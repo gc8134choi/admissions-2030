@@ -22,7 +22,7 @@ export async function roadmapView(el, { load, esc, learner, fmt, badgeMain, noti
   const draw = () => {
     $sections.innerHTML = stages.map((s) => {
       const rs = items.filter((x) => x.stageKey === s.key && (!who || x.who.includes(who)));
-      return rs.length ? `<section id="rd-${esc(s.key)}"><h3>${esc(s.label)}${s.key === cur.key ? '<span class="ed-tag">지금</span>' : ""}</h3>${rs.map(rowHtml).join("")}</section>` : "";
+      return rs.length ? `<section id="rd-${esc(s.key)}"><h2>${esc(s.label)}${s.key === cur.key ? '<span class="ed-tag">지금</span>' : ""}</h2>${rs.map(rowHtml).join("")}</section>` : "";
     }).join("") || '<p class="ed-src">이 조건에 맞는 항목이 없어요.</p>';
   };
   el.innerHTML = `<div class="ed"><p class="ed-top"><b>${esc(learner.label)}의 학년별 로드맵이에요.</b> 추정은 아직 공고 전이라 바뀔 수 있어요.</p>

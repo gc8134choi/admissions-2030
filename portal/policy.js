@@ -42,7 +42,7 @@ export function register(views, { $, esc, load, store }) {
   const basic = [["항목", (r) => `<b>${esc(r.title)}</b>`], ["내용", (r) => esc(r.body)], ["상태", badge], ["구분·출처", src]];
   // 행 리스트(표 대체, A안): 왼쪽 상태 점, 오른쪽 제목·내용·출처. 구분은 헤어라인만. 옵션: meta(r)=제목 위 작은 글씨, cls(r)=추가 클래스, title(r)=제목.
   const cards = (rows, { meta, cls = () => "", title = (r) => r.title } = {}) => rows.length
-    ? `<div class="ed-rows">${rows.map((r) => `<article class="ed-row ${cls(r)}">${meta && meta(r) ? `<div class="ed-meta">${esc(meta(r))}</div>` : ""}<div class="ed-st">${badgeMain(r)}</div><h4>${esc(title(r))}</h4><p class="ed-b">${esc(r.body)}</p>${badgeNote(r)}<p class="ed-s">출처 ${src(r)}</p></article>`).join("")}</div>`
+    ? `<div class="ed-rows">${rows.map((r) => `<article class="ed-row ${cls(r)}">${meta && meta(r) ? `<div class="ed-meta">${esc(meta(r))}</div>` : ""}<div class="ed-st">${badgeMain(r)}</div><h3>${esc(title(r))}</h3><p class="ed-b">${esc(r.body)}</p>${badgeNote(r)}<p class="ed-s">출처 ${src(r)}</p></article>`).join("")}</div>`
     : '<p class="muted">해당 항목이 없어요.</p>';
   const cnt = (n) => `<span class="cnt">${n}</span>`;
   const tabs = (items, on) => `<div class="ed-tabs">${items.map(([k, h, t]) => `<a href="${h}" class="${k === on ? "on" : ""}">${t}</a>`).join("")}</div>`;
@@ -76,7 +76,7 @@ export function register(views, { $, esc, load, store }) {
     const tr = (e) => `<tr class="${(e.end || e.start) < t ? "past" : ""}${only3(e) ? " g3" : ""}"><td class="l">${esc(fmt(e))}</td><td class="l"><b>${esc(e.r.title)}</b>${e.label ? ` · ${esc(e.label)}` : ""}${e.first ? `<div class="muted small">${esc(e.r.body)}</div>` : ""}</td><td class="l">${badge(e.r)}</td><td class="l">${src(e.r)}</td></tr>`;
     const none = rows.filter((r) => !r.events);
     if (!evs.length && !none.length) return '<p class="note">아직 모인 일정이 없어요. 일정이 생기면 이 자리에 떠요.</p>';
-    return `<p class="muted">오늘(${t}) 이전 일정은 흐리게, 현 고3 일정은 <span class="g3k">회색</span>으로 표시해요.</p><div class="tw"><table class="policy"><thead><tr><th class="l">날짜</th><th class="l">항목</th><th class="l">상태</th><th class="l">구분·출처</th></tr></thead><tbody>${evs.map(tr).join("")}</tbody></table></div>${none.length ? `<h3>일정 미확인</h3>${table(none, basic)}` : ""}`;
+    return `<p class="muted">오늘(${t}) 이전 일정은 흐리게, 현 고3 일정은 <span class="g3k">회색</span>으로 표시해요.</p><div class="tw"><table class="policy"><thead><tr><th class="l">날짜</th><th class="l">항목</th><th class="l">상태</th><th class="l">구분·출처</th></tr></thead><tbody>${evs.map(tr).join("")}</tbody></table></div>${none.length ? `<h2>일정 미확인</h2>${table(none, basic)}` : ""}`;
   };
 
   const logTable = (rows) => cards(rows, { meta: (r) => (dateOf(r.title) ? fmtDate(dateOf(r.title)) : "날짜 미정"), title: (r) => r.title.slice(dateOf(r.title).length).trim() || r.title });
@@ -98,10 +98,10 @@ export function register(views, { $, esc, load, store }) {
     const links = (list) => (list || []).length ? `<div class="ed-src">${list.map((x) => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a> (${SKIND[x.kind] || x.kind})`).join(" · ")}</div>` : "";
     const regs = rules.csatRegimes.filter(mine).map((r) => { const a = mine(r);
       const tbl = r.areas ? `<table class="ed-tbl"><thead><tr><th>영역</th><th>문항</th><th>배점</th><th>시간</th><th>성적</th></tr></thead><tbody>${r.areas.map((x) => `<tr><td>${esc(x.area)}${x.scope ? `<div class="muted small">${esc(x.scope.join("·"))}</div>` : ""}</td><td>${x.items ?? ""}</td><td>${x.points ?? ""}</td><td>${x.minutes ?? ""}분</td><td>${x.scoring === "absolute" ? "절대평가" : "상대평가"}</td></tr>`).join("")}</tbody></table>` : "";
-      return `<div class="ed-row"><div class="ed-st">${stat(a.status, r.unverified)}</div><h4>${esc(r.label)}</h4><p>${esc(a.note || r.note || "")}</p>${tbl}${links(a.sources && a.sources.length ? a.sources : r.sources)}</div>`; });
+      return `<div class="ed-row"><div class="ed-st">${stat(a.status, r.unverified)}</div><h3>${esc(r.label)}</h3><p>${esc(a.note || r.note || "")}</p>${tbl}${links(a.sources && a.sources.length ? a.sources : r.sources)}</div>`; });
     const gr = rules.gradingRules.filter(mine).map((r) => { const a = mine(r); const b = r.rankGrades.bandPercent;
-      return `<div class="ed-row"><div class="ed-st">${stat(a.status, r.unverified)}</div><h4>내신 산출: 5등급 상대평가</h4><p>${me.label}는 ${b.map((v, i) => `${i + 1}등급 ${v}%`).join(" · ")}로 등급을 매겨요. ${esc(a.note || "")}</p>${links(a.sources && a.sources.length ? a.sources : r.sources)}</div>`; });
-    return regs.length + gr.length ? `<h3>수능·내신 규칙</h3><div class="ed-rows">${regs.join("")}${gr.join("")}</div>` : "";
+      return `<div class="ed-row"><div class="ed-st">${stat(a.status, r.unverified)}</div><h3>내신 산출: 5등급 상대평가</h3><p>${me.label}는 ${b.map((v, i) => `${i + 1}등급 ${v}%`).join(" · ")}로 등급을 매겨요. ${esc(a.note || "")}</p>${links(a.sources && a.sources.length ? a.sources : r.sources)}</div>`; });
+    return regs.length + gr.length ? `<h2>수능·내신 규칙</h2><div class="ed-rows">${regs.join("")}${gr.join("")}</div>` : "";
   };
 
   views.system = async (el, query) => {
@@ -126,8 +126,8 @@ export function register(views, { $, esc, load, store }) {
     filtered(el, body, (f) => {
       const rs = (x) => x.filter((r) => stMatch(r, f));
       $("#ptbl").innerHTML = log ? logTable(rs(body)) : Object.entries(TOPIC).map(([t, label]) => { const g = rs(body.filter((r) => key(r) === t)); if (!g.length) return "";
-        if (t === "academy") return `<h3>${label}<span class="ed-tag">학원 의견·자료</span> ${cnt(g.length)}</h3><div class="ed-op"><p>학원 설명회 의견과 자료예요. 확인된 사실이 아니에요.</p>${cards(g, { meta: (r) => [r.examYear && `대입 ${r.examYear}학년도`, r.entryYear && `입학 ${r.entryYear}`].filter(Boolean).join(" · ") })}</div>`;
-        return `<h3>${label} ${cnt(g.length)}</h3>${t === "cur-select" ? pickLine : ""}${NOTE[t] || ""}${cards(g, { meta: (r) => [r.examYear && `대입 ${r.examYear}학년도`, r.entryYear && `입학 ${r.entryYear}`].filter(Boolean).join(" · ") })}${t === "cur-select" ? imgBlock : ""}`; }).join("") || '<p class="muted">조건에 맞는 항목이 없어요.</p>';
+        if (t === "academy") return `<h2>${label}<span class="ed-tag">학원 의견·자료</span> ${cnt(g.length)}</h2><div class="ed-op"><p>학원 설명회 의견과 자료예요. 확인된 사실이 아니에요.</p>${cards(g, { meta: (r) => [r.examYear && `대입 ${r.examYear}학년도`, r.entryYear && `입학 ${r.entryYear}`].filter(Boolean).join(" · ") })}</div>`;
+        return `<h2>${label} ${cnt(g.length)}</h2>${t === "cur-select" ? pickLine : ""}${NOTE[t] || ""}${cards(g, { meta: (r) => [r.examYear && `대입 ${r.examYear}학년도`, r.entryYear && `입학 ${r.entryYear}`].filter(Boolean).join(" · ") })}${t === "cur-select" ? imgBlock : ""}`; }).join("") || '<p class="muted">조건에 맞는 항목이 없어요.</p>';
     });
   };
 
@@ -176,15 +176,15 @@ export function register(views, { $, esc, load, store }) {
     const gg = rows.filter((r) => r.topic === "gg-hs-entry" && !r.events);
     const asg = rows.filter((r) => r.topic === "high-school-assignment");
     el.innerHTML = `<div class="ed"><div class="ed-top"><b>고교 유형과 전형이에요.</b><details><summary>자세히</summary>${notice()}</details></div>
-      <h3>고교 유형 ${cnt(rows.filter((r) => r.topic === "hs-types").length)}</h3>${cards(rows.filter((r) => r.topic === "hs-types"))}
-      ${gg.length ? `<h3>경기 고입 안내 <small>2027학년도</small> ${cnt(gg.length)}</h3>${cards(gg)}` : ""}
-      ${asg.length ? `<h3>용인 평준화 배정 <small>2026학년도 기준 참고</small> ${cnt(asg.length)}</h3>
+      <h2>고교 유형 ${cnt(rows.filter((r) => r.topic === "hs-types").length)}</h2>${cards(rows.filter((r) => r.topic === "hs-types"))}
+      ${gg.length ? `<h2>경기 고입 안내 <small>2027학년도</small> ${cnt(gg.length)}</h2>${cards(gg)}` : ""}
+      ${asg.length ? `<h2>용인 평준화 배정 <small>2026학년도 기준 참고</small> ${cnt(asg.length)}</h2>
       <p class="ed-big">우리 4개교(풍덕·성복·수지·홍천)는 모두 <em>2구역</em></p>
       <p class="ed-src">원문은 아직 못 봤어요. 2027 규칙은 한 번 더 확인해요.</p>
       ${cards(asg, { cls: (r) => (r.id === "asg-02" ? "hl" : "") })}` : ""}
-      ${credit ? `<h3>고교학점제 <small>입학 후 제도</small></h3>
+      ${credit ? `<h2>고교학점제 <small>입학 후 제도</small></h2>
       <p class="ed-b">${esc(credit.body)}</p><p class="ed-s">${badgeMain(credit)} · <a href="#life/credit">고교학점제 이해에서 자세히 봐요</a></p>` : ""}
-      ${opn.length ? `<h3>선택 기준<span class="ed-tag">학원 의견</span> ${cnt(opn.length)}</h3>
+      ${opn.length ? `<h2>선택 기준<span class="ed-tag">학원 의견</span> ${cnt(opn.length)}</h2>
       <div class="ed-op"><p>학원 설명회의 의견이에요. 확인된 사실이 아니라서 위 내용과 구분해서 봐요.</p>${cards(opn)}</div>` : ""}
       <p class="ed-src">고입 전형 일정은 <a href="#schedule">일정</a>의 고입 탭에서 볼 수 있어요.</p></div>`;
   };

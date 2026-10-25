@@ -11,10 +11,10 @@
 
 .ed{color:var(--e-ink);counter-reset:edsec;letter-spacing:-.01em;word-break:keep-all}
 .ed a{color:inherit;text-underline-offset:3px}
-.ed h3{margin:40px 0 18px;padding-top:22px;border-top:1px solid var(--e-rule);font-size:12px;font-weight:700;letter-spacing:.06em;display:flex;align-items:baseline;gap:10px;counter-increment:edsec}
-.ed h3::before{content:counter(edsec,decimal-leading-zero);color:var(--e-accent)}
-.ed h3 .cnt{margin-left:auto;font-size:12px;font-weight:400;color:var(--e-mute);background:none;padding:0;min-width:0}
-.ed h3 .muted,.ed h3 small{font-weight:400;letter-spacing:0;color:var(--e-mute)}
+.ed h2{margin:40px 0 18px;padding-top:22px;border-top:1px solid var(--e-rule);font-size:12px;font-weight:700;letter-spacing:.06em;display:flex;align-items:baseline;gap:10px;counter-increment:edsec}
+.ed h2::before{content:counter(edsec,decimal-leading-zero);color:var(--e-accent)}
+.ed h2 .cnt{margin-left:auto;font-size:12px;font-weight:400;color:var(--e-mute);background:none;padding:0;min-width:0}
+.ed h2 .muted,.ed h2 small{font-weight:400;letter-spacing:0;color:var(--e-mute)}
 
 /* 상태: 알약 대신 점 + 글자 (확정=채운 점, 보도=반 채움, 추정=빈 점, 그 밖=빈 점) */
 .es{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--e-mute);white-space:nowrap}
@@ -47,12 +47,12 @@
 .ed-meta{font-size:12px;color:var(--e-mute);margin-bottom:2px}
 .ed-row .ed-st{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 12px;margin-bottom:3px}.ed-row .ed-st:empty{display:none}
 .ed-row .ed-unv{margin-top:0}
-.ed-row h4{margin:0;font-size:18px;line-height:1.4;font-weight:700;letter-spacing:-.025em}
+.ed-row h3{margin:0;font-size:18px;line-height:1.4;font-weight:700;letter-spacing:-.025em}
 .ed-b{margin:3px 0 0;font-size:15px;line-height:1.7;max-width:46em}
 .ed-s{margin:6px 0 0;font-size:13px;color:var(--e-mute);line-height:1.6}
 .ed-s a{color:var(--e-mute)}.ed-s a:hover{color:var(--e-ink)}
 .ed-note{font-size:12px;color:var(--e-mute);margin-top:2px}
-.ed-row.hl h4{color:var(--e-accent)}
+.ed-row.hl h3{color:var(--e-accent)}
 
 /* 학원 의견: 사실과 섞이지 않게 점선과 글자 라벨만 */
 .ed-op{margin:8px 0 0;padding-top:12px;border-top:1px dashed var(--e-mute)}
@@ -88,7 +88,7 @@
 .ed-ln b{text-align:right;font-variant-numeric:tabular-nums}
 .ed-gauge .l{font-size:14px;margin-bottom:8px}.ed-gauge .t{height:3px;background:var(--e-hair);position:relative}.ed-gauge .t i{position:absolute;left:0;top:0;bottom:0;background:var(--e-ink)}
 .ed-two{display:grid;grid-template-columns:1fr 1fr;gap:0}.ed-two>div{padding:0 24px 0 0}.ed-two>div+div{padding:0 0 0 24px;border-left:1px solid var(--e-hair)}
-.ed-two h5{margin:0 0 14px;font-size:15px}.ed-two .ed-gauge+.ed-gauge{margin-top:18px}
+.ed-two h3{margin:0 0 14px;font-size:15px}.ed-two .ed-gauge+.ed-gauge{margin-top:18px}
 @media (max-width:640px){.ed-two{grid-template-columns:1fr}.ed-two>div,.ed-two>div+div{padding:0;border:0}.ed-two>div+div{margin-top:24px}}
 .ed-plain{margin:12px 0 0;padding:0;list-style:none;font-size:13px;color:var(--e-mute)}.ed-plain li{padding:3px 0}
 .ed-kinds{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--e-hair);margin-bottom:6px}
@@ -106,7 +106,7 @@
 @media (max-width:760px){.ed-steps{grid-template-columns:1fr 1fr}.ed-steps li:nth-child(3){padding-left:0;border-left:0}.ed-steps li:nth-child(n+3){border-top:1px solid var(--e-hair);margin-top:12px}}
 .ed-tl{display:flex;align-items:center;margin:14px 0 4px}.ed-tl .p{display:flex;flex-direction:column;gap:2px;min-width:54px}.ed-tl .p small{font-size:12px;color:var(--e-mute)}.ed-tl .p b{font-size:20px;font-weight:800;letter-spacing:-.04em}
 .ed-tl .a{flex:1;height:1px;background:var(--e-rule);min-width:24px;margin:0 12px}
-.ed-years{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:22px;margin-top:10px}.ed-ym h5{margin:0 0 8px;font-size:14px}
+.ed-years{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:22px;margin-top:10px}.ed-ym h3{margin:0 0 8px;font-size:14px}
 .ed-yc{display:flex;gap:10px;align-items:flex-end;height:110px}.ed-yc>div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%;gap:4px}.ed-yb{display:flex;flex-direction:column}.ed-yb span{display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--e-paper);min-height:0}
 .ed-yb .ele{background:var(--e-ele)}.ed-yb .req{background:var(--e-req)}.ed-yc em{font-style:normal;font-size:11px;color:var(--e-mute);text-align:center}
 .ed-ylegend{display:flex;gap:16px;font-size:12px;color:var(--e-mute);margin:2px 0 0}.ed-ylegend i{display:inline-block;width:9px;height:9px;margin-right:5px}
