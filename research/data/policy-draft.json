@@ -132,7 +132,7 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "보도(원문 미확인)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "national"
     },
     {
@@ -149,7 +149,7 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "보도(원문 미확인)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "national"
     },
     {
@@ -166,7 +166,7 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "보도(원문 미확인, 개인 제안)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "national"
     },
     {
@@ -186,7 +186,7 @@
       "audience": [
         "common"
       ],
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "seoul"
     },
     {
@@ -206,7 +206,7 @@
       "audience": [
         "science"
       ],
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "seoul"
     },
     {
@@ -227,7 +227,7 @@
         "general",
         "private"
       ],
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "seoul"
     },
     {
@@ -268,7 +268,7 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "보도(원문 미확인)",
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "national"
     },
     {
@@ -285,7 +285,7 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "보도(원문 미확인)",
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "national"
     },
     {
@@ -325,16 +325,15 @@
       "topic": "hs-credit-system",
       "entryYear": 2027,
       "title": "졸업 기준",
-      "body": "3년간 192학점(교과 174 + 창체 18)",
-      "status": "보도",
-      "sourceKind": "매체",
-      "sourceName": "서울경제",
-      "sourceUrl": "https://www.sedaily.com/article/12985967",
+      "body": "3년간 192학점(교과 174 + 창의적 체험활동 18)을 이수해야 졸업",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "고교학점제 종합지원포털(교육부) 졸업·이수 기준",
+      "sourceUrl": "https://www.hscredit.kr/about/graduation",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true,
-      "statusNote": "보도(원문 미확인)",
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "unverified": false,
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
       "region": "national"
     },
     {
@@ -342,16 +341,20 @@
       "topic": "hs-credit-system",
       "entryYear": 2027,
       "title": "과목 이수",
-      "body": "과목 이수는 출석률 2/3 이상과 학업성취율 40% 이상이 원칙이었으나 2026.1.28 완화로 선택과목은 출석률만 적용(공통과목은 현행 유지). 미이수 시 보충이수 가능(기존 검색 요약, 완화 내용은 log-16 참고)",
-      "status": "보도",
-      "sourceKind": "매체",
-      "sourceName": "교육플러스",
-      "sourceUrl": "https://www.edpl.co.kr/news/articleView.html?idxno=33",
-      "extraSources": [],
+      "body": "과목 이수 기준: 공통과목은 출석률 2/3 이상 + 학업성취율 40% 이상, 선택과목은 출석률 2/3 이상(2026학년도 고1·2, 2027학년도 전 학년 적용). 기준에 못 미치면 미도달, 최소 성취수준 보장지도·추가학습 후에도 못 미치면 미이수",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "고교학점제 종합지원포털(교육부) 졸업·이수 기준",
+      "sourceUrl": "https://www.hscredit.kr/about/graduation",
+      "extraSources": [
+        {
+          "name": "정책브리핑 정책뉴스(2026.1.28)",
+          "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148958710"
+        }
+      ],
       "checkedAt": "2026-10-25",
-      "unverified": true,
-      "statusNote": "보도(원문 미확인)",
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "unverified": false,
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
       "region": "national"
     },
     {
@@ -359,32 +362,31 @@
       "topic": "hs-credit-system",
       "entryYear": 2027,
       "title": "성적 표기",
-      "body": "성취도 A~E 절대평가 + 석차 5등급 병기(2025 고1부터)",
-      "status": "보도",
-      "sourceKind": "매체",
-      "sourceName": "교풀",
-      "sourceUrl": "https://www.gyopool.com/blog/high-school-credit-system-ai",
+      "body": "성취평가(A~E) + 상대평가 5등급 병기. 2025학년도 고1부터 전국 모든 고교에 전면 적용",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "고교학점제 종합지원포털(교육부) 고교학점제란",
+      "sourceUrl": "https://www.hscredit.kr/about/intro",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true,
-      "statusNote": "보도(원문 미확인)",
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "unverified": false,
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
       "region": "national"
     },
     {
       "id": "hs-14",
       "topic": "hs-credit-system",
       "entryYear": 2027,
-      "title": "2027 고1 적용 세부",
-      "body": "확인 못 함",
-      "status": "unknown",
-      "sourceKind": null,
-      "sourceName": null,
-      "sourceUrl": null,
+      "title": "2027 적용 세부(이수 기준)",
+      "body": "2027학년도에는 선택과목 출석률만 적용하는 완화 기준이 모든 학년에 적용(국가교육위원회 제64차 의결 2026.1.15)",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "고교학점제 종합지원포털(교육부) 졸업·이수 기준",
+      "sourceUrl": "https://www.hscredit.kr/about/graduation",
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": null,
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
       "region": "national"
     },
     {
@@ -805,7 +807,7 @@
       "audience": [
         "common"
       ],
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "national"
     },
     {
@@ -844,7 +846,7 @@
       "audience": [
         "common"
       ],
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "national"
     },
     {
@@ -888,7 +890,7 @@
       "audience": [
         "common"
       ],
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "national"
     },
     {
@@ -932,7 +934,7 @@
       "audience": [
         "common"
       ],
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "national"
     },
     {
@@ -957,7 +959,7 @@
       "audience": [
         "common"
       ],
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "national"
     },
     {
@@ -982,7 +984,7 @@
       "audience": [
         "common"
       ],
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "national"
     },
     {
@@ -1101,7 +1103,7 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "보도(원문 미확인)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "national"
     },
     {
@@ -1123,7 +1125,7 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "보도(원문 미확인)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "national"
     },
     {
@@ -1140,7 +1142,7 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "보도(원문 미확인)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "national"
     },
     {
@@ -1157,7 +1159,7 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "보도(원문 미확인)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "national"
     },
     {
@@ -1275,7 +1277,7 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "gyeonggi"
     },
     {
@@ -1292,7 +1294,7 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "gyeonggi"
     },
     {
@@ -1309,7 +1311,7 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "gyeonggi"
     },
     {
@@ -1326,7 +1328,7 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "gyeonggi"
     },
     {
@@ -1343,7 +1345,7 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "gyeonggi"
     },
     {
@@ -1360,7 +1362,7 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "gyeonggi"
     },
     {
@@ -1377,7 +1379,7 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "gyeonggi"
     },
     {
@@ -1513,15 +1515,20 @@
       "topic": "curriculum-guide",
       "entryYear": 2026,
       "title": "학점 환산",
-      "body": "1학점당 수업량은 16회(원문). 1회 50분이라는 문구는 원문에서 확인 못 함 (경기 적용은 별도 확인)",
+      "body": "1학점은 50분 수업 16회(2·3학년은 17회 중 1회 자율 운영 가능, 고교학점제 종합지원포털)",
       "status": "확정",
       "sourceKind": "공식",
-      "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
-      "sourceUrl": null,
-      "extraSources": [],
+      "sourceName": "고교학점제 종합지원포털(교육부) 졸업·이수 기준",
+      "sourceUrl": "https://www.hscredit.kr/about/graduation",
+      "extraSources": [
+        {
+          "name": "고교학점제 종합지원포털(교육부) 고교학점제란",
+          "url": "https://www.hscredit.kr/about/intro"
+        }
+      ],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)",
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
       "region": "national"
     },
     {
@@ -2059,76 +2066,69 @@
         "common"
       ],
       "date": "2026-03-30",
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "gyeonggi"
     },
     {
       "id": "gg-02",
       "topic": "gg-hs-entry",
       "entryYear": 2027,
-      "title": "경기 후기 전형 일정 불일치",
-      "body": "후기 전형 시작일이 경기도교육청 기본계획 보도에서는 12.4, 전국 자사고 12.2~11 보도도 있음. 학교·유형별로 다를 수 있어 공식 포털에서 확인 필요",
-      "status": "보도",
-      "sourceKind": "매체",
-      "sourceName": "베리타스알파",
-      "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=604064",
-      "extraSources": [
-        {
-          "name": "뉴스핌",
-          "url": "https://www.newspim.com/news/view/20260330000537"
-        }
-      ],
+      "title": "경기 후기 전형 원서접수",
+      "body": "후기 학교(일반고, 자율형 공립고, 외국어고, 국제고, 자율형 사립고) 원서접수 2026.12.4(금)~12.10(목). 전형요강은 2026.9.3 이내 공고, 일정은 사정에 따라 변경 가능",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "경기도교육청 고등학교 입학전학 포털 공지: 2027학년도 경기도 고등학교 신입생 전형요강(2026.8.19, 첨부 PDF)",
+      "sourceUrl": "https://satp.goe.go.kr/main.do",
+      "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true,
-      "statusNote": "보도(원문 미확인)",
+      "unverified": false,
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
       "audience": [
         "general",
         "private"
       ],
-      "date": "2026-12-02~2026-12-11",
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "date": "2026-12-04~2026-12-10",
       "region": "gyeonggi"
     },
     {
       "id": "gg-03",
       "topic": "gg-hs-entry",
       "entryYear": 2027,
-      "title": "경기 외고·국제고·자사고 원서접수",
-      "body": "외대부고·안산동산고(전국 자사고) 12.4~10, 경기·고양·과천·김포·동두천·성남·수원·안양 외고와 고양·동탄·청심 국제고도 12.4~10 접수(2026.10.23 기준 고입캘린더)",
-      "status": "보도",
-      "sourceKind": "매체",
-      "sourceName": "베리타스알파 고입캘린더",
-      "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=632287",
+      "title": "경기 외고·국제고·자사고 전형 일정",
+      "body": "외국어고·국제고·자율형 사립고(자기주도학습전형): 원서접수 12.4~12.10, 1단계 전형 12.11~12, 합격자 발표 12.14 이내, 서류접수 12.15~16, 2단계 전형 12.17~24, 합격자 발표 12.29 이내. 추가모집 접수 2027.1.7~12, 합격자 발표 1.14",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "경기도교육청 고등학교 입학전학 포털 공지: 2027학년도 경기도 고등학교 신입생 전형요강(2026.8.19, 첨부 PDF)",
+      "sourceUrl": "https://satp.goe.go.kr/main.do",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true,
-      "statusNote": "보도(원문 미확인)",
+      "unverified": false,
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
       "audience": [
         "private"
       ],
-      "date": "2026-12-04~2026-12-10",
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "date": "2026-12-04~2027-01-14",
       "region": "gyeonggi"
     },
     {
       "id": "gg-04",
       "topic": "gg-hs-entry",
       "entryYear": 2027,
-      "title": "경기 후기 평준화 일반고 원서접수",
-      "body": "2027학년도 날짜는 확인 못 함. 참고로 2026학년도 기본계획은 2025.12.5~12.11",
-      "status": "보도",
-      "sourceKind": null,
-      "sourceName": null,
-      "sourceUrl": null,
+      "title": "경기 후기 평준화 일반고 일정",
+      "body": "원서접수 2026.12.4~12.10(해당 지역 교육지원청), 전형기간 12.11~2027.1.5, 배정 대상자 발표 1.6, 배정 학교 발표 1.22, 등록 1.25~27, 추가 배정·발표 2.4, 추가 배정학교 등록 2.4~5",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "경기도교육청 고등학교 입학전학 포털 공지: 2027학년도 경기도 고등학교 신입생 전형요강(2026.8.19, 첨부 PDF)",
+      "sourceUrl": "https://satp.goe.go.kr/main.do",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true,
-      "statusNote": "보도(원문 미확인)",
+      "unverified": false,
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
       "audience": [
         "general"
       ],
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
-      "region": "gyeonggi"
+      "region": "gyeonggi",
+      "date": "2026-12-04~2027-02-05"
     },
     {
       "id": "gg-05",
@@ -2147,7 +2147,7 @@
       "audience": [
         "common"
       ],
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "gyeonggi"
     },
     {
@@ -2155,24 +2155,18 @@
       "topic": "gg-hs-entry",
       "entryYear": 2027,
       "title": "평준화 일반고 배정 방식",
-      "body": "도내 평준화 일반고는 지원과 추첨 결합 방식. 중학교 내신(200점 만점) 기준으로 학군별 정원만큼 대상자를 뽑은 뒤 지망 순위에 따라 추첨. 용인은 1단계 학군내배정, 2단계 구역내배정",
-      "status": "보도",
-      "sourceKind": "매체",
-      "sourceName": "분당신문",
-      "sourceUrl": "https://www.bundangnews.co.kr/58587",
-      "extraSources": [
-        {
-          "name": "아시아경제",
-          "url": "https://view.asiae.co.kr/article/2026092812475292099"
-        }
-      ],
+      "body": "학군별 일반고 모집정원만큼 중학교 내신(200점)으로 선발하고 컴퓨터로 배정. 선지원 후추첨 방식. 용인 등 구역이 설정된 학군은 1단계 학군내배정(용인 50%, 서천고 80%, 처인고 100%)과 2단계 구역내배정으로 진행",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "경기도교육청 고등학교 입학전학 포털 공지: 2027학년도 경기도 고교 평준화지역 학생 배정 방안(2026.8.19, 첨부 PDF)",
+      "sourceUrl": "https://satp.goe.go.kr/main.do",
+      "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true,
-      "statusNote": "보도(원문 미확인)",
+      "unverified": false,
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
       "audience": [
         "general"
       ],
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
       "region": "gyeonggi"
     },
     {
@@ -2180,25 +2174,19 @@
       "topic": "gg-hs-entry",
       "entryYear": 2027,
       "title": "지망 작성 규칙",
-      "body": "외국어고·국제고·자사고 지원자는 1지망에 해당 학교, 2지망부터 학군 또는 구역 내 학교를 희망 순서대로 작성. 1지망 불합격 시 2지망부터 추첨",
-      "status": "보도",
-      "sourceKind": "매체",
-      "sourceName": "분당신문",
-      "sourceUrl": "https://www.bundangnews.co.kr/58587",
-      "extraSources": [
-        {
-          "name": "아시아경제",
-          "url": "https://view.asiae.co.kr/article/2026092812475292099"
-        }
-      ],
+      "body": "외고·국제고·자사고 지원자가 평준화 일반고에 동시 지원하면 1지망은 외고·국제고·자사고, 2지망부터 학군내·구역내 일반고 순위를 작성. 외·국·자에 합격하면 일반고에 지원하지 않은 것으로 간주하고 불합격한 경우에만 일반고 추첨 배정. 지망은 학군내배정 5지망까지 추첨, 구역내배정은 끝 지망까지. 2지망 이후는 앞 지망자로 정원이 차지 않은 학교에서만 추첨 기회",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "경기도교육청 고등학교 입학전학 포털 공지: 2027학년도 경기도 고교 평준화지역 학생 배정 방안(2026.8.19, 첨부 PDF)",
+      "sourceUrl": "https://satp.goe.go.kr/main.do",
+      "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true,
-      "statusNote": "보도(원문 미확인)",
+      "unverified": false,
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
       "audience": [
         "general",
         "private"
       ],
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
       "region": "gyeonggi"
     },
     {
@@ -2206,7 +2194,7 @@
       "topic": "gg-hs-entry",
       "entryYear": 2027,
       "title": "평준화 배정 설명회",
-      "body": "경기도교육청 2027학년도 고교 평준화 배정 설명회 2026.10.19~11.27, 유튜브 경기고입TV 비대면. 세부 자료는 고입·전학 포털(satp.goe.go.kr)",
+      "body": "경기도교육청 2027학년도 고교 평준화 배정 설명회 2026.10.19~11.27, 유튜브 경기고입TV 비대면. 세부 자료는 고입·전학 포털(satp.goe.go.kr) 경기도교육청 포털 자료실에 학군별 학생배정방안 온라인 설명회 자료가 2026.9.18 게시됨(공식)",
       "status": "보도",
       "sourceKind": "매체",
       "sourceName": "아시아경제",
@@ -2224,7 +2212,7 @@
         "general"
       ],
       "date": "2026-10-19~2026-11-27",
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "gyeonggi"
     },
     {
@@ -2232,7 +2220,7 @@
       "topic": "gg-hs-entry",
       "entryYear": 2027,
       "title": "경기·용인 확인 못 함",
-      "body": "2027학년도 용인학군 구역 구성(1·2·3구역)·구역별 지망 가능 학교 수, 후기 일반고 접수일, 외고·국제고·자사고 면접·내신 배점은 확인 못 함",
+      "body": "2027학년도 용인학군 구역별 학교 구성과 구역별 지망 학교수는 공식 PDF의 표 글자를 추출하지 못해 확인 못 함(2026학년도 학교 배부 자료 기준은 asg 행). 외고·국제고·자사고 면접·내신 배점, 중1 2학기 성적 반영의 요강 문구도 확인 못 함",
       "status": "unknown",
       "sourceKind": null,
       "sourceName": null,
@@ -2272,7 +2260,7 @@
       "audience": [
         "common"
       ],
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "date": "2026-08",
       "region": "national"
     },
@@ -2298,7 +2286,7 @@
       "audience": [
         "common"
       ],
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "date": "2026-08",
       "region": "national"
     },
@@ -2324,7 +2312,7 @@
       "audience": [
         "common"
       ],
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "date": "2026-09",
       "region": "national"
     },
@@ -2345,7 +2333,7 @@
       "audience": [
         "common"
       ],
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "date": "2026-09",
       "region": "national"
     },

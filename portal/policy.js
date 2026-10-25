@@ -1,10 +1,12 @@
 import { creditView } from "./credit.js";
+import { loadProfile, profileOf, filterByProfile } from "./profile.js";
 import { loadAudience, saveAudience, toggleAudience, audienceMatch, audienceChips } from "./home.js";
 
 // 제도·일정 화면(대입 제도, 일정, 고교 유형·전형, 제도 변경 로그). 데이터는 data/policy.json.
 const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "확인 못 함", material: "학교 배부 자료", seoul: "서울교육청 자료", "seoul-verified": "서울교육청 자료(원문 확인)", match: "서울·경기 자료 일치", gyeonggi: "경기도교육청 자료", opinion: "의견", academy: "학원 자료" };
 const SKIND = { official: "공식", media: "매체", material: "학교 배부", seoul: "서울교육청", "seoul-gyeonggi": "서울·경기교육청", gyeonggi: "경기도교육청", opinion: "학원 의견", academy: "학원 자료" };
-const NOTICE = '<p class="note">조사일 2026-10-25, <b>검색 요약 기준이며 공식 사이트로 재확인 필요.</b> 입학학년도 2027(현 중3) · 대입학년도 2030. <span class="unv">원문 미확인</span> 표시는 원문 페이지를 열람하지 못했다는 뜻입니다.</p>';
+const NOTICE_TPL = '<p class="note">조사일 2026-10-25, <b>검색 요약 기준이며 공식 사이트로 재확인 필요.</b> 입학학년도 {E}({L}) · 대입학년도 {X}. <span class="unv">원문 미확인</span> 표시는 원문 페이지를 열람하지 못했다는 뜻입니다.</p>';
+const noticeFor = (p) => NOTICE_TPL.replace("{E}", p.entryYear).replace("{L}", p.label).replace("{X}", p.examYear);
 
 // 대입 제도 화면에 표로 보여 줄 cur-* 행(수능 출제범위, 전형 구분, 학종 평가요소). 나머지는 고교학점제 이해 화면.
 const CUR_SYS = new Set(["cur-08", "cur-29", "cur-30"]);
@@ -14,6 +16,10 @@ const ACD_SYS = new Set(["acd-01", "acd-02", "acd-03"]);
 const CUR_GROUP = { "cur-29": "admission-structure", "cur-30": "admission-structure" };
 
 export function register(views, { $, esc, load, store }) {
+  // 선택된 프로필(portal.profile)의 행 + 연도 없는 공통 행만 쓴다. 프로필을 바꾸면 셸이 화면을 다시 그린다.
+  const curProfile = () => profileOf(loadProfile(store));
+  const loadPolicy = async () => filterByProfile(await load("policy"), curProfile().id);
+  const notice = () => noticeFor(curProfile());
   const badgeMain = (r) => `<span class="pst ${r.status}">${PST[r.status]}</span>${r.unverified ? ` <span class="unv"${r.reason ? ` title="${esc(r.reason)}"` : ""}>원문 미확인</span>` : ""}`;
   const badgeNote = (r) => `${r.unverified && r.reason ? `<div class="muted small">사유: ${esc(r.reason)}</div>` : ""}${r.note ? `<div class="muted small">${esc(r.note)}</div>` : ""}`;
   const badge = (r) => badgeMain(r) + badgeNote(r);
@@ -45,7 +51,7 @@ export function register(views, { $, esc, load, store }) {
   };
   // 카드 리스트(표 대체): 항목명(좌)·상태 배지(우), 내용 전폭, 출처 칩. 옵션: meta(r)=제목 위 작은 글씨, cls(r)=추가 클래스, title(r)=제목.
   const cards = (rows, { meta, cls = () => "", title = (r) => r.title } = {}) => rows.length
-    ? `<div class="rowlist">${rows.map((r) => `<article class="rowcard ${cls(r)}">${meta ? `<div class="rc-meta">${esc(meta(r))}</div>` : ""}<h4 class="rc-t">${esc(title(r))}</h4><div class="rc-s">${badgeMain(r)}</div><p class="rc-b">${esc(r.body)}</p>${badgeNote(r) ? `<div class="rc-n">${badgeNote(r)}</div>` : ""}<div class="rc-src">${srcChips(r)}</div></article>`).join("")}</div>`
+    ? `<div class="rowlist">${rows.map((r) => `<article class="rowcard ${cls(r)}">${meta && meta(r) ? `<div class="rc-meta">${esc(meta(r))}</div>` : ""}<h4 class="rc-t">${esc(title(r))}</h4><div class="rc-s">${badgeMain(r)}</div><p class="rc-b">${esc(r.body)}</p>${badgeNote(r) ? `<div class="rc-n">${badgeNote(r)}</div>` : ""}<div class="rc-src">${srcChips(r)}</div></article>`).join("")}</div>`
     : '<p class="muted">해당 항목이 없습니다.</p>';
   const cnt = (n) => `<span class="cnt">${n}</span>`;
   const tabs = (items, on) => `<div class="subtabs">${items.map(([k, h, t]) => `<a href="${h}" class="${k === on ? "on" : ""}">${t}</a>`).join("")}</div>`;
@@ -74,6 +80,7 @@ export function register(views, { $, esc, load, store }) {
     const evs = rows.flatMap((r) => (r.events || []).map((e, i) => ({ ...e, r, first: i === 0 }))).sort((a, b) => a.start.localeCompare(b.start));
     const tr = (e) => `<tr class="${(e.end || e.start) < t ? "past" : ""}"><td class="l">${esc(fmt(e))}</td><td class="l"><b>${esc(e.r.title)}</b>${e.label ? ` · ${esc(e.label)}` : ""}${e.first ? `<div class="muted small">${esc(e.r.body)}</div>` : ""}</td><td class="l">${badge(e.r)}</td><td class="l">${src(e.r)}</td></tr>`;
     const none = rows.filter((r) => !r.events);
+    if (!evs.length && !none.length) return '<p class="note">이 프로필의 일정 데이터를 준비 중입니다.</p>';
     return `<p class="muted">오늘(${t}) 이전 일정은 흐리게 표시합니다.</p><div class="tw"><table class="policy"><thead><tr><th class="l">날짜</th><th class="l">항목</th><th class="l">상태</th><th class="l">구분·출처</th></tr></thead><tbody>${evs.map(tr).join("")}</tbody></table></div>${none.length ? `<h3>일정 미확인</h3>${table(none, basic)}` : ""}`;
   };
 
@@ -88,11 +95,11 @@ export function register(views, { $, esc, load, store }) {
   };
 
   views.system = async (el, query) => {
-    const rows = (await load("policy")).filter((r) => r.topic.startsWith("admission") || r.topic === "change-log" || CUR_SYS.has(r.id) || ACD_SYS.has(r.id));
+    const rows = (await loadPolicy()).filter((r) => r.topic.startsWith("admission") || r.topic === "change-log" || CUR_SYS.has(r.id) || ACD_SYS.has(r.id));
     const log = query.get("t") === "log";
     const body = rows.filter((r) => (r.topic === "change-log") === log);
     // 노란 경고는 한 줄로 합치고(앰버+코랄 선), 나머지 안내는 접어 둔다.
-    el.innerHTML = `<div class="alert-amber"><b>2027.3 공표 전까지 확정 아님</b><details><summary>자세히</summary>${banner(rows)}${NOTICE}${log ? "" : '<p class="muted small">현 중3은 2028 개편안의 직접 대상(2025 입학생)이 아닙니다. 2030학년도 제도는 2027.3 공표 내용에 따라 바뀔 수 있습니다.</p>'}</details></div>${tabs([["sys", "#admission/system", "제도"], ["log", "#admission/system?t=log", "제도 변경 로그"]], log ? "log" : "sys")}
+    el.innerHTML = `<div class="alert-amber"><b>2027.3 공표 전까지 확정 아님</b><details><summary>자세히</summary>${banner(rows)}${notice()}${log || curProfile().id !== "A" ? "" : '<p class="muted small">현 중3은 2028 개편안의 직접 대상(2025 입학생)이 아닙니다. 2030학년도 제도는 2027.3 공표 내용에 따라 바뀔 수 있습니다.</p>'}</details></div>${tabs([["sys", "#admission/system", "제도"], ["log", "#admission/system?t=log", "제도 변경 로그"]], log ? "log" : "sys")}
       ${statusSelect(body)}<div id="ptbl"></div>`;
     const TOPIC = { "admission-system": "2028학년도 개편 확정안과 2030학년도 적용", "admission-outlook": "2030학년도 대상 추가 동향", "admission-structure": "대입 전형 구조", "cur-select": "수능 출제범위(참고)", academy: "학원 설명 자료" };
     const NOTE = { "cur-select": '<p class="note">서울교육청 자료, 경기 적용 확인 필요. 수능 출제범위는 추정이며 2030학년도 확정이 아닙니다.</p>' };
@@ -103,29 +110,29 @@ export function register(views, { $, esc, load, store }) {
     const imgBlock = credits.map((c) => c.usable
       ? `<figure class="pol-fig"><a href="img/credit/${esc(c.file)}" target="_blank" rel="noopener"><img src="img/credit/${esc(c.file)}" alt="${esc(c.title)}" loading="lazy"></a><figcaption>${esc(c.org)} · ${esc(c.title)} · <b>${esc(c.license)}</b> · <a href="${esc(c.sourceUrl)}" target="_blank" rel="noopener">원문 보기</a>${c.note ? `<div class="muted">${esc(c.note)}</div>` : ""}</figcaption></figure>`
       : `<p class="muted small">참고 링크(이용 조건 확인 필요): <a href="${esc(c.sourceUrl)}" target="_blank" rel="noopener">${esc(c.org)} · ${esc(c.title)}</a></p>`).join("");
-    const pick = (await load("policy")).filter((r) => r.id === "cur-06" || r.id === "cur-07");
+    const pick = (await loadPolicy()).filter((r) => r.id === "cur-06" || r.id === "cur-07");
     const pickLine = pick.length ? `<p class="muted small">선택과목 조사·대학 권장이수과목: ${pick.map((r) => esc(r.body)).join(" / ")} · <a href="#life/credit">고교학점제 이해에서 자세히</a></p>` : "";
     const cols = [...basic.slice(0, 2), ["대입학년도", (r) => `${r.examYear}<div class="muted small">입학 ${r.entryYear}</div>`], ...basic.slice(2)];
     filtered(el, body, (f) => {
       const rs = (x) => x.filter((r) => !f || r.status === f);
       $("#ptbl").innerHTML = log ? logTable(rs(body)) : Object.entries(TOPIC).map(([t, label]) => { const g = rs(body.filter((r) => key(r) === t)); if (!g.length) return "";
-        if (t === "academy") return `<h3>${label} ${cnt(g.length)} <span class="opinion-label">학원</span></h3><div class="opinion"><p class="muted small">학원 설명회 의견·자료입니다. 확인된 사실이 아닙니다.</p>${cards(g, { meta: (r) => `대입 ${r.examYear}학년도 · 입학 ${r.entryYear}` })}</div>`;
-        return `<h3>${label} ${cnt(g.length)}</h3>${t === "cur-select" ? pickLine : ""}${NOTE[t] || ""}${cards(g, { meta: (r) => `대입 ${r.examYear}학년도 · 입학 ${r.entryYear}` })}${t === "cur-select" ? imgBlock : ""}`; }).join("") || '<p class="muted">조건에 맞는 항목이 없습니다.</p>';
+        if (t === "academy") return `<h3>${label} ${cnt(g.length)} <span class="opinion-label">학원</span></h3><div class="opinion"><p class="muted small">학원 설명회 의견·자료입니다. 확인된 사실이 아닙니다.</p>${cards(g, { meta: (r) => [r.examYear && `대입 ${r.examYear}학년도`, r.entryYear && `입학 ${r.entryYear}`].filter(Boolean).join(" · ") })}</div>`;
+        return `<h3>${label} ${cnt(g.length)}</h3>${t === "cur-select" ? pickLine : ""}${NOTE[t] || ""}${cards(g, { meta: (r) => [r.examYear && `대입 ${r.examYear}학년도`, r.entryYear && `입학 ${r.entryYear}`].filter(Boolean).join(" · ") })}${t === "cur-select" ? imgBlock : ""}`; }).join("") || '<p class="muted">조건에 맞는 항목이 없습니다.</p>';
     });
   };
 
   views.changelog = async (el) => {
-    const rows = (await load("policy")).filter((r) => r.topic === "change-log");
-    el.innerHTML = `${NOTICE}${statusSelect(rows)}<div id="ptbl"></div>`;
+    const rows = (await loadPolicy()).filter((r) => r.topic === "change-log");
+    el.innerHTML = `${notice()}${statusSelect(rows)}<div id="ptbl"></div>`;
     filtered(el, rows, (f) => { $("#ptbl").innerHTML = logTable(rows.filter((r) => !f || r.status === f)); });
   };
 
   views.schedule = async (el, query) => {
     const tab = query.get("t") === "univ" ? "univ" : "hs";
-    const all = await load("policy");
+    const all = await loadPolicy();
     const rows = all.filter((r) => r.topic === (tab === "univ" ? "exam-schedule" : "hs-schedule") || (tab === "hs" && r.topic === "gg-hs-entry" && r.events));
     const chips = '<div id="aud"></div>'; // 칩 UI·저장(portal.audience)은 home.js와 공유
-    el.innerHTML = `${tabs([["hs", "#schedule?t=hs", "고입"], ["univ", "#schedule?t=univ", "대입"]], tab)}${NOTICE}
+    el.innerHTML = `${tabs([["hs", "#schedule?t=hs", "고입"], ["univ", "#schedule?t=univ", "대입"]], tab)}${notice()}
       <p class="muted">${tab === "univ" ? "수능·대교협 일정. 2030학년도분은 대부분 추정입니다." : "2027학년도 고입(서울 기준). 연도는 2027학년도 고입이 2026년 하반기에 진행되는 것을 기준으로 붙였습니다."}</p>${chips}<div id="tl"></div>`;
     let sel = loadAudience(store);
     const draw = () => {
@@ -143,16 +150,16 @@ export function register(views, { $, esc, load, store }) {
   };
 
   // 고교학점제 이해(고교 생활 메뉴): 도표·그림 중심 화면은 credit.js.
-  views.credit = (el) => creditView(el, { load, esc, badge, src, table: (rs) => cards(rs), basic });
+  views.credit = (el) => creditView(el, { load: (n) => (n === "policy" ? loadPolicy() : load(n)), profile: curProfile(), esc, badge, src, table: (rs) => cards(rs), basic });
 
   views.types = async (el) => {
-    const rows = await load("policy");
+    const rows = await loadPolicy();
     // asg-02(2구역 학교) 본문: 풍덕·성복·수지·홍천 4개교가 모두 2구역이라는 내용을 눈에 띄게 한다.
     const credit = rows.find((r) => r.id === "cur-01");
     const opn = rows.filter((r) => r.topic === "hs-choice-opinion" || r.id === "acd-04");
     const gg = rows.filter((r) => r.topic === "gg-hs-entry" && !r.events);
     const asg = rows.filter((r) => r.topic === "high-school-assignment");
-    el.innerHTML = `${NOTICE}<h3>고교 유형 ${cnt(rows.filter((r) => r.topic === "hs-types").length)}</h3>${cards(rows.filter((r) => r.topic === "hs-types"))}
+    el.innerHTML = `${notice()}<h3>고교 유형 ${cnt(rows.filter((r) => r.topic === "hs-types").length)}</h3>${cards(rows.filter((r) => r.topic === "hs-types"))}
       ${gg.length ? `<h3>경기 고입 안내 <span class="muted small">2027학년도</span> ${cnt(gg.length)}</h3>${cards(gg)}` : ""}
       ${asg.length ? `<h3>용인 평준화 배정 <span class="muted small">2026학년도 기준 참고</span> ${cnt(asg.length)}</h3>
       <p class="note">원문 미확인, 2027 규칙 확인 필요</p>
