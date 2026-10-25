@@ -1,0 +1,3749 @@
+{
+ "_meta": {
+  "note": "학교×모집단위 권장 과목 충족 계산(생성물, 손으로 고치지 않는다). tools/build-matches.mjs. 편제표는 개설 '후보'이고 요강은 2028학년도 기준 참고 구조예요.",
+  "admissionYear": 2028,
+  "count": 68
+ },
+ "matches": [
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2028-snu-hum-rec",
+   "universityId": "s-901",
+   "track": "susi-jonghap",
+   "requirements": [
+    {
+     "label": "제2외국어/한문 교과(군) 1과목 이상",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0135",
+       "terms": [
+        "2-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-1-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0131",
+       "terms": [
+        "2-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-1-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0136",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-2-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0132",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-2-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0134",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#3-1-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0130",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#3-1-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0129",
+       "terms": [
+        "3-2"
+       ],
+       "groupId": "curriculum-pungdeok-2027#3-2-B",
+       "pick": 1
+      }
+     ],
+     "blockedBy": [
+      {
+       "groupId": "curriculum-pungdeok-2027#2-1-B",
+       "label": "2-1-B",
+       "term": "2-1",
+       "pick": 1,
+       "size": 3,
+       "wanted": [
+        "sj-0135",
+        "sj-0131"
+       ]
+      },
+      {
+       "groupId": "curriculum-pungdeok-2027#2-2-B",
+       "label": "2-2-B",
+       "term": "2-2",
+       "pick": 1,
+       "size": 3,
+       "wanted": [
+        "sj-0136",
+        "sj-0132"
+       ]
+      },
+      {
+       "groupId": "curriculum-pungdeok-2027#3-1-B",
+       "label": "3-1-B",
+       "term": "3-1",
+       "pick": 1,
+       "size": 5,
+       "wanted": [
+        "sj-0134",
+        "sj-0130"
+       ]
+      }
+     ]
+    }
+   ],
+   "summary": {
+    "need": 1,
+    "guaranteed": 0,
+    "offered": 1,
+    "reachable": 1,
+    "blocked": 0,
+    "absent": 0
+   },
+   "nullReason": null
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2028-snu-soc-rec",
+   "universityId": "s-901",
+   "track": "susi-jonghap",
+   "requirements": [
+    {
+     "label": "제2외국어/한문 교과(군) 1과목 이상",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0135",
+       "terms": [
+        "2-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-1-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0131",
+       "terms": [
+        "2-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-1-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0136",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-2-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0132",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-2-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0134",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#3-1-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0130",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#3-1-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0129",
+       "terms": [
+        "3-2"
+       ],
+       "groupId": "curriculum-pungdeok-2027#3-2-B",
+       "pick": 1
+      }
+     ],
+     "blockedBy": [
+      {
+       "groupId": "curriculum-pungdeok-2027#2-1-B",
+       "label": "2-1-B",
+       "term": "2-1",
+       "pick": 1,
+       "size": 3,
+       "wanted": [
+        "sj-0135",
+        "sj-0131"
+       ]
+      },
+      {
+       "groupId": "curriculum-pungdeok-2027#2-2-B",
+       "label": "2-2-B",
+       "term": "2-2",
+       "pick": 1,
+       "size": 3,
+       "wanted": [
+        "sj-0136",
+        "sj-0132"
+       ]
+      },
+      {
+       "groupId": "curriculum-pungdeok-2027#3-1-B",
+       "label": "3-1-B",
+       "term": "3-1",
+       "pick": 1,
+       "size": 5,
+       "wanted": [
+        "sj-0134",
+        "sj-0130"
+       ]
+      }
+     ]
+    }
+   ],
+   "summary": {
+    "need": 1,
+    "guaranteed": 0,
+    "offered": 1,
+    "reachable": 1,
+    "blocked": 0,
+    "absent": 0
+   },
+   "nullReason": null
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2028-snu-biz-rec",
+   "universityId": "s-901",
+   "track": "susi-jonghap",
+   "requirements": [
+    {
+     "label": "제2외국어/한문 교과(군) 1과목 이상",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0135",
+       "terms": [
+        "2-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-1-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0131",
+       "terms": [
+        "2-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-1-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0136",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-2-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0132",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-2-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0134",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#3-1-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0130",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#3-1-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0129",
+       "terms": [
+        "3-2"
+       ],
+       "groupId": "curriculum-pungdeok-2027#3-2-B",
+       "pick": 1
+      }
+     ],
+     "blockedBy": [
+      {
+       "groupId": "curriculum-pungdeok-2027#2-1-B",
+       "label": "2-1-B",
+       "term": "2-1",
+       "pick": 1,
+       "size": 3,
+       "wanted": [
+        "sj-0135",
+        "sj-0131"
+       ]
+      },
+      {
+       "groupId": "curriculum-pungdeok-2027#2-2-B",
+       "label": "2-2-B",
+       "term": "2-2",
+       "pick": 1,
+       "size": 3,
+       "wanted": [
+        "sj-0136",
+        "sj-0132"
+       ]
+      },
+      {
+       "groupId": "curriculum-pungdeok-2027#3-1-B",
+       "label": "3-1-B",
+       "term": "3-1",
+       "pick": 1,
+       "size": 5,
+       "wanted": [
+        "sj-0134",
+        "sj-0130"
+       ]
+      }
+     ]
+    }
+   ],
+   "summary": {
+    "need": 1,
+    "guaranteed": 0,
+    "offered": 1,
+    "reachable": 1,
+    "blocked": 0,
+    "absent": 0
+   },
+   "nullReason": null
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2028-snu-nsci-rec",
+   "universityId": "s-901",
+   "track": "susi-jonghap",
+   "requirements": [
+    {
+     "label": "수학 교과(군) 권장",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0015",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-2-A",
+       "pick": 3
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "수학 교과(군) 권장",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0018",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#3-1-A",
+       "pick": 4
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "과학 교과(군) 진로 선택 과목 3과목 이상",
+     "minCount": 3,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 3,
+      "reachable": 3,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0074",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-2-A",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0069",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-2-A",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0073",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-2-A",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0078",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-2-A",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0076",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#3-1-A",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0083",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#3-1-A",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0072",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#3-1-A",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0081",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#3-1-A",
+       "pick": 4
+      }
+     ],
+     "blockedBy": [
+      {
+       "groupId": "curriculum-pungdeok-2027#2-2-A",
+       "label": "2-2-A",
+       "term": "2-2",
+       "pick": 3,
+       "size": 9,
+       "wanted": [
+        "sj-0074",
+        "sj-0069",
+        "sj-0073",
+        "sj-0078"
+       ]
+      }
+     ]
+    }
+   ],
+   "summary": {
+    "need": 5,
+    "guaranteed": 0,
+    "offered": 5,
+    "reachable": 5,
+    "blocked": 0,
+    "absent": 0
+   },
+   "nullReason": null
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2028-snu-eng-rec",
+   "universityId": "s-901",
+   "track": "susi-jonghap",
+   "requirements": [
+    {
+     "label": "수학 교과(군) 권장",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0015",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-2-A",
+       "pick": 3
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "수학 교과(군) 권장",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0018",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#3-1-A",
+       "pick": 4
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "과학 교과(군) 진로 선택 과목 3과목 이상",
+     "minCount": 3,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 3,
+      "reachable": 3,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0074",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-2-A",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0069",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-2-A",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0073",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-2-A",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0078",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-2-A",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0076",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#3-1-A",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0083",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#3-1-A",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0072",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#3-1-A",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0081",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#3-1-A",
+       "pick": 4
+      }
+     ],
+     "blockedBy": [
+      {
+       "groupId": "curriculum-pungdeok-2027#2-2-A",
+       "label": "2-2-A",
+       "term": "2-2",
+       "pick": 3,
+       "size": 9,
+       "wanted": [
+        "sj-0074",
+        "sj-0069",
+        "sj-0073",
+        "sj-0078"
+       ]
+      }
+     ]
+    }
+   ],
+   "summary": {
+    "need": 5,
+    "guaranteed": 0,
+    "offered": 5,
+    "reachable": 5,
+    "blocked": 0,
+    "absent": 0
+   },
+   "nullReason": null
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2028-snu-med-rec",
+   "universityId": "s-901",
+   "track": "susi-jonghap",
+   "requirements": [
+    {
+     "label": "수학 교과(군) 권장",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0015",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-2-A",
+       "pick": 3
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "수학 교과(군) 권장",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0018",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#3-1-A",
+       "pick": 4
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "과학 진로 선택 3과목 이상에 반드시 포함",
+     "minCount": 2,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 2,
+      "reachable": 2,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0073",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-2-A",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0072",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#3-1-A",
+       "pick": 4
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "과학 교과(군) 진로 선택 과목 3과목 이상",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0074",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-2-A",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0069",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-2-A",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0078",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-pungdeok-2027#2-2-A",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0076",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#3-1-A",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0083",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#3-1-A",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0081",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-pungdeok-2027#3-1-A",
+       "pick": 4
+      }
+     ],
+     "blockedBy": [],
+     "note": "지정 과목 2과목은 위 항목에서 센 것을 빼고 1과목이 더 필요해요"
+    }
+   ],
+   "summary": {
+    "need": 5,
+    "guaranteed": 0,
+    "offered": 5,
+    "reachable": 5,
+    "blocked": 0,
+    "absent": 0
+   },
+   "nullReason": null
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2028-yonsei-hum-gyogwa",
+   "universityId": "s-902",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "연세대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2028-yonsei-nat-gyogwa",
+   "universityId": "s-902",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "연세대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2028-yonsei-med-gyogwa",
+   "universityId": "s-902",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "연세대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2028-yonsei-integ-gyogwa",
+   "universityId": "s-902",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "연세대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2028-yonsei-all-jonghap",
+   "universityId": "s-902",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "연세대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2028-yonsei-all-csat",
+   "universityId": "s-902",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "연세대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2028-ku-hum-nat-gyogwa",
+   "universityId": "s-903",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2028-ku-med-gyogwa",
+   "universityId": "s-903",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2028-ku-hum-nat-jonghap",
+   "universityId": "s-903",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2028-ku-med-jonghap",
+   "universityId": "s-903",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2028-ku-all-csat",
+   "universityId": "s-903",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2028-snu-hum-rec",
+   "universityId": "s-901",
+   "track": "susi-jonghap",
+   "requirements": [
+    {
+     "label": "제2외국어/한문 교과(군) 1과목 이상",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0135",
+       "terms": [
+        "2-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#2-1-C",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0131",
+       "terms": [
+        "2-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#2-1-C",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0136",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-seongbok-2027#2-2-C",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0132",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-seongbok-2027#2-2-C",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0134",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-1-C",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0130",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-1-C",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0127",
+       "terms": [
+        "3-2"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-2-C",
+       "pick": 1
+      }
+     ],
+     "blockedBy": [
+      {
+       "groupId": "curriculum-seongbok-2027#2-1-C",
+       "label": "2-1-C",
+       "term": "2-1",
+       "pick": 1,
+       "size": 3,
+       "wanted": [
+        "sj-0135",
+        "sj-0131"
+       ]
+      },
+      {
+       "groupId": "curriculum-seongbok-2027#2-2-C",
+       "label": "2-2-C",
+       "term": "2-2",
+       "pick": 1,
+       "size": 3,
+       "wanted": [
+        "sj-0136",
+        "sj-0132"
+       ]
+      },
+      {
+       "groupId": "curriculum-seongbok-2027#3-1-C",
+       "label": "3-1-C",
+       "term": "3-1",
+       "pick": 1,
+       "size": 3,
+       "wanted": [
+        "sj-0134",
+        "sj-0130"
+       ]
+      }
+     ]
+    }
+   ],
+   "summary": {
+    "need": 1,
+    "guaranteed": 0,
+    "offered": 1,
+    "reachable": 1,
+    "blocked": 0,
+    "absent": 0
+   },
+   "nullReason": null
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2028-snu-soc-rec",
+   "universityId": "s-901",
+   "track": "susi-jonghap",
+   "requirements": [
+    {
+     "label": "제2외국어/한문 교과(군) 1과목 이상",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0135",
+       "terms": [
+        "2-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#2-1-C",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0131",
+       "terms": [
+        "2-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#2-1-C",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0136",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-seongbok-2027#2-2-C",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0132",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-seongbok-2027#2-2-C",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0134",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-1-C",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0130",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-1-C",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0127",
+       "terms": [
+        "3-2"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-2-C",
+       "pick": 1
+      }
+     ],
+     "blockedBy": [
+      {
+       "groupId": "curriculum-seongbok-2027#2-1-C",
+       "label": "2-1-C",
+       "term": "2-1",
+       "pick": 1,
+       "size": 3,
+       "wanted": [
+        "sj-0135",
+        "sj-0131"
+       ]
+      },
+      {
+       "groupId": "curriculum-seongbok-2027#2-2-C",
+       "label": "2-2-C",
+       "term": "2-2",
+       "pick": 1,
+       "size": 3,
+       "wanted": [
+        "sj-0136",
+        "sj-0132"
+       ]
+      },
+      {
+       "groupId": "curriculum-seongbok-2027#3-1-C",
+       "label": "3-1-C",
+       "term": "3-1",
+       "pick": 1,
+       "size": 3,
+       "wanted": [
+        "sj-0134",
+        "sj-0130"
+       ]
+      }
+     ]
+    }
+   ],
+   "summary": {
+    "need": 1,
+    "guaranteed": 0,
+    "offered": 1,
+    "reachable": 1,
+    "blocked": 0,
+    "absent": 0
+   },
+   "nullReason": null
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2028-snu-biz-rec",
+   "universityId": "s-901",
+   "track": "susi-jonghap",
+   "requirements": [
+    {
+     "label": "제2외국어/한문 교과(군) 1과목 이상",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0135",
+       "terms": [
+        "2-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#2-1-C",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0131",
+       "terms": [
+        "2-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#2-1-C",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0136",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-seongbok-2027#2-2-C",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0132",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-seongbok-2027#2-2-C",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0134",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-1-C",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0130",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-1-C",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0127",
+       "terms": [
+        "3-2"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-2-C",
+       "pick": 1
+      }
+     ],
+     "blockedBy": [
+      {
+       "groupId": "curriculum-seongbok-2027#2-1-C",
+       "label": "2-1-C",
+       "term": "2-1",
+       "pick": 1,
+       "size": 3,
+       "wanted": [
+        "sj-0135",
+        "sj-0131"
+       ]
+      },
+      {
+       "groupId": "curriculum-seongbok-2027#2-2-C",
+       "label": "2-2-C",
+       "term": "2-2",
+       "pick": 1,
+       "size": 3,
+       "wanted": [
+        "sj-0136",
+        "sj-0132"
+       ]
+      },
+      {
+       "groupId": "curriculum-seongbok-2027#3-1-C",
+       "label": "3-1-C",
+       "term": "3-1",
+       "pick": 1,
+       "size": 3,
+       "wanted": [
+        "sj-0134",
+        "sj-0130"
+       ]
+      }
+     ]
+    }
+   ],
+   "summary": {
+    "need": 1,
+    "guaranteed": 0,
+    "offered": 1,
+    "reachable": 1,
+    "blocked": 0,
+    "absent": 0
+   },
+   "nullReason": null
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2028-snu-nsci-rec",
+   "universityId": "s-901",
+   "track": "susi-jonghap",
+   "requirements": [
+    {
+     "label": "수학 교과(군) 권장",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0015",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-1-B",
+       "pick": 4
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "수학 교과(군) 권장",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0018",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-1-A",
+       "pick": 1
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "과학 교과(군) 진로 선택 과목 3과목 이상",
+     "minCount": 3,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 3,
+      "reachable": 3,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0074",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-seongbok-2027#2-2-A",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0069",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-seongbok-2027#2-2-A",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0073",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-seongbok-2027#2-2-A",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0078",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-seongbok-2027#2-2-A",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0076",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-1-B",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0083",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-1-B",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0072",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-1-B",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0081",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-1-B",
+       "pick": 4
+      }
+     ],
+     "blockedBy": [
+      {
+       "groupId": "curriculum-seongbok-2027#2-2-A",
+       "label": "2-2-A",
+       "term": "2-2",
+       "pick": 3,
+       "size": 8,
+       "wanted": [
+        "sj-0074",
+        "sj-0069",
+        "sj-0073",
+        "sj-0078"
+       ]
+      }
+     ]
+    }
+   ],
+   "summary": {
+    "need": 5,
+    "guaranteed": 0,
+    "offered": 5,
+    "reachable": 5,
+    "blocked": 0,
+    "absent": 0
+   },
+   "nullReason": null
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2028-snu-eng-rec",
+   "universityId": "s-901",
+   "track": "susi-jonghap",
+   "requirements": [
+    {
+     "label": "수학 교과(군) 권장",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0015",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-1-B",
+       "pick": 4
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "수학 교과(군) 권장",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0018",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-1-A",
+       "pick": 1
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "과학 교과(군) 진로 선택 과목 3과목 이상",
+     "minCount": 3,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 3,
+      "reachable": 3,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0074",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-seongbok-2027#2-2-A",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0069",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-seongbok-2027#2-2-A",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0073",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-seongbok-2027#2-2-A",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0078",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-seongbok-2027#2-2-A",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0076",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-1-B",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0083",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-1-B",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0072",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-1-B",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0081",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-1-B",
+       "pick": 4
+      }
+     ],
+     "blockedBy": [
+      {
+       "groupId": "curriculum-seongbok-2027#2-2-A",
+       "label": "2-2-A",
+       "term": "2-2",
+       "pick": 3,
+       "size": 8,
+       "wanted": [
+        "sj-0074",
+        "sj-0069",
+        "sj-0073",
+        "sj-0078"
+       ]
+      }
+     ]
+    }
+   ],
+   "summary": {
+    "need": 5,
+    "guaranteed": 0,
+    "offered": 5,
+    "reachable": 5,
+    "blocked": 0,
+    "absent": 0
+   },
+   "nullReason": null
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2028-snu-med-rec",
+   "universityId": "s-901",
+   "track": "susi-jonghap",
+   "requirements": [
+    {
+     "label": "수학 교과(군) 권장",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0015",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-1-B",
+       "pick": 4
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "수학 교과(군) 권장",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0018",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-1-A",
+       "pick": 1
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "과학 진로 선택 3과목 이상에 반드시 포함",
+     "minCount": 2,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 2,
+      "reachable": 2,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0073",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-seongbok-2027#2-2-A",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0072",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-1-B",
+       "pick": 4
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "과학 교과(군) 진로 선택 과목 3과목 이상",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0074",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-seongbok-2027#2-2-A",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0069",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-seongbok-2027#2-2-A",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0078",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-seongbok-2027#2-2-A",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0076",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-1-B",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0083",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-1-B",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0081",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-seongbok-2027#3-1-B",
+       "pick": 4
+      }
+     ],
+     "blockedBy": [],
+     "note": "지정 과목 2과목은 위 항목에서 센 것을 빼고 1과목이 더 필요해요"
+    }
+   ],
+   "summary": {
+    "need": 5,
+    "guaranteed": 0,
+    "offered": 5,
+    "reachable": 5,
+    "blocked": 0,
+    "absent": 0
+   },
+   "nullReason": null
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2028-yonsei-hum-gyogwa",
+   "universityId": "s-902",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "연세대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2028-yonsei-nat-gyogwa",
+   "universityId": "s-902",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "연세대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2028-yonsei-med-gyogwa",
+   "universityId": "s-902",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "연세대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2028-yonsei-integ-gyogwa",
+   "universityId": "s-902",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "연세대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2028-yonsei-all-jonghap",
+   "universityId": "s-902",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "연세대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2028-yonsei-all-csat",
+   "universityId": "s-902",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "연세대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2028-ku-hum-nat-gyogwa",
+   "universityId": "s-903",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2028-ku-med-gyogwa",
+   "universityId": "s-903",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2028-ku-hum-nat-jonghap",
+   "universityId": "s-903",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2028-ku-med-jonghap",
+   "universityId": "s-903",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2028-ku-all-csat",
+   "universityId": "s-903",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2028-snu-hum-rec",
+   "universityId": "s-901",
+   "track": "susi-jonghap",
+   "requirements": [
+    {
+     "label": "제2외국어/한문 교과(군) 1과목 이상",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0123",
+       "terms": [
+        "2-1"
+       ],
+       "groupId": "curriculum-suji-2027#2-1-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0135",
+       "terms": [
+        "2-1"
+       ],
+       "groupId": "curriculum-suji-2027#2-1-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0124",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-suji-2027#2-2-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0136",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-suji-2027#2-2-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0125",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-suji-2027#3-1-D",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0134",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-suji-2027#3-1-D",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0126",
+       "terms": [
+        "3-2"
+       ],
+       "groupId": "curriculum-suji-2027#3-2-D",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0128",
+       "terms": [
+        "3-2"
+       ],
+       "groupId": "curriculum-suji-2027#3-2-D",
+       "pick": 1
+      }
+     ],
+     "blockedBy": [
+      {
+       "groupId": "curriculum-suji-2027#2-1-B",
+       "label": "2-1-B",
+       "term": "2-1",
+       "pick": 1,
+       "size": 4,
+       "wanted": [
+        "sj-0123",
+        "sj-0135"
+       ]
+      },
+      {
+       "groupId": "curriculum-suji-2027#2-2-B",
+       "label": "2-2-B",
+       "term": "2-2",
+       "pick": 1,
+       "size": 4,
+       "wanted": [
+        "sj-0124",
+        "sj-0136"
+       ]
+      },
+      {
+       "groupId": "curriculum-suji-2027#3-1-D",
+       "label": "3-1-D",
+       "term": "3-1",
+       "pick": 1,
+       "size": 5,
+       "wanted": [
+        "sj-0125",
+        "sj-0134"
+       ]
+      },
+      {
+       "groupId": "curriculum-suji-2027#3-2-D",
+       "label": "3-2-D",
+       "term": "3-2",
+       "pick": 1,
+       "size": 4,
+       "wanted": [
+        "sj-0126",
+        "sj-0128"
+       ]
+      }
+     ]
+    }
+   ],
+   "summary": {
+    "need": 1,
+    "guaranteed": 0,
+    "offered": 1,
+    "reachable": 1,
+    "blocked": 0,
+    "absent": 0
+   },
+   "nullReason": null
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2028-snu-soc-rec",
+   "universityId": "s-901",
+   "track": "susi-jonghap",
+   "requirements": [
+    {
+     "label": "제2외국어/한문 교과(군) 1과목 이상",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0123",
+       "terms": [
+        "2-1"
+       ],
+       "groupId": "curriculum-suji-2027#2-1-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0135",
+       "terms": [
+        "2-1"
+       ],
+       "groupId": "curriculum-suji-2027#2-1-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0124",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-suji-2027#2-2-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0136",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-suji-2027#2-2-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0125",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-suji-2027#3-1-D",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0134",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-suji-2027#3-1-D",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0126",
+       "terms": [
+        "3-2"
+       ],
+       "groupId": "curriculum-suji-2027#3-2-D",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0128",
+       "terms": [
+        "3-2"
+       ],
+       "groupId": "curriculum-suji-2027#3-2-D",
+       "pick": 1
+      }
+     ],
+     "blockedBy": [
+      {
+       "groupId": "curriculum-suji-2027#2-1-B",
+       "label": "2-1-B",
+       "term": "2-1",
+       "pick": 1,
+       "size": 4,
+       "wanted": [
+        "sj-0123",
+        "sj-0135"
+       ]
+      },
+      {
+       "groupId": "curriculum-suji-2027#2-2-B",
+       "label": "2-2-B",
+       "term": "2-2",
+       "pick": 1,
+       "size": 4,
+       "wanted": [
+        "sj-0124",
+        "sj-0136"
+       ]
+      },
+      {
+       "groupId": "curriculum-suji-2027#3-1-D",
+       "label": "3-1-D",
+       "term": "3-1",
+       "pick": 1,
+       "size": 5,
+       "wanted": [
+        "sj-0125",
+        "sj-0134"
+       ]
+      },
+      {
+       "groupId": "curriculum-suji-2027#3-2-D",
+       "label": "3-2-D",
+       "term": "3-2",
+       "pick": 1,
+       "size": 4,
+       "wanted": [
+        "sj-0126",
+        "sj-0128"
+       ]
+      }
+     ]
+    }
+   ],
+   "summary": {
+    "need": 1,
+    "guaranteed": 0,
+    "offered": 1,
+    "reachable": 1,
+    "blocked": 0,
+    "absent": 0
+   },
+   "nullReason": null
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2028-snu-biz-rec",
+   "universityId": "s-901",
+   "track": "susi-jonghap",
+   "requirements": [
+    {
+     "label": "제2외국어/한문 교과(군) 1과목 이상",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0123",
+       "terms": [
+        "2-1"
+       ],
+       "groupId": "curriculum-suji-2027#2-1-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0135",
+       "terms": [
+        "2-1"
+       ],
+       "groupId": "curriculum-suji-2027#2-1-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0124",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-suji-2027#2-2-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0136",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-suji-2027#2-2-B",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0125",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-suji-2027#3-1-D",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0134",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-suji-2027#3-1-D",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0126",
+       "terms": [
+        "3-2"
+       ],
+       "groupId": "curriculum-suji-2027#3-2-D",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0128",
+       "terms": [
+        "3-2"
+       ],
+       "groupId": "curriculum-suji-2027#3-2-D",
+       "pick": 1
+      }
+     ],
+     "blockedBy": [
+      {
+       "groupId": "curriculum-suji-2027#2-1-B",
+       "label": "2-1-B",
+       "term": "2-1",
+       "pick": 1,
+       "size": 4,
+       "wanted": [
+        "sj-0123",
+        "sj-0135"
+       ]
+      },
+      {
+       "groupId": "curriculum-suji-2027#2-2-B",
+       "label": "2-2-B",
+       "term": "2-2",
+       "pick": 1,
+       "size": 4,
+       "wanted": [
+        "sj-0124",
+        "sj-0136"
+       ]
+      },
+      {
+       "groupId": "curriculum-suji-2027#3-1-D",
+       "label": "3-1-D",
+       "term": "3-1",
+       "pick": 1,
+       "size": 5,
+       "wanted": [
+        "sj-0125",
+        "sj-0134"
+       ]
+      },
+      {
+       "groupId": "curriculum-suji-2027#3-2-D",
+       "label": "3-2-D",
+       "term": "3-2",
+       "pick": 1,
+       "size": 4,
+       "wanted": [
+        "sj-0126",
+        "sj-0128"
+       ]
+      }
+     ]
+    }
+   ],
+   "summary": {
+    "need": 1,
+    "guaranteed": 0,
+    "offered": 1,
+    "reachable": 1,
+    "blocked": 0,
+    "absent": 0
+   },
+   "nullReason": null
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2028-snu-nsci-rec",
+   "universityId": "s-901",
+   "track": "susi-jonghap",
+   "requirements": [
+    {
+     "label": "수학 교과(군) 권장",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0015",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-suji-2027#2-2-A",
+       "pick": 4
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "수학 교과(군) 권장",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0018",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-suji-2027#3-1-A",
+       "pick": 1
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "과학 교과(군) 진로 선택 과목 3과목 이상",
+     "minCount": 3,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 3,
+      "reachable": 3,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0073",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-suji-2027#2-2-A",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0078",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-suji-2027#2-2-A",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0074",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-suji-2027#2-2-A",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0069",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-suji-2027#2-2-A",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0076",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-suji-2027#3-1-B",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0083",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-suji-2027#3-1-B",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0072",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-suji-2027#3-1-B",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0061",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-suji-2027#3-1-B",
+       "pick": 3
+      }
+     ],
+     "blockedBy": [
+      {
+       "groupId": "curriculum-suji-2027#3-1-B",
+       "label": "3-1-B",
+       "term": "3-1",
+       "pick": 3,
+       "size": 9,
+       "wanted": [
+        "sj-0076",
+        "sj-0083",
+        "sj-0072",
+        "sj-0061"
+       ]
+      }
+     ]
+    }
+   ],
+   "summary": {
+    "need": 5,
+    "guaranteed": 0,
+    "offered": 5,
+    "reachable": 5,
+    "blocked": 0,
+    "absent": 0
+   },
+   "nullReason": null
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2028-snu-eng-rec",
+   "universityId": "s-901",
+   "track": "susi-jonghap",
+   "requirements": [
+    {
+     "label": "수학 교과(군) 권장",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0015",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-suji-2027#2-2-A",
+       "pick": 4
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "수학 교과(군) 권장",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0018",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-suji-2027#3-1-A",
+       "pick": 1
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "과학 교과(군) 진로 선택 과목 3과목 이상",
+     "minCount": 3,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 3,
+      "reachable": 3,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0073",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-suji-2027#2-2-A",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0078",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-suji-2027#2-2-A",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0074",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-suji-2027#2-2-A",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0069",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-suji-2027#2-2-A",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0076",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-suji-2027#3-1-B",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0083",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-suji-2027#3-1-B",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0072",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-suji-2027#3-1-B",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0061",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-suji-2027#3-1-B",
+       "pick": 3
+      }
+     ],
+     "blockedBy": [
+      {
+       "groupId": "curriculum-suji-2027#3-1-B",
+       "label": "3-1-B",
+       "term": "3-1",
+       "pick": 3,
+       "size": 9,
+       "wanted": [
+        "sj-0076",
+        "sj-0083",
+        "sj-0072",
+        "sj-0061"
+       ]
+      }
+     ]
+    }
+   ],
+   "summary": {
+    "need": 5,
+    "guaranteed": 0,
+    "offered": 5,
+    "reachable": 5,
+    "blocked": 0,
+    "absent": 0
+   },
+   "nullReason": null
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2028-snu-med-rec",
+   "universityId": "s-901",
+   "track": "susi-jonghap",
+   "requirements": [
+    {
+     "label": "수학 교과(군) 권장",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0015",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-suji-2027#2-2-A",
+       "pick": 4
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "수학 교과(군) 권장",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0018",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-suji-2027#3-1-A",
+       "pick": 1
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "과학 진로 선택 3과목 이상에 반드시 포함",
+     "minCount": 2,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 2,
+      "reachable": 2,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0073",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-suji-2027#2-2-A",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0072",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-suji-2027#3-1-B",
+       "pick": 3
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "과학 교과(군) 진로 선택 과목 3과목 이상",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0078",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-suji-2027#2-2-A",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0074",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-suji-2027#2-2-A",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0069",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-suji-2027#2-2-A",
+       "pick": 4
+      },
+      {
+       "subjectId": "sj-0076",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-suji-2027#3-1-B",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0083",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-suji-2027#3-1-B",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0061",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-suji-2027#3-1-B",
+       "pick": 3
+      }
+     ],
+     "blockedBy": [],
+     "note": "지정 과목 2과목은 위 항목에서 센 것을 빼고 1과목이 더 필요해요"
+    }
+   ],
+   "summary": {
+    "need": 5,
+    "guaranteed": 0,
+    "offered": 5,
+    "reachable": 5,
+    "blocked": 0,
+    "absent": 0
+   },
+   "nullReason": null
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2028-yonsei-hum-gyogwa",
+   "universityId": "s-902",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "연세대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2028-yonsei-nat-gyogwa",
+   "universityId": "s-902",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "연세대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2028-yonsei-med-gyogwa",
+   "universityId": "s-902",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "연세대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2028-yonsei-integ-gyogwa",
+   "universityId": "s-902",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "연세대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2028-yonsei-all-jonghap",
+   "universityId": "s-902",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "연세대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2028-yonsei-all-csat",
+   "universityId": "s-902",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "연세대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2028-ku-hum-nat-gyogwa",
+   "universityId": "s-903",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2028-ku-med-gyogwa",
+   "universityId": "s-903",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2028-ku-hum-nat-jonghap",
+   "universityId": "s-903",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2028-ku-med-jonghap",
+   "universityId": "s-903",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2028-ku-all-csat",
+   "universityId": "s-903",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2028-snu-hum-rec",
+   "universityId": "s-901",
+   "track": "susi-jonghap",
+   "requirements": [
+    {
+     "label": "제2외국어/한문 교과(군) 1과목 이상",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0135",
+       "terms": [
+        "2-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-1-A",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0131",
+       "terms": [
+        "2-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-1-A",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0136",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-A",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0132",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-A",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0130",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#3-1-A",
+       "pick": 2
+      },
+      {
+       "subjectId": "sj-0134",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#3-1-A",
+       "pick": 2
+      }
+     ],
+     "blockedBy": [
+      {
+       "groupId": "curriculum-yonginheungcheon-2027#2-1-A",
+       "label": "2-1-A",
+       "term": "2-1",
+       "pick": 1,
+       "size": 3,
+       "wanted": [
+        "sj-0135",
+        "sj-0131"
+       ]
+      },
+      {
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-A",
+       "label": "2-2-A",
+       "term": "2-2",
+       "pick": 1,
+       "size": 3,
+       "wanted": [
+        "sj-0136",
+        "sj-0132"
+       ]
+      }
+     ]
+    }
+   ],
+   "summary": {
+    "need": 1,
+    "guaranteed": 0,
+    "offered": 1,
+    "reachable": 1,
+    "blocked": 0,
+    "absent": 0
+   },
+   "nullReason": null
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2028-snu-soc-rec",
+   "universityId": "s-901",
+   "track": "susi-jonghap",
+   "requirements": [
+    {
+     "label": "제2외국어/한문 교과(군) 1과목 이상",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0135",
+       "terms": [
+        "2-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-1-A",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0131",
+       "terms": [
+        "2-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-1-A",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0136",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-A",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0132",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-A",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0130",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#3-1-A",
+       "pick": 2
+      },
+      {
+       "subjectId": "sj-0134",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#3-1-A",
+       "pick": 2
+      }
+     ],
+     "blockedBy": [
+      {
+       "groupId": "curriculum-yonginheungcheon-2027#2-1-A",
+       "label": "2-1-A",
+       "term": "2-1",
+       "pick": 1,
+       "size": 3,
+       "wanted": [
+        "sj-0135",
+        "sj-0131"
+       ]
+      },
+      {
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-A",
+       "label": "2-2-A",
+       "term": "2-2",
+       "pick": 1,
+       "size": 3,
+       "wanted": [
+        "sj-0136",
+        "sj-0132"
+       ]
+      }
+     ]
+    }
+   ],
+   "summary": {
+    "need": 1,
+    "guaranteed": 0,
+    "offered": 1,
+    "reachable": 1,
+    "blocked": 0,
+    "absent": 0
+   },
+   "nullReason": null
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2028-snu-biz-rec",
+   "universityId": "s-901",
+   "track": "susi-jonghap",
+   "requirements": [
+    {
+     "label": "제2외국어/한문 교과(군) 1과목 이상",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0135",
+       "terms": [
+        "2-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-1-A",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0131",
+       "terms": [
+        "2-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-1-A",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0136",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-A",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0132",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-A",
+       "pick": 1
+      },
+      {
+       "subjectId": "sj-0130",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#3-1-A",
+       "pick": 2
+      },
+      {
+       "subjectId": "sj-0134",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#3-1-A",
+       "pick": 2
+      }
+     ],
+     "blockedBy": [
+      {
+       "groupId": "curriculum-yonginheungcheon-2027#2-1-A",
+       "label": "2-1-A",
+       "term": "2-1",
+       "pick": 1,
+       "size": 3,
+       "wanted": [
+        "sj-0135",
+        "sj-0131"
+       ]
+      },
+      {
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-A",
+       "label": "2-2-A",
+       "term": "2-2",
+       "pick": 1,
+       "size": 3,
+       "wanted": [
+        "sj-0136",
+        "sj-0132"
+       ]
+      }
+     ]
+    }
+   ],
+   "summary": {
+    "need": 1,
+    "guaranteed": 0,
+    "offered": 1,
+    "reachable": 1,
+    "blocked": 0,
+    "absent": 0
+   },
+   "nullReason": null
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2028-snu-nsci-rec",
+   "universityId": "s-901",
+   "track": "susi-jonghap",
+   "requirements": [
+    {
+     "label": "수학 교과(군) 권장",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0015",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-B",
+       "pick": 1
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "수학 교과(군) 권장",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0018",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#3-1-B",
+       "pick": 6
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "과학 교과(군) 진로 선택 과목 3과목 이상",
+     "minCount": 3,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 3,
+      "reachable": 3,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0074",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-C",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0069",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-C",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0073",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-C",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0078",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-C",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0076",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#3-1-B",
+       "pick": 6
+      },
+      {
+       "subjectId": "sj-0083",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#3-1-B",
+       "pick": 6
+      },
+      {
+       "subjectId": "sj-0072",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#3-1-B",
+       "pick": 6
+      },
+      {
+       "subjectId": "sj-0081",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#3-1-B",
+       "pick": 6
+      }
+     ],
+     "blockedBy": [
+      {
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-C",
+       "label": "2-2-C",
+       "term": "2-2",
+       "pick": 3,
+       "size": 9,
+       "wanted": [
+        "sj-0074",
+        "sj-0069",
+        "sj-0073",
+        "sj-0078"
+       ]
+      }
+     ]
+    }
+   ],
+   "summary": {
+    "need": 5,
+    "guaranteed": 0,
+    "offered": 5,
+    "reachable": 5,
+    "blocked": 0,
+    "absent": 0
+   },
+   "nullReason": null
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2028-snu-eng-rec",
+   "universityId": "s-901",
+   "track": "susi-jonghap",
+   "requirements": [
+    {
+     "label": "수학 교과(군) 권장",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0015",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-B",
+       "pick": 1
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "수학 교과(군) 권장",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0018",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#3-1-B",
+       "pick": 6
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "과학 교과(군) 진로 선택 과목 3과목 이상",
+     "minCount": 3,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 3,
+      "reachable": 3,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0074",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-C",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0069",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-C",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0073",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-C",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0078",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-C",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0076",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#3-1-B",
+       "pick": 6
+      },
+      {
+       "subjectId": "sj-0083",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#3-1-B",
+       "pick": 6
+      },
+      {
+       "subjectId": "sj-0072",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#3-1-B",
+       "pick": 6
+      },
+      {
+       "subjectId": "sj-0081",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#3-1-B",
+       "pick": 6
+      }
+     ],
+     "blockedBy": [
+      {
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-C",
+       "label": "2-2-C",
+       "term": "2-2",
+       "pick": 3,
+       "size": 9,
+       "wanted": [
+        "sj-0074",
+        "sj-0069",
+        "sj-0073",
+        "sj-0078"
+       ]
+      }
+     ]
+    }
+   ],
+   "summary": {
+    "need": 5,
+    "guaranteed": 0,
+    "offered": 5,
+    "reachable": 5,
+    "blocked": 0,
+    "absent": 0
+   },
+   "nullReason": null
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2028-snu-med-rec",
+   "universityId": "s-901",
+   "track": "susi-jonghap",
+   "requirements": [
+    {
+     "label": "수학 교과(군) 권장",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0015",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-B",
+       "pick": 1
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "수학 교과(군) 권장",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0018",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#3-1-B",
+       "pick": 6
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "과학 진로 선택 3과목 이상에 반드시 포함",
+     "minCount": 2,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 2,
+      "reachable": 2,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0073",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-C",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0072",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#3-1-B",
+       "pick": 6
+      }
+     ],
+     "blockedBy": []
+    },
+    {
+     "label": "과학 교과(군) 진로 선택 과목 3과목 이상",
+     "minCount": 1,
+     "strength": "recommended",
+     "state": "reachable",
+     "counts": {
+      "offered": 1,
+      "reachable": 1,
+      "guaranteed": 0
+     },
+     "guaranteed": [],
+     "selectable": [
+      {
+       "subjectId": "sj-0074",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-C",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0069",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-C",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0078",
+       "terms": [
+        "2-2"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#2-2-C",
+       "pick": 3
+      },
+      {
+       "subjectId": "sj-0076",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#3-1-B",
+       "pick": 6
+      },
+      {
+       "subjectId": "sj-0083",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#3-1-B",
+       "pick": 6
+      },
+      {
+       "subjectId": "sj-0081",
+       "terms": [
+        "3-1"
+       ],
+       "groupId": "curriculum-yonginheungcheon-2027#3-1-B",
+       "pick": 6
+      }
+     ],
+     "blockedBy": [],
+     "note": "지정 과목 2과목은 위 항목에서 센 것을 빼고 1과목이 더 필요해요"
+    }
+   ],
+   "summary": {
+    "need": 5,
+    "guaranteed": 0,
+    "offered": 5,
+    "reachable": 5,
+    "blocked": 0,
+    "absent": 0
+   },
+   "nullReason": null
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2028-yonsei-hum-gyogwa",
+   "universityId": "s-902",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "연세대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2028-yonsei-nat-gyogwa",
+   "universityId": "s-902",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "연세대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2028-yonsei-med-gyogwa",
+   "universityId": "s-902",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "연세대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2028-yonsei-integ-gyogwa",
+   "universityId": "s-902",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "연세대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2028-yonsei-all-jonghap",
+   "universityId": "s-902",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "연세대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2028-yonsei-all-csat",
+   "universityId": "s-902",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "연세대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2028-ku-hum-nat-gyogwa",
+   "universityId": "s-903",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2028-ku-med-gyogwa",
+   "universityId": "s-903",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2028-ku-hum-nat-jonghap",
+   "universityId": "s-903",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2028-ku-med-jonghap",
+   "universityId": "s-903",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2028-ku-all-csat",
+   "universityId": "s-903",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  }
+ ]
+}
