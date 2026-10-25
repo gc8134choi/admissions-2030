@@ -3,8 +3,8 @@
 // 사용: node tools/build-policy.mjs  (--check: 파일과 결과가 다르면 종료코드 1)
 import { readFileSync, writeFileSync } from "node:fs";
 
-const STATUS = { 확정: "confirmed", 보도: "reported", 추정: "estimated", "학교 배부 자료": "material", "서울교육청 자료": "seoul", unknown: "unknown" };
-const KIND = { 공식: "official", 매체: "media", "학교 배부 자료": "material", "서울교육청 자료": "seoul" };
+const STATUS = { 확정: "confirmed", 보도: "reported", 추정: "estimated", "학교 배부 자료": "material", "서울교육청 자료": "seoul", "서울·경기 자료 일치": "match", "경기도교육청 자료": "gyeonggi", 의견: "opinion", unknown: "unknown" };
+const KIND = { 공식: "official", 매체: "media", "학교 배부 자료": "material", "서울교육청 자료": "seoul", "서울교육청·경기도교육청 자료": "seoul-gyeonggi", "경기도교육청 자료": "gyeonggi", "학원 의견": "opinion" };
 
 // 고입·대입 일정 행의 날짜(고입은 id, 대입은 id가 밀릴 수 있어 title 키). draft 본문의 날짜를 ISO로 옮겼다(연도는 해당 학년도 시행 연도). 월만 알면 YYYY-MM.
 const EVENTS = {
@@ -44,7 +44,7 @@ const BODY = { "adm-07": "수능 세부 범위는 추정이며, 2030학년도 �
 const APPEND = { "sch-12": "사용자 잠정 예상 2029.11.15, 공식 공고 전." };
 
 // statusNote("확정(원문 미확인, 시기 조정은 미결정)") 괄호 안에서 배지로 따로 보이는 "원문 미확인"을 뺀 나머지.
-const extra = (t) => ((t || "").match(/\((.*)\)\s*$/)?.[1] ?? "").split(/,\s*/).filter((x) => x && x !== "원문 미확인").join(", ");
+const extra = (t) => ((t || "").match(/\((.*)\)\s*$/)?.[1] ?? "").split(/,\s*/).filter((x) => x && x !== "원문 미확인" && x !== "학원").join(", ");
 
 const draft = JSON.parse(readFileSync("research/data/policy-draft.json", "utf8")).items;
 const out = draft.map((d) => {
