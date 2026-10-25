@@ -29,6 +29,10 @@ const load = (name) => {
 const stars = () => store.get("stars", []);
 const toggleStar = (id) => { const s = stars(); store.set("stars", s.includes(id) ? s.filter((x) => x !== id) : [...s, id]); };
 const nameOf = (schools, id) => schools.find((s) => s.id === id)?.name || id;
+// 학교 로고(128px 원형 사본). 파일이 있는 학교만 표시한다.
+const LOGO_IDS = new Set(["school-pungdeok", "school-seongbok", "school-suji", "school-yonginheungcheon"]);
+const logo = (id, name, px = 20) => (LOGO_IDS.has(id) ? `<img class="logo" src="img/schools/128/${esc(id)}.png" alt="${esc(name)} 로고" width="${px}" height="${px}" style="--lg:${px}px">` : "");
+const nm = (id, name, px) => `<span class="nm">${logo(id, name, px)}<span>${esc(name)}</span></span>`;
 const SLOT = { required: "지정", elective: "선택", outside: "교외" };
 const CSAT = { in: "포함", base: "기초", out: "제외", none: "-" };
 const options = (items, all) => `${all ? `<option value="">${esc(all)}</option>` : ""}${items.map((v) => `<option value="${esc(v.v ?? v)}">${esc(v.t ?? v)}</option>`).join("")}`;
@@ -47,9 +51,9 @@ const views = {
   async home(el) {
     const [schools, summary] = await Promise.all([load("schools"), load("summary")]);
     const s = stars();
-    el.innerHTML = `<div class="panel"><b>관심 학교</b><p class="muted">${s.length ? s.map((id) => `<a href="#select/curriculum?v=compare&s=${esc(id)}">${esc(nameOf(schools, id))}</a>`).join(", ") : "비교 화면의 ☆을 누르면 여기에 모입니다."}</p></div>
+    el.innerHTML = `<div class="panel"><b>관심 학교</b><p class="muted">${s.length ? s.map((id) => `<a href="#select/curriculum?v=compare&s=${esc(id)}">${nm(id, nameOf(schools, id), 18)}</a>`).join(" ") : "비교 화면의 ☆을 누르면 여기에 모입니다."}</p></div>
       <div class="panel"><b>편제표 등록 현황</b><p class="muted">${summary.length}개교 · ${summary[0].entryYear}학년도 입학생(대입 ${summary[0].entryYear + 3}학년도) 기준</p>
-      <div class="cards">${summary.map((m) => `<a href="#select/curriculum"><b>${esc(m.schoolName)}</b><div class="muted">${esc(m.region || "")} · ${esc(m.schoolType || "")} · ${esc(m.founding || "")}</div><div>지정 ${m.creditsRequired} / 선택 ${m.creditsElective}학점</div></a>`).join("")}</div></div>
+      <div class="cards">${summary.map((m) => `<a href="#select/curriculum"><b>${nm(m.schoolId, m.schoolName, 22)}</b><div class="muted">${esc(m.region || "")} · ${esc(m.schoolType || "")} · ${esc(m.founding || "")}</div><div>지정 ${m.creditsRequired} / 선택 ${m.creditsElective}학점</div></a>`).join("")}</div></div>
       <div class="panel"><b>이번 달 할 일</b><p class="muted">일정 데이터 연결 예정</p></div>`;
   },
 
@@ -92,7 +96,7 @@ async function curriculumView(el, query, node) {
     q.set("s", sel.join(","));
     history.replaceState(null, "", `#select/curriculum?${q.toString().replace(/%2C/g, ",")}`);
   };
-  const chipHtml = () => schools.map((x) => `<button type="button" class="chip ${sel.includes(x.id) ? "on" : ""}" data-id="${esc(x.id)}" aria-pressed="${sel.includes(x.id)}">${esc(x.name)}</button>`).join("");
+  const chipHtml = () => schools.map((x) => `<button type="button" class="chip ${sel.includes(x.id) ? "on" : ""}" data-id="${esc(x.id)}" aria-pressed="${sel.includes(x.id)}">${nm(x.id, x.name, 18)}</button>`).join("");
   const drawChips = () => {
     // 요약 탭: 본문 위 칩 줄 / 상세 비교 탭: 필터 패널 안의 "학교" 항목
     $("#chipbar").hidden = tab === "compare";
@@ -138,7 +142,7 @@ async function summaryBody(el, ids) {
     const sc = schools.find((x) => x.id === m.schoolId) || {};
     const uniq = subjects.filter((x) => x.schoolCount === 1 && x.offeredBy[0] === m.schoolId);
     const total = m.creditsRequired + m.creditsElective;
-    return `<section class="school"><header><h3>${esc(m.schoolName)} <button class="star" data-id="${esc(m.schoolId)}" aria-label="관심">${st.includes(m.schoolId) ? "★" : "☆"}</button></h3>
+    return `<section class="school"><header><h3>${nm(m.schoolId, m.schoolName, 34)} <button class="star" data-id="${esc(m.schoolId)}" aria-label="관심">${st.includes(m.schoolId) ? "★" : "☆"}</button></h3>
       <div class="muted">${esc([m.region, m.schoolType, m.founding, m.gender].filter(Boolean).join(" · "))}</div>
       <div class="muted">${esc(m.assignment || "")}</div></header>
       <div class="big">총 ${m.creditsTotal}학점 <span class="muted">(교과 ${m.creditsSubject} + 창체 ${m.creditsCreative})</span></div>
@@ -219,7 +223,7 @@ async function compareShell(el, onReset) {
       html += `<tr><td class="l">${esc(r.name)}</td>${ids.map((id) => cell(r.cells[id])).join("")}</tr>`;
     }
     $("#tbl").style.minWidth = `${200 + 210 * ids.length}px`;
-    $("#tbl").innerHTML = `<thead><tr><th class="l">과목</th>${names.map((n) => `<th>${esc(n)}</th>`).join("")}</tr></thead><tbody>${html || `<tr><td colspan="${ids.length + 1}">조건에 맞는 과목이 없습니다.</td></tr>`}</tbody>
+    $("#tbl").innerHTML = `<thead><tr><th class="l">과목</th>${ids.map((id, i) => `<th>${nm(id, names[i], 22)}</th>`).join("")}</tr></thead><tbody>${html || `<tr><td colspan="${ids.length + 1}">조건에 맞는 과목이 없습니다.</td></tr>`}</tbody>
       <tfoot><tr><th class="l">해당 과목 수</th>${ids.map((id) => `<th>${rows.filter((r) => r.cells[id]).length}</th>`).join("")}</tr></tfoot>`;
     $("#cnt").textContent = `${rows.length}개 과목`;
   };
