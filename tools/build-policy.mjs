@@ -6,7 +6,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 const STATUS = { 확정: "confirmed", 보도: "reported", 추정: "estimated", unknown: "unknown" };
 const KIND = { 공식: "official", 매체: "media" };
 
-// 고입·대입 일정 행의 날짜. draft 본문의 날짜를 ISO로 옮겼다(연도는 해당 학년도 시행 연도). 월만 알면 YYYY-MM.
+// 고입·대입 일정 행의 날짜(고입은 id, 대입은 id가 밀릴 수 있어 title 키). draft 본문의 날짜를 ISO로 옮겼다(연도는 해당 학년도 시행 연도). 월만 알면 YYYY-MM.
 const EVENTS = {
   "hs-01": [{ label: "기본계획 확정", start: "2026-08" }],
   "hs-02": [{ label: "접수(전국 기준)", start: "2026-08-18", end: "2026-09-03" }],
@@ -17,13 +17,14 @@ const EVENTS = {
     { label: "추가모집 접수", start: "2026-12-02", end: "2026-12-03" }, { label: "추가모집 발표", start: "2026-12-03" },
   ],
   "hs-05": [{ label: "후기 전형 개막(보도)", start: "2026-12-02" }],
-  "sch-01": [{ label: "원서접수", start: "2026-08-24", end: "2026-09-04" }, { label: "시험", start: "2026-11-19" }, { label: "성적통지", start: "2026-12-11" }],
-  "sch-02": [{ label: "시험", start: "2027-11-18" }, { label: "성적통지", start: "2027-12-10" }],
-  "sch-03": [{ label: "수시 원서접수 시작", start: "2027-09-20" }],
-  "sch-04": [{ label: "대교협 발표", start: "2025-08-28" }],
-  "sch-05": [{ label: "발표 가능성(추정)", start: "2027-08" }],
-  "sch-06": [{ label: "시행일 미확인(2029.11 중하순 추정)", start: "2029-11" }],
-  "sch-07": [{ label: "공고(2029.3 전후 추정)", start: "2029-03" }],
+  "2027학년도 수능(참고, 현 고3)": [{ label: "원서접수", start: "2026-08-24", end: "2026-09-04" }, { label: "시험", start: "2026-11-19" }, { label: "성적통지", start: "2026-12-11" }],
+  "2027학년도 수능 시행 기본계획 공고": [{ label: "공고(매체 보도)", start: "2026-03-31" }],
+  "2028학년도 수능": [{ label: "시험", start: "2027-11-18" }, { label: "성적통지", start: "2027-12-10" }],
+  "2028학년도 수시 원서접수": [{ label: "수시 원서접수 시작", start: "2027-09-20" }],
+  "2028학년도 대입전형 기본사항": [{ label: "대교협 발표", start: "2025-08-28" }],
+  "2030학년도 대입전형 기본사항 발표": [{ label: "발표 가능성(추정)", start: "2027-08" }],
+  "2030학년도 수능 시행일": [{ label: "시행일 미확인(2029.11 중하순 추정)", start: "2029-11" }],
+  "2030학년도 수능 시행 기본계획 공고": [{ label: "공고(2029.3 전후 추정)", start: "2029-03" }],
 };
 // draft에서 빠진, 조사 md 상태 칸의 괄호 설명.
 const NOTES = { "adm-05": "미결정 상태", "adm-10": "개인 제안, 정부안 아님", "hs-04": "공식 페이지 요약", "hs-08": "공식 FAQ 인용" };
@@ -43,7 +44,7 @@ const out = draft.map((d) => {
   row.sourceName = d.sourceName ?? null;
   row.sourceUrl = d.sourceUrl ?? null;
   if (sources.length > 1) row.sources = sources;
-  if (EVENTS[d.id]) row.events = EVENTS[d.id];
+  if (EVENTS[d.id] || EVENTS[d.title]) row.events = EVENTS[d.id] || EVENTS[d.title];
   row.checkedAt = d.checkedAt;
   return row;
 });
