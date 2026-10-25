@@ -4,25 +4,29 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>대입 대시보드</title>
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
   <div id="gate" class="gate">
     <form id="gate-form">
-      <h1>2028학년도 대입 대시보드</h1>
+      <h1>2030학년도 대입 대시보드</h1>
       <input id="pw" type="password" placeholder="비밀번호" autocomplete="current-password" autofocus required>
       <button type="submit">입장</button>
       <p id="gate-msg" class="muted" role="alert"></p>
     </form>
   </div>
 
-  <div id="app" hidden>
-    <header class="site-header">
-      <h1 id="site-title"></h1>
-      <p id="updated" class="muted"></p>
-    </header>
-    <nav id="tabs" class="tabs" role="tablist"></nav>
+  <div id="app" class="layout" hidden>
+    <aside id="sidebar">
+      <div class="side-head">
+        <h1 id="site-title"></h1>
+        <p id="updated" class="muted"></p>
+      </div>
+      <button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="tabs">☰ 메뉴 · <span id="menu-current"></span></button>
+      <nav id="tabs" class="side-nav" aria-label="메뉴"></nav>
+    </aside>
     <main id="main"></main>
   </div>
 

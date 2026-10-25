@@ -1,6 +1,114 @@
 {
-  "title": "2028학년도 대입 대시보드",
+  "title": "2030학년도 대입 대시보드",
   "sections": [
-    { "id": "curriculum", "title": "교육과정 편제표", "type": "gallery", "data": "curriculum.json" }
+    {
+      "id": "home",
+      "icon": "🏠",
+      "title": "홈",
+      "children": [
+        {
+          "id": "todo",
+          "title": "지금 할 일",
+          "type": "home",
+          "pri": "★"
+        }
+      ]
+    },
+    {
+      "id": "cal",
+      "icon": "📅",
+      "title": "일정",
+      "children": [
+        {
+          "id": "timeline",
+          "title": "전체 타임라인",
+          "type": "timeline",
+          "pri": "★"
+        }
+      ]
+    },
+    {
+      "id": "hs",
+      "icon": "🏫",
+      "title": "고교 선택",
+      "children": [
+        {
+          "id": "types",
+          "title": "고교 유형·전형 일정",
+          "type": "hstypes",
+          "pri": "★"
+        },
+        {
+          "id": "curr",
+          "title": "학교별 편제표",
+          "type": "db",
+          "pri": "★",
+          "data": [
+            "db/*.json"
+          ],
+          "load": "auto"
+        }
+      ]
+    },
+    {
+      "id": "life",
+      "icon": "📘",
+      "title": "고교 생활",
+      "children": [
+        {
+          "id": "planner",
+          "title": "이수과목 플래너",
+          "type": "soon",
+          "pri": "○",
+          "message": "고1 이후에 채웁니다. 희망 학과 ↔ 권장 이수과목 ↔ 학교 개설 여부 매트릭스."
+        }
+      ]
+    },
+    {
+      "id": "univ",
+      "icon": "🎓",
+      "title": "대입",
+      "children": [
+        {
+          "id": "system",
+          "title": "대입 제도",
+          "type": "system",
+          "pri": "★"
+        },
+        {
+          "id": "compare",
+          "title": "대학·학과 비교",
+          "type": "soon",
+          "pri": "○",
+          "message": "후보 대학·학과가 정해지면 모집인원·전형요소·입결·등록금·취업률을 비교합니다."
+        }
+      ]
+    },
+    {
+      "id": "log",
+      "icon": "🔄",
+      "title": "제도 변경 로그",
+      "children": [
+        {
+          "id": "changes",
+          "title": "변경 이력",
+          "type": "policy",
+          "pri": "★"
+        }
+      ]
+    },
+    {
+      "id": "lib",
+      "icon": "📚",
+      "title": "자료실",
+      "children": [
+        {
+          "id": "src",
+          "title": "출처·갱신 현황",
+          "type": "sources",
+          "pri": "◇"
+        }
+      ]
+    }
   ]
 }

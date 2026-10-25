@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>편제표 전사 검수</title>
+  <style>
+    :root { --bg:#f7f8fa; --fg:#1c2330; --muted:#6b7482; --card:#fff; --line:#e2e6ec; --accent:#2f6fed; --ok:#1a8f4c; --bad:#d23b3b; --warn:#b7791f; }
+    @media (prefers-color-scheme: dark) { :root { --bg:#14171d; --fg:#e8ebf0; --muted:#98a1b0; --card:#1d222b; --line:#2c333f; --accent:#6b9bff; --ok:#4cc27d; --bad:#ff7a7a; --warn:#e6b450; } }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--fg); font:15px/1.5 -apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif; }
+    header { padding:12px 16px; border-bottom:1px solid var(--line); display:flex; gap:8px; flex-wrap:wrap; align-items:center; position:sticky; top:0; background:var(--bg); z-index:5; }
+    header h1 { font-size:1rem; margin:0 12px 0 0; }
+    .tab { border:1px solid var(--line); background:var(--card); color:var(--fg); padding:6px 12px; border-radius:8px; cursor:pointer; font:inherit; }
+    .tab.active { border-color:var(--accent); color:var(--accent); font-weight:600; }
+    .tab .prog { color:var(--muted); font-size:.8rem; margin-left:6px; }
+    main { display:grid; grid-template-columns: minmax(320px, 45%) 1fr; gap:16px; padding:16px; align-items:start; }
+    @media (max-width: 900px) { main { grid-template-columns: 1fr; } .imgpane { position:static !important; height:50vh !important; } }
+    .imgpane { position:sticky; top:64px; height:calc(100vh - 140px); overflow:auto; background:var(--card); border:1px solid var(--line); border-radius:10px; }
+    .imgpane img { width:100%; display:block; cursor:zoom-in; }
+    .imgpane img.zoom { width:220%; max-width:none; cursor:zoom-out; }
+    section { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin-bottom:14px; }
+    section h2 { font-size:.95rem; margin:0 0 8px; }
+    table { border-collapse:collapse; width:100%; font-size:.85rem; }
+    th, td { border-bottom:1px solid var(--line); padding:4px 6px; text-align:left; vertical-align:top; }
+    td.n { text-align:center; }
+    th { color:var(--muted); font-weight:600; }
+    .muted { color:var(--muted); font-size:.8rem; }
+    .tag { display:inline-block; font-size:.7rem; padding:0 6px; border-radius:6px; border:1px solid var(--line); color:var(--muted); margin-left:4px; }
+    .opts { display:flex; flex-wrap:wrap; gap:4px; margin:6px 0; }
+    .opts span { border:1px solid var(--line); border-radius:6px; padding:0 8px; font-size:.82rem; }
+    .st { display:inline-flex; gap:2px; }
+    .st button { border:1px solid var(--line); background:var(--card); color:var(--muted); width:28px; height:24px; border-radius:6px; cursor:pointer; font-size:.8rem; padding:0; }
+    .st button.on1 { background:var(--ok); color:#fff; border-color:var(--ok); }
+    .st button.on2 { background:var(--bad); color:#fff; border-color:var(--bad); }
+    .note { width:100%; margin-top:4px; padding:4px 8px; border:1px solid var(--bad); border-radius:6px; background:var(--card); color:var(--fg); font:inherit; font-size:.82rem; }
+    .row2 { display:flex; justify-content:space-between; gap:8px; align-items:flex-start; }
+    .good { color:var(--ok); } .bad { color:var(--bad); } .warn { color:var(--warn); }
+    footer { position:sticky; bottom:0; background:var(--bg); border-top:1px solid var(--line); padding:10px 16px; display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+    footer button { padding:8px 14px; border-radius:8px; border:1px solid var(--accent); background:var(--accent); color:#fff; cursor:pointer; font:inherit; }
+    footer button.sec { background:var(--card); color:var(--accent); }
+    #msg { color:var(--muted); font-size:.85rem; }
+  </style>
+</head>
+<body>
+  <header><h1>편제표 전사 검수</h1><div id="tabs"></div></header>
+  <main><div class="imgpane"><img id="img" alt="원본 편제표"></div><div id="body"></div></main>
+  <footer>
+    <button id="copy">검수 결과 복사</button>
+    <button id="allok" class="sec">이 학교 전부 맞음</button>
+    <button id="reset" class="sec">이 학교 초기화</button>
+    <span id="msg">항목마다 ✓(맞음) / ✗(틀림, 메모 입력)을 눌러 주세요. 결과는 이 브라우저에만 저장됩니다.</span>
+  </footer>
+
+<script>
+let IDS = []; // content/curriculum/*.json 파일 이름에서 읽는다(공개 저장소에 학교 id 를 적지 않기 위함)
+const TERMS = ["1-1", "1-2", "2-1", "2-2", "3-1", "3-2"];
+const $ = (s) => document.querySelector(s);
+const esc = (s = "") => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const kindText = (k) => (Array.isArray(k) ? k.join("·") : k || "");
+let data = {}, cur = IDS[0], state = {};
+
+const load = () => { try { state = JSON.parse(localStorage.getItem("review-state") || "{}"); } catch { state = {}; } };
+const save = () => { try { localStorage.setItem("review-state", JSON.stringify(state)); } catch {} };
+const get = (id) => (state[cur] ||= {})[id] || { s: 0, note: "" };
+const set = (id, patch) => { (state[cur] ||= {})[id] = { ...get(id), ...patch }; save(); };
+
+function items(d) {
+  const rows = [], seen = new Map();
+  for (const c of d.courses) {
+    const key = `${c.area || ""}|${c.subject}`;
+    if (!seen.has(key)) { seen.set(key, { id: `c:${key}`, label: c.subject, area: c.area, kind: c.kind, extra: c.extra, graded: c.graded, basic: c.basicCredits, terms: {} }); rows.push(seen.get(key)); }
+    seen.get(key).terms[c.term] = c.credits;
+  }
+  return { rows };
+}
+
+function toggle(id) {
+  const v = get(id);
+  return `<span class="st" data-id="${esc(id)}"><button data-s="1" class="${v.s === 1 ? "on1" : ""}" title="맞음">✓</button><button data-s="2" class="${v.s === 2 ? "on2" : ""}" title="틀림">✗</button></span>`;
+}
+const noteBox = (id) => (get(id).s === 2 ? `<input class="note" data-note="${esc(id)}" placeholder="어떻게 틀렸나요? (예: 2-1이 아니라 2-2)" value="${esc(get(id).note)}">` : "");
+
+function render() {
+  const d = data[cur];
+  $("#img").src = `/content/${d.sourceImage}`;
+  $("#img").classList.remove("zoom");
+  const { rows } = items(d);
+  const sum = (xs) => xs.reduce((a, b) => a + b, 0);
+  const fixedOf = (t) => sum(d.courses.filter((c) => c.term === t).map((c) => c.credits));
+  const elOf = (t) => sum(d.electiveGroups.filter((g) => g.term === t).map((g) => g.pick * g.creditsEach));
+  const termRow = TERMS.map((t) => { const a = fixedOf(t) + elOf(t), e = d.declared.termCredits[t]; return `<td class="n ${a === e ? "good" : "bad"}">${a}${a === e ? "" : ` (표 ${e})`}</td>`; }).join("");
+
+  $("#body").innerHTML = `
+    <section><div class="row2"><div><h2>${esc(d.school)} · ${esc(d.document)}</h2>
+      <div class="muted">입학 ${d.entryYear}학년도 · ${esc(d.schoolType || "유형 미표기")} · 신뢰도 ${esc(d._meta.confidence)}</div></div>${toggle("h:header")}</div>${noteBox("h:header")}</section>
+
+    <section><h2>학교지정 과목 (학기별 운영학점)</h2>
+      <table><thead><tr><th>과목</th>${TERMS.map((t) => `<th class="n">${t}</th>`).join("")}<th>구분</th><th></th></tr></thead><tbody>
+      ${rows.map((r) => `<tr><td>${esc(r.label)}${r.area ? `<span class="tag">${esc(r.area)}</span>` : ""}${r.basic && Object.values(r.terms).some((v) => v !== r.basic) ? `<span class="tag">기본 ${r.basic}</span>` : ""}</td>
+        ${TERMS.map((t) => `<td class="n">${r.terms[t] ?? ""}</td>`).join("")}
+        <td>${esc(kindText(r.kind))}${r.extra ? `<span class="tag">${esc(r.extra)}</span>` : ""}${r.graded === false ? `<span class="tag">성취도만</span>` : ""}</td>
+        <td>${toggle(r.id)}</td></tr>${get(r.id).s === 2 ? `<tr><td colspan="9">${noteBox(r.id)}</td></tr>` : ""}`).join("")}
+      <tr><th>학기 합계(계산)</th>${termRow}<th colspan="2" class="muted">표: ${TERMS.map((t) => d.declared.termCredits[t]).join("/")}</th></tr>
+      </tbody></table></section>
+
+    <section><h2>선택 묶음 (학생이 학기마다 택n)</h2>
+      ${d.electiveGroups.map((g) => `<div style="border-top:1px solid var(--line);padding:8px 0"><div class="row2"><div><b>${g.term}</b> · 택${g.pick} (각 ${g.creditsEach}학점)
+        ${g.area ? `<span class="tag">${esc(g.area)}</span>` : ""}${g.kind ? `<span class="tag">${esc(kindText(g.kind))}</span>` : ""}</div>${toggle("g:" + g.id)}</div>
+        <div class="opts">${g.options.map((o) => `<span>${esc(o.subject)}${o.kind && !g.kind ? ` <small class="muted">${esc(kindText(o.kind))}</small>` : ""}${o.extra ? ` <small class="muted">${esc(o.extra)}</small>` : ""}${o.graded === false ? " ♥" : ""}</span>`).join("")}</div>
+        ${g.note ? `<div class="muted warn">참고: ${esc(g.note)}</div>` : ""}${noteBox("g:" + g.id)}</div>`).join("")}
+    </section>
+
+    ${(d.outsideSchool || []).length ? `<section><h2>학교 밖 과목</h2>${d.outsideSchool.map((o, i) => `<div class="row2"><div>${esc(o.subject)} · ${o.term} ${o.credits}학점 · ${esc(kindText(o.kind))}<div class="muted">${esc(o.note || "")}</div></div>${toggle("o:" + i)}</div>${noteBox("o:" + i)}`).join("")}</section>` : ""}
+
+    <section><div class="row2"><div><h2>창체 (학기당 시간)</h2>
+      <div class="muted">${Object.entries(d.creative.perTerm["1-1"]).map(([k, v]) => `${esc(k)} ${v}`).join(" · ")}${d.creative.standardHours ? ` · 기준 ${d.creative.standardHours}h / 운영 ${d.creative.operatedHours}h` : ""}</div></div>${toggle("x:creative")}</div>${noteBox("x:creative")}</section>
+
+    <section><h2>전사 중 판독이 불확실했던 부분</h2>
+      ${d.flags.map((f, i) => `<div class="row2" style="padding:4px 0"><div><span class="${f.confidence === "low" ? "bad" : "warn"}">[${f.confidence}]</span> <b>${esc(f.ref)}</b><div class="muted">${esc(f.note)}</div></div>${toggle("f:" + i)}</div>${noteBox("f:" + i)}`).join("")}
+    </section>`;
+  tabs();
+}
+
+function allIds(d) { return ["h:header", ...items(d).rows.map((r) => r.id), ...d.electiveGroups.map((g) => "g:" + g.id), ...(d.outsideSchool || []).map((_, i) => "o:" + i), "x:creative", ...d.flags.map((_, i) => "f:" + i)]; }
+function progress(id) { const d = data[id], st = state[id] || {}; const ids = allIds(d); return { done: ids.filter((i) => st[i]?.s).length, bad: ids.filter((i) => st[i]?.s === 2).length, total: ids.length }; }
+function tabs() {
+  $("#tabs").innerHTML = IDS.map((id) => { const p = progress(id); return `<button class="tab ${id === cur ? "active" : ""}" data-t="${id}">${esc(data[id].school.replace("등학교", ""))}<span class="prog">${p.done}/${p.total}${p.bad ? ` · ✗${p.bad}` : ""}</span></button>`; }).join("");
+}
+
+document.addEventListener("click", (e) => {
+  const t = e.target.closest(".tab"); if (t) { cur = t.dataset.t; render(); return; }
+  const b = e.target.closest(".st button"); if (b) { const id = b.parentElement.dataset.id, s = +b.dataset.s; set(id, { s: get(id).s === s ? 0 : s }); render(); }
+});
+document.addEventListener("input", (e) => { if (e.target.dataset.note) set(e.target.dataset.note, { note: e.target.value }); });
+$("#img").addEventListener("click", (e) => e.target.classList.toggle("zoom"));
+$("#allok").onclick = () => { allIds(data[cur]).forEach((id) => { if (!get(id).s) set(id, { s: 1 }); }); render(); };
+$("#reset").onclick = () => { if (confirm("이 학교의 검수 표시를 모두 지울까요?")) { delete state[cur]; save(); render(); } };
+$("#copy").onclick = async () => {
+  const lines = [];
+  for (const id of IDS) {
+    const d = data[id], st = state[id] || {}, p = progress(id);
+    const bad = allIds(d).filter((i) => st[i]?.s === 2);
+    lines.push(`## ${d.school}: 확인 ${p.done}/${p.total}, 수정 ${bad.length}건${p.done === p.total && !bad.length ? " (전부 맞음)" : ""}`);
+    for (const i of bad) {
+      const label = i.startsWith("c:") ? `과목 ${i.split("|")[1]}` : i.startsWith("g:") ? `선택묶음 ${i.slice(2)}` : i.startsWith("f:") ? `불확실 항목 #${+i.slice(2) + 1} (${d.flags[+i.slice(2)].ref})` : i === "h:header" ? "머리글 정보" : i === "x:creative" ? "창체" : `학교 밖 과목 #${+i.slice(2) + 1}`;
+      lines.push(`- ${label}: ${st[i].note || "(메모 없음)"}`);
+    }
+    const left = allIds(d).filter((i) => !st[i]?.s).length;
+    if (left) lines.push(`- 미확인 ${left}건`);
+  }
+  const text = lines.join("\n");
+  try { await navigator.clipboard.writeText(text); $("#msg").textContent = "복사됨. 대화창에 붙여넣어 주세요."; } catch { prompt("복사해서 대화창에 붙여넣어 주세요", text); }
+};
+
+(async () => {
+  load();
+  const listing = await fetch("/content/curriculum/").then((r) => r.text());
+  IDS = [...listing.matchAll(/href="([^"]+)\.json"/g)].map((m) => decodeURIComponent(m[1]).split("/").pop()).sort();
+  if (!IDS.length) throw new Error("content/curriculum/*.json 목록을 읽지 못했습니다");
+  cur = IDS[0];
+  for (const id of IDS) data[id] = await fetch(`/content/curriculum/${id}.json`).then((r) => r.json());
+  render();
+})().catch((e) => { $("#body").textContent = "불러오기 실패: " + e.message + " (프로젝트 루트에서 서버를 실행했는지 확인하세요)"; });
+</script>
+</body>
+</html>

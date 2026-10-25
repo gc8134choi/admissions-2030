@@ -1,5 +1,5 @@
 // build.mjs 와 형식이 같아야 합니다: PBKDF2-SHA256 → AES-256-GCM
-export const ITERATIONS = 250000;
+export const ITERATIONS = 1_000_000;
 const SALT_LEN = 16;
 const IV_LEN = 12;
 
@@ -30,4 +30,9 @@ export async function openManifest(password, buf) {
 export async function importFileKey(b64) {
   const raw = Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
   return crypto.subtle.importKey("raw", raw, "AES-GCM", false, ["decrypt"]);
+}
+
+// 지연 로딩 데이터(vault/data/<id>.enc) 복호화 → JSON. fetch 로 받은 ArrayBuffer 를 넘긴다.
+export async function decryptJson(key, buf) {
+  return JSON.parse(new TextDecoder().decode(await decrypt(key, buf)));
 }
