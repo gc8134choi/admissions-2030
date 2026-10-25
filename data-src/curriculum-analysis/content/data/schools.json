@@ -2,7 +2,7 @@
   "items": [
     {
       "id": "school-seongbok",
-      "name": "성복고등학교",
+      "name": "성복고",
       "schoolType": "일반",
       "founding": "공립",
       "region": "경기 용인시 수지구",
@@ -47,7 +47,7 @@
     },
     {
       "id": "school-pungdeok",
-      "name": "풍덕고등학교",
+      "name": "풍덕고",
       "schoolType": "일반",
       "founding": "공립",
       "region": "경기 용인시 수지구",
@@ -92,7 +92,7 @@
     },
     {
       "id": "school-suji",
-      "name": "수지고등학교",
+      "name": "수지고",
       "schoolType": "일반",
       "founding": "공립",
       "region": "경기 용인시 수지구",
@@ -143,7 +143,7 @@
     },
     {
       "id": "school-yonginheungcheon",
-      "name": "용인홍천고등학교",
+      "name": "홍천고",
       "schoolType": "일반",
       "founding": "공립",
       "region": "경기 용인시 수지구",
