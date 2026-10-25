@@ -3,6 +3,7 @@ import { register as registerPolicy } from "./policy.js";
 import { registerHome } from "./home.js";
 import { registerFiles } from "./files.js";
 import { currentProfile, allProfiles, initProfiles, mountProfileSwitch, nameSettings, bindNameSettings } from "./profile-ui.js";
+import { univBody } from "./univ-match.js";
 import { mountSearch } from "./search.js";
 import { schoolBand } from "./school-card.js";
 import { preloadSubjectInfo, subjectName, decorateSubjectLists } from "./subject-info.js";
@@ -111,17 +112,17 @@ async function curriculumView(el, query, node) {
   let sel = query.has("s") ? query.get("s").split(",").filter(known) : schools.map((x) => x.id);
   sel = [...new Set(sel)];
   let areasSel = AREA7.filter((a) => (query.get("a") || "").split(",").includes(a)); // 비어 있으면 전체
-  let tab = query.get("v") === "compare" ? "compare" : "summary";
+  let tab = ["compare", "univ"].includes(query.get("v")) ? query.get("v") : "summary";
   let compare = null; // 상세 비교 화면(필터 포함)은 한 번만 만들고 탭 전환 때 재사용한다
 
   el.innerHTML = `<div class="phead"><h2>${esc(node?.title || "학교별 과목표")} ${node ? badge(node.status) : ""}</h2>
-      <div class="subtabs" id="tabs"><a href="#" data-tab="summary">학교별 요약</a><a href="#" data-tab="compare">상세 비교</a></div></div>
+      <div class="subtabs" id="tabs"><a href="#" data-tab="summary">학교별 요약</a><a href="#" data-tab="compare">상세 비교</a><a href="#" data-tab="univ">대학 요건 맞춰보기</a></div></div>
     <div class="chipbar" id="chipbar"><span class="flabel">학교</span><div class="chips" id="chips"></div></div>
     <div id="cview"></div>`;
 
   const syncUrl = () => {
     const q = new URLSearchParams();
-    if (tab === "compare") q.set("v", "compare");
+    if (tab !== "summary") q.set("v", tab);
     q.set("s", sel.join(","));
     if (areasSel.length) q.set("a", areasSel.join(","));
     history.replaceState(null, "", `#select/curriculum?${q.toString().replace(/%2C/g, ",")}`);
@@ -129,7 +130,7 @@ async function curriculumView(el, query, node) {
   const chipHtml = () => schools.map((x) => `<button type="button" class="chip schip ${sel.includes(x.id) ? "on" : ""}" data-id="${esc(x.id)}" aria-pressed="${sel.includes(x.id)}" title="${esc(x.name)}">${nm(x.id, x.name, 36)}</button>`).join("");
   const drawChips = () => {
     // 요약 탭: 본문 위 칩 줄 / 상세 비교 탭: 필터 패널 안의 "학교" 항목
-    $("#chipbar").hidden = tab === "compare";
+    $("#chipbar").hidden = tab !== "summary";
     $("#chips").innerHTML = chipHtml();
     const fc = $("#fchips"); if (fc) fc.innerHTML = chipHtml();
     // 표시 순서: 국어·영어·수학 / 한국사·사회·과학(한 줄 3개), 나머지는 한 줄 4개. 표의 교과군 정렬은 그대로.
@@ -139,6 +140,7 @@ async function curriculumView(el, query, node) {
   const drawBody = async () => {
     const body = $("#cview");
     if (tab === "summary") { compare = null; await summaryBody(body, sel); }
+    else if (tab === "univ") { compare = null; await univBody(body, { load, esc, profile: currentProfile(store), schools, sel }); }
     else {
       if (!compare || !body.contains(compare.root)) compare = await compareShell(body, () => { sel = schools.map((x) => x.id); areasSel = []; refresh(); }, () => areasSel);
       compare.draw(sel);
