@@ -2,6 +2,7 @@ import { MENU, STATUS } from "./menu.js";
 import { register as registerPolicy } from "./policy.js";
 import { registerHome } from "./home.js";
 import { registerFiles } from "./files.js";
+import { preloadSubjectInfo, subjectName, decorateSubjectLists } from "./subject-info.js";
 
 const $ = (s) => document.querySelector(s);
 const esc = (s = "") => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -273,7 +274,7 @@ async function compareShell(el, onReset, getAreas) {
     for (const r of rows) {
       const first = r.area !== area;
       if (first) { area = r.area; ai++; }
-      html += `<tr class="ra${ai % 2}${first ? " af" : ""}">${first ? `<td class="ar" rowspan="${spans.get(r.area)}" title="${esc(r.area)}">${esc(r.area)}</td>` : ""}<td class="l">${esc(r.name)}</td>${ids.map((id) => cell(r.cells[id])).join("")}</tr>`;
+      html += `<tr class="ra${ai % 2}${first ? " af" : ""}">${first ? `<td class="ar" rowspan="${spans.get(r.area)}" title="${esc(r.area)}">${esc(r.area)}</td>` : ""}<td class="l">${subjectName(r.name)}</td>${ids.map((id) => cell(r.cells[id])).join("")}</tr>`;
     }
     need = AW + LW + CW * ids.length;
     $("#tbl").style.minWidth = `${need}px`;
@@ -312,6 +313,8 @@ async function compareShell(el, onReset, getAreas) {
     draw();
     onReset?.();
   });
+  // 과목 설명 데이터는 표를 막지 않고 따로 읽는다: 도착하면 ⓘ만 덧붙이도록 한 번 더 그린다.
+  preloadSubjectInfo(load).then(() => { if (ids.length && root.isConnected) draw(); });
   return { root, draw };
 }
 
@@ -339,7 +342,7 @@ function render() {
     <h2>${esc(n.title)} ${badge(n.status)}</h2><p class="muted">${esc(n.desc || "")}</p>
     ${n.status !== "v1" ? '<p class="note">아직 구현 전인 메뉴입니다. 구조 확인용 자리표시입니다.</p>' : ""}
     <div id="view"></div>${parts}${kids}`;
-  if (n.view) views[n.view]($("#view"), query).then(() => filesApi.afterView(n.view, $("#view"))).catch(() => ($("#view").innerHTML = '<p class="note">데이터를 불러오지 못했습니다. 페이지를 새로고침해 보세요.</p>'));
+  if (n.view) views[n.view]($("#view"), query).then(() => { filesApi.afterView(n.view, $("#view")); if (n.view === "credit") decorateSubjectLists($("#view"), load, "4."); }).catch(() => ($("#view").innerHTML = '<p class="note">데이터를 불러오지 못했습니다. 페이지를 새로고침해 보세요.</p>'));
 }
 
 $("#burger").addEventListener("click", () => $("#nav").classList.toggle("open"));

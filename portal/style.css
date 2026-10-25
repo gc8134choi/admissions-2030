@@ -358,4 +358,17 @@ body.fv-open{overflow:hidden}
 .hm-aud{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0 6px}
 .hm-aud .fchip{font-size:12px;padding:2px 10px}
 ul.plain{margin:6px 0;padding-left:18px}
+
+/* 과목 설명 팝오버(ⓘ) */
+.si{border:0;background:none;color:var(--accent);cursor:pointer;font:inherit;font-size:12px;line-height:1;padding:2px 3px;margin-left:2px;border-radius:50%;vertical-align:baseline}
+.si:hover,.si[aria-expanded="true"]{background:var(--soft)}
+.si:focus-visible,.sip:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.sip{position:fixed;z-index:60;background:var(--panel);color:var(--fg);border:1px solid var(--line);border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,.18);padding:10px 12px;font-size:13px;line-height:1.5}
+.sip-h{display:flex;align-items:baseline;gap:6px;padding-right:22px;position:relative}
+.sip-x{position:absolute;right:-4px;top:-4px;border:0;background:none;color:var(--muted);font-size:18px;line-height:1;cursor:pointer;padding:2px 6px}
+.sip p{margin:6px 0}
+.sip-f{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center;color:var(--muted)}
 .pst.seoul-verified{color:var(--accent)}
+.sip{max-height:min(70vh,520px);overflow:auto}
+.sip-d{margin:4px 0 6px;display:grid;grid-template-columns:auto 1fr;gap:2px 8px;font-size:12px}
+.sip-d dt{color:var(--muted)}.sip-d dd{margin:0}
