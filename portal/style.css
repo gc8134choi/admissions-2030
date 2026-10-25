@@ -1,14 +1,19 @@
-:root{--bg:#fafaf8;--fg:#1f2328;--muted:#6b7280;--line:#e3e1db;--panel:#fff;--accent:#2f5d8a;--soft:#eaf1f8;
---v1:#1a7f4b;--v2:#9a6700;--soon:#6b7280;--warn:#fff4d6}
-@media (prefers-color-scheme:dark){:root{--bg:#16181b;--fg:#e6e6e3;--muted:#9aa0a6;--line:#2c3036;--panel:#1d2024;--accent:#7fb0e0;--soft:#232b34;
---v1:#4fc38a;--v2:#e0b04a;--soon:#9aa0a6;--warn:#3a3220}}
+:root{--bg:#F5F7FB;--fg:#14213D;--muted:#5B6780;--line:#E6EBF4;--panel:#fff;--accent:#1B3A6B;--soft:#E8EEFA;
+--v1:#0B7F63;--v2:#9A6700;--soon:#5B6780;--warn:#fff4d6;
+/* 디자인 토큰(2026-10 개편): 서브 세션·다른 화면도 이 변수를 쓴다 */
+--navy:#1B3A6B;--navy2:#2F5D8A;--emerald:#0FA37F;--coral:#FF6B4A;--amber:#F5A623;--blue:#3B82F6;--coral-fg:#fff;
+--r:16px;--r-in:12px;--r-chip:999px;--sh:0 4px 16px rgba(20,33,61,.08);--gap:32px;--pad:24px;--hh:64px}
+@media (max-width:760px){:root{--hh:56px;--pad:16px}}
+@media (prefers-color-scheme:dark){:root{--bg:#0E1626;--fg:#E8EDF7;--muted:#9AA7C0;--line:#26324D;--panel:#16213A;--accent:#6EA0F0;--soft:#1D2B4A;
+--v1:#34D3A8;--v2:#F5C066;--soon:#9AA7C0;--warn:#3a3220;
+--navy:#6EA0F0;--emerald:#34D3A8;--coral:#FF8A70;--coral-fg:#14213D;--amber:#F5C066;--blue:#7DB0FF;--sh:0 4px 16px rgba(0,0,0,.35)}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.6 system-ui,-apple-system,"Noto Sans KR",sans-serif}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.65 system-ui,-apple-system,"Noto Sans KR",sans-serif}
 .muted{color:var(--muted)}
 .top{display:flex;gap:12px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--line);background:var(--panel);position:sticky;top:0;z-index:5}
 #burger{display:none;font-size:20px;background:none;border:0;color:inherit;cursor:pointer}
 .layout{display:flex;align-items:flex-start}
-#nav{width:240px;flex:none;padding:16px;border-right:1px solid var(--line);position:sticky;top:49px;height:calc(100vh - 49px);overflow-y:auto}
+#nav{width:240px;flex:none;padding:16px;border-right:1px solid var(--line);position:sticky;top:var(--hh);height:calc(100vh - var(--hh));overflow-y:auto}
 #nav ul{list-style:none;margin:0;padding:0 0 0 14px}
 #nav>ul{padding:0}
 #nav a{display:flex;gap:6px;align-items:center;padding:5px 8px;border-radius:6px;color:inherit;text-decoration:none}
@@ -38,7 +43,7 @@ td.yes{color:var(--v1);font-weight:600}td.no{color:var(--muted)}
 textarea{width:100%;min-height:70px;border:1px solid var(--line);border-radius:6px;padding:8px;background:var(--panel);color:inherit;font:inherit}
 @media (max-width:760px){
  #burger{display:block}
- #nav{position:fixed;inset:49px 0 0 0;width:auto;height:auto;background:var(--bg);z-index:4;display:none;overflow:auto}
+ #nav{position:fixed;inset:var(--hh) 0 0 0;width:auto;height:auto;background:var(--bg);z-index:4;display:none;overflow:auto}
  #nav.open{display:block}
 }
 .subtabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin:8px 0 14px}
@@ -74,7 +79,7 @@ td.req .tm,td.req .cr{font-weight:700}td.ele .tm,td.ele .cr{font-weight:400}
 td.req .muted,td.ele .muted{color:var(--muted)}
 tfoot th{background:var(--soft)}
 .cmp{display:grid;grid-template-columns:230px minmax(0,1fr);gap:16px;align-items:start}
-.cmp .filters{position:sticky;top:60px;margin:0;max-height:calc(100vh - 80px);overflow:auto}
+.cmp .filters{position:sticky;top:calc(var(--hh) + 8px);margin:0;max-height:calc(100vh - var(--hh) - 24px);overflow:auto}
 .fbody{display:flex;flex-direction:column;gap:12px;margin-top:10px}
 .fgroup{display:flex;flex-direction:column;gap:4px}
 .flabel{font-size:12px;color:var(--muted)}
@@ -115,7 +120,7 @@ tfoot th{background:var(--soft)}
 
 .pst{display:inline-block;font-size:12px;font-weight:600;border-radius:99px;padding:0 8px;border:1px solid currentColor;white-space:nowrap}
 .pst.confirmed{color:var(--v1)}.pst.reported{color:var(--accent)}.pst.estimated{color:var(--v2)}.pst.unknown{color:var(--soon)}
-.fixednote{position:sticky;top:49px;z-index:3;background:var(--warn);border:1px solid var(--v2);border-radius:8px;padding:8px 12px;font-weight:600;margin:10px 0}
+.fixednote{position:sticky;top:var(--hh);z-index:3;background:var(--warn);border:1px solid var(--v2);border-radius:8px;padding:8px 12px;font-weight:600;margin:10px 0}
 table.policy td{vertical-align:top}
 table.policy tr.past{opacity:.45}
 .unv{display:inline-block;font-size:11px;color:var(--muted);border:1px dashed var(--muted);border-radius:99px;padding:0 6px;white-space:nowrap}
@@ -174,8 +179,7 @@ select,input[type=search]{font-size:13px;padding:5px 8px}
 .tw:not(.fit){overflow:auto;max-height:calc(100vh - 66px)}
 #tbl{border-collapse:separate;border-spacing:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}
 #tbl th,#tbl td{border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
-:root{--tb:45px}
-@media (max-width:760px){:root{--tb:50px}}
+:root{--tb:calc(var(--hh) - 4px)}
 #tbl thead th{position:sticky;top:var(--tb);z-index:3;background:var(--soft)}
 .tw:not(.fit) #tbl thead th{top:0}
 #tbl thead th.ar,#tbl thead th.l{z-index:5}
@@ -467,6 +471,71 @@ ul.plain{margin:6px 0;padding-left:18px}
 .cv-notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.cv-note{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:color-mix(in srgb,var(--c) 6%,var(--panel))}
 .cv-note p{margin:4px 0;font-size:13px}
 .cv-schools{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}.cv-sc{display:grid;grid-template-columns:64px 1fr;gap:8px;align-items:center;font-size:13px}
+.cv-basis{margin-top:10px;font-size:13px}.cv-basis summary{color:var(--muted)}.cv-big{margin:14px 0}
+
+/* 학교 카드 공통(홈 "내 학교"·편제표 요약 카드): 큰 로고 + 포인트 색 밴드 */
+.sb{--sc:var(--accent);display:flex;align-items:center;gap:14px;padding:14px 14px;border-radius:12px;color:#fff;background:linear-gradient(135deg,var(--sc),color-mix(in srgb,var(--sc) 62%,#000))}
+.sb-logo{width:84px;height:84px;flex:none;border-radius:50%;background:#fff;object-fit:contain;padding:5px;box-sizing:border-box;box-shadow:0 0 0 3px rgba(255,255,255,.55)}
+.sb-t{display:flex;flex-direction:column;min-width:0;flex:1;line-height:1.3}
+.sb-t b{font-size:22px;letter-spacing:-.3px}
+.sb-t span{font-size:12px;opacity:.92}
+.sb-star{font-size:26px;line-height:1;color:#ffd666;padding:4px;align-self:flex-start}
+.sb-star:focus-visible{outline:2px solid #fff;border-radius:6px}
+.school header{margin-bottom:8px}
+.school header .muted{margin-top:6px}
+.hm-mine{grid-template-columns:1fr}
+.hm-schools{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.hs{display:flex;flex-direction:column;gap:10px;padding:10px;border:1px solid var(--line);border-radius:16px;background:var(--panel)}
+.hs.fav{border-color:var(--sc);box-shadow:0 0 0 1px var(--sc)}
+.hs .sb{padding:12px}
+.hs .sb-logo{width:72px;height:72px}
+.hs .sb-t b{font-size:20px}
+.hs-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;text-align:center}
+.hs-tiles div{background:var(--soft);border-radius:10px;padding:6px 2px;display:flex;flex-direction:column}
+.hs-tiles b{font-size:24px;line-height:1.15;font-variant-numeric:tabular-nums}
+.hs-tiles span{font-size:11px;color:var(--muted)}
+.hs .bar{height:14px;line-height:14px;font-size:10px;border-radius:99px}
+.hs .bar span{padding-left:8px}
+.hs-chips{display:flex;gap:6px;flex-wrap:wrap}
+.hs-chips span{font-size:12px;padding:2px 10px;border-radius:99px;background:var(--soft);border:1px solid var(--line)}
+.hs-go{text-align:center;padding:9px 14px;margin-top:auto}
+@media (max-width:760px){.hm-schools{grid-template-columns:1fr}.sb-logo{width:72px;height:72px}}
+/* 다듬기: 홈은 2열(4개교가 한 화면에 균형), 좁은 요약 카드는 세로 배치 */
+.sb-t,.sb-t span{word-break:keep-all}
+@media (min-width:761px){.hm-schools{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.school .sb{flex-direction:column;text-align:center;position:relative;padding:16px 12px 12px;gap:8px}
+.school .sb-logo{width:96px;height:96px}
+.school .sb-t b{font-size:21px}
+.school .sb-star{position:absolute;top:6px;right:8px}
+@media (prefers-color-scheme:dark){.hs .bar{color:#10140a}}
 .cv-fig{margin:14px 0 0}.cv-fig img{width:100%;height:auto;border-radius:10px;border:1px solid var(--line)}.cv-fig figcaption{font-size:12px;margin-top:4px}
 .cv-basis{margin-top:12px;font-size:13px}.cv-basis summary{color:var(--muted);cursor:pointer}.cv-big{margin:14px 0}
 @media (max-width:640px){.cv-hero{grid-template-columns:1fr;padding:16px}.cv-hero-art{max-width:280px;justify-self:center}.cv-flow li:not(:last-child)::after{display:none}.cv-card{padding:14px}}
+
+/* ===== 셸(헤더·사이드 메뉴) ===== */
+.top{z-index:20;height:var(--hh);padding:0 20px;gap:14px;border:0;background:linear-gradient(135deg,#1B3A6B,#2F5D8A);color:#fff;box-shadow:0 2px 12px rgba(20,33,61,.18)}
+.top .brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;font-size:20px;font-weight:800;letter-spacing:-.3px}
+.top .brand svg{width:40px;height:40px;flex:none}
+#burger{color:#fff;font-size:24px;padding:4px 6px}
+#nav{background:var(--panel);border-right:1px solid var(--line)}
+#nav a{position:relative;padding:8px 10px;border-radius:10px;gap:10px}
+#nav a svg{width:20px;height:20px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#nav a.on{background:var(--soft);color:var(--accent);font-weight:700}
+#nav a.on::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:4px;border-radius:0 4px 4px 0;background:var(--navy)}
+#nav .top-item>a{font-weight:700}
+.badge.soon{border:0;padding:0;display:inline-flex;align-items:center;gap:5px;color:var(--soon);font-size:12px}
+.badge.soon i{width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.7}
+@media (max-width:760px){#nav{background:var(--bg)}}
+
+/* ===== 공통 카드·타이포 ===== */
+body{letter-spacing:-.1px}
+h2{font-size:28px;font-weight:800;letter-spacing:-.5px;line-height:1.25}
+h3{font-size:20px;font-weight:700}
+#main{padding:var(--pad) clamp(16px,2.5vw,48px) 64px}
+.panel,.hm-box,.school,.cards a,.hs{border-radius:var(--r);box-shadow:var(--sh);border-color:var(--line)}
+.panel,.hm-box{padding:var(--pad)}
+.hm-box h3{font-size:17px;font-weight:700}
+.hm{gap:var(--gap)}
+.small,.muted.small{font-size:13px}
+td,th,.tnum,.hm-tiles b,.hs-tiles b,.st-n{font-variant-numeric:tabular-nums}
+@media (max-width:760px){h2{font-size:24px}.panel,.hm-box{padding:16px}.hm{gap:20px}}

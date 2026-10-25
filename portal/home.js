@@ -1,5 +1,6 @@
 // 홈 화면. 데이터: policy.json(일정·변경 로그·학점제 규칙·마일스톤), summary/curricula/schools(관심 학교).
 // policy.json·policy.js는 읽기만 한다(서브 세션 담당).
+import { homeSchoolCard } from "./school-card.js";
 const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "확인 못 함" };
 const DAY = 864e5;
 
@@ -14,7 +15,7 @@ export const toggleAudience = (sel, key) => (sel.includes(key) ? sel.filter((k) 
 export const audienceMatch = (aud, sel) => !sel.length || !aud || !aud.length || aud.includes("common") || aud.some((a) => sel.includes(a));
 export const audienceChips = (sel, esc) => `<div class="hm-aud" role="group" aria-label="일정 대상">${AUDIENCES.map(([k, t]) => `<button type="button" class="fchip${sel.includes(k) ? " on" : ""}" data-aud="${k}" aria-pressed="${sel.includes(k)}">${esc(t)}</button>`).join("")}</div>`;
 
-export function registerHome(views, { esc, load, store, nm, stars, toggleStar, nameOf, TERMS }) {
+export function registerHome(views, { esc, load, store, nm, stars, toggleStar, nameOf, TERMS, hasLogo }) {
   const today = () => { const d = new Date(); return new Date(d.getFullYear(), d.getMonth(), d.getDate()); };
   // "YYYY-MM-DD" 또는 월 단위 "YYYY-MM" → 시작·끝 날짜
   const span = (s, e) => {
@@ -115,15 +116,14 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const logHtml = log.slice(0, 3).map((x) => `<li><span class="hm-date">${esc(ymdText(x.d))}</span><span class="hm-tx"><b>${esc(x.r.title.slice(x.d.length).trim() || x.r.title)}</b></span><span class="hm-bd">${badges(x.r)}</span>${link(x.r)}</li>`).join("") || '<li class="muted">기록 없음</li>';
 
     // 5) 관심 학교 카드
-    const card = (id) => {
-      const m = summary.find((x) => x.schoolId === id); if (!m) return "";
-      const cr = curricula.find((x) => x.schoolId === id)?.creative;
-      return `<section class="hm-school"><header>${nm(id, nameOf(schools, id), 34)} <button class="star" data-id="${esc(id)}" aria-label="관심 해제">★</button></header>
-        <div class="hm-line"><b>지정 ${m.creditsRequired}</b> / 선택 ${m.creditsElective}학점</div>
-        <div class="muted small">창체 ${m.creditsCreative}학점${cr ? ` · ${cr.totalHours}시간` : ""}</div>
-        <a class="btn" href="#select/curriculum?v=compare&s=${esc(id)}">이 학교 과목 보기</a></section>`;
+    // 4개교 모두 보이되 ★ 관심 학교를 앞에 둔다
+    const starred = stars();
+    const mine = [...summary].sort((a, b) => starred.includes(b.schoolId) - starred.includes(a.schoolId));
+    const card = (m) => {
+      const sc = schools.find((x) => x.id === m.schoolId) || {};
+      return homeSchoolCard(m, { starred: starred.includes(m.schoolId), sub: [m.region, m.schoolType, m.founding, m.gender].filter(Boolean).join(" · "), logoOk: hasLogo(m.schoolId), cr: curricula.find((x) => x.schoolId === m.schoolId)?.creative });
     };
-    const favs = stars().filter((id) => summary.some((m) => m.schoolId === id));
+    const favs = mine.filter((m) => starred.includes(m.schoolId));
 
     // 추가 카드 (a) 학점제 핵심 규칙 (b) 데이터 상태
     const rules = ["hs-11", "hs-12", "hs-13"].map((id) => P.get(id)).filter(Boolean);
@@ -146,7 +146,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
         <div class="hm-now"><div id="hm-nx">${nextCard()}</div>${csatCard}</div>
         <ul class="hm-list" id="hm-up">${upList()}</ul></section>
       <div class="hm-mine">
-        <section class="hm-box"><h3>내 학교</h3>${favs.length ? `<div class="hm-schools">${favs.map(card).join("")}</div>` : '<p class="muted">학교별 편제표 요약 카드의 ☆를 누르면 여기에 모입니다.</p>'}</section>
+        <section class="hm-box hm-sch"><h3>내 학교 <span class="muted small">${favs.length ? `관심 ${favs.length}개교를 앞에 둡니다` : "☆를 누르면 관심 학교가 앞에 고정됩니다"}</span> <a class="hm-more" href="#select/curriculum">학교별 편제표</a></h3><div class="hm-schools">${mine.map(card).join("")}</div></section>
         <section class="hm-box"><h3>내 메모/할 일 <span class="muted small">이 브라우저에만 저장</span></h3>${ok ? '<form class="hm-todoform"><input type="text" id="todoin" placeholder="할 일 추가" maxlength="120" autocomplete="off"><button class="btn" type="submit">추가</button></form><ul class="hm-todos" id="todos"></ul>' : '<p class="muted">이 브라우저에서는 저장 공간을 쓸 수 없어 메모를 사용할 수 없습니다.</p>'}</section>
       </div>
       <nav class="hm-go" aria-label="바로가기"><a class="btn primary" href="#select/curriculum">학교별 편제표</a><a class="btn" href="#admission/system">대입 제도</a><a class="btn" href="#schedule">일정</a></nav>
