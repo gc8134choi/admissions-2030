@@ -1,0 +1,1192 @@
+[
+ {
+  "id": "ev-hs-01-1",
+  "policyId": "hs-01",
+  "title": "서울 기본계획",
+  "label": "기본계획 확정",
+  "start": "2026-08",
+  "status": "reported",
+  "unverified": true,
+  "reason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
+  "sourceKind": "media",
+  "sourceName": "교육을 비추다",
+  "sourceUrl": "https://www.kyobit.com/news/articleView.html?idxno=5127",
+  "region": "seoul",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "A"
+  ],
+  "entryYear": 2027,
+  "examYear": 2030,
+  "body": "서울교육청 2027학년도 고입 기본계획 확정(2026.8). 후기고 동일교 배정 확대",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-hs-02-1",
+  "policyId": "hs-02",
+  "title": "서울 과학고",
+  "label": "접수(전국 기준)",
+  "start": "2026-08-18",
+  "end": "2026-09-03",
+  "status": "reported",
+  "unverified": true,
+  "reason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
+  "sourceKind": "media",
+  "sourceName": "베리타스알파",
+  "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=604064",
+  "region": "seoul",
+  "audience": [
+   "science"
+  ],
+  "learners": [
+   "A"
+  ],
+  "entryYear": 2027,
+  "examYear": 2030,
+  "body": "전국 기준 접수 8.18~9.3",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-hs-05-1",
+  "policyId": "hs-05",
+  "title": "서울 후기 일반고·자사고·외고·국제고",
+  "label": "후기 전형 개막(보도)",
+  "start": "2026-12-02",
+  "status": "reported",
+  "unverified": true,
+  "reason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
+  "sourceKind": "media",
+  "sourceName": "베리타스알파",
+  "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=604064",
+  "region": "seoul",
+  "audience": [
+   "general",
+   "private"
+  ],
+  "learners": [
+   "A"
+  ],
+  "entryYear": 2027,
+  "examYear": 2030,
+  "body": "후기 전형 12월 시작(12.2 개막 보도). 세부 접수·발표일은 확인 못 함",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-01-1",
+  "policyId": "sch-01",
+  "title": "2027학년도 수능(참고, 현 고3)",
+  "label": "원서접수",
+  "start": "2026-08-24",
+  "end": "2026-09-04",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "평가원 수능 홈페이지(2027학년도 수능 주요 일정)",
+  "sourceUrl": "https://www.suneung.re.kr/main.do?s=suneung",
+  "region": "national",
+  "audience": [
+   "grade3"
+  ],
+  "examYear": 2027,
+  "body": "시험 2026.11.19(목), 원서접수·변경 2026.8.24~9.4, 이의신청 11.19~23, 정답 확정 12.1, 성적통지 12.11",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-01-2",
+  "policyId": "sch-01",
+  "title": "2027학년도 수능(참고, 현 고3)",
+  "label": "시험",
+  "start": "2026-11-19",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "평가원 수능 홈페이지(2027학년도 수능 주요 일정)",
+  "sourceUrl": "https://www.suneung.re.kr/main.do?s=suneung",
+  "region": "national",
+  "audience": [
+   "grade3"
+  ],
+  "examYear": 2027,
+  "body": "시험 2026.11.19(목), 원서접수·변경 2026.8.24~9.4, 이의신청 11.19~23, 정답 확정 12.1, 성적통지 12.11",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-01-3",
+  "policyId": "sch-01",
+  "title": "2027학년도 수능(참고, 현 고3)",
+  "label": "성적통지",
+  "start": "2026-12-11",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "평가원 수능 홈페이지(2027학년도 수능 주요 일정)",
+  "sourceUrl": "https://www.suneung.re.kr/main.do?s=suneung",
+  "region": "national",
+  "audience": [
+   "grade3"
+  ],
+  "examYear": 2027,
+  "body": "시험 2026.11.19(목), 원서접수·변경 2026.8.24~9.4, 이의신청 11.19~23, 정답 확정 12.1, 성적통지 12.11",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-02-1",
+  "policyId": "sch-02",
+  "title": "2027학년도 수능 시행 기본계획 공고",
+  "label": "공고(매체 보도)",
+  "start": "2026-03-31",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "평가원 수능 홈페이지(2027학년도 수능 주요 일정)",
+  "sourceUrl": "https://www.suneung.re.kr/main.do?s=suneung",
+  "region": "national",
+  "audience": [
+   "grade3"
+  ],
+  "examYear": 2027,
+  "body": "평가원이 2026.3.31 2027학년도 수능 시행 기본계획 발표, 시행세부계획은 2026.7.1 공고",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-03-1",
+  "policyId": "sch-03",
+  "title": "2028학년도 수능",
+  "label": "시험",
+  "start": "2027-11-18",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "교육부 보도자료: 2028학년도 수능 시행일 발표",
+  "sourceUrl": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512",
+  "region": "national",
+  "audience": [
+   "common"
+  ],
+  "examYear": 2028,
+  "body": "시험 2027.11.18(목), 성적통지 2027.12.10(금). 통합형 수능체제(국어·수학·탐구 선택과목 폐지) 적용",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-03-2",
+  "policyId": "sch-03",
+  "title": "2028학년도 수능",
+  "label": "성적통지",
+  "start": "2027-12-10",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "교육부 보도자료: 2028학년도 수능 시행일 발표",
+  "sourceUrl": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512",
+  "region": "national",
+  "audience": [
+   "common"
+  ],
+  "examYear": 2028,
+  "body": "시험 2027.11.18(목), 성적통지 2027.12.10(금). 통합형 수능체제(국어·수학·탐구 선택과목 폐지) 적용",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-04-1",
+  "policyId": "sch-04",
+  "title": "2028학년도 수시 원서접수",
+  "label": "수시 원서접수 시작",
+  "start": "2027-09-20",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "대교협 보도자료: 2028학년도 대학입학전형기본사항 발표(2025.8.28)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/08/28/application_b244345d6cc72f7e172df15e831c276e.pdf",
+  "sources": [
+   {
+    "name": "대교협 보도자료: 2028학년도 대학입학전형기본사항 발표(2025.8.28)",
+    "url": "https://www.kcue.or.kr/_upload/news/2025/08/28/application_b244345d6cc72f7e172df15e831c276e.pdf"
+   },
+   {
+    "name": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29)",
+    "url": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf"
+   }
+  ],
+  "region": "national",
+  "audience": [
+   "common"
+  ],
+  "examYear": 2028,
+  "body": "수시 원서접수 2027.9.20(월)~23(목) 중 3일 이상, 전형기간 9.24~12.20(88일), 합격자 발표 12.21까지, 등록 12.22~24. 하반기 모의평가를 8월 말에 실시한 뒤 접수",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-05-1",
+  "policyId": "sch-05",
+  "title": "2028학년도 대입전형 기본사항",
+  "label": "대교협 발표",
+  "start": "2025-08-28",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "대교협 보도자료: 2028학년도 대학입학전형기본사항 발표(2025.8.28)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/08/28/application_b244345d6cc72f7e172df15e831c276e.pdf",
+  "sources": [
+   {
+    "name": "대교협 보도자료: 2028학년도 대학입학전형기본사항 발표(2025.8.28)",
+    "url": "https://www.kcue.or.kr/_upload/news/2025/08/28/application_b244345d6cc72f7e172df15e831c276e.pdf"
+   },
+   {
+    "name": "대교협 2028학년도 대학입학전형기본사항(개정 2026.7.31)",
+    "url": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf"
+   }
+  ],
+  "region": "national",
+  "audience": [
+   "common"
+  ],
+  "examYear": 2028,
+  "body": "대교협이 2025.8.28 발표(개정 2026.7.31)",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-06-1",
+  "policyId": "sch-06",
+  "title": "2030학년도 대입전형 기본사항 발표",
+  "label": "발표 가능성(추정)",
+  "start": "2027-08",
+  "status": "estimated",
+  "unverified": false,
+  "sourceName": "대교협 기본사항 안내",
+  "sourceUrl": "https://www.kcue.or.kr/work/sub06/sub01.php",
+  "region": "national",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "A"
+  ],
+  "entryYear": 2027,
+  "examYear": 2030,
+  "body": "2027.8 무렵 발표 가능성(최근 관행: 2028학년도분은 2025.8 말). 법정 기한 계산상 2027.9경",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-07-1",
+  "policyId": "sch-07",
+  "title": "2030학년도 수능 시행일",
+  "label": "시행일(잠정 예상)",
+  "start": "2029-11-15",
+  "status": "estimated",
+  "unverified": false,
+  "region": "national",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "A"
+  ],
+  "entryYear": 2027,
+  "examYear": 2030,
+  "body": "2029.11.15(목) 잠정 예상. 공식 공고 전이며 확정 아님",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-08-1",
+  "policyId": "sch-08",
+  "title": "2030학년도 수능 시행 기본계획 공고",
+  "label": "공고(2029.3 전후 추정)",
+  "start": "2029-03",
+  "status": "estimated",
+  "unverified": false,
+  "sourceName": "KDI EIEC",
+  "sourceUrl": "https://eiec.kdi.re.kr/policy/materialView.do?num=267335&pg=&pp=&topic=L",
+  "region": "national",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "A"
+  ],
+  "entryYear": 2027,
+  "examYear": 2030,
+  "body": "2027학년도분이 2026.3.31, 2028학년도분이 2027.3 공고 예정(보도)이므로 같은 주기라면 2030학년도 수능 기본계획은 2029.3 전후로 추정. 정부 중장기 대입 개편안은 별도로 2027.3 공표 예정(변경 로그 참고). 수능 세부 범위는 이 기본계획 공고 전까지 추정",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-09-1",
+  "policyId": "sch-09",
+  "title": "2027학년도 고교 입학(개학)",
+  "label": "입학·개학(추정)",
+  "start": "2027-03",
+  "status": "estimated",
+  "unverified": false,
+  "region": "national",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "A"
+  ],
+  "stage": "고교",
+  "entryYear": 2027,
+  "examYear": 2030,
+  "body": "2027.3 초(서울/경기). 학년도는 3월 1일 시작이 관행이고 2027.3.1이 월요일 삼일절이라 입학식·개학은 3.2(화) 전후로 추정. 서울·경기 교육청의 2027학년도 학사일정 근거는 확인 못 함",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-10-1",
+  "policyId": "sch-10",
+  "title": "2028학년도 정시 일정(참고)",
+  "label": "원서접수(3일 이상)",
+  "start": "2028-01-03",
+  "end": "2028-01-06",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf",
+  "region": "national",
+  "audience": [
+   "common"
+  ],
+  "examYear": 2028,
+  "body": "원서접수 2028.1.3(월)~1.6(목) 중 3일 이상, 전형기간 가군 1.10~17, 나군 1.18~25, 다군 1.31~2.7, 합격자 발표 2.10까지, 등록 2.11~14, 미등록 충원 통보 2.15~20, 충원 등록 마감 2.21 18시",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-10-2",
+  "policyId": "sch-10",
+  "title": "2028학년도 정시 일정(참고)",
+  "label": "가군 전형",
+  "start": "2028-01-10",
+  "end": "2028-01-17",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf",
+  "region": "national",
+  "audience": [
+   "common"
+  ],
+  "examYear": 2028,
+  "body": "원서접수 2028.1.3(월)~1.6(목) 중 3일 이상, 전형기간 가군 1.10~17, 나군 1.18~25, 다군 1.31~2.7, 합격자 발표 2.10까지, 등록 2.11~14, 미등록 충원 통보 2.15~20, 충원 등록 마감 2.21 18시",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-10-3",
+  "policyId": "sch-10",
+  "title": "2028학년도 정시 일정(참고)",
+  "label": "나군 전형",
+  "start": "2028-01-18",
+  "end": "2028-01-25",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf",
+  "region": "national",
+  "audience": [
+   "common"
+  ],
+  "examYear": 2028,
+  "body": "원서접수 2028.1.3(월)~1.6(목) 중 3일 이상, 전형기간 가군 1.10~17, 나군 1.18~25, 다군 1.31~2.7, 합격자 발표 2.10까지, 등록 2.11~14, 미등록 충원 통보 2.15~20, 충원 등록 마감 2.21 18시",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-10-4",
+  "policyId": "sch-10",
+  "title": "2028학년도 정시 일정(참고)",
+  "label": "다군 전형",
+  "start": "2028-01-31",
+  "end": "2028-02-07",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf",
+  "region": "national",
+  "audience": [
+   "common"
+  ],
+  "examYear": 2028,
+  "body": "원서접수 2028.1.3(월)~1.6(목) 중 3일 이상, 전형기간 가군 1.10~17, 나군 1.18~25, 다군 1.31~2.7, 합격자 발표 2.10까지, 등록 2.11~14, 미등록 충원 통보 2.15~20, 충원 등록 마감 2.21 18시",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-10-5",
+  "policyId": "sch-10",
+  "title": "2028학년도 정시 일정(참고)",
+  "label": "합격자 발표(~2.10)",
+  "start": "2028-02-10",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf",
+  "region": "national",
+  "audience": [
+   "common"
+  ],
+  "examYear": 2028,
+  "body": "원서접수 2028.1.3(월)~1.6(목) 중 3일 이상, 전형기간 가군 1.10~17, 나군 1.18~25, 다군 1.31~2.7, 합격자 발표 2.10까지, 등록 2.11~14, 미등록 충원 통보 2.15~20, 충원 등록 마감 2.21 18시",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-10-6",
+  "policyId": "sch-10",
+  "title": "2028학년도 정시 일정(참고)",
+  "label": "등록",
+  "start": "2028-02-11",
+  "end": "2028-02-14",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf",
+  "region": "national",
+  "audience": [
+   "common"
+  ],
+  "examYear": 2028,
+  "body": "원서접수 2028.1.3(월)~1.6(목) 중 3일 이상, 전형기간 가군 1.10~17, 나군 1.18~25, 다군 1.31~2.7, 합격자 발표 2.10까지, 등록 2.11~14, 미등록 충원 통보 2.15~20, 충원 등록 마감 2.21 18시",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-11-1",
+  "policyId": "sch-11",
+  "title": "2030학년도 수시 원서접수",
+  "label": "시작(2029.9 중하순 추정)",
+  "start": "2029-09",
+  "status": "estimated",
+  "unverified": false,
+  "sourceName": "한국교육신문",
+  "sourceUrl": "https://www.hangyo.com/mobile/article.html?no=105345",
+  "region": "national",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "A"
+  ],
+  "entryYear": 2027,
+  "examYear": 2030,
+  "body": "2029.9 중하순 전후로 추정. 2028학년도분이 2027.9.20 시작(보도)이므로 같은 구조라면 비슷한 시기",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-12-1",
+  "policyId": "sch-12",
+  "title": "2030학년도 수능",
+  "label": "시행일(잠정 예상)",
+  "start": "2029-11-15",
+  "status": "estimated",
+  "unverified": false,
+  "sourceName": "평가원 수능 홈페이지",
+  "sourceUrl": "https://www.suneung.re.kr/main.do?s=suneung",
+  "sources": [
+   {
+    "name": "평가원 수능 홈페이지",
+    "url": "https://www.suneung.re.kr/main.do?s=suneung"
+   },
+   {
+    "name": "교육부 보도자료",
+    "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512"
+   }
+  ],
+  "region": "national",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "A"
+  ],
+  "entryYear": 2027,
+  "examYear": 2030,
+  "body": "2029.11.15(목) 잠정 예상. 공식 공고 전이며 확정 아님",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-13-1",
+  "policyId": "sch-13",
+  "title": "2030학년도 정시",
+  "label": "원서접수·전형(추정)",
+  "start": "2029-12",
+  "end": "2030-02",
+  "status": "estimated",
+  "unverified": false,
+  "region": "national",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "A"
+  ],
+  "entryYear": 2027,
+  "examYear": 2030,
+  "body": "원서접수 2029.12 말~2030.1 초, 전형 2030.1~2월로 추정(2028학년도분 기준). 정시 접수가 12월이라는 근거는 없음",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-14-1",
+  "policyId": "sch-14",
+  "title": "2027학년도 수시 원서접수",
+  "label": "",
+  "start": "2026-09-07",
+  "end": "2026-09-11",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
+  "region": "national",
+  "audience": [
+   "grade3"
+  ],
+  "examYear": 2027,
+  "body": "2026.9.7(월)~9.11(금) 중 대학별 3일 이상",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-15-1",
+  "policyId": "sch-15",
+  "title": "2027학년도 수시 전형기간·합격자 발표",
+  "label": "",
+  "start": "2026-09-12",
+  "end": "2026-12-18",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
+  "region": "national",
+  "audience": [
+   "grade3"
+  ],
+  "examYear": 2027,
+  "body": "전형기간 2026.9.12~12.17(97일), 합격자 발표 12.18까지",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-16-1",
+  "policyId": "sch-16",
+  "title": "2027학년도 수시 합격자 등록·충원",
+  "label": "",
+  "start": "2026-12-21",
+  "end": "2026-12-30",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
+  "region": "national",
+  "audience": [
+   "grade3"
+  ],
+  "examYear": 2027,
+  "body": "합격자 등록 2026.12.21~23, 미등록 충원 통보 12.24~29, 충원 등록 마감 12.30 22시",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-17-1",
+  "policyId": "sch-17",
+  "title": "2027학년도 정시 원서접수",
+  "label": "",
+  "start": "2027-01-04",
+  "end": "2027-01-07",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
+  "region": "national",
+  "audience": [
+   "grade3"
+  ],
+  "examYear": 2027,
+  "body": "2027.1.4(월)~1.7(목) 중 3일 이상",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-18-1",
+  "policyId": "sch-18",
+  "title": "2027학년도 정시 전형기간",
+  "label": "",
+  "start": "2027-01-11",
+  "end": "2027-01-31",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
+  "region": "national",
+  "audience": [
+   "grade3"
+  ],
+  "examYear": 2027,
+  "body": "가군 2027.1.11~17, 나군 1.18~24, 다군 1.25~31",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-sch-19-1",
+  "policyId": "sch-19",
+  "title": "2027학년도 정시 합격자 발표·등록",
+  "label": "",
+  "start": "2027-02-05",
+  "end": "2027-02-18",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
+  "region": "national",
+  "audience": [
+   "grade3"
+  ],
+  "examYear": 2027,
+  "body": "합격자 발표 2027.2.5까지, 등록 2.10~12, 미등록 충원 통보 2.13~17, 충원 등록 마감 2.18 22시. 추가모집 2.19~26",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-gg-01-1",
+  "policyId": "gg-01",
+  "title": "경기 2027학년도 고입 기본계획 발표",
+  "label": "",
+  "start": "2026-03-30",
+  "status": "reported",
+  "unverified": true,
+  "reason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
+  "sourceKind": "media",
+  "sourceName": "뉴스핌",
+  "sourceUrl": "https://www.newspim.com/news/view/20260330000537",
+  "sources": [
+   {
+    "name": "뉴스핌",
+    "url": "https://www.newspim.com/news/view/20260330000537"
+   },
+   {
+    "name": "데일리안",
+    "url": "https://www.dailian.co.kr/news/view/1627070/%EA%B2%BD%EA%B8%B0%EB%8F%84%EA%B5%90%EC%9C%A1%EC%B2%AD-2027%ED%95%99%EB%85%84%EB%8F%84-%EA%B2%BD%EA%B8%B0%EB%8F%84-%EA%B3%A0-2026"
+   }
+  ],
+  "region": "gyeonggi",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "A"
+  ],
+  "entryYear": 2027,
+  "examYear": 2030,
+  "body": "경기도교육청이 2026.3.30 기본계획 발표. 전기 학교는 8.24, 후기 학교(일반고, 자율형 공립고, 외국어고, 국제고, 자율형 사립고)는 12.4부터 전형 시작, 후기 전형은 2027.2.5까지",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-gg-02-1",
+  "policyId": "gg-02",
+  "title": "경기 후기 전형 원서접수",
+  "label": "",
+  "start": "2026-12-04",
+  "end": "2026-12-10",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "경기도교육청 고등학교 입학전학 포털 공지: 2027학년도 경기도 고등학교 신입생 전형요강(2026.8.19, 첨부 PDF)",
+  "sourceUrl": "https://satp.goe.go.kr/main.do",
+  "region": "gyeonggi",
+  "audience": [
+   "general",
+   "private"
+  ],
+  "learners": [
+   "A"
+  ],
+  "entryYear": 2027,
+  "examYear": 2030,
+  "body": "후기 학교(일반고, 자율형 공립고, 외국어고, 국제고, 자율형 사립고) 원서접수 2026.12.4(금)~12.10(목). 전형요강은 2026.9.3 이내 공고, 일정은 사정에 따라 변경 가능",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-gg-03-1",
+  "policyId": "gg-03",
+  "title": "경기 외고·국제고·자사고 전형 일정",
+  "label": "",
+  "start": "2026-12-04",
+  "end": "2027-01-14",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "경기도교육청 고등학교 입학전학 포털 공지: 2027학년도 경기도 고등학교 신입생 전형요강(2026.8.19, 첨부 PDF)",
+  "sourceUrl": "https://satp.goe.go.kr/main.do",
+  "region": "gyeonggi",
+  "audience": [
+   "private"
+  ],
+  "learners": [
+   "A"
+  ],
+  "entryYear": 2027,
+  "examYear": 2030,
+  "body": "외국어고·국제고·자율형 사립고(자기주도학습전형): 원서접수 12.4~12.10, 1단계 전형 12.11~12, 합격자 발표 12.14 이내, 서류접수 12.15~16, 2단계 전형 12.17~24, 합격자 발표 12.29 이내. 추가모집 접수 2027.1.7~12, 합격자 발표 1.14",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-gg-04-1",
+  "policyId": "gg-04",
+  "title": "경기 후기 평준화 일반고 일정",
+  "label": "",
+  "start": "2026-12-04",
+  "end": "2027-02-05",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "경기도교육청 고등학교 입학전학 포털 공지: 2027학년도 경기도 고등학교 신입생 전형요강(2026.8.19, 첨부 PDF)",
+  "sourceUrl": "https://satp.goe.go.kr/main.do",
+  "region": "gyeonggi",
+  "audience": [
+   "general"
+  ],
+  "learners": [
+   "A"
+  ],
+  "entryYear": 2027,
+  "examYear": 2030,
+  "body": "원서접수 2026.12.4~12.10(해당 지역 교육지원청), 전형기간 12.11~2027.1.5, 배정 대상자 발표 1.6, 배정 학교 발표 1.22, 등록 1.25~27, 추가 배정·발표 2.4, 추가 배정학교 등록 2.4~5",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-gg-08-1",
+  "policyId": "gg-08",
+  "title": "평준화 배정 설명회",
+  "label": "",
+  "start": "2026-10-19",
+  "end": "2026-11-27",
+  "status": "reported",
+  "unverified": true,
+  "reason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
+  "sourceKind": "media",
+  "sourceName": "아시아경제",
+  "sourceUrl": "https://view.asiae.co.kr/article/2026092812475292099",
+  "sources": [
+   {
+    "name": "아시아경제",
+    "url": "https://view.asiae.co.kr/article/2026092812475292099"
+   },
+   {
+    "name": "분당신문",
+    "url": "https://www.bundangnews.co.kr/58587"
+   }
+  ],
+  "region": "gyeonggi",
+  "audience": [
+   "general"
+  ],
+  "learners": [
+   "A"
+  ],
+  "entryYear": 2027,
+  "examYear": 2030,
+  "body": "경기도교육청 2027학년도 고교 평준화 배정 설명회 2026.10.19~11.27, 유튜브 경기고입TV 비대면. 세부 자료는 고입·전학 포털(satp.goe.go.kr) 경기도교육청 포털 자료실에 학군별 학생배정방안 온라인 설명회 자료가 2026.9.18 게시됨(공식)",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-b33-01-1",
+  "policyId": "b33-01",
+  "title": "2033학년도 수능 시행일(잠정)",
+  "label": "",
+  "start": "2032-11-18",
+  "status": "estimated",
+  "unverified": false,
+  "region": "national",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "B"
+  ],
+  "entryYear": 2030,
+  "examYear": 2033,
+  "body": "2032.11.18(목) 잠정 추정. 2032년 11월 목요일은 4·11·18·25일이고 2028학년도 수능(2027.11.18)·2027학년도 수능(2026.11.19)이 모두 11월 셋째 목요일이라는 관행 기준. 11.11 가능성도 있음. 평가원 시행 기본계획 공고 후 확정",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-b33-02-1",
+  "policyId": "b33-02",
+  "title": "2033학년도 수능 시행 기본계획 공고",
+  "label": "",
+  "start": "2032-03",
+  "status": "estimated",
+  "unverified": false,
+  "region": "national",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "B"
+  ],
+  "entryYear": 2030,
+  "examYear": 2033,
+  "body": "2032.3 전후로 추정(2027학년도분 2026.3.31, 2028학년도분 2027.3 공고 예정 관행). 그 전까지 수능 세부 범위는 확정이 아님",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-b33-03-1",
+  "policyId": "b33-03",
+  "title": "대교협 2033학년도 대입전형 기본사항",
+  "label": "",
+  "start": "2030-08",
+  "status": "estimated",
+  "unverified": false,
+  "region": "national",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "B"
+  ],
+  "entryYear": 2030,
+  "examYear": 2033,
+  "body": "2030.8 무렵 발표 추정(2028학년도분이 2025.8.28 발표된 관행, 법정 기한 계산상 2030.9). 그 전까지 전형 구조는 확정이 아님",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-b33-04-1",
+  "policyId": "b33-04",
+  "title": "고입(2030학년도 입학) 시기",
+  "label": "",
+  "start": "2029-12",
+  "status": "estimated",
+  "unverified": false,
+  "region": "national",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "B"
+  ],
+  "entryYear": 2030,
+  "examYear": 2033,
+  "body": "2029.12 전후 후기 전형 추정(2027학년도 경기 후기 전형이 2026.12.4 시작). 입학은 2030.3. 2030학년도 입학 전형 기본계획은 2030.3 전후 발표 추정",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-b33-05-1",
+  "policyId": "b33-05",
+  "title": "2033학년도 수능 개편 검토(절대평가·서논술형)",
+  "label": "",
+  "start": "2027-03",
+  "status": "reported",
+  "unverified": true,
+  "reason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
+  "sourceKind": "media",
+  "sourceName": "다음뉴스",
+  "sourceUrl": "https://v.daum.net/v/20260803100648087",
+  "sources": [
+   {
+    "name": "다음뉴스",
+    "url": "https://v.daum.net/v/20260803100648087"
+   },
+   {
+    "name": "교육플러스",
+    "url": "https://www.edpl.co.kr/news/articleView.html?idxno=21218"
+   },
+   {
+    "name": "네이트",
+    "url": "https://news.nate.com/view/20260806n01096?mid=n1101"
+   }
+  ],
+  "region": "national",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "B"
+  ],
+  "entryYear": 2030,
+  "examYear": 2033,
+  "body": "수능 절대평가·서·논술형 도입은 2033학년도 대입(2030 입학생)부터 적용하는 안이 유력하게 검토됨(보도, 확정 아님). 최종안은 2027.3 확정 예정. 근거 보도는 log-12·log-14·log-15 참고",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-b33-07-1",
+  "policyId": "b33-07",
+  "title": "2033학년도 수시·정시 시기",
+  "label": "",
+  "start": "2032-09",
+  "status": "estimated",
+  "unverified": false,
+  "region": "national",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "B"
+  ],
+  "entryYear": 2030,
+  "examYear": 2033,
+  "body": "수시 원서접수 2032.9 중하순, 정시 접수 2033.1 초 전후로 추정(2028학년도분 수시 2027.9.20~23, 정시 2028.1.3~6). 시기 조정 논의(국교위)가 있어 바뀔 수 있음",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-life-01-1",
+  "policyId": "life-01",
+  "title": "중학교 졸업",
+  "label": "",
+  "start": "2026-12-18",
+  "status": "confirmed",
+  "unverified": false,
+  "sourceName": "사용자 제공",
+  "region": "gyeonggi",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "A"
+  ],
+  "stage": "중졸",
+  "entryYear": 2027,
+  "examYear": 2030,
+  "body": "2026.12.18(금) 중학교 졸업",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-life-02-1",
+  "policyId": "life-02",
+  "title": "초등학교 졸업",
+  "label": "",
+  "start": "2026-12-31",
+  "status": "confirmed",
+  "unverified": false,
+  "sourceName": "사용자 제공",
+  "region": "gyeonggi",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "B"
+  ],
+  "stage": "초졸",
+  "entryYear": 2030,
+  "examYear": 2033,
+  "body": "2026.12.31(목) 초등학교 졸업",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-life-03-1",
+  "policyId": "life-03",
+  "title": "중학교 배정원서 작성(출신 초등학교)",
+  "label": "",
+  "start": "2026-11-02",
+  "end": "2026-11-06",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획 일정)",
+  "sourceUrl": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
+  "region": "gyeonggi",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "B"
+  ],
+  "stage": "중입",
+  "entryYear": 2030,
+  "examYear": 2033,
+  "body": "2027학년도 용인 중학교 신입생 배정원서 작성 2026.11.2(월)~11.6(금). 학교군 내 모든 중학교를 희망 순으로 지원",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-life-04-1",
+  "policyId": "life-04",
+  "title": "중학교 배정원서 접수(용인교육지원청)",
+  "label": "",
+  "start": "2026-11-09",
+  "end": "2026-11-13",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획 일정)",
+  "sourceUrl": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
+  "region": "gyeonggi",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "B"
+  ],
+  "stage": "중입",
+  "entryYear": 2030,
+  "examYear": 2033,
+  "body": "2026.11.9(월)~11.13(금), 출신 초등학교에서 접수",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-life-05-1",
+  "policyId": "life-05",
+  "title": "중학교 추가배정",
+  "label": "",
+  "start": "2026-12-07",
+  "end": "2026-12-16",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획 일정)",
+  "sourceUrl": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
+  "region": "gyeonggi",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "B"
+  ],
+  "stage": "중입",
+  "entryYear": 2030,
+  "examYear": 2033,
+  "body": "추가배정원서 작성 2026.12.7~12.11(출신 초등학교), 접수 12.14~12.16(용인교육지원청)",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-life-06-1",
+  "policyId": "life-06",
+  "title": "중학교 배정학교 발표",
+  "label": "",
+  "start": "2026-12-31",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획 일정)",
+  "sourceUrl": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
+  "region": "gyeonggi",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "B"
+  ],
+  "stage": "중입",
+  "entryYear": 2030,
+  "examYear": 2033,
+  "body": "2026.12.31(목) 출신 초등학교에서 발표",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-life-07-1",
+  "policyId": "life-07",
+  "title": "중학교 신입생 등록",
+  "label": "",
+  "start": "2027-01-04",
+  "end": "2027-01-07",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획 일정)",
+  "sourceUrl": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
+  "region": "gyeonggi",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "B"
+  ],
+  "stage": "중입",
+  "entryYear": 2030,
+  "examYear": 2033,
+  "body": "2027.1.4(월)~1.7(목) 각 중학교",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-life-08-1",
+  "policyId": "life-08",
+  "title": "중학교 재배정",
+  "label": "",
+  "start": "2027-01-11",
+  "end": "2027-01-22",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-25",
+  "sourceKind": "official",
+  "sourceName": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획 일정)",
+  "sourceUrl": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
+  "region": "gyeonggi",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "B"
+  ],
+  "stage": "중입",
+  "entryYear": 2030,
+  "examYear": 2033,
+  "body": "재배정 원서 접수 2027.1.11~1.15(용인교육지원청), 재배정 발표 1.22(용인교육지원청 홈페이지), 재배정자 등록 1.22(각 중학교)",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-life-09-1",
+  "policyId": "life-09",
+  "title": "중학교 입학식·개학",
+  "label": "",
+  "start": "2027-03",
+  "status": "estimated",
+  "unverified": false,
+  "region": "gyeonggi",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "B"
+  ],
+  "stage": "중입",
+  "entryYear": 2030,
+  "examYear": 2033,
+  "body": "2027.3 초 입학식·개학. 학년도 3월 1일 시작, 3.1(월)이 삼일절이라 3.2~3.3 전후로 추정(2026학년도 경기 학교 사례는 3.3). 신입생 예비소집은 학교별 공지",
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "ev-life-10-1",
+  "policyId": "life-10",
+  "title": "고교 입학식·개학",
+  "label": "",
+  "start": "2027-03",
+  "status": "estimated",
+  "unverified": false,
+  "region": "gyeonggi",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "A"
+  ],
+  "stage": "고교",
+  "entryYear": 2027,
+  "examYear": 2030,
+  "body": "2027.3 초 입학식·개학 3.2~3.3 전후로 추정. 경기 학사일정 공식 근거는 확인 못 함",
+  "checkedAt": "2026-10-25"
+ }
+]

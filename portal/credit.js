@@ -68,15 +68,17 @@ export async function creditView(el, { load, profile, esc, badge, badgeMain, src
   const out = [];
 
   // ---- 한눈에: 한 문장 + 큰 숫자 + 헤어라인 격자 ----
-  const g = (v, k, n, id, main) => `<div class="ed-g${main ? " main" : ""}"><span class="v">${v}</span><span class="k">${k}</span>${n ? `<span class="n">${n}</span>` : ""}${id ? `<span class="n">${dot(id)}</span>` : ""}</div>`;
-  const glance = grad ? `<div class="ed-glance">${[
-    g(grad[0], "졸업까지 채울 학점", `교과 ${grad[1]} + 창의적 체험활동 ${grad[2]}`, "cur-01", true),
-    g(grad[1], "교과 학점", "", ""),
-    g(grad[2], "창의적 체험활동", "", ""),
-    unit && g(`${unit[0]}<sup>회</sup>`, "1학점당 수업", unitMin ? `1회 ${unitMin}분 수업` : "", "cur-09"),
-    att && g(`${att[0]}/${att[1]}`, "출석률 기준", "", relax ? "log-16" : "cur-02"),
-    ach && g(`${ach[0]}<sup>%</sup>`, "공통과목 학업성취율", "선택과목은 출석률만 봐요", relax ? "log-16" : "cur-16"),
-  ].filter(Boolean).join("")}</div><p class="ed-src">출처 ${get("cur-01") ? src(get("cur-01")) : ""}</p>` : "";
+  const g = (v, k, n, id, cls = "", st = "") => `<div class="ed-g${cls}"${st ? ` style="${st}"` : ""}><span class="v">${v}</span><span class="k">${k}</span>${n ? `<span class="n">${n}</span>` : ""}${id ? `<span class="n">${dot(id)}</span>` : ""}</div>`;
+  // 큰 숫자(192) 옆 칸들은 데스크톱 3열, 모바일 2열. 마지막 칸이 줄을 채우도록 넓힌다.
+  const tiles = grad ? [
+    [grad[1], "교과 학점", "", ""],
+    [grad[2], "창의적 체험활동", "", ""],
+    unit && [`${unit[0]}<sup>회</sup>`, "1학점당 수업", unitMin ? `1회 ${unitMin}분 수업` : "", "cur-09"],
+    att && [`${att[0]}/${att[1]}`, "출석률 기준", "", relax ? "log-16" : "cur-02"],
+    ach && [`${ach[0]}<sup>%</sup>`, "공통과목 학업성취율", "선택과목은 출석률만 봐요", relax ? "log-16" : "cur-16"],
+  ].filter(Boolean) : [];
+  const spanFor = (cols) => cols - ((tiles.length - 1) % cols);
+  const glance = grad ? `<div class="ed-glance">${g(grad[0], "졸업까지 채울 학점", `교과 ${grad[1]} + 창의적 체험활동 ${grad[2]}`, "cur-01", " main")}${tiles.map((t, i) => g(t[0], t[1], t[2], t[3], i === tiles.length - 1 ? " last" : "", i === tiles.length - 1 ? `--sp-d:${spanFor(3)};--sp-m:${spanFor(2)}` : "")).join("")}</div><p class="ed-src">출처 ${get("cur-01") ? src(get("cur-01")) : ""}</p>` : "";
   const lead = grad ? `<p class="ed-lead">3년 동안 <mark>${grad[0]}학점</mark>을 스스로 채웁니다.</p>` : "";
   const profNote = profile && profile.id !== "A" ? `<p class="ed-src">${esc(profile.label)}이 입학하는 ${profile.entryYear}학년도에도 같은 틀일지는 아직 확정이 아니에요. 바뀔 수 있어요(추정).</p>` : "";
 
