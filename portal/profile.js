@@ -2,7 +2,7 @@
 // 프로필 A = 현 중3(입학 2027, 대입 2030학년도), B = 현 초6(입학 2030, 대입 2033학년도).
 // UI.showProfiles=false(기본)이면 A 한 가지 기준만 쓰고, B 전용 행(2033학년도 등)은 숨긴다. 졸업·입학(life-schedule)은 항상 보인다.
 // 기존 프로필 전환 코드는 이 플래그를 true로 바꾸면 되살아난다.
-export const UI = { showProfiles: false };
+export const UI = { showProfiles: false, showGrade3: false };
 // 선택값은 localStorage "portal.profile"(JSON)에 저장한다. "A"/"B" 외에 입학연도(2027/2030)도 받아들인다.
 export const PROFILES = [
   { id: "A", label: "중3 기준", grade: "현 중3", entryYear: 2027, examYear: 2030 },
@@ -28,5 +28,5 @@ export const rowProfiles = (r) => {
   return PROFILES.filter((p) => r.entryYear === p.entryYear || r.examYear === p.examYear).map((p) => p.id);
 };
 // 졸업·입학 일정(life-schedule: 초졸·중입·중졸·고입·고교 입학)은 프로필과 상관없이 항상 보인다.
-export const profileMatch = (r, id, { grade3 = false } = {}) => (isGrade3(r) ? grade3 : !UI.showProfiles && r.topic === "life-schedule" ? true : rowProfiles(r).includes(id));
+export const profileMatch = (r, id, { grade3 = false } = {}) => (isGrade3(r) ? UI.showGrade3 && grade3 : !UI.showProfiles && r.topic === "life-schedule" ? true : rowProfiles(r).includes(id));
 export const filterByProfile = (rows, id, opts) => rows.filter((r) => profileMatch(r, id, opts));

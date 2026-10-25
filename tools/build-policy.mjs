@@ -25,7 +25,9 @@ const extra = (t) => {
 const status = (d) => { const v = STATUS[d.status]; if (!v) throw new Error(`unmapped status "${d.status}" (${d.id})`); return v; };
 
 const rawDate = new Map();
-const draft = JSON.parse(readFileSync("research/data/policy-draft.json", "utf8")).items;
+// 현고3(audience grade3) 일정은 화면에 내지 않는다(사용자 결정 2026-10-25). 초안에는 남아 있고, 다시 쓰려면 INCLUDE_GRADE3=1 로 생성한다.
+const INCLUDE_GRADE3 = process.env.INCLUDE_GRADE3 === "1";
+const draft = JSON.parse(readFileSync("research/data/policy-draft.json", "utf8")).items.filter((d) => INCLUDE_GRADE3 || !(d.audience || []).includes("grade3"));
 const out = draft.map((d) => {
   const sources = [d.sourceName && { name: d.sourceName, url: d.sourceUrl }, ...(d.extraSources || [])].filter(Boolean);
   const row = { id: d.id, topic: d.topic };
