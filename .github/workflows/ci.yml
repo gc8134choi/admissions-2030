@@ -51,3 +51,8 @@ jobs:
           else
             echo "::notice::$dir 가 없어 build-db 검증을 건너뜁니다."
           fi
+
+      - name: school-notes 복사본이 원본과 같은지 확인
+        run: |
+          src=data-src/curriculum-analysis/content/data/school-notes.json
+          if [ -f "$src" ]; then cmp "$src" portal/data/school-notes.json; fi

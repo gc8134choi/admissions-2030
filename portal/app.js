@@ -164,9 +164,18 @@ function creativeBlock(m, cur) {
     <div class="crew"><table class="crt"><thead><tr><th></th>${terms.map((t) => `<th>${t}</th>`).join("")}</tr></thead><tbody>${areas.map((a) => `<tr><th>${esc(a)}</th>${terms.map((t) => `<td>${c.perTerm[t][a] ?? "-"}</td>`).join("")}</tr>`).join("")}</tbody></table></div>${extra ? `<div class="muted small">${esc(extra)} (데이터 표기)</div>` : ""}</div>`;
 }
 
+// 특이 사항: 맨 위에 "사진 대조 전 추정" 라벨, 5줄까지 보이고 나머지는 접어 둔다.
+function notesBlock(list, status) {
+  if (!list?.length) return "";
+  const li = (n) => `<li>${esc(n)}</li>`;
+  return `<div class="sn"><div class="sn-h"><b>특이 사항</b> <span class="sn-tag">사진 대조 전 ${esc(status || "추정")}</span></div>
+    <ul>${list.slice(0, 5).map(li).join("")}</ul>${list.length > 5 ? `<details><summary>나머지 ${list.length - 5}줄</summary><ul>${list.slice(5).map(li).join("")}</ul></details>` : ""}</div>`;
+}
+
 // 요약 카드: 선택한 학교만 가로로 나란히
 async function summaryBody(el, ids) {
   const [schools, summary, curricula] = await Promise.all([load("schools"), load("summary"), load("curricula")]);
+  const notes = await load("school-notes").catch(() => null); // 특이 사항(없으면 생략)
   const st = stars();
   const card = (m) => {
     const sc = schools.find((x) => x.id === m.schoolId) || {};
@@ -181,6 +190,7 @@ async function summaryBody(el, ids) {
       <dl class="stats"><div><dt>지정 과목</dt><dd>${m.requiredCount}</dd></div><div><dt>택n 묶음</dt><dd>${m.groupCount}</dd></div><div><dt>골라야 하는 과목</dt><dd>${m.pickTotal}</dd></div>
       <div><dt>선택 후보</dt><dd>${m.candidateSubjects}</dd></div><div><dt>선택 폭</dt><dd>${m.breadth}</dd></div><div><dt>첫 선택 학기</dt><dd>${esc(m.firstElectiveTerm || "-")}</dd></div></dl>
       ${creativeBlock(m, curricula.find((x) => x.schoolId === m.schoolId))}
+      ${notesBlock(notes?.schools?.find((x) => x.schoolId === m.schoolId)?.notes, notes?._meta?.status)}
       <details><summary>메모</summary><textarea data-memo="${esc(m.schoolId)}" placeholder="이 브라우저에만 저장됩니다">${esc(store.get("memo:" + m.schoolId, ""))}</textarea></details>
       <div class="foot"><a class="btn" href="#" data-go="${esc(m.schoolId)}">이 학교 과목 보기</a>
       <span class="muted small">${m.reviewCount ? `⚠ 확인 필요 ${m.reviewCount}건 · ` : ""}수집 ${esc(sc._meta?.updated || "-")}</span></div></section>`;
@@ -188,7 +198,8 @@ async function summaryBody(el, ids) {
   const shown = ids.map((id) => summary.find((m) => m.schoolId === id)).filter(Boolean);
   // 비교 중인 학교들 사이에 값이 다른 항목만 표시(학교가 하나뿐이면 전부 표시)
   const vary = (k) => shown.length < 2 || new Set(shown.map((x) => x[k] ?? "")).size > 1;
-  el.innerHTML = shown.length ? `<div class="schoolgrid cols${shown.length > 4 ? "n" : shown.length}">${shown.map(card).join("")}</div>` : '<p class="note">위에서 학교를 하나 이상 선택하세요.</p>';
+  const common = notes?.common?.length ? `<div class="sn-common"><span class="sn-tag">사진 대조 전 ${esc(notes._meta?.status || "추정")}</span> ${notes.common.map(esc).join(" ")}</div>` : "";
+  el.innerHTML = shown.length ? `${common}<div class="schoolgrid cols${shown.length > 4 ? "n" : shown.length}">${shown.map(card).join("")}</div>` : '<p class="note">위에서 학교를 하나 이상 선택하세요.</p>';
 }
 
 // 상세 비교: 필터 + 선택 학교를 열 단위로 나란히
