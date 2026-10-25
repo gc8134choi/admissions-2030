@@ -185,3 +185,7 @@ select,input[type=search]{font-size:13px;padding:5px 8px}
 #tbl tbody tr.ra0>td{background:var(--panel)}
 #tbl tbody tr.ra1>td{background:color-mix(in srgb,var(--soft) 55%,var(--panel))}
 #tbl tbody tr.af>td{border-top:2px solid color-mix(in srgb,var(--accent) 35%,var(--line))}
+
+/* 지정/선택 구분 강화: 칸 배경 색조 + 왼쪽 띠 + 글자색 */
+#tbl tbody tr.ra0>td.req,#tbl tbody tr.ra1>td.req{background:color-mix(in srgb,var(--v1) 13%,var(--panel));box-shadow:inset 3px 0 0 var(--v1)}
+#tbl tbody tr.ra0>td.ele,#tbl tbody tr.ra1>td.ele{background:color-mix(in srgb,var(--accent) 14%,var(--panel));box-shadow:inset 3px 0 0 var(--accent)}
