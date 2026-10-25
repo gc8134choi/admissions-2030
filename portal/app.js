@@ -151,7 +151,7 @@ async function curriculumView(el, query, node) {
   await refresh();
 }
 
-// 창체(창의적 체험활동) 블록: 총 학점·시수, 영역별 시수 합계, 학기별 보기(기본 접힘). 영역 이름은 데이터 그대로.
+// 창체(창의적 체험활동) 블록: 총 학점·시수, 영역별 시수 합계, 학기별 표(항상 펼침). 영역 이름은 데이터 그대로.
 function creativeBlock(m, cur) {
   const c = cur?.creative;
   if (!c?.perTerm) return "";
@@ -161,16 +161,15 @@ function creativeBlock(m, cur) {
   const extra = [c.standardHours != null ? `표준 ${c.standardHours}` : "", c.operatedHours != null ? `운영 ${c.operatedHours}` : ""].filter(Boolean).join(" · ");
   return `<div class="cre"><div><b>창체</b> <span class="cr1">${m.creditsCreative}학점 · ${c.totalHours}시간</span></div>
     <div class="muted small">${areas.map((a) => `${esc(a)} ${sum(a)}`).join(" · ")}</div>
-    <details><summary>학기별 보기</summary><div class="crew"><table class="crt"><thead><tr><th></th>${terms.map((t) => `<th>${t}</th>`).join("")}</tr></thead><tbody>${areas.map((a) => `<tr><th>${esc(a)}</th>${terms.map((t) => `<td>${c.perTerm[t][a] ?? "-"}</td>`).join("")}</tr>`).join("")}</tbody></table></div>${extra ? `<div class="muted small">${esc(extra)} (데이터 표기)</div>` : ""}</details></div>`;
+    <div class="crew"><table class="crt"><thead><tr><th></th>${terms.map((t) => `<th>${t}</th>`).join("")}</tr></thead><tbody>${areas.map((a) => `<tr><th>${esc(a)}</th>${terms.map((t) => `<td>${c.perTerm[t][a] ?? "-"}</td>`).join("")}</tr>`).join("")}</tbody></table></div>${extra ? `<div class="muted small">${esc(extra)} (데이터 표기)</div>` : ""}</div>`;
 }
 
 // 요약 카드: 선택한 학교만 가로로 나란히
 async function summaryBody(el, ids) {
-  const [schools, summary, subjects, curricula] = await Promise.all([load("schools"), load("summary"), load("subjects"), load("curricula")]);
+  const [schools, summary, curricula] = await Promise.all([load("schools"), load("summary"), load("curricula")]);
   const st = stars();
   const card = (m) => {
     const sc = schools.find((x) => x.id === m.schoolId) || {};
-    const uniq = subjects.filter((x) => x.schoolCount === 1 && x.offeredBy[0] === m.schoolId);
     const total = m.creditsRequired + m.creditsElective;
     return `<section class="school"><header><h3>${nm(m.schoolId, m.schoolName, 34)} <button class="star" data-id="${esc(m.schoolId)}" aria-label="관심">${st.includes(m.schoolId) ? "★" : "☆"}</button></h3>
       ${(() => { const l1 = ["region", "schoolType", "founding", "gender"].filter((k) => vary(k)).map((k) => m[k]).filter(Boolean).join(" · "); return l1 ? `<div class="muted">${esc(l1)}</div>` : ""; })()}
@@ -182,7 +181,6 @@ async function summaryBody(el, ids) {
       <dl class="stats"><div><dt>지정 과목</dt><dd>${m.requiredCount}</dd></div><div><dt>택n 묶음</dt><dd>${m.groupCount}</dd></div><div><dt>골라야 하는 과목</dt><dd>${m.pickTotal}</dd></div>
       <div><dt>선택 후보</dt><dd>${m.candidateSubjects}</dd></div><div><dt>선택 폭</dt><dd>${m.breadth}</dd></div><div><dt>첫 선택 학기</dt><dd>${esc(m.firstElectiveTerm || "-")}</dd></div></dl>
       ${creativeBlock(m, curricula.find((x) => x.schoolId === m.schoolId))}
-      <details><summary>이 학교에만 있는 과목 (${uniq.length})</summary><p>${uniq.map((x) => esc(x.name)).join(", ") || "-"}</p></details>
       <details><summary>메모</summary><textarea data-memo="${esc(m.schoolId)}" placeholder="이 브라우저에만 저장됩니다">${esc(store.get("memo:" + m.schoolId, ""))}</textarea></details>
       <div class="foot"><a class="btn" href="#" data-go="${esc(m.schoolId)}">이 학교 과목 보기</a>
       <span class="muted small">${m.reviewCount ? `⚠ 확인 필요 ${m.reviewCount}건 · ` : ""}수집 ${esc(sc._meta?.updated || "-")}</span></div></section>`;
