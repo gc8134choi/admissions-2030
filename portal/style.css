@@ -206,3 +206,8 @@ select,input[type=search]{font-size:13px;padding:5px 8px}
 .chipbar .chip.schip .logo{width:28px;height:28px}
 #tbl thead th .nm{gap:9px;font-weight:600;font-size:14px}
 #tbl thead th .logo{width:30px;height:30px}
+/* 필터의 학교 선택: 로고 4개를 한 줄에(학교가 더 많아지면 줄바꿈) */
+#fchips{display:flex;flex-wrap:wrap;gap:4px 2px}
+#fchips .schip{flex:1 1 44px;min-width:44px;padding:4px 0}
+#fchips .schip .logo{width:34px;height:34px}
+#fchips .schip .nm span:last-child{font-size:11px}
