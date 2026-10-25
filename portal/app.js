@@ -71,6 +71,15 @@ const ICON = {
   filter: '<svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path d="M2 3h12L9.5 8.5V13l-3-1.5V8.5z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>',
   search: '<svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>',
 };
+// 상세 비교 필터 칩의 선택 상태(탭을 오가도 유지). 비어 있으면 전체.
+const FS = { sel: [], kind: [], terms: [], csat: [] };
+const FOPT = {
+  sel: [["school", "학교 지정"], ["student", "학생 선택"], ["outside", "학교 밖"]],
+  kind: ["공통", "일반", "진로", "융합"].map((k) => [k, k]),
+  csat: [["in", "출제 범위"], ["base", "기초(공통)"], ["out", "제외"]],
+};
+const fchips = (g) => `<div class="fcs">${FOPT[g].map(([v, t]) => `<button type="button" class="fchip" data-g="${g}" data-v="${esc(v)}" aria-pressed="false">${esc(t)}</button>`).join("")}</div>`;
+const termGrid = () => `<div class="ftg">${[1, 2, 3].map((g) => `<button type="button" class="fchip fgr" data-grade="${g}" aria-pressed="false">${g}학년</button><button type="button" class="fchip" data-g="terms" data-v="${g}-1" aria-pressed="false">${g}-1</button><button type="button" class="fchip" data-g="terms" data-v="${g}-2" aria-pressed="false">${g}-2</button>`).join("")}</div>`;
 const TERMS = ["1-1", "1-2", "2-1", "2-2", "3-1", "3-2"];
 
 async function curriculumView(el, query, node) {
@@ -100,7 +109,10 @@ async function curriculumView(el, query, node) {
     $("#chipbar").hidden = tab === "compare";
     $("#chips").innerHTML = chipHtml();
     const fc = $("#fchips"); if (fc) fc.innerHTML = chipHtml();
-    const ac = $("#achips"); if (ac) ac.innerHTML = facets.areas.map((a) => `<button type="button" class="chip achip ${areasSel.includes(a) ? "on" : ""}" data-area="${esc(a)}" aria-pressed="${areasSel.includes(a)}">${esc(a)}</button>`).join("");
+    // 표시 순서: 국어·영어·수학 / 한국사·사회·과학(한 줄 3개), 나머지는 한 줄 4개. 표의 교과군 정렬은 그대로.
+    const TOP = ["국어", "영어", "수학", "한국사", "사회", "과학"].filter((a) => facets.areas.includes(a));
+    const order = [...TOP, ...facets.areas.filter((a) => !TOP.includes(a))];
+    const ac = $("#achips"); if (ac) ac.innerHTML = order.map((a) => `<button type="button" class="chip achip ${TOP.includes(a) ? "a3" : "a4"} ${areasSel.includes(a) ? "on" : ""}" data-area="${esc(a)}" aria-pressed="${areasSel.includes(a)}">${esc(a).replace(/([/·])/g, "$1<wbr>")}</button>`).join("");
     el.querySelectorAll("#tabs a").forEach((a) => a.classList.toggle("on", a.dataset.tab === tab));
   };
   const drawBody = async () => {
@@ -190,14 +202,11 @@ async function compareShell(el, onReset, getAreas) {
       <div class="fsr" hidden><input type="search" id="q" placeholder="과목명" autocomplete="off"><button type="button" class="ib" id="fclr" aria-label="검색 닫기" title="검색 닫기(Esc)">×</button></div><div class="fbody">
       <div class="fgroup"><span class="flabel">학교</span><div class="chips" id="fchips"></div></div>
       <div class="fgroup"><span class="flabel">교과군 (여러 개 선택, 없으면 전체)</span><div class="chips" id="achips"></div></div>
-      <div class="fgroup"><span class="flabel">이수 방식</span><select id="sel">${options([{ v: "school", t: "학교 지정" }, { v: "student", t: "학생 선택" }, { v: "outside", t: "학교 밖" }], "전체")}</select></div>
-      <div class="fgroup"><span class="flabel">구분</span><select id="kind">${options(["공통", "일반", "진로", "융합"], "전체")}</select></div>
-      <div class="fgroup"><span class="flabel">학년</span><select id="grade">${options([{ v: "1", t: "1학년" }, { v: "2", t: "2학년" }, { v: "3", t: "3학년" }], "전체")}</select></div>
-      <div class="fgroup"><span class="flabel">학기</span><select id="term">${options(TERMS, "전체")}</select></div>
-      <div class="fgroup"><span class="flabel">학점</span><select id="cr">${options([1, 2, 3, 4].map((v) => ({ v: String(v), t: `${v}학점` })), "전체")}</select></div>
+      <div class="fgroup"><span class="flabel">이수 방식</span>${fchips("sel")}</div>
+      <div class="fgroup"><span class="flabel">구분</span>${fchips("kind")}</div>
+      <div class="fgroup"><span class="flabel">학년 · 학기</span>${termGrid()}</div>
+      <div class="fgroup"><span class="flabel">수능 범위(추정)</span>${fchips("csat")}</div>
       <div class="fgroup"><span class="flabel">택n 묶음 유형</span><select id="pool">${options(Object.entries(POOL).map(([v, t]) => ({ v, t })), "전체")}</select></div>
-      <div class="fgroup"><span class="flabel">확인 필요 행</span><select id="chk">${options([...Object.entries(CHECK).map(([v, t]) => ({ v, t })), { v: "any", t: "하나라도 해당" }], "전체")}</select></div>
-      <div class="fgroup"><span class="flabel">수능 범위(추정)</span><select id="csat">${options([{ v: "in", t: "출제 범위" }, { v: "base", t: "기초(공통)" }, { v: "out", t: "제외" }], "전체")}</select></div>
       <div class="fgroup"><label><input type="checkbox" id="diff"> 학교 간 차이 나는 과목만</label><label><input type="checkbox" id="one"> 한 학교에만 있는 과목</label></div>
       <button id="reset" type="button">필터 초기화</button>
     </div></div>
@@ -209,18 +218,13 @@ async function compareShell(el, onReset, getAreas) {
   window.addEventListener("resize", fitMode);
   const draw = (next) => {
     if (next) ids = next;
-    const f = { q: $("#q").value.replace(/\s/g, ""), areas: getAreas(), sel: $("#sel").value, kind: $("#kind").value, term: $("#term").value, grade: $("#grade").value, cr: $("#cr").value, pool: $("#pool").value, chk: $("#chk").value, csat: $("#csat").value, diff: $("#diff").checked, one: $("#one").checked };
+    const f = { q: $("#q").value.replace(/\s/g, ""), areas: getAreas(), sel: FS.sel, kind: FS.kind, terms: FS.terms, pool: $("#pool").value, csat: FS.csat, diff: $("#diff").checked, one: $("#one").checked };
     if (!ids.length) { $("#tbl").innerHTML = '<tbody><tr><td class="l" style="padding:12px">필터에서 학교를 하나 이상 선택하세요.</td></tr></tbody>'; return; }
     const by = new Map();
     for (const o of offerings) {
-      if (!ids.includes(o.schoolId) || (f.areas.length && !f.areas.includes(o.area)) || (f.sel && o.selection !== f.sel) || (f.term && o.term !== f.term) || (f.csat && o.csatScope !== f.csat)) continue;
-      if ((f.grade && String(o.grade) !== f.grade) || (f.cr && String(o.credits) !== f.cr)) continue;
+      if (!ids.includes(o.schoolId) || (f.areas.length && !f.areas.includes(o.area)) || (f.sel.length && !f.sel.includes(o.selection)) || (f.terms.length && !f.terms.includes(o.term)) || (f.csat.length && !f.csat.includes(o.csatScope))) continue;
       if (f.pool && gmap.get(o.groupId)?.poolType !== f.pool) continue;
-      if (f.chk) {
-        const is = { inferred: o.kindStatus === "inferred", unmarked: o.kindStatus === "unmarked", flag: o.openFlagIds.length > 0 };
-        if (!(f.chk === "any" ? is.inferred || is.unmarked || is.flag : is[f.chk])) continue;
-      }
-      if (f.kind && !o.kind.includes(f.kind) && o.kindGuess !== f.kind) continue;
+      if (f.kind.length && !f.kind.some((k) => o.kind.includes(k) || o.kindGuess === k)) continue;
       if (f.q && !o.subject.replace(/\s/g, "").includes(f.q)) continue;
       if (f.one && subj.get(o.subjectKey)?.schoolCount !== 1) continue;
       if (!by.has(o.subjectKey)) by.set(o.subjectKey, { area: o.area, name: subj.get(o.subjectKey)?.name || o.subject, cells: {} });
@@ -267,6 +271,19 @@ async function compareShell(el, onReset, getAreas) {
   root.addEventListener("change", () => draw());
   // 접기/펼치기, 과목명 검색(돋보기 → 입력창, 입력 즉시 필터, Esc·× 로 비우고 닫기)
   const box = $(".filters"), sr = $(".fsr"), qin = $("#q");
+  const paintF = () => {
+    root.querySelectorAll(".fchip[data-g]").forEach((b) => { const on = FS[b.dataset.g].includes(b.dataset.v); b.classList.toggle("on", on); b.setAttribute("aria-pressed", on); });
+    root.querySelectorAll(".fchip[data-grade]").forEach((b) => { const on = FS.terms.includes(`${b.dataset.grade}-1`) && FS.terms.includes(`${b.dataset.grade}-2`); b.classList.toggle("on", on); b.setAttribute("aria-pressed", on); });
+  };
+  root.addEventListener("click", (e) => {
+    const b = e.target.closest(".fchip"); if (!b) return;
+    if (b.dataset.grade) { // 학년 칩: 두 학기를 함께 켜고 끈다
+      const ts = [`${b.dataset.grade}-1`, `${b.dataset.grade}-2`], all = ts.every((t) => FS.terms.includes(t));
+      FS.terms = all ? FS.terms.filter((t) => !ts.includes(t)) : [...new Set([...FS.terms, ...ts])];
+    } else FS[b.dataset.g] = FS[b.dataset.g].includes(b.dataset.v) ? FS[b.dataset.g].filter((x) => x !== b.dataset.v) : [...FS[b.dataset.g], b.dataset.v];
+    paintF(); draw();
+  });
+  paintF();
   $("#ftog").addEventListener("click", () => box.classList.toggle("fold"));
   const closeSearch = () => { qin.value = ""; sr.hidden = true; draw(); $("#fsrch").focus(); };
   $("#fsrch").addEventListener("click", () => { box.classList.remove("fold"); sr.hidden = false; qin.focus(); });
@@ -274,7 +291,9 @@ async function compareShell(el, onReset, getAreas) {
   qin.addEventListener("keydown", (e) => { if (e.key === "Escape") closeSearch(); });
   $("#reset").addEventListener("click", () => {
     sr.hidden = true;
-    ["q", "sel", "kind", "term", "grade", "cr", "pool", "chk", "csat"].forEach((id) => ($("#" + id).value = ""));
+    ["q", "pool"].forEach((id) => ($("#" + id).value = ""));
+    for (const k of Object.keys(FS)) FS[k] = [];
+    paintF();
     ["diff", "one"].forEach((id) => ($("#" + id).checked = false));
     draw();
     onReset?.();
