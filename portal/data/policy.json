@@ -12,6 +12,7 @@
   "sourceKind": "official",
   "sourceName": "교육부 브리핑(2023.12.27)",
   "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -27,6 +28,7 @@
   "sourceKind": "official",
   "sourceName": "교육부 브리핑(2023.12.27)",
   "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -42,6 +44,7 @@
   "sourceKind": "official",
   "sourceName": "교육부 브리핑(2023.12.27)",
   "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -57,6 +60,7 @@
   "sourceKind": "official",
   "sourceName": "교육부 브리핑(2023.12.27)",
   "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -72,6 +76,7 @@
   "sourceKind": "official",
   "sourceName": "교육부 브리핑(2023.12.27)",
   "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -86,6 +91,7 @@
   "sourceKind": null,
   "sourceName": null,
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -100,6 +106,7 @@
   "sourceKind": null,
   "sourceName": "KDI EIEC",
   "sourceUrl": "https://eiec.kdi.re.kr/policy/materialView.do?num=267335&pg=&pp=&topic=L",
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -125,6 +132,7 @@
     "url": "https://m.news.nate.com/view/20260817n13532"
    }
   ],
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -140,6 +148,7 @@
   "sourceKind": "media",
   "sourceName": "교육을 비추다",
   "sourceUrl": "https://www.kyobit.com/news/articleView.html?idxno=5130",
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -156,6 +165,7 @@
   "sourceKind": "media",
   "sourceName": "다음뉴스",
   "sourceUrl": "https://v.daum.net/v/20251210100131836",
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -171,6 +181,7 @@
   "sourceKind": "media",
   "sourceName": "교육을 비추다",
   "sourceUrl": "https://www.kyobit.com/news/articleView.html?idxno=5127",
+  "region": "seoul",
   "audience": [
    "common"
   ],
@@ -195,6 +206,7 @@
   "sourceKind": "media",
   "sourceName": "베리타스알파",
   "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=604064",
+  "region": "seoul",
   "audience": [
    "science"
   ],
@@ -220,6 +232,7 @@
   "sourceKind": "media",
   "sourceName": "베리타스알파",
   "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=604064",
+  "region": "seoul",
   "audience": [
    "general",
    "private"
@@ -244,6 +257,7 @@
   "sourceKind": null,
   "sourceName": null,
   "sourceUrl": null,
+  "region": "seoul",
   "audience": [
    "science"
   ],
@@ -272,6 +286,7 @@
     "url": "https://www.veritas-a.com/news/articleView.html?idxno=626898"
    }
   ],
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -288,6 +303,7 @@
   "sourceKind": "media",
   "sourceName": "고입정보포털 안내",
   "sourceUrl": "https://www.make2t.kr/2026/10/hischool-high-school-admission-2027.html",
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -302,6 +318,7 @@
   "sourceKind": null,
   "sourceName": "노컷뉴스",
   "sourceUrl": "https://www.nocutnews.co.kr/news/5239739",
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -316,6 +333,7 @@
   "sourceKind": null,
   "sourceName": null,
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -331,6 +349,7 @@
   "sourceKind": "media",
   "sourceName": "서울경제",
   "sourceUrl": "https://www.sedaily.com/article/12985967",
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -346,6 +365,7 @@
   "sourceKind": "media",
   "sourceName": "교육플러스",
   "sourceUrl": "https://www.edpl.co.kr/news/articleView.html?idxno=33",
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -361,6 +381,7 @@
   "sourceKind": "media",
   "sourceName": "교풀",
   "sourceUrl": "https://www.gyopool.com/blog/high-school-credit-system-ai",
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -375,6 +396,7 @@
   "sourceKind": null,
   "sourceName": null,
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -390,6 +412,7 @@
   "sourceKind": "official",
   "sourceName": "평가원 수능 홈페이지(2027학년도 수능 주요 일정)",
   "sourceUrl": "https://www.suneung.re.kr/main.do?s=suneung",
+  "region": "national",
   "audience": [
    "grade3"
   ],
@@ -423,6 +446,7 @@
   "sourceKind": "official",
   "sourceName": "평가원 수능 홈페이지(2027학년도 수능 주요 일정)",
   "sourceUrl": "https://www.suneung.re.kr/main.do?s=suneung",
+  "region": "national",
   "audience": [
    "grade3"
   ],
@@ -447,6 +471,7 @@
   "sourceKind": "official",
   "sourceName": "교육부 보도자료: 2028학년도 수능 시행일 발표",
   "sourceUrl": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512",
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -485,6 +510,7 @@
     "url": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf"
    }
   ],
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -519,6 +545,7 @@
     "url": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf"
    }
   ],
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -542,6 +569,7 @@
   "sourceKind": null,
   "sourceName": "대교협 기본사항 안내",
   "sourceUrl": "https://www.kcue.or.kr/work/sub06/sub01.php",
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -565,6 +593,7 @@
   "sourceKind": null,
   "sourceName": null,
   "sourceUrl": null,
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -588,6 +617,7 @@
   "sourceKind": null,
   "sourceName": "KDI EIEC",
   "sourceUrl": "https://eiec.kdi.re.kr/policy/materialView.do?num=267335&pg=&pp=&topic=L",
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -611,6 +641,7 @@
   "sourceKind": null,
   "sourceName": null,
   "sourceUrl": null,
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -635,6 +666,7 @@
   "sourceKind": "official",
   "sourceName": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29)",
   "sourceUrl": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf",
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -683,6 +715,7 @@
   "sourceKind": null,
   "sourceName": "한국교육신문",
   "sourceUrl": "https://www.hangyo.com/mobile/article.html?no=105345",
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -716,6 +749,7 @@
     "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512"
    }
   ],
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -739,6 +773,7 @@
   "sourceKind": null,
   "sourceName": null,
   "sourceUrl": null,
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -764,6 +799,7 @@
   "sourceKind": "official",
   "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
   "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
+  "region": "national",
   "audience": [
    "grade3"
   ],
@@ -789,6 +825,7 @@
   "sourceKind": "official",
   "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
   "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
+  "region": "national",
   "audience": [
    "grade3"
   ],
@@ -814,6 +851,7 @@
   "sourceKind": "official",
   "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
   "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
+  "region": "national",
   "audience": [
    "grade3"
   ],
@@ -839,6 +877,7 @@
   "sourceKind": "official",
   "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
   "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
+  "region": "national",
   "audience": [
    "grade3"
   ],
@@ -864,6 +903,7 @@
   "sourceKind": "official",
   "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
   "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
+  "region": "national",
   "audience": [
    "grade3"
   ],
@@ -889,6 +929,7 @@
   "sourceKind": "official",
   "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
   "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
+  "region": "national",
   "audience": [
    "grade3"
   ],
@@ -914,6 +955,7 @@
   "sourceKind": "official",
   "sourceName": "교육부 브리핑(2023.12.27)",
   "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -932,6 +974,7 @@
   "sourceKind": "official",
   "sourceName": "교육부 브리핑",
   "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -950,6 +993,7 @@
   "sourceKind": "official",
   "sourceName": "교육부 브리핑(2023.12.27)",
   "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -968,6 +1012,7 @@
   "sourceKind": "media",
   "sourceName": "한국대학신문",
   "sourceUrl": "https://news.unn.net/news/articleView.html?idxno=577665",
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -996,6 +1041,7 @@
     "url": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf"
    }
   ],
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -1015,6 +1061,7 @@
   "sourceKind": "media",
   "sourceName": "다음뉴스",
   "sourceUrl": "https://v.daum.net/v/20251210100131836",
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -1033,6 +1080,7 @@
   "sourceKind": "official",
   "sourceName": "교육부 보도자료: 2028학년도 수능 시행일 발표",
   "sourceUrl": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512",
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -1061,6 +1109,7 @@
     "url": "https://m.news.nate.com/view/20260803n19506"
    }
   ],
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -1089,6 +1138,7 @@
     "url": "https://m.news.nate.com/view/20260805n25953"
    }
   ],
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -1117,6 +1167,7 @@
     "url": "https://www.joongangenews.com/news/articleView.html?idxno=537981"
    }
   ],
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -1134,6 +1185,7 @@
   "sourceKind": null,
   "sourceName": null,
   "sourceUrl": null,
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -1162,6 +1214,7 @@
     "url": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf"
    }
   ],
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1187,6 +1240,7 @@
     "url": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf"
    }
   ],
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1202,6 +1256,7 @@
   "sourceKind": "official",
   "sourceName": "대교협 2028학년도 대학입학전형기본사항(개정 2026.7.31)",
   "sourceUrl": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf",
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1217,6 +1272,7 @@
   "sourceKind": "official",
   "sourceName": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29)",
   "sourceUrl": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf",
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1246,6 +1302,7 @@
     "url": "https://www.megastudy.net/Entinfo/ipsi_News/news_view_ax.asp?idx=7506"
    }
   ],
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1271,6 +1328,7 @@
     "url": "https://riroschool.kr/kceenews/detail/242"
    }
   ],
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1286,6 +1344,7 @@
   "sourceKind": "media",
   "sourceName": "국민일보",
   "sourceUrl": "https://www.kmib.co.kr/article/view.asp?arcid=1771923523",
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1301,6 +1360,7 @@
   "sourceKind": "media",
   "sourceName": "베리타스알파",
   "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=600481",
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1326,6 +1386,7 @@
     "url": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf"
    }
   ],
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1341,6 +1402,7 @@
   "sourceKind": "official",
   "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
   "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1356,6 +1418,7 @@
   "sourceKind": "official",
   "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
   "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1371,6 +1434,7 @@
   "sourceKind": "official",
   "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
   "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1385,6 +1449,7 @@
   "sourceKind": null,
   "sourceName": null,
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1399,6 +1464,7 @@
   "sourceKind": null,
   "sourceName": null,
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1415,6 +1481,7 @@
   "sourceKind": "material",
   "sourceName": "학교 배부 가정통신문 사진(분석 세션 판독)",
   "sourceUrl": null,
+  "region": "gyeonggi",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1431,6 +1498,7 @@
   "sourceKind": "material",
   "sourceName": "학교 배부 가정통신문 사진(분석 세션 판독)",
   "sourceUrl": null,
+  "region": "gyeonggi",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1447,6 +1515,7 @@
   "sourceKind": "material",
   "sourceName": "학교 배부 가정통신문 사진(분석 세션 판독)",
   "sourceUrl": null,
+  "region": "gyeonggi",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1463,6 +1532,7 @@
   "sourceKind": "material",
   "sourceName": "학교 배부 가정통신문 사진(분석 세션 판독)",
   "sourceUrl": null,
+  "region": "gyeonggi",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1479,6 +1549,7 @@
   "sourceKind": "material",
   "sourceName": "학교 배부 가정통신문 사진(분석 세션 판독)",
   "sourceUrl": null,
+  "region": "gyeonggi",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1495,6 +1566,7 @@
   "sourceKind": "material",
   "sourceName": "학교 배부 가정통신문 사진(분석 세션 판독)",
   "sourceUrl": null,
+  "region": "gyeonggi",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1511,6 +1583,7 @@
   "sourceKind": "material",
   "sourceName": "학교 배부 가정통신문 사진(분석 세션 판독)",
   "sourceUrl": null,
+  "region": "gyeonggi",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1526,6 +1599,7 @@
   "sourceKind": "official",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1541,6 +1615,7 @@
   "sourceKind": "official",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1556,6 +1631,7 @@
   "sourceKind": "official",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1571,6 +1647,7 @@
   "sourceKind": "official",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1586,6 +1663,7 @@
   "sourceKind": "seoul",
   "sourceName": "서울시교육청교육연구정보원 계열 「2022 개정 교육과정에 따른 과목 선택 지도」 설명회 지원 자료(pptx 40쪽, 서울 학교 대상, 2026 입학생 기준, 분석 세션 요약, 파일 미게시)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1601,6 +1679,7 @@
   "sourceKind": "seoul",
   "sourceName": "서울시교육청교육연구정보원 계열 「2022 개정 교육과정에 따른 과목 선택 지도」 설명회 지원 자료(pptx 40쪽, 서울 학교 대상, 2026 입학생 기준, 분석 세션 요약, 파일 미게시)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1616,6 +1695,7 @@
   "sourceKind": "seoul",
   "sourceName": "서울시교육청교육연구정보원 계열 「2022 개정 교육과정에 따른 과목 선택 지도」 설명회 지원 자료(pptx 40쪽, 서울 학교 대상, 2026 입학생 기준, 분석 세션 요약, 파일 미게시)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1631,6 +1711,7 @@
   "sourceKind": "seoul",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13) p27",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1646,6 +1727,7 @@
   "sourceKind": "official",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1661,6 +1743,7 @@
   "sourceKind": "official",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1676,6 +1759,7 @@
   "sourceKind": "official",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1691,6 +1775,7 @@
   "sourceKind": "official",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1706,6 +1791,7 @@
   "sourceKind": "official",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1720,6 +1806,7 @@
   "sourceKind": "opinion",
   "sourceName": "설연고 설명회 자료(원 출처 미표기)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1734,6 +1821,7 @@
   "sourceKind": "opinion",
   "sourceName": "설연고 설명회 자료(원 출처 미표기)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1748,6 +1836,7 @@
   "sourceKind": "opinion",
   "sourceName": "설연고 설명회 자료(원 출처 미표기)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1762,6 +1851,7 @@
   "sourceKind": "opinion",
   "sourceName": "설연고 설명회 자료(원 출처 미표기)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1776,6 +1866,7 @@
   "sourceKind": "opinion",
   "sourceName": "설연고 설명회 자료(원 출처 미표기)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1791,6 +1882,7 @@
   "sourceKind": "official",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1806,6 +1898,7 @@
   "sourceKind": "official",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1821,6 +1914,7 @@
   "sourceKind": "official",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1836,6 +1930,7 @@
   "sourceKind": "seoul",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1851,6 +1946,7 @@
   "sourceKind": "seoul",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1866,6 +1962,7 @@
   "sourceKind": "seoul",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1881,6 +1978,7 @@
   "sourceKind": "seoul",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1896,6 +1994,7 @@
   "sourceKind": "seoul",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1911,6 +2010,7 @@
   "sourceKind": "seoul",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1926,6 +2026,7 @@
   "sourceKind": "seoul",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1941,6 +2042,7 @@
   "sourceKind": "seoul",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1956,6 +2058,7 @@
   "sourceKind": "seoul",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1971,6 +2074,7 @@
   "sourceKind": "seoul",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1986,6 +2090,7 @@
   "sourceKind": "seoul",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -2001,6 +2106,7 @@
   "sourceKind": "seoul",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -2016,6 +2122,7 @@
   "sourceKind": "seoul",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13) p23",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -2031,6 +2138,7 @@
   "sourceKind": "seoul",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13) p23 (출처: 건국대·경희대·연세대·중앙대·한국외대 공동연구 「학생부종합전형 공통 평가요소 및 항목 개선 연구」)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -2046,6 +2154,7 @@
   "sourceKind": "seoul",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13) p24~26",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -2061,6 +2170,7 @@
   "sourceKind": "seoul",
   "sourceName": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13) p28~29",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -2076,6 +2186,7 @@
   "sourceKind": "academy",
   "sourceName": "설연고 설명회 자료(사용자 제공 원본)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -2091,6 +2202,7 @@
   "sourceKind": "academy",
   "sourceName": "설연고 설명회 자료(사용자 제공 원본)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -2106,6 +2218,7 @@
   "sourceKind": "academy",
   "sourceName": "설연고 설명회 자료(사용자 제공 원본)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -2121,6 +2234,7 @@
   "sourceKind": "academy",
   "sourceName": "설연고 설명회 자료(사용자 제공 원본)",
   "sourceUrl": null,
+  "region": "national",
   "checkedAt": "2026-10-25"
  },
  {
@@ -2146,6 +2260,7 @@
     "url": "https://www.dailian.co.kr/news/view/1627070/%EA%B2%BD%EA%B8%B0%EB%8F%84%EA%B5%90%EC%9C%A1%EC%B2%AD-2027%ED%95%99%EB%85%84%EB%8F%84-%EA%B2%BD%EA%B8%B0%EB%8F%84-%EA%B3%A0-2026"
    }
   ],
+  "region": "gyeonggi",
   "audience": [
    "common"
   ],
@@ -2180,6 +2295,7 @@
     "url": "https://www.newspim.com/news/view/20260330000537"
    }
   ],
+  "region": "gyeonggi",
   "audience": [
    "general",
    "private"
@@ -2206,6 +2322,7 @@
   "sourceKind": "media",
   "sourceName": "베리타스알파 고입캘린더",
   "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=632287",
+  "region": "gyeonggi",
   "audience": [
    "private"
   ],
@@ -2231,6 +2348,7 @@
   "sourceKind": null,
   "sourceName": null,
   "sourceUrl": null,
+  "region": "gyeonggi",
   "audience": [
    "general"
   ],
@@ -2249,6 +2367,7 @@
   "sourceKind": "media",
   "sourceName": "뉴스1",
   "sourceUrl": "https://www.news1.kr/local/gyeonggi/6118183",
+  "region": "gyeonggi",
   "audience": [
    "common"
   ],
@@ -2277,6 +2396,7 @@
     "url": "https://view.asiae.co.kr/article/2026092812475292099"
    }
   ],
+  "region": "gyeonggi",
   "audience": [
    "general"
   ],
@@ -2305,6 +2425,7 @@
     "url": "https://view.asiae.co.kr/article/2026092812475292099"
    }
   ],
+  "region": "gyeonggi",
   "audience": [
    "general",
    "private"
@@ -2334,6 +2455,7 @@
     "url": "https://www.bundangnews.co.kr/58587"
    }
   ],
+  "region": "gyeonggi",
   "audience": [
    "general"
   ],
@@ -2359,6 +2481,7 @@
   "sourceKind": null,
   "sourceName": null,
   "sourceUrl": null,
+  "region": "gyeonggi",
   "audience": [
    "common"
   ],
@@ -2391,6 +2514,7 @@
     "url": "https://news.nate.com/view/20260806n01096?mid=n1101"
    }
   ],
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -2419,6 +2543,7 @@
     "url": "https://www.te.co.kr/news/article.html?no=29318"
    }
   ],
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -2447,6 +2572,7 @@
     "url": "https://www.newspim.com/news/view/20260805000395"
    }
   ],
+  "region": "national",
   "audience": [
    "common"
   ],
@@ -2465,6 +2591,7 @@
   "sourceKind": "media",
   "sourceName": "네이트",
   "sourceUrl": "https://m.news.nate.com/view/20260904n29452",
+  "region": "national",
   "audience": [
    "common"
   ],
