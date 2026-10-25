@@ -136,8 +136,7 @@ table.policy tr.past{opacity:.45}
 @media (max-width:760px){.phead h2{font-size:18px}}
 
 /* 구분 배지: 같은 크기·같은 모양, 색만 다름 */
-.kb{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;flex:none;width:34px;height:18px;border:1px solid var(--k);border-radius:5px;font-size:11px;font-weight:600;line-height:1;letter-spacing:-.02em;color:color-mix(in srgb,var(--k) 62%,var(--fg));background:color-mix(in srgb,var(--k) 15%,transparent)}
-.kb.est{background:transparent}
+.kb{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;flex:none;width:34px;height:18px;border:1px solid var(--k);border-radius:5px;font-size:11px;font-weight:600;line-height:1;letter-spacing:-.02em;color:color-mix(in srgb,var(--k) 62%,var(--fg));background:transparent}
 .kb.none{border-style:dashed;border-color:var(--muted);color:var(--muted);background:transparent;font-weight:400}
 
 /* 학교 로고(원형) */
@@ -161,7 +160,7 @@ table.policy tr.past{opacity:.45}
 select,input[type=search]{font-size:13px;padding:5px 8px}
 .filters .fbody{gap:9px}
 .filters label{font-size:13px}
-.kb{width:32px;height:17px;font-size:11px}
+.kb{width:36px;height:17px;font-size:11px}
 .cr{width:14px;height:14px;font-size:10px}
 .c1{gap:5px}
 .btn{font-size:13px;padding:5px 12px}

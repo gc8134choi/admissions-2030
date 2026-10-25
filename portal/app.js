@@ -38,11 +38,11 @@ const CSAT = { in: "포함", base: "기초", out: "제외", none: "-" };
 const options = (items, all) => `${all ? `<option value="">${esc(all)}</option>` : ""}${items.map((v) => `<option value="${esc(v.v ?? v)}">${esc(v.t ?? v)}</option>`).join("")}`;
 const POOL = { basic: "기초교과", cross: "교과(군) 간 선택", "in-area": "한 교과 안 선택", life: "기술·가정/정보/제2외국어 등" };
 const CHECK = { inferred: "구분 추정", unmarked: "구분 미표기", flag: "열린 flag 있음" };
-// 구분 배지: 모두 같은 크기의 둥근 사각형, 색만 다름. 추정은 윤곽선(배경 투명), 미표기는 점선 [—].
+// 구분 배지: 모두 같은 크기의 윤곽선 둥근 사각형(채움 없음), 색만 다름. 추정은 이름 끝에 "?", 미표기는 점선 [—].
 const KCOLOR = { 공통: "#64748b", 일반: "#0ea5e9", 진로: "#f59e0b", 융합: "#a855f7", 특목: "#f43f5e", 전문: "#14b8a6" };
 const kindBadge = (kind, est) => {
   const title = kind ? `${kind}${est ? " (추정)" : ""}` : "구분 미표기";
-  return `<span class="kb${est ? " est" : ""}${kind ? "" : " none"}" style="--k:${KCOLOR[kind] || "#94a3b8"}" title="${esc(title)}">${kind ? esc(kind) : "—"}</span>`;
+  return `<span class="kb${est ? " est" : ""}${kind ? "" : " none"}" style="--k:${KCOLOR[kind] || "#94a3b8"}" title="${esc(title)}">${kind ? esc(kind) + (est ? "?" : "") : "—"}</span>`;
 };
 const kindOf = (o) => (o.primaryKind ? o.primaryKind + (o.kindStatus === "inferred" ? "?" : "") : "미표기");
 
