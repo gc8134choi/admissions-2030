@@ -1,0 +1,71 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "schools.schema.json",
+ "title": "schools",
+ "$defs": {
+  "id": {
+   "type": "string",
+   "pattern": "^(school-[a-z0-9]+(-[a-z0-9]+)*|s-\\d{3,})$"
+  }
+ },
+ "type": "object",
+ "required": [
+  "id",
+  "name",
+  "level"
+ ],
+ "properties": {
+  "id": {
+   "$ref": "#/$defs/id"
+  },
+  "name": {
+   "type": "string"
+  },
+  "level": {
+   "enum": [
+    "elem",
+    "mid",
+    "hs",
+    "univ"
+   ]
+  },
+  "schoolType": {
+   "type": "string"
+  },
+  "founding": {
+   "type": "string"
+  },
+  "region": {
+   "type": "string"
+  },
+  "learnerIds": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   },
+   "description": "이 학교를 보는 학습자(관심 학교)"
+  },
+  "curriculumIds": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  }
+ },
+ "examples": [
+  {
+   "id": "school-suji",
+   "name": "수지고",
+   "level": "hs",
+   "schoolType": "일반",
+   "founding": "공립",
+   "region": "경기 용인시 수지구",
+   "learnerIds": [
+    "A"
+   ],
+   "curriculumIds": [
+    "curriculum-suji-2027"
+   ]
+  }
+ ]
+}

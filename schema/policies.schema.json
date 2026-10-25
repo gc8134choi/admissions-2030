@@ -1,0 +1,156 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "policies.schema.json",
+ "title": "policies (제도·변경 로그)",
+ "description": "현행 policy.json 필드 유지(v2 호환) + 구조화 확장. 일정(events[])은 events.json으로 이전하고 eventIds 로 참조.",
+ "type": "object",
+ "required": [
+  "id",
+  "topic",
+  "title",
+  "body",
+  "status",
+  "sourceKind",
+  "sourceName",
+  "checkedAt"
+ ],
+ "properties": {
+  "id": {
+   "type": "string",
+   "pattern": "^[a-z0-9]+-\\d{2,}$"
+  },
+  "topic": {
+   "enum": [
+    "admission-system",
+    "hs-types",
+    "hs-credit-system",
+    "exam-schedule",
+    "change-log",
+    "admission-structure",
+    "gg-hs-entry",
+    "high-school-assignment",
+    "hs-schedule",
+    "hs-choice-opinion",
+    "curriculum-guide",
+    "academy-material",
+    "admission-outlook"
+   ]
+  },
+  "entryYear": {
+   "type": [
+    "integer",
+    "null"
+   ]
+  },
+  "examYear": {
+   "type": [
+    "integer",
+    "null"
+   ]
+  },
+  "region": {
+   "enum": [
+    "national",
+    "gyeonggi",
+    "seoul"
+   ]
+  },
+  "title": {
+   "type": "string"
+  },
+  "body": {
+   "type": "string"
+  },
+  "status": {
+   "enum": [
+    "confirmed",
+    "reported",
+    "estimated",
+    "material",
+    "seoul",
+    "seoul-verified",
+    "gyeonggi",
+    "match",
+    "academy",
+    "opinion",
+    "unknown"
+   ]
+  },
+  "unverified": {
+   "type": "boolean"
+  },
+  "reason": {
+   "type": "string"
+  },
+  "sourceKind": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "sourceName": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "sourceUrl": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "sources": {
+   "type": "array"
+  },
+  "eventIds": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "supersedes": {
+   "type": "string"
+  },
+  "changedAt": {
+   "type": "string"
+  },
+  "checkedAt": {
+   "type": "string",
+   "format": "date"
+  }
+ },
+ "examples": [
+  {
+   "id": "adm-03",
+   "topic": "admission-system",
+   "examYear": 2028,
+   "title": "심화수학",
+   "body": "심화수학은 수능에 포함하지 않는 것으로 최종 결정",
+   "status": "confirmed",
+   "unverified": false,
+   "sourceKind": "official",
+   "sourceName": "교육부 브리핑(2023.12.27)",
+   "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
+   "region": "national",
+   "checkedAt": "2026-10-25"
+  },
+  {
+   "id": "sch-12",
+   "topic": "exam-schedule",
+   "examYear": 2030,
+   "title": "2030학년도 수능",
+   "body": "2029.11.15(목) 잠정 예상. 공식 공고 전이며 확정 아님",
+   "status": "estimated",
+   "unverified": false,
+   "sourceKind": null,
+   "sourceName": "평가원 수능 홈페이지",
+   "sourceUrl": "https://www.suneung.re.kr/main.do?s=suneung",
+   "region": "national",
+   "eventIds": [
+    "ev-csat-2030"
+   ],
+   "checkedAt": "2026-10-25"
+  }
+ ]
+}
