@@ -25,10 +25,10 @@ a{color:inherit}
 h1,h2,h3{font-family:var(--font)}
 
 /* 상단 바 */
-.bar{border-bottom:1px solid var(--rule);background:var(--paper)}
-.barin{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:12px}
-.logo{font-weight:800;font-size:17px;letter-spacing:-.04em;text-decoration:none}
-.logo i{font-style:normal;color:var(--accent)}.logo small{font-size:.72em;font-weight:500;color:var(--mute);margin-left:2px;letter-spacing:0}
+.hdr{border-bottom:1px solid var(--rule);background:var(--paper);position:sticky;top:0;z-index:25;height:56px;overflow:visible}
+.barin{display:flex;align-items:center;justify-content:space-between;gap:16px;height:100%}
+.wm{font-weight:800;font-size:17px;letter-spacing:-.04em;text-decoration:none;white-space:nowrap}
+.wm i{font-style:normal;color:var(--accent)}.wm small{font-size:.72em;font-weight:500;color:var(--mute);margin-left:2px;letter-spacing:0}
 #today{font-size:12px;color:var(--mute)}
 #topnav,.sw{display:none}
 .top,.layout,#nav,#burger{display:none}
@@ -105,8 +105,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
   #topnav a{text-decoration:none;font-size:14px;color:var(--mute);padding-bottom:4px}
   #topnav a[aria-current=page]{color:var(--ink);font-weight:700;border-bottom:2px solid var(--accent)}
   #topnav a:hover{color:var(--ink)}
-  .logo{font-size:19px}
-  .barin{align-items:baseline}
+  .wm{font-size:19px}
+  .hdr{height:64px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
@@ -283,3 +283,11 @@ table.policy tr.g3 td:first-child{color:var(--g3c);font-weight:700}
 .al-body,.note{border:0;background:var(--band);border-radius:0;padding:12px 14px;font-size:13px}
 .subtabs{border-bottom:1px solid var(--hair)}
 .subtabs a{color:var(--mute)}.subtabs a.on{color:var(--ink);border-bottom-color:var(--accent);font-weight:800}
+
+/* 대상 칩: 켜짐은 얇은 외곽선 + 점(검정 채움 금지). 현고3은 같은 규칙에 회색 */
+.hm .hm-aud .fchip{background:none;color:var(--mute);border:1px solid var(--hair);padding:5px 12px;min-height:32px;display:inline-flex;align-items:center;gap:6px;font-size:12px}
+.hm .hm-aud .fchip::before{content:"";width:7px;height:7px;border-radius:50%;border:1.25px solid currentColor;box-sizing:border-box}
+.hm .hm-aud .fchip.on,.hm .hm-aud .fchip[aria-pressed=true]{background:none;color:var(--ink);border-color:var(--ink)}
+.hm .hm-aud .fchip.on::before,.hm .hm-aud .fchip[aria-pressed=true]::before{background:currentColor}
+.hm .hm-aud .fchip[data-aud=grade3]{color:var(--g3c);border-color:var(--hair)}
+.hm .hm-aud .fchip[data-aud=grade3].on,.hm .hm-aud .fchip[data-aud=grade3][aria-pressed=true]{background:none;color:var(--g3);border-color:var(--g3c)}
