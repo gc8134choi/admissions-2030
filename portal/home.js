@@ -87,7 +87,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const csatRowB = isB ? policy.find((r) => r.examYear === examYear && /수능/.test(r.title) && !/기본계획|원서|정시|수시/.test(r.title) && r.events?.length) : null;
     const pcsat = pf.csat && !csatRowB ? { id: "pf-csat", status: pf.csat.status, sourceName: pf.csat.sourceName, title: "수능", reason: pf.csat.note, events: [{ start: pf.csat.date, label: "수능 시행일(잠정 예상)" }] } : null;
     const csatRow = isB ? csatRowB || pcsat : P.get("sch-12") || P.get("sch-07"), csat = isB ? csatRow?.events?.[0] : ev0("sch-12") || ev0("sch-07");
-    let heroDays = null, heroMeta = "수능 날짜 데이터 준비 중";
+    let heroDays = null, heroMeta = "수능 날짜를 아직 못 가져왔어요";
     if (csat) {
       const sp = span(csat.start, csat.end);
       const target = sp.month ? new Date(sp.start.getFullYear(), sp.start.getMonth(), 15) : sp.start;
