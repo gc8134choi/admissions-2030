@@ -5,11 +5,12 @@
   "entryYear": 2025,
   "examYear": 2028,
   "title": "2028학년도 대입 개편 확정",
-  "body": "교육부가 2023.12.27 확정안 발표. 국가교육위원회 권고안은 2023.12.22 의결",
+  "body": "교육부가 2023.12.27 확정안 발표",
   "status": "confirmed",
-  "unverified": true,
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
   "sourceKind": "official",
-  "sourceName": "교육부 브리핑",
+  "sourceName": "교육부 브리핑(2023.12.27)",
   "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
   "checkedAt": "2026-10-25"
  },
@@ -19,12 +20,13 @@
   "entryYear": 2025,
   "examYear": 2028,
   "title": "통합형 수능",
-  "body": "국어·수학·사회·과학 선택과목 폐지. 사회·과학은 통합사회·통합과학 공통 응시",
+  "body": "2028 수능부터 국어·수학·사회·과학탐구·직업탐구 영역에서 선택과목 없이 동일한 내용과 기준으로 평가. 사회·과학탐구는 통합사회·통합과학 출제",
   "status": "confirmed",
-  "unverified": true,
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
   "sourceKind": "official",
-  "sourceName": "교육부 확정안 PDF",
-  "sourceUrl": "https://files-scs.pstatic.net/2024/07/02/Ic4S8r8egU/[%EA%B5%90%EC%9C%A1%EB%B6%80+12-27(%EC%88%98",
+  "sourceName": "교육부 브리핑(2023.12.27)",
+  "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
   "checkedAt": "2026-10-25"
  },
  {
@@ -33,22 +35,13 @@
   "entryYear": 2025,
   "examYear": 2028,
   "title": "심화수학",
-  "body": "수능에 신설하지 않음",
+  "body": "심화수학은 수능에 포함하지 않는 것으로 최종 결정",
   "status": "confirmed",
-  "unverified": true,
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
   "sourceKind": "official",
-  "sourceName": "교육부 브리핑",
+  "sourceName": "교육부 브리핑(2023.12.27)",
   "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
-  "sources": [
-   {
-    "name": "교육부 브리핑",
-    "url": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888"
-   },
-   {
-    "name": "교육플러스",
-    "url": "https://www.edpl.co.kr/news/articleView.html?idxno=11264"
-   }
-  ],
   "checkedAt": "2026-10-25"
  },
  {
@@ -57,11 +50,12 @@
   "entryYear": 2025,
   "examYear": 2028,
   "title": "내신 5등급 상대평가",
-  "body": "사회·과학 융합 선택과목 9개는 석차등급 미기재",
+  "body": "내신 5등급 상대평가. 사회·과학 융합선택 9개 과목은 석차등급을 기재하지 않고 절대평가만 실시",
   "status": "confirmed",
-  "unverified": true,
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
   "sourceKind": "official",
-  "sourceName": "교육부 브리핑",
+  "sourceName": "교육부 브리핑(2023.12.27)",
   "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
   "checkedAt": "2026-10-25"
  },
@@ -71,12 +65,12 @@
   "entryYear": 2025,
   "examYear": 2028,
   "title": "수능·수시/정시 시기 조정",
-  "body": "확정안에 미포함. 국교위·교육부가 추후 협의·검토",
+  "body": "수능·수시/정시 시기 조정은 국가교육위원회 권고에서 추후 검토 사항으로 남았고 확정안에는 포함되지 않음",
   "status": "confirmed",
   "note": "미결정 상태",
-  "unverified": true,
+  "unverified": false,
   "sourceKind": "official",
-  "sourceName": "교육부 브리핑",
+  "sourceName": "교육부 브리핑(2023.12.27)",
   "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
   "checkedAt": "2026-10-25"
  },
@@ -117,6 +111,7 @@
   "body": "교육부 장관·국교위원장이 서술·논술형 도입, 절대평가 전환 등을 담은 안을 2026 하반기 공론화 후 2027.3 공표하겠다고 밝힘",
   "status": "reported",
   "unverified": true,
+  "reason": "공식 원문 출처 미특정, 매체 보도만 확인",
   "sourceKind": "media",
   "sourceName": "다음뉴스",
   "sourceUrl": "https://v.daum.net/v/20251210100131836",
@@ -141,6 +136,7 @@
   "body": "교육부는 \"2030년도 등 특정 시기를 예단할 수 없다\"고 설명",
   "status": "reported",
   "unverified": true,
+  "reason": "공식 원문 출처 미특정, 매체 보도만 확인",
   "sourceKind": "media",
   "sourceName": "교육을 비추다",
   "sourceUrl": "https://www.kyobit.com/news/articleView.html?idxno=5130",
@@ -156,6 +152,7 @@
   "status": "reported",
   "note": "개인 제안, 정부안 아님",
   "unverified": true,
+  "reason": "공식 원문 출처 미특정, 매체 보도만 확인",
   "sourceKind": "media",
   "sourceName": "다음뉴스",
   "sourceUrl": "https://v.daum.net/v/20251210100131836",
@@ -166,10 +163,11 @@
   "topic": "hs-schedule",
   "entryYear": 2027,
   "examYear": 2030,
-  "title": "기본계획",
+  "title": "서울 기본계획",
   "body": "서울교육청 2027학년도 고입 기본계획 확정(2026.8). 후기고 동일교 배정 확대",
   "status": "reported",
   "unverified": true,
+  "reason": "교육청 사이트 접속 차단, 매체 보도만 확인",
   "sourceKind": "media",
   "sourceName": "교육을 비추다",
   "sourceUrl": "https://www.kyobit.com/news/articleView.html?idxno=5127",
@@ -189,10 +187,11 @@
   "topic": "hs-schedule",
   "entryYear": 2027,
   "examYear": 2030,
-  "title": "과학고",
+  "title": "서울 과학고",
   "body": "전국 기준 접수 8.18~9.3",
   "status": "reported",
   "unverified": true,
+  "reason": "교육청 사이트 접속 차단, 매체 보도만 확인",
   "sourceKind": "media",
   "sourceName": "베리타스알파",
   "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=604064",
@@ -213,10 +212,11 @@
   "topic": "hs-schedule",
   "entryYear": 2027,
   "examYear": 2030,
-  "title": "후기 일반고·자사고·외고·국제고",
+  "title": "서울 후기 일반고·자사고·외고·국제고",
   "body": "후기 전형 12월 시작(12.2 개막 보도). 세부 접수·발표일은 확인 못 함",
   "status": "reported",
   "unverified": true,
+  "reason": "교육청 사이트 접속 차단, 매체 보도만 확인",
   "sourceKind": "media",
   "sourceName": "베리타스알파",
   "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=604064",
@@ -237,7 +237,7 @@
   "topic": "hs-schedule",
   "entryYear": 2027,
   "examYear": 2030,
-  "title": "영재학교",
+  "title": "서울 영재학교",
   "body": "별도 법령 적용, 기본계획 제외. 일정은 확인 못 함",
   "status": "unknown",
   "unverified": false,
@@ -258,6 +258,7 @@
   "body": "2027학년도에도 모집. 외고 28개교 5,518명, 국제고 8개교 1,172명",
   "status": "reported",
   "unverified": true,
+  "reason": "교육청 사이트 접속 차단, 매체 보도만 확인",
   "sourceKind": "media",
   "sourceName": "외고",
   "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=627933",
@@ -283,6 +284,7 @@
   "status": "reported",
   "note": "공식 FAQ 인용",
   "unverified": true,
+  "reason": "교육청 사이트 접속 차단, 매체 보도만 확인",
   "sourceKind": "media",
   "sourceName": "고입정보포털 안내",
   "sourceUrl": "https://www.make2t.kr/2026/10/hischool-high-school-admission-2027.html",
@@ -325,6 +327,7 @@
   "body": "3년간 192학점(교과 174 + 창체 18)",
   "status": "reported",
   "unverified": true,
+  "reason": "교육청 사이트 접속 차단, 매체 보도만 확인",
   "sourceKind": "media",
   "sourceName": "서울경제",
   "sourceUrl": "https://www.sedaily.com/article/12985967",
@@ -339,6 +342,7 @@
   "body": "학업성취율 40% 미만이면 미이수, 보충이수 가능",
   "status": "reported",
   "unverified": true,
+  "reason": "교육청 사이트 접속 차단, 매체 보도만 확인",
   "sourceKind": "media",
   "sourceName": "교육플러스",
   "sourceUrl": "https://www.edpl.co.kr/news/articleView.html?idxno=33",
@@ -353,6 +357,7 @@
   "body": "성취도 A~E 절대평가 + 석차 5등급 병기(2025 고1부터)",
   "status": "reported",
   "unverified": true,
+  "reason": "교육청 사이트 접속 차단, 매체 보도만 확인",
   "sourceKind": "media",
   "sourceName": "교풀",
   "sourceUrl": "https://www.gyopool.com/blog/high-school-credit-system-ai",
@@ -378,22 +383,13 @@
   "entryYear": 2024,
   "examYear": 2027,
   "title": "2027학년도 수능(참고, 현 고3)",
-  "body": "시험 2026.11.19(목), 원서접수 8.24~9.4, 성적통지 12.11",
+  "body": "시험 2026.11.19(목), 원서접수·변경 2026.8.24~9.4, 이의신청 11.19~23, 정답 확정 12.1, 성적통지 12.11",
   "status": "confirmed",
-  "unverified": true,
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
   "sourceKind": "official",
-  "sourceName": "평가원 수능 홈페이지",
+  "sourceName": "평가원 수능 홈페이지(2027학년도 수능 주요 일정)",
   "sourceUrl": "https://www.suneung.re.kr/main.do?s=suneung",
-  "sources": [
-   {
-    "name": "평가원 수능 홈페이지",
-    "url": "https://www.suneung.re.kr/main.do?s=suneung"
-   },
-   {
-    "name": "정리글",
-    "url": "https://makerschool.kr/458"
-   }
-  ],
   "audience": [
    "grade3"
   ],
@@ -420,22 +416,13 @@
   "entryYear": 2024,
   "examYear": 2027,
   "title": "2027학년도 수능 시행 기본계획 공고",
-  "body": "2026.3.31 공고(매체 보도). 평가원 원문 공고는 열람하지 못함",
-  "status": "reported",
-  "unverified": true,
-  "sourceKind": "media",
-  "sourceName": "이투데이",
-  "sourceUrl": "https://www.etoday.co.kr/news/view/2390974",
-  "sources": [
-   {
-    "name": "이투데이",
-    "url": "https://www.etoday.co.kr/news/view/2390974"
-   },
-   {
-    "name": "다음뉴스",
-    "url": "https://v.daum.net/v/6U94upsAym?f=p"
-   }
-  ],
+  "body": "평가원이 2026.3.31 2027학년도 수능 시행 기본계획 발표, 시행세부계획은 2026.7.1 공고",
+  "status": "confirmed",
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
+  "sourceKind": "official",
+  "sourceName": "평가원 수능 홈페이지(2027학년도 수능 주요 일정)",
+  "sourceUrl": "https://www.suneung.re.kr/main.do?s=suneung",
   "audience": [
    "grade3"
   ],
@@ -453,22 +440,13 @@
   "entryYear": 2025,
   "examYear": 2028,
   "title": "2028학년도 수능",
-  "body": "시험 2027.11.18(목), 성적통지 2027.12.10. 모의평가·정시 세부 일정은 기본계획 공고 후 확정",
+  "body": "시험 2027.11.18(목), 성적통지 2027.12.10(금). 통합형 수능체제(국어·수학·탐구 선택과목 폐지) 적용",
   "status": "confirmed",
-  "unverified": true,
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
   "sourceKind": "official",
-  "sourceName": "교육부 보도자료",
+  "sourceName": "교육부 보도자료: 2028학년도 수능 시행일 발표",
   "sourceUrl": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512",
-  "sources": [
-   {
-    "name": "교육부 보도자료",
-    "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512"
-   },
-   {
-    "name": "KDI EIEC",
-    "url": "https://eiec.kdi.re.kr/policy/materialView.do?num=267335&pg=&pp=&topic=L"
-   }
-  ],
   "audience": [
    "common"
   ],
@@ -490,20 +468,21 @@
   "entryYear": 2025,
   "examYear": 2028,
   "title": "2028학년도 수시 원서접수",
-  "body": "2027.9.20 시작. 하반기 모의평가를 9월에서 8월 말로 옮기고 성적통지 후 접수",
-  "status": "reported",
-  "unverified": true,
-  "sourceKind": "media",
-  "sourceName": "한국교육신문(hangyo)",
-  "sourceUrl": "https://www.hangyo.com/mobile/article.html?no=105345",
+  "body": "수시 원서접수 2027.9.20(월)~23(목) 중 3일 이상, 전형기간 9.24~12.20(88일), 합격자 발표 12.21까지, 등록 12.22~24. 하반기 모의평가를 8월 말에 실시한 뒤 접수",
+  "status": "confirmed",
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
+  "sourceKind": "official",
+  "sourceName": "대교협 보도자료: 2028학년도 대학입학전형기본사항 발표(2025.8.28)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/08/28/application_b244345d6cc72f7e172df15e831c276e.pdf",
   "sources": [
    {
-    "name": "한국교육신문(hangyo)",
-    "url": "https://www.hangyo.com/mobile/article.html?no=105345"
+    "name": "대교협 보도자료: 2028학년도 대학입학전형기본사항 발표(2025.8.28)",
+    "url": "https://www.kcue.or.kr/_upload/news/2025/08/28/application_b244345d6cc72f7e172df15e831c276e.pdf"
    },
    {
-    "name": "대학지성",
-    "url": "https://dhnews.co.kr/news/view/1065582138689771"
+    "name": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29)",
+    "url": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf"
    }
   ],
   "audience": [
@@ -523,12 +502,23 @@
   "entryYear": 2025,
   "examYear": 2028,
   "title": "2028학년도 대입전형 기본사항",
-  "body": "대교협이 2025.8.28 발표",
+  "body": "대교협이 2025.8.28 발표(개정 2026.7.31)",
   "status": "confirmed",
-  "unverified": true,
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
   "sourceKind": "official",
-  "sourceName": "대교협 보도자료 PDF",
+  "sourceName": "대교협 보도자료: 2028학년도 대학입학전형기본사항 발표(2025.8.28)",
   "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/08/28/application_b244345d6cc72f7e172df15e831c276e.pdf",
+  "sources": [
+   {
+    "name": "대교협 보도자료: 2028학년도 대학입학전형기본사항 발표(2025.8.28)",
+    "url": "https://www.kcue.or.kr/_upload/news/2025/08/28/application_b244345d6cc72f7e172df15e831c276e.pdf"
+   },
+   {
+    "name": "대교협 2028학년도 대학입학전형기본사항(개정 2026.7.31)",
+    "url": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf"
+   }
+  ],
   "audience": [
    "common"
   ],
@@ -638,26 +628,13 @@
   "entryYear": 2025,
   "examYear": 2028,
   "title": "2028학년도 정시 일정(참고)",
-  "body": "원서접수 2028.1.3~1.6 중 3일 이상, 군별 전형기간 가 1.10~17, 나 1.18~25, 다 1.31~2.7, 합격자 발표 2.10까지, 등록 2.11~14",
-  "status": "reported",
-  "unverified": true,
+  "body": "원서접수 2028.1.3(월)~1.6(목) 중 3일 이상, 전형기간 가군 1.10~17, 나군 1.18~25, 다군 1.31~2.7, 합격자 발표 2.10까지, 등록 2.11~14, 미등록 충원 통보 2.15~20, 충원 등록 마감 2.21 18시",
+  "status": "confirmed",
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
   "sourceKind": "official",
-  "sourceName": "대교협 2028학년도 시행계획 주요사항",
+  "sourceName": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29)",
   "sourceUrl": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf",
-  "sources": [
-   {
-    "name": "대교협 2028학년도 시행계획 주요사항",
-    "url": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf"
-   },
-   {
-    "name": "에듀진",
-    "url": "https://www.edujin.co.kr/news/articleView.html?idxno=50855"
-   },
-   {
-    "name": "입시리포트",
-    "url": "https://sanedu.com/%EC%9E%85%EC%8B%9C%EB%A6%AC%ED%8F%AC%ED%8A%B8-2028%ED%95%99%EB%85%84%EB%8F%84-%EB%8C%80%ED%95%99%EC%9E%85%EC%8B%9C-%EC%A3%BC%EC%9A%94-%EC%A0%84%ED%98%95-%EC%9D%BC%EC%A0%95/"
-   }
-  ],
   "audience": [
    "common"
   ],
@@ -780,26 +757,13 @@
   "entryYear": 2024,
   "examYear": 2027,
   "title": "2027학년도 수시 원서접수",
-  "body": "2026.9.7(월)~9.11(금) 중 대학별 3일 이상. 수시 지원은 최대 6회",
-  "status": "reported",
-  "unverified": true,
-  "sourceKind": "media",
-  "sourceName": "입시 일정 정리(makerschool)",
-  "sourceUrl": "https://makerschool.kr/482",
-  "sources": [
-   {
-    "name": "입시 일정 정리(makerschool)",
-    "url": "https://makerschool.kr/482"
-   },
-   {
-    "name": "전국지역신문협회",
-    "url": "https://www.anln.org/news/articleView.html?idxno=12395"
-   },
-   {
-    "name": "이다로 공식 주요일정",
-    "url": "https://edaero.kr/analysis/guide/%EC%A0%95%EC%8B%9C-%ED%83%80%EC%9E%84%EB%9D%BC%EC%9D%B8/2027%ED%95%99%EB%85%84%EB%8F%84-%EA%B3%B5%EC%8B%9D-%EC%A3%BC%EC%9A%94%EC%9D%BC%EC%A0%95"
-   }
-  ],
+  "body": "2026.9.7(월)~9.11(금) 중 대학별 3일 이상",
+  "status": "confirmed",
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
+  "sourceKind": "official",
+  "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
   "audience": [
    "grade3"
   ],
@@ -818,26 +782,13 @@
   "entryYear": 2024,
   "examYear": 2027,
   "title": "2027학년도 수시 전형기간·합격자 발표",
-  "body": "전형기간 2026.9.12~12.17, 합격자 발표 12.18까지(대교협 자료 인용 보도)",
-  "status": "reported",
-  "unverified": true,
-  "sourceKind": "media",
-  "sourceName": "입시 일정 정리(makerschool)",
-  "sourceUrl": "https://makerschool.kr/482",
-  "sources": [
-   {
-    "name": "입시 일정 정리(makerschool)",
-    "url": "https://makerschool.kr/482"
-   },
-   {
-    "name": "전국지역신문협회",
-    "url": "https://www.anln.org/news/articleView.html?idxno=12395"
-   },
-   {
-    "name": "이다로 공식 주요일정",
-    "url": "https://edaero.kr/analysis/guide/%EC%A0%95%EC%8B%9C-%ED%83%80%EC%9E%84%EB%9D%BC%EC%9D%B8/2027%ED%95%99%EB%85%84%EB%8F%84-%EA%B3%B5%EC%8B%9D-%EC%A3%BC%EC%9A%94%EC%9D%BC%EC%A0%95"
-   }
-  ],
+  "body": "전형기간 2026.9.12~12.17(97일), 합격자 발표 12.18까지",
+  "status": "confirmed",
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
+  "sourceKind": "official",
+  "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
   "audience": [
    "grade3"
   ],
@@ -856,26 +807,13 @@
   "entryYear": 2024,
   "examYear": 2027,
   "title": "2027학년도 수시 합격자 등록·충원",
-  "body": "최초 합격자 등록 2026.12.21~23, 미등록 충원 통보 12.24~29, 충원합격 등록 마감 12.30",
-  "status": "reported",
-  "unverified": true,
-  "sourceKind": "media",
-  "sourceName": "입시 일정 정리(makerschool)",
-  "sourceUrl": "https://makerschool.kr/482",
-  "sources": [
-   {
-    "name": "입시 일정 정리(makerschool)",
-    "url": "https://makerschool.kr/482"
-   },
-   {
-    "name": "전국지역신문협회",
-    "url": "https://www.anln.org/news/articleView.html?idxno=12395"
-   },
-   {
-    "name": "이다로 공식 주요일정",
-    "url": "https://edaero.kr/analysis/guide/%EC%A0%95%EC%8B%9C-%ED%83%80%EC%9E%84%EB%9D%BC%EC%9D%B8/2027%ED%95%99%EB%85%84%EB%8F%84-%EA%B3%B5%EC%8B%9D-%EC%A3%BC%EC%9A%94%EC%9D%BC%EC%A0%95"
-   }
-  ],
+  "body": "합격자 등록 2026.12.21~23, 미등록 충원 통보 12.24~29, 충원 등록 마감 12.30 22시",
+  "status": "confirmed",
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
+  "sourceKind": "official",
+  "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
   "audience": [
    "grade3"
   ],
@@ -894,26 +832,13 @@
   "entryYear": 2024,
   "examYear": 2027,
   "title": "2027학년도 정시 원서접수",
-  "body": "2027.1.4(월)~1.7(목) 중 3일 이상. 일정표 1종은 마감을 1.5로 적어 확인 필요",
-  "status": "reported",
-  "unverified": true,
-  "sourceKind": "media",
-  "sourceName": "메가스터디 대입 일정",
-  "sourceUrl": "https://www.megastudy.net/entinfo/main/entinfo_popup_251209.asp?tab_no=1",
-  "sources": [
-   {
-    "name": "메가스터디 대입 일정",
-    "url": "https://www.megastudy.net/entinfo/main/entinfo_popup_251209.asp?tab_no=1"
-   },
-   {
-    "name": "내신닷컴 일정표 PDF",
-    "url": "https://www.nesin.com/images/ipsi_plan/2027_ipsi_plan.pdf"
-   },
-   {
-    "name": "이다로 공식 주요일정",
-    "url": "https://edaero.kr/analysis/guide/%EC%A0%95%EC%8B%9C-%ED%83%80%EC%9E%84%EB%9D%BC%EC%9D%B8/2027%ED%95%99%EB%85%84%EB%8F%84-%EA%B3%B5%EC%8B%9D-%EC%A3%BC%EC%9A%94%EC%9D%BC%EC%A0%95"
-   }
-  ],
+  "body": "2027.1.4(월)~1.7(목) 중 3일 이상",
+  "status": "confirmed",
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
+  "sourceKind": "official",
+  "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
   "audience": [
    "grade3"
   ],
@@ -933,25 +858,12 @@
   "examYear": 2027,
   "title": "2027학년도 정시 전형기간",
   "body": "가군 2027.1.11~17, 나군 1.18~24, 다군 1.25~31",
-  "status": "reported",
-  "unverified": true,
-  "sourceKind": "media",
-  "sourceName": "메가스터디 대입 일정",
-  "sourceUrl": "https://www.megastudy.net/entinfo/main/entinfo_popup_251209.asp?tab_no=1",
-  "sources": [
-   {
-    "name": "메가스터디 대입 일정",
-    "url": "https://www.megastudy.net/entinfo/main/entinfo_popup_251209.asp?tab_no=1"
-   },
-   {
-    "name": "내신닷컴 일정표 PDF",
-    "url": "https://www.nesin.com/images/ipsi_plan/2027_ipsi_plan.pdf"
-   },
-   {
-    "name": "이다로 공식 주요일정",
-    "url": "https://edaero.kr/analysis/guide/%EC%A0%95%EC%8B%9C-%ED%83%80%EC%9E%84%EB%9D%BC%EC%9D%B8/2027%ED%95%99%EB%85%84%EB%8F%84-%EA%B3%B5%EC%8B%9D-%EC%A3%BC%EC%9A%94%EC%9D%BC%EC%A0%95"
-   }
-  ],
+  "status": "confirmed",
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
+  "sourceKind": "official",
+  "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
   "audience": [
    "grade3"
   ],
@@ -970,26 +882,13 @@
   "entryYear": 2024,
   "examYear": 2027,
   "title": "2027학년도 정시 합격자 발표·등록",
-  "body": "합격자 발표 2027.2.5까지(자료 1종), 등록 2.10~12, 미등록 충원 통보 2.13~17, 등록 마감 2.18 22시",
-  "status": "reported",
-  "unverified": true,
-  "sourceKind": "media",
-  "sourceName": "메가스터디 대입 일정",
-  "sourceUrl": "https://www.megastudy.net/entinfo/main/entinfo_popup_251209.asp?tab_no=1",
-  "sources": [
-   {
-    "name": "메가스터디 대입 일정",
-    "url": "https://www.megastudy.net/entinfo/main/entinfo_popup_251209.asp?tab_no=1"
-   },
-   {
-    "name": "내신닷컴 일정표 PDF",
-    "url": "https://www.nesin.com/images/ipsi_plan/2027_ipsi_plan.pdf"
-   },
-   {
-    "name": "이다로 공식 주요일정",
-    "url": "https://edaero.kr/analysis/guide/%EC%A0%95%EC%8B%9C-%ED%83%80%EC%9E%84%EB%9D%BC%EC%9D%B8/2027%ED%95%99%EB%85%84%EB%8F%84-%EA%B3%B5%EC%8B%9D-%EC%A3%BC%EC%9A%94%EC%9D%BC%EC%A0%95"
-   }
-  ],
+  "body": "합격자 발표 2027.2.5까지, 등록 2.10~12, 미등록 충원 통보 2.13~17, 충원 등록 마감 2.18 22시. 추가모집 2.19~26",
+  "status": "confirmed",
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
+  "sourceKind": "official",
+  "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
   "audience": [
    "grade3"
   ],
@@ -1008,12 +907,13 @@
   "entryYear": 2025,
   "examYear": 2028,
   "title": "2023-10-10 2028 대입개편 시안",
-  "body": "교육부가 시안 발표. 고교학점제를 앞두고 수능·내신 평가방식 개선 중심",
+  "body": "교육부가 2023.10.10 2028 대입개편 시안 발표(12.27 브리핑에서 언급)",
   "status": "confirmed",
-  "unverified": true,
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
   "sourceKind": "official",
-  "sourceName": "교육부 시안 브리핑",
-  "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156593725",
+  "sourceName": "교육부 브리핑(2023.12.27)",
+  "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
   "audience": [
    "common"
   ],
@@ -1028,6 +928,7 @@
   "body": "심화수학 신설 제외, 사회·과학 융합 선택과목은 절대평가만",
   "status": "confirmed",
   "unverified": true,
+  "reason": "공식 원문 출처 미특정, 매체 보도만 확인",
   "sourceKind": "official",
   "sourceName": "교육부 브리핑",
   "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
@@ -1042,11 +943,12 @@
   "entryYear": 2025,
   "examYear": 2028,
   "title": "2023-12-27 2028 대입개편 확정안",
-  "body": "통합형 수능, 내신 5등급. 2025 고1부터 적용",
+  "body": "통합형 수능, 내신 5등급. 2025년 고교 입학생부터 적용",
   "status": "confirmed",
-  "unverified": true,
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
   "sourceKind": "official",
-  "sourceName": "교육부 브리핑",
+  "sourceName": "교육부 브리핑(2023.12.27)",
   "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
   "audience": [
    "common"
@@ -1062,6 +964,7 @@
   "body": "국·수·사·과 예시문항과 대입전형 반영과목 조기 안내",
   "status": "reported",
   "unverified": true,
+  "reason": "공식 원문 출처 미특정, 매체 보도만 확인",
   "sourceKind": "media",
   "sourceName": "한국대학신문",
   "sourceUrl": "https://news.unn.net/news/articleView.html?idxno=577665",
@@ -1078,10 +981,21 @@
   "title": "2025-08-28 대교협 2028 기본사항",
   "body": "수시 시작 2027.9.20, 하반기 모의평가 9월→8월",
   "status": "confirmed",
-  "unverified": true,
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
   "sourceKind": "official",
-  "sourceName": "대교협 보도자료 PDF",
+  "sourceName": "대교협 보도자료: 2028학년도 대학입학전형기본사항 발표(2025.8.28)",
   "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/08/28/application_b244345d6cc72f7e172df15e831c276e.pdf",
+  "sources": [
+   {
+    "name": "대교협 보도자료: 2028학년도 대학입학전형기본사항 발표(2025.8.28)",
+    "url": "https://www.kcue.or.kr/_upload/news/2025/08/28/application_b244345d6cc72f7e172df15e831c276e.pdf"
+   },
+   {
+    "name": "대교협 2028학년도 대학입학전형기본사항(개정 2026.7.31)",
+    "url": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf"
+   }
+  ],
   "audience": [
    "common"
   ],
@@ -1097,6 +1011,7 @@
   "status": "reported",
   "note": "개인 제안",
   "unverified": true,
+  "reason": "공식 원문 출처 미특정, 매체 보도만 확인",
   "sourceKind": "media",
   "sourceName": "다음뉴스",
   "sourceUrl": "https://v.daum.net/v/20251210100131836",
@@ -1110,12 +1025,13 @@
   "topic": "change-log",
   "entryYear": 2025,
   "examYear": 2028,
-  "title": "2026-06-02 2028 수능 시행일 발표",
-  "body": "2027.11.18(목), 성적통지 12.10",
+  "title": "2025-06 2028 수능 시행일 발표",
+  "body": "2027.11.18(목), 성적통지 12.10(금). 교육부 보도자료 게시일 2025-06-01",
   "status": "confirmed",
-  "unverified": true,
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
   "sourceKind": "official",
-  "sourceName": "교육부 보도자료",
+  "sourceName": "교육부 보도자료: 2028학년도 수능 시행일 발표",
   "sourceUrl": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512",
   "audience": [
    "common"
@@ -1131,6 +1047,7 @@
   "body": "수능 전 과목 절대평가·서논술형 도입을 검토, 하반기 의견 수렴. 국교위는 확정된 개편안 없음이라고 밝힘",
   "status": "reported",
   "unverified": true,
+  "reason": "공식 원문 출처 미특정, 매체 보도만 확인",
   "sourceKind": "media",
   "sourceName": "MBC",
   "sourceUrl": "https://imnews.imbc.com/news/2026/society/article/6842663_36918.html",
@@ -1158,6 +1075,7 @@
   "body": "10월 말 공개 예정이었으나 연말로 연기 보도",
   "status": "reported",
   "unverified": true,
+  "reason": "공식 원문 출처 미특정, 매체 보도만 확인",
   "sourceKind": "media",
   "sourceName": "네이트(왜냐면)",
   "sourceUrl": "https://m.news.nate.com/view/20260817n13532",
@@ -1185,6 +1103,7 @@
   "body": "국교위 확정 목표(보도에 따라 3월 말). 적용 시기 미정",
   "status": "reported",
   "unverified": true,
+  "reason": "공식 원문 출처 미특정, 매체 보도만 확인",
   "sourceKind": "media",
   "sourceName": "M이코노미뉴스",
   "sourceUrl": "https://www.m-economynews.com/news/article.html?no=69490",
@@ -1226,12 +1145,23 @@
   "entryYear": 2025,
   "examYear": 2028,
   "title": "전형 유형 구분",
-  "body": "대교협 기본사항은 학생부위주(교과), 학생부위주(종합), 논술위주, 실기/실적위주, 수능위주로 나눔",
+  "body": "학생부위주(교과), 학생부위주(종합), 논술위주, 실기/실적위주, 수능위주, 기타로 구분(대교협 시행계획 모집인원 표 기준)",
   "status": "confirmed",
-  "unverified": true,
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
   "sourceKind": "official",
-  "sourceName": "대교협 2028학년도 기본사항",
-  "sourceUrl": "https://www.kcue.or.kr/news/sub02/sub01.php?at=view&idx=2764740",
+  "sourceName": "대교협 2028학년도 대학입학전형기본사항(개정 2026.7.31)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf",
+  "sources": [
+   {
+    "name": "대교협 2028학년도 대학입학전형기본사항(개정 2026.7.31)",
+    "url": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf"
+   },
+   {
+    "name": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
+    "url": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf"
+   }
+  ],
   "checkedAt": "2026-10-25"
  },
  {
@@ -1240,12 +1170,23 @@
   "entryYear": 2025,
   "examYear": 2028,
   "title": "시행계획 공표",
-  "body": "대학은 모집시기별 선발인원·전형유형·정시 모집군·전형요소별 반영비율을 담은 시행계획을 4월 말까지 공표. 2028학년도분은 2026.4.29 대교협 정리",
+  "body": "대학은 모집시기별 선발인원·전형유형·정시 모집군·전형요소별 반영비율 등을 담은 시행계획을 2026년 4월 말까지 홈페이지에 공표해야 함. 2028학년도분은 2026.4.29 대교협 정리",
   "status": "confirmed",
-  "unverified": true,
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
   "sourceKind": "official",
-  "sourceName": "대교협 2028학년도 시행계획 주요사항",
-  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf",
+  "sourceName": "대교협 2028학년도 대학입학전형기본사항(개정 2026.7.31)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf",
+  "sources": [
+   {
+    "name": "대교협 2028학년도 대학입학전형기본사항(개정 2026.7.31)",
+    "url": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf"
+   },
+   {
+    "name": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29)",
+    "url": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf"
+   }
+  ],
   "checkedAt": "2026-10-25"
  },
  {
@@ -1254,12 +1195,13 @@
   "entryYear": 2025,
   "examYear": 2028,
   "title": "지원 횟수",
-  "body": "수시 최대 6회(대학 수가 아니라 전형 수), 정시 가·나·다군 각 1회. 공식 원문으로 못 확인",
-  "status": "reported",
-  "unverified": true,
-  "sourceKind": "media",
-  "sourceName": "스토리플래닛",
-  "sourceUrl": "https://storyplanet.co.kr/2028-admission-apply-count-rules/",
+  "body": "수시모집은 지원 횟수 최대 6회(대학 수와 무관하게 수시 모든 전형 기준, 초과 지원은 무효). 정시모집은 군별 지원횟수 제한",
+  "status": "confirmed",
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
+  "sourceKind": "official",
+  "sourceName": "대교협 2028학년도 대학입학전형기본사항(개정 2026.7.31)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1268,11 +1210,12 @@
   "entryYear": 2025,
   "examYear": 2028,
   "title": "2028학년도 모집 규모",
-  "body": "수시 281,895명(약 80.8%), 정시 66,894명(약 19.2%), 합계 348,789명. 깨진 표를 해석한 값이라 불확실",
-  "status": "estimated",
+  "body": "수시 281,895명(80.8%, 정원내 252,356 + 정원외 29,539), 정시 66,894명(19.2%), 합계 348,789명(2026.4.29 기준)",
+  "status": "confirmed",
+  "note": "공식 원문 확인, 2026-10-25",
   "unverified": false,
-  "sourceKind": null,
-  "sourceName": "대교협 2028학년도 시행계획 주요사항",
+  "sourceKind": "official",
+  "sourceName": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29)",
   "sourceUrl": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf",
   "checkedAt": "2026-10-25"
  },
@@ -1285,6 +1228,7 @@
   "body": "경희대 수능90+학생부10 트랙 신설, 서울대 정시 2단계 수능60+교과역량평가40, 중앙대 수능위주 2분할",
   "status": "reported",
   "unverified": true,
+  "reason": "공식 원문 출처 미특정, 매체 보도만 확인",
   "sourceKind": "media",
   "sourceName": "교육을 비추다",
   "sourceUrl": "https://www.kyobit.com/news/articleView.html?idxno=5130",
@@ -1313,6 +1257,7 @@
   "body": "서울대 수시 전 전형 폐지, 고려대 학교추천 일부 폐지, 성균관대 융합인재 신설(3개 합 6). 대학별로 방향이 엇갈림",
   "status": "reported",
   "unverified": true,
+  "reason": "공식 원문 출처 미특정, 매체 보도만 확인",
   "sourceKind": "media",
   "sourceName": "교육을 비추다",
   "sourceUrl": "https://www.kyobit.com/news/articleView.html?idxno=5440",
@@ -1337,6 +1282,7 @@
   "body": "교육부가 최저기준을 낮춘 대학에 가점을 주는 방향",
   "status": "reported",
   "unverified": true,
+  "reason": "공식 원문 출처 미특정, 매체 보도만 확인",
   "sourceKind": "media",
   "sourceName": "국민일보",
   "sourceUrl": "https://www.kmib.co.kr/article/view.asp?arcid=1771923523",
@@ -1351,6 +1297,7 @@
   "body": "모집단위별 권장과목 제시가 수시·정시에서 확산. 구체 과목은 확인 못 함",
   "status": "reported",
   "unverified": true,
+  "reason": "공식 원문 출처 미특정, 매체 보도만 확인",
   "sourceKind": "media",
   "sourceName": "베리타스알파",
   "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=600481",
@@ -1362,20 +1309,21 @@
   "entryYear": 2024,
   "examYear": 2027,
   "title": "총 모집·수시/정시 비율",
-  "body": "총 345,717명. 수시 277,583명(80.3%), 정시 68,134명(19.7%). 수시 수치는 기사마다 277,538/277,583로 달라 대교협 원문 확인 필요. 의대 증원 반영 여부에 따라 변동 가능",
-  "status": "reported",
-  "unverified": true,
-  "sourceKind": "media",
-  "sourceName": "머니투데이",
-  "sourceUrl": "https://www.mt.co.kr/policy/2025/04/30/2025042915510298641",
+  "body": "총 345,717명. 수시 277,583명(80.3%), 정시 68,134명(19.7%)(2025.4.28 기준, 2028학년도 시행계획 표에도 동일)",
+  "status": "confirmed",
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
+  "sourceKind": "official",
+  "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
   "sources": [
    {
-    "name": "머니투데이",
-    "url": "https://www.mt.co.kr/policy/2025/04/30/2025042915510298641"
+    "name": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
+    "url": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf"
    },
    {
-    "name": "한국NGO신문",
-    "url": "https://www.ngonews.kr/news/articleView.html?idxno=206140"
+    "name": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29)",
+    "url": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf"
    }
   ],
   "checkedAt": "2026-10-25"
@@ -1386,12 +1334,13 @@
   "entryYear": 2024,
   "examYear": 2027,
   "title": "수시 내 전형 구성",
-  "body": "학생부교과 56.3%(156,403명), 학생부종합 29.5%(81,931명), 논술 4.6%(12,711명), 실기/실적 7.9%(21,954명). 합이 수시 전체와 맞지 않아 나머지는 확인 못 함",
-  "status": "reported",
-  "unverified": true,
-  "sourceKind": "media",
-  "sourceName": "EBSi 시행계획 정리",
-  "sourceUrl": "https://www.ebsi.co.kr/ebs/ent/enta/retrieveUnivEntOperPnt.ebs?yearGbn=2027",
+  "body": "수시 277,583명 중 학생부교과 156,403명(56.3%), 학생부종합 81,931명(29.5%), 논술 12,711명(4.6%), 실기/실적 21,954명(7.9%), 기타 4,584명(1.7%). 전체 대비 각 45.2%, 23.7%, 3.7%, 6.4%, 1.3%",
+  "status": "confirmed",
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
+  "sourceKind": "official",
+  "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1400,12 +1349,13 @@
   "entryYear": 2024,
   "examYear": 2027,
   "title": "정시 구성",
-  "body": "수능위주 63,195명(92.8%)",
-  "status": "reported",
-  "unverified": true,
-  "sourceKind": "media",
-  "sourceName": "경향신문",
-  "sourceUrl": "https://www.khan.co.kr/article/202504300739001",
+  "body": "정시 68,134명 중 수능위주 63,195명(92.8%, 전체 대비 18.3%), 실기/실적 4,574명, 학생부교과 228명, 학생부종합 117명, 기타 20명",
+  "status": "confirmed",
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
+  "sourceKind": "official",
+  "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1414,12 +1364,13 @@
   "entryYear": 2024,
   "examYear": 2027,
   "title": "지역별 수시 비중",
-  "body": "비수도권 89.5%, 수도권 65.8%",
-  "status": "reported",
-  "unverified": true,
-  "sourceKind": "media",
-  "sourceName": "머니투데이",
-  "sourceUrl": "https://www.mt.co.kr/policy/2025/04/30/2025042915510298641",
+  "body": "권역별 수시 비중: 수도권 88,756/134,787명 = 65.8%, 비수도권 188,827/210,930명 = 89.5%(시행계획 표로 계산)",
+  "status": "confirmed",
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
+  "sourceKind": "official",
+  "sourceName": "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
   "checkedAt": "2026-10-25"
  },
  {
@@ -1460,6 +1411,7 @@
   "status": "material",
   "note": "2026학년도 기준, 2027 규칙 확인 필요",
   "unverified": true,
+  "reason": "공식 원문 출처 미특정, 매체 보도만 확인",
   "sourceKind": "material",
   "sourceName": "학교 배부 가정통신문 사진(분석 세션 판독)",
   "sourceUrl": null,
@@ -1475,6 +1427,7 @@
   "status": "material",
   "note": "2026학년도 기준, 2027 규칙 확인 필요",
   "unverified": true,
+  "reason": "공식 원문 출처 미특정, 매체 보도만 확인",
   "sourceKind": "material",
   "sourceName": "학교 배부 가정통신문 사진(분석 세션 판독)",
   "sourceUrl": null,
@@ -1490,6 +1443,7 @@
   "status": "material",
   "note": "2026학년도 기준, 2027 규칙 확인 필요",
   "unverified": true,
+  "reason": "공식 원문 출처 미특정, 매체 보도만 확인",
   "sourceKind": "material",
   "sourceName": "학교 배부 가정통신문 사진(분석 세션 판독)",
   "sourceUrl": null,
@@ -1505,6 +1459,7 @@
   "status": "material",
   "note": "2026학년도 기준, 2027 규칙 확인 필요",
   "unverified": true,
+  "reason": "공식 원문 출처 미특정, 매체 보도만 확인",
   "sourceKind": "material",
   "sourceName": "학교 배부 가정통신문 사진(분석 세션 판독)",
   "sourceUrl": null,
@@ -1520,6 +1475,7 @@
   "status": "material",
   "note": "2026학년도 기준, 2027 규칙 확인 필요",
   "unverified": true,
+  "reason": "공식 원문 출처 미특정, 매체 보도만 확인",
   "sourceKind": "material",
   "sourceName": "학교 배부 가정통신문 사진(분석 세션 판독)",
   "sourceUrl": null,
@@ -1535,6 +1491,7 @@
   "status": "material",
   "note": "2026학년도 기준, 2027 규칙 확인 필요",
   "unverified": true,
+  "reason": "공식 원문 출처 미특정, 매체 보도만 확인",
   "sourceKind": "material",
   "sourceName": "학교 배부 가정통신문 사진(분석 세션 판독)",
   "sourceUrl": null,
@@ -1550,6 +1507,7 @@
   "status": "material",
   "note": "2026학년도 기준, 2027 규칙 확인 필요",
   "unverified": true,
+  "reason": "공식 원문 출처 미특정, 매체 보도만 확인",
   "sourceKind": "material",
   "sourceName": "학교 배부 가정통신문 사진(분석 세션 판독)",
   "sourceUrl": null,
@@ -2163,6 +2121,247 @@
   "sourceKind": "academy",
   "sourceName": "설연고 설명회 자료(사용자 제공 원본)",
   "sourceUrl": null,
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "gg-01",
+  "topic": "gg-hs-entry",
+  "entryYear": 2027,
+  "examYear": 2030,
+  "title": "경기 2027학년도 고입 기본계획 발표",
+  "body": "경기도교육청이 2026.3.30 기본계획 발표. 전기 학교는 8.24, 후기 학교(일반고, 자율형 공립고, 외국어고, 국제고, 자율형 사립고)는 12.4부터 전형 시작, 후기 전형은 2027.2.5까지",
+  "status": "reported",
+  "unverified": true,
+  "reason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+  "sourceKind": "media",
+  "sourceName": "뉴스핌",
+  "sourceUrl": "https://www.newspim.com/news/view/20260330000537",
+  "sources": [
+   {
+    "name": "뉴스핌",
+    "url": "https://www.newspim.com/news/view/20260330000537"
+   },
+   {
+    "name": "데일리안",
+    "url": "https://www.dailian.co.kr/news/view/1627070/%EA%B2%BD%EA%B8%B0%EB%8F%84%EA%B5%90%EC%9C%A1%EC%B2%AD-2027%ED%95%99%EB%85%84%EB%8F%84-%EA%B2%BD%EA%B8%B0%EB%8F%84-%EA%B3%A0-2026"
+   }
+  ],
+  "audience": [
+   "common"
+  ],
+  "events": [
+   {
+    "label": "",
+    "start": "2026-03-30"
+   }
+  ],
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "gg-02",
+  "topic": "gg-hs-entry",
+  "entryYear": 2027,
+  "examYear": 2030,
+  "title": "경기 후기 전형 일정 불일치",
+  "body": "후기 전형 시작일이 경기도교육청 기본계획 보도에서는 12.4, 전국 자사고 12.2~11 보도도 있음. 학교·유형별로 다를 수 있어 공식 포털에서 확인 필요",
+  "status": "reported",
+  "unverified": true,
+  "reason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+  "sourceKind": "media",
+  "sourceName": "베리타스알파",
+  "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=604064",
+  "sources": [
+   {
+    "name": "베리타스알파",
+    "url": "https://www.veritas-a.com/news/articleView.html?idxno=604064"
+   },
+   {
+    "name": "뉴스핌",
+    "url": "https://www.newspim.com/news/view/20260330000537"
+   }
+  ],
+  "audience": [
+   "general",
+   "private"
+  ],
+  "events": [
+   {
+    "label": "",
+    "start": "2026-12-02",
+    "end": "2026-12-11"
+   }
+  ],
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "gg-03",
+  "topic": "gg-hs-entry",
+  "entryYear": 2027,
+  "examYear": 2030,
+  "title": "경기 외고·국제고·자사고 원서접수",
+  "body": "외대부고·안산동산고(전국 자사고) 12.4~10, 경기·고양·과천·김포·동두천·성남·수원·안양 외고와 고양·동탄·청심 국제고도 12.4~10 접수(2026.10.23 기준 고입캘린더)",
+  "status": "reported",
+  "unverified": true,
+  "reason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+  "sourceKind": "media",
+  "sourceName": "베리타스알파 고입캘린더",
+  "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=632287",
+  "audience": [
+   "private"
+  ],
+  "events": [
+   {
+    "label": "",
+    "start": "2026-12-04",
+    "end": "2026-12-10"
+   }
+  ],
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "gg-04",
+  "topic": "gg-hs-entry",
+  "entryYear": 2027,
+  "examYear": 2030,
+  "title": "경기 후기 평준화 일반고 원서접수",
+  "body": "2027학년도 날짜는 확인 못 함. 참고로 2026학년도 기본계획은 2025.12.5~12.11",
+  "status": "reported",
+  "unverified": true,
+  "reason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+  "sourceKind": null,
+  "sourceName": null,
+  "sourceUrl": null,
+  "audience": [
+   "general"
+  ],
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "gg-05",
+  "topic": "gg-hs-entry",
+  "entryYear": 2027,
+  "examYear": 2030,
+  "title": "중1 2학기 성적 반영",
+  "body": "2027학년도 고입부터 중학교 1학년 2학기 성적 반영. 2028학년도 입학전형부터 봉사활동 실적 제외, 출결 반영 강화(현 중3은 중1 2학기 성적 해당)",
+  "status": "reported",
+  "unverified": true,
+  "reason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+  "sourceKind": "media",
+  "sourceName": "뉴스1",
+  "sourceUrl": "https://www.news1.kr/local/gyeonggi/6118183",
+  "audience": [
+   "common"
+  ],
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "gg-06",
+  "topic": "gg-hs-entry",
+  "entryYear": 2027,
+  "examYear": 2030,
+  "title": "평준화 일반고 배정 방식",
+  "body": "도내 평준화 일반고는 지원과 추첨 결합 방식. 중학교 내신(200점 만점) 기준으로 학군별 정원만큼 대상자를 뽑은 뒤 지망 순위에 따라 추첨. 용인은 1단계 학군내배정, 2단계 구역내배정",
+  "status": "reported",
+  "unverified": true,
+  "reason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+  "sourceKind": "media",
+  "sourceName": "분당신문",
+  "sourceUrl": "https://www.bundangnews.co.kr/58587",
+  "sources": [
+   {
+    "name": "분당신문",
+    "url": "https://www.bundangnews.co.kr/58587"
+   },
+   {
+    "name": "아시아경제",
+    "url": "https://view.asiae.co.kr/article/2026092812475292099"
+   }
+  ],
+  "audience": [
+   "general"
+  ],
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "gg-07",
+  "topic": "gg-hs-entry",
+  "entryYear": 2027,
+  "examYear": 2030,
+  "title": "지망 작성 규칙",
+  "body": "외국어고·국제고·자사고 지원자는 1지망에 해당 학교, 2지망부터 학군 또는 구역 내 학교를 희망 순서대로 작성. 1지망 불합격 시 2지망부터 추첨",
+  "status": "reported",
+  "unverified": true,
+  "reason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+  "sourceKind": "media",
+  "sourceName": "분당신문",
+  "sourceUrl": "https://www.bundangnews.co.kr/58587",
+  "sources": [
+   {
+    "name": "분당신문",
+    "url": "https://www.bundangnews.co.kr/58587"
+   },
+   {
+    "name": "아시아경제",
+    "url": "https://view.asiae.co.kr/article/2026092812475292099"
+   }
+  ],
+  "audience": [
+   "general",
+   "private"
+  ],
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "gg-08",
+  "topic": "gg-hs-entry",
+  "entryYear": 2027,
+  "examYear": 2030,
+  "title": "평준화 배정 설명회",
+  "body": "경기도교육청 2027학년도 고교 평준화 배정 설명회 2026.10.19~11.27, 유튜브 경기고입TV 비대면. 세부 자료는 고입·전학 포털(satp.goe.go.kr)",
+  "status": "reported",
+  "unverified": true,
+  "reason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+  "sourceKind": "media",
+  "sourceName": "아시아경제",
+  "sourceUrl": "https://view.asiae.co.kr/article/2026092812475292099",
+  "sources": [
+   {
+    "name": "아시아경제",
+    "url": "https://view.asiae.co.kr/article/2026092812475292099"
+   },
+   {
+    "name": "분당신문",
+    "url": "https://www.bundangnews.co.kr/58587"
+   }
+  ],
+  "audience": [
+   "general"
+  ],
+  "events": [
+   {
+    "label": "",
+    "start": "2026-10-19",
+    "end": "2026-11-27"
+   }
+  ],
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "gg-09",
+  "topic": "gg-hs-entry",
+  "entryYear": 2027,
+  "examYear": 2030,
+  "title": "경기·용인 확인 못 함",
+  "body": "2027학년도 용인학군 구역 구성(1·2·3구역)·구역별 지망 가능 학교 수, 후기 일반고 접수일, 외고·국제고·자사고 면접·내신 배점은 확인 못 함",
+  "status": "unknown",
+  "note": "확인 못 함",
+  "unverified": false,
+  "sourceKind": null,
+  "sourceName": null,
+  "sourceUrl": null,
+  "audience": [
+   "common"
+  ],
   "checkedAt": "2026-10-25"
  }
 ]
