@@ -563,10 +563,10 @@
         "kind": "official",
         "retrieved": "2026-10-25",
         "file": "files/inbox/ABrJyp73GibgGE5W.jpg",
-        "note": "AI가 사진에서 전사. 사람 확인 전"
+        "note": "AI가 사진에서 전사. 사용자 확인 완료(2026-10-25)"
       }
     ],
-    "confidence": "unverified",
+    "confidence": "reported",
     "updated": "2026-10-25"
   }
 }
