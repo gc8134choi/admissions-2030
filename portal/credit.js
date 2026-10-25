@@ -46,6 +46,22 @@ const HERO_SVG = `<svg class="cv-hero-art" viewBox="0 0 320 190" role="img" aria
   </g>
 </svg>`;
 
+// 섹션 머리 오른쪽의 작은 일러스트(직접 그림). 번호는 카드 번호(.cv-sN)와 같다. 색은 --c(섹션색)와 테마 변수만 쓴다.
+const SPOT_STYLE = 'stroke="var(--cv-ink)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"';
+const SPOT = {
+  1: '<path d="M14 54V10" /><path d="M14 12h30l-7 9 7 9H14z" fill="var(--c)"/><path d="M4 54h60" /><circle cx="58" cy="14" r="6" fill="var(--cv-sun)"/>',
+  2: '<circle cx="36" cy="38" r="20" fill="var(--c)"/><path d="M36 38V18A20 20 0 0 1 43 19.3z" fill="var(--cv5)" transform="translate(3 -4)"/><path d="M2 14l14-5 14 5-14 5z" fill="var(--cv-cap)"/>',
+  3: '<path d="M4 54h14V42h14V30h14V18h16v36" fill="color-mix(in srgb,var(--c) 30%,var(--panel))"/><circle cx="24" cy="22" r="5" fill="var(--panel)"/><path d="M24 27v9M24 31l-6 5M24 31l6 4" /><path d="M62 18V6l8 3-8 3" fill="var(--c)"/>',
+  4: '<rect x="14" y="10" width="40" height="46" rx="4" fill="var(--panel)"/><rect x="26" y="5" width="16" height="9" rx="3" fill="var(--c)"/><path d="M22 24l4 4 7-8M22 38l4 4 7-8M38 25h10M38 39h10" />',
+  5: '<rect x="8" y="40" width="50" height="12" rx="2" fill="var(--cv-b1)"/><rect x="14" y="28" width="44" height="12" rx="2" fill="var(--c)"/><rect x="10" y="16" width="46" height="12" rx="2" fill="var(--cv-b3)"/><path d="M60 52l8-34 4 2-6 34z" fill="var(--cv-sun)"/>',
+  6: '<path d="M34 56V8" /><path d="M34 10h22l5 6-5 6H34z" fill="var(--cv-b2)"/><path d="M34 26H14l-5 6 5 6h20z" fill="var(--cv-b1)"/><path d="M34 42h22l5 6-5 6H34z" fill="var(--cv-b3)"/>',
+  7: '<rect x="12" y="6" width="42" height="52" rx="4" fill="var(--panel)"/><text x="33" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="var(--c)" stroke="none">A</text><path d="M20 40v10M28 36v14M36 43v7M44 38v12" stroke="var(--c)" stroke-width="4"/>',
+  8: '<path d="M8 54c18-4 6-18 22-22s8-14 26-18" fill="none" stroke-dasharray="3 5"/><circle cx="8" cy="54" r="5" fill="var(--panel)"/><circle cx="30" cy="32" r="5" fill="var(--panel)"/><circle cx="56" cy="14" r="5" fill="var(--c)"/><path d="M56 9V1l9 3-9 3" fill="var(--c)"/>',
+  9: '<path d="M6 24L34 8l28 16z" fill="var(--c)"/><path d="M12 28v22M24 28v22M44 28v22M56 28v22M6 54h56" /><path d="M2 6l10-3 10 3-10 3z" fill="var(--cv-cap)" transform="translate(48 -2)"/>',
+  10: '<g fill="var(--panel)"><path d="M4 56V34l9-8 9 8v22z"/><path d="M26 56V28l9-8 9 8v28z" fill="color-mix(in srgb,var(--c) 30%,var(--panel))"/><path d="M48 56V34l9-8 9 8v22z"/></g><path d="M10 56V46h6v10M32 56V44h6v12M54 56V46h6v10" />',
+};
+const spot = (n) => (SPOT[n] ? `<svg class="cv-spot" viewBox="0 0 72 62" ${SPOT_STYLE} fill="none" aria-hidden="true">${SPOT[n]}</svg>` : "");
+
 export async function creditView(el, { load, esc, badge, src, table, basic }) {
   const [rows, summary, manifest] = await Promise.all([load("policy"), load("summary"), fetch("img/credit/manifest.json").then((r) => (r.ok ? r.json() : {})).catch(() => ({}))]);
   const get = (id) => rows.find((r) => r.id === id);
@@ -61,15 +77,20 @@ export async function creditView(el, { load, esc, badge, src, table, basic }) {
     return `<figure class="cv-fig"><img src="img/credit/${esc(m.file)}" alt="${esc(m.caption || "")}" loading="lazy"><figcaption>${esc(m.caption || "")}${m.source ? ` <span class="muted">출처: ${esc(m.source)}</span>` : ""}</figcaption></figure>`;
   };
   // 섹션 카드: 색(.cv-sN), 아이콘 헤더, 한 줄 요약, 본문, 공식 이미지 슬롯, 근거 표.
-  const card = (n, ic, title, lead, body, ids, slot, basisTitle = "근거·상태 표") =>
-    `<section class="cv-card cv-s${n}"><header class="cv-h"><span class="cv-hi">${icon(ic)}</span><div><h3>${title}</h3>${lead ? `<p class="cv-lead">${lead}</p>` : ""}</div></header>${body}${fig(slot)}${basis(basisTitle, ids)}</section>`;
+  const toc = [];
+  const card = (n, ic, title, lead, body, ids, slot, basisTitle = "근거·상태 표") => (toc.push([n, title]),
+    `<section class="cv-card cv-s${n}" id="cv-sec-${n}"><header class="cv-h"><span class="cv-hi">${icon(ic)}</span><div class="cv-ht"><h3><span class="cv-no"></span>${title}</h3>${lead ? `<p class="cv-lead">${lead}</p>` : ""}</div>${spot(n)}</header>${body}${fig(slot)}${basis(basisTitle, ids)}</section>`);
 
   // ---- 숫자 읽기 ----
   const grad = num("cur-01", /(\d+)학점\s*=\s*교과\s*(\d+).*?창의적 체험활동\s*(\d+)/); // [192, 174, 18]
   const split = num("cur-14", /필수\s*(\d+)학점.*?나머지\s*(\d+)학점/) || num("cur-14", /필수\s*(\d+)\s*\+\s*자율\s*(\d+)/); // [84, 90]
   const unit = num("cur-09", /1학점당 수업량은\s*(\d+)회/); // [16] (1회 시간은 원문 확인 전이라 쓰지 않는다)
-  const att = num("cur-02", /출석\s*(\d+)\s*\/\s*(\d+)/); // [2, 3]
-  const ach = num("cur-16", /성취율\s*(\d+)\s*%/); // [40]
+  // 이수 기준: 선택과목은 출석률만, 공통과목은 출석률+학업성취율(2026.1.28 완화, log-16). 못 읽으면 cur-02·cur-16 본문을 쓴다.
+  const att = num("log-16", /출석률\(?\s*(\d+)\s*\/\s*(\d+)/) || num("cur-02", /출석\s*(\d+)\s*\/\s*(\d+)/); // [2, 3]
+  const ach = num("log-16", /공통과목은[^.]*?학업성취율\s*(\d+)\s*%/) || num("cur-16", /성취율\s*(\d+)\s*%/); // [40] 공통과목 한정
+  const relax = get("log-16");
+  const applyText = (relax?.body.match(/\d{4}학년도 고1~2, \d{4}학년도 전 학년 적용 예정/) || [])[0]; // 적용 시기(본문 그대로)
+  const onlineText = (relax?.body.match(/미이수 시 ([^(]+?)(?:\(|$)/) || [])[1]?.trim();
   const cap = num("cur-12", /(\d+)학점을 넘을 수/); // [81]
   const ratioText = (get("cur-15")?.body.match(/((?:\d+\/){4}\d+)\s*%/) || get("cur-04")?.body.match(/((?:\d+\/){4}\d+)\s*%/) || [])[1];
   const ratio = ratioText ? ratioText.split("/").map(Number) : null; // [10, 24, 32, 24, 10]
@@ -97,9 +118,9 @@ export async function creditView(el, { load, esc, badge, src, table, basic }) {
   // ---- 1. 한눈에: 큰 숫자 타일 ----
   const tiles = [
     grad && [grad[0], "졸업 학점", "cur-01", "flag"], grad && [grad[1], "교과 학점", "cur-01", "book"], grad && [grad[2], "창의적 체험활동", "cur-01", "merge"],
-    unit && [`${unit[0]}회`, "1학점당 수업량", "cur-09", "calendar"], att && [`${att[0]}/${att[1]}`, "출석 기준", "cur-02", "list"], ach && [`${ach[0]}%`, "학업성취율 기준", "cur-16", "gauge"],
+    unit && [`${unit[0]}회`, "1학점당 수업량", "cur-09", "calendar"], att && [`${att[0]}/${att[1]}`, "출석률 기준", relax ? "log-16" : "cur-02", "list"], ach && [`${ach[0]}%`, "공통과목 학업성취율", relax ? "log-16" : "cur-16", "gauge"],
   ].filter(Boolean);
-  if (tiles.length) cards.push(card(1, "flag", "한눈에", "졸업과 이수 기준의 핵심 숫자", `<div class="cv-tiles">${tiles.map(([v, l, id, ic], i) => `<div class="cv-tile t${i % 6}"><span class="cv-ti">${icon(ic)}</span><b>${esc(String(v))}</b><span>${l}</span>${chip(id)}</div>`).join("")}</div>`, ["cur-01", "cur-14", "cur-09", "cur-02", "cur-16", "hs-14"], "credit-01-overview"));
+  if (tiles.length) cards.push(card(1, "flag", "한눈에", "졸업과 이수 기준의 핵심 숫자", `<div class="cv-tiles">${tiles.map(([v, l, id, ic], i) => `<div class="cv-tile t${i % 6}"><span class="cv-ti">${icon(ic)}</span><b>${esc(String(v))}</b><span>${l}</span>${chip(id)}</div>`).join("")}</div>`, ["cur-01", "cur-14", "cur-09", "log-16", "cur-02", "cur-16", "hs-14"], "credit-01-overview"));
 
   // ---- 2. 졸업 학점 구성: 도넛 + 스택바 ----
   if (grad && grad[1] + grad[2] === grad[0]) {
@@ -126,13 +147,18 @@ export async function creditView(el, { load, esc, badge, src, table, basic }) {
       `${road}<div class="cv-ylegend"><span><i class="req"></i>지정</span><span><i class="ele"></i>선택</span></div><div class="cv-years">${summary.map(mini).join("")}</div><p class="muted small">학교별 학년 교과 학점. 창의적 체험활동 제외. <a href="#select/curriculum">학교별 편제표 보기</a></p>`, [], "credit-03-journey"));
   }
 
-  // ---- 4. 이수 요건: 게이지 ----
-  const gauges = [
-    att && [`출석 ${att[0]}/${att[1]} 이상`, pct(att[0], att[1]), "cur-02"],
-    ach && [`학업성취율 ${ach[0]}% 이상`, ach[0], "cur-16"],
-    cap && grad && [`국·수·영 이수학점 합 ${cap[0]}학점 이하 (교과 ${grad[1]} 중)`, pct(cap[0], grad[1]), "cur-12"],
-  ].filter(Boolean);
-  if (gauges.length) cards.push(card(4, "shield", "과목 이수 요건", "이 기준에 못 미치면 학점이 인정되지 않습니다(보충이수 가능).", `<div class="cv-gauges">${gauges.map(([l, p, id]) => `<div class="cv-g"><div class="cv-gl">${esc(l)} ${chip(id)}</div><div class="cv-gb"><span style="width:${p}%"></span></div></div>`).join("")}</div>`, ["cur-02", "cur-16", "cur-12"], "credit-04-requirements"));
+  // ---- 4. 이수 요건: 공통과목 / 선택과목 게이지 ----
+  const gauge = (l, p, id) => `<div class="cv-g"><div class="cv-gl">${esc(l)} ${chip(id)}</div><div class="cv-gb"><span style="width:${p}%"></span></div></div>`;
+  const rid = relax ? "log-16" : "cur-02";
+  const common = [att && gauge(`출석률 ${att[0]}/${att[1]} 이상`, pct(att[0], att[1]), rid), ach && gauge(`학업성취율 ${ach[0]}% 이상`, ach[0], relax ? "log-16" : "cur-16")].filter(Boolean);
+  const elective = att ? [gauge(`출석률 ${att[0]}/${att[1]} 이상`, pct(att[0], att[1]), rid)] : [];
+  const capG = cap && grad ? gauge(`국·수·영 이수학점 합 ${cap[0]}학점 이하 (교과 ${grad[1]} 중)`, pct(cap[0], grad[1]), "cur-12") : "";
+  if (common.length || elective.length) {
+    const lead = relax && ach ? `선택과목은 출석률만, 공통과목은 출석률과 학업성취율 ${ach[0]}%가 요건입니다.` : "과목 이수 기준입니다.";
+    const extra = [applyText && `적용: ${esc(applyText)}`, onlineText && `미이수 시 ${esc(onlineText)}`].filter(Boolean);
+    const body = `<div class="cv-two"><div class="cv-pane"><h4><i class="cv-dot c0"></i>공통과목</h4>${common.join("")}</div><div class="cv-pane"><h4><i class="cv-dot c1"></i>선택과목</h4>${elective.join("")}<p class="muted small">학업성취율은 선택과목의 이수 요건이 아닙니다.</p></div></div>${capG ? `<div class="cv-cap">${capG}</div>` : ""}${extra.length ? `<ul class="cv-extra">${extra.map((t) => `<li>${t}</li>`).join("")}</ul>` : ""}`;
+    cards.push(card(4, "shield", "과목 이수 요건", lead, body, ["log-16", "cur-02", "cur-16", "cur-12"], "credit-04-requirements"));
+  }
 
   // ---- 5. 공통과목 필수학점 ----
   if (c3) {
@@ -196,7 +222,9 @@ export async function creditView(el, { load, esc, badge, src, table, basic }) {
   const subj = by("cur-17", "cur-18", "cur-19", "cur-20", "cur-21", "cur-22", "cur-23", "cur-24", "cur-25", "cur-27");
   const tail = subj.length ? `<details class="cv-basis cv-big"><summary>과목표(교과군별) 전체 보기</summary>${table(subj, basic)}</details>` : "";
 
+  const nav = `<nav class="cv-toc" aria-label="섹션 목차">${toc.map(([n, t], i) => `<button type="button" class="fchip" data-go="cv-sec-${n}"><b>${i + 1}</b> ${esc(t)}</button>`).join("")}</nav>`;
   el.innerHTML = `${hero}<p class="note">서울교육청 자료는 경기 적용 확인 필요. 경기도교육청 행은 요약본(출처 불일치 가능). 그림 위 배지와 "근거·상태 표"에서 상태·출처를 확인하세요.</p>
-    ${cards.join("")}${tail}
+    ${nav}${cards.map((c, i) => c.replace('<span class="cv-no"></span>', `<span class="cv-no">${i + 1}</span>`)).join("")}${tail}
     <p class="muted">수능 출제범위는 <a href="#admission/system">대입 제도</a>에서 봅니다.</p>`;
+  el.querySelector(".cv-toc")?.addEventListener("click", (e) => { const b = e.target.closest("[data-go]"); if (b) document.getElementById(b.dataset.go)?.scrollIntoView({ behavior: "smooth", block: "start" }); });
 }

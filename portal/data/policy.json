@@ -358,7 +358,7 @@
   "entryYear": 2027,
   "examYear": 2030,
   "title": "과목 이수",
-  "body": "학업성취율 40% 미만이면 미이수, 보충이수 가능",
+  "body": "과목 이수는 출석률 2/3 이상과 학업성취율 40% 이상이 원칙이었으나 2026.1.28 완화로 선택과목은 출석률만 적용(공통과목은 현행 유지). 미이수 시 보충이수 가능(기존 검색 요약, 완화 내용은 log-16 참고)",
   "status": "reported",
   "unverified": true,
   "reason": "교육청 사이트 접속 차단, 매체 보도만 확인",
@@ -2594,6 +2594,31 @@
   "region": "national",
   "audience": [
    "common"
+  ],
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "log-16",
+  "topic": "change-log",
+  "entryYear": 2025,
+  "examYear": 2028,
+  "title": "2026-01-28 고교학점제 학점 이수 기준 완화",
+  "body": "선택과목은 학업성취율을 제외하고 출석률(2/3 이상)만 적용, 공통과목은 출석률과 학업성취율 40% 현행 유지, 창의적 체험활동은 학년별 수업일수 2/3 출석. 2026학년도 고1~2, 2027학년도 전 학년 적용 예정. 미이수 시 온라인 콘텐츠로 학점 취득 지원(국가교육위원회 2026.1.15 의결 후속)",
+  "status": "confirmed",
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
+  "sourceKind": "official",
+  "sourceName": "정책브리핑 정책뉴스: 고교학점제 학점 이수기준 완화…선택과목 출석률만 적용(2026.1.28)",
+  "sourceUrl": "https://www.korea.kr/news/policyNewsView.do?newsId=148958710",
+  "region": "national",
+  "audience": [
+   "common"
+  ],
+  "events": [
+   {
+    "label": "",
+    "start": "2026-01-28"
+   }
   ],
   "checkedAt": "2026-10-25"
  }
