@@ -127,7 +127,13 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
 
     // 4) 바뀐 소식 1줄
     const log = policy.filter((r) => r.topic === "change-log").map((r) => ({ r, d: dateOf(r.title) })).filter((x) => x.d && span(x.d).start <= t).sort((a, b) => span(b.d).start - span(a.d).start);
-    const lg = log[0];
+    // 마지막 확인 일시(데이터 checkedAt 최신값)와 새 소식(지난 방문 이후, 이 브라우저에만 저장)
+    const checked = policy.map((r) => r.checkedAt).filter(Boolean).sort().pop() || "";
+    const VK = "portal.visit"; const iso = `${t.getFullYear()}-${two(t.getMonth() + 1)}-${two(t.getDate())}`;
+    const vis = store.get(VK, null) || { last: null, prev: null };
+    if (vis.last !== iso) { vis.prev = vis.last; vis.last = iso; store.set(VK, vis); }
+    const fresh = vis.prev ? log.filter((x) => span(x.d).start > new Date(vis.prev + "T00:00:00")).length : 0;
+    const logRow = (x) => `<li class="row"><div><h3>${esc(x.r.title.slice(x.d.length).trim() || x.r.title)}</h3><p class="num">${esc(ymdText(x.d))}</p><div class="meta">${badges(x.r)} ${link(x.r)}</div></div></li>`;
 
     // 5) 학교(예나) · 학점제 숫자
     const mine = summary.filter((m) => pf.schoolIds.includes(m.schoolId));
@@ -161,7 +167,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
         <section class="hero" aria-labelledby="hh">
           <p class="hello" id="hh">${esc(pf.name)}님, 오늘도 한 칸씩.</p>
           <p class="kicker">${examYear}학년도 수능까지</p>
-          <button type="button" class="dday" id="dday" aria-live="polite" aria-label="수능까지 남은 날. 누르면 단위가 바뀝니다"><span class="big num" id="ddn">${heroDays == null ? "-" : heroDays.toLocaleString()}</span><span class="unit" id="ddu">일</span></button>
+          <button type="button" class="dday" id="dday" aria-live="polite"><span class="sr-only">수능까지 남은 날. 누르면 단위가 바뀝니다. </span><span class="big num" id="ddn">${heroDays == null ? "-" : heroDays.toLocaleString()}</span><span class="unit" id="ddu">일</span></button>
           <p class="hero-meta">${heroMeta}</p>
           <p class="hint">숫자를 누르면 주·달로 바뀌어요.</p>
         </section>
@@ -179,7 +185,8 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
         <section class="sec"><div class="sec-h"><h2><em>03</em>이번 주 할 일</h2><span class="muted small" id="tdc"></span></div>
           ${ok ? `<ul class="todo" id="todos"></ul><form class="hm-todoform"><input type="text" id="todoin" placeholder="할 일 추가" maxlength="120" autocomplete="off" aria-label="할 일 추가"><button class="btn" type="submit">추가</button></form>` : '<p class="muted">이 브라우저에서는 저장 공간을 쓸 수 없어 메모를 사용할 수 없어요.</p>'}</section>
         <section class="sec"><div class="sec-h"><h2><em>04</em>바뀐 소식</h2><a href="#changelog">전체 보기</a></div>
-          ${lg ? `<ul class="rows"><li class="row"><div><h3>${esc(lg.r.title.slice(lg.d.length).trim() || lg.r.title)}</h3><p class="num">${esc(ymdText(lg.d))}</p><div class="meta">${badges(lg.r)} ${link(lg.r)}</div></div></li></ul>` : '<div class="empty"><p>아직 바뀐 소식이 없어요.</p></div>'}</section>
+          <p class="fresh num">${checked ? `마지막 확인 ${esc(ymdText(checked))}` : ""}${vis.prev ? ` · ${fresh ? `<b>새 소식 ${fresh}건</b>` : "새 소식 없음"}` : ""}</p>
+          ${log.length ? `<ul class="rows">${log.slice(0, 3).map(logRow).join("")}</ul>` : '<div class="empty"><p>아직 바뀐 소식이 없어요.</p></div>'}</section>
       </div>
       <section class="sec"><div class="sec-h"><h2><em>05</em>학점제 한눈에</h2><a href="#life/credit">자세히</a></div>
         <p class="glance-lead">3년 동안 <mark>${m0.creditsTotal}학점</mark>을 스스로 채웁니다.</p>

@@ -227,6 +227,7 @@ async function summaryBody(el, ids) {
 }
 
 // 상세 비교: 필터 + 선택 학교를 열 단위로 나란히
+let drawToken = null; // 다시 그릴 때 이전 이어 붙이기를 멈추는 표시
 async function compareShell(el, onReset, getAreas) {
   const [schools, facets, subjects, offerings, groups] = await Promise.all([load("schools"), load("facets"), load("subjects"), load("offerings"), load("groups")]);
   const subj = new Map(subjects.map((x) => [x.subjectKey, x]));
@@ -289,19 +290,29 @@ async function compareShell(el, onReset, getAreas) {
     // 교과군은 맨 왼쪽 열(rowspan)로 한 번만 표시한다.
     const spans = new Map();
     for (const r of rows) spans.set(r.area, (spans.get(r.area) || 0) + 1);
-    let area = "", html = "", ai = -1;
+    // 행은 처음 한 덩어리(24행)만 바로 그리고 나머지는 한가할 때 이어 붙인다(모바일에서 첫 화면이 빨리 뜨게).
+    let area = "", ai = -1;
+    const trs = [];
     for (const r of rows) {
       const first = r.area !== area;
       if (first) { area = r.area; ai++; }
-      html += `<tr class="ra${ai % 2}${first ? " af" : ""}">${first ? `<td class="ar" rowspan="${spans.get(r.area)}" title="${esc(r.area)}">${esc(r.area)}</td>` : ""}<td class="l">${subjectName(r.name)}</td>${ids.map((id) => cell(r.cells[id])).join("")}</tr>`;
+      const cls = `ra${ai % 2}${first ? " af" : ""}`; // 이어 붙일 때 값이 바뀌지 않게 지금 정해 둔다
+      const arCell = first ? `<td class="ar" rowspan="${spans.get(r.area)}" title="${esc(r.area)}">${esc(r.area)}</td>` : "";
+      trs.push(() => `<tr class="${cls}">${arCell}<td class="l">${subjectName(r.name)}</td>${ids.map((id) => cell(r.cells[id])).join("")}</tr>`);
     }
     need = AW + LW + CW * ids.length;
     $("#tbl").style.minWidth = `${need}px`;
-    $("#tbl").innerHTML = `<thead><tr><th class="ar">교과군</th><th class="l">과목</th>${ids.map((id, i) => `<th>${nm(id, names[i], 30)}</th>`).join("")}</tr></thead><tbody>${html || `<tr><td colspan="${ids.length + 2}">조건에 맞는 과목이 없습니다.</td></tr>`}</tbody>
-      <tfoot><tr><th class="lf" colspan="2">해당 과목 수</th>${ids.map((id) => `<th>${rows.filter((r) => r.cells[id]).length}</th>`).join("")}</tr></tfoot>`;
+    const CH = 24, token = (drawToken = Symbol());
+    const head = `<thead><tr><th class="ar">교과군</th><th class="l">과목</th>${ids.map((id, i) => `<th>${nm(id, names[i], 30)}</th>`).join("")}</tr></thead>`;
+    const foot = `<tfoot><tr><th class="lf" colspan="2">해당 과목 수</th>${ids.map((id) => `<th>${rows.filter((r) => r.cells[id]).length}</th>`).join("")}</tr></tfoot>`;
+    const chunk = (i) => trs.slice(i, i + CH).map((f) => f()).join("");
+    $("#tbl").innerHTML = `${head}<tbody>${trs.length ? chunk(0) : `<tr><td colspan="${ids.length + 2}">조건에 맞는 과목이 없어요.</td></tr>`}</tbody>${foot}`;
+    const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 16));
+    const more = (i) => { if (token !== drawToken || i >= trs.length) return; idle(() => { if (token !== drawToken) return; $("#tbl tbody").insertAdjacentHTML("beforeend", chunk(i)); more(i + CH); }); };
+    more(CH);
     fitMode();
   };
-  root.addEventListener("input", () => draw());
+  let dbt; root.addEventListener("input", () => { clearTimeout(dbt); dbt = setTimeout(() => draw(), 120); }); // 글자 입력은 잠깐 모아서 한 번만
   root.addEventListener("change", () => draw());
   // 접기/펼치기, 과목명 검색(돋보기 → 입력창, 입력 즉시 필터, Esc·× 로 비우고 닫기)
   const box = $(".filters"), sr = $(".fsr"), qin = $("#q");
