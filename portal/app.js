@@ -2,6 +2,7 @@ import { MENU, STATUS } from "./menu.js";
 import { register as registerPolicy } from "./policy.js";
 import { registerHome } from "./home.js";
 import { registerFiles } from "./files.js";
+import { preloadSubjectInfo, subjectName } from "./subject-info.js";
 
 const $ = (s) => document.querySelector(s);
 const esc = (s = "") => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -208,7 +209,7 @@ async function summaryBody(el, ids) {
 
 // 상세 비교: 필터 + 선택 학교를 열 단위로 나란히
 async function compareShell(el, onReset, getAreas) {
-  const [schools, facets, subjects, offerings, groups] = await Promise.all([load("schools"), load("facets"), load("subjects"), load("offerings"), load("groups")]);
+  const [schools, facets, subjects, offerings, groups] = await Promise.all([load("schools"), load("facets"), load("subjects"), load("offerings"), load("groups"), preloadSubjectInfo(load)]);
   const subj = new Map(subjects.map((x) => [x.subjectKey, x]));
   const gmap = new Map(groups.map((g) => [g.id, g]));
   el.innerHTML = `<div class="cmp">
@@ -273,7 +274,7 @@ async function compareShell(el, onReset, getAreas) {
     for (const r of rows) {
       const first = r.area !== area;
       if (first) { area = r.area; ai++; }
-      html += `<tr class="ra${ai % 2}${first ? " af" : ""}">${first ? `<td class="ar" rowspan="${spans.get(r.area)}" title="${esc(r.area)}">${esc(r.area)}</td>` : ""}<td class="l">${esc(r.name)}</td>${ids.map((id) => cell(r.cells[id])).join("")}</tr>`;
+      html += `<tr class="ra${ai % 2}${first ? " af" : ""}">${first ? `<td class="ar" rowspan="${spans.get(r.area)}" title="${esc(r.area)}">${esc(r.area)}</td>` : ""}<td class="l">${subjectName(r.name)}</td>${ids.map((id) => cell(r.cells[id])).join("")}</tr>`;
     }
     need = AW + LW + CW * ids.length;
     $("#tbl").style.minWidth = `${need}px`;
