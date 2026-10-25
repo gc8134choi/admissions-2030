@@ -660,7 +660,7 @@ a.sc:hover{border-color:var(--accent)}
 }
 @media (max-width:420px){.top .brand span{display:none}}
 
-/* 프로필별 포인트색 2세트(예나=A, 예은=B). 상태색·지정/선택 색(--v1,--v2,--req,--ele)은 프로필과 무관하게 고정 */
+/* 프로필별 포인트색 2세트(A=A, B=B). 상태색·지정/선택 색(--v1,--v2,--req,--ele)은 프로필과 무관하게 고정 */
 :root{--accent-a:#1B3A6B;--soft-a:#E8EEFA;--accent-b:#6B3F8F;--soft-b:#F0E8F6}
 @media (prefers-color-scheme:dark){:root{--accent-a:#6EA0F0;--soft-a:#1D2B4A;--accent-b:#C39BE6;--soft-b:#2B2140}}
 body[data-profile=a]{--accent:var(--accent-a);--soft:var(--soft-a);--hero1:#1B3A6B;--hero2:#2F5D8A}
