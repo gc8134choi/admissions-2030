@@ -56,8 +56,9 @@ const draft = JSON.parse(readFileSync("research/data/policy-draft.json", "utf8")
 const out = draft.map((d) => {
   const sources = [d.sourceName && { name: d.sourceName, url: d.sourceUrl }, ...(d.extraSources || [])].filter(Boolean);
   const row = { id: d.id, topic: d.topic };
-  row.entryYear = d.entryYear ?? (d.examYear ? d.examYear - 3 : 2027);
-  row.examYear = d.examYear ?? row.entryYear + 3;
+  // 연도는 draft에 있는 것만 그대로 내보낸다(없는 행은 프로필 공통 행). 프로필 필터는 portal/profile.js.
+  if (d.entryYear != null) row.entryYear = d.entryYear;
+  if (d.examYear != null) row.examYear = d.examYear;
   Object.assign(row, { title: d.title, body: BODY[d.id] ?? d.body, status: status(d) });
   const note = NOTES[d.id] ?? extra(d.statusNote);
   if (note) row.note = note;

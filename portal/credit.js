@@ -62,7 +62,9 @@ const SPOT = {
 };
 const spot = (n) => (SPOT[n] ? `<svg class="cv-spot" viewBox="0 0 72 62" ${SPOT_STYLE} fill="none" aria-hidden="true">${SPOT[n]}</svg>` : "");
 
-export async function creditView(el, { load, esc, badge, src, table, basic }) {
+import { preloadSubjectInfo, subjectName, hasSubjectInfo } from "./subject-info.js";
+
+export async function creditView(el, { load, profile, esc, badge, src, table, basic }) {
   const [rows, summary, manifest] = await Promise.all([load("policy"), load("summary"), fetch("img/credit/manifest.json").then((r) => (r.ok ? r.json() : {})).catch(() => ({}))]);
   const get = (id) => rows.find((r) => r.id === id);
   const by = (...ids) => ids.map(get).filter(Boolean);
@@ -223,8 +225,15 @@ export async function creditView(el, { load, esc, badge, src, table, basic }) {
   const tail = subj.length ? `<details class="cv-basis cv-big"><summary>과목표(교과군별) 전체 보기</summary>${table(subj, basic)}</details>` : "";
 
   const nav = `<nav class="cv-toc" aria-label="섹션 목차">${toc.map(([n, t], i) => `<button type="button" class="fchip" data-go="cv-sec-${n}"><b>${i + 1}</b> ${esc(t)}</button>`).join("")}</nav>`;
-  el.innerHTML = `${hero}<p class="note">서울교육청 자료는 경기 적용 확인 필요. 경기도교육청 행은 요약본(출처 불일치 가능). 그림 위 배지와 "근거·상태 표"에서 상태·출처를 확인하세요.</p>
+  const profNote = profile && profile.id !== "A" ? `<p class="note">고교학점제(2022 개정, 2025학년도 입학 고1부터)는 ${profile.entryYear}학년도 입학 때도 같은 틀로 이어질 것으로 보이나 확정이 아니며 바뀔 수 있습니다(추정).</p>` : "";
+  el.innerHTML = `${hero}${profNote}<p class="note">서울교육청 자료는 경기 적용 확인 필요. 경기도교육청 행은 요약본(출처 불일치 가능). 그림 위 배지와 "근거·상태 표"에서 상태·출처를 확인하세요.</p>
     ${nav}${cards.map((c, i) => c.replace('<span class="cv-no"></span>', `<span class="cv-no">${i + 1}</span>`)).join("")}${tail}
     <p class="muted">수능 출제범위는 <a href="#admission/system">대입 제도</a>에서 봅니다.</p>`;
   el.querySelector(".cv-toc")?.addEventListener("click", (e) => { const b = e.target.closest("[data-go]"); if (b) document.getElementById(b.dataset.go)?.scrollIntoView({ behavior: "smooth", block: "start" }); });
+  // 과목표(교과군별) 카드 본문의 과목명에 ⓘ(subject-info.js)를 붙인다. 설명이 있는 과목만 붙는다.
+  await preloadSubjectInfo(load);
+  el.querySelectorAll(".cv-big .rc-b").forEach((p) => {
+    const parts = p.textContent.split(/([,·/:|()]|\s{2,})/);
+    if (parts.some((t) => t.trim() && hasSubjectInfo(t))) p.innerHTML = parts.map((t) => (t.trim() && hasSubjectInfo(t) ? subjectName(t.trim()) : esc(t))).join("");
+  });
 }
