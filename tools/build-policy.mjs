@@ -3,7 +3,7 @@
 // 사용: node tools/build-policy.mjs  (--check: 파일과 결과가 다르면 종료코드 1)
 import { readFileSync, writeFileSync } from "node:fs";
 
-const STATUS = { 확정: "confirmed", 보도: "reported", 추정: "estimated", "학교 배부 자료": "material", "서울교육청 자료": "seoul", "서울·경기 자료 일치": "match", "경기도교육청 자료": "gyeonggi", 의견: "opinion", unknown: "unknown" };
+const STATUS = { 확정: "confirmed", 보도: "reported", 추정: "estimated", "학교 배부 자료": "material", "서울교육청 자료": "seoul", "서울교육청 자료(원문 확인)": "seoul-verified", "서울·경기 자료 일치": "match", "경기도교육청 자료": "gyeonggi", 의견: "opinion", unknown: "unknown" };
 const KIND = { 공식: "official", 매체: "media", "학교 배부 자료": "material", "서울교육청 자료": "seoul", "서울교육청·경기도교육청 자료": "seoul-gyeonggi", "경기도교육청 자료": "gyeonggi", "학원 의견": "opinion" };
 
 // 고입·대입 일정 행의 날짜(고입은 id, 대입은 id가 밀릴 수 있어 title 키). draft 본문의 날짜를 ISO로 옮겼다(연도는 해당 학년도 시행 연도). 월만 알면 YYYY-MM.
@@ -43,13 +43,16 @@ const dateEvents = (t) => {
   return m ? [m[2] && m[2] !== m[1] ? { label: "", start: m[1], end: m[2] } : { label: "", start: m[1] }] : null;
 };
 
+// 모르는 status 문구는 조용히 unknown으로 두지 않고 멈춘다(새 값은 STATUS에 추가).
+const status = (d) => { const v = STATUS[d.status]; if (!v) throw new Error(`unmapped status "${d.status}" (${d.id})`); return v; };
+
 const draft = JSON.parse(readFileSync("research/data/policy-draft.json", "utf8")).items;
 const out = draft.map((d) => {
   const sources = [d.sourceName && { name: d.sourceName, url: d.sourceUrl }, ...(d.extraSources || [])].filter(Boolean);
   const row = { id: d.id, topic: d.topic };
   row.entryYear = d.entryYear ?? (d.examYear ? d.examYear - 3 : 2027);
   row.examYear = d.examYear ?? row.entryYear + 3;
-  Object.assign(row, { title: d.title, body: BODY[d.id] ?? d.body, status: STATUS[d.status] ?? "unknown" });
+  Object.assign(row, { title: d.title, body: BODY[d.id] ?? d.body, status: status(d) });
   const note = NOTES[d.id] ?? extra(d.statusNote);
   if (note) row.note = note;
   row.unverified = !!d.unverified;

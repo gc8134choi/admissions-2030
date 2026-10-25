@@ -368,3 +368,7 @@ ul.plain{margin:6px 0;padding-left:18px}
 .sip-x{position:absolute;right:-4px;top:-4px;border:0;background:none;color:var(--muted);font-size:18px;line-height:1;cursor:pointer;padding:2px 6px}
 .sip p{margin:6px 0}
 .sip-f{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center;color:var(--muted)}
+.pst.seoul-verified{color:var(--accent)}
+.sip{max-height:min(70vh,520px);overflow:auto}
+.sip-d{margin:4px 0 6px;display:grid;grid-template-columns:auto 1fr;gap:2px 8px;font-size:12px}
+.sip-d dt{color:var(--muted)}.sip-d dd{margin:0}
