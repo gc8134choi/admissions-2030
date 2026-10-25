@@ -36,24 +36,13 @@ const dataNote = '<p class="note">편제표 값은 AI가 학교 배부 사진에
 const options = (items, all) => `${all ? `<option value="">${esc(all)}</option>` : ""}${items.map((v) => `<option value="${esc(v.v ?? v)}">${esc(v.t ?? v)}</option>`).join("")}`;
 const POOL = { basic: "기초교과", cross: "교과(군) 간 선택", "in-area": "한 교과 안 선택", life: "기술·가정/정보/제2외국어 등" };
 const CHECK = { inferred: "구분 추정", unmarked: "구분 미표기", flag: "열린 flag 있음" };
-// 구분 아이콘: 모양+색으로 구분(색만 의존하지 않음). 추정은 윤곽선만, 미표기는 점선 원.
-const KICON = {
-  공통: ["#64748b", '<circle cx="8" cy="8" r="5.3"/>'],
-  일반: ["#0ea5e9", '<rect x="3.3" y="3.3" width="9.4" height="9.4" rx="1.6"/>'],
-  진로: ["#f59e0b", '<path d="M8 2.2 L14.7 13.8 L1.3 13.8Z"/>'],
-  융합: ["#a855f7", '<path d="M8 1.6 L14.4 8 L8 14.4 L1.6 8Z"/>'],
-  특목: ["#f43f5e", '<path d="M8 0.9 L10.23 5.43 L15.23 6.15 L11.61 9.67 L12.47 14.65 L8 12.3 L3.53 14.65 L4.39 9.67 L0.77 6.15 L5.77 5.43Z"/>'],
-  전문: ["#14b8a6", '<path d="M8 2.1 L13.11 5.05 L13.11 10.95 L8 13.9 L2.89 10.95 L2.89 5.05Z"/>'],
+// 구분 배지: 모두 같은 크기의 둥근 사각형, 색만 다름. 추정은 윤곽선(배경 투명), 미표기는 점선 [—].
+const KCOLOR = { 공통: "#64748b", 일반: "#0ea5e9", 진로: "#f59e0b", 융합: "#a855f7", 특목: "#f43f5e", 전문: "#14b8a6" };
+const kindBadge = (kind, est) => {
+  const title = kind ? `${kind}${est ? " (추정)" : ""}` : "구분 미표기";
+  return `<span class="kb${est ? " est" : ""}${kind ? "" : " none"}" style="--k:${KCOLOR[kind] || "#94a3b8"}" title="${esc(title)}">${kind ? esc(kind) : "—"}</span>`;
 };
-const kindIcon = (kind, est) => {
-  if (!kind) return '<svg class="ki none" viewBox="0 0 16 16" role="img" aria-label="구분 미표기"><title>구분 미표기</title><circle cx="8" cy="8" r="5.3"/></svg>';
-  const [c, shape] = KICON[kind] || KICON.공통;
-  const label = `${kind}${est ? " (추정)" : ""}`;
-  return `<svg class="ki${est ? " est" : ""}" viewBox="0 0 16 16" role="img" aria-label="${esc(label)}" style="--k:${c}"><title>${esc(label)}</title>${shape}</svg>`;
-};
-// 아이콘 + 구분 이름(작은 글자). 셀과 범례가 같은 형태를 쓴다.
-const kindBadge = (kind, est) => `<span class="kk">${kindIcon(kind, est)}<span class="kn">${kind ? esc(kind) : "미표기"}</span></span>`;
-const kindLegend = `<div class="legend">${Object.keys(KICON).map((k) => kindBadge(k)).join("")}<span class="kk">${kindIcon("일반", true)}<span class="kn">추정(윤곽선)</span></span>${kindBadge(null)}<span class="kk"><i class="cr">4</i><span class="kn">학점</span></span><span class="cnt" id="cnt"></span></div>`;
+const kindLegend = `<div class="legend">${Object.keys(KCOLOR).map((k) => `<span class="lg">${kindBadge(k)}</span>`).join("")}<span class="lg">${kindBadge("일반", true)}추정(윤곽선)</span><span class="lg">${kindBadge(null)}미표기</span><span class="lg"><i class="cr">4</i>학점</span><span class="cnt" id="cnt"></span></div>`;
 const kindOf = (o) => (o.primaryKind ? o.primaryKind + (o.kindStatus === "inferred" ? "?" : "") : "미표기");
 
 // ---- 뷰 ----
