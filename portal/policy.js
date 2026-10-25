@@ -5,8 +5,10 @@ const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unkn
 const SKIND = { official: "공식", media: "매체", material: "학교 배부", seoul: "서울교육청", "seoul-gyeonggi": "서울·경기교육청", gyeonggi: "경기도교육청", opinion: "학원 의견" };
 const NOTICE = '<p class="note">조사일 2026-10-25, <b>검색 요약 기준이며 공식 사이트로 재확인 필요.</b> 입학학년도 2027(현 중3) · 대입학년도 2030. <span class="unv">원문 미확인</span> 표시는 원문 페이지를 열람하지 못했다는 뜻입니다.</p>';
 
-// 대입 제도 화면에 표로 보여 줄 과목 선택 지도 행(수능 출제범위). 나머지 cur-*는 고교학점제 이해 화면.
-const CUR_SYS = new Set(["cur-08"]);
+// 대입 제도 화면에 표로 보여 줄 cur-* 행(수능 출제범위, 전형 구분, 학종 평가요소). 나머지는 고교학점제 이해 화면.
+const CUR_SYS = new Set(["cur-08", "cur-29", "cur-30"]);
+// 대입 전형 구분·학생부종합 평가요소는 "대입 전형 구조" 묶음에, 수능 출제범위는 따로 묶는다.
+const CUR_GROUP = { "cur-29": "admission-structure", "cur-30": "admission-structure" };
 
 export function register(views, { $, esc, load, store }) {
   const badge = (r) => `<span class="pst ${r.status}">${PST[r.status]}</span>${r.unverified ? ' <span class="unv">원문 미확인</span>' : ""}${r.note ? `<div class="muted small">${esc(r.note)}</div>` : ""}`;
@@ -70,7 +72,7 @@ export function register(views, { $, esc, load, store }) {
       ${statusSelect(body)}<div id="ptbl"></div>`;
     const TOPIC = { "admission-system": "2028학년도 개편 확정안과 2030학년도 적용", "admission-outlook": "2030학년도 대상 추가 동향", "admission-structure": "대입 전형 구조", "cur-select": "수능 출제범위(참고)" };
     const NOTE = { "cur-select": '<p class="note">서울교육청 자료, 경기 적용 확인 필요. 수능 출제범위는 추정이며 2030학년도 확정이 아닙니다.</p>' };
-    const key = (r) => (CUR_SYS.has(r.id) ? "cur-select" : r.topic);
+    const key = (r) => (CUR_SYS.has(r.id) ? CUR_GROUP[r.id] || "cur-select" : r.topic);
     // 선택과목 조사·대학 권장이수과목은 고교학점제 이해에서 자세히 보고, 여기는 한 줄 요약만 둔다.
     const pick = (await load("policy")).filter((r) => r.id === "cur-06" || r.id === "cur-07");
     const pickLine = pick.length ? `<p class="muted small">선택과목 조사·대학 권장이수과목: ${pick.map((r) => esc(r.body)).join(" / ")} · <a href="#life/credit">고교학점제 이해에서 자세히</a></p>` : "";
@@ -136,7 +138,7 @@ export function register(views, { $, esc, load, store }) {
       sec("5. 성적 산출", table(by("cur-04", "cur-15", "cur-28", "hs-13"), basic)),
       c3 ? sec("6. 공통과목 필수학점", `${parsed ? `<div class="tw"><table class="policy"><thead><tr><th class="l">과목</th><th>학점</th></tr></thead><tbody>${items.map(([n, c]) => `<tr><td class="l">${esc(n)}</td><td>${c}</td></tr>`).join("")}<tr class="hl"><td class="l">합계</td><td>${sum}</td></tr></tbody></table></div>` : `<p>${esc(c3.body)}</p>`}
         <p class="small">${badge(c3)} ${src(c3)}</p>`) : "",
-      sec("7. 선택과목 조사·절차·대학 권장이수과목", table(by("cur-06", "cur-26", "cur-07"), basic)),
+      sec("7. 선택과목 조사·절차·대학 권장이수과목", table(by("cur-06", "cur-26", "cur-07", "cur-31", "cur-32"), basic)),
       sec("8. 우리 4개교", `<ul class="plain">${summary.map((m) => `<li><b>${esc(m.schoolName)}</b> 교과 ${m.creditsSubject}학점 = 지정 ${m.creditsRequired} + 선택 ${m.creditsElective}, 창체 ${m.creditsCreative}학점</li>`).join("")}</ul>
         <p><a class="btn" href="#select/curriculum">학교별 편제표 보기</a> <span class="muted small">학교 편제표 기준 학점이며, 위 서울교육청 기준 필수·자율 분류와 다릅니다.</span></p>`),
     ];
