@@ -1,0 +1,338 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "checkedAt": "2026-10-25",
+    "note": "조사 세션 초안. 확정 값은 공식 원문(교육부 보도자료 첨부, 안내서, 포털)에서 확인한 것만. 모르는 값은 null. 개인 이름·출생연도 없음",
+    "statusVocabulary": [
+      "confirmed",
+      "reported",
+      "estimated"
+    ]
+  },
+  "_notes": {
+    "탐구 행 구성": "두 행(사회탐구·과학탐구)을 권장. 교육부 표가 사회·과학을 각각 문항 수·시간으로 따로 제시하고, 응시 규칙은 note로 둔다.",
+    "appliesTo와 버전 status": "화면은 appliesTo.status를 우선 보여 주기를 권장. 버전 status는 체제 자체의 확정도, appliesTo는 그 학습자에게 적용될 확정도이기 때문.",
+    "추가": "영역별 scoring(relative|absolute), examDate, scoreReportDate, 제2외국어 문항 수(20)를 공식 표에서 채워 넣음. 수학 단답형은 9문항(교육부 표)."
+  },
+  "csatRegimes": [
+    {
+      "id": "csat-2028",
+      "label": "통합형 수능(2028학년도~)",
+      "status": "confirmed",
+      "effectiveFromExamYear": 2028,
+      "examDate": "2027-11-18",
+      "scoreReportDate": "2027-12-10",
+      "areas": [
+        {
+          "area": "국어",
+          "items": 45,
+          "points": 100,
+          "minutes": 80,
+          "scope": [
+            "화법과 언어",
+            "독서와 작문",
+            "문학"
+          ],
+          "elective": false,
+          "scoring": "relative"
+        },
+        {
+          "area": "수학",
+          "items": 30,
+          "points": 100,
+          "minutes": 100,
+          "scope": [
+            "대수",
+            "미적분Ⅰ",
+            "확률과 통계"
+          ],
+          "elective": false,
+          "scoring": "relative",
+          "shortAnswerPercent": 30,
+          "shortAnswerItems": 9
+        },
+        {
+          "area": "영어",
+          "items": 45,
+          "points": 100,
+          "minutes": 70,
+          "scope": [
+            "영어Ⅰ",
+            "영어Ⅱ"
+          ],
+          "listeningItems": 17,
+          "elective": false,
+          "scoring": "absolute"
+        },
+        {
+          "area": "한국사",
+          "items": 20,
+          "points": 50,
+          "minutes": 30,
+          "required": true,
+          "scoring": "absolute"
+        },
+        {
+          "area": "사회탐구",
+          "items": 25,
+          "points": 50,
+          "minutes": 40,
+          "scope": [
+            "통합사회"
+          ],
+          "elective": false,
+          "scoring": "relative",
+          "note": "사회·과학탐구 선택자는 사회·과학에 모두 응시, 점수는 분리 산출"
+        },
+        {
+          "area": "과학탐구",
+          "items": 25,
+          "points": 50,
+          "minutes": 40,
+          "scope": [
+            "통합과학"
+          ],
+          "elective": false,
+          "scoring": "relative",
+          "note": "사회·과학탐구 선택자는 사회·과학에 모두 응시, 점수는 분리 산출"
+        },
+        {
+          "area": "직업탐구",
+          "items": 25,
+          "points": 50,
+          "minutes": 40,
+          "scope": [
+            "성공적인 직업 생활"
+          ],
+          "elective": false,
+          "scoring": "relative"
+        },
+        {
+          "area": "제2외국어·한문",
+          "items": 20,
+          "points": 50,
+          "minutes": 30,
+          "pickOne": 9,
+          "scope": [
+            "독일어",
+            "프랑스어",
+            "스페인어",
+            "중국어",
+            "일본어",
+            "러시아어",
+            "아랍어",
+            "베트남어",
+            "한문"
+          ],
+          "scoring": "absolute",
+          "note": "과목당 20문항·50점·30분, 9과목 중 1과목 선택"
+        }
+      ],
+      "scoringNote": "한국사·영어·제2외국어/한문은 등급만 기재(절대평가, 원점수를 고정 분할점수로 9등급 표기), 나머지는 표준점수·백분위·등급(상대평가)",
+      "excluded": [
+        "심화수학"
+      ],
+      "format": "객관식 5지선다형, 수학은 문항 수의 30%를 단답형으로 출제",
+      "sources": [
+        {
+          "name": "교육부 보도자료: 2028학년도 대학수학능력시험은 2027년 11월 18일(목)에 시행됩니다(붙임 2028학년도 수능 영역별 문항 수·시험시간·출제범위, 공공누리 제1유형)",
+          "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512",
+          "kind": "official"
+        },
+        {
+          "name": "교육부 2028 대입제도 개편안 발표(2023.12.27)",
+          "url": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
+          "kind": "official"
+        },
+        {
+          "name": "정책브리핑 정책뉴스: 올해 중2부터 선택과목 없는 통합형 수능…내신 5등급 체제로(표=교육부, 2023.12.27)",
+          "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148924193",
+          "kind": "official"
+        },
+        {
+          "name": "서울특별시교육청교육연구정보원 2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서교연 2026-13, 2026.4)",
+          "url": null,
+          "kind": "official"
+        }
+      ],
+      "appliesTo": [
+        {
+          "learner": "A",
+          "examYear": 2030,
+          "status": "estimated",
+          "note": "2027.3 정부 중장기 개편안 공표 전까지 2030학년도 적용은 확정 아님",
+          "sources": [
+            {
+              "name": "M이코노미뉴스: 국가교육위원회, 대입제도 전면 개편 공론화 2027년 3월 확정",
+              "url": "https://www.m-economynews.com/news/article.html?no=69490",
+              "kind": "media"
+            }
+          ]
+        },
+        {
+          "learner": "B",
+          "examYear": 2033,
+          "status": "estimated",
+          "note": "절대평가·서논술형 도입이 2033학년도부터 유력하게 검토되는 단계(보도), 확정 아님",
+          "sources": [
+            {
+              "name": "다음뉴스: 초6 대입 확 바뀌나…수능 절대평가 전환하고 서논술형 도입 검토",
+              "url": "https://v.daum.net/v/20260803100648087",
+              "kind": "media"
+            },
+            {
+              "name": "교육플러스: 국교위 수능 절대평가·서논술형 보도에 교육계 촉각 \"확정안 아냐\"",
+              "url": "https://www.edpl.co.kr/news/articleView.html?idxno=21218",
+              "kind": "media"
+            }
+          ]
+        }
+      ],
+      "detailRange": {
+        "status": "estimated",
+        "note": "평가원 시행 기본계획(2028학년도분 2027.3, 2030학년도분 2029.3 전후 추정) 공고 전까지 세부 범위는 확정이 아님"
+      },
+      "checkedAt": "2026-10-25"
+    },
+    {
+      "id": "csat-2033",
+      "label": "2033학년도 수능(미정)",
+      "status": "reported",
+      "effectiveFromExamYear": 2033,
+      "areas": null,
+      "note": "수능 절대평가·서·논술형 도입을 2033학년도부터 적용하는 안이 유력하게 검토됨(보도). 확정 아님. 값은 공표 후에 채운다",
+      "sources": [
+        {
+          "name": "다음뉴스: 초6 대입 확 바뀌나…수능 절대평가 전환하고 서논술형 도입 검토",
+          "url": "https://v.daum.net/v/20260803100648087",
+          "kind": "media"
+        },
+        {
+          "name": "교육플러스: 국교위 수능 절대평가·서논술형 보도에 교육계 촉각 \"확정안 아냐\"",
+          "url": "https://www.edpl.co.kr/news/articleView.html?idxno=21218",
+          "kind": "media"
+        }
+      ],
+      "appliesTo": [
+        {
+          "learner": "B",
+          "examYear": 2033,
+          "status": "reported",
+          "sources": [
+            {
+              "name": "다음뉴스: 초6 대입 확 바뀌나…수능 절대평가 전환하고 서논술형 도입 검토",
+              "url": "https://v.daum.net/v/20260803100648087",
+              "kind": "media"
+            },
+            {
+              "name": "교육플러스: 국교위 수능 절대평가·서논술형 보도에 교육계 촉각 \"확정안 아냐\"",
+              "url": "https://www.edpl.co.kr/news/articleView.html?idxno=21218",
+              "kind": "media"
+            }
+          ]
+        }
+      ],
+      "unverified": true,
+      "unverifiedReason": "공식 원문 대조 전(매체 보도)",
+      "checkedAt": "2026-10-25"
+    }
+  ],
+  "gradingRules": [
+    {
+      "id": "gr-2028",
+      "label": "고교 내신 5등급 상대평가(2025 입학생부터, 2028학년도 대입~)",
+      "status": "confirmed",
+      "effectiveFromEntryYear": 2025,
+      "rankGrades": {
+        "cumulativePercent": [
+          10,
+          34,
+          66,
+          90,
+          100
+        ],
+        "bandPercent": [
+          10,
+          24,
+          32,
+          24,
+          10
+        ]
+      },
+      "achievementLevels": {
+        "common_and_general_elective": "A~E 5단계",
+        "pe_art_science_experiment": "A·B·C 3단계",
+        "liberal": "P"
+      },
+      "noRank": [
+        "사회·과학 융합선택",
+        "체육·예술·과학탐구실험",
+        "교양",
+        "공동교육과정·온라인학교 개설 과목"
+      ],
+      "noRankNote": "보통·전문교과 중 수강자 5명 이하 과목은 석차등급 산출 여부가 달라질 수 있음(안내서 표)",
+      "completion": {
+        "common": {
+          "attendance": "2/3",
+          "achievementPercent": 40
+        },
+        "elective": {
+          "attendance": "2/3"
+        },
+        "creativeActivities": "학년별 수업일수의 2/3 이상 출석",
+        "note": "2026.1.28 완화(선택과목은 출석률만 적용), 2026학년도 고1·2, 2027학년도 전 학년 적용"
+      },
+      "sources": [
+        {
+          "name": "서울특별시교육청교육연구정보원 2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서교연 2026-13, 2026.4)",
+          "url": null,
+          "kind": "official"
+        },
+        {
+          "name": "고교학점제 종합지원포털 졸업·이수 기준",
+          "url": "https://www.hscredit.kr/about/graduation",
+          "kind": "official"
+        },
+        {
+          "name": "정책브리핑 정책뉴스: 고교학점제 학점 이수기준 완화…선택과목 출석률만 적용(2026.1.28)",
+          "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148958710",
+          "kind": "official"
+        },
+        {
+          "name": "정책브리핑 정책뉴스: 올해 중2부터 선택과목 없는 통합형 수능…내신 5등급 체제로(표=교육부, 2023.12.27)",
+          "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148924193",
+          "kind": "official"
+        }
+      ],
+      "appliesTo": [
+        {
+          "learner": "A",
+          "entryYear": 2027,
+          "status": "estimated",
+          "note": "2030학년도부터 내신 석차등급 폐지·성취평가 일원화 초안이 보도됨(확정 아님)",
+          "sources": [
+            {
+              "name": "교육을 비추다: 정근식표 대입개혁 다시 움직인다",
+              "url": "https://www.kyobit.com/news/articleView.html?idxno=6335",
+              "kind": "media"
+            }
+          ]
+        },
+        {
+          "learner": "B",
+          "entryYear": 2030,
+          "status": "estimated",
+          "note": "2027.3 개편안 확정 전까지 적용 여부 추정",
+          "sources": [
+            {
+              "name": "M이코노미뉴스: 국가교육위원회, 대입제도 전면 개편 공론화 2027년 3월 확정",
+              "url": "https://www.m-economynews.com/news/article.html?no=69490",
+              "kind": "media"
+            }
+          ]
+        }
+      ],
+      "checkedAt": "2026-10-25"
+    }
+  ]
+}
