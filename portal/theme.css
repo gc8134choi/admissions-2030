@@ -231,3 +231,55 @@ html[data-profile=b] .aux-n{color:var(--accent-a)}
 .hm .hm-aud .fchip{color:var(--ink)}
 .hm .hm-aud .fchip.on{color:var(--paper)}
 @media (min-width:900px){.hero-grid{align-items:start}.hero{padding-top:36px}.hero-aside{padding-top:36px}}
+
+/* ===== 학교별 과목표(편제표) 요약: 카드 해체, 헤어라인과 큰 숫자 ===== */
+.school{display:flex;flex-direction:column;gap:14px;padding:20px 0 24px;border:0;border-top:1px solid var(--rule);background:none;border-radius:0}
+.schoolgrid{gap:0 32px}
+.school .sb{background:none;color:var(--ink);padding:0;border:0;border-radius:0;gap:12px;align-items:center;flex-direction:row;text-align:left}
+.school .sb-logo{width:40px;height:40px;padding:0;background:none;box-shadow:none;filter:grayscale(1);opacity:.9;border-radius:50%}
+.school .sb-t b{font-size:28px;font-weight:800;letter-spacing:-.045em;line-height:1.1}
+.school .sb-t span{color:var(--mute);font-size:12px}
+.school .sb-star{color:var(--ink);font-size:22px;position:static}
+.school .sb-star[aria-pressed=true]{color:var(--accent)}
+.hs-tiles.k3{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:0;text-align:left}
+.hs-tiles.k3>div{background:none;border-radius:0;padding:4px 12px 4px 0;display:flex;flex-direction:column}
+.hs-tiles.k3>div+div{padding-left:12px;border-left:1px solid var(--hair)}
+.hs-tiles.k3 b{font-size:clamp(34px,4vw,48px);font-weight:800;letter-spacing:-.05em;line-height:1}
+.hs-tiles.k3 span{font-size:12px;color:var(--mute);margin-top:6px}
+.school .bar{height:3px;line-height:0;font-size:0;border-radius:0;background:var(--hair);margin-top:-6px}
+.school .bar span{font-size:0;padding:0}
+.school .bar .req{background:var(--req)}.school .bar .ele{background:var(--ele)}
+.fold{border-top:1px solid var(--hair);padding-top:10px}
+.fold>summary{font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;min-height:32px}
+.school .st2{border:0;background:none;padding:0}
+.school .st-req,.school .st-ele{font-size:15px}
+.school .foot{border-top:1px solid var(--hair);padding-top:12px;margin-top:auto}
+.school .foot .btn{border:0;background:none;color:var(--ink);padding:0;font-weight:700;text-decoration:underline;text-underline-offset:4px}
+.sn{border:0;background:none;padding:0}
+.sn-h b{font-size:12px;letter-spacing:.06em}
+.sn ul{padding-left:16px}
+.sn-common{border:0;background:none;padding:0 0 12px;color:var(--mute);font-size:13px}
+.school .terms{background:none}
+.cre{background:none;border:0;padding:0}
+.crt th,.crt td{border-color:var(--hair)}
+.phead{border-bottom:1px solid var(--hair)}
+.phead h2{font-size:clamp(26px,7.4vw,44px);font-weight:800;letter-spacing:-.045em;margin:20px 0 10px}
+.phead .subtabs a,#tabs a{color:var(--mute)}
+#tabs a.on,.subtabs a.on{color:var(--ink);font-weight:800;border-bottom-color:var(--accent)}
+.chipbar .chip.schip{background:none;border:0;border-bottom:2px solid transparent;border-radius:0}
+.chipbar .chip.schip.on{border-bottom-color:var(--accent)}
+.hs-tiles.k3 b{font-size:clamp(28px,3vw,40px)}
+.hs-tiles.k3>div{min-width:0}
+@media (max-width:760px){.hs-tiles.k3 b{font-size:clamp(34px,10vw,48px)}}
+
+/* ===== 일정 화면 ===== */
+table.policy{border-collapse:collapse;width:100%}
+table.policy th,table.policy td{border:0;border-top:1px solid var(--hair);text-align:left;padding:14px 10px 14px 0;vertical-align:top;background:none}
+table.policy thead th{border-top:1px solid var(--rule);font-size:12px;letter-spacing:.06em;color:var(--mute);font-weight:700}
+table.policy tr.past{opacity:.55}
+table.policy tr.g3 td,table.policy tr.g3 b{color:var(--g3)}
+table.policy tr.g3 td:first-child{color:var(--g3c);font-weight:700}
+.g3k{color:var(--g3c);font-weight:700}
+.al-body,.note{border:0;background:var(--band);border-radius:0;padding:12px 14px;font-size:13px}
+.subtabs{border-bottom:1px solid var(--hair)}
+.subtabs a{color:var(--mute)}.subtabs a.on{color:var(--ink);border-bottom-color:var(--accent);font-weight:800}
