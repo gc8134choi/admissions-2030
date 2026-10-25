@@ -47,7 +47,7 @@ const toggleStar = (id) => { const s = stars(); store.set("stars", s.includes(id
 const nameOf = (schools, id) => schools.find((s) => s.id === id)?.name || id;
 // 학교 로고(128px 원형 사본). 파일이 있는 학교만 표시한다.
 const LOGO_IDS = new Set(["school-pungdeok", "school-seongbok", "school-suji", "school-yonginheungcheon"]);
-const logo = (id, name, px = 20) => (LOGO_IDS.has(id) ? `<img class="logo" src="img/schools/128/${esc(id)}.png" alt="${esc(name)} 로고" width="${px}" height="${px}" style="--lg:${px}px">` : "");
+const logo = (id, name, px = 20) => (LOGO_IDS.has(id) ? `<img class="logo" src="img/schools/256/${esc(id)}.png" alt="${esc(name)} 로고" width="${px}" height="${px}" style="--lg:${px}px">` : "");
 const nm = (id, name, px) => `<span class="nm">${logo(id, name, px)}<span>${esc(name)}</span></span>`;
 const SLOT = { required: "지정", elective: "선택", outside: "교외" };
 const CSAT = { in: "포함", base: "기초", out: "제외", none: "-" };
