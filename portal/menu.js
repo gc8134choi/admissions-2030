@@ -49,8 +49,8 @@ export const MENU = [
     desc: "날짜·항목·영향 범위. 편제표·요건 갱신도 자동 기록.", parts: ["날짜 / 항목 / 영향 범위"] },
 
   { id: "library", title: "자료실", icon: "🗂️", status: "v1", children: [
-    { id: "library/sources", title: "출처 목록", status: "v1", desc: "자료별 출처 링크." },
-    { id: "library/status", title: "갱신 현황", status: "v1", desc: "학교별 기준연도·수집일." },
+    { id: "library/sources", title: "출처 목록", status: "v1", view: "sources", desc: "학교 정보 출처 링크." },
+    { id: "library/status", title: "갱신 현황", status: "v1", view: "status", desc: "학교별 기준연도·수집일·확인 필요 건수." },
     { id: "library/files", title: "원본 파일", status: "v2", desc: "PDF 등 원본." },
   ] },
 ];

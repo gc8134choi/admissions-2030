@@ -18,7 +18,7 @@ body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.6 system-ui,-appl
 .badge{font-size:11px;border:1px solid currentColor;border-radius:99px;padding:0 6px;margin-left:auto;white-space:nowrap}
 .badge.v1{color:var(--v1)}.badge.v2{color:var(--v2)}.badge.soon{color:var(--soon)}
 #main{flex:1;min-width:0;padding:24px clamp(16px,4vw,40px) 64px}
-h2{margin:.2em 0 .3em}
+h2{margin:.2em 0 .3em}h3{margin:1.2em 0 .4em}
 .crumb{font-size:13px;color:var(--muted)}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;margin:14px 0}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
