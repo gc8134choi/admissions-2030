@@ -1,7 +1,7 @@
 // research/data/policy-draft.json(조사 세션 산출) → portal/data/policy.json. 편제표 DB(build-db)와 별개다.
 // 값은 draft에서 그대로 옮기고, 화면용 필드(entryYear, events, note)만 더한다.
 // 사용: node tools/build-policy.mjs  (--check: 파일과 결과가 다르면 종료코드 1)
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, copyFileSync, mkdirSync, existsSync } from "node:fs";
 
 const STATUS = { 확정: "confirmed", 보도: "reported", 추정: "estimated", "학교 배부 자료": "material", "서울교육청 자료": "seoul", "학원 자료": "academy", "서울교육청 자료(원문 확인)": "seoul-verified", "서울·경기 자료 일치": "match", "경기도교육청 자료": "gyeonggi", 의견: "opinion", unknown: "unknown" };
 const KIND = { 공식: "official", 매체: "media", "학교 배부 자료": "material", "서울교육청 자료": "seoul", "서울교육청·경기도교육청 자료": "seoul-gyeonggi", "경기도교육청 자료": "gyeonggi", "학원 의견": "opinion", "학원 자료": "academy" };
@@ -81,3 +81,23 @@ if (process.argv.includes("--check")) {
   if (cur !== json) { console.error("policy.json is out of date"); process.exit(1); }
 } else writeFileSync(target, json);
 console.log(out.length, "rows");
+
+// ---- 공식 이미지 출처(research/data/image-credits.json → portal/data/image-credits.json) ----
+// 공공누리 제1유형(출처표시)만 portal/img/credit/로 복사해 화면에 쓰고, 그 밖의 유형·조건 불명은 링크만 남긴다(usable=false).
+{
+  const credits = JSON.parse(readFileSync("research/data/image-credits.json", "utf8")).images || [];
+  const out2 = credits.map((c) => {
+    const usable = /제1유형/.test(c.license || "") && c.file && existsSync(c.file);
+    const base = (c.file || "").split("/").pop();
+    if (usable && !process.argv.includes("--check")) { mkdirSync("portal/img/credit", { recursive: true }); copyFileSync(c.file, `portal/img/credit/${base}`); }
+    const { file, imageUrl, ...rest } = c;
+    return { ...rest, file: usable ? base : null, usable: !!usable };
+  });
+  const j2 = JSON.stringify(out2, null, 1) + "\n";
+  const t2 = "portal/data/image-credits.json";
+  if (process.argv.includes("--check")) {
+    let cur = ""; try { cur = readFileSync(t2, "utf8"); } catch {}
+    if (cur !== j2) { console.error("image-credits.json is out of date"); process.exit(1); }
+  } else writeFileSync(t2, j2);
+  console.log(out2.filter((x) => x.usable).length, "usable images");
+}

@@ -539,3 +539,9 @@ h3{font-size:20px;font-weight:700}
 .small,.muted.small{font-size:13px}
 td,th,.tnum,.hm-tiles b,.hs-tiles b,.st-n{font-variant-numeric:tabular-nums}
 @media (max-width:760px){h2{font-size:24px}.panel,.hm-box{padding:16px}.hm{gap:20px}}
+.cv-ht{flex:1;min-width:0}.cv-spot{width:84px;height:72px;flex:none;margin-left:auto}@media (max-width:640px){.cv-spot{width:56px;height:48px}}
+.pol-fig{margin:12px 0}.pol-fig img{width:100%;max-width:520px;height:auto;border:1px solid var(--line);border-radius:10px;display:block}.pol-fig figcaption{font-size:12px;margin-top:6px}
+.cv-two{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.cv-pane{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:color-mix(in srgb,var(--c) 6%,var(--panel));display:flex;flex-direction:column;gap:12px}
+.cv-pane h4{margin:0;font-size:14px;display:flex;align-items:center;gap:6px}.cv-dot{width:10px;height:10px;border-radius:50%;background:var(--c)}.cv-dot.c1{background:var(--cs2)}
+.cv-pane .cv-gl{font-size:13px}.cv-cap{margin-top:12px}.cv-extra{margin:12px 0 0;padding-left:18px;font-size:13px;color:var(--muted)}

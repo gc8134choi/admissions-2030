@@ -77,6 +77,11 @@ export function register(views, { $, esc, load, store }) {
     const NOTE = { "cur-select": '<p class="note">서울교육청 자료, 경기 적용 확인 필요. 수능 출제범위는 추정이며 2030학년도 확정이 아닙니다.</p>' };
     const key = (r) => (ACD_SYS.has(r.id) ? "academy" : CUR_SYS.has(r.id) ? CUR_GROUP[r.id] || "cur-select" : r.topic);
     // 선택과목 조사·대학 권장이수과목은 고교학점제 이해에서 자세히 보고, 여기는 한 줄 요약만 둔다.
+    // 공식 이미지(공공누리 제1유형만 저장·표시). 그 밖의 자료는 링크만. 출처·이용 조건은 data/image-credits.json.
+    const credits = (await load("image-credits")).filter((c) => /대입 제도/.test(c.screen));
+    const imgBlock = credits.map((c) => c.usable
+      ? `<figure class="pol-fig"><a href="img/credit/${esc(c.file)}" target="_blank" rel="noopener"><img src="img/credit/${esc(c.file)}" alt="${esc(c.title)}" loading="lazy"></a><figcaption>${esc(c.org)} · ${esc(c.title)} · <b>${esc(c.license)}</b> · <a href="${esc(c.sourceUrl)}" target="_blank" rel="noopener">원문 보기</a>${c.note ? `<div class="muted">${esc(c.note)}</div>` : ""}</figcaption></figure>`
+      : `<p class="muted small">참고 링크(이용 조건 확인 필요): <a href="${esc(c.sourceUrl)}" target="_blank" rel="noopener">${esc(c.org)} · ${esc(c.title)}</a></p>`).join("");
     const pick = (await load("policy")).filter((r) => r.id === "cur-06" || r.id === "cur-07");
     const pickLine = pick.length ? `<p class="muted small">선택과목 조사·대학 권장이수과목: ${pick.map((r) => esc(r.body)).join(" / ")} · <a href="#life/credit">고교학점제 이해에서 자세히</a></p>` : "";
     const cols = [...basic.slice(0, 2), ["대입학년도", (r) => `${r.examYear}<div class="muted small">입학 ${r.entryYear}</div>`], ...basic.slice(2)];
@@ -84,7 +89,7 @@ export function register(views, { $, esc, load, store }) {
       const rs = (x) => x.filter((r) => !f || r.status === f);
       $("#ptbl").innerHTML = log ? logTable(rs(body)) : Object.entries(TOPIC).map(([t, label]) => { const g = rs(body.filter((r) => key(r) === t)); if (!g.length) return "";
         if (t === "academy") return `<h3>${label} <span class="opinion-label">학원</span></h3><div class="opinion"><p class="muted small">학원 설명회 의견·자료입니다. 확인된 사실이 아닙니다.</p>${table(g, cols)}</div>`;
-        return `<h3>${label}</h3>${t === "cur-select" ? pickLine : ""}${NOTE[t] || ""}${table(g, cols)}`; }).join("") || '<p class="muted">조건에 맞는 항목이 없습니다.</p>';
+        return `<h3>${label}</h3>${t === "cur-select" ? pickLine : ""}${NOTE[t] || ""}${table(g, cols)}${t === "cur-select" ? imgBlock : ""}`; }).join("") || '<p class="muted">조건에 맞는 항목이 없습니다.</p>';
     });
   };
 
