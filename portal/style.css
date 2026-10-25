@@ -471,3 +471,4 @@ ul.plain{margin:6px 0;padding-left:18px}
 .cv-basis{margin-top:12px;font-size:13px}.cv-basis summary{color:var(--muted);cursor:pointer}.cv-big{margin:14px 0}
 @media (max-width:640px){.cv-hero{grid-template-columns:1fr;padding:16px}.cv-hero-art{max-width:280px;justify-self:center}.cv-flow li:not(:last-child)::after{display:none}.cv-card{padding:14px}}
 .cv-ht{flex:1;min-width:0}.cv-spot{width:84px;height:72px;flex:none;margin-left:auto}@media (max-width:640px){.cv-spot{width:56px;height:48px}}
+.pol-fig{margin:12px 0}.pol-fig img{width:100%;max-width:520px;height:auto;border:1px solid var(--line);border-radius:10px;display:block}.pol-fig figcaption{font-size:12px;margin-top:6px}
