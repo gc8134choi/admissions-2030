@@ -485,6 +485,90 @@
       "unverified": false
     },
     {
+      "id": "sch-09",
+      "topic": "exam-schedule",
+      "entryYear": 2027,
+      "title": "2027학년도 고교 입학(개학)",
+      "body": "2027.3 초(서울/경기). 학년도는 3월 1일 시작이 관행이고 2027.3.1이 월요일 삼일절이라 입학식·개학은 3.2(화) 전후로 추정. 서울·경기 교육청의 2027학년도 학사일정 근거는 확인 못 함",
+      "status": "추정",
+      "sourceKind": null,
+      "sourceName": null,
+      "sourceUrl": null,
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": false
+    },
+    {
+      "id": "sch-10",
+      "topic": "exam-schedule",
+      "examYear": 2028,
+      "title": "2028학년도 정시 일정(참고)",
+      "body": "원서접수 2028.1.3~1.6 중 3일 이상, 군별 전형기간 가 1.10~17, 나 1.18~25, 다 1.31~2.7, 합격자 발표 2.10까지, 등록 2.11~14",
+      "status": "보도",
+      "sourceKind": "공식",
+      "sourceName": "대교협 2028학년도 시행계획 주요사항",
+      "sourceUrl": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf",
+      "extraSources": [
+        {
+          "name": "에듀진",
+          "url": "https://www.edujin.co.kr/news/articleView.html?idxno=50855"
+        },
+        {
+          "name": "입시리포트",
+          "url": "https://sanedu.com/%EC%9E%85%EC%8B%9C%EB%A6%AC%ED%8F%AC%ED%8A%B8-2028%ED%95%99%EB%85%84%EB%8F%84-%EB%8C%80%ED%95%99%EC%9E%85%EC%8B%9C-%EC%A3%BC%EC%9A%94-%EC%A0%84%ED%98%95-%EC%9D%BC%EC%A0%95/"
+        }
+      ],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "sch-11",
+      "topic": "exam-schedule",
+      "examYear": 2030,
+      "title": "2030학년도 수시 원서접수",
+      "body": "2029.9 중하순 전후로 추정. 2028학년도분이 2027.9.20 시작(보도)이므로 같은 구조라면 비슷한 시기",
+      "status": "추정",
+      "sourceKind": null,
+      "sourceName": "한국교육신문",
+      "sourceUrl": "https://www.hangyo.com/mobile/article.html?no=105345",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": false
+    },
+    {
+      "id": "sch-12",
+      "topic": "exam-schedule",
+      "examYear": 2030,
+      "title": "2030학년도 수능",
+      "body": "2029.11 중하순 목요일로 추정(2027학년도 2026.11.19, 2028학년도 2027.11.18). 시행일 확정 공고는 확인 못 함",
+      "status": "추정",
+      "sourceKind": null,
+      "sourceName": "평가원 수능 홈페이지",
+      "sourceUrl": "https://www.suneung.re.kr/main.do?s=suneung",
+      "extraSources": [
+        {
+          "name": "교육부 보도자료",
+          "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512"
+        }
+      ],
+      "checkedAt": "2026-10-25",
+      "unverified": false
+    },
+    {
+      "id": "sch-13",
+      "topic": "exam-schedule",
+      "examYear": 2030,
+      "title": "2030학년도 정시",
+      "body": "원서접수 2029.12 말~2030.1 초, 전형 2030.1~2월로 추정(2028학년도분 기준). 정시 접수가 12월이라는 근거는 없음",
+      "status": "추정",
+      "sourceKind": null,
+      "sourceName": null,
+      "sourceUrl": null,
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": false
+    },
+    {
       "id": "log-01",
       "topic": "change-log",
       "examYear": 2028,
