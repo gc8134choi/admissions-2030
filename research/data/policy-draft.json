@@ -14,7 +14,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(공식 원문 확인, 2026-10-25)"
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
+      "region": "national"
     },
     {
       "id": "adm-02",
@@ -29,7 +30,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(공식 원문 확인, 2026-10-25)"
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
+      "region": "national"
     },
     {
       "id": "adm-03",
@@ -44,7 +46,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(공식 원문 확인, 2026-10-25)"
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
+      "region": "national"
     },
     {
       "id": "adm-04",
@@ -59,7 +62,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(공식 원문 확인, 2026-10-25)"
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
+      "region": "national"
     },
     {
       "id": "adm-05",
@@ -74,7 +78,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(공식 원문 확인, 시기 조정은 미결정)"
+      "statusNote": "확정(공식 원문 확인, 시기 조정은 미결정)",
+      "region": "national"
     },
     {
       "id": "adm-06",
@@ -89,7 +94,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": null
+      "statusNote": null,
+      "region": "national"
     },
     {
       "id": "adm-07",
@@ -104,7 +110,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": null
+      "statusNote": null,
+      "region": "national"
     },
     {
       "id": "adm-08",
@@ -125,7 +132,8 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "보도(원문 미확인)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인"
+      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "region": "national"
     },
     {
       "id": "adm-09",
@@ -141,7 +149,8 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "보도(원문 미확인)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인"
+      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "region": "national"
     },
     {
       "id": "adm-10",
@@ -157,7 +166,8 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "보도(원문 미확인, 개인 제안)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인"
+      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "region": "national"
     },
     {
       "id": "hs-01",
@@ -176,7 +186,8 @@
       "audience": [
         "common"
       ],
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인"
+      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "region": "seoul"
     },
     {
       "id": "hs-02",
@@ -195,7 +206,8 @@
       "audience": [
         "science"
       ],
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인"
+      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "region": "seoul"
     },
     {
       "id": "hs-05",
@@ -215,7 +227,8 @@
         "general",
         "private"
       ],
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인"
+      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "region": "seoul"
     },
     {
       "id": "hs-06",
@@ -233,7 +246,8 @@
       "statusNote": null,
       "audience": [
         "science"
-      ]
+      ],
+      "region": "seoul"
     },
     {
       "id": "hs-07",
@@ -254,7 +268,8 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "보도(원문 미확인)",
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인"
+      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "region": "national"
     },
     {
       "id": "hs-08",
@@ -270,7 +285,8 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "보도(원문 미확인)",
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인"
+      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "region": "national"
     },
     {
       "id": "hs-09",
@@ -285,7 +301,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": null
+      "statusNote": null,
+      "region": "national"
     },
     {
       "id": "hs-10",
@@ -300,7 +317,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": null
+      "statusNote": null,
+      "region": "national"
     },
     {
       "id": "hs-11",
@@ -316,7 +334,8 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "보도(원문 미확인)",
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인"
+      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "region": "national"
     },
     {
       "id": "hs-12",
@@ -332,7 +351,8 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "보도(원문 미확인)",
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인"
+      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "region": "national"
     },
     {
       "id": "hs-13",
@@ -348,7 +368,8 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "보도(원문 미확인)",
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인"
+      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "region": "national"
     },
     {
       "id": "hs-14",
@@ -363,7 +384,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": null
+      "statusNote": null,
+      "region": "national"
     },
     {
       "id": "sch-01",
@@ -381,7 +403,8 @@
       "statusNote": "확정(공식 원문 확인, 2026-10-25)",
       "audience": [
         "grade3"
-      ]
+      ],
+      "region": "national"
     },
     {
       "id": "sch-02",
@@ -399,7 +422,8 @@
       "statusNote": "확정(공식 원문 확인, 2026-10-25)",
       "audience": [
         "grade3"
-      ]
+      ],
+      "region": "national"
     },
     {
       "id": "sch-03",
@@ -417,7 +441,8 @@
       "statusNote": "확정(공식 원문 확인, 2026-10-25)",
       "audience": [
         "common"
-      ]
+      ],
+      "region": "national"
     },
     {
       "id": "sch-04",
@@ -440,7 +465,8 @@
       "statusNote": "확정(공식 원문 확인, 2026-10-25)",
       "audience": [
         "common"
-      ]
+      ],
+      "region": "national"
     },
     {
       "id": "sch-05",
@@ -463,7 +489,8 @@
       "statusNote": "확정(공식 원문 확인, 2026-10-25)",
       "audience": [
         "common"
-      ]
+      ],
+      "region": "national"
     },
     {
       "id": "sch-06",
@@ -481,7 +508,8 @@
       "statusNote": null,
       "audience": [
         "common"
-      ]
+      ],
+      "region": "national"
     },
     {
       "id": "sch-07",
@@ -499,7 +527,8 @@
       "statusNote": null,
       "audience": [
         "common"
-      ]
+      ],
+      "region": "national"
     },
     {
       "id": "sch-08",
@@ -517,7 +546,8 @@
       "statusNote": null,
       "audience": [
         "common"
-      ]
+      ],
+      "region": "national"
     },
     {
       "id": "sch-09",
@@ -535,7 +565,8 @@
       "statusNote": null,
       "audience": [
         "common"
-      ]
+      ],
+      "region": "national"
     },
     {
       "id": "sch-10",
@@ -553,7 +584,8 @@
       "statusNote": "확정(공식 원문 확인, 2026-10-25)",
       "audience": [
         "common"
-      ]
+      ],
+      "region": "national"
     },
     {
       "id": "sch-11",
@@ -571,7 +603,8 @@
       "statusNote": null,
       "audience": [
         "common"
-      ]
+      ],
+      "region": "national"
     },
     {
       "id": "sch-12",
@@ -594,7 +627,8 @@
       "statusNote": null,
       "audience": [
         "common"
-      ]
+      ],
+      "region": "national"
     },
     {
       "id": "sch-13",
@@ -612,7 +646,8 @@
       "statusNote": null,
       "audience": [
         "common"
-      ]
+      ],
+      "region": "national"
     },
     {
       "id": "sch-14",
@@ -631,7 +666,8 @@
       "audience": [
         "grade3"
       ],
-      "date": "2026-09-07~2026-09-11"
+      "date": "2026-09-07~2026-09-11",
+      "region": "national"
     },
     {
       "id": "sch-15",
@@ -650,7 +686,8 @@
       "audience": [
         "grade3"
       ],
-      "date": "2026-09-12~2026-12-18"
+      "date": "2026-09-12~2026-12-18",
+      "region": "national"
     },
     {
       "id": "sch-16",
@@ -669,7 +706,8 @@
       "audience": [
         "grade3"
       ],
-      "date": "2026-12-21~2026-12-30"
+      "date": "2026-12-21~2026-12-30",
+      "region": "national"
     },
     {
       "id": "sch-17",
@@ -688,7 +726,8 @@
       "audience": [
         "grade3"
       ],
-      "date": "2027-01-04~2027-01-07"
+      "date": "2027-01-04~2027-01-07",
+      "region": "national"
     },
     {
       "id": "sch-18",
@@ -707,7 +746,8 @@
       "audience": [
         "grade3"
       ],
-      "date": "2027-01-11~2027-01-31"
+      "date": "2027-01-11~2027-01-31",
+      "region": "national"
     },
     {
       "id": "sch-19",
@@ -726,7 +766,8 @@
       "audience": [
         "grade3"
       ],
-      "date": "2027-02-05~2027-02-18"
+      "date": "2027-02-05~2027-02-18",
+      "region": "national"
     },
     {
       "id": "log-01",
@@ -744,7 +785,8 @@
       "statusNote": "확정(공식 원문 확인, 2026-10-25)",
       "audience": [
         "common"
-      ]
+      ],
+      "region": "national"
     },
     {
       "id": "log-02",
@@ -763,7 +805,8 @@
       "audience": [
         "common"
       ],
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인"
+      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "region": "national"
     },
     {
       "id": "log-03",
@@ -781,7 +824,8 @@
       "statusNote": "확정(공식 원문 확인, 2026-10-25)",
       "audience": [
         "common"
-      ]
+      ],
+      "region": "national"
     },
     {
       "id": "log-04",
@@ -800,7 +844,8 @@
       "audience": [
         "common"
       ],
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인"
+      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "region": "national"
     },
     {
       "id": "log-05",
@@ -823,7 +868,8 @@
       "statusNote": "확정(공식 원문 확인, 2026-10-25)",
       "audience": [
         "common"
-      ]
+      ],
+      "region": "national"
     },
     {
       "id": "log-06",
@@ -842,7 +888,8 @@
       "audience": [
         "common"
       ],
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인"
+      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "region": "national"
     },
     {
       "id": "log-07",
@@ -860,7 +907,8 @@
       "statusNote": "확정(공식 원문 확인, 2026-10-25)",
       "audience": [
         "common"
-      ]
+      ],
+      "region": "national"
     },
     {
       "id": "log-08",
@@ -884,7 +932,8 @@
       "audience": [
         "common"
       ],
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인"
+      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "region": "national"
     },
     {
       "id": "log-09",
@@ -908,7 +957,8 @@
       "audience": [
         "common"
       ],
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인"
+      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "region": "national"
     },
     {
       "id": "log-10",
@@ -932,7 +982,8 @@
       "audience": [
         "common"
       ],
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인"
+      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "region": "national"
     },
     {
       "id": "log-11",
@@ -950,7 +1001,8 @@
       "statusNote": null,
       "audience": [
         "common"
-      ]
+      ],
+      "region": "national"
     },
     {
       "id": "str-01",
@@ -970,7 +1022,8 @@
       ],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(공식 원문 확인, 2026-10-25)"
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
+      "region": "national"
     },
     {
       "id": "str-02",
@@ -990,7 +1043,8 @@
       ],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(공식 원문 확인, 2026-10-25)"
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
+      "region": "national"
     },
     {
       "id": "str-03",
@@ -1005,7 +1059,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(공식 원문 확인, 2026-10-25)"
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
+      "region": "national"
     },
     {
       "id": "str-04",
@@ -1020,7 +1075,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(공식 원문 확인, 2026-10-25)"
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
+      "region": "national"
     },
     {
       "id": "str-05",
@@ -1045,7 +1101,8 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "보도(원문 미확인)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인"
+      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "region": "national"
     },
     {
       "id": "str-06",
@@ -1066,7 +1123,8 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "보도(원문 미확인)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인"
+      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "region": "national"
     },
     {
       "id": "str-07",
@@ -1082,7 +1140,8 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "보도(원문 미확인)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인"
+      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "region": "national"
     },
     {
       "id": "str-08",
@@ -1098,7 +1157,8 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "보도(원문 미확인)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인"
+      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "region": "national"
     },
     {
       "id": "str-09",
@@ -1118,7 +1178,8 @@
       ],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(공식 원문 확인, 2026-10-25)"
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
+      "region": "national"
     },
     {
       "id": "str-10",
@@ -1133,7 +1194,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(공식 원문 확인, 2026-10-25)"
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
+      "region": "national"
     },
     {
       "id": "str-11",
@@ -1148,7 +1210,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(공식 원문 확인, 2026-10-25)"
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
+      "region": "national"
     },
     {
       "id": "str-12",
@@ -1163,7 +1226,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(공식 원문 확인, 2026-10-25)"
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
+      "region": "national"
     },
     {
       "id": "str-13",
@@ -1178,7 +1242,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": null
+      "statusNote": null,
+      "region": "national"
     },
     {
       "id": "str-14",
@@ -1193,7 +1258,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": null
+      "statusNote": null,
+      "region": "national"
     },
     {
       "id": "asg-01",
@@ -1209,7 +1275,8 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인"
+      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "region": "gyeonggi"
     },
     {
       "id": "asg-02",
@@ -1225,7 +1292,8 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인"
+      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "region": "gyeonggi"
     },
     {
       "id": "asg-03",
@@ -1241,7 +1309,8 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인"
+      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "region": "gyeonggi"
     },
     {
       "id": "asg-04",
@@ -1257,7 +1326,8 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인"
+      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "region": "gyeonggi"
     },
     {
       "id": "asg-05",
@@ -1273,7 +1343,8 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인"
+      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "region": "gyeonggi"
     },
     {
       "id": "asg-06",
@@ -1289,7 +1360,8 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인"
+      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "region": "gyeonggi"
     },
     {
       "id": "asg-07",
@@ -1305,7 +1377,8 @@
       "checkedAt": "2026-10-25",
       "unverified": true,
       "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)",
-      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인"
+      "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
+      "region": "gyeonggi"
     },
     {
       "id": "cur-01",
@@ -1320,7 +1393,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)"
+      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)",
+      "region": "national"
     },
     {
       "id": "cur-02",
@@ -1335,7 +1409,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)"
+      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)",
+      "region": "national"
     },
     {
       "id": "cur-03",
@@ -1350,7 +1425,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)"
+      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)",
+      "region": "national"
     },
     {
       "id": "cur-04",
@@ -1365,7 +1441,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)"
+      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)",
+      "region": "national"
     },
     {
       "id": "cur-05",
@@ -1380,7 +1457,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "서울교육청 자료(경기 적용 확인 필요)"
+      "statusNote": "서울교육청 자료(경기 적용 확인 필요)",
+      "region": "national"
     },
     {
       "id": "cur-06",
@@ -1395,7 +1473,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "서울교육청 자료(경기 적용 확인 필요)"
+      "statusNote": "서울교육청 자료(경기 적용 확인 필요)",
+      "region": "national"
     },
     {
       "id": "cur-07",
@@ -1410,7 +1489,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "서울교육청 자료(경기 적용 확인 필요)"
+      "statusNote": "서울교육청 자료(경기 적용 확인 필요)",
+      "region": "national"
     },
     {
       "id": "cur-08",
@@ -1425,7 +1505,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "추정(안내서 원문의 2028학년도 체제 표, 2030학년도 확정 아님. 중장기 개편안 2027.3 공표 예정)"
+      "statusNote": "추정(안내서 원문의 2028학년도 체제 표, 2030학년도 확정 아님. 중장기 개편안 2027.3 공표 예정)",
+      "region": "national"
     },
     {
       "id": "cur-09",
@@ -1440,7 +1521,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)"
+      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)",
+      "region": "national"
     },
     {
       "id": "cur-10",
@@ -1455,7 +1537,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)"
+      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)",
+      "region": "national"
     },
     {
       "id": "cur-11",
@@ -1470,7 +1553,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)"
+      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)",
+      "region": "national"
     },
     {
       "id": "cur-12",
@@ -1485,7 +1569,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)"
+      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)",
+      "region": "national"
     },
     {
       "id": "cur-13",
@@ -1500,7 +1585,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)"
+      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)",
+      "region": "national"
     },
     {
       "id": "opn-01",
@@ -1515,7 +1601,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "의견(학원)"
+      "statusNote": "의견(학원)",
+      "region": "national"
     },
     {
       "id": "opn-02",
@@ -1530,7 +1617,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "의견(학원)"
+      "statusNote": "의견(학원)",
+      "region": "national"
     },
     {
       "id": "opn-03",
@@ -1545,7 +1633,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "의견(학원)"
+      "statusNote": "의견(학원)",
+      "region": "national"
     },
     {
       "id": "opn-04",
@@ -1560,7 +1649,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "의견(학원)"
+      "statusNote": "의견(학원)",
+      "region": "national"
     },
     {
       "id": "opn-05",
@@ -1575,7 +1665,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "의견(학원)"
+      "statusNote": "의견(학원)",
+      "region": "national"
     },
     {
       "id": "cur-14",
@@ -1590,7 +1681,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)"
+      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)",
+      "region": "national"
     },
     {
       "id": "cur-15",
@@ -1605,7 +1697,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)"
+      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)",
+      "region": "national"
     },
     {
       "id": "cur-16",
@@ -1620,7 +1713,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)"
+      "statusNote": "확정(서울교육청 공식 발간물, 원문 대조 완료, 경기 적용은 별도 확인)",
+      "region": "national"
     },
     {
       "id": "cur-17",
@@ -1635,7 +1729,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)"
+      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)",
+      "region": "national"
     },
     {
       "id": "cur-18",
@@ -1650,7 +1745,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)"
+      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)",
+      "region": "national"
     },
     {
       "id": "cur-19",
@@ -1665,7 +1761,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)"
+      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)",
+      "region": "national"
     },
     {
       "id": "cur-20",
@@ -1680,7 +1777,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)"
+      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)",
+      "region": "national"
     },
     {
       "id": "cur-21",
@@ -1695,7 +1793,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)"
+      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)",
+      "region": "national"
     },
     {
       "id": "cur-22",
@@ -1710,7 +1809,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)"
+      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)",
+      "region": "national"
     },
     {
       "id": "cur-23",
@@ -1725,7 +1825,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)"
+      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)",
+      "region": "national"
     },
     {
       "id": "cur-24",
@@ -1740,7 +1841,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)"
+      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)",
+      "region": "national"
     },
     {
       "id": "cur-25",
@@ -1755,7 +1857,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)"
+      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)",
+      "region": "national"
     },
     {
       "id": "cur-26",
@@ -1770,7 +1873,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)"
+      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)",
+      "region": "national"
     },
     {
       "id": "cur-27",
@@ -1785,7 +1889,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)"
+      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)",
+      "region": "national"
     },
     {
       "id": "cur-28",
@@ -1800,7 +1905,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)"
+      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)",
+      "region": "national"
     },
     {
       "id": "cur-29",
@@ -1815,7 +1921,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)"
+      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)",
+      "region": "national"
     },
     {
       "id": "cur-30",
@@ -1830,7 +1937,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)"
+      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)",
+      "region": "national"
     },
     {
       "id": "cur-31",
@@ -1845,7 +1953,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)"
+      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)",
+      "region": "national"
     },
     {
       "id": "cur-32",
@@ -1860,7 +1969,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)"
+      "statusNote": "서울 발간 원문 확인(경기 적용 확인 필요)",
+      "region": "national"
     },
     {
       "id": "acd-02",
@@ -1875,7 +1985,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "학원 자료, 2028학년도 기준"
+      "statusNote": "학원 자료, 2028학년도 기준",
+      "region": "national"
     },
     {
       "id": "acd-03",
@@ -1890,7 +2001,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "학원 자료, 2028학년도 기준(2030학년도 확정 아님)"
+      "statusNote": "학원 자료, 2028학년도 기준(2030학년도 확정 아님)",
+      "region": "national"
     },
     {
       "id": "acd-01",
@@ -1905,7 +2017,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "학원 자료, 2028학년도 기준"
+      "statusNote": "학원 자료, 2028학년도 기준",
+      "region": "national"
     },
     {
       "id": "acd-04",
@@ -1920,7 +2033,8 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "학원 자료, 2028학년도 기준"
+      "statusNote": "학원 자료, 2028학년도 기준",
+      "region": "national"
     },
     {
       "id": "gg-01",
@@ -1945,7 +2059,8 @@
         "common"
       ],
       "date": "2026-03-30",
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인"
+      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "region": "gyeonggi"
     },
     {
       "id": "gg-02",
@@ -1971,7 +2086,8 @@
         "private"
       ],
       "date": "2026-12-02~2026-12-11",
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인"
+      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "region": "gyeonggi"
     },
     {
       "id": "gg-03",
@@ -1991,7 +2107,8 @@
         "private"
       ],
       "date": "2026-12-04~2026-12-10",
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인"
+      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "region": "gyeonggi"
     },
     {
       "id": "gg-04",
@@ -2010,7 +2127,8 @@
       "audience": [
         "general"
       ],
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인"
+      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "region": "gyeonggi"
     },
     {
       "id": "gg-05",
@@ -2029,7 +2147,8 @@
       "audience": [
         "common"
       ],
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인"
+      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "region": "gyeonggi"
     },
     {
       "id": "gg-06",
@@ -2053,7 +2172,8 @@
       "audience": [
         "general"
       ],
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인"
+      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "region": "gyeonggi"
     },
     {
       "id": "gg-07",
@@ -2078,7 +2198,8 @@
         "general",
         "private"
       ],
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인"
+      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "region": "gyeonggi"
     },
     {
       "id": "gg-08",
@@ -2103,7 +2224,8 @@
         "general"
       ],
       "date": "2026-10-19~2026-11-27",
-      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인"
+      "unverifiedReason": "교육청 사이트 접속 차단, 매체 보도만 확인",
+      "region": "gyeonggi"
     },
     {
       "id": "gg-09",
@@ -2121,7 +2243,8 @@
       "statusNote": "확인 못 함",
       "audience": [
         "common"
-      ]
+      ],
+      "region": "gyeonggi"
     },
     {
       "id": "log-12",
@@ -2150,7 +2273,8 @@
         "common"
       ],
       "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
-      "date": "2026-08"
+      "date": "2026-08",
+      "region": "national"
     },
     {
       "id": "log-13",
@@ -2175,7 +2299,8 @@
         "common"
       ],
       "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
-      "date": "2026-08"
+      "date": "2026-08",
+      "region": "national"
     },
     {
       "id": "log-14",
@@ -2200,7 +2325,8 @@
         "common"
       ],
       "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
-      "date": "2026-09"
+      "date": "2026-09",
+      "region": "national"
     },
     {
       "id": "log-15",
@@ -2220,7 +2346,11 @@
         "common"
       ],
       "unverifiedReason": "공식 원문 출처 미특정, 매체 보도만 확인",
-      "date": "2026-09"
+      "date": "2026-09",
+      "region": "national"
     }
-  ]
+  ],
+  "fields": {
+    "region": "seoul | gyeonggi | national. 시·도 단위 일정·규칙은 seoul/gyeonggi, 전국 제도(대입·수능·학점제 등)는 national. 홈 다음 일정은 gyeonggi 우선 정렬"
+  }
 }
