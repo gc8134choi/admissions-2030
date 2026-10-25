@@ -1,4 +1,5 @@
 import { creditView } from "./credit.js";
+import { roadmapView } from "./roadmap.js";
 import { loadProfile, profileOf, filterByProfile } from "./profile.js";
 import { loadAudience, saveAudience, toggleAudience, audienceMatch, audienceChips } from "./home.js";
 
@@ -37,7 +38,7 @@ export function register(views, { $, esc, load, store }) {
     if (!list.length) return "<span>없음</span>";
     return `${r.sourceKind ? `<span>${SKIND[r.sourceKind]}</span> · ` : ""}${list.map((x) => (x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>` : esc(x.name))).join(" · ")}`;
   };
-  const table = (rows, cols, cls = () => "") => `<div class="tw"><table class="policy"><thead><tr>${cols.map((c) => `<th class="l">${c[0]}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => `<tr class="${cls(r)}">${cols.map((c) => `<td class="l">${c[1](r)}</td>`).join("")}</tr>`).join("") || `<tr><td colspan="${cols.length}">해당 항목이 없습니다.</td></tr>`}</tbody></table></div>`;
+  const table = (rows, cols, cls = () => "") => `<div class="tw"><table class="policy"><thead><tr>${cols.map((c) => `<th class="l">${c[0]}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => `<tr class="${cls(r)}">${cols.map((c) => `<td class="l">${c[1](r)}</td>`).join("")}</tr>`).join("") || `<tr><td colspan="${cols.length}">해당 항목이 없어요.</td></tr>`}</tbody></table></div>`;
   const basic = [["항목", (r) => `<b>${esc(r.title)}</b>`], ["내용", (r) => esc(r.body)], ["상태", badge], ["구분·출처", src]];
   // 행 리스트(표 대체, A안): 왼쪽 상태 점, 오른쪽 제목·내용·출처. 구분은 헤어라인만. 옵션: meta(r)=제목 위 작은 글씨, cls(r)=추가 클래스, title(r)=제목.
   const cards = (rows, { meta, cls = () => "", title = (r) => r.title } = {}) => rows.length
@@ -65,7 +66,7 @@ export function register(views, { $, esc, load, store }) {
   const dateOf = (t) => (t.match(/^\d{4}-\d{2}(-\d{2})?/) || [""])[0];
 
   // 상단 안내문은 수능 세부 범위 행(adm-07)의 body를 읽어, 문구를 policy.json 한 곳에서 관리한다.
-  const banner = (rows) => `<div class="al-body">2030학년도 제도는 중장기 대입 개편안 공표(2027.3 예정) 후 확정됩니다. ${esc(rows.find((r) => r.id === "adm-07")?.body || "수능 세부 범위는 추정")}</div>`;
+  const banner = (rows) => `<div class="al-body">2030학년도 제도는 중장기 대입 개편안 공표(2027.3 예정) 후 확정돼요. ${esc(rows.find((r) => r.id === "adm-07")?.body || "수능 세부 범위는 추정")}</div>`;
 
   // 일정 표: events를 펼쳐 날짜순으로, 오늘 이전은 흐리게.
   const timeline = (rows) => {
@@ -74,8 +75,8 @@ export function register(views, { $, esc, load, store }) {
     const only3 = (e) => { const a = e.audience || e.r.audience; return !!a && a.length > 0 && a.every((x) => x === "grade3"); };
     const tr = (e) => `<tr class="${(e.end || e.start) < t ? "past" : ""}${only3(e) ? " g3" : ""}"><td class="l">${esc(fmt(e))}</td><td class="l"><b>${esc(e.r.title)}</b>${e.label ? ` · ${esc(e.label)}` : ""}${e.first ? `<div class="muted small">${esc(e.r.body)}</div>` : ""}</td><td class="l">${badge(e.r)}</td><td class="l">${src(e.r)}</td></tr>`;
     const none = rows.filter((r) => !r.events);
-    if (!evs.length && !none.length) return '<p class="note">이 프로필의 일정 데이터를 준비 중입니다.</p>';
-    return `<p class="muted">오늘(${t}) 이전 일정은 흐리게, 현 고3 일정은 <span class="g3k">회색</span>으로 표시합니다.</p><div class="tw"><table class="policy"><thead><tr><th class="l">날짜</th><th class="l">항목</th><th class="l">상태</th><th class="l">구분·출처</th></tr></thead><tbody>${evs.map(tr).join("")}</tbody></table></div>${none.length ? `<h3>일정 미확인</h3>${table(none, basic)}` : ""}`;
+    if (!evs.length && !none.length) return '<p class="note">아직 모인 일정이 없어요. 일정이 생기면 이 자리에 떠요.</p>';
+    return `<p class="muted">오늘(${t}) 이전 일정은 흐리게, 현 고3 일정은 <span class="g3k">회색</span>으로 표시해요.</p><div class="tw"><table class="policy"><thead><tr><th class="l">날짜</th><th class="l">항목</th><th class="l">상태</th><th class="l">구분·출처</th></tr></thead><tbody>${evs.map(tr).join("")}</tbody></table></div>${none.length ? `<h3>일정 미확인</h3>${table(none, basic)}` : ""}`;
   };
 
   const logTable = (rows) => cards(rows, { meta: (r) => (dateOf(r.title) ? fmtDate(dateOf(r.title)) : "날짜 미정"), title: (r) => r.title.slice(dateOf(r.title).length).trim() || r.title });
@@ -111,7 +112,7 @@ export function register(views, { $, esc, load, store }) {
       const rs = (x) => x.filter((r) => stMatch(r, f));
       $("#ptbl").innerHTML = log ? logTable(rs(body)) : Object.entries(TOPIC).map(([t, label]) => { const g = rs(body.filter((r) => key(r) === t)); if (!g.length) return "";
         if (t === "academy") return `<h3>${label}<span class="ed-tag">학원 의견·자료</span> ${cnt(g.length)}</h3><div class="ed-op"><p>학원 설명회 의견과 자료예요. 확인된 사실이 아니에요.</p>${cards(g, { meta: (r) => [r.examYear && `대입 ${r.examYear}학년도`, r.entryYear && `입학 ${r.entryYear}`].filter(Boolean).join(" · ") })}</div>`;
-        return `<h3>${label} ${cnt(g.length)}</h3>${t === "cur-select" ? pickLine : ""}${NOTE[t] || ""}${cards(g, { meta: (r) => [r.examYear && `대입 ${r.examYear}학년도`, r.entryYear && `입학 ${r.entryYear}`].filter(Boolean).join(" · ") })}${t === "cur-select" ? imgBlock : ""}`; }).join("") || '<p class="muted">조건에 맞는 항목이 없습니다.</p>';
+        return `<h3>${label} ${cnt(g.length)}</h3>${t === "cur-select" ? pickLine : ""}${NOTE[t] || ""}${cards(g, { meta: (r) => [r.examYear && `대입 ${r.examYear}학년도`, r.entryYear && `입학 ${r.entryYear}`].filter(Boolean).join(" · ") })}${t === "cur-select" ? imgBlock : ""}`; }).join("") || '<p class="muted">조건에 맞는 항목이 없어요.</p>';
     });
   };
 
@@ -122,12 +123,18 @@ export function register(views, { $, esc, load, store }) {
   };
 
   views.schedule = async (el, query) => {
-    const tab = ["univ", "life"].includes(query.get("t")) ? query.get("t") : "hs";
+    const tab = ["univ", "life", "road"].includes(query.get("t")) ? query.get("t") : "hs";
+    if (tab === "road") {
+      const tb = `<div class="ed">${tabs([["hs", "#schedule?t=hs", "고입"], ["univ", "#schedule?t=univ", "대입"], ["life", "#schedule?t=life", "졸업·입학"], ["road", "#schedule?t=road", "학년별"]], "road")}</div>`;
+      el.innerHTML = tb + '<div id="rdhost"></div>';
+      await roadmapView(el.querySelector("#rdhost"), { load, esc, learner: curProfile(), fmt, badgeMain, notice });
+      return;
+    }
     const all = filterByProfile(await load("policy"), curProfile().id, { grade3: true }); // 현고3 행은 아래 칩(audience)이 걸러 준다
     const rows = all.filter((r) => r.topic === ({ univ: "exam-schedule", life: "life-schedule" }[tab] || "hs-schedule") || (tab === "hs" && r.topic === "gg-hs-entry" && r.events) || (r.topic === "profile-2033" && (tab === "hs" ? /고입/.test(r.title) : tab === "univ" && r.events)));
     const chips = '<div id="aud"></div>'; // 칩 UI·저장(portal.audience)은 home.js와 공유
-    el.innerHTML = `${tabs([["hs", "#schedule?t=hs", "고입"], ["univ", "#schedule?t=univ", "대입"], ["life", "#schedule?t=life", "졸업·입학"]], tab)}${notice()}
-      <p class="muted">${{ univ: "수능·대교협 일정. 2030학년도분은 대부분 추정입니다.", life: "졸업·배정·입학 일정입니다. 추정은 (추정)으로 표시해요." }[tab] || "2027학년도 고입(서울 기준). 연도는 2027학년도 고입이 2026년 하반기에 진행되는 것을 기준으로 붙였습니다."}</p>${chips}<div id="tl"></div>`;
+    el.innerHTML = `${tabs([["hs", "#schedule?t=hs", "고입"], ["univ", "#schedule?t=univ", "대입"], ["life", "#schedule?t=life", "졸업·입학"], ["road", "#schedule?t=road", "학년별"]], tab)}${notice()}
+      <p class="muted">${{ univ: "수능·대교협 일정이에요. 2030학년도분은 대부분 추정이에요.", life: "졸업·배정·입학 일정이에요. 추정은 (추정)으로 표시해요. 겨울방학·졸업식·신입생 예비소집 날짜는 학교마다 달라서 학교 공지로 확인해 주세요." }[tab] || "2027학년도 고입(서울 기준). 연도는 2027학년도 고입이 2026년 하반기에 진행되는 것을 기준으로 붙였어요."}</p>${chips}<div id="tl"></div>`;
     let sel = loadAudience(store);
     const draw = () => {
       $("#aud").innerHTML = audienceChips(sel, esc) + '<span class="muted small"> 선택 없음 = 전체</span>';
