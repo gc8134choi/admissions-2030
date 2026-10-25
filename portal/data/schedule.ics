@@ -3,15 +3,14 @@ VERSION:2.0
 PRODID:-//admissions-2030//schedule//KO
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:예나·예은 대입 일정
+X-WR-CALNAME:대입 일정
 X-WR-TIMEZONE:Asia/Seoul
 BEGIN:VEVENT
 UID:ev-hs-01-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20260801
 DTEND;VALUE=DATE:20260901
-SUMMARY:[예나] 서울 기본계획 · 기본계획 확정 (보도) (월 
- 단위)
+SUMMARY:서울 기본계획 · 기본계획 확정 (보도) (월 단위)
 DESCRIPTION:서울교육청 2027학년도 고입 기본계획 확정(2026.8
  ). 후기고 동일교 배정 확대\n원문은 아직 못 봤어요.\n사
  유: 공식 원문 대조 전(매체 보도). 교육청 포털·보도자
@@ -24,7 +23,7 @@ UID:ev-hs-02-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20260818
 DTEND;VALUE=DATE:20260904
-SUMMARY:[예나] 서울 과학고 · 접수(전국 기준) (보도)
+SUMMARY:서울 과학고 · 접수(전국 기준) (보도)
 DESCRIPTION:전국 기준 접수 8.18~9.3\n원문은 아직 못 봤어요.\
  n사유: 공식 원문 대조 전(매체 보도). 교육청 포털·보도
  자료에서 해당 항목 미특정\n출처: 베리타스알파 https://w
@@ -36,8 +35,8 @@ UID:ev-hs-05-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20261202
 DTEND;VALUE=DATE:20261203
-SUMMARY:[예나] 서울 후기 일반고·자사고·외고·국제고 · 
- 후기 전형 개막(보도) (보도)
+SUMMARY:서울 후기 일반고·자사고·외고·국제고 · 후기 전
+ 형 개막(보도) (보도)
 DESCRIPTION:후기 전형 12월 시작(12.2 개막 보도). 세부 접수·
  발표일은 확인 못 함\n원문은 아직 못 봤어요.\n사유: 공
  식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서
@@ -107,8 +106,8 @@ UID:ev-sch-06-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20270801
 DTEND;VALUE=DATE:20270901
-SUMMARY:[예나] 2030학년도 대입전형 기본사항 발표 · 발표 
- 가능성(추정) (추정) (월 단위)
+SUMMARY:2030학년도 대입전형 기본사항 발표 · 발표 가능성(
+ 추정) (추정) (월 단위)
 DESCRIPTION:2027.8 무렵 발표 가능성(최근 관행: 2028학년도분
  은 2025.8 말). 법정 기한 계산상 2027.9경\n출처: 대교협 기
  본사항 안내 https://www.kcue.or.kr/work/sub06/sub01.php\n확인일 20
@@ -120,8 +119,7 @@ UID:ev-sch-07-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20291115
 DTEND;VALUE=DATE:20291116
-SUMMARY:[예나] 2030학년도 수능 시행일 · 시행일(잠정 예상)
-  (추정)
+SUMMARY:2030학년도 수능 시행일 · 시행일(잠정 예상) (추정)
 DESCRIPTION:2029.11.15(목) 잠정 예상. 공식 공고 전이며 확정 
  아님\n확인일 2026-10-25
 TRANSP:TRANSPARENT
@@ -131,8 +129,8 @@ UID:ev-sch-08-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20290301
 DTEND;VALUE=DATE:20290401
-SUMMARY:[예나] 2030학년도 수능 시행 기본계획 공고 · 공고(
- 2029.3 전후 추정) (추정) (월 단위)
+SUMMARY:2030학년도 수능 시행 기본계획 공고 · 공고(2029.3 
+ 전후 추정) (추정) (월 단위)
 DESCRIPTION:2027학년도분이 2026.3.31\, 2028학년도분이 2027.3 공
  고 예정(보도)이므로 같은 주기라면 2030학년도 수능 기
  본계획은 2029.3 전후로 추정. 정부 중장기 대입 개편안은
@@ -147,8 +145,8 @@ UID:ev-sch-09-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20270301
 DTEND;VALUE=DATE:20270401
-SUMMARY:[예나] 2027학년도 고교 입학(개학) · 입학·개학(추
- 정) (추정) (월 단위)
+SUMMARY:2027학년도 고교 입학(개학) · 입학·개학(추정) (추
+ 정) (월 단위)
 DESCRIPTION:2027.3 초(서울/경기). 학년도는 3월 1일 시작이 관
  행이고 2027.3.1이 월요일 삼일절이라 입학식·개학은 3.2(
  화) 전후로 추정. 서울·경기 교육청의 2027학년도 학사일
@@ -250,8 +248,8 @@ UID:ev-sch-11-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20290901
 DTEND;VALUE=DATE:20291001
-SUMMARY:[예나] 2030학년도 수시 원서접수 · 시작(2029.9 중하
- 순 추정) (추정) (월 단위)
+SUMMARY:2030학년도 수시 원서접수 · 시작(2029.9 중하순 추정
+ ) (추정) (월 단위)
 DESCRIPTION:2029.9 중하순 전후로 추정. 2028학년도분이 2027.9.2
  0 시작(보도)이므로 같은 구조라면 비슷한 시기\n출처: 
  한국교육신문 https://www.hangyo.com/mobile/article.html?no=105345\n
@@ -263,7 +261,7 @@ UID:ev-sch-12-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20291115
 DTEND;VALUE=DATE:20291116
-SUMMARY:[예나] 2030학년도 수능 · 시행일(잠정 예상) (추정)
+SUMMARY:2030학년도 수능 · 시행일(잠정 예상) (추정)
 DESCRIPTION:2029.11.15(목) 잠정 예상. 공식 공고 전이며 확정 
  아님\n출처: 평가원 수능 홈페이지 https://www.suneung.re.kr/ma
  in.do?s=suneung / 교육부 보도자료 https://www.moe.go.kr/boardCnts/v
@@ -276,8 +274,8 @@ UID:ev-sch-13-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20291201
 DTEND;VALUE=DATE:20300301
-SUMMARY:[예나] 2030학년도 정시 · 원서접수·전형(추정) (추
- 정) (월 단위)
+SUMMARY:2030학년도 정시 · 원서접수·전형(추정) (추정) (월 
+ 단위)
 DESCRIPTION:원서접수 2029.12 말~2030.1 초\, 전형 2030.1~2월로 추
  정(2028학년도분 기준). 정시 접수가 12월이라는 근거는 
  없음\n확인일 2026-10-25
@@ -288,7 +286,7 @@ UID:ev-gg-01-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20260330
 DTEND;VALUE=DATE:20260331
-SUMMARY:[예나] 경기 2027학년도 고입 기본계획 발표 (보도)
+SUMMARY:경기 2027학년도 고입 기본계획 발표 (보도)
 DESCRIPTION:경기도교육청이 2026.3.30 기본계획 발표. 전기 학
  교는 8.24\, 후기 학교(일반고\, 자율형 공립고\, 외국어고
  \, 국제고\, 자율형 사립고)는 12.4부터 전형 시작\, 후기 
@@ -306,7 +304,7 @@ UID:ev-gg-02-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261211
-SUMMARY:[예나] 경기 후기 전형 원서접수
+SUMMARY:경기 후기 전형 원서접수
 DESCRIPTION:후기 학교(일반고\, 자율형 공립고\, 외국어고\, 
  국제고\, 자율형 사립고) 원서접수 2026.12.4(금)~12.10(목). 
  전형요강은 2026.9.3 이내 공고\, 일정은 사정에 따라 변경
@@ -320,7 +318,7 @@ UID:ev-gg-03-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20270115
-SUMMARY:[예나] 경기 외고·국제고·자사고 전형 일정
+SUMMARY:경기 외고·국제고·자사고 전형 일정
 DESCRIPTION:외국어고·국제고·자율형 사립고(자기주도학습
  전형): 원서접수 12.4~12.10\, 1단계 전형 12.11~12\, 합격자 발
  표 12.14 이내\, 서류접수 12.15~16\, 2단계 전형 12.17~24\, 합
@@ -335,7 +333,7 @@ UID:ev-gg-04-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20270206
-SUMMARY:[예나] 경기 후기 평준화 일반고 일정
+SUMMARY:경기 후기 평준화 일반고 일정
 DESCRIPTION:원서접수 2026.12.4~12.10(해당 지역 교육지원청)\, 
  전형기간 12.11~2027.1.5\, 배정 대상자 발표 1.6\, 배정 학교 
  발표 1.22\, 등록 1.25~27\, 추가 배정·발표 2.4\, 추가 배정
@@ -350,7 +348,7 @@ UID:ev-gg-08-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20261019
 DTEND;VALUE=DATE:20261128
-SUMMARY:[예나] 평준화 배정 설명회 (보도)
+SUMMARY:평준화 배정 설명회 (보도)
 DESCRIPTION:경기도교육청 2027학년도 고교 평준화 배정 설명
  회 2026.10.19~11.27\, 유튜브 경기고입TV 비대면. 세부 자료
  는 고입·전학 포털(satp.goe.go.kr) 경기도교육청 포털 자료
@@ -363,89 +361,11 @@ DESCRIPTION:경기도교육청 2027학년도 고교 평준화 배정 설명
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:ev-b33-01-1@admissions-2030
-DTSTAMP:20261025T000000Z
-DTSTART;VALUE=DATE:20321118
-DTEND;VALUE=DATE:20321119
-SUMMARY:[예은] 2033학년도 수능 시행일(잠정) (추정)
-DESCRIPTION:2032.11.18(목) 잠정 추정. 2032년 11월 목요일은 4·11
- ·18·25일이고 2028학년도 수능(2027.11.18)·2027학년도 수능(2
- 026.11.19)이 모두 11월 셋째 목요일이라는 관행 기준. 11.11 
- 가능성도 있음. 평가원 시행 기본계획 공고 후 확정\n확
- 인일 2026-10-25
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:ev-b33-02-1@admissions-2030
-DTSTAMP:20261025T000000Z
-DTSTART;VALUE=DATE:20320301
-DTEND;VALUE=DATE:20320401
-SUMMARY:[예은] 2033학년도 수능 시행 기본계획 공고 (추정) (
- 월 단위)
-DESCRIPTION:2032.3 전후로 추정(2027학년도분 2026.3.31\, 2028학년
- 도분 2027.3 공고 예정 관행). 그 전까지 수능 세부 범위는
-  확정이 아님\n확인일 2026-10-25
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:ev-b33-03-1@admissions-2030
-DTSTAMP:20261025T000000Z
-DTSTART;VALUE=DATE:20300801
-DTEND;VALUE=DATE:20300901
-SUMMARY:[예은] 대교협 2033학년도 대입전형 기본사항 (추정)
-  (월 단위)
-DESCRIPTION:2030.8 무렵 발표 추정(2028학년도분이 2025.8.28 발
- 표된 관행\, 법정 기한 계산상 2030.9). 그 전까지 전형 구
- 조는 확정이 아님\n확인일 2026-10-25
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:ev-b33-04-1@admissions-2030
-DTSTAMP:20261025T000000Z
-DTSTART;VALUE=DATE:20291201
-DTEND;VALUE=DATE:20300101
-SUMMARY:[예은] 고입(2030학년도 입학) 시기 (추정) (월 단위)
-DESCRIPTION:2029.12 전후 후기 전형 추정(2027학년도 경기 후기
-  전형이 2026.12.4 시작). 입학은 2030.3. 2030학년도 입학 전
- 형 기본계획은 2030.3 전후 발표 추정\n확인일 2026-10-25
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:ev-b33-05-1@admissions-2030
-DTSTAMP:20261025T000000Z
-DTSTART;VALUE=DATE:20270301
-DTEND;VALUE=DATE:20270401
-SUMMARY:[예은] 2033학년도 수능 개편 검토(절대평가·서논술
- 형) (보도) (월 단위)
-DESCRIPTION:수능 절대평가·서·논술형 도입은 2033학년도 대
- 입(2030 입학생)부터 적용하는 안이 유력하게 검토됨(보
- 도\, 확정 아님). 최종안은 2027.3 확정 예정. 근거 보도는 
- log-12·log-14·log-15 참고\n원문은 아직 못 봤어요.\n사유: 
- 공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에
- 서 해당 항목 미특정\n출처: 다음뉴스 https://v.daum.net/v/202
- 60803100648087 / 교육플러스 https://www.edpl.co.kr/news/articleView.h
- tml?idxno=21218 / 네이트 https://news.nate.com/view/20260806n01096?mid=
- n1101\n확인일 2026-10-25
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:ev-b33-07-1@admissions-2030
-DTSTAMP:20261025T000000Z
-DTSTART;VALUE=DATE:20320901
-DTEND;VALUE=DATE:20321001
-SUMMARY:[예은] 2033학년도 수시·정시 시기 (추정) (월 단위)
-DESCRIPTION:수시 원서접수 2032.9 중하순\, 정시 접수 2033.1 초
-  전후로 추정(2028학년도분 수시 2027.9.20~23\, 정시 2028.1.3~6
- ). 시기 조정 논의(국교위)가 있어 바뀔 수 있음\n확인일 
- 2026-10-25
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:ev-life-01-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20261218
 DTEND;VALUE=DATE:20261219
-SUMMARY:[예나] 중학교 졸업
+SUMMARY:중학교 졸업
 DESCRIPTION:2026.12.18(금) 중학교 졸업\n출처: 사용자 제공\n확
  인일 2026-10-25
 TRANSP:TRANSPARENT
@@ -455,7 +375,7 @@ UID:ev-life-02-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270101
-SUMMARY:[예은] 초등학교 졸업
+SUMMARY:초등학교 졸업
 DESCRIPTION:2026.12.31(목) 초등학교 졸업\n출처: 사용자 제공\n
  확인일 2026-10-25
 TRANSP:TRANSPARENT
@@ -465,7 +385,7 @@ UID:ev-life-03-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20261102
 DTEND;VALUE=DATE:20261107
-SUMMARY:[예은] 중학교 배정원서 작성(출신 초등학교)
+SUMMARY:중학교 배정원서 작성(출신 초등학교)
 DESCRIPTION:2027학년도 용인 중학교 신입생 배정원서 작성 20
  26.11.2(월)~11.6(금). 학교군 내 모든 중학교를 희망 순으로
   지원\n출처: 경기도용인교육지원청 중학교 신입생 배정
@@ -478,7 +398,7 @@ UID:ev-life-04-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20261109
 DTEND;VALUE=DATE:20261114
-SUMMARY:[예은] 중학교 배정원서 접수(용인교육지원청)
+SUMMARY:중학교 배정원서 접수(용인교육지원청)
 DESCRIPTION:2026.11.9(월)~11.13(금)\, 출신 초등학교에서 접수\n
  출처: 경기도용인교육지원청 중학교 신입생 배정 안내(2
  027학년도 시행계획 일정) https://www.goeyi.kr/goeyi/cm/cntnts/cnt
@@ -490,7 +410,7 @@ UID:ev-life-05-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20261207
 DTEND;VALUE=DATE:20261217
-SUMMARY:[예은] 중학교 추가배정
+SUMMARY:중학교 추가배정
 DESCRIPTION:추가배정원서 작성 2026.12.7~12.11(출신 초등학교)\
  , 접수 12.14~12.16(용인교육지원청)\n출처: 경기도용인교육
  지원청 중학교 신입생 배정 안내(2027학년도 시행계획 일
@@ -503,7 +423,7 @@ UID:ev-life-06-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270101
-SUMMARY:[예은] 중학교 배정학교 발표
+SUMMARY:중학교 배정학교 발표
 DESCRIPTION:2026.12.31(목) 출신 초등학교에서 발표\n출처: 경
  기도용인교육지원청 중학교 신입생 배정 안내(2027학년
  도 시행계획 일정) https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.d
@@ -515,7 +435,7 @@ UID:ev-life-07-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20270104
 DTEND;VALUE=DATE:20270108
-SUMMARY:[예은] 중학교 신입생 등록
+SUMMARY:중학교 신입생 등록
 DESCRIPTION:2027.1.4(월)~1.7(목) 각 중학교\n출처: 경기도용인
  교육지원청 중학교 신입생 배정 안내(2027학년도 시행계
  획 일정) https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cn
@@ -527,7 +447,7 @@ UID:ev-life-08-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20270111
 DTEND;VALUE=DATE:20270123
-SUMMARY:[예은] 중학교 재배정
+SUMMARY:중학교 재배정
 DESCRIPTION:재배정 원서 접수 2027.1.11~1.15(용인교육지원청)\,
   재배정 발표 1.22(용인교육지원청 홈페이지)\, 재배정자 
  등록 1.22(각 중학교)\n출처: 경기도용인교육지원청 중학
@@ -541,7 +461,7 @@ UID:ev-life-09-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20270301
 DTEND;VALUE=DATE:20270401
-SUMMARY:[예은] 중학교 입학식·개학 (추정) (월 단위)
+SUMMARY:중학교 입학식·개학 (추정) (월 단위)
 DESCRIPTION:2027.3 초 입학식·개학. 학년도 3월 1일 시작\, 3.1(
  월)이 삼일절이라 3.2~3.3 전후로 추정(2026학년도 경기 학
  교 사례는 3.3). 신입생 예비소집은 학교별 공지\n확인일 
@@ -553,7 +473,7 @@ UID:ev-life-10-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20270301
 DTEND;VALUE=DATE:20270401
-SUMMARY:[예나] 고교 입학식·개학 (추정) (월 단위)
+SUMMARY:고교 입학식·개학 (추정) (월 단위)
 DESCRIPTION:2027.3 초 입학식·개학 3.2~3.3 전후로 추정. 경기 
  학사일정 공식 근거는 확인 못 함\n확인일 2026-10-25
 TRANSP:TRANSPARENT
@@ -563,7 +483,7 @@ UID:ev-gg-12-1@admissions-2030
 DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261211
-SUMMARY:[예나] 용인 배정 비율·원서 접수 방식
+SUMMARY:용인 배정 비율·원서 접수 방식
 DESCRIPTION:학군내배정 정원은 고교별 모집정원의 50%(서천
  고 80%\, 처인고 100%)\, 구역내배정은 모집정원 × 구역별 
  지원율 − 학군내 배정 인원. 경기도 내 중학교 졸업예

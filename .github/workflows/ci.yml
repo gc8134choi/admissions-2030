@@ -57,6 +57,12 @@ jobs:
           src=data-src/curriculum-analysis/content/data/school-notes.json
           if [ -f "$src" ]; then cmp "$src" portal/data/school-notes.json; fi
 
+      - name: 화면·산출물에 이름 금지("예나|예은")
+        run: |
+          if grep -rIn -E "예나|예은" portal tools schema --exclude-dir=img --exclude-dir=files; then
+            echo "portal/·tools/·schema/에는 이름을 쓰지 않는다(사용자 결정 2026-10-25)"; exit 1
+          fi
+
       - name: 제도·일정·학습자 생성물 검증 (build-policy·build-ics·build-roadmap·build-rules --check, build-learners 검증)
         run: |
           # policy.json·events.json·image-credits.json은 research/data의 draft에서, schedule.ics는 events.json에서,

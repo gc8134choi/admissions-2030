@@ -158,7 +158,7 @@
    "learners": [
     {
      "id": "A",
-     "name": "예나",
+     "name": "",
      "label": "현 중3",
      "enabled": true,
      "primary": true,
@@ -189,7 +189,7 @@
     },
     {
      "id": "B",
-     "name": "예은",
+     "name": "",
      "label": "현 초6",
      "enabled": true,
      "primary": false,
