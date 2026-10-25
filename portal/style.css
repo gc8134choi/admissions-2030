@@ -355,3 +355,5 @@ body.fv-open{overflow:hidden}
 .st-n{font-size:18px;font-weight:700}
 .st-ele .st-n{font-weight:600}
 .st-sub{font-size:12px;color:var(--ele);opacity:.85;margin-top:1px}
+.hm-aud{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0 6px}
+.hm-aud .fchip{font-size:12px;padding:2px 10px}
