@@ -221,9 +221,8 @@ async function compareShell(el, onReset) {
       const kinds = uniq(os.map((o) => (o.primaryKind ? `${o.primaryKind}|0` : o.kindGuess ? `${o.kindGuess}|1` : "|0")));
       const icons = kinds.map((k) => { const [n, est] = k.split("|"); return kindIcon(n || null, est === "1"); }).join("");
       const crs = uniq(os.map((o) => o.credits)).map((c) => `<i class="cr" title="${c}학점">${c}</i>`).join("");
-      const g = os.map((o) => gmap.get(o.groupId)).find(Boolean);
       const warn = os.some((o) => o.openFlagIds.length) ? '<span title="열린 flag">⚠️</span>' : "";
-      return `<td class="${os.some((o) => o.slot === "required") ? "req" : "ele"}"><div class="c1">${icons}<span class="sl">${slots.join("/")}</span><span>${esc(tm)}</span>${crs}${g ? `<span class="muted small">택${g.pick}/${g.size}</span>` : ""}${warn}</div></td>`;
+      return `<td class="${os.some((o) => o.slot === "required") ? "req" : "ele"}"><div class="c1">${icons}<span class="sl">${slots.join("/")}</span><span>${esc(tm)}</span>${crs}${warn}</div></td>`;
     };
     let area = "", html = "";
     for (const r of rows) {
