@@ -40,3 +40,6 @@ textarea{width:100%;min-height:70px;border:1px solid var(--line);border-radius:6
  #nav{position:fixed;inset:49px 0 0 0;width:auto;background:var(--bg);z-index:4;display:none;overflow:auto}
  #nav.open{display:block}
 }
+.subtabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin:8px 0 14px}
+.subtabs a{padding:8px 16px;color:var(--muted);text-decoration:none;border-bottom:2px solid transparent;margin-bottom:-1px}
+.subtabs a.on{color:var(--accent);border-color:var(--accent);font-weight:600}

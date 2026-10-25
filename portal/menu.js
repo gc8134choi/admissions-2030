@@ -13,14 +13,8 @@ export const MENU = [
     { id: "select/types", title: "고교 유형·전형 일정", status: "v2",
       desc: "일반/자사고/특목/특성화 등 유형 개요와 전형 일정·요건.",
       parts: ["유형별 개요", "전형 일정·요건"] },
-    { id: "select/curriculum", title: "학교별 편제표", status: "v1", children: [
-      { id: "select/curriculum/search", title: "검색·필터", status: "v1", view: "search",
-        desc: "과목명·교과군·과목유형으로 찾기. 관심 계열 태그는 기본값 '미정'." },
-      { id: "select/curriculum/compare", title: "학교 비교", status: "v1", view: "compare",
-        desc: "과목 × 학교 매트릭스. '차이만 보기' 토글, 교과군별 학점 합계." },
-      { id: "select/curriculum/detail", title: "학교 상세", status: "v1", view: "detail",
-        desc: "표준 양식 편제표. 학년·학기 탭, 출처·기준연도·수집일, 메모." },
-    ] },
+    { id: "select/curriculum", title: "학교별 편제표", status: "v1", view: "curriculum",
+      desc: "비교 · 검색 · 학교 상세를 한 화면의 탭으로 확인합니다." },
   ] },
 
   { id: "life", title: "고교 생활", icon: "📚", status: "soon",

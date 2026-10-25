@@ -38,9 +38,9 @@ const views = {
   async home(el) {
     const [schools, summary] = await Promise.all([load("schools"), load("summary")]);
     const s = stars();
-    el.innerHTML = `<div class="panel"><b>관심 학교</b><p class="muted">${s.length ? s.map((id) => `<a href="#select/curriculum/detail?s=${esc(id)}">${esc(nameOf(schools, id))}</a>`).join(", ") : "비교 화면의 ☆을 누르면 여기에 모입니다."}</p></div>
+    el.innerHTML = `<div class="panel"><b>관심 학교</b><p class="muted">${s.length ? s.map((id) => `<a href="#select/curriculum?tab=detail&s=${esc(id)}">${esc(nameOf(schools, id))}</a>`).join(", ") : "비교 화면의 ☆을 누르면 여기에 모입니다."}</p></div>
       <div class="panel"><b>편제표 등록 현황</b><p class="muted">${summary.length}개교 · ${summary[0].entryYear}학년도 입학생(대입 ${summary[0].entryYear + 3}학년도) 기준</p>
-      <div class="cards">${summary.map((m) => `<a href="#select/curriculum/detail?s=${esc(m.schoolId)}"><b>${esc(m.schoolName)}</b><div class="muted">${esc(m.region || "")} · ${esc(m.schoolType || "")} · ${esc(m.founding || "")}</div><div>지정 ${m.creditsRequired} / 선택 ${m.creditsElective}학점</div></a>`).join("")}</div></div>
+      <div class="cards">${summary.map((m) => `<a href="#select/curriculum?tab=detail&s=${esc(m.schoolId)}"><b>${esc(m.schoolName)}</b><div class="muted">${esc(m.region || "")} · ${esc(m.schoolType || "")} · ${esc(m.founding || "")}</div><div>지정 ${m.creditsRequired} / 선택 ${m.creditsElective}학점</div></a>`).join("")}</div></div>
       <div class="panel"><b>이번 달 할 일</b><p class="muted">일정 데이터 연결 예정</p></div>`;
   },
 
@@ -133,6 +133,13 @@ const views = {
     $("#term").addEventListener("change", draw);
     $("#memo").addEventListener("input", (e) => store.set("memo:" + $("#sc").value, e.target.value));
     draw();
+  },
+
+  async curriculum(el, query) {
+    const tabs = [["compare", "학교 비교"], ["search", "과목 검색"], ["detail", "학교 상세"]];
+    const tab = tabs.some(([k]) => k === query.get("tab")) ? query.get("tab") : "compare";
+    el.innerHTML = `<div class="subtabs">${tabs.map(([k, t]) => `<a href="#select/curriculum?tab=${k}" class="${k === tab ? "on" : ""}">${t}</a>`).join("")}</div><div id="tabview"></div>`;
+    await views[tab]($("#tabview"), query);
   },
 
   async sources(el) {
