@@ -11,7 +11,7 @@ export const MENU = [
 
   { id: "select", title: "고교 선택", icon: "🏫", status: "v1", children: [
     { id: "select/types", title: "고교 유형·전형 일정", status: "v1", view: "types",
-      desc: "일반/자사고/특목/특성화 등 유형 개요와 전형 일정·요건.",
+      desc: "일반/자사고/특목 등 유형 개요와 전형 일정·요건.",
       parts: ["유형별 개요", "전형 일정·요건"] },
     { id: "select/curriculum", title: "학교별 편제표", status: "v1", view: "curriculum",
       desc: "학교별 요약을 보고, 상세 비교에서 여러 필터로 과목을 비교합니다." },
@@ -20,7 +20,7 @@ export const MENU = [
   { id: "life", title: "고교 생활", icon: "📚", status: "soon",
     desc: "입학 후 단계. 지금은 최소한만.",
     children: [
-      { id: "life/credit", title: "고교학점제 이해", status: "soon", desc: "학점제 개념과 졸업 요건." },
+      { id: "life/credit", title: "고교학점제 이해", status: "v1", view: "credit", desc: "학점제 개념과 졸업 요건." },
       { id: "life/checklist", title: "학년별 체크리스트", status: "soon", desc: "학년별로 챙길 일." },
     ] },
 

@@ -167,7 +167,7 @@
   "entryYear": 2027,
   "examYear": 2030,
   "title": "기본계획",
-  "body": "서울교육청 2027학년도 고입 기본계획 확정(2026.8). 반도체 마이스터고 개교(2027.3), 후기고 동일교 배정 확대",
+  "body": "서울교육청 2027학년도 고입 기본계획 확정(2026.8). 후기고 동일교 배정 확대",
   "status": "reported",
   "unverified": true,
   "sourceKind": "media",
@@ -204,81 +204,6 @@
     "label": "접수(전국 기준)",
     "start": "2026-08-18",
     "end": "2026-09-03"
-   }
-  ],
-  "checkedAt": "2026-10-25"
- },
- {
-  "id": "hs-03",
-  "topic": "hs-schedule",
-  "entryYear": 2027,
-  "examYear": 2030,
-  "title": "마이스터고",
-  "body": "접수 10.19~22, 합격 발표 11.4",
-  "status": "reported",
-  "unverified": true,
-  "sourceKind": "media",
-  "sourceName": "교육을 비추다",
-  "sourceUrl": "https://www.kyobit.com/news/articleView.html?idxno=5127",
-  "audience": [
-   "vocational"
-  ],
-  "events": [
-   {
-    "label": "접수",
-    "start": "2026-10-19",
-    "end": "2026-10-22"
-   },
-   {
-    "label": "합격 발표",
-    "start": "2026-11-04"
-   }
-  ],
-  "checkedAt": "2026-10-25"
- },
- {
-  "id": "hs-04",
-  "topic": "hs-schedule",
-  "entryYear": 2027,
-  "examYear": 2030,
-  "title": "특성화고",
-  "body": "특별전형 접수 11.23~24(발표 11.27), 일반전형 접수 11.30~12.1(발표 12.2), 추가모집 접수 12.2~3(발표 12.3)",
-  "status": "reported",
-  "note": "공식 페이지 요약",
-  "unverified": true,
-  "sourceKind": "official",
-  "sourceName": "서울 하이잡",
-  "sourceUrl": "https://high-job.sen.go.kr/FUS/BO/J1List.do",
-  "audience": [
-   "vocational"
-  ],
-  "events": [
-   {
-    "label": "특별전형 접수",
-    "start": "2026-11-23",
-    "end": "2026-11-24"
-   },
-   {
-    "label": "특별전형 발표",
-    "start": "2026-11-27"
-   },
-   {
-    "label": "일반전형 접수",
-    "start": "2026-11-30",
-    "end": "2026-12-01"
-   },
-   {
-    "label": "일반전형 발표",
-    "start": "2026-12-02"
-   },
-   {
-    "label": "추가모집 접수",
-    "start": "2026-12-02",
-    "end": "2026-12-03"
-   },
-   {
-    "label": "추가모집 발표",
-    "start": "2026-12-03"
    }
   ],
   "checkedAt": "2026-10-25"

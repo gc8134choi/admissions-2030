@@ -5,8 +5,8 @@ const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unkn
 const SKIND = { official: "공식", media: "매체", material: "학교 배부", seoul: "서울교육청", "seoul-gyeonggi": "서울·경기교육청", gyeonggi: "경기도교육청", opinion: "학원 의견" };
 const NOTICE = '<p class="note">조사일 2026-10-25, <b>검색 요약 기준이며 공식 사이트로 재확인 필요.</b> 입학학년도 2027(현 중3) · 대입학년도 2030. <span class="unv">원문 미확인</span> 표시는 원문 페이지를 열람하지 못했다는 뜻입니다.</p>';
 
-// 대입 제도 화면에 보여 줄 과목 선택 지도 행(선택과목 조사 시기, 대학 권장이수과목, 수능 출제범위). 나머지 cur-*는 고교 유형·전형 화면.
-const CUR_SYS = new Set(["cur-06", "cur-07", "cur-08"]);
+// 대입 제도 화면에 표로 보여 줄 과목 선택 지도 행(수능 출제범위). 나머지 cur-*는 고교학점제 이해 화면.
+const CUR_SYS = new Set(["cur-08"]);
 
 export function register(views, { $, esc, load, store }) {
   const badge = (r) => `<span class="pst ${r.status}">${PST[r.status]}</span>${r.unverified ? ' <span class="unv">원문 미확인</span>' : ""}${r.note ? `<div class="muted small">${esc(r.note)}</div>` : ""}`;
@@ -67,13 +67,16 @@ export function register(views, { $, esc, load, store }) {
     el.innerHTML = `${banner(rows)}${NOTICE}${tabs([["sys", "#admission/system", "제도"], ["log", "#admission/system?t=log", "제도 변경 로그"]], log ? "log" : "sys")}
       ${log ? "" : '<p class="muted">현 중3은 2028 개편안의 직접 대상(2025 입학생)이 아닙니다. 2030학년도 제도는 2027.3 공표 내용에 따라 바뀔 수 있습니다.</p>'}
       ${statusSelect(body)}<div id="ptbl"></div>`;
-    const TOPIC = { "admission-system": "2028학년도 개편 확정안과 2030학년도 적용", "admission-outlook": "2030학년도 대상 추가 동향", "admission-structure": "대입 전형 구조", "cur-select": "과목 선택·대학 권장이수과목·수능 출제범위(참고)" };
+    const TOPIC = { "admission-system": "2028학년도 개편 확정안과 2030학년도 적용", "admission-outlook": "2030학년도 대상 추가 동향", "admission-structure": "대입 전형 구조", "cur-select": "수능 출제범위(참고)" };
     const NOTE = { "cur-select": '<p class="note">서울교육청 자료, 경기 적용 확인 필요. 수능 출제범위는 추정이며 2030학년도 확정이 아닙니다.</p>' };
     const key = (r) => (CUR_SYS.has(r.id) ? "cur-select" : r.topic);
+    // 선택과목 조사·대학 권장이수과목은 고교학점제 이해에서 자세히 보고, 여기는 한 줄 요약만 둔다.
+    const pick = (await load("policy")).filter((r) => r.id === "cur-06" || r.id === "cur-07");
+    const pickLine = pick.length ? `<p class="muted small">선택과목 조사·대학 권장이수과목: ${pick.map((r) => esc(r.body)).join(" / ")} · <a href="#life/credit">고교학점제 이해에서 자세히</a></p>` : "";
     const cols = [...basic.slice(0, 2), ["대입학년도", (r) => `${r.examYear}<div class="muted small">입학 ${r.entryYear}</div>`], ...basic.slice(2)];
     filtered(el, body, (f) => {
       const rs = (x) => x.filter((r) => !f || r.status === f);
-      $("#ptbl").innerHTML = log ? logTable(rs(body)) : Object.entries(TOPIC).map(([t, label]) => { const g = rs(body.filter((r) => key(r) === t)); return g.length ? `<h3>${label}</h3>${NOTE[t] || ""}${table(g, cols)}` : ""; }).join("") || '<p class="muted">조건에 맞는 항목이 없습니다.</p>';
+      $("#ptbl").innerHTML = log ? logTable(rs(body)) : Object.entries(TOPIC).map(([t, label]) => { const g = rs(body.filter((r) => key(r) === t)); return g.length ? `<h3>${label}</h3>${t === "cur-select" ? pickLine : ""}${NOTE[t] || ""}${table(g, cols)}` : ""; }).join("") || '<p class="muted">조건에 맞는 항목이 없습니다.</p>';
     });
   };
 
@@ -105,10 +108,34 @@ export function register(views, { $, esc, load, store }) {
     draw();
   };
 
+  // 고교학점제 이해(고교 생활 메뉴): 기존 policy 행을 주제별로 재배치한다. 수능 출제범위는 대입 제도에서만 보여 준다.
+  views.credit = async (el) => {
+    const [rows, summary] = await Promise.all([load("policy"), load("summary")]);
+    const by = (...ids) => ids.map((id) => rows.find((r) => r.id === id)).filter(Boolean);
+    // 공통과목 필수학점(cur-03): 본문의 "과목 학점" 목록을 표로 풀고 합계는 코드로 계산한다.
+    const c3 = rows.find((r) => r.id === "cur-03");
+    const items = c3 ? c3.body.split(/\s*\(/)[0].split(/,\s*/).map((t) => { const m = t.match(/^(.*\S)\s+(\d+)$/); return m ? [m[1], Number(m[2])] : null; }).filter(Boolean) : [];
+    const sum = items.reduce((n, x) => n + x[1], 0);
+    const sec = (title, body) => `<h3>${title}</h3>${body}`;
+    const sections = [
+      sec("1. 한눈에", table(by("cur-01", "cur-09", "hs-14"), basic)),
+      sec("2. 이수 요건", table(by("cur-02", "cur-12"), basic)),
+      sec("3. 과목 유형", table(by("cur-05", "cur-10", "cur-11", "cur-13"), basic)),
+      sec("4. 성적 산출", table(by("cur-04", "hs-13"), basic)),
+      c3 ? sec("5. 공통과목 필수학점", `<div class="tw"><table class="policy"><thead><tr><th class="l">과목</th><th>학점</th></tr></thead><tbody>${items.map(([n, c]) => `<tr><td class="l">${esc(n)}</td><td>${c}</td></tr>`).join("")}<tr class="hl"><td class="l">합계</td><td>${sum}</td></tr></tbody></table></div>
+        <p class="small">${badge(c3)} ${src(c3)} <span class="muted">· 분석 요약 수치 그대로이며 세부는 확인 필요</span></p>`) : "",
+      sec("6. 선택과목 조사·대학 권장이수과목", table(by("cur-06", "cur-07"), basic)),
+      sec("7. 우리 4개교", `<ul class="plain">${summary.map((m) => `<li><b>${esc(m.schoolName)}</b> 교과 ${m.creditsSubject}학점 = 지정 ${m.creditsRequired} + 선택 ${m.creditsElective}, 창체 ${m.creditsCreative}학점</li>`).join("")}</ul>
+        <p><a class="btn" href="#select/curriculum">학교별 편제표 보기</a> <span class="muted small">학교 편제표 기준 학점이며, 위 서울교육청 기준 필수·자율 분류와 다릅니다.</span></p>`),
+    ];
+    el.innerHTML = `<p class="note">서울교육청 자료는 경기 적용 확인 필요. 경기도교육청 행은 요약본이며 원문 미확인. 항목별 배지로 상태를 확인하세요.</p>${sections.join("")}
+      <p class="muted">수능 출제범위는 <a href="#admission/system">대입 제도</a>에서 봅니다.</p>`;
+  };
+
   views.types = async (el) => {
     const rows = await load("policy");
     // asg-02(2구역 학교) 본문: 풍덕·성복·수지·홍천 4개교가 모두 2구역이라는 내용을 눈에 띄게 한다.
-    const cur = rows.filter((r) => r.topic === "curriculum-guide" && !CUR_SYS.has(r.id));
+    const credit = rows.find((r) => r.id === "cur-01");
     const opn = rows.filter((r) => r.topic === "hs-choice-opinion");
     const asg = rows.filter((r) => r.topic === "high-school-assignment");
     el.innerHTML = `${NOTICE}<h3>고교 유형</h3>${table(rows.filter((r) => r.topic === "hs-types"), basic)}
@@ -116,9 +143,8 @@ export function register(views, { $, esc, load, store }) {
       <p class="note">원문 미확인, 2027 규칙 확인 필요</p>
       <div class="fixednote hlnote">우리 4개교(풍덕·성복·수지·홍천)는 모두 2구역</div>
       ${table(asg, basic, (r) => (r.id === "asg-02" ? "hl" : ""))}` : ""}
-      <h3>고교학점제 요약 <span class="muted small">입학 후 제도</span></h3>${table(rows.filter((r) => r.topic === "hs-credit-system"), basic)}
-      ${cur.length ? `<h3>졸업·이수 요건, 성적 산출, 과목 유형 <span class="muted small">서울·경기교육청 과목 선택 지도 자료</span></h3>
-      <p class="note">서울교육청 자료는 경기 적용 확인 필요. 경기도교육청 행은 요약본이며 원문 미확인.</p>${table(cur, basic)}` : ""}
+      ${credit ? `<h3>고교학점제 <span class="muted small">입학 후 제도</span></h3>
+      <p>${esc(credit.body)} ${badge(credit)} · <a href="#life/credit">고교학점제 이해에서 자세히</a></p>` : ""}
       ${opn.length ? `<h3>선택 기준 <span class="opinion-label">학원 의견</span></h3>
       <div class="opinion"><p class="muted small">학원 설명회의 의견입니다. 확인된 사실이 아니며, 위 사실 섹션과 구분해서 보세요.</p>${table(opn, basic)}</div>` : ""}
       <p class="muted">고입 전형 일정은 <a href="#schedule">일정</a> 화면의 고입 탭에서 봅니다.</p>`;
