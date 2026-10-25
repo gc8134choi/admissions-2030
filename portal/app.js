@@ -14,7 +14,8 @@ const trail = (n) => (n ? [...trail(n.parent), n] : []);
 const badge = (s) => `<span class="badge ${s}">${STATUS[s]}</span>`;
 
 function drawNav(activeId) {
-  const li = (n, top) => `<li class="${top ? "top-item" : ""}"><a href="#${n.id}" class="${n.id === activeId ? "on" : ""}">${n.icon ? n.icon + " " : ""}${esc(n.title)}${badge(n.status)}</a>${n.children ? `<ul>${n.children.map((c) => li(c)).join("")}</ul>` : ""}</li>`;
+  const holds = (n) => n.id === activeId || (n.children || []).some(holds);
+  const li = (n, top) => `<li class="${top ? "top-item" : ""} ${top && holds(n) ? "has-on" : ""}"><a href="#${n.id}" class="${n.id === activeId ? "on" : ""}">${n.icon ? n.icon + " " : ""}${esc(n.title)}${badge(n.status)}</a>${n.children ? `<ul>${n.children.map((c) => li(c)).join("")}</ul>` : ""}</li>`;
   $("#nav").innerHTML = `<ul>${MENU.map((n) => li(n, true)).join("")}</ul>`;
 }
 
