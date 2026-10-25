@@ -12,9 +12,15 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     return { start: a.a, end: b.b, month: a.month };
   };
   const two = (n) => String(n).padStart(2, "0");
-  const fmtDate = (sp, t) => {
-    const y = sp.start.getFullYear() === t.getFullYear() ? "" : `${sp.start.getFullYear()}.`;
-    return sp.month ? `${sp.start.getFullYear()}.${two(sp.start.getMonth() + 1)}` : `${y}${two(sp.start.getMonth() + 1)}.${two(sp.start.getDate())}`;
+  const WD = ["일", "월", "화", "수", "목", "금", "토"];
+  const dayText = (d, t, withYear) => `${withYear || d.getFullYear() !== t.getFullYear() ? d.getFullYear() + "." : ""}${two(d.getMonth() + 1)}.${two(d.getDate())}(${WD[d.getDay()]})`;
+  const ymdText = (s) => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || ""); return m ? dayText(new Date(+m[1], +m[2] - 1, +m[3]), new Date(0), true) : (s || "-").replace(/-/g, "."); };
+  const fmtDate = (sp, t) => (sp.month ? `${sp.start.getFullYear()}.${two(sp.start.getMonth() + 1)}` : dayText(sp.start, t));
+  // 기간은 양 끝 모두 요일 표기. 월 단위 기간은 "YYYY.MM~YYYY.MM"
+  const fmtRange = (sp, t, e) => {
+    if (sp.month) return e && e.end && e.end !== e.start ? `${fmtDate(sp, t)}~${e.end.slice(0, 4)}.${e.end.slice(5, 7)}` : fmtDate(sp, t);
+    if (sp.end > sp.start) return `${dayText(sp.start, t)}~${dayText(sp.end, t, sp.end.getFullYear() !== sp.start.getFullYear())}`;
+    return fmtDate(sp, t);
   };
   const dLabel = (sp, t) => {
     if (sp.start <= t && t <= sp.end) return sp.month ? "이번 달" : "진행 중";
@@ -40,13 +46,13 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const ev0 = (id) => P.get(id)?.events?.[0];
 
     // 1) 상황 한 줄 + 수능 D-일수(월 단위 추정이면 그 달 15일 기준 "약")
-    const csat = ev0("sch-07"), csatRow = P.get("sch-07");
+    const csat = ev0("sch-12") || ev0("sch-07"), csatRow = P.get("sch-12") || P.get("sch-07");
     let hero = "";
     if (csat) {
       const sp = span(csat.start, csat.end);
       const target = sp.month ? new Date(sp.start.getFullYear(), sp.start.getMonth(), 15) : sp.start;
       const n = Math.round((target - t) / DAY);
-      hero = `<span class="hm-dday">수능까지 <b>${sp.month ? "약 " : ""}D-${n.toLocaleString()}</b> <span class="pst ${csatRow.status}">${PST[csatRow.status]}</span> <span class="muted small">${fmtDate(sp, t)} · ${esc(csat.label)}</span></span>`;
+      hero = `<span class="hm-dday">수능까지 <b>${sp.month ? "약 " : ""}D-${n.toLocaleString()}</b> <span class="pst ${csatRow.status}">${PST[csatRow.status]}</span> <span class="muted small">${fmtRange(sp, t, csat)} · ${esc(csat.label)}</span></span>`;
     } else hero = '<span class="hm-dday muted">수능 시행일 데이터 없음 (2029.11 추정)</span>';
 
     // 2) 다가오는 일정: 고입·대입 일정 중 오늘~90일, 지난 일정 숨김
@@ -55,11 +61,11 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
       .flatMap((r) => (r.events || []).map((e) => ({ r, e, sp: span(e.start, e.end) })))
       .filter((x) => x.sp.end >= t && x.sp.start <= limit).sort((a, b) => a.sp.start - b.sp.start || a.sp.end - b.sp.end);
     const upHtml = upcoming.length
-      ? upcoming.map((x) => `<li><span class="hm-d${x.sp.start <= t ? " now" : ""}">${dLabel(x.sp, t)}</span><span class="hm-date">${fmtDate(x.sp, t)}${x.sp.end > x.sp.start && !x.sp.month ? "~" + two(x.sp.end.getMonth() + 1) + "." + two(x.sp.end.getDate()) : ""}</span><span class="hm-tx"><b>${esc(x.r.title)}</b> · ${esc(x.e.label)}</span><span class="hm-bd">${badges(x.r)}</span>${link(x.r)}</li>`).join("")
+      ? upcoming.map((x) => `<li><span class="hm-d${x.sp.start <= t ? " now" : ""}">${dLabel(x.sp, t)}</span><span class="hm-date">${fmtRange(x.sp, t, x.e)}</span><span class="hm-tx"><b>${esc(x.r.title)}</b> · ${esc(x.e.label)}</span><span class="hm-bd">${badges(x.r)}</span>${link(x.r)}</li>`).join("")
       : '<li class="muted">예정된 일정 없음</li>';
 
     // 3) 장기 타임라인: 모든 마일스톤을 policy.json 행에서 읽는다.
-    const rng = (e) => { const s = span(e.start, e.end); return s.month && e.end && e.end !== e.start ? `${fmtDate(s, t)}~${e.end.slice(0, 4)}.${e.end.slice(5, 7)}` : fmtDate(s, t); };
+    const rng = (e) => fmtRange(span(e.start, e.end), t, e);
     const one = (id, label, suffix = "") => { const r = P.get(id), e = ev0(id); return { label, row: r, key: e?.start, date: e ? rng(e) + suffix : "" }; };
     const subs = ["sch-11", "sch-12", "sch-13"].map((id) => ({ r: P.get(id), e: ev0(id) })).filter((x) => x.r && x.e);
     const ms = [
@@ -81,7 +87,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const log = policy.filter((r) => r.topic === "change-log").map((r) => ({ r, d: dateOf(r.title) })).filter((x) => x.d && span(x.d).start <= t)
       .sort((a, b) => span(b.d).start - span(a.d).start);
     const logUpdated = policy.filter((r) => r.topic === "change-log").map((r) => r.checkedAt).filter(Boolean).sort().pop() || "-";
-    const logHtml = log.slice(0, 3).map((x) => `<li><span class="hm-date">${esc(x.d.replace(/-/g, "."))}</span><span class="hm-tx"><b>${esc(x.r.title.slice(x.d.length).trim() || x.r.title)}</b></span><span class="hm-bd">${badges(x.r)}</span>${link(x.r)}</li>`).join("") || '<li class="muted">기록 없음</li>';
+    const logHtml = log.slice(0, 3).map((x) => `<li><span class="hm-date">${esc(ymdText(x.d))}</span><span class="hm-tx"><b>${esc(x.r.title.slice(x.d.length).trim() || x.r.title)}</b></span><span class="hm-bd">${badges(x.r)}</span>${link(x.r)}</li>`).join("") || '<li class="muted">기록 없음</li>';
 
     // 5) 관심 학교 카드
     const card = (id) => {
@@ -103,9 +109,9 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
 
     el.innerHTML = `<div class="hm">
       <div class="hm-hero"><b>현 중3</b> · <b>${entryYear}학년도 입학</b> · <b>${examYear}학년도 수능</b> ${hero}</div>
-      <section class="hm-box"><h3>다가오는 일정 <span class="muted small">앞으로 90일 · 오늘 ${t.getFullYear()}.${two(t.getMonth() + 1)}.${two(t.getDate())}</span> <a class="hm-more" href="#schedule">전체 일정</a></h3><ul class="hm-list">${upHtml}</ul></section>
+      <section class="hm-box"><h3>다가오는 일정 <span class="muted small">앞으로 90일 · 오늘 ${dayText(t, t, true)}</span> <a class="hm-more" href="#schedule">전체 일정</a></h3><ul class="hm-list">${upHtml}</ul></section>
       <section class="hm-box"><h3>장기 타임라인</h3><ol class="hm-tl">${tl}</ol></section>
-      <section class="hm-box"><h3>최근 변경 <span class="muted small">갱신 ${esc(logUpdated)}</span> <a class="hm-more" href="#changelog">전체 보기</a></h3><ul class="hm-list">${logHtml}</ul></section>
+      <section class="hm-box"><h3>최근 변경 <span class="muted small">갱신 ${esc(ymdText(logUpdated))}</span> <a class="hm-more" href="#changelog">전체 보기</a></h3><ul class="hm-list">${logHtml}</ul></section>
       <section class="hm-box"><h3>관심 학교</h3>${favs.length ? `<div class="hm-schools">${favs.map(card).join("")}</div>` : '<p class="muted">학교별 편제표 요약 카드의 ☆를 누르면 여기에 모입니다.</p>'}</section>
       <nav class="hm-go"><a class="btn primary" href="#select/curriculum">학교별 편제표</a><a class="btn" href="#admission/system">대입 제도</a><a class="btn" href="#schedule">일정</a></nav>
       <div class="hm-three">
