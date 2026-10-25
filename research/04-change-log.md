@@ -5,13 +5,13 @@
 ## 변경 이력·예정
 | 항목 | 내용 | 상태 | 구분 | 출처 |
 |---|---|---|---|---|
-| 2023-10-10 2028 대입개편 시안 | 교육부가 시안 발표. 고교학점제를 앞두고 수능·내신 평가방식 개선 중심 | 확정(원문 미확인) | 공식 | [교육부 시안 브리핑](https://www.korea.kr/briefing/policyBriefingView.do?newsId=156593725) |
+| 2023-10-10 2028 대입개편 시안 | 교육부가 2023.10.10 2028 대입개편 시안 발표(12.27 브리핑에서 언급) | 확정(공식 원문 확인, 2026-10-25) | 공식 | [교육부 브리핑(2023.12.27)](https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888) |
 | 2023-12-22 국교위 의견 의결 | 심화수학 신설 제외, 사회·과학 융합 선택과목은 절대평가만 | 확정(원문 미확인) | 공식 | [교육부 브리핑](https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888) |
-| 2023-12-27 2028 대입개편 확정안 | 통합형 수능, 내신 5등급. 2025 고1부터 적용 | 확정(원문 미확인) | 공식 | [교육부 브리핑](https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888) |
+| 2023-12-27 2028 대입개편 확정안 | 통합형 수능, 내신 5등급. 2025년 고교 입학생부터 적용 | 확정(공식 원문 확인, 2026-10-25) | 공식 | [교육부 브리핑(2023.12.27)](https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888) |
 | 2024-04 2028 수능 예시문항·반영과목 안내 | 국·수·사·과 예시문항과 대입전형 반영과목 조기 안내 | 보도(원문 미확인) | 매체 | [한국대학신문](https://news.unn.net/news/articleView.html?idxno=577665) |
-| 2025-08-28 대교협 2028 기본사항 | 수시 시작 2027.9.20, 하반기 모의평가 9월→8월 | 확정(원문 미확인) | 공식 | [대교협 보도자료 PDF](https://www.kcue.or.kr/_upload/news/2025/08/28/application_b244345d6cc72f7e172df15e831c276e.pdf) |
+| 2025-08-28 대교협 2028 기본사항 | 수시 시작 2027.9.20, 하반기 모의평가 9월→8월 | 확정(공식 원문 확인, 2026-10-25) | 공식 | [대교협 보도자료: 2028학년도 대학입학전형기본사항 발표(2025.8.28)](https://www.kcue.or.kr/_upload/news/2025/08/28/application_b244345d6cc72f7e172df15e831c276e.pdf), [대교협 2028학년도 대학입학전형기본사항(개정 2026.7.31)](https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf) |
 | 2025-12 서울교육감 대입 제안 | 수시·정시 통합, 2033학년도 내신 절대평가 등. 정부안 아님 | 보도(원문 미확인, 개인 제안) | 매체 | [다음뉴스](https://v.daum.net/v/20251210100131836) |
-| 2026-06-02 2028 수능 시행일 발표 | 2027.11.18(목), 성적통지 12.10 | 확정(원문 미확인) | 공식 | [교육부 보도자료](https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512) |
+| 2025-06 2028 수능 시행일 발표 | 2027.11.18(목), 성적통지 12.10(금). 교육부 보도자료 게시일 2025-06-01 | 확정(공식 원문 확인, 2026-10-25) | 공식 | [교육부 보도자료: 2028학년도 수능 시행일 발표](https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512) |
 | 2026-08 초 국교위 대입 공론화 | 수능 전 과목 절대평가·서논술형 도입을 검토, 하반기 의견 수렴. 국교위는 확정된 개편안 없음이라고 밝힘 | 보도(원문 미확인) | 매체 | [MBC](https://imnews.imbc.com/news/2026/society/article/6842663_36918.html), [네이트](https://m.news.nate.com/view/20260803n19506) |
 | 국가교육발전계획 시안 공개 | 10월 말 공개 예정이었으나 연말로 연기 보도 | 보도(원문 미확인) | 매체 | [네이트(왜냐면)](https://m.news.nate.com/view/20260817n13532), [네이트](https://m.news.nate.com/view/20260805n25953) |
 | 2027-03 대입 개편 최종안 확정 예정 | 국교위 확정 목표(보도에 따라 3월 말). 적용 시기 미정 | 보도(원문 미확인) | 매체 | [M이코노미뉴스](https://www.m-economynews.com/news/article.html?no=69490), [중앙이코노미뉴스](https://www.joongangenews.com/news/articleView.html?idxno=537981) |

@@ -62,6 +62,7 @@ const out = draft.map((d) => {
   const note = NOTES[d.id] ?? extra(d.statusNote);
   if (note) row.note = note;
   row.unverified = !!d.unverified;
+  if (d.unverifiedReason) row.reason = d.unverifiedReason;
   row.sourceKind = KIND[d.sourceKind] ?? null;
   row.sourceName = d.sourceName ?? null;
   row.sourceUrl = d.sourceUrl ?? null;

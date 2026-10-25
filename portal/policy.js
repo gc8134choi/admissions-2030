@@ -13,7 +13,7 @@ const ACD_SYS = new Set(["acd-01", "acd-02", "acd-03"]);
 const CUR_GROUP = { "cur-29": "admission-structure", "cur-30": "admission-structure" };
 
 export function register(views, { $, esc, load, store }) {
-  const badge = (r) => `<span class="pst ${r.status}">${PST[r.status]}</span>${r.unverified ? ' <span class="unv">원문 미확인</span>' : ""}${r.note ? `<div class="muted small">${esc(r.note)}</div>` : ""}`;
+  const badge = (r) => `<span class="pst ${r.status}">${PST[r.status]}</span>${r.unverified ? ` <span class="unv"${r.reason ? ` title="${esc(r.reason)}"` : ""}>원문 미확인</span>` : ""}${r.unverified && r.reason ? `<div class="muted small">사유: ${esc(r.reason)}</div>` : ""}${r.note ? `<div class="muted small">${esc(r.note)}</div>` : ""}`;
   const src = (r) => {
     const list = r.sources || (r.sourceName ? [{ name: r.sourceName, url: r.sourceUrl }] : []);
     // 링크 없는 배부·교육청 자료는 긴 설명 대신 짧은 라벨만 보이고, 전체 설명은 마우스를 올리면 나온다.
@@ -96,7 +96,7 @@ export function register(views, { $, esc, load, store }) {
   views.schedule = async (el, query) => {
     const tab = query.get("t") === "univ" ? "univ" : "hs";
     const all = await load("policy");
-    const rows = all.filter((r) => r.topic === (tab === "univ" ? "exam-schedule" : "hs-schedule"));
+    const rows = all.filter((r) => r.topic === (tab === "univ" ? "exam-schedule" : "hs-schedule") || (tab === "hs" && r.topic === "gg-hs-entry" && r.events));
     const chips = '<div id="aud"></div>'; // 칩 UI·저장(portal.audience)은 home.js와 공유
     el.innerHTML = `${tabs([["hs", "#schedule?t=hs", "고입"], ["univ", "#schedule?t=univ", "대입"]], tab)}${NOTICE}
       <p class="muted">${tab === "univ" ? "수능·대교협 일정. 2030학년도분은 대부분 추정입니다." : "2027학년도 고입(서울 기준). 연도는 2027학년도 고입이 2026년 하반기에 진행되는 것을 기준으로 붙였습니다."}</p>${chips}<div id="tl"></div>`;
@@ -155,8 +155,10 @@ export function register(views, { $, esc, load, store }) {
     // asg-02(2구역 학교) 본문: 풍덕·성복·수지·홍천 4개교가 모두 2구역이라는 내용을 눈에 띄게 한다.
     const credit = rows.find((r) => r.id === "cur-01");
     const opn = rows.filter((r) => r.topic === "hs-choice-opinion" || r.id === "acd-04");
+    const gg = rows.filter((r) => r.topic === "gg-hs-entry" && !r.events);
     const asg = rows.filter((r) => r.topic === "high-school-assignment");
     el.innerHTML = `${NOTICE}<h3>고교 유형</h3>${table(rows.filter((r) => r.topic === "hs-types"), basic)}
+      ${gg.length ? `<h3>경기 고입 안내 <span class="muted small">2027학년도</span></h3>${table(gg, basic)}` : ""}
       ${asg.length ? `<h3>용인 평준화 배정 <span class="muted small">2026학년도 기준 참고</span></h3>
       <p class="note">원문 미확인, 2027 규칙 확인 필요</p>
       <div class="fixednote hlnote">우리 4개교(풍덕·성복·수지·홍천)는 모두 2구역</div>
