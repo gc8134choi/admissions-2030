@@ -37,20 +37,22 @@ const POOL = { basic: "기초교과", cross: "교과(군) 간 선택", "in-area"
 const CHECK = { inferred: "구분 추정", unmarked: "구분 미표기", flag: "열린 flag 있음" };
 // 구분 아이콘: 모양+색으로 구분(색만 의존하지 않음). 추정은 윤곽선만, 미표기는 점선 원.
 const KICON = {
-  공통: ["#64748b", '<circle cx="8" cy="8" r="6"/>'],
-  일반: ["#0ea5e9", '<rect x="2.5" y="2.5" width="11" height="11" rx="2"/>'],
-  진로: ["#f59e0b", '<path d="M8 2 L14.5 13.5 H1.5 Z"/>'],
-  융합: ["#a855f7", '<path d="M8 1.5 L14.5 8 L8 14.5 L1.5 8 Z"/>'],
-  특목: ["#f43f5e", '<path d="M8 1.5 L9.9 5.9 14.6 6.3 11 9.4 12.1 14 8 11.6 3.9 14 5 9.4 1.4 6.3 6.1 5.9Z"/>'],
-  전문: ["#14b8a6", '<path d="M8 1.5 L13.7 4.75 V11.25 L8 14.5 L2.3 11.25 V4.75 Z"/>'],
+  공통: ["#64748b", '<circle cx="8" cy="8" r="5.3"/>'],
+  일반: ["#0ea5e9", '<rect x="3.3" y="3.3" width="9.4" height="9.4" rx="1.6"/>'],
+  진로: ["#f59e0b", '<path d="M8 2.2 L14.7 13.8 L1.3 13.8Z"/>'],
+  융합: ["#a855f7", '<path d="M8 1.6 L14.4 8 L8 14.4 L1.6 8Z"/>'],
+  특목: ["#f43f5e", '<path d="M8 0.9 L10.23 5.43 L15.23 6.15 L11.61 9.67 L12.47 14.65 L8 12.3 L3.53 14.65 L4.39 9.67 L0.77 6.15 L5.77 5.43Z"/>'],
+  전문: ["#14b8a6", '<path d="M8 2.1 L13.11 5.05 L13.11 10.95 L8 13.9 L2.89 10.95 L2.89 5.05Z"/>'],
 };
 const kindIcon = (kind, est) => {
-  if (!kind) return '<svg class="ki none" viewBox="0 0 16 16" role="img" aria-label="구분 미표기"><title>구분 미표기</title><circle cx="8" cy="8" r="6"/></svg>';
+  if (!kind) return '<svg class="ki none" viewBox="0 0 16 16" role="img" aria-label="구분 미표기"><title>구분 미표기</title><circle cx="8" cy="8" r="5.3"/></svg>';
   const [c, shape] = KICON[kind] || KICON.공통;
   const label = `${kind}${est ? " (추정)" : ""}`;
   return `<svg class="ki${est ? " est" : ""}" viewBox="0 0 16 16" role="img" aria-label="${esc(label)}" style="--k:${c}"><title>${esc(label)}</title>${shape}</svg>`;
 };
-const kindLegend = `<div class="legend">${Object.keys(KICON).map((k) => `<span>${kindIcon(k)}${k}</span>`).join("")}<span>${kindIcon("일반", true)}추정</span><span>${kindIcon(null)}미표기</span><span><i class="cr">4</i>학점</span></div>`;
+// 아이콘 + 구분 이름(작은 글자). 셀과 범례가 같은 형태를 쓴다.
+const kindBadge = (kind, est) => `<span class="kk">${kindIcon(kind, est)}<span class="kn">${kind ? esc(kind) : "미표기"}</span></span>`;
+const kindLegend = `<div class="legend">${Object.keys(KICON).map((k) => kindBadge(k)).join("")}<span class="kk">${kindIcon("일반", true)}<span class="kn">추정(윤곽선)</span></span>${kindBadge(null)}<span class="kk"><i class="cr">4</i><span class="kn">학점</span></span></div>`;
 const kindOf = (o) => (o.primaryKind ? o.primaryKind + (o.kindStatus === "inferred" ? "?" : "") : "미표기");
 
 // ---- 뷰 ----
@@ -219,7 +221,7 @@ async function compareShell(el, onReset) {
       if (!os) return '<td class="no">✕</td>';
       const slots = uniq(os.map((o) => SLOT[o.slot])), tm = uniq(os.map((o) => o.term)).sort().join(",");
       const kinds = uniq(os.map((o) => (o.primaryKind ? `${o.primaryKind}|0` : o.kindGuess ? `${o.kindGuess}|1` : "|0")));
-      const icons = kinds.map((k) => { const [n, est] = k.split("|"); return kindIcon(n || null, est === "1"); }).join("");
+      const icons = kinds.map((k) => { const [n, est] = k.split("|"); return kindBadge(n || null, est === "1"); }).join("");
       const crs = uniq(os.map((o) => o.credits)).map((c) => `<i class="cr" title="${c}학점">${c}</i>`).join("");
       const warn = os.some((o) => o.openFlagIds.length) ? '<span title="열린 flag">⚠️</span>' : "";
       return `<td class="${os.some((o) => o.slot === "required") ? "req" : "ele"}"><div class="c1">${icons}<span class="sl">${slots.join("/")}</span><span>${esc(tm)}</span>${crs}${warn}</div></td>`;
@@ -229,7 +231,7 @@ async function compareShell(el, onReset) {
       if (r.area !== area) { area = r.area; html += `<tr class="area"><td colspan="${ids.length + 1}">${esc(area)}</td></tr>`; }
       html += `<tr><td class="l">${esc(r.name)}</td>${ids.map((id) => cell(r.cells[id])).join("")}</tr>`;
     }
-    $("#tbl").style.minWidth = `${200 + 190 * ids.length}px`;
+    $("#tbl").style.minWidth = `${200 + 210 * ids.length}px`;
     $("#tbl").innerHTML = `<thead><tr><th class="l">과목</th>${names.map((n) => `<th>${esc(n)}</th>`).join("")}</tr></thead><tbody>${html || `<tr><td colspan="${ids.length + 1}">조건에 맞는 과목이 없습니다.</td></tr>`}</tbody>
       <tfoot><tr><th class="l">해당 과목 수</th>${ids.map((id) => `<th>${rows.filter((r) => r.cells[id]).length}</th>`).join("")}</tr></tfoot>`;
     $("#cnt").textContent = `${rows.length}개 과목 · ${ids.length}개교`;
