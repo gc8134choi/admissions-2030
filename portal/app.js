@@ -78,10 +78,11 @@ const views = {
 const TERMS = ["1-1", "1-2", "2-1", "2-2", "3-1", "3-2"];
 
 async function curriculumView(el, query, node) {
-  const [schools, summary] = await Promise.all([load("schools"), load("summary")]);
+  const [schools, summary, facets] = await Promise.all([load("schools"), load("summary"), load("facets")]);
   const known = (id) => schools.some((x) => x.id === id);
   let sel = query.has("s") ? query.get("s").split(",").filter(known) : schools.map((x) => x.id);
   sel = [...new Set(sel)];
+  let areasSel = facets.areas.filter((a) => (query.get("a") || "").split(",").includes(a)); // 비어 있으면 전체
   let tab = query.get("v") === "compare" ? "compare" : "summary";
   let compare = null; // 상세 비교 화면(필터 포함)은 한 번만 만들고 탭 전환 때 재사용한다
 
@@ -94,6 +95,7 @@ async function curriculumView(el, query, node) {
     const q = new URLSearchParams();
     if (tab === "compare") q.set("v", "compare");
     q.set("s", sel.join(","));
+    if (areasSel.length) q.set("a", areasSel.join(","));
     history.replaceState(null, "", `#select/curriculum?${q.toString().replace(/%2C/g, ",")}`);
   };
   const chipHtml = () => schools.map((x) => `<button type="button" class="chip ${sel.includes(x.id) ? "on" : ""}" data-id="${esc(x.id)}" aria-pressed="${sel.includes(x.id)}">${nm(x.id, x.name, 18)}</button>`).join("");
@@ -102,6 +104,7 @@ async function curriculumView(el, query, node) {
     $("#chipbar").hidden = tab === "compare";
     $("#chips").innerHTML = chipHtml();
     const fc = $("#fchips"); if (fc) fc.innerHTML = chipHtml();
+    const ac = $("#achips"); if (ac) ac.innerHTML = facets.areas.map((a) => `<button type="button" class="chip achip ${areasSel.includes(a) ? "on" : ""}" data-area="${esc(a)}" aria-pressed="${areasSel.includes(a)}">${esc(a)}</button>`).join("");
     const fs = $("#fsum"); if (fs) fs.textContent = `학교 ${sel.length}/${schools.length}`;
     el.querySelectorAll("#tabs a").forEach((a) => a.classList.toggle("on", a.dataset.tab === tab));
   };
@@ -109,13 +112,19 @@ async function curriculumView(el, query, node) {
     const body = $("#cview");
     if (tab === "summary") { compare = null; await summaryBody(body, sel); }
     else {
-      if (!compare || !body.contains(compare.root)) compare = await compareShell(body, () => { sel = schools.map((x) => x.id); refresh(); });
+      if (!compare || !body.contains(compare.root)) compare = await compareShell(body, () => { sel = schools.map((x) => x.id); areasSel = []; refresh(); }, () => areasSel);
       compare.draw(sel);
     }
   };
   const refresh = async () => { drawChips(); syncUrl(); await drawBody(); drawChips(); };
 
   el.addEventListener("click", (e) => {
+    const ach = e.target.closest(".achip");
+    if (ach) {
+      const a = ach.dataset.area;
+      areasSel = facets.areas.filter((x) => (x === a ? !areasSel.includes(a) : areasSel.includes(x)));
+      return void refresh();
+    }
     const chip = e.target.closest(".chip");
     if (chip) {
       const id = chip.dataset.id;
@@ -161,7 +170,7 @@ async function summaryBody(el, ids) {
 }
 
 // 상세 비교: 필터 + 선택 학교를 열 단위로 나란히
-async function compareShell(el, onReset) {
+async function compareShell(el, onReset, getAreas) {
   const [schools, facets, subjects, offerings, groups] = await Promise.all([load("schools"), load("facets"), load("subjects"), load("offerings"), load("groups")]);
   const subj = new Map(subjects.map((x) => [x.subjectKey, x]));
   const gmap = new Map(groups.map((g) => [g.id, g]));
@@ -169,7 +178,7 @@ async function compareShell(el, onReset) {
     <details class="panel filters" ${innerWidth > 1000 ? "open" : ""}><summary><b>필터</b> <span class="muted small"><span id="fsum"></span> · <span id="cnt"></span></span></summary><div class="fbody">
       <div class="fgroup"><span class="flabel">학교</span><div class="chips" id="fchips"></div></div>
       <div class="fgroup"><span class="flabel">과목명</span><input type="search" id="q" placeholder="과목명 검색"></div>
-      <div class="fgroup"><span class="flabel">교과군</span><select id="area">${options(facets.areas, "전체")}</select></div>
+      <div class="fgroup"><span class="flabel">교과군 (여러 개 선택, 없으면 전체)</span><div class="chips" id="achips"></div></div>
       <div class="fgroup"><span class="flabel">이수 방식</span><select id="sel">${options([{ v: "school", t: "학교 지정" }, { v: "student", t: "학생 선택" }, { v: "outside", t: "학교 밖" }], "전체")}</select></div>
       <div class="fgroup"><span class="flabel">구분</span><select id="kind">${options(["공통", "일반", "진로", "융합"], "전체")}</select></div>
       <div class="fgroup"><span class="flabel">학년</span><select id="grade">${options([{ v: "1", t: "1학년" }, { v: "2", t: "2학년" }, { v: "3", t: "3학년" }], "전체")}</select></div>
@@ -186,11 +195,11 @@ async function compareShell(el, onReset) {
   let ids = [];
   const draw = (next) => {
     if (next) ids = next;
-    const f = { q: $("#q").value.replace(/\s/g, ""), area: $("#area").value, sel: $("#sel").value, kind: $("#kind").value, term: $("#term").value, grade: $("#grade").value, cr: $("#cr").value, pool: $("#pool").value, chk: $("#chk").value, csat: $("#csat").value, diff: $("#diff").checked, one: $("#one").checked };
+    const f = { q: $("#q").value.replace(/\s/g, ""), areas: getAreas(), sel: $("#sel").value, kind: $("#kind").value, term: $("#term").value, grade: $("#grade").value, cr: $("#cr").value, pool: $("#pool").value, chk: $("#chk").value, csat: $("#csat").value, diff: $("#diff").checked, one: $("#one").checked };
     if (!ids.length) { $("#tbl").innerHTML = ""; $("#cnt").textContent = "위에서 학교를 하나 이상 선택하세요."; return; }
     const by = new Map();
     for (const o of offerings) {
-      if (!ids.includes(o.schoolId) || (f.area && o.area !== f.area) || (f.sel && o.selection !== f.sel) || (f.term && o.term !== f.term) || (f.csat && o.csatScope !== f.csat)) continue;
+      if (!ids.includes(o.schoolId) || (f.areas.length && !f.areas.includes(o.area)) || (f.sel && o.selection !== f.sel) || (f.term && o.term !== f.term) || (f.csat && o.csatScope !== f.csat)) continue;
       if ((f.grade && String(o.grade) !== f.grade) || (f.cr && String(o.credits) !== f.cr)) continue;
       if (f.pool && gmap.get(o.groupId)?.poolType !== f.pool) continue;
       if (f.chk) {
@@ -230,7 +239,7 @@ async function compareShell(el, onReset) {
   root.addEventListener("input", () => draw());
   root.addEventListener("change", () => draw());
   $("#reset").addEventListener("click", () => {
-    ["q", "area", "sel", "kind", "term", "grade", "cr", "pool", "chk", "csat"].forEach((id) => ($("#" + id).value = ""));
+    ["q", "sel", "kind", "term", "grade", "cr", "pool", "chk", "csat"].forEach((id) => ($("#" + id).value = ""));
     ["diff", "one"].forEach((id) => ($("#" + id).checked = false));
     draw();
     onReset?.();
