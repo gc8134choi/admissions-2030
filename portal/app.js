@@ -8,6 +8,11 @@ const store = {
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
 };
 
+// 임시: 지정/선택 색 후보 전환(?pal=a|b|c|d, 주소의 ? 또는 # 뒤 어디든). 선택 확정 후 삭제.
+let PAL = "";
+const readPal = () => { const m = `${location.search}&${location.hash.split("?")[1] || ""}`.match(/(?:^|[?&])pal=([a-d])(?:&|$)/); if (m) PAL = m[1]; document.documentElement.dataset.pal = PAL; };
+readPal();
+
 // ---- 메뉴 인덱스 ----
 const byId = new Map();
 (function index(nodes, parent) { for (const n of nodes) { n.parent = parent; byId.set(n.id, n); if (n.children) index(n.children, n); } })(MENU, null);
@@ -96,6 +101,7 @@ async function curriculumView(el, query, node) {
     if (tab === "compare") q.set("v", "compare");
     q.set("s", sel.join(","));
     if (areasSel.length) q.set("a", areasSel.join(","));
+    if (PAL) q.set("pal", PAL);
     history.replaceState(null, "", `#select/curriculum?${q.toString().replace(/%2C/g, ",")}`);
   };
   const chipHtml = () => schools.map((x) => `<button type="button" class="chip ${sel.includes(x.id) ? "on" : ""}" data-id="${esc(x.id)}" aria-pressed="${sel.includes(x.id)}">${nm(x.id, x.name, 18)}</button>`).join("");
@@ -267,6 +273,7 @@ async function compareShell(el, onReset, getAreas) {
 registerPolicy(views, { $, esc, load });
 
 function render() {
+  readPal();
   const [path, qs] = decodeURIComponent(location.hash.slice(1)).split("?");
   const query = new URLSearchParams(qs || "");
   const id = path || "home";
