@@ -45,7 +45,7 @@ export function register(views, { $, esc, load }) {
   const timeline = (rows) => {
     const t = today();
     const evs = rows.flatMap((r) => (r.events || []).map((e, i) => ({ ...e, r, first: i === 0 }))).sort((a, b) => a.start.localeCompare(b.start));
-    const tr = (e) => `<tr class="${(e.end || e.start) < t ? "past" : ""}"><td class="l">${esc(fmt(e))}</td><td class="l"><b>${esc(e.r.title)}</b> · ${esc(e.label)}${e.first ? `<div class="muted small">${esc(e.r.body)}</div>` : ""}</td><td class="l">${badge(e.r)}</td><td class="l">${src(e.r)}</td></tr>`;
+    const tr = (e) => `<tr class="${(e.end || e.start) < t ? "past" : ""}"><td class="l">${esc(fmt(e))}</td><td class="l"><b>${esc(e.r.title)}</b>${e.label ? ` · ${esc(e.label)}` : ""}${e.first ? `<div class="muted small">${esc(e.r.body)}</div>` : ""}</td><td class="l">${badge(e.r)}</td><td class="l">${src(e.r)}</td></tr>`;
     const none = rows.filter((r) => !r.events);
     return `<p class="muted">오늘(${t}) 이전 일정은 흐리게 표시합니다.</p><div class="tw"><table class="policy"><thead><tr><th class="l">날짜</th><th class="l">항목</th><th class="l">상태</th><th class="l">구분·출처</th></tr></thead><tbody>${evs.map(tr).join("")}</tbody></table></div>${none.length ? `<h3>일정 미확인</h3>${table(none, basic)}` : ""}`;
   };
@@ -92,10 +92,9 @@ export function register(views, { $, esc, load }) {
     const tab = query.get("t") === "univ" ? "univ" : "hs";
     const all = await load("policy");
     const rows = all.filter((r) => r.topic === (tab === "univ" ? "exam-schedule" : "hs-schedule"));
-    const chips = tab === "hs" ? '<div class="chips" id="aud"></div>' : "";
+    const chips = '<div class="chips" id="aud"></div>';
     el.innerHTML = `${tabs([["hs", "#schedule?t=hs", "고입"], ["univ", "#schedule?t=univ", "대입"]], tab)}${NOTICE}
       <p class="muted">${tab === "univ" ? "수능·대교협 일정. 2030학년도분은 대부분 추정입니다." : "2027학년도 고입(서울 기준). 연도는 2027학년도 고입이 2026년 하반기에 진행되는 것을 기준으로 붙였습니다."}</p>${chips}<div id="tl"></div>`;
-    if (tab === "univ") { $("#tl").innerHTML = timeline(rows); return; }
     let sel = readSel();
     const draw = () => {
       $("#aud").innerHTML = CHIPS.map(([k, t]) => `<button type="button" class="chip ${sel.includes(k) ? "on" : ""}" data-k="${k}">${t}</button>`).join("") + '<span class="muted small">선택 없음 = 전체</span>';
