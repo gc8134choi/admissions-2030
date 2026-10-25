@@ -91,7 +91,7 @@ async function curriculumView(el, query) {
   let tab = query.get("v") === "compare" ? "compare" : "summary";
   let compare = null; // 상세 비교 화면(필터 포함)은 한 번만 만들고 탭 전환 때 재사용한다
 
-  el.innerHTML = `<div class="chipbar"><span class="flabel">비교할 학교 (눌러서 켜고 끄기)</span>
+  el.innerHTML = `<div class="chipbar" id="chipbar"><span class="flabel">학교 (눌러서 켜고 끄기)</span>
       <div class="chips" id="chips"></div></div>
     <div class="subtabs" id="tabs"><a href="#" data-tab="summary">학교별 요약</a><a href="#" data-tab="compare">상세 비교</a></div>
     <div class="muted small">${summary[0].entryYear}학년도 입학생(대입 ${summary[0].entryYear + 3}학년도) 편제표 · ${summary.length}개교 등록</div>${dataNote}
@@ -103,19 +103,24 @@ async function curriculumView(el, query) {
     q.set("s", sel.join(","));
     history.replaceState(null, "", `#select/curriculum?${q.toString().replace(/%2C/g, ",")}`);
   };
+  const chipHtml = () => schools.map((x) => `<button type="button" class="chip ${sel.includes(x.id) ? "on" : ""}" data-id="${esc(x.id)}" aria-pressed="${sel.includes(x.id)}">${esc(x.name)}</button>`).join("");
   const drawChips = () => {
-    $("#chips").innerHTML = schools.map((x) => `<button type="button" class="chip ${sel.includes(x.id) ? "on" : ""}" data-id="${esc(x.id)}" aria-pressed="${sel.includes(x.id)}">${esc(x.name)}</button>`).join("");
+    // 요약 탭: 본문 위 칩 줄 / 상세 비교 탭: 필터 패널 안의 "학교" 항목
+    $("#chipbar").hidden = tab === "compare";
+    $("#chips").innerHTML = chipHtml();
+    const fc = $("#fchips"); if (fc) fc.innerHTML = chipHtml();
+    const fs = $("#fsum"); if (fs) fs.textContent = `학교 ${sel.length}/${schools.length}`;
     el.querySelectorAll("#tabs a").forEach((a) => a.classList.toggle("on", a.dataset.tab === tab));
   };
   const drawBody = async () => {
     const body = $("#cview");
     if (tab === "summary") { compare = null; await summaryBody(body, sel); }
     else {
-      if (!compare || !body.contains(compare.root)) compare = await compareShell(body);
+      if (!compare || !body.contains(compare.root)) compare = await compareShell(body, () => { sel = schools.map((x) => x.id); refresh(); });
       compare.draw(sel);
     }
   };
-  const refresh = async () => { drawChips(); syncUrl(); await drawBody(); };
+  const refresh = async () => { drawChips(); syncUrl(); await drawBody(); drawChips(); };
 
   el.addEventListener("click", (e) => {
     const chip = e.target.closest(".chip");
@@ -163,12 +168,13 @@ async function summaryBody(el, ids) {
 }
 
 // 상세 비교: 필터 + 선택 학교를 열 단위로 나란히
-async function compareShell(el) {
+async function compareShell(el, onReset) {
   const [schools, facets, subjects, offerings, groups] = await Promise.all([load("schools"), load("facets"), load("subjects"), load("offerings"), load("groups")]);
   const subj = new Map(subjects.map((x) => [x.subjectKey, x]));
   const gmap = new Map(groups.map((g) => [g.id, g]));
   el.innerHTML = `<div class="cmp">
-    <details class="panel filters" ${innerWidth > 1000 ? "open" : ""}><summary><b>필터</b></summary><div class="fbody">
+    <details class="panel filters" ${innerWidth > 1000 ? "open" : ""}><summary><b>필터</b> <span class="muted small" id="fsum"></span></summary><div class="fbody">
+      <div class="fgroup"><span class="flabel">학교</span><div class="chips" id="fchips"></div></div>
       <div class="fgroup"><span class="flabel">과목명</span><input type="search" id="q" placeholder="과목명 검색"></div>
       <div class="fgroup"><span class="flabel">교과군</span><select id="area">${options(facets.areas, "전체")}</select></div>
       <div class="fgroup"><span class="flabel">이수 방식</span><select id="sel">${options([{ v: "school", t: "학교 지정" }, { v: "student", t: "학생 선택" }, { v: "outside", t: "학교 밖" }], "전체")}</select></div>
@@ -215,9 +221,8 @@ async function compareShell(el) {
       const kinds = uniq(os.map((o) => (o.primaryKind ? `${o.primaryKind}|0` : o.kindGuess ? `${o.kindGuess}|1` : "|0")));
       const icons = kinds.map((k) => { const [n, est] = k.split("|"); return kindIcon(n || null, est === "1"); }).join("");
       const crs = uniq(os.map((o) => o.credits)).map((c) => `<i class="cr" title="${c}학점">${c}</i>`).join("");
-      const g = os.map((o) => gmap.get(o.groupId)).find(Boolean);
       const warn = os.some((o) => o.openFlagIds.length) ? '<span title="열린 flag">⚠️</span>' : "";
-      return `<td class="${os.some((o) => o.slot === "required") ? "req" : "ele"}"><div class="c1">${icons}<span class="sl">${slots.join("/")}</span><span>${esc(tm)}</span>${crs}${g ? `<span class="muted small">택${g.pick}/${g.size}</span>` : ""}${warn}</div></td>`;
+      return `<td class="${os.some((o) => o.slot === "required") ? "req" : "ele"}"><div class="c1">${icons}<span class="sl">${slots.join("/")}</span><span>${esc(tm)}</span>${crs}${warn}</div></td>`;
     };
     let area = "", html = "";
     for (const r of rows) {
@@ -235,6 +240,7 @@ async function compareShell(el) {
     ["q", "area", "sel", "kind", "term", "grade", "cr", "pool", "chk", "csat"].forEach((id) => ($("#" + id).value = ""));
     ["diff", "one"].forEach((id) => ($("#" + id).checked = false));
     draw();
+    onReset?.();
   });
   return { root, draw };
 }

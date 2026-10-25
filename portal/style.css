@@ -130,3 +130,5 @@ table.policy tr.past{opacity:.45}
 .legend span{display:inline-flex;align-items:center;gap:5px}
 .legend .cr{color:var(--muted)}
 @media (max-width:760px){.legend{font-size:11px;gap:1px 9px}.legend .ki{width:13px;height:13px}}
+.chipbar[hidden]{display:none}
+.fgroup .chips{gap:6px;margin:0}.fgroup .chip{padding:4px 10px;font-size:13px}
