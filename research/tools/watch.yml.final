@@ -1,0 +1,53 @@
+# 최종본: PM이 .github/workflows/watch.yml 로 옮겨 등록한다. 비밀 값 없음(기본 GITHUB_TOKEN만 사용).
+# 사전 설정: 저장소 Settings > Actions > General 에서 "Allow GitHub Actions to create and approve pull requests" 켜기.
+# 참고: GITHUB_TOKEN으로 만든 PR은 다른 워크플로(CI)를 자동 실행하지 않는다. PR 생성이 막히면 이슈로 대체한다.
+name: watch
+on:
+  schedule:
+    - cron: "0 23 * * *"   # 매일 KST 08:00 (UTC 23:00)
+  workflow_dispatch: {}
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+concurrency:
+  group: watch
+  cancel-in-progress: false
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: run watch
+        id: watch
+        run: |
+          set +e
+          node research/tools/watch.mjs > watch-report.md
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+          cat watch-report.md
+      - name: open or update PR (changed or failed)
+        if: steps.watch.outputs.code == '2'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          branch="watch/auto"
+          git config user.name "watch-bot"
+          git config user.email "watch-bot@users.noreply.github.com"
+          git checkout -B "$branch"
+          git add research/data/watch-state.json
+          git commit -m "watch: 변경 감지 $(date -u +%F)" || true
+          git push -f origin "$branch"
+          n=$(gh pr list --head "$branch" --state open --json number --jq '.[0].number')
+          if [ -n "$n" ]; then
+            gh pr edit "$n" --title "감시: 변경 감지 $(date -u +%F)" --body-file watch-report.md
+          else
+            gh pr create --base main --head "$branch" --title "감시: 변경 감지 $(date -u +%F)" --body-file watch-report.md \
+              || gh issue create --title "감시: 변경 감지 $(date -u +%F)" --body-file watch-report.md
+          fi

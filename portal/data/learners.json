@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "note": "학습자 설정(사람 손으로 관리하는 정본, 편제표 DB 아님). profiles.json은 이 파일에서 tools/build-learners.mjs가 만드는 하위 호환 사본이다. 이름은 써도 되고 출생연도는 두지 않는다.",
+    "entryYearRule": "examYear = entryYear + 3 (build-learners가 검증)",
+    "primary": "enabled=true인 학습자 중 primary가 기본 화면(한 명만 보기), 나머지는 보조"
+  },
+  "learners": [
+    {
+      "id": "A",
+      "name": "예나",
+      "label": "현 중3",
+      "enabled": true,
+      "primary": true,
+      "entryYear": 2027,
+      "examYear": 2030,
+      "schoolIds": [
+        "school-pungdeok",
+        "school-seongbok",
+        "school-suji",
+        "school-yonginheungcheon"
+      ],
+      "csat": {
+        "date": "2029-11-15",
+        "status": "estimated",
+        "policyRowId": "sch-12",
+        "note": "시행 기본계획 공고(2029.3 전후 추정) 전까지 잠정"
+      },
+      "milestones": [
+        {
+          "id": "grad",
+          "kind": "graduation",
+          "label": "중학교 졸업",
+          "date": "2026-12-18",
+          "status": "confirmed",
+          "sourceName": "사용자 제공"
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "name": "예은",
+      "label": "현 초6",
+      "enabled": true,
+      "primary": false,
+      "entryYear": 2030,
+      "examYear": 2033,
+      "schoolIds": [],
+      "csat": {
+        "date": "2032-11-18",
+        "status": "estimated",
+        "sourceName": "자체 산출(11월 셋째 목요일 시행 관행)",
+        "note": "시행 기본계획 공고(2032.3 전후 추정) 전까지 확정 아님. 제도 개편으로 바뀔 수 있음"
+      },
+      "milestones": [
+        {
+          "id": "grad",
+          "kind": "graduation",
+          "label": "초등학교 졸업",
+          "date": "2026-12-31",
+          "status": "confirmed",
+          "sourceName": "사용자 제공"
+        }
+      ]
+    }
+  ]
+}

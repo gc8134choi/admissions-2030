@@ -1,0 +1,127 @@
+/* 제도 화면(대입 제도, 고교 유형·전형 일정, 바뀐 소식, 고교학점제 이해) 전용 스타일. A안(에디토리얼) — temp/design/brief.md.
+   공통 토큰(--ink/--paper/--hair/--rule/--accent-a/--accent-b/--st-est/--req/--ele)이 있으면 그것을 쓰고, 없으면 같은 값의 대체값을 쓴다.
+   상자·알약·색 막대·파스텔 틴트 없이, 헤어라인과 큰 타이포로 구분한다. 프로필 색은 포인트 1개(--e-accent). */
+:root{
+  --e-ink:var(--ink,#111110);--e-paper:var(--paper,#FAF9F6);--e-mute:var(--mute,#6A6963);--e-hair:var(--hair,rgba(17,17,16,.16));--e-rule:var(--rule,#111110);
+  --e-accent:var(--accent-a,#C4310D);--e-est:var(--st-est,#9A5B00);--e-req:var(--req,#1B3A6B);--e-ele:var(--ele,#0B7F63);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--e-ink:var(--ink,#F4F2EC);--e-paper:var(--paper,#111110);--e-mute:var(--mute,#9C9A92);--e-hair:var(--hair,rgba(244,242,236,.18));--e-rule:var(--rule,#F4F2EC);--e-accent:var(--accent-a,#FF6A45);--e-est:var(--st-est,#F0B04A);--e-req:var(--req,#6EA0F0);--e-ele:var(--ele,#34D3A8)}}
+[data-profile=b]{--e-accent:var(--accent-b,#4B3FD6)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light])[data-profile=b]{--e-accent:var(--accent-b,#8F85FF)}}
+
+.ed{color:var(--e-ink);counter-reset:edsec;letter-spacing:-.01em;word-break:keep-all}
+.ed a{color:inherit;text-underline-offset:3px}
+.ed h3{margin:40px 0 18px;padding-top:22px;border-top:1px solid var(--e-rule);font-size:12px;font-weight:700;letter-spacing:.06em;display:flex;align-items:baseline;gap:10px;counter-increment:edsec}
+.ed h3::before{content:counter(edsec,decimal-leading-zero);color:var(--e-accent)}
+.ed h3 .cnt{margin-left:auto;font-size:12px;font-weight:400;color:var(--e-mute);background:none;padding:0;min-width:0}
+.ed h3 .muted,.ed h3 small{font-weight:400;letter-spacing:0;color:var(--e-mute)}
+
+/* 상태: 알약 대신 점 + 글자 (확정=채운 점, 보도=반 채움, 추정=빈 점, 그 밖=빈 점) */
+.es{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--e-mute);white-space:nowrap}
+.es::before{content:"";width:7px;height:7px;border-radius:50%;border:1.25px solid currentColor;box-sizing:border-box}
+.es.ok{color:var(--e-ink)}.es.ok::before{background:currentColor}
+.es.rep::before{background:linear-gradient(90deg,currentColor 50%,transparent 50%)}
+.es.est{color:var(--e-est)}
+.ed-unv{display:block;font-size:12px;color:var(--e-mute);margin-top:3px}
+
+/* 상단 한 줄 안내 */
+.ed-top{margin:6px 0 0;padding:14px 0;border-top:1px solid var(--e-rule);border-bottom:1px solid var(--e-hair);font-size:15px}
+.ed-top b{font-weight:800}.ed-top details{margin-top:6px}.ed-top summary{cursor:pointer;font-size:13px;color:var(--e-mute)}
+.ed-top .note,.ed-top .al-body,.ed-top p{background:none;border:0;padding:6px 0;margin:4px 0;font-size:13px;color:var(--e-mute);font-weight:400}
+.ed-top .unv{font-size:12px;color:var(--e-ink)}
+
+/* 탭·필터: 글자와 밑줄만 */
+.ed-tabs{display:flex;gap:22px;margin:26px 0 6px;border-bottom:1px solid var(--e-hair)}
+.ed-tabs a{padding:8px 0;font-size:15px;font-weight:600;color:var(--e-mute);text-decoration:none;border-bottom:3px solid transparent;margin-bottom:-1px}
+.ed-tabs a.on{color:var(--e-ink);font-weight:800;border-bottom-color:var(--e-accent)}
+.ed-filter{display:flex;flex-wrap:wrap;gap:4px 18px;margin:14px 0 0;align-items:baseline;font-size:13px}
+.ed-filter span{color:var(--e-mute)}
+.ed-filter button{background:none;border:0;padding:4px 0;font:inherit;font-size:14px;color:var(--e-mute);cursor:pointer;border-bottom:2px solid transparent}
+.ed-filter button.on{color:var(--e-ink);font-weight:800;border-bottom-color:var(--e-accent)}
+.ed-filter button:focus-visible{outline:2px solid var(--e-accent);outline-offset:2px}
+
+/* 행: 헤어라인으로만 나눈다 */
+.ed-rows{margin:0}
+.ed-row{display:block;padding:20px 0;border-top:1px solid var(--e-hair)}
+.ed-row:first-child{border-top:0;padding-top:0}
+.ed-meta{font-size:12px;color:var(--e-mute);margin-bottom:2px}
+.ed-row .ed-st{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 12px;margin-bottom:3px}.ed-row .ed-st:empty{display:none}
+.ed-row .ed-unv{margin-top:0}
+.ed-row h4{margin:0;font-size:18px;line-height:1.4;font-weight:700;letter-spacing:-.025em}
+.ed-b{margin:3px 0 0;font-size:15px;line-height:1.7;max-width:46em}
+.ed-s{margin:6px 0 0;font-size:13px;color:var(--e-mute);line-height:1.6}
+.ed-s a{color:var(--e-mute)}.ed-s a:hover{color:var(--e-ink)}
+.ed-note{font-size:12px;color:var(--e-mute);margin-top:2px}
+.ed-row.hl h4{color:var(--e-accent)}
+
+/* 학원 의견: 사실과 섞이지 않게 점선과 글자 라벨만 */
+.ed-op{margin:8px 0 0;padding-top:12px;border-top:1px dashed var(--e-mute)}
+.ed-op>p{margin:0 0 10px;font-size:13px;color:var(--e-mute)}
+.ed-tag{display:inline;font-size:12px;font-weight:700;color:var(--e-mute);margin-left:8px;letter-spacing:0}
+.ed-big{margin:10px 0 18px;font-size:clamp(24px,5.4vw,36px);font-weight:800;line-height:1.2;letter-spacing:-.045em}
+.ed-big em{font-style:normal;color:var(--e-accent)}
+
+/* 공식 이미지 */
+.ed-fig{margin:14px 0}.ed-fig img{width:100%;max-width:560px;height:auto;display:block;border:1px solid var(--e-hair)}.ed-fig figcaption{font-size:12px;color:var(--e-mute);margin-top:6px}
+
+/* ===== 고교학점제 이해 ===== */
+.ed-lead{font-size:clamp(26px,6.6vw,44px);font-weight:800;line-height:1.18;letter-spacing:-.045em;margin:18px 0 26px;max-width:15em}
+.ed-lead mark{background:none;color:var(--e-accent)}
+.ed-glance{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--e-hair);border-top:1px solid var(--e-rule);border-bottom:1px solid var(--e-hair)}
+.ed-g{background:var(--bg,var(--e-paper));padding:18px 16px 22px}
+.ed-g .v{display:block;font-weight:800;font-size:clamp(44px,8vw,72px);line-height:.95;letter-spacing:-.06em;font-variant-numeric:tabular-nums}
+.ed-g .v sup{font-size:.34em;letter-spacing:-.02em;vertical-align:top;position:relative;top:.35em;margin-left:3px;font-weight:700}
+.ed-g .k{display:block;font-size:14px;font-weight:600;margin-top:10px}.ed-g .n{display:block;font-size:12px;color:var(--e-mute);line-height:1.5;margin-top:2px}
+.ed-g.main{grid-column:1 / 4;grid-row:1 / 3;padding-left:0;padding-right:24px}
+.ed-g.main .v{font-size:clamp(96px,22vw,200px);color:var(--e-accent)}
+.ed-g.last{grid-column:span var(--sp-d,1)}
+@media (max-width:760px){.ed-glance{grid-template-columns:1fr 1fr}.ed-g.main{grid-column:1 / -1;grid-row:auto}.ed-g.last{grid-column:span var(--sp-m,1)}.ed-g:not(.main):nth-child(even){padding-left:0}}
+.ed-src{font-size:12px;color:var(--e-mute);margin:14px 0 0}
+
+/* 얇은 선 그래프: 막대는 3px 선 */
+.ed-seg{display:flex;height:4px;margin:12px 0 6px;background:var(--e-hair)}.ed-seg i{display:block;height:100%}
+.ed-key{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:13px;color:var(--e-mute);margin:6px 0 0}.ed-key b{color:var(--e-ink);font-weight:700}
+.ed-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:0}
+.ed-lines{display:grid;gap:14px}
+.ed-ln{display:grid;grid-template-columns:minmax(96px,32%) 1fr 36px;gap:12px;align-items:center;font-size:14px}
+.ed-ln .t{height:3px;background:var(--e-hair);position:relative}.ed-ln .t i{position:absolute;left:0;top:0;bottom:0;background:var(--e-ink)}
+.ed-ln b{text-align:right;font-variant-numeric:tabular-nums}
+.ed-gauge .l{font-size:14px;margin-bottom:8px}.ed-gauge .t{height:3px;background:var(--e-hair);position:relative}.ed-gauge .t i{position:absolute;left:0;top:0;bottom:0;background:var(--e-ink)}
+.ed-two{display:grid;grid-template-columns:1fr 1fr;gap:0}.ed-two>div{padding:0 24px 0 0}.ed-two>div+div{padding:0 0 0 24px;border-left:1px solid var(--e-hair)}
+.ed-two h5{margin:0 0 14px;font-size:15px}.ed-two .ed-gauge+.ed-gauge{margin-top:18px}
+@media (max-width:640px){.ed-two{grid-template-columns:1fr}.ed-two>div,.ed-two>div+div{padding:0;border:0}.ed-two>div+div{margin-top:24px}}
+.ed-plain{margin:12px 0 0;padding:0;list-style:none;font-size:13px;color:var(--e-mute)}.ed-plain li{padding:3px 0}
+.ed-kinds{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--e-hair);margin-bottom:6px}
+.ed-kinds>div{padding:16px 14px 16px 0}.ed-kinds>div+div{padding-left:16px;border-left:1px solid var(--e-hair)}
+.ed-kinds b{display:block;font-size:16px}.ed-kinds .n{display:block;font-size:32px;font-weight:800;letter-spacing:-.05em;margin:4px 0}.ed-kinds small{font-size:12px;color:var(--e-mute);line-height:1.4;display:block}
+@media (max-width:640px){.ed-kinds{grid-template-columns:1fr 1fr}.ed-kinds>div:nth-child(3){padding-left:0;border-left:0}.ed-kinds>div:nth-child(n+3){border-top:1px solid var(--e-hair)}}
+.ed-mx{display:grid;grid-template-columns:minmax(72px,1.2fr) repeat(3,1fr);font-size:14px;margin-top:6px}
+.ed-mx>*{padding:8px 0;border-top:1px solid var(--e-hair)}.ed-mx .h{font-size:12px;color:var(--e-mute);border-top:0}.ed-mx .c{font-weight:700;font-variant-numeric:tabular-nums}
+.ed-cols{display:flex;gap:14px;align-items:flex-end;height:150px;margin-top:6px}
+.ed-col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;font-size:13px}.ed-col b{font-variant-numeric:tabular-nums}
+.ed-col span{display:block;width:100%;max-width:56px;background:var(--e-ink)}.ed-col em{font-style:normal;color:var(--e-mute);font-size:12px}
+.ed-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--e-hair)}
+.ed-steps li{padding:16px 14px 6px 0;font-size:14px;line-height:1.55}.ed-steps li+li{padding-left:16px;border-left:1px solid var(--e-hair)}
+.ed-steps b{display:block;font-size:40px;font-weight:800;letter-spacing:-.05em;line-height:1;color:var(--e-accent);margin-bottom:8px}
+@media (max-width:760px){.ed-steps{grid-template-columns:1fr 1fr}.ed-steps li:nth-child(3){padding-left:0;border-left:0}.ed-steps li:nth-child(n+3){border-top:1px solid var(--e-hair);margin-top:12px}}
+.ed-tl{display:flex;align-items:center;margin:14px 0 4px}.ed-tl .p{display:flex;flex-direction:column;gap:2px;min-width:54px}.ed-tl .p small{font-size:12px;color:var(--e-mute)}.ed-tl .p b{font-size:20px;font-weight:800;letter-spacing:-.04em}
+.ed-tl .a{flex:1;height:1px;background:var(--e-rule);min-width:24px;margin:0 12px}
+.ed-years{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:22px;margin-top:10px}.ed-ym h5{margin:0 0 8px;font-size:14px}
+.ed-yc{display:flex;gap:10px;align-items:flex-end;height:110px}.ed-yc>div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%;gap:4px}.ed-yb{display:flex;flex-direction:column}.ed-yb span{display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--e-paper);min-height:0}
+.ed-yb .ele{background:var(--e-ele)}.ed-yb .req{background:var(--e-req)}.ed-yc em{font-style:normal;font-size:11px;color:var(--e-mute);text-align:center}
+.ed-ylegend{display:flex;gap:16px;font-size:12px;color:var(--e-mute);margin:2px 0 0}.ed-ylegend i{display:inline-block;width:9px;height:9px;margin-right:5px}
+.ed-bar2{display:flex;height:6px;margin:8px 0 4px}.ed-bar2 .r{background:var(--e-req)}.ed-bar2 .e{background:var(--e-ele)}
+.ed-sch{display:grid;grid-template-columns:70px 1fr auto;gap:14px;align-items:center;padding:12px 0;border-top:1px solid var(--e-hair);font-size:14px}.ed-sch:first-child{border-top:0}
+.ed-sch .nm{font-size:18px;font-weight:800;letter-spacing:-.04em}.ed-sch .f{font-size:13px;color:var(--e-mute);text-align:right}
+.ed-toc{position:sticky;top:var(--hh,0);z-index:3;display:flex;gap:18px;overflow-x:auto;padding:10px 0;margin:18px 0 0;background:var(--bg,var(--e-paper));border-bottom:1px solid var(--e-hair);scrollbar-width:thin}
+.ed-toc button{flex:none;background:none;border:0;padding:2px 0;font:inherit;font-size:13px;color:var(--e-mute);cursor:pointer;white-space:nowrap}.ed-toc button:hover{color:var(--e-ink)}
+.ed-toc button b{color:var(--e-accent);margin-right:6px;font-weight:700}
+.ed [id^="cv-sec-"]{scroll-margin-top:calc(var(--hh,0px) + 56px)}
+.ed-basis{margin:16px 0 0;font-size:13px}.ed-basis summary{cursor:pointer;color:var(--e-mute)}
+.ed-art{float:right;width:84px;height:72px;margin:-8px 0 0 12px}
+.ed-art [fill]{fill:none}.ed-art [fill="var(--c)"]{fill:var(--e-accent)}
+.ed-art{--cv-ink:var(--e-ink);--c:var(--e-accent);color:var(--e-ink)}
+@media (max-width:640px){.ed-art{width:56px;height:48px}}
+
+/* 현고3 일정은 진한 회색 */
+tr.g3,tr.g3 td,tr.g3 a{color:var(--e-mute)}

@@ -1,0 +1,198 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "subjects.schema.json",
+ "title": "subjects (과목 마스터)",
+ "description": "안정 코드 subjectId가 기준. 기존 subjectKey(공백 제거 이름)는 legacyKey로 보존.",
+ "type": "object",
+ "required": [
+  "subjectId",
+  "legacyKey",
+  "name",
+  "area",
+  "kind",
+  "rev"
+ ],
+ "properties": {
+  "subjectId": {
+   "type": "string",
+   "pattern": "^sj-\\d{4}$",
+   "description": "한 번 부여하면 불변·재사용 금지"
+  },
+  "legacyKey": {
+   "type": "string"
+  },
+  "name": {
+   "type": "string"
+  },
+  "aliases": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "area": {
+   "enum": [
+    "국어",
+    "수학",
+    "영어",
+    "한국사",
+    "사회",
+    "과학",
+    "체육",
+    "예술",
+    "기술·가정/정보",
+    "제2외국어/한문/교양"
+   ],
+   "description": "현행 DB 교과군 10종. 영역 7개 필터(국어·수학·영어·한국사·사회·과학·기타)는 areaGroup으로 파생"
+  },
+  "areaGroup": {
+   "enum": [
+    "국어",
+    "수학",
+    "영어",
+    "한국사",
+    "사회",
+    "과학",
+    "기타"
+   ]
+  },
+  "subArea": {
+   "type": "string"
+  },
+  "kind": {
+   "enum": [
+    "공통",
+    "일반",
+    "진로",
+    "융합",
+    "전문교과",
+    "학교지정"
+   ]
+  },
+  "defaultCredits": {
+   "type": "integer",
+   "description": "교육청 안내 기본 4학점(3~5 편성 가능)"
+  },
+  "rev": {
+   "type": "object",
+   "properties": {
+    "r2022": {
+     "type": "boolean"
+    },
+    "predecessors2015": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "description": "2015 개정 대응 과목명"
+    }
+   }
+  },
+  "isComposite": {
+   "type": "boolean"
+  },
+  "components": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "csat": {
+   "type": "array",
+   "description": "수능 체제 버전별 범위. 전 버전에서 같으면 1개",
+   "items": {
+    "type": "object",
+    "required": [
+     "regimeId",
+     "scope",
+     "confidence"
+    ],
+    "properties": {
+     "regimeId": {
+      "type": "string"
+     },
+     "area": {
+      "enum": [
+       "국어",
+       "수학",
+       "영어",
+       "한국사",
+       "통사",
+       "통과",
+       "제2외"
+      ]
+     },
+     "scope": {
+      "enum": [
+       "in",
+       "base",
+       "out",
+       "none"
+      ]
+     },
+     "confidence": {
+      "enum": [
+       "confirmed",
+       "reported",
+       "unconfirmed"
+      ]
+     }
+    }
+   }
+  },
+  "majorsHint": {
+   "type": "string",
+   "description": "커리어넷 예시 관련 학과(subject-info 이관)"
+  }
+ },
+ "examples": [
+  {
+   "subjectId": "sj-0001",
+   "legacyKey": "미적분Ⅰ",
+   "name": "미적분Ⅰ",
+   "aliases": [],
+   "area": "수학",
+   "areaGroup": "수학",
+   "kind": "일반",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": [
+     "수학Ⅱ"
+    ]
+   },
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "수학",
+     "scope": "in",
+     "confidence": "reported"
+    }
+   ],
+   "majorsHint": "사회과학계열, 자연과학계열, 공학계열 학과 전체"
+  },
+  {
+   "subjectId": "sj-0002",
+   "legacyKey": "물리학",
+   "name": "물리학",
+   "aliases": [],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "물리",
+   "kind": "일반",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ]
+  }
+ ]
+}

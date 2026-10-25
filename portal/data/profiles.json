@@ -1,8 +1,7 @@
 {
   "_meta": {
-    "note": "프로필 설정(사람 손으로 관리하는 설정 파일, 편제표 DB가 아님). 행 연도 필터는 policy.json의 entryYear/examYear를 쓴다. 출생연도는 두지 않는다.",
-    "entryYearRule": "examYear = entryYear + 3",
-    "milestones": "졸업·입학 같은 생활 일정(사용자 제공 또는 조사 데이터). 사진은 저장소에 없고 브라우저(IndexedDB)에만 저장된다."
+    "note": "하위 호환 사본. 정본은 learners.json이며 이 파일은 tools/build-learners.mjs가 만든다(손으로 고치지 않는다).",
+    "entryYearRule": "examYear = entryYear + 3 (build-learners가 검증)"
   },
   "profiles": [
     {
@@ -22,17 +21,7 @@
         "status": "estimated",
         "policyRowId": "sch-12",
         "note": "시행 기본계획 공고(2029.3 전후 추정) 전까지 잠정"
-      },
-      "milestones": [
-        {
-          "id": "grad",
-          "kind": "graduation",
-          "label": "중학교 졸업",
-          "date": "2026-12-18",
-          "status": "confirmed",
-          "sourceName": "사용자 제공"
-        }
-      ]
+      }
     },
     {
       "id": "B",
@@ -46,17 +35,7 @@
         "status": "estimated",
         "sourceName": "자체 산출(11월 셋째 목요일 시행 관행)",
         "note": "시행 기본계획 공고(2032.3 전후 추정) 전까지 확정 아님. 제도 개편으로 바뀔 수 있음"
-      },
-      "milestones": [
-        {
-          "id": "grad",
-          "kind": "graduation",
-          "label": "초등학교 졸업",
-          "date": "2026-12-31",
-          "status": "confirmed",
-          "sourceName": "사용자 제공"
-        }
-      ]
+      }
     }
   ]
 }
