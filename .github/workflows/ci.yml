@@ -57,7 +57,7 @@ jobs:
           src=data-src/curriculum-analysis/content/data/school-notes.json
           if [ -f "$src" ]; then cmp "$src" portal/data/school-notes.json; fi
 
-      - name: 제도·일정·학습자 생성물 검증 (build-policy·build-ics·build-roadmap --check, build-learners 검증)
+      - name: 제도·일정·학습자 생성물 검증 (build-policy·build-ics·build-roadmap·build-rules --check, build-learners 검증)
         run: |
           # policy.json·events.json·image-credits.json은 research/data의 draft에서, schedule.ics는 events.json에서,
           # learners.json은 손으로 관리하는 정본이고 build-learners가 규칙(examYear=entryYear+3 등)만 검증한다.
@@ -65,6 +65,7 @@ jobs:
             node tools/build-policy.mjs --check
             node tools/build-ics.mjs --check
             node tools/build-roadmap.mjs --check
+            node tools/build-rules.mjs --check
           fi
           node tools/build-learners.mjs --check
           if [ -f research/data/links-draft.json ]; then node tools/build-links.mjs --check; fi

@@ -89,13 +89,28 @@ export function register(views, { $, esc, load, store }) {
     render();
   };
 
+
+  // 수능 체제·내신 산출 규칙(rules.json). 선택된 학습자의 appliesTo 상태를 우선 표시한다(확정은 표시 안 함).
+  const rulesSection = async () => {
+    const rules = await load("rules"); const id = curProfile().id; const me = curProfile();
+    const mine = (r) => (r.appliesTo || []).find((a) => a.learner === id);
+    const stat = (st, unv) => badgeMain({ status: st, unverified: unv });
+    const links = (list) => (list || []).length ? `<div class="ed-src">${list.map((x) => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a> (${SKIND[x.kind] || x.kind})`).join(" · ")}</div>` : "";
+    const regs = rules.csatRegimes.filter(mine).map((r) => { const a = mine(r);
+      const tbl = r.areas ? `<table class="ed-tbl"><thead><tr><th>영역</th><th>문항</th><th>배점</th><th>시간</th><th>성적</th></tr></thead><tbody>${r.areas.map((x) => `<tr><td>${esc(x.area)}${x.scope ? `<div class="muted small">${esc(x.scope.join("·"))}</div>` : ""}</td><td>${x.items ?? ""}</td><td>${x.points ?? ""}</td><td>${x.minutes ?? ""}분</td><td>${x.scoring === "absolute" ? "절대평가" : "상대평가"}</td></tr>`).join("")}</tbody></table>` : "";
+      return `<div class="ed-row"><div class="ed-st">${stat(a.status, r.unverified)}</div><h4>${esc(r.label)}</h4><p>${esc(a.note || r.note || "")}</p>${tbl}${links(a.sources && a.sources.length ? a.sources : r.sources)}</div>`; });
+    const gr = rules.gradingRules.filter(mine).map((r) => { const a = mine(r); const b = r.rankGrades.bandPercent;
+      return `<div class="ed-row"><div class="ed-st">${stat(a.status, r.unverified)}</div><h4>내신 산출: 5등급 상대평가</h4><p>${me.label}는 ${b.map((v, i) => `${i + 1}등급 ${v}%`).join(" · ")}로 등급을 매겨요. ${esc(a.note || "")}</p>${links(a.sources && a.sources.length ? a.sources : r.sources)}</div>`; });
+    return regs.length + gr.length ? `<h3>수능·내신 규칙</h3><div class="ed-rows">${regs.join("")}${gr.join("")}</div>` : "";
+  };
+
   views.system = async (el, query) => {
     const rows = (await loadPolicy()).filter((r) => r.topic.startsWith("admission") || r.topic === "change-log" || CUR_SYS.has(r.id) || ACD_SYS.has(r.id) || r.topic === "profile-2033");
     const log = query.get("t") === "log";
     const body = rows.filter((r) => (r.topic === "change-log") === log);
     // 한 줄 안내(헤어라인 위아래). 나머지 안내는 접어 둔다.
     el.innerHTML = `<div class="ed"><div class="ed-top"><b>2027.3 공표 전까지는 확정이 아니에요.</b><details><summary>자세히</summary>${banner(rows)}${notice()}${log || curProfile().id !== "A" ? "" : `<p>${curProfile().label}(${curProfile().grade})는 2028 개편안의 직접 대상(2025 입학생)이 아니에요. 2030학년도 제도는 2027.3 공표 내용에 따라 바뀔 수 있어요.</p>`}</details></div>${tabs([["sys", "#admission/system", "제도"], ["log", "#admission/system?t=log", "바뀐 소식"]], log ? "log" : "sys")}
-      ${statusSelect(body)}<div id="ptbl"></div></div>`;
+      ${log ? "" : await rulesSection()}${statusSelect(body)}<div id="ptbl"></div></div>`;
     const TOPIC = { "admission-system": "2028학년도 개편 확정안과 2030학년도 적용", "admission-outlook": "2030학년도 대상 추가 동향", "admission-structure": "대입 전형 구조", "cur-select": "수능 출제범위(참고)", academy: "학원 설명 자료", "profile-2033": "2033학년도 대입 전망(추정)" };
     const NOTE = { "cur-select": '<p class="ed-src">서울교육청 자료라서 경기 적용은 확인이 필요해요. 수능 출제범위는 추정이고, 2030학년도 확정이 아니에요.</p>' };
     const key = (r) => (ACD_SYS.has(r.id) ? "academy" : CUR_SYS.has(r.id) ? CUR_GROUP[r.id] || "cur-select" : r.topic);
