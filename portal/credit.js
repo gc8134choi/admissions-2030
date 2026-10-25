@@ -46,6 +46,22 @@ const HERO_SVG = `<svg class="cv-hero-art" viewBox="0 0 320 190" role="img" aria
   </g>
 </svg>`;
 
+// 섹션 머리 오른쪽의 작은 일러스트(직접 그림). 번호는 카드 번호(.cv-sN)와 같다. 색은 --c(섹션색)와 테마 변수만 쓴다.
+const SPOT_STYLE = 'stroke="var(--cv-ink)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"';
+const SPOT = {
+  1: '<path d="M14 54V10" /><path d="M14 12h30l-7 9 7 9H14z" fill="var(--c)"/><path d="M4 54h60" /><circle cx="58" cy="14" r="6" fill="var(--cv-sun)"/>',
+  2: '<circle cx="36" cy="38" r="20" fill="var(--c)"/><path d="M36 38V18A20 20 0 0 1 43 19.3z" fill="var(--cv5)" transform="translate(3 -4)"/><path d="M2 14l14-5 14 5-14 5z" fill="var(--cv-cap)"/>',
+  3: '<path d="M4 54h14V42h14V30h14V18h16v36" fill="color-mix(in srgb,var(--c) 30%,var(--panel))"/><circle cx="24" cy="22" r="5" fill="var(--panel)"/><path d="M24 27v9M24 31l-6 5M24 31l6 4" /><path d="M62 18V6l8 3-8 3" fill="var(--c)"/>',
+  4: '<rect x="14" y="10" width="40" height="46" rx="4" fill="var(--panel)"/><rect x="26" y="5" width="16" height="9" rx="3" fill="var(--c)"/><path d="M22 24l4 4 7-8M22 38l4 4 7-8M38 25h10M38 39h10" />',
+  5: '<rect x="8" y="40" width="50" height="12" rx="2" fill="var(--cv-b1)"/><rect x="14" y="28" width="44" height="12" rx="2" fill="var(--c)"/><rect x="10" y="16" width="46" height="12" rx="2" fill="var(--cv-b3)"/><path d="M60 52l8-34 4 2-6 34z" fill="var(--cv-sun)"/>',
+  6: '<path d="M34 56V8" /><path d="M34 10h22l5 6-5 6H34z" fill="var(--cv-b2)"/><path d="M34 26H14l-5 6 5 6h20z" fill="var(--cv-b1)"/><path d="M34 42h22l5 6-5 6H34z" fill="var(--cv-b3)"/>',
+  7: '<rect x="12" y="6" width="42" height="52" rx="4" fill="var(--panel)"/><text x="33" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="var(--c)" stroke="none">A</text><path d="M20 40v10M28 36v14M36 43v7M44 38v12" stroke="var(--c)" stroke-width="4"/>',
+  8: '<path d="M8 54c18-4 6-18 22-22s8-14 26-18" fill="none" stroke-dasharray="3 5"/><circle cx="8" cy="54" r="5" fill="var(--panel)"/><circle cx="30" cy="32" r="5" fill="var(--panel)"/><circle cx="56" cy="14" r="5" fill="var(--c)"/><path d="M56 9V1l9 3-9 3" fill="var(--c)"/>',
+  9: '<path d="M6 24L34 8l28 16z" fill="var(--c)"/><path d="M12 28v22M24 28v22M44 28v22M56 28v22M6 54h56" /><path d="M2 6l10-3 10 3-10 3z" fill="var(--cv-cap)" transform="translate(48 -2)"/>',
+  10: '<g fill="var(--panel)"><path d="M4 56V34l9-8 9 8v22z"/><path d="M26 56V28l9-8 9 8v28z" fill="color-mix(in srgb,var(--c) 30%,var(--panel))"/><path d="M48 56V34l9-8 9 8v22z"/></g><path d="M10 56V46h6v10M32 56V44h6v12M54 56V46h6v10" />',
+};
+const spot = (n) => (SPOT[n] ? `<svg class="cv-spot" viewBox="0 0 72 62" ${SPOT_STYLE} fill="none" aria-hidden="true">${SPOT[n]}</svg>` : "");
+
 export async function creditView(el, { load, esc, badge, src, table, basic }) {
   const [rows, summary, manifest] = await Promise.all([load("policy"), load("summary"), fetch("img/credit/manifest.json").then((r) => (r.ok ? r.json() : {})).catch(() => ({}))]);
   const get = (id) => rows.find((r) => r.id === id);
@@ -62,7 +78,7 @@ export async function creditView(el, { load, esc, badge, src, table, basic }) {
   };
   // 섹션 카드: 색(.cv-sN), 아이콘 헤더, 한 줄 요약, 본문, 공식 이미지 슬롯, 근거 표.
   const card = (n, ic, title, lead, body, ids, slot, basisTitle = "근거·상태 표") =>
-    `<section class="cv-card cv-s${n}"><header class="cv-h"><span class="cv-hi">${icon(ic)}</span><div><h3>${title}</h3>${lead ? `<p class="cv-lead">${lead}</p>` : ""}</div></header>${body}${fig(slot)}${basis(basisTitle, ids)}</section>`;
+    `<section class="cv-card cv-s${n}"><header class="cv-h"><span class="cv-hi">${icon(ic)}</span><div class="cv-ht"><h3>${title}</h3>${lead ? `<p class="cv-lead">${lead}</p>` : ""}</div>${spot(n)}</header>${body}${fig(slot)}${basis(basisTitle, ids)}</section>`;
 
   // ---- 숫자 읽기 ----
   const grad = num("cur-01", /(\d+)학점\s*=\s*교과\s*(\d+).*?창의적 체험활동\s*(\d+)/); // [192, 174, 18]
