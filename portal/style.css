@@ -539,3 +539,46 @@ h3{font-size:20px;font-weight:700}
 .small,.muted.small{font-size:13px}
 td,th,.tnum,.hm-tiles b,.hs-tiles b,.st-n{font-variant-numeric:tabular-nums}
 @media (max-width:760px){h2{font-size:24px}.panel,.hm-box{padding:16px}.hm{gap:20px}}
+
+/* ===== 홈 2단계: 히어로 · 맞춤 띠 · 일정 카드 ===== */
+.hm-hero2{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;min-height:260px;padding:28px 32px;border-radius:20px;color:#fff;background:linear-gradient(135deg,#1B3A6B,#2F5D8A);box-shadow:var(--sh)}
+.hh-l,.hh-r{display:flex;flex-direction:column;justify-content:center;gap:6px;min-width:0}
+.hh-r{padding-left:28px;border-left:1px solid rgba(255,255,255,.22);align-items:flex-start}
+.hh-k{font-size:13px;font-weight:600;opacity:.85}
+.hh-n{font-size:72px;line-height:1;font-weight:800;letter-spacing:-2px;font-variant-numeric:tabular-nums}
+.hh-s{font-size:13px;opacity:.92}
+.hh-nt{font-size:22px;line-height:1.35;font-weight:700}
+.hm-hero2 .hm-d{align-self:flex-start;font-size:14px;padding:2px 12px;background:var(--coral);color:var(--coral-fg)}
+.hm-hero2 a{color:#fff}
+.hm-hero2 .pst{background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.7)}
+.hm-hero2 .unv-i{color:#fff}
+.hh-cta{margin-top:8px;display:inline-block;padding:10px 20px;border-radius:999px;background:var(--coral);color:var(--coral-fg)!important;font-weight:700;text-decoration:none}
+.hh-cta:focus-visible,.hm-hero2 a:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.hm-strip{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.hs-chips2{display:flex;gap:8px;flex-wrap:wrap}
+.hs-chips2 span{height:36px;display:inline-flex;align-items:center;padding:0 14px;border-radius:999px;background:var(--soft);color:var(--accent);font-weight:600;font-size:14px}
+.hs-logos{display:flex;gap:18px;margin-left:auto;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 4px}
+.hs-lg{position:relative;scroll-snap-align:start;flex:none}
+.hs-lg a{display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--fg);text-decoration:none;font-size:14px;font-weight:600;min-width:64px}
+.hs-lg img{width:56px;height:56px;border-radius:50%;background:#fff;box-shadow:0 0 0 1px var(--line),var(--sh)}
+.hs-lg .star{position:absolute;top:-4px;right:-4px;font-size:15px;line-height:1;padding:2px;border-radius:50%;background:var(--panel);box-shadow:0 0 0 1px var(--line)}
+.hm-empty{display:flex;flex-direction:column;gap:2px;margin:0;padding:22px;text-align:center;border:2px dashed var(--line);border-radius:var(--r-in);color:var(--muted)}
+.hm-empty b{font-size:17px;color:var(--fg)}
+.hm-list li{padding:10px 0;gap:6px 12px}
+.hm-d{background:var(--coral);color:var(--coral-fg);padding:2px 10px;font-size:13px}
+.hm-d.now{background:var(--coral)}
+.hm-tx{font-size:16px;line-height:1.4}
+.hm-tx b{font-size:17px;font-weight:700}
+.hm-list .hm-bd,.hm-list .hm-src{font-size:12px}
+.unv-i{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;border:1px dashed currentColor;font-size:11px;color:var(--muted);cursor:help;vertical-align:middle}
+.unv-i:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+@media (max-width:760px){
+ .hm-hero2{grid-template-columns:1fr;min-height:220px;padding:20px 18px;gap:16px;border-radius:16px}
+ .hh-n{font-size:56px}
+ .hh-r{padding:14px 0 0;border-left:0;border-top:1px solid rgba(255,255,255,.22)}
+ .hh-nt{font-size:18px}
+ .hs-logos{margin-left:0;width:100%;gap:16px}
+}
+#hm-nx{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.hm .hm-hero2 a:not(.btn):not(.hh-cta){color:#fff;text-decoration:underline}
+.hm .hm-hero2 .hh-cta{color:var(--coral-fg)}

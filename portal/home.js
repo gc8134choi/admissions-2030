@@ -44,7 +44,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     if (!s) return "";
     return s.url && /^https?:\/\//.test(s.url) ? `<a class="hm-src" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>` : `<span class="muted small">${esc(s.name)}</span>`;
   };
-  const badges = (r) => `<span class="pst ${r.status}">${PST[r.status] || r.status}</span>${r.unverified ? ' <span class="unv">원문 미확인</span>' : ""}`;
+  const badges = (r) => `<span class="pst ${r.status}">${PST[r.status] || r.status}</span>${r.unverified ? ` <span class="unv-i" tabindex="0" role="img" aria-label="원문 미확인${r.reason || r.note ? `: ${esc(r.reason || r.note)}` : ""}" title="원문 미확인${r.reason || r.note ? ` — ${esc(r.reason || r.note)}` : ""}">ⓘ</span>` : ""}`;
   // 행에 events가 없고 date("YYYY-MM-DD" 또는 "시작~끝")만 있어도 일정으로 읽는다.
   const DRE = /^\d{4}-\d{2}(-\d{2})?$/;
   const eventsOf = (r) => {
@@ -71,8 +71,8 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
       const sp = span(csat.start, csat.end);
       const target = sp.month ? new Date(sp.start.getFullYear(), sp.start.getMonth(), 15) : sp.start;
       const n = Math.round((target - t) / DAY);
-      hero = `<span class="hm-dday"><b>${sp.month ? "약 " : ""}D-${n.toLocaleString()}</b> <span class="pst ${csatRow.status}">${PST[csatRow.status]}</span> <span class="muted small">${fmtRange(sp, t, csat)} · ${esc(csat.label)}</span></span>`;
-    } else hero = '<span class="hm-dday muted">수능 시행일 데이터 없음 (2029.11 추정)</span>';
+      hero = `<span class="hh-k">${examYear}학년도 수능${csatRow.status === "estimated" ? "(추정)" : ""}까지</span><b class="hh-n">${sp.month ? "약 " : ""}D-${n.toLocaleString()}</b><span class="hh-s">${fmtRange(sp, t, csat)} · ${esc(csat.label)} <span class="hm-bd">${badges(csatRow)} ${link(csatRow)}</span></span>`;
+    } else hero = `<span class="hh-k">${examYear}학년도 수능까지</span><b class="hh-n">-</b><span class="hh-s">수능 시행일 데이터 없음 (2029.11 추정)</span>`;
 
     // 2) 다가오는 일정: 고입·대입 일정 중 오늘~90일, 지난 일정 숨김
     const limit = new Date(t.getTime() + 90 * DAY);
@@ -85,8 +85,8 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     // "지금" 카드: 선택한 대상의 가장 가까운 일정 1건
     const nextCard = () => {
       const x = upRows()[0];
-      if (!x) return `<div class="hm-next empty"><span class="hm-nl">다음 일정</span><b>${upcoming.length ? "선택한 대상의 " : ""}예정된 일정 없음</b><a class="hm-more" href="#schedule">전체 일정 보기</a></div>`;
-      return `<div class="hm-next"><span class="hm-nl">다음 일정</span><span class="hm-nd${x.sp.start <= t ? " now" : ""}">${dLabel(x.sp, t)}</span><b class="hm-nt">${esc(x.r.title)}${x.e.label ? ` · ${esc(x.e.label)}` : ""}</b><span class="hm-date">${fmtRange(x.sp, t, x.e)}</span><span class="hm-bd">${badges(x.r)} ${link(x.r)}</span></div>`;
+      if (!x) return `<span class="hh-k">다음 일정</span><b class="hh-nt">${upcoming.length ? "선택한 대상의 " : ""}예정된 일정 없음</b>`;
+      return `<span class="hh-k">다음 일정</span><span class="hm-d${x.sp.start <= t ? " now" : ""}">${dLabel(x.sp, t)}</span><b class="hh-nt">${esc(x.r.title)}${x.e.label ? ` · ${esc(x.e.label)}` : ""}</b><span class="hh-s">${fmtRange(x.sp, t, x.e)}</span><span class="hh-s hm-bd">${badges(x.r)} ${link(x.r)}</span>`;
     };
     const upList = () => { const rest = upRows().slice(1); return rest.length ? rest.map(li).join("") : '<li class="muted">이어지는 일정 없음</li>'; };
 
@@ -116,9 +116,9 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const logHtml = log.slice(0, 3).map((x) => `<li><span class="hm-date">${esc(ymdText(x.d))}</span><span class="hm-tx"><b>${esc(x.r.title.slice(x.d.length).trim() || x.r.title)}</b></span><span class="hm-bd">${badges(x.r)}</span>${link(x.r)}</li>`).join("") || '<li class="muted">기록 없음</li>';
 
     // 5) 관심 학교 카드
-    // 4개교 모두 보이되 ★ 관심 학교를 앞에 둔다
+    // 상단 띠에는 4개교 모두, 아래 큰 카드는 ★ 관심 학교만
     const starred = stars();
-    const mine = [...summary].sort((a, b) => starred.includes(b.schoolId) - starred.includes(a.schoolId));
+    const mine = summary;
     const card = (m) => {
       const sc = schools.find((x) => x.id === m.schoolId) || {};
       return homeSchoolCard(m, { starred: starred.includes(m.schoolId), sub: [m.region, m.schoolType, m.founding, m.gender].filter(Boolean).join(" · "), logoOk: hasLogo(m.schoolId), cr: curricula.find((x) => x.schoolId === m.schoolId)?.creative });
@@ -132,7 +132,10 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const verified = summary.filter((m) => m.confidence !== "unverified").length; // 사진 대조 전이 아닌 학교
     const ok = canStore();
 
-    const csatCard = `<div class="hm-next hm-csat"><span class="hm-nl">수능까지</span>${hero}${csatRow ? ` <span class="hm-bd">${link(csatRow)}</span>` : ""}</div>`;
+    const region = (summary[0]?.region || "").split(/\s+/).slice(0, 2).map((x) => x.replace(/시$/, "")).join("·");
+    const myChips = () => { const l = AUDIENCES.filter(([k]) => aud.includes(k)).map(([, v]) => v).join("·"); return `<span>현 중3</span>${l ? `<span>${esc(l)}</span>` : ""}${region ? `<span>${esc(region)}</span>` : ""}`; };
+    const strip = `<section class="hm-strip" aria-label="내 설정과 학교"><div class="hs-chips2">${myChips()}</div>
+      <div class="hs-logos">${summary.map((m) => `<div class="hs-lg"><a href="#select/curriculum?v=compare&s=${esc(m.schoolId)}">${hasLogo(m.schoolId) ? `<img src="img/schools/128/${esc(m.schoolId)}.png" alt="" width="56" height="56">` : ""}<span>${esc(m.schoolName)}</span></a><button type="button" class="star" data-id="${esc(m.schoolId)}" aria-label="${starred.includes(m.schoolId) ? "관심 해제" : "관심 학교로 고정"}" aria-pressed="${starred.includes(m.schoolId)}">${starred.includes(m.schoolId) ? "★" : "☆"}</button></div>`).join("")}</div></section>`;
     const tab = (id, label, body, on) => ({ id, label, body, on });
     const tabs = [
       tab("tl", "장기 타임라인", `<ol class="hm-tl">${tl}</ol>`, true),
@@ -141,12 +144,12 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
       tab("st", "데이터 상태", `<a class="hm-status" href="#library/status"><div>원문 미확인 <b>${unv}</b>건 <span class="muted small">(제도·일정 ${policy.length}건 중)</span></div><div>편제표 학교 대조 완료 <b>${verified}/${summary.length}</b>개교</div><div class="muted small">flag ${flags.t}건 중 ${flags.c}건 대조 · 열린 flag ${flags.o}건</div></a>`),
     ];
     el.innerHTML = `<div class="hm">
-      <div class="hm-ctx"><b>현 중3</b> · ${entryYear}학년도 입학 · ${examYear}학년도 수능 <span class="muted small">오늘 ${dayText(t, t, true)}</span></div>
-      <section class="hm-box hm-nowbox" aria-labelledby="hm-now-h"><h3 id="hm-now-h">지금 <span class="muted small">내 대상 기준 · 앞으로 90일</span> <a class="hm-more" href="#schedule">전체 일정</a></h3>${audienceChips(aud, esc)}
-        <div class="hm-now"><div id="hm-nx">${nextCard()}</div>${csatCard}</div>
+      <section class="hm-hero2" aria-label="수능 D-day와 다음 일정"><div class="hh-l">${hero}</div><div class="hh-r"><div id="hm-nx">${nextCard()}</div><a class="hh-cta" href="#schedule">전체 일정 보기 →</a></div></section>
+      ${strip}
+      <section class="hm-box hm-nowbox" aria-labelledby="hm-now-h"><h3 id="hm-now-h">이어지는 일정 <span class="muted small">내 대상 기준 · 앞으로 90일 · 오늘 ${dayText(t, t, true)}</span></h3>${audienceChips(aud, esc)}
         <ul class="hm-list" id="hm-up">${upList()}</ul></section>
       <div class="hm-mine">
-        <section class="hm-box hm-sch"><h3>내 학교 <span class="muted small">${favs.length ? `관심 ${favs.length}개교를 앞에 둡니다` : "☆를 누르면 관심 학교가 앞에 고정됩니다"}</span> <a class="hm-more" href="#select/curriculum">학교별 편제표</a></h3><div class="hm-schools">${mine.map(card).join("")}</div></section>
+        <section class="hm-box hm-sch"><h3>관심 학교 <span class="muted small">★로 고정한 학교의 요약</span> <a class="hm-more" href="#select/curriculum">학교별 편제표</a></h3>${favs.length ? `<div class="hm-schools">${favs.map(card).join("")}</div>` : '<p class="hm-empty"><b>☆를 눌러 관심 학교를 고르세요</b><span>위 학교 로고 옆 ☆를 누르면 학점 구성·창체·과목 보기가 큰 카드로 여기에 모입니다.</span></p>'}</section>
         <section class="hm-box"><h3>내 메모/할 일 <span class="muted small">이 브라우저에만 저장</span></h3>${ok ? '<form class="hm-todoform"><input type="text" id="todoin" placeholder="할 일 추가" maxlength="120" autocomplete="off"><button class="btn" type="submit">추가</button></form><ul class="hm-todos" id="todos"></ul>' : '<p class="muted">이 브라우저에서는 저장 공간을 쓸 수 없어 메모를 사용할 수 없습니다.</p>'}</section>
       </div>
       <nav class="hm-go" aria-label="바로가기"><a class="btn primary" href="#select/curriculum">학교별 편제표</a><a class="btn" href="#admission/system">대입 제도</a><a class="btn" href="#schedule">일정</a></nav>
@@ -169,7 +172,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
       const b = e.target.closest("[data-aud]"); if (!b) return;
       aud = toggleAudience(aud, b.dataset.aud); saveAudience(store, aud);
       upBox.querySelector(".hm-aud").outerHTML = audienceChips(aud, esc);
-      upBox.querySelector("#hm-nx").innerHTML = nextCard();
+      el.querySelector("#hm-nx").innerHTML = nextCard(); el.querySelector(".hs-chips2").innerHTML = myChips();
       upBox.querySelector("#hm-up").innerHTML = upList();
     });
 
