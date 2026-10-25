@@ -109,7 +109,10 @@ async function curriculumView(el, query, node) {
     $("#chipbar").hidden = tab === "compare";
     $("#chips").innerHTML = chipHtml();
     const fc = $("#fchips"); if (fc) fc.innerHTML = chipHtml();
-    const ac = $("#achips"); if (ac) ac.innerHTML = facets.areas.map((a) => `<button type="button" class="chip achip ${areasSel.includes(a) ? "on" : ""}" data-area="${esc(a)}" aria-pressed="${areasSel.includes(a)}">${esc(a)}</button>`).join("");
+    // 표시 순서: 국어·영어·수학 / 한국사·사회·과학(한 줄 3개), 나머지는 한 줄 4개. 표의 교과군 정렬은 그대로.
+    const TOP = ["국어", "영어", "수학", "한국사", "사회", "과학"].filter((a) => facets.areas.includes(a));
+    const order = [...TOP, ...facets.areas.filter((a) => !TOP.includes(a))];
+    const ac = $("#achips"); if (ac) ac.innerHTML = order.map((a) => `<button type="button" class="chip achip ${TOP.includes(a) ? "a3" : "a4"} ${areasSel.includes(a) ? "on" : ""}" data-area="${esc(a)}" aria-pressed="${areasSel.includes(a)}">${esc(a).replace(/([/·])/g, "$1<wbr>")}</button>`).join("");
     el.querySelectorAll("#tabs a").forEach((a) => a.classList.toggle("on", a.dataset.tab === tab));
   };
   const drawBody = async () => {

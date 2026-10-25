@@ -288,3 +288,9 @@ select,input[type=search]{font-size:13px;padding:5px 8px}
 .ftg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
 .ftg .fchip{text-align:center;padding:3px 0}
 .fgr{font-weight:600}
+
+/* 교과군 칩: 위 6개는 한 줄 3개, 나머지는 한 줄 4개 */
+#achips{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:5px}
+#achips .a3{grid-column:span 4}
+#achips .a4{grid-column:span 3}
+#achips .achip{padding:3px 1px;font-size:11px;line-height:1.2;overflow-wrap:anywhere;min-width:0}
