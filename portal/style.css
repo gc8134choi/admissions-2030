@@ -225,7 +225,7 @@ select,input[type=search]{font-size:13px;padding:5px 8px}
 .hm-list li:first-child{border-top:0}
 .hm-d{min-width:60px;text-align:center;font-weight:700;font-size:12px;border-radius:99px;background:var(--soft);color:var(--accent);padding:1px 8px;white-space:nowrap}
 .hm-d.now{background:var(--accent);color:var(--bg)}
-.hm-date{min-width:84px;color:var(--muted);font-size:12px;white-space:nowrap}
+.hm-date{min-width:150px;color:var(--muted);font-size:12px;white-space:nowrap}
 .hm-tx{flex:1;min-width:170px}
 .hm-bd{white-space:nowrap}
 .hm-src{font-size:12px}
@@ -261,5 +261,5 @@ select,input[type=search]{font-size:13px;padding:5px 8px}
  .hm-date{min-width:70px}
 }
 .hm-subs{display:flex;flex-direction:column;gap:1px;margin-top:2px;font-size:12px;text-align:left}
-.hm-subs .hm-mdate{display:inline-block;min-width:118px;margin:0}
+.hm-subs .hm-mdate{display:inline-block;min-width:120px;margin:0}
 @media (max-width:760px){.hm-subs .hm-mdate{min-width:0}}
