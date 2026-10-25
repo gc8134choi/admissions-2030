@@ -1,0 +1,657 @@
+{
+  "schemaNote": "research draft; not portal/data schema",
+  "items": [
+    {
+      "id": "adm-01",
+      "topic": "admission-system",
+      "examYear": 2028,
+      "title": "2028학년도 대입 개편 확정",
+      "body": "교육부가 2023.12.27 확정안 발표. 국가교육위원회 권고안은 2023.12.22 의결",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "교육부 브리핑",
+      "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "adm-02",
+      "topic": "admission-system",
+      "examYear": 2028,
+      "title": "통합형 수능",
+      "body": "국어·수학·사회·과학 선택과목 폐지. 사회·과학은 통합사회·통합과학 공통 응시",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "교육부 확정안 PDF",
+      "sourceUrl": "https://files-scs.pstatic.net/2024/07/02/Ic4S8r8egU/[%EA%B5%90%EC%9C%A1%EB%B6%80+12-27(%EC%88%98",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "adm-03",
+      "topic": "admission-system",
+      "examYear": 2028,
+      "title": "심화수학",
+      "body": "수능에 신설하지 않음",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "교육부 브리핑",
+      "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
+      "extraSources": [
+        {
+          "name": "교육플러스",
+          "url": "https://www.edpl.co.kr/news/articleView.html?idxno=11264"
+        }
+      ],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "adm-04",
+      "topic": "admission-system",
+      "examYear": 2028,
+      "title": "내신 5등급 상대평가",
+      "body": "사회·과학 융합 선택과목 9개는 석차등급 미기재",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "교육부 브리핑",
+      "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "adm-05",
+      "topic": "admission-system",
+      "examYear": 2028,
+      "title": "수능·수시/정시 시기 조정",
+      "body": "확정안에 미포함. 국교위·교육부가 추후 협의·검토",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "교육부 브리핑",
+      "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "adm-06",
+      "topic": "admission-system",
+      "examYear": 2030,
+      "title": "2030학년도에 위 제도 적용",
+      "body": "개편안은 2028학년도부터 적용으로 발표됨. 2030 전용 변경은 확인 못 함",
+      "status": "추정",
+      "sourceKind": null,
+      "sourceName": null,
+      "sourceUrl": null,
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": false
+    },
+    {
+      "id": "adm-07",
+      "topic": "admission-system",
+      "examYear": 2030,
+      "title": "수능 세부 범위·출제",
+      "body": "평가원 시행 기본계획 공고 전까지 미확정. 2030학년도 수능 기본계획은 2029.3 전후로 추정(03-schedule 참고)",
+      "status": "추정",
+      "sourceKind": null,
+      "sourceName": "KDI EIEC",
+      "sourceUrl": "https://eiec.kdi.re.kr/policy/materialView.do?num=267335&pg=&pp=&topic=L",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": false
+    },
+    {
+      "id": "adm-08",
+      "topic": "admission-outlook",
+      "examYear": 2030,
+      "title": "중장기 대입 개편안",
+      "body": "교육부 장관·국교위원장이 서술·논술형 도입, 절대평가 전환 등을 담은 안을 2026 하반기 공론화 후 2027.3 공표하겠다고 밝힘",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "다음뉴스",
+      "sourceUrl": "https://v.daum.net/v/20251210100131836",
+      "extraSources": [
+        {
+          "name": "네이트(왜냐면)",
+          "url": "https://m.news.nate.com/view/20260817n13532"
+        }
+      ],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "adm-09",
+      "topic": "admission-outlook",
+      "examYear": 2030,
+      "title": "시기조정 적용 시점",
+      "body": "교육부는 \"2030년도 등 특정 시기를 예단할 수 없다\"고 설명",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "교육을 비추다",
+      "sourceUrl": "https://www.kyobit.com/news/articleView.html?idxno=5130",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "adm-10",
+      "topic": "admission-outlook",
+      "examYear": 2030,
+      "title": "서울교육감 제안",
+      "body": "수시·정시 통합, 2030학년도 이후 내신 서·논술형 50% 이상, 2033학년도 내신 완전 절대평가",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "다음뉴스",
+      "sourceUrl": "https://v.daum.net/v/20251210100131836",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "hs-01",
+      "topic": "hs-schedule",
+      "entryYear": 2027,
+      "title": "기본계획",
+      "body": "서울교육청 2027학년도 고입 기본계획 확정(2026.8). 반도체 마이스터고 개교(2027.3), 후기고 동일교 배정 확대",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "교육을 비추다",
+      "sourceUrl": "https://www.kyobit.com/news/articleView.html?idxno=5127",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "hs-02",
+      "topic": "hs-schedule",
+      "entryYear": 2027,
+      "title": "과학고",
+      "body": "전국 기준 접수 8.18~9.3",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "베리타스알파",
+      "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=604064",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "hs-03",
+      "topic": "hs-schedule",
+      "entryYear": 2027,
+      "title": "마이스터고",
+      "body": "접수 10.19~22, 합격 발표 11.4",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "교육을 비추다",
+      "sourceUrl": "https://www.kyobit.com/news/articleView.html?idxno=5127",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "hs-04",
+      "topic": "hs-schedule",
+      "entryYear": 2027,
+      "title": "특성화고",
+      "body": "특별전형 접수 11.23~24(발표 11.27), 일반전형 접수 11.30~12.1(발표 12.2), 추가모집 접수 12.2~3(발표 12.3)",
+      "status": "보도",
+      "sourceKind": "공식",
+      "sourceName": "서울 하이잡",
+      "sourceUrl": "https://high-job.sen.go.kr/FUS/BO/J1List.do",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "hs-05",
+      "topic": "hs-schedule",
+      "entryYear": 2027,
+      "title": "후기 일반고·자사고·외고·국제고",
+      "body": "후기 전형 12월 시작(12.2 개막 보도). 세부 접수·발표일은 확인 못 함",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "베리타스알파",
+      "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=604064",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "hs-06",
+      "topic": "hs-schedule",
+      "entryYear": 2027,
+      "title": "영재학교",
+      "body": "별도 법령 적용, 기본계획 제외. 일정은 확인 못 함",
+      "status": "unknown",
+      "sourceKind": null,
+      "sourceName": null,
+      "sourceUrl": null,
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": false
+    },
+    {
+      "id": "hs-07",
+      "topic": "hs-types",
+      "entryYear": 2027,
+      "title": "외고·국제고",
+      "body": "2027학년도에도 모집. 외고 28개교 5,518명, 국제고 8개교 1,172명",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "외고",
+      "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=627933",
+      "extraSources": [
+        {
+          "name": "국제고",
+          "url": "https://www.veritas-a.com/news/articleView.html?idxno=626898"
+        }
+      ],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "hs-08",
+      "topic": "hs-types",
+      "entryYear": 2027,
+      "title": "후기 선발",
+      "body": "2019학년도부터 외고·국제고·자사고는 일반고와 함께 후기 선발",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "고입정보포털 안내",
+      "sourceUrl": "https://www.make2t.kr/2026/10/hischool-high-school-admission-2027.html",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "hs-09",
+      "topic": "hs-types",
+      "entryYear": 2027,
+      "title": "자사고·외고·국제고 일반고 전환",
+      "body": "2025 전환 시행령 기사(2019년경)가 검색됨. 2027학년도에 모집하는 점과 맞지 않아 현재 정책 상태는 확인 못 함",
+      "status": "unknown",
+      "sourceKind": null,
+      "sourceName": "노컷뉴스",
+      "sourceUrl": "https://www.nocutnews.co.kr/news/5239739",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": false
+    },
+    {
+      "id": "hs-10",
+      "topic": "hs-types",
+      "entryYear": 2027,
+      "title": "개별 학교 모집 현황",
+      "body": "확인 못 함",
+      "status": "unknown",
+      "sourceKind": null,
+      "sourceName": null,
+      "sourceUrl": null,
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": false
+    },
+    {
+      "id": "hs-11",
+      "topic": "hs-credit-system",
+      "entryYear": 2027,
+      "title": "졸업 기준",
+      "body": "3년간 192학점(교과 174 + 창체 18)",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "서울경제",
+      "sourceUrl": "https://www.sedaily.com/article/12985967",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "hs-12",
+      "topic": "hs-credit-system",
+      "entryYear": 2027,
+      "title": "과목 이수",
+      "body": "학업성취율 40% 미만이면 미이수, 보충이수 가능",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "교육플러스",
+      "sourceUrl": "https://www.edpl.co.kr/news/articleView.html?idxno=33",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "hs-13",
+      "topic": "hs-credit-system",
+      "entryYear": 2027,
+      "title": "성적 표기",
+      "body": "성취도 A~E 절대평가 + 석차 5등급 병기(2025 고1부터)",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "교풀",
+      "sourceUrl": "https://www.gyopool.com/blog/high-school-credit-system-ai",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "hs-14",
+      "topic": "hs-credit-system",
+      "entryYear": 2027,
+      "title": "2027 고1 적용 세부",
+      "body": "확인 못 함",
+      "status": "unknown",
+      "sourceKind": null,
+      "sourceName": null,
+      "sourceUrl": null,
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": false
+    },
+    {
+      "id": "sch-01",
+      "topic": "exam-schedule",
+      "examYear": 2027,
+      "title": "2027학년도 수능(참고, 현 고3)",
+      "body": "시험 2026.11.19(목), 원서접수 8.24~9.4, 성적통지 12.11",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "평가원 수능 홈페이지",
+      "sourceUrl": "https://www.suneung.re.kr/main.do?s=suneung",
+      "extraSources": [
+        {
+          "name": "정리글",
+          "url": "https://makerschool.kr/458"
+        }
+      ],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "sch-02",
+      "topic": "exam-schedule",
+      "examYear": 2027,
+      "title": "2027학년도 수능 시행 기본계획 공고",
+      "body": "2026.3.31 공고(매체 보도). 평가원 원문 공고는 열람하지 못함",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "이투데이",
+      "sourceUrl": "https://www.etoday.co.kr/news/view/2390974",
+      "extraSources": [
+        {
+          "name": "다음뉴스",
+          "url": "https://v.daum.net/v/6U94upsAym?f=p"
+        }
+      ],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "sch-03",
+      "topic": "exam-schedule",
+      "examYear": 2028,
+      "title": "2028학년도 수능",
+      "body": "시험 2027.11.18(목), 성적통지 2027.12.10. 모의평가·정시 세부 일정은 기본계획 공고 후 확정",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "교육부 보도자료",
+      "sourceUrl": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512",
+      "extraSources": [
+        {
+          "name": "KDI EIEC",
+          "url": "https://eiec.kdi.re.kr/policy/materialView.do?num=267335&pg=&pp=&topic=L"
+        }
+      ],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "sch-04",
+      "topic": "exam-schedule",
+      "examYear": 2028,
+      "title": "2028학년도 수시 원서접수",
+      "body": "2027.9.20 시작. 하반기 모의평가를 9월에서 8월 말로 옮기고 성적통지 후 접수",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "한국교육신문(hangyo)",
+      "sourceUrl": "https://www.hangyo.com/mobile/article.html?no=105345",
+      "extraSources": [
+        {
+          "name": "대학지성",
+          "url": "https://dhnews.co.kr/news/view/1065582138689771"
+        }
+      ],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "sch-05",
+      "topic": "exam-schedule",
+      "examYear": 2028,
+      "title": "2028학년도 대입전형 기본사항",
+      "body": "대교협이 2025.8.28 발표",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "대교협 보도자료 PDF",
+      "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/08/28/application_b244345d6cc72f7e172df15e831c276e.pdf",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "sch-06",
+      "topic": "exam-schedule",
+      "examYear": 2030,
+      "title": "2030학년도 대입전형 기본사항 발표",
+      "body": "2027.8 무렵 발표 가능성(최근 관행: 2028학년도분은 2025.8 말). 법정 기한 계산상 2027.9경",
+      "status": "추정",
+      "sourceKind": null,
+      "sourceName": "대교협 기본사항 안내",
+      "sourceUrl": "https://www.kcue.or.kr/work/sub06/sub01.php",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": false
+    },
+    {
+      "id": "sch-07",
+      "topic": "exam-schedule",
+      "examYear": 2030,
+      "title": "2030학년도 수능 시행일",
+      "body": "확인 못 함. 2029.11 중하순 목요일로 짐작되나 직접 확인 자료 없음",
+      "status": "추정",
+      "sourceKind": null,
+      "sourceName": null,
+      "sourceUrl": null,
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": false
+    },
+    {
+      "id": "sch-08",
+      "topic": "exam-schedule",
+      "examYear": 2030,
+      "title": "2030학년도 수능 시행 기본계획 공고",
+      "body": "2027학년도분이 2026.3.31, 2028학년도분이 2027.3 공고 예정(보도)이므로 같은 주기라면 2030학년도 수능 기본계획은 2029.3 전후로 추정. 정부 중장기 대입 개편안은 별도로 2027.3 공표 예정(변경 로그 참고). 수능 세부 범위는 이 기본계획 공고 전까지 추정",
+      "status": "추정",
+      "sourceKind": null,
+      "sourceName": "KDI EIEC",
+      "sourceUrl": "https://eiec.kdi.re.kr/policy/materialView.do?num=267335&pg=&pp=&topic=L",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": false
+    },
+    {
+      "id": "log-01",
+      "topic": "change-log",
+      "examYear": 2028,
+      "title": "2023-10-10 2028 대입개편 시안",
+      "body": "교육부가 시안 발표. 고교학점제를 앞두고 수능·내신 평가방식 개선 중심",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "교육부 시안 브리핑",
+      "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156593725",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "log-02",
+      "topic": "change-log",
+      "examYear": 2028,
+      "title": "2023-12-22 국교위 의견 의결",
+      "body": "심화수학 신설 제외, 사회·과학 융합 선택과목은 절대평가만",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "교육부 브리핑",
+      "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "log-03",
+      "topic": "change-log",
+      "examYear": 2028,
+      "title": "2023-12-27 2028 대입개편 확정안",
+      "body": "통합형 수능, 내신 5등급. 2025 고1부터 적용",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "교육부 브리핑",
+      "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "log-04",
+      "topic": "change-log",
+      "examYear": 2028,
+      "title": "2024-04 2028 수능 예시문항·반영과목 안내",
+      "body": "국·수·사·과 예시문항과 대입전형 반영과목 조기 안내",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "한국대학신문",
+      "sourceUrl": "https://news.unn.net/news/articleView.html?idxno=577665",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "log-05",
+      "topic": "change-log",
+      "examYear": 2028,
+      "title": "2025-08-28 대교협 2028 기본사항",
+      "body": "수시 시작 2027.9.20, 하반기 모의평가 9월→8월",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "대교협 보도자료 PDF",
+      "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/08/28/application_b244345d6cc72f7e172df15e831c276e.pdf",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "log-06",
+      "topic": "change-log",
+      "examYear": 2028,
+      "title": "2025-12 서울교육감 대입 제안",
+      "body": "수시·정시 통합, 2033학년도 내신 절대평가 등. 정부안 아님",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "다음뉴스",
+      "sourceUrl": "https://v.daum.net/v/20251210100131836",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "log-07",
+      "topic": "change-log",
+      "examYear": 2028,
+      "title": "2026-06-02 2028 수능 시행일 발표",
+      "body": "2027.11.18(목), 성적통지 12.10",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "교육부 보도자료",
+      "sourceUrl": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "log-08",
+      "topic": "change-log",
+      "examYear": 2030,
+      "title": "2026-08 초 국교위 대입 공론화",
+      "body": "수능 전 과목 절대평가·서논술형 도입을 검토, 하반기 의견 수렴. 국교위는 확정된 개편안 없음이라고 밝힘",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "MBC",
+      "sourceUrl": "https://imnews.imbc.com/news/2026/society/article/6842663_36918.html",
+      "extraSources": [
+        {
+          "name": "네이트",
+          "url": "https://m.news.nate.com/view/20260803n19506"
+        }
+      ],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "log-09",
+      "topic": "change-log",
+      "examYear": 2030,
+      "title": "국가교육발전계획 시안 공개",
+      "body": "10월 말 공개 예정이었으나 연말로 연기 보도",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "네이트(왜냐면)",
+      "sourceUrl": "https://m.news.nate.com/view/20260817n13532",
+      "extraSources": [
+        {
+          "name": "네이트",
+          "url": "https://m.news.nate.com/view/20260805n25953"
+        }
+      ],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "log-10",
+      "topic": "change-log",
+      "examYear": 2030,
+      "title": "2027-03 대입 개편 최종안 확정 예정",
+      "body": "국교위 확정 목표(보도에 따라 3월 말). 적용 시기 미정",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "M이코노미뉴스",
+      "sourceUrl": "https://www.m-economynews.com/news/article.html?no=69490",
+      "extraSources": [
+        {
+          "name": "중앙이코노미뉴스",
+          "url": "https://www.joongangenews.com/news/articleView.html?idxno=537981"
+        }
+      ],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "log-11",
+      "topic": "change-log",
+      "examYear": 2030,
+      "title": "2030학년도 적용 여부",
+      "body": "2027.3 확정안의 적용 시기에 달림. 현 중3 적용 여부는 확인 못 함",
+      "status": "unknown",
+      "sourceKind": null,
+      "sourceName": null,
+      "sourceUrl": null,
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": false
+    }
+  ]
+}
