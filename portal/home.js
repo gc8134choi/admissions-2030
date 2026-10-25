@@ -44,6 +44,13 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     return s.url && /^https?:\/\//.test(s.url) ? `<a class="hm-src" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>` : `<span class="muted small">${esc(s.name)}</span>`;
   };
   const badges = (r) => `<span class="pst ${r.status}">${PST[r.status] || r.status}</span>${r.unverified ? ' <span class="unv">원문 미확인</span>' : ""}`;
+  // 행에 events가 없고 date("YYYY-MM-DD" 또는 "시작~끝")만 있어도 일정으로 읽는다.
+  const DRE = /^\d{4}-\d{2}(-\d{2})?$/;
+  const eventsOf = (r) => {
+    if (r.events) return r.events;
+    const [a, b] = String(r.date || "").split("~").map((x) => x.trim());
+    return DRE.test(a) ? [{ label: "", start: a, ...(b && DRE.test(b) ? { end: b } : {}) }] : [];
+  };
   const dateOf = (t) => (t.match(/^\d{4}(-\d{2}){0,2}/) || [""])[0];
 
   // 메모/할 일: 이 브라우저(localStorage)에만 저장. 접근할 수 없으면 비활성.
@@ -69,12 +76,12 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     // 2) 다가오는 일정: 고입·대입 일정 중 오늘~90일, 지난 일정 숨김
     const limit = new Date(t.getTime() + 90 * DAY);
     const upcoming = policy.filter((r) => r.topic === "hs-schedule" || r.topic === "exam-schedule")
-      .flatMap((r) => (r.events || []).map((e) => ({ r, e, sp: span(e.start, e.end) })))
+      .flatMap((r) => eventsOf(r).map((e) => ({ r, e, sp: span(e.start, e.end) })))
       .filter((x) => x.sp.end >= t && x.sp.start <= limit).sort((a, b) => a.sp.start - b.sp.start || a.sp.end - b.sp.end);
     let aud = loadAudience(store);
     const upList = () => {
       const rows = upcoming.filter((x) => audienceMatch(x.e.audience || x.r.audience, aud));
-      return rows.length ? rows.map((x) => `<li><span class="hm-d${x.sp.start <= t ? " now" : ""}">${dLabel(x.sp, t)}</span><span class="hm-date">${fmtRange(x.sp, t, x.e)}</span><span class="hm-tx"><b>${esc(x.r.title)}</b> · ${esc(x.e.label)}</span><span class="hm-bd">${badges(x.r)}</span>${link(x.r)}</li>`).join("") : `<li class="muted">${upcoming.length ? "선택한 대상의 " : ""}예정된 일정 없음</li>`;
+      return rows.length ? rows.map((x) => `<li><span class="hm-d${x.sp.start <= t ? " now" : ""}">${dLabel(x.sp, t)}</span><span class="hm-date">${fmtRange(x.sp, t, x.e)}</span><span class="hm-tx"><b>${esc(x.r.title)}</b>${x.e.label ? ` · ${esc(x.e.label)}` : ""}</span><span class="hm-bd">${badges(x.r)}</span>${link(x.r)}</li>`).join("") : `<li class="muted">${upcoming.length ? "선택한 대상의 " : ""}예정된 일정 없음</li>`;
     };
 
     // 3) 장기 타임라인: 모든 마일스톤을 policy.json 행에서 읽는다.
