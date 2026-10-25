@@ -14,9 +14,20 @@ export function register(views, { $, esc, load }) {
   const basic = [["항목", (r) => `<b>${esc(r.title)}</b>`], ["내용", (r) => esc(r.body)], ["상태", badge], ["구분·출처", src]];
   const tabs = (items, on) => `<div class="subtabs">${items.map(([k, h, t]) => `<a href="${h}" class="${k === on ? "on" : ""}">${t}</a>`).join("")}</div>`;
   const today = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
-  const fmt = (e) => { const f = (d) => d.split("-").slice(1).map(Number).join("."); return `${e.start.slice(0, 4)}.${f(e.start)}${e.end ? "~" + f(e.end) : ""}`; };
+  // 날짜 표시: 일 단위 값에는 요일을 코드로 계산해 붙이고, 월 단위 값은 그대로 둔다.
+  const DOW = "일월화수목금토";
+  const ymd = (d) => d.split("-").map(Number);
+  const wd = (d) => { const [y, m, dd] = ymd(d); return DOW[new Date(y, m - 1, dd).getDay()]; };
+  const day = (d) => { const [y, m, dd] = ymd(d); return dd ? `${y}.${m}.${dd}(${wd(d)})` : `${y}.${m}`; };
+  const fmtDate = (d) => day(d);
+  const fmt = (e) => {
+    if (!e.end) return day(e.start);
+    const [sy] = ymd(e.start), [ey, em, ed] = ymd(e.end);
+    const tail = ed ? `${sy === ey ? "" : ey + "."}${em}.${ed}(${wd(e.end)})` : `${sy === ey ? "" : ey + "."}${em}`;
+    return `${day(e.start)}~${tail}`;
+  };
   const statusSelect = (rows) => `<div class="tools"><span class="muted">상태</span><select id="pst"><option value="">전체 (${rows.length})</option>${Object.entries(PST).map(([k, v]) => `<option value="${k}">${v} (${rows.filter((r) => r.status === k).length})</option>`).join("")}</select></div>`;
-  const dateOf = (t) => (t.match(/^\d{4}(-\d{2}){0,2}/) || [""])[0];
+  const dateOf = (t) => (t.match(/^\d{4}-\d{2}(-\d{2})?/) || [""])[0];
 
   // 상단 안내문은 수능 세부 범위 행(adm-07)의 body를 읽어, 문구를 policy.json 한 곳에서 관리한다.
   const banner = (rows) => `<div class="fixednote">2030학년도 제도는 중장기 대입 개편안 공표(2027.3 예정) 후 확정됩니다. ${esc(rows.find((r) => r.id === "adm-07")?.body || "수능 세부 범위는 추정")}</div>`;
@@ -30,7 +41,7 @@ export function register(views, { $, esc, load }) {
     return `<p class="muted">오늘(${t}) 이전 일정은 흐리게 표시합니다.</p><div class="tw"><table class="policy"><thead><tr><th class="l">날짜</th><th class="l">항목</th><th class="l">상태</th><th class="l">구분·출처</th></tr></thead><tbody>${evs.map(tr).join("")}</tbody></table></div>${none.length ? `<h3>일정 미확인</h3>${table(none, basic)}` : ""}`;
   };
 
-  const logTable = (rows) => table(rows, [["날짜", (r) => esc(dateOf(r.title) || "-")], ["항목", (r) => `<b>${esc(r.title.slice(dateOf(r.title).length).trim() || r.title)}</b>`], basic[1], basic[2], basic[3]]);
+  const logTable = (rows) => table(rows, [["날짜", (r) => esc(dateOf(r.title) ? fmtDate(dateOf(r.title)) : "-")], ["항목", (r) => `<b>${esc(r.title.slice(dateOf(r.title).length).trim() || r.title)}</b>`], basic[1], basic[2], basic[3]]);
 
   // 상태 필터가 있는 표 공통 처리
   const filtered = (el, rows, draw) => {
