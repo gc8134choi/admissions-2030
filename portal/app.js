@@ -35,6 +35,22 @@ const dataNote = '<p class="note">편제표 값은 AI가 학교 배부 사진에
 const options = (items, all) => `${all ? `<option value="">${esc(all)}</option>` : ""}${items.map((v) => `<option value="${esc(v.v ?? v)}">${esc(v.t ?? v)}</option>`).join("")}`;
 const POOL = { basic: "기초교과", cross: "교과(군) 간 선택", "in-area": "한 교과 안 선택", life: "기술·가정/정보/제2외국어 등" };
 const CHECK = { inferred: "구분 추정", unmarked: "구분 미표기", flag: "열린 flag 있음" };
+// 구분 아이콘: 모양+색으로 구분(색만 의존하지 않음). 추정은 윤곽선만, 미표기는 점선 원.
+const KICON = {
+  공통: ["#64748b", '<circle cx="8" cy="8" r="6"/>'],
+  일반: ["#0ea5e9", '<rect x="2.5" y="2.5" width="11" height="11" rx="2"/>'],
+  진로: ["#f59e0b", '<path d="M8 2 L14.5 13.5 H1.5 Z"/>'],
+  융합: ["#a855f7", '<path d="M8 1.5 L14.5 8 L8 14.5 L1.5 8 Z"/>'],
+  특목: ["#f43f5e", '<path d="M8 1.5 L9.9 5.9 14.6 6.3 11 9.4 12.1 14 8 11.6 3.9 14 5 9.4 1.4 6.3 6.1 5.9Z"/>'],
+  전문: ["#14b8a6", '<path d="M8 1.5 L13.7 4.75 V11.25 L8 14.5 L2.3 11.25 V4.75 Z"/>'],
+};
+const kindIcon = (kind, est) => {
+  if (!kind) return '<svg class="ki none" viewBox="0 0 16 16" role="img" aria-label="구분 미표기"><title>구분 미표기</title><circle cx="8" cy="8" r="6"/></svg>';
+  const [c, shape] = KICON[kind] || KICON.공통;
+  const label = `${kind}${est ? " (추정)" : ""}`;
+  return `<svg class="ki${est ? " est" : ""}" viewBox="0 0 16 16" role="img" aria-label="${esc(label)}" style="--k:${c}"><title>${esc(label)}</title>${shape}</svg>`;
+};
+const kindLegend = `<div class="legend">${Object.keys(KICON).map((k) => `<span>${kindIcon(k)}${k}</span>`).join("")}<span>${kindIcon("일반", true)}추정</span><span>${kindIcon(null)}미표기</span><span><i class="cr">4</i>학점</span></div>`;
 const kindOf = (o) => (o.primaryKind ? o.primaryKind + (o.kindStatus === "inferred" ? "?" : "") : "미표기");
 
 // ---- 뷰 ----
@@ -166,7 +182,7 @@ async function compareShell(el) {
       <div class="fgroup"><label><input type="checkbox" id="diff"> 학교 간 차이 나는 과목만</label><label><input type="checkbox" id="one"> 한 학교에만 있는 과목</label></div>
       <button id="reset" type="button">필터 초기화</button>
     </div></details>
-    <div class="cmpmain"><div class="tools"><span class="muted" id="cnt"></span></div><div class="tw"><table id="tbl"></table></div></div></div>`;
+    <div class="cmpmain"><div class="tools"><span class="muted" id="cnt"></span></div>${kindLegend}<div class="tw"><table id="tbl"></table></div></div></div>`;
   const root = el.firstElementChild;
   let ids = [];
   const draw = (next) => {
@@ -195,18 +211,20 @@ async function compareShell(el) {
     const uniq = (a) => [...new Set(a)];
     const cell = (os) => {
       if (!os) return '<td class="no">✕</td>';
-      const slots = uniq(os.map((o) => SLOT[o.slot])), tm = uniq(os.map((o) => o.term)).sort().join(", ");
-      const kinds = uniq(os.map(kindOf)).join("/"), cr = uniq(os.map((o) => o.credits)).join("/");
+      const slots = uniq(os.map((o) => SLOT[o.slot])), tm = uniq(os.map((o) => o.term)).sort().join(",");
+      const kinds = uniq(os.map((o) => (o.primaryKind ? `${o.primaryKind}|0` : o.kindGuess ? `${o.kindGuess}|1` : "|0")));
+      const icons = kinds.map((k) => { const [n, est] = k.split("|"); return kindIcon(n || null, est === "1"); }).join("");
+      const crs = uniq(os.map((o) => o.credits)).map((c) => `<i class="cr" title="${c}학점">${c}</i>`).join("");
       const g = os.map((o) => gmap.get(o.groupId)).find(Boolean);
-      const warn = os.some((o) => o.openFlagIds.length) ? " ⚠️" : "";
-      return `<td class="${os.some((o) => o.slot === "required") ? "req" : "ele"}">${slots.join("/")} ${esc(tm)}${warn}<br><span class="muted small">${esc(kinds)} · ${cr}학점${g ? ` · 택${g.pick}/${g.size}` : ""}</span></td>`;
+      const warn = os.some((o) => o.openFlagIds.length) ? '<span title="열린 flag">⚠️</span>' : "";
+      return `<td class="${os.some((o) => o.slot === "required") ? "req" : "ele"}"><div class="c1">${icons}<span class="sl">${slots.join("/")}</span><span>${esc(tm)}</span>${crs}${g ? `<span class="muted small">택${g.pick}/${g.size}</span>` : ""}${warn}</div></td>`;
     };
     let area = "", html = "";
     for (const r of rows) {
       if (r.area !== area) { area = r.area; html += `<tr class="area"><td colspan="${ids.length + 1}">${esc(area)}</td></tr>`; }
       html += `<tr><td class="l">${esc(r.name)}</td>${ids.map((id) => cell(r.cells[id])).join("")}</tr>`;
     }
-    $("#tbl").style.minWidth = `${200 + 170 * ids.length}px`;
+    $("#tbl").style.minWidth = `${200 + 190 * ids.length}px`;
     $("#tbl").innerHTML = `<thead><tr><th class="l">과목</th>${names.map((n) => `<th>${esc(n)}</th>`).join("")}</tr></thead><tbody>${html || `<tr><td colspan="${ids.length + 1}">조건에 맞는 과목이 없습니다.</td></tr>`}</tbody>
       <tfoot><tr><th class="l">해당 과목 수</th>${ids.map((id) => `<th>${rows.filter((r) => r.cells[id]).length}</th>`).join("")}</tr></tfoot>`;
     $("#cnt").textContent = `${rows.length}개 과목 · ${ids.length}개교`;

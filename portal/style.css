@@ -54,22 +54,22 @@ button#reset{padding:5px 12px;border:1px solid var(--line);border-radius:6px;bac
 .big{font-weight:600;margin:10px 0 6px}
 .bar{display:flex;height:26px;border-radius:6px;overflow:hidden;font-size:12px;line-height:26px;color:#fff}
 .bar span{padding-left:8px;white-space:nowrap;overflow:hidden}
-.bar .req{background:var(--accent);font-weight:700}.bar .ele{background:var(--v1)}
+.bar .req{background:var(--v1);font-weight:700}.bar .ele{background:var(--accent)}
 .terms{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:12px 0 2px;text-align:center;font-size:12px}
 .terms .col{height:56px;background:var(--soft);border-radius:4px;display:flex;flex-direction:column;overflow:hidden}
 .terms .col i{display:block;width:100%}
-.terms .col i.e,.bar .ele{background:var(--v1)}
-.terms .col i.r{background:var(--accent)}
+.terms .col i.e{background:var(--accent)}
+.terms .col i.r{background:var(--v1)}
 .tnum{display:flex;justify-content:center;gap:5px;font-size:12px;line-height:1.5;margin-bottom:2px}
-.tnum .r,.rk{color:var(--accent);font-weight:700}
-.tnum .e,.ek{color:var(--v1)}
+.tnum .r,.rk{color:var(--v1);font-weight:700}
+.tnum .e,.ek{color:var(--accent);font-weight:400}
 .terms span{display:block;color:var(--muted)}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
 .stats dt{font-size:12px;color:var(--muted)}.stats dd{margin:0;font-weight:600;font-size:16px}
 details{margin:6px 0;font-size:13px}summary{cursor:pointer;color:var(--muted)}
 .foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap}
 .filters .frow{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;padding:4px 0}
-td.req{color:var(--accent);font-weight:700}td.ele{color:var(--v1)}
+td.req{color:var(--v1)}td.req .sl{font-weight:700}td.ele{color:var(--accent)}td.ele .sl{font-weight:400}
 td.req .muted,td.ele .muted{color:var(--muted)}
 tfoot th{background:var(--soft)}
 .cmp{display:grid;grid-template-columns:230px minmax(0,1fr);gap:16px;align-items:start}
@@ -111,7 +111,7 @@ tfoot th{background:var(--soft)}
 #tbl td.l,#tbl th.l{position:sticky;left:0;z-index:1;background:var(--panel);min-width:150px}
 #tbl thead th.l,#tbl tfoot th.l{background:var(--soft)}
 #tbl tr.area td{position:static}
-#tbl th:not(.l),#tbl td:not(.l){min-width:150px}
+#tbl th:not(.l),#tbl td:not(.l){min-width:170px}
 
 .pst{display:inline-block;font-size:12px;font-weight:600;border-radius:99px;padding:0 8px;border:1px solid currentColor;white-space:nowrap}
 .pst.confirmed{color:var(--v1)}.pst.reported{color:var(--accent)}.pst.estimated{color:var(--v2)}.pst.unknown{color:var(--soon)}
@@ -119,3 +119,13 @@ tfoot th{background:var(--soft)}
 table.policy td{vertical-align:top}
 table.policy tr.past{opacity:.45}
 .unv{display:inline-block;font-size:11px;color:var(--muted);border:1px dashed var(--muted);border-radius:99px;padding:0 6px;white-space:nowrap}
+
+/* 상세 비교: 한 줄 셀, 구분 아이콘, 학점 원 */
+.c1{display:flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap}
+.ki{width:15px;height:15px;flex:none;fill:var(--k);stroke:var(--k);stroke-width:1.5;stroke-linejoin:round}
+.ki.est{fill:none;stroke-dasharray:2.2 1.6}
+.ki.none{fill:none;stroke:var(--muted);stroke-width:1.3;stroke-dasharray:2 2}
+.cr{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border:1.5px solid currentColor;border-radius:50%;font-style:normal;font-size:11px;font-weight:600;line-height:1;flex:none}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center;font-size:12px;color:var(--muted);margin:2px 0 8px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend .cr{color:var(--muted)}
