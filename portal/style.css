@@ -69,7 +69,7 @@ button#reset{padding:5px 12px;border:1px solid var(--line);border-radius:6px;bac
 details{margin:6px 0;font-size:13px}summary{cursor:pointer;color:var(--muted)}
 .foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap}
 .filters .frow{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;padding:4px 0}
-td.req{color:var(--v1)}td.req .sl{font-weight:700}td.ele{color:var(--accent)}td.ele .sl{font-weight:400}
+td.req{color:var(--v1)}td.ele{color:var(--accent)}.tm{font-weight:700;white-space:nowrap}
 td.req .muted,td.ele .muted{color:var(--muted)}
 tfoot th{background:var(--soft)}
 .cmp{display:grid;grid-template-columns:230px minmax(0,1fr);gap:16px;align-items:start}

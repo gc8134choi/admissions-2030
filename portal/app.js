@@ -227,7 +227,7 @@ async function compareShell(el, onReset, getAreas) {
       const icons = kinds.map((k) => { const [n, est] = k.split("|"); return kindBadge(n || null, est === "1"); }).join("");
       const crs = uniq(os.map((o) => o.credits)).map((c) => `<i class="cr" title="${c}학점">${c}</i>`).join("");
       const warn = os.some((o) => o.openFlagIds.length) ? '<span title="열린 flag">⚠️</span>' : "";
-      return `<td class="${os.some((o) => o.slot === "required") ? "req" : "ele"}"><div class="c1">${icons}<span class="sl">${slots.join("/")}</span><span>${esc(tm)}</span>${crs}${warn}</div></td>`;
+      return `<td class="${os.some((o) => o.slot === "required") ? "req" : "ele"}"><div class="c1">${icons}<span class="tm">${esc(tm)} (${slots.join("/")})</span>${crs}${warn}</div></td>`;
     };
     // 교과군은 맨 왼쪽 열(rowspan)로 한 번만 표시한다.
     const spans = new Map();
