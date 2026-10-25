@@ -2,6 +2,7 @@ import { MENU, STATUS } from "./menu.js";
 import { register as registerPolicy } from "./policy.js";
 import { registerHome } from "./home.js";
 import { registerFiles } from "./files.js";
+import { currentProfile, allProfiles, initProfiles, mountProfileSwitch } from "./profile-ui.js";
 import { schoolBand } from "./school-card.js";
 import { preloadSubjectInfo, subjectName, decorateSubjectLists } from "./subject-info.js";
 
@@ -334,7 +335,7 @@ async function compareShell(el, onReset, getAreas) {
 }
 
 registerPolicy(views, { $, esc, load, store });
-registerHome(views, { esc, load, store, nm, stars, toggleStar, nameOf, TERMS, hasLogo: (id) => LOGO_IDS.has(id) });
+registerHome(views, { esc, load, store, nm, stars, toggleStar, nameOf, TERMS, hasLogo: (id) => LOGO_IDS.has(id), profile: () => currentProfile(store), profiles: () => allProfiles(store) });
 const filesApi = registerFiles(views, { esc, load, nm });
 
 function render() {
@@ -344,6 +345,11 @@ function render() {
   const n = byId.get(id) || byId.get("home");
   drawNav(n.id);
   $("#nav").classList.remove("open");
+  document.body.dataset.profile = currentProfile(store).key;
+  if (n.view === "curriculum" && currentProfile(store).key === "b") { // 프로필 B는 아직 학교가 없다
+    $("#main").innerHTML = `<div id="view"><section class="hm-box"><h3>학교별 편제표</h3><p class="hm-empty"><b>${esc(currentProfile(store).name)}의 학교는 아직 없습니다</b><span>고입 이후 학교가 정해지면 편제표가 여기에 들어옵니다. 지금은 홈에서 고입 준비 일정을 확인하세요.</span></p><p><a class="btn primary" href="#home">홈으로</a></p></section></div>`;
+    return;
+  }
   if (n.view === "curriculum" || n.view === "home") { // 위쪽 공간 절약: 브레드크럼·설명 없이 화면이 바로 시작
     $("#main").innerHTML = '<div id="view"></div>';
     views[n.view]($("#view"), query, n).catch(() => ($("#view").innerHTML = '<p class="note">데이터를 불러오지 못했습니다. 페이지를 새로고침해 보세요.</p>'));
@@ -362,4 +368,6 @@ function render() {
 
 $("#burger").addEventListener("click", () => $("#nav").classList.toggle("open"));
 addEventListener("hashchange", render);
+await initProfiles(load);
+mountProfileSwitch($("#pf"), store, render);
 render();
