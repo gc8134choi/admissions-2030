@@ -6,7 +6,7 @@ export const ONE_KEY = "portal.oneperson"; // "한 명만 보기": 켜면 예은
 const esc = (s = "") => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 let CFG = [];
 
-// profiles.json을 한 번 읽는다(없어도 profile.js의 기본값으로 동작).
+// learners.json(정본)을 한 번 읽는다(없어도 profile.js의 기본값으로 동작).
 export async function initProfiles(load) {
   try { const d = await load("learners"); CFG = d?.learners || []; } catch { CFG = []; }
 }
