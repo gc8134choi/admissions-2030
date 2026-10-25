@@ -1,12 +1,14 @@
 import { loadAudience, saveAudience, toggleAudience, audienceMatch, audienceChips } from "./home.js";
 
 // 제도·일정 화면(대입 제도, 일정, 고교 유형·전형, 제도 변경 로그). 데이터는 data/policy.json.
-const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "확인 못 함", material: "학교 배부 자료", seoul: "서울교육청 자료", "seoul-verified": "서울교육청 자료(원문 확인)", match: "서울·경기 자료 일치", gyeonggi: "경기도교육청 자료", opinion: "의견" };
-const SKIND = { official: "공식", media: "매체", material: "학교 배부", seoul: "서울교육청", "seoul-gyeonggi": "서울·경기교육청", gyeonggi: "경기도교육청", opinion: "학원 의견" };
+const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "확인 못 함", material: "학교 배부 자료", seoul: "서울교육청 자료", "seoul-verified": "서울교육청 자료(원문 확인)", match: "서울·경기 자료 일치", gyeonggi: "경기도교육청 자료", opinion: "의견", academy: "학원 자료" };
+const SKIND = { official: "공식", media: "매체", material: "학교 배부", seoul: "서울교육청", "seoul-gyeonggi": "서울·경기교육청", gyeonggi: "경기도교육청", opinion: "학원 의견", academy: "학원 자료" };
 const NOTICE = '<p class="note">조사일 2026-10-25, <b>검색 요약 기준이며 공식 사이트로 재확인 필요.</b> 입학학년도 2027(현 중3) · 대입학년도 2030. <span class="unv">원문 미확인</span> 표시는 원문 페이지를 열람하지 못했다는 뜻입니다.</p>';
 
 // 대입 제도 화면에 표로 보여 줄 cur-* 행(수능 출제범위, 전형 구분, 학종 평가요소). 나머지는 고교학점제 이해 화면.
 const CUR_SYS = new Set(["cur-08", "cur-29", "cur-30"]);
+// 학원 설명 자료 중 대입 관련 행(acd-04 진학 비율은 고교 유형 화면의 학원 의견 섹션).
+const ACD_SYS = new Set(["acd-01", "acd-02", "acd-03"]);
 // 대입 전형 구분·학생부종합 평가요소는 "대입 전형 구조" 묶음에, 수능 출제범위는 따로 묶는다.
 const CUR_GROUP = { "cur-29": "admission-structure", "cur-30": "admission-structure" };
 
@@ -18,7 +20,7 @@ export function register(views, { $, esc, load, store }) {
     if (r.sourceKind === "material") return '<span class="muted">학교 배부 자료(원본 사진)</span>';
     const label = { "seoul-gyeonggi": "서울·경기교육청 자료(원본 파일 미게시, 경기는 요약본)", gyeonggi: "경기도교육청 안내자료 요약본(원문 미확인)" }[r.sourceKind];
     if (label) return `<span class="muted" title="${esc(r.sourceName || "")}">${label}</span>`;
-    if (r.sourceKind === "opinion") return `<span class="muted">${esc(r.sourceName || "출처 미표기")}</span>`;
+    if (r.sourceKind === "opinion" || r.sourceKind === "academy") return `<span class="muted">${esc(r.sourceName || "출처 미표기")}</span>`;
     if (r.status === "seoul-verified") { const no = (r.sourceName || "").match(/서교연 [\d-]+/); return `<span class="muted" title="${esc(r.sourceName || "")}">서울교육청 선택 과목 안내서${no ? `(${no[0]})` : ""}</span>`; }
     if (r.sourceKind === "seoul") return `<span class="muted" title="${esc(r.sourceName || "")}">서울교육청 설명회 자료(원본 파일 미게시)</span>`;
     if (!list.length) return '<span class="muted">출처 없음</span>';
@@ -64,22 +66,24 @@ export function register(views, { $, esc, load, store }) {
   };
 
   views.system = async (el, query) => {
-    const rows = (await load("policy")).filter((r) => r.topic.startsWith("admission") || r.topic === "change-log" || CUR_SYS.has(r.id));
+    const rows = (await load("policy")).filter((r) => r.topic.startsWith("admission") || r.topic === "change-log" || CUR_SYS.has(r.id) || ACD_SYS.has(r.id));
     const log = query.get("t") === "log";
     const body = rows.filter((r) => (r.topic === "change-log") === log);
     el.innerHTML = `${banner(rows)}${NOTICE}${tabs([["sys", "#admission/system", "제도"], ["log", "#admission/system?t=log", "제도 변경 로그"]], log ? "log" : "sys")}
       ${log ? "" : '<p class="muted">현 중3은 2028 개편안의 직접 대상(2025 입학생)이 아닙니다. 2030학년도 제도는 2027.3 공표 내용에 따라 바뀔 수 있습니다.</p>'}
       ${statusSelect(body)}<div id="ptbl"></div>`;
-    const TOPIC = { "admission-system": "2028학년도 개편 확정안과 2030학년도 적용", "admission-outlook": "2030학년도 대상 추가 동향", "admission-structure": "대입 전형 구조", "cur-select": "수능 출제범위(참고)" };
+    const TOPIC = { "admission-system": "2028학년도 개편 확정안과 2030학년도 적용", "admission-outlook": "2030학년도 대상 추가 동향", "admission-structure": "대입 전형 구조", "cur-select": "수능 출제범위(참고)", academy: "학원 설명 자료" };
     const NOTE = { "cur-select": '<p class="note">서울교육청 자료, 경기 적용 확인 필요. 수능 출제범위는 추정이며 2030학년도 확정이 아닙니다.</p>' };
-    const key = (r) => (CUR_SYS.has(r.id) ? CUR_GROUP[r.id] || "cur-select" : r.topic);
+    const key = (r) => (ACD_SYS.has(r.id) ? "academy" : CUR_SYS.has(r.id) ? CUR_GROUP[r.id] || "cur-select" : r.topic);
     // 선택과목 조사·대학 권장이수과목은 고교학점제 이해에서 자세히 보고, 여기는 한 줄 요약만 둔다.
     const pick = (await load("policy")).filter((r) => r.id === "cur-06" || r.id === "cur-07");
     const pickLine = pick.length ? `<p class="muted small">선택과목 조사·대학 권장이수과목: ${pick.map((r) => esc(r.body)).join(" / ")} · <a href="#life/credit">고교학점제 이해에서 자세히</a></p>` : "";
     const cols = [...basic.slice(0, 2), ["대입학년도", (r) => `${r.examYear}<div class="muted small">입학 ${r.entryYear}</div>`], ...basic.slice(2)];
     filtered(el, body, (f) => {
       const rs = (x) => x.filter((r) => !f || r.status === f);
-      $("#ptbl").innerHTML = log ? logTable(rs(body)) : Object.entries(TOPIC).map(([t, label]) => { const g = rs(body.filter((r) => key(r) === t)); return g.length ? `<h3>${label}</h3>${t === "cur-select" ? pickLine : ""}${NOTE[t] || ""}${table(g, cols)}` : ""; }).join("") || '<p class="muted">조건에 맞는 항목이 없습니다.</p>';
+      $("#ptbl").innerHTML = log ? logTable(rs(body)) : Object.entries(TOPIC).map(([t, label]) => { const g = rs(body.filter((r) => key(r) === t)); if (!g.length) return "";
+        if (t === "academy") return `<h3>${label} <span class="opinion-label">학원</span></h3><div class="opinion"><p class="muted small">학원 설명회 의견·자료입니다. 원문 미확인이며 확인된 사실이 아닙니다.</p>${table(g, cols)}</div>`;
+        return `<h3>${label}</h3>${t === "cur-select" ? pickLine : ""}${NOTE[t] || ""}${table(g, cols)}`; }).join("") || '<p class="muted">조건에 맞는 항목이 없습니다.</p>';
     });
   };
 
@@ -150,7 +154,7 @@ export function register(views, { $, esc, load, store }) {
     const rows = await load("policy");
     // asg-02(2구역 학교) 본문: 풍덕·성복·수지·홍천 4개교가 모두 2구역이라는 내용을 눈에 띄게 한다.
     const credit = rows.find((r) => r.id === "cur-01");
-    const opn = rows.filter((r) => r.topic === "hs-choice-opinion");
+    const opn = rows.filter((r) => r.topic === "hs-choice-opinion" || r.id === "acd-04");
     const asg = rows.filter((r) => r.topic === "high-school-assignment");
     el.innerHTML = `${NOTICE}<h3>고교 유형</h3>${table(rows.filter((r) => r.topic === "hs-types"), basic)}
       ${asg.length ? `<h3>용인 평준화 배정 <span class="muted small">2026학년도 기준 참고</span></h3>

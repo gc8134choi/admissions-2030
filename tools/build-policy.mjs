@@ -3,8 +3,8 @@
 // 사용: node tools/build-policy.mjs  (--check: 파일과 결과가 다르면 종료코드 1)
 import { readFileSync, writeFileSync } from "node:fs";
 
-const STATUS = { 확정: "confirmed", 보도: "reported", 추정: "estimated", "학교 배부 자료": "material", "서울교육청 자료": "seoul", "서울교육청 자료(원문 확인)": "seoul-verified", "서울·경기 자료 일치": "match", "경기도교육청 자료": "gyeonggi", 의견: "opinion", unknown: "unknown" };
-const KIND = { 공식: "official", 매체: "media", "학교 배부 자료": "material", "서울교육청 자료": "seoul", "서울교육청·경기도교육청 자료": "seoul-gyeonggi", "경기도교육청 자료": "gyeonggi", "학원 의견": "opinion" };
+const STATUS = { 확정: "confirmed", 보도: "reported", 추정: "estimated", "학교 배부 자료": "material", "서울교육청 자료": "seoul", "학원 자료": "academy", "서울교육청 자료(원문 확인)": "seoul-verified", "서울·경기 자료 일치": "match", "경기도교육청 자료": "gyeonggi", 의견: "opinion", unknown: "unknown" };
+const KIND = { 공식: "official", 매체: "media", "학교 배부 자료": "material", "서울교육청 자료": "seoul", "서울교육청·경기도교육청 자료": "seoul-gyeonggi", "경기도교육청 자료": "gyeonggi", "학원 의견": "opinion", "학원 자료": "academy" };
 
 // 고입·대입 일정 행의 날짜(고입은 id, 대입은 id가 밀릴 수 있어 title 키). draft 본문의 날짜를 ISO로 옮겼다(연도는 해당 학년도 시행 연도). 월만 알면 YYYY-MM.
 const EVENTS = {
@@ -34,8 +34,14 @@ const NOTES = { "adm-05": "미결정 상태", "adm-10": "개인 제안, 정부�
 // 사용자 결정 Q6(2026-10-25): 기본계획 공고 시기 정정. 화면 상단 안내문도 이 행의 body를 읽는다(문구 관리 한 곳).
 const BODY = { "adm-07": "수능 세부 범위는 추정이며, 2030학년도 수능 시행 기본계획 공고(2029.3 전후 추정, 2027학년도분은 2026.3.31 공고) 전까지 미확정" };
 
-// statusNote("확정(원문 미확인, 시기 조정은 미결정)") 괄호 안에서 배지로 따로 보이는 "원문 미확인"·"학원"을 뺀 나머지.
-const extra = (t) => ((t || "").match(/\((.*)\)\s*$/)?.[1] ?? "").split(/,\s*/).filter((x) => x && x !== "원문 미확인" && x !== "학원").join(", ");
+// statusNote에서 배지로 따로 보이는 상태 문구·"원문 미확인"·"학원" 라벨을 뺀 나머지.
+// 형식: "확정(원문 미확인, 시기 조정은 미결정)" 또는 "학원 자료, 2028학년도 기준, 원문 미확인; 추가 설명". ";" 뒤는 그대로 붙인다.
+const DROP = new Set(["원문 미확인", "학원", "학원 자료", "학원 의견", ...Object.keys(STATUS)]);
+const extra = (t) => {
+  const [head, ...rest] = (t || "").split(/;\s*/);
+  const inner = head.match(/\((.*)\)\s*$/)?.[1] ?? head;
+  return [inner.split(/,\s*/).filter((x) => x && !DROP.has(x)).join(", "), ...rest].filter(Boolean).join("; ");
+};
 
 // draft의 date("YYYY-MM-DD" 또는 "YYYY-MM-DD~YYYY-MM-DD") → 날짜 하나짜리 events. 라벨은 항목 제목이 대신한다.
 const dateEvents = (t) => {

@@ -372,3 +372,4 @@ ul.plain{margin:6px 0;padding-left:18px}
 .sip{max-height:min(70vh,520px);overflow:auto}
 .sip-d{margin:4px 0 6px;display:grid;grid-template-columns:auto 1fr;gap:2px 8px;font-size:12px}
 .sip-d dt{color:var(--muted)}.sip-d dd{margin:0}
+.pst.academy{color:var(--muted);border-style:dotted}
