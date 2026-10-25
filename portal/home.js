@@ -15,7 +15,7 @@ export const toggleAudience = (sel, key) => (sel.includes(key) ? sel.filter((k) 
 export const audienceMatch = (aud, sel) => !sel.length || !aud || !aud.length || aud.includes("common") || aud.some((a) => sel.includes(a));
 export const audienceChips = (sel, esc) => `<div class="hm-aud" role="group" aria-label="일정 대상">${AUDIENCES.map(([k, t]) => `<button type="button" class="fchip${sel.includes(k) ? " on" : ""}" data-aud="${k}" aria-pressed="${sel.includes(k)}">${esc(t)}</button>`).join("")}</div>`;
 
-export function registerHome(views, { esc, load, store, nm, stars, toggleStar, nameOf, TERMS, hasLogo, profile }) {
+export function registerHome(views, { esc, load, store, nm, stars, toggleStar, nameOf, TERMS, hasLogo, profile, profiles }) {
   const today = () => { const d = new Date(); return new Date(d.getFullYear(), d.getMonth(), d.getDate()); };
   // "YYYY-MM-DD" 또는 월 단위 "YYYY-MM" → 시작·끝 날짜
   const span = (s, e) => {
@@ -68,7 +68,8 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     // 1) 상황 한 줄 + 수능 D-일수(월 단위 추정이면 그 달 15일 기준 "약")
     // 수능 시행일 행: 프로필 A는 기존 행, B는 examYear가 맞는 "수능" 행(없으면 안내)
     const csatRowB = isB ? policy.find((r) => r.examYear === examYear && /수능/.test(r.title) && !/기본계획|원서|정시|수시/.test(r.title) && r.events?.length) : null;
-    const csatRow = isB ? csatRowB : P.get("sch-12") || P.get("sch-07"), csat = isB ? csatRowB?.events?.[0] : ev0("sch-12") || ev0("sch-07");
+    const pcsat = pf.csat && !csatRowB ? { id: "pf-csat", status: pf.csat.status, sourceName: pf.csat.sourceName, title: "수능", reason: pf.csat.note, events: [{ start: pf.csat.date, label: "수능 시행일(잠정 예상)" }] } : null;
+    const csatRow = isB ? csatRowB || pcsat : P.get("sch-12") || P.get("sch-07"), csat = isB ? csatRow?.events?.[0] : ev0("sch-12") || ev0("sch-07");
     let hero = "";
     if (csat) {
       const sp = span(csat.start, csat.end);
@@ -121,7 +122,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     // 5) 관심 학교 카드
     // 상단 띠에는 4개교 모두, 아래 큰 카드는 ★ 관심 학교만
     const starred = stars();
-    const mine = summary;
+    const mine = summary.filter((m) => pf.schoolIds.includes(m.schoolId));
     const card = (m) => {
       const sc = schools.find((x) => x.id === m.schoolId) || {};
       return homeSchoolCard(m, { starred: starred.includes(m.schoolId), sub: [m.region, m.schoolType, m.founding, m.gender].filter(Boolean).join(" · "), logoOk: hasLogo(m.schoolId), cr: curricula.find((x) => x.schoolId === m.schoolId)?.creative });
@@ -137,9 +138,12 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const todosKey = isB ? "todos:b" : "todos"; // 프로필 A는 기존 키 유지
 
     const region = (summary[0]?.region || "").split(/\s+/).slice(0, 2).map((x) => x.replace(/시$/, "")).join("·");
-    const myChips = () => { const l = isB ? "일반고" : AUDIENCES.filter(([k]) => aud.includes(k)).map(([, v]) => v).join("·"); return `<span>${esc(pf.label)}</span>${l ? `<span>${esc(l)}</span>` : ""}${region ? `<span>${esc(region)}</span>` : ""}`; };
+    const myChips = () => { const l = isB ? "일반고" : AUDIENCES.filter(([k]) => aud.includes(k)).map(([, v]) => v).join("·"); return `<span>${esc(pf.name)} · ${esc(pf.label)}</span>${l ? `<span>${esc(l)}</span>` : ""}${region ? `<span>${esc(region)}</span>` : ""}`; };
     const strip = `<section class="hm-strip" aria-label="내 설정과 학교"><div class="hs-chips2">${myChips()}</div>
-      ${isB ? "" : `<div class="hs-logos">${summary.map((m) => `<div class="hs-lg"><a href="#select/curriculum?v=compare&s=${esc(m.schoolId)}">${hasLogo(m.schoolId) ? `<img src="img/schools/256/${esc(m.schoolId)}.png" alt="" width="56" height="56">` : ""}<span>${esc(m.schoolName)}</span></a><button type="button" class="star" data-id="${esc(m.schoolId)}" aria-label="${starred.includes(m.schoolId) ? "관심 해제" : "관심 학교로 고정"}" aria-pressed="${starred.includes(m.schoolId)}">${starred.includes(m.schoolId) ? "★" : "☆"}</button></div>`).join("")}</div>`}</section>`;
+      ${isB ? "" : `<div class="hs-logos">${mine.map((m) => `<div class="hs-lg"><a href="#select/curriculum?v=compare&s=${esc(m.schoolId)}">${hasLogo(m.schoolId) ? `<img src="img/schools/256/${esc(m.schoolId)}.png" alt="" width="56" height="56">` : ""}<span>${esc(m.schoolName)}</span></a><button type="button" class="star" data-id="${esc(m.schoolId)}" aria-label="${starred.includes(m.schoolId) ? "관심 해제" : "관심 학교로 고정"}" aria-pressed="${starred.includes(m.schoolId)}">${starred.includes(m.schoolId) ? "★" : "☆"}</button></div>`).join("")}</div>`}</section>`;
+    // 두 프로필의 수능 D-day를 나란히(profiles.json의 시행일·상태)
+    const ddn = (c) => { const [y, m, d] = c.date.split("-").map(Number); return Math.round((new Date(y, m - 1, d) - t) / DAY); };
+    const dd2 = `<section class="hm-dd2" aria-label="두 프로필의 수능 D-day">${profiles().map((q) => q.csat ? `<div class="${q.id === pf.id ? "me" : ""}"><span class="dd-w">${esc(q.name)} <span class="muted small">${esc(q.label)} · ${q.examYear}학년도</span></span><b>D-${ddn(q.csat).toLocaleString()}</b><span class="dd-s">${esc(ymdText(q.csat.date))} <span class="pst ${q.csat.status}">${PST[q.csat.status] || q.csat.status}</span></span></div>` : "").join("")}</section>`;
     const tab = (id, label, body, on) => ({ id, label, body, on });
     const tabs = [
       ...(isB ? [] : [tab("tl", "장기 타임라인", `<ol class="hm-tl">${tl}</ol>`, true)]),
@@ -151,11 +155,13 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     // 프로필 B: 학교 대신 고입 준비 안내(경기·용인 일반고 기준 일정은 현 중3 데이터를 참고용으로 보여 준다)
     const prep = policy.filter((r) => r.topic === "gg-hs-entry" && (!r.audience || r.audience.includes("common") || r.audience.includes("general")));
     const prepHtml = `<section class="hm-box hm-sch"><h3>고입 준비 <span class="muted small">경기·용인 일반고 기준</span></h3>
-      <p class="muted small">입학 ${entryYear}학년도 기준 고입은 ${entryYear - 1}년 12월 전후로 추정합니다(현 중3의 후기 전형 시기에서 유추). 아래는 현 중3(${summary[0].entryYear}학년도 입학) 일정으로, 제도가 바뀔 수 있어 참고용입니다.</p>
+      <p class="muted small">${esc(pf.name)}의 학교를 고르면 학교 카드가 여기에 모입니다(아직 학교 없음).</p>
+      <p class="muted small">${esc(pf.name)}의 입학은 ${entryYear}학년도, 고입은 ${entryYear - 1}년 12월 전후로 추정합니다(현 중3의 후기 전형 시기에서 유추). 아래는 현 중3(${summary[0].entryYear}학년도 입학) 일정으로, 제도가 바뀔 수 있어 참고용입니다.</p>
       <ul class="hm-list">${prep.map((r) => { const e = r.events?.[0]; return `<li><span class="hm-date">${e ? esc(fmtRange(span(e.start, e.end), t, e)) : "일정 미정"}</span><span class="hm-tx"><b>${esc(r.title)}</b></span><span class="hm-bd">${badges(r)}</span>${link(r)}</li>`; }).join("") || '<li class="muted">등록된 고입 일정이 없습니다.</li>'}</ul></section>`;
     el.innerHTML = `<div class="hm">
       <section class="hm-hero2" aria-label="수능 D-day와 다음 일정"><div class="hh-l">${hero}</div><div class="hh-r"><div id="hm-nx">${nextCard()}</div><a class="hh-cta" href="#schedule">전체 일정 보기 →</a></div></section>
       ${strip}
+      ${dd2}
       <section class="hm-box hm-nowbox" aria-labelledby="hm-now-h"><h3 id="hm-now-h">이어지는 일정 <span class="muted small">${isB ? "일반고 기준" : "내 대상 기준"} · 앞으로 90일 · 오늘 ${dayText(t, t, true)}</span></h3>${isB ? "" : audienceChips(aud, esc)}
         <ul class="hm-list" id="hm-up">${upList()}</ul></section>
       <div class="hm-mine">

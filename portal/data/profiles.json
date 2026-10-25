@@ -1,0 +1,26 @@
+{
+  "_meta": {
+    "note": "프로필 설정(사람 손으로 관리하는 설정 파일, 편제표 DB가 아님). 행 연도 필터는 policy.json의 entryYear/examYear를 쓴다. 출생연도는 두지 않는다.",
+    "entryYearRule": "examYear = entryYear + 3"
+  },
+  "profiles": [
+    {
+      "id": "A",
+      "name": "예나",
+      "label": "현 중3",
+      "entryYear": 2027,
+      "examYear": 2030,
+      "schoolIds": ["school-pungdeok", "school-seongbok", "school-suji", "school-yonginheungcheon"],
+      "csat": { "date": "2029-11-15", "status": "estimated", "policyRowId": "sch-12", "note": "시행 기본계획 공고(2029.3 전후 추정) 전까지 잠정" }
+    },
+    {
+      "id": "B",
+      "name": "예은",
+      "label": "현 초6",
+      "entryYear": 2030,
+      "examYear": 2033,
+      "schoolIds": [],
+      "csat": { "date": "2032-11-18", "status": "estimated", "sourceName": "자체 산출(11월 셋째 목요일 시행 관행)", "note": "시행 기본계획 공고(2032.3 전후 추정) 전까지 확정 아님. 제도 개편으로 바뀔 수 있음" }
+    }
+  ]
+}
