@@ -1,7 +1,7 @@
 {
-  "name": "예나·예은 대입 포털",
-  "short_name": "예나·예은",
-  "description": "두 사람의 입시 일정·학교·제도를 한곳에서 보는 가족용 포털",
+  "name": "대입 포털",
+  "short_name": "대입 포털",
+  "description": "입시 일정·학교·제도를 한곳에서 보는 가족용 포털",
   "lang": "ko",
   "start_url": "./",
   "scope": "./",

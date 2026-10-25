@@ -62,5 +62,9 @@
         }
       ]
     }
-  ]
+  ],
+  "ui": {
+    "showProfiles": false,
+    "note": "false면 UI에서 사람 이름·구분을 모두 숨긴다(데이터는 유지). 나중에 true로 켜면 전환 UI가 나타난다."
+  }
 }
