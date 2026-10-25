@@ -62,19 +62,18 @@ const views = {
 };
 
 // ---- 학교별 편제표: 학교 칩(on/off, 최대 4개교) + 탭(요약 / 상세 비교) ----
-const MAX_SCHOOLS = 4;
 const TERMS = ["1-1", "1-2", "2-1", "2-2", "3-1", "3-2"];
 
 async function curriculumView(el, query) {
   const [schools, summary] = await Promise.all([load("schools"), load("summary")]);
   const known = (id) => schools.some((x) => x.id === id);
-  let sel = query.has("s") ? query.get("s").split(",").filter(known) : schools.slice(0, MAX_SCHOOLS).map((x) => x.id);
-  sel = [...new Set(sel)].slice(0, MAX_SCHOOLS);
+  let sel = query.has("s") ? query.get("s").split(",").filter(known) : schools.map((x) => x.id);
+  sel = [...new Set(sel)];
   let tab = query.get("v") === "compare" ? "compare" : "summary";
   let compare = null; // 상세 비교 화면(필터 포함)은 한 번만 만들고 탭 전환 때 재사용한다
 
-  el.innerHTML = `<div class="chipbar"><span class="flabel">비교할 학교 (최대 ${MAX_SCHOOLS}개교)</span>
-      <div class="chips" id="chips"></div><div class="note" id="limit" hidden>한 번에 최대 ${MAX_SCHOOLS}개교까지 비교할 수 있습니다. 다른 학교를 끄고 선택하세요.</div></div>
+  el.innerHTML = `<div class="chipbar"><span class="flabel">비교할 학교 (눌러서 켜고 끄기)</span>
+      <div class="chips" id="chips"></div></div>
     <div class="subtabs" id="tabs"><a href="#" data-tab="summary">학교별 요약</a><a href="#" data-tab="compare">상세 비교</a></div>
     <div class="muted small">${summary[0].entryYear}학년도 입학생(대입 ${summary[0].entryYear + 3}학년도) 편제표 · ${summary.length}개교 등록</div>${dataNote}
     <div id="cview"></div>`;
@@ -104,9 +103,7 @@ async function curriculumView(el, query) {
     if (chip) {
       const id = chip.dataset.id;
       if (sel.includes(id)) sel = sel.filter((x) => x !== id);
-      else if (sel.length >= MAX_SCHOOLS) { $("#limit").hidden = false; return; }
       else sel = schools.map((x) => x.id).filter((x) => sel.includes(x) || x === id);
-      $("#limit").hidden = true;
       return void refresh();
     }
     const t = e.target.closest("#tabs a");
@@ -143,7 +140,7 @@ async function summaryBody(el, ids) {
       <span class="muted small">${m.reviewCount ? `⚠ 확인 필요 ${m.reviewCount}건 · ` : ""}수집 ${esc(sc._meta?.updated || "-")}</span></div></section>`;
   };
   const shown = ids.map((id) => summary.find((m) => m.schoolId === id)).filter(Boolean);
-  el.innerHTML = shown.length ? `<div class="schoolgrid cols${shown.length}">${shown.map(card).join("")}</div>` : '<p class="note">위에서 학교를 하나 이상 선택하세요.</p>';
+  el.innerHTML = shown.length ? `<div class="schoolgrid cols${shown.length > 4 ? "n" : shown.length}">${shown.map(card).join("")}</div>` : '<p class="note">위에서 학교를 하나 이상 선택하세요.</p>';
 }
 
 // 상세 비교: 필터 + 선택 학교를 열 단위로 나란히
@@ -196,6 +193,7 @@ async function compareShell(el) {
       if (r.area !== area) { area = r.area; html += `<tr class="area"><td colspan="${ids.length + 1}">${esc(area)}</td></tr>`; }
       html += `<tr><td class="l">${esc(r.name)}</td>${ids.map((id) => cell(r.cells[id])).join("")}</tr>`;
     }
+    $("#tbl").style.minWidth = `${200 + 170 * ids.length}px`;
     $("#tbl").innerHTML = `<thead><tr><th class="l">과목</th>${names.map((n) => `<th>${esc(n)}</th>`).join("")}</tr></thead><tbody>${html || `<tr><td colspan="${ids.length + 1}">조건에 맞는 과목이 없습니다.</td></tr>`}</tbody>
       <tfoot><tr><th class="l">해당 과목 수</th>${ids.map((id) => `<th>${rows.filter((r) => r.cells[id]).length}</th>`).join("")}</tr></tfoot>`;
     $("#cnt").textContent = `${rows.length}개 과목 · ${ids.length}개교`;
