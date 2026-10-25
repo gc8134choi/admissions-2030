@@ -1,22 +1,22 @@
 {
   "schemaVersion": "2.1.0",
-  "generatedAt": "2026-10-25T10:15:15.851Z",
+  "generatedAt": "2026-10-25T11:20:44.421Z",
   "inputs": [
     {
       "path": "content/curriculum/pungdeok.json",
-      "sha256_16": "26f61d340004de72"
+      "sha256_16": "b681a98ce3c6cc95"
     },
     {
       "path": "content/curriculum/seongbok.json",
-      "sha256_16": "241ca6fcce9ba6e8"
+      "sha256_16": "4f545dd4f2a6bdb6"
     },
     {
       "path": "content/curriculum/suji.json",
-      "sha256_16": "28a1fc5311cc4f95"
+      "sha256_16": "57bd733e4b3b2096"
     },
     {
       "path": "content/curriculum/yonginheungcheon.json",
-      "sha256_16": "53daef1d45f5e41a"
+      "sha256_16": "bb83c8cccdde209c"
     },
     {
       "path": "content/data/schools.json",

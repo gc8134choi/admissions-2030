@@ -1,6 +1,6 @@
 {
   "version": "2.1.0",
-  "generatedAt": "2026-10-25T10:15:15.851Z",
+  "generatedAt": "2026-10-25T11:20:44.421Z",
   "entryYears": [
     2027
   ],
@@ -18,7 +18,7 @@
       "use": "core",
       "purpose": "학교(편제표)당 1행 비교표 + 학기·영역·구분 요약. 가장 작고 먼저 읽는 파일",
       "rows": 4,
-      "bytes": 10253
+      "bytes": 10245
     },
     {
       "name": "schools.json",
@@ -32,7 +32,7 @@
       "use": "core",
       "purpose": "편제표 헤더: 선언 학점(declared), 창체, 검증 건수",
       "rows": 4,
-      "bytes": 6445
+      "bytes": 6501
     },
     {
       "name": "facets.json",
@@ -66,7 +66,7 @@
       "use": "lazy",
       "purpose": "핵심 사실 표: 학교×학기×과목 1행(평탄화, 항상 생성물)",
       "rows": 388,
-      "bytes": 222067
+      "bytes": 221363
     },
     {
       "name": "subject-matrix.json",
@@ -96,6 +96,6 @@
       "bytes": 16293
     }
   ],
-  "totalBytes": 462842,
-  "coreBytes": 26833
+  "totalBytes": 462186,
+  "coreBytes": 26881
 }
