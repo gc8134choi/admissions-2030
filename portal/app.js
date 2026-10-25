@@ -149,9 +149,22 @@ async function curriculumView(el, query, node) {
   await refresh();
 }
 
+// 창체(창의적 체험활동) 블록: 총 학점·시수, 영역별 시수 합계, 학기별 보기(기본 접힘). 영역 이름은 데이터 그대로.
+function creativeBlock(m, cur) {
+  const c = cur?.creative;
+  if (!c?.perTerm) return "";
+  const terms = TERMS.filter((t) => c.perTerm[t]);
+  const areas = [...new Set(terms.flatMap((t) => Object.keys(c.perTerm[t])))];
+  const sum = (a) => terms.reduce((n, t) => n + (c.perTerm[t][a] || 0), 0);
+  const extra = [c.standardHours != null ? `표준 ${c.standardHours}` : "", c.operatedHours != null ? `운영 ${c.operatedHours}` : ""].filter(Boolean).join(" · ");
+  return `<div class="cre"><div><b>창체</b> <span class="cr1">${m.creditsCreative}학점 · ${c.totalHours}시간</span></div>
+    <div class="muted small">${areas.map((a) => `${esc(a)} ${sum(a)}`).join(" · ")}</div>
+    <details><summary>학기별 보기</summary><div class="crew"><table class="crt"><thead><tr><th></th>${terms.map((t) => `<th>${t}</th>`).join("")}</tr></thead><tbody>${areas.map((a) => `<tr><th>${esc(a)}</th>${terms.map((t) => `<td>${c.perTerm[t][a] ?? "-"}</td>`).join("")}</tr>`).join("")}</tbody></table></div>${extra ? `<div class="muted small">${esc(extra)} (데이터 표기)</div>` : ""}</details></div>`;
+}
+
 // 요약 카드: 선택한 학교만 가로로 나란히
 async function summaryBody(el, ids) {
-  const [schools, summary, subjects] = await Promise.all([load("schools"), load("summary"), load("subjects")]);
+  const [schools, summary, subjects, curricula] = await Promise.all([load("schools"), load("summary"), load("subjects"), load("curricula")]);
   const st = stars();
   const card = (m) => {
     const sc = schools.find((x) => x.id === m.schoolId) || {};
@@ -166,6 +179,7 @@ async function summaryBody(el, ids) {
       <div class="muted small">학기별 학점: <b class="rk">지정</b> · <b class="ek">선택</b> (막대 위 숫자 = 지정 / 선택, 막대 = 비중)</div>
       <dl class="stats"><div><dt>지정 과목</dt><dd>${m.requiredCount}</dd></div><div><dt>택n 묶음</dt><dd>${m.groupCount}</dd></div><div><dt>골라야 하는 과목</dt><dd>${m.pickTotal}</dd></div>
       <div><dt>선택 후보</dt><dd>${m.candidateSubjects}</dd></div><div><dt>선택 폭</dt><dd>${m.breadth}</dd></div><div><dt>첫 선택 학기</dt><dd>${esc(m.firstElectiveTerm || "-")}</dd></div></dl>
+      ${creativeBlock(m, curricula.find((x) => x.schoolId === m.schoolId))}
       <details><summary>이 학교에만 있는 과목 (${uniq.length})</summary><p>${uniq.map((x) => esc(x.name)).join(", ") || "-"}</p></details>
       <details><summary>메모</summary><textarea data-memo="${esc(m.schoolId)}" placeholder="이 브라우저에만 저장됩니다">${esc(store.get("memo:" + m.schoolId, ""))}</textarea></details>
       <div class="foot"><a class="btn" href="#" data-go="${esc(m.schoolId)}">이 학교 과목 보기</a>
