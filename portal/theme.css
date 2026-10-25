@@ -6,7 +6,6 @@
   --st-est:#9A5B00; --req:#1B3A6B; --ele:#0B7F63;
   --font:"Pretendard Variable",Pretendard,-apple-system,"Noto Sans KR",system-ui,sans-serif;
   --pad:20px; --maxw:1120px; --tab-h:56px; --dock-h:44px;
-  --g3:#4A4F57; --g3c:#5B6068; /* 현 고3 전용 일정: 진한 회색(상태색·프로필색과 겹치지 않게) */
   /* style.css 옛 변수를 새 토큰으로 연결 */
   --bg:var(--paper); --fg:var(--ink); --muted:var(--mute); --line:var(--hair); --panel:var(--paper); --soft:var(--band);
   --v1:var(--ele); --v2:var(--st-est); --soon:var(--mute); --warn:var(--band);
@@ -14,7 +13,7 @@
 }
 @media (prefers-color-scheme:dark){:root{
   --paper:#111110; --ink:#F4F2EC; --mute:#9C9A92; --hair:rgba(244,242,236,.18); --rule:#F4F2EC; --band:#1C1C1A;
-  --accent-a:#FF6A45; --accent-b:#8F85FF; --st-est:#F0B04A; --req:#6EA0F0; --ele:#34D3A8; --g3:#B4B8BF; --g3c:#8B9099}}
+  --accent-a:#FF6A45; --accent-b:#8F85FF; --st-est:#F0B04A; --req:#6EA0F0; --ele:#34D3A8}}
 html[data-profile=b]{--accent:var(--accent-b)}
 body[data-profile]{--accent:var(--accent-a);--soft:var(--band)}
 html[data-profile=b] body[data-profile]{--accent:var(--accent-b)}
@@ -147,15 +146,9 @@ html[data-profile=b] .aux-n{color:var(--accent-a)}
 .row .d.live{color:var(--accent);font-size:13px;font-weight:700;letter-spacing:0;padding-top:6px}
 .row .meta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:6px}
 .row .meta a,.src{font-size:12px;color:var(--mute);text-underline-offset:3px}
-/* 현 고3 전용 일정: 진한 회색(상태색·강조색과 구분) */
-.row.g3 h3,.row.g3 .d{color:var(--g3)}
-.row.g3 .d.live{color:var(--g3c)}
-.row.g3{border-left:0}
 .hm-aud-wrap{margin:0 0 8px}
 .hm-aud{display:flex;flex-wrap:wrap;gap:6px}
 .hm-aud .fchip{font-size:12px;padding:5px 10px;min-height:32px}
-.hm-aud .fchip[data-aud=grade3]{border-color:var(--g3c);color:var(--g3)}
-.hm-aud .fchip[data-aud=grade3].on,.hm-aud .fchip[data-aud=grade3][aria-pressed=true]{background:var(--g3c);border-color:var(--g3c);color:var(--paper)}
 /* 우리 4개교 */
 .schools{list-style:none;margin:0;padding:0}
 .sr{display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:14px;padding:18px 0;border-top:1px solid var(--hair);text-decoration:none;color:inherit}
@@ -277,20 +270,14 @@ table.policy{border-collapse:collapse;width:100%}
 table.policy th,table.policy td{border:0;border-top:1px solid var(--hair);text-align:left;padding:14px 10px 14px 0;vertical-align:top;background:none}
 table.policy thead th{border-top:1px solid var(--rule);font-size:12px;letter-spacing:.06em;color:var(--mute);font-weight:700}
 table.policy tr.past td,table.policy tr.past b{color:var(--mute)}
-table.policy tr.g3 td,table.policy tr.g3 b{color:var(--g3)}
-table.policy tr.g3 td:first-child{color:var(--g3c);font-weight:700}
-.g3k{color:var(--g3c);font-weight:700}
 .al-body,.note{border:0;background:var(--band);border-radius:0;padding:12px 14px;font-size:13px}
 .subtabs{border-bottom:1px solid var(--hair)}
 .subtabs a{color:var(--mute)}.subtabs a.on{color:var(--ink);border-bottom-color:var(--accent);font-weight:800}
 
-/* 대상 칩: 켜짐은 얇은 외곽선 + 점(검정 채움 금지). 현고3은 같은 규칙에 회색 */
 .hm .hm-aud .fchip{background:none;color:var(--mute);border:1px solid var(--hair);padding:5px 12px;min-height:32px;display:inline-flex;align-items:center;gap:6px;font-size:12px}
 .hm .hm-aud .fchip::before{content:"";width:7px;height:7px;border-radius:50%;border:1.25px solid currentColor;box-sizing:border-box}
 .hm .hm-aud .fchip.on,.hm .hm-aud .fchip[aria-pressed=true]{background:none;color:var(--ink);border-color:var(--ink)}
 .hm .hm-aud .fchip.on::before,.hm .hm-aud .fchip[aria-pressed=true]::before{background:currentColor}
-.hm .hm-aud .fchip[data-aud=grade3]{color:var(--g3c);border-color:var(--hair)}
-.hm .hm-aud .fchip[data-aud=grade3].on,.hm .hm-aud .fchip[data-aud=grade3][aria-pressed=true]{background:none;color:var(--g3);border-color:var(--g3c)}
 
 /* 바로가기: 공식은 밑줄 링크 + "공식" 글자 */
 .kd{font-size:11px;font-weight:600;color:var(--mute)}
@@ -357,7 +344,6 @@ table.policy tr.g3 td:first-child{color:var(--g3c);font-weight:700}
 .dday .unit{font-size:clamp(18px,5vw,32px);color:var(--ink)}
 .hh-left{display:block;font-size:14px;color:var(--mute);margin-top:6px}
 .hero-t{margin:22px 0 4px;font-size:clamp(24px,6.6vw,40px);font-weight:800;letter-spacing:-.045em;line-height:1.2}
-.hero-t.g3{color:var(--g3)}
 .hero-d{margin:0;font-size:15px;color:var(--mute)}
 .hero-s{margin:6px 0 0;font-size:15px;max-width:34em}
 .hero-meta{margin:14px 0 0}
