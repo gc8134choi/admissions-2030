@@ -1,0 +1,219 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "learners.schema.json",
+ "title": "learners (프로필)",
+ "description": "사람이 관리하는 설정. 출생연도·주민정보 금지, 이름은 사용자 허용(2026-10-25). profiles.json의 후속(v3).",
+ "type": "object",
+ "required": [
+  "schemaVersion",
+  "learners"
+ ],
+ "properties": {
+  "schemaVersion": {
+   "const": "3.0.0"
+  },
+  "learners": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "enabled",
+     "entryYear",
+     "examYear",
+     "stageNow"
+    ],
+    "additionalProperties": false,
+    "properties": {
+     "id": {
+      "type": "string",
+      "pattern": "^(A|B|lrn-\\d{2,})$",
+      "description": "기존 A/B 유지, 3번째부터 lrn-03"
+     },
+     "name": {
+      "type": "string"
+     },
+     "label": {
+      "type": "string",
+      "description": "'현 중3' 같은 표시 문구(해마다 생성)"
+     },
+     "enabled": {
+      "type": "boolean",
+      "description": "false면 UI에서 숨김. 한 명만 쓰는 설정"
+     },
+     "primary": {
+      "type": "boolean",
+      "description": "기본 화면 대상. 1명만 true"
+     },
+     "entryYear": {
+      "type": "integer"
+     },
+     "examYear": {
+      "type": "integer",
+      "description": "= entryYear + 3 (CI 검증)"
+     },
+     "stageNow": {
+      "enum": [
+       "elem",
+       "mid",
+       "hs1",
+       "hs2",
+       "hs3",
+       "post"
+      ]
+     },
+     "accent": {
+      "type": "string",
+      "pattern": "^#[0-9A-Fa-f]{6}$"
+     },
+     "schoolIds": {
+      "type": "array",
+      "items": {
+       "$ref": "schools.schema.json#/$defs/id"
+      }
+     },
+     "lifeEvents": {
+      "type": "array",
+      "description": "졸업·입학 등 생활 일정 -> events 로 생성되는 입력",
+      "items": {
+       "type": "object",
+       "required": [
+        "kind",
+        "date",
+        "source"
+       ],
+       "properties": {
+        "kind": {
+         "enum": [
+          "elem-graduation",
+          "mid-graduation",
+          "hs-entrance"
+         ]
+        },
+        "date": {
+         "type": "string"
+        },
+        "source": {
+         "type": "object",
+         "required": [
+          "name",
+          "kind"
+         ],
+         "properties": {
+          "name": {
+           "type": "string"
+          },
+          "url": {
+           "type": "string",
+           "format": "uri"
+          },
+          "kind": {
+           "enum": [
+            "official",
+            "media",
+            "school",
+            "self"
+           ]
+          },
+          "retrieved": {
+           "type": "string",
+           "format": "date"
+          }
+         }
+        }
+       }
+      }
+     },
+     "csat": {
+      "type": "object",
+      "properties": {
+       "date": {
+        "type": "string",
+        "format": "date"
+       },
+       "status": {
+        "enum": [
+         "confirmed",
+         "reported",
+         "estimated"
+        ],
+        "description": "확정/보도/추정. 화면 표시: confirmed는 표시 안 함, 나머지만 표시"
+       },
+       "policyRowId": {
+        "type": "string"
+       },
+       "note": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "examples": [
+  {
+   "schemaVersion": "3.0.0",
+   "learners": [
+    {
+     "id": "A",
+     "name": "예나",
+     "label": "현 중3",
+     "enabled": true,
+     "primary": true,
+     "entryYear": 2027,
+     "examYear": 2030,
+     "stageNow": "mid",
+     "schoolIds": [
+      "school-pungdeok",
+      "school-seongbok",
+      "school-suji",
+      "school-yonginheungcheon"
+     ],
+     "lifeEvents": [
+      {
+       "kind": "mid-graduation",
+       "date": "2026-12-18",
+       "source": {
+        "name": "사용자 제공",
+        "kind": "self"
+       }
+      }
+     ],
+     "csat": {
+      "date": "2029-11-15",
+      "status": "estimated",
+      "policyRowId": "sch-12"
+     }
+    },
+    {
+     "id": "B",
+     "name": "예은",
+     "label": "현 초6",
+     "enabled": true,
+     "primary": false,
+     "entryYear": 2030,
+     "examYear": 2033,
+     "stageNow": "elem",
+     "schoolIds": [],
+     "lifeEvents": [
+      {
+       "kind": "elem-graduation",
+       "date": "2026-12-31",
+       "source": {
+        "name": "사용자 제공",
+        "kind": "self"
+       }
+      }
+     ],
+     "csat": {
+      "date": "2032-11-18",
+      "status": "estimated",
+      "note": "자체 산출(11월 셋째 목요일 시행 관행)"
+     }
+    }
+   ]
+  }
+ ]
+}

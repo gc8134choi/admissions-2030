@@ -1,0 +1,193 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "offerings.schema.json",
+ "title": "offerings (학교 개설)",
+ "description": "학교×학기×과목 1행. 전사본에서만 생성. subjectId 참조 추가, 나머지는 v2 필드 유지.",
+ "type": "object",
+ "required": [
+  "id",
+  "curriculumId",
+  "schoolId",
+  "entryYear",
+  "term",
+  "slot",
+  "subjectId",
+  "credits",
+  "provenance"
+ ],
+ "properties": {
+  "id": {
+   "type": "string"
+  },
+  "curriculumId": {
+   "type": "string"
+  },
+  "schoolId": {
+   "$ref": "schools.schema.json#/$defs/id"
+  },
+  "entryYear": {
+   "type": "integer"
+  },
+  "term": {
+   "type": "string",
+   "pattern": "^[1-3]-[1-2]$"
+  },
+  "grade": {
+   "type": "integer"
+  },
+  "semester": {
+   "type": "integer"
+  },
+  "slot": {
+   "enum": [
+    "required",
+    "elective",
+    "outside"
+   ]
+  },
+  "selection": {
+   "enum": [
+    "school",
+    "student",
+    "outside"
+   ]
+  },
+  "subjectId": {
+   "type": "string"
+  },
+  "subjectKey": {
+   "type": "string",
+   "description": "v2 호환 필드(제거 예정 v4)"
+  },
+  "subject": {
+   "type": "string",
+   "description": "인쇄 표기 그대로"
+  },
+  "credits": {
+   "type": "number"
+  },
+  "basicCredits": {
+   "type": "number"
+  },
+  "groupId": {
+   "type": "string"
+  },
+  "pick": {
+   "type": "integer"
+  },
+  "groupSize": {
+   "type": "integer"
+  },
+  "availability": {
+   "enum": [
+    "candidate",
+    "confirmed",
+    "closed"
+   ],
+   "description": "편제표=candidate. 학교 수강신청 확정 자료가 생기면 confirmed"
+  },
+  "openYears": {
+   "type": "object",
+   "properties": {
+    "from": {
+     "type": "integer"
+    },
+    "to": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    }
+   }
+  },
+  "provenance": {
+   "type": "object",
+   "required": [
+    "sourceFile",
+    "sourceKind"
+   ],
+   "properties": {
+    "sourceFile": {
+     "type": "string"
+    },
+    "sourceKind": {
+     "enum": [
+      "school-photo",
+      "school-site",
+      "schoolinfo"
+     ]
+    },
+    "transcribedBy": {
+     "type": "string"
+    },
+    "verifiedBy": {
+     "type": "string"
+    },
+    "verifiedAt": {
+     "type": "string",
+     "format": "date"
+    }
+   }
+  },
+  "confidence": {
+   "enum": [
+    "unverified",
+    "checked",
+    "verified",
+    "reported"
+   ]
+  }
+ },
+ "examples": [
+  {
+   "id": "curriculum-suji-2027#2-2#r02",
+   "curriculumId": "curriculum-suji-2027",
+   "schoolId": "school-suji",
+   "entryYear": 2027,
+   "term": "2-2",
+   "grade": 2,
+   "semester": 2,
+   "slot": "required",
+   "selection": "school",
+   "subjectId": "sj-0001",
+   "subjectKey": "미적분Ⅰ",
+   "subject": "미적분Ⅰ",
+   "credits": 4,
+   "basicCredits": 4,
+   "availability": "candidate",
+   "provenance": {
+    "sourceFile": "data-src/curriculum-analysis/content/curriculum/suji.json",
+    "sourceKind": "school-photo",
+    "verifiedBy": "사용자 대조",
+    "verifiedAt": "2026-10-25"
+   },
+   "confidence": "reported"
+  },
+  {
+   "id": "curriculum-pungdeok-2027#2-1#e06",
+   "curriculumId": "curriculum-pungdeok-2027",
+   "schoolId": "school-pungdeok",
+   "entryYear": 2027,
+   "term": "2-1",
+   "grade": 2,
+   "semester": 1,
+   "slot": "elective",
+   "selection": "student",
+   "subjectId": "sj-0002",
+   "subjectKey": "물리학",
+   "subject": "물리학",
+   "credits": 3,
+   "groupId": "curriculum-pungdeok-2027#2-1-A",
+   "pick": 3,
+   "groupSize": 9,
+   "availability": "candidate",
+   "provenance": {
+    "sourceFile": "data-src/curriculum-analysis/content/curriculum/pungdeok.json",
+    "sourceKind": "school-photo",
+    "verifiedBy": "사용자 대조",
+    "verifiedAt": "2026-10-25"
+   },
+   "confidence": "reported"
+  }
+ ]
+}

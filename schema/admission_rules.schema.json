@@ -1,0 +1,410 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "admission_rules.schema.json",
+ "title": "admission_rules (대학 요강) + csat_regimes + grading_rules",
+ "description": "구조화 필드 우선(A안), 조건식 DSL은 requirements[].expr 에 선택적으로. 판정은 tools/match-rules.mjs가 offerings와 결합해 계산(생성물 matches.json).",
+ "$defs": {
+  "requirement": {
+   "type": "object",
+   "required": [
+    "subjectIds",
+    "strength"
+   ],
+   "properties": {
+    "subjectIds": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "description": "OR 묶음: 이 중 하나 이상 이수하면 충족"
+    },
+    "minCount": {
+     "type": "integer",
+     "default": 1
+    },
+    "strength": {
+     "enum": [
+      "required",
+      "recommended",
+      "advised"
+     ]
+    },
+    "orGroupLabel": {
+     "type": "string"
+    }
+   }
+  },
+  "csatRegime": {
+   "type": "object",
+   "required": [
+    "regimeId",
+    "examYear",
+    "status",
+    "sources"
+   ],
+   "properties": {
+    "regimeId": {
+     "type": "string"
+    },
+    "appliesToExamYears": {
+     "type": "array",
+     "items": {
+      "type": "integer"
+     }
+    },
+    "areas": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "removedElectives": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "excludedSubjectIds": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "status": {
+     "enum": [
+      "confirmed",
+      "reported",
+      "estimated"
+     ],
+     "description": "확정/보도/추정. 화면 표시: confirmed는 표시 안 함, 나머지만 표시"
+    },
+    "sources": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "required": [
+       "name",
+       "kind"
+      ],
+      "properties": {
+       "name": {
+        "type": "string"
+       },
+       "url": {
+        "type": "string",
+        "format": "uri"
+       },
+       "kind": {
+        "enum": [
+         "official",
+         "media",
+         "school",
+         "self"
+        ]
+       },
+       "retrieved": {
+        "type": "string",
+        "format": "date"
+       }
+      }
+     }
+    },
+    "supersededBy": {
+     "type": [
+      "string",
+      "null"
+     ]
+    }
+   }
+  },
+  "gradingRule": {
+   "type": "object",
+   "required": [
+    "gradingId",
+    "appliesToEntryYears",
+    "method",
+    "status"
+   ],
+   "properties": {
+    "gradingId": {
+     "type": "string"
+    },
+    "appliesToEntryYears": {
+     "type": "array",
+     "items": {
+      "type": "integer"
+     }
+    },
+    "method": {
+     "enum": [
+      "rank5",
+      "absolute5",
+      "absolute3"
+     ]
+    },
+    "absoluteOnlySubjectKind": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "status": {
+     "enum": [
+      "confirmed",
+      "reported",
+      "estimated"
+     ],
+     "description": "확정/보도/추정. 화면 표시: confirmed는 표시 안 함, 나머지만 표시"
+    },
+    "sources": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "required": [
+       "name",
+       "kind"
+      ],
+      "properties": {
+       "name": {
+        "type": "string"
+       },
+       "url": {
+        "type": "string",
+        "format": "uri"
+       },
+       "kind": {
+        "enum": [
+         "official",
+         "media",
+         "school",
+         "self"
+        ]
+       },
+       "retrieved": {
+        "type": "string",
+        "format": "date"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "type": "object",
+ "required": [
+  "ruleId",
+  "universityId",
+  "unitName",
+  "admissionYear",
+  "track",
+  "status",
+  "sources",
+  "announcedAt"
+ ],
+ "properties": {
+  "ruleId": {
+   "type": "string",
+   "pattern": "^ar-\\d{4}-[a-z0-9-]+$"
+  },
+  "universityId": {
+   "type": "string",
+   "pattern": "^s-\\d{3,}$"
+  },
+  "unitName": {
+   "type": "string"
+  },
+  "admissionYear": {
+   "type": "integer",
+   "description": "대입학년도(examYear)"
+  },
+  "track": {
+   "enum": [
+    "susi-gyogwa",
+    "susi-jonghap",
+    "susi-nonsul",
+    "jeongsi-csat",
+    "special"
+   ]
+  },
+  "announcedAt": {
+   "type": "string",
+   "format": "date"
+  },
+  "status": {
+   "enum": [
+    "confirmed",
+    "reported",
+    "estimated"
+   ],
+   "description": "확정/보도/추정. 화면 표시: confirmed는 표시 안 함, 나머지만 표시"
+  },
+  "requirements": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/requirement"
+   }
+  },
+  "gradeReflection": {
+   "type": "object",
+   "properties": {
+    "areas": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "subjectsCounted": {
+     "type": "string"
+    },
+    "gradeMethod": {
+     "type": "string"
+    },
+    "careerSubjectsPolicy": {
+     "type": "string"
+    }
+   }
+  },
+  "csatMinimum": {
+   "type": "object",
+   "properties": {
+    "expr": {
+     "type": "string"
+    },
+    "requiredAreas": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "designatedSubjectIds": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "sources": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "type": "object",
+    "required": [
+     "name",
+     "kind"
+    ],
+    "properties": {
+     "name": {
+      "type": "string"
+     },
+     "url": {
+      "type": "string",
+      "format": "uri"
+     },
+     "kind": {
+      "enum": [
+       "official",
+       "media",
+       "school",
+       "self"
+      ]
+     },
+     "retrieved": {
+      "type": "string",
+      "format": "date"
+     }
+    }
+   }
+  },
+  "sourcePage": {
+   "type": "string"
+  },
+  "_example": {
+   "type": "boolean"
+  }
+ },
+ "examples": [
+  {
+   "_comment": "구조 예시(대학 요강 실데이터는 아직 없음). 대학·모집단위·학년도는 비워 두고 과목 코드만 실제 마스터를 쓴다.",
+   "ruleId": "ar-0000-example",
+   "universityId": "s-000",
+   "unitName": "(예시) 자연계 모집단위",
+   "admissionYear": 2030,
+   "track": "susi-gyogwa",
+   "announcedAt": "2026-10-25",
+   "status": "estimated",
+   "_example": true,
+   "requirements": [
+    {
+     "subjectIds": [
+      "sj-0001"
+     ],
+     "strength": "recommended",
+     "orGroupLabel": "수학 심화 후보"
+    }
+   ],
+   "sources": [
+    {
+     "name": "예시 레코드(실제 요강 아님)",
+     "kind": "self",
+     "retrieved": "2026-10-25"
+    }
+   ]
+  },
+  {
+   "regimeId": "csat-2028",
+   "appliesToExamYears": [
+    2028,
+    2029,
+    2030
+   ],
+   "areas": [
+    "국어",
+    "수학",
+    "영어",
+    "한국사",
+    "통합사회",
+    "통합과학",
+    "제2외국어/한문"
+   ],
+   "removedElectives": [
+    "국어 선택과목",
+    "수학 선택과목",
+    "사회·과학탐구 선택과목"
+   ],
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "교육부 브리핑(2023.12.27)",
+     "url": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
+     "kind": "official",
+     "retrieved": "2026-10-25"
+    }
+   ],
+   "supersededBy": null,
+   "_note": "appliesToExamYears의 2029·2030 적용은 가정(facets.csat.applicability=assumed)이며 CI에서 estimated 표시를 강제"
+  },
+  {
+   "gradingId": "gr-2028",
+   "appliesToEntryYears": [
+    2025,
+    2026,
+    2027
+   ],
+   "method": "rank5",
+   "absoluteOnlySubjectKind": [
+    "사회·과학 융합선택 9개 과목"
+   ],
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "교육부 브리핑(2023.12.27)",
+     "url": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
+     "kind": "official",
+     "retrieved": "2026-10-25"
+    }
+   ],
+   "_note": "entryYear 범위는 정부 개편안(2027.3 공표 예정) 전까지 예나(2027) 적용을 estimated로 표시"
+  }
+ ]
+}
