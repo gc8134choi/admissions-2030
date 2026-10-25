@@ -3,6 +3,17 @@
 const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "확인 못 함" };
 const DAY = 864e5;
 
+// ---- 일정 대상 필터(칩): 일정 화면 등 다른 화면에서 같은 키·함수를 재사용할 수 있게 분리 ----
+export const AUDIENCES = [["general", "일반고"], ["science", "과학·영재"], ["private", "자사·외·국제"], ["vocational", "특성화·마이스터"], ["grade3", "현고3"]];
+export const AUDIENCE_KEY = "portal.audience"; // localStorage 키(값: audience 키 배열 JSON)
+export const AUDIENCE_DEFAULT = ["general", "science", "private", "vocational"];
+export const loadAudience = (store) => { const v = store.get(AUDIENCE_KEY, null); return Array.isArray(v) ? v.filter((k) => AUDIENCES.some(([a]) => a === k)) : [...AUDIENCE_DEFAULT]; };
+export const saveAudience = (store, sel) => store.set(AUDIENCE_KEY, sel);
+export const toggleAudience = (sel, key) => (sel.includes(key) ? sel.filter((k) => k !== key) : [...sel, key]);
+// 아무것도 안 켜면 전체, 행에 audience가 없거나 common이면 항상 표시, 하나라도 겹치면 표시
+export const audienceMatch = (aud, sel) => !sel.length || !aud || !aud.length || aud.includes("common") || aud.some((a) => sel.includes(a));
+export const audienceChips = (sel, esc) => `<div class="hm-aud" role="group" aria-label="일정 대상">${AUDIENCES.map(([k, t]) => `<button type="button" class="fchip${sel.includes(k) ? " on" : ""}" data-aud="${k}" aria-pressed="${sel.includes(k)}">${esc(t)}</button>`).join("")}</div>`;
+
 export function registerHome(views, { esc, load, store, nm, stars, toggleStar, nameOf, TERMS }) {
   const today = () => { const d = new Date(); return new Date(d.getFullYear(), d.getMonth(), d.getDate()); };
   // "YYYY-MM-DD" 또는 월 단위 "YYYY-MM" → 시작·끝 날짜
@@ -33,6 +44,13 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     return s.url && /^https?:\/\//.test(s.url) ? `<a class="hm-src" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>` : `<span class="muted small">${esc(s.name)}</span>`;
   };
   const badges = (r) => `<span class="pst ${r.status}">${PST[r.status] || r.status}</span>${r.unverified ? ' <span class="unv">원문 미확인</span>' : ""}`;
+  // 행에 events가 없고 date("YYYY-MM-DD" 또는 "시작~끝")만 있어도 일정으로 읽는다.
+  const DRE = /^\d{4}-\d{2}(-\d{2})?$/;
+  const eventsOf = (r) => {
+    if (r.events) return r.events;
+    const [a, b] = String(r.date || "").split("~").map((x) => x.trim());
+    return DRE.test(a) ? [{ label: "", start: a, ...(b && DRE.test(b) ? { end: b } : {}) }] : [];
+  };
   const dateOf = (t) => (t.match(/^\d{4}(-\d{2}){0,2}/) || [""])[0];
 
   // 메모/할 일: 이 브라우저(localStorage)에만 저장. 접근할 수 없으면 비활성.
@@ -58,11 +76,13 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     // 2) 다가오는 일정: 고입·대입 일정 중 오늘~90일, 지난 일정 숨김
     const limit = new Date(t.getTime() + 90 * DAY);
     const upcoming = policy.filter((r) => r.topic === "hs-schedule" || r.topic === "exam-schedule")
-      .flatMap((r) => (r.events || []).map((e) => ({ r, e, sp: span(e.start, e.end) })))
+      .flatMap((r) => eventsOf(r).map((e) => ({ r, e, sp: span(e.start, e.end) })))
       .filter((x) => x.sp.end >= t && x.sp.start <= limit).sort((a, b) => a.sp.start - b.sp.start || a.sp.end - b.sp.end);
-    const upHtml = upcoming.length
-      ? upcoming.map((x) => `<li><span class="hm-d${x.sp.start <= t ? " now" : ""}">${dLabel(x.sp, t)}</span><span class="hm-date">${fmtRange(x.sp, t, x.e)}</span><span class="hm-tx"><b>${esc(x.r.title)}</b> · ${esc(x.e.label)}</span><span class="hm-bd">${badges(x.r)}</span>${link(x.r)}</li>`).join("")
-      : '<li class="muted">예정된 일정 없음</li>';
+    let aud = loadAudience(store);
+    const upList = () => {
+      const rows = upcoming.filter((x) => audienceMatch(x.e.audience || x.r.audience, aud));
+      return rows.length ? rows.map((x) => `<li><span class="hm-d${x.sp.start <= t ? " now" : ""}">${dLabel(x.sp, t)}</span><span class="hm-date">${fmtRange(x.sp, t, x.e)}</span><span class="hm-tx"><b>${esc(x.r.title)}</b>${x.e.label ? ` · ${esc(x.e.label)}` : ""}</span><span class="hm-bd">${badges(x.r)}</span>${link(x.r)}</li>`).join("") : `<li class="muted">${upcoming.length ? "선택한 대상의 " : ""}예정된 일정 없음</li>`;
+    };
 
     // 3) 장기 타임라인: 모든 마일스톤을 policy.json 행에서 읽는다.
     const rng = (e) => fmtRange(span(e.start, e.end), t, e);
@@ -109,7 +129,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
 
     el.innerHTML = `<div class="hm">
       <div class="hm-hero"><b>현 중3</b> · <b>${entryYear}학년도 입학</b> · <b>${examYear}학년도 수능</b> ${hero}</div>
-      <section class="hm-box"><h3>다가오는 일정 <span class="muted small">앞으로 90일 · 오늘 ${dayText(t, t, true)}</span> <a class="hm-more" href="#schedule">전체 일정</a></h3><ul class="hm-list">${upHtml}</ul></section>
+      <section class="hm-box"><h3>다가오는 일정 <span class="muted small">앞으로 90일 · 오늘 ${dayText(t, t, true)}</span> <a class="hm-more" href="#schedule">전체 일정</a></h3>${audienceChips(aud, esc)}<ul class="hm-list" id="hm-up">${upList()}</ul></section>
       <section class="hm-box"><h3>장기 타임라인</h3><ol class="hm-tl">${tl}</ol></section>
       <section class="hm-box"><h3>최근 변경 <span class="muted small">갱신 ${esc(ymdText(logUpdated))}</span> <a class="hm-more" href="#changelog">전체 보기</a></h3><ul class="hm-list">${logHtml}</ul></section>
       <section class="hm-box"><h3>관심 학교</h3>${favs.length ? `<div class="hm-schools">${favs.map(card).join("")}</div>` : '<p class="muted">학교별 편제표 요약 카드의 ☆를 누르면 여기에 모입니다.</p>'}</section>
@@ -119,6 +139,14 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
         <a class="hm-box hm-status" href="#library/status"><h3>데이터 상태</h3><div>원문 미확인 <b>${unv}</b>건 <span class="muted small">(제도·일정 ${policy.length}건 중)</span></div><div>편제표 학교 대조 완료 <b>${verified}/${summary.length}</b>개교</div><div class="muted small">flag ${flags.t}건 중 ${flags.c}건 대조 · 열린 flag ${flags.o}건</div></a>
         <section class="hm-box"><h3>내 메모/할 일 <span class="muted small">이 브라우저에만 저장</span></h3>${ok ? '<form class="hm-todoform"><input type="text" id="todoin" placeholder="할 일 추가" maxlength="120" autocomplete="off"><button class="btn" type="submit">추가</button></form><ul class="hm-todos" id="todos"></ul>' : '<p class="muted">이 브라우저에서는 저장 공간을 쓸 수 없어 메모를 사용할 수 없습니다.</p>'}</section>
       </div></div>`;
+
+    const upBox = el.querySelector("#hm-up")?.parentElement; // 칩·목록을 감싸는 박스(칩만 다시 그려도 리스너 유지)
+    upBox?.addEventListener("click", (e) => {
+      const b = e.target.closest("[data-aud]"); if (!b) return;
+      aud = toggleAudience(aud, b.dataset.aud); saveAudience(store, aud);
+      upBox.querySelector(".hm-aud").outerHTML = audienceChips(aud, esc);
+      upBox.querySelector("#hm-up").innerHTML = upList();
+    });
 
     // 관심 해제
     if (!el._hmStar) { el._hmStar = true; el.addEventListener("click", (e) => { const b = e.target.closest(".star"); if (b) { toggleStar(b.dataset.id); views.home(el); } }); }

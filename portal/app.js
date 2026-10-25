@@ -315,7 +315,7 @@ async function compareShell(el, onReset, getAreas) {
   return { root, draw };
 }
 
-registerPolicy(views, { $, esc, load });
+registerPolicy(views, { $, esc, load, store });
 registerHome(views, { esc, load, store, nm, stars, toggleStar, nameOf, TERMS });
 const filesApi = registerFiles(views, { esc, load, nm });
 
