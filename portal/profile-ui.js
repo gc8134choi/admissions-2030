@@ -1,4 +1,4 @@
-// 프로필 전환 UI와 현재 프로필 정보. 키 저장·연도 규칙은 profile.js(공통 모듈), 이름·학교·수능 시행일은 data/profiles.json.
+// 프로필 전환 UI와 현재 프로필 정보. 키 저장·연도 규칙은 profile.js(공통 모듈), 이름·학교·수능 시행일은 data/learners.json.
 // 헤더의 전환 컨트롤(세그먼트) + 표시 이름을 덮어쓰는 작은 입력(선택 기능, 이 브라우저에만 저장).
 import { PROFILES, loadProfile, saveProfile } from "./profile.js";
 export const LABELS_KEY = "portal.profile.labels";
@@ -8,7 +8,7 @@ let CFG = [];
 
 // profiles.json을 한 번 읽는다(없어도 profile.js의 기본값으로 동작).
 export async function initProfiles(load) {
-  try { const d = await load("profiles"); CFG = d?.profiles || []; } catch { CFG = []; }
+  try { const d = await load("learners"); CFG = d?.learners || []; } catch { CFG = []; }
 }
 const cfgOf = (id) => CFG.find((p) => p.id === id) || {};
 export const nameOf = (store, id) => { const v = store.get(LABELS_KEY, {})?.[id]; return typeof v === "string" && v.trim() ? v.trim().slice(0, 10) : cfgOf(id).name || PROFILES.find((p) => p.id === id).label; };
