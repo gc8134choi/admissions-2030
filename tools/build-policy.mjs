@@ -2,33 +2,11 @@
 // 값은 draft에서 그대로 옮기고, 화면용 필드(entryYear, events, note)만 더한다.
 // 사용: node tools/build-policy.mjs  (--check: 파일과 결과가 다르면 종료코드 1)
 import { readFileSync, writeFileSync, copyFileSync, mkdirSync, existsSync } from "node:fs";
+import { loadManual, specFor, makeEvents } from "./build-events.mjs";
 
 const STATUS = { 확정: "confirmed", 보도: "reported", 추정: "estimated", "학교 배부 자료": "material", "서울교육청 자료": "seoul", "학원 자료": "academy", "서울교육청 자료(원문 확인)": "seoul-verified", "서울·경기 자료 일치": "match", "경기도교육청 자료": "gyeonggi", 의견: "opinion", unknown: "unknown" };
 const KIND = { 공식: "official", 매체: "media", "학교 배부 자료": "material", "서울교육청 자료": "seoul", "서울교육청·경기도교육청 자료": "seoul-gyeonggi", "경기도교육청 자료": "gyeonggi", "학원 의견": "opinion", "학원 자료": "academy" };
 
-// 고입·대입 일정 행의 날짜(고입은 id, 대입은 id가 밀릴 수 있어 title 키). draft 본문의 날짜를 ISO로 옮겼다(연도는 해당 학년도 시행 연도). 월만 알면 YYYY-MM.
-const EVENTS = {
-  "hs-01": [{ label: "기본계획 확정", start: "2026-08" }],
-  "hs-02": [{ label: "접수(전국 기준)", start: "2026-08-18", end: "2026-09-03" }],
-  "hs-05": [{ label: "후기 전형 개막(보도)", start: "2026-12-02" }],
-  "2027학년도 수능(참고, 현 고3)": [{ label: "원서접수", start: "2026-08-24", end: "2026-09-04" }, { label: "시험", start: "2026-11-19" }, { label: "성적통지", start: "2026-12-11" }],
-  "2027학년도 수능 시행 기본계획 공고": [{ label: "공고(매체 보도)", start: "2026-03-31" }],
-  "2028학년도 수능": [{ label: "시험", start: "2027-11-18" }, { label: "성적통지", start: "2027-12-10" }],
-  "2028학년도 수시 원서접수": [{ label: "수시 원서접수 시작", start: "2027-09-20" }],
-  "2028학년도 대입전형 기본사항": [{ label: "대교협 발표", start: "2025-08-28" }],
-  "2030학년도 대입전형 기본사항 발표": [{ label: "발표 가능성(추정)", start: "2027-08" }],
-  "2030학년도 수능 시행일": [{ label: "시행일(잠정 예상)", start: "2029-11-15" }],
-  "2030학년도 수능 시행 기본계획 공고": [{ label: "공고(2029.3 전후 추정)", start: "2029-03" }],
-  "2027학년도 고교 입학(개학)": [{ label: "입학·개학(추정)", start: "2027-03" }],
-  "2028학년도 정시 일정(참고)": [
-    { label: "원서접수(3일 이상)", start: "2028-01-03", end: "2028-01-06" }, { label: "가군 전형", start: "2028-01-10", end: "2028-01-17" },
-    { label: "나군 전형", start: "2028-01-18", end: "2028-01-25" }, { label: "다군 전형", start: "2028-01-31", end: "2028-02-07" },
-    { label: "합격자 발표(~2.10)", start: "2028-02-10" }, { label: "등록", start: "2028-02-11", end: "2028-02-14" },
-  ],
-  "2030학년도 수시 원서접수": [{ label: "시작(2029.9 중하순 추정)", start: "2029-09" }],
-  "2030학년도 수능": [{ label: "시행일(잠정 예상)", start: "2029-11-15" }],
-  "2030학년도 정시": [{ label: "원서접수·전형(추정)", start: "2029-12", end: "2030-02" }],
-};
 // draft에서 빠진, 조사 md 상태 칸의 괄호 설명.
 const NOTES = { "adm-05": "미결정 상태", "adm-10": "개인 제안, 정부안 아님", "hs-08": "공식 FAQ 인용" };
 // 사용자 결정 Q6(2026-10-25): 기본계획 공고 시기 정정. 화면 상단 안내문도 이 행의 body를 읽는다(문구 관리 한 곳).
@@ -43,15 +21,10 @@ const extra = (t) => {
   return [inner.split(/,\s*/).filter((x) => x && !DROP.has(x)).join(", "), ...rest].filter(Boolean).join("; ");
 };
 
-// draft의 date("YYYY-MM-DD" 또는 "YYYY-MM-DD~YYYY-MM-DD") → 날짜 하나짜리 events. 라벨은 항목 제목이 대신한다.
-const dateEvents = (t) => {
-  const m = typeof t === "string" && t.match(/^(\d{4}-\d{2}-\d{2})(?:~(\d{4}-\d{2}-\d{2}))?$/);
-  return m ? [m[2] && m[2] !== m[1] ? { label: "", start: m[1], end: m[2] } : { label: "", start: m[1] }] : null;
-};
-
 // 모르는 status 문구는 조용히 unknown으로 두지 않고 멈춘다(새 값은 STATUS에 추가).
 const status = (d) => { const v = STATUS[d.status]; if (!v) throw new Error(`unmapped status "${d.status}" (${d.id})`); return v; };
 
+const rawDate = new Map();
 const draft = JSON.parse(readFileSync("research/data/policy-draft.json", "utf8")).items;
 const out = draft.map((d) => {
   const sources = [d.sourceName && { name: d.sourceName, url: d.sourceUrl }, ...(d.extraSources || [])].filter(Boolean);
@@ -70,11 +43,20 @@ const out = draft.map((d) => {
   if (sources.length > 1) row.sources = sources;
   if (d.region) row.region = d.region; // seoul | gyeonggi | national (정의: draft 상단 fields.region)
   if (Array.isArray(d.audience)) row.audience = d.audience; // 일정 대상별 필터용(없으면 공통 취급)
-  const events = EVENTS[d.id] || EVENTS[d.title] || dateEvents(d.date);
-  if (events) row.events = events;
+  if (Array.isArray(d.learners)) row.learners = d.learners; // 학습자 관련성(A/B). 없으면 연도 규칙(portal/profile.js)
+  if (d.stage) row.stage = d.stage;
+  rawDate.set(row.id, d.date);
   row.checkedAt = d.checkedAt;
   return row;
 });
+// 일정은 events.json이 정본이고, policy 행에는 하위 호환용 events[]와 eventIds를 함께 둔다(한 릴리스 동안).
+const manual = loadManual();
+// 바뀐 소식(change-log)의 date는 보도일이라 일정으로 쓰지 않는다.
+const events = makeEvents(out, (r) => (r.topic === "change-log" ? null : specFor(r, rawDate.get(r.id), manual)));
+for (const r of out) {
+  const mine = events.filter((e) => e.policyId === r.id);
+  if (mine.length) { r.events = mine.map((e) => ({ label: e.label, start: e.start, ...(e.end ? { end: e.end } : {}) })); r.eventIds = mine.map((e) => e.id); }
+}
 const json = JSON.stringify(out, null, 1) + "\n";
 const target = "portal/data/policy.json";
 if (process.argv.includes("--check")) {
@@ -82,6 +64,12 @@ if (process.argv.includes("--check")) {
   if (cur !== json) { console.error("policy.json is out of date"); process.exit(1); }
 } else writeFileSync(target, json);
 console.log(out.length, "rows");
+{
+  const j = JSON.stringify(events, null, 1) + "\n", t = "portal/data/events.json";
+  if (process.argv.includes("--check")) { let cur = ""; try { cur = readFileSync(t, "utf8"); } catch {} if (cur !== j) { console.error("events.json is out of date"); process.exit(1); } }
+  else writeFileSync(t, j);
+  console.log(events.length, "events");
+}
 
 // ---- 공식 이미지 출처(research/data/image-credits.json → portal/data/image-credits.json) ----
 // 공공누리 제1유형(출처표시)만 portal/img/credit/로 복사해 화면에 쓰고, 그 밖의 유형·조건 불명은 링크만 남긴다(usable=false).

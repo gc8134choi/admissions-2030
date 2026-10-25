@@ -175,13 +175,19 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "A"
+  ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "기본계획 확정",
     "start": "2026-08"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-hs-01-1"
+  ]
  },
  {
   "id": "hs-02",
@@ -200,6 +206,10 @@
   "audience": [
    "science"
   ],
+  "learners": [
+   "A"
+  ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "접수(전국 기준)",
@@ -207,7 +217,9 @@
     "end": "2026-09-03"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-hs-02-1"
+  ]
  },
  {
   "id": "hs-05",
@@ -227,13 +239,19 @@
    "general",
    "private"
   ],
+  "learners": [
+   "A"
+  ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "후기 전형 개막(보도)",
     "start": "2026-12-02"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-hs-05-1"
+  ]
  },
  {
   "id": "hs-06",
@@ -250,6 +268,9 @@
   "region": "seoul",
   "audience": [
    "science"
+  ],
+  "learners": [
+   "A"
   ],
   "checkedAt": "2026-10-25"
  },
@@ -402,6 +423,7 @@
   "audience": [
    "grade3"
   ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "원서접수",
@@ -417,7 +439,11 @@
     "start": "2026-12-11"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-sch-01-1",
+   "ev-sch-01-2",
+   "ev-sch-01-3"
+  ]
  },
  {
   "id": "sch-02",
@@ -435,13 +461,16 @@
   "audience": [
    "grade3"
   ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "공고(매체 보도)",
     "start": "2026-03-31"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-sch-02-1"
+  ]
  },
  {
   "id": "sch-03",
@@ -459,6 +488,7 @@
   "audience": [
    "common"
   ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "시험",
@@ -469,7 +499,10 @@
     "start": "2027-12-10"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-sch-03-1",
+   "ev-sch-03-2"
+  ]
  },
  {
   "id": "sch-04",
@@ -497,13 +530,16 @@
   "audience": [
    "common"
   ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "수시 원서접수 시작",
     "start": "2027-09-20"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-sch-04-1"
+  ]
  },
  {
   "id": "sch-05",
@@ -531,13 +567,16 @@
   "audience": [
    "common"
   ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "대교협 발표",
     "start": "2025-08-28"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-sch-05-1"
+  ]
  },
  {
   "id": "sch-06",
@@ -555,13 +594,19 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "A"
+  ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "발표 가능성(추정)",
     "start": "2027-08"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-sch-06-1"
+  ]
  },
  {
   "id": "sch-07",
@@ -579,13 +624,19 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "A"
+  ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "시행일(잠정 예상)",
     "start": "2029-11-15"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-sch-07-1"
+  ]
  },
  {
   "id": "sch-08",
@@ -603,13 +654,19 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "A"
+  ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "공고(2029.3 전후 추정)",
     "start": "2029-03"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-sch-08-1"
+  ]
  },
  {
   "id": "sch-09",
@@ -627,13 +684,20 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "A"
+  ],
+  "stage": "고교",
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "입학·개학(추정)",
     "start": "2027-03"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-sch-09-1"
+  ]
  },
  {
   "id": "sch-10",
@@ -651,6 +715,7 @@
   "audience": [
    "common"
   ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "원서접수(3일 이상)",
@@ -682,7 +747,14 @@
     "end": "2028-02-14"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-sch-10-1",
+   "ev-sch-10-2",
+   "ev-sch-10-3",
+   "ev-sch-10-4",
+   "ev-sch-10-5",
+   "ev-sch-10-6"
+  ]
  },
  {
   "id": "sch-11",
@@ -700,13 +772,19 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "A"
+  ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "시작(2029.9 중하순 추정)",
     "start": "2029-09"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-sch-11-1"
+  ]
  },
  {
   "id": "sch-12",
@@ -734,13 +812,19 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "A"
+  ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "시행일(잠정 예상)",
     "start": "2029-11-15"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-sch-12-1"
+  ]
  },
  {
   "id": "sch-13",
@@ -758,6 +842,10 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "A"
+  ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "원서접수·전형(추정)",
@@ -765,7 +853,9 @@
     "end": "2030-02"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-sch-13-1"
+  ]
  },
  {
   "id": "sch-14",
@@ -783,6 +873,7 @@
   "audience": [
    "grade3"
   ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "",
@@ -790,7 +881,9 @@
     "end": "2026-09-11"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-sch-14-1"
+  ]
  },
  {
   "id": "sch-15",
@@ -808,6 +901,7 @@
   "audience": [
    "grade3"
   ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "",
@@ -815,7 +909,9 @@
     "end": "2026-12-18"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-sch-15-1"
+  ]
  },
  {
   "id": "sch-16",
@@ -833,6 +929,7 @@
   "audience": [
    "grade3"
   ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "",
@@ -840,7 +937,9 @@
     "end": "2026-12-30"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-sch-16-1"
+  ]
  },
  {
   "id": "sch-17",
@@ -858,6 +957,7 @@
   "audience": [
    "grade3"
   ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "",
@@ -865,7 +965,9 @@
     "end": "2027-01-07"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-sch-17-1"
+  ]
  },
  {
   "id": "sch-18",
@@ -883,6 +985,7 @@
   "audience": [
    "grade3"
   ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "",
@@ -890,7 +993,9 @@
     "end": "2027-01-31"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-sch-18-1"
+  ]
  },
  {
   "id": "sch-19",
@@ -908,6 +1013,7 @@
   "audience": [
    "grade3"
   ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "",
@@ -915,7 +1021,9 @@
     "end": "2027-02-18"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-sch-19-1"
+  ]
  },
  {
   "id": "log-01",
@@ -1074,6 +1182,9 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "A"
+  ],
   "checkedAt": "2026-10-25"
  },
  {
@@ -1102,6 +1213,9 @@
   "region": "national",
   "audience": [
    "common"
+  ],
+  "learners": [
+   "A"
   ],
   "checkedAt": "2026-10-25"
  },
@@ -1132,6 +1246,9 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "A"
+  ],
   "checkedAt": "2026-10-25"
  },
  {
@@ -1149,6 +1266,9 @@
   "region": "national",
   "audience": [
    "common"
+  ],
+  "learners": [
+   "A"
   ],
   "checkedAt": "2026-10-25"
  },
@@ -2115,13 +2235,19 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "A"
+  ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "",
     "start": "2026-03-30"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-gg-01-1"
+  ]
  },
  {
   "id": "gg-02",
@@ -2141,6 +2267,10 @@
    "general",
    "private"
   ],
+  "learners": [
+   "A"
+  ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "",
@@ -2148,7 +2278,9 @@
     "end": "2026-12-10"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-gg-02-1"
+  ]
  },
  {
   "id": "gg-03",
@@ -2167,6 +2299,10 @@
   "audience": [
    "private"
   ],
+  "learners": [
+   "A"
+  ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "",
@@ -2174,7 +2310,9 @@
     "end": "2027-01-14"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-gg-03-1"
+  ]
  },
  {
   "id": "gg-04",
@@ -2193,6 +2331,10 @@
   "audience": [
    "general"
   ],
+  "learners": [
+   "A"
+  ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "",
@@ -2200,7 +2342,9 @@
     "end": "2027-02-05"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-gg-04-1"
+  ]
  },
  {
   "id": "gg-05",
@@ -2218,6 +2362,9 @@
   "region": "gyeonggi",
   "audience": [
    "common"
+  ],
+  "learners": [
+   "A"
   ],
   "checkedAt": "2026-10-25"
  },
@@ -2238,6 +2385,9 @@
   "audience": [
    "general"
   ],
+  "learners": [
+   "A"
+  ],
   "checkedAt": "2026-10-25"
  },
  {
@@ -2257,6 +2407,9 @@
   "audience": [
    "general",
    "private"
+  ],
+  "learners": [
+   "A"
   ],
   "checkedAt": "2026-10-25"
  },
@@ -2287,6 +2440,10 @@
   "audience": [
    "general"
   ],
+  "learners": [
+   "A"
+  ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "",
@@ -2294,7 +2451,9 @@
     "end": "2026-11-27"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-gg-08-1"
+  ]
  },
  {
   "id": "gg-09",
@@ -2312,6 +2471,9 @@
   "region": "gyeonggi",
   "audience": [
    "common"
+  ],
+  "learners": [
+   "A"
   ],
   "checkedAt": "2026-10-25"
  },
@@ -2346,6 +2508,9 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "A"
+  ],
   "checkedAt": "2026-10-25"
  },
  {
@@ -2374,6 +2539,9 @@
   "region": "national",
   "audience": [
    "common"
+  ],
+  "learners": [
+   "A"
   ],
   "checkedAt": "2026-10-25"
  },
@@ -2404,6 +2572,9 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "A"
+  ],
   "checkedAt": "2026-10-25"
  },
  {
@@ -2423,6 +2594,9 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "A"
+  ],
   "checkedAt": "2026-10-25"
  },
  {
@@ -2439,12 +2613,6 @@
   "region": "national",
   "audience": [
    "common"
-  ],
-  "events": [
-   {
-    "label": "",
-    "start": "2026-01-28"
-   }
   ],
   "checkedAt": "2026-10-25"
  },
@@ -2464,13 +2632,19 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "B"
+  ],
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "",
     "start": "2032-11-18"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-b33-01-1"
+  ]
  },
  {
   "id": "b33-02",
@@ -2488,7 +2662,19 @@
   "audience": [
    "common"
   ],
-  "checkedAt": "2026-10-25"
+  "learners": [
+   "B"
+  ],
+  "checkedAt": "2026-10-25",
+  "events": [
+   {
+    "label": "",
+    "start": "2032-03"
+   }
+  ],
+  "eventIds": [
+   "ev-b33-02-1"
+  ]
  },
  {
   "id": "b33-03",
@@ -2506,7 +2692,19 @@
   "audience": [
    "common"
   ],
-  "checkedAt": "2026-10-25"
+  "learners": [
+   "B"
+  ],
+  "checkedAt": "2026-10-25",
+  "events": [
+   {
+    "label": "",
+    "start": "2030-08"
+   }
+  ],
+  "eventIds": [
+   "ev-b33-03-1"
+  ]
  },
  {
   "id": "b33-04",
@@ -2524,7 +2722,19 @@
   "audience": [
    "common"
   ],
-  "checkedAt": "2026-10-25"
+  "learners": [
+   "B"
+  ],
+  "checkedAt": "2026-10-25",
+  "events": [
+   {
+    "label": "",
+    "start": "2029-12"
+   }
+  ],
+  "eventIds": [
+   "ev-b33-04-1"
+  ]
  },
  {
   "id": "b33-05",
@@ -2557,7 +2767,19 @@
   "audience": [
    "common"
   ],
-  "checkedAt": "2026-10-25"
+  "learners": [
+   "B"
+  ],
+  "checkedAt": "2026-10-25",
+  "events": [
+   {
+    "label": "",
+    "start": "2027-03"
+   }
+  ],
+  "eventIds": [
+   "ev-b33-05-1"
+  ]
  },
  {
   "id": "b33-06",
@@ -2586,6 +2808,9 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "B"
+  ],
   "checkedAt": "2026-10-25"
  },
  {
@@ -2604,7 +2829,19 @@
   "audience": [
    "common"
   ],
-  "checkedAt": "2026-10-25"
+  "learners": [
+   "B"
+  ],
+  "checkedAt": "2026-10-25",
+  "events": [
+   {
+    "label": "",
+    "start": "2032-09"
+   }
+  ],
+  "eventIds": [
+   "ev-b33-07-1"
+  ]
  },
  {
   "id": "b33-08",
@@ -2621,6 +2858,9 @@
   "region": "national",
   "audience": [
    "common"
+  ],
+  "learners": [
+   "B"
   ],
   "checkedAt": "2026-10-25"
  },
@@ -2640,6 +2880,9 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "B"
+  ],
   "checkedAt": "2026-10-25"
  },
  {
@@ -2658,13 +2901,20 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "A"
+  ],
+  "stage": "중졸",
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "",
     "start": "2026-12-18"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-life-01-1"
+  ]
  },
  {
   "id": "life-02",
@@ -2682,13 +2932,20 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "B"
+  ],
+  "stage": "초졸",
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "",
     "start": "2026-12-31"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-life-02-1"
+  ]
  },
  {
   "id": "life-03",
@@ -2707,6 +2964,11 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "B"
+  ],
+  "stage": "중입",
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "",
@@ -2714,7 +2976,9 @@
     "end": "2026-11-06"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-life-03-1"
+  ]
  },
  {
   "id": "life-04",
@@ -2733,6 +2997,11 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "B"
+  ],
+  "stage": "중입",
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "",
@@ -2740,7 +3009,9 @@
     "end": "2026-11-13"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-life-04-1"
+  ]
  },
  {
   "id": "life-05",
@@ -2759,6 +3030,11 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "B"
+  ],
+  "stage": "중입",
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "",
@@ -2766,7 +3042,9 @@
     "end": "2026-12-16"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-life-05-1"
+  ]
  },
  {
   "id": "life-06",
@@ -2785,13 +3063,20 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "B"
+  ],
+  "stage": "중입",
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "",
     "start": "2026-12-31"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-life-06-1"
+  ]
  },
  {
   "id": "life-07",
@@ -2810,6 +3095,11 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "B"
+  ],
+  "stage": "중입",
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "",
@@ -2817,7 +3107,9 @@
     "end": "2027-01-07"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-life-07-1"
+  ]
  },
  {
   "id": "life-08",
@@ -2836,6 +3128,11 @@
   "audience": [
    "common"
   ],
+  "learners": [
+   "B"
+  ],
+  "stage": "중입",
+  "checkedAt": "2026-10-25",
   "events": [
    {
     "label": "",
@@ -2843,7 +3140,9 @@
     "end": "2027-01-22"
    }
   ],
-  "checkedAt": "2026-10-25"
+  "eventIds": [
+   "ev-life-08-1"
+  ]
  },
  {
   "id": "life-09",
@@ -2861,7 +3160,20 @@
   "audience": [
    "common"
   ],
-  "checkedAt": "2026-10-25"
+  "learners": [
+   "B"
+  ],
+  "stage": "중입",
+  "checkedAt": "2026-10-25",
+  "events": [
+   {
+    "label": "",
+    "start": "2027-03"
+   }
+  ],
+  "eventIds": [
+   "ev-life-09-1"
+  ]
  },
  {
   "id": "life-10",
@@ -2879,6 +3191,19 @@
   "audience": [
    "common"
   ],
-  "checkedAt": "2026-10-25"
+  "learners": [
+   "A"
+  ],
+  "stage": "고교",
+  "checkedAt": "2026-10-25",
+  "events": [
+   {
+    "label": "",
+    "start": "2027-03"
+   }
+  ],
+  "eventIds": [
+   "ev-life-10-1"
+  ]
  }
 ]

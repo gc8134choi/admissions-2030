@@ -121,12 +121,12 @@ export function register(views, { $, esc, load, store }) {
   };
 
   views.schedule = async (el, query) => {
-    const tab = query.get("t") === "univ" ? "univ" : "hs";
+    const tab = ["univ", "life"].includes(query.get("t")) ? query.get("t") : "hs";
     const all = filterByProfile(await load("policy"), curProfile().id, { grade3: true }); // 현고3 행은 아래 칩(audience)이 걸러 준다
-    const rows = all.filter((r) => r.topic === (tab === "univ" ? "exam-schedule" : "hs-schedule") || (tab === "hs" && r.topic === "gg-hs-entry" && r.events) || (r.topic === "profile-2033" && (tab === "hs" ? /고입/.test(r.title) : r.events)));
+    const rows = all.filter((r) => r.topic === ({ univ: "exam-schedule", life: "life-schedule" }[tab] || "hs-schedule") || (tab === "hs" && r.topic === "gg-hs-entry" && r.events) || (r.topic === "profile-2033" && (tab === "hs" ? /고입/.test(r.title) : tab === "univ" && r.events)));
     const chips = '<div id="aud"></div>'; // 칩 UI·저장(portal.audience)은 home.js와 공유
-    el.innerHTML = `${tabs([["hs", "#schedule?t=hs", "고입"], ["univ", "#schedule?t=univ", "대입"]], tab)}${notice()}
-      <p class="muted">${tab === "univ" ? "수능·대교협 일정. 2030학년도분은 대부분 추정입니다." : "2027학년도 고입(서울 기준). 연도는 2027학년도 고입이 2026년 하반기에 진행되는 것을 기준으로 붙였습니다."}</p>${chips}<div id="tl"></div>`;
+    el.innerHTML = `${tabs([["hs", "#schedule?t=hs", "고입"], ["univ", "#schedule?t=univ", "대입"], ["life", "#schedule?t=life", "졸업·입학"]], tab)}${notice()}
+      <p class="muted">${{ univ: "수능·대교협 일정. 2030학년도분은 대부분 추정입니다.", life: "졸업·배정·입학 일정입니다. 추정은 (추정)으로 표시해요." }[tab] || "2027학년도 고입(서울 기준). 연도는 2027학년도 고입이 2026년 하반기에 진행되는 것을 기준으로 붙였습니다."}</p>${chips}<div id="tl"></div>`;
     let sel = loadAudience(store);
     const draw = () => {
       $("#aud").innerHTML = audienceChips(sel, esc) + '<span class="muted small"> 선택 없음 = 전체</span>';
