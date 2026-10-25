@@ -118,17 +118,17 @@ export function register(views, { $, esc, load, store }) {
     const sum = items.reduce((n, x) => n + x[1], 0);
     const sec = (title, body) => `<h3>${title}</h3>${body}`;
     const sections = [
-      sec("1. 한눈에", table(by("cur-01", "cur-09", "hs-14"), basic)),
-      sec("2. 이수 요건", table(by("cur-02", "cur-12"), basic)),
+      sec("1. 한눈에", table(by("cur-01", "cur-14", "cur-09", "hs-14"), basic)),
+      sec("2. 이수 요건", table(by("cur-02", "cur-16", "cur-12"), basic)),
       sec("3. 과목 유형", table(by("cur-05", "cur-10", "cur-11", "cur-13"), basic)),
-      sec("4. 성적 산출", table(by("cur-04", "hs-13"), basic)),
+      sec("4. 성적 산출", table(by("cur-04", "cur-15", "hs-13"), basic)),
       c3 ? sec("5. 공통과목 필수학점", `<div class="tw"><table class="policy"><thead><tr><th class="l">과목</th><th>학점</th></tr></thead><tbody>${items.map(([n, c]) => `<tr><td class="l">${esc(n)}</td><td>${c}</td></tr>`).join("")}<tr class="hl"><td class="l">합계</td><td>${sum}</td></tr></tbody></table></div>
         <p class="small">${badge(c3)} ${src(c3)} <span class="muted">· 분석 요약 수치 그대로이며 세부는 확인 필요</span></p>`) : "",
       sec("6. 선택과목 조사·대학 권장이수과목", table(by("cur-06", "cur-07"), basic)),
       sec("7. 우리 4개교", `<ul class="plain">${summary.map((m) => `<li><b>${esc(m.schoolName)}</b> 교과 ${m.creditsSubject}학점 = 지정 ${m.creditsRequired} + 선택 ${m.creditsElective}, 창체 ${m.creditsCreative}학점</li>`).join("")}</ul>
         <p><a class="btn" href="#select/curriculum">학교별 편제표 보기</a> <span class="muted small">학교 편제표 기준 학점이며, 위 서울교육청 기준 필수·자율 분류와 다릅니다.</span></p>`),
     ];
-    el.innerHTML = `<p class="note">서울교육청 자료는 경기 적용 확인 필요. 경기도교육청 행은 요약본이며 원문 미확인. 항목별 배지로 상태를 확인하세요.</p>${sections.join("")}
+    el.innerHTML = `<p class="note">서울교육청 자료는 경기 적용 확인 필요. 경기도교육청 행은 요약본이며 원문 미확인(출처 불일치 가능). 항목별 배지로 상태를 확인하세요.</p>${sections.join("")}
       <p class="muted">수능 출제범위는 <a href="#admission/system">대입 제도</a>에서 봅니다.</p>`;
   };
 
