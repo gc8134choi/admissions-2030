@@ -2,6 +2,7 @@ import { MENU, STATUS } from "./menu.js";
 import { register as registerPolicy } from "./policy.js";
 import { registerHome } from "./home.js";
 import { registerFiles } from "./files.js";
+import { schoolBand } from "./school-card.js";
 import { preloadSubjectInfo, subjectName, decorateSubjectLists } from "./subject-info.js";
 
 const $ = (s) => document.querySelector(s);
@@ -15,11 +16,23 @@ const store = {
 const byId = new Map();
 (function index(nodes, parent) { for (const n of nodes) { n.parent = parent; byId.set(n.id, n); if (n.children) index(n.children, n); } })(MENU, null);
 const trail = (n) => (n ? [...trail(n.parent), n] : []);
-const badge = (s) => `<span class="badge ${s}">${STATUS[s]}</span>`;
+// 상태 배지: 구현된 화면(v1)은 표시하지 않고, 준비 중인 것만 회색 점 + 글자로 보인다
+const badge = (s) => (s === "v1" ? "" : `<span class="badge soon"><i></i>준비 중</span>`);
+const P = (d) => `<svg viewBox="0 0 24 24" aria-hidden="true">${d}</svg>`;
+const MENU_ICON = {
+  home: P('<path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/>'),
+  calendar: P('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>'),
+  school: P('<path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6M12 9v.01"/>'),
+  book: P('<path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2z"/><path d="M4 19V5M9 7h6"/>'),
+  cap: P('<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/>'),
+  compass: P('<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>'),
+  log: P('<path d="M5 3h10l4 4v14H5z"/><path d="M14 3v5h5M8 13h8M8 17h5"/>'),
+  folder: P('<path d="M3 6a2 2 0 012-2h4l2 3h8a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>'),
+};
 
 function drawNav(activeId) {
   const holds = (n) => n.id === activeId || (n.children || []).some(holds);
-  const li = (n, top) => `<li class="${top ? "top-item" : ""} ${top && holds(n) ? "has-on" : ""}"><a href="#${n.id}" class="${n.id === activeId ? "on" : ""}">${n.icon ? n.icon + " " : ""}${esc(n.title)}${badge(n.status)}</a>${n.children ? `<ul>${n.children.map((c) => li(c)).join("")}</ul>` : ""}</li>`;
+  const li = (n, top) => `<li class="${top ? "top-item" : ""} ${top && holds(n) ? "has-on" : ""}"><a href="#${n.id}" class="${n.id === activeId ? "on" : ""}">${MENU_ICON[n.icon] || ""}<span>${esc(n.title)}</span>${badge(n.status)}</a>${n.children ? `<ul>${n.children.map((c) => li(c)).join("")}</ul>` : ""}</li>`;
   $("#nav").innerHTML = `<ul>${MENU.map((n) => li(n, true)).join("")}</ul>`;
 }
 
@@ -183,8 +196,8 @@ async function summaryBody(el, ids) {
   const card = (m) => {
     const sc = schools.find((x) => x.id === m.schoolId) || {};
     const total = m.creditsRequired + m.creditsElective;
-    return `<section class="school"><header><h3>${nm(m.schoolId, m.schoolName, 34)} <button class="star" data-id="${esc(m.schoolId)}" aria-label="관심">${st.includes(m.schoolId) ? "★" : "☆"}</button></h3>
-      ${(() => { const l1 = ["region", "schoolType", "founding", "gender"].filter((k) => vary(k)).map((k) => m[k]).filter(Boolean).join(" · "); return l1 ? `<div class="muted">${esc(l1)}</div>` : ""; })()}
+    const l1 = ["region", "schoolType", "founding", "gender"].filter((k) => vary(k)).map((k) => m[k]).filter(Boolean).join(" · ");
+    return `<section class="school"><header>${schoolBand(m, { starred: st.includes(m.schoolId), sub: l1, logoOk: LOGO_IDS.has(m.schoolId) })}
       ${vary("assignment") && m.assignment ? `<div class="muted">${esc(m.assignment)}</div>` : ""}</header>
       <div class="big">총 ${m.creditsTotal}학점 <span class="muted">(교과 ${m.creditsSubject} + 창체 ${m.creditsCreative})</span></div>
       <div class="bar" title="지정 ${m.creditsRequired} / 선택 ${m.creditsElective}"><span class="req" style="width:${(m.creditsRequired / total) * 100}%">지정 ${m.creditsRequired}</span><span class="ele" style="width:${(m.creditsElective / total) * 100}%">선택 ${m.creditsElective}</span></div>
@@ -320,7 +333,7 @@ async function compareShell(el, onReset, getAreas) {
 }
 
 registerPolicy(views, { $, esc, load, store });
-registerHome(views, { esc, load, store, nm, stars, toggleStar, nameOf, TERMS });
+registerHome(views, { esc, load, store, nm, stars, toggleStar, nameOf, TERMS, hasLogo: (id) => LOGO_IDS.has(id) });
 const filesApi = registerFiles(views, { esc, load, nm });
 
 function render() {
