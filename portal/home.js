@@ -84,22 +84,17 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const ev0 = (id) => P.get(id)?.events?.[0];
     
 
-    // 2) 다음 일정: 학습자와 관련 있는 행만(연도 비어 있으면 공통). 현고3 칩을 켜면 다른 해·현고3 행도 보인다.
+    // 2) 다음 일정: 관련 있는 행만(연도 비어 있으면 공통). 현 고3 일정은 화면에 내지 않는다.
     const limit = new Date(t.getTime() + 90 * DAY);
     let aud = isB ? [] : loadAudience(store);
     const related = (r) => r.topic === "life-schedule" || (r.examYear == null && r.entryYear == null) || r.examYear === examYear || r.entryYear === entryYear; // 졸업·입학은 항상, 대입 일정은 2030학년도 대입 기준만
-    const only3 = (r, e) => { const a = e?.audience || r.audience; return !!a && a.length > 0 && a.every((x) => x === "grade3"); };
+    const isG3 = (r, e) => (e?.audience || r.audience || []).includes("grade3"); // 데이터에 남아 있어도 화면에는 내지 않는다
     const upcoming = policy.filter((r) => r.topic === "hs-schedule" || r.topic === "gg-hs-entry" || r.topic === "exam-schedule" || r.topic === "life-schedule")
       .flatMap((r) => eventsOf(r).map((e) => ({ r, e, sp: span(e.start, e.end) })))
       .filter((x) => x.sp.end >= t && x.sp.start <= limit)
       .sort((a, b) => (a.r.region === "seoul") - (b.r.region === "seoul") || a.sp.start - b.sp.start || a.sp.end - b.sp.end);
-    const upRows = () => upcoming.filter((x) => {
-      const g3 = aud.includes("grade3");
-      if (only3(x.r, x.e)) return g3;
-      if (!related(x.r) && !g3) return false;
-      return audienceMatch(x.e.audience || x.r.audience, aud);
-    });
-    const row = (x) => `<li class="row${only3(x.r, x.e) ? " g3" : ""}"><span class="d${x.sp.start <= t ? " live" : " num"}">${dLabel(x.sp, t)}</span>
+    const upRows = () => upcoming.filter((x) => !isG3(x.r, x.e) && related(x.r) && audienceMatch(x.e.audience || x.r.audience, aud));
+    const row = (x) => `<li class="row"><span class="d${x.sp.start <= t ? " live" : " num"}">${dLabel(x.sp, t)}</span>
       <div><h3>${esc(x.r.title)}${x.e.label ? ` · ${esc(x.e.label)}` : ""}</h3><p class="num">${fmtRange(x.sp, t, x.e)}</p><div class="meta">${badges(x.r)} ${link(x.r)}</div></div></li>`;
     const upList = () => { const rs = upRows().slice(0, 4); return rs.length ? rs.map(row).join("") : `<li class="row"><div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p><small>${isB ? "학교를 고르면 그 학교 일정이 여기에 모입니다." : "앞으로 90일 안에 해당하는 일정이 없어요."}</small></div></li>`; };
 
@@ -119,7 +114,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const oneLine = (b) => { const t1 = String(b || "").split(/(?<=[.。다요])\s/)[0] || ""; return t1.length > 80 ? t1.slice(0, 78) + "…" : t1; };
     const feed = () => {
       const stoneIds = new Set(stones.map((m) => m.id));
-      const evs = upRows().filter((x) => !stoneIds.has(x.r.id)).map((x) => ({ kind: "ev", seoul: x.r.region === "seoul", sp: x.sp, g3: only3(x.r, x.e), title: x.r.title + (x.e.label ? ` · ${x.e.label}` : ""), date: fmtRange(x.sp, t, x.e), line: oneLine(x.r.body), meta: `${badges(x.r)} ${link(x.r)}` }));
+      const evs = upRows().filter((x) => !stoneIds.has(x.r.id)).map((x) => ({ kind: "ev", seoul: x.r.region === "seoul", sp: x.sp, title: x.r.title + (x.e.label ? ` · ${x.e.label}` : ""), date: fmtRange(x.sp, t, x.e), line: oneLine(x.r.body), meta: `${badges(x.r)} ${link(x.r)}` }));
       const sts = stones.filter((m) => dayN(m.date, t) >= 0).map((m) => ({ kind: "stone", m, sp: span(m.date), title: m.label, date: ymdText(m.date), line: "", meta: `${badges(m.row)} ${link(m.row)}` }));
       return [...evs, ...sts].sort((a, b) => !!a.seoul - !!b.seoul || a.sp.start - b.sp.start || a.sp.end - b.sp.end); // 서울 행은 경기·전국 행 다음
     };
@@ -132,9 +127,9 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
       const photo = it.kind === "stone" ? `<div class="hero-ph ms" data-ms="${esc("life:" + it.m.id)}"><div class="ms-p" aria-hidden="true">${ART[it.m.kind] || ART.graduation}</div><span class="ms-a"><button type="button" class="lnk" data-add>사진 넣기</button><button type="button" class="lnk" data-del hidden>삭제</button><input type="file" accept="image/*" hidden></span><p class="hint">사진은 이 기기에만 저장돼요.</p></div>` : "";
       return `<p class="hello" id="hh">가장 가까운 일이에요.</p>
         <button type="button" class="dday" id="dday"${live || n === 0 ? " disabled" : ""}><span class="sr-only">남은 날. 누르면 단위가 바뀝니다. </span>${num}</button>${sub}
-        <h2 class="hero-t${it.g3 ? " g3" : ""}">${esc(it.title)}</h2><p class="hero-d num">${it.date}</p>${it.line ? `<p class="hero-s">${esc(it.line)}</p>` : ""}<p class="hero-meta">${it.meta}</p>${photo}${!live && n > 0 ? '<p class="hint">숫자를 누르면 주·달로 바뀌어요.</p>' : ""}`;
+        <h2 class="hero-t">${esc(it.title)}</h2><p class="hero-d num">${it.date}</p>${it.line ? `<p class="hero-s">${esc(it.line)}</p>` : ""}<p class="hero-meta">${it.meta}</p>${photo}${!live && n > 0 ? '<p class="hint">숫자를 누르면 주·달로 바뀌어요.</p>' : ""}`;
     };
-    const rest = () => { const r = feed().slice(1, 4); return r.length ? r.map((it) => `<li class="row${it.g3 ? " g3" : ""}"><span class="d${it.sp.start <= t ? " live" : " num"}">${dLabel(it.sp, t)}</span><div><h3>${esc(it.title)}</h3><p class="num">${it.date}</p>${it.meta ? `<div class="meta">${it.meta}</div>` : ""}</div></li>`).join("") : '<li class="row"><div class="empty"><p>이어지는 일정은 아직 없어요.</p></div></li>'; };
+    const rest = () => { const r = feed().slice(1, 4); return r.length ? r.map((it) => `<li class="row"><span class="d${it.sp.start <= t ? " live" : " num"}">${dLabel(it.sp, t)}</span><div><h3>${esc(it.title)}</h3><p class="num">${it.date}</p>${it.meta ? `<div class="meta">${it.meta}</div>` : ""}</div></li>`).join("") : '<li class="row"><div class="empty"><p>이어지는 일정은 아직 없어요.</p></div></li>'; };
 
     // 4) 바뀐 소식 1줄
     const log = policy.filter((r) => r.topic === "change-log").map((r) => ({ r, d: dateOf(r.title) })).filter((x) => x.d && span(x.d).start <= t).sort((a, b) => span(b.d).start - span(a.d).start);
