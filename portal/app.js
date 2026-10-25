@@ -133,8 +133,8 @@ async function summaryBody(el, ids) {
       <div class="muted">${esc(m.assignment || "")}</div></header>
       <div class="big">총 ${m.creditsTotal}학점 <span class="muted">(교과 ${m.creditsSubject} + 창체 ${m.creditsCreative})</span></div>
       <div class="bar" title="지정 ${m.creditsRequired} / 선택 ${m.creditsElective}"><span class="req" style="width:${(m.creditsRequired / total) * 100}%">지정 ${m.creditsRequired}</span><span class="ele" style="width:${(m.creditsElective / total) * 100}%">선택 ${m.creditsElective}</span></div>
-      <div class="terms">${TERMS.map((t) => { const b = m.byTerm[t], tot = b.required + b.elective || 1; return `<div><div class="col"><i style="height:${(b.elective / tot) * 100}%"></i></div><span>${t}</span><b>${b.elective}</b></div>`; }).join("")}</div>
-      <div class="muted small">학기별 선택 학점 (막대 = 선택 비중)</div>
+      <div class="terms">${TERMS.map((t) => { const b = m.byTerm[t], tot = b.required + b.elective || 1; return `<div><div class="tnum"><b class="r">${b.required}</b><b class="e">${b.elective}</b></div><div class="col"><i class="e" style="height:${(b.elective / tot) * 100}%"></i><i class="r" style="height:${(b.required / tot) * 100}%"></i></div><span>${t}</span></div>`; }).join("")}</div>
+      <div class="muted small">학기별 학점: <b class="rk">지정</b> · <b class="ek">선택</b> (막대 위 숫자 = 지정 / 선택, 막대 = 비중)</div>
       <dl class="stats"><div><dt>지정 과목</dt><dd>${m.requiredCount}</dd></div><div><dt>택n 묶음</dt><dd>${m.groupCount}</dd></div><div><dt>골라야 하는 과목</dt><dd>${m.pickTotal}</dd></div>
       <div><dt>선택 후보</dt><dd>${m.candidateSubjects}</dd></div><div><dt>선택 폭</dt><dd>${m.breadth}</dd></div><div><dt>첫 선택 학기</dt><dd>${esc(m.firstElectiveTerm || "-")}</dd></div></dl>
       <details><summary>이 학교에만 있는 과목 (${uniq.length})</summary><p>${uniq.map((x) => esc(x.name)).join(", ") || "-"}</p></details>
