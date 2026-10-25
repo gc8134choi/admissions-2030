@@ -18,7 +18,7 @@ export function register(views, { $, esc, load, store }) {
     const list = r.sources || (r.sourceName ? [{ name: r.sourceName, url: r.sourceUrl }] : []);
     // 링크 없는 배부·교육청 자료는 긴 설명 대신 짧은 라벨만 보이고, 전체 설명은 마우스를 올리면 나온다.
     if (r.sourceKind === "material") return '<span class="muted">학교 배부 자료(원본 사진)</span>';
-    const label = { "seoul-gyeonggi": "서울·경기교육청 자료(원본 파일 미게시, 경기는 요약본)", gyeonggi: "경기도교육청 안내자료 요약본(원문 미확인)" }[r.sourceKind];
+    const label = { "seoul-gyeonggi": "서울·경기교육청 자료(원본 파일 미게시, 경기는 요약본)", gyeonggi: "경기도교육청 안내자료 요약본" }[r.sourceKind];
     if (label) return `<span class="muted" title="${esc(r.sourceName || "")}">${label}</span>`;
     if (r.sourceKind === "opinion" || r.sourceKind === "academy") return `<span class="muted">${esc(r.sourceName || "출처 미표기")}</span>`;
     if (r.status === "seoul-verified") { const no = (r.sourceName || "").match(/서교연 [\d-]+/); return `<span class="muted" title="${esc(r.sourceName || "")}">서울교육청 선택 과목 안내서${no ? `(${no[0]})` : ""}</span>`; }
@@ -82,7 +82,7 @@ export function register(views, { $, esc, load, store }) {
     filtered(el, body, (f) => {
       const rs = (x) => x.filter((r) => !f || r.status === f);
       $("#ptbl").innerHTML = log ? logTable(rs(body)) : Object.entries(TOPIC).map(([t, label]) => { const g = rs(body.filter((r) => key(r) === t)); if (!g.length) return "";
-        if (t === "academy") return `<h3>${label} <span class="opinion-label">학원</span></h3><div class="opinion"><p class="muted small">학원 설명회 의견·자료입니다. 원문 미확인이며 확인된 사실이 아닙니다.</p>${table(g, cols)}</div>`;
+        if (t === "academy") return `<h3>${label} <span class="opinion-label">학원</span></h3><div class="opinion"><p class="muted small">학원 설명회 의견·자료입니다. 확인된 사실이 아닙니다.</p>${table(g, cols)}</div>`;
         return `<h3>${label}</h3>${t === "cur-select" ? pickLine : ""}${NOTE[t] || ""}${table(g, cols)}`; }).join("") || '<p class="muted">조건에 맞는 항목이 없습니다.</p>';
     });
   };
@@ -146,7 +146,7 @@ export function register(views, { $, esc, load, store }) {
       sec("8. 우리 4개교", `<ul class="plain">${summary.map((m) => `<li><b>${esc(m.schoolName)}</b> 교과 ${m.creditsSubject}학점 = 지정 ${m.creditsRequired} + 선택 ${m.creditsElective}, 창체 ${m.creditsCreative}학점</li>`).join("")}</ul>
         <p><a class="btn" href="#select/curriculum">학교별 편제표 보기</a> <span class="muted small">학교 편제표 기준 학점이며, 위 서울교육청 기준 필수·자율 분류와 다릅니다.</span></p>`),
     ];
-    el.innerHTML = `<p class="note">서울교육청 자료는 경기 적용 확인 필요. 경기도교육청 행은 요약본이며 원문 미확인(출처 불일치 가능). 항목별 배지로 상태를 확인하세요.</p>${sections.join("")}
+    el.innerHTML = `<p class="note">서울교육청 자료는 경기 적용 확인 필요. 경기도교육청 행은 요약본(출처 불일치 가능). 항목별 배지로 상태를 확인하세요.</p>${sections.join("")}
       <p class="muted">수능 출제범위는 <a href="#admission/system">대입 제도</a>에서 봅니다.</p>`;
   };
 
