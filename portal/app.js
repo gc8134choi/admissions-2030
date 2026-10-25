@@ -217,12 +217,15 @@ async function compareShell(el, onReset, getAreas) {
     }
     let rows = [...by.values()];
     if (f.diff) rows = rows.filter((r) => ids.some((id) => !r.cells[id]));
-    // 정렬: 교과군 → 지정 있는 과목 먼저(지정으로 둔 학교가 많은 순) → 선택 → 이른 학기 → 과목명
+    // 정렬: 교과군 → 지정 → 선택 → 구분(공통·일반·진로·융합, 미표기 마지막) → 학점 내림차순 → 과목명
+    const KORDER = ["공통", "일반", "진로", "융합"];
     for (const r of rows) {
-      r.req = ids.filter((id) => (r.cells[id] || []).some((o) => o.slot === "required")).length;
-      r.term = ids.flatMap((id) => (r.cells[id] || []).map((o) => o.term)).sort()[0] || "9-9";
+      const os = ids.flatMap((id) => r.cells[id] || []);
+      r.isReq = os.some((o) => o.slot === "required") ? 0 : 1;
+      r.kind = Math.min(...os.map((o) => { const i = KORDER.indexOf(o.primaryKind || o.kindGuess); return i < 0 ? KORDER.length : i; }));
+      r.cr = Math.max(...os.map((o) => o.credits || 0));
     }
-    rows.sort((a, b) => facets.areas.indexOf(a.area) - facets.areas.indexOf(b.area) || (b.req > 0) - (a.req > 0) || b.req - a.req || a.term.localeCompare(b.term) || a.name.localeCompare(b.name, "ko"));
+    rows.sort((a, b) => facets.areas.indexOf(a.area) - facets.areas.indexOf(b.area) || a.isReq - b.isReq || a.kind - b.kind || b.cr - a.cr || a.name.localeCompare(b.name, "ko"));
     const names = ids.map((id) => nameOf(schools, id));
     const uniq = (a) => [...new Set(a)];
     const cell = (os) => {
