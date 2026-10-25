@@ -351,6 +351,119 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false
+    },
+    {
+      "id": "sch-01",
+      "topic": "exam-schedule",
+      "examYear": 2027,
+      "title": "2027학년도 수능(참고, 현 고3)",
+      "body": "시험 2026.11.19(목), 원서접수 8.24~9.4, 성적통지 12.11",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "평가원 수능 홈페이지",
+      "sourceUrl": "https://www.suneung.re.kr/main.do?s=suneung",
+      "extraSources": [
+        {
+          "name": "정리글",
+          "url": "https://makerschool.kr/458"
+        }
+      ],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "sch-02",
+      "topic": "exam-schedule",
+      "examYear": 2028,
+      "title": "2028학년도 수능",
+      "body": "시험 2027.11.18(목), 성적통지 2027.12.10. 모의평가·정시 세부 일정은 기본계획 공고 후 확정",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "교육부 보도자료",
+      "sourceUrl": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512",
+      "extraSources": [
+        {
+          "name": "KDI EIEC",
+          "url": "https://eiec.kdi.re.kr/policy/materialView.do?num=267335&pg=&pp=&topic=L"
+        }
+      ],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "sch-03",
+      "topic": "exam-schedule",
+      "examYear": 2028,
+      "title": "2028학년도 수시 원서접수",
+      "body": "2027.9.20 시작. 하반기 모의평가를 9월에서 8월 말로 옮기고 성적통지 후 접수",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "한국교육신문(hangyo)",
+      "sourceUrl": "https://www.hangyo.com/mobile/article.html?no=105345",
+      "extraSources": [
+        {
+          "name": "대학지성",
+          "url": "https://dhnews.co.kr/news/view/1065582138689771"
+        }
+      ],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "sch-04",
+      "topic": "exam-schedule",
+      "examYear": 2028,
+      "title": "2028학년도 대입전형 기본사항",
+      "body": "대교협이 2025.8.28 발표",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "대교협 보도자료 PDF",
+      "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/08/28/application_b244345d6cc72f7e172df15e831c276e.pdf",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "sch-05",
+      "topic": "exam-schedule",
+      "examYear": 2030,
+      "title": "2030학년도 대입전형 기본사항 발표",
+      "body": "2027.8 무렵 발표 가능성(최근 관행: 2028학년도분은 2025.8 말). 법정 기한 계산상 2027.9경",
+      "status": "추정",
+      "sourceKind": null,
+      "sourceName": "대교협 기본사항 안내",
+      "sourceUrl": "https://www.kcue.or.kr/work/sub06/sub01.php",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": false
+    },
+    {
+      "id": "sch-06",
+      "topic": "exam-schedule",
+      "examYear": 2030,
+      "title": "2030학년도 수능 시행일",
+      "body": "확인 못 함. 2029.11 중하순 목요일로 짐작되나 직접 확인 자료 없음",
+      "status": "추정",
+      "sourceKind": null,
+      "sourceName": null,
+      "sourceUrl": null,
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": false
+    },
+    {
+      "id": "sch-07",
+      "topic": "exam-schedule",
+      "examYear": 2030,
+      "title": "2030학년도 수능 시행 기본계획 공고",
+      "body": "2028학년도 분이 2027.3 공고 예정(보도)이므로 2030학년도 분은 2029.3 전후로 추정. 포털 CLAUDE.md의 \"2027.3 공고\"는 2028학년도 수능 기준으로 보이며 2030학년도와 맞는지 확인 필요",
+      "status": "추정",
+      "sourceKind": null,
+      "sourceName": "KDI EIEC",
+      "sourceUrl": "https://eiec.kdi.re.kr/policy/materialView.do?num=267335&pg=&pp=&topic=L",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": false
     }
   ]
 }
