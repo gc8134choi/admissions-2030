@@ -111,7 +111,7 @@ export function register(views, { $, esc, load, store }) {
     // 한 줄 안내(헤어라인 위아래). 나머지 안내는 접어 둔다.
     el.innerHTML = `<div class="ed"><div class="ed-top"><b>2027.3 공표 전까지는 확정이 아니에요.</b><details><summary>자세히</summary>${banner(rows)}${notice()}${log || curProfile().id !== "A" ? "" : `<p>${curProfile().label}(${curProfile().grade})는 2028 개편안의 직접 대상(2025 입학생)이 아니에요. 2030학년도 제도는 2027.3 공표 내용에 따라 바뀔 수 있어요.</p>`}</details></div>${tabs([["sys", "#admission/system", "제도"], ["log", "#admission/system?t=log", "바뀐 소식"]], log ? "log" : "sys")}
       ${log ? "" : await rulesSection()}${statusSelect(body)}<div id="ptbl"></div></div>`;
-    const TOPIC = { "admission-system": "2028학년도 개편 확정안과 2030학년도 적용", "admission-outlook": "2030학년도 대상 추가 동향", "admission-structure": "대입 전형 구조", "cur-select": "수능 출제범위(참고)", academy: "학원 설명 자료", "profile-2033": "2033학년도 대입 전망(추정)" };
+    const TOPIC = { "admission-system": "2028학년도 개편안과 2030학년도 적용", "admission-outlook": "2030학년도 대상 추가 동향", "admission-structure": "대입 전형 구조", "cur-select": "수능 출제범위(참고)", academy: "학원 설명 자료", "profile-2033": "2033학년도 대입 전망(추정)" };
     const NOTE = { "cur-select": '<p class="ed-src">서울교육청 자료라서 경기 적용은 확인이 필요해요. 수능 출제범위는 추정이고, 2030학년도 확정이 아니에요.</p>' };
     const key = (r) => (ACD_SYS.has(r.id) ? "academy" : CUR_SYS.has(r.id) ? CUR_GROUP[r.id] || "cur-select" : r.topic);
     // 선택과목 조사·대학 권장이수과목은 고교학점제 이해에서 자세히 보고, 여기는 한 줄 요약만 둔다.

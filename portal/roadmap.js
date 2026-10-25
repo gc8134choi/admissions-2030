@@ -28,7 +28,7 @@ export async function roadmapView(el, { load, esc, learner, fmt, badgeMain, noti
   el.innerHTML = `<div class="ed"><p class="ed-top"><b>${esc(learner.label)}의 학년별 로드맵이에요.</b> 추정은 아직 공고 전이라 바뀔 수 있어요.</p>
     <nav class="ed-toc" aria-label="시기 축">${stages.map((s) => `<button type="button" data-go="rd-${esc(s.key)}"${s.key === cur.key ? ' aria-current="true"' : ""}>${esc(s.label)}</button>`).join("")}</nav>
     <div class="ed-filter" id="rdw" role="group" aria-label="누구 할 일"><span>보기</span><button type="button" class="on" data-w="">전체</button><button type="button" data-w="학생">학생</button><button type="button" data-w="학부모">학부모</button></div>
-    <div id="rdsec"></div><p class="ed-src">확정된 항목은 공식 원문을 확인했어요. 표시가 없으면 확인된 거예요.</p></div>`;
+    <div id="rdsec"></div></div>`;
   const $sections = el.querySelector("#rdsec");
   draw();
   el.querySelector("#rdw").addEventListener("click", (e) => { const b = e.target.closest("[data-w]"); if (!b) return; who = b.dataset.w; el.querySelectorAll("#rdw button").forEach((x) => x.classList.toggle("on", x === b)); draw(); });
