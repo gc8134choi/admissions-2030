@@ -23,6 +23,16 @@
 | 2030학년도 수능 | 2029.11.15(목) 잠정 예상. 공식 공고 전이며 확정 아님 | 추정 | - | 사용자 잠정 예상, 공식 공고 전; 2029.11 셋째 주 목요일 관행([평가원 수능 홈페이지](https://www.suneung.re.kr/main.do?s=suneung), [교육부 보도자료](https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512)) |
 | 2030학년도 정시 | 원서접수 2029.12 말~2030.1 초, 전형 2030.1~2월로 추정(2028학년도분 기준). 정시 접수가 12월이라는 근거는 없음 | 추정 | - | 위 2028학년도 정시 행 기준 |
 
+## 현 고3 대입 일정 (2027학년도 대입)
+| 항목 | 내용 | 상태 | 구분 | 출처 |
+|---|---|---|---|---|
+| 2027학년도 수시 원서접수 | 2026.9.7(월)~9.11(금) 중 대학별 3일 이상. 수시 지원은 최대 6회 | 보도(원문 미확인) | 매체 | [입시 일정 정리(makerschool)](https://makerschool.kr/482), [전국지역신문협회](https://www.anln.org/news/articleView.html?idxno=12395), [이다로 공식 주요일정](https://edaero.kr/analysis/guide/%EC%A0%95%EC%8B%9C-%ED%83%80%EC%9E%84%EB%9D%BC%EC%9D%B8/2027%ED%95%99%EB%85%84%EB%8F%84-%EA%B3%B5%EC%8B%9D-%EC%A3%BC%EC%9A%94%EC%9D%BC%EC%A0%95) |
+| 2027학년도 수시 전형기간·합격자 발표 | 전형기간 2026.9.12~12.17, 합격자 발표 12.18까지(대교협 자료 인용 보도) | 보도(원문 미확인) | 매체 | [입시 일정 정리(makerschool)](https://makerschool.kr/482), [전국지역신문협회](https://www.anln.org/news/articleView.html?idxno=12395), [이다로 공식 주요일정](https://edaero.kr/analysis/guide/%EC%A0%95%EC%8B%9C-%ED%83%80%EC%9E%84%EB%9D%BC%EC%9D%B8/2027%ED%95%99%EB%85%84%EB%8F%84-%EA%B3%B5%EC%8B%9D-%EC%A3%BC%EC%9A%94%EC%9D%BC%EC%A0%95) |
+| 2027학년도 수시 합격자 등록·충원 | 최초 합격자 등록 2026.12.21~23, 미등록 충원 통보 12.24~29, 충원합격 등록 마감 12.30 | 보도(원문 미확인) | 매체 | [입시 일정 정리(makerschool)](https://makerschool.kr/482), [전국지역신문협회](https://www.anln.org/news/articleView.html?idxno=12395), [이다로 공식 주요일정](https://edaero.kr/analysis/guide/%EC%A0%95%EC%8B%9C-%ED%83%80%EC%9E%84%EB%9D%BC%EC%9D%B8/2027%ED%95%99%EB%85%84%EB%8F%84-%EA%B3%B5%EC%8B%9D-%EC%A3%BC%EC%9A%94%EC%9D%BC%EC%A0%95) |
+| 2027학년도 정시 원서접수 | 2027.1.4(월)~1.7(목) 중 3일 이상. 일정표 1종은 마감을 1.5로 적어 확인 필요 | 보도(원문 미확인) | 매체 | [메가스터디 대입 일정](https://www.megastudy.net/entinfo/main/entinfo_popup_251209.asp?tab_no=1), [내신닷컴 일정표 PDF](https://www.nesin.com/images/ipsi_plan/2027_ipsi_plan.pdf), [이다로 공식 주요일정](https://edaero.kr/analysis/guide/%EC%A0%95%EC%8B%9C-%ED%83%80%EC%9E%84%EB%9D%BC%EC%9D%B8/2027%ED%95%99%EB%85%84%EB%8F%84-%EA%B3%B5%EC%8B%9D-%EC%A3%BC%EC%9A%94%EC%9D%BC%EC%A0%95) |
+| 2027학년도 정시 전형기간 | 가군 2027.1.11~17, 나군 1.18~24, 다군 1.25~31 | 보도(원문 미확인) | 매체 | [메가스터디 대입 일정](https://www.megastudy.net/entinfo/main/entinfo_popup_251209.asp?tab_no=1), [내신닷컴 일정표 PDF](https://www.nesin.com/images/ipsi_plan/2027_ipsi_plan.pdf), [이다로 공식 주요일정](https://edaero.kr/analysis/guide/%EC%A0%95%EC%8B%9C-%ED%83%80%EC%9E%84%EB%9D%BC%EC%9D%B8/2027%ED%95%99%EB%85%84%EB%8F%84-%EA%B3%B5%EC%8B%9D-%EC%A3%BC%EC%9A%94%EC%9D%BC%EC%A0%95) |
+| 2027학년도 정시 합격자 발표·등록 | 합격자 발표 2027.2.5까지(자료 1종), 등록 2.10~12, 미등록 충원 통보 2.13~17, 등록 마감 2.18 22시 | 보도(원문 미확인) | 매체 | [메가스터디 대입 일정](https://www.megastudy.net/entinfo/main/entinfo_popup_251209.asp?tab_no=1), [내신닷컴 일정표 PDF](https://www.nesin.com/images/ipsi_plan/2027_ipsi_plan.pdf), [이다로 공식 주요일정](https://edaero.kr/analysis/guide/%EC%A0%95%EC%8B%9C-%ED%83%80%EC%9E%84%EB%9D%BC%EC%9D%B8/2027%ED%95%99%EB%85%84%EB%8F%84-%EA%B3%B5%EC%8B%9D-%EC%A3%BC%EC%9A%94%EC%9D%BC%EC%A0%95) |
+
 ## 확인 못 함
 - 2030학년도 수시 원서접수·정시 일정, 모집군 체계
 - 2028학년도 수시 6회·정시 세부 날짜
