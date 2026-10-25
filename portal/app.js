@@ -60,10 +60,11 @@ const views = {
   },
 
   async status(el) {
-    const [schools, summary] = await Promise.all([load("schools"), load("summary")]);
+    const [schools, summary, curricula] = await Promise.all([load("schools"), load("summary"), load("curricula")]);
+    const cdate = (curricula.map((c) => /\d{4}-\d{2}-\d{2}/.exec(c._meta?.source?.[0]?.note || "")?.[0]).filter(Boolean).sort().pop() || "");
     el.innerHTML = `<div class="tw"><table><thead><tr><th class="l">학교</th><th>입학학년도</th><th>정보 수집일</th><th>편제표 신뢰도</th><th>열린 flag</th><th>구분 미표기 행</th><th>확인 필요</th></tr></thead><tbody>${summary.map((m) => { const sc = schools.find((s) => s.id === m.schoolId); return `<tr><td class="l">${esc(m.schoolName)}</td><td>${m.entryYear}</td><td>${esc(sc?._meta?.updated || "-")}</td><td>${esc(m.confidence)}</td><td>${m.flagsOpen}</td><td>${m.kindMissingRows}</td><td>${m.reviewCount}</td></tr>`; }).join("")}</tbody></table></div>
       <p class="muted">unverified = 사진 대조 전 / reported = 보도·사용자 확인 / verified = 대조 완료</p>
-      <p class="note">편제표 값은 AI가 학교 배부 사진에서 옮긴 것으로, 일부(flag 22행)만 사진과 대조했습니다. 수능 범위는 2028 통합형 수능 기준 <b>추정</b>이며, 편제표는 개설 가능 <b>후보</b>입니다. 중요한 결정 전에는 원본으로 확인하세요.</p>`;
+      <p class="note">편제표 값은 AI가 학교 배부 사진에서 옮긴 뒤 <b>사용자 사진 대조 완료${cdate ? `, ${esc(cdate)}` : ""}</b>입니다. 수능 범위는 2028 통합형 수능 기준 <b>추정</b>이며, 편제표는 개설 가능 <b>후보</b>입니다.</p>`;
   },
 };
 

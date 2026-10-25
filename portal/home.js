@@ -104,7 +104,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const rules = ["hs-11", "hs-12", "hs-13"].map((id) => P.get(id)).filter(Boolean);
     const unv = policy.filter((r) => r.unverified).length;
     const flags = summary.reduce((a, m) => ({ t: a.t + m.flagsTotal, c: a.c + m.flagsChecked, o: a.o + m.flagsOpen }), { t: 0, c: 0, o: 0 });
-    const verified = summary.filter((m) => m.confidence === "verified").length;
+    const verified = summary.filter((m) => m.confidence !== "unverified").length; // 사진 대조 전이 아닌 학교
     const ok = canStore();
 
     el.innerHTML = `<div class="hm">
