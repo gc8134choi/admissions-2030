@@ -23,6 +23,21 @@ export function preloadSubjectInfo(load) {
   return loading;
 }
 
+// 이미 그려진 표의 본문(쉼표·가운데점·슬래시 등으로 나열된 과목명)에 ⓘ를 붙인다. 정책 화면 파일은 건드리지 않는다.
+export async function decorateSubjectLists(el, load, headingPrefix) {
+  await preloadSubjectInfo(load);
+  const h = [...el.querySelectorAll("h3")].find((x) => x.textContent.trim().startsWith(headingPrefix));
+  const box = h?.nextElementSibling;
+  if (!box || box.dataset.siDone) return;
+  box.dataset.siDone = "1";
+  box.querySelectorAll("tbody td.l").forEach((td) => {
+    if (td.children.length) return; // 굵은 제목·배지 셀 제외(본문 셀만)
+    const parts = td.textContent.split(/([,·/:|()]|\s{2,})/);
+    if (!parts.some((t) => t.trim() && hasSubjectInfo(t))) return;
+    td.innerHTML = parts.map((t) => (t.trim() && hasSubjectInfo(t) ? subjectName(t.trim()) : esc(t))).join("");
+  });
+}
+
 export const hasSubjectInfo = (name) => MAP.has(keyOf(name));
 
 // 과목명(이스케이프됨) + 설명이 있으면 ⓘ 버튼
@@ -46,9 +61,10 @@ function open(btn) {
   const srcHtml = src ? (typeof src === "string" ? esc(src) : src.url && /^https?:\/\//.test(src.url) ? `<a href="${esc(src.url)}" target="_blank" rel="noopener">${esc(src.name || src.url)}</a>` : esc(src.name || "")) : "";
   pop = document.createElement("div");
   pop.className = "sip"; pop.setAttribute("role", "dialog"); pop.setAttribute("aria-label", `${it.name} 설명`); pop.tabIndex = -1;
-  pop.innerHTML = `<div class="sip-h"><b>${esc(it.name)}</b>${it.area ? ` <span class="muted small">${esc(it.area)}</span>` : ""}<button type="button" class="sip-x" aria-label="닫기">×</button></div>
+  pop.innerHTML = `<div class="sip-h"><b>${esc(it.name)}</b>${it.area ? ` <span class="muted small">${esc([it.area, it.type].filter(Boolean).join(" · "))}</span>` : ""}<button type="button" class="sip-x" aria-label="닫기">×</button></div>
     <p>${txt(it.summary)}</p>
-    ${it.credit || it.old2015 || it.majors ? `<dl class="sip-d">${it.credit ? `<dt>학점</dt><dd>${txt(it.credit)}</dd>` : ""}${it.old2015 ? `<dt>2015 개정</dt><dd>${txt(it.old2015)}</dd>` : ""}${it.majors ? `<dt>관련 학과</dt><dd>${txt(it.majors)}</dd>` : ""}</dl>` : ""}
+    ${it.specialPurpose ? '<p class="muted small">특수 목적 고교 과목</p>' : ""}
+    <dl class="sip-d"><dt>학점</dt><dd>${txt(it.credit || META.defaultCredit || "확인 필요")}</dd>${""}${it.old2015 ? `<dt>2015 개정</dt><dd>${txt(it.old2015)}</dd>` : ""}${it.majors ? `<dt>관련 학과</dt><dd>${txt(it.majors)}</dd>` : ""}</dl>
     <div class="sip-f small">${srcHtml ? `출처 ${srcHtml}` : ""}${status ? ` <span class="pst ${esc(status)}">${esc(PST[status] || status)}</span>` : ""}${unv ? ' <span class="unv">원문 미확인</span>' : ""}</div>`;
   document.body.appendChild(pop);
   anchor = btn; btn.setAttribute("aria-expanded", "true");
