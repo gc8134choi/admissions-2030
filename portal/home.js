@@ -58,20 +58,24 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
       ? upcoming.map((x) => `<li><span class="hm-d${x.sp.start <= t ? " now" : ""}">${dLabel(x.sp, t)}</span><span class="hm-date">${fmtDate(x.sp, t)}${x.sp.end > x.sp.start && !x.sp.month ? "~" + two(x.sp.end.getMonth() + 1) + "." + two(x.sp.end.getDate()) : ""}</span><span class="hm-tx"><b>${esc(x.r.title)}</b> · ${esc(x.e.label)}</span><span class="hm-bd">${badges(x.r)}</span>${link(x.r)}</li>`).join("")
       : '<li class="muted">예정된 일정 없음</li>';
 
-    // 3) 장기 타임라인: 마일스톤은 policy.json 행에서 읽는다(없는 항목은 데이터 없음으로 표시).
-    const mk = (label, row, key, date) => ({ label, row, key, date });
+    // 3) 장기 타임라인: 모든 마일스톤을 policy.json 행에서 읽는다.
+    const rng = (e) => { const s = span(e.start, e.end); return s.month && e.end && e.end !== e.start ? `${fmtDate(s, t)}~${e.end.slice(0, 4)}.${e.end.slice(5, 7)}` : fmtDate(s, t); };
+    const one = (id, label, suffix = "") => { const r = P.get(id), e = ev0(id); return { label, row: r, key: e?.start, date: e ? rng(e) + suffix : "" }; };
+    const subs = ["sch-11", "sch-12", "sch-13"].map((id) => ({ r: P.get(id), e: ev0(id) })).filter((x) => x.r && x.e);
     const ms = [
-      mk("고입 후기 전형", P.get("hs-05"), ev0("hs-05")?.start, ev0("hs-05") && fmtDate(span(ev0("hs-05").start), t)),
-      mk("중장기 대입 개편안 공표", P.get("log-10"), dateOf(P.get("log-10")?.title || ""), dateOf(P.get("log-10")?.title || "").replace("-", ".")),
-      // 입학: policy.json에 항목이 없어 entryYear로만 표기(월은 상태 판정용 가정, 화면에는 안 보임)
-      mk("입학", null, `${entryYear}-03`, `${entryYear}학년도`),
-      mk("수능 시행 기본계획 공고", P.get("sch-08"), ev0("sch-08")?.start, ev0("sch-08") && fmtDate(span(ev0("sch-08").start), t) + " 전후"),
-      mk(`${examYear}학년도 수능`, P.get("sch-07"), ev0("sch-07")?.start, ev0("sch-07") && fmtDate(span(ev0("sch-07").start), t)),
-      mk(`${examYear}학년도 대입`, null, `${examYear}-01`, "일정 미정"),
+      one("hs-05", "고입 후기 전형"),
+      { label: "중장기 대입 개편안 공표", row: P.get("log-10"), key: dateOf(P.get("log-10")?.title || ""), date: dateOf(P.get("log-10")?.title || "").replace("-", ".") },
+      one("sch-09", "입학"),
+      one("sch-08", "수능 시행 기본계획 공고", " 전후"),
+      { label: `${examYear}학년도 대입`, row: null, key: subs.map((x) => x.e.start).sort()[0], date: "", subs },
     ];
-    const state = (m) => { if (!m.key) return ""; const sp = span(m.key); return sp.end < t ? "past" : ""; };
+    const state = (m) => (m.key && span(m.key).end < t ? "past" : "");
     let nextDone = false;
-    const tl = ms.map((m) => { let cls = state(m); if (!cls && !nextDone) { cls = "next"; nextDone = true; } return `<li class="${cls}"><span class="hm-dot"></span><span class="hm-mdate">${esc(m.date || "일정 데이터 없음")}</span><b>${esc(m.label)}</b>${m.row ? `<span>${badges(m.row)}</span>` : ""}</li>`; }).join("");
+    const tl = ms.map((m) => {
+      let cls = state(m); if (!cls && !nextDone) { cls = "next"; nextDone = true; }
+      const subHtml = m.subs ? `<div class="hm-subs">${m.subs.map((x) => `<div><span class="hm-mdate">${rng(x.e)}</span> <b>${esc(x.r.title.replace(`${examYear}학년도 `, ""))}</b> <span class="pst ${x.r.status}">${PST[x.r.status]}</span></div>`).join("")}</div>` : "";
+      return `<li class="${cls}"><span class="hm-dot"></span>${m.date || !m.subs ? `<span class="hm-mdate">${esc(m.date || "일정 데이터 없음")}</span>` : ""}<b>${esc(m.label)}</b>${m.row ? `<span>${badges(m.row)}</span>` : ""}${subHtml}</li>`;
+    }).join("");
 
     // 4) 최근 변경: 제도 변경 로그 중 날짜가 있고 오늘 이전인 최신 3건
     const log = policy.filter((r) => r.topic === "change-log").map((r) => ({ r, d: dateOf(r.title) })).filter((x) => x.d && span(x.d).start <= t)
