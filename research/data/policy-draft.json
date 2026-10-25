@@ -13,7 +13,8 @@
       "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "확정(원문 미확인)"
     },
     {
       "id": "adm-02",
@@ -27,7 +28,8 @@
       "sourceUrl": "https://files-scs.pstatic.net/2024/07/02/Ic4S8r8egU/[%EA%B5%90%EC%9C%A1%EB%B6%80+12-27(%EC%88%98",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "확정(원문 미확인)"
     },
     {
       "id": "adm-03",
@@ -46,7 +48,8 @@
         }
       ],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "확정(원문 미확인)"
     },
     {
       "id": "adm-04",
@@ -60,7 +63,8 @@
       "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "확정(원문 미확인)"
     },
     {
       "id": "adm-05",
@@ -74,7 +78,8 @@
       "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "확정(원문 미확인, 시기 조정은 미결정)"
     },
     {
       "id": "adm-06",
@@ -88,7 +93,8 @@
       "sourceUrl": null,
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": false
+      "unverified": false,
+      "statusNote": null
     },
     {
       "id": "adm-07",
@@ -102,7 +108,8 @@
       "sourceUrl": "https://eiec.kdi.re.kr/policy/materialView.do?num=267335&pg=&pp=&topic=L",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": false
+      "unverified": false,
+      "statusNote": null
     },
     {
       "id": "adm-08",
@@ -121,7 +128,8 @@
         }
       ],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "adm-09",
@@ -135,7 +143,8 @@
       "sourceUrl": "https://www.kyobit.com/news/articleView.html?idxno=5130",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "adm-10",
@@ -149,7 +158,8 @@
       "sourceUrl": "https://v.daum.net/v/20251210100131836",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인, 개인 제안)"
     },
     {
       "id": "hs-01",
@@ -163,7 +173,8 @@
       "sourceUrl": "https://www.kyobit.com/news/articleView.html?idxno=5127",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "hs-02",
@@ -177,7 +188,8 @@
       "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=604064",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "hs-03",
@@ -191,7 +203,8 @@
       "sourceUrl": "https://www.kyobit.com/news/articleView.html?idxno=5127",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "hs-04",
@@ -205,7 +218,8 @@
       "sourceUrl": "https://high-job.sen.go.kr/FUS/BO/J1List.do",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "hs-05",
@@ -219,7 +233,8 @@
       "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=604064",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "hs-06",
@@ -233,7 +248,8 @@
       "sourceUrl": null,
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": false
+      "unverified": false,
+      "statusNote": null
     },
     {
       "id": "hs-07",
@@ -252,7 +268,8 @@
         }
       ],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "hs-08",
@@ -266,7 +283,8 @@
       "sourceUrl": "https://www.make2t.kr/2026/10/hischool-high-school-admission-2027.html",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "hs-09",
@@ -280,7 +298,8 @@
       "sourceUrl": "https://www.nocutnews.co.kr/news/5239739",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": false
+      "unverified": false,
+      "statusNote": null
     },
     {
       "id": "hs-10",
@@ -294,7 +313,8 @@
       "sourceUrl": null,
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": false
+      "unverified": false,
+      "statusNote": null
     },
     {
       "id": "hs-11",
@@ -308,7 +328,8 @@
       "sourceUrl": "https://www.sedaily.com/article/12985967",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "hs-12",
@@ -322,7 +343,8 @@
       "sourceUrl": "https://www.edpl.co.kr/news/articleView.html?idxno=33",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "hs-13",
@@ -336,7 +358,8 @@
       "sourceUrl": "https://www.gyopool.com/blog/high-school-credit-system-ai",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "hs-14",
@@ -350,7 +373,8 @@
       "sourceUrl": null,
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": false
+      "unverified": false,
+      "statusNote": null
     },
     {
       "id": "sch-01",
@@ -369,7 +393,8 @@
         }
       ],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "확정(원문 미확인)"
     },
     {
       "id": "sch-02",
@@ -388,7 +413,8 @@
         }
       ],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "sch-03",
@@ -407,7 +433,8 @@
         }
       ],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "확정(원문 미확인)"
     },
     {
       "id": "sch-04",
@@ -426,7 +453,8 @@
         }
       ],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "sch-05",
@@ -440,7 +468,8 @@
       "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/08/28/application_b244345d6cc72f7e172df15e831c276e.pdf",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "확정(원문 미확인)"
     },
     {
       "id": "sch-06",
@@ -454,21 +483,23 @@
       "sourceUrl": "https://www.kcue.or.kr/work/sub06/sub01.php",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": false
+      "unverified": false,
+      "statusNote": null
     },
     {
       "id": "sch-07",
       "topic": "exam-schedule",
       "examYear": 2030,
       "title": "2030학년도 수능 시행일",
-      "body": "확인 못 함. 2029.11 중하순 목요일로 짐작되나 직접 확인 자료 없음",
+      "body": "2029.11.15(목) 잠정 예상. 공식 공고 전이며 확정 아님",
       "status": "추정",
       "sourceKind": null,
       "sourceName": null,
       "sourceUrl": null,
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": false
+      "unverified": false,
+      "statusNote": null
     },
     {
       "id": "sch-08",
@@ -482,7 +513,8 @@
       "sourceUrl": "https://eiec.kdi.re.kr/policy/materialView.do?num=267335&pg=&pp=&topic=L",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": false
+      "unverified": false,
+      "statusNote": null
     },
     {
       "id": "sch-09",
@@ -496,7 +528,8 @@
       "sourceUrl": null,
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": false
+      "unverified": false,
+      "statusNote": null
     },
     {
       "id": "sch-10",
@@ -519,7 +552,8 @@
         }
       ],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "sch-11",
@@ -533,14 +567,15 @@
       "sourceUrl": "https://www.hangyo.com/mobile/article.html?no=105345",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": false
+      "unverified": false,
+      "statusNote": null
     },
     {
       "id": "sch-12",
       "topic": "exam-schedule",
       "examYear": 2030,
       "title": "2030학년도 수능",
-      "body": "2029.11 중하순 목요일로 추정(2027학년도 2026.11.19, 2028학년도 2027.11.18). 시행일 확정 공고는 확인 못 함",
+      "body": "2029.11.15(목) 잠정 예상. 공식 공고 전이며 확정 아님",
       "status": "추정",
       "sourceKind": null,
       "sourceName": "평가원 수능 홈페이지",
@@ -552,7 +587,8 @@
         }
       ],
       "checkedAt": "2026-10-25",
-      "unverified": false
+      "unverified": false,
+      "statusNote": null
     },
     {
       "id": "sch-13",
@@ -566,7 +602,8 @@
       "sourceUrl": null,
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": false
+      "unverified": false,
+      "statusNote": null
     },
     {
       "id": "log-01",
@@ -580,7 +617,8 @@
       "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156593725",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "확정(원문 미확인)"
     },
     {
       "id": "log-02",
@@ -594,7 +632,8 @@
       "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "확정(원문 미확인)"
     },
     {
       "id": "log-03",
@@ -608,7 +647,8 @@
       "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "확정(원문 미확인)"
     },
     {
       "id": "log-04",
@@ -622,7 +662,8 @@
       "sourceUrl": "https://news.unn.net/news/articleView.html?idxno=577665",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "log-05",
@@ -636,7 +677,8 @@
       "sourceUrl": "https://www.kcue.or.kr/_upload/news/2025/08/28/application_b244345d6cc72f7e172df15e831c276e.pdf",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "확정(원문 미확인)"
     },
     {
       "id": "log-06",
@@ -650,7 +692,8 @@
       "sourceUrl": "https://v.daum.net/v/20251210100131836",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인, 개인 제안)"
     },
     {
       "id": "log-07",
@@ -664,7 +707,8 @@
       "sourceUrl": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "확정(원문 미확인)"
     },
     {
       "id": "log-08",
@@ -683,7 +727,8 @@
         }
       ],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "log-09",
@@ -702,7 +747,8 @@
         }
       ],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "log-10",
@@ -721,7 +767,8 @@
         }
       ],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "log-11",
@@ -735,7 +782,8 @@
       "sourceUrl": null,
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": false
+      "unverified": false,
+      "statusNote": null
     },
     {
       "id": "str-01",
@@ -749,7 +797,8 @@
       "sourceUrl": "https://www.kcue.or.kr/news/sub02/sub01.php?at=view&idx=2764740",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "확정(원문 미확인)"
     },
     {
       "id": "str-02",
@@ -763,7 +812,8 @@
       "sourceUrl": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "확정(원문 미확인)"
     },
     {
       "id": "str-03",
@@ -777,7 +827,8 @@
       "sourceUrl": "https://storyplanet.co.kr/2028-admission-apply-count-rules/",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "str-04",
@@ -791,7 +842,8 @@
       "sourceUrl": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": false
+      "unverified": false,
+      "statusNote": null
     },
     {
       "id": "str-05",
@@ -814,7 +866,8 @@
         }
       ],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "str-06",
@@ -833,7 +886,8 @@
         }
       ],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "str-07",
@@ -847,7 +901,8 @@
       "sourceUrl": "https://www.kmib.co.kr/article/view.asp?arcid=1771923523",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "str-08",
@@ -861,7 +916,8 @@
       "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=600481",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "str-09",
@@ -880,7 +936,8 @@
         }
       ],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "str-10",
@@ -894,7 +951,8 @@
       "sourceUrl": "https://www.ebsi.co.kr/ebs/ent/enta/retrieveUnivEntOperPnt.ebs?yearGbn=2027",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "str-11",
@@ -908,7 +966,8 @@
       "sourceUrl": "https://www.khan.co.kr/article/202504300739001",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "str-12",
@@ -922,7 +981,8 @@
       "sourceUrl": "https://www.mt.co.kr/policy/2025/04/30/2025042915510298641",
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)"
     },
     {
       "id": "str-13",
@@ -936,7 +996,8 @@
       "sourceUrl": null,
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": false
+      "unverified": false,
+      "statusNote": null
     },
     {
       "id": "str-14",
@@ -950,7 +1011,113 @@
       "sourceUrl": null,
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": false
+      "unverified": false,
+      "statusNote": null
+    },
+    {
+      "id": "asg-01",
+      "topic": "high-school-assignment",
+      "entryYear": 2026,
+      "title": "구역 구성",
+      "body": "「2026학년도 고교평준화 용인학군 일반고 지망 조사(최종)」. 1구역 기흥구 12개교, 2구역 수지구 10개교, 3구역 처인구 7개교",
+      "status": "학교 배부 자료",
+      "sourceKind": "학교 배부 자료",
+      "sourceName": null,
+      "sourceUrl": null,
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true,
+      "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)"
+    },
+    {
+      "id": "asg-02",
+      "topic": "high-school-assignment",
+      "entryYear": 2026,
+      "title": "2구역 학교",
+      "body": "대지·상현·서원·성복·수지·신봉·죽전·풍덕·현암·용인홍천. 풍덕·성복·수지·홍천 4개교는 모두 2구역",
+      "status": "학교 배부 자료",
+      "sourceKind": "학교 배부 자료",
+      "sourceName": null,
+      "sourceUrl": null,
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true,
+      "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)"
+    },
+    {
+      "id": "asg-03",
+      "topic": "high-school-assignment",
+      "entryYear": 2026,
+      "title": "2구역 지망 규칙",
+      "body": "2구역은 10개교 전부 지망으로 작성하며 중복 불가",
+      "status": "학교 배부 자료",
+      "sourceKind": "학교 배부 자료",
+      "sourceName": null,
+      "sourceUrl": null,
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true,
+      "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)"
+    },
+    {
+      "id": "asg-04",
+      "topic": "high-school-assignment",
+      "entryYear": 2026,
+      "title": "외고·국제고·자사고·기업고 지원자",
+      "body": "1지망에 해당교를 쓰고 2지망부터 구역 내 전체 학교를 작성",
+      "status": "학교 배부 자료",
+      "sourceKind": "학교 배부 자료",
+      "sourceName": null,
+      "sourceUrl": null,
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true,
+      "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)"
+    },
+    {
+      "id": "asg-05",
+      "topic": "high-school-assignment",
+      "entryYear": 2026,
+      "title": "지망 수",
+      "body": "구역 내 5지망, 학군 내 11지망까지",
+      "status": "학교 배부 자료",
+      "sourceKind": "학교 배부 자료",
+      "sourceName": null,
+      "sourceUrl": null,
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true,
+      "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)"
+    },
+    {
+      "id": "asg-06",
+      "topic": "high-school-assignment",
+      "entryYear": 2026,
+      "title": "쌍둥이·교직원 자녀",
+      "body": "쌍둥이·교직원 자녀 표시란이 있음",
+      "status": "학교 배부 자료",
+      "sourceKind": "학교 배부 자료",
+      "sourceName": null,
+      "sourceUrl": null,
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true,
+      "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)"
+    },
+    {
+      "id": "asg-07",
+      "topic": "high-school-assignment",
+      "entryYear": 2026,
+      "title": "판독 주의",
+      "body": "3구역 처인구 7개교(남학교 대성고 1교 포함) 중 일부 학교명은 판독이 불확실하다. 숫자·학교명은 원본 사진으로 재확인 필요",
+      "status": "학교 배부 자료",
+      "sourceKind": "학교 배부 자료",
+      "sourceName": null,
+      "sourceUrl": null,
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true,
+      "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)"
     }
   ]
 }
