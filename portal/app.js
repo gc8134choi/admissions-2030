@@ -1,4 +1,5 @@
 import { MENU, STATUS } from "./menu.js";
+import { register as registerPolicy } from "./policy.js";
 
 const $ = (s) => document.querySelector(s);
 const esc = (s = "") => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -219,6 +220,8 @@ async function compareShell(el) {
   });
   return { root, draw };
 }
+
+registerPolicy(views, { $, esc, load });
 
 function render() {
   const [path, qs] = decodeURIComponent(location.hash.slice(1)).split("?");
