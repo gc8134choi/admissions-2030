@@ -558,4 +558,21 @@ DESCRIPTION:2027.3 초 입학식·개학 3.2~3.3 전후로 추정. 경기
  학사일정 공식 근거는 확인 못 함\n확인일 2026-10-25
 TRANSP:TRANSPARENT
 END:VEVENT
+BEGIN:VEVENT
+UID:ev-gg-12-1@admissions-2030
+DTSTAMP:20261025T000000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261211
+SUMMARY:[예나] 용인 배정 비율·원서 접수 방식
+DESCRIPTION:학군내배정 정원은 고교별 모집정원의 50%(서천
+ 고 80%\, 처인고 100%)\, 구역내배정은 모집정원 × 구역별 
+ 지원율 − 학군내 배정 인원. 경기도 내 중학교 졸업예
+ 정자는 재학 중학교에서 고교입학시스템으로 원서 작성
+ ·전송 후 용인교육지원청에 종이원서 제출\, 원서접수 
+ 마감 2026.12.10(목) 17:00\n출처: 경기도교육청 고입·전학 
+ 포털 자료실: 2027학년도 경기도 고교 평준화학군 리플렛
+ (9개 학군) 중 용인학군(2026.9.18 게시\, 공식) https://satp.goe
+ .go.kr/main.do\n확인일 2026-10-25
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR

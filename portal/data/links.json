@@ -61,44 +61,44 @@
       "category": "학교 정보",
       "org": "풍덕고등학교",
       "name": "학교 홈페이지",
-      "url": "https://pungduck-h.goeyi.kr",
+      "url": "https://pungduck-h.goeyi.kr/pungduck-h/main.do",
       "purpose": "입학·교육과정 공지(학교 공지 확인)",
       "kind": "공식",
       "checkedAt": "2026-10-25",
-      "note": "접속 200이나 첫 응답이 1KB 안팎 셸 페이지라 학교 공지 본문은 미확인"
+      "note": "학교명 확인(페이지 제목), 공지사항·가정통신문·입학안내 게시판 있음"
     },
     {
       "id": "lnk-06",
       "category": "학교 정보",
       "org": "성복고등학교",
       "name": "학교 홈페이지",
-      "url": "https://seongbok-h.goeyi.kr",
+      "url": "https://seongbok-h.goeyi.kr/seongbok-h/main.do",
       "purpose": "입학·교육과정 공지",
       "kind": "공식",
       "checkedAt": "2026-10-25",
-      "note": "접속 200이나 셸 페이지, 공지 본문 미확인"
+      "note": "학교명 확인(페이지 제목), 공지사항·가정통신문·입학안내 게시판 있음"
     },
     {
       "id": "lnk-07",
       "category": "학교 정보",
       "org": "수지고등학교",
       "name": "학교 홈페이지",
-      "url": "https://suji-h.goeyi.kr",
+      "url": "https://suji-h.goeyi.kr/suji-h/main.do",
       "purpose": "입학·교육과정 공지",
       "kind": "공식",
       "checkedAt": "2026-10-25",
-      "note": "접속 200이나 셸 페이지, 학교명 확인 못 함. 주소는 같은 규칙으로 추정"
+      "note": "학교명 확인(페이지 제목), 공지사항·가정통신문·입학안내 게시판 있음"
     },
     {
       "id": "lnk-08",
       "category": "학교 정보",
       "org": "용인홍천고등학교",
       "name": "학교 홈페이지",
-      "url": "https://yihongcheon-h.goeyi.kr",
+      "url": "https://yihongcheon-h.goeyi.kr/yihongcheon-h/main.do",
       "purpose": "입학·교육과정 공지",
       "kind": "공식",
       "checkedAt": "2026-10-25",
-      "note": "접속 200이나 셸 페이지, 학교명 확인 못 함. 주소는 같은 규칙으로 추정"
+      "note": "학교명 확인(페이지 제목), 공지사항·가정통신문·입학안내 게시판 있음"
     },
     {
       "id": "lnk-09",
@@ -243,6 +243,17 @@
       "purpose": "교육부 보도자료·정책뉴스(공공누리 표시 확인 후 인용)",
       "kind": "공식",
       "checkedAt": "2026-10-25"
+    },
+    {
+      "id": "lnk-23",
+      "category": "학교 정보",
+      "org": "경기도용인교육지원청",
+      "name": "용인교육지원청 중학교 신입생 배정 안내",
+      "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
+      "purpose": "용인 중학교 신입생 배정 일정·방법(초6 대상)",
+      "kind": "공식",
+      "checkedAt": "2026-10-25",
+      "note": "용인교육지원청 주소는 goeyi.kr"
     }
   ]
 }
