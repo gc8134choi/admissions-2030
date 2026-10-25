@@ -1,13 +1,19 @@
 // 제도·일정 화면(대입 제도, 일정, 고교 유형·전형, 제도 변경 로그). 데이터는 data/policy.json.
-const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "확인 못 함", material: "학교 배부 자료" };
-const SKIND = { official: "공식", media: "매체", material: "학교 배부" };
+const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "확인 못 함", material: "학교 배부 자료", seoul: "서울교육청 자료" };
+const SKIND = { official: "공식", media: "매체", material: "학교 배부", seoul: "서울교육청" };
 const NOTICE = '<p class="note">조사일 2026-10-25, <b>검색 요약 기준이며 공식 사이트로 재확인 필요.</b> 입학학년도 2027(현 중3) · 대입학년도 2030. <span class="unv">원문 미확인</span> 표시는 원문 페이지를 열람하지 못했다는 뜻입니다.</p>';
+
+// 대입 제도 화면에 보여 줄 과목 선택 지도 행(선택과목 조사 시기, 대학 권장이수과목, 수능 출제범위). 나머지 cur-*는 고교 유형·전형 화면.
+const CUR_SYS = new Set(["cur-06", "cur-07", "cur-08"]);
 
 export function register(views, { $, esc, load }) {
   const badge = (r) => `<span class="pst ${r.status}">${PST[r.status]}</span>${r.unverified ? ' <span class="unv">원문 미확인</span>' : ""}${r.note ? `<div class="muted small">${esc(r.note)}</div>` : ""}`;
   const src = (r) => {
     const list = r.sources || (r.sourceName ? [{ name: r.sourceName, url: r.sourceUrl }] : []);
-    if (!list.length) return r.sourceKind === "material" ? '<span class="muted">학교 배부 자료(원본 사진)</span>' : '<span class="muted">출처 없음</span>';
+    // 링크 없는 배부·교육청 자료는 긴 설명 대신 짧은 라벨만 보이고, 전체 설명은 마우스를 올리면 나온다.
+    if (r.sourceKind === "material") return '<span class="muted">학교 배부 자료(원본 사진)</span>';
+    if (r.sourceKind === "seoul") return `<span class="muted" title="${esc(r.sourceName || "")}">서울교육청 설명회 자료(원본 파일 미게시)</span>`;
+    if (!list.length) return '<span class="muted">출처 없음</span>';
     return `${r.sourceKind ? `<span class="muted small">${SKIND[r.sourceKind]}</span> ` : ""}${list.map((x) => (x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>` : esc(x.name))).join(", ")}`;
   };
   const table = (rows, cols, cls = () => "") => `<div class="tw"><table class="policy"><thead><tr>${cols.map((c) => `<th class="l">${c[0]}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => `<tr class="${cls(r)}">${cols.map((c) => `<td class="l">${c[1](r)}</td>`).join("")}</tr>`).join("") || `<tr><td colspan="${cols.length}">해당 항목이 없습니다.</td></tr>`}</tbody></table></div>`;
@@ -26,7 +32,7 @@ export function register(views, { $, esc, load }) {
     const tail = ed ? `${sy === ey ? "" : ey + "."}${em}.${ed}(${wd(e.end)})` : `${sy === ey ? "" : ey + "."}${em}`;
     return `${day(e.start)}~${tail}`;
   };
-  const statusSelect = (rows) => `<div class="tools"><span class="muted">상태</span><select id="pst"><option value="">전체 (${rows.length})</option>${Object.entries(PST).map(([k, v]) => `<option value="${k}">${v} (${rows.filter((r) => r.status === k).length})</option>`).join("")}</select></div>`;
+  const statusSelect = (rows) => `<div class="tools"><span class="muted">상태</span><select id="pst"><option value="">전체 (${rows.length})</option>${Object.entries(PST).filter(([k]) => rows.some((r) => r.status === k)).map(([k, v]) => `<option value="${k}">${v} (${rows.filter((r) => r.status === k).length})</option>`).join("")}</select></div>`;
   const dateOf = (t) => (t.match(/^\d{4}-\d{2}(-\d{2})?/) || [""])[0];
 
   // 상단 안내문은 수능 세부 범위 행(adm-07)의 body를 읽어, 문구를 policy.json 한 곳에서 관리한다.
@@ -50,17 +56,19 @@ export function register(views, { $, esc, load }) {
   };
 
   views.system = async (el, query) => {
-    const rows = (await load("policy")).filter((r) => r.topic.startsWith("admission") || r.topic === "change-log");
+    const rows = (await load("policy")).filter((r) => r.topic.startsWith("admission") || r.topic === "change-log" || CUR_SYS.has(r.id));
     const log = query.get("t") === "log";
     const body = rows.filter((r) => (r.topic === "change-log") === log);
     el.innerHTML = `${banner(rows)}${NOTICE}${tabs([["sys", "#admission/system", "제도"], ["log", "#admission/system?t=log", "제도 변경 로그"]], log ? "log" : "sys")}
       ${log ? "" : '<p class="muted">현 중3은 2028 개편안의 직접 대상(2025 입학생)이 아닙니다. 2030학년도 제도는 2027.3 공표 내용에 따라 바뀔 수 있습니다.</p>'}
       ${statusSelect(body)}<div id="ptbl"></div>`;
-    const TOPIC = { "admission-system": "2028학년도 개편 확정안과 2030학년도 적용", "admission-outlook": "2030학년도 대상 추가 동향", "admission-structure": "대입 전형 구조" };
+    const TOPIC = { "admission-system": "2028학년도 개편 확정안과 2030학년도 적용", "admission-outlook": "2030학년도 대상 추가 동향", "admission-structure": "대입 전형 구조", "cur-select": "과목 선택·대학 권장이수과목·수능 출제범위(참고)" };
+    const NOTE = { "cur-select": '<p class="note">서울교육청 자료, 경기 적용 확인 필요. 수능 출제범위는 추정이며 2030학년도 확정이 아닙니다.</p>' };
+    const key = (r) => (CUR_SYS.has(r.id) ? "cur-select" : r.topic);
     const cols = [...basic.slice(0, 2), ["대입학년도", (r) => `${r.examYear}<div class="muted small">입학 ${r.entryYear}</div>`], ...basic.slice(2)];
     filtered(el, body, (f) => {
       const rs = (x) => x.filter((r) => !f || r.status === f);
-      $("#ptbl").innerHTML = log ? logTable(rs(body)) : Object.entries(TOPIC).map(([t, label]) => { const g = rs(body.filter((r) => r.topic === t)); return g.length ? `<h3>${label}</h3>${table(g, cols)}` : ""; }).join("") || '<p class="muted">조건에 맞는 항목이 없습니다.</p>';
+      $("#ptbl").innerHTML = log ? logTable(rs(body)) : Object.entries(TOPIC).map(([t, label]) => { const g = rs(body.filter((r) => key(r) === t)); return g.length ? `<h3>${label}</h3>${NOTE[t] || ""}${table(g, cols)}` : ""; }).join("") || '<p class="muted">조건에 맞는 항목이 없습니다.</p>';
     });
   };
 
@@ -81,6 +89,7 @@ export function register(views, { $, esc, load }) {
   views.types = async (el) => {
     const rows = await load("policy");
     // asg-02(2구역 학교) 본문: 풍덕·성복·수지·홍천 4개교가 모두 2구역이라는 내용을 눈에 띄게 한다.
+    const cur = rows.filter((r) => r.topic === "curriculum-guide" && !CUR_SYS.has(r.id));
     const asg = rows.filter((r) => r.topic === "high-school-assignment");
     el.innerHTML = `${NOTICE}<h3>고교 유형</h3>${table(rows.filter((r) => r.topic === "hs-types"), basic)}
       ${asg.length ? `<h3>용인 평준화 배정 <span class="muted small">2026학년도 기준 참고</span></h3>
@@ -88,6 +97,8 @@ export function register(views, { $, esc, load }) {
       <div class="fixednote hlnote">우리 4개교(풍덕·성복·수지·홍천)는 모두 2구역</div>
       ${table(asg, basic, (r) => (r.id === "asg-02" ? "hl" : ""))}` : ""}
       <h3>고교학점제 요약 <span class="muted small">입학 후 제도</span></h3>${table(rows.filter((r) => r.topic === "hs-credit-system"), basic)}
+      ${cur.length ? `<h3>졸업·이수 요건, 성적 산출, 과목 유형 <span class="muted small">서울교육청 과목 선택 지도 자료</span></h3>
+      <p class="note">서울교육청 자료, 경기 적용 확인 필요</p>${table(cur, basic)}` : ""}
       <p class="muted">고입 전형 일정은 <a href="#schedule">일정</a> 화면의 고입 탭에서 봅니다.</p>`;
   };
 }

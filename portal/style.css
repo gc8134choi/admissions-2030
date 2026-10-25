@@ -297,3 +297,4 @@ select,input[type=search]{font-size:13px;padding:5px 8px}
 .pst.material{color:var(--muted)}
 table.policy tr.hl td{background:var(--soft);font-weight:600}
 .fixednote.hlnote{position:static}
+.pst.seoul{color:var(--muted)}
