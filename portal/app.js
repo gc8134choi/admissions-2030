@@ -389,5 +389,5 @@ await initProfiles(load);
   const d = new Date(), W = ["일", "월", "화", "수", "목", "금", "토"];
   $("#today").textContent = `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}(${W[d.getDay()]})`;
 }
-mountProfileSwitch([$("#pf"), $("#dock")], store, render);
+mountProfileSwitch([$("#pf")], store, render);
 render();
