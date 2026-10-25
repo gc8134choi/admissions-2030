@@ -374,6 +374,25 @@
     {
       "id": "sch-02",
       "topic": "exam-schedule",
+      "examYear": 2027,
+      "title": "2027학년도 수능 시행 기본계획 공고",
+      "body": "2026.3.31 공고(매체 보도). 평가원 원문 공고는 열람하지 못함",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "이투데이",
+      "sourceUrl": "https://www.etoday.co.kr/news/view/2390974",
+      "extraSources": [
+        {
+          "name": "다음뉴스",
+          "url": "https://v.daum.net/v/6U94upsAym?f=p"
+        }
+      ],
+      "checkedAt": "2026-10-25",
+      "unverified": true
+    },
+    {
+      "id": "sch-03",
+      "topic": "exam-schedule",
       "examYear": 2028,
       "title": "2028학년도 수능",
       "body": "시험 2027.11.18(목), 성적통지 2027.12.10. 모의평가·정시 세부 일정은 기본계획 공고 후 확정",
@@ -391,7 +410,7 @@
       "unverified": true
     },
     {
-      "id": "sch-03",
+      "id": "sch-04",
       "topic": "exam-schedule",
       "examYear": 2028,
       "title": "2028학년도 수시 원서접수",
@@ -410,7 +429,7 @@
       "unverified": true
     },
     {
-      "id": "sch-04",
+      "id": "sch-05",
       "topic": "exam-schedule",
       "examYear": 2028,
       "title": "2028학년도 대입전형 기본사항",
@@ -424,7 +443,7 @@
       "unverified": true
     },
     {
-      "id": "sch-05",
+      "id": "sch-06",
       "topic": "exam-schedule",
       "examYear": 2030,
       "title": "2030학년도 대입전형 기본사항 발표",
@@ -438,7 +457,7 @@
       "unverified": false
     },
     {
-      "id": "sch-06",
+      "id": "sch-07",
       "topic": "exam-schedule",
       "examYear": 2030,
       "title": "2030학년도 수능 시행일",
@@ -452,11 +471,11 @@
       "unverified": false
     },
     {
-      "id": "sch-07",
+      "id": "sch-08",
       "topic": "exam-schedule",
       "examYear": 2030,
       "title": "2030학년도 수능 시행 기본계획 공고",
-      "body": "2028학년도 수능 기본계획은 2027.3 공고 예정(보도). 같은 주기라면 2030학년도 수능 기본계획은 2029.3 전후로 추정. 정부 중장기 대입 개편안은 별도로 2027.3 공표 예정(변경 로그 참고). 수능 세부 범위는 이 기본계획 공고 전까지 추정",
+      "body": "2027학년도분이 2026.3.31, 2028학년도분이 2027.3 공고 예정(보도)이므로 같은 주기라면 2030학년도 수능 기본계획은 2029.3 전후로 추정. 정부 중장기 대입 개편안은 별도로 2027.3 공표 예정(변경 로그 참고). 수능 세부 범위는 이 기본계획 공고 전까지 추정",
       "status": "추정",
       "sourceKind": null,
       "sourceName": "KDI EIEC",
