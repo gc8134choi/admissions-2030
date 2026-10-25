@@ -1,3 +1,5 @@
 content/
 .DS_Store
 node_modules/
+.secrets/
+client_secret*.json
