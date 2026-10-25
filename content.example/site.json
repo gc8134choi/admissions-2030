@@ -1,0 +1,6 @@
+{
+  "title": "2028학년도 대입 대시보드",
+  "sections": [
+    { "id": "curriculum", "title": "교육과정 편제표", "type": "gallery", "data": "curriculum.json" }
+  ]
+}

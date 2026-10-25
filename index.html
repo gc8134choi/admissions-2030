@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>대입 대시보드</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div id="gate" class="gate">
+    <form id="gate-form">
+      <h1>2028학년도 대입 대시보드</h1>
+      <input id="pw" type="password" placeholder="비밀번호" autocomplete="current-password" autofocus required>
+      <button type="submit">입장</button>
+      <p id="gate-msg" class="muted" role="alert"></p>
+    </form>
+  </div>
+
+  <div id="app" hidden>
+    <header class="site-header">
+      <h1 id="site-title"></h1>
+      <p id="updated" class="muted"></p>
+    </header>
+    <nav id="tabs" class="tabs" role="tablist"></nav>
+    <main id="main"></main>
+  </div>
+
+  <div id="lightbox" class="lightbox" hidden><img alt=""></div>
+  <script type="module" src="assets/app.js"></script>
+</body>
+</html>
