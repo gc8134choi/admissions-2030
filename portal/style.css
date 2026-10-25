@@ -373,3 +373,40 @@ ul.plain{margin:6px 0;padding-left:18px}
 .sip-d{margin:4px 0 6px;display:grid;grid-template-columns:auto 1fr;gap:2px 8px;font-size:12px}
 .sip-d dt{color:var(--muted)}.sip-d dd{margin:0}
 .pst.academy{color:var(--muted);border-style:dotted}
+
+/* 고교학점제 이해: 도표·카드 (cv-) */
+.cv-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:14px 0}
+.cv-card h3{margin:0 0 4px}.cv-lead{margin:0 0 10px;font-size:13px}
+.cv-chip{font-size:11px;padding:0 6px;vertical-align:middle}
+.cv-tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.cv-tile{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--soft);display:flex;flex-direction:column;gap:2px}
+.cv-tile b{font-size:22px;line-height:1.2;color:var(--accent)}.cv-tile span{font-size:12px;color:var(--muted)}
+.cv-row{display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+.cv-donut{width:150px;height:150px;flex:none}.cv-dn{font-size:9px;font-weight:700;fill:var(--fg)}.cv-ds{font-size:3.4px;fill:var(--muted)}
+.cv-legend{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.cv-legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.cv-sub{margin-top:14px}.cv-subt{font-size:13px;color:var(--muted);margin-bottom:4px}
+.cv-stack{display:flex;height:30px;border-radius:6px;overflow:hidden;font-size:12px;line-height:30px;color:var(--bg)}
+.cv-stack span{padding-left:8px;white-space:nowrap;overflow:hidden}.cv-stack .req{background:var(--req)}.cv-stack .ele{background:var(--ele)}
+.cv-gauges{display:flex;flex-direction:column;gap:12px}.cv-gl{font-size:13px;margin-bottom:3px}
+.cv-gb{height:12px;border-radius:99px;background:var(--line);overflow:hidden}.cv-gb span{display:block;height:100%;background:var(--accent);border-radius:99px}
+.cv-bars{display:flex;flex-direction:column;gap:6px}.cv-br{display:grid;grid-template-columns:minmax(80px,28%) 1fr 32px;gap:8px;align-items:center;font-size:13px}
+.cv-bn{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.cv-bt{height:14px;background:var(--line);border-radius:4px;overflow:hidden}.cv-bt i{display:block;height:100%;background:var(--accent)}
+.cv-br b{text-align:right}.cv-total{margin:10px 0 0;font-size:14px}
+.cv-types{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}.cv-type{border:1px solid var(--accent);color:var(--accent);border-radius:99px;padding:3px 14px;font-weight:600;font-size:14px}
+.cv-mx{display:grid;grid-template-columns:minmax(70px,1.2fr) repeat(3,1fr);gap:4px;font-size:13px;text-align:center}
+.cv-mh{color:var(--muted);font-size:12px}.cv-ma{text-align:left;align-self:center}
+.cv-mc{border-radius:6px;padding:6px 0;background:color-mix(in srgb,var(--accent) calc(var(--a) * 100%),var(--line));font-weight:600}
+.cv-cols{display:flex;gap:10px;align-items:flex-end;height:130px;padding-top:6px}
+.cv-col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;font-size:12px}
+.cv-col span{display:block;width:100%;max-width:64px;background:var(--accent);border-radius:4px 4px 0 0}.cv-col em{font-style:normal;color:var(--muted)}
+.cv-flow{list-style:none;margin:0 0 14px;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.cv-flow li{flex:1 1 150px;position:relative;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--soft);display:flex;gap:8px;align-items:flex-start;font-size:13px}
+.cv-flow li b{flex:none;width:22px;height:22px;border-radius:50%;background:var(--accent);color:var(--bg);text-align:center;line-height:22px;font-size:12px}
+.cv-tlr{display:flex;align-items:center;gap:0;margin:6px 0}.cv-tp{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:64px}
+.cv-tp b{font-size:12px;color:var(--muted)}.cv-tp span{border:2px solid var(--accent);border-radius:99px;padding:2px 12px;font-weight:700;background:var(--panel)}
+.cv-ta{flex:1;height:2px;background:var(--accent);min-width:20px}
+.cv-notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}.cv-note{border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.cv-note p{margin:4px 0;font-size:13px}
+.cv-schools{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}.cv-sc{display:grid;grid-template-columns:64px 1fr;gap:8px;align-items:center;font-size:13px}
+.cv-basis{margin-top:10px;font-size:13px}.cv-basis summary{color:var(--muted)}.cv-big{margin:14px 0}
