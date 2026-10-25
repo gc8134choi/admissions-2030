@@ -39,7 +39,7 @@ export const MENU = [
       { id: "planner/report", title: "목표 학과 요건 충족 리포트", status: "soon", desc: "희망 학과 요건과 내 계획 비교." },
     ] },
 
-  { id: "changelog", title: "제도 변경 로그", icon: "📝", status: "v2",
+  { id: "changelog", title: "제도 변경 로그", icon: "📝", status: "v1", view: "changelog",
     desc: "날짜·항목·영향 범위. 편제표·요건 갱신도 자동 기록.", parts: ["날짜 / 항목 / 영향 범위"] },
 
   { id: "library", title: "자료실", icon: "🗂️", status: "v1", children: [

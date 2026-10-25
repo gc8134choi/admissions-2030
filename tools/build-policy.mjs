@@ -1,89 +1,52 @@
-// research/*.md 표 → portal/data/policy.json. 값은 md에서 그대로 옮기고, 지어내지 않는다.
+// research/data/policy-draft.json(조사 세션 산출) → portal/data/policy.json. 편제표 DB(build-db)와 별개다.
+// 값은 draft에서 그대로 옮기고, 화면용 필드(entryYear, events, note)만 더한다.
 // 사용: node tools/build-policy.mjs  (--check: 파일과 결과가 다르면 종료코드 1)
 import { readFileSync, writeFileSync } from "node:fs";
 
-const CHECKED_AT = "2026-10-25"; // 두 md의 조사일
-const STATUS = { 확정: "confirmed", 보도: "reported", 추정: "estimated", "확인 못 함": "unknown" };
+const STATUS = { 확정: "confirmed", 보도: "reported", 추정: "estimated", unknown: "unknown" };
 const KIND = { 공식: "official", 매체: "media" };
 
-// md 표 위치 → topic / id 접두. (md는 research/ 소관이라 읽기만 한다.)
-const TABLES = {
-  "01": [
-    { topic: "admission-reform", prefix: "adm" },
-    { topic: "admission-trend", prefix: "adm-t" },
-  ],
-  "02": [
-    { topic: "hs-schedule", prefix: "hs-sch" },
-    { topic: "hs-types", prefix: "hs-type" },
-    { topic: "credit-system", prefix: "credit" },
-  ],
-};
-// 학년도: 2028 개편 확정안 행은 2028학년도 대상(md: 2025 입학생), 그 외는 현 중3(2027→2030).
-const YEAR_2028 = ["2028학년도 대입 개편 확정", "통합형 수능", "심화수학", "내신 5등급 상대평가", "수능·수시/정시 시기 조정"];
-// 일정 행의 날짜(md 본문의 월.일을 ISO로 옮김. 연도는 2027학년도 고입이 2026 하반기라서 2026으로 둠).
+// 고입·대입 일정 행의 날짜. draft 본문의 날짜를 ISO로 옮겼다(연도는 해당 학년도 시행 연도). 월만 알면 YYYY-MM.
 const EVENTS = {
-  기본계획: [{ label: "기본계획 확정", start: "2026-08" }],
-  과학고: [{ label: "접수(전국 기준)", start: "2026-08-18", end: "2026-09-03" }],
-  마이스터고: [{ label: "접수", start: "2026-10-19", end: "2026-10-22" }, { label: "합격 발표", start: "2026-11-04" }],
-  특성화고: [
+  "hs-01": [{ label: "기본계획 확정", start: "2026-08" }],
+  "hs-02": [{ label: "접수(전국 기준)", start: "2026-08-18", end: "2026-09-03" }],
+  "hs-03": [{ label: "접수", start: "2026-10-19", end: "2026-10-22" }, { label: "합격 발표", start: "2026-11-04" }],
+  "hs-04": [
     { label: "특별전형 접수", start: "2026-11-23", end: "2026-11-24" }, { label: "특별전형 발표", start: "2026-11-27" },
     { label: "일반전형 접수", start: "2026-11-30", end: "2026-12-01" }, { label: "일반전형 발표", start: "2026-12-02" },
     { label: "추가모집 접수", start: "2026-12-02", end: "2026-12-03" }, { label: "추가모집 발표", start: "2026-12-03" },
   ],
-  "후기 일반고·자사고·외고·국제고": [{ label: "후기 전형 개막(보도)", start: "2026-12-02" }],
+  "hs-05": [{ label: "후기 전형 개막(보도)", start: "2026-12-02" }],
+  "sch-01": [{ label: "원서접수", start: "2026-08-24", end: "2026-09-04" }, { label: "시험", start: "2026-11-19" }, { label: "성적통지", start: "2026-12-11" }],
+  "sch-02": [{ label: "시험", start: "2027-11-18" }, { label: "성적통지", start: "2027-12-10" }],
+  "sch-03": [{ label: "수시 원서접수 시작", start: "2027-09-20" }],
+  "sch-04": [{ label: "대교협 발표", start: "2025-08-28" }],
+  "sch-05": [{ label: "발표 가능성(추정)", start: "2027-08" }],
+  "sch-06": [{ label: "시행일 미확인(2029.11 중하순 추정)", start: "2029-11" }],
+  "sch-07": [{ label: "공고(2029.3 전후 추정)", start: "2029-03" }],
 };
+// draft에서 빠진, 조사 md 상태 칸의 괄호 설명.
+const NOTES = { "adm-05": "미결정 상태", "adm-10": "개인 제안, 정부안 아님", "hs-04": "공식 페이지 요약", "hs-08": "공식 FAQ 인용" };
+// 사용자 결정 Q6(2026-10-25): 기본계획 공고 시기 정정. 화면 상단 안내문도 이 행의 body를 읽는다(문구 관리 한 곳).
+const BODY = { "adm-07": "수능 세부 범위는 추정이며, 2030학년도 수능 시행 기본계획 공고(2029.3 전후 추정, 2027학년도분은 2026.3.31 공고) 전까지 미확정" };
 
-const cells = (line) => line.replace(/^\||\|$/g, "").split("|").map((c) => c.trim());
-const links = (cell) => {
-  if (!cell || cell === "-") return [];
-  return cell.split(/,\s*(?=\[)/).map((p) => {
-    const m = p.match(/^\[([^\]]+)\]\((.*)\)(.*)$/);
-    return m ? { name: (m[1] + m[3]).trim(), url: m[2] } : { name: p, url: null };
-  });
-};
-
-function parse(file, defs) {
-  const lines = readFileSync(file, "utf8").split("\n");
-  const rows = [];
-  let t = -1;
-  for (let i = 0; i < lines.length; i++) {
-    if (!/^\| 항목 /.test(lines[i])) continue;
-    const def = defs[++t];
-    let n = 0;
-    for (i += 2; i < lines.length && lines[i].startsWith("|"); i++) {
-      const [title, body, st, kind, src] = cells(lines[i]);
-      const m = st.match(/^([^()]+)(?:\((.*)\))?$/);
-      const key = m[1].trim();
-      const status = STATUS[key] || "unknown"; // '-' = 판단 근거 없음 → unknown
-      const sources = links(src);
-      const row = { id: `${def.prefix}-${String(++n).padStart(3, "0")}`, topic: def.topic };
-      Object.assign(row, years(title), { title, body: status === "unknown" && body === "확인 못 함" ? "확인 못 함" : body, status });
-      const note = [m[2], kind !== "-" && !KIND[kind] ? kind : null].filter(Boolean).join("; ");
-      if (note) row.note = note;
-      row.sourceKind = KIND[kind] ?? (kind.startsWith("공식") ? "media" : null);
-      row.sourceName = sources[0]?.name ?? (src === "-" ? null : src);
-      row.sourceUrl = sources[0]?.url ?? null;
-      if (sources.length > 1) row.sources = sources;
-      if (EVENTS[title]) row.events = EVENTS[title];
-      row.checkedAt = CHECKED_AT;
-      rows.push(row);
-    }
-  }
-  return rows;
-}
-const years = (title) => (YEAR_2028.includes(title) ? { entryYear: 2025, examYear: 2028 } : { entryYear: 2027, examYear: 2030 });
-
-// 01의 '확인 못 함' 목록 → unknown 행
-function unknownRows(file) {
-  const text = readFileSync(file, "utf8").split("## 확인 못 함")[1] || "";
-  return text.split("\n").filter((l) => l.startsWith("- ")).map((l, i) => ({
-    id: `adm-u-${String(i + 1).padStart(3, "0")}`, topic: "admission-unknown", entryYear: 2027, examYear: 2030,
-    title: l.slice(2).split(". ")[0].replace(/\.$/, ""), body: l.slice(2), status: "unknown",
-    sourceKind: null, sourceName: null, sourceUrl: null, checkedAt: CHECKED_AT,
-  }));
-}
-
-const out = [...parse("research/01-admission-system.md", TABLES["01"]), ...unknownRows("research/01-admission-system.md"), ...parse("research/02-high-school-entry.md", TABLES["02"])];
+const draft = JSON.parse(readFileSync("research/data/policy-draft.json", "utf8")).items;
+const out = draft.map((d) => {
+  const sources = [d.sourceName && { name: d.sourceName, url: d.sourceUrl }, ...(d.extraSources || [])].filter(Boolean);
+  const row = { id: d.id, topic: d.topic };
+  row.entryYear = d.entryYear ?? (d.examYear ? d.examYear - 3 : 2027);
+  row.examYear = d.examYear ?? row.entryYear + 3;
+  Object.assign(row, { title: d.title, body: BODY[d.id] ?? d.body, status: STATUS[d.status] ?? "unknown" });
+  if (NOTES[d.id]) row.note = NOTES[d.id];
+  row.unverified = !!d.unverified;
+  row.sourceKind = KIND[d.sourceKind] ?? null;
+  row.sourceName = d.sourceName ?? null;
+  row.sourceUrl = d.sourceUrl ?? null;
+  if (sources.length > 1) row.sources = sources;
+  if (EVENTS[d.id]) row.events = EVENTS[d.id];
+  row.checkedAt = d.checkedAt;
+  return row;
+});
 const json = JSON.stringify(out, null, 1) + "\n";
 const target = "portal/data/policy.json";
 if (process.argv.includes("--check")) {

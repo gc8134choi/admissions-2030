@@ -1,0 +1,76 @@
+// 제도·일정 화면(대입 제도, 일정, 고교 유형·전형, 제도 변경 로그). 데이터는 data/policy.json.
+const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "확인 못 함" };
+const SKIND = { official: "공식", media: "매체" };
+const NOTICE = '<p class="note">조사일 2026-10-25, <b>검색 요약 기준이며 공식 사이트로 재확인 필요.</b> 입학학년도 2027(현 중3) · 대입학년도 2030. <span class="unv">원문 미확인</span> 표시는 원문 페이지를 열람하지 못했다는 뜻입니다.</p>';
+
+export function register(views, { $, esc, load }) {
+  const badge = (r) => `<span class="pst ${r.status}">${PST[r.status]}</span>${r.unverified ? ' <span class="unv">원문 미확인</span>' : ""}${r.note ? `<div class="muted small">${esc(r.note)}</div>` : ""}`;
+  const src = (r) => {
+    const list = r.sources || (r.sourceName ? [{ name: r.sourceName, url: r.sourceUrl }] : []);
+    if (!list.length) return '<span class="muted">출처 없음</span>';
+    return `${r.sourceKind ? `<span class="muted small">${SKIND[r.sourceKind]}</span> ` : ""}${list.map((x) => (x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>` : esc(x.name))).join(", ")}`;
+  };
+  const table = (rows, cols) => `<div class="tw"><table class="policy"><thead><tr>${cols.map((c) => `<th class="l">${c[0]}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => `<tr>${cols.map((c) => `<td class="l">${c[1](r)}</td>`).join("")}</tr>`).join("") || `<tr><td colspan="${cols.length}">해당 항목이 없습니다.</td></tr>`}</tbody></table></div>`;
+  const basic = [["항목", (r) => `<b>${esc(r.title)}</b>`], ["내용", (r) => esc(r.body)], ["상태", badge], ["구분·출처", src]];
+  const tabs = (items, on) => `<div class="subtabs">${items.map(([k, h, t]) => `<a href="${h}" class="${k === on ? "on" : ""}">${t}</a>`).join("")}</div>`;
+  const today = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
+  const fmt = (e) => { const f = (d) => d.split("-").slice(1).map(Number).join("."); return `${e.start.slice(0, 4)}.${f(e.start)}${e.end ? "~" + f(e.end) : ""}`; };
+  const statusSelect = (rows) => `<div class="tools"><span class="muted">상태</span><select id="pst"><option value="">전체 (${rows.length})</option>${Object.entries(PST).map(([k, v]) => `<option value="${k}">${v} (${rows.filter((r) => r.status === k).length})</option>`).join("")}</select></div>`;
+  const dateOf = (t) => (t.match(/^\d{4}(-\d{2}){0,2}/) || [""])[0];
+
+  // 상단 안내문은 수능 세부 범위 행(adm-07)의 body를 읽어, 문구를 policy.json 한 곳에서 관리한다.
+  const banner = (rows) => `<div class="fixednote">2030학년도 제도는 중장기 대입 개편안 공표(2027.3 예정) 후 확정됩니다. ${esc(rows.find((r) => r.id === "adm-07")?.body || "수능 세부 범위는 추정")}</div>`;
+
+  // 일정 표: events를 펼쳐 날짜순으로, 오늘 이전은 흐리게.
+  const timeline = (rows) => {
+    const t = today();
+    const evs = rows.flatMap((r) => (r.events || []).map((e, i) => ({ ...e, r, first: i === 0 }))).sort((a, b) => a.start.localeCompare(b.start));
+    const tr = (e) => `<tr class="${(e.end || e.start) < t ? "past" : ""}"><td class="l">${esc(fmt(e))}</td><td class="l"><b>${esc(e.r.title)}</b> · ${esc(e.label)}${e.first ? `<div class="muted small">${esc(e.r.body)}</div>` : ""}</td><td class="l">${badge(e.r)}</td><td class="l">${src(e.r)}</td></tr>`;
+    const none = rows.filter((r) => !r.events);
+    return `<p class="muted">오늘(${t}) 이전 일정은 흐리게 표시합니다.</p><div class="tw"><table class="policy"><thead><tr><th class="l">날짜</th><th class="l">항목</th><th class="l">상태</th><th class="l">구분·출처</th></tr></thead><tbody>${evs.map(tr).join("")}</tbody></table></div>${none.length ? `<h3>일정 미확인</h3>${table(none, basic)}` : ""}`;
+  };
+
+  const logTable = (rows) => table(rows, [["날짜", (r) => esc(dateOf(r.title) || "-")], ["항목", (r) => `<b>${esc(r.title.slice(dateOf(r.title).length).trim() || r.title)}</b>`], basic[1], basic[2], basic[3]]);
+
+  // 상태 필터가 있는 표 공통 처리
+  const filtered = (el, rows, draw) => {
+    el.querySelector("#pst").addEventListener("change", () => draw(el.querySelector("#pst").value));
+    draw("");
+  };
+
+  views.system = async (el, query) => {
+    const rows = (await load("policy")).filter((r) => r.topic.startsWith("admission") || r.topic === "change-log");
+    const log = query.get("t") === "log";
+    const body = rows.filter((r) => (r.topic === "change-log") === log);
+    el.innerHTML = `${banner(rows)}${NOTICE}${tabs([["sys", "#admission/system", "제도"], ["log", "#admission/system?t=log", "제도 변경 로그"]], log ? "log" : "sys")}
+      ${log ? "" : '<p class="muted">현 중3은 2028 개편안의 직접 대상(2025 입학생)이 아닙니다. 2030학년도 제도는 2027.3 공표 내용에 따라 바뀔 수 있습니다.</p>'}
+      ${statusSelect(body)}<div id="ptbl"></div>`;
+    const TOPIC = { "admission-system": "2028학년도 개편 확정안과 2030학년도 적용", "admission-outlook": "2030학년도 대상 추가 동향" };
+    const cols = [...basic.slice(0, 2), ["대입학년도", (r) => `${r.examYear}<div class="muted small">입학 ${r.entryYear}</div>`], ...basic.slice(2)];
+    filtered(el, body, (f) => {
+      const rs = (x) => x.filter((r) => !f || r.status === f);
+      $("#ptbl").innerHTML = log ? logTable(rs(body)) : Object.entries(TOPIC).map(([t, label]) => { const g = rs(body.filter((r) => r.topic === t)); return g.length ? `<h3>${label}</h3>${table(g, cols)}` : ""; }).join("") || '<p class="muted">조건에 맞는 항목이 없습니다.</p>';
+    });
+  };
+
+  views.changelog = async (el) => {
+    const rows = (await load("policy")).filter((r) => r.topic === "change-log");
+    el.innerHTML = `${NOTICE}${statusSelect(rows)}<div id="ptbl"></div>`;
+    filtered(el, rows, (f) => { $("#ptbl").innerHTML = logTable(rows.filter((r) => !f || r.status === f)); });
+  };
+
+  views.schedule = async (el, query) => {
+    const tab = query.get("t") === "univ" ? "univ" : "hs";
+    const all = await load("policy");
+    const rows = all.filter((r) => r.topic === (tab === "univ" ? "exam-schedule" : "hs-schedule"));
+    el.innerHTML = `${tabs([["hs", "#schedule?t=hs", "고입"], ["univ", "#schedule?t=univ", "대입"]], tab)}${NOTICE}
+      <p class="muted">${tab === "univ" ? "수능·대교협 일정. 2030학년도분은 대부분 추정입니다." : "2027학년도 고입(서울 기준). 연도는 2027학년도 고입이 2026년 하반기에 진행되는 것을 기준으로 붙였습니다."}</p>${timeline(rows)}`;
+  };
+
+  views.types = async (el) => {
+    const rows = await load("policy");
+    el.innerHTML = `${NOTICE}<h3>고교 유형</h3>${table(rows.filter((r) => r.topic === "hs-types"), basic)}
+      <h3>고교학점제 요약 <span class="muted small">입학 후 제도</span></h3>${table(rows.filter((r) => r.topic === "hs-credit-system"), basic)}
+      <p class="muted">고입 전형 일정은 <a href="#schedule">일정</a> 화면의 고입 탭에서 봅니다.</p>`;
+  };
+}

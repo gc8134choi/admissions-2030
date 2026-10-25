@@ -1,4 +1,5 @@
 import { MENU, STATUS } from "./menu.js";
+import { register as registerPolicy } from "./policy.js";
 
 const $ = (s) => document.querySelector(s);
 const esc = (s = "") => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -208,58 +209,7 @@ async function compareShell(el) {
   return { root, draw };
 }
 
-// ---- 제도·일정 (policy.json: research/*.md에서 생성) ----
-const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "확인 못 함" };
-const SKIND = { official: "공식", media: "매체" };
-const pstBadge = (r) => `<span class="pst ${r.status}">${PST[r.status]}</span>${r.note ? `<div class="muted small">${esc(r.note)}</div>` : ""}`;
-const srcCell = (r) => {
-  const list = r.sources || (r.sourceName ? [{ name: r.sourceName, url: r.sourceUrl }] : []);
-  if (!list.length) return '<span class="muted">출처 없음</span>';
-  return `${r.sourceKind ? `<span class="muted small">${SKIND[r.sourceKind]}</span> ` : ""}${list.map((x) => (x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>` : esc(x.name))).join(", ")}`;
-};
-const policyNote = '<p class="note">조사일 2026-10-25, <b>검색 요약 기준이며 원문을 모두 열람하지 못했습니다. 공식 사이트로 재확인 필요.</b> 입학학년도 2027(현 중3) · 대입학년도 2030.</p>';
-const policyTable = (rows, cols) => `<div class="tw"><table class="policy"><thead><tr>${cols.map((c) => `<th class="l">${c[0]}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => `<tr>${cols.map((c) => `<td class="l">${c[1](r)}</td>`).join("")}</tr>`).join("") || `<tr><td colspan="${cols.length}">해당 항목이 없습니다.</td></tr>`}</tbody></table></div>`;
-const basicCols = [["항목", (r) => `<b>${esc(r.title)}</b>`], ["내용", (r) => esc(r.body)], ["상태", pstBadge], ["구분·출처", srcCell]];
-const todayStr = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
-const fmtDate = (e) => { const f = (d) => d.split("-").slice(1).map(Number).join("."); const [a, b] = [e.start, e.end]; return `${e.start.slice(0, 4)}.${f(a)}${b ? "~" + f(b) : ""}`; };
-
-Object.assign(views, {
-  async system(el) {
-    const rows = (await load("policy")).filter((r) => r.topic.startsWith("admission"));
-    const TOPIC = { "admission-reform": "2028학년도 개편 확정안과 2030학년도 적용", "admission-trend": "2030학년도 대상 추가 동향", "admission-unknown": "확인 못 함" };
-    el.innerHTML = `<div class="fixednote">2030학년도 제도는 2027.3 공표 예정이며 수능 세부 범위는 추정</div>${policyNote}
-      <p class="muted">현 중3은 2028 개편안의 직접 대상(2025 입학생)이 아닙니다. 2030학년도 제도는 2027.3 공표 내용에 따라 바뀔 수 있습니다.</p>
-      <div class="tools"><span class="muted">상태</span><select id="pst"><option value="">전체 (${rows.length})</option>${Object.entries(PST).map(([k, v]) => `<option value="${k}">${v} (${rows.filter((r) => r.status === k).length})</option>`).join("")}</select></div><div id="ptbl"></div>`;
-    const cols = [...basicCols.slice(0, 2), ["대입학년도", (r) => `${r.examYear}<div class="muted small">입학 ${r.entryYear}</div>`], ...basicCols.slice(2)];
-    const draw = () => {
-      const f = $("#pst").value;
-      $("#ptbl").innerHTML = Object.entries(TOPIC).map(([t, label]) => { const rs = rows.filter((r) => r.topic === t && (!f || r.status === f)); return rs.length ? `<h3>${label}</h3>${policyTable(rs, cols)}` : ""; }).join("") || '<p class="muted">조건에 맞는 항목이 없습니다.</p>';
-    };
-    $("#pst").addEventListener("change", draw);
-    draw();
-  },
-
-  async schedule(el, query) {
-    const tab = query.get("t") === "univ" ? "univ" : "hs";
-    const tabs = `<div class="subtabs"><a href="#schedule?t=hs" class="${tab === "hs" ? "on" : ""}">고입</a><a href="#schedule?t=univ" class="${tab === "univ" ? "on" : ""}">대입</a></div>`;
-    if (tab === "univ") { el.innerHTML = `${tabs}<p class="note">데이터 준비 중</p>`; return; }
-    const rows = (await load("policy")).filter((r) => r.topic === "hs-schedule");
-    const today = todayStr();
-    const evs = rows.flatMap((r) => (r.events || []).map((e, i) => ({ ...e, r, first: i === 0 }))).sort((a, b) => a.start.localeCompare(b.start));
-    const tr = (e) => `<tr class="${(e.end || e.start) < today ? "past" : ""}"><td class="l">${esc(fmtDate(e))}</td><td class="l"><b>${esc(e.r.title)}</b> · ${esc(e.label)}${e.first ? `<div class="muted small">${esc(e.r.body)}</div>` : ""}</td><td class="l">${pstBadge(e.r)}</td><td class="l">${srcCell(e.r)}</td></tr>`;
-    const none = rows.filter((r) => !r.events);
-    el.innerHTML = `${tabs}${policyNote}<p class="muted">2027학년도 고입(서울 기준). 오늘(${today}) 이전 일정은 흐리게 표시합니다. 연도는 2027학년도 고입이 2026년 하반기에 진행되는 것을 기준으로 붙였습니다.</p>
-      <div class="tw"><table class="policy"><thead><tr><th class="l">날짜</th><th class="l">항목</th><th class="l">상태</th><th class="l">구분·출처</th></tr></thead><tbody>${evs.map(tr).join("")}</tbody></table></div>
-      ${none.length ? `<h3>일정 미확인</h3>${policyTable(none, basicCols)}` : ""}`;
-  },
-
-  async types(el) {
-    const rows = await load("policy");
-    el.innerHTML = `${policyNote}<h3>고교 유형</h3>${policyTable(rows.filter((r) => r.topic === "hs-types"), basicCols)}
-      <h3>고교학점제 요약 <span class="muted small">입학 후 제도</span></h3>${policyTable(rows.filter((r) => r.topic === "credit-system"), basicCols)}
-      <p class="muted">고입 전형 일정은 <a href="#schedule">일정</a> 화면의 고입 탭에서 봅니다.</p>`;
-  },
-});
+registerPolicy(views, { $, esc, load });
 
 function render() {
   const [path, qs] = decodeURIComponent(location.hash.slice(1)).split("?");
