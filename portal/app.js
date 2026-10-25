@@ -2,6 +2,7 @@ import { MENU, STATUS } from "./menu.js";
 import { register as registerPolicy } from "./policy.js";
 import { registerHome } from "./home.js";
 import { registerFiles } from "./files.js";
+import { schoolBand } from "./school-card.js";
 import { preloadSubjectInfo, subjectName, decorateSubjectLists } from "./subject-info.js";
 
 const $ = (s) => document.querySelector(s);
@@ -183,8 +184,8 @@ async function summaryBody(el, ids) {
   const card = (m) => {
     const sc = schools.find((x) => x.id === m.schoolId) || {};
     const total = m.creditsRequired + m.creditsElective;
-    return `<section class="school"><header><h3>${nm(m.schoolId, m.schoolName, 34)} <button class="star" data-id="${esc(m.schoolId)}" aria-label="관심">${st.includes(m.schoolId) ? "★" : "☆"}</button></h3>
-      ${(() => { const l1 = ["region", "schoolType", "founding", "gender"].filter((k) => vary(k)).map((k) => m[k]).filter(Boolean).join(" · "); return l1 ? `<div class="muted">${esc(l1)}</div>` : ""; })()}
+    const l1 = ["region", "schoolType", "founding", "gender"].filter((k) => vary(k)).map((k) => m[k]).filter(Boolean).join(" · ");
+    return `<section class="school"><header>${schoolBand(m, { starred: st.includes(m.schoolId), sub: l1, logoOk: LOGO_IDS.has(m.schoolId) })}
       ${vary("assignment") && m.assignment ? `<div class="muted">${esc(m.assignment)}</div>` : ""}</header>
       <div class="big">총 ${m.creditsTotal}학점 <span class="muted">(교과 ${m.creditsSubject} + 창체 ${m.creditsCreative})</span></div>
       <div class="bar" title="지정 ${m.creditsRequired} / 선택 ${m.creditsElective}"><span class="req" style="width:${(m.creditsRequired / total) * 100}%">지정 ${m.creditsRequired}</span><span class="ele" style="width:${(m.creditsElective / total) * 100}%">선택 ${m.creditsElective}</span></div>
@@ -320,7 +321,7 @@ async function compareShell(el, onReset, getAreas) {
 }
 
 registerPolicy(views, { $, esc, load, store });
-registerHome(views, { esc, load, store, nm, stars, toggleStar, nameOf, TERMS });
+registerHome(views, { esc, load, store, nm, stars, toggleStar, nameOf, TERMS, hasLogo: (id) => LOGO_IDS.has(id) });
 const filesApi = registerFiles(views, { esc, load, nm });
 
 function render() {
