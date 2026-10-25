@@ -1,29 +1,29 @@
 # 고입 (현 중3 = 2027학년도 고입)
 
-조사일 2026-10-25. 아래는 검색 결과 요약 기준이며 원문 페이지는 열람하지 못했다(네트워크 오류). 날짜는 공식 사이트로 재확인 필요.
+조사일 2026-10-25. 원문 미확인 행은 상태에 "(원문 미확인)"을 표기했다. 아래는 검색 결과 요약 기준이며 원문 페이지는 열람하지 못했다(네트워크 오류). 날짜는 공식 사이트로 재확인 필요.
 
 ## 일정 (서울 기준)
 | 항목 | 내용 | 상태 | 구분 | 출처 |
 |---|---|---|---|---|
-| 기본계획 | 서울교육청 2027학년도 고입 기본계획 확정(2026.8). 반도체 마이스터고 개교(2027.3), 후기고 동일교 배정 확대 | 보도 | 매체 | [교육을 비추다](https://www.kyobit.com/news/articleView.html?idxno=5127) |
-| 과학고 | 전국 기준 접수 8.18~9.3 | 보도 | 매체 | [베리타스알파](https://www.veritas-a.com/news/articleView.html?idxno=604064) |
-| 마이스터고 | 접수 10.19~22, 합격 발표 11.4 | 보도 | 매체 | [교육을 비추다](https://www.kyobit.com/news/articleView.html?idxno=5127) |
-| 특성화고 | 특별전형 접수 11.23~24(발표 11.27), 일반전형 접수 11.30~12.1(발표 12.2), 추가모집 접수 12.2~3(발표 12.3) | 보도(공식 페이지 요약) | 공식 | [서울 하이잡](https://high-job.sen.go.kr/FUS/BO/J1List.do) |
-| 후기 일반고·자사고·외고·국제고 | 후기 전형 12월 시작(12.2 개막 보도). 세부 접수·발표일은 확인 못 함 | 보도 | 매체 | [베리타스알파](https://www.veritas-a.com/news/articleView.html?idxno=604064) |
+| 기본계획 | 서울교육청 2027학년도 고입 기본계획 확정(2026.8). 반도체 마이스터고 개교(2027.3), 후기고 동일교 배정 확대 | 보도(원문 미확인) | 매체 | [교육을 비추다](https://www.kyobit.com/news/articleView.html?idxno=5127) |
+| 과학고 | 전국 기준 접수 8.18~9.3 | 보도(원문 미확인) | 매체 | [베리타스알파](https://www.veritas-a.com/news/articleView.html?idxno=604064) |
+| 마이스터고 | 접수 10.19~22, 합격 발표 11.4 | 보도(원문 미확인) | 매체 | [교육을 비추다](https://www.kyobit.com/news/articleView.html?idxno=5127) |
+| 특성화고 | 특별전형 접수 11.23~24(발표 11.27), 일반전형 접수 11.30~12.1(발표 12.2), 추가모집 접수 12.2~3(발표 12.3) | 보도(원문 미확인) | 공식 | [서울 하이잡](https://high-job.sen.go.kr/FUS/BO/J1List.do) |
+| 후기 일반고·자사고·외고·국제고 | 후기 전형 12월 시작(12.2 개막 보도). 세부 접수·발표일은 확인 못 함 | 보도(원문 미확인) | 매체 | [베리타스알파](https://www.veritas-a.com/news/articleView.html?idxno=604064) |
 | 영재학교 | 별도 법령 적용, 기본계획 제외. 일정은 확인 못 함 | 확인 못 함 | - | - |
 
 ## 고교 유형
 | 항목 | 내용 | 상태 | 구분 | 출처 |
 |---|---|---|---|---|
-| 외고·국제고 | 2027학년도에도 모집. 외고 28개교 5,518명, 국제고 8개교 1,172명 | 보도 | 매체 | [외고](https://www.veritas-a.com/news/articleView.html?idxno=627933), [국제고](https://www.veritas-a.com/news/articleView.html?idxno=626898) |
-| 후기 선발 | 2019학년도부터 외고·국제고·자사고는 일반고와 함께 후기 선발 | 보도 | 공식 FAQ 인용 | [고입정보포털 안내](https://www.make2t.kr/2026/10/hischool-high-school-admission-2027.html) |
+| 외고·국제고 | 2027학년도에도 모집. 외고 28개교 5,518명, 국제고 8개교 1,172명 | 보도(원문 미확인) | 매체 | [외고](https://www.veritas-a.com/news/articleView.html?idxno=627933), [국제고](https://www.veritas-a.com/news/articleView.html?idxno=626898) |
+| 후기 선발 | 2019학년도부터 외고·국제고·자사고는 일반고와 함께 후기 선발 | 보도(원문 미확인) | 매체 | [고입정보포털 안내](https://www.make2t.kr/2026/10/hischool-high-school-admission-2027.html) |
 | 자사고·외고·국제고 일반고 전환 | 2025 전환 시행령 기사(2019년경)가 검색됨. 2027학년도에 모집하는 점과 맞지 않아 현재 정책 상태는 확인 못 함 | 확인 못 함 | - | [노컷뉴스](https://www.nocutnews.co.kr/news/5239739) |
 | 개별 학교 모집 현황 | 확인 못 함 | - | - | - |
 
 ## 고교학점제 (입학 후 제도)
 | 항목 | 내용 | 상태 | 구분 | 출처 |
 |---|---|---|---|---|
-| 졸업 기준 | 3년간 192학점(교과 174 + 창체 18) | 보도 | 매체 | [서울경제](https://www.sedaily.com/article/12985967) |
-| 과목 이수 | 학업성취율 40% 미만이면 미이수, 보충이수 가능 | 보도 | 매체 | [교육플러스](https://www.edpl.co.kr/news/articleView.html?idxno=33) |
-| 성적 표기 | 성취도 A~E 절대평가 + 석차 5등급 병기(2025 고1부터) | 보도 | 매체 | [교풀](https://www.gyopool.com/blog/high-school-credit-system-ai) |
+| 졸업 기준 | 3년간 192학점(교과 174 + 창체 18) | 보도(원문 미확인) | 매체 | [서울경제](https://www.sedaily.com/article/12985967) |
+| 과목 이수 | 학업성취율 40% 미만이면 미이수, 보충이수 가능 | 보도(원문 미확인) | 매체 | [교육플러스](https://www.edpl.co.kr/news/articleView.html?idxno=33) |
+| 성적 표기 | 성취도 A~E 절대평가 + 석차 5등급 병기(2025 고1부터) | 보도(원문 미확인) | 매체 | [교풀](https://www.gyopool.com/blog/high-school-credit-system-ai) |
 | 2027 고1 적용 세부 | 확인 못 함 | - | - | - |
