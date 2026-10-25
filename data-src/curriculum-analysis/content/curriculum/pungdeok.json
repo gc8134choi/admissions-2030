@@ -548,7 +548,11 @@
     {
       "ref": "3-2-A '문화로 보는 한국사', '과학의 역사와 문화'",
       "confidence": "medium",
-      "note": "글자가 겹쳐 있으나 읽힘"
+      "note": "글자가 겹쳐 있으나 읽힘",
+      "checked": true,
+      "checkedDate": "2026-10-25",
+      "checkedBy": "사용자 확인",
+      "resolution": "사용자가 3-2-A '문화로 보는 한국사', '과학의 역사와 문화' 전사 값이 맞다고 확인"
     }
   ],
   "schoolId": "school-pungdeok",

@@ -1,6 +1,6 @@
 {
   "version": "2.1.0",
-  "generatedAt": "2026-10-25T08:32:03.438Z",
+  "generatedAt": "2026-10-25T10:15:15.851Z",
   "entryYears": [
     2027
   ],
@@ -59,14 +59,14 @@
       "use": "lazy",
       "purpose": "판독 확인 필요 항목. refs[{type,id}] 로 offering/group/curriculum 에 연결",
       "rows": 12,
-      "bytes": 7037
+      "bytes": 7237
     },
     {
       "name": "offerings.json",
       "use": "lazy",
       "purpose": "핵심 사실 표: 학교×학기×과목 1행(평탄화, 항상 생성물)",
       "rows": 388,
-      "bytes": 222149
+      "bytes": 222067
     },
     {
       "name": "subject-matrix.json",
@@ -93,9 +93,9 @@
       "name": "review-queue.json",
       "use": "optional",
       "purpose": "사람이 확인할 항목 모음(검수 화면용)",
-      "bytes": 15920
+      "bytes": 16293
     }
   ],
-  "totalBytes": 462351,
+  "totalBytes": 462842,
   "coreBytes": 26833
 }
