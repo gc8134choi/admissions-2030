@@ -83,18 +83,6 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const ev0 = (id) => P.get(id)?.events?.[0];
     const one = store.get("portal.oneperson", false);
 
-    // 1) 큰 D-day: 활성 학습자의 수능
-    const csatRowB = isB ? policy.find((r) => r.examYear === examYear && /수능/.test(r.title) && !/기본계획|원서|정시|수시/.test(r.title) && r.events?.length) : null;
-    const pcsat = pf.csat && !csatRowB ? { id: "pf-csat", status: pf.csat.status, sourceName: pf.csat.sourceName, title: "수능", reason: pf.csat.note, events: [{ start: pf.csat.date, label: "수능 시행일(잠정 예상)" }] } : null;
-    const csatRow = isB ? csatRowB || pcsat : P.get("sch-12") || P.get("sch-07"), csat = isB ? csatRow?.events?.[0] : ev0("sch-12") || ev0("sch-07");
-    let heroDays = null, heroMeta = "수능 날짜를 아직 못 가져왔어요";
-    if (csat) {
-      const sp = span(csat.start, csat.end);
-      const target = sp.month ? new Date(sp.start.getFullYear(), sp.start.getMonth(), 15) : sp.start;
-      heroDays = Math.round((target - t) / DAY);
-      heroMeta = `<span class="num">${fmtRange(sp, t, csat)} · ${esc(csat.label)}</span> ${badges(csatRow)} ${link(csatRow)}`;
-    }
-
     // 2) 다음 일정: 학습자와 관련 있는 행만(연도 비어 있으면 공통). 현고3 칩을 켜면 다른 해·현고3 행도 보인다.
     const limit = new Date(t.getTime() + 90 * DAY);
     let aud = isB ? [] : loadAudience(store);
@@ -124,6 +112,26 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
         <span class="ms-a"><button type="button" class="lnk" data-add>사진 넣기</button><button type="button" class="lnk" data-del hidden>삭제</button><input type="file" accept="image/*" hidden></span></div>
         <div class="ms-p" aria-hidden="true">${ART[m.kind] || ART.graduation}</div></li>`;
     };
+
+    // 히어로 = 가장 가까운 한 가지 일(일정 또는 졸업·입학). 그다음 몇 개는 헤어라인 목록.
+    const oneLine = (b) => { const t1 = String(b || "").split(/(?<=[.。다요])\s/)[0] || ""; return t1.length > 80 ? t1.slice(0, 78) + "…" : t1; };
+    const feed = () => {
+      const evs = upRows().map((x) => ({ kind: "ev", seoul: x.r.region === "seoul", sp: x.sp, g3: only3(x.r, x.e), title: x.r.title + (x.e.label ? ` · ${x.e.label}` : ""), date: fmtRange(x.sp, t, x.e), line: oneLine(x.r.body), meta: `${badges(x.r)} ${link(x.r)}` }));
+      const sts = stones.filter((m) => dayN(m.date, t) >= 0).map((m) => ({ kind: "stone", m, sp: span(m.date), title: m.label, date: ymdText(m.date), line: "", meta: m.sourceName ? `<span class="muted">${esc(m.sourceName)}</span>` : "" }));
+      return [...evs, ...sts].sort((a, b) => !!a.seoul - !!b.seoul || a.sp.start - b.sp.start || a.sp.end - b.sp.end); // 서울 행은 경기·전국 행 다음
+    };
+    const heroHtml = () => {
+      const it = feed()[0];
+      if (!it) return `<p class="hello" id="hh">${esc(pf.name)}님, 오늘도 한 칸씩.</p><div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p><small>${isB ? "학교를 고르면 그 학교 일정이 여기에 모입니다." : "앞으로 90일 안에 해당하는 일정이 없어요."}</small></div>`;
+      const live = it.sp.start <= t, n = Math.round((it.sp.start - t) / DAY), left = Math.round((it.sp.end - t) / DAY);
+      const num = live ? `<span class="big live">진행 중</span>` : n === 0 ? `<span class="big live">오늘</span>` : `<span class="big num" id="ddn">${n.toLocaleString()}</span><span class="unit" id="ddu">일 남음</span>`;
+      const sub = live && left > 0 ? `<span class="hh-left num">${left}일 남았어요</span>` : "";
+      const photo = it.kind === "stone" ? `<div class="hero-ph ms" data-ms="${esc(pf.id + ":" + it.m.id)}"><div class="ms-p" aria-hidden="true">${ART[it.m.kind] || ART.graduation}</div><span class="ms-a"><button type="button" class="lnk" data-add>사진 넣기</button><button type="button" class="lnk" data-del hidden>삭제</button><input type="file" accept="image/*" hidden></span><p class="hint">사진은 이 기기에만 저장돼요.</p></div>` : "";
+      return `<p class="hello" id="hh">${esc(pf.name)}님, 가장 가까운 일이에요.</p>
+        <button type="button" class="dday" id="dday"${live || n === 0 ? " disabled" : ""}><span class="sr-only">남은 날. 누르면 단위가 바뀝니다. </span>${num}</button>${sub}
+        <h2 class="hero-t${it.g3 ? " g3" : ""}">${esc(it.title)}</h2><p class="hero-d num">${it.date}</p>${it.line ? `<p class="hero-s">${esc(it.line)}</p>` : ""}<p class="hero-meta">${it.meta}</p>${photo}${!live && n > 0 ? '<p class="hint">숫자를 누르면 주·달로 바뀌어요.</p>' : ""}`;
+    };
+    const rest = () => { const r = feed().slice(1, 4); return r.length ? r.map((it) => `<li class="row${it.g3 ? " g3" : ""}"><span class="d${it.sp.start <= t ? " live" : " num"}">${dLabel(it.sp, t)}</span><div><h3>${esc(it.title)}</h3><p class="num">${it.date}</p>${it.meta ? `<div class="meta">${it.meta}</div>` : ""}</div></li>`).join("") : '<li class="row"><div class="empty"><p>이어지는 일정은 아직 없어요.</p></div></li>'; };
 
     // 4) 바뀐 소식 1줄
     const log = policy.filter((r) => r.topic === "change-log").map((r) => ({ r, d: dateOf(r.title) })).filter((x) => x.d && span(x.d).start <= t).sort((a, b) => span(b.d).start - span(a.d).start);
@@ -158,28 +166,22 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const region = (summary[0]?.region || "").split(/\s+/).slice(0, 2).map((x) => x.replace(/시$/, "")).join("·");
     const myChips = () => { const l = isB ? "일반고" : AUDIENCES.filter(([k]) => aud.includes(k)).map(([, v]) => v).join("·"); return `<span>${esc(pf.label)}</span>${l ? `<span>${esc(l)}</span>` : ""}${region ? `<span>${esc(region)}</span>` : ""}`; };
 
-    // 예은(보조) D-day 줄: 한 명만 보기가 켜져 있으면 숨긴다. 누르면 그 사람 화면으로.
-    const oth = one ? "" : others.map((q) => q.csat ? `<button type="button" class="aux" data-pf="${q.id}"><span class="aux-n">${esc(q.name)}</span><span class="aux-d num">${esc(q.examYear)}학년도 수능까지 <b>D-${dayN(q.csat.date, t).toLocaleString()}</b></span><span class="pst estimated">추정</span></button>` : "").join("");
+    // 수능 D-day는 작은 보조 줄로(예나·예은, 추정 표기 유지). 한 명만 보기면 활성 학습자만.
+    const ddline = profiles().filter((q) => q.csat && (!one || q.id === pf.id)).map((q) => `<button type="button" class="aux${q.id === pf.id ? " me" : ""}" data-pf="${q.id}"><span class="aux-n">${esc(q.name)}</span><span class="aux-d num">${esc(q.examYear)}학년도 수능 <b>${dayN(q.csat.date, t).toLocaleString()}일</b></span><span class="pst ${q.csat.status}">${PST[q.csat.status] || q.csat.status}</span></button>`).join("");
 
     el.innerHTML = `<div class="hm">
-      ${oth ? `<div class="auxbar">${oth}</div>` : ""}
+      ${ddline ? `<div class="auxbar" aria-label="수능 D-day">${ddline}</div>` : ""}
       <div class="hero-grid">
-        <section class="hero" aria-labelledby="hh">
-          <p class="hello" id="hh">${esc(pf.name)}님, 오늘도 한 칸씩.</p>
-          <p class="kicker">${examYear}학년도 수능까지</p>
-          <button type="button" class="dday" id="dday" aria-live="polite"><span class="sr-only">수능까지 남은 날. 누르면 단위가 바뀝니다. </span><span class="big num" id="ddn">${heroDays == null ? "-" : heroDays.toLocaleString()}</span><span class="unit" id="ddu">일</span></button>
-          <p class="hero-meta">${heroMeta}</p>
-          <p class="hint">숫자를 누르면 주·달로 바뀌어요.</p>
-        </section>
-        <aside class="hero-aside" aria-label="다음 일정"><div class="sec-h"><h2><em>지금</em>다음 일정</h2><a href="#schedule">전체 일정</a></div>
+        <section class="hero" aria-labelledby="hh" id="hm-hero">${heroHtml()}</section>
+        <aside class="hero-aside" aria-label="이어지는 일정"><div class="sec-h"><h2><em>이어서</em>그다음 일정</h2><a href="#schedule">전체 일정</a></div>
           ${isB ? "" : `<div class="hm-aud-wrap">${audienceChips(aud, esc)}</div>`}
-          <ul class="rows" id="hm-up">${upList()}</ul></aside>
+          <ul class="rows" id="hm-up">${rest()}</ul></aside>
       </div>
       <div class="two">
         <section class="sec"><div class="sec-h"><h2><em>01</em>${isB ? esc(pf.name) + "의 학교" : "우리 " + mine.length + "개교"}</h2>${isB ? "" : '<a href="#select/curriculum?v=compare">과목표 비교</a>'}</div>
           ${isB || !mine.length ? '<div class="empty"><span class="z" aria-hidden="true">0</span><p>학교를 고르면 여기에 모입니다.</p><small>후보 학교를 담아 두면 지정·선택 학점과 개설 과목을 나란히 볼 수 있어요.</small><a href="#select/curriculum">학교 고르러 가기 →</a></div>' : `<ul class="schools">${mine.map(sch).join("")}</ul><p class="legend">네 학교 모두 <b>${m0.creditsTotal}학점</b>. 막대: <b style="color:var(--req)">지정</b> · <b style="color:var(--ele)">선택</b> · 나머지는 창의적 체험활동.</p>`}</section>
         <section class="sec"><div class="sec-h"><h2><em>02</em>곧 있을 일</h2></div>
-          ${stones.length ? `<ul class="mss">${stones.map(stoneHtml).join("")}</ul><p class="hint">사진은 이 기기에만 저장돼요.</p>` : '<div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p></div>'}</section>
+          ${stones.length && feed()[0]?.kind !== "stone" ? `<ul class="mss">${stones.map(stoneHtml).join("")}</ul><p class="hint">사진은 이 기기에만 저장돼요.</p>` : '<div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p></div>'}</section>
       </div>
       <div class="two">
         <section class="sec"><div class="sec-h"><h2><em>03</em>이번 주 할 일</h2><span class="muted small" id="tdc"></span></div>
@@ -195,24 +197,30 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
       ${isB ? "" : `<section class="sec"><div class="sec-h"><h2><em>06</em>앞으로 3년</h2><a href="#roadmap" id="rm-link" hidden>학년별 로드맵</a></div><ol class="tl">${tl}</ol></section>`}
     </div>`;
 
-    // D-day 숫자 단위 전환(일 → 주 → 개월)
-    if (heroDays != null) {
-      const modes = [["일", heroDays], ["주", Math.floor(heroDays / 7)], ["개월 안팎", Math.round(heroDays / 30.44)]]; let mi = 0;
-      el.querySelector("#dday").addEventListener("click", () => { mi = (mi + 1) % 3; el.querySelector("#ddn").textContent = modes[mi][1].toLocaleString(); el.querySelector("#ddu").textContent = modes[mi][0]; });
-    }
-    // 대상 칩(예나) → 다음 일정만 다시 그린다
+    // 히어로 숫자 단위 전환(일 → 주 → 개월)과 사진 연결은 히어로를 다시 그릴 때마다 붙인다.
+    const bindHero = () => {
+      const it = feed()[0], d = el.querySelector("#dday");
+      if (it && d && !d.disabled) {
+        const n = Math.round((it.sp.start - t) / DAY), modes = [["일 남음", n], ["주 남음", Math.floor(n / 7)], ["개월 안팎", Math.round(n / 30.44)]]; let mi = 0;
+        d.addEventListener("click", () => { mi = (mi + 1) % 3; el.querySelector("#ddn").textContent = modes[mi][1].toLocaleString(); el.querySelector("#ddu").textContent = modes[mi][0]; });
+      }
+      bindPhotos(el.querySelector("#hm-hero"));
+    };
+    // 대상 칩(예나) → 히어로와 이어지는 일정을 다시 그린다
     const hs = el.querySelector(".hero-aside");
     hs.addEventListener("click", (e) => {
       const b = e.target.closest("[data-aud]"); if (!b) return;
       aud = toggleAudience(aud, b.dataset.aud); saveAudience(store, aud);
       hs.querySelector(".hm-aud").outerHTML = audienceChips(aud, esc);
-      hs.querySelector("#hm-up").innerHTML = upList();
+      el.querySelector("#hm-hero").innerHTML = heroHtml();
+      hs.querySelector("#hm-up").innerHTML = rest();
+      bindHero();
     });
     // 보조 D-day 줄: 그 사람 화면으로 전환
     el.querySelector(".auxbar")?.addEventListener("click", (e) => { const b = e.target.closest("[data-pf]"); if (b) document.querySelector(`#pf [data-pf="${b.dataset.pf}"]`)?.click(); });
 
     // 졸업·입학 사진: 이 기기에만 저장
-    el.querySelectorAll(".ms").forEach(async (li) => {
+    function bindPhotos(scope) { (scope || el).querySelectorAll("[data-ms]").forEach(async (li) => {
       const key = li.dataset.ms, art = li.querySelector(".ms-p"), add = li.querySelector("[data-add]"), del = li.querySelector("[data-del]"), inp = li.querySelector("input[type=file]");
       let url = null;
       const show = (blob) => { if (url) URL.revokeObjectURL(url); url = blob ? URL.createObjectURL(blob) : null; art.classList.toggle("photo", !!blob); if (blob) art.innerHTML = `<img src="${url}" alt="">`; else art.innerHTML = ART[(pf.milestones || []).find((m) => pf.id + ":" + m.id === key)?.kind] || ART.graduation; add.textContent = blob ? "사진 바꾸기" : "사진 넣기"; del.hidden = !blob; };
@@ -221,7 +229,9 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
       add.addEventListener("click", () => inp.click());
       inp.addEventListener("change", async () => { const f = inp.files[0]; if (!f) return; try { const b = await resizePhoto(f); await photoPut(key, b); show(b); } catch { add.textContent = "사진을 못 읽었어요"; } inp.value = ""; });
       del.addEventListener("click", async () => { await photoDel(key).catch(() => {}); show(null); });
-    });
+    }); }
+    bindPhotos(el.querySelector(".mss"));
+    bindHero();
 
     // 이번 주 할 일(체크리스트, 이 브라우저에만 저장)
     if (ok) {
