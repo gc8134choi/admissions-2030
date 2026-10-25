@@ -1,0 +1,53 @@
+name: CI
+
+# PR마다: JSON 문법 검증 + 편제표 DB 검증(build-db.mjs --check)
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: JSON 문법 검증
+        run: |
+          node --input-type=module -e '
+            import { readdirSync, readFileSync, statSync } from "node:fs";
+            import { join } from "node:path";
+            const skip = new Set([".git", "node_modules"]);
+            const files = [];
+            (function walk(d) {
+              for (const n of readdirSync(d)) {
+                if (skip.has(n)) continue;
+                const p = join(d, n);
+                if (statSync(p).isDirectory()) walk(p);
+                else if (n.endsWith(".json")) files.push(p);
+              }
+            })(".");
+            let bad = 0;
+            for (const f of files) {
+              try { JSON.parse(readFileSync(f, "utf8")); }
+              catch (e) { bad++; console.error(`::error file=${f}::${e.message}`); }
+            }
+            console.log(`${files.length}개 JSON 중 오류 ${bad}개`);
+            process.exit(bad ? 1 : 0);
+          '
+
+      - name: 편제표 DB 검증 (build-db.mjs --check)
+        run: |
+          # 생성기는 자기 위치 기준으로 content/, tools/ 를 찾는다.
+          # data-src 가 아직 없는 브랜치에서는 건너뛴다.
+          dir=data-src/curriculum-analysis
+          if [ -f "$dir/tools/build-db.mjs" ]; then
+            node "$dir/tools/build-db.mjs" --check
+          else
+            echo "::notice::$dir 가 없어 build-db 검증을 건너뜁니다."
+          fi
