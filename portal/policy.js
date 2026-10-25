@@ -1,3 +1,4 @@
+import { creditView } from "./credit.js";
 import { loadAudience, saveAudience, toggleAudience, audienceMatch, audienceChips } from "./home.js";
 
 // 제도·일정 화면(대입 제도, 일정, 고교 유형·전형, 제도 변경 로그). 데이터는 data/policy.json.
@@ -115,40 +116,8 @@ export function register(views, { $, esc, load, store }) {
     draw();
   };
 
-  // 고교학점제 이해(고교 생활 메뉴): 기존 policy 행을 주제별로 재배치한다. 수능 출제범위는 대입 제도에서만 보여 준다.
-  views.credit = async (el) => {
-    const [rows, summary] = await Promise.all([load("policy"), load("summary")]);
-    const by = (...ids) => ids.map((id) => rows.find((r) => r.id === id)).filter(Boolean);
-    // 공통과목 필수학점(cur-03): 본문 문장("A·B 각 8학점, C 6학점, D 합 16학점(필수 84학점)")을 표로 풀고 합계는 코드로 계산한다.
-    // 본문에 적힌 필수 합계와 맞지 않거나 풀지 못하면 표 대신 본문을 그대로 보여 준다.
-    const c3 = rows.find((r) => r.id === "cur-03");
-    const items = [];
-    if (c3) {
-      for (const seg of c3.body.split(/,\s*/)) {
-        let m;
-        if ((m = seg.match(/^(.+?)\s*각\s*(\d+)학점/))) m[1].split("·").forEach((n) => items.push([n.trim(), Number(m[2])]));
-        else if ((m = seg.match(/^(.+?)\s*합\s*(\d+)학점/)) || (m = seg.match(/^(.+?)\s+(\d+)학점/))) items.push([m[1].trim(), Number(m[2])]);
-      }
-    }
-    const sum = items.reduce((n, x) => n + x[1], 0);
-    const stated = Number((c3?.body.match(/필수\s*(\d+)학점/) || [])[1]) || null;
-    const parsed = items.length && (!stated || stated === sum);
-    const sec = (title, body) => `<h3>${title}</h3>${body}`;
-    const sections = [
-      sec("1. 한눈에", table(by("cur-01", "cur-14", "cur-09", "hs-14"), basic)),
-      sec("2. 이수 요건", table(by("cur-02", "cur-16", "cur-12"), basic)),
-      sec("3. 과목 유형", table(by("cur-05", "cur-10", "cur-11", "cur-13"), basic)),
-      sec("4. 과목표(교과군별)", table(by("cur-17", "cur-18", "cur-19", "cur-20", "cur-21", "cur-22", "cur-23", "cur-24", "cur-25", "cur-27"), basic)),
-      sec("5. 성적 산출", table(by("cur-04", "cur-15", "cur-28", "hs-13"), basic)),
-      c3 ? sec("6. 공통과목 필수학점", `${parsed ? `<div class="tw"><table class="policy"><thead><tr><th class="l">과목</th><th>학점</th></tr></thead><tbody>${items.map(([n, c]) => `<tr><td class="l">${esc(n)}</td><td>${c}</td></tr>`).join("")}<tr class="hl"><td class="l">합계</td><td>${sum}</td></tr></tbody></table></div>` : `<p>${esc(c3.body)}</p>`}
-        <p class="small">${badge(c3)} ${src(c3)}</p>`) : "",
-      sec("7. 선택과목 조사·절차·대학 권장이수과목", table(by("cur-06", "cur-26", "cur-07", "cur-31", "cur-32"), basic)),
-      sec("8. 우리 4개교", `<ul class="plain">${summary.map((m) => `<li><b>${esc(m.schoolName)}</b> 교과 ${m.creditsSubject}학점 = 지정 ${m.creditsRequired} + 선택 ${m.creditsElective}, 창체 ${m.creditsCreative}학점</li>`).join("")}</ul>
-        <p><a class="btn" href="#select/curriculum">학교별 편제표 보기</a> <span class="muted small">학교 편제표 기준 학점이며, 위 서울교육청 기준 필수·자율 분류와 다릅니다.</span></p>`),
-    ];
-    el.innerHTML = `<p class="note">서울교육청 자료는 경기 적용 확인 필요. 경기도교육청 행은 요약본(출처 불일치 가능). 항목별 배지로 상태를 확인하세요.</p>${sections.join("")}
-      <p class="muted">수능 출제범위는 <a href="#admission/system">대입 제도</a>에서 봅니다.</p>`;
-  };
+  // 고교학점제 이해(고교 생활 메뉴): 도표·그림 중심 화면은 credit.js.
+  views.credit = (el) => creditView(el, { load, esc, badge, src, table, basic });
 
   views.types = async (el) => {
     const rows = await load("policy");
