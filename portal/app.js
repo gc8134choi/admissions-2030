@@ -340,20 +340,27 @@ registerPolicy(views, { $, esc, load, store });
 registerHome(views, { esc, load, store, nm, stars, toggleStar, nameOf, TERMS, hasLogo: (id) => LOGO_IDS.has(id), profile: () => currentProfile(store), profiles: () => allProfiles(store) });
 const filesApi = registerFiles(views, { esc, load, nm });
 
-// 보관함 > 바로가기: 공식 사이트 한 곳 모음(출처·상태가 붙은 정보는 각 화면의 출처 줄에서 본다)
-const LINKS = [
-  ["고교학점제 종합지원포털", "교육부", "https://www.hscredit.kr"],
-  ["평가원 수능 홈페이지", "한국교육과정평가원", "https://www.suneung.re.kr"],
-  ["대교협 대입정보포털 어디가", "한국대학교육협의회", "https://www.adiga.kr"],
-  ["대학알리미", "한국대학교육협의회", "https://www.academyinfo.go.kr"],
-  ["경기도교육청 고등학교 입학전학 포털", "경기도교육청", "https://satp.goe.go.kr"],
-  ["교육부", "교육부", "https://www.moe.go.kr"],
-];
+// 보관함 > 바로가기: 분류별 헤어라인 목록. 공식·공공은 구분해 적고, 확인일을 함께 보여 준다(data/links.json).
 views.links = async (el) => {
-  el.innerHTML = `<ul class="rows">${LINKS.map(([t, o, u]) => `<li class="row"><div><h3><a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)} ↗</a></h3><p>${esc(o)} · 공식</p></div></li>`).join("")}</ul>
-    <section class="sec"><div class="sec-h"><h2><em>설정</em>표시 이름</h2></div><p class="muted small">이 브라우저에서만 바뀝니다. 비우면 기본 이름으로 돌아가요.</p>${nameSettings(store)}</section>`;
+  const d = await load("links");
+  const KIND = { 공식: "공식", 공공: "공공", 매체: "매체", 학원: "학원" };
+  el.innerHTML = `<p class="muted small">접속을 확인한 곳만 담았어요. 확인일 ${esc((d._meta?.checkedAt || "").replace(/-/g, "."))}</p>
+    ${d.categories.map((c, i) => `<section class="sec"><div class="sec-h"><h2><em>${String(i + 1).padStart(2, "0")}</em>${esc(c)}</h2></div><ul class="rows lk">${d.items.filter((x) => x.category === c).map((x) => `<li class="row"><div><h3><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)} ↗</a></h3><p>${esc(x.purpose)}</p><div class="meta"><span class="kd${x.kind === "공식" ? " off" : ""}">${esc(KIND[x.kind] || x.kind)}</span><span class="muted small">${esc(x.org)} · 확인 ${esc(x.checkedAt.slice(5).replace("-", "."))}</span></div></div></li>`).join("")}</ul></section>`).join("")}
+    <section class="sec"><div class="sec-h"><h2><em>설정</em>표시 이름</h2></div><p class="muted small">이 브라우저에서만 바뀌어요. 비우면 기본 이름으로 돌아가요.</p>${nameSettings(store)}</section>`;
   bindNameSettings(el, store, render);
 };
+
+// 일정 화면: 캘린더 구독(webcal) 또는 .ics 내려받기
+const ICS_URL = "gc8134choi.github.io/admissions-2030/portal/data/schedule.ics";
+function addCalendar(el) {
+  if (el.querySelector(".cal")) return;
+  const s = document.createElement("section");
+  s.className = "sec cal";
+  s.innerHTML = `<div class="sec-h"><h2><em>캘린더</em>내 캘린더에 담기</h2></div>
+    <p class="muted small">구독하면 일정이 바뀔 때 캘린더 앱이 알아서 따라가요. 추정 일정은 제목에 (추정)이 붙어 있어요.</p>
+    <p class="cal-a"><a class="lnk" href="webcal://${ICS_URL}">내 캘린더에 구독</a><a class="lnk" href="data/schedule.ics" download="schedule.ics">.ics 내려받기</a></p>`;
+  el.appendChild(s);
+}
 
 const GO_ERR = '<p class="note">정보를 못 가져왔어요. 잠시 뒤 다시 열어 주세요.</p>';
 function render() {
@@ -380,7 +387,7 @@ function render() {
   }
   const title = tab.items.find((x) => x.id === n.id)?.title || n.title;
   $("#main").innerHTML = `${sub}<h1 class="ph">${esc(title)}</h1><div id="view"></div>${soon}`;
-  if (n.view) views[n.view]($("#view"), query).then(() => { filesApi.afterView(n.view, $("#view")); if (n.view === "credit") decorateSubjectLists($("#view"), load, "4."); }).catch(() => ($("#view").innerHTML = GO_ERR));
+  if (n.view) views[n.view]($("#view"), query).then(() => { filesApi.afterView(n.view, $("#view")); if (n.view === "credit") decorateSubjectLists($("#view"), load, "4."); if (n.view === "schedule") addCalendar($("#view")); }).catch(() => ($("#view").innerHTML = GO_ERR));
 }
 
 addEventListener("hashchange", render);
