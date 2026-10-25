@@ -193,8 +193,8 @@ select,input[type=search]{font-size:13px;padding:5px 8px}
 
 
 /* 지정/선택 색: 지정=올리브(볼드), 선택=와인(보통). 다크 모드는 밝은 톤 */
-:root{--req:#3f6212;--ele:#831843}
-@media (prefers-color-scheme:dark){:root{--req:#b5d37a;--ele:#f0a0bd}}
+:root{--req:#1B3A6B;--ele:#0B7F63}
+@media (prefers-color-scheme:dark){:root{--req:#6EA0F0;--ele:#34D3A8}.bar{color:#0E1626}}
 
 /* 학교 로고: 상자 없이 로고 중심. 칩은 켜짐=선명+링, 꺼짐=흐린 흑백 */
 .logo{box-shadow:0 0 0 1px var(--line)}
@@ -582,3 +582,26 @@ td,th,.tnum,.hm-tiles b,.hs-tiles b,.st-n{font-variant-numeric:tabular-nums}
 #hm-nx{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
 .hm .hm-hero2 a:not(.btn):not(.hh-cta){color:#fff;text-decoration:underline}
 .hm .hm-hero2 .hh-cta{color:var(--coral-fg)}
+
+/* ===== 3단계: 학교별 편제표 요약 카드 ===== */
+.school{display:flex;flex-direction:column;gap:12px;padding:20px}
+.school .sb{flex-direction:row;text-align:left;background:none;color:var(--fg);padding:0 0 10px;gap:12px;border-bottom:3px solid var(--sc);border-radius:0}
+.school .sb-logo{width:56px;height:56px;box-shadow:0 0 0 1px var(--line)}
+.school .sb-t b{font-size:22px;font-weight:800}
+.school .sb-t span{color:var(--muted)}
+.school .sb-star{position:static;color:var(--amber);font-size:24px}
+.hs-tiles.k3 b{font-size:28px;font-weight:800}
+.hs-tiles.k3 .kr b{color:var(--req)}.hs-tiles.k3 .ke b{color:var(--ele)}
+.hs-tiles.k3 small{font-size:10px}
+.school .bar{height:22px;line-height:22px;border-radius:99px}
+.fold{border-top:1px solid var(--line);padding-top:8px}
+.fold>summary{cursor:pointer;font-weight:600;font-size:14px;list-style:revert}
+.fold[open]>summary{margin-bottom:8px}
+.school .st2{margin:0}
+.sn ul{margin:4px 0 0;padding-left:18px}
+@media (max-width:760px){
+ .chipbar{position:sticky;top:var(--hh);z-index:6;background:var(--bg);padding:8px 0;margin:0 0 8px;box-shadow:0 1px 0 var(--line)}
+ .school{padding:16px}
+}
+.school .foot .btn{background:var(--navy);border-color:var(--navy);color:var(--bg);font-weight:700}
+@media (prefers-color-scheme:dark){.school .foot .btn{color:#0E1626}}

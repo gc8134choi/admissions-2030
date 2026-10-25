@@ -184,8 +184,8 @@ function creativeBlock(m, cur) {
 function notesBlock(list, status) {
   if (!list?.length) return "";
   const li = (n) => `<li>${esc(n)}</li>`;
-  return `<div class="sn"><div class="sn-h"><b>특이 사항</b> <span class="sn-tag">사진 대조 전 ${esc(status || "추정")}</span></div>
-    <ul>${list.slice(0, 5).map(li).join("")}</ul>${list.length > 5 ? `<details><summary>나머지 ${list.length - 5}줄</summary><ul>${list.slice(5).map(li).join("")}</ul></details>` : ""}</div>`;
+  return `<div class="sn"><div class="sn-h"><b>특이 사항</b></div>
+    <ul>${list.slice(0, 3).map(li).join("")}</ul>${list.length > 3 ? `<details><summary>더 보기 (${list.length - 3})</summary><ul>${list.slice(3).map(li).join("")}</ul></details>` : ""}</div>`;
 }
 
 // 요약 카드: 선택한 학교만 가로로 나란히
@@ -199,16 +199,17 @@ async function summaryBody(el, ids) {
     const l1 = ["region", "schoolType", "founding", "gender"].filter((k) => vary(k)).map((k) => m[k]).filter(Boolean).join(" · ");
     return `<section class="school"><header>${schoolBand(m, { starred: st.includes(m.schoolId), sub: l1, logoOk: LOGO_IDS.has(m.schoolId) })}
       ${vary("assignment") && m.assignment ? `<div class="muted">${esc(m.assignment)}</div>` : ""}</header>
-      <div class="big">총 ${m.creditsTotal}학점 <span class="muted">(교과 ${m.creditsSubject} + 창체 ${m.creditsCreative})</span></div>
+      <div class="hs-tiles k3"><div><b>${m.creditsTotal}</b><span title="교과 ${m.creditsSubject} + 창체 ${m.creditsCreative}">총 학점</span></div><div class="kr"><b>${m.creditsRequired}</b><span>지정</span></div><div class="ke"><b>${m.creditsElective}</b><span>선택</span></div></div>
       <div class="bar" title="지정 ${m.creditsRequired} / 선택 ${m.creditsElective}"><span class="req" style="width:${(m.creditsRequired / total) * 100}%">지정 ${m.creditsRequired}</span><span class="ele" style="width:${(m.creditsElective / total) * 100}%">선택 ${m.creditsElective}</span></div>
+      <details class="fold"><summary>학기별 학점</summary>
       <div class="terms">${TERMS.map((t) => { const b = m.byTerm[t], tot = b.required + b.elective || 1; return `<div><div class="tnum"><b class="r">${b.required}</b><b class="e">${b.elective}</b></div><div class="col"><i class="e" style="height:${(b.elective / tot) * 100}%"></i><i class="r" style="height:${(b.required / tot) * 100}%"></i></div><span>${t}</span></div>`; }).join("")}</div>
-      <div class="muted small">학기별 학점: <b class="rk">지정</b> · <b class="ek">선택</b> (막대 위 숫자 = 지정 / 선택, 막대 = 비중)</div>
+      </details>
       <div class="st2">
         <div class="st-req"><b class="st-l">지정</b> 과목 <b class="st-n">${m.requiredCount}</b></div>
         <div class="st-ele"><b class="st-l">선택</b> 후보 <b class="st-n">${m.candidateSubjects}</b> 중 <b class="st-n">${m.pickTotal}</b>개 선택
           <div class="st-sub">택n 묶음 ${m.groupCount} · 선택 폭 ${m.breadth} · 첫 선택 학기 ${esc(m.firstElectiveTerm || "-")}</div></div>
       </div>
-      ${creativeBlock(m, curricula.find((x) => x.schoolId === m.schoolId))}
+      ${(() => { const cb = creativeBlock(m, curricula.find((x) => x.schoolId === m.schoolId)); return cb ? `<details class="fold"><summary>창체 ${m.creditsCreative}학점 · ${m.creativeHours}시간</summary>${cb}</details>` : ""; })()}
       ${notesBlock(notes?.schools?.find((x) => x.schoolId === m.schoolId)?.notes, notes?._meta?.status)}
       <details><summary>메모</summary><textarea data-memo="${esc(m.schoolId)}" placeholder="이 브라우저에만 저장됩니다">${esc(store.get("memo:" + m.schoolId, ""))}</textarea></details>
       <div class="foot"><a class="btn" href="#" data-go="${esc(m.schoolId)}">이 학교 과목 보기</a>
@@ -217,7 +218,7 @@ async function summaryBody(el, ids) {
   const shown = ids.map((id) => summary.find((m) => m.schoolId === id)).filter(Boolean);
   // 비교 중인 학교들 사이에 값이 다른 항목만 표시(학교가 하나뿐이면 전부 표시)
   const vary = (k) => shown.length < 2 || new Set(shown.map((x) => x[k] ?? "")).size > 1;
-  const common = notes?.common?.length ? `<div class="sn-common"><span class="sn-tag">사진 대조 전 ${esc(notes._meta?.status || "추정")}</span> ${notes.common.map(esc).join(" ")}</div>` : "";
+  const common = notes?.common?.length ? `<div class="sn-common">${notes.common.map(esc).join(" ")}</div>` : "";
   el.innerHTML = shown.length ? `${common}<div class="schoolgrid cols${shown.length > 4 ? "n" : shown.length}">${shown.map(card).join("")}</div>` : '<p class="note">위에서 학교를 하나 이상 선택하세요.</p>';
 }
 
