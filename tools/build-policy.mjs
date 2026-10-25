@@ -3,8 +3,8 @@
 // 사용: node tools/build-policy.mjs  (--check: 파일과 결과가 다르면 종료코드 1)
 import { readFileSync, writeFileSync } from "node:fs";
 
-const STATUS = { 확정: "confirmed", 보도: "reported", 추정: "estimated", "학교 배부 자료": "material", unknown: "unknown" };
-const KIND = { 공식: "official", 매체: "media", "학교 배부 자료": "material" };
+const STATUS = { 확정: "confirmed", 보도: "reported", 추정: "estimated", "학교 배부 자료": "material", "서울교육청 자료": "seoul", unknown: "unknown" };
+const KIND = { 공식: "official", 매체: "media", "학교 배부 자료": "material", "서울교육청 자료": "seoul" };
 
 // 고입·대입 일정 행의 날짜(고입은 id, 대입은 id가 밀릴 수 있어 title 키). draft 본문의 날짜를 ISO로 옮겼다(연도는 해당 학년도 시행 연도). 월만 알면 YYYY-MM.
 const EVENTS = {
