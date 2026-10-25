@@ -38,108 +38,14 @@ const views = {
   async home(el) {
     const [schools, summary] = await Promise.all([load("schools"), load("summary")]);
     const s = stars();
-    el.innerHTML = `<div class="panel"><b>관심 학교</b><p class="muted">${s.length ? s.map((id) => `<a href="#select/curriculum?tab=detail&s=${esc(id)}">${esc(nameOf(schools, id))}</a>`).join(", ") : "비교 화면의 ☆을 누르면 여기에 모입니다."}</p></div>
+    el.innerHTML = `<div class="panel"><b>관심 학교</b><p class="muted">${s.length ? s.map((id) => `<a href="#select/curriculum?v=compare&s=${esc(id)}">${esc(nameOf(schools, id))}</a>`).join(", ") : "비교 화면의 ☆을 누르면 여기에 모입니다."}</p></div>
       <div class="panel"><b>편제표 등록 현황</b><p class="muted">${summary.length}개교 · ${summary[0].entryYear}학년도 입학생(대입 ${summary[0].entryYear + 3}학년도) 기준</p>
-      <div class="cards">${summary.map((m) => `<a href="#select/curriculum?tab=detail&s=${esc(m.schoolId)}"><b>${esc(m.schoolName)}</b><div class="muted">${esc(m.region || "")} · ${esc(m.schoolType || "")} · ${esc(m.founding || "")}</div><div>지정 ${m.creditsRequired} / 선택 ${m.creditsElective}학점</div></a>`).join("")}</div></div>
+      <div class="cards">${summary.map((m) => `<a href="#select/curriculum"><b>${esc(m.schoolName)}</b><div class="muted">${esc(m.region || "")} · ${esc(m.schoolType || "")} · ${esc(m.founding || "")}</div><div>지정 ${m.creditsRequired} / 선택 ${m.creditsElective}학점</div></a>`).join("")}</div></div>
       <div class="panel"><b>이번 달 할 일</b><p class="muted">일정 데이터 연결 예정</p></div>`;
   },
 
-  async search(el) {
-    const [subjects, schools] = await Promise.all([load("subjects"), load("schools")]);
-    el.innerHTML = `${dataNote}<div class="tools"><input type="search" id="q" placeholder="과목명 검색">
-      <select id="area">${options([...new Set(subjects.map((s) => s.area))], "교과군 전체")}</select>
-      <select id="kind">${options(["공통", "일반", "진로", "융합"], "구분 전체")}</select>
-      <select id="sch">${options(schools.map((s) => ({ v: s.id, t: s.name })), "학교 전체")}</select>
-      <label><input type="checkbox" id="only1"> 한 학교에만 있는 과목</label><span class="muted" id="cnt"></span></div>
-      <div class="tw"><table><thead><tr><th class="l">과목</th><th>교과군</th><th>구분</th><th>수능 범위(추정)</th><th class="l">개설 학교</th></tr></thead><tbody id="rows"></tbody></table></div>`;
-    const draw = () => {
-      const q = $("#q").value.replace(/\s/g, ""), a = $("#area").value, k = $("#kind").value, sc = $("#sch").value, one = $("#only1").checked;
-      const rows = subjects.filter((s) => (!q || s.name.replace(/\s/g, "").includes(q) || s.aliases.some((x) => x.replace(/\s/g, "").includes(q))) && (!a || s.area === a) && (!k || s.kindsPrinted.includes(k)) && (!sc || s.offeredBy.includes(sc)) && (!one || s.schoolCount === 1));
-      $("#cnt").textContent = `${rows.length}개`;
-      $("#rows").innerHTML = rows.map((s) => `<tr><td class="l">${esc(s.name)}</td><td>${esc(s.area)}</td><td>${esc(s.kindsPrinted.join("·") || "미표기")}</td><td>${CSAT[s.csatScope] || "-"}${s.csatArea ? " (" + esc(s.csatArea) + ")" : ""}</td><td class="l">${s.offeredBy.map((id) => esc(nameOf(schools, id).replace("등학교", ""))).join(", ")}</td></tr>`).join("") || '<tr><td colspan="5">조건에 맞는 과목이 없습니다.</td></tr>';
-    };
-    el.addEventListener("input", draw); draw();
-  },
-
-  async compare(el) {
-    const [summary, matrix] = await Promise.all([load("summary"), load("subject-matrix")]);
-    const sch = summary.map((m) => ({ id: m.schoolId, name: m.schoolName }));
-    const pct = (a, b) => `${a} (${Math.round((a / b) * 100)}%)`;
-    const rows = [
-      ["총 이수학점", (m) => m.creditsTotal], ["지정 학점", (m) => pct(m.creditsRequired, m.creditsSubject)], ["선택 학점", (m) => pct(m.creditsElective, m.creditsSubject)],
-      ["지정 과목 수", (m) => m.requiredCount], ["택n 묶음 수", (m) => m.groupCount], ["선택해야 하는 과목 수", (m) => m.pickTotal],
-      ["선택 후보 과목 수", (m) => m.candidateSubjects], ["선택 폭 (후보÷선택 수)", (m) => m.breadth], ["선택이 처음 나오는 학기", (m) => m.firstElectiveTerm],
-      ["확인 필요 건수", (m) => m.reviewCount],
-    ];
-    const terms = ["1-1", "1-2", "2-1", "2-2", "3-1", "3-2"];
-    const st = stars();
-    el.innerHTML = `${dataNote}
-      <h3>학교 구조 비교</h3><div class="tw"><table><thead><tr><th class="l"></th>${sch.map((s) => `<th>${esc(s.name)}<br><button class="star" data-id="${esc(s.id)}" aria-label="관심">${st.includes(s.id) ? "★" : "☆"}</button></th>`).join("")}</tr></thead>
-      <tbody>${rows.map(([l, f]) => `<tr><td class="l">${l}</td>${summary.map((m) => `<td>${esc(f(m) ?? "-")}</td>`).join("")}</tr>`).join("")}
-      <tr class="area"><td colspan="${sch.length + 1}">학기별 지정 / 선택 학점</td></tr>
-      ${terms.map((t) => `<tr><td class="l">${t}</td>${summary.map((m) => { const b = m.byTerm[t]; return `<td>${b.required} / ${b.elective}</td>`; }).join("")}</tr>`).join("")}</tbody></table></div>
-      <h3>과목 × 학교</h3><div class="tools"><select id="area">${options([...new Set(matrix.map((m) => m.area))], "교과군 전체")}</select>
-      <label><input type="checkbox" id="diff"> 차이 나는 과목만</label><label><input type="checkbox" id="elec"> 선택과목만</label><span class="muted" id="cnt"></span></div>
-      <div class="tw"><table><thead><tr><th class="l">과목</th>${sch.map((s) => `<th>${esc(s.name)}</th>`).join("")}</tr></thead><tbody id="rows"></tbody></table></div>`;
-    const cell = (c) => (c ? `<td class="yes">${c.slots.map((x) => SLOT[x]).join("/")}<br><span class="muted">${esc(c.terms.join(", "))}</span></td>` : '<td class="no">✕</td>');
-    const draw = () => {
-      const a = $("#area").value, diff = $("#diff").checked, elec = $("#elec").checked; let area = "", html = "", n = 0;
-      for (const m of matrix) {
-        if (a && m.area !== a) continue;
-        const cs = sch.map((s) => m.cells[s.id]);
-        if (elec && !cs.some((c) => c && c.slots.includes("elective"))) continue;
-        const sig = cs.map((c) => (c ? c.slots.join("+") : "-"));
-        if (diff && sig.every((x) => x === sig[0])) continue;
-        if (m.area !== area) { area = m.area; html += `<tr class="area"><td colspan="${sch.length + 1}">${esc(area)}</td></tr>`; }
-        html += `<tr><td class="l">${esc(m.name)}</td>${cs.map(cell).join("")}</tr>`; n++;
-      }
-      $("#cnt").textContent = `${n}개`;
-      $("#rows").innerHTML = html || `<tr><td colspan="${sch.length + 1}">조건에 맞는 과목이 없습니다.</td></tr>`;
-    };
-    el.addEventListener("change", (e) => { if (e.target.matches("#area,#diff,#elec")) draw(); });
-    el.addEventListener("click", (e) => { const b = e.target.closest(".star"); if (!b) return; toggleStar(b.dataset.id); b.textContent = stars().includes(b.dataset.id) ? "★" : "☆"; });
-    draw();
-  },
-
-  async detail(el, query) {
-    const [schools, summary, offerings, groups] = await Promise.all([load("schools"), load("summary"), load("offerings"), load("groups")]);
-    const terms = ["1-1", "1-2", "2-1", "2-2", "3-1", "3-2"];
-    el.innerHTML = `${dataNote}<div class="tools"><select id="sc">${options(schools.map((s) => ({ v: s.id, t: s.name })))}</select>
-      <select id="term">${options(terms, "전체 학기")}</select></div><div id="info"></div>
-      <div class="tw"><table><thead><tr><th>학기</th><th class="l">교과군</th><th class="l">과목</th><th>구분</th><th>학점</th><th>수능(추정)</th></tr></thead><tbody id="rows"></tbody></table></div>
-      <div class="panel"><b>메모</b><textarea id="memo" placeholder="이 학교에 대한 메모 (이 브라우저에만 저장됩니다)"></textarea></div>`;
-    if (query.get("s") && schools.some((s) => s.id === query.get("s"))) $("#sc").value = query.get("s");
-    const draw = () => {
-      const id = $("#sc").value, t = $("#term").value, sm = summary.find((m) => m.schoolId === id), sc = schools.find((s) => s.id === id);
-      const src = (sc._meta?.source || []).filter((x) => x.kind !== "self");
-      $("#info").innerHTML = `<div class="panel"><b>${esc(sc.name)}</b> <span class="muted">${esc([sc.region, sc.schoolType, sc.founding, sm?.gender, sm?.assignment].filter(Boolean).join(" · "))}</span>
-        <div>${sm ? `${sm.entryYear}학년도 입학생 · 총 ${sm.creditsTotal}학점 (지정 ${sm.creditsRequired} / 선택 ${sm.creditsElective}${sm.creditsOutside ? ` / 교외 ${sm.creditsOutside}` : ""}) · 확인 필요 ${sm.reviewCount}건` : ""}</div>
-        <div class="muted">정보 수집일 ${esc(sc._meta?.updated || "-")}${src.length ? " · 출처 " + src.map((x) => (x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>` : esc(x.name))).join(", ") : ""}</div></div>`;
-      const list = offerings.filter((o) => o.schoolId === id && (!t || o.term === t)).sort((a, b) => a.term.localeCompare(b.term) || (a.slot === b.slot ? (a.groupId || "").localeCompare(b.groupId || "") || a.seq - b.seq : a.slot === "required" ? -1 : 1));
-      let html = "", cur = "";
-      for (const o of list) {
-        const key = o.term + "|" + (o.groupId || o.slot);
-        if (key !== cur) {
-          cur = key;
-          const g = o.groupId && groups.find((x) => x.id === o.groupId);
-          html += `<tr class="area"><td colspan="6">${o.term} · ${g ? `택${g.pick}/${g.size} (과목당 ${g.creditsEach}학점)` : SLOT[o.slot] + " 과목"}</td></tr>`;
-        }
-        html += `<tr><td>${o.term}</td><td class="l">${esc(o.area)}</td><td class="l">${esc(o.subject)}${o.openFlagIds.length ? ' <span title="판독 확인 필요">⚠️</span>' : ""}</td><td>${esc(kindOf(o))}</td><td>${o.credits}</td><td>${CSAT[o.csatScope] || "-"}</td></tr>`;
-      }
-      $("#rows").innerHTML = html || '<tr><td colspan="6">해당 학기의 과목이 없습니다.</td></tr>';
-      $("#memo").value = store.get("memo:" + id, "");
-    };
-    $("#sc").addEventListener("change", draw);
-    $("#term").addEventListener("change", draw);
-    $("#memo").addEventListener("input", (e) => store.set("memo:" + $("#sc").value, e.target.value));
-    draw();
-  },
-
   async curriculum(el, query) {
-    const tabs = [["compare", "학교 비교"], ["search", "과목 검색"], ["detail", "학교 상세"]];
-    const tab = tabs.some(([k]) => k === query.get("tab")) ? query.get("tab") : "compare";
-    el.innerHTML = `<div class="subtabs">${tabs.map(([k, t]) => `<a href="#select/curriculum?tab=${k}" class="${k === tab ? "on" : ""}">${t}</a>`).join("")}</div><div id="tabview"></div>`;
-    await views[tab]($("#tabview"), query);
+    await (query.get("v") === "compare" ? compareView : summaryView)(el, query);
   },
 
   async sources(el) {
@@ -153,6 +59,103 @@ const views = {
       <p class="muted">unverified = 사진 대조 전 / reported = 보도·사용자 확인 / verified = 대조 완료</p>`;
   },
 };
+
+// ---- 학교별 편제표: 요약 화면 ----
+async function summaryView(el) {
+  const [schools, summary, subjects] = await Promise.all([load("schools"), load("summary"), load("subjects")]);
+  const st = stars(), terms = ["1-1", "1-2", "2-1", "2-2", "3-1", "3-2"];
+  const card = (m) => {
+    const sc = schools.find((x) => x.id === m.schoolId) || {};
+    const uniq = subjects.filter((x) => x.schoolCount === 1 && x.offeredBy[0] === m.schoolId);
+    const total = m.creditsRequired + m.creditsElective;
+    return `<section class="school"><header><h3>${esc(m.schoolName)} <button class="star" data-id="${esc(m.schoolId)}" aria-label="관심">${st.includes(m.schoolId) ? "★" : "☆"}</button></h3>
+      <div class="muted">${esc([m.region, m.schoolType, m.founding, m.gender].filter(Boolean).join(" · "))}</div>
+      <div class="muted">${esc(m.assignment || "")}</div></header>
+      <div class="big">총 ${m.creditsTotal}학점 <span class="muted">(교과 ${m.creditsSubject} + 창체 ${m.creditsCreative})</span></div>
+      <div class="bar" title="지정 ${m.creditsRequired} / 선택 ${m.creditsElective}"><span class="req" style="width:${(m.creditsRequired / total) * 100}%">지정 ${m.creditsRequired}</span><span class="ele" style="width:${(m.creditsElective / total) * 100}%">선택 ${m.creditsElective}</span></div>
+      <div class="terms">${terms.map((t) => { const b = m.byTerm[t], tot = b.required + b.elective || 1; return `<div><div class="col"><i style="height:${(b.elective / tot) * 100}%"></i></div><span>${t}</span><b>${b.elective}</b></div>`; }).join("")}</div>
+      <div class="muted small">학기별 선택 학점 (막대 = 선택 비중)</div>
+      <dl class="stats"><div><dt>지정 과목</dt><dd>${m.requiredCount}</dd></div><div><dt>택n 묶음</dt><dd>${m.groupCount}</dd></div><div><dt>골라야 하는 과목</dt><dd>${m.pickTotal}</dd></div>
+      <div><dt>선택 후보</dt><dd>${m.candidateSubjects}</dd></div><div><dt>선택 폭</dt><dd>${m.breadth}</dd></div><div><dt>첫 선택 학기</dt><dd>${esc(m.firstElectiveTerm || "-")}</dd></div></dl>
+      <details><summary>이 학교에만 있는 과목 (${uniq.length})</summary><p>${uniq.map((x) => esc(x.name)).join(", ") || "-"}</p></details>
+      <details><summary>메모</summary><textarea data-memo="${esc(m.schoolId)}" placeholder="이 브라우저에만 저장됩니다">${esc(store.get("memo:" + m.schoolId, ""))}</textarea></details>
+      <div class="foot"><a class="btn" href="#select/curriculum?v=compare&s=${esc(m.schoolId)}">이 학교 과목 보기</a>
+      <span class="muted small">${m.reviewCount ? `⚠ 확인 필요 ${m.reviewCount}건 · ` : ""}수집 ${esc(sc._meta?.updated || "-")}</span></div></section>`;
+  };
+  el.innerHTML = `<div class="tools"><a class="btn primary" href="#select/curriculum?v=compare">상세 비교 →</a>
+    <span class="muted">${summary[0].entryYear}학년도 입학생(대입 ${summary[0].entryYear + 3}학년도) 편제표 · ${summary.length}개교</span></div>${dataNote}
+    <div class="schoolgrid">${summary.map(card).join("")}</div>`;
+  el.addEventListener("click", (e) => { const b = e.target.closest(".star"); if (!b) return; toggleStar(b.dataset.id); b.textContent = stars().includes(b.dataset.id) ? "★" : "☆"; });
+  el.addEventListener("input", (e) => { if (e.target.dataset.memo) store.set("memo:" + e.target.dataset.memo, e.target.value); });
+}
+
+// ---- 학교별 편제표: 상세 비교(필터) ----
+async function compareView(el, query) {
+  const [schools, facets, subjects, offerings, groups] = await Promise.all([load("schools"), load("facets"), load("subjects"), load("offerings"), load("groups")]);
+  const subj = new Map(subjects.map((x) => [x.subjectKey, x]));
+  const gmap = new Map(groups.map((g) => [g.id, g]));
+  const preset = (query.get("s") || "").split(",").filter((id) => schools.some((x) => x.id === id));
+  const on = preset.length ? preset : schools.map((x) => x.id);
+  const terms = ["1-1", "1-2", "2-1", "2-2", "3-1", "3-2"];
+  el.innerHTML = `<div class="cmp">
+    <aside class="panel filters"><b>필터</b>
+      <div class="fgroup"><span class="flabel">학교</span>${schools.map((x) => `<label><input type="checkbox" class="fs" value="${esc(x.id)}" ${on.includes(x.id) ? "checked" : ""}> ${esc(x.name)}</label>`).join("")}</div>
+      <div class="fgroup"><span class="flabel">과목명</span><input type="search" id="q" placeholder="과목명 검색"></div>
+      <div class="fgroup"><span class="flabel">교과군</span><select id="area">${options(facets.areas, "전체")}</select></div>
+      <div class="fgroup"><span class="flabel">이수 방식</span><select id="sel">${options([{ v: "school", t: "학교 지정" }, { v: "student", t: "학생 선택" }, { v: "outside", t: "학교 밖" }], "전체")}</select></div>
+      <div class="fgroup"><span class="flabel">구분</span><select id="kind">${options(["공통", "일반", "진로", "융합"], "전체")}</select></div>
+      <div class="fgroup"><span class="flabel">학기</span><select id="term">${options(terms, "전체")}</select></div>
+      <div class="fgroup"><span class="flabel">수능 범위(추정)</span><select id="csat">${options([{ v: "in", t: "출제 범위" }, { v: "base", t: "기초(공통)" }, { v: "out", t: "제외" }], "전체")}</select></div>
+      <div class="fgroup"><label><input type="checkbox" id="diff"> 학교 간 차이 나는 과목만</label><label><input type="checkbox" id="one"> 한 학교에만 있는 과목</label></div>
+      <button id="reset" type="button">필터 초기화</button>
+    </aside>
+    <div class="cmpmain"><div class="tools"><a class="btn" href="#select/curriculum">← 학교별 요약</a><span class="muted" id="cnt"></span></div>${dataNote}
+      <div class="tw"><table id="tbl"></table></div></div></div>`;
+  const draw = () => {
+    const ids = [...el.querySelectorAll(".fs:checked")].map((x) => x.value);
+    const f = { q: $("#q").value.replace(/\s/g, ""), area: $("#area").value, sel: $("#sel").value, kind: $("#kind").value, term: $("#term").value, csat: $("#csat").value, diff: $("#diff").checked, one: $("#one").checked };
+    if (!ids.length) { $("#tbl").innerHTML = ""; $("#cnt").textContent = "학교를 하나 이상 선택하세요."; return; }
+    const by = new Map();
+    for (const o of offerings) {
+      if (!ids.includes(o.schoolId) || (f.area && o.area !== f.area) || (f.sel && o.selection !== f.sel) || (f.term && o.term !== f.term) || (f.csat && o.csatScope !== f.csat)) continue;
+      if (f.kind && !o.kind.includes(f.kind) && o.kindGuess !== f.kind) continue;
+      if (f.q && !o.subject.replace(/\s/g, "").includes(f.q)) continue;
+      if (f.one && subj.get(o.subjectKey)?.schoolCount !== 1) continue;
+      if (!by.has(o.subjectKey)) by.set(o.subjectKey, { area: o.area, name: subj.get(o.subjectKey)?.name || o.subject, cells: {} });
+      (by.get(o.subjectKey).cells[o.schoolId] ||= []).push(o);
+    }
+    let rows = [...by.values()];
+    if (f.diff) rows = rows.filter((r) => ids.some((id) => !r.cells[id]));
+    rows.sort((a, b) => facets.areas.indexOf(a.area) - facets.areas.indexOf(b.area) || a.name.localeCompare(b.name, "ko"));
+    const names = ids.map((id) => nameOf(schools, id));
+    const uniq = (a) => [...new Set(a)];
+    const cell = (os) => {
+      if (!os) return '<td class="no">✕</td>';
+      const slots = uniq(os.map((o) => SLOT[o.slot])), tm = uniq(os.map((o) => o.term)).sort().join(", ");
+      const kinds = uniq(os.map(kindOf)).join("/"), cr = uniq(os.map((o) => o.credits)).join("/");
+      const g = os.map((o) => gmap.get(o.groupId)).find(Boolean);
+      const warn = os.some((o) => o.openFlagIds.length) ? " ⚠️" : "";
+      return `<td class="${os.some((o) => o.slot === "required") ? "req" : "ele"}">${slots.join("/")} ${esc(tm)}${warn}<br><span class="muted small">${esc(kinds)} · ${cr}학점${g ? ` · 택${g.pick}/${g.size}` : ""}</span></td>`;
+    };
+    let area = "", html = "";
+    for (const r of rows) {
+      if (r.area !== area) { area = r.area; html += `<tr class="area"><td colspan="${ids.length + 1}">${esc(area)}</td></tr>`; }
+      html += `<tr><td class="l">${esc(r.name)}</td>${ids.map((id) => cell(r.cells[id])).join("")}</tr>`;
+    }
+    $("#tbl").innerHTML = `<thead><tr><th class="l">과목</th>${names.map((n) => `<th>${esc(n)}</th>`).join("")}</tr></thead><tbody>${html || `<tr><td colspan="${ids.length + 1}">조건에 맞는 과목이 없습니다.</td></tr>`}</tbody>
+      <tfoot><tr><th class="l">해당 과목 수</th>${ids.map((id) => `<th>${rows.filter((r) => r.cells[id]).length}</th>`).join("")}</tr></tfoot>`;
+    $("#cnt").textContent = `${rows.length}개 과목`;
+  };
+  el.addEventListener("input", draw);
+  el.addEventListener("change", draw);
+  $("#reset").addEventListener("click", () => {
+    el.querySelectorAll(".fs").forEach((c) => (c.checked = true));
+    ["q", "area", "sel", "kind", "term", "csat"].forEach((id) => ($("#" + id).value = ""));
+    ["diff", "one"].forEach((id) => ($("#" + id).checked = false));
+    draw();
+  });
+  draw();
+}
 
 function render() {
   const [path, qs] = decodeURIComponent(location.hash.slice(1)).split("?");

@@ -14,7 +14,7 @@ export const MENU = [
       desc: "일반/자사고/특목/특성화 등 유형 개요와 전형 일정·요건.",
       parts: ["유형별 개요", "전형 일정·요건"] },
     { id: "select/curriculum", title: "학교별 편제표", status: "v1", view: "curriculum",
-      desc: "비교 · 검색 · 학교 상세를 한 화면의 탭으로 확인합니다." },
+      desc: "학교별 요약을 보고, 상세 비교에서 여러 필터로 과목을 비교합니다." },
   ] },
 
   { id: "life", title: "고교 생활", icon: "📚", status: "soon",
