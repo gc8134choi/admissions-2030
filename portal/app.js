@@ -31,8 +31,6 @@ const toggleStar = (id) => { const s = stars(); store.set("stars", s.includes(id
 const nameOf = (schools, id) => schools.find((s) => s.id === id)?.name || id;
 const SLOT = { required: "지정", elective: "선택", outside: "교외" };
 const CSAT = { in: "포함", base: "기초", out: "제외", none: "-" };
-const dataNoteShort = '<details class="dnote"><summary><b>ⓘ 데이터 안내</b> AI 전사값 · 일부만 대조 · 수능 범위는 추정 · 개설 후보 <span class="muted">(펼쳐서 보기)</span></summary><p>편제표 값은 AI가 학교 배부 사진에서 옮긴 것으로, 일부(flag 22행)만 사진과 대조했습니다. 수능 범위는 2028 통합형 수능 기준 <b>추정</b>이며, 편제표는 개설 가능 <b>후보</b>입니다. 중요한 결정 전에는 원본으로 확인하세요.</p></details>';
-const dataNote = '<p class="note">편제표 값은 AI가 학교 배부 사진에서 옮긴 것으로, 일부(flag 22행)만 사진과 대조했습니다. 수능 범위는 2028 통합형 수능 기준 <b>추정</b>이며, 편제표는 개설 가능 <b>후보</b>입니다. 중요한 결정 전에는 원본으로 확인하세요.</p>';
 const options = (items, all) => `${all ? `<option value="">${esc(all)}</option>` : ""}${items.map((v) => `<option value="${esc(v.v ?? v)}">${esc(v.t ?? v)}</option>`).join("")}`;
 const POOL = { basic: "기초교과", cross: "교과(군) 간 선택", "in-area": "한 교과 안 선택", life: "기술·가정/정보/제2외국어 등" };
 const CHECK = { inferred: "구분 추정", unmarked: "구분 미표기", flag: "열린 flag 있음" };
@@ -42,7 +40,6 @@ const kindBadge = (kind, est) => {
   const title = kind ? `${kind}${est ? " (추정)" : ""}` : "구분 미표기";
   return `<span class="kb${est ? " est" : ""}${kind ? "" : " none"}" style="--k:${KCOLOR[kind] || "#94a3b8"}" title="${esc(title)}">${kind ? esc(kind) : "—"}</span>`;
 };
-const kindLegend = `<div class="legend">${Object.keys(KCOLOR).map((k) => `<span class="lg">${kindBadge(k)}</span>`).join("")}<span class="lg">${kindBadge("일반", true)}추정(윤곽선)</span><span class="lg">${kindBadge(null)}미표기</span><span class="lg"><i class="cr">4</i>학점</span><span class="cnt" id="cnt"></span></div>`;
 const kindOf = (o) => (o.primaryKind ? o.primaryKind + (o.kindStatus === "inferred" ? "?" : "") : "미표기");
 
 // ---- 뷰 ----
@@ -68,7 +65,8 @@ const views = {
   async status(el) {
     const [schools, summary] = await Promise.all([load("schools"), load("summary")]);
     el.innerHTML = `<div class="tw"><table><thead><tr><th class="l">학교</th><th>입학학년도</th><th>정보 수집일</th><th>편제표 신뢰도</th><th>열린 flag</th><th>구분 미표기 행</th><th>확인 필요</th></tr></thead><tbody>${summary.map((m) => { const sc = schools.find((s) => s.id === m.schoolId); return `<tr><td class="l">${esc(m.schoolName)}</td><td>${m.entryYear}</td><td>${esc(sc?._meta?.updated || "-")}</td><td>${esc(m.confidence)}</td><td>${m.flagsOpen}</td><td>${m.kindMissingRows}</td><td>${m.reviewCount}</td></tr>`; }).join("")}</tbody></table></div>
-      <p class="muted">unverified = 사진 대조 전 / reported = 보도·사용자 확인 / verified = 대조 완료</p>`;
+      <p class="muted">unverified = 사진 대조 전 / reported = 보도·사용자 확인 / verified = 대조 완료</p>
+      <p class="note">편제표 값은 AI가 학교 배부 사진에서 옮긴 것으로, 일부(flag 22행)만 사진과 대조했습니다. 수능 범위는 2028 통합형 수능 기준 <b>추정</b>이며, 편제표는 개설 가능 <b>후보</b>입니다. 중요한 결정 전에는 원본으로 확인하세요.</p>`;
   },
 };
 
@@ -85,7 +83,6 @@ async function curriculumView(el, query, node) {
 
   el.innerHTML = `<div class="phead"><h2>${esc(node?.title || "학교별 편제표")} ${node ? badge(node.status) : ""}</h2>
       <div class="subtabs" id="tabs"><a href="#" data-tab="summary">학교별 요약</a><a href="#" data-tab="compare">상세 비교</a></div></div>
-    ${dataNoteShort}
     <div class="chipbar" id="chipbar"><span class="flabel">학교</span><div class="chips" id="chips"></div></div>
     <div id="cview"></div>`;
 
@@ -165,7 +162,7 @@ async function compareShell(el, onReset) {
   const subj = new Map(subjects.map((x) => [x.subjectKey, x]));
   const gmap = new Map(groups.map((g) => [g.id, g]));
   el.innerHTML = `<div class="cmp">
-    <details class="panel filters" ${innerWidth > 1000 ? "open" : ""}><summary><b>필터</b> <span class="muted small" id="fsum"></span></summary><div class="fbody">
+    <details class="panel filters" ${innerWidth > 1000 ? "open" : ""}><summary><b>필터</b> <span class="muted small"><span id="fsum"></span> · <span id="cnt"></span></span></summary><div class="fbody">
       <div class="fgroup"><span class="flabel">학교</span><div class="chips" id="fchips"></div></div>
       <div class="fgroup"><span class="flabel">과목명</span><input type="search" id="q" placeholder="과목명 검색"></div>
       <div class="fgroup"><span class="flabel">교과군</span><select id="area">${options(facets.areas, "전체")}</select></div>
@@ -180,7 +177,7 @@ async function compareShell(el, onReset) {
       <div class="fgroup"><label><input type="checkbox" id="diff"> 학교 간 차이 나는 과목만</label><label><input type="checkbox" id="one"> 한 학교에만 있는 과목</label></div>
       <button id="reset" type="button">필터 초기화</button>
     </div></details>
-    <div class="cmpmain">${kindLegend}<div class="tw"><table id="tbl"></table></div></div></div>`;
+    <div class="cmpmain"><div class="tw"><table id="tbl"></table></div></div></div>`;
   const root = el.firstElementChild;
   let ids = [];
   const draw = (next) => {
@@ -224,7 +221,7 @@ async function compareShell(el, onReset) {
     $("#tbl").style.minWidth = `${200 + 210 * ids.length}px`;
     $("#tbl").innerHTML = `<thead><tr><th class="l">과목</th>${names.map((n) => `<th>${esc(n)}</th>`).join("")}</tr></thead><tbody>${html || `<tr><td colspan="${ids.length + 1}">조건에 맞는 과목이 없습니다.</td></tr>`}</tbody>
       <tfoot><tr><th class="l">해당 과목 수</th>${ids.map((id) => `<th>${rows.filter((r) => r.cells[id]).length}</th>`).join("")}</tr></tfoot>`;
-    $("#cnt").textContent = `${rows.length}개 과목 · ${ids.length}개교`;
+    $("#cnt").textContent = `${rows.length}개 과목`;
   };
   root.addEventListener("input", () => draw());
   root.addEventListener("change", () => draw());
