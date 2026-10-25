@@ -1,7 +1,7 @@
 import { loadAudience, saveAudience, toggleAudience, audienceMatch, audienceChips } from "./home.js";
 
 // 제도·일정 화면(대입 제도, 일정, 고교 유형·전형, 제도 변경 로그). 데이터는 data/policy.json.
-const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "확인 못 함", material: "학교 배부 자료", seoul: "서울교육청 자료", match: "서울·경기 자료 일치", gyeonggi: "경기도교육청 자료", opinion: "의견" };
+const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "확인 못 함", material: "학교 배부 자료", seoul: "서울교육청 자료", "seoul-verified": "서울교육청 자료(원문 확인)", match: "서울·경기 자료 일치", gyeonggi: "경기도교육청 자료", opinion: "의견" };
 const SKIND = { official: "공식", media: "매체", material: "학교 배부", seoul: "서울교육청", "seoul-gyeonggi": "서울·경기교육청", gyeonggi: "경기도교육청", opinion: "학원 의견" };
 const NOTICE = '<p class="note">조사일 2026-10-25, <b>검색 요약 기준이며 공식 사이트로 재확인 필요.</b> 입학학년도 2027(현 중3) · 대입학년도 2030. <span class="unv">원문 미확인</span> 표시는 원문 페이지를 열람하지 못했다는 뜻입니다.</p>';
 
@@ -17,6 +17,7 @@ export function register(views, { $, esc, load, store }) {
     const label = { "seoul-gyeonggi": "서울·경기교육청 자료(원본 파일 미게시, 경기는 요약본)", gyeonggi: "경기도교육청 안내자료 요약본(원문 미확인)" }[r.sourceKind];
     if (label) return `<span class="muted" title="${esc(r.sourceName || "")}">${label}</span>`;
     if (r.sourceKind === "opinion") return `<span class="muted">${esc(r.sourceName || "출처 미표기")}</span>`;
+    if (r.status === "seoul-verified") { const no = (r.sourceName || "").match(/서교연 [\d-]+/); return `<span class="muted" title="${esc(r.sourceName || "")}">서울교육청 선택 과목 안내서${no ? `(${no[0]})` : ""}</span>`; }
     if (r.sourceKind === "seoul") return `<span class="muted" title="${esc(r.sourceName || "")}">서울교육청 설명회 자료(원본 파일 미게시)</span>`;
     if (!list.length) return '<span class="muted">출처 없음</span>';
     return `${r.sourceKind ? `<span class="muted small">${SKIND[r.sourceKind]}</span> ` : ""}${list.map((x) => (x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>` : esc(x.name))).join(", ")}`;
@@ -112,20 +113,31 @@ export function register(views, { $, esc, load, store }) {
   views.credit = async (el) => {
     const [rows, summary] = await Promise.all([load("policy"), load("summary")]);
     const by = (...ids) => ids.map((id) => rows.find((r) => r.id === id)).filter(Boolean);
-    // 공통과목 필수학점(cur-03): 본문의 "과목 학점" 목록을 표로 풀고 합계는 코드로 계산한다.
+    // 공통과목 필수학점(cur-03): 본문 문장("A·B 각 8학점, C 6학점, D 합 16학점(필수 84학점)")을 표로 풀고 합계는 코드로 계산한다.
+    // 본문에 적힌 필수 합계와 맞지 않거나 풀지 못하면 표 대신 본문을 그대로 보여 준다.
     const c3 = rows.find((r) => r.id === "cur-03");
-    const items = c3 ? c3.body.split(/\s*\(/)[0].split(/,\s*/).map((t) => { const m = t.match(/^(.*\S)\s+(\d+)$/); return m ? [m[1], Number(m[2])] : null; }).filter(Boolean) : [];
+    const items = [];
+    if (c3) {
+      for (const seg of c3.body.split(/,\s*/)) {
+        let m;
+        if ((m = seg.match(/^(.+?)\s*각\s*(\d+)학점/))) m[1].split("·").forEach((n) => items.push([n.trim(), Number(m[2])]));
+        else if ((m = seg.match(/^(.+?)\s*합\s*(\d+)학점/)) || (m = seg.match(/^(.+?)\s+(\d+)학점/))) items.push([m[1].trim(), Number(m[2])]);
+      }
+    }
     const sum = items.reduce((n, x) => n + x[1], 0);
+    const stated = Number((c3?.body.match(/필수\s*(\d+)학점/) || [])[1]) || null;
+    const parsed = items.length && (!stated || stated === sum);
     const sec = (title, body) => `<h3>${title}</h3>${body}`;
     const sections = [
       sec("1. 한눈에", table(by("cur-01", "cur-14", "cur-09", "hs-14"), basic)),
       sec("2. 이수 요건", table(by("cur-02", "cur-16", "cur-12"), basic)),
       sec("3. 과목 유형", table(by("cur-05", "cur-10", "cur-11", "cur-13"), basic)),
-      sec("4. 성적 산출", table(by("cur-04", "cur-15", "hs-13"), basic)),
-      c3 ? sec("5. 공통과목 필수학점", `<div class="tw"><table class="policy"><thead><tr><th class="l">과목</th><th>학점</th></tr></thead><tbody>${items.map(([n, c]) => `<tr><td class="l">${esc(n)}</td><td>${c}</td></tr>`).join("")}<tr class="hl"><td class="l">합계</td><td>${sum}</td></tr></tbody></table></div>
-        <p class="small">${badge(c3)} ${src(c3)} <span class="muted">· 분석 요약 수치 그대로이며 세부는 확인 필요</span></p>`) : "",
-      sec("6. 선택과목 조사·대학 권장이수과목", table(by("cur-06", "cur-07"), basic)),
-      sec("7. 우리 4개교", `<ul class="plain">${summary.map((m) => `<li><b>${esc(m.schoolName)}</b> 교과 ${m.creditsSubject}학점 = 지정 ${m.creditsRequired} + 선택 ${m.creditsElective}, 창체 ${m.creditsCreative}학점</li>`).join("")}</ul>
+      sec("4. 과목표(교과군별)", table(by("cur-17", "cur-18", "cur-19", "cur-20", "cur-21", "cur-22", "cur-23", "cur-24", "cur-25", "cur-27"), basic)),
+      sec("5. 성적 산출", table(by("cur-04", "cur-15", "cur-28", "hs-13"), basic)),
+      c3 ? sec("6. 공통과목 필수학점", `${parsed ? `<div class="tw"><table class="policy"><thead><tr><th class="l">과목</th><th>학점</th></tr></thead><tbody>${items.map(([n, c]) => `<tr><td class="l">${esc(n)}</td><td>${c}</td></tr>`).join("")}<tr class="hl"><td class="l">합계</td><td>${sum}</td></tr></tbody></table></div>` : `<p>${esc(c3.body)}</p>`}
+        <p class="small">${badge(c3)} ${src(c3)}</p>`) : "",
+      sec("7. 선택과목 조사·절차·대학 권장이수과목", table(by("cur-06", "cur-26", "cur-07"), basic)),
+      sec("8. 우리 4개교", `<ul class="plain">${summary.map((m) => `<li><b>${esc(m.schoolName)}</b> 교과 ${m.creditsSubject}학점 = 지정 ${m.creditsRequired} + 선택 ${m.creditsElective}, 창체 ${m.creditsCreative}학점</li>`).join("")}</ul>
         <p><a class="btn" href="#select/curriculum">학교별 편제표 보기</a> <span class="muted small">학교 편제표 기준 학점이며, 위 서울교육청 기준 필수·자율 분류와 다릅니다.</span></p>`),
     ];
     el.innerHTML = `<p class="note">서울교육청 자료는 경기 적용 확인 필요. 경기도교육청 행은 요약본이며 원문 미확인(출처 불일치 가능). 항목별 배지로 상태를 확인하세요.</p>${sections.join("")}
