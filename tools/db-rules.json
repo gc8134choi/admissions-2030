@@ -329,12 +329,5 @@
     "시창·청음": "음악 전문교과 가능성 — 예술(음악)로 분류",
     "드로잉": "미술 전문교과 가능성 — 예술(미술)로 분류",
     "기술가정/한문": "한 슬롯에서 택1(기술·가정 또는 한문) — 대표 교과군은 기술·가정/정보, 전체 교과군은 areasAll 참고"
-  },
-  "displayImages": {
-    "_comment": "학교별 화면용 편제표 이미지(DB의 displayImage). \"$sourceImage\" = 원본 전사본의 사진 경로를 그대로 사용(화면 노출이 허용된 학교만). 마스킹본이 있는 학교는 그 경로를 적는다. 이 목록에 없는 학교는 displayImage를 넣지 않고 경고. 마스킹본을 지정한 학교의 원본 경로는 DB 어디에도 있으면 안 된다(빌드 실패).",
-    "school-suji": "files/masked/suji.jpg",
-    "school-seongbok": "$sourceImage",
-    "school-pungdeok": "$sourceImage",
-    "school-yonginheungcheon": "$sourceImage"
   }
 }

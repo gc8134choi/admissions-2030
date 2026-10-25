@@ -5,7 +5,7 @@
 //   node tools/build-db.mjs --check  파일을 쓰지 않고 검증만 (CI/수동 점검용)
 // content/db/ 는 전부 생성물이다(실행할 때마다 *.json 을 지우고 다시 만든다). 직접 고치지 말 것.
 //
-// 입력: content/curriculum/*.json (읽기 전용 원본), content/data/schools.json, tools/db-rules.json
+// 입력: content/curriculum/*.json (읽기 전용 원본), content/data/schools.json, content/data/display-images.json, tools/db-rules.json
 // 출력: content/db/ (스키마 설명은 docs/db-schema.md)
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, existsSync, rmSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -330,11 +330,12 @@ const clean = v => Array.isArray(v) ? v.map(clean) : (v && typeof v === 'object'
 
 // 화면용 이미지
 const sourceImageOf = new Map(curOut.map(c => [c.curId, c.d.sourceImage ?? null]));
-const imageRules = rules.displayImages ?? {};
+const IMAGES_FILE = join(ROOT, 'content', 'data', 'display-images.json'); // 비공개(content/ 는 gitignore)
+const imageRules = existsSync(IMAGES_FILE) ? readJson(IMAGES_FILE) : {};
 const maskedSources = new Set();
 const displayImageOf = c => {
   const r = imageRules[c.schoolId];
-  if (r == null) { note('warn', c.curId, 'display-image', `${c.schoolId} 는 tools/db-rules.json 의 displayImages 에 없어 displayImage 를 넣지 않습니다.`, { schoolId: c.schoolId }); return null; }
+  if (r == null) { note('warn', c.curId, 'display-image', `${c.schoolId} 는 content/data/display-images.json 에 없어 displayImage 를 넣지 않습니다.`, { schoolId: c.schoolId }); return null; }
   if (r === '$sourceImage') return c.d.sourceImage ?? null;
   if (c.d.sourceImage) maskedSources.add(c.d.sourceImage); // 마스킹본이 있는 학교의 원본 경로는 어디에도 나오면 안 됨
   return r;
@@ -414,7 +415,7 @@ const data = {
 const serialized = Object.entries(data).map(([name, d]) => [`${name}.json`, JSON.stringify(d.rows)]);
 const internal = {
   'validation.json': issues,
-  'build-report.json': { schemaVersion: SCHEMA_VERSION, generatedAt: new Date().toISOString(), inputs: [...curricula.map(c => ({ path: `content/curriculum/${c.file}`, sha256_16: sha(join(CUR_DIR, c.file)) })), ...(existsSync(SCHOOLS_FILE) ? [{ path: 'content/data/schools.json', sha256_16: sha(SCHOOLS_FILE) }] : []), { path: 'tools/db-rules.json', sha256_16: sha(RULES_FILE) }], counts: { schools: schoolList.length, curricula: curRecords.length, subjects: subjects.length, offerings: rows.length, groups: groups.length, flags: flagsOut.length } },
+  'build-report.json': { schemaVersion: SCHEMA_VERSION, generatedAt: new Date().toISOString(), inputs: [...curricula.map(c => ({ path: `content/curriculum/${c.file}`, sha256_16: sha(join(CUR_DIR, c.file)) })), ...(existsSync(SCHOOLS_FILE) ? [{ path: 'content/data/schools.json', sha256_16: sha(SCHOOLS_FILE) }] : []), { path: 'tools/db-rules.json', sha256_16: sha(RULES_FILE) }, ...(existsSync(IMAGES_FILE) ? [{ path: 'content/data/display-images.json', sha256_16: sha(IMAGES_FILE) }] : [])], counts: { schools: schoolList.length, curricula: curRecords.length, subjects: subjects.length, offerings: rows.length, groups: groups.length, flags: flagsOut.length } },
 };
 
 // 원본 경로 노출 검사: ① 마스킹 학교의 원본 경로는 어디에도 금지 ② files/inbox 문자열은 displayImage 값으로만 허용 ③ sourceImage 키 금지
