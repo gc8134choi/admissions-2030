@@ -196,3 +196,15 @@ select,input[type=search]{font-size:13px;padding:5px 8px}
 :root[data-pal="c"]{--req:#831843;--ele:#6b5b6e}
 :root[data-pal="d"]{--req:#5a3825;--ele:#7a6a5c}
 }
+
+/* 요약 카드: 창체 블록 */
+.cre{margin:8px 0 6px;padding-top:8px;border-top:1px solid var(--line);font-size:13px}
+.cre .cr1{color:var(--fg)}
+.cre details{margin:4px 0 0}
+.crew{overflow-x:auto}
+.crt{border-collapse:collapse;min-width:0;width:100%;font-size:11px;margin:4px 0}
+.crt th,.crt td{border:0;border-bottom:1px solid var(--line);padding:2px 3px;text-align:center;font-size:11px;white-space:nowrap}
+.crt th{background:none;font-weight:400;color:var(--muted)}
+.crt tbody th{text-align:left;color:var(--fg)}
+.crt tbody th{white-space:normal;word-break:keep-all;width:62px;line-height:1.25}
+#main .crt th,#main .crt td{padding:2px 2px}
