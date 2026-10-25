@@ -84,8 +84,12 @@ export async function creditView(el, { load, esc, badge, src, table, basic }) {
   const grad = num("cur-01", /(\d+)학점\s*=\s*교과\s*(\d+).*?창의적 체험활동\s*(\d+)/); // [192, 174, 18]
   const split = num("cur-14", /필수\s*(\d+)학점.*?나머지\s*(\d+)학점/) || num("cur-14", /필수\s*(\d+)\s*\+\s*자율\s*(\d+)/); // [84, 90]
   const unit = num("cur-09", /1학점당 수업량은\s*(\d+)회/); // [16] (1회 시간은 원문 확인 전이라 쓰지 않는다)
-  const att = num("cur-02", /출석\s*(\d+)\s*\/\s*(\d+)/); // [2, 3]
-  const ach = num("cur-16", /성취율\s*(\d+)\s*%/); // [40]
+  // 이수 기준: 선택과목은 출석률만, 공통과목은 출석률+학업성취율(2026.1.28 완화, log-16). 못 읽으면 cur-02·cur-16 본문을 쓴다.
+  const att = num("log-16", /출석률\(?\s*(\d+)\s*\/\s*(\d+)/) || num("cur-02", /출석\s*(\d+)\s*\/\s*(\d+)/); // [2, 3]
+  const ach = num("log-16", /공통과목은[^.]*?학업성취율\s*(\d+)\s*%/) || num("cur-16", /성취율\s*(\d+)\s*%/); // [40] 공통과목 한정
+  const relax = get("log-16");
+  const applyText = (relax?.body.match(/\d{4}학년도 고1~2, \d{4}학년도 전 학년 적용 예정/) || [])[0]; // 적용 시기(본문 그대로)
+  const onlineText = (relax?.body.match(/미이수 시 ([^(]+?)(?:\(|$)/) || [])[1]?.trim();
   const cap = num("cur-12", /(\d+)학점을 넘을 수/); // [81]
   const ratioText = (get("cur-15")?.body.match(/((?:\d+\/){4}\d+)\s*%/) || get("cur-04")?.body.match(/((?:\d+\/){4}\d+)\s*%/) || [])[1];
   const ratio = ratioText ? ratioText.split("/").map(Number) : null; // [10, 24, 32, 24, 10]
@@ -113,9 +117,9 @@ export async function creditView(el, { load, esc, badge, src, table, basic }) {
   // ---- 1. 한눈에: 큰 숫자 타일 ----
   const tiles = [
     grad && [grad[0], "졸업 학점", "cur-01", "flag"], grad && [grad[1], "교과 학점", "cur-01", "book"], grad && [grad[2], "창의적 체험활동", "cur-01", "merge"],
-    unit && [`${unit[0]}회`, "1학점당 수업량", "cur-09", "calendar"], att && [`${att[0]}/${att[1]}`, "출석 기준", "cur-02", "list"], ach && [`${ach[0]}%`, "학업성취율 기준", "cur-16", "gauge"],
+    unit && [`${unit[0]}회`, "1학점당 수업량", "cur-09", "calendar"], att && [`${att[0]}/${att[1]}`, "출석률 기준", relax ? "log-16" : "cur-02", "list"], ach && [`${ach[0]}%`, "공통과목 학업성취율", relax ? "log-16" : "cur-16", "gauge"],
   ].filter(Boolean);
-  if (tiles.length) cards.push(card(1, "flag", "한눈에", "졸업과 이수 기준의 핵심 숫자", `<div class="cv-tiles">${tiles.map(([v, l, id, ic], i) => `<div class="cv-tile t${i % 6}"><span class="cv-ti">${icon(ic)}</span><b>${esc(String(v))}</b><span>${l}</span>${chip(id)}</div>`).join("")}</div>`, ["cur-01", "cur-14", "cur-09", "cur-02", "cur-16", "hs-14"], "credit-01-overview"));
+  if (tiles.length) cards.push(card(1, "flag", "한눈에", "졸업과 이수 기준의 핵심 숫자", `<div class="cv-tiles">${tiles.map(([v, l, id, ic], i) => `<div class="cv-tile t${i % 6}"><span class="cv-ti">${icon(ic)}</span><b>${esc(String(v))}</b><span>${l}</span>${chip(id)}</div>`).join("")}</div>`, ["cur-01", "cur-14", "cur-09", "log-16", "cur-02", "cur-16", "hs-14"], "credit-01-overview"));
 
   // ---- 2. 졸업 학점 구성: 도넛 + 스택바 ----
   if (grad && grad[1] + grad[2] === grad[0]) {
@@ -142,13 +146,18 @@ export async function creditView(el, { load, esc, badge, src, table, basic }) {
       `${road}<div class="cv-ylegend"><span><i class="req"></i>지정</span><span><i class="ele"></i>선택</span></div><div class="cv-years">${summary.map(mini).join("")}</div><p class="muted small">학교별 학년 교과 학점. 창의적 체험활동 제외. <a href="#select/curriculum">학교별 편제표 보기</a></p>`, [], "credit-03-journey"));
   }
 
-  // ---- 4. 이수 요건: 게이지 ----
-  const gauges = [
-    att && [`출석 ${att[0]}/${att[1]} 이상`, pct(att[0], att[1]), "cur-02"],
-    ach && [`학업성취율 ${ach[0]}% 이상`, ach[0], "cur-16"],
-    cap && grad && [`국·수·영 이수학점 합 ${cap[0]}학점 이하 (교과 ${grad[1]} 중)`, pct(cap[0], grad[1]), "cur-12"],
-  ].filter(Boolean);
-  if (gauges.length) cards.push(card(4, "shield", "과목 이수 요건", "이 기준에 못 미치면 학점이 인정되지 않습니다(보충이수 가능).", `<div class="cv-gauges">${gauges.map(([l, p, id]) => `<div class="cv-g"><div class="cv-gl">${esc(l)} ${chip(id)}</div><div class="cv-gb"><span style="width:${p}%"></span></div></div>`).join("")}</div>`, ["cur-02", "cur-16", "cur-12"], "credit-04-requirements"));
+  // ---- 4. 이수 요건: 공통과목 / 선택과목 게이지 ----
+  const gauge = (l, p, id) => `<div class="cv-g"><div class="cv-gl">${esc(l)} ${chip(id)}</div><div class="cv-gb"><span style="width:${p}%"></span></div></div>`;
+  const rid = relax ? "log-16" : "cur-02";
+  const common = [att && gauge(`출석률 ${att[0]}/${att[1]} 이상`, pct(att[0], att[1]), rid), ach && gauge(`학업성취율 ${ach[0]}% 이상`, ach[0], relax ? "log-16" : "cur-16")].filter(Boolean);
+  const elective = att ? [gauge(`출석률 ${att[0]}/${att[1]} 이상`, pct(att[0], att[1]), rid)] : [];
+  const capG = cap && grad ? gauge(`국·수·영 이수학점 합 ${cap[0]}학점 이하 (교과 ${grad[1]} 중)`, pct(cap[0], grad[1]), "cur-12") : "";
+  if (common.length || elective.length) {
+    const lead = relax && ach ? `선택과목은 출석률만, 공통과목은 출석률과 학업성취율 ${ach[0]}%가 요건입니다.` : "과목 이수 기준입니다.";
+    const extra = [applyText && `적용: ${esc(applyText)}`, onlineText && `미이수 시 ${esc(onlineText)}`].filter(Boolean);
+    const body = `<div class="cv-two"><div class="cv-pane"><h4><i class="cv-dot c0"></i>공통과목</h4>${common.join("")}</div><div class="cv-pane"><h4><i class="cv-dot c1"></i>선택과목</h4>${elective.join("")}<p class="muted small">학업성취율은 선택과목의 이수 요건이 아닙니다.</p></div></div>${capG ? `<div class="cv-cap">${capG}</div>` : ""}${extra.length ? `<ul class="cv-extra">${extra.map((t) => `<li>${t}</li>`).join("")}</ul>` : ""}`;
+    cards.push(card(4, "shield", "과목 이수 요건", lead, body, ["log-16", "cur-02", "cur-16", "cur-12"], "credit-04-requirements"));
+  }
 
   // ---- 5. 공통과목 필수학점 ----
   if (c3) {
