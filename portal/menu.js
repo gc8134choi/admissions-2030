@@ -45,7 +45,7 @@ export const MENU = [
   { id: "library", title: "자료실", icon: "🗂️", status: "v1", children: [
     { id: "library/sources", title: "출처 목록", status: "v1", view: "sources", desc: "학교 정보 출처 링크." },
     { id: "library/status", title: "갱신 현황", status: "v1", view: "status", desc: "학교별 기준연도·수집일·확인 필요 건수." },
-    { id: "library/files", title: "원본 파일", status: "v2", desc: "PDF 등 원본." },
+    { id: "library/files", title: "원본 파일", status: "v1", view: "files", desc: "학교에서 받은 원본 양식·사진. 눌러서 크게 봅니다." },
   ] },
 ];
 
