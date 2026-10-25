@@ -15,7 +15,7 @@ export const toggleAudience = (sel, key) => (sel.includes(key) ? sel.filter((k) 
 export const audienceMatch = (aud, sel) => !sel.length || !aud || !aud.length || aud.includes("common") || aud.some((a) => sel.includes(a));
 export const audienceChips = (sel, esc) => `<div class="hm-aud" role="group" aria-label="일정 대상">${AUDIENCES.map(([k, t]) => `<button type="button" class="fchip${sel.includes(k) ? " on" : ""}" data-aud="${k}" aria-pressed="${sel.includes(k)}">${esc(t)}</button>`).join("")}</div>`;
 
-export function registerHome(views, { esc, load, store, nm, stars, toggleStar, nameOf, TERMS, hasLogo }) {
+export function registerHome(views, { esc, load, store, nm, stars, toggleStar, nameOf, TERMS, hasLogo, profile }) {
   const today = () => { const d = new Date(); return new Date(d.getFullYear(), d.getMonth(), d.getDate()); };
   // "YYYY-MM-DD" 또는 월 단위 "YYYY-MM" → 시작·끝 날짜
   const span = (s, e) => {
@@ -61,25 +61,28 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const [schools, summary, curricula, policy] = await Promise.all([load("schools"), load("summary"), load("curricula"), load("policy")]);
     const t = today();
     const P = new Map(policy.map((r) => [r.id, r]));
-    const entryYear = summary[0].entryYear, examYear = entryYear + 3;
+    const pf = profile(), isB = pf.key === "b";
+    const entryYear = isB ? pf.entryYear : summary[0].entryYear, examYear = entryYear + 3;
     const ev0 = (id) => P.get(id)?.events?.[0];
 
     // 1) 상황 한 줄 + 수능 D-일수(월 단위 추정이면 그 달 15일 기준 "약")
-    const csat = ev0("sch-12") || ev0("sch-07"), csatRow = P.get("sch-12") || P.get("sch-07");
+    // 수능 시행일 행: 프로필 A는 기존 행, B는 examYear가 맞는 "수능" 행(없으면 안내)
+    const csatRowB = isB ? policy.find((r) => r.examYear === examYear && /수능/.test(r.title) && !/기본계획|원서|정시|수시/.test(r.title) && r.events?.length) : null;
+    const csatRow = isB ? csatRowB : P.get("sch-12") || P.get("sch-07"), csat = isB ? csatRowB?.events?.[0] : ev0("sch-12") || ev0("sch-07");
     let hero = "";
     if (csat) {
       const sp = span(csat.start, csat.end);
       const target = sp.month ? new Date(sp.start.getFullYear(), sp.start.getMonth(), 15) : sp.start;
       const n = Math.round((target - t) / DAY);
       hero = `<span class="hh-k">${examYear}학년도 수능${csatRow.status === "estimated" ? "(추정)" : ""}까지</span><b class="hh-n">${sp.month ? "약 " : ""}D-${n.toLocaleString()}</b><span class="hh-s">${fmtRange(sp, t, csat)} · ${esc(csat.label)} <span class="hm-bd">${badges(csatRow)} ${link(csatRow)}</span></span>`;
-    } else hero = `<span class="hh-k">${examYear}학년도 수능까지</span><b class="hh-n">-</b><span class="hh-s">수능 시행일 데이터 없음 (2029.11 추정)</span>`;
+    } else hero = `<span class="hh-k">${examYear}학년도 수능까지</span><b class="hh-n">-</b><span class="hh-s">수능 날짜 데이터 준비 중${isB ? " (조사 대기)" : ""}</span>`;
 
     // 2) 다가오는 일정: 고입·대입 일정 중 오늘~90일, 지난 일정 숨김
     const limit = new Date(t.getTime() + 90 * DAY);
-    const upcoming = policy.filter((r) => r.topic === "hs-schedule" || r.topic === "gg-hs-entry" || r.topic === "exam-schedule")
+    const upcoming = policy.filter((r) => !isB || r.examYear === examYear || r.entryYear === entryYear).filter((r) => r.topic === "hs-schedule" || r.topic === "gg-hs-entry" || r.topic === "exam-schedule")
       .flatMap((r) => eventsOf(r).map((e) => ({ r, e, sp: span(e.start, e.end) })))
       .filter((x) => x.sp.end >= t && x.sp.start <= limit).sort((a, b) => (a.r.region === "seoul") - (b.r.region === "seoul") || a.sp.start - b.sp.start || a.sp.end - b.sp.end); // 서울 행은 경기·전국 행 다음(같은 대상 안에서)
-    let aud = loadAudience(store);
+    let aud = isB ? [] : loadAudience(store); // 대상 칩은 프로필 A 전용(B는 일반고 기준)
     const upRows = () => upcoming.filter((x) => audienceMatch(x.e.audience || x.r.audience, aud));
     const li = (x) => `<li><span class="hm-d${x.sp.start <= t ? " now" : ""}">${dLabel(x.sp, t)}</span><span class="hm-date">${fmtRange(x.sp, t, x.e)}</span><span class="hm-tx"><b>${esc(x.r.title)}</b>${x.e.label ? ` · ${esc(x.e.label)}` : ""}</span><span class="hm-bd">${badges(x.r)}</span>${link(x.r)}</li>`;
     // "지금" 카드: 선택한 대상의 가장 가까운 일정 1건
@@ -131,28 +134,35 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const flags = summary.reduce((a, m) => ({ t: a.t + m.flagsTotal, c: a.c + m.flagsChecked, o: a.o + m.flagsOpen }), { t: 0, c: 0, o: 0 });
     const verified = summary.filter((m) => m.confidence !== "unverified").length; // 사진 대조 전이 아닌 학교
     const ok = canStore();
+    const todosKey = isB ? "todos:b" : "todos"; // 프로필 A는 기존 키 유지
 
     const region = (summary[0]?.region || "").split(/\s+/).slice(0, 2).map((x) => x.replace(/시$/, "")).join("·");
-    const myChips = () => { const l = AUDIENCES.filter(([k]) => aud.includes(k)).map(([, v]) => v).join("·"); return `<span>현 중3</span>${l ? `<span>${esc(l)}</span>` : ""}${region ? `<span>${esc(region)}</span>` : ""}`; };
+    const myChips = () => { const l = isB ? "일반고" : AUDIENCES.filter(([k]) => aud.includes(k)).map(([, v]) => v).join("·"); return `<span>${esc(pf.label)}</span>${l ? `<span>${esc(l)}</span>` : ""}${region ? `<span>${esc(region)}</span>` : ""}`; };
     const strip = `<section class="hm-strip" aria-label="내 설정과 학교"><div class="hs-chips2">${myChips()}</div>
-      <div class="hs-logos">${summary.map((m) => `<div class="hs-lg"><a href="#select/curriculum?v=compare&s=${esc(m.schoolId)}">${hasLogo(m.schoolId) ? `<img src="img/schools/256/${esc(m.schoolId)}.png" alt="" width="56" height="56">` : ""}<span>${esc(m.schoolName)}</span></a><button type="button" class="star" data-id="${esc(m.schoolId)}" aria-label="${starred.includes(m.schoolId) ? "관심 해제" : "관심 학교로 고정"}" aria-pressed="${starred.includes(m.schoolId)}">${starred.includes(m.schoolId) ? "★" : "☆"}</button></div>`).join("")}</div></section>`;
+      ${isB ? "" : `<div class="hs-logos">${summary.map((m) => `<div class="hs-lg"><a href="#select/curriculum?v=compare&s=${esc(m.schoolId)}">${hasLogo(m.schoolId) ? `<img src="img/schools/256/${esc(m.schoolId)}.png" alt="" width="56" height="56">` : ""}<span>${esc(m.schoolName)}</span></a><button type="button" class="star" data-id="${esc(m.schoolId)}" aria-label="${starred.includes(m.schoolId) ? "관심 해제" : "관심 학교로 고정"}" aria-pressed="${starred.includes(m.schoolId)}">${starred.includes(m.schoolId) ? "★" : "☆"}</button></div>`).join("")}</div>`}</section>`;
     const tab = (id, label, body, on) => ({ id, label, body, on });
     const tabs = [
-      tab("tl", "장기 타임라인", `<ol class="hm-tl">${tl}</ol>`, true),
+      ...(isB ? [] : [tab("tl", "장기 타임라인", `<ol class="hm-tl">${tl}</ol>`, true)]),
       tab("log", "최근 변경", `<p class="muted small">갱신 ${esc(ymdText(logUpdated))} <a class="hm-more" href="#changelog">전체 보기</a></p><ul class="hm-list">${logHtml}</ul>`),
       tab("rules", "학점제 핵심 규칙", `<ul class="hm-rules">${rules.map((r) => `<li><b>${esc(r.title)}</b> ${esc(r.body)} <span class="hm-bd">${badges(r)}</span> ${link(r)}</li>`).join("") || '<li class="muted">데이터 없음</li>'}</ul>`),
       tab("st", "데이터 상태", `<a class="hm-status" href="#library/status"><div>원문 미확인 <b>${unv}</b>건 <span class="muted small">(제도·일정 ${policy.length}건 중)</span></div><div>편제표 학교 대조 완료 <b>${verified}/${summary.length}</b>개교</div><div class="muted small">flag ${flags.t}건 중 ${flags.c}건 대조 · 열린 flag ${flags.o}건</div></a>`),
     ];
+    if (isB) tabs[0].on = true;
+    // 프로필 B: 학교 대신 고입 준비 안내(경기·용인 일반고 기준 일정은 현 중3 데이터를 참고용으로 보여 준다)
+    const prep = policy.filter((r) => r.topic === "gg-hs-entry" && (!r.audience || r.audience.includes("common") || r.audience.includes("general")));
+    const prepHtml = `<section class="hm-box hm-sch"><h3>고입 준비 <span class="muted small">경기·용인 일반고 기준</span></h3>
+      <p class="muted small">입학 ${entryYear}학년도 기준 고입은 ${entryYear - 1}년 12월 전후로 추정합니다(현 중3의 후기 전형 시기에서 유추). 아래는 현 중3(${summary[0].entryYear}학년도 입학) 일정으로, 제도가 바뀔 수 있어 참고용입니다.</p>
+      <ul class="hm-list">${prep.map((r) => { const e = r.events?.[0]; return `<li><span class="hm-date">${e ? esc(fmtRange(span(e.start, e.end), t, e)) : "일정 미정"}</span><span class="hm-tx"><b>${esc(r.title)}</b></span><span class="hm-bd">${badges(r)}</span>${link(r)}</li>`; }).join("") || '<li class="muted">등록된 고입 일정이 없습니다.</li>'}</ul></section>`;
     el.innerHTML = `<div class="hm">
       <section class="hm-hero2" aria-label="수능 D-day와 다음 일정"><div class="hh-l">${hero}</div><div class="hh-r"><div id="hm-nx">${nextCard()}</div><a class="hh-cta" href="#schedule">전체 일정 보기 →</a></div></section>
       ${strip}
-      <section class="hm-box hm-nowbox" aria-labelledby="hm-now-h"><h3 id="hm-now-h">이어지는 일정 <span class="muted small">내 대상 기준 · 앞으로 90일 · 오늘 ${dayText(t, t, true)}</span></h3>${audienceChips(aud, esc)}
+      <section class="hm-box hm-nowbox" aria-labelledby="hm-now-h"><h3 id="hm-now-h">이어지는 일정 <span class="muted small">${isB ? "일반고 기준" : "내 대상 기준"} · 앞으로 90일 · 오늘 ${dayText(t, t, true)}</span></h3>${isB ? "" : audienceChips(aud, esc)}
         <ul class="hm-list" id="hm-up">${upList()}</ul></section>
       <div class="hm-mine">
-        <section class="hm-box hm-sch"><h3>관심 학교 <span class="muted small">★로 고정한 학교의 요약</span> <a class="hm-more" href="#select/curriculum">학교별 편제표</a></h3>${favs.length ? `<div class="hm-schools">${favs.map(card).join("")}</div>` : '<p class="hm-empty"><b>☆를 눌러 관심 학교를 고르세요</b><span>위 학교 로고 옆 ☆를 누르면 학점 구성·창체·과목 보기가 큰 카드로 여기에 모입니다.</span></p>'}</section>
+        ${isB ? prepHtml : `<section class="hm-box hm-sch"><h3>관심 학교 <span class="muted small">★로 고정한 학교의 요약</span> <a class="hm-more" href="#select/curriculum">학교별 편제표</a></h3>${favs.length ? `<div class="hm-schools">${favs.map(card).join("")}</div>` : '<p class="hm-empty"><b>☆를 눌러 관심 학교를 고르세요</b><span>위 학교 로고 옆 ☆를 누르면 학점 구성·창체·과목 보기가 큰 카드로 여기에 모입니다.</span></p>'}</section>`}
         <section class="hm-box"><h3>내 메모/할 일 <span class="muted small">이 브라우저에만 저장</span></h3>${ok ? '<form class="hm-todoform"><input type="text" id="todoin" placeholder="할 일 추가" maxlength="120" autocomplete="off"><button class="btn" type="submit">추가</button></form><ul class="hm-todos" id="todos"></ul>' : '<p class="muted">이 브라우저에서는 저장 공간을 쓸 수 없어 메모를 사용할 수 없습니다.</p>'}</section>
       </div>
-      <nav class="hm-go" aria-label="바로가기"><a class="btn primary" href="#select/curriculum">학교별 편제표</a><a class="btn" href="#admission/system">대입 제도</a><a class="btn" href="#schedule">일정</a></nav>
+      <nav class="hm-go" aria-label="바로가기">${isB ? "" : '<a class="btn primary" href="#select/curriculum">학교별 편제표</a>'}<a class="btn" href="#admission/system">대입 제도</a><a class="btn" href="#schedule">일정</a></nav>
       <section class="hm-box hm-ref"><h3>참고 자료 <span class="muted small">제도·일정 원본 정보</span></h3>
         <div class="hm-tabs" role="tablist">${tabs.map((x) => `<button type="button" role="tab" id="hm-t-${x.id}" aria-controls="hm-p-${x.id}" aria-selected="${!!x.on}" tabindex="${x.on ? 0 : -1}" data-t="${x.id}">${x.label}</button>`).join("")}</div>
         ${tabs.map((x) => `<div class="hm-pane" role="tabpanel" id="hm-p-${x.id}" aria-labelledby="hm-t-${x.id}"${x.on ? "" : " hidden"}>${x.body}</div>`).join("")}</section></div>`;
@@ -181,17 +191,17 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
 
     // 메모/할 일
     if (ok) {
-      const list = () => store.get("todos", []);
+      const list = () => store.get(todosKey, []);
       const draw = () => {
         const items = list();
         el.querySelector("#todos").innerHTML = items.length ? items.map((it, i) => `<li class="${it.done ? "done" : ""}"><label><input type="checkbox" data-i="${i}" ${it.done ? "checked" : ""}> <span>${esc(it.text)}</span></label><button type="button" class="hm-del" data-i="${i}" aria-label="삭제">×</button></li>`).join("") : '<li class="muted small">할 일이 없습니다.</li>';
       };
-      el.querySelector(".hm-todoform").addEventListener("submit", (e) => { e.preventDefault(); const v = el.querySelector("#todoin").value.trim(); if (!v) return; store.set("todos", [...list(), { text: v, done: false }]); el.querySelector("#todoin").value = ""; draw(); });
+      el.querySelector(".hm-todoform").addEventListener("submit", (e) => { e.preventDefault(); const v = el.querySelector("#todoin").value.trim(); if (!v) return; store.set(todosKey, [...list(), { text: v, done: false }]); el.querySelector("#todoin").value = ""; draw(); });
       el.querySelector("#todos").addEventListener("click", (e) => {
         const i = e.target.dataset.i; if (i === undefined) return;
         const items = list();
         if (e.target.classList.contains("hm-del")) items.splice(+i, 1); else if (items[+i]) items[+i].done = e.target.checked;
-        store.set("todos", items); draw();
+        store.set(todosKey, items); draw();
       });
       draw();
     }
