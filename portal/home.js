@@ -1,10 +1,11 @@
+import { showProfiles } from "./profile-ui.js";
 // 홈 화면(A안 에디토리얼). 데이터: policy.json(일정·변경 로그·학점제 규칙·마일스톤), summary/curricula/schools(관심 학교).
 // policy.json·policy.js는 읽기만 한다(서브 세션 담당).
 const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "확인 못 함" };
 const DAY = 864e5;
 
 // ---- 일정 대상 필터(칩): 일정 화면 등 다른 화면에서 같은 키·함수를 재사용할 수 있게 분리 ----
-export const AUDIENCES = [["general", "일반고"], ["science", "과학·영재"], ["private", "자사·외·국제"], ["grade3", "현고3"]];
+export const AUDIENCES = [["general", "일반고"], ["science", "과학·영재"], ["private", "자사·외·국제"]];
 export const AUDIENCE_KEY = "portal.audience"; // localStorage 키(값: audience 키 배열 JSON)
 export const AUDIENCE_DEFAULT = ["general", "science", "private"];
 export const loadAudience = (store) => { const v = store.get(AUDIENCE_KEY, null); return Array.isArray(v) ? v.filter((k) => AUDIENCES.some(([a]) => a === k)) : [...AUDIENCE_DEFAULT]; };
@@ -78,17 +79,17 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const [schools, summary, curricula, policy] = await Promise.all([load("schools"), load("summary"), load("curricula"), load("policy")]);
     const t = today();
     const P = new Map(policy.map((r) => [r.id, r]));
-    const pf = profile(), isB = pf.key === "b", others = profiles().filter((q) => q.id !== pf.id);
+    const pf = profile(), SHOW = showProfiles(), isB = SHOW && pf.key === "b";
     const entryYear = pf.entryYear, examYear = pf.examYear;
     const ev0 = (id) => P.get(id)?.events?.[0];
-    const one = store.get("portal.oneperson", false);
+    
 
     // 2) 다음 일정: 학습자와 관련 있는 행만(연도 비어 있으면 공통). 현고3 칩을 켜면 다른 해·현고3 행도 보인다.
     const limit = new Date(t.getTime() + 90 * DAY);
     let aud = isB ? [] : loadAudience(store);
-    const related = (r) => (r.examYear == null && r.entryYear == null) || r.examYear === examYear || r.entryYear === entryYear;
+    const related = (r) => r.topic === "life-schedule" || (r.examYear == null && r.entryYear == null) || r.examYear === examYear || r.entryYear === entryYear; // 졸업·입학은 항상, 대입 일정은 2030학년도 대입 기준만
     const only3 = (r, e) => { const a = e?.audience || r.audience; return !!a && a.length > 0 && a.every((x) => x === "grade3"); };
-    const upcoming = policy.filter((r) => r.topic === "hs-schedule" || r.topic === "gg-hs-entry" || r.topic === "exam-schedule")
+    const upcoming = policy.filter((r) => r.topic === "hs-schedule" || r.topic === "gg-hs-entry" || r.topic === "exam-schedule" || r.topic === "life-schedule")
       .flatMap((r) => eventsOf(r).map((e) => ({ r, e, sp: span(e.start, e.end) })))
       .filter((x) => x.sp.end >= t && x.sp.start <= limit)
       .sort((a, b) => (a.r.region === "seoul") - (b.r.region === "seoul") || a.sp.start - b.sp.start || a.sp.end - b.sp.end);
@@ -103,12 +104,13 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const upList = () => { const rs = upRows().slice(0, 4); return rs.length ? rs.map(row).join("") : `<li class="row"><div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p><small>${isB ? "학교를 고르면 그 학교 일정이 여기에 모입니다." : "앞으로 90일 안에 해당하는 일정이 없어요."}</small></div></li>`; };
 
     // 3) 곧 있을 일(졸업·입학 D-day + 사진)
-    const stones = (pf.milestones || []).filter((m) => m.date);
+    const lifeRows = policy.filter((r) => r.topic === "life-schedule" && /졸업|입학/.test(r.title) && r.events?.[0]?.start);
+    const stones = lifeRows.map((r) => ({ id: r.id, label: r.title, date: r.events[0].start, kind: /졸업/.test(r.title) ? "graduation" : "entrance", row: r })).filter((m) => /^\d{4}-\d{2}-\d{2}$/.test(m.date)).sort((a, b) => a.date.localeCompare(b.date));
     const stoneHtml = (m) => {
       const n = dayN(m.date, t), past = n < 0;
-      return `<li class="ms${past ? " past" : ""}" data-ms="${esc(pf.id + ":" + m.id)}"><div class="ms-t"><span class="ms-k">${esc(m.label)}</span>
+      return `<li class="ms${past ? " past" : ""}" data-ms="${esc("life:" + m.id)}"><div class="ms-t"><span class="ms-k">${esc(m.label)}</span>
         <b class="ms-n num">${past ? "지났어요" : n === 0 ? "오늘" : `D-${n.toLocaleString()}`}</b>
-        <span class="ms-s num">${esc(ymdText(m.date))} ${m.sourceName ? `<span class="muted">· ${esc(m.sourceName)}</span>` : ""}</span>
+        <span class="ms-s num">${esc(ymdText(m.date))} ${link(m.row)}</span>
         <span class="ms-a"><button type="button" class="lnk" data-add>사진 넣기</button><button type="button" class="lnk" data-del hidden>삭제</button><input type="file" accept="image/*" hidden></span></div>
         <div class="ms-p" aria-hidden="true">${ART[m.kind] || ART.graduation}</div></li>`;
     };
@@ -116,18 +118,19 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     // 히어로 = 가장 가까운 한 가지 일(일정 또는 졸업·입학). 그다음 몇 개는 헤어라인 목록.
     const oneLine = (b) => { const t1 = String(b || "").split(/(?<=[.。다요])\s/)[0] || ""; return t1.length > 80 ? t1.slice(0, 78) + "…" : t1; };
     const feed = () => {
-      const evs = upRows().map((x) => ({ kind: "ev", seoul: x.r.region === "seoul", sp: x.sp, g3: only3(x.r, x.e), title: x.r.title + (x.e.label ? ` · ${x.e.label}` : ""), date: fmtRange(x.sp, t, x.e), line: oneLine(x.r.body), meta: `${badges(x.r)} ${link(x.r)}` }));
-      const sts = stones.filter((m) => dayN(m.date, t) >= 0).map((m) => ({ kind: "stone", m, sp: span(m.date), title: m.label, date: ymdText(m.date), line: "", meta: m.sourceName ? `<span class="muted">${esc(m.sourceName)}</span>` : "" }));
+      const stoneIds = new Set(stones.map((m) => m.id));
+      const evs = upRows().filter((x) => !stoneIds.has(x.r.id)).map((x) => ({ kind: "ev", seoul: x.r.region === "seoul", sp: x.sp, g3: only3(x.r, x.e), title: x.r.title + (x.e.label ? ` · ${x.e.label}` : ""), date: fmtRange(x.sp, t, x.e), line: oneLine(x.r.body), meta: `${badges(x.r)} ${link(x.r)}` }));
+      const sts = stones.filter((m) => dayN(m.date, t) >= 0).map((m) => ({ kind: "stone", m, sp: span(m.date), title: m.label, date: ymdText(m.date), line: "", meta: `${badges(m.row)} ${link(m.row)}` }));
       return [...evs, ...sts].sort((a, b) => !!a.seoul - !!b.seoul || a.sp.start - b.sp.start || a.sp.end - b.sp.end); // 서울 행은 경기·전국 행 다음
     };
     const heroHtml = () => {
       const it = feed()[0];
-      if (!it) return `<p class="hello" id="hh">${esc(pf.name)}님, 오늘도 한 칸씩.</p><div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p><small>${isB ? "학교를 고르면 그 학교 일정이 여기에 모입니다." : "앞으로 90일 안에 해당하는 일정이 없어요."}</small></div>`;
+      if (!it) return `<p class="hello" id="hh">오늘도 한 칸씩.</p><div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p><small>${isB ? "학교를 고르면 그 학교 일정이 여기에 모입니다." : "앞으로 90일 안에 해당하는 일정이 없어요."}</small></div>`;
       const live = it.sp.start <= t, n = Math.round((it.sp.start - t) / DAY), left = Math.round((it.sp.end - t) / DAY);
       const num = live ? `<span class="big live">진행 중</span>` : n === 0 ? `<span class="big live">오늘</span>` : `<span class="big num" id="ddn">${n.toLocaleString()}</span><span class="unit" id="ddu">일 남음</span>`;
       const sub = live && left > 0 ? `<span class="hh-left num">${left}일 남았어요</span>` : "";
-      const photo = it.kind === "stone" ? `<div class="hero-ph ms" data-ms="${esc(pf.id + ":" + it.m.id)}"><div class="ms-p" aria-hidden="true">${ART[it.m.kind] || ART.graduation}</div><span class="ms-a"><button type="button" class="lnk" data-add>사진 넣기</button><button type="button" class="lnk" data-del hidden>삭제</button><input type="file" accept="image/*" hidden></span><p class="hint">사진은 이 기기에만 저장돼요.</p></div>` : "";
-      return `<p class="hello" id="hh">${esc(pf.name)}님, 가장 가까운 일이에요.</p>
+      const photo = it.kind === "stone" ? `<div class="hero-ph ms" data-ms="${esc("life:" + it.m.id)}"><div class="ms-p" aria-hidden="true">${ART[it.m.kind] || ART.graduation}</div><span class="ms-a"><button type="button" class="lnk" data-add>사진 넣기</button><button type="button" class="lnk" data-del hidden>삭제</button><input type="file" accept="image/*" hidden></span><p class="hint">사진은 이 기기에만 저장돼요.</p></div>` : "";
+      return `<p class="hello" id="hh">가장 가까운 일이에요.</p>
         <button type="button" class="dday" id="dday"${live || n === 0 ? " disabled" : ""}><span class="sr-only">남은 날. 누르면 단위가 바뀝니다. </span>${num}</button>${sub}
         <h2 class="hero-t${it.g3 ? " g3" : ""}">${esc(it.title)}</h2><p class="hero-d num">${it.date}</p>${it.line ? `<p class="hero-s">${esc(it.line)}</p>` : ""}<p class="hero-meta">${it.meta}</p>${photo}${!live && n > 0 ? '<p class="hint">숫자를 누르면 주·달로 바뀌어요.</p>' : ""}`;
     };
@@ -143,12 +146,12 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const fresh = vis.prev ? log.filter((x) => span(x.d).start > new Date(vis.prev + "T00:00:00")).length : 0;
     const logRow = (x) => `<li class="row"><div><h3>${esc(x.r.title.slice(x.d.length).trim() || x.r.title)}</h3><p class="num">${esc(ymdText(x.d))}</p><div class="meta">${badges(x.r)} ${link(x.r)}</div></div></li>`;
 
-    // 5) 학교(예나) · 학점제 숫자
+    // 5) 학교 · 학점제 숫자
     const mine = summary.filter((m) => pf.schoolIds.includes(m.schoolId));
     const m0 = summary[0];
     const sch = (m) => { const tot = m.creditsTotal || 1; return `<li><a class="sr" href="#select/curriculum?v=compare&s=${esc(m.schoolId)}">${hasLogo(m.schoolId) ? `<img src="img/schools/256/${esc(m.schoolId)}.png" alt="" width="28" height="28">` : "<span></span>"}<span class="nm">${esc(m.schoolName)}<span class="sub">지정 ${m.requiredCount}과목 · 선택 후보 ${m.candidateSubjects}개</span></span><span class="fig"><b class="num">${m.creditsRequired}+${m.creditsElective}</b>지정 + 선택</span><span class="seg" style="grid-column:2 / 4" aria-hidden="true"><i class="r" style="width:${(m.creditsRequired / tot) * 100}%"></i><i class="e" style="width:${(m.creditsElective / tot) * 100}%"></i><i class="o"></i></span></a></li>`; };
 
-    // 6) 앞으로 3년(큰 흐름): 예나만. 모든 마일스톤을 policy.json 행에서 읽는다.
+    // 6) 앞으로 3년(큰 흐름). 모든 마일스톤을 policy.json 행에서 읽는다.
     const rng = (e) => fmtRange(span(e.start, e.end), t, e);
     const mk = (id, label, suffix = "") => { const r = P.get(id), e = ev0(id); return { label, row: r, key: e?.start, date: e ? rng(e) + suffix : "" }; };
     const subs = ["sch-11", "sch-12", "sch-13"].map((id) => ({ r: P.get(id), e: ev0(id) })).filter((x) => x.r && x.e);
@@ -166,8 +169,10 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const region = (summary[0]?.region || "").split(/\s+/).slice(0, 2).map((x) => x.replace(/시$/, "")).join("·");
     const myChips = () => { const l = isB ? "일반고" : AUDIENCES.filter(([k]) => aud.includes(k)).map(([, v]) => v).join("·"); return `<span>${esc(pf.label)}</span>${l ? `<span>${esc(l)}</span>` : ""}${region ? `<span>${esc(region)}</span>` : ""}`; };
 
-    // 수능 D-day는 작은 보조 줄로(예나·예은, 추정 표기 유지). 한 명만 보기면 활성 학습자만.
-    const ddline = profiles().filter((q) => q.csat && (!one || q.id === pf.id)).map((q) => `<button type="button" class="aux${q.id === pf.id ? " me" : ""}" data-pf="${q.id}"><span class="aux-n">${esc(q.name)}</span><span class="aux-d num">${esc(q.examYear)}학년도 수능 <b>${dayN(q.csat.date, t).toLocaleString()}일</b></span><span class="pst ${q.csat.status}">${PST[q.csat.status] || q.csat.status}</span></button>`).join("");
+    // 수능 D-day는 작은 한 줄로(추정 표기 유지)
+    const cs = ev0("sch-12") || ev0("sch-07"), csRow = P.get("sch-12") || P.get("sch-07");
+    const csDays = cs && !cs.start.endsWith("-") ? (() => { const sp0 = span(cs.start, cs.end); return Math.round(((sp0.month ? new Date(sp0.start.getFullYear(), sp0.start.getMonth(), 15) : sp0.start) - t) / DAY); })() : null;
+    const ddline = csDays != null ? `<span class="aux me"><span class="aux-d num">${examYear}학년도 수능 <b>${csDays.toLocaleString()}일</b></span> ${badges(csRow)}</span>` : "";
 
     el.innerHTML = `<div class="hm">
       ${ddline ? `<div class="auxbar" aria-label="수능 D-day">${ddline}</div>` : ""}
@@ -206,7 +211,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
       }
       bindPhotos(el.querySelector("#hm-hero"));
     };
-    // 대상 칩(예나) → 히어로와 이어지는 일정을 다시 그린다
+    // 대상 칩 → 히어로와 이어지는 일정을 다시 그린다
     const hs = el.querySelector(".hero-aside");
     hs.addEventListener("click", (e) => {
       const b = e.target.closest("[data-aud]"); if (!b) return;

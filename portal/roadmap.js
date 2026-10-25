@@ -25,7 +25,7 @@ export async function roadmapView(el, { load, esc, learner, fmt, badgeMain, noti
       return rs.length ? `<section id="rd-${esc(s.key)}"><h2>${esc(s.label)}${s.key === cur.key ? '<span class="ed-tag">지금</span>' : ""}</h2>${rs.map(rowHtml).join("")}</section>` : "";
     }).join("") || '<p class="ed-src">이 조건에 맞는 항목이 없어요.</p>';
   };
-  el.innerHTML = `<div class="ed"><p class="ed-top"><b>${esc(learner.label)}의 학년별 로드맵이에요.</b> 추정은 아직 공고 전이라 바뀔 수 있어요.</p>
+  el.innerHTML = `<div class="ed"><p class="ed-top"><b>중3 기준 학년별 로드맵이에요.</b> 추정은 아직 공고 전이라 바뀔 수 있어요.</p>
     <nav class="ed-toc" aria-label="시기 축">${stages.map((s) => `<button type="button" data-go="rd-${esc(s.key)}"${s.key === cur.key ? ' aria-current="true"' : ""}>${esc(s.label)}</button>`).join("")}</nav>
     <div class="ed-filter" id="rdw" role="group" aria-label="누구 할 일"><span>보기</span><button type="button" class="on" data-w="">전체</button><button type="button" data-w="학생">학생</button><button type="button" data-w="학부모">학부모</button></div>
     <div id="rdsec"></div></div>`;

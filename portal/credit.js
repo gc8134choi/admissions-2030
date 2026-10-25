@@ -80,7 +80,7 @@ export async function creditView(el, { load, profile, esc, badge, badgeMain, src
   const spanFor = (cols) => cols - ((tiles.length - 1) % cols);
   const glance = grad ? `<div class="ed-glance">${g(grad[0], "졸업까지 채울 학점", `교과 ${grad[1]} + 창의적 체험활동 ${grad[2]}`, "cur-01", " main")}${tiles.map((t, i) => g(t[0], t[1], t[2], t[3], i === tiles.length - 1 ? " last" : "", i === tiles.length - 1 ? `--sp-d:${spanFor(3)};--sp-m:${spanFor(2)}` : "")).join("")}</div><p class="ed-src">출처 ${get("cur-01") ? src(get("cur-01")) : ""}</p>` : "";
   const lead = grad ? `<p class="ed-lead">3년 동안 <mark>${grad[0]}학점</mark>을 스스로 채웁니다.</p>` : "";
-  const profNote = profile && profile.id !== "A" ? `<p class="ed-src">${esc(profile.label)}이 입학하는 ${profile.entryYear}학년도에도 같은 틀일지는 아직 확정이 아니에요. 바뀔 수 있어요(추정).</p>` : "";
+  const profNote = profile && profile.id !== "A" ? `<p class="ed-src">${profile.entryYear}학년도 입학생에게도 같은 틀일지는 아직 확정이 아니에요. 바뀔 수 있어요(추정).</p>` : "";
 
   // ---- 졸업 학점 구성 ----
   if (grad && grad[1] + grad[2] === grad[0]) {

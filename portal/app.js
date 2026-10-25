@@ -2,7 +2,7 @@ import { MENU, STATUS, TABS, REDIRECT } from "./menu.js";
 import { register as registerPolicy } from "./policy.js";
 import { registerHome } from "./home.js";
 import { registerFiles } from "./files.js";
-import { currentProfile, allProfiles, initProfiles, mountProfileSwitch, nameSettings, bindNameSettings } from "./profile-ui.js";
+import { currentProfile, allProfiles, initProfiles, mountProfileSwitch, nameSettings, bindNameSettings, showProfiles } from "./profile-ui.js";
 import { univBody } from "./univ-match.js";
 import { mountSearch } from "./search.js";
 import { schoolBand } from "./school-card.js";
@@ -361,7 +361,7 @@ views.links = async (el) => {
   el.innerHTML = `<p class="muted small">접속을 확인한 곳만 담았어요. 확인일 ${esc((d._meta?.checkedAt || "").replace(/-/g, "."))}</p>
     ${d.categories.map((c, i) => `<section class="sec"><div class="sec-h"><h2><em>${String(i + 1).padStart(2, "0")}</em>${esc(c)}</h2></div><ul class="rows lk">${d.items.filter((x) => x.category === c).map((x) => `<li class="row"><div><h3><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)} ↗</a></h3><p>${esc(x.purpose)}</p><div class="meta"><span class="kd${x.kind === "공식" ? " off" : ""}">${esc(KIND[x.kind] || x.kind)}</span><span class="muted small">${esc(x.org)} · 확인 ${esc(x.checkedAt.slice(5).replace("-", "."))}</span></div></div></li>`).join("")}</ul></section>`).join("")}
     <section class="sec"><div class="sec-h"><h2><em>앱처럼</em>홈 화면에 추가하는 법</h2></div><p class="muted small">아이폰은 공유 버튼 → "홈 화면에 추가", 안드로이드 크롬은 메뉴 → "홈 화면에 추가"를 누르세요. 한 번 열어 두면 인터넷이 약해도 홈이 열려요.</p></section>
-    <section class="sec"><div class="sec-h"><h2><em>설정</em>표시 이름</h2></div><p class="muted small">이 브라우저에서만 바뀌어요. 비우면 기본 이름으로 돌아가요.</p>${nameSettings(store)}</section>`;
+    ${showProfiles() ? `<section class="sec"><div class="sec-h"><h2><em>설정</em>표시 이름</h2></div><p class="muted small">이 브라우저에서만 바뀌어요. 비우면 기본 이름으로 돌아가요.</p>${nameSettings(store)}</section>` : ""}`;
   bindNameSettings(el, store, render);
 };
 
@@ -387,7 +387,7 @@ function render() {
   const tab = tabOf(n.id) || TABS[0];
   document.body.dataset.profile = currentProfile(store).key;
   drawTabs(tab);
-  document.title = `${tab.id === "home" ? "" : tab.title + " · "}예나·예은 대입 포털`;
+  document.title = `${tab.id === "home" ? "" : tab.title + " · "}대입 포털`;
   scrollTo(0, 0);
   const sub = tab.items.length > 1 ? `<nav class="subnav" aria-label="${esc(tab.title)} 안의 화면">${tab.items.map((x) => `<a href="#${x.id}"${x.id === n.id ? ' aria-current="page"' : ""}>${esc(x.title)}</a>`).join("")}</nav>` : "";
   const soon = tab.soon ? `<p class="soon">곧 열려요: ${tab.soon.map(esc).join(" · ")}</p>` : "";
