@@ -192,7 +192,10 @@ async function compareShell(el, onReset, getAreas) {
     </div></details>
     <div class="cmpmain"><div class="tw"><table id="tbl"></table></div></div></div>`;
   const root = el.firstElementChild;
-  let ids = [];
+  let ids = [], need = 0;
+  const AW = 72, LW = 150, CW = 190; // 교과군 열·과목 열·학교 열 폭
+  const fitMode = () => $(".tw")?.classList.toggle("fit", $(".cmpmain").clientWidth >= need);
+  window.addEventListener("resize", fitMode);
   const draw = (next) => {
     if (next) ids = next;
     const f = { q: $("#q").value.replace(/\s/g, ""), areas: getAreas(), sel: $("#sel").value, kind: $("#kind").value, term: $("#term").value, grade: $("#grade").value, cr: $("#cr").value, pool: $("#pool").value, chk: $("#chk").value, csat: $("#csat").value, diff: $("#diff").checked, one: $("#one").checked };
@@ -226,14 +229,20 @@ async function compareShell(el, onReset, getAreas) {
       const warn = os.some((o) => o.openFlagIds.length) ? '<span title="열린 flag">⚠️</span>' : "";
       return `<td class="${os.some((o) => o.slot === "required") ? "req" : "ele"}"><div class="c1">${icons}<span class="sl">${slots.join("/")}</span><span>${esc(tm)}</span>${crs}${warn}</div></td>`;
     };
-    let area = "", html = "";
+    // 교과군은 맨 왼쪽 열(rowspan)로 한 번만 표시한다.
+    const spans = new Map();
+    for (const r of rows) spans.set(r.area, (spans.get(r.area) || 0) + 1);
+    let area = "", html = "", ai = -1;
     for (const r of rows) {
-      if (r.area !== area) { area = r.area; html += `<tr class="area"><td colspan="${ids.length + 1}">${esc(area)}</td></tr>`; }
-      html += `<tr><td class="l">${esc(r.name)}</td>${ids.map((id) => cell(r.cells[id])).join("")}</tr>`;
+      const first = r.area !== area;
+      if (first) { area = r.area; ai++; }
+      html += `<tr class="ra${ai % 2}${first ? " af" : ""}">${first ? `<td class="ar" rowspan="${spans.get(r.area)}" title="${esc(r.area)}">${esc(r.area)}</td>` : ""}<td class="l">${esc(r.name)}</td>${ids.map((id) => cell(r.cells[id])).join("")}</tr>`;
     }
-    $("#tbl").style.minWidth = `${200 + 210 * ids.length}px`;
-    $("#tbl").innerHTML = `<thead><tr><th class="l">과목</th>${ids.map((id, i) => `<th>${nm(id, names[i], 22)}</th>`).join("")}</tr></thead><tbody>${html || `<tr><td colspan="${ids.length + 1}">조건에 맞는 과목이 없습니다.</td></tr>`}</tbody>
-      <tfoot><tr><th class="l">해당 과목 수</th>${ids.map((id) => `<th>${rows.filter((r) => r.cells[id]).length}</th>`).join("")}</tr></tfoot>`;
+    need = AW + LW + CW * ids.length;
+    $("#tbl").style.minWidth = `${need}px`;
+    $("#tbl").innerHTML = `<thead><tr><th class="ar">교과군</th><th class="l">과목</th>${ids.map((id, i) => `<th>${nm(id, names[i], 22)}</th>`).join("")}</tr></thead><tbody>${html || `<tr><td colspan="${ids.length + 2}">조건에 맞는 과목이 없습니다.</td></tr>`}</tbody>
+      <tfoot><tr><th class="lf" colspan="2">해당 과목 수</th>${ids.map((id) => `<th>${rows.filter((r) => r.cells[id]).length}</th>`).join("")}</tr></tfoot>`;
+    fitMode();
     $("#cnt").textContent = `${rows.length}개 과목`;
   };
   root.addEventListener("input", () => draw());
