@@ -67,6 +67,10 @@ const views = {
 };
 
 // ---- 학교별 편제표: 학교 칩(on/off, 최대 4개교) + 탭(요약 / 상세 비교) ----
+const ICON = {
+  filter: '<svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path d="M2 3h12L9.5 8.5V13l-3-1.5V8.5z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>',
+  search: '<svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>',
+};
 const TERMS = ["1-1", "1-2", "2-1", "2-2", "3-1", "3-2"];
 
 async function curriculumView(el, query, node) {
@@ -97,7 +101,6 @@ async function curriculumView(el, query, node) {
     $("#chips").innerHTML = chipHtml();
     const fc = $("#fchips"); if (fc) fc.innerHTML = chipHtml();
     const ac = $("#achips"); if (ac) ac.innerHTML = facets.areas.map((a) => `<button type="button" class="chip achip ${areasSel.includes(a) ? "on" : ""}" data-area="${esc(a)}" aria-pressed="${areasSel.includes(a)}">${esc(a)}</button>`).join("");
-    const fs = $("#fsum"); if (fs) fs.textContent = `학교 ${sel.length}/${schools.length}`;
     el.querySelectorAll("#tabs a").forEach((a) => a.classList.toggle("on", a.dataset.tab === tab));
   };
   const drawBody = async () => {
@@ -181,9 +184,9 @@ async function compareShell(el, onReset, getAreas) {
   const subj = new Map(subjects.map((x) => [x.subjectKey, x]));
   const gmap = new Map(groups.map((g) => [g.id, g]));
   el.innerHTML = `<div class="cmp">
-    <details class="panel filters" ${innerWidth > 1000 ? "open" : ""}><summary><b>필터</b> <span class="muted small"><span id="fsum"></span> · <span id="cnt"></span></span></summary><div class="fbody">
+    <div class="panel filters${innerWidth > 1000 ? "" : " fold"}"><div class="fhead"><button type="button" class="ib" id="ftog" aria-label="필터 접기/펼치기" title="필터 접기/펼치기">${ICON.filter}<span class="ftxt">필터</span></button><button type="button" class="ib" id="fsrch" aria-label="과목명 검색" title="과목명 검색">${ICON.search}</button></div>
+      <div class="fsr" hidden><input type="search" id="q" placeholder="과목명" autocomplete="off"><button type="button" class="ib" id="fclr" aria-label="검색 닫기" title="검색 닫기(Esc)">×</button></div><div class="fbody">
       <div class="fgroup"><span class="flabel">학교</span><div class="chips" id="fchips"></div></div>
-      <div class="fgroup"><span class="flabel">과목명</span><input type="search" id="q" placeholder="과목명 검색"></div>
       <div class="fgroup"><span class="flabel">교과군 (여러 개 선택, 없으면 전체)</span><div class="chips" id="achips"></div></div>
       <div class="fgroup"><span class="flabel">이수 방식</span><select id="sel">${options([{ v: "school", t: "학교 지정" }, { v: "student", t: "학생 선택" }, { v: "outside", t: "학교 밖" }], "전체")}</select></div>
       <div class="fgroup"><span class="flabel">구분</span><select id="kind">${options(["공통", "일반", "진로", "융합"], "전체")}</select></div>
@@ -195,7 +198,7 @@ async function compareShell(el, onReset, getAreas) {
       <div class="fgroup"><span class="flabel">수능 범위(추정)</span><select id="csat">${options([{ v: "in", t: "출제 범위" }, { v: "base", t: "기초(공통)" }, { v: "out", t: "제외" }], "전체")}</select></div>
       <div class="fgroup"><label><input type="checkbox" id="diff"> 학교 간 차이 나는 과목만</label><label><input type="checkbox" id="one"> 한 학교에만 있는 과목</label></div>
       <button id="reset" type="button">필터 초기화</button>
-    </div></details>
+    </div></div>
     <div class="cmpmain"><div class="tw"><table id="tbl"></table></div></div></div>`;
   const root = el.firstElementChild;
   let ids = [], need = 0;
@@ -205,7 +208,7 @@ async function compareShell(el, onReset, getAreas) {
   const draw = (next) => {
     if (next) ids = next;
     const f = { q: $("#q").value.replace(/\s/g, ""), areas: getAreas(), sel: $("#sel").value, kind: $("#kind").value, term: $("#term").value, grade: $("#grade").value, cr: $("#cr").value, pool: $("#pool").value, chk: $("#chk").value, csat: $("#csat").value, diff: $("#diff").checked, one: $("#one").checked };
-    if (!ids.length) { $("#tbl").innerHTML = ""; $("#cnt").textContent = "위에서 학교를 하나 이상 선택하세요."; return; }
+    if (!ids.length) { $("#tbl").innerHTML = '<tbody><tr><td class="l" style="padding:12px">필터에서 학교를 하나 이상 선택하세요.</td></tr></tbody>'; return; }
     const by = new Map();
     for (const o of offerings) {
       if (!ids.includes(o.schoolId) || (f.areas.length && !f.areas.includes(o.area)) || (f.sel && o.selection !== f.sel) || (f.term && o.term !== f.term) || (f.csat && o.csatScope !== f.csat)) continue;
@@ -257,11 +260,18 @@ async function compareShell(el, onReset, getAreas) {
     $("#tbl").innerHTML = `<thead><tr><th class="ar">교과군</th><th class="l">과목</th>${ids.map((id, i) => `<th>${nm(id, names[i], 30)}</th>`).join("")}</tr></thead><tbody>${html || `<tr><td colspan="${ids.length + 2}">조건에 맞는 과목이 없습니다.</td></tr>`}</tbody>
       <tfoot><tr><th class="lf" colspan="2">해당 과목 수</th>${ids.map((id) => `<th>${rows.filter((r) => r.cells[id]).length}</th>`).join("")}</tr></tfoot>`;
     fitMode();
-    $("#cnt").textContent = `${rows.length}개 과목`;
   };
   root.addEventListener("input", () => draw());
   root.addEventListener("change", () => draw());
+  // 접기/펼치기, 과목명 검색(돋보기 → 입력창, 입력 즉시 필터, Esc·× 로 비우고 닫기)
+  const box = $(".filters"), sr = $(".fsr"), qin = $("#q");
+  $("#ftog").addEventListener("click", () => box.classList.toggle("fold"));
+  const closeSearch = () => { qin.value = ""; sr.hidden = true; draw(); $("#fsrch").focus(); };
+  $("#fsrch").addEventListener("click", () => { box.classList.remove("fold"); sr.hidden = false; qin.focus(); });
+  $("#fclr").addEventListener("click", closeSearch);
+  qin.addEventListener("keydown", (e) => { if (e.key === "Escape") closeSearch(); });
   $("#reset").addEventListener("click", () => {
+    sr.hidden = true;
     ["q", "sel", "kind", "term", "grade", "cr", "pool", "chk", "csat"].forEach((id) => ($("#" + id).value = ""));
     ["diff", "one"].forEach((id) => ($("#" + id).checked = false));
     draw();
