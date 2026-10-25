@@ -161,7 +161,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
         <section class="hero" aria-labelledby="hh">
           <p class="hello" id="hh">${esc(pf.name)}님, 오늘도 한 칸씩.</p>
           <p class="kicker">${examYear}학년도 수능까지</p>
-          <button type="button" class="dday" id="dday" aria-live="polite" aria-label="수능까지 남은 날. 누르면 단위가 바뀝니다"><span class="big num" id="ddn">${heroDays == null ? "-" : heroDays.toLocaleString()}</span><span class="unit" id="ddu">일</span></button>
+          <button type="button" class="dday" id="dday" aria-live="polite"><span class="sr-only">수능까지 남은 날. 누르면 단위가 바뀝니다. </span><span class="big num" id="ddn">${heroDays == null ? "-" : heroDays.toLocaleString()}</span><span class="unit" id="ddu">일</span></button>
           <p class="hero-meta">${heroMeta}</p>
           <p class="hint">숫자를 누르면 주·달로 바뀌어요.</p>
         </section>
