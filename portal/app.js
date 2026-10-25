@@ -1,5 +1,6 @@
 import { MENU, STATUS } from "./menu.js";
 import { register as registerPolicy } from "./policy.js";
+import { registerHome } from "./home.js";
 
 const $ = (s) => document.querySelector(s);
 const esc = (s = "") => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -48,15 +49,6 @@ const kindOf = (o) => (o.primaryKind ? o.primaryKind + (o.kindStatus === "inferr
 
 // ---- 뷰 ----
 const views = {
-  async home(el) {
-    const [schools, summary] = await Promise.all([load("schools"), load("summary")]);
-    const s = stars();
-    el.innerHTML = `<div class="panel"><b>관심 학교</b><p class="muted">${s.length ? s.map((id) => `<a href="#select/curriculum?v=compare&s=${esc(id)}">${nm(id, nameOf(schools, id), 18)}</a>`).join(" ") : "비교 화면의 ☆을 누르면 여기에 모입니다."}</p></div>
-      <div class="panel"><b>편제표 등록 현황</b><p class="muted">${summary.length}개교 · ${summary[0].entryYear}학년도 입학생(대입 ${summary[0].entryYear + 3}학년도) 기준</p>
-      <div class="cards">${summary.map((m) => `<a href="#select/curriculum"><b>${nm(m.schoolId, m.schoolName, 22)}</b><div class="muted">${esc(m.region || "")} · ${esc(m.schoolType || "")} · ${esc(m.founding || "")}</div><div>지정 ${m.creditsRequired} / 선택 ${m.creditsElective}학점</div></a>`).join("")}</div></div>
-      <div class="panel"><b>이번 달 할 일</b><p class="muted">일정 데이터 연결 예정</p></div>`;
-  },
-
   async curriculum(el, query, node) {
     await curriculumView(el, query, node);
   },
@@ -279,6 +271,7 @@ async function compareShell(el, onReset, getAreas) {
 }
 
 registerPolicy(views, { $, esc, load });
+registerHome(views, { esc, load, store, nm, stars, toggleStar, nameOf, TERMS });
 
 function render() {
   const [path, qs] = decodeURIComponent(location.hash.slice(1)).split("?");
@@ -287,9 +280,9 @@ function render() {
   const n = byId.get(id) || byId.get("home");
   drawNav(n.id);
   $("#nav").classList.remove("open");
-  if (n.view === "curriculum") { // 표를 위로: 브레드크럼·설명 없이 제목과 탭을 한 줄에
+  if (n.view === "curriculum" || n.view === "home") { // 위쪽 공간 절약: 브레드크럼·설명 없이 화면이 바로 시작
     $("#main").innerHTML = '<div id="view"></div>';
-    views.curriculum($("#view"), query, n).catch(() => ($("#view").innerHTML = '<p class="note">데이터를 불러오지 못했습니다. 페이지를 새로고침해 보세요.</p>'));
+    views[n.view]($("#view"), query, n).catch(() => ($("#view").innerHTML = '<p class="note">데이터를 불러오지 못했습니다. 페이지를 새로고침해 보세요.</p>'));
     return;
   }
   const kids = n.children
