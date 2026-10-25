@@ -9,8 +9,8 @@ if (typeof document !== "undefined" && !document.getElementById("policy-css")) {
 const ES = { confirmed: ["ok", "확정"], "seoul-verified": ["ok", "서울교육청 원문 확인"], reported: ["rep", "보도"], match: ["rep", "서울·경기 자료 일치"], seoul: ["rep", "서울교육청 자료"], gyeonggi: ["rep", "경기도교육청 자료"], material: ["rep", "학교 배부 자료"], estimated: ["est", "추정"], unknown: ["", "확인 못 함"], opinion: ["", "의견"], academy: ["", "학원 자료"] };
 const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "확인 못 함", material: "학교 배부 자료", seoul: "서울교육청 자료", "seoul-verified": "서울교육청 자료(원문 확인)", match: "서울·경기 자료 일치", gyeonggi: "경기도교육청 자료", opinion: "의견", academy: "학원 자료" };
 const SKIND = { official: "공식", media: "매체", material: "학교 배부", seoul: "서울교육청", "seoul-gyeonggi": "서울·경기교육청", gyeonggi: "경기도교육청", opinion: "학원 의견", academy: "학원 자료" };
-const NOTICE_TPL = '<p class="note">조사일 2026-10-25 · <b>검색 요약 기준이며 공식 사이트로 재확인 필요.</b> {L}: 입학학년도 {E} · 대입학년도 {X}. "원문은 아직 못 봤어요"는 원문 페이지를 열람하지 못했다는 뜻이에요.</p>';
-const noticeFor = (p) => NOTICE_TPL.replace("{E}", p.entryYear).replace("{L}", `${p.label}(${p.grade})`).replace("{X}", p.examYear);
+const NOTICE_TPL = '<p class="note">조사일 2026-10-25 · <b>검색 요약 기준이며 공식 사이트로 재확인 필요.</b> 입학학년도 {E} · 대입학년도 {X} 기준. "원문은 아직 못 봤어요"는 원문 페이지를 열람하지 못했다는 뜻이에요.</p>';
+const noticeFor = (p) => NOTICE_TPL.replace("{E}", p.entryYear).replace("{X}", p.examYear);
 
 // 대입 제도 화면에 표로 보여 줄 cur-* 행(수능 출제범위, 전형 구분, 학종 평가요소). 나머지는 고교학점제 이해 화면.
 const CUR_SYS = new Set(["cur-08", "cur-29", "cur-30"]);
@@ -100,7 +100,7 @@ export function register(views, { $, esc, load, store }) {
       const tbl = r.areas ? `<table class="ed-tbl"><thead><tr><th>영역</th><th>문항</th><th>배점</th><th>시간</th><th>성적</th></tr></thead><tbody>${r.areas.map((x) => `<tr><td>${esc(x.area)}${x.scope ? `<div class="muted small">${esc(x.scope.join("·"))}</div>` : ""}</td><td>${x.items ?? ""}</td><td>${x.points ?? ""}</td><td>${x.minutes ?? ""}분</td><td>${x.scoring === "absolute" ? "절대평가" : "상대평가"}</td></tr>`).join("")}</tbody></table>` : "";
       return `<div class="ed-row"><div class="ed-st">${stat(a.status, r.unverified)}</div><h3>${esc(r.label)}</h3><p>${esc(a.note || r.note || "")}</p>${tbl}${links(a.sources && a.sources.length ? a.sources : r.sources)}</div>`; });
     const gr = rules.gradingRules.filter(mine).map((r) => { const a = mine(r); const b = r.rankGrades.bandPercent;
-      return `<div class="ed-row"><div class="ed-st">${stat(a.status, r.unverified)}</div><h3>내신 산출: 5등급 상대평가</h3><p>${me.label}는 ${b.map((v, i) => `${i + 1}등급 ${v}%`).join(" · ")}로 등급을 매겨요. ${esc(a.note || "")}</p>${links(a.sources && a.sources.length ? a.sources : r.sources)}</div>`; });
+      return `<div class="ed-row"><div class="ed-st">${stat(a.status, r.unverified)}</div><h3>내신 산출: 5등급 상대평가</h3><p>${b.map((v, i) => `${i + 1}등급 ${v}%`).join(" · ")}로 등급을 매겨요. ${esc(a.note || "")}</p>${links(a.sources && a.sources.length ? a.sources : r.sources)}</div>`; });
     return regs.length + gr.length ? `<h2>수능·내신 규칙</h2><div class="ed-rows">${regs.join("")}${gr.join("")}</div>` : "";
   };
 
@@ -109,7 +109,7 @@ export function register(views, { $, esc, load, store }) {
     const log = query.get("t") === "log";
     const body = rows.filter((r) => (r.topic === "change-log") === log);
     // 한 줄 안내(헤어라인 위아래). 나머지 안내는 접어 둔다.
-    el.innerHTML = `<div class="ed"><div class="ed-top"><b>2027.3 공표 전까지는 확정이 아니에요.</b><details><summary>자세히</summary>${banner(rows)}${notice()}${log || curProfile().id !== "A" ? "" : `<p>${curProfile().label}(${curProfile().grade})는 2028 개편안의 직접 대상(2025 입학생)이 아니에요. 2030학년도 제도는 2027.3 공표 내용에 따라 바뀔 수 있어요.</p>`}</details></div>${tabs([["sys", "#admission/system", "제도"], ["log", "#admission/system?t=log", "바뀐 소식"]], log ? "log" : "sys")}
+    el.innerHTML = `<div class="ed"><div class="ed-top"><b>2027.3 공표 전까지는 확정이 아니에요.</b><details><summary>자세히</summary>${banner(rows)}${notice()}${log || curProfile().id !== "A" ? "" : `<p>${curProfile().entryYear}학년도 입학생은 2028 개편안의 직접 대상(2025 입학생)이 아니에요. 2030학년도 제도는 2027.3 공표 내용에 따라 바뀔 수 있어요.</p>`}</details></div>${tabs([["sys", "#admission/system", "제도"], ["log", "#admission/system?t=log", "바뀐 소식"]], log ? "log" : "sys")}
       ${log ? "" : await rulesSection()}${statusSelect(body)}<div id="ptbl"></div></div>`;
     const TOPIC = { "admission-system": "2028학년도 개편안과 2030학년도 적용", "admission-outlook": "2030학년도 대상 추가 동향", "admission-structure": "대입 전형 구조", "cur-select": "수능 출제범위(참고)", academy: "학원 설명 자료", "profile-2033": "2033학년도 대입 전망(추정)" };
     const NOTE = { "cur-select": '<p class="ed-src">서울교육청 자료라서 경기 적용은 확인이 필요해요. 수능 출제범위는 추정이고, 2030학년도 확정이 아니에요.</p>' };

@@ -8,7 +8,7 @@ export async function univBody(el, { load, esc, profile, schools, sel, pick }) {
   const [rules, matches, master] = await Promise.all([load("admission-rules"), load("matches"), load("subject-master")]);
   const name = new Map(master.subjects.map((m) => [m.subjectId, m.name]));
   const mine = (profile.schoolIds || []).length ? schools.filter((s) => profile.schoolIds.includes(s.id)) : [];
-  if (!mine.length) { el.innerHTML = `<div class="ed"><p class="muted">${esc(profile.name)}은(는) 아직 학교가 정해지지 않아서 맞춰볼 편제표가 없어요.</p></div>`; return; }
+  if (!mine.length) { el.innerHTML = `<div class="ed"><p class="muted">아직 학교가 정해지지 않아서 맞춰볼 편제표가 없어요.</p></div>`; return; }
   const st = (el.__univ ||= { school: (sel.find((id) => mine.some((s) => s.id === id)) || mine[0].id), univ: Object.keys(rules._meta.universities)[0], rule: null });
   if (!mine.some((s) => s.id === st.school)) st.school = mine[0].id;
   const units = () => rules.rules.filter((r) => r.universityId === st.univ);
