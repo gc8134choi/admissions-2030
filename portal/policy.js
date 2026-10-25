@@ -45,7 +45,7 @@ export function register(views, { $, esc, load }) {
     el.innerHTML = `${banner(rows)}${NOTICE}${tabs([["sys", "#admission/system", "제도"], ["log", "#admission/system?t=log", "제도 변경 로그"]], log ? "log" : "sys")}
       ${log ? "" : '<p class="muted">현 중3은 2028 개편안의 직접 대상(2025 입학생)이 아닙니다. 2030학년도 제도는 2027.3 공표 내용에 따라 바뀔 수 있습니다.</p>'}
       ${statusSelect(body)}<div id="ptbl"></div>`;
-    const TOPIC = { "admission-system": "2028학년도 개편 확정안과 2030학년도 적용", "admission-outlook": "2030학년도 대상 추가 동향" };
+    const TOPIC = { "admission-system": "2028학년도 개편 확정안과 2030학년도 적용", "admission-outlook": "2030학년도 대상 추가 동향", "admission-structure": "대입 전형 구조" };
     const cols = [...basic.slice(0, 2), ["대입학년도", (r) => `${r.examYear}<div class="muted small">입학 ${r.entryYear}</div>`], ...basic.slice(2)];
     filtered(el, body, (f) => {
       const rs = (x) => x.filter((r) => !f || r.status === f);
