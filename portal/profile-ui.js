@@ -18,33 +18,29 @@ export function currentProfile(store) {
 }
 export const allProfiles = (store) => PROFILES.map((p) => ({ id: p.id, key: p.id.toLowerCase(), name: nameOf(store, p.id), label: cfgOf(p.id).label || p.label, entryYear: p.entryYear, examYear: p.examYear, schoolIds: cfgOf(p.id).schoolIds || [], csat: cfgOf(p.id).csat || null }));
 
-export function mountProfileSwitch(el, store, onChange) {
+// 프로필 전환: 상단(데스크톱 #pf)과 하단(모바일 #dock)에 같은 점+글자 버튼을 그린다.
+export function mountProfileSwitch(els, store, onChange) {
   const draw = () => {
     const cur = loadProfile(store);
-    el.innerHTML = `<div class="pf-seg" role="radiogroup" aria-label="프로필 선택">${PROFILES.map((p) => `<button type="button" role="radio" aria-checked="${p.id === cur}" data-pf="${p.id}">${esc(nameOf(store, p.id))}</button>`).join("")}</div>
-      <button type="button" class="pf-edit-btn" aria-label="표시 이름 바꾸기" title="표시 이름 바꾸기">✎</button>`;
+    const html = PROFILES.map((p) => `<button type="button" role="tab" class="p${p.id.toLowerCase()}" aria-selected="${p.id === cur}" data-pf="${p.id}">${esc(nameOf(store, p.id))}</button>`).join("");
+    els.forEach((e) => (e.innerHTML = html));
+    document.documentElement.dataset.profile = cur.toLowerCase();
   };
-  let pop = null;
-  const closePop = () => { pop?.remove(); pop = null; };
-  const openPop = () => {
-    closePop();
-    const cur = loadProfile(store);
-    pop = document.createElement("form");
-    pop.className = "pf-pop";
-    pop.innerHTML = `<label>표시 이름 <span class="muted small">(이 브라우저에만 저장, 비우면 기본값)</span><input type="text" maxlength="10" value="${esc(store.get(LABELS_KEY, {})?.[cur] || "")}" placeholder="${esc(cfgOf(cur).name || "")}" autocomplete="off"></label>
-      <div class="pf-pop-b"><button type="submit" class="btn primary">저장</button><button type="button" class="btn" data-reset>기본값</button></div>`;
-    document.body.appendChild(pop);
-    const inp = pop.querySelector("input"); inp.focus();
-    const save = (v) => { const l = { ...store.get(LABELS_KEY, {}) }; if (v.trim()) l[cur] = v.trim().slice(0, 10); else delete l[cur]; store.set(LABELS_KEY, l); closePop(); draw(); onChange(); };
-    pop.addEventListener("submit", (e) => { e.preventDefault(); save(inp.value); });
-    pop.querySelector("[data-reset]").addEventListener("click", () => save(""));
-  };
-  el.addEventListener("click", (e) => {
-    const b = e.target.closest("[data-pf]");
-    if (b) { if (b.dataset.pf !== loadProfile(store)) { saveProfile(store, b.dataset.pf); draw(); onChange(); } return; }
-    if (e.target.closest(".pf-edit-btn")) { pop ? closePop() : openPop(); }
-  });
-  document.addEventListener("click", (e) => { if (pop && !pop.contains(e.target) && !e.target.closest(".pf-edit-btn")) closePop(); });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closePop(); });
+  const set = (id) => { if (id !== loadProfile(store)) { saveProfile(store, id); draw(); onChange(); } };
+  els.forEach((e) => e.addEventListener("click", (ev) => { const b = ev.target.closest("[data-pf]"); if (b) set(b.dataset.pf); }));
+  // 화면 좌우 스와이프로도 전환(버튼·링크·입력 위에서 시작한 것은 제외)
+  let sx = null;
+  document.addEventListener("touchstart", (e) => { sx = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener("touchend", (e) => { if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; sx = null; if (Math.abs(dx) > 90 && !e.target.closest("input,textarea,select,button,a,.tw,.cv-toc,.hs-logos,.hm-tabs")) set(dx < 0 ? "B" : "A"); }, { passive: true });
   draw();
+  return draw;
+}
+
+// 보관함 > 설정: 표시 이름을 이 브라우저에서만 바꾼다(비우면 기본 이름).
+export function nameSettings(store, onChange) {
+  return `<form class="nm-form" id="nm-form">${PROFILES.map((p) => `<label>${esc(cfgOf(p.id).label || p.label)} 표시 이름<input type="text" name="${p.id}" maxlength="10" value="${esc(store.get(LABELS_KEY, {})?.[p.id] || "")}" placeholder="${esc(cfgOf(p.id).name || "")}" autocomplete="off"></label>`).join("")}<button type="submit" class="btn">저장</button></form>`;
+}
+export function bindNameSettings(root, store, onChange) {
+  const f = root.querySelector("#nm-form"); if (!f) return;
+  f.addEventListener("submit", (e) => { e.preventDefault(); const l = {}; for (const p of PROFILES) { const v = f.elements[p.id].value.trim(); if (v) l[p.id] = v.slice(0, 10); } store.set(LABELS_KEY, l); onChange(); });
 }

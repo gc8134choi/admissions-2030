@@ -1,0 +1,111 @@
+/* A안 에디토리얼 테마 (2026-10). style.css 위에 덮어쓴다.
+   원칙: 상자·그림자·그라디언트·파스텔 틴트·알약 배지·색 막대 없음. 헤어라인과 큰 글자로 구분. 색은 사람당 하나(--accent). */
+:root{
+  --paper:#FAF9F6; --ink:#111110; --mute:#6A6963; --hair:rgba(17,17,16,.16); --rule:#111110; --band:#F1EFEA;
+  --accent-a:#C4310D; --accent-b:#4B3FD6; --accent:var(--accent-a);
+  --st-est:#9A5B00; --req:#1B3A6B; --ele:#0B7F63;
+  --font:"Pretendard Variable",Pretendard,-apple-system,"Noto Sans KR",system-ui,sans-serif;
+  --pad:20px; --maxw:1120px; --tab-h:56px; --dock-h:44px;
+  --g3:#4A4F57; --g3c:#5B6068; /* 현 고3 전용 일정: 진한 회색(상태색·프로필색과 겹치지 않게) */
+  /* style.css 옛 변수를 새 토큰으로 연결 */
+  --bg:var(--paper); --fg:var(--ink); --muted:var(--mute); --line:var(--hair); --panel:var(--paper); --soft:var(--band);
+  --v1:var(--ele); --v2:var(--st-est); --soon:var(--mute); --warn:var(--band);
+  --r:0px; --sh:none; --hh:0px;
+}
+@media (prefers-color-scheme:dark){:root{
+  --paper:#111110; --ink:#F4F2EC; --mute:#9C9A92; --hair:rgba(244,242,236,.18); --rule:#F4F2EC; --band:#1C1C1A;
+  --accent-a:#FF6A45; --accent-b:#8F85FF; --st-est:#F0B04A; --req:#6EA0F0; --ele:#34D3A8; --g3:#B4B8BF; --g3c:#8B9099}}
+html[data-profile=b]{--accent:var(--accent-b)}
+body[data-profile]{--accent:var(--accent-a);--soft:var(--band)}
+html[data-profile=b] body[data-profile]{--accent:var(--accent-b)}
+body{font:400 15px/1.65 var(--font);letter-spacing:-.01em;word-break:keep-all;background:var(--paper);color:var(--ink);padding-bottom:calc(var(--tab-h) + var(--dock-h) + env(safe-area-inset-bottom) + 24px)}
+.num,.num *{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+a{color:inherit}
+h1,h2,h3{font-family:var(--font)}
+
+/* 상단 바 */
+.bar{border-bottom:1px solid var(--rule);background:var(--paper)}
+.barin{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:12px}
+.logo{font-weight:800;font-size:17px;letter-spacing:-.04em;text-decoration:none}
+.logo i{font-style:normal;color:var(--accent)}.logo small{font-size:.72em;font-weight:500;color:var(--mute);margin-left:2px;letter-spacing:0}
+#today{font-size:12px;color:var(--mute)}
+#topnav,.sw{display:none}
+.top,.layout,#nav,#burger{display:none}
+
+/* 모바일 하단: 프로필 줄(44px) + 5탭(글자만) */
+.dock{position:fixed;left:0;right:0;bottom:calc(var(--tab-h) + env(safe-area-inset-bottom));z-index:21;background:var(--paper);border-top:1px solid var(--hair);display:flex;justify-content:center;height:var(--dock-h)}
+.dock button,.sw button{background:none;border:0;font:inherit;font-size:14px;font-weight:600;color:var(--mute);padding:0 22px;cursor:pointer;letter-spacing:-.02em;min-height:44px}
+.dock button[aria-selected=true],.sw button[aria-selected=true]{color:var(--ink);font-weight:800}
+.dock button::before,.sw button::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px;background:var(--hair);vertical-align:1px}
+.dock .pa[aria-selected=true]::before,.sw .pa[aria-selected=true]::before{background:var(--accent-a)}
+.dock .pb[aria-selected=true]::before,.sw .pb[aria-selected=true]::before{background:var(--accent-b)}
+.dock button:focus-visible,.sw button:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--paper);border-top:1px solid var(--rule);display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom)}
+.tabs a{height:var(--tab-h);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;text-decoration:none;color:var(--mute);position:relative;letter-spacing:-.02em}
+.tabs a[aria-current=page]{color:var(--ink);font-weight:800}
+.tabs a[aria-current=page]::before{content:"";position:absolute;top:-1px;left:22%;right:22%;height:3px;background:var(--accent)}
+.tabs a:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
+
+/* 본문 */
+#main{display:block;max-width:var(--maxw);margin:0 auto;padding:0 var(--pad) 40px}
+.ph{margin:28px 0 12px;font-size:clamp(26px,7.4vw,44px);font-weight:800;letter-spacing:-.045em;line-height:1.18}
+.subnav{display:flex;gap:22px;overflow-x:auto;border-bottom:1px solid var(--hair);margin:0 0 4px;scrollbar-width:none}
+.subnav a{flex:none;padding:14px 0 10px;font-size:14px;font-weight:600;color:var(--mute);text-decoration:none;border-bottom:3px solid transparent;margin-bottom:-1px}
+.subnav a[aria-current=page]{color:var(--ink);font-weight:800;border-bottom-color:var(--accent)}
+.soon{margin:56px 0 0;padding-top:16px;border-top:1px solid var(--hair);font-size:12px;color:var(--mute)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* 섹션·행·상태: 상자 대신 헤어라인 */
+.sec{padding:36px 0 8px;border-top:1px solid var(--rule);margin-top:40px}
+.sec-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px}
+.sec-h h2{margin:0;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.sec-h h2 em{font-style:normal;color:var(--accent);margin-right:10px}
+.sec-h a{font-size:13px;color:var(--mute)}
+.rows{list-style:none;margin:0;padding:0}
+.row{display:grid;grid-template-columns:1fr;gap:2px 16px;padding:16px 0;border-top:1px solid var(--hair)}
+.row:first-child{border-top:0}
+.row h3{margin:0;font-size:17px;line-height:1.35;font-weight:700;letter-spacing:-.025em}
+.row p{margin:2px 0 0;font-size:13px;color:var(--mute)}
+.empty{padding:6px 0 4px}
+.empty .z{display:block;font-weight:800;font-size:clamp(72px,22vw,120px);line-height:.9;letter-spacing:-.06em;color:var(--hair)}
+.empty p{margin:10px 0 0;font-size:17px;font-weight:700;letter-spacing:-.03em;line-height:1.4}
+.empty small{display:block;font-size:13px;color:var(--mute);margin-top:4px}
+.empty a{display:inline-block;margin-top:14px;font-weight:700;font-size:14px;color:var(--accent);text-underline-offset:4px}
+.nm-form{display:flex;flex-direction:column;gap:12px;max-width:340px}
+.nm-form label{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:600}
+.nm-form input{padding:8px 10px;border:1px solid var(--rule);border-radius:0;background:none;color:inherit;font:inherit}
+
+/* 상태 배지: 알약 대신 점 + 글자(확정 ● 보도 ◐ 추정 ○), 프로필과 무관하게 고정 */
+.pst{display:inline-flex;align-items:center;gap:5px;border:0;background:none;padding:0;border-radius:0;font-size:11px;font-weight:600;letter-spacing:.02em;color:var(--mute);white-space:nowrap}
+.pst::before{content:"";width:7px;height:7px;border-radius:50%;border:1.25px solid currentColor;box-sizing:border-box}
+.pst.confirmed{color:var(--ink)}.pst.confirmed::before{background:currentColor}
+.pst.reported::before{background:linear-gradient(90deg,currentColor 50%,transparent 50%)}
+.pst.estimated{color:var(--st-est)}
+.pst.unknown{color:var(--mute)}
+.unv,.unv-i{border:0;background:none;color:var(--mute);font-size:11px;padding:0}
+.unv-i{border:1px dashed var(--mute);width:16px;height:16px;font-size:10px}
+.badge{border:0;padding:0;font-size:11px;color:var(--mute)}.badge.soon i{display:none}
+
+/* 옛 상자 스타일 해체(화면별 개편 전까지의 기본값) */
+.panel,.hm-box,.school,.cards a,.hs,.note{background:none;border:0;border-radius:0;box-shadow:none}
+.hm-box,.panel{border-top:1px solid var(--rule);padding:20px 0}
+.btn{border-radius:0;background:none;border:1px solid var(--rule);color:var(--ink)}
+.btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn:hover{border-color:var(--accent)}
+.fchip,.chip{border-radius:0;background:none;border:1px solid var(--hair);color:var(--ink)}
+.fchip.on,.fchip[aria-pressed=true]{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+
+@media (min-width:900px){
+  :root{--pad:40px}
+  body{padding-bottom:0}
+  .tabs,.dock{display:none}
+  .sw{display:flex;align-items:baseline}
+  #topnav{display:flex;gap:30px;margin-left:auto}
+  #topnav a{text-decoration:none;font-size:14px;color:var(--mute);padding-bottom:4px}
+  #topnav a[aria-current=page]{color:var(--ink);font-weight:700;border-bottom:2px solid var(--accent)}
+  #topnav a:hover{color:var(--ink)}
+  .logo{font-size:19px}
+  .barin{align-items:baseline}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}

@@ -1,8 +1,8 @@
-import { MENU, STATUS } from "./menu.js";
+import { MENU, STATUS, TABS, REDIRECT } from "./menu.js";
 import { register as registerPolicy } from "./policy.js";
 import { registerHome } from "./home.js";
 import { registerFiles } from "./files.js";
-import { currentProfile, allProfiles, initProfiles, mountProfileSwitch } from "./profile-ui.js";
+import { currentProfile, allProfiles, initProfiles, mountProfileSwitch, nameSettings, bindNameSettings } from "./profile-ui.js";
 import { schoolBand } from "./school-card.js";
 import { preloadSubjectInfo, subjectName, decorateSubjectLists } from "./subject-info.js";
 
@@ -31,10 +31,12 @@ const MENU_ICON = {
   folder: P('<path d="M3 6a2 2 0 012-2h4l2 3h8a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>'),
 };
 
-function drawNav(activeId) {
-  const holds = (n) => n.id === activeId || (n.children || []).some(holds);
-  const li = (n, top) => `<li class="${top ? "top-item" : ""} ${top && holds(n) ? "has-on" : ""}"><a href="#${n.id}" class="${n.id === activeId ? "on" : ""}">${MENU_ICON[n.icon] || ""}<span>${esc(n.title)}</span>${badge(n.status)}</a>${n.children ? `<ul>${n.children.map((c) => li(c)).join("")}</ul>` : ""}</li>`;
-  $("#nav").innerHTML = `<ul>${MENU.map((n) => li(n, true)).join("")}</ul>`;
+// 상단 메뉴(데스크톱)·하단 탭(모바일): 5개 탭, 글자만. 켜진 탭은 위쪽 선.
+const tabOf = (id) => TABS.find((t) => t.items.some((x) => x.id === id));
+function drawTabs(tab) {
+  const html = TABS.map((t) => `<a href="#${t.items[0].id}"${t.id === tab.id ? ' aria-current="page"' : ""}>${esc(t.title)}</a>`).join("");
+  $("#topnav").innerHTML = html;
+  $("#btabs").innerHTML = html;
 }
 
 // ---- 데이터 ----
@@ -338,36 +340,54 @@ registerPolicy(views, { $, esc, load, store });
 registerHome(views, { esc, load, store, nm, stars, toggleStar, nameOf, TERMS, hasLogo: (id) => LOGO_IDS.has(id), profile: () => currentProfile(store), profiles: () => allProfiles(store) });
 const filesApi = registerFiles(views, { esc, load, nm });
 
+// 보관함 > 바로가기: 공식 사이트 한 곳 모음(출처·상태가 붙은 정보는 각 화면의 출처 줄에서 본다)
+const LINKS = [
+  ["고교학점제 종합지원포털", "교육부", "https://www.hscredit.kr"],
+  ["평가원 수능 홈페이지", "한국교육과정평가원", "https://www.suneung.re.kr"],
+  ["대교협 대입정보포털 어디가", "한국대학교육협의회", "https://www.adiga.kr"],
+  ["대학알리미", "한국대학교육협의회", "https://www.academyinfo.go.kr"],
+  ["경기도교육청 고등학교 입학전학 포털", "경기도교육청", "https://satp.goe.go.kr"],
+  ["교육부", "교육부", "https://www.moe.go.kr"],
+];
+views.links = async (el) => {
+  el.innerHTML = `<ul class="rows">${LINKS.map(([t, o, u]) => `<li class="row"><div><h3><a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)} ↗</a></h3><p>${esc(o)} · 공식</p></div></li>`).join("")}</ul>
+    <section class="sec"><div class="sec-h"><h2><em>설정</em>표시 이름</h2></div><p class="muted small">이 브라우저에서만 바뀝니다. 비우면 기본 이름으로 돌아가요.</p>${nameSettings(store)}</section>`;
+  bindNameSettings(el, store, render);
+};
+
+const GO_ERR = '<p class="note">정보를 못 가져왔어요. 잠시 뒤 다시 열어 주세요.</p>';
 function render() {
   const [path, qs] = decodeURIComponent(location.hash.slice(1)).split("?");
   const query = new URLSearchParams(qs || "");
-  const id = path || "home";
+  let id = path || "home";
+  if (REDIRECT[id]) { location.replace("#" + REDIRECT[id] + (qs ? "?" + qs : "")); return; } // 옛 주소 → 가까운 화면
   const n = byId.get(id) || byId.get("home");
-  drawNav(n.id);
-  $("#nav").classList.remove("open");
+  const tab = tabOf(n.id) || TABS[0];
   document.body.dataset.profile = currentProfile(store).key;
+  drawTabs(tab);
+  document.title = `${tab.id === "home" ? "" : tab.title + " · "}예나·예은 대입 포털`;
+  scrollTo(0, 0);
+  const sub = tab.items.length > 1 ? `<nav class="subnav" aria-label="${esc(tab.title)} 안의 화면">${tab.items.map((x) => `<a href="#${x.id}"${x.id === n.id ? ' aria-current="page"' : ""}>${esc(x.title)}</a>`).join("")}</nav>` : "";
+  const soon = tab.soon ? `<p class="soon">곧 열려요: ${tab.soon.map(esc).join(" · ")}</p>` : "";
   if (n.view === "curriculum" && currentProfile(store).key === "b") { // 프로필 B는 아직 학교가 없다
-    $("#main").innerHTML = `<div id="view"><section class="hm-box"><h3>학교별 편제표</h3><p class="hm-empty"><b>${esc(currentProfile(store).name)}의 학교는 아직 없습니다</b><span>고입 이후 학교가 정해지면 편제표가 여기에 들어옵니다. 지금은 홈에서 고입 준비 일정을 확인하세요.</span></p><p><a class="btn primary" href="#home">홈으로</a></p></section></div>`;
+    $("#main").innerHTML = `${sub}<div id="view"><section class="sec"><div class="empty"><span class="z" aria-hidden="true">0</span><p>${esc(currentProfile(store).name)}의 학교는 아직 없어요.</p><small>고입 이후 학교가 정해지면 과목표가 여기에 들어옵니다.</small><a href="#home">오늘 화면으로 →</a></div></section></div>${soon}`;
     return;
   }
-  if (n.view === "curriculum" || n.view === "home") { // 위쪽 공간 절약: 브레드크럼·설명 없이 화면이 바로 시작
-    $("#main").innerHTML = '<div id="view"></div>';
-    views[n.view]($("#view"), query, n).catch(() => ($("#view").innerHTML = '<p class="note">데이터를 불러오지 못했습니다. 페이지를 새로고침해 보세요.</p>'));
+  if (n.view === "curriculum" || n.view === "home") { // 위쪽 공간 절약: 제목 없이 화면이 바로 시작
+    $("#main").innerHTML = `${sub}<div id="view"></div>${soon}`;
+    views[n.view]($("#view"), query, n).catch(() => ($("#view").innerHTML = GO_ERR));
     return;
   }
-  const kids = n.children
-    ? `<div class="cards">${n.children.map((c) => `<a href="#${c.id}"><b>${esc(c.title)}</b> ${badge(c.status)}<div class="muted">${esc(c.desc || (c.children ? c.children.map((x) => x.title).join(" · ") : ""))}</div></a>`).join("")}</div>`
-    : "";
-  const parts = n.parts && !n.view ? `<div class="panel"><b>예정 구성</b><ul>${n.parts.map((p) => `<li>${esc(p)}</li>`).join("")}</ul></div>` : "";
-  $("#main").innerHTML = `<div class="crumb">${trail(n).map((t) => esc(t.title)).join(" › ")}</div>
-    <h2>${esc(n.title)} ${badge(n.status)}</h2><p class="muted">${esc(n.desc || "")}</p>
-    ${n.status !== "v1" ? '<p class="note">아직 구현 전인 메뉴입니다. 구조 확인용 자리표시입니다.</p>' : ""}
-    <div id="view"></div>${parts}${kids}`;
-  if (n.view) views[n.view]($("#view"), query).then(() => { filesApi.afterView(n.view, $("#view")); if (n.view === "credit") decorateSubjectLists($("#view"), load, "4."); }).catch(() => ($("#view").innerHTML = '<p class="note">데이터를 불러오지 못했습니다. 페이지를 새로고침해 보세요.</p>'));
+  const title = tab.items.find((x) => x.id === n.id)?.title || n.title;
+  $("#main").innerHTML = `${sub}<h1 class="ph">${esc(title)}</h1><div id="view"></div>${soon}`;
+  if (n.view) views[n.view]($("#view"), query).then(() => { filesApi.afterView(n.view, $("#view")); if (n.view === "credit") decorateSubjectLists($("#view"), load, "4."); }).catch(() => ($("#view").innerHTML = GO_ERR));
 }
 
-$("#burger").addEventListener("click", () => $("#nav").classList.toggle("open"));
 addEventListener("hashchange", render);
 await initProfiles(load);
-mountProfileSwitch($("#pf"), store, render);
+{
+  const d = new Date(), W = ["일", "월", "화", "수", "목", "금", "토"];
+  $("#today").textContent = `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}(${W[d.getDay()]})`;
+}
+mountProfileSwitch([$("#pf"), $("#dock")], store, render);
 render();

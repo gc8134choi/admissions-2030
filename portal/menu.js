@@ -42,7 +42,7 @@ export const MENU = [
   { id: "changelog", title: "제도 변경 로그", icon: "log", status: "v1", view: "changelog",
     desc: "날짜·항목·영향 범위. 편제표·요건 갱신도 자동 기록.", parts: ["날짜 / 항목 / 영향 범위"] },
 
-  { id: "library", title: "자료실", icon: "folder", status: "v1", children: [
+  { id: "library", title: "자료실", icon: "folder", status: "v1", view: "links", children: [
     { id: "library/sources", title: "출처 목록", status: "v1", view: "sources", desc: "학교 정보 출처 링크." },
     { id: "library/status", title: "갱신 현황", status: "v1", view: "status", desc: "학교별 기준연도·수집일·확인 필요 건수." },
     { id: "library/files", title: "원본 파일", status: "v1", view: "files", desc: "학교에서 받은 원본 양식·사진. 눌러서 크게 봅니다." },
@@ -50,3 +50,15 @@ export const MENU = [
 ];
 
 export const STATUS = { v1: "1차", v2: "2차", soon: "준비 중" };
+
+// 하단 탭·상단 메뉴(2026-10 개편). 항목 id는 위 MENU의 id를 그대로 쓰므로 기존 링크(#select/curriculum 등)는 깨지지 않는다.
+// soon: 아직 열리지 않은 기능은 메뉴에 두지 않고 해당 탭 맨 아래 한 줄로만 알린다.
+export const TABS = [
+  { id: "home", title: "오늘", items: [{ id: "home", title: "오늘" }] },
+  { id: "schedule", title: "일정", items: [{ id: "schedule", title: "일정" }] },
+  { id: "school", title: "학교", items: [{ id: "select/curriculum", title: "학교별 과목표" }, { id: "select/types", title: "고교 유형·전형" }], soon: ["내 계획표", "학교별 시뮬레이션", "목표 학과 체크"] },
+  { id: "know", title: "알아두기", items: [{ id: "life/credit", title: "학점제 한눈에" }, { id: "admission/system", title: "대입 제도" }, { id: "changelog", title: "바뀐 소식" }], soon: ["학년별 할 일", "대학·학과 찾기"] },
+  { id: "vault", title: "내 보관함", items: [{ id: "library", title: "바로가기" }, { id: "library/sources", title: "출처 목록" }, { id: "library/status", title: "업데이트 기록" }, { id: "library/files", title: "원본 파일" }] },
+];
+// 메뉴에서 빠진 옛 주소는 가장 가까운 화면으로 보낸다.
+export const REDIRECT = { select: "select/curriculum", life: "life/credit", "life/checklist": "life/credit", admission: "admission/system", "admission/univ": "admission/system", planner: "select/curriculum", "planner/plan": "select/curriculum", "planner/sim": "select/curriculum", "planner/report": "select/curriculum" };
