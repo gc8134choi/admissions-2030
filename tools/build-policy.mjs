@@ -67,6 +67,7 @@ const out = draft.map((d) => {
   row.sourceName = d.sourceName ?? null;
   row.sourceUrl = d.sourceUrl ?? null;
   if (sources.length > 1) row.sources = sources;
+  if (d.region) row.region = d.region; // seoul | gyeonggi | national (정의: draft 상단 fields.region)
   if (Array.isArray(d.audience)) row.audience = d.audience; // 일정 대상별 필터용(없으면 공통 취급)
   const events = EVENTS[d.id] || EVENTS[d.title] || dateEvents(d.date);
   if (events) row.events = events;
