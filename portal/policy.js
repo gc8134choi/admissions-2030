@@ -1,3 +1,5 @@
+import { loadAudience, saveAudience, toggleAudience, audienceMatch, audienceChips } from "./home.js";
+
 // 제도·일정 화면(대입 제도, 일정, 고교 유형·전형, 제도 변경 로그). 데이터는 data/policy.json.
 const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "확인 못 함", material: "학교 배부 자료", seoul: "서울교육청 자료", match: "서울·경기 자료 일치", gyeonggi: "경기도교육청 자료", opinion: "의견" };
 const SKIND = { official: "공식", media: "매체", material: "학교 배부", seoul: "서울교육청", "seoul-gyeonggi": "서울·경기교육청", gyeonggi: "경기도교육청", opinion: "학원 의견" };
@@ -6,7 +8,7 @@ const NOTICE = '<p class="note">조사일 2026-10-25, <b>검색 요약 기준이
 // 대입 제도 화면에 보여 줄 과목 선택 지도 행(선택과목 조사 시기, 대학 권장이수과목, 수능 출제범위). 나머지 cur-*는 고교 유형·전형 화면.
 const CUR_SYS = new Set(["cur-06", "cur-07", "cur-08"]);
 
-export function register(views, { $, esc, load }) {
+export function register(views, { $, esc, load, store }) {
   const badge = (r) => `<span class="pst ${r.status}">${PST[r.status]}</span>${r.unverified ? ' <span class="unv">원문 미확인</span>' : ""}${r.note ? `<div class="muted small">${esc(r.note)}</div>` : ""}`;
   const src = (r) => {
     const list = r.sources || (r.sourceName ? [{ name: r.sourceName, url: r.sourceUrl }] : []);
@@ -45,7 +47,7 @@ export function register(views, { $, esc, load }) {
   const timeline = (rows) => {
     const t = today();
     const evs = rows.flatMap((r) => (r.events || []).map((e, i) => ({ ...e, r, first: i === 0 }))).sort((a, b) => a.start.localeCompare(b.start));
-    const tr = (e) => `<tr class="${(e.end || e.start) < t ? "past" : ""}"><td class="l">${esc(fmt(e))}</td><td class="l"><b>${esc(e.r.title)}</b> · ${esc(e.label)}${e.first ? `<div class="muted small">${esc(e.r.body)}</div>` : ""}</td><td class="l">${badge(e.r)}</td><td class="l">${src(e.r)}</td></tr>`;
+    const tr = (e) => `<tr class="${(e.end || e.start) < t ? "past" : ""}"><td class="l">${esc(fmt(e))}</td><td class="l"><b>${esc(e.r.title)}</b>${e.label ? ` · ${esc(e.label)}` : ""}${e.first ? `<div class="muted small">${esc(e.r.body)}</div>` : ""}</td><td class="l">${badge(e.r)}</td><td class="l">${src(e.r)}</td></tr>`;
     const none = rows.filter((r) => !r.events);
     return `<p class="muted">오늘(${t}) 이전 일정은 흐리게 표시합니다.</p><div class="tw"><table class="policy"><thead><tr><th class="l">날짜</th><th class="l">항목</th><th class="l">상태</th><th class="l">구분·출처</th></tr></thead><tbody>${evs.map(tr).join("")}</tbody></table></div>${none.length ? `<h3>일정 미확인</h3>${table(none, basic)}` : ""}`;
   };
@@ -85,8 +87,22 @@ export function register(views, { $, esc, load }) {
     const tab = query.get("t") === "univ" ? "univ" : "hs";
     const all = await load("policy");
     const rows = all.filter((r) => r.topic === (tab === "univ" ? "exam-schedule" : "hs-schedule"));
+    const chips = '<div id="aud"></div>'; // 칩 UI·저장(portal.audience)은 home.js와 공유
     el.innerHTML = `${tabs([["hs", "#schedule?t=hs", "고입"], ["univ", "#schedule?t=univ", "대입"]], tab)}${NOTICE}
-      <p class="muted">${tab === "univ" ? "수능·대교협 일정. 2030학년도분은 대부분 추정입니다." : "2027학년도 고입(서울 기준). 연도는 2027학년도 고입이 2026년 하반기에 진행되는 것을 기준으로 붙였습니다."}</p>${timeline(rows)}`;
+      <p class="muted">${tab === "univ" ? "수능·대교협 일정. 2030학년도분은 대부분 추정입니다." : "2027학년도 고입(서울 기준). 연도는 2027학년도 고입이 2026년 하반기에 진행되는 것을 기준으로 붙였습니다."}</p>${chips}<div id="tl"></div>`;
+    let sel = loadAudience(store);
+    const draw = () => {
+      $("#aud").innerHTML = audienceChips(sel, esc) + '<span class="muted small"> 선택 없음 = 전체</span>';
+      $("#tl").innerHTML = timeline(rows.filter((r) => audienceMatch(r.audience, sel)));
+    };
+    $("#aud").addEventListener("click", (e) => {
+      const k = e.target.closest("[data-aud]")?.dataset.aud;
+      if (!k) return;
+      sel = toggleAudience(sel, k);
+      saveAudience(store, sel);
+      draw();
+    });
+    draw();
   };
 
   views.types = async (el) => {

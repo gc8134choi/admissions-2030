@@ -23,7 +23,7 @@ const EVENTS = {
   "2028학년도 수시 원서접수": [{ label: "수시 원서접수 시작", start: "2027-09-20" }],
   "2028학년도 대입전형 기본사항": [{ label: "대교협 발표", start: "2025-08-28" }],
   "2030학년도 대입전형 기본사항 발표": [{ label: "발표 가능성(추정)", start: "2027-08" }],
-  "2030학년도 수능 시행일": [{ label: "시행일 미확인(2029.11 중하순 추정)", start: "2029-11" }],
+  "2030학년도 수능 시행일": [{ label: "시행일(잠정 예상)", start: "2029-11-15" }],
   "2030학년도 수능 시행 기본계획 공고": [{ label: "공고(2029.3 전후 추정)", start: "2029-03" }],
   "2027학년도 고교 입학(개학)": [{ label: "입학·개학(추정)", start: "2027-03" }],
   "2028학년도 정시 일정(참고)": [
@@ -40,11 +40,14 @@ const NOTES = { "adm-05": "미결정 상태", "adm-10": "개인 제안, 정부�
 // 사용자 결정 Q6(2026-10-25): 기본계획 공고 시기 정정. 화면 상단 안내문도 이 행의 body를 읽는다(문구 관리 한 곳).
 const BODY = { "adm-07": "수능 세부 범위는 추정이며, 2030학년도 수능 시행 기본계획 공고(2029.3 전후 추정, 2027학년도분은 2026.3.31 공고) 전까지 미확정" };
 
-// 사용자 지시(PM 경유, 2026-10-25): 2030학년도 수능을 2029.11.15로 잠정 예상. 상태는 추정 그대로, 본문에 출처를 덧붙인다.
-const APPEND = { "sch-12": "사용자 잠정 예상 2029.11.15, 공식 공고 전." };
-
-// statusNote("확정(원문 미확인, 시기 조정은 미결정)") 괄호 안에서 배지로 따로 보이는 "원문 미확인"을 뺀 나머지.
+// statusNote("확정(원문 미확인, 시기 조정은 미결정)") 괄호 안에서 배지로 따로 보이는 "원문 미확인"·"학원"을 뺀 나머지.
 const extra = (t) => ((t || "").match(/\((.*)\)\s*$/)?.[1] ?? "").split(/,\s*/).filter((x) => x && x !== "원문 미확인" && x !== "학원").join(", ");
+
+// draft의 date("YYYY-MM-DD" 또는 "YYYY-MM-DD~YYYY-MM-DD") → 날짜 하나짜리 events. 라벨은 항목 제목이 대신한다.
+const dateEvents = (t) => {
+  const m = typeof t === "string" && t.match(/^(\d{4}-\d{2}-\d{2})(?:~(\d{4}-\d{2}-\d{2}))?$/);
+  return m ? [m[2] && m[2] !== m[1] ? { label: "", start: m[1], end: m[2] } : { label: "", start: m[1] }] : null;
+};
 
 const draft = JSON.parse(readFileSync("research/data/policy-draft.json", "utf8")).items;
 const out = draft.map((d) => {
@@ -52,7 +55,7 @@ const out = draft.map((d) => {
   const row = { id: d.id, topic: d.topic };
   row.entryYear = d.entryYear ?? (d.examYear ? d.examYear - 3 : 2027);
   row.examYear = d.examYear ?? row.entryYear + 3;
-  Object.assign(row, { title: d.title, body: APPEND[d.id] ? `${(BODY[d.id] ?? d.body).replace(/\.?$/, ".")} ${APPEND[d.id]}` : BODY[d.id] ?? d.body, status: STATUS[d.status] ?? "unknown" });
+  Object.assign(row, { title: d.title, body: BODY[d.id] ?? d.body, status: STATUS[d.status] ?? "unknown" });
   const note = NOTES[d.id] ?? extra(d.statusNote);
   if (note) row.note = note;
   row.unverified = !!d.unverified;
@@ -60,7 +63,9 @@ const out = draft.map((d) => {
   row.sourceName = d.sourceName ?? null;
   row.sourceUrl = d.sourceUrl ?? null;
   if (sources.length > 1) row.sources = sources;
-  if (EVENTS[d.id] || EVENTS[d.title]) row.events = EVENTS[d.id] || EVENTS[d.title];
+  if (Array.isArray(d.audience)) row.audience = d.audience; // 일정 대상별 필터용(없으면 공통 취급)
+  const events = EVENTS[d.id] || EVENTS[d.title] || dateEvents(d.date);
+  if (events) row.events = events;
   row.checkedAt = d.checkedAt;
   return row;
 });
