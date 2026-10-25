@@ -1387,9 +1387,8 @@
       "sourceUrl": null,
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true,
-      "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)",
-      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
+      "unverified": false,
+      "statusNote": "학교 배부 자료(2026학년도 기준, 2027 규칙은 gg-10~12 참고)",
       "region": "gyeonggi",
       "examYear": null
     },
@@ -1405,9 +1404,8 @@
       "sourceUrl": null,
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true,
-      "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)",
-      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
+      "unverified": false,
+      "statusNote": "학교 배부 자료(2026학년도 기준, 2027 규칙은 gg-10~12 참고)",
       "region": "gyeonggi",
       "examYear": null
     },
@@ -1423,9 +1421,8 @@
       "sourceUrl": null,
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true,
-      "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)",
-      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
+      "unverified": false,
+      "statusNote": "학교 배부 자료(2026학년도 기준, 2027 규칙은 gg-10~12 참고)",
       "region": "gyeonggi",
       "examYear": null
     },
@@ -1441,9 +1438,8 @@
       "sourceUrl": null,
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true,
-      "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)",
-      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
+      "unverified": false,
+      "statusNote": "학교 배부 자료(2026학년도 기준, 2027 규칙은 gg-10~12 참고)",
       "region": "gyeonggi",
       "examYear": null
     },
@@ -1452,16 +1448,15 @@
       "topic": "high-school-assignment",
       "entryYear": null,
       "title": "지망 수",
-      "body": "구역 내 5지망, 학군 내 11지망까지",
+      "body": "구역 내 5지망, 학군 내 11지망까지 (2027학년도 공식 리플렛 기준 학군내 5지망, 구역내는 해당 구역 전체 지망. 2구역은 10지망이므로 이 행의 \"학군 내 11지망\"은 판독 또는 학년도 차이 확인 필요)",
       "status": "학교 배부 자료",
       "sourceKind": "학교 배부 자료",
       "sourceName": "학교 배부 가정통신문 사진(분석 세션 판독)",
       "sourceUrl": null,
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true,
-      "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)",
-      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
+      "unverified": false,
+      "statusNote": "학교 배부 자료(2026학년도 기준, 2027 규칙은 gg-10~12 참고)",
       "region": "gyeonggi",
       "examYear": null
     },
@@ -1477,9 +1472,8 @@
       "sourceUrl": null,
       "extraSources": [],
       "checkedAt": "2026-10-25",
-      "unverified": true,
-      "statusNote": "학교 배부 자료(원문 미확인, 2026학년도 기준, 2027 규칙 확인 필요)",
-      "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
+      "unverified": false,
+      "statusNote": "학교 배부 자료(2026학년도 기준, 2027 규칙은 gg-10~12 참고)",
       "region": "gyeonggi",
       "examYear": null
     },
@@ -2412,7 +2406,7 @@
       "topic": "gg-hs-entry",
       "entryYear": 2027,
       "title": "경기·용인 확인 못 함",
-      "body": "2027학년도 용인학군 구역별 학교 구성과 구역별 지망 학교수는 공식 PDF의 표 글자를 추출하지 못해 확인 못 함(2026학년도 학교 배부 자료 기준은 asg 행). 외고·국제고·자사고 면접·내신 배점, 중1 2학기 성적 반영의 요강 문구도 확인 못 함",
+      "body": "외고·국제고·자사고 면접·내신 배점, 중1 2학기 성적 반영의 전형요강 문구는 확인 못 함(내신성적 반영지침은 별도 문서). 용인 구역 구성과 지망 수는 gg-10·11에서 공식 확인",
       "status": "unknown",
       "sourceKind": null,
       "sourceName": null,
@@ -3048,6 +3042,103 @@
         "A"
       ],
       "stage": "고교"
+    },
+    {
+      "id": "gg-10",
+      "topic": "gg-hs-entry",
+      "entryYear": 2027,
+      "title": "용인학군 구역 구성(2027학년도)",
+      "body": "1구역 기흥구 고교 12개교(구성·기흥·동백·보라·보정·서천·성지·신갈·용인백현·청덕·초당·흥덕), 2구역 수지구 고교 10개교(대지·상현·서원·성복·수지·신봉·용인홍천·죽전·풍덕·현암), 3구역 처인구 고교 7개교(고림·용인·용인삼계·진덕·포곡·태성(남)·처인). 풍덕·성복·수지·용인홍천은 모두 2구역. 백암고는 평준화 비적용 자율형 공립고, 용인한국외국어대부설고는 자율형 사립고, 처인고는 학군내 100% 배정(구역내배정 없음)",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "경기도교육청 고입·전학 포털 자료실: 2027학년도 경기도 고교 평준화학군 리플렛(9개 학군) 중 용인학군(2026.9.18 게시, 공식)",
+      "sourceUrl": "https://satp.goe.go.kr/main.do",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": false,
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
+      "audience": [
+        "general",
+        "private"
+      ],
+      "region": "gyeonggi",
+      "examYear": 2030,
+      "learners": [
+        "A"
+      ]
+    },
+    {
+      "id": "gg-11",
+      "topic": "gg-hs-entry",
+      "entryYear": 2027,
+      "title": "용인 지망 순위 작성(2027학년도)",
+      "body": "학군내배정(1단계)은 용인학군에서 5개 고교를 지망 순위로 작성. 구역내배정(2단계)은 해당 구역 전체 고교를 지망 순위로 작성(1구역 12지망, 2구역 10지망, 3구역 남 6·여 5지망, 처인고 제외). 외·국·자 지원자는 학군내 1지망에 외고·국제고·자사고, 2지망부터 5지망까지 학군내 고교, 구역내는 1지망 외·국·자 뒤 구역 전체 고교. 원서 작성 시 외·국·자 지원자 체크",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "경기도교육청 고입·전학 포털 자료실: 2027학년도 경기도 고교 평준화학군 리플렛(9개 학군) 중 용인학군(2026.9.18 게시, 공식)",
+      "sourceUrl": "https://satp.goe.go.kr/main.do",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": false,
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
+      "audience": [
+        "general",
+        "private"
+      ],
+      "region": "gyeonggi",
+      "examYear": 2030,
+      "learners": [
+        "A"
+      ]
+    },
+    {
+      "id": "gg-12",
+      "topic": "gg-hs-entry",
+      "entryYear": 2027,
+      "title": "용인 배정 비율·원서 접수 방식",
+      "body": "학군내배정 정원은 고교별 모집정원의 50%(서천고 80%, 처인고 100%), 구역내배정은 모집정원 × 구역별 지원율 − 학군내 배정 인원. 경기도 내 중학교 졸업예정자는 재학 중학교에서 고교입학시스템으로 원서 작성·전송 후 용인교육지원청에 종이원서 제출, 원서접수 마감 2026.12.10(목) 17:00",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "경기도교육청 고입·전학 포털 자료실: 2027학년도 경기도 고교 평준화학군 리플렛(9개 학군) 중 용인학군(2026.9.18 게시, 공식)",
+      "sourceUrl": "https://satp.goe.go.kr/main.do",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": false,
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
+      "audience": [
+        "general",
+        "private"
+      ],
+      "region": "gyeonggi",
+      "examYear": 2030,
+      "learners": [
+        "A"
+      ],
+      "date": "2026-12-04~2026-12-10"
+    },
+    {
+      "id": "gg-13",
+      "topic": "gg-hs-entry",
+      "entryYear": 2027,
+      "title": "출신구역 조정·변경 대상(용인)",
+      "body": "출신구역 조정 대상 중학교: 소현중·용인신촌중(1구역→2구역), 모현중·도현중(3구역→1·2구역). 출신구역 변경은 1구역 출신자가 2구역으로 변경 희망 시 신청, 수용구역 인가 정원 내에서 추첨",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "경기도교육청 고입·전학 포털 자료실: 2027학년도 경기도 고교 평준화학군 리플렛(9개 학군) 중 용인학군(2026.9.18 게시, 공식)",
+      "sourceUrl": "https://satp.goe.go.kr/main.do",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": false,
+      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
+      "audience": [
+        "general",
+        "private"
+      ],
+      "region": "gyeonggi",
+      "examYear": 2030,
+      "learners": [
+        "A"
+      ]
     }
   ],
   "fields": {
