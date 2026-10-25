@@ -29,6 +29,8 @@ function normalize(html, item) {
   const ignore = [/조회수?\s*:?\s*\d[\d,]*/g, /조회\s*\d[\d,]*/g, /공감수\s*\d+/g, /댓글수[^\n]*/g, /\d{4}[-.]\d{2}[-.]\d{2}\s+\d{2}:\d{2}(:\d{2})?/g, ...(item.ignore || []).map((p) => new RegExp(p, "g"))];
   for (const re of ignore) text = text.replace(re, "");
   lines = text.split("\n").map((l) => l.replace(/\s+/g, " ").trim()).filter(Boolean);
+  // 목록(list-titles)은 조회수·번호 같은 숫자 줄과 날짜만 있는 줄을 빼고, 한글이 든 6자 이상 줄(제목)만 비교한다.
+  if (item.method === "list-titles") lines = lines.filter((l) => /[가-힣]/.test(l) && l.length >= 6 && !/^[\d.\-\s:]+$/.test(l));
   return lines;
 }
 
