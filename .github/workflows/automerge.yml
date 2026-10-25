@@ -1,0 +1,35 @@
+# CI가 통과한 PR 중 작업 브랜치(dev/*, research/*, data/*, pm/*)를 자동으로 머지한다.
+# 막으려면 PR에 'hold' 라벨을 붙인다. main으로 직접 푸시하지 않는다는 규칙은 그대로다.
+name: automerge
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
+permissions:
+  contents: write
+  pull-requests: write
+concurrency:
+  group: automerge
+  cancel-in-progress: false
+jobs:
+  merge:
+    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: merge ready PRs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          set -u
+          repo="${GITHUB_REPOSITORY}"
+          for n in $(gh api "repos/$repo/pulls?state=open&per_page=50" --jq ".[] | select(.head.sha==\"$HEAD_SHA\") | .number"); do
+            ref=$(gh api "repos/$repo/pulls/$n" --jq .head.ref)
+            hold=$(gh api "repos/$repo/pulls/$n" --jq '[.labels[].name] | index("hold") != null')
+            case "$ref" in
+              dev/*|research/*|data/*|pm/*) ;;
+              *) echo "skip #$n ($ref)"; continue;;
+            esac
+            if [ "$hold" = "true" ]; then echo "hold #$n"; continue; fi
+            gh api -X PUT "repos/$repo/pulls/$n/merge" -f merge_method=merge --jq '"#'"$n"' merged="+(.merged|tostring)' || echo "#$n merge failed"
+          done

@@ -29,6 +29,15 @@
 | 13 | 일정 캘린더 구독(.ics), 알림 | 개발 | 후보 |
 | 14 | 과목 선택 플래너(내 계획표) | 개발+분석 | 후보 |
 
+## 담당 파일(충돌 방지)
+| 세션 | 브랜치 | 담당 |
+|------|--------|------|
+| 개발 | `dev/portal` | `portal/app.js`, `home.js`, `style.css`, `theme.css`, 셸·홈·편제표·검색·서비스 워커·manifest |
+| 서브 개발 | `dev/portal-policy` | `portal/policy.js`, `credit.js`, `policy.css`, `tools/build-*.mjs`, `portal/data` 생성물, `schema/` |
+| 조사 | `research/materials` | `research/` 전체(초안 JSON, 감시 스크립트) |
+| 편제표 데이터 | `data/verify-curriculum` | 정본 전사본(사용자 승인 전 변경 금지) |
+| PM | `pm/*` | `CLAUDE.md`, `ROADMAP.md`, `ARCHITECTURE.md`, `tools/pm/`, `.github/workflows/` |
+
 ## 결정 기록
 | 주제 | 대안 | 선택 | 근거 |
 |------|------|------|------|
