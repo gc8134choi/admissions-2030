@@ -146,12 +146,12 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const fresh = vis.prev ? log.filter((x) => span(x.d).start > new Date(vis.prev + "T00:00:00")).length : 0;
     const logRow = (x) => `<li class="row"><div><h3>${esc(x.r.title.slice(x.d.length).trim() || x.r.title)}</h3><p class="num">${esc(ymdText(x.d))}</p><div class="meta">${badges(x.r)} ${link(x.r)}</div></div></li>`;
 
-    // 5) 학교(예나) · 학점제 숫자
+    // 5) 학교 · 학점제 숫자
     const mine = summary.filter((m) => pf.schoolIds.includes(m.schoolId));
     const m0 = summary[0];
     const sch = (m) => { const tot = m.creditsTotal || 1; return `<li><a class="sr" href="#select/curriculum?v=compare&s=${esc(m.schoolId)}">${hasLogo(m.schoolId) ? `<img src="img/schools/256/${esc(m.schoolId)}.png" alt="" width="28" height="28">` : "<span></span>"}<span class="nm">${esc(m.schoolName)}<span class="sub">지정 ${m.requiredCount}과목 · 선택 후보 ${m.candidateSubjects}개</span></span><span class="fig"><b class="num">${m.creditsRequired}+${m.creditsElective}</b>지정 + 선택</span><span class="seg" style="grid-column:2 / 4" aria-hidden="true"><i class="r" style="width:${(m.creditsRequired / tot) * 100}%"></i><i class="e" style="width:${(m.creditsElective / tot) * 100}%"></i><i class="o"></i></span></a></li>`; };
 
-    // 6) 앞으로 3년(큰 흐름): 예나만. 모든 마일스톤을 policy.json 행에서 읽는다.
+    // 6) 앞으로 3년(큰 흐름). 모든 마일스톤을 policy.json 행에서 읽는다.
     const rng = (e) => fmtRange(span(e.start, e.end), t, e);
     const mk = (id, label, suffix = "") => { const r = P.get(id), e = ev0(id); return { label, row: r, key: e?.start, date: e ? rng(e) + suffix : "" }; };
     const subs = ["sch-11", "sch-12", "sch-13"].map((id) => ({ r: P.get(id), e: ev0(id) })).filter((x) => x.r && x.e);
@@ -211,7 +211,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
       }
       bindPhotos(el.querySelector("#hm-hero"));
     };
-    // 대상 칩(예나) → 히어로와 이어지는 일정을 다시 그린다
+    // 대상 칩 → 히어로와 이어지는 일정을 다시 그린다
     const hs = el.querySelector(".hero-aside");
     hs.addEventListener("click", (e) => {
       const b = e.target.closest("[data-aud]"); if (!b) return;
