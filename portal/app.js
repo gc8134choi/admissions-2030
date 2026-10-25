@@ -32,6 +32,8 @@ const SLOT = { required: "지정", elective: "선택", outside: "교외" };
 const CSAT = { in: "포함", base: "기초", out: "제외", none: "-" };
 const dataNote = '<p class="note">편제표 값은 AI가 학교 배부 사진에서 옮긴 것으로, 일부(flag 22행)만 사진과 대조했습니다. 수능 범위는 2028 통합형 수능 기준 <b>추정</b>이며, 편제표는 개설 가능 <b>후보</b>입니다. 중요한 결정 전에는 원본으로 확인하세요.</p>';
 const options = (items, all) => `${all ? `<option value="">${esc(all)}</option>` : ""}${items.map((v) => `<option value="${esc(v.v ?? v)}">${esc(v.t ?? v)}</option>`).join("")}`;
+const POOL = { basic: "기초교과", cross: "교과(군) 간 선택", "in-area": "한 교과 안 선택", life: "기술·가정/정보/제2외국어 등" };
+const CHECK = { inferred: "구분 추정", unmarked: "구분 미표기", flag: "열린 flag 있음" };
 const kindOf = (o) => (o.primaryKind ? o.primaryKind + (o.kindStatus === "inferred" ? "?" : "") : "미표기");
 
 // ---- 뷰 ----
@@ -154,7 +156,11 @@ async function compareShell(el) {
       <div class="fgroup"><span class="flabel">교과군</span><select id="area">${options(facets.areas, "전체")}</select></div>
       <div class="fgroup"><span class="flabel">이수 방식</span><select id="sel">${options([{ v: "school", t: "학교 지정" }, { v: "student", t: "학생 선택" }, { v: "outside", t: "학교 밖" }], "전체")}</select></div>
       <div class="fgroup"><span class="flabel">구분</span><select id="kind">${options(["공통", "일반", "진로", "융합"], "전체")}</select></div>
+      <div class="fgroup"><span class="flabel">학년</span><select id="grade">${options([{ v: "1", t: "1학년" }, { v: "2", t: "2학년" }, { v: "3", t: "3학년" }], "전체")}</select></div>
       <div class="fgroup"><span class="flabel">학기</span><select id="term">${options(TERMS, "전체")}</select></div>
+      <div class="fgroup"><span class="flabel">학점</span><select id="cr">${options([1, 2, 3, 4].map((v) => ({ v: String(v), t: `${v}학점` })), "전체")}</select></div>
+      <div class="fgroup"><span class="flabel">택n 묶음 유형</span><select id="pool">${options(Object.entries(POOL).map(([v, t]) => ({ v, t })), "전체")}</select></div>
+      <div class="fgroup"><span class="flabel">확인 필요 행</span><select id="chk">${options([...Object.entries(CHECK).map(([v, t]) => ({ v, t })), { v: "any", t: "하나라도 해당" }], "전체")}</select></div>
       <div class="fgroup"><span class="flabel">수능 범위(추정)</span><select id="csat">${options([{ v: "in", t: "출제 범위" }, { v: "base", t: "기초(공통)" }, { v: "out", t: "제외" }], "전체")}</select></div>
       <div class="fgroup"><label><input type="checkbox" id="diff"> 학교 간 차이 나는 과목만</label><label><input type="checkbox" id="one"> 한 학교에만 있는 과목</label></div>
       <button id="reset" type="button">필터 초기화</button>
@@ -164,11 +170,17 @@ async function compareShell(el) {
   let ids = [];
   const draw = (next) => {
     if (next) ids = next;
-    const f = { q: $("#q").value.replace(/\s/g, ""), area: $("#area").value, sel: $("#sel").value, kind: $("#kind").value, term: $("#term").value, csat: $("#csat").value, diff: $("#diff").checked, one: $("#one").checked };
+    const f = { q: $("#q").value.replace(/\s/g, ""), area: $("#area").value, sel: $("#sel").value, kind: $("#kind").value, term: $("#term").value, grade: $("#grade").value, cr: $("#cr").value, pool: $("#pool").value, chk: $("#chk").value, csat: $("#csat").value, diff: $("#diff").checked, one: $("#one").checked };
     if (!ids.length) { $("#tbl").innerHTML = ""; $("#cnt").textContent = "위에서 학교를 하나 이상 선택하세요."; return; }
     const by = new Map();
     for (const o of offerings) {
       if (!ids.includes(o.schoolId) || (f.area && o.area !== f.area) || (f.sel && o.selection !== f.sel) || (f.term && o.term !== f.term) || (f.csat && o.csatScope !== f.csat)) continue;
+      if ((f.grade && String(o.grade) !== f.grade) || (f.cr && String(o.credits) !== f.cr)) continue;
+      if (f.pool && gmap.get(o.groupId)?.poolType !== f.pool) continue;
+      if (f.chk) {
+        const is = { inferred: o.kindStatus === "inferred", unmarked: o.kindStatus === "unmarked", flag: o.openFlagIds.length > 0 };
+        if (!(f.chk === "any" ? is.inferred || is.unmarked || is.flag : is[f.chk])) continue;
+      }
       if (f.kind && !o.kind.includes(f.kind) && o.kindGuess !== f.kind) continue;
       if (f.q && !o.subject.replace(/\s/g, "").includes(f.q)) continue;
       if (f.one && subj.get(o.subjectKey)?.schoolCount !== 1) continue;
@@ -201,7 +213,7 @@ async function compareShell(el) {
   root.addEventListener("input", () => draw());
   root.addEventListener("change", () => draw());
   $("#reset").addEventListener("click", () => {
-    ["q", "area", "sel", "kind", "term", "csat"].forEach((id) => ($("#" + id).value = ""));
+    ["q", "area", "sel", "kind", "term", "grade", "cr", "pool", "chk", "csat"].forEach((id) => ($("#" + id).value = ""));
     ["diff", "one"].forEach((id) => ($("#" + id).checked = false));
     draw();
   });
