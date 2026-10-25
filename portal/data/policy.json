@@ -104,8 +104,8 @@
   "status": "estimated",
   "unverified": false,
   "sourceKind": null,
-  "sourceName": null,
-  "sourceUrl": null,
+  "sourceName": "KDI EIEC",
+  "sourceUrl": "https://eiec.kdi.re.kr/policy/materialView.do?num=267335&pg=&pp=&topic=L",
   "checkedAt": "2026-10-25"
  },
  {
@@ -597,7 +597,7 @@
   "entryYear": 2027,
   "examYear": 2030,
   "title": "2030학년도 수능 시행 기본계획 공고",
-  "body": "2028학년도 분이 2027.3 공고 예정(보도)이므로 2030학년도 분은 2029.3 전후로 추정. 포털 CLAUDE.md의 \"2027.3 공고\"는 2028학년도 수능 기준으로 보이며 2030학년도와 맞는지 확인 필요",
+  "body": "2028학년도 수능 기본계획은 2027.3 공고 예정(보도). 같은 주기라면 2030학년도 수능 기본계획은 2029.3 전후로 추정. 정부 중장기 대입 개편안은 별도로 2027.3 공표 예정(변경 로그 참고). 수능 세부 범위는 이 기본계획 공고 전까지 추정",
   "status": "estimated",
   "unverified": false,
   "sourceKind": null,
