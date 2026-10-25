@@ -110,7 +110,6 @@ tfoot th{background:var(--soft)}
 .schoolgrid.colsn{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(300px,320px);grid-template-columns:none;overflow-x:auto;padding-bottom:8px}
 #tbl td.l,#tbl th.l{position:sticky;left:0;z-index:1;background:var(--panel);min-width:150px}
 #tbl thead th.l,#tbl tfoot th.l{background:var(--soft)}
-#tbl tr.area td{position:static}
 #tbl th:not(.l),#tbl td:not(.l){min-width:170px}
 
 .pst{display:inline-block;font-size:12px;font-weight:600;border-radius:99px;padding:0 8px;border:1px solid currentColor;white-space:nowrap}
@@ -169,3 +168,21 @@ select,input[type=search]{font-size:13px;padding:5px 8px}
 .school{padding:12px 14px}
 .stats dd{font-size:15px}
 .subtabs a{padding:7px 14px}
+
+/* 상세 비교 표: [교과군 | 과목 | 학교…], 머리글 고정 */
+.tw.fit{overflow:visible}
+.tw:not(.fit){overflow:auto;max-height:calc(100vh - 66px)}
+#tbl{border-collapse:separate;border-spacing:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+#tbl th,#tbl td{border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+:root{--tb:45px}
+@media (max-width:760px){:root{--tb:50px}}
+#tbl thead th{position:sticky;top:var(--tb);z-index:3;background:var(--soft)}
+.tw:not(.fit) #tbl thead th{top:0}
+#tbl thead th.ar,#tbl thead th.l{z-index:5}
+#tbl th.ar,#tbl td.ar{position:sticky;left:0;width:72px;min-width:72px;max-width:72px;box-sizing:border-box}
+#tbl td.ar{z-index:2;text-align:left;vertical-align:top;font-size:12px;font-weight:600;line-height:1.3;padding:5px 6px;word-break:keep-all;overflow-wrap:anywhere;color:var(--accent)}
+#tbl th.l,#tbl td.l{left:72px;min-width:150px}
+#tbl tfoot th.lf{position:sticky;left:0;text-align:left;background:var(--soft)}
+#tbl tbody tr.ra0>td{background:var(--panel)}
+#tbl tbody tr.ra1>td{background:color-mix(in srgb,var(--soft) 55%,var(--panel))}
+#tbl tbody tr.af>td{border-top:2px solid color-mix(in srgb,var(--accent) 35%,var(--line))}
