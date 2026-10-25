@@ -1,0 +1,568 @@
+{
+  "id": "curriculum-pungdeok-2027",
+  "school": "풍덕고등학교",
+  "entryYear": 2027,
+  "document": "2027학년도 입학생 교육과정 편제표",
+  "schoolType": null,
+  "sourceImage": "files/inbox/ABrJyp73GibgGE5W.jpg",
+  "legend": {
+    "♥": "사회·과학 융합 선택 과목. 등급을 산출하지 않고 성취도 5단계만 평가"
+  },
+  "declared": {
+    "termCredits": {
+      "1-1": 29,
+      "1-2": 29,
+      "2-1": 29,
+      "2-2": 29,
+      "3-1": 29,
+      "3-2": 29
+    },
+    "subjectCredits": 174,
+    "creativeCredits": 18,
+    "totalCredits": 192,
+    "fixedCredits": 120,
+    "fixedCoreCredits": 70,
+    "fixedOtherCredits": 50,
+    "electiveCredits": 54,
+    "termFixed": {
+      "1-1": 29,
+      "1-2": 29,
+      "2-1": 17,
+      "2-2": 17,
+      "3-1": 14,
+      "3-2": 14
+    },
+    "termElective": {
+      "1-1": 0,
+      "1-2": 0,
+      "2-1": 12,
+      "2-2": 12,
+      "3-1": 15,
+      "3-2": 15
+    }
+  },
+  "notes": [
+    "공통 과목의 kind는 과목명으로 추정",
+    "일반/진로 구분 기호가 표에 없어 선택 과목의 kind는 비어 있음"
+  ],
+  "courses": [
+    {
+      "term": "1-1",
+      "subject": "공통국어1",
+      "credits": 4,
+      "kind": "공통"
+    },
+    {
+      "term": "1-1",
+      "subject": "공통수학1",
+      "credits": 4,
+      "kind": "공통"
+    },
+    {
+      "term": "1-1",
+      "subject": "공통영어1",
+      "credits": 3,
+      "kind": "공통"
+    },
+    {
+      "term": "1-1",
+      "subject": "한국사1",
+      "credits": 3,
+      "kind": "공통"
+    },
+    {
+      "term": "1-1",
+      "subject": "통합사회1",
+      "credits": 3,
+      "kind": "공통"
+    },
+    {
+      "term": "1-1",
+      "subject": "통합과학1",
+      "credits": 4,
+      "kind": "공통"
+    },
+    {
+      "term": "1-1",
+      "subject": "과학탐구실험1",
+      "credits": 1,
+      "kind": "공통"
+    },
+    {
+      "term": "1-1",
+      "subject": "체육1",
+      "credits": 2
+    },
+    {
+      "term": "1-1",
+      "subject": "음악/미술",
+      "credits": 2
+    },
+    {
+      "term": "1-1",
+      "subject": "기술가정/한문",
+      "credits": 3
+    },
+    {
+      "term": "1-2",
+      "subject": "공통국어2",
+      "credits": 4,
+      "kind": "공통"
+    },
+    {
+      "term": "1-2",
+      "subject": "공통수학2",
+      "credits": 4,
+      "kind": "공통"
+    },
+    {
+      "term": "1-2",
+      "subject": "공통영어2",
+      "credits": 3,
+      "kind": "공통"
+    },
+    {
+      "term": "1-2",
+      "subject": "한국사2",
+      "credits": 3,
+      "kind": "공통"
+    },
+    {
+      "term": "1-2",
+      "subject": "통합사회2",
+      "credits": 3,
+      "kind": "공통"
+    },
+    {
+      "term": "1-2",
+      "subject": "통합과학2",
+      "credits": 4,
+      "kind": "공통"
+    },
+    {
+      "term": "1-2",
+      "subject": "과학탐구실험2",
+      "credits": 1,
+      "kind": "공통"
+    },
+    {
+      "term": "1-2",
+      "subject": "체육2",
+      "credits": 2
+    },
+    {
+      "term": "1-2",
+      "subject": "음악/미술",
+      "credits": 2
+    },
+    {
+      "term": "1-2",
+      "subject": "기술가정/한문",
+      "credits": 3
+    },
+    {
+      "term": "2-1",
+      "subject": "문학",
+      "credits": 4
+    },
+    {
+      "term": "2-1",
+      "subject": "대수",
+      "credits": 4
+    },
+    {
+      "term": "2-1",
+      "subject": "영어Ⅰ",
+      "credits": 4
+    },
+    {
+      "term": "2-1",
+      "subject": "운동과 건강",
+      "credits": 2
+    },
+    {
+      "term": "2-1",
+      "subject": "미술 창작/음악 연주와 창작",
+      "credits": 3
+    },
+    {
+      "term": "2-2",
+      "subject": "독서와 작문",
+      "credits": 4
+    },
+    {
+      "term": "2-2",
+      "subject": "미적분Ⅰ",
+      "credits": 4
+    },
+    {
+      "term": "2-2",
+      "subject": "영어Ⅱ",
+      "credits": 4
+    },
+    {
+      "term": "2-2",
+      "subject": "스포츠 문화",
+      "credits": 2
+    },
+    {
+      "term": "2-2",
+      "subject": "미술 창작/음악 연주와 창작",
+      "credits": 3
+    },
+    {
+      "term": "3-1",
+      "subject": "화법과 언어",
+      "credits": 4
+    },
+    {
+      "term": "3-1",
+      "subject": "확률과 통계",
+      "credits": 4
+    },
+    {
+      "term": "3-1",
+      "subject": "심화 영어",
+      "credits": 4
+    },
+    {
+      "term": "3-1",
+      "subject": "스포츠 생활1",
+      "credits": 2
+    },
+    {
+      "term": "3-2",
+      "subject": "주제 탐구 독서",
+      "credits": 4
+    },
+    {
+      "term": "3-2",
+      "subject": "실용 통계",
+      "credits": 4
+    },
+    {
+      "term": "3-2",
+      "subject": "심화 영어 독해와 작문",
+      "credits": 4
+    },
+    {
+      "term": "3-2",
+      "subject": "스포츠 생활2",
+      "credits": 2
+    }
+  ],
+  "electiveGroups": [
+    {
+      "id": "2-1-A",
+      "term": "2-1",
+      "pick": 3,
+      "creditsEach": 3,
+      "options": [
+        {
+          "subject": "인공지능 수학"
+        },
+        {
+          "subject": "세계시민과 지리"
+        },
+        {
+          "subject": "정치"
+        },
+        {
+          "subject": "윤리와 사상"
+        },
+        {
+          "subject": "동아시아 역사 기행"
+        },
+        {
+          "subject": "물리학"
+        },
+        {
+          "subject": "화학"
+        },
+        {
+          "subject": "생명과학"
+        },
+        {
+          "subject": "지구과학"
+        }
+      ]
+    },
+    {
+      "id": "2-1-B",
+      "term": "2-1",
+      "pick": 1,
+      "creditsEach": 3,
+      "options": [
+        {
+          "subject": "중국어"
+        },
+        {
+          "subject": "일본어"
+        },
+        {
+          "subject": "정보"
+        }
+      ]
+    },
+    {
+      "id": "2-2-A",
+      "term": "2-2",
+      "pick": 3,
+      "creditsEach": 3,
+      "options": [
+        {
+          "subject": "기하"
+        },
+        {
+          "subject": "도시의 미래 탐구"
+        },
+        {
+          "subject": "법과 사회"
+        },
+        {
+          "subject": "인문학과 윤리"
+        },
+        {
+          "subject": "세계사"
+        },
+        {
+          "subject": "역학과 에너지"
+        },
+        {
+          "subject": "물질과 에너지"
+        },
+        {
+          "subject": "세포와 물질대사"
+        },
+        {
+          "subject": "지구시스템과학"
+        }
+      ]
+    },
+    {
+      "id": "2-2-B",
+      "term": "2-2",
+      "pick": 1,
+      "creditsEach": 3,
+      "options": [
+        {
+          "subject": "중국어 회화"
+        },
+        {
+          "subject": "일본어 회화"
+        },
+        {
+          "subject": "인공지능 기초"
+        }
+      ]
+    },
+    {
+      "id": "3-1-A",
+      "term": "3-1",
+      "pick": 4,
+      "creditsEach": 3,
+      "options": [
+        {
+          "subject": "문학과 영상"
+        },
+        {
+          "subject": "미적분Ⅱ"
+        },
+        {
+          "subject": "경제 수학"
+        },
+        {
+          "subject": "세계 문화와 영어"
+        },
+        {
+          "subject": "기후변화와 지속가능한 세계",
+          "kind": "융합",
+          "graded": false
+        },
+        {
+          "subject": "사회와 문화"
+        },
+        {
+          "subject": "현대사회와 윤리"
+        },
+        {
+          "subject": "역사로 탐구하는 현대 세계",
+          "kind": "융합",
+          "graded": false
+        },
+        {
+          "subject": "전자기와 양자"
+        },
+        {
+          "subject": "화학 반응의 세계"
+        },
+        {
+          "subject": "생물의 유전"
+        },
+        {
+          "subject": "행성우주과학"
+        }
+      ]
+    },
+    {
+      "id": "3-1-B",
+      "term": "3-1",
+      "pick": 1,
+      "creditsEach": 3,
+      "options": [
+        {
+          "subject": "중국 문화"
+        },
+        {
+          "subject": "일본 문화"
+        },
+        {
+          "subject": "데이터 과학"
+        },
+        {
+          "subject": "창의 공학 설계"
+        },
+        {
+          "subject": "생활과 한문"
+        }
+      ]
+    },
+    {
+      "id": "3-2-A",
+      "term": "3-2",
+      "pick": 4,
+      "creditsEach": 3,
+      "options": [
+        {
+          "subject": "언어생활 탐구"
+        },
+        {
+          "subject": "수학과제 탐구"
+        },
+        {
+          "subject": "영미 문학 읽기"
+        },
+        {
+          "subject": "여행지리",
+          "kind": "융합",
+          "graded": false
+        },
+        {
+          "subject": "사회문제 탐구",
+          "kind": "융합",
+          "graded": false
+        },
+        {
+          "subject": "윤리문제 탐구",
+          "kind": "융합",
+          "graded": false
+        },
+        {
+          "subject": "문화로 보는 한국사"
+        },
+        {
+          "subject": "과학의 역사와 문화",
+          "kind": "융합",
+          "graded": false
+        },
+        {
+          "subject": "기후변화와 환경생태",
+          "kind": "융합",
+          "graded": false
+        },
+        {
+          "subject": "융합과학 탐구",
+          "kind": "융합",
+          "graded": false
+        }
+      ]
+    },
+    {
+      "id": "3-2-B",
+      "term": "3-2",
+      "pick": 1,
+      "creditsEach": 3,
+      "options": [
+        {
+          "subject": "관광 중국어"
+        },
+        {
+          "subject": "관광 일본어"
+        },
+        {
+          "subject": "소프트웨어와 생활"
+        },
+        {
+          "subject": "아동발달과 부모"
+        },
+        {
+          "subject": "언어생활과 한자"
+        }
+      ]
+    }
+  ],
+  "creative": {
+    "perTerm": {
+      "1-1": {
+        "자율자치활동": 17,
+        "동아리활동": 15,
+        "진로활동": 16
+      },
+      "1-2": {
+        "자율자치활동": 17,
+        "동아리활동": 15,
+        "진로활동": 16
+      },
+      "2-1": {
+        "자율자치활동": 17,
+        "동아리활동": 15,
+        "진로활동": 16
+      },
+      "2-2": {
+        "자율자치활동": 17,
+        "동아리활동": 15,
+        "진로활동": 16
+      },
+      "3-1": {
+        "자율자치활동": 17,
+        "동아리활동": 15,
+        "진로활동": 16
+      },
+      "3-2": {
+        "자율자치활동": 17,
+        "동아리활동": 15,
+        "진로활동": 16
+      }
+    }
+  },
+  "flags": [
+    {
+      "ref": "3-2 학교지정 '심화 영어 독해와 작문'",
+      "confidence": "low",
+      "note": "글자가 겹쳐 있어 과목명을 추정",
+      "checked": true,
+      "checkedDate": "2026-10-25",
+      "checkedBy": "마스터 사진 대조",
+      "resolution": "사진 대조에서 3-2 '심화 영어 독해와 작문' 전사 값 일치"
+    },
+    {
+      "ref": "3-2-A '문화로 보는 한국사', '과학의 역사와 문화'",
+      "confidence": "medium",
+      "note": "글자가 겹쳐 있으나 읽힘"
+    }
+  ],
+  "schoolId": "school-pungdeok",
+  "_meta": {
+    "source": [
+      {
+        "name": "학교 배부 편제표 사진(구글 포토)",
+        "kind": "official",
+        "retrieved": "2026-10-25",
+        "file": "files/inbox/ABrJyp73GibgGE5W.jpg",
+        "note": "AI가 사진에서 전사. 사람 확인 전"
+      }
+    ],
+    "confidence": "unverified",
+    "updated": "2026-10-25"
+  }
+}

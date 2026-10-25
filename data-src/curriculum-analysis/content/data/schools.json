@@ -1,0 +1,200 @@
+{
+  "items": [
+    {
+      "id": "school-seongbok",
+      "name": "성복고등학교",
+      "schoolType": "일반",
+      "founding": "공립",
+      "region": "경기 용인시 수지구",
+      "_meta": {
+        "source": [
+          {
+            "name": "편제표 사진의 학교명 표기",
+            "kind": "official",
+            "retrieved": "2026-10-25"
+          },
+          {
+            "name": "나무위키 성복고등학교",
+            "url": "https://namu.wiki/w/%EC%84%B1%EB%B3%B5%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90",
+            "kind": "media",
+            "retrieved": "2026-10-25"
+          },
+          {
+            "name": "경기도교육청 배정 보도 (분당신문)",
+            "url": "https://www.bundangnews.co.kr/58587",
+            "kind": "media",
+            "retrieved": "2026-10-25"
+          },
+          {
+            "name": "서울경제 2027학년도 고교 평준화 배정",
+            "url": "https://www.sedaily.com/article/20080777",
+            "kind": "media",
+            "retrieved": "2026-10-25"
+          },
+          {
+            "name": "사용자 확인(대화)",
+            "kind": "self",
+            "retrieved": "2026-10-25"
+          }
+        ],
+        "confidence": "reported",
+        "updated": "2026-10-25",
+        "note": "지역(용인)은 사용자 확인 2026-10-25, 구·주소·유형·설립 구분은 위키·보도 기준(reported)"
+      },
+      "gender": "남녀공학",
+      "assignment": "평준화 추첨(구역설정학군, 선복수지원-후추첨)",
+      "address": "경기 용인시 수지구 도마치로 92"
+    },
+    {
+      "id": "school-pungdeok",
+      "name": "풍덕고등학교",
+      "schoolType": "일반",
+      "founding": "공립",
+      "region": "경기 용인시 수지구",
+      "_meta": {
+        "source": [
+          {
+            "name": "편제표 사진의 학교명 표기",
+            "kind": "official",
+            "retrieved": "2026-10-25"
+          },
+          {
+            "name": "나무위키 풍덕고등학교",
+            "url": "https://namu.wiki/w/%ED%92%8D%EB%8D%95%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90",
+            "kind": "media",
+            "retrieved": "2026-10-25"
+          },
+          {
+            "name": "경기도교육청 배정 보도 (분당신문)",
+            "url": "https://www.bundangnews.co.kr/58587",
+            "kind": "media",
+            "retrieved": "2026-10-25"
+          },
+          {
+            "name": "서울경제 2027학년도 고교 평준화 배정",
+            "url": "https://www.sedaily.com/article/20080777",
+            "kind": "media",
+            "retrieved": "2026-10-25"
+          },
+          {
+            "name": "사용자 확인(대화)",
+            "kind": "self",
+            "retrieved": "2026-10-25"
+          }
+        ],
+        "confidence": "reported",
+        "updated": "2026-10-25",
+        "note": "지역(용인)은 사용자 확인 2026-10-25, 구·주소·유형·설립 구분은 위키·보도 기준(reported)"
+      },
+      "gender": "남녀공학",
+      "assignment": "평준화 추첨(구역설정학군, 선복수지원-후추첨)",
+      "address": "경기 용인시 수지구 정평로13번길 5"
+    },
+    {
+      "id": "school-suji",
+      "name": "수지고등학교",
+      "schoolType": "일반",
+      "founding": "공립",
+      "region": "경기 용인시 수지구",
+      "_meta": {
+        "source": [
+          {
+            "name": "편제표 사진의 학교명 표기",
+            "kind": "official",
+            "retrieved": "2026-10-25"
+          },
+          {
+            "name": "나무위키 수지고등학교",
+            "url": "https://namu.wiki/w/%EC%88%98%EC%A7%80%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90",
+            "kind": "media",
+            "retrieved": "2026-10-25"
+          },
+          {
+            "name": "학교알리미 수지고 (일부 판독)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100000655",
+            "kind": "media",
+            "retrieved": "2026-10-25"
+          },
+          {
+            "name": "경기도교육청 배정 보도 (분당신문)",
+            "url": "https://www.bundangnews.co.kr/58587",
+            "kind": "media",
+            "retrieved": "2026-10-25"
+          },
+          {
+            "name": "서울경제 2027학년도 고교 평준화 배정",
+            "url": "https://www.sedaily.com/article/20080777",
+            "kind": "media",
+            "retrieved": "2026-10-25"
+          },
+          {
+            "name": "사용자 확인(대화)",
+            "kind": "self",
+            "retrieved": "2026-10-25"
+          }
+        ],
+        "confidence": "reported",
+        "updated": "2026-10-25",
+        "note": "지역(용인)은 사용자 확인 2026-10-25, 구·주소·유형·설립 구분은 위키·보도 기준(reported)"
+      },
+      "gender": "남녀공학",
+      "assignment": "평준화 추첨(구역설정학군, 선복수지원-후추첨)",
+      "address": "경기 용인시 수지구 수풍로 73"
+    },
+    {
+      "id": "school-yonginheungcheon",
+      "name": "용인홍천고등학교",
+      "schoolType": "일반",
+      "founding": "공립",
+      "region": "경기 용인시 수지구",
+      "_meta": {
+        "source": [
+          {
+            "name": "편제표 사진의 학교명 표기",
+            "kind": "official",
+            "retrieved": "2026-10-25"
+          },
+          {
+            "name": "오늘학교 아카데미",
+            "url": "https://academy.prompie.com/schools/high-school/detail/09gylha/용인홍천고등학교/",
+            "kind": "media",
+            "retrieved": "2026-10-25"
+          },
+          {
+            "name": "나이스비즈인포",
+            "url": "https://www.nicebizinfo.com/ep/EP0100M002GE.nice?kiscode=OL1463",
+            "kind": "media",
+            "retrieved": "2026-10-25"
+          },
+          {
+            "name": "경기도교육청 배정 보도 (분당신문)",
+            "url": "https://www.bundangnews.co.kr/58587",
+            "kind": "media",
+            "retrieved": "2026-10-25"
+          },
+          {
+            "name": "서울경제 2027학년도 고교 평준화 배정",
+            "url": "https://www.sedaily.com/article/20080777",
+            "kind": "media",
+            "retrieved": "2026-10-25"
+          },
+          {
+            "name": "사용자 확인(대화)",
+            "kind": "self",
+            "retrieved": "2026-10-25"
+          }
+        ],
+        "confidence": "reported",
+        "updated": "2026-10-25",
+        "note": "사용자 확인 2026-10-25: 학교명은 용인홍천고(홍), 공립. 기존 \"흥천\"은 오타. id(school-yonginheungcheon)는 참조 안정성을 위해 유지. 나머지 필드는 reported",
+        "fieldConfidence": {
+          "name": "verified",
+          "founding": "verified"
+        }
+      },
+      "gender": "남녀공학",
+      "assignment": "평준화 추첨(구역설정학군, 선복수지원-후추첨)",
+      "address": "경기 용인시 수지구 수지로227번길 22"
+    }
+  ]
+}

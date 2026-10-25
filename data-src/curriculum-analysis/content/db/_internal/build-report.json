@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "2.1.0",
+  "generatedAt": "2026-10-25T07:26:50.755Z",
+  "inputs": [
+    {
+      "path": "content/curriculum/pungdeok.json",
+      "sha256_16": "fe2bd3611bb4833f"
+    },
+    {
+      "path": "content/curriculum/seongbok.json",
+      "sha256_16": "6f8a5af995d1deeb"
+    },
+    {
+      "path": "content/curriculum/suji.json",
+      "sha256_16": "9eafc0ccf90088a3"
+    },
+    {
+      "path": "content/curriculum/yonginheungcheon.json",
+      "sha256_16": "caa652f6baf9ec80"
+    },
+    {
+      "path": "content/data/schools.json",
+      "sha256_16": "4a8c983c2592f379"
+    },
+    {
+      "path": "tools/db-rules.json",
+      "sha256_16": "d8039d8de7125ed1"
+    }
+  ],
+  "counts": {
+    "schools": 4,
+    "curricula": 4,
+    "subjects": 136,
+    "offerings": 388,
+    "groups": 41,
+    "flags": 12
+  }
+}
