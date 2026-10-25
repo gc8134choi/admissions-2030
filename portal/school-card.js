@@ -7,7 +7,7 @@ const esc = (s = "") => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<"
 export function schoolBand(m, { starred = false, sub = "", logoOk = true } = {}) {
   const c = ACCENT[m.schoolId];
   return `<div class="sb"${c ? ` style="--sc:${c}"` : ""}>
-    ${logoOk ? `<img class="sb-logo" src="img/schools/${esc(m.schoolId)}.png" alt="${esc(m.schoolName)} 로고" width="84" height="84">` : ""}
+    ${logoOk ? `<img class="sb-logo" src="img/schools/256/${esc(m.schoolId)}.png" alt="${esc(m.schoolName)} 로고" width="84" height="84">` : ""}
     <div class="sb-t"><b>${esc(m.schoolName)}</b>${sub ? `<span>${esc(sub)}</span>` : ""}</div>
     <button type="button" class="star sb-star" data-id="${esc(m.schoolId)}" aria-label="${starred ? "관심 해제" : "관심 학교로 고정"}" aria-pressed="${starred}">${starred ? "★" : "☆"}</button></div>`;
 }
