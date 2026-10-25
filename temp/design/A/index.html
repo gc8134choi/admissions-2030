@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>예나·예은 대입 포털 · A안 에디토리얼</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
+<style>
+/* ===== A안 · 에디토리얼 · 토큰 ===== */
+:root{
+  --paper:#FAF9F6; --ink:#111110; --mute:#6A6963; --hair:rgba(17,17,16,.16); --rule:#111110;
+  --accent-a:#C4310D;         /* 예나: 버밀리언 (OKLCH L.56 C.19 h35) */
+  --accent-b:#4B3FD6;         /* 예은: 아이리스 (OKLCH L.50 C.20 h280) — 같은 명도·채도, 색상만 다름 */
+  --accent:var(--accent-a);
+  --st-est:#9A5B00;           /* 상태색은 프로필과 무관하게 고정 */
+  --req:#1B3A6B; --ele:#0B7F63; /* 지정=남색, 선택=초록 고정 */
+  --font:"Pretendard Variable",Pretendard,-apple-system,"Noto Sans KR",system-ui,sans-serif;
+  --pad:20px; --maxw:1120px; --tab-h:56px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--paper:#111110;--ink:#F4F2EC;--mute:#9C9A92;--hair:rgba(244,242,236,.18);--rule:#F4F2EC;--accent-a:#FF6A45;--accent-b:#8F85FF;--st-est:#F0B04A;--req:#6EA0F0;--ele:#34D3A8}}
+:root[data-theme=dark]{--paper:#111110;--ink:#F4F2EC;--mute:#9C9A92;--hair:rgba(244,242,236,.18);--rule:#F4F2EC;--accent-a:#FF6A45;--accent-b:#8F85FF;--st-est:#F0B04A;--req:#6EA0F0;--ele:#34D3A8}
+[data-profile=b]{--accent:var(--accent-b)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light])[data-profile=b]{--accent:var(--accent-b)}}
+[data-profile=a] [data-for=b],[data-profile=b] [data-for=a]{display:none!important}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.65 var(--font);letter-spacing:-.01em;word-break:keep-all;
+  padding-bottom:calc(var(--tab-h) + 44px + env(safe-area-inset-bottom) + 24px)}
+a{color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+.num{font-feature-settings:"tnum" 1;font-variant-numeric:tabular-nums}
+
+/* 상단 얇은 바: 로고 글자 + 날짜 */
+.bar{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0 12px;border-bottom:1px solid var(--rule)}
+.bar b{font-weight:800;font-size:15px;letter-spacing:-.02em}
+.logo i{font-style:normal;color:var(--accent)}.logo small{font-size:.72em;font-weight:500;color:var(--mute);margin-left:2px;letter-spacing:0}
+.bar span{font-size:12px;color:var(--mute)}
+.topnav{display:none}
+
+/* 섹션 머리: 번호 + 제목, 위에 1px 룰 */
+.sec{padding:36px 0 8px;border-top:1px solid var(--rule);margin-top:40px}
+.sec:first-of-type{margin-top:0}
+.sec-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px}
+.sec-h h2{margin:0;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.sec-h h2 em{font-style:normal;color:var(--accent);margin-right:10px}
+.sec-h a{font-size:13px;color:var(--mute);text-decoration:none}
+.sec-h a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+
+/* 상태 표시: 알약 대신 점 + 글자 */
+.st{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;letter-spacing:.02em;color:var(--mute);white-space:nowrap}
+.st::before{content:"";width:7px;height:7px;border-radius:50%;border:1.25px solid currentColor;box-sizing:border-box}
+.st.ok{color:var(--ink)}.st.ok::before{background:currentColor}
+.st.rep::before{background:linear-gradient(90deg,currentColor 50%,transparent 50%)}
+.st.est{color:var(--st-est)}
+
+/* 두 사람 한 줄 요약 + 프로필 전환 */
+.pair{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule)}
+.pair button{background:none;border:0;border-top:3px solid transparent;text-align:left;padding:10px 0 12px;color:var(--mute);font:inherit;cursor:pointer}
+.pair button+button{padding-left:16px;border-left:1px solid var(--hair)}
+.pair button[aria-selected=true]{color:var(--ink)}
+.pair .pa{border-top-color:var(--accent-a)}.pair .pb{border-top-color:var(--accent-b)}
+.pair button:not([aria-selected=true]){border-top-color:var(--hair)}
+.pair small{display:block;font-size:12px;font-weight:600;letter-spacing:-.01em}
+.pair .pa small{color:var(--accent-a)}.pair .pb small{color:var(--accent-b)}
+.pair b{display:block;font-size:26px;font-weight:800;letter-spacing:-.05em;line-height:1.15}
+.pair i{font-style:normal;font-size:12px;color:var(--mute);letter-spacing:0}
+.pair button:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
+.dock{position:fixed;left:0;right:0;bottom:calc(var(--tab-h) + env(safe-area-inset-bottom));z-index:21;background:var(--paper);border-top:1px solid var(--hair);display:flex;justify-content:center;gap:0;height:44px}
+.dock button,.sw button{background:none;border:0;font:inherit;font-size:14px;font-weight:600;color:var(--mute);padding:0 22px;cursor:pointer;position:relative;letter-spacing:-.02em}
+.dock button[aria-selected=true],.sw button[aria-selected=true]{color:var(--ink);font-weight:800}
+.dock button::before,.sw button::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px;background:var(--hair)}
+.dock .pa[aria-selected=true]::before,.sw .pa[aria-selected=true]::before{background:var(--accent-a)}
+.dock .pb[aria-selected=true]::before,.sw .pb[aria-selected=true]::before{background:var(--accent-b)}
+.dock button:focus-visible,.sw button:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
+.sw{display:none}
+/* 빈 상태: 글자만 */
+.empty{padding:6px 0 4px}
+.empty .z{display:block;font-weight:800;font-size:clamp(72px,22vw,120px);line-height:.9;letter-spacing:-.06em;color:var(--hair)}
+.empty p{margin:10px 0 0;font-size:17px;font-weight:700;letter-spacing:-.03em;line-height:1.4}
+.empty small{display:block;font-size:13px;color:var(--mute);font-weight:400;margin-top:4px}
+.empty a{display:inline-block;margin-top:14px;font-weight:700;font-size:14px;color:var(--accent);text-underline-offset:4px}
+.seg{display:flex;height:3px;margin-top:-2px}
+.seg i{display:block;height:100%;transform-origin:left}
+.seg .r{background:var(--req)}.seg .e{background:var(--ele)}
+.seg .o{background:var(--hair);flex:1}
+
+/* 히어로 */
+.hero{padding:28px 0 8px}
+.hello{font-size:15px;color:var(--mute);margin:0 0 4px}
+.kicker{font-size:13px;font-weight:600;margin:0}
+.dday{display:block;width:100%;text-align:left;background:none;border:0;padding:0;margin:2px 0 0;cursor:pointer;color:inherit;font:inherit}
+.dday{white-space:nowrap}
+.dday .big{display:inline-block;font-weight:800;font-size:clamp(96px,31vw,208px);line-height:.86;letter-spacing:-.06em}
+.dday .unit{font-size:clamp(22px,6vw,40px);font-weight:700;letter-spacing:-.03em;margin-left:6px}
+.dday:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:13px;color:var(--mute);margin:34px 0 0}
+.hero-meta a{color:var(--mute);text-underline-offset:3px}
+.hint{font-size:11px;color:var(--mute);margin:10px 0 0}
+
+/* 일정: 표처럼 읽히는 행, 구분은 헤어라인만 */
+.rows{list-style:none;margin:0;padding:0}
+.row{display:grid;grid-template-columns:64px 1fr;gap:2px 16px;padding:16px 0;border-top:1px solid var(--hair)}
+.row:first-child{border-top:0;padding-top:0}
+.row .d{font-weight:800;font-size:22px;letter-spacing:-.04em;line-height:1.1}
+.row .d.live{color:var(--accent);font-size:13px;font-weight:700;letter-spacing:0;padding-top:6px}
+.row h3{margin:0;font-size:17px;line-height:1.35;font-weight:700;letter-spacing:-.025em}
+.row p{margin:2px 0 0;font-size:13px;color:var(--mute)}
+.row .meta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:6px}
+.row .meta a{font-size:12px;color:var(--mute);text-underline-offset:3px}
+
+/* 우리 4개교 */
+.schools{list-style:none;margin:0;padding:0}
+.sc{display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:14px;padding:18px 0;border-top:1px solid var(--hair);text-decoration:none;position:relative;transition:padding .25s ease}
+.sc:first-child{border-top:0;padding-top:4px}
+.sc img{width:28px;height:28px;border-radius:50%;filter:grayscale(1);opacity:.85;transition:filter .25s}
+.sc .nm{font-size:22px;font-weight:800;letter-spacing:-.04em;line-height:1.1}
+.sc .sub{display:block;font-size:12px;font-weight:400;color:var(--mute);letter-spacing:0;margin-top:3px}
+.sc .fig{font-size:13px;color:var(--mute);text-align:right;line-height:1.35}
+.sc .fig b{display:block;color:var(--ink);font-size:20px;font-weight:700;letter-spacing:-.03em}
+.sc .gauge-unused{grid-column:2 / 4;height:2px;background:var(--hair);position:relative;margin-top:-4px}
+.sc .gauge i{position:absolute;left:0;right:0;top:-0.5px;height:3px;background:var(--ink);transform-origin:left;transform:scaleX(0);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.sc .gauge.on i{transform:scaleX(var(--w))}
+.sc:hover img,.sc:focus-visible img{filter:none}
+.sc:hover .nm{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1.5px}
+.legend{font-size:12px;color:var(--mute);margin:8px 0 0}
+.legend b{color:var(--ink);font-weight:600}
+
+/* 오늘 할 일 */
+.todo{list-style:none;margin:0;padding:0}
+.todo li{border-top:1px solid var(--hair)}
+.todo li:first-child{border-top:0}
+.todo label{display:grid;grid-template-columns:22px 1fr;gap:14px;padding:14px 0;cursor:pointer;align-items:start}
+.todo input{appearance:none;-webkit-appearance:none;margin:2px 0 0;width:20px;height:20px;border:1.5px solid var(--ink);background:none;display:grid;place-content:center;cursor:pointer}
+.todo input::after{content:"";width:10px;height:10px;background:var(--accent);transform:scale(0);transition:transform .15s ease}
+.todo input:checked{border-color:var(--accent)}
+.todo input:checked::after{transform:scale(1)}
+.todo input:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.todo b{display:block;font-size:16px;font-weight:600;letter-spacing:-.02em;line-height:1.4}
+.todo small{display:block;color:var(--mute);font-size:13px;margin-top:2px}
+.todo input:checked ~ span b{text-decoration:line-through;text-decoration-thickness:1px;color:var(--mute)}
+
+/* 한눈에: 숫자가 주인공, 상자 없음 */
+.glance-lead{font-size:clamp(26px,7.4vw,44px);font-weight:800;line-height:1.18;letter-spacing:-.045em;margin:0 0 28px;max-width:16em}
+.glance-lead mark{background:none;color:var(--accent)}
+.glance{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rule)}
+.g{padding:18px 0 22px;border-bottom:1px solid var(--hair)}
+.g:nth-child(odd){padding-right:14px}
+.g:nth-child(even){padding-left:16px;border-left:1px solid var(--hair)}
+.g .v{display:block;font-weight:800;font-size:clamp(52px,15vw,84px);line-height:.95;letter-spacing:-.06em}
+.g .v sup{font-size:.34em;letter-spacing:-.02em;vertical-align:top;position:relative;top:.35em;margin-left:3px;font-weight:700}
+.g .k{display:block;font-size:14px;font-weight:600;margin-top:10px;letter-spacing:-.02em}
+.g .n{display:block;font-size:12px;color:var(--mute);line-height:1.5;margin-top:2px}
+.g .st{margin-top:8px}
+.g.main{grid-column:1 / -1;padding-right:0;border-left:0}
+.g.main .v{font-size:clamp(120px,40vw,240px);color:var(--accent)}
+.g.wide{grid-column:1 / -1;border-left:0;padding-left:0}
+.src{font-size:12px;color:var(--mute);margin:14px 0 0}
+.src a{text-underline-offset:3px}
+
+/* 하단 탭: 아이콘 없이 글자, 켜진 탭은 위쪽 2px 선 */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--paper);border-top:1px solid var(--rule);display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom)}
+.tabs a{height:var(--tab-h);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:13px;font-weight:500;text-decoration:none;color:var(--mute);position:relative;letter-spacing:-.02em}
+.tabs a[aria-current=page]{color:var(--ink);font-weight:800}
+.tabs a[aria-current=page]::before{content:"";position:absolute;top:-1px;left:22%;right:22%;height:3px;background:var(--accent)}
+.tabs a:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
+.tabs a.has::after{content:"";position:absolute;top:13px;right:calc(50% - 22px);width:5px;height:5px;border-radius:50%;background:var(--accent)}
+
+footer{margin-top:56px;padding:20px 0;border-top:1px solid var(--rule);font-size:12px;color:var(--mute)}
+
+/* 등장 모션: 아래에서 8px, 한 번만 */
+.rv{opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease}
+.rv.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.sc .gauge i{transition:none}.todo input::after{transition:none}}
+
+/* ===== 데스크톱 ===== */
+@media (min-width:900px){
+  :root{--pad:40px}
+  body{padding-bottom:0}
+  .tabs,.dock{display:none}
+  .sw{display:flex;align-items:center}
+  .bar{display:none}
+  .topnav{display:flex;justify-content:space-between;align-items:baseline;padding:18px 0 14px;border-bottom:1px solid var(--rule)}
+  .topnav b{font-weight:800;font-size:19px;letter-spacing:-.04em}
+  .topnav nav{display:flex;gap:30px}
+  .topnav nav a{text-decoration:none;font-size:14px;color:var(--mute);padding-bottom:4px}
+  .topnav nav a[aria-current=page]{color:var(--ink);font-weight:700;border-bottom:2px solid var(--accent)}
+  .topnav nav a:hover{color:var(--ink)}
+  .topnav span{font-size:12px;color:var(--mute)}
+  .hero-grid{display:grid;grid-template-columns:7fr 5fr;gap:0 64px;align-items:end;padding-top:20px}
+  .hero{padding-top:56px}
+  .dday .big{font-size:clamp(120px,14.5vw,184px)}
+  .hero-aside{padding-bottom:12px;border-left:1px solid var(--rule);padding-left:32px}
+  .two{display:grid;grid-template-columns:5fr 7fr;gap:0 72px}
+  .glance{grid-template-columns:repeat(6,1fr)}
+  .g,.g:nth-child(odd),.g:nth-child(even){padding:22px 20px 26px;border-left:1px solid var(--hair)}
+  .g.main{grid-column:1 / 4;grid-row:1 / 3;border-left:0;padding-left:0;border-right:0}
+  .g.d1{grid-column:4 / 7}.g.d2{grid-column:4 / 7}
+  .g.d3{grid-column:1 / 3;border-left:0;padding-left:0}.g.d4{grid-column:3 / 5}.g.d5{grid-column:5 / 7}
+  .g .v{font-size:clamp(56px,6vw,92px)}
+  .g.main .v{font-size:clamp(150px,18vw,260px)}
+  .g.wide{display:none}
+  .glance-lead{font-size:48px}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="bar" aria-label="포털 상단"><b class="logo">예나<i>·</i>예은 <small>대입</small></b><span class="num" id="today"></span></header>
+  <header class="topnav"><b class="logo">예나<i>·</i>예은 <small>대입</small></b>
+    <nav aria-label="주 메뉴"><a href="#" aria-current="page">오늘</a><a href="#">일정</a><a href="#">학교</a><a href="#">알아두기</a><a href="#">내 보관함</a></nav>
+    <span class="sw" role="tablist" aria-label="누구 화면"><button class="pa" role="tab" data-p="a">예나</button><button class="pb" role="tab" data-p="b">예은</button></span><span class="num" id="today2" style="margin-left:24px"></span></header>
+
+  <div class="pair" role="tablist" aria-label="두 사람의 수능 D-day">
+    <button class="pa" role="tab" data-p="a"><small>예나 · 2030학년도</small><b class="num" id="pa-n">1,117일</b><i>2029.11.15 <span class="st est">추정</span></i></button>
+    <button class="pb" role="tab" data-p="b"><small>예은 · 2033학년도</small><b class="num" id="pb-n">2,216일</b><i>2032.11.18 <span class="st est">추정</span></i></button>
+  </div>
+  <main>
+    <!-- ① 홈 상단 -->
+    <div class="hero-grid">
+      <section class="hero" aria-labelledby="hh">
+        <p class="hello" id="hh"><span id="greet">안녕하세요.</span></p>
+        <p class="kicker" id="kick">2030학년도 수능까지</p>
+        <button class="dday" id="dday" aria-live="polite" aria-label="수능까지 남은 날. 누르면 단위가 바뀝니다">
+          <span class="big num" id="ddn">1,117</span><span class="unit" id="ddu">일</span>
+        </button>
+        <p class="hero-meta"><span class="num" id="exdate">2029.11.15(목) 잠정</span><span class="st est">추정</span><a href="https://www.suneung.re.kr/main.do?s=suneung" rel="noopener">평가원 공고 전</a></p>
+        <p class="hint">숫자를 누르면 주·달로 바뀌어요.</p>
+      </section>
+
+      <aside class="hero-aside rv" data-for="a" aria-label="다음 일정" style="margin-top:36px">
+        <div class="sec-h" style="margin-bottom:12px"><h2><em>지금</em>다음 일정</h2><a href="#">전체 일정</a></div>
+        <ul class="rows">
+          <li class="row"><span class="d live">진행 중</span>
+            <div><h3>경기 평준화 배정 설명회</h3><p class="num">10.19(월) – 11.27(금) · 경기고입TV 비대면</p>
+            <div class="meta"><span class="st rep">보도</span><a href="https://satp.goe.go.kr" rel="noopener">고입·전학 포털</a></div></div></li>
+          <li class="row"><span class="d num">D-38</span>
+            <div><h3>경기 후기 전형 시작</h3><p class="num">12.02(수) – 12.11(금) · 보도마다 날짜가 달라요(12.4도 있음)</p>
+            <div class="meta"><span class="st rep">보도</span><a href="https://www.veritas-a.com" rel="noopener">베리타스알파</a></div></div></li>
+        </ul>
+      </aside>
+      <aside class="hero-aside rv" data-for="b" aria-label="다음 일정" style="margin-top:36px">
+        <div class="sec-h" style="margin-bottom:12px"><h2><em>지금</em>다음 일정</h2><a href="#">전체 일정</a></div>
+        <div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p><small>학교를 고르면 그 학교 일정이 여기에 모입니다.</small></div>
+      </aside>
+    </div>
+
+    <!-- 우리 4개교 + 오늘 할 일 -->
+    <div class="two">
+      <section class="sec" data-for="a" aria-labelledby="s-sch">
+        <div class="sec-h"><h2 id="s-sch"><em>01</em>우리 4개교</h2><a href="#">편제표 비교</a></div>
+        <ul class="schools">
+          <li><a class="sc" href="#"><img src="../../../portal/img/schools/school-pungdeok.png" alt="" width="28" height="28"><span class="nm">풍덕고<span class="sub">지정 38과목 · 선택 후보 56개</span></span><span class="fig"><b class="num">120+54</b>지정 + 선택</span><span class="seg" style="grid-column:2 / 4" aria-hidden="true"><i class="r" style="width:62.50%"></i><i class="e" style="width:28.12%"></i><i class="o"></i></span></a></li>
+          <li><a class="sc" href="#"><img src="../../../portal/img/schools/school-seongbok.png" alt="" width="28" height="28"><span class="nm">성복고<span class="sub">지정 37과목 · 선택 후보 60개</span></span><span class="fig"><b class="num">108+66</b>지정 + 선택</span><span class="seg" style="grid-column:2 / 4" aria-hidden="true"><i class="r" style="width:56.25%"></i><i class="e" style="width:34.38%"></i><i class="o"></i></span></a></li>
+          <li><a class="sc" href="#"><img src="../../../portal/img/schools/school-suji.png" alt="" width="28" height="28"><span class="nm">수지고<span class="sub">지정 33과목 · 선택 후보 64개</span></span><span class="fig"><b class="num">99+75</b>지정 + 선택</span><span class="seg" style="grid-column:2 / 4" aria-hidden="true"><i class="r" style="width:51.56%"></i><i class="e" style="width:39.06%"></i><i class="o"></i></span></a></li>
+          <li><a class="sc" href="#"><img src="../../../portal/img/schools/school-yonginheungcheon.png" alt="" width="28" height="28"><span class="nm">홍천고<span class="sub">지정 32과목 · 선택 후보 66개</span></span><span class="fig"><b class="num">96+78</b>지정 + 선택</span><span class="seg" style="grid-column:2 / 4" aria-hidden="true"><i class="r" style="width:50.00%"></i><i class="e" style="width:40.62%"></i><i class="o"></i></span></a></li>
+        </ul>
+        <p class="legend">네 학교 모두 <b>192학점</b>. 막대: <b style="color:var(--req)">지정</b> · <b style="color:var(--ele)">선택</b> · 나머지는 창의적 체험활동. 선택은 2학년 1학기부터.</p>
+      </section>
+
+      <section class="sec" data-for="b" aria-labelledby="s-sch-b">
+        <div class="sec-h"><h2 id="s-sch-b"><em>01</em>예은의 학교</h2></div>
+        <div class="empty"><span class="z" aria-hidden="true">0</span><p>학교를 고르면 여기에 모입니다.</p><small>후보 학교를 담아 두면 지정·선택 학점과 개설 과목을 나란히 볼 수 있어요.</small><a href="#">학교 고르러 가기 →</a></div>
+      </section>
+      <section class="sec" data-for="a" aria-labelledby="s-td">
+        <div class="sec-h"><h2 id="s-td"><em>02</em>이번 주 할 일</h2><a href="#" id="tdcount">0/3</a></div>
+        <ul class="todo" id="todo">
+          <li><label><input type="checkbox" data-k="t1"><span><b>배정 설명회 영상 보기</b><small class="num">경기고입TV · 11.27(금)까지</small></span></label></li>
+          <li><label><input type="checkbox" data-k="t2"><span><b>후기 전형 시작일 학교에 확인하기</b><small>보도에 12.2와 12.4가 함께 나와요</small></span></label></li>
+          <li><label><input type="checkbox" data-k="t3"><span><b>4개교 편제표, 2학년 선택 과목 훑어보기</b><small>선택 과목은 2학년 1학기부터 시작해요</small></span></label></li>
+        </ul>
+      </section>
+      <section class="sec" data-for="b" aria-labelledby="s-td-b">
+        <div class="sec-h"><h2 id="s-td-b"><em>02</em>이번 주 할 일</h2></div>
+        <div class="empty"><span class="z" aria-hidden="true">0</span><p>오늘은 챙길 게 없어요.</p><small>일정이 생기면 이 자리에 떠요. 급한 것부터 세 개까지만요.</small></div>
+      </section>
+    </div>
+
+    <!-- ② 고교학점제 한눈에 -->
+    <section class="sec" aria-labelledby="s-gl">
+      <div class="sec-h"><h2 id="s-gl"><em>03</em>고교학점제 한눈에</h2><a href="#">자세히</a></div>
+      <p class="glance-lead">3년 동안 <mark>192학점</mark>을 스스로 채웁니다.</p>
+      <div class="glance">
+        <div class="g main rv"><span class="v num" data-count="192">192</span><span class="k">졸업까지 채울 학점</span><span class="n">교과 174 + 창의적 체험활동 18</span><span class="st ok">확정</span></div>
+        <div class="g d1 rv"><span class="v num" data-count="174">174</span><span class="k">교과 학점</span><span class="n">공통·선택 과목으로 채웁니다</span></div>
+        <div class="g d2 rv"><span class="v num" data-count="18">18</span><span class="k">창의적 체험활동</span><span class="n">동아리·봉사·진로</span></div>
+        <div class="g d3 rv"><span class="v num">16<sup>회</sup></span><span class="k">1학점당 수업</span><span class="n">한 학점은 16회 수업</span></div>
+        <div class="g d4 rv"><span class="v num">2/3</span><span class="k">출석률 기준</span><span class="n">수업의 3분의 2 이상 출석</span></div>
+        <div class="g d5 rv"><span class="v num">40<sup>%</sup></span><span class="k">공통과목 학업성취율</span><span class="n">선택과목은 출석률만 봐요</span></div>
+      </div>
+      <p class="src" data-for="b"><span class="st est">추정</span> 예은이 입학하는 2030학년도에도 192학점이 그대로일지는 아직 확인되지 않았어요. 지금 학년도 기준 숫자입니다.</p>
+      <p class="src">출처 <a href="https://hscredit.kr" rel="noopener">고교학점제 종합지원포털</a> · 2026.1.28 완화 내용 반영 · <span class="st rep">보도</span> 원문 미확인</p>
+    </section>
+  </main>
+
+  <footer>© 2030 대입 포털 · 정보는 출처·상태와 함께 보여드려요. <span class="st ok">확정</span> &nbsp; <span class="st rep">보도</span> &nbsp; <span class="st est">추정</span></footer>
+</div>
+
+<!-- ③ 모바일 하단 탭 -->
+<div class="dock" role="tablist" aria-label="누구 화면"><button class="pa" role="tab" data-p="a">예나</button><button class="pb" role="tab" data-p="b">예은</button></div>
+<nav class="tabs" aria-label="하단 메뉴">
+  <a href="#" aria-current="page">오늘</a>
+  <a href="#" class="has">일정</a>
+  <a href="#">학교</a>
+  <a href="#">알아두기</a>
+  <a href="#">내 보관함</a>
+</nav>
+
+<script>
+(function(){
+  var qs=new URLSearchParams(location.search), reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var now=qs.get("today")?new Date(qs.get("today")+"T00:00:00+09:00"):new Date();
+  var exam=new Date("2029-11-15T00:00:00+09:00");
+  var days=Math.round((exam-new Date(Math.floor((now.getTime()+9*36e5)/864e5)*864e5-9*36e5))/864e5);
+  var fmt=function(n){return n.toLocaleString("ko-KR")};
+  var W=["일","월","화","수","목","금","토"];
+  var k=new Date(now.getTime()+9*36e5),t=k.getUTCFullYear()+"."+(k.getUTCMonth()+1)+"."+k.getUTCDate()+"("+W[k.getUTCDay()]+")";
+  document.getElementById("today").textContent=t;document.getElementById("today2").textContent=t;
+  // 이름은 이 브라우저(localStorage)에만 저장. 저장소 파일에는 넣지 않는다.
+  var P={a:{name:"예나",exam:[2029,11,15],ey:2030,kick:"2030학년도 수능까지",date:"2029.11.15(목) 잠정"},b:{name:"예은",exam:[2032,11,18],ey:2033,kick:"2033학년도 수능까지",date:"2032.11.18(목)"}};
+  var base=Date.UTC(k.getUTCFullYear(),k.getUTCMonth(),k.getUTCDate());
+  function dd(e){return Math.round((Date.UTC(e[0],e[1]-1,e[2])-base)/864e5)}
+  document.getElementById("pa-n").textContent=fmt(dd(P.a.exam))+"일";document.getElementById("pb-n").textContent=fmt(dd(P.b.exam))+"일";
+  var cur="a";try{cur=qs.get("p")||localStorage.getItem("portal.profile")||"a"}catch(e){}
+  var modes,mi=0;
+  var ddn=document.getElementById("ddn"),ddu=document.getElementById("ddu");
+  function show(){ddn.textContent=fmt(modes[mi][1]);ddu.textContent=(mi===2?"개월 안팎":modes[mi][0])}
+  function setP(p){cur=p;try{localStorage.setItem("portal.profile",p)}catch(e){}
+    document.documentElement.dataset.profile=p;var d=dd(P[p].exam);modes=[["일",d],["주",Math.floor(d/7)],["개월",Math.round(d/30.44)]];mi=0;show();
+    document.getElementById("greet").textContent=P[p].name+"님, 오늘도 한 칸씩.";document.getElementById("kick").textContent=P[p].kick;document.getElementById("exdate").textContent=P[p].date;
+    [].forEach.call(document.querySelectorAll("[data-p]"),function(b){b.setAttribute("aria-selected",b.dataset.p===p)})}
+  [].forEach.call(document.querySelectorAll("[data-p]"),function(b){b.addEventListener("click",function(){setP(b.dataset.p)})});
+  // 바(헤더) 좌우 스와이프로도 전환
+  var sx=null;document.addEventListener("touchstart",function(e){sx=e.touches[0].clientX},{passive:true});
+  document.addEventListener("touchend",function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>80&&!e.target.closest("input,button,a"))setP(dx<0?"b":"a")},{passive:true});
+  // D-day 단위 전환
+  document.getElementById("dday").addEventListener("click",function(){mi=(mi+1)%3;show()});
+  // 체크리스트(브라우저에만 저장)
+  var boxes=[].slice.call(document.querySelectorAll("#todo input")),cnt=document.getElementById("tdcount");
+  function upd(){cnt.textContent=boxes.filter(function(b){return b.checked}).length+"/"+boxes.length}
+  boxes.forEach(function(b){try{b.checked=localStorage.getItem("a.todo."+b.dataset.k)==="1"}catch(e){}
+    b.addEventListener("change",function(){try{localStorage.setItem("a.todo."+b.dataset.k,b.checked?"1":"0")}catch(e){}upd()})});
+  upd();
+  setP(cur);
+  // 등장 모션
+  var io=("IntersectionObserver" in window&&!reduce)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("on");io.unobserve(e.target)}})},{threshold:.15}):null;
+  [].forEach.call(document.querySelectorAll(".rv"),function(el){io?io.observe(el):el.classList.add("on")});
+  var gio=("IntersectionObserver" in window&&!reduce)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("on");gio.unobserve(e.target)}})},{threshold:.4}):null;
+  [].forEach.call(document.querySelectorAll(".gauge"),function(el){gio?gio.observe(el):el.classList.add("on")});
+  if(qs.get("shot")){[].forEach.call(document.querySelectorAll(".rv,.gauge"),function(el){el.classList.add("on")})}
+})();
+</script>
+</body>
+</html>
