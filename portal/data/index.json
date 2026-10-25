@@ -1,6 +1,6 @@
 {
   "version": "2.1.0",
-  "generatedAt": "2026-10-25T07:26:50.755Z",
+  "generatedAt": "2026-10-25T08:27:03.706Z",
   "entryYears": [
     2027
   ],
@@ -18,14 +18,14 @@
       "use": "core",
       "purpose": "학교(편제표)당 1행 비교표 + 학기·영역·구분 요약. 가장 작고 먼저 읽는 파일",
       "rows": 4,
-      "bytes": 10295
+      "bytes": 10253
     },
     {
       "name": "schools.json",
       "use": "core",
       "purpose": "학교 엔티티(이름·유형·설립·지역·배정방식·출처 신뢰도)",
       "rows": 4,
-      "bytes": 5108
+      "bytes": 5066
     },
     {
       "name": "curricula.json",
@@ -38,7 +38,7 @@
       "name": "facets.json",
       "use": "core",
       "purpose": "필터 UI용 값 목록과 개수",
-      "bytes": 5111
+      "bytes": 5069
     },
     {
       "name": "subjects.json",
@@ -96,6 +96,6 @@
       "bytes": 15920
     }
   ],
-  "totalBytes": 462477,
-  "coreBytes": 26959
+  "totalBytes": 462351,
+  "coreBytes": 26833
 }
