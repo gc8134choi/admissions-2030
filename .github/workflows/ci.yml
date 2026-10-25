@@ -66,6 +66,7 @@ jobs:
             node tools/build-ics.mjs --check
             node tools/build-roadmap.mjs --check
             node tools/build-rules.mjs --check
+            node tools/build-subjects.mjs --check
           fi
           node tools/build-learners.mjs --check
           if [ -f research/data/links-draft.json ]; then node tools/build-links.mjs --check; fi

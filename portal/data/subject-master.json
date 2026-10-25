@@ -1,0 +1,4390 @@
+{
+ "_meta": {
+  "note": "과목 마스터(생성물, 손으로 고치지 않는다). tools/build-subjects.mjs가 subjects.json·subject-info.json·subjects.lock.json으로 만든다. 기존 subjects.json은 그대로 두고 화면은 아직 이것을 쓰지 않는다.",
+  "schemaVersion": "3.0.0-draft",
+  "count": 136,
+  "infoCount": 231,
+  "infoMatched": 125
+ },
+ "subjects": [
+  {
+   "subjectId": "sj-0001",
+   "legacyKey": "공통국어1",
+   "name": "공통국어1",
+   "aliases": [],
+   "area": "국어",
+   "areaGroup": "국어",
+   "kind": "공통",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "국어",
+     "scope": "base",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "공통국어1",
+   "summary": "공통국어1은 중학교 ‘국어’의 성격을 계승하여 국어 관련 학문의 기본적 내용을 학습하는 과목이자 고등학교 선택 과목에서의 심화 학습을 위한 토대를 마련하는 공통 과목이다.",
+   "majorsHint": "국어국문학과, 국어교육과, 신문방송학과, 미디어커뮤니케이션학과, 언어학과, 문헌정보학과, 문예창작과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0002",
+   "legacyKey": "공통국어2",
+   "name": "공통국어2",
+   "aliases": [],
+   "area": "국어",
+   "areaGroup": "국어",
+   "kind": "공통",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "국어",
+     "scope": "base",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "공통국어2",
+   "summary": "공통국어2는 중학교 ‘국어’의 성격을 계승하여 국어 관련 학문의 기본적 내용을 학습하는 과목이자 고등학교 선택 과목에서의 심화 학습을 위한 토대를 마련하는 공통 과목이다.",
+   "majorsHint": "국어국문학과, 국어교육과, 신문방송학과, 미디어커뮤니케이션학과, 언어학과, 문헌정보학과, 문예창작과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0003",
+   "legacyKey": "독서토론과글쓰기",
+   "name": "독서 토론과 글쓰기",
+   "aliases": [],
+   "area": "국어",
+   "areaGroup": "국어",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "국어",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "독서 토론과 글쓰기",
+   "summary": "독서 토론과 글쓰기는 고등학교 ‘공통국어1, 공통국어2’의 듣기⋅말하기, 읽기, 쓰기 영역을 심화⋅확장한 융합 선택 과목으로, 학습자 스스로 필요한 책을 탐색하여 읽고 대화, 토의, 토론 등을 활용하여 독서 토론하고 글을 씀으로써 비판적⋅창의적 사고력과 협력적 의사소통 능력을 함양하고 삶과 세상을 이해하고 통찰하며 서로 다른 생각과 관점을 존중하는 성숙한 민주시민으로 성장하도록 돕는 융합 선택 과목이다.",
+   "majorsHint": "국어국문학과, 국어교육과, 신문방송학과, 미디어커뮤니케이션학과, 언어학과, 문헌정보학과, 문예창작과 등",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0004",
+   "legacyKey": "독서와작문",
+   "name": "독서와 작문",
+   "aliases": [],
+   "area": "국어",
+   "areaGroup": "국어",
+   "kind": "일반",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "국어",
+     "scope": "in",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "독서와 작문",
+   "summary": "독서와 작문은 고등학교 ‘공통국어1, 공통국어2’의 읽기 영역과 쓰기 영역을 심화ㆍ확장한 과목으로 다양한 글과 자료를 이해하고 생산하는 활동에 능동적으로 참여함으로써 효과적으로 의사소통하는 능력과 바람직한 의사소통 태도를 함양하는 것을 목적으로 하는 일반 선택 과목이다.",
+   "majorsHint": "국어국문학과, 국어교육학과, 신문방송학과, 광고홍보학과, 미디어커뮤니케이션학과, 언어학과, 문헌정보학과, 문예창작과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0005",
+   "legacyKey": "매체의사소통",
+   "name": "매체 의사소통",
+   "aliases": [],
+   "area": "국어",
+   "areaGroup": "국어",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "국어",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "매체 의사소통",
+   "summary": "매체 의사소통은 고등학교 ‘공통국어1, 공통국어2’의 매체 영역을 심화⋅확장한 융합 선택 과목이다.",
+   "majorsHint": "국어국문학과, 국어교육과, 신문방송학과, 미디어커뮤니케이션학과, 언어학과, 문헌정보학과, 문예창작과 등",
+   "schoolCount": 2,
+   "offeredBy": [
+    "school-seongbok",
+    "school-suji"
+   ]
+  },
+  {
+   "subjectId": "sj-0006",
+   "legacyKey": "문학",
+   "name": "문학",
+   "aliases": [],
+   "area": "국어",
+   "areaGroup": "국어",
+   "kind": "일반",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "국어",
+     "scope": "in",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "문학",
+   "summary": "문학은 고등학교 ‘공통국어1, 공통국어2’의 문학 영역을 심화⋅확장한 과목으로, 다양한 문학 경험과 활동을 통해 작품을 수용⋅생산하는 능력을 기르고, 인간과 세계에 대한 이해를 넓히며, 문학 활동의 적극적 주체로 살아갈 수 있는 태도를 함양하는 데에 목적이 있는 일반 선택 과목이다.",
+   "majorsHint": "문예창작과, 국어국문학과, 국어교육과, 영어영문학과, 불어불문학과, 독어독문학과, 노어노문학과, 중어중문학과, 일어일문학과, 통번역과, 신문방송학과, 미디어커뮤니케이션학과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0007",
+   "legacyKey": "문학과영상",
+   "name": "문학과 영상",
+   "aliases": [],
+   "area": "국어",
+   "areaGroup": "국어",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "국어",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "문학과 영상",
+   "summary": "문학과 영상은 고등학교 ‘공통국어1, 공통국어2’의 문학 영역과 매체 영역 관련 내용을 통합적으로 심화⋅확장한 과목으로, 문학 작품과 영상물을 감상하고 비평하는 능력을 바탕으로 자신이 경험하거나 상상한 내용을 문학 작품이나 영상물로 제작한 후, 적절한 매체로 공유하는 경험을 통해 표현 능력을 심화하며, 문학과 영상을 통한 소통의 영향력을 비판적으로 파악하고 이에 관한 윤리적 책임을 인식하는 진로 선택 과목이다.",
+   "majorsHint": "국어국문학과, 문예창작과, 신문방송학과, 미디어커뮤니케이션학과, 언어학과, 광고홍보학과, 국어교육과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0008",
+   "legacyKey": "언어생활탐구",
+   "name": "언어생활 탐구",
+   "aliases": [
+    "언어생활탐구"
+   ],
+   "area": "국어",
+   "areaGroup": "국어",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "국어",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "언어생활 탐구",
+   "summary": "언어생활 탐구는 고등학교 ‘공통국어1, 공통국어2’의 문법 영역을 중심으로 듣기⋅말하기, 쓰기, 매체 영역을 심화⋅확장한 융합 선택 과목으로, 타인과 사회적으로 소통하는 양상을 탐구함으로써 언어의 힘과 가치를 인식하고 언어생활에 능동적으로 참여하도록 하는 데 중점을 두고 여러 개념과 현상들이 어떻게 언어를 매개로 구현되고 실천되는지를 탐구함으로써 자신과 공동체의 언어생활을 성찰하고 개선하도록 한다.",
+   "majorsHint": "국어국문학과, 국어교육과, 신문방송학과, 미디어커뮤니케이션학과, 언어학과, 문헌정보학과, 문예창작과 등",
+   "schoolCount": 3,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0009",
+   "legacyKey": "주제탐구독서",
+   "name": "주제 탐구 독서",
+   "aliases": [],
+   "area": "국어",
+   "areaGroup": "국어",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "국어",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "주제 탐구 독서",
+   "summary": "주제 탐구 독서는 고등학교 ‘공통국어1, 공통국어2’의 읽기 영역을 심화⋅확장한 과목이다.",
+   "majorsHint": "국어국문학과, 국어교육과, 신문방송학과, 미디어커뮤니케이션학과, 언어학과, 문헌정보학과, 문예창작과 등",
+   "schoolCount": 2,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok"
+   ]
+  },
+  {
+   "subjectId": "sj-0010",
+   "legacyKey": "화법과언어",
+   "name": "화법과 언어",
+   "aliases": [],
+   "area": "국어",
+   "areaGroup": "국어",
+   "kind": "일반",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "국어",
+     "scope": "in",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "화법과 언어",
+   "summary": "화법과 언어는 중학교 공통 ‘국어’와 고등학교 ‘공통국어1, 공통국어2’의 듣기ㆍ말하기 영역과 문법 영역을 심화ㆍ확장한 일반 선택 과목으로, 화법과 언어의 본질을 이해하고 언어 자원의 표현 효과를 탐구하며 다양한 유형의 담화에 능동적으로 참여함으로써, 효과적인 의사소통 능력과 비판적 사고력을 기르고 바람직한 의사소통 태도를 함양하는 데에 목적이 있다.",
+   "majorsHint": "국어국문학과, 국어교육과, 신문방송학과, 미디어커뮤니케이션학과, 언어학과, 광고홍보학과, 통번역학과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0011",
+   "legacyKey": "경제수학",
+   "name": "경제 수학",
+   "aliases": [],
+   "area": "수학",
+   "areaGroup": "수학",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": [
+     "2015 개정 교육과정의 <경제 수학>"
+    ]
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "수학",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "경제 수학",
+   "summary": "경제 수학은 경제 및 금융의 기본 개념에 수학이 활용되는 다양한 사례를 경험하고, 수학의 개념, 원리, 법칙을 경제 분야의 지식과 연결하여 융합적 관점에서 경제 현상을 수학적으로 해석하고 탐구하는 과목이다.",
+   "majorsHint": "경영학과, 경제학과, 금융수학과, 통계학과 등",
+   "schoolCount": 2,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-suji"
+   ]
+  },
+  {
+   "subjectId": "sj-0012",
+   "legacyKey": "고급대수",
+   "name": "고급 대수",
+   "aliases": [],
+   "area": "수학",
+   "areaGroup": "수학",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "수학",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "고급 대수",
+   "summary": "고급 대수는 수학의 여러 분야에서 대수적 개념과 방법을 어떻게 사용하는지, 인공지능, 기계공학, 전자공학 등 다양한 영역에서 행렬 및 벡터가 어떻게 사용되는지 이해하는 데 도움이 되며 대수의 심화된 내용과 추론 방식을 이해하고 탐구하는 과학 계열 진로 선택 과목이다.",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0013",
+   "legacyKey": "공통수학1",
+   "name": "공통수학1",
+   "aliases": [],
+   "area": "수학",
+   "areaGroup": "수학",
+   "kind": "공통",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "수학",
+     "scope": "base",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "공통수학1",
+   "summary": "공통수학1·2는 수학에 대한 기초 소양과 학문적 이해를 기반으로 학생 스스로 자신의 적성을 개발하여 창의성을 갖춘 사람으로 성장하기 위해 수학의 여러 영역의 기본적인 내용을 학습하는 공통 과목이다.",
+   "majorsHint": "사회과학계열, 자연과학계열, 공학계열 학과 전체",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0014",
+   "legacyKey": "공통수학2",
+   "name": "공통수학2",
+   "aliases": [],
+   "area": "수학",
+   "areaGroup": "수학",
+   "kind": "공통",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "수학",
+     "scope": "base",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "공통수학2",
+   "summary": "공통수학1·2는 수학에 대한 기초 소양과 학문적 이해를 기반으로 학생 스스로 자신의 적성을 개발하여 창의성을 갖춘 사람으로 성장하기 위해 수학의 여러 영역의 기본적인 내용을 학습하는 공통 과목이다.",
+   "majorsHint": "사회과학계열, 자연과학계열, 공학계열 학과 전체",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0015",
+   "legacyKey": "기하",
+   "name": "기하",
+   "aliases": [],
+   "area": "수학",
+   "areaGroup": "수학",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": [
+     "2015 개정 교육 과정의 <기하>"
+    ]
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "수학",
+     "scope": "out",
+     "confidence": "confirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "기하",
+   "summary": "기하는 이차곡선, 공간도형, 벡터 등을 다루어 평면과 공간에 나타나는 기하적 대상을 다양한 방식으로 표현하고 탐구하는 진로 선택 과목이다.",
+   "majorsHint": "건축학과, 경제학과, 기계공학과, 물리학과, 산업디자인학과, 지구과학과, 지리학과, 전자공학과, 조선해양공학과, 통계학과, 항공운항과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0016",
+   "legacyKey": "대수",
+   "name": "대수",
+   "aliases": [],
+   "area": "수학",
+   "areaGroup": "수학",
+   "kind": "일반",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": [
+     "2015 개정 교육과정의 <수학Ⅰ>"
+    ]
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "수학",
+     "scope": "in",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "대수",
+   "summary": "대수는 증가하거나 감소하는 수량이나 주기적인 현상을 일반적인 식으로 표현하여, 규칙적으로 변화하는 관계를 나타내는 함수에 대해 이해하고 탐구하는 일반 선택 과목이다.",
+   "majorsHint": "사회과학계열, 자연과학계열, 공학계열 학과 전체",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0017",
+   "legacyKey": "미적분Ⅰ",
+   "name": "미적분Ⅰ",
+   "aliases": [],
+   "area": "수학",
+   "areaGroup": "수학",
+   "kind": "일반",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": [
+     "2015 개정 교육과정의 <수학Ⅱ>"
+    ]
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "수학",
+     "scope": "in",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "미적분Ⅰ",
+   "summary": "미적분Ⅰ은 사회 및 자연 현상의 변화를 다루는 수학적 도구로서 무한의 개념, 순간적인 변화를 탐구하는 데 유용한 개념 및 넓이, 이동 거리 등과 관련된 문제해결에서 폭넓게 활용되는 미적분의 기초 내용에 대해 이해하고 탐구하는 일반 선택 과목이다.",
+   "majorsHint": "사회과학계열, 자연과학계열, 공학계열 학과 전체",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0018",
+   "legacyKey": "미적분Ⅱ",
+   "name": "미적분Ⅱ",
+   "aliases": [],
+   "area": "수학",
+   "areaGroup": "수학",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": [
+     "2015 개정 교육과정의 <미적분>"
+    ]
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "수학",
+     "scope": "out",
+     "confidence": "confirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "미적분Ⅱ",
+   "summary": "미적분Ⅱ는 수열의 극한과 급수의 합, 여러 가지 함수의 미분과 적분을 효율적으로 구하는 방법을 다루어, 사회 및 자연 현상을 탐구하는 데 필요한 미적분 내용을 폭넓게 이해하고 탐구하는 진로 선택 과목이다.",
+   "majorsHint": "사회과학계열, 자연과학계열, 공학계열 학과 전체",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0019",
+   "legacyKey": "수학과문화",
+   "name": "수학과 문화",
+   "aliases": [],
+   "area": "수학",
+   "areaGroup": "수학",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "수학",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "수학과 문화",
+   "summary": "수학과 문화는 문화와 수학 사이의 융합 현상을 탐구하여 인간 활동으로서 수학의 역할을 이해하고 문화 발달에서 수학의 유용성과 가치를 음미하는 융합 선택 과목이다.",
+   "majorsHint": "사회과학계열, 자연과학계열, 공학계열 학과 전체",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0020",
+   "legacyKey": "수학과제탐구",
+   "name": "수학과제 탐구",
+   "aliases": [],
+   "area": "수학",
+   "areaGroup": "수학",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": [
+     "2015 개정 교육과정의 <수학과제 탐구>"
+    ]
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "수학",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "수학과제 탐구",
+   "summary": "수학과제 탐구는 다양한 수학적 탐구 방법과 절차를 이해하고, 자신의 흥미와 관심에 따라 수학 개념을 심층적으로 탐구하고, 타 교과와 연결하거나 실생활 사례를 수학적으로 해석하는 등 자기주도적 탐구를 실행하는 융합 선택 과목이다.",
+   "majorsHint": "사회과학계열, 자연과학계열, 공학계열 학과 전체",
+   "schoolCount": 3,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0021",
+   "legacyKey": "실용통계",
+   "name": "실용 통계",
+   "aliases": [],
+   "area": "수학",
+   "areaGroup": "수학",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": [
+     "2015 개정 교육과정의 <실용 통계>"
+    ]
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "수학",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "실용 통계",
+   "summary": "실용 통계는 통계적 문제해결 과정을 이해하고, 통계적 탐구 활동을 통해 정보화 사회에서 생산되는 자료를 활용하여 현대 사회의 다양한 실생활 문제를 해결하는 융합 선택 과목이다.",
+   "majorsHint": "사회과학계열, 자연과학계열, 공학계열 학과 전체",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0022",
+   "legacyKey": "심화수학",
+   "name": "심화 수학",
+   "aliases": [],
+   "area": "수학",
+   "areaGroup": "수학",
+   "kind": "진로",
+   "kindSource": "offerings",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "수학",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "none",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0023",
+   "legacyKey": "인공지능수학",
+   "name": "인공지능 수학",
+   "aliases": [],
+   "area": "수학",
+   "areaGroup": "수학",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": [
+     "2015 개정 교육과정의 <인공지능 수학>"
+    ]
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "수학",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "인공지능 수학",
+   "summary": "인공지능 수학은 인공지능의 데이터 처리와 의사 결정에 수학이 활용되는 다양한 사례를 경험함으로써, 융합적 관점에서 인공지능과 수학의 관련성을 탐구하는 진로 선택 과목이다.",
+   "majorsHint": "AI융합학부, AI학과, 데이터과학과, 산업공학과, 언어학과, 인공지능학과, 정보통신공학과, 컴퓨터공학과, 컴퓨터 과학과, 통계학과 등",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-pungdeok"
+   ]
+  },
+  {
+   "subjectId": "sj-0024",
+   "legacyKey": "전문수학",
+   "name": "전문 수학",
+   "aliases": [],
+   "area": "수학",
+   "areaGroup": "수학",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "수학",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "전문 수학",
+   "summary": "전문 수학은 수학의 여러 영역의 내용을 이해하는 데 도움을 주고 타 교과 학습의 기초가 되며 삼각함수와 미적분, 기하, 확률과 통계의 심화된 내용을 이해하고 탐구하는 과학 계열 진로 선택 과목이다.",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-suji"
+   ]
+  },
+  {
+   "subjectId": "sj-0025",
+   "legacyKey": "확률과통계",
+   "name": "확률과 통계",
+   "aliases": [],
+   "area": "수학",
+   "areaGroup": "수학",
+   "kind": "일반",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": [
+     "2015 개정 교육과정의 <확률과 통계>"
+    ]
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "수학",
+     "scope": "in",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "확률과 통계",
+   "summary": "확률과 통계는 데이터를 기반으로 하는 확률적 소양과 통계적 소양을 개발하기 위해 확률, 통계와 관련된 개념을 이해하고 탐구하는 일반 선택 과목이다.",
+   "majorsHint": "사회과학계열, 자연과학계열, 공학계열 학과 전체",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0026",
+   "legacyKey": "공통영어1",
+   "name": "공통영어1",
+   "aliases": [],
+   "area": "영어",
+   "areaGroup": "영어",
+   "kind": "공통",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "영어",
+     "scope": "base",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "공통영어1",
+   "summary": "공통영어1·2는 중학교 ‘영어’의 내용을 고등학교 수준으로 확장시키는 과목으로, 듣기, 말하기, 읽기, 쓰기 등 영어 기능을 통합적으로 함양하고, 새로운 학교생활 적응에 도움이 될 수 있는 주제의 담화나 이야기 또는 친숙하고 일반적인 주제나 이슈를 담은 담화 및 글 등을 종합적으로 다루는 이해 활동과 표현 활동을 통해 영어 역량을 함양하고자 하는 공통 과목이다.",
+   "majorsHint": "영문학부, EICC학과, 국제학부, 글로벌커뮤니케이션학부, 영미언어문화학과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0027",
+   "legacyKey": "공통영어2",
+   "name": "공통영어2",
+   "aliases": [],
+   "area": "영어",
+   "areaGroup": "영어",
+   "kind": "공통",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "영어",
+     "scope": "base",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "공통영어2",
+   "summary": "공통영어1·2는 중학교 ‘영어’의 내용을 고등학교 수준으로 확장시키는 과목으로, 듣기, 말하기, 읽기, 쓰기 등 영어 기능을 통합적으로 함양하고, 새로운 학교생활 적응에 도움이 될 수 있는 주제의 담화나 이야기 또는 친숙하고 일반적인 주제나 이슈를 담은 담화 및 글 등을 종합적으로 다루는 이해 활동과 표현 활동을 통해 영어 역량을 함양하고자 하는 공통 과목이다.",
+   "majorsHint": "영문학부, EICC학과, 국제학부, 글로벌커뮤니케이션학부, 영미언어문화학과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0028",
+   "legacyKey": "미디어영어",
+   "name": "미디어 영어",
+   "aliases": [],
+   "area": "영어",
+   "areaGroup": "영어",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "영어",
+     "scope": "out",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "미디어 영어",
+   "summary": "미디어 영어는 다양한 유형의 미디어에서 영어로 접하게 되는 주제를 학습자가 이해하고 창의적으로 활용하는 데 필요한 영어 의사소통 능력을 함양하며, 주체적인 의사소통을 위해 다양한 미디어를 통해 얻게 되는 정보에 대해 분석⋅평가하는 능력을 향상함으로써 창의적⋅비판적 사고 능력을 기르는 융합선택 과목이다.",
+   "majorsHint": "영어영문학과, 영문학부, 영미언어문화학과, 영어산업학과, 영어 통번역학과 등",
+   "schoolCount": 2,
+   "offeredBy": [
+    "school-seongbok",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0029",
+   "legacyKey": "세계문화와영어",
+   "name": "세계 문화와 영어",
+   "aliases": [
+    "세계문화와 영어"
+   ],
+   "area": "영어",
+   "areaGroup": "영어",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "영어",
+     "scope": "out",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "세계 문화와 영어",
+   "summary": "세계 문화와 영어는 세계 영어(World Englishes)를 통해 나타나는 다양하고 흥미로운 문화 현상과 문화적 산물을 이해하고 자신의 문화적 관점을 창의적으로 표현하며 서로 다른 사고와 문화를 존중하는 열린 가치관을 바탕으로 세계인과 소통하기 위한 융합 선택 과목이다.",
+   "majorsHint": "영미문화학과, 영미인문학과, 영어산업학과, 비즈니스 영어학과, 응용영어콘텐츠학과 등",
+   "schoolCount": 3,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0030",
+   "legacyKey": "심화영어",
+   "name": "심화 영어",
+   "aliases": [],
+   "area": "영어",
+   "areaGroup": "영어",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "영어",
+     "scope": "out",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "심화 영어",
+   "summary": "심화 영어는 일반 선택과목인 ‘영어 I’ 및 ‘영어Ⅱ’와 연계된 심화 과목으로, 일상생활에 필요한 의사소통 능력을 심화하고 기초 학문 분야를 포함한 다양한 주제와 관련된 영어 이해 능력과 표현 능력을 기르는 진로 선택 과목이다.",
+   "majorsHint": "영어영문학과, 영어통번역전공, 영어통번역학부, 응용영어통번역학과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0031",
+   "legacyKey": "심화영어독해와작문",
+   "name": "심화 영어 독해와 작문",
+   "aliases": [],
+   "area": "영어",
+   "areaGroup": "영어",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "영어",
+     "scope": "out",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "심화 영어 독해와 작문",
+   "summary": "심화 영어 독해와 작문은 일반 선택과목군의 ‘영어 독해와 작문’과 연계된 읽기⋅쓰기 기능의 심화 과목으로, 기초 학문 분야를 포함하는 다양한 주제와 장르의 글을 읽고 이해하며 비판적인 독해 능력을 기르고 자신의 의견을 창의적으로 표현하는 종합적인 영어 문해력을 배양하기 위한 진로 선택 과목이다.",
+   "majorsHint": "영미어문학부, 영미언어문화학과, 영어통상통역학과, 글로벌 커뮤니테이션 영어전공 등",
+   "schoolCount": 3,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji"
+   ]
+  },
+  {
+   "subjectId": "sj-0032",
+   "legacyKey": "영미문학읽기",
+   "name": "영미 문학 읽기",
+   "aliases": [],
+   "area": "영어",
+   "areaGroup": "영어",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "영어",
+     "scope": "out",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "영미 문학 읽기",
+   "summary": "영미 문학 읽기는 일반 선택과목인 ‘영어 I’, ‘영어Ⅱ’, ‘영어 독해와 작문 과목’과 연계된 과목으로, 시, 희곡, 소설 등 영어로 쓰인 다양한 장르의 문학 작품 감상을 통해 영어 능력을 확장하고 작품에 대한 생각과 느낌을 비판적⋅창의적으로 표현하는 능력을 기르기 위한 진로 선택 과목이다.",
+   "majorsHint": "영어영문학과, 영문학부, 영미언어문화학과, 영어산업학과, 영어 통번역학과 등",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-pungdeok"
+   ]
+  },
+  {
+   "subjectId": "sj-0033",
+   "legacyKey": "영어독해와작문",
+   "name": "영어 독해와 작문",
+   "aliases": [],
+   "area": "영어",
+   "areaGroup": "영어",
+   "kind": "일반",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "영어",
+     "scope": "out",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "영어 독해와 작문",
+   "summary": "영어 독해와 작문은 ‘기본영어’ 또는 ‘공통영어’나 일반 선택과목군의 교과목에서 배운 내용을 바탕으로 읽기와 쓰기를 중점적으로 학습하여 일상생활이나 사회생활에서 필요로 하는 영어 능력뿐만 아니라, 학문 및 전공 분야에서 필요로 하는 독해와 작문 능력을 향상하는 일반 선택 과목이다.",
+   "majorsHint": "영어영문학과, 영어통번역학과, 영어학과, 국제관계학과, 미국학과",
+   "schoolCount": 3,
+   "offeredBy": [
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0034",
+   "legacyKey": "영어Ⅰ",
+   "name": "영어Ⅰ",
+   "aliases": [],
+   "area": "영어",
+   "areaGroup": "영어",
+   "kind": "일반",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "영어",
+     "scope": "in",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "영어Ⅰ",
+   "summary": "영어Ⅰ은 공통 과목인 ‘공통영어’에서 배운 내용을 바탕으로 듣기, 말하기, 읽기, 쓰기의 네 기능을 통합적으로 다루어 사회생활이나 학업에 필요한 의사소통 능력을 더욱 향상할 뿐만 아니라, 장차 학습자의 진로 및 전공 분야와 관련된 영어 이해 능력과 표현 능력의 기본을 다지는 일반 선택 과목이다.",
+   "majorsHint": "영어학과, 영어교육과, 영어영문학과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0035",
+   "legacyKey": "영어Ⅱ",
+   "name": "영어Ⅱ",
+   "aliases": [],
+   "area": "영어",
+   "areaGroup": "영어",
+   "kind": "일반",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "영어",
+     "scope": "in",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "영어Ⅱ",
+   "summary": "영어Ⅱ는 ‘공통영어’나 일반 선택과목군 내의 다른 과목에서 배운 내용을 심화하여 사회생활이나 학업에 필요한 의사소통 능력을 더욱 향상할 뿐만 아니라, 장차 학습자의 진로 및 전공 분야와 관련된 영어 이해 능력과 표현 능력을 연마하고자 하는 일반 선택 과목이다.",
+   "majorsHint": "영문학부, EICC학과, 국제학부, 글로벌커뮤니케이션학부, 영미언어문화학과, 영어교육학과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0036",
+   "legacyKey": "한국사1",
+   "name": "한국사1",
+   "aliases": [],
+   "area": "한국사",
+   "areaGroup": "한국사",
+   "kind": "공통",
+   "kindSource": "subject-info",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "한국사",
+     "scope": "in",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "한국사1",
+   "summary": "한국사1는 우리나라의 역사를 배우며 인간과 사회에 대한 깊은 이해를 토대로 현대 사회를 통찰하는 안목을 키울 수 있는 고등학교 공통 과목이다.",
+   "majorsHint": "고고학, 경제학과, 철학과, 환경공학과, 사회학과, 문화인류학과, 도시공학과, 정치외교학과, 행정학과, 사회복지학과, 경영학과, 무역학과, 국제학부, 국제관계학과, 자유전공학부, 교육학과, 역사학부, 역사교육과, 한국사학과, 사학과, 문화콘텐츠학과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0037",
+   "legacyKey": "한국사2",
+   "name": "한국사2",
+   "aliases": [],
+   "area": "한국사",
+   "areaGroup": "한국사",
+   "kind": "공통",
+   "kindSource": "subject-info",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "한국사",
+     "scope": "in",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "한국사2",
+   "summary": "한국사2는 우리나라의 역사를 배우며 인간과 사회에 대한 깊은 이해를 토대로 현대 사회를 통찰하는 안목을 키울 수 있는 고등학교 공통 과목이다.",
+   "majorsHint": "고고학, 경제학과, 철학과, 환경공학과, 사회학과, 문화인류학과, 도시공학과, 정치외교학과, 행정학과, 사회복지학과, 경영학과, 무역학과, 국제학부, 국제관계학과, 자유전공학부, 교육학과, 역사학부, 역사교육과, 한국사학과, 사학과, 문화콘텐츠학과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0038",
+   "legacyKey": "경제",
+   "name": "경제",
+   "aliases": [],
+   "area": "사회",
+   "areaGroup": "사회",
+   "subArea": "일반사회",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통사",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "경제",
+   "summary": "경제는 경제생활에서 요구되는 경제적 사고력과 경제 문제 해결력을 기르기 위해 개설된 일반사회 영역의 진로 선택 과목이다.",
+   "majorsHint": "경제학과, 산업경제학과, 농경제학과, 경영학과, 세무학과, 회계학과, 국제경제학과, 국제통상학과, 금융경제학과, 금융정보학과, 사회교육과 등 일반사회 영역의 선택 과목",
+   "schoolCount": 2,
+   "offeredBy": [
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0039",
+   "legacyKey": "국제관계의이해",
+   "name": "국제 관계의 이해",
+   "aliases": [],
+   "area": "사회",
+   "areaGroup": "사회",
+   "subArea": "일반사회",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통사",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "국제 관계의 이해",
+   "summary": "국제 관계의 이해는 국가의 경계를 넘어선 일상을 살아가고 있는 학생들이 세계시민으로 살아가는 데 필요한 다양한 이슈들과 국제 사회 행위 주체들의 복합적인 관계를 파악하고, 세계시민으로서 보편적이고 타당한 의사 결정 능력과 태도를 기르기 위해 개설된 일반사회 영역의 진로 선택 과목이다.",
+   "majorsHint": "정치외교학과, 국제문화정보학과, 법학과, 국제통상학과, 국제법무학과, 국제학부, 국제관계학과, 사회복지학과, 통일외교안보학과, 사회교육과 등 일반사회 영역의 선택 과목",
+   "schoolCount": 3,
+   "offeredBy": [
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0040",
+   "legacyKey": "금융과경제생활",
+   "name": "금융과 경제생활",
+   "aliases": [],
+   "area": "사회",
+   "areaGroup": "사회",
+   "subArea": "일반사회",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통사",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "금융과 경제생활",
+   "summary": "금융과 경제생활은 미래 경제생활의 주체인 학생들이 급변하는 디지털 금융 환경에서 평생에 걸쳐 안정된 금융 복지 (financial wellbeing)를 향유하는 데 필요한 금융 지식과 금융 의사 결정 능력, 건전한 재무적 태도와 습관을 기르도록 개설된 일반사회 영역의 융합 선택 과목이다.",
+   "majorsHint": "경영학과, 경제학과, 금융경영과, 금융보험학과, 세무학과, 회계학과, 국제통상학과, 금융재무학과, 자산관리학부, 국제금융학과, 사회교육과 등 일반사회 영역의 선택 과목",
+   "schoolCount": 2,
+   "offeredBy": [
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0041",
+   "legacyKey": "도시의미래탐구",
+   "name": "도시의 미래 탐구",
+   "aliases": [],
+   "area": "사회",
+   "areaGroup": "사회",
+   "subArea": "지리",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통사",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "도시의 미래 탐구",
+   "summary": "도시의 미래 탐구는 도시에 대한 지리적 이해를 바탕으로 하여 세계 여러 도시의 역동적인 변화를 탐색하고, 도시 문제에 대한 사회과학적 분석과 인문학적 성찰을 통해 더 나은 도시의 미래를 만들어가기 위한 지리영역의 진로 선택 과목이다.",
+   "majorsHint": "지리학, 지역학, 도시사회학, 부동산학, 환경학, 도시 계획학, 도시행정학, 도시공학, 교통공학, 건축학, 토목 공학 등 지리 영역의 선택 과목",
+   "schoolCount": 3,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0042",
+   "legacyKey": "동아시아역사기행",
+   "name": "동아시아 역사 기행",
+   "aliases": [],
+   "area": "사회",
+   "areaGroup": "사회",
+   "subArea": "역사",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통사",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "동아시아 역사 기행",
+   "summary": "동아시아 역사 기행은 동아시아를 무대로 한 유·무형의 문화유산과 역사 현장에 대해 배우는 역사 영역의 진로 선택 과목이다.",
+   "majorsHint": "신문방송학과(미디어학부), 정치외교학과, 국제학부⋅ 국제관계학과, 사회학과, 역사학부⋅사학과, 동양사학과, 역사교육과, 일어일문학과, 중어중문학과, 고고미술사학, 고고학과, 군사학과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0043",
+   "legacyKey": "문화로보는한국사",
+   "name": "문화로 보는 한국사",
+   "aliases": [],
+   "area": "사회",
+   "areaGroup": "사회",
+   "subArea": "역사",
+   "kind": "학교지정",
+   "kindSource": "offerings",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "한국사",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "none",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-pungdeok"
+   ]
+  },
+  {
+   "subjectId": "sj-0044",
+   "legacyKey": "법과사회",
+   "name": "법과 사회",
+   "aliases": [],
+   "area": "사회",
+   "areaGroup": "사회",
+   "subArea": "일반사회",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통사",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "법과 사회",
+   "summary": "법과 사회는 민주주의와 법치주의, 복지국가를 지향하는 우리나라에서 법에 대해 이해하고 능동적인 사회 구성원으로서 민주시민의 자질을 함양하기 위해 개설되었으며, 학생들에게 법 관련 분야의 진로 탐색에 도움을 주는 일반사회 영역의 진로 선택 과목이다.",
+   "majorsHint": "법학과, 자유전공학부, 세무학과, 경찰행정학과, 정치 외교학과, 행정학과, 사회학과, 사회복지학과, 교육학과, 사회교육과 등",
+   "schoolCount": 3,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0045",
+   "legacyKey": "사회문제탐구",
+   "name": "사회문제 탐구",
+   "aliases": [],
+   "area": "사회",
+   "areaGroup": "사회",
+   "subArea": "일반사회",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통사",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "사회문제 탐구",
+   "summary": "사회문제 탐구 과목은 현대 사회에서 발생하는 여러 사회문제를 탐구하고 해결 방안을 모색할 수 있는 능력을 함양하기 위해 개설된 일반사회 영역의 융합 선택 과목이다.",
+   "majorsHint": "사회계열 전반, 통계학과, 사회학과, 행정학과, 경제학과, 경영학과, 정치외교학과, 신문방송학과, 미디어학과, 사회복지학과, 지역개발학과, 교육학과, 사회교육과, 문화인류학과 등 일반사회 영역의 선택 과목",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0046",
+   "legacyKey": "사회와문화",
+   "name": "사회와 문화",
+   "aliases": [],
+   "area": "사회",
+   "areaGroup": "사회",
+   "subArea": "일반사회",
+   "kind": "일반",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통사",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "사회와 문화",
+   "summary": "사회와 문화 과목은 개인이 다양한 관점과 문화를 가진 타인들과 지속적으로 상호 작용하며 살아가는 사회적 존재이며, 사회 구조의 영향을 받는 존재임과 동시에 사회를 변화시키는 주체라는 사실을 인식하고 민주시민으로서 사회에 참여하는 데 필요한 역량을 함양하기 위해 개설된 일반 선택 과목이다.",
+   "majorsHint": "사회학과, 통계학과, 교육학과, 사회교육과, 경찰행정학과, 청소년지도학과, 신문방송학과, 미디어학과, 문화콘텐츠학과, 문화 인류학과, 사회복지학과, 행정학과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0047",
+   "legacyKey": "세계사",
+   "name": "세계사",
+   "aliases": [],
+   "area": "사회",
+   "areaGroup": "사회",
+   "subArea": "역사",
+   "kind": "일반",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통사",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "세계사",
+   "summary": "세계사는 인류가 출현한 시기부터 오늘날 인류가 걸어온 발자취를 탐구하는 역사 영역의 일반 선택 과목이다.",
+   "majorsHint": "신문방송학과(미디어학부), 정치외교학과, 국제학부·국제관계학과, 경제학과, 사회학과, 역사학부·사학과, 서양사학과/동양사학과, 역사교육과, 고고미술사학, 군사학과 등, 건축학, 교육학과, 순수/응용 미술 및 디자인, 연극영화, 행정학과, 인류학, 문헌정보학",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0048",
+   "legacyKey": "세계시민과지리",
+   "name": "세계시민과 지리",
+   "aliases": [],
+   "area": "사회",
+   "areaGroup": "사회",
+   "subArea": "지리",
+   "kind": "일반",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통사",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "세계시민과 지리",
+   "summary": "세계시민과 지리는 세계화와 지역화의 연계, 인간과 자연의 상호 작용, 에너지 및 환경 문제, 세계 여러 지역의 공간적 차이와 다양한 삶의 모습을 다면적으로 이해하고 지구촌 일원으로서 인류의 공동선과 지속가능한 미래를 위해 행동할 수 있는 태도를 함양하는 지리 영역의 일반 선택 과목이다.",
+   "majorsHint": "국제지역학과, 글로벌경제학과, 문화인류학과, 무역학과, 관광학과, 도시계획학과, 건축학과, 기상학과, 문화컨텐츠학과, 환경공학과, 지리(교육)학과, 신문방송학과, 군사학과, 공간정보학과, 정치외교학과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0049",
+   "legacyKey": "여행지리",
+   "name": "여행지리",
+   "aliases": [],
+   "area": "사회",
+   "areaGroup": "사회",
+   "subArea": "지리",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통사",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "여행지리",
+   "summary": "여행지리 우리 주변과 세계 여러 지역에서 나타나는 다양한 자연경관과 인문경관, 인간과 환경의 관계에 대한 이해를 바탕으로 행복한 여행을 향유하는 데 필요한 지리적 소양을 함양하는 지리영역의 융합 선택과목이다.",
+   "majorsHint": "관광학과, 문화인류학과, 지리학과, 지리교육과, 건축학과, 도시계획학과, 외국어 관련 학과, 부동산학과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0050",
+   "legacyKey": "역사로탐구하는현대세계",
+   "name": "역사로 탐구하는 현대 세계",
+   "aliases": [],
+   "area": "사회",
+   "areaGroup": "사회",
+   "subArea": "역사",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통사",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "역사로 탐구하는 현대 세계",
+   "summary": "역사로 탐구하는 현대 세계는 현대 세계의 과제를 선정해 역사적 관점에서 파악하고 해결 방안 및 실천 방안을 찾아가는 역사 영역의 융합 선택 과목이다.",
+   "majorsHint": "신문방송학과(미디어학부), 정치외교학과, 국제학부⋅국제관계학과, 경제학과, 사회학과, 역사학부⋅사학과, 서양사학과/동양사학과, 역사교육과, 고고미술사학, 군사학과 등, 건축학, 교육학과, 순수/응용 미술 및 디자인, 연극영화, 행정학과, 인류학, 문헌정보학",
+   "schoolCount": 3,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji"
+   ]
+  },
+  {
+   "subjectId": "sj-0051",
+   "legacyKey": "윤리문제탐구",
+   "name": "윤리문제 탐구",
+   "aliases": [],
+   "area": "사회",
+   "areaGroup": "사회",
+   "subArea": "윤리",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통사",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "윤리문제 탐구",
+   "summary": "윤리문제 탐구 과목은 동·서양의 윤리 이론, 사회사상, 최신 도덕 심리학 등의 연구 성과에 기반을 두고 민주시민, 디지털과 인공지능, 생태전환과 관련한 최근의 윤리적 쟁점들을 구체적인 사례 중심으로 탐구함으로써 윤리적 탐구와 성찰 능력, 윤리적 실천 역량을 기르도록 하는 과목이다.",
+   "majorsHint": "사회복지학과, 사회학과, 아동청소년학과, 정보사회학과, 문화인류학과, 윤리교육과, 철학과, 정치외교학과, 상담 심리학과,",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0052",
+   "legacyKey": "윤리와사상",
+   "name": "윤리와 사상",
+   "aliases": [],
+   "area": "사회",
+   "areaGroup": "사회",
+   "subArea": "윤리",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통사",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "윤리와 사상",
+   "summary": "윤리와 사상 과목은 학습자의 삶에서 직면할 수 있는 윤리적 물음을 중심으로 한국 및 동·서양의 윤리사상과 사회사상의 주요 이론과 의미를 체계적으로 학습함으로써 윤리적 탐구와 성찰 및 문제 해결 능력을 기르기 위한 진로 선택 과목이다.",
+   "majorsHint": "윤리교육과, 철학과, 사회학과, 정치외교학과, 유학⋅ 동양학과, 종교학과, 문화인류학과, 상담심리학과, 기독교철학과, 철학생명의료윤리학과 등 윤리 영역의 선택 과목",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0053",
+   "legacyKey": "인간과경제활동",
+   "name": "인간과 경제활동",
+   "aliases": [],
+   "area": "사회",
+   "areaGroup": "사회",
+   "subArea": "일반사회",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통사",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "인간과 경제활동",
+   "summary": "인간과 경제활동 과목은 경제 문제를 개인의 의사 결정에서 출발하여 직업 세계, 경제 공동체, 미래 사회로 확장되는 구조로 설계하여, 자신의 삶과 생활에 연계된 실용적 지식을 체험 활동 위주로 체득할 수 있도록 구성한 교양 교과의 융합 선택 과목이다.",
+   "majorsHint": "경제학과, 경영학과, 무역학과, 회계학과, 관광경영학과, 국제통상학과, 금융보험학과, 농업경제학과, 보건행정학과, 부동산학과, 세무학과, 소비자학과 등",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-seongbok"
+   ]
+  },
+  {
+   "subjectId": "sj-0054",
+   "legacyKey": "인문학과윤리",
+   "name": "인문학과 윤리",
+   "aliases": [],
+   "area": "사회",
+   "areaGroup": "사회",
+   "subArea": "윤리",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통사",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "인문학과 윤리",
+   "summary": "인문학과 윤리 과목은 고전에 대한 탐구와 성찰을 통해 학생들의 인문학적 소양과 바람직한 인성 및 포용성과 시민성을 길러주기 위한 진로 선택 과목이다.",
+   "majorsHint": "윤리교육과, 철학과, 사회학과, 정치외교학과, 유학⋅ 동양학과, 종교학과, 문화인류학과, 상담심리학과, 기독교 철학과, 철학생명의료윤리학과 등 윤리 영역의 선택 과목",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0055",
+   "legacyKey": "정치",
+   "name": "정치",
+   "aliases": [],
+   "area": "사회",
+   "areaGroup": "사회",
+   "subArea": "일반사회",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통사",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "정치",
+   "summary": "정치는 현대 민주주의 사회의 공동체 구성원에게 요구되는 시민 역량과 일상생활의 정치 생활에 능동적으로 참여하는 민주시민의 자질을 함양하기 위해 개설된 일반사회 영역의 진로 선택 과목이다.",
+   "majorsHint": "정치학과, 법학과, 행정학과, 정치행정학과, 언론정보 학과, 공공인재학부, 자치행정학과, 행정정책학과, 정치 외교학과, 통일안보학과, 사회교육과 등 일반사회 영역의 선택 과목",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0056",
+   "legacyKey": "통합사회1",
+   "name": "통합사회1",
+   "aliases": [],
+   "area": "사회",
+   "areaGroup": "사회",
+   "subArea": "일반사회",
+   "kind": "공통",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통사",
+     "scope": "in",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "통합사회1",
+   "summary": "통합사회1는 인간, 사회, 국가, 지구 공동체 및 환경을 개별 학문의 경계를 넘어 시간적, 공간적, 사회적, 윤리적 관점을 통합하여 이해하고, 사회적 변화에 능동적으로 대응하며, 미래 사회에 필요한 기초 소양과 역량을 함양하기 위한 공통 과목이다.",
+   "majorsHint": "철학과, 지리학과, 환경공학과, 사회학과, 문화인류학과, 도시공학과, 지역개발학과, 법학과, 정치외교학과, 행정학과, 사회 복지학과, 경제학과, 경영학과, 무역학과, 국제관계학과, 자유전공학부 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0057",
+   "legacyKey": "통합사회2",
+   "name": "통합사회2",
+   "aliases": [],
+   "area": "사회",
+   "areaGroup": "사회",
+   "subArea": "일반사회",
+   "kind": "공통",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통사",
+     "scope": "in",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "통합사회2",
+   "summary": "통합사회2는 인간, 사회, 국가, 지구 공동체 및 환경을 개별 학문의 경계를 넘어 시간적, 공간적, 사회적, 윤리적 관점을 통합하여 이해하고, 사회적 변화에 능동적으로 대응하며, 미래 사회에 필요한 기초 소양과 역량을 함양하기 위한 공통 과목이다.",
+   "majorsHint": "철학과, 지리학과, 환경공학과, 사회학과, 문화인류학과, 도시공학과, 지역개발학과, 법학과, 정치외교학과, 행정학과, 사회 복지학과, 경제학과, 경영학과, 무역학과, 국제관계학과, 자유전공학부 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0058",
+   "legacyKey": "한국사심화탐구",
+   "name": "한국사 심화 탐구",
+   "aliases": [],
+   "area": "사회",
+   "areaGroup": "사회",
+   "subArea": "역사",
+   "kind": "진로",
+   "kindSource": "offerings",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "한국사",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "none",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-seongbok"
+   ]
+  },
+  {
+   "subjectId": "sj-0059",
+   "legacyKey": "한국지리탐구",
+   "name": "한국지리 탐구",
+   "aliases": [],
+   "area": "사회",
+   "areaGroup": "사회",
+   "subArea": "지리",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통사",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "한국지리 탐구",
+   "summary": "한국지리 탐구는 국토 환경 및 지역의 지리적 이슈와 쟁점을 깊이 있게 이해하고, 탐구를 통해서 주요 문제에 대한 해결책 및 대안을 제시할 수 있는 시민으로서의 자질과 책임감 있는 태도를 기를 수 있는 지리 영역의 진로 선택 과목이다.",
+   "majorsHint": "행정학과, 도시계획학과, 도시공학과, 정치외교학과, 부동산학과, 건축학과, 관광학과, 통계학과, 공간정보 공학과, 지리학과, 지리교육과, 문화컨텐츠학과, 북한학과 지리 영역의 선택 과목",
+   "schoolCount": 3,
+   "offeredBy": [
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0060",
+   "legacyKey": "현대사회와윤리",
+   "name": "현대사회와 윤리",
+   "aliases": [],
+   "area": "사회",
+   "areaGroup": "사회",
+   "subArea": "윤리",
+   "kind": "일반",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통사",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "현대사회와 윤리",
+   "summary": "현대사회와 윤리 과목은 현대사회에서 발생하는 윤리 문제와 쟁점들을 동·서양의 윤리이론과 사회사상을 바탕으로 탐구하고 성찰하여 실천에 옮기는 역동적이고 실천적인 과정에 중점을 두는 과목으로, 윤리 문제에 대한 민감성과 도덕적 탐구 능력, 윤리적 성찰 및 실천 능력을 기르기 위한 일반 선택 과목이다.",
+   "majorsHint": "윤리교육과, 철학과, 사회학과, 정치외교학과, 유학⋅동양학과, 종교학과, 문화인류학과, 상담심리학과, 기독교철학과, 철학생명의료윤리학과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0061",
+   "legacyKey": "고급지구과학",
+   "name": "고급 지구과학",
+   "aliases": [],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "지구",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "고급 지구과학",
+   "summary": "고급 지구과학은 지구를 포함한 우주 공간에서 나타나는 현상에 대한 기본 개념을 바탕으로 지구과학적 탐구를 직간접적으로 체험하고 지구과학의 심화 개념과 탐구 능력을 충분히 활용하여 실생활에서의 문제해결 능력과 과학적 소양을 함양 하기 위한 과학 계열 진로 선택 과목이다.",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-suji"
+   ]
+  },
+  {
+   "subjectId": "sj-0062",
+   "legacyKey": "과학의역사와문화",
+   "name": "과학의 역사와 문화",
+   "aliases": [],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "과학융합",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "과학의 역사와 문화",
+   "summary": "과학의 역사와 문화에서는 과학적 소양을 갖추고 더불어 살아가는 창의적인 사람을 기르기 위해 과학의 역사에서 중요한 사건이나 사례를 중심으로, 과학과 사회, 경제, 문화 등의 상호작용을 탐색한다.",
+   "majorsHint": "역사학, 문화학, 예술사 관련학과, 과학사, 과학철학학과, 사회과학계열, 과학교육학과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0063",
+   "legacyKey": "과학탐구실험1",
+   "name": "과학탐구실험1",
+   "aliases": [],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "과학융합",
+   "kind": "공통",
+   "kindSource": "subject-info",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "base",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "과학탐구실험1",
+   "summary": "과학탐구실험1는 모든 학생이 과학의 기본 개념을 익히고 과학 탐구 능력과 태도를 길러, 자연과 일상생활에서 접하는 현상을 과학적으로 이해하고, 민주 시민으로서 개인과 사회 문제를 과학적으로 해결하고 참여⋅실천하는 역량 함양에 중점을 두는 공통 과목이다.",
+   "majorsHint": "물리학과, 기계공학과, 전자공학과, 고분자공학과, 나노화학공학과, 바이오나노화학과, 응용화학과, 생화학과, 생명과학과, 생명공학과, 식품공학과, 지질학과, 천문학과, 해양학과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0064",
+   "legacyKey": "과학탐구실험2",
+   "name": "과학탐구실험2",
+   "aliases": [],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "과학융합",
+   "kind": "공통",
+   "kindSource": "subject-info",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "base",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "과학탐구실험2",
+   "summary": "과학탐구실험2는 모든 학생이 과학의 기본 개념을 익히고 과학 탐구 능력과 태도를 길러, 자연과 일상생활에서 접하는 현상을 과학적으로 이해하고, 민주 시민으로서 개인과 사회 문제를 과학적으로 해결하고 참여⋅실천하는 역량 함양에 중점을 두는 공통 과목이다.",
+   "majorsHint": "물리학과, 기계공학과, 전자공학과, 고분자공학과, 나노화학공학과, 바이오나노화학과, 응용화학과, 생화학과, 생명과학과, 생명공학과, 식품공학과, 지질학과, 천문학과, 해양학과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0065",
+   "legacyKey": "기후변화와지속가능한세계",
+   "name": "기후변화와 지속가능한 세계",
+   "aliases": [
+    "기후변화와 지속 가능한 세계"
+   ],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "과학융합",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "기후변화와 지속가능한 세계",
+   "summary": "기후변화와 지속가능한 세계는 인간과 환경의 상호의존적 관계 인식을 토대로 통합적 관점에서 기후변화의 원인과 문제를 이해하고, 오늘날 인류가 처한 지구적 생태 위기를 극복하고 지속가능한 세계를 실현하기 위해 적극적으로 참여하고 실천 하는 생태 시민을 기를 수 있는 지리 영역의 융합 선택 과목이다.",
+   "majorsHint": "국제학과, 정치외교학과, 행정학과, 지구환경과학과, 환경과학과, 공간정보공학과, 생명공학부, 소방방재학과, 지리학과, 지리교육과 등 지리 영역의 선택 과목",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0066",
+   "legacyKey": "기후변화와환경생태",
+   "name": "기후변화와 환경생태",
+   "aliases": [],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "과학융합",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "기후변화와 환경생태",
+   "summary": "기후변화와 환경생태는 과학적 소양을 갖추고 더불어 살아가는 창의적인 사람을 기르기 위해 기후변화가 초래하는 환경과 생태계의 변화를 이해하고, 기후위기에 대응하는 인류의 노력을 탐색하는 융합 선택 과목이다.",
+   "majorsHint": "지구과학교육과, 과학교육학부, 지구환경과학과, 지구시스템과학과, 대기과학과, 지구해양학과, 에너지자원공학과, 자원공학과, 토목공학과, 해양시스템학과, 생물학과, 환경생태공학과, 환경공학과, 바이오환경공학과, 환경안전공학과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0067",
+   "legacyKey": "물리학",
+   "name": "물리학",
+   "aliases": [],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "물리",
+   "kind": "일반",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "물리학",
+   "summary": "물리학은 모든 자연 현상과 과학기술을 이해하는 데 필요한 기초 개념을 제공하고 자연 세계에 대한 본질적 이해를 추구하는 학문이다.",
+   "majorsHint": "물리학과, 물리교육과, 지질·지구 물리학부, 기계, 전기, 전자, 건축, 산업, 신소재, 컴퓨터정보, 나노, 화학공학, 자동차 등 공학 계열 등 물리학과 연계된 과목 선택",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0068",
+   "legacyKey": "물리학실험",
+   "name": "물리학 실험",
+   "aliases": [],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "물리",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "물리학 실험",
+   "summary": "물리학 실험은 역학, 전자기, 광학, 현대 물리와 관련된 다양한 주제의 실험을 설계하고 수행하여 물리 현상에 대한 이해를 심화하고 실생활에 응용할 수 있는 과학적 소양과 창의성을 함양하기 위한 과학 계열 융합 선택 과목이다.",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0069",
+   "legacyKey": "물질과에너지",
+   "name": "물질과 에너지",
+   "aliases": [],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "화학",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "물질과 에너지",
+   "summary": "물질과 에너지는 ‘화학’에서 학습한 내용을 심화하여 인류 문명의 발전과 우리 삶의 질 향상에 기여해 온 물질 현상과 에너지의 관계에 포함된 화학 개념과 법칙을 이해하고, 과학적 탐구 능력과 태도를 함양하여 개인과 사의 문제를 과학적이고 창의적으로 해결하고 화학 관련 진로 설정에 필요한 역량을 기르는 것을 목적으로 하는 진로 선택 과목이다.",
+   "majorsHint": "화학과, 화학공학과, 화학생명공학과, 생화학과, 의예과, 약학과, 간호학과, 식품영양학과, 정밀화학과, 환경화학과, 화학교육과, 나노공학과, 신소재공학과, 재료공학과 등 화학과 연계된 과목 선택",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0070",
+   "legacyKey": "생명과학",
+   "name": "생명과학",
+   "aliases": [],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "생명",
+   "kind": "일반",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "생명과학",
+   "summary": "생명과학은 생명과학 기초 소양을 갖추고 더불어 살아가는 창의적인 사람을 육성하기 위한 일반선택 과목이다.",
+   "majorsHint": "생명과학과, 생명공학과, 생명자원학과, 생물교육과, 생물학과, 생화학과, 식품공학과, 식품과학과, 약학과, 유전공학과, 융합생명 특성화과, 응용미생물학과, 응용생물과학과, 의생명시스템학부, 의학과, 임상병리학과, 화학생명공학과 등 생명과학과 연계된 과목 선택",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0071",
+   "legacyKey": "생명과학실험",
+   "name": "생명과학 실험",
+   "aliases": [],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "생명",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "생명과학 실험",
+   "summary": "생명과학 실험은 과학계열 고등학교 학생이나 일반계 고등학교에서 과학 과목 중점으로 교육과정을 이수하는 학생들이 심화된 수준의 생명과학의 학문적 체계와 내용을 탐구하기 위한 과학 계열 융합 선택 과목이다.",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0072",
+   "legacyKey": "생물의유전",
+   "name": "생물의 유전",
+   "aliases": [],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "생명",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "생물의 유전",
+   "summary": "생물의 유전은 생물의 유전 관련 다양한 생명 현상에 대한 학문적 흥미와 호기심을 갖도록 하며, 생명과학 탐구능력과 태도를 함양하여, 자연과 일상생활에서 접하게 되는 다양한 생명 현상에 대한 의문점들을 과학적이고 창의적으로 해결하는 생명과학의 학문적 소양을 기르는 데 중점을 두는 진로 선택 과목이다.",
+   "majorsHint": "생명과학과, 생명공학과, 생명자원학과, 생물교육과, 생물학과, 생화학과, 식품공학과, 식품과학과, 약학과, 유전공학과, 융합생명특성화과, 응용미생물학과, 응용생물과학과, 의생명 시스템학부, 의학과, 임상병리학과, 화학생명공학과 등 생명과학과 연계된 과목 선택",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0073",
+   "legacyKey": "세포와물질대사",
+   "name": "세포와 물질대사",
+   "aliases": [],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "생명",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "세포와 물질대사",
+   "summary": "세포와 물질대사는 생명의 기본 단위인 세포와 생명체에서 일어나는 다양한 생명 현상에 대한 학문적 흥미와 호기심을 갖도록 하며, 생명과학 탐구능력과 태도를 함양하여, 자연과 일상생활에서 접하게 되는 다양한 생명 현상에 대한 의문점들을 과학적이고 창의적으로 해결하는 생명과학의 학문적 소양을 기르는 데 중점을 두는 진로 선택 과목이다.",
+   "majorsHint": "생명과학과, 생명공학과, 생명자원학과, 생물교육과, 생물학과, 생화학과, 식품공학과, 식품과학과, 약학과, 유전공학과, 융합생명특성화과, 응용미생물학과, 응용생물과학과, 의생명 시스템학부, 의학과, 임상병리학과, 화학생명공학과 등 생명과학과 연계된 과목 선택",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0074",
+   "legacyKey": "역학과에너지",
+   "name": "역학과 에너지",
+   "aliases": [],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "물리",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "역학과 에너지",
+   "summary": "역학과 에너지는 역학의 기본 법칙을 이해히여 다양한 물체의 운동 및 열 현상과 열기관, 탄성파 등에 대해 학문적 흥미와 호기심을 갖도록 하며, 물리학 탐구 능력과 과학적 태도를 함양하여, 자연과 일상생활에서 접하게 되는 다양한 물리 현상에 대한 의문점들을 과학적이고 창의적으로 해결하는 물리학의 학문적 소양을 기르는 데 중점을 두는 진로 선택 과목이다.",
+   "majorsHint": "물리학과, 물리교육과, 지질·지구물리학부, 기계, 전기, 전자, 정보, 건축, 산업, 신소재, 컴퓨터, 나노, 화학공학, 자동차 등 공학 계열 물리학과 연계된 과목 선택",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0075",
+   "legacyKey": "융합과학탐구",
+   "name": "융합과학 탐구",
+   "aliases": [
+    "융합과학탐구"
+   ],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "과학융합",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "융합과학 탐구",
+   "summary": "융합과학 탐구는 빅데이터, 인공지능, 모의실험 등을 이용한 탐구 활동을 통해 융합과학의 역할과 필요성을 이해하고, 융합적 사고 능력과 탐구 능력을 함양하기 위한 융합 선택 과목이다.",
+   "majorsHint": "물리학과, 기계공학과, 전자공학과, 고분자공학과, 나노화학 공학과, 바이오나노화학과, 응용화학과, 생화학과, 생명과학과, 생명공학과, 식품공학과, 지질학과, 천문학과, 해양학과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0076",
+   "legacyKey": "전자기와양자",
+   "name": "전자기와 양자",
+   "aliases": [],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "물리",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "전자기와 양자",
+   "summary": "전자기와 양자는 전기와 자기의 상호작용, 빛의 성질과 응용, 원자보다 작은 미시세계 등에 대해 학문적 흥미와 호기심을 갖도록 하며, 물리학 탐구 능력과 과학적 태도를 함양하여, 자연과 일상생활에서 접하게 되는 다양한 물리 현상에 대한 의문점들을 과학적이고 창의적으로 해결하는 물리학의 학문적 소양을 기르는 데 중점을 두는 진로 선택 과목이다.",
+   "majorsHint": "물리학과, 물리교육과, 지질·지구물리학부, 기계, 전기, 전자, 정보, 건축, 산업, 신소재, 컴퓨터, 나노, 화학공학, 자동차 등 공학 계열 물리학과 연계된 과목 선택",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0077",
+   "legacyKey": "지구과학",
+   "name": "지구과학",
+   "aliases": [],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "지구",
+   "kind": "일반",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "지구과학",
+   "summary": "지구과학은 모든 학생이 지구시스템과학과 행성우주과학 분야의 기본 개념을 익히고 과학 탐구 능력과 태도를 길러, 자연과 일상생활에서 접하는 지구와 우주에 관한 현상을 과학적으로 이해하고, 민주 시민으로서 개인과 사회 문제를 과학적으로 해결하고 참여⋅실천하는 역량 함양하는 일반 선택 과목이다.",
+   "majorsHint": "지구과학교육과, 과학교육학부, 지구시스템과학과, 지구환경과학과, 천문학과(우주과학과), 항공우주공학과, 지구환경과학과, 대기과학과, 환경공학과, 해양학과, 지질학과, 에너지자원공학과, 자원공학과, 토목공학과, 해양시스템학과, 지리학과, 환경생태공학과",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0078",
+   "legacyKey": "지구시스템과학",
+   "name": "지구시스템과학",
+   "aliases": [],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "지구",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "지구시스템과학",
+   "summary": "지구시스템과학에서는 지구시스템의 구성 및 구성 권역들의 상호작용에 대한 기본 개념을 이해하고, 지구과학 탐구 능력과 태도를 길러, 시⋅공간적으로 밀접하게 관련된 생물권을 포함한 지구시스템 관련 현상을 과학적으로 이해하고, 민주 시민으로서 개인과 사회 문제를 과학적으로 해결하고 참여⋅실천하는 역량 함양에 중점을 둔 진로 선택 과목이다.",
+   "majorsHint": "지구과학교육과, 과학교육학부, 지구환경과학과, 지구시스템과학과, 대기과학과, 지구해양학과, 지질학과, 에너지자원공학과, 자원공학과, 토목공학과, 해양시스템학과, 토목공학과, 등 지구과학과 연계된 과목 선택",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0079",
+   "legacyKey": "통합과학1",
+   "name": "통합과학1",
+   "aliases": [],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "과학융합",
+   "kind": "공통",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "in",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "통합과학1",
+   "summary": "통합과학1 과목에서는 모든 학생이 과학의 기본 개념을 익히고, 과학 탐구 능력과 태도를 길러, 자연과 일상생활에서 접하는 현상을 과학적으로 이해하고, 민주 시민으로서 개인과 사회 문제를 해결하고 참여⋅실천하는 역량 함양에 중점을 두는 공통 과목이다.",
+   "majorsHint": "자연과학 계열, 공학 계열, 의학 및 보건 계열, 환경 및 지구과학 계열, 컴퓨터 과학, 수학, 생태학, 신소재 공학 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0080",
+   "legacyKey": "통합과학2",
+   "name": "통합과학2",
+   "aliases": [],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "과학융합",
+   "kind": "공통",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "in",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "통합과학2",
+   "summary": "통합과학2 과목에서는 모든 학생이 과학의 기본 개념을 익히고, 과학 탐구 능력과 태도를 길러, 자연과 일상생활에서 접하는 현상을 과학적으로 이해하고, 민주 시민으로서 개인과 사회 문제를 해결하고 참여⋅실천하는 역량 함양에 중점을 두는 공통 과목이다.",
+   "majorsHint": "자연과학 계열, 공학 계열, 의학 및 보건 계열, 환경 및 지구과학 계열, 컴퓨터 과학, 수학, 생태학, 신소재 공학 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0081",
+   "legacyKey": "행성우주과학",
+   "name": "행성우주과학",
+   "aliases": [],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "지구",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "행성우주과학",
+   "summary": "행성우주과학에서는 행성 지구를 비롯한 천체 및 우주과학 관련 기본 개념을 이해하고, 지구과학 탐구 능력과 태도를 길러, 시⋅공간적으로 밀접하게 관련된 지구 행성계를 포함한 천체와 우주 관련 현상을 과학적으로 이해하고, 민주 시민으로서 개인과 사회 문제를 과학적으로 해결하고 참여⋅실천하는 역량 함양에 중점을 둔 진로 선택 과목이다.",
+   "majorsHint": "지구과학교육과, 과학교육학부, 천문학과(우주과학과), 우주항공공학과, 천체물리학과, 물리학과",
+   "schoolCount": 3,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0082",
+   "legacyKey": "화학",
+   "name": "화학",
+   "aliases": [],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "화학",
+   "kind": "일반",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "화학",
+   "summary": "화학은 21세기를 살아가는 데 필요한 핵심역량과 시민으로서 갖추어야 할 화학에 대한 기초 소양을 함양하는 과목이다.",
+   "majorsHint": "화학과, 화학공학과, 화학생명공학과, 생화학과, 의예과, 약학과, 간호학과, 식품영양학과, 정밀화학과, 환경화학과, 화학교육과, 나노공학과, 신소재공학과, 재료공학과 등 화학과 연계된 과목 선택",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0083",
+   "legacyKey": "화학반응의세계",
+   "name": "화학 반응의 세계",
+   "aliases": [],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "화학",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "화학 반응의 세계",
+   "summary": "화학 반응의 세계는 다양한 화학 반응과 관련된 지식과 탐구 방법을 학습함으로써 과학적 탐구 능력과 태도를 함양하여 화학 관련 문제를 과학적이고 창의적으로 해결하는 능력을 길러 화학 관련 진로 설정에 필요한 역량을 기르는 것을 목적으로 하는 진로 선택 과목이다.",
+   "majorsHint": "화학과, 화학공학과, 화학생명공학과, 생화학과, 의예과, 약학과, 간호학과, 식품영양학과, 정밀화학과, 환경화학과, 화학교육과, 나노공학과, 신소재공학과, 재료공학과 등 화학과 연계된 과목 선택",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0084",
+   "legacyKey": "화학실험",
+   "name": "화학 실험",
+   "aliases": [],
+   "area": "과학",
+   "areaGroup": "과학",
+   "subArea": "화학",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "통과",
+     "scope": "out",
+     "confidence": "reported"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "화학 실험",
+   "summary": "화학 실험은 21세기를 살아가는 데 필요한 핵심역량과 물질 현상을 과학적이고 창의적으로 분석하고 예측할 수 있는 화학적 소양을 함양하는 과학 계열 융합 선택 과목이다.",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0085",
+   "legacyKey": "스포츠과학",
+   "name": "스포츠 과학",
+   "aliases": [],
+   "area": "체육",
+   "areaGroup": "기타",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "스포츠 과학",
+   "summary": "스포츠 과학은 중학교 체육의 스포츠 영역에 내재한 과학적 원리를 이론적, 실제적으로 더욱 심화하여 학습함으로써, 스포츠 현상을 체계적으로 분석하고 효율적으로 실천할 수 있는 자질을 길러주는 진로 선택 과목이다.",
+   "majorsHint": "체육교육과, 체육학과, 스포츠과학과, 글로벌스포츠산업학부, 스포츠학과, 국제스포츠학과, 생활체육학과, 사회체육학과, 스포츠산업과학부, 스포츠의학과, 골프산업학과 등",
+   "schoolCount": 3,
+   "offeredBy": [
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0086",
+   "legacyKey": "스포츠문화",
+   "name": "스포츠 문화",
+   "aliases": [],
+   "area": "체육",
+   "areaGroup": "기타",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "스포츠 문화",
+   "summary": "스포츠 문화는 중학교 체육의 스포츠 영역에 내재한 문화적 측면을 더욱 심화하여 학습함으로써, 인간이 스포츠 활동 과정에서 축적한 다양한 문화 양식을 이론적, 실제적으로 탐구하고 스포츠 경기와 통합하여 실천할 수 있는 자질을 길러 주는 진로 선택 과목이다.",
+   "majorsHint": "체육교육과, 체육학과, 글로벌스포츠산업학부, 레저스포츠학과, 스포츠학과, 생활체육학과, 사회체육학과, 스포츠청소년 지도학과, 스포츠산업과학부 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0087",
+   "legacyKey": "스포츠생활1",
+   "name": "스포츠 생활1",
+   "aliases": [],
+   "area": "체육",
+   "areaGroup": "기타",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "스포츠 생활1",
+   "summary": "스포츠 생활1은 중학교 〈체육〉의 전략형 스포츠의 영역형 스포츠와 생태형 스포츠의 생활ㆍ자연환경형 스포츠를 심화하여 학습함으로써, 스포츠 경기 유형에 적합한 체력을 강화하고 더욱 고도화된 스포츠 경기 수행 능력을 발휘하여 스포츠를 생활화할 수 있는 능력을 길러주는 융합 선택 과목이다.",
+   "majorsHint": "체육교육과, 체육학과, 스포츠과학과, 레저스포츠학과, 스포츠학과, 특수체육교육과, 생활체육학과, 사회체육학과, 스포츠산업과학부, 스포츠의학과, 운동재활학과, 경호학과, 골프산업학과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0088",
+   "legacyKey": "스포츠생활2",
+   "name": "스포츠 생활2",
+   "aliases": [],
+   "area": "체육",
+   "areaGroup": "기타",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "스포츠 생활2",
+   "summary": "스포츠 생활2는 중학교〈체육〉의 전략형 스포츠 영역의 네트형 스포츠와 필드형 스포츠를 심화하여 학습함으로써, 스포츠 경기 유형에 적합한 체력을 강화하고 더욱 고도화된 스포츠 경기 수행 능력을 발휘하여 스포츠를 생활화할 수 있는 능력을 길러주는 융합 선택 과목이다.",
+   "majorsHint": "체육교육과, 체육학과, 스포츠과학과, 레저스포츠학과, 스포츠학과, 특수체육교육과, 생활체육학과, 사회체육학과, 스포츠산업과학부, 스포츠의학과, 운동재활학과, 경호학과, 골프산업학과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0089",
+   "legacyKey": "운동과건강",
+   "name": "운동과 건강",
+   "aliases": [],
+   "area": "체육",
+   "areaGroup": "기타",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "운동과 건강",
+   "summary": "운동과 건강은 중학교 체육의 건강 활동과 체력 운동 영역을 더욱 심화하여 학습함으로써, 운동을 바탕으로 건강을 관리하고, 상황과 맥락에 맞는 개인 맞춤형 트레이닝을 통해 체력을 증진하며, 운동을 생활화하는 능력을 길러주는 진로 선택 과목이다.",
+   "majorsHint": "체육교육과, 체육학과, 스포츠과학과, 특수체육교육과, 생활체육학과, 사회체육학과, 스포츠의학과, 운동재활학과 등",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-pungdeok"
+   ]
+  },
+  {
+   "subjectId": "sj-0090",
+   "legacyKey": "체육1",
+   "name": "체육1",
+   "aliases": [],
+   "area": "체육",
+   "areaGroup": "기타",
+   "kind": "일반",
+   "kindSource": "subject-info",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "체육1",
+   "summary": "체육1은 중학교 체육의 건강 활동, 전략형 스포츠, 생태형 스포츠 영역을 더욱 심화하여 학습함으로써, 생애주기에 따라 건강을 유지 및 증진하고, 타인 및 환경과 상호작용하며 스포츠를 생활화할 수 있는 자질을 길러주는 일반 선택 과목이다.",
+   "majorsHint": "체육교육과, 체육학과, 스포츠과학과, 레저스포츠학과, 스포츠학과, 특수체육교육과, 생활체육학과, 사회체육학과, 스포츠산업과학부, 스포츠의학과, 운동재활학과, 경호학과, 골프산업학과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0091",
+   "legacyKey": "체육2",
+   "name": "체육2",
+   "aliases": [],
+   "area": "체육",
+   "areaGroup": "기타",
+   "kind": "일반",
+   "kindSource": "subject-info",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "체육2",
+   "summary": "체육2는 중학교 체육의 체력 운동, 기술형 스포츠, 표현 영역을 더욱 심화하여 학습함으로써, 과학적 원리와 방법에 따라 체력을 증진하고 스포츠와 표현 활동의 수행 능력을 함양하여 생활화할 수 있는 자질을 길러주는 일반 선택 과목이다.",
+   "majorsHint": "체육교육과, 체육학과, 스포츠과학과, 레저스포츠학과, 스포츠학과, 특수체육교육과, 생활체육학과, 사회체육학과, 스포츠산업과학부, 스포츠의학과, 운동재활학과, 경호학과, 골프산업학과, 무용과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0092",
+   "legacyKey": "드로잉",
+   "name": "드로잉",
+   "aliases": [],
+   "area": "예술",
+   "areaGroup": "기타",
+   "subArea": "미술",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "드로잉",
+   "summary": "드로잉은 주로 선을 활용하여 사물의 형태나 심상의 세계 등을 표현하는 방법을 탐색하는 실기 과목이며, 조형 활동의 기본적인 기법과 표현력을 높이며 다양한 장르의 작품 제작에도 폭넓게 활용할 수 있는 예술 교과 예술 계열의 진로 선택 과목이다.",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-seongbok"
+   ]
+  },
+  {
+   "subjectId": "sj-0093",
+   "legacyKey": "미술감상과비평",
+   "name": "미술 감상과 비평",
+   "aliases": [],
+   "area": "예술",
+   "areaGroup": "기타",
+   "subArea": "미술",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "미술 감상과 비평",
+   "summary": "미술 감상과 비평은 미술 작품의 미적 의미를 탐구하고 작품의 해석과 판단을 통해 미술을 깊이 있게 학습하는 예술 교과의 진로 선택 과목이다.",
+   "majorsHint": "큐레이터학과, 예술학과, 미학과, 회화과, 조소과, 시각디자인과, 조형디자인학과, 커뮤니케이션디자인학과, 디자인조형학부, 영상학과, 미술교육과, 서양화과, 한국화과, AI디자인학과 등",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-seongbok"
+   ]
+  },
+  {
+   "subjectId": "sj-0094",
+   "legacyKey": "미술창작",
+   "name": "미술 창작",
+   "aliases": [],
+   "area": "예술",
+   "areaGroup": "기타",
+   "subArea": "미술",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "미술 창작",
+   "summary": "미술 창작은 자신의 진로나 관심 분야와 미술을 연결하고 작품 제작을 통해 세계와 소통하는 방법을 창조하는 예술 교과의 진로 선택 과목이다.",
+   "majorsHint": "미술교육과, 회화과, 서양화과, 한국화과, 도예과, 시각디자인과, 멀티미디어디자인학과, 커뮤니케이션디자인학과, 산업디자인과, 패션디자인과, AI디자인학과 등",
+   "schoolCount": 2,
+   "offeredBy": [
+    "school-seongbok",
+    "school-suji"
+   ]
+  },
+  {
+   "subjectId": "sj-0095",
+   "legacyKey": "미술창작|음악감상과비평",
+   "name": "미술 창작↔음악 감상과 비평",
+   "aliases": [
+    "음악 감상과 비평↔미술 창작"
+   ],
+   "area": "예술",
+   "areaGroup": "기타",
+   "kind": "진로",
+   "kindSource": "offerings",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": true,
+   "components": [
+    "음악 감상과 비평",
+    "미술 창작"
+   ],
+   "componentIds": [
+    "sj-0100",
+    "sj-0094"
+   ],
+   "infoMatch": "auto",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0096",
+   "legacyKey": "미술창작|음악연주와창작",
+   "name": "미술 창작↔음악 연주와 창작",
+   "aliases": [
+    "미술 창작/음악 연주와 창작"
+   ],
+   "area": "예술",
+   "areaGroup": "기타",
+   "kind": "학교지정",
+   "kindSource": "offerings",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": true,
+   "components": [
+    "미술 창작",
+    "음악 연주와 창작"
+   ],
+   "componentIds": [
+    "sj-0094",
+    "sj-0101"
+   ],
+   "infoMatch": "auto",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-pungdeok"
+   ]
+  },
+  {
+   "subjectId": "sj-0097",
+   "legacyKey": "미술|음악",
+   "name": "미술↔음악",
+   "aliases": [
+    "음악/미술",
+    "음악↔미술"
+   ],
+   "area": "예술",
+   "areaGroup": "기타",
+   "kind": "일반",
+   "kindSource": "offerings",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": true,
+   "components": [
+    "음악",
+    "미술"
+   ],
+   "componentIds": [
+    null,
+    null
+   ],
+   "infoMatch": "auto",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0098",
+   "legacyKey": "미술과매체",
+   "name": "미술과 매체",
+   "aliases": [],
+   "area": "예술",
+   "areaGroup": "기타",
+   "subArea": "미술",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "미술과 매체",
+   "summary": "미술과 매체는 매체를 이해하고 활용 가능성을 탐색하여 창의적으로 표현하는 융합 선택 과목이며, 과거에서 현대까지의 매체를 탐색하고 역할을 이해함으로써 매체의 다양성과 융합 가능성을 발견하여 학생들은 다양한 매체로 표현된 작품이 시대를 반영한 결과물임을 이해하고 다양한 매체를 탐색하고 창의적으로 활용함으로써 타 분야로 확장할 수 있다.",
+   "majorsHint": "산업디자인학과, 판화과, 한국화과, 조소과, 금속공예과, 시각디자인학과, 멀티미디어디자인학과, 커뮤니케이션 디자인학과, AI디자인학과 등",
+   "schoolCount": 2,
+   "offeredBy": [
+    "school-seongbok",
+    "school-suji"
+   ]
+  },
+  {
+   "subjectId": "sj-0099",
+   "legacyKey": "시창·청음",
+   "name": "시창·청음",
+   "aliases": [],
+   "area": "예술",
+   "areaGroup": "기타",
+   "subArea": "음악",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "시창ㆍ청음",
+   "summary": "시창·청음은 음악의 본질과 가치를 심도 있게 경험함으로써, 음악 정보의 이해와 소통을 심화하고, 모든 음악 활동의 기초가 되는 악보를 보고 부르는 능력, 듣고 적는 능력, 듣고 분석하는 능력, 듣고 연주하는 능력 등을 체계적으로 학습하여 음악적 문해력을 신장하기 위한 예술 계열의 진로 선택 과목이다.",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-seongbok"
+   ]
+  },
+  {
+   "subjectId": "sj-0100",
+   "legacyKey": "음악감상과비평",
+   "name": "음악 감상과 비평",
+   "aliases": [],
+   "area": "예술",
+   "areaGroup": "기타",
+   "subArea": "음악",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "음악 감상과 비평",
+   "summary": "음악 감상과 비평은 생활 속 다양한 음악 감상과 비평 활동을 통하여 음악의 미적ㆍ창의적ㆍ문화적ㆍ사회적 가치와 안목을 넓히고, 음악의 핵심 원리와 개념을 이해하고 연계하여 음악을 감상하고 비평할 수 있는 능력을 함양시키는 진로 선택 과목이다.",
+   "majorsHint": "피아노과, 성악과, 작곡과, 관현악과, 국악과, 음악교육과, 실용음악과, 종교음악과, 반주학과, 뮤지컬학과, 공연제작과, 음향제작과 등",
+   "schoolCount": 2,
+   "offeredBy": [
+    "school-seongbok",
+    "school-suji"
+   ]
+  },
+  {
+   "subjectId": "sj-0101",
+   "legacyKey": "음악연주와창작",
+   "name": "음악 연주와 창작",
+   "aliases": [
+    "음악연주와 창작"
+   ],
+   "area": "예술",
+   "areaGroup": "기타",
+   "subArea": "음악",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "음악 연주와 창작",
+   "summary": "음악 연주와 창작은 학습자가 다양한 연주와 창작 활동을 통하여 음악의 본질과 여러 가치를 경험함으로써 창의적으로 음악을 표현할 줄 아는 음악적 능력을 함양하게 하고, 평생의 삶 속에서 공동체와 소통하며 주체적으로 연주와 창작 활동에 참여하여 문화적으로 다양한 음악을 포용하고 즐길 수 있는 역량과 태도를 형성하는 데 중점을 두는 진로 선택 과목이다.",
+   "majorsHint": "피아노과, 성악과, 작곡과, 관현악과, 국악과, 음악교육과, 실용음악과, 종교음악과, 반주학과, 뮤지컬학과, 공연제작과, 음향제작과 등",
+   "schoolCount": 2,
+   "offeredBy": [
+    "school-seongbok",
+    "school-suji"
+   ]
+  },
+  {
+   "subjectId": "sj-0102",
+   "legacyKey": "음악과미디어",
+   "name": "음악과 미디어",
+   "aliases": [],
+   "area": "예술",
+   "areaGroup": "기타",
+   "subArea": "음악",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "음악과 미디어",
+   "summary": "음악과 미디어는 학습자가 미디어와 관련한 음악의 다양한 역할을 경험함으로써 변화해가는 실제 삶에서 주체적인 음악 활용자이자 다양한 사회ㆍ문화ㆍ산업 등에서의 음악 협력자로 역할을 수행할 수 있도록 하는 융합 선택 과목이다.",
+   "majorsHint": "피아노과, 성악과, 작곡과, 관현악과, 국악과, 음악교육과, 실용음악과, 종교음악과, 반주학과, 뮤지컬학과, 공연제작과, 음향제작과 등",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-seongbok"
+   ]
+  },
+  {
+   "subjectId": "sj-0103",
+   "legacyKey": "기술·가정|정보",
+   "name": "기술·가정↔정보",
+   "aliases": [
+    "기술·가정/정보"
+   ],
+   "area": "기술·가정/정보",
+   "areaGroup": "기타",
+   "kind": "일반",
+   "kindSource": "offerings",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": true,
+   "components": [
+    "기술·가정",
+    "정보"
+   ],
+   "componentIds": [
+    null,
+    "sj-0111"
+   ],
+   "infoMatch": "auto",
+   "schoolCount": 2,
+   "offeredBy": [
+    "school-seongbok",
+    "school-suji"
+   ]
+  },
+  {
+   "subjectId": "sj-0104",
+   "legacyKey": "기술·가정|한문",
+   "name": "기술·가정↔한문",
+   "aliases": [
+    "기술가정/한문"
+   ],
+   "area": "기술·가정/정보",
+   "areaGroup": "기타",
+   "kind": "학교지정",
+   "kindSource": "offerings",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": true,
+   "components": [
+    "기술·가정",
+    "한문"
+   ],
+   "componentIds": [
+    null,
+    null
+   ],
+   "infoMatch": "auto",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-pungdeok"
+   ]
+  },
+  {
+   "subjectId": "sj-0105",
+   "legacyKey": "데이터과학",
+   "name": "데이터 과학",
+   "aliases": [],
+   "area": "기술·가정/정보",
+   "areaGroup": "기타",
+   "subArea": "정보",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "데이터 과학",
+   "summary": "데이터 과학은 컴퓨팅 사고력을 바탕으로 디지털 사회에서의 데이터의 역할과 잠재 가치를 인식하고, 데이터 과학 기반의 문제 해결 과정의 중요성을 이해하며, 다양한 분야의 문제 해결과 합리적인 의사결정을 위한 통찰력 향상에 중점을 두는 진로 선택 과목이다.",
+   "majorsHint": "컴퓨터 공학과, 컴퓨터 과학과, 소프트웨어학과, 인공 지능학과, 데이터 과학과, 전기·정보학과, 빅데이터 분석과, 정보보호과, 뇌인지과학융합과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0106",
+   "legacyKey": "로봇과공학세계",
+   "name": "로봇과 공학세계",
+   "aliases": [],
+   "area": "기술·가정/정보",
+   "areaGroup": "기타",
+   "subArea": "기술·가정",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "로봇과 공학세계",
+   "summary": "로봇과 공학세계는 과학, 수학, 정보 등 다양한 과목의 기초 지식을 활용하여 기술의 내용과 수준을 심화ㆍ확장함과 동시에 로봇의 구성 요소, 동력전달장치와 원리, 제어를 위한 알고리즘 작성 방법 등에 대하여 학습하는 기술 영역의 진로 선택 과목이다.",
+   "majorsHint": "로봇공학과, 메카트로닉스공학과, 항공우주공학과, IT융합학과, 기계, 토목ㆍ건축, 교통ㆍ운송, 산업, 소재ㆍ재료, 전기ㆍ전자, 에너지, 컴퓨터·통신, 화공 등 공학 계열 전 학과",
+   "schoolCount": 2,
+   "offeredBy": [
+    "school-seongbok",
+    "school-suji"
+   ]
+  },
+  {
+   "subjectId": "sj-0107",
+   "legacyKey": "생활과학탐구",
+   "name": "생활과학 탐구",
+   "aliases": [],
+   "area": "기술·가정/정보",
+   "areaGroup": "기타",
+   "subArea": "기술·가정",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "생활과학 탐구",
+   "summary": "생활과학 탐구는 인간 행동 및 생활환경에 대한 건강한 관심과 관찰을 바탕으로 심화된 탐구를 통해 개인 및 사회 공동체의 삶의 질을 향상시키는 생활 역량을 기르며, 생활과학 분야(의, 식, 주, 아동, 가족, 소비자 등)와 생활과학 관련 여러 분야(심리상담 및 복지 분야, 보건 및 간호의료 계열 등)의 직업을 탐색하여 진로를 개발할 수 있도록 돕는 가정 영역의 진로 선택 과목이다.",
+   "majorsHint": "생활복지주거학과, 소비자아동학과, 소비자학과, 식품 공학과, 식품영양학과, 아동가족학과, 주거환경학과, 의류학과, 패션디자인과, 심리ㆍ상담과, 유아교육과, 사회복지학과 등",
+   "schoolCount": 2,
+   "offeredBy": [
+    "school-seongbok",
+    "school-suji"
+   ]
+  },
+  {
+   "subjectId": "sj-0108",
+   "legacyKey": "소프트웨어와생활",
+   "name": "소프트웨어와 생활",
+   "aliases": [],
+   "area": "기술·가정/정보",
+   "areaGroup": "기타",
+   "subArea": "정보",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "소프트웨어와 생활",
+   "summary": "소프트웨어와 생활은 디지털 사회에서의 실생활과 다양한 학문 분야의 문제를 해결하며 새로운 가치를 창출하는 소프트웨어의 가치와 필요성을 인식하고, 융합의 관점에서 문제를 효과적이고 창의적으로 해결하는 능력을 배양하여 사회적 가치와 기여를 위한 가치관과 태도를 기르는 융합 선택 과목이다.",
+   "majorsHint": "컴퓨터 공학과, 컴퓨터 과학과, 소프트웨어학과, 인공 지능학과, 데이터 과학과, 전기·정보학과, 빅데이터 분석과, 정보보호과, 뇌인지과학융합과 등",
+   "schoolCount": 3,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0109",
+   "legacyKey": "아동발달과부모",
+   "name": "아동발달과 부모",
+   "aliases": [],
+   "area": "기술·가정/정보",
+   "areaGroup": "기타",
+   "subArea": "기술·가정",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "아동발달과 부모",
+   "summary": "아동발달과 부모는 아동발달에 대한 이해와 양육에 관련된 다양한 주제를 융합하여 다양한 유형의 건강한 부모됨을 실천할 수 있는 실제적 역량을 함양하고 아동의 건강한 발달을 지원할 수 있도록 돌봄 역량을 키우는데 목표가 있는 가정 영역의 융합 선택 과목이다.",
+   "majorsHint": "유아교육과, 초등교육과, 가정교육과, 교육학과, 가족상담ㆍ 치료학과, 청소년지도학과, 사회학과, 식품공학과, 식품 영양학과, 아동학과, 아동가족학과, 심리ㆍ상담과, 사회 복지학과 간호학과, 보건관리학과 등",
+   "schoolCount": 2,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-suji"
+   ]
+  },
+  {
+   "subjectId": "sj-0110",
+   "legacyKey": "인공지능기초",
+   "name": "인공지능 기초",
+   "aliases": [],
+   "area": "기술·가정/정보",
+   "areaGroup": "기타",
+   "subArea": "정보",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "인공지능 기초",
+   "summary": "인공지능 기초는 컴퓨터과학, 데이터 과학, 정보시스템 등의 학문을 바탕으로, 인공지능이 개인의 삶과 다양한 분야에 미치는 직접적인 영향에 대한 깊은 이해를 제공하며, 미래 사회의 변화와 불확실성에 대응하여 인공지능을 안전하고 책임 있게 사용하는 주체적 사용자로서의 자기주도성을 기르는 디지털 민주시민 육성을 목표로 하는 진로 선택 과목이다.",
+   "majorsHint": "컴퓨터 공학과, 컴퓨터 과학과, 소프트웨어학과, 인공지능학과, 데이터 과학과, 전기·정보학과, 빅데이터 분석과, 정보보호과, 뇌인지과학융합과 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0111",
+   "legacyKey": "정보",
+   "name": "정보",
+   "aliases": [],
+   "area": "기술·가정/정보",
+   "areaGroup": "기타",
+   "subArea": "정보",
+   "kind": "일반",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "정보",
+   "summary": "정보는 미래 사회에서 필요한 데이터 이해와 소프트웨어, 인공지능 기본 역량 및 자기 주도성을 기반으로, 컴퓨팅을 활용한 문제 해결과 컴퓨팅 사고력을 중심으로 지식정보처리, 창의적 사고, 협력적 소통 역량 및 공동체 역량을 개발하여 디지털 민주시민으로 성장하는 일반 선택 과목이다.",
+   "majorsHint": "컴퓨터 공학과, 컴퓨터 과학과, 소프트웨어학과, 인공 지능학과, 데이터 과학과, 전기·정보학과, 빅데이터 분석과, 정보보호과, 뇌인지과학융합과 등",
+   "schoolCount": 2,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0112",
+   "legacyKey": "정보처리와관리",
+   "name": "정보 처리와 관리",
+   "aliases": [],
+   "area": "기술·가정/정보",
+   "areaGroup": "기타",
+   "subArea": "정보",
+   "kind": "진로",
+   "kindSource": "offerings",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "none",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0113",
+   "legacyKey": "정보과학",
+   "name": "정보과학",
+   "aliases": [],
+   "area": "기술·가정/정보",
+   "areaGroup": "기타",
+   "subArea": "정보",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "정보과학",
+   "summary": "정보과학은 컴퓨터과학과 소프트웨어 공학에 대한 깊은 이해를 바탕으로 디지털 사회의 복잡한 문제를 분석하고 해결하는 능력을 키우며, 이를 통해 프로그래밍, 컴퓨팅 시스템의 활용, 문제 해결 역량 등을 개발하는 과학 계열의 진로 선택 과목이다.",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0114",
+   "legacyKey": "지식재산일반",
+   "name": "지식재산 일반",
+   "aliases": [],
+   "area": "기술·가정/정보",
+   "areaGroup": "기타",
+   "subArea": "기술·가정",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "지식 재산 일반",
+   "summary": "지식 재산 일반은 발명과 지식재산권에 대한 역사와 사례 탐구를 통하여 지식재산권의 가치와 중요성을 이해하고 발명 문제해결 과정을 통하여 새로운 지식재산권 창출 경험을 제공한다.",
+   "majorsHint": "지식재산학과, 저작권학과, 기술교육과, 디지털콘텐츠 학과, 법학과, 벤처창업학과, 산업경영과, 창업경영과, 발명특허학과 등",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-suji"
+   ]
+  },
+  {
+   "subjectId": "sj-0115",
+   "legacyKey": "창의공학설계",
+   "name": "창의 공학 설계",
+   "aliases": [],
+   "area": "기술·가정/정보",
+   "areaGroup": "기타",
+   "subArea": "기술·가정",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "창의 공학 설계",
+   "summary": "창의 공학 설계는 우리의 삶 속에서 다양한 창의 공학 설계 문제를 찾고 아이디어 구상과 시각화, 디지털 기반 공학 설계, 재료 특성 및 시제품 제작, 안전한 도구 사용, 시제품 평가 등의 과정을 통해 융합 지식의 활용을 탐구하여 공학자에게 필요한 창의성과 문제해결 능력, 협력적 의사소통 능력을 기를 수 있도록 돕는 기술 영역의 융합 선택 과목이다.",
+   "majorsHint": "건축, 교통ㆍ운송, 기계ㆍ금속, 산업, 소재ㆍ재료, 전기ㆍ전자, 정밀ㆍ에너지, 컴퓨터ㆍ통신, 토목ㆍ도시, 화공 등 공학 계열 전 학과",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-pungdeok"
+   ]
+  },
+  {
+   "subjectId": "sj-0116",
+   "legacyKey": "프로그래밍",
+   "name": "프로그래밍",
+   "aliases": [],
+   "area": "기술·가정/정보",
+   "areaGroup": "기타",
+   "subArea": "정보",
+   "kind": "진로",
+   "kindSource": "offerings",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "none",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-suji"
+   ]
+  },
+  {
+   "subjectId": "sj-0117",
+   "legacyKey": "피지컬AI와사고방법론프로젝트",
+   "name": "피지컬AI와 사고방법론 프로젝트",
+   "aliases": [],
+   "area": "기술·가정/정보",
+   "areaGroup": "기타",
+   "kind": "융합",
+   "kindSource": "offerings",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "none",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-suji"
+   ]
+  },
+  {
+   "subjectId": "sj-0118",
+   "legacyKey": "관광일본어",
+   "name": "관광 일본어",
+   "aliases": [],
+   "area": "제2외국어/한문/교양",
+   "areaGroup": "기타",
+   "subArea": "제2외국어",
+   "kind": "진로",
+   "kindSource": "offerings",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "제2외",
+     "scope": "out",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "ambiguous",
+   "schoolCount": 2,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0119",
+   "legacyKey": "관광중국어",
+   "name": "관광 중국어",
+   "aliases": [],
+   "area": "제2외국어/한문/교양",
+   "areaGroup": "기타",
+   "subArea": "제2외국어",
+   "kind": "진로",
+   "kindSource": "offerings",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "제2외",
+     "scope": "out",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "ambiguous",
+   "schoolCount": 3,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0120",
+   "legacyKey": "논리와사고",
+   "name": "논리와 사고",
+   "aliases": [],
+   "area": "제2외국어/한문/교양",
+   "areaGroup": "기타",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "논리와 사고",
+   "summary": "논리와 사고 과목은 주장을 뒷받침하기 위해 제시된 근거가 충분한지 검토하고, 증거로부터 추론할 수 있는 가설이 무엇이고 그 추론이 얼마나 훌륭한지 따져보는 것을 배우는 교양 교과의 진로 선택 과목이다.",
+   "majorsHint": "철학과, 경제학과, 법학과, 수학과, 윤리학과 등",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0121",
+   "legacyKey": "논술",
+   "name": "논술",
+   "aliases": [],
+   "area": "제2외국어/한문/교양",
+   "areaGroup": "기타",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "auto",
+   "infoName": "논술",
+   "summary": "논술은 학생이 다양한 유형으로 제공되는 정보와 자료를 수집, 분석, 평가할 수 있으며, 해결책이나 견해를 설정하고 이를 정당화하는 근거를 찾을 수 있는 능력을 함양하는 교양 교과의 융합 선택 과목이다.",
+   "majorsHint": "국어국문학과, 문예창작비평학과, 신문방송학과, 언론정보학과, 철학과 등",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0122",
+   "legacyKey": "생활과한문",
+   "name": "생활과 한문",
+   "aliases": [],
+   "area": "제2외국어/한문/교양",
+   "areaGroup": "기타",
+   "subArea": "한문",
+   "kind": "학교지정",
+   "kindSource": "offerings",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "제2외",
+     "scope": "out",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "none",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-pungdeok"
+   ]
+  },
+  {
+   "subjectId": "sj-0123",
+   "legacyKey": "스페인어",
+   "name": "스페인어",
+   "aliases": [],
+   "area": "제2외국어/한문/교양",
+   "areaGroup": "기타",
+   "subArea": "제2외국어",
+   "kind": "일반",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "제2외",
+     "scope": "in",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "스페인어",
+   "summary": "스페인어는 스페인어를 처음 배우는 학습자가 일상생활에서 자주 사용되는 기본 표현을 학습하여 기초적인 스페인어 의사소통 능력을 함양하고, 스페인어권 문화를 이해함으로써 타 문화에 대한 이해력과 포용력을 갖춘 세계시민으로서의 능력을 기를 수 있는 제2외국어/한문 영역의 일반 선택 과목이다.",
+   "majorsHint": "서어서문학과, 스페인어통번역학과, 유럽학부, 중남미 관련학과, 국제학부, 언어학과, 언어인지과학과, 글로벌 경영학 등",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-suji"
+   ]
+  },
+  {
+   "subjectId": "sj-0124",
+   "legacyKey": "스페인어회화",
+   "name": "스페인어 회화",
+   "aliases": [],
+   "area": "제2외국어/한문/교양",
+   "areaGroup": "기타",
+   "subArea": "제2외국어",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "제2외",
+     "scope": "out",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "스페인어 회화",
+   "summary": "스페인어 회화는 학생들이 일반 선택과목인 「스페인어」에서 습득한 어휘, 의사소통 표현, 문화에 대한 지식을 바탕으로 일상생활에서 스페인어로 소통할 수 있도록 듣고 말하는 능력을 배양하여 세계와 소통하고 조화를 이루는 협력적 의사 소통의 주체로 성장할 수 있는 제2외국어/한문 영역의 진로 선택 과목이다.",
+   "majorsHint": "서어서문학과, 스페인어통번역학과, 유럽학부, 중남미 관련학과, 국제학부, 언어학과, 언어인지과학과, 글로벌 경영학 등",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-suji"
+   ]
+  },
+  {
+   "subjectId": "sj-0125",
+   "legacyKey": "스페인어권문화",
+   "name": "스페인어권 문화",
+   "aliases": [],
+   "area": "제2외국어/한문/교양",
+   "areaGroup": "기타",
+   "subArea": "제2외국어",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "제2외",
+     "scope": "out",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "스페인어권 문화",
+   "summary": "스페인어권 문화는 스페인어권 문화에 대해 상호문화적 관점에서 이해하고, 이러한 이해를 바탕으로 스페인어 의사소통 능력을 함양하는 과목이다.",
+   "majorsHint": "서어서문학과, 스페인어통번역학과, 유럽학부, 중남미 관련학과, 국제학부, 언어학과, 언어인지과학과, 글로벌경영학 등",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-suji"
+   ]
+  },
+  {
+   "subjectId": "sj-0126",
+   "legacyKey": "심화스페인어",
+   "name": "심화 스페인어",
+   "aliases": [],
+   "area": "제2외국어/한문/교양",
+   "areaGroup": "기타",
+   "subArea": "제2외국어",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "제2외",
+     "scope": "out",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "심화 스페인어",
+   "summary": "심화 스페인어는 학생들이 일반 선택 과목「스페인어」에서 습득한 기초적인 스페인어 의사소통 능력을 확장·심화하는 과목으로, 스페인어 의사소통 능력 함양과 함께 스페인어권 세계에 대한 이해의 폭을 넓힘으로써 세계 시민으로 성장하는 데 필요한 능력을 강화할 수 있는 제2외국어/한문 영역의 진로 선택 과목이다.",
+   "majorsHint": "서어서문학과, 스페인어통번역학과, 유럽학부, 중남미 관련학과, 국제학부, 언어학과, 언어인지과학과, 글로벌 경영학 등",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-suji"
+   ]
+  },
+  {
+   "subjectId": "sj-0127",
+   "legacyKey": "심화일본어",
+   "name": "심화 일본어",
+   "aliases": [],
+   "area": "제2외국어/한문/교양",
+   "areaGroup": "기타",
+   "subArea": "제2외국어",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "제2외",
+     "scope": "out",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "심화 일본어",
+   "summary": "심화 일본어는 학생들이 일반 선택 과목「일본어」에서 습득한 기초적인 일본어 의사소통 능력을 확장·심화하는 과목으로, 읽기와 쓰기 능력 향상에 보다 중점을 두고, 다양한 매체를 활용하여 정보를 수집하고 상호문화적 관점에서 일본 문화를 폭넓게 이해하는 제2외국어/한문 영역의 진로 선택 과목이다.",
+   "majorsHint": "정치외교학과, 일어일문학과, 일어교육과, 아시아학부, 아시아언어문명학과, 유학·동양학과, 언어학과, 언어 인지과학과, 글로벌경영학 등",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-seongbok"
+   ]
+  },
+  {
+   "subjectId": "sj-0128",
+   "legacyKey": "심화중국어",
+   "name": "심화 중국어",
+   "aliases": [],
+   "area": "제2외국어/한문/교양",
+   "areaGroup": "기타",
+   "subArea": "제2외국어",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "제2외",
+     "scope": "out",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "심화 중국어",
+   "summary": "심화 중국어는 학생들이 일반 선택 과목「중국어」에서 습득한 기초적인 중국어 의사소통 능력을 확장ㆍ심화하는 과목으로, 중국에 대한 이해의 폭을 넓히고 전 세계 중국어 사용자들과 소통하고 교류하는 데 필요한 능력을 신장시키며 진로와 중국과의 연계성을 모색할 수 있는 제2외국어/한문 영역의 진로 선택 과목이다.",
+   "majorsHint": "정치외교학과, 중어중문학과, 중국어교육과, 아시아학부, 유학ㆍ동양학과, 한문학과, 한문교육과, 국제학부, 언어학과, 언어인지과학과, 글로벌경영학 등",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-suji"
+   ]
+  },
+  {
+   "subjectId": "sj-0129",
+   "legacyKey": "언어생활과한자",
+   "name": "언어생활과 한자",
+   "aliases": [],
+   "area": "제2외국어/한문/교양",
+   "areaGroup": "기타",
+   "subArea": "한문",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "제2외",
+     "scope": "out",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "언어생활과 한자",
+   "summary": "언어생활과 한자는 올바른 언어생활을 위해 한문 교육용 기초 한자를 중심으로 한 핵심적⋅필수적 한자 어휘를 익혀 원활하고 협력적인 의사소통 능력을 기름으로써, 공감 능력과 공동체 내에서 소통하는 능력을 기르고, 언어생활에 필요한 한자와 한자 어휘를 실생활 및 다양한 분야에서 활용할 수 있는 능력을 함양하는 융합 선택 과목이다.",
+   "majorsHint": "법학과, 행정학과, 국어국문학과, 동양어문 관련 학과, 철학과, 사학과, 문헌정보학과, 정치외교학과, 신문방송 학과, 고고학과, 문화인류학과, 한문교육과, 한의예과 등",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-pungdeok"
+   ]
+  },
+  {
+   "subjectId": "sj-0130",
+   "legacyKey": "일본문화",
+   "name": "일본 문화",
+   "aliases": [],
+   "area": "제2외국어/한문/교양",
+   "areaGroup": "기타",
+   "subArea": "제2외국어",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "제2외",
+     "scope": "out",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "일본 문화",
+   "summary": "일본 문화는 일본의 일상생활 및 사회 문화 전반에 관한 내용을 폭넓게 이해하고 기초적인 의사소통 능력을 배양하며, 우리 문화에 대한 주체적인 태도를 바탕으로 일본의 다양한 유무형의 문화 자산과 생활양식, 가치관 및 세계관 등을 상호 문화적 관점에서 깊이 이해할 수 있는 제2외국어/한문 영역의 융합 선택 과목이다.",
+   "majorsHint": "정치외교학과, 일어일문학과, 일어교육과, 아시아학부, 아시아언어문명학과, 유학·동양학과, 언어학과, 언어 인지과학과, 글로벌경영학 등",
+   "schoolCount": 3,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0131",
+   "legacyKey": "일본어",
+   "name": "일본어",
+   "aliases": [],
+   "area": "제2외국어/한문/교양",
+   "areaGroup": "기타",
+   "subArea": "제2외국어",
+   "kind": "일반",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "제2외",
+     "scope": "in",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "일본어",
+   "summary": "일본어는 일본어를 처음 배우는 학습자들이 일상생활과 관련된 의사소통 기본 표현을 학습함으로써 기초적인 일본어 의사소통 능력을 함양하고, 일본 문화에 대한 폭넓은 이해를 바탕으로 상호문화적 관점에서 타 문화에 대한 포용력과 이해력을 신장하는 제2외국어/한문 영역의 일반 선택 과목이다.",
+   "majorsHint": "정치외교학과, 일어일문학과, 일어교육과, 아시아학부, 아시아언어문명학과, 유학·동양학과, 언어학과, 언어 인지과학과, 글로벌경영학 등",
+   "schoolCount": 3,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0132",
+   "legacyKey": "일본어회화",
+   "name": "일본어 회화",
+   "aliases": [],
+   "area": "제2외국어/한문/교양",
+   "areaGroup": "기타",
+   "subArea": "제2외국어",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "제2외",
+     "scope": "out",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "일본어 회화",
+   "summary": "일본어 회화는 학생들이 일반 선택과목인「일본어」에서 습득한 어휘, 의사소통 표현, 문화에 대한 지식을 바탕으로 일상 생활의 다양한 분야에서 자연스럽고 유창하게 소통할 수 있는 능력을 배양하는 제2외국어/한문 영역의 진로 선택 과목이다.",
+   "majorsHint": "정치외교학과, 일어일문학과, 일어교육과, 아시아학부, 아시아언어문명학과, 유학·동양학과, 언어학과, 언어 인지과학과, 글로벌경영학 등",
+   "schoolCount": 3,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0133",
+   "legacyKey": "주제탐구프로젝트Ⅰ",
+   "name": "주제탐구 프로젝트Ⅰ",
+   "aliases": [],
+   "area": "제2외국어/한문/교양",
+   "areaGroup": "기타",
+   "kind": "융합",
+   "kindSource": "offerings",
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "infoMatch": "none",
+   "schoolCount": 1,
+   "offeredBy": [
+    "school-suji"
+   ]
+  },
+  {
+   "subjectId": "sj-0134",
+   "legacyKey": "중국문화",
+   "name": "중국 문화",
+   "aliases": [],
+   "area": "제2외국어/한문/교양",
+   "areaGroup": "기타",
+   "subArea": "제2외국어",
+   "kind": "융합",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "제2외",
+     "scope": "out",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "중국 문화",
+   "summary": "중국 문화는 중국의 문화와 생활을 직간접적으로 체험하면서 상호문화적 관점에서 중국의 문화를 이해하고, 공유하며, 창조적으로 변용하는 동시에 우리 문화를 새롭게 발견하는 주체적 태도를 형성할 수 있는 제2외국어/한문 영역의 융합 선택 과목이다.",
+   "majorsHint": "정치외교학과, 중어중문학과, 중국어교육과, 아시아학부, 유학ㆍ동양학과, 한문학과, 한문교육과, 국제학부, 언어학과, 언어인지과학과, 글로벌경영학 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0135",
+   "legacyKey": "중국어",
+   "name": "중국어",
+   "aliases": [],
+   "area": "제2외국어/한문/교양",
+   "areaGroup": "기타",
+   "subArea": "제2외국어",
+   "kind": "일반",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "제2외",
+     "scope": "in",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "중국어",
+   "summary": "중국어는 중국어를 처음 접하는 학습자들이 일상생활에서 자주 사용되는 기본 표현을 학습하여 기초적인 중국어 의사 소통 능력을 함양하고, 중국 문화에 대한 이해를 통해 타 문화에 대한 포용성과 문화적 감수성, 공동체 소양을 기를 수 있는 제2외국어/한문 영역의 일반 선택 과목이다.",
+   "majorsHint": "정치외교학과, 중어중문학과, 중국어교육과, 아시아학부, 유학ㆍ동양학과, 한문학과, 한문교육과, 국제학부, 언어학과, 언어인지과학과, 글로벌경영학 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  },
+  {
+   "subjectId": "sj-0136",
+   "legacyKey": "중국어회화",
+   "name": "중국어 회화",
+   "aliases": [],
+   "area": "제2외국어/한문/교양",
+   "areaGroup": "기타",
+   "subArea": "제2외국어",
+   "kind": "진로",
+   "kindSource": "subject-info",
+   "defaultCredits": 4,
+   "rev": {
+    "r2022": true,
+    "predecessors2015": []
+   },
+   "isComposite": false,
+   "csat": [
+    {
+     "regimeId": "csat-2028",
+     "area": "제2외",
+     "scope": "out",
+     "confidence": "unconfirmed"
+    }
+   ],
+   "infoMatch": "auto",
+   "infoName": "중국어 회화",
+   "summary": "중국어 회화는 학생들이 일반 선택과목인「중국어」에서 습득한 어휘, 의사소통 표현, 문화에 대한 지식을 바탕으로 일상 생활에서 다양한 매체를 활용하여 자연스럽고 유창하게 소통할 수 있는 능력을 기르고, 진로와 중국과의 연계성을 모색할 수 있는 제2외국어/한문 영역의 진로 선택 과목이다.",
+   "majorsHint": "정치외교학과, 중어중문학과, 중국어교육과, 아시아학부, 유학ㆍ동양학과, 한문학과, 한문교육과, 국제학부, 언어학과, 언어인지과학과, 글로벌경영학 등",
+   "schoolCount": 4,
+   "offeredBy": [
+    "school-pungdeok",
+    "school-seongbok",
+    "school-suji",
+    "school-yonginheungcheon"
+   ]
+  }
+ ]
+}
