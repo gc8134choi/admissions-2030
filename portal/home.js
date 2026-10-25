@@ -75,9 +75,9 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
 
     // 2) 다가오는 일정: 고입·대입 일정 중 오늘~90일, 지난 일정 숨김
     const limit = new Date(t.getTime() + 90 * DAY);
-    const upcoming = policy.filter((r) => r.topic === "hs-schedule" || r.topic === "exam-schedule")
+    const upcoming = policy.filter((r) => r.topic === "hs-schedule" || r.topic === "gg-hs-entry" || r.topic === "exam-schedule")
       .flatMap((r) => eventsOf(r).map((e) => ({ r, e, sp: span(e.start, e.end) })))
-      .filter((x) => x.sp.end >= t && x.sp.start <= limit).sort((a, b) => a.sp.start - b.sp.start || a.sp.end - b.sp.end);
+      .filter((x) => x.sp.end >= t && x.sp.start <= limit).sort((a, b) => (a.r.region === "seoul") - (b.r.region === "seoul") || a.sp.start - b.sp.start || a.sp.end - b.sp.end); // 서울 행은 경기·전국 행 다음(같은 대상 안에서)
     let aud = loadAudience(store);
     const upRows = () => upcoming.filter((x) => audienceMatch(x.e.audience || x.r.audience, aud));
     const li = (x) => `<li><span class="hm-d${x.sp.start <= t ? " now" : ""}">${dLabel(x.sp, t)}</span><span class="hm-date">${fmtRange(x.sp, t, x.e)}</span><span class="hm-tx"><b>${esc(x.r.title)}</b>${x.e.label ? ` · ${esc(x.e.label)}` : ""}</span><span class="hm-bd">${badges(x.r)}</span>${link(x.r)}</li>`;
