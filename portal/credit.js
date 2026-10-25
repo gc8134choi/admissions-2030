@@ -34,7 +34,7 @@ export async function creditView(el, { load, profile, esc, badge, badgeMain, src
   const basis = (ids) => { const rs = by(...ids); return rs.length ? `<details class="ed-basis"><summary>근거와 출처 ${rs.length}건</summary>${table(rs)}</details>` : ""; };
   const toc = [];
   // 섹션: 번호는 CSS 카운터(01, 02…). lead는 한 문장, body는 그림, ids는 근거 행.
-  const sec = (n, title, lead, body, ids, slot) => (toc.push([n, title]), `<section id="cv-sec-${n}"><h3>${title}</h3>${spot(n)}${lead ? `<p class="ed-b">${lead}</p>` : ""}${body}${fig(slot)}${basis(ids)}</section>`);
+  const sec = (n, title, lead, body, ids, slot) => (toc.push([n, title]), `<section id="cv-sec-${n}"><h2>${title}</h2>${spot(n)}${lead ? `<p class="ed-b">${lead}</p>` : ""}${body}${fig(slot)}${basis(ids)}</section>`);
 
   // ---- 숫자 읽기 ----
   const grad = num("cur-01", /(\d+)학점\s*=\s*교과\s*(\d+).*?창의적 체험활동\s*(\d+)/); // [192, 174, 18]
@@ -95,7 +95,7 @@ export async function creditView(el, { load, profile, esc, badge, badgeMain, src
   const yearSum = (m, ts, k) => ts.reduce((n, t) => n + (m.byTerm?.[t]?.[k] || 0), 0);
   const ymax = Math.max(...summary.flatMap((m) => years.map(([, ts]) => yearSum(m, ts, "required") + yearSum(m, ts, "elective"))), 1);
   if (summary.length && ymax > 1) {
-    const mini = (m) => `<div class="ed-ym"><h5>${esc(m.schoolName)}</h5><div class="ed-yc">${years.map(([lab, ts]) => { const r = yearSum(m, ts, "required"), e = yearSum(m, ts, "elective"); return `<div><div class="ed-yb" style="height:${pct(r + e, ymax) * 0.9}px"><span class="ele" style="flex:${e || 0.0001}">${e || ""}</span><span class="req" style="flex:${r || 0.0001}">${r || ""}</span></div><em>${lab}</em></div>`; }).join("")}</div></div>`;
+    const mini = (m) => `<div class="ed-ym"><h3>${esc(m.schoolName)}</h3><div class="ed-yc">${years.map(([lab, ts]) => { const r = yearSum(m, ts, "required"), e = yearSum(m, ts, "elective"); return `<div><div class="ed-yb" style="height:${pct(r + e, ymax) * 0.9}px"><span class="ele" style="flex:${e || 0.0001}">${e || ""}</span><span class="req" style="flex:${r || 0.0001}">${r || ""}</span></div><em>${lab}</em></div>`; }).join("")}</div></div>`;
     out.push(sec(3, "학년별 여정", "1학년은 지정 과목이 중심이고, 학년이 올라갈수록 선택 과목이 늘어요(학교 편제표 기준).",
       `<p class="ed-ylegend"><span><i style="background:var(--e-req)"></i>지정</span><span><i style="background:var(--e-ele)"></i>선택</span></p><div class="ed-years">${summary.map(mini).join("")}</div><p class="ed-src">학교별 학년 교과 학점이에요. 창의적 체험활동은 빼요. <a href="#select/curriculum">학교별 편제표 보기</a></p>`, [], "credit-03-journey"));
   }
@@ -109,7 +109,7 @@ export async function creditView(el, { load, profile, esc, badge, badgeMain, src
     const capG = cap && grad ? `<div style="margin-top:22px">${gauge(`국·수·영 이수학점 합 ${cap[0]}학점 이하 (교과 ${grad[1]} 중)`, pct(cap[0], grad[1]), "cur-12")}</div>` : "";
     const extra = [applyText && `적용: ${esc(applyText)}`, onlineText && `미이수하면 ${esc(onlineText)}`].filter(Boolean);
     out.push(sec(4, "과목 이수 요건", relax && ach ? `선택과목은 출석률만, 공통과목은 출석률과 학업성취율 ${ach[0]}%가 요건이에요.` : "과목 이수 기준이에요.",
-      `<div class="ed-two"><div><h5>공통과목</h5>${common.join("")}</div><div><h5>선택과목</h5>${elective.join("")}</div></div>${capG}${extra.length ? `<ul class="ed-plain">${extra.map((t) => `<li>${t}</li>`).join("")}</ul>` : ""}`, ["log-16", "cur-02", "cur-16", "cur-12"], "credit-04-requirements"));
+      `<div class="ed-two"><div><h3>공통과목</h3>${common.join("")}</div><div><h3>선택과목</h3>${elective.join("")}</div></div>${capG}${extra.length ? `<ul class="ed-plain">${extra.map((t) => `<li>${t}</li>`).join("")}</ul>` : ""}`, ["log-16", "cur-02", "cur-16", "cur-12"], "credit-04-requirements"));
   }
 
   // ---- 공통과목 필수학점: 얇은 선 ----
@@ -156,7 +156,7 @@ export async function creditView(el, { load, profile, esc, badge, badgeMain, src
 
   // ---- 대학 권장이수·학교 교육과정 ----
   const info = by("cur-07", "cur-31", "cur-32");
-  if (info.length) out.push(sec(9, "대학 권장이수과목과 학교 교육과정", "", `<div class="ed-rows">${info.map((r) => `<article class="ed-row"><div class="ed-st">${badgeMain(r)}</div><h4>${esc(r.title)}</h4><p class="ed-b">${esc(r.body)}</p></article>`).join("")}</div>`, ["cur-07", "cur-31", "cur-32"], "credit-09-university"));
+  if (info.length) out.push(sec(9, "대학 권장이수과목과 학교 교육과정", "", `<div class="ed-rows">${info.map((r) => `<article class="ed-row"><div class="ed-st">${badgeMain(r)}</div><h3>${esc(r.title)}</h3><p class="ed-b">${esc(r.body)}</p></article>`).join("")}</div>`, ["cur-07", "cur-31", "cur-32"], "credit-09-university"));
 
   // ---- 우리 4개교 ----
   if (summary.length) {
