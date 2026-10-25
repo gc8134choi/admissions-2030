@@ -294,3 +294,6 @@ select,input[type=search]{font-size:13px;padding:5px 8px}
 #achips .a3{grid-column:span 4}
 #achips .a4{grid-column:span 3}
 #achips .achip{padding:3px 1px;font-size:11px;line-height:1.2;overflow-wrap:anywhere;min-width:0}
+.pst.material{color:var(--muted)}
+table.policy tr.hl td{background:var(--soft);font-weight:600}
+.fixednote.hlnote{position:static}

@@ -3,8 +3,8 @@
 // 사용: node tools/build-policy.mjs  (--check: 파일과 결과가 다르면 종료코드 1)
 import { readFileSync, writeFileSync } from "node:fs";
 
-const STATUS = { 확정: "confirmed", 보도: "reported", 추정: "estimated", unknown: "unknown" };
-const KIND = { 공식: "official", 매체: "media" };
+const STATUS = { 확정: "confirmed", 보도: "reported", 추정: "estimated", "학교 배부 자료": "material", unknown: "unknown" };
+const KIND = { 공식: "official", 매체: "media", "학교 배부 자료": "material" };
 
 // 고입·대입 일정 행의 날짜(고입은 id, 대입은 id가 밀릴 수 있어 title 키). draft 본문의 날짜를 ISO로 옮겼다(연도는 해당 학년도 시행 연도). 월만 알면 YYYY-MM.
 const EVENTS = {
@@ -43,6 +43,9 @@ const BODY = { "adm-07": "수능 세부 범위는 추정이며, 2030학년도 �
 // 사용자 지시(PM 경유, 2026-10-25): 2030학년도 수능을 2029.11.15로 잠정 예상. 상태는 추정 그대로, 본문에 출처를 덧붙인다.
 const APPEND = { "sch-12": "사용자 잠정 예상 2029.11.15, 공식 공고 전." };
 
+// statusNote("확정(원문 미확인, 시기 조정은 미결정)") 괄호 안에서 배지로 따로 보이는 "원문 미확인"을 뺀 나머지.
+const extra = (t) => ((t || "").match(/\((.*)\)\s*$/)?.[1] ?? "").split(/,\s*/).filter((x) => x && x !== "원문 미확인").join(", ");
+
 const draft = JSON.parse(readFileSync("research/data/policy-draft.json", "utf8")).items;
 const out = draft.map((d) => {
   const sources = [d.sourceName && { name: d.sourceName, url: d.sourceUrl }, ...(d.extraSources || [])].filter(Boolean);
@@ -50,7 +53,8 @@ const out = draft.map((d) => {
   row.entryYear = d.entryYear ?? (d.examYear ? d.examYear - 3 : 2027);
   row.examYear = d.examYear ?? row.entryYear + 3;
   Object.assign(row, { title: d.title, body: APPEND[d.id] ? `${(BODY[d.id] ?? d.body).replace(/\.?$/, ".")} ${APPEND[d.id]}` : BODY[d.id] ?? d.body, status: STATUS[d.status] ?? "unknown" });
-  if (NOTES[d.id]) row.note = NOTES[d.id];
+  const note = NOTES[d.id] ?? extra(d.statusNote);
+  if (note) row.note = note;
   row.unverified = !!d.unverified;
   row.sourceKind = KIND[d.sourceKind] ?? null;
   row.sourceName = d.sourceName ?? null;
