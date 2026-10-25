@@ -188,23 +188,6 @@ select,input[type=search]{font-size:13px;padding:5px 8px}
 #tbl tbody tr.af>td{border-top:1px solid color-mix(in srgb,var(--fg) 28%,var(--line))}
 
 
-/* 지정/선택 색(기본: 초록/남색). 아래 후보는 임시: ?pal=a|b|c|d 로 전환(사용자 선택 후 삭제) */
-:root{--req:var(--v1);--ele:var(--accent)}
-@media (prefers-color-scheme:light){
-:root[data-pal="a"]{--req:#111827;--ele:#656d7a}
-:root[data-pal="b"]{--req:#3f6212;--ele:#6b705c}
-:root[data-pal="c"]{--req:#831843;--ele:#6b5b6e}
-:root[data-pal="d"]{--req:#5a3825;--ele:#7a6a5c}
-}
-
-/* 요약 카드: 창체 블록 */
-.cre{margin:8px 0 6px;padding-top:8px;border-top:1px solid var(--line);font-size:13px}
-.cre .cr1{color:var(--fg)}
-.cre details{margin:4px 0 0}
-.crew{overflow-x:auto}
-.crt{border-collapse:collapse;min-width:0;width:100%;font-size:11px;margin:4px 0}
-.crt th,.crt td{border:0;border-bottom:1px solid var(--line);padding:2px 3px;text-align:center;font-size:11px;white-space:nowrap}
-.crt th{background:none;font-weight:400;color:var(--muted)}
-.crt tbody th{text-align:left;color:var(--fg)}
-.crt tbody th{white-space:normal;word-break:keep-all;width:62px;line-height:1.25}
-#main .crt th,#main .crt td{padding:2px 2px}
+/* 지정/선택 색: 지정=올리브(볼드), 선택=와인(보통). 다크 모드는 밝은 톤 */
+:root{--req:#3f6212;--ele:#831843}
+@media (prefers-color-scheme:dark){:root{--req:#b5d37a;--ele:#f0a0bd}}
