@@ -77,8 +77,9 @@ export async function creditView(el, { load, esc, badge, src, table, basic }) {
     return `<figure class="cv-fig"><img src="img/credit/${esc(m.file)}" alt="${esc(m.caption || "")}" loading="lazy"><figcaption>${esc(m.caption || "")}${m.source ? ` <span class="muted">출처: ${esc(m.source)}</span>` : ""}</figcaption></figure>`;
   };
   // 섹션 카드: 색(.cv-sN), 아이콘 헤더, 한 줄 요약, 본문, 공식 이미지 슬롯, 근거 표.
-  const card = (n, ic, title, lead, body, ids, slot, basisTitle = "근거·상태 표") =>
-    `<section class="cv-card cv-s${n}"><header class="cv-h"><span class="cv-hi">${icon(ic)}</span><div class="cv-ht"><h3>${title}</h3>${lead ? `<p class="cv-lead">${lead}</p>` : ""}</div>${spot(n)}</header>${body}${fig(slot)}${basis(basisTitle, ids)}</section>`;
+  const toc = [];
+  const card = (n, ic, title, lead, body, ids, slot, basisTitle = "근거·상태 표") => (toc.push([n, title]),
+    `<section class="cv-card cv-s${n}" id="cv-sec-${n}"><header class="cv-h"><span class="cv-hi">${icon(ic)}</span><div class="cv-ht"><h3><span class="cv-no"></span>${title}</h3>${lead ? `<p class="cv-lead">${lead}</p>` : ""}</div>${spot(n)}</header>${body}${fig(slot)}${basis(basisTitle, ids)}</section>`);
 
   // ---- 숫자 읽기 ----
   const grad = num("cur-01", /(\d+)학점\s*=\s*교과\s*(\d+).*?창의적 체험활동\s*(\d+)/); // [192, 174, 18]
@@ -221,7 +222,9 @@ export async function creditView(el, { load, esc, badge, src, table, basic }) {
   const subj = by("cur-17", "cur-18", "cur-19", "cur-20", "cur-21", "cur-22", "cur-23", "cur-24", "cur-25", "cur-27");
   const tail = subj.length ? `<details class="cv-basis cv-big"><summary>과목표(교과군별) 전체 보기</summary>${table(subj, basic)}</details>` : "";
 
+  const nav = `<nav class="cv-toc" aria-label="섹션 목차">${toc.map(([n, t], i) => `<button type="button" class="fchip" data-go="cv-sec-${n}"><b>${i + 1}</b> ${esc(t)}</button>`).join("")}</nav>`;
   el.innerHTML = `${hero}<p class="note">서울교육청 자료는 경기 적용 확인 필요. 경기도교육청 행은 요약본(출처 불일치 가능). 그림 위 배지와 "근거·상태 표"에서 상태·출처를 확인하세요.</p>
-    ${cards.join("")}${tail}
+    ${nav}${cards.map((c, i) => c.replace('<span class="cv-no"></span>', `<span class="cv-no">${i + 1}</span>`)).join("")}${tail}
     <p class="muted">수능 출제범위는 <a href="#admission/system">대입 제도</a>에서 봅니다.</p>`;
+  el.querySelector(".cv-toc")?.addEventListener("click", (e) => { const b = e.target.closest("[data-go]"); if (b) document.getElementById(b.dataset.go)?.scrollIntoView({ behavior: "smooth", block: "start" }); });
 }
