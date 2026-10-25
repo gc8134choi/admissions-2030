@@ -5,8 +5,8 @@ import { loadAudience, saveAudience, toggleAudience, audienceMatch, audienceChip
 // 제도·일정 화면(대입 제도, 일정, 고교 유형·전형, 제도 변경 로그). 데이터는 data/policy.json.
 const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "확인 못 함", material: "학교 배부 자료", seoul: "서울교육청 자료", "seoul-verified": "서울교육청 자료(원문 확인)", match: "서울·경기 자료 일치", gyeonggi: "경기도교육청 자료", opinion: "의견", academy: "학원 자료" };
 const SKIND = { official: "공식", media: "매체", material: "학교 배부", seoul: "서울교육청", "seoul-gyeonggi": "서울·경기교육청", gyeonggi: "경기도교육청", opinion: "학원 의견", academy: "학원 자료" };
-const NOTICE_TPL = '<p class="note">조사일 2026-10-25, <b>검색 요약 기준이며 공식 사이트로 재확인 필요.</b> 입학학년도 {E}({L}) · 대입학년도 {X}. <span class="unv">원문 미확인</span> 표시는 원문 페이지를 열람하지 못했다는 뜻입니다.</p>';
-const noticeFor = (p) => NOTICE_TPL.replace("{E}", p.entryYear).replace("{L}", p.label).replace("{X}", p.examYear);
+const NOTICE_TPL = '<p class="note">조사일 2026-10-25, <b>검색 요약 기준이며 공식 사이트로 재확인 필요.</b> {L}: 입학학년도 {E} · 대입학년도 {X}. <span class="unv">원문 미확인</span> 표시는 원문 페이지를 열람하지 못했다는 뜻입니다.</p>';
+const noticeFor = (p) => NOTICE_TPL.replace("{E}", p.entryYear).replace("{L}", `${p.label}(${p.grade})`).replace("{X}", p.examYear);
 
 // 대입 제도 화면에 표로 보여 줄 cur-* 행(수능 출제범위, 전형 구분, 학종 평가요소). 나머지는 고교학점제 이해 화면.
 const CUR_SYS = new Set(["cur-08", "cur-29", "cur-30"]);
@@ -81,7 +81,7 @@ export function register(views, { $, esc, load, store }) {
     const tr = (e) => `<tr class="${(e.end || e.start) < t ? "past" : ""}"><td class="l">${esc(fmt(e))}</td><td class="l"><b>${esc(e.r.title)}</b>${e.label ? ` · ${esc(e.label)}` : ""}${e.first ? `<div class="muted small">${esc(e.r.body)}</div>` : ""}</td><td class="l">${badge(e.r)}</td><td class="l">${src(e.r)}</td></tr>`;
     const none = rows.filter((r) => !r.events);
     if (!evs.length && !none.length) return '<p class="note">이 프로필의 일정 데이터를 준비 중입니다.</p>';
-    return `<p class="muted">오늘(${t}) 이전 일정은 흐리게 표시합니다.</p><div class="tw"><table class="policy"><thead><tr><th class="l">날짜</th><th class="l">항목</th><th class="l">상태</th><th class="l">구분·출처</th></tr></thead><tbody>${evs.map(tr).join("")}</tbody></table></div>${none.length ? `<h3>일정 미확인</h3>${table(none, basic)}` : ""}`;
+    return `<p class="muted">오늘(${t}) 이전 일정은 흐리게 표시합니다.</p><div class="tw"><table class="policy"><thead><tr><th class="l">날짜</th><th class="l">항목</th><th class="l">상태</th><th class="l">구분·출처</th></tr></thead><tbody>${evs.map(tr).join("")}</tbody></table></div>${none.length ? `<h3>일정 미확인</h3>${cards(none)}` : ""}`;
   };
 
   const logTable = (rows) => cards(rows, { meta: (r) => (dateOf(r.title) ? fmtDate(dateOf(r.title)) : "날짜 미정"), title: (r) => r.title.slice(dateOf(r.title).length).trim() || r.title });
@@ -95,13 +95,13 @@ export function register(views, { $, esc, load, store }) {
   };
 
   views.system = async (el, query) => {
-    const rows = (await loadPolicy()).filter((r) => r.topic.startsWith("admission") || r.topic === "change-log" || CUR_SYS.has(r.id) || ACD_SYS.has(r.id));
+    const rows = (await loadPolicy()).filter((r) => r.topic.startsWith("admission") || r.topic === "change-log" || CUR_SYS.has(r.id) || ACD_SYS.has(r.id) || r.topic === "profile-2033");
     const log = query.get("t") === "log";
     const body = rows.filter((r) => (r.topic === "change-log") === log);
     // 노란 경고는 한 줄로 합치고(앰버+코랄 선), 나머지 안내는 접어 둔다.
-    el.innerHTML = `<div class="alert-amber"><b>2027.3 공표 전까지 확정 아님</b><details><summary>자세히</summary>${banner(rows)}${notice()}${log || curProfile().id !== "A" ? "" : '<p class="muted small">현 중3은 2028 개편안의 직접 대상(2025 입학생)이 아닙니다. 2030학년도 제도는 2027.3 공표 내용에 따라 바뀔 수 있습니다.</p>'}</details></div>${tabs([["sys", "#admission/system", "제도"], ["log", "#admission/system?t=log", "제도 변경 로그"]], log ? "log" : "sys")}
+    el.innerHTML = `<div class="alert-amber"><b>2027.3 공표 전까지 확정 아님</b><details><summary>자세히</summary>${banner(rows)}${notice()}${log || curProfile().id !== "A" ? "" : `<p class="muted small">${curProfile().label}(${curProfile().grade})는 2028 개편안의 직접 대상(2025 입학생)이 아닙니다. 2030학년도 제도는 2027.3 공표 내용에 따라 바뀔 수 있습니다.</p>`}</details></div>${tabs([["sys", "#admission/system", "제도"], ["log", "#admission/system?t=log", "제도 변경 로그"]], log ? "log" : "sys")}
       ${statusSelect(body)}<div id="ptbl"></div>`;
-    const TOPIC = { "admission-system": "2028학년도 개편 확정안과 2030학년도 적용", "admission-outlook": "2030학년도 대상 추가 동향", "admission-structure": "대입 전형 구조", "cur-select": "수능 출제범위(참고)", academy: "학원 설명 자료" };
+    const TOPIC = { "admission-system": "2028학년도 개편 확정안과 2030학년도 적용", "admission-outlook": "2030학년도 대상 추가 동향", "admission-structure": "대입 전형 구조", "cur-select": "수능 출제범위(참고)", academy: "학원 설명 자료", "profile-2033": "2033학년도 대입 전망(추정)" };
     const NOTE = { "cur-select": '<p class="note">서울교육청 자료, 경기 적용 확인 필요. 수능 출제범위는 추정이며 2030학년도 확정이 아닙니다.</p>' };
     const key = (r) => (ACD_SYS.has(r.id) ? "academy" : CUR_SYS.has(r.id) ? CUR_GROUP[r.id] || "cur-select" : r.topic);
     // 선택과목 조사·대학 권장이수과목은 고교학점제 이해에서 자세히 보고, 여기는 한 줄 요약만 둔다.
@@ -130,7 +130,7 @@ export function register(views, { $, esc, load, store }) {
   views.schedule = async (el, query) => {
     const tab = query.get("t") === "univ" ? "univ" : "hs";
     const all = await loadPolicy();
-    const rows = all.filter((r) => r.topic === (tab === "univ" ? "exam-schedule" : "hs-schedule") || (tab === "hs" && r.topic === "gg-hs-entry" && r.events));
+    const rows = all.filter((r) => r.topic === (tab === "univ" ? "exam-schedule" : "hs-schedule") || (tab === "hs" && r.topic === "gg-hs-entry" && r.events) || (r.topic === "profile-2033" && (tab === "hs" ? /고입/.test(r.title) : r.events)));
     const chips = '<div id="aud"></div>'; // 칩 UI·저장(portal.audience)은 home.js와 공유
     el.innerHTML = `${tabs([["hs", "#schedule?t=hs", "고입"], ["univ", "#schedule?t=univ", "대입"]], tab)}${notice()}
       <p class="muted">${tab === "univ" ? "수능·대교협 일정. 2030학년도분은 대부분 추정입니다." : "2027학년도 고입(서울 기준). 연도는 2027학년도 고입이 2026년 하반기에 진행되는 것을 기준으로 붙였습니다."}</p>${chips}<div id="tl"></div>`;

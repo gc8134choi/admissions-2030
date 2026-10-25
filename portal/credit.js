@@ -225,7 +225,7 @@ export async function creditView(el, { load, profile, esc, badge, src, table, ba
   const tail = subj.length ? `<details class="cv-basis cv-big"><summary>과목표(교과군별) 전체 보기</summary>${table(subj, basic)}</details>` : "";
 
   const nav = `<nav class="cv-toc" aria-label="섹션 목차">${toc.map(([n, t], i) => `<button type="button" class="fchip" data-go="cv-sec-${n}"><b>${i + 1}</b> ${esc(t)}</button>`).join("")}</nav>`;
-  const profNote = profile && profile.id !== "A" ? `<p class="note">고교학점제(2022 개정, 2025학년도 입학 고1부터)는 ${profile.entryYear}학년도 입학 때도 같은 틀로 이어질 것으로 보이나 확정이 아니며 바뀔 수 있습니다(추정).</p>` : "";
+  const profNote = profile && profile.id !== "A" ? `<p class="note">고교학점제(2022 개정, 2025학년도 입학 고1부터)는 ${profile.label}의 ${profile.entryYear}학년도 입학 때도 같은 틀로 이어질 것으로 보이나 확정이 아니며 바뀔 수 있습니다(추정).</p>` : "";
   el.innerHTML = `${hero}${profNote}<p class="note">서울교육청 자료는 경기 적용 확인 필요. 경기도교육청 행은 요약본(출처 불일치 가능). 그림 위 배지와 "근거·상태 표"에서 상태·출처를 확인하세요.</p>
     ${nav}${cards.map((c, i) => c.replace('<span class="cv-no"></span>', `<span class="cv-no">${i + 1}</span>`)).join("")}${tail}
     <p class="muted">수능 출제범위는 <a href="#admission/system">대입 제도</a>에서 봅니다.</p>`;
