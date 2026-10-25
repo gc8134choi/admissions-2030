@@ -60,6 +60,7 @@ const out = draft.map((d) => {
   row.sourceName = d.sourceName ?? null;
   row.sourceUrl = d.sourceUrl ?? null;
   if (sources.length > 1) row.sources = sources;
+  if (Array.isArray(d.audience)) row.audience = d.audience; // 일정 대상별 필터용(없으면 공통 취급)
   if (EVENTS[d.id] || EVENTS[d.title]) row.events = EVENTS[d.id] || EVENTS[d.title];
   row.checkedAt = d.checkedAt;
   return row;

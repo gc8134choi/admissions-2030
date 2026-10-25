@@ -81,12 +81,34 @@ export function register(views, { $, esc, load }) {
     filtered(el, rows, (f) => { $("#ptbl").innerHTML = logTable(rows.filter((r) => !f || r.status === f)); });
   };
 
+  // 일정 대상 칩: 선택은 홈과 같은 키 "portal.audience"(선택한 칩 key 배열)로 저장한다. 미선택=전체, audience 없음·common=항상 표시.
+  const CHIPS = [["general", "일반고"], ["science", "과학·영재"], ["private", "자사·외·국제"], ["vocational", "특성화·마이스터"], ["grade3", "현고3"]];
+  const KEY = "portal.audience";
+  const readSel = () => { try { const v = JSON.parse(localStorage.getItem(KEY)); if (Array.isArray(v)) return v; } catch {} return CHIPS.slice(0, 4).map((c) => c[0]); };
+  const saveSel = (v) => { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch {} };
+  const visible = (r, sel) => !sel.length || !r.audience?.length || r.audience.includes("common") || r.audience.some((a) => sel.includes(a));
+
   views.schedule = async (el, query) => {
     const tab = query.get("t") === "univ" ? "univ" : "hs";
     const all = await load("policy");
     const rows = all.filter((r) => r.topic === (tab === "univ" ? "exam-schedule" : "hs-schedule"));
+    const chips = tab === "hs" ? '<div class="chips" id="aud"></div>' : "";
     el.innerHTML = `${tabs([["hs", "#schedule?t=hs", "고입"], ["univ", "#schedule?t=univ", "대입"]], tab)}${NOTICE}
-      <p class="muted">${tab === "univ" ? "수능·대교협 일정. 2030학년도분은 대부분 추정입니다." : "2027학년도 고입(서울 기준). 연도는 2027학년도 고입이 2026년 하반기에 진행되는 것을 기준으로 붙였습니다."}</p>${timeline(rows)}`;
+      <p class="muted">${tab === "univ" ? "수능·대교협 일정. 2030학년도분은 대부분 추정입니다." : "2027학년도 고입(서울 기준). 연도는 2027학년도 고입이 2026년 하반기에 진행되는 것을 기준으로 붙였습니다."}</p>${chips}<div id="tl"></div>`;
+    if (tab === "univ") { $("#tl").innerHTML = timeline(rows); return; }
+    let sel = readSel();
+    const draw = () => {
+      $("#aud").innerHTML = CHIPS.map(([k, t]) => `<button type="button" class="chip ${sel.includes(k) ? "on" : ""}" data-k="${k}">${t}</button>`).join("") + '<span class="muted small">선택 없음 = 전체</span>';
+      $("#tl").innerHTML = timeline(rows.filter((r) => visible(r, sel)));
+    };
+    $("#aud").addEventListener("click", (e) => {
+      const k = e.target.closest(".chip")?.dataset.k;
+      if (!k) return;
+      sel = sel.includes(k) ? sel.filter((x) => x !== k) : [...sel, k];
+      saveSel(sel);
+      draw();
+    });
+    draw();
   };
 
   views.types = async (el) => {
