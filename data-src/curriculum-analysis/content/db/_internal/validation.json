@@ -1,0 +1,31 @@
+[
+  {
+    "level": "warn",
+    "curriculumId": "curriculum-pungdeok-2027",
+    "schoolId": "school-pungdeok",
+    "check": "kind-missing",
+    "message": "구분(kind) 미표기 72행 (표에 융합(♥)만 표시되고 일반/진로 구분 없음); 다른 학교 기준 추정 59행",
+    "count": 72
+  },
+  {
+    "level": "info",
+    "curriculumId": "curriculum-suji-2027",
+    "schoolId": "school-suji",
+    "check": "outside-school",
+    "message": "학교 밖 과목 1개(2학점)는 교내 합계에 포함하지 않음"
+  },
+  {
+    "level": "info",
+    "curriculumId": "curriculum-suji-2027",
+    "schoolId": "school-suji",
+    "check": "credits-differ",
+    "message": "운영학점≠기본학점 16과목: 독서와 작문, 확률과 통계, 영어 독해와 작문, 통합사회1, 통합사회2, 스포츠 문화, 스포츠 과학, 체육1, 체육2, 스포츠 생활1, 스포츠 생활2, 미술↔음악, 기술·가정↔정보, 피지컬AI와 사고방법론 프로젝트"
+  },
+  {
+    "level": "info",
+    "curriculumId": "curriculum-yonginheungcheon-2027",
+    "schoolId": "school-yonginheungcheon",
+    "check": "credits-differ",
+    "message": "운영학점≠기본학점 12과목: 문학, 화법과 언어, 독서와 작문, 확률과 통계, 영어Ⅰ, 영어Ⅱ, 체육1, 체육2, 스포츠 생활1, 스포츠 생활2, 음악 감상과 비평↔미술 창작"
+  }
+]

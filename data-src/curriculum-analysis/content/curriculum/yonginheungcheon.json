@@ -1,0 +1,850 @@
+{
+  "id": "curriculum-yonginheungcheon-2027",
+  "school": "홍천고",
+  "entryYear": 2027,
+  "document": "2027학년도 일반고 입학생 교육과정 편성표",
+  "schoolType": "일반고",
+  "sourceImage": "files/inbox/ABrJyp7ktXkbCS00.jpg",
+  "declared": {
+    "termCredits": {
+      "1-1": 29,
+      "1-2": 29,
+      "2-1": 29,
+      "2-2": 29,
+      "3-1": 29,
+      "3-2": 29
+    },
+    "subjectCredits": 174,
+    "creativeCredits": 18,
+    "totalCredits": 192,
+    "requiredCredits": 84,
+    "areaTotals": {
+      "국어": 17,
+      "수학": 19,
+      "영어": 14,
+      "한국사": 6,
+      "사회": 8,
+      "과학": 10,
+      "체육": 12,
+      "예술": 10
+    },
+    "requiredByArea": [
+      {
+        "areas": [
+          "국어"
+        ],
+        "credits": 8
+      },
+      {
+        "areas": [
+          "수학"
+        ],
+        "credits": 8
+      },
+      {
+        "areas": [
+          "영어"
+        ],
+        "credits": 8
+      },
+      {
+        "areas": [
+          "한국사"
+        ],
+        "credits": 6
+      },
+      {
+        "areas": [
+          "사회"
+        ],
+        "credits": 8
+      },
+      {
+        "areas": [
+          "과학"
+        ],
+        "credits": 10
+      },
+      {
+        "areas": [
+          "체육"
+        ],
+        "credits": 10
+      },
+      {
+        "areas": [
+          "예술"
+        ],
+        "credits": 10
+      },
+      {
+        "areas": [
+          "기술·가정/정보",
+          "제2외국어/한문/교양"
+        ],
+        "credits": 16
+      }
+    ]
+  },
+  "notes": [
+    "credits는 운영학점, basicCredits는 기본학점",
+    "사진이 기울어 행과 값의 위치를 학기별 합계(29)와 영역 합계로 대조해 확정",
+    "혼합 선택군의 과목별 구분은 글자색(검정 일반·빨강 진로·파랑 융합)으로 보강(kindSource)"
+  ],
+  "courses": [
+    {
+      "term": "1-1",
+      "area": "국어",
+      "subject": "공통국어1",
+      "basicCredits": 4,
+      "kind": "공통",
+      "credits": 4
+    },
+    {
+      "term": "1-2",
+      "area": "국어",
+      "subject": "공통국어2",
+      "basicCredits": 4,
+      "kind": "공통",
+      "credits": 4
+    },
+    {
+      "term": "2-1",
+      "area": "국어",
+      "subject": "문학",
+      "basicCredits": 4,
+      "kind": "일반",
+      "credits": 3
+    },
+    {
+      "term": "2-2",
+      "area": "국어",
+      "subject": "화법과 언어",
+      "basicCredits": 4,
+      "kind": "일반",
+      "credits": 3
+    },
+    {
+      "term": "3-1",
+      "area": "국어",
+      "subject": "독서와 작문",
+      "basicCredits": 4,
+      "kind": "일반",
+      "credits": 3
+    },
+    {
+      "term": "1-1",
+      "area": "수학",
+      "subject": "공통수학1",
+      "basicCredits": 4,
+      "kind": "공통",
+      "credits": 4
+    },
+    {
+      "term": "1-2",
+      "area": "수학",
+      "subject": "공통수학2",
+      "basicCredits": 4,
+      "kind": "공통",
+      "credits": 4
+    },
+    {
+      "term": "2-1",
+      "area": "수학",
+      "subject": "대수",
+      "basicCredits": 4,
+      "kind": "일반",
+      "credits": 4
+    },
+    {
+      "term": "2-2",
+      "area": "수학",
+      "subject": "미적분Ⅰ",
+      "basicCredits": 4,
+      "kind": "일반",
+      "credits": 4
+    },
+    {
+      "term": "2-1",
+      "area": "수학",
+      "subject": "확률과 통계",
+      "basicCredits": 4,
+      "kind": "일반",
+      "credits": 3
+    },
+    {
+      "term": "1-1",
+      "area": "영어",
+      "subject": "공통영어1",
+      "basicCredits": 4,
+      "kind": "공통",
+      "credits": 4
+    },
+    {
+      "term": "1-2",
+      "area": "영어",
+      "subject": "공통영어2",
+      "basicCredits": 4,
+      "kind": "공통",
+      "credits": 4
+    },
+    {
+      "term": "2-1",
+      "area": "영어",
+      "subject": "영어Ⅰ",
+      "basicCredits": 4,
+      "kind": "일반",
+      "credits": 3
+    },
+    {
+      "term": "2-2",
+      "area": "영어",
+      "subject": "영어Ⅱ",
+      "basicCredits": 4,
+      "kind": "일반",
+      "credits": 3
+    },
+    {
+      "term": "1-1",
+      "area": "한국사",
+      "subject": "한국사1",
+      "basicCredits": 3,
+      "kind": "공통",
+      "credits": 3
+    },
+    {
+      "term": "1-2",
+      "area": "한국사",
+      "subject": "한국사2",
+      "basicCredits": 3,
+      "kind": "공통",
+      "credits": 3
+    },
+    {
+      "term": "1-1",
+      "area": "사회",
+      "subject": "통합사회1",
+      "basicCredits": 4,
+      "kind": "공통",
+      "credits": 4
+    },
+    {
+      "term": "1-2",
+      "area": "사회",
+      "subject": "통합사회2",
+      "basicCredits": 4,
+      "kind": "공통",
+      "credits": 4
+    },
+    {
+      "term": "1-1",
+      "area": "과학",
+      "subject": "통합과학1",
+      "basicCredits": 4,
+      "kind": "공통",
+      "credits": 4
+    },
+    {
+      "term": "1-2",
+      "area": "과학",
+      "subject": "통합과학2",
+      "basicCredits": 4,
+      "kind": "공통",
+      "credits": 4
+    },
+    {
+      "term": "1-1",
+      "area": "과학",
+      "subject": "과학탐구실험1",
+      "basicCredits": 1,
+      "kind": "공통",
+      "credits": 1
+    },
+    {
+      "term": "1-2",
+      "area": "과학",
+      "subject": "과학탐구실험2",
+      "basicCredits": 1,
+      "kind": "공통",
+      "credits": 1
+    },
+    {
+      "term": "1-1",
+      "area": "체육",
+      "subject": "체육1",
+      "basicCredits": 3,
+      "kind": "일반",
+      "credits": 2
+    },
+    {
+      "term": "1-2",
+      "area": "체육",
+      "subject": "체육2",
+      "basicCredits": 3,
+      "kind": "일반",
+      "credits": 2
+    },
+    {
+      "term": "2-1",
+      "area": "체육",
+      "subject": "스포츠 생활1",
+      "basicCredits": 3,
+      "kind": "융합",
+      "credits": 2
+    },
+    {
+      "term": "2-2",
+      "area": "체육",
+      "subject": "스포츠 생활2",
+      "basicCredits": 3,
+      "kind": "융합",
+      "credits": 2
+    },
+    {
+      "term": "3-1",
+      "area": "체육",
+      "subject": "스포츠 문화",
+      "basicCredits": 2,
+      "kind": "진로",
+      "credits": 2
+    },
+    {
+      "term": "3-2",
+      "area": "체육",
+      "subject": "스포츠 과학",
+      "basicCredits": 2,
+      "kind": "진로",
+      "credits": 2
+    },
+    {
+      "term": "1-1",
+      "area": "예술",
+      "subject": "음악↔미술",
+      "basicCredits": 3,
+      "kind": "일반",
+      "credits": 3
+    },
+    {
+      "term": "1-2",
+      "area": "예술",
+      "subject": "음악↔미술",
+      "basicCredits": 3,
+      "kind": "일반",
+      "credits": 3
+    },
+    {
+      "term": "2-1",
+      "area": "예술",
+      "subject": "음악 감상과 비평↔미술 창작",
+      "basicCredits": 3,
+      "kind": "진로",
+      "credits": 2
+    },
+    {
+      "term": "2-2",
+      "area": "예술",
+      "subject": "음악 감상과 비평↔미술 창작",
+      "basicCredits": 3,
+      "kind": "진로",
+      "credits": 2
+    }
+  ],
+  "electiveGroups": [
+    {
+      "id": "2-1-A",
+      "term": "2-1",
+      "pick": 1,
+      "creditsEach": 3,
+      "area": "제2외국어/정보",
+      "kind": "일반",
+      "options": [
+        {
+          "subject": "중국어",
+          "kind": "일반"
+        },
+        {
+          "subject": "일본어",
+          "kind": "일반"
+        },
+        {
+          "subject": "정보",
+          "kind": "일반"
+        }
+      ]
+    },
+    {
+      "id": "2-2-A",
+      "term": "2-2",
+      "pick": 1,
+      "creditsEach": 3,
+      "area": "제2외국어/정보",
+      "kind": "진로",
+      "options": [
+        {
+          "subject": "중국어 회화",
+          "kind": "진로"
+        },
+        {
+          "subject": "일본어 회화",
+          "kind": "진로"
+        },
+        {
+          "subject": "인공지능 기초",
+          "kind": "진로"
+        }
+      ]
+    },
+    {
+      "id": "2-2-B",
+      "term": "2-2",
+      "pick": 1,
+      "creditsEach": 3,
+      "area": "수학",
+      "kind": [
+        "진로",
+        "융합"
+      ],
+      "options": [
+        {
+          "subject": "수학과제 탐구",
+          "kind": "융합",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "기하",
+          "kind": "진로",
+          "kindSource": "글자색"
+        }
+      ]
+    },
+    {
+      "id": "2-1-B",
+      "term": "2-1",
+      "pick": 3,
+      "creditsEach": 3,
+      "area": "교과(군) 간 선택",
+      "kind": [
+        "일반",
+        "진로"
+      ],
+      "options": [
+        {
+          "subject": "세계시민과 지리",
+          "kind": "일반",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "윤리와 사상",
+          "kind": "진로",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "사회와 문화",
+          "kind": "일반",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "세계사",
+          "kind": "일반",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "물리학",
+          "kind": "일반",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "화학",
+          "kind": "일반",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "생명과학",
+          "kind": "일반",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "지구과학",
+          "kind": "일반",
+          "kindSource": "글자색"
+        }
+      ]
+    },
+    {
+      "id": "2-2-C",
+      "term": "2-2",
+      "pick": 3,
+      "creditsEach": 3,
+      "area": "교과(군) 간 선택",
+      "kind": "진로",
+      "options": [
+        {
+          "subject": "한국지리 탐구",
+          "kind": "진로"
+        },
+        {
+          "subject": "인문학과 윤리",
+          "kind": "진로"
+        },
+        {
+          "subject": "정치",
+          "kind": "진로"
+        },
+        {
+          "subject": "경제",
+          "kind": "진로"
+        },
+        {
+          "subject": "동아시아 역사 기행",
+          "kind": "진로"
+        },
+        {
+          "subject": "역학과 에너지",
+          "kind": "진로"
+        },
+        {
+          "subject": "물질과 에너지",
+          "kind": "진로"
+        },
+        {
+          "subject": "세포와 물질대사",
+          "kind": "진로"
+        },
+        {
+          "subject": "지구시스템과학",
+          "kind": "진로"
+        }
+      ]
+    },
+    {
+      "id": "3-1-A",
+      "term": "3-1",
+      "pick": 2,
+      "creditsEach": 3,
+      "area": "제2외국어/정보",
+      "kind": "진로",
+      "options": [
+        {
+          "subject": "일본 문화",
+          "kind": "진로"
+        },
+        {
+          "subject": "중국 문화",
+          "kind": "진로"
+        },
+        {
+          "subject": "데이터 과학",
+          "kind": "진로"
+        },
+        {
+          "subject": "정보과학",
+          "kind": "진로"
+        }
+      ]
+    },
+    {
+      "id": "3-2-A",
+      "term": "3-2",
+      "pick": 2,
+      "creditsEach": 3,
+      "area": "제2외국어/정보",
+      "kind": [
+        "진로",
+        "융합"
+      ],
+      "options": [
+        {
+          "subject": "관광 일본어",
+          "kind": "진로",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "관광 중국어",
+          "kind": "진로",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "소프트웨어와 생활",
+          "kind": "융합",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "정보 처리와 관리",
+          "kind": "진로",
+          "kindSource": "글자색"
+        }
+      ]
+    },
+    {
+      "id": "3-1-B",
+      "term": "3-1",
+      "pick": 6,
+      "creditsEach": 3,
+      "area": "교과(군) 간 선택",
+      "kind": [
+        "일반",
+        "진로",
+        "융합"
+      ],
+      "options": [
+        {
+          "subject": "문학과 영상",
+          "kind": "진로",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "미적분Ⅱ",
+          "kind": "진로",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "고급 대수",
+          "kind": "진로",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "심화 수학",
+          "kind": "진로",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "영어 독해와 작문",
+          "kind": "일반",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "심화 영어",
+          "kind": "진로",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "물리학 실험",
+          "kind": "진로",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "화학 실험",
+          "kind": "진로",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "생명과학 실험",
+          "kind": "진로",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "전자기와 양자",
+          "kind": "진로",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "화학 반응의 세계",
+          "kind": "진로",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "생물의 유전",
+          "kind": "진로",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "행성우주과학",
+          "kind": "진로",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "융합과학탐구",
+          "kind": "융합",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "법과 사회",
+          "kind": "진로",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "도시의 미래 탐구",
+          "kind": "진로",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "국제 관계의 이해",
+          "kind": "진로",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "현대사회와 윤리",
+          "kind": "일반",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "기후변화와 지속 가능한 세계",
+          "kind": "융합",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "사회문제 탐구",
+          "kind": "융합",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "논술",
+          "kind": "융합",
+          "kindSource": "글자색"
+        }
+      ]
+    },
+    {
+      "id": "3-2-B",
+      "term": "3-2",
+      "pick": 7,
+      "creditsEach": 3,
+      "area": "교과(군) 간 선택",
+      "kind": [
+        "진로",
+        "융합"
+      ],
+      "options": [
+        {
+          "subject": "언어생활 탐구",
+          "kind": "융합",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "독서 토론과 글쓰기",
+          "kind": "융합",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "실용 통계",
+          "kind": "융합",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "수학과 문화",
+          "kind": "융합",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "세계 문화와 영어",
+          "kind": "융합",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "미디어 영어",
+          "kind": "융합",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "기후변화와 환경생태",
+          "kind": "융합",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "과학의 역사와 문화",
+          "kind": "융합",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "윤리문제 탐구",
+          "kind": "융합",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "여행지리",
+          "kind": "융합",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "금융과 경제생활",
+          "kind": "융합",
+          "kindSource": "글자색"
+        },
+        {
+          "subject": "논리와 사고",
+          "kind": "진로",
+          "kindSource": "글자색"
+        }
+      ]
+    }
+  ],
+  "creative": {
+    "perTerm": {
+      "1-1": {
+        "자율·자치활동": 25,
+        "동아리활동": 8,
+        "진로활동": 16
+      },
+      "1-2": {
+        "자율·자치활동": 25,
+        "동아리활동": 8,
+        "진로활동": 16
+      },
+      "2-1": {
+        "자율·자치활동": 25,
+        "동아리활동": 8,
+        "진로활동": 16
+      },
+      "2-2": {
+        "자율·자치활동": 25,
+        "동아리활동": 8,
+        "진로활동": 16
+      },
+      "3-1": {
+        "자율·자치활동": 25,
+        "동아리활동": 8,
+        "진로활동": 16
+      },
+      "3-2": {
+        "자율·자치활동": 25,
+        "동아리활동": 8,
+        "진로활동": 16
+      }
+    },
+    "standardHours": 408,
+    "operatedHours": 294
+  },
+  "flags": [
+    {
+      "ref": "과목 구분 ○ 위치(혼합 표기)",
+      "confidence": "medium",
+      "note": "열 사이가 아니라 한 행에 ○가 둘 또는 셋 찍혀 있음(복수 ○ = 혼합). 과목별 구분은 글자색(검정 일반·빨강 진로·파랑 융합)으로 보강",
+      "checked": true,
+      "checkedDate": "2026-10-25",
+      "checkedBy": "마스터 사진 대조",
+      "resolution": "복수 ○ 표기 확인, 과목별 구분은 글자색으로 보강"
+    },
+    {
+      "ref": "3-1-B '고급 대수', '융합과학탐구' 등 3학년 택6 목록",
+      "confidence": "medium",
+      "note": "작은 글씨, 줄바꿈으로 경계가 불명확",
+      "checked": true,
+      "checkedDate": "2026-10-25",
+      "checkedBy": "마스터 사진 대조",
+      "resolution": "사진 대조에서 3학년 택6 목록 전사 값 일치, 과목별 구분은 글자색으로 보강"
+    },
+    {
+      "ref": "기술·가정/정보/제2외국어/한문/교양 영역 필수이수학점 16",
+      "confidence": "low",
+      "note": "2학년이 아니라 이 영역 전체의 필수이수학점 16이다(8+8+8+6+8+10+10+10+16=84)",
+      "checked": true,
+      "checkedDate": "2026-10-25",
+      "checkedBy": "마스터 사진 대조",
+      "resolution": "영역 필수이수학점 16 확인, 영역별 합계 84 일치"
+    }
+  ],
+  "schoolId": "school-yonginheungcheon",
+  "_meta": {
+    "source": [
+      {
+        "name": "학교 배부 편제표 사진(구글 포토)",
+        "kind": "official",
+        "retrieved": "2026-10-25",
+        "file": "files/inbox/ABrJyp7ktXkbCS00.jpg",
+        "note": "AI가 사진에서 전사. 사람 확인 전"
+      }
+    ],
+    "confidence": "unverified",
+    "updated": "2026-10-25"
+  }
+}
