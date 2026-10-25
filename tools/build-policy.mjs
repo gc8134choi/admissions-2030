@@ -32,7 +32,7 @@ const EVENTS = {
     { label: "합격자 발표(~2.10)", start: "2028-02-10" }, { label: "등록", start: "2028-02-11", end: "2028-02-14" },
   ],
   "2030학년도 수시 원서접수": [{ label: "시작(2029.9 중하순 추정)", start: "2029-09" }],
-  "2030학년도 수능": [{ label: "시행일(2029.11 중하순 추정)", start: "2029-11" }],
+  "2030학년도 수능": [{ label: "시행일(잠정 예상)", start: "2029-11-15" }],
   "2030학년도 정시": [{ label: "원서접수·전형(추정)", start: "2029-12", end: "2030-02" }],
 };
 // draft에서 빠진, 조사 md 상태 칸의 괄호 설명.
@@ -40,13 +40,16 @@ const NOTES = { "adm-05": "미결정 상태", "adm-10": "개인 제안, 정부�
 // 사용자 결정 Q6(2026-10-25): 기본계획 공고 시기 정정. 화면 상단 안내문도 이 행의 body를 읽는다(문구 관리 한 곳).
 const BODY = { "adm-07": "수능 세부 범위는 추정이며, 2030학년도 수능 시행 기본계획 공고(2029.3 전후 추정, 2027학년도분은 2026.3.31 공고) 전까지 미확정" };
 
+// 사용자 지시(PM 경유, 2026-10-25): 2030학년도 수능을 2029.11.15로 잠정 예상. 상태는 추정 그대로, 본문에 출처를 덧붙인다.
+const APPEND = { "sch-12": "사용자 잠정 예상 2029.11.15, 공식 공고 전." };
+
 const draft = JSON.parse(readFileSync("research/data/policy-draft.json", "utf8")).items;
 const out = draft.map((d) => {
   const sources = [d.sourceName && { name: d.sourceName, url: d.sourceUrl }, ...(d.extraSources || [])].filter(Boolean);
   const row = { id: d.id, topic: d.topic };
   row.entryYear = d.entryYear ?? (d.examYear ? d.examYear - 3 : 2027);
   row.examYear = d.examYear ?? row.entryYear + 3;
-  Object.assign(row, { title: d.title, body: BODY[d.id] ?? d.body, status: STATUS[d.status] ?? "unknown" });
+  Object.assign(row, { title: d.title, body: APPEND[d.id] ? `${(BODY[d.id] ?? d.body).replace(/\.?$/, ".")} ${APPEND[d.id]}` : BODY[d.id] ?? d.body, status: STATUS[d.status] ?? "unknown" });
   if (NOTES[d.id]) row.note = NOTES[d.id];
   row.unverified = !!d.unverified;
   row.sourceKind = KIND[d.sourceKind] ?? null;
