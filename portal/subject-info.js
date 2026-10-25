@@ -59,7 +59,7 @@ function close(refocus) {
 function open(btn) {
   const it = MAP.get(btn.dataset.si); if (!it) return;
   close(false);
-  const src = it.source || META.source, status = it.status || META.status, unv = it.unverified ?? META.unverified;
+  const src = it.source || META.source, status = it.status || META.status;
   const srcHtml = src ? (typeof src === "string" ? esc(src) : src.url && /^https?:\/\//.test(src.url) ? `<a href="${esc(src.url)}" target="_blank" rel="noopener">${esc(src.name || src.url)}</a>` : esc(src.name || "")) : "";
   pop = document.createElement("div");
   pop.className = "sip"; pop.setAttribute("role", "dialog"); pop.setAttribute("aria-label", `${it.name} 설명`); pop.tabIndex = -1;
@@ -67,7 +67,7 @@ function open(btn) {
     <p>${txt(it.summary)}</p>
     ${it.specialPurpose ? '<p class="muted small">특수 목적 고교 과목</p>' : ""}
     <dl class="sip-d"><dt>학점</dt><dd>${txt(it.credit || META.defaultCredit || "확인 필요")}</dd>${""}${it.old2015 ? `<dt>2015 개정</dt><dd>${txt(it.old2015)}</dd>` : ""}${it.majors ? `<dt>관련 학과</dt><dd>${txt(it.majors)}</dd>` : ""}</dl>
-    <div class="sip-f small">${srcHtml ? `출처 ${srcHtml}` : ""}${status ? ` <span class="pst ${esc(status)}">${esc(PST[status] || status)}</span>` : ""}${unv ? ' <span class="unv">원문 미확인</span>' : ""}</div>`;
+    <div class="sip-f small">${srcHtml ? `출처 ${srcHtml}` : ""}${status ? ` <span class="pst ${esc(status)}">${esc(PST[status] || status)}</span>` : ""}</div>`;
   document.body.appendChild(pop);
   anchor = btn; btn.setAttribute("aria-expanded", "true");
   // 버튼 아래(공간이 없으면 위)에 두고, 화면 밖으로 나가지 않게 가로·세로를 맞춘다
