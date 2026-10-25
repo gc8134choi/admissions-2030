@@ -146,3 +146,4 @@ table.policy tr.past{opacity:.45}
 .nm{display:inline-flex;align-items:center;gap:6px;vertical-align:middle}
 .chip .logo{box-shadow:0 0 0 1.5px #fff}
 .school h3 .nm{gap:8px}
+.fgroup .achip{font-size:12px;padding:3px 6px;white-space:normal;line-height:1.25;border-radius:12px;min-height:26px;display:inline-flex;align-items:center;justify-content:center}
