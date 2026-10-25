@@ -291,3 +291,27 @@ table.policy tr.g3 td:first-child{color:var(--g3c);font-weight:700}
 .hm .hm-aud .fchip.on::before,.hm .hm-aud .fchip[aria-pressed=true]::before{background:currentColor}
 .hm .hm-aud .fchip[data-aud=grade3]{color:var(--g3c);border-color:var(--hair)}
 .hm .hm-aud .fchip[data-aud=grade3].on,.hm .hm-aud .fchip[data-aud=grade3][aria-pressed=true]{background:none;color:var(--g3);border-color:var(--g3c)}
+
+/* 바로가기: 공식은 밑줄 링크 + "공식" 글자 */
+.kd{font-size:11px;font-weight:600;color:var(--mute)}
+.kd.off{color:var(--ink);font-weight:800}
+.row h3 a{text-underline-offset:4px;text-decoration-thickness:1px}
+
+/* ===== 상세 비교표(?v=compare): 헤어라인 표, 구분 배지는 조용한 글자 ===== */
+#tbl{border:0}
+#tbl th,#tbl td{background:none;border:0;border-bottom:1px solid var(--hair)}
+#tbl thead th{background:var(--paper);border-bottom:1px solid var(--rule);font-size:12px;letter-spacing:.04em;font-weight:700}
+#tbl td.l,#tbl th.l,#tbl td.ar,#tbl th.ar{background:var(--paper)}
+#tbl td.ar{color:var(--mute);font-size:12px;font-weight:700;border-bottom:0;border-top:1px solid var(--rule)}
+#tbl tr.af td{border-top:1px solid var(--rule)}
+#tbl tr.ra0 td,#tbl tr.ra1 td{background:none}
+#tbl td.req{color:var(--req)}#tbl td.ele{color:var(--ele)}
+.kb{border:0;background:none;padding:0;border-radius:0;width:auto;height:auto;font-size:11px;font-weight:700;color:var(--mute);margin-right:4px;display:inline}
+.kb.none{border:0}
+.cmp .filters,.filters.panel{border:0;background:none;padding:0 16px 0 0}
+.fgroup .flabel,.flabel{font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--mute)}
+.fchip,.achip{min-height:34px}
+.si{color:var(--mute);border:0;background:none}
+.sip{background:var(--paper);border:1px solid var(--rule);border-radius:0;box-shadow:none}
+@media (max-width:760px){.cmpmain::before{content:"옆으로 밀어 보세요 →";display:block;font-size:12px;color:var(--mute);margin:6px 0 4px}}
+.rows.lk .row{grid-template-columns:1fr}

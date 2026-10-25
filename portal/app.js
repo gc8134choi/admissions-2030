@@ -79,7 +79,7 @@ const views = {
   async status(el) {
     const [schools, summary, curricula] = await Promise.all([load("schools"), load("summary"), load("curricula")]);
     const cdate = (curricula.map((c) => /\d{4}-\d{2}-\d{2}/.exec(c._meta?.source?.[0]?.note || "")?.[0]).filter(Boolean).sort().pop() || "");
-    el.innerHTML = `<div class="tw"><table><thead><tr><th class="l">학교</th><th>입학학년도</th><th>정보 수집일</th><th>편제표 신뢰도</th><th>열린 flag</th><th>구분 미표기 행</th><th>확인 필요</th></tr></thead><tbody>${summary.map((m) => { const sc = schools.find((s) => s.id === m.schoolId); return `<tr><td class="l">${esc(m.schoolName)}</td><td>${m.entryYear}</td><td>${esc(sc?._meta?.updated || "-")}</td><td>${esc(m.confidence)}</td><td>${m.flagsOpen}</td><td>${m.kindMissingRows}</td><td>${m.reviewCount}</td></tr>`; }).join("")}</tbody></table></div>
+    el.innerHTML = `<div class="tw"><table><thead><tr><th class="l">학교</th><th>입학학년도</th><th>정보 수집일</th><th>편제표 신뢰도</th><th>확인할 항목</th><th>구분이 빠진 과목</th><th>직접 확인해 볼 항목</th></tr></thead><tbody>${summary.map((m) => { const sc = schools.find((s) => s.id === m.schoolId); return `<tr><td class="l">${esc(m.schoolName)}</td><td>${m.entryYear}</td><td>${esc(sc?._meta?.updated || "-")}</td><td>${esc(m.confidence)}</td><td>${m.flagsOpen}</td><td>${m.kindMissingRows}</td><td>${m.reviewCount}</td></tr>`; }).join("")}</tbody></table></div>
       <p class="muted">unverified = 사진 대조 전 / reported = 보도·사용자 확인 / verified = 대조 완료</p>
       <p class="note">편제표 값은 AI가 학교 배부 사진에서 옮긴 뒤 <b>사용자 사진 대조 완료${cdate ? `, ${esc(cdate)}` : ""}</b>입니다. 수능 범위는 2028 통합형 수능 기준 <b>추정</b>이며, 편제표는 개설 가능 <b>후보</b>입니다.</p>`;
   },
@@ -113,7 +113,7 @@ async function curriculumView(el, query, node) {
   let tab = query.get("v") === "compare" ? "compare" : "summary";
   let compare = null; // 상세 비교 화면(필터 포함)은 한 번만 만들고 탭 전환 때 재사용한다
 
-  el.innerHTML = `<div class="phead"><h2>${esc(node?.title || "학교별 편제표")} ${node ? badge(node.status) : ""}</h2>
+  el.innerHTML = `<div class="phead"><h2>${esc(node?.title || "학교별 과목표")} ${node ? badge(node.status) : ""}</h2>
       <div class="subtabs" id="tabs"><a href="#" data-tab="summary">학교별 요약</a><a href="#" data-tab="compare">상세 비교</a></div></div>
     <div class="chipbar" id="chipbar"><span class="flabel">학교</span><div class="chips" id="chips"></div></div>
     <div id="cview"></div>`;
@@ -216,7 +216,7 @@ async function summaryBody(el, ids) {
       ${notesBlock(notes?.schools?.find((x) => x.schoolId === m.schoolId)?.notes, notes?._meta?.status)}
       <details><summary>메모</summary><textarea data-memo="${esc(m.schoolId)}" placeholder="이 브라우저에만 저장됩니다">${esc(store.get("memo:" + m.schoolId, ""))}</textarea></details>
       <div class="foot"><a class="btn" href="#" data-go="${esc(m.schoolId)}">이 학교 과목 보기</a>
-      <span class="muted small">${m.reviewCount ? `⚠ 확인 필요 ${m.reviewCount}건 · ` : ""}수집 ${esc(sc._meta?.updated || "-")}</span></div></section>`;
+      <span class="muted small">${m.reviewCount ? `직접 확인해 볼 항목 ${m.reviewCount}건 · ` : ""}수집 ${esc(sc._meta?.updated || "-")}</span></div></section>`;
   };
   const shown = ids.map((id) => summary.find((m) => m.schoolId === id)).filter(Boolean);
   // 비교 중인 학교들 사이에 값이 다른 항목만 표시(학교가 하나뿐이면 전부 표시)
@@ -340,20 +340,27 @@ registerPolicy(views, { $, esc, load, store });
 registerHome(views, { esc, load, store, nm, stars, toggleStar, nameOf, TERMS, hasLogo: (id) => LOGO_IDS.has(id), profile: () => currentProfile(store), profiles: () => allProfiles(store) });
 const filesApi = registerFiles(views, { esc, load, nm });
 
-// 보관함 > 바로가기: 공식 사이트 한 곳 모음(출처·상태가 붙은 정보는 각 화면의 출처 줄에서 본다)
-const LINKS = [
-  ["고교학점제 종합지원포털", "교육부", "https://www.hscredit.kr"],
-  ["평가원 수능 홈페이지", "한국교육과정평가원", "https://www.suneung.re.kr"],
-  ["대교협 대입정보포털 어디가", "한국대학교육협의회", "https://www.adiga.kr"],
-  ["대학알리미", "한국대학교육협의회", "https://www.academyinfo.go.kr"],
-  ["경기도교육청 고등학교 입학전학 포털", "경기도교육청", "https://satp.goe.go.kr"],
-  ["교육부", "교육부", "https://www.moe.go.kr"],
-];
+// 보관함 > 바로가기: 분류별 헤어라인 목록. 공식·공공은 구분해 적고, 확인일을 함께 보여 준다(data/links.json).
 views.links = async (el) => {
-  el.innerHTML = `<ul class="rows">${LINKS.map(([t, o, u]) => `<li class="row"><div><h3><a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)} ↗</a></h3><p>${esc(o)} · 공식</p></div></li>`).join("")}</ul>
-    <section class="sec"><div class="sec-h"><h2><em>설정</em>표시 이름</h2></div><p class="muted small">이 브라우저에서만 바뀝니다. 비우면 기본 이름으로 돌아가요.</p>${nameSettings(store)}</section>`;
+  const d = await load("links");
+  const KIND = { 공식: "공식", 공공: "공공", 매체: "매체", 학원: "학원" };
+  el.innerHTML = `<p class="muted small">접속을 확인한 곳만 담았어요. 확인일 ${esc((d._meta?.checkedAt || "").replace(/-/g, "."))}</p>
+    ${d.categories.map((c, i) => `<section class="sec"><div class="sec-h"><h2><em>${String(i + 1).padStart(2, "0")}</em>${esc(c)}</h2></div><ul class="rows lk">${d.items.filter((x) => x.category === c).map((x) => `<li class="row"><div><h3><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)} ↗</a></h3><p>${esc(x.purpose)}</p><div class="meta"><span class="kd${x.kind === "공식" ? " off" : ""}">${esc(KIND[x.kind] || x.kind)}</span><span class="muted small">${esc(x.org)} · 확인 ${esc(x.checkedAt.slice(5).replace("-", "."))}</span></div></div></li>`).join("")}</ul></section>`).join("")}
+    <section class="sec"><div class="sec-h"><h2><em>설정</em>표시 이름</h2></div><p class="muted small">이 브라우저에서만 바뀌어요. 비우면 기본 이름으로 돌아가요.</p>${nameSettings(store)}</section>`;
   bindNameSettings(el, store, render);
 };
+
+// 일정 화면: 캘린더 구독(webcal) 또는 .ics 내려받기
+const ICS_URL = "gc8134choi.github.io/admissions-2030/portal/data/schedule.ics";
+function addCalendar(el) {
+  if (el.querySelector(".cal")) return;
+  const s = document.createElement("section");
+  s.className = "sec cal";
+  s.innerHTML = `<div class="sec-h"><h2><em>캘린더</em>내 캘린더에 담기</h2></div>
+    <p class="muted small">구독하면 일정이 바뀔 때 캘린더 앱이 알아서 따라가요. 추정 일정은 제목에 (추정)이 붙어 있어요.</p>
+    <p class="cal-a"><a class="lnk" href="webcal://${ICS_URL}">내 캘린더에 구독</a><a class="lnk" href="data/schedule.ics" download="schedule.ics">.ics 내려받기</a></p>`;
+  el.appendChild(s);
+}
 
 const GO_ERR = '<p class="note">정보를 못 가져왔어요. 잠시 뒤 다시 열어 주세요.</p>';
 function render() {
@@ -380,7 +387,7 @@ function render() {
   }
   const title = tab.items.find((x) => x.id === n.id)?.title || n.title;
   $("#main").innerHTML = `${sub}<h1 class="ph">${esc(title)}</h1><div id="view"></div>${soon}`;
-  if (n.view) views[n.view]($("#view"), query).then(() => { filesApi.afterView(n.view, $("#view")); if (n.view === "credit") decorateSubjectLists($("#view"), load, "4."); }).catch(() => ($("#view").innerHTML = GO_ERR));
+  if (n.view) views[n.view]($("#view"), query).then(() => { filesApi.afterView(n.view, $("#view")); if (n.view === "credit") decorateSubjectLists($("#view"), load, "4."); if (n.view === "schedule") addCalendar($("#view")); }).catch(() => ($("#view").innerHTML = GO_ERR));
 }
 
 addEventListener("hashchange", render);

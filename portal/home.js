@@ -87,7 +87,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const csatRowB = isB ? policy.find((r) => r.examYear === examYear && /수능/.test(r.title) && !/기본계획|원서|정시|수시/.test(r.title) && r.events?.length) : null;
     const pcsat = pf.csat && !csatRowB ? { id: "pf-csat", status: pf.csat.status, sourceName: pf.csat.sourceName, title: "수능", reason: pf.csat.note, events: [{ start: pf.csat.date, label: "수능 시행일(잠정 예상)" }] } : null;
     const csatRow = isB ? csatRowB || pcsat : P.get("sch-12") || P.get("sch-07"), csat = isB ? csatRow?.events?.[0] : ev0("sch-12") || ev0("sch-07");
-    let heroDays = null, heroMeta = "수능 날짜 데이터 준비 중";
+    let heroDays = null, heroMeta = "수능 날짜를 아직 못 가져왔어요";
     if (csat) {
       const sp = span(csat.start, csat.end);
       const target = sp.month ? new Date(sp.start.getFullYear(), sp.start.getMonth(), 15) : sp.start;
@@ -185,7 +185,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
         <p class="glance-lead">3년 동안 <mark>${m0.creditsTotal}학점</mark>을 스스로 채웁니다.</p>
         <div class="glance"><div class="g"><span class="v num">${m0.creditsSubject}</span><span class="k">교과 학점</span><span class="n">공통·선택 과목으로 채웁니다</span></div><div class="g"><span class="v num">${m0.creditsCreative}</span><span class="k">창의적 체험활동</span><span class="n">동아리·봉사·진로</span></div></div>
         ${isB ? `<p class="src-line"><span class="pst estimated">추정</span> ${esc(pf.name)}이 입학하는 ${entryYear}학년도에도 같을지는 아직 확인되지 않았어요. 지금 학년도 기준 숫자입니다.</p>` : ""}</section>
-      ${isB ? "" : `<section class="sec"><div class="sec-h"><h2><em>06</em>앞으로 3년</h2></div><ol class="tl">${tl}</ol></section>`}
+      ${isB ? "" : `<section class="sec"><div class="sec-h"><h2><em>06</em>앞으로 3년</h2><a href="#roadmap" id="rm-link" hidden>학년별 로드맵</a></div><ol class="tl">${tl}</ol></section>`}
     </div>`;
 
     // D-day 숫자 단위 전환(일 → 주 → 개월)

@@ -34,7 +34,7 @@ export function registerFiles(views, { esc, load, nm }) {
     document.addEventListener("keydown", onKey);
     const img = v.querySelector(".fv-img"), stage = v.querySelector(".fv-stage"), pct = v.querySelector(".fv-pct");
     const set = (z) => { zoom = Math.min(5, Math.max(0.5, z)); img.style.width = `${zoom * 100}%`; pct.textContent = `${Math.round(zoom * 100)}%`; };
-    img.addEventListener("error", () => { stage.innerHTML = '<p class="fv-none">파일 준비 중입니다.</p>'; v.querySelector(".fv-tools").classList.add("off"); });
+    img.addEventListener("error", () => { stage.innerHTML = '<p class="fv-none">파일이 곧 올라와요.</p>'; v.querySelector(".fv-tools").classList.add("off"); });
     v.addEventListener("click", (e) => {
       if (e.target === stage || e.target.closest(".fv-x")) return closeViewer();
       const z = e.target.closest("[data-z]")?.dataset.z;
@@ -46,7 +46,7 @@ export function registerFiles(views, { esc, load, nm }) {
   }
 
   const card = (f, schools) => `<button type="button" class="fl-card" data-id="${esc(f.id)}">
-      <span class="fl-thumb"><img src="${esc(f.thumb || f.file)}" alt="" loading="lazy"><span class="fl-none">파일 준비 중</span></span>
+      <span class="fl-thumb"><img src="${esc(f.thumb || f.file)}" alt="" loading="lazy"><span class="fl-none">곧 올라와요</span></span>
       <span class="fl-body"><b>${esc(f.title)}</b>${f.description ? `<span class="muted small">${esc(f.description)}</span>` : ""}
         <span class="fl-meta muted small">${[TOPIC[f.topic] || f.topic, f.source, f.date].filter(Boolean).map(esc).join(" · ")}</span>
         ${(f.schoolIds || []).length ? `<span class="fl-sch">${f.schoolIds.map((id) => nm(id, schools.find((s) => s.id === id)?.name || id, 18)).join(" ")}</span>` : ""}</span></button>`;
