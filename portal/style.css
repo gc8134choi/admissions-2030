@@ -74,3 +74,9 @@ tfoot th{background:var(--soft)}
 .cmpmain{min-width:0}
 .cmpmain .tools{margin-top:0}
 @media (max-width:1000px){.cmp{grid-template-columns:1fr}.cmp .filters{position:static;max-height:none}}
+
+.pst{display:inline-block;font-size:12px;font-weight:600;border-radius:99px;padding:0 8px;border:1px solid currentColor;white-space:nowrap}
+.pst.confirmed{color:var(--v1)}.pst.reported{color:var(--accent)}.pst.estimated{color:var(--v2)}.pst.unknown{color:var(--soon)}
+.fixednote{position:sticky;top:49px;z-index:3;background:var(--warn);border:1px solid var(--v2);border-radius:8px;padding:8px 12px;font-weight:600;margin:10px 0}
+table.policy td{vertical-align:top}
+table.policy tr.past{opacity:.45}

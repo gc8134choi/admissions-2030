@@ -5,12 +5,12 @@ export const MENU = [
     desc: "지금 할 일, 관심 학교, 최근 변경을 한눈에.",
     parts: ["이번 달 할 일 / 다가오는 일정", "관심 학교 위젯 (★ 토글로 모은 학교)", "최근 갱신 · 제도 변경 알림"] },
 
-  { id: "schedule", title: "일정", icon: "📅", status: "v2",
+  { id: "schedule", title: "일정", icon: "📅", status: "v1", view: "schedule",
     desc: "학년·월별 전체 타임라인.",
     parts: ["학년·월별 타임라인", "필터: 고교 선택 / 고교 생활 / 대입"] },
 
   { id: "select", title: "고교 선택", icon: "🏫", status: "v1", children: [
-    { id: "select/types", title: "고교 유형·전형 일정", status: "v2",
+    { id: "select/types", title: "고교 유형·전형 일정", status: "v1", view: "types",
       desc: "일반/자사고/특목/특성화 등 유형 개요와 전형 일정·요건.",
       parts: ["유형별 개요", "전형 일정·요건"] },
     { id: "select/curriculum", title: "학교별 편제표", status: "v1", view: "curriculum",
@@ -25,7 +25,7 @@ export const MENU = [
     ] },
 
   { id: "admission", title: "대입", icon: "🎓", status: "v2", children: [
-    { id: "admission/system", title: "대입 제도", status: "v2", desc: "2030학년도 대입 개요." },
+    { id: "admission/system", title: "대입 제도", status: "v1", view: "system", desc: "2030학년도 대입 개요." },
     { id: "admission/univ", title: "대학·학과 비교", status: "v2",
       desc: "대학·학과별 과목 요건(필수/권장/가산). 요강 확정 전까지 상태를 표시한다.",
       parts: ["과목 요건 데이터 틀", "상태: 확정 / 예정 / 추정"] },
