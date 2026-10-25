@@ -446,6 +446,7 @@
  {
   "id": "sch-03",
   "topic": "exam-schedule",
+  "examYear": 2028,
   "title": "2028학년도 수능",
   "body": "시험 2027.11.18(목), 성적통지 2027.12.10(금). 통합형 수능체제(국어·수학·탐구 선택과목 폐지) 적용",
   "status": "confirmed",
@@ -473,6 +474,7 @@
  {
   "id": "sch-04",
   "topic": "exam-schedule",
+  "examYear": 2028,
   "title": "2028학년도 수시 원서접수",
   "body": "수시 원서접수 2027.9.20(월)~23(목) 중 3일 이상, 전형기간 9.24~12.20(88일), 합격자 발표 12.21까지, 등록 12.22~24. 하반기 모의평가를 8월 말에 실시한 뒤 접수",
   "status": "confirmed",
@@ -506,6 +508,7 @@
  {
   "id": "sch-05",
   "topic": "exam-schedule",
+  "examYear": 2028,
   "title": "2028학년도 대입전형 기본사항",
   "body": "대교협이 2025.8.28 발표(개정 2026.7.31)",
   "status": "confirmed",
@@ -635,6 +638,7 @@
  {
   "id": "sch-10",
   "topic": "exam-schedule",
+  "examYear": 2028,
   "title": "2028학년도 정시 일정(참고)",
   "body": "원서접수 2028.1.3(월)~1.6(목) 중 3일 이상, 전형기간 가군 1.10~17, 나군 1.18~25, 다군 1.31~2.7, 합격자 발표 2.10까지, 등록 2.11~14, 미등록 충원 통보 2.15~20, 충원 등록 마감 2.21 18시",
   "status": "confirmed",
@@ -2633,6 +2637,245 @@
   "sourceName": null,
   "sourceUrl": null,
   "region": "national",
+  "audience": [
+   "common"
+  ],
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "life-01",
+  "topic": "life-schedule",
+  "entryYear": 2027,
+  "examYear": 2030,
+  "title": "중학교 졸업",
+  "body": "2026.12.18(금) 중학교 졸업",
+  "status": "confirmed",
+  "unverified": false,
+  "sourceKind": null,
+  "sourceName": "사용자 제공",
+  "sourceUrl": null,
+  "region": "gyeonggi",
+  "audience": [
+   "common"
+  ],
+  "events": [
+   {
+    "label": "",
+    "start": "2026-12-18"
+   }
+  ],
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "life-02",
+  "topic": "life-schedule",
+  "entryYear": 2030,
+  "examYear": 2033,
+  "title": "초등학교 졸업",
+  "body": "2026.12.31(목) 초등학교 졸업",
+  "status": "confirmed",
+  "unverified": false,
+  "sourceKind": null,
+  "sourceName": "사용자 제공",
+  "sourceUrl": null,
+  "region": "gyeonggi",
+  "audience": [
+   "common"
+  ],
+  "events": [
+   {
+    "label": "",
+    "start": "2026-12-31"
+   }
+  ],
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "life-03",
+  "topic": "life-schedule",
+  "entryYear": 2030,
+  "examYear": 2033,
+  "title": "중학교 배정원서 작성(출신 초등학교)",
+  "body": "2027학년도 용인 중학교 신입생 배정원서 작성 2026.11.2(월)~11.6(금). 학교군 내 모든 중학교를 희망 순으로 지원",
+  "status": "confirmed",
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
+  "sourceKind": "official",
+  "sourceName": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획 일정)",
+  "sourceUrl": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
+  "region": "gyeonggi",
+  "audience": [
+   "common"
+  ],
+  "events": [
+   {
+    "label": "",
+    "start": "2026-11-02",
+    "end": "2026-11-06"
+   }
+  ],
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "life-04",
+  "topic": "life-schedule",
+  "entryYear": 2030,
+  "examYear": 2033,
+  "title": "중학교 배정원서 접수(용인교육지원청)",
+  "body": "2026.11.9(월)~11.13(금), 출신 초등학교에서 접수",
+  "status": "confirmed",
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
+  "sourceKind": "official",
+  "sourceName": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획 일정)",
+  "sourceUrl": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
+  "region": "gyeonggi",
+  "audience": [
+   "common"
+  ],
+  "events": [
+   {
+    "label": "",
+    "start": "2026-11-09",
+    "end": "2026-11-13"
+   }
+  ],
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "life-05",
+  "topic": "life-schedule",
+  "entryYear": 2030,
+  "examYear": 2033,
+  "title": "중학교 추가배정",
+  "body": "추가배정원서 작성 2026.12.7~12.11(출신 초등학교), 접수 12.14~12.16(용인교육지원청)",
+  "status": "confirmed",
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
+  "sourceKind": "official",
+  "sourceName": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획 일정)",
+  "sourceUrl": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
+  "region": "gyeonggi",
+  "audience": [
+   "common"
+  ],
+  "events": [
+   {
+    "label": "",
+    "start": "2026-12-07",
+    "end": "2026-12-16"
+   }
+  ],
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "life-06",
+  "topic": "life-schedule",
+  "entryYear": 2030,
+  "examYear": 2033,
+  "title": "중학교 배정학교 발표",
+  "body": "2026.12.31(목) 출신 초등학교에서 발표",
+  "status": "confirmed",
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
+  "sourceKind": "official",
+  "sourceName": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획 일정)",
+  "sourceUrl": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
+  "region": "gyeonggi",
+  "audience": [
+   "common"
+  ],
+  "events": [
+   {
+    "label": "",
+    "start": "2026-12-31"
+   }
+  ],
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "life-07",
+  "topic": "life-schedule",
+  "entryYear": 2030,
+  "examYear": 2033,
+  "title": "중학교 신입생 등록",
+  "body": "2027.1.4(월)~1.7(목) 각 중학교",
+  "status": "confirmed",
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
+  "sourceKind": "official",
+  "sourceName": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획 일정)",
+  "sourceUrl": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
+  "region": "gyeonggi",
+  "audience": [
+   "common"
+  ],
+  "events": [
+   {
+    "label": "",
+    "start": "2027-01-04",
+    "end": "2027-01-07"
+   }
+  ],
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "life-08",
+  "topic": "life-schedule",
+  "entryYear": 2030,
+  "examYear": 2033,
+  "title": "중학교 재배정",
+  "body": "재배정 원서 접수 2027.1.11~1.15(용인교육지원청), 재배정 발표 1.22(용인교육지원청 홈페이지), 재배정자 등록 1.22(각 중학교)",
+  "status": "confirmed",
+  "note": "공식 원문 확인, 2026-10-25",
+  "unverified": false,
+  "sourceKind": "official",
+  "sourceName": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획 일정)",
+  "sourceUrl": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
+  "region": "gyeonggi",
+  "audience": [
+   "common"
+  ],
+  "events": [
+   {
+    "label": "",
+    "start": "2027-01-11",
+    "end": "2027-01-22"
+   }
+  ],
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "life-09",
+  "topic": "life-schedule",
+  "entryYear": 2030,
+  "examYear": 2033,
+  "title": "중학교 입학식·개학",
+  "body": "2027.3 초 입학식·개학. 학년도 3월 1일 시작, 3.1(월)이 삼일절이라 3.2~3.3 전후로 추정(2026학년도 경기 학교 사례는 3.3). 신입생 예비소집은 학교별 공지",
+  "status": "estimated",
+  "unverified": false,
+  "sourceKind": null,
+  "sourceName": null,
+  "sourceUrl": null,
+  "region": "gyeonggi",
+  "audience": [
+   "common"
+  ],
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "life-10",
+  "topic": "life-schedule",
+  "entryYear": 2027,
+  "examYear": 2030,
+  "title": "고교 입학식·개학",
+  "body": "2027.3 초 입학식·개학 3.2~3.3 전후로 추정. 경기 학사일정 공식 근거는 확인 못 함",
+  "status": "estimated",
+  "unverified": false,
+  "sourceKind": null,
+  "sourceName": null,
+  "sourceUrl": null,
+  "region": "gyeonggi",
   "audience": [
    "common"
   ],
