@@ -80,7 +80,7 @@
   "entryYear": 2027,
   "examYear": 2030,
   "title": "2030학년도에 위 제도 적용",
-  "body": "개편안은 2028학년도부터 적용으로 발표됨. 2030 전용 변경은 확인 못 함",
+  "body": "2028 개편(통합형 수능, 내신 5등급)이 2030학년도에 그대로 적용되는지는 확정 공고 없음. 수능 절대평가·서논술형은 2033학년도 적용이 유력하게 검토되는 단계(보도). 2030학년도 내신 석차등급 폐지 초안은 확정 아님",
   "status": "estimated",
   "unverified": false,
   "sourceKind": null,
@@ -1128,7 +1128,7 @@
   "entryYear": 2027,
   "examYear": 2030,
   "title": "2030학년도 적용 여부",
-  "body": "2027.3 확정안의 적용 시기에 달림. 현 중3 적용 여부는 확인 못 함",
+  "body": "수능 절대평가·서·논술형은 2033학년도 적용이 유력하게 검토됨(보도, 확정 아님). 2030학년도 쪽에서 거론되는 것은 고교 내신 석차등급 폐지·성취평가 일원화 초안(확정 아님). 최종안은 2027.3 확정 예정",
   "status": "unknown",
   "unverified": false,
   "sourceKind": null,
@@ -2359,6 +2359,112 @@
   "sourceKind": null,
   "sourceName": null,
   "sourceUrl": null,
+  "audience": [
+   "common"
+  ],
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "log-12",
+  "topic": "change-log",
+  "entryYear": 2027,
+  "examYear": 2030,
+  "title": "2026-08 수능 개편안 적용 시기 검토",
+  "body": "수능 절대평가·서·논술형 도입은 2033학년도 대입(현 초6)부터 적용하는 안이 유력하게 검토됨. 국교위는 특별위원회가 논의 중인 복수 방안이며 확정된 사안이 아니라고 설명. 현 중3의 2030학년도 수능에는 해당하지 않을 가능성이 큼(보도 기준)",
+  "status": "reported",
+  "unverified": true,
+  "reason": "공식 원문 출처 미특정, 매체 보도만 확인",
+  "sourceKind": "media",
+  "sourceName": "다음뉴스",
+  "sourceUrl": "https://v.daum.net/v/20260803100648087",
+  "sources": [
+   {
+    "name": "다음뉴스",
+    "url": "https://v.daum.net/v/20260803100648087"
+   },
+   {
+    "name": "교육플러스",
+    "url": "https://www.edpl.co.kr/news/articleView.html?idxno=21218"
+   },
+   {
+    "name": "네이트",
+    "url": "https://news.nate.com/view/20260806n01096?mid=n1101"
+   }
+  ],
+  "audience": [
+   "common"
+  ],
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "log-13",
+  "topic": "change-log",
+  "entryYear": 2027,
+  "examYear": 2030,
+  "title": "2030학년도 고교 내신 석차등급 폐지안(초안)",
+  "body": "2030학년도부터 고교 내신 석차등급제를 폐지하고 성취평가제로 일원화하는 방안이 초안에 담겼다고 보도됨. 국교위 관계자는 초안 단계이며 확정이 아니라고 설명. 확정되면 현 중3의 고교 내신에 직접 영향",
+  "status": "reported",
+  "unverified": true,
+  "reason": "공식 원문 출처 미특정, 매체 보도만 확인",
+  "sourceKind": "media",
+  "sourceName": "교육을 비추다",
+  "sourceUrl": "https://www.kyobit.com/news/articleView.html?idxno=6335",
+  "sources": [
+   {
+    "name": "교육을 비추다",
+    "url": "https://www.kyobit.com/news/articleView.html?idxno=6335"
+   },
+   {
+    "name": "한국교육신문(te.co.kr)",
+    "url": "https://www.te.co.kr/news/article.html?no=29318"
+   }
+  ],
+  "audience": [
+   "common"
+  ],
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "log-14",
+  "topic": "change-log",
+  "entryYear": 2027,
+  "examYear": 2030,
+  "title": "2026-08~09 국교위 의견 수렴",
+  "body": "대입 특위가 현장 토론회(인천·전남광주·대구), 국민의견플랫폼(9.14~28), 국민참여위원 203명 1박 2일 숙의토론(화성)으로 의견을 수렴. 결과는 국가교육발전계획에 반영 예정",
+  "status": "reported",
+  "unverified": true,
+  "reason": "공식 원문 출처 미특정, 매체 보도만 확인",
+  "sourceKind": "media",
+  "sourceName": "뉴스핌",
+  "sourceUrl": "https://www.newspim.com/news/view/20260828000191",
+  "sources": [
+   {
+    "name": "뉴스핌",
+    "url": "https://www.newspim.com/news/view/20260828000191"
+   },
+   {
+    "name": "뉴스핌(업무보고)",
+    "url": "https://www.newspim.com/news/view/20260805000395"
+   }
+  ],
+  "audience": [
+   "common"
+  ],
+  "checkedAt": "2026-10-25"
+ },
+ {
+  "id": "log-15",
+  "topic": "change-log",
+  "entryYear": 2027,
+  "examYear": 2030,
+  "title": "2026-09 국교위 내부 갈등",
+  "body": "위원 11명 요구로 임시회의가 열려 수능 서·논술형 도입안의 공론화 방식, AI 채점 신뢰성, 사교육 확대 우려 등이 제기됨",
+  "status": "reported",
+  "unverified": true,
+  "reason": "공식 원문 출처 미특정, 매체 보도만 확인",
+  "sourceKind": "media",
+  "sourceName": "네이트",
+  "sourceUrl": "https://m.news.nate.com/view/20260904n29452",
   "audience": [
    "common"
   ],
