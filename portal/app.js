@@ -217,7 +217,12 @@ async function compareShell(el, onReset, getAreas) {
     }
     let rows = [...by.values()];
     if (f.diff) rows = rows.filter((r) => ids.some((id) => !r.cells[id]));
-    rows.sort((a, b) => facets.areas.indexOf(a.area) - facets.areas.indexOf(b.area) || a.name.localeCompare(b.name, "ko"));
+    // 정렬: 교과군 → 지정 있는 과목 먼저(지정으로 둔 학교가 많은 순) → 선택 → 이른 학기 → 과목명
+    for (const r of rows) {
+      r.req = ids.filter((id) => (r.cells[id] || []).some((o) => o.slot === "required")).length;
+      r.term = ids.flatMap((id) => (r.cells[id] || []).map((o) => o.term)).sort()[0] || "9-9";
+    }
+    rows.sort((a, b) => facets.areas.indexOf(a.area) - facets.areas.indexOf(b.area) || (b.req > 0) - (a.req > 0) || b.req - a.req || a.term.localeCompare(b.term) || a.name.localeCompare(b.name, "ko"));
     const names = ids.map((id) => nameOf(schools, id));
     const uniq = (a) => [...new Set(a)];
     const cell = (os) => {
