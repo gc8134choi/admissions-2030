@@ -31,26 +31,18 @@ const toggleStar = (id) => { const s = stars(); store.set("stars", s.includes(id
 const nameOf = (schools, id) => schools.find((s) => s.id === id)?.name || id;
 const SLOT = { required: "지정", elective: "선택", outside: "교외" };
 const CSAT = { in: "포함", base: "기초", out: "제외", none: "-" };
+const dataNoteShort = '<details class="dnote"><summary><b>ⓘ 데이터 안내</b> AI 전사값 · 일부만 대조 · 수능 범위는 추정 · 개설 후보 <span class="muted">(펼쳐서 보기)</span></summary><p>편제표 값은 AI가 학교 배부 사진에서 옮긴 것으로, 일부(flag 22행)만 사진과 대조했습니다. 수능 범위는 2028 통합형 수능 기준 <b>추정</b>이며, 편제표는 개설 가능 <b>후보</b>입니다. 중요한 결정 전에는 원본으로 확인하세요.</p></details>';
 const dataNote = '<p class="note">편제표 값은 AI가 학교 배부 사진에서 옮긴 것으로, 일부(flag 22행)만 사진과 대조했습니다. 수능 범위는 2028 통합형 수능 기준 <b>추정</b>이며, 편제표는 개설 가능 <b>후보</b>입니다. 중요한 결정 전에는 원본으로 확인하세요.</p>';
 const options = (items, all) => `${all ? `<option value="">${esc(all)}</option>` : ""}${items.map((v) => `<option value="${esc(v.v ?? v)}">${esc(v.t ?? v)}</option>`).join("")}`;
 const POOL = { basic: "기초교과", cross: "교과(군) 간 선택", "in-area": "한 교과 안 선택", life: "기술·가정/정보/제2외국어 등" };
 const CHECK = { inferred: "구분 추정", unmarked: "구분 미표기", flag: "열린 flag 있음" };
-// 구분 아이콘: 모양+색으로 구분(색만 의존하지 않음). 추정은 윤곽선만, 미표기는 점선 원.
-const KICON = {
-  공통: ["#64748b", '<circle cx="8" cy="8" r="6"/>'],
-  일반: ["#0ea5e9", '<rect x="2.5" y="2.5" width="11" height="11" rx="2"/>'],
-  진로: ["#f59e0b", '<path d="M8 2 L14.5 13.5 H1.5 Z"/>'],
-  융합: ["#a855f7", '<path d="M8 1.5 L14.5 8 L8 14.5 L1.5 8 Z"/>'],
-  특목: ["#f43f5e", '<path d="M8 1.5 L9.9 5.9 14.6 6.3 11 9.4 12.1 14 8 11.6 3.9 14 5 9.4 1.4 6.3 6.1 5.9Z"/>'],
-  전문: ["#14b8a6", '<path d="M8 1.5 L13.7 4.75 V11.25 L8 14.5 L2.3 11.25 V4.75 Z"/>'],
+// 구분 배지: 모두 같은 크기의 둥근 사각형, 색만 다름. 추정은 윤곽선(배경 투명), 미표기는 점선 [—].
+const KCOLOR = { 공통: "#64748b", 일반: "#0ea5e9", 진로: "#f59e0b", 융합: "#a855f7", 특목: "#f43f5e", 전문: "#14b8a6" };
+const kindBadge = (kind, est) => {
+  const title = kind ? `${kind}${est ? " (추정)" : ""}` : "구분 미표기";
+  return `<span class="kb${est ? " est" : ""}${kind ? "" : " none"}" style="--k:${KCOLOR[kind] || "#94a3b8"}" title="${esc(title)}">${kind ? esc(kind) : "—"}</span>`;
 };
-const kindIcon = (kind, est) => {
-  if (!kind) return '<svg class="ki none" viewBox="0 0 16 16" role="img" aria-label="구분 미표기"><title>구분 미표기</title><circle cx="8" cy="8" r="6"/></svg>';
-  const [c, shape] = KICON[kind] || KICON.공통;
-  const label = `${kind}${est ? " (추정)" : ""}`;
-  return `<svg class="ki${est ? " est" : ""}" viewBox="0 0 16 16" role="img" aria-label="${esc(label)}" style="--k:${c}"><title>${esc(label)}</title>${shape}</svg>`;
-};
-const kindLegend = `<div class="legend">${Object.keys(KICON).map((k) => `<span>${kindIcon(k)}${k}</span>`).join("")}<span>${kindIcon("일반", true)}추정</span><span>${kindIcon(null)}미표기</span><span><i class="cr">4</i>학점</span></div>`;
+const kindLegend = `<div class="legend">${Object.keys(KCOLOR).map((k) => `<span class="lg">${kindBadge(k)}</span>`).join("")}<span class="lg">${kindBadge("일반", true)}추정(윤곽선)</span><span class="lg">${kindBadge(null)}미표기</span><span class="lg"><i class="cr">4</i>학점</span><span class="cnt" id="cnt"></span></div>`;
 const kindOf = (o) => (o.primaryKind ? o.primaryKind + (o.kindStatus === "inferred" ? "?" : "") : "미표기");
 
 // ---- 뷰 ----
@@ -64,8 +56,8 @@ const views = {
       <div class="panel"><b>이번 달 할 일</b><p class="muted">일정 데이터 연결 예정</p></div>`;
   },
 
-  async curriculum(el, query) {
-    await curriculumView(el, query);
+  async curriculum(el, query, node) {
+    await curriculumView(el, query, node);
   },
 
   async sources(el) {
@@ -83,7 +75,7 @@ const views = {
 // ---- 학교별 편제표: 학교 칩(on/off, 최대 4개교) + 탭(요약 / 상세 비교) ----
 const TERMS = ["1-1", "1-2", "2-1", "2-2", "3-1", "3-2"];
 
-async function curriculumView(el, query) {
+async function curriculumView(el, query, node) {
   const [schools, summary] = await Promise.all([load("schools"), load("summary")]);
   const known = (id) => schools.some((x) => x.id === id);
   let sel = query.has("s") ? query.get("s").split(",").filter(known) : schools.map((x) => x.id);
@@ -91,10 +83,10 @@ async function curriculumView(el, query) {
   let tab = query.get("v") === "compare" ? "compare" : "summary";
   let compare = null; // 상세 비교 화면(필터 포함)은 한 번만 만들고 탭 전환 때 재사용한다
 
-  el.innerHTML = `<div class="chipbar" id="chipbar"><span class="flabel">학교 (눌러서 켜고 끄기)</span>
-      <div class="chips" id="chips"></div></div>
-    <div class="subtabs" id="tabs"><a href="#" data-tab="summary">학교별 요약</a><a href="#" data-tab="compare">상세 비교</a></div>
-    <div class="muted small">${summary[0].entryYear}학년도 입학생(대입 ${summary[0].entryYear + 3}학년도) 편제표 · ${summary.length}개교 등록</div>${dataNote}
+  el.innerHTML = `<div class="phead"><h2>${esc(node?.title || "학교별 편제표")} ${node ? badge(node.status) : ""}</h2>
+      <div class="subtabs" id="tabs"><a href="#" data-tab="summary">학교별 요약</a><a href="#" data-tab="compare">상세 비교</a></div></div>
+    ${dataNoteShort}
+    <div class="chipbar" id="chipbar"><span class="flabel">학교</span><div class="chips" id="chips"></div></div>
     <div id="cview"></div>`;
 
   const syncUrl = () => {
@@ -188,7 +180,7 @@ async function compareShell(el, onReset) {
       <div class="fgroup"><label><input type="checkbox" id="diff"> 학교 간 차이 나는 과목만</label><label><input type="checkbox" id="one"> 한 학교에만 있는 과목</label></div>
       <button id="reset" type="button">필터 초기화</button>
     </div></details>
-    <div class="cmpmain"><div class="tools"><span class="muted" id="cnt"></span></div>${kindLegend}<div class="tw"><table id="tbl"></table></div></div></div>`;
+    <div class="cmpmain">${kindLegend}<div class="tw"><table id="tbl"></table></div></div></div>`;
   const root = el.firstElementChild;
   let ids = [];
   const draw = (next) => {
@@ -219,7 +211,7 @@ async function compareShell(el, onReset) {
       if (!os) return '<td class="no">✕</td>';
       const slots = uniq(os.map((o) => SLOT[o.slot])), tm = uniq(os.map((o) => o.term)).sort().join(",");
       const kinds = uniq(os.map((o) => (o.primaryKind ? `${o.primaryKind}|0` : o.kindGuess ? `${o.kindGuess}|1` : "|0")));
-      const icons = kinds.map((k) => { const [n, est] = k.split("|"); return kindIcon(n || null, est === "1"); }).join("");
+      const icons = kinds.map((k) => { const [n, est] = k.split("|"); return kindBadge(n || null, est === "1"); }).join("");
       const crs = uniq(os.map((o) => o.credits)).map((c) => `<i class="cr" title="${c}학점">${c}</i>`).join("");
       const warn = os.some((o) => o.openFlagIds.length) ? '<span title="열린 flag">⚠️</span>' : "";
       return `<td class="${os.some((o) => o.slot === "required") ? "req" : "ele"}"><div class="c1">${icons}<span class="sl">${slots.join("/")}</span><span>${esc(tm)}</span>${crs}${warn}</div></td>`;
@@ -229,7 +221,7 @@ async function compareShell(el, onReset) {
       if (r.area !== area) { area = r.area; html += `<tr class="area"><td colspan="${ids.length + 1}">${esc(area)}</td></tr>`; }
       html += `<tr><td class="l">${esc(r.name)}</td>${ids.map((id) => cell(r.cells[id])).join("")}</tr>`;
     }
-    $("#tbl").style.minWidth = `${200 + 190 * ids.length}px`;
+    $("#tbl").style.minWidth = `${200 + 210 * ids.length}px`;
     $("#tbl").innerHTML = `<thead><tr><th class="l">과목</th>${names.map((n) => `<th>${esc(n)}</th>`).join("")}</tr></thead><tbody>${html || `<tr><td colspan="${ids.length + 1}">조건에 맞는 과목이 없습니다.</td></tr>`}</tbody>
       <tfoot><tr><th class="l">해당 과목 수</th>${ids.map((id) => `<th>${rows.filter((r) => r.cells[id]).length}</th>`).join("")}</tr></tfoot>`;
     $("#cnt").textContent = `${rows.length}개 과목 · ${ids.length}개교`;
@@ -254,6 +246,11 @@ function render() {
   const n = byId.get(id) || byId.get("home");
   drawNav(n.id);
   $("#nav").classList.remove("open");
+  if (n.view === "curriculum") { // 표를 위로: 브레드크럼·설명 없이 제목과 탭을 한 줄에
+    $("#main").innerHTML = '<div id="view"></div>';
+    views.curriculum($("#view"), query, n).catch(() => ($("#view").innerHTML = '<p class="note">데이터를 불러오지 못했습니다. 페이지를 새로고침해 보세요.</p>'));
+    return;
+  }
   const kids = n.children
     ? `<div class="cards">${n.children.map((c) => `<a href="#${c.id}"><b>${esc(c.title)}</b> ${badge(c.status)}<div class="muted">${esc(c.desc || (c.children ? c.children.map((x) => x.title).join(" · ") : ""))}</div></a>`).join("")}</div>`
     : "";

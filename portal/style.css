@@ -122,13 +122,30 @@ table.policy tr.past{opacity:.45}
 
 /* 상세 비교: 한 줄 셀, 구분 아이콘, 학점 원 */
 .c1{display:flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap}
-.ki{width:15px;height:15px;flex:none;fill:var(--k);stroke:var(--k);stroke-width:1.5;stroke-linejoin:round}
-.ki.est{fill:none;stroke-dasharray:2.2 1.6}
-.ki.none{fill:none;stroke:var(--muted);stroke-width:1.3;stroke-dasharray:2 2}
 .cr{display:inline-flex;align-items:center;justify-content:center;width:13px;height:13px;border:1.2px solid currentColor;border-radius:50%;font-style:normal;font-size:9px;font-weight:600;line-height:1;flex:none}
 .legend{display:flex;flex-wrap:wrap;gap:2px 12px;align-items:center;font-size:12px;color:var(--muted);margin:0 0 6px;padding:5px 0;position:sticky;top:49px;z-index:3;background:var(--bg);border-bottom:1px solid var(--line)}
-.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend .lg{display:inline-flex;align-items:center;gap:5px}
 .legend .cr{color:var(--muted)}
-@media (max-width:760px){.legend{font-size:11px;gap:1px 9px}.legend .ki{width:13px;height:13px}}
+@media (max-width:760px){.legend{font-size:11px;gap:1px 9px}}
 .chipbar[hidden]{display:none}
 .fgroup .chips{gap:6px;margin:0}.fgroup .chip{padding:4px 10px;font-size:13px}
+#tbl th:not(.l),#tbl td:not(.l){min-width:190px}
+
+/* 학교별 편제표 헤더: 제목+탭 한 줄, 안내문 접기 */
+.phead{display:flex;flex-wrap:wrap;align-items:flex-end;gap:0 20px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.phead h2{margin:0 0 6px;font-size:20px;display:flex;align-items:center;gap:8px}
+.phead .subtabs{border-bottom:0;margin:0}
+.phead .subtabs a{padding:8px 14px}
+.dnote{background:var(--warn);border-radius:8px;padding:4px 10px;font-size:12px;margin:0 0 8px}
+.dnote summary{cursor:pointer;color:var(--fg);list-style:none}
+.dnote summary::-webkit-details-marker{display:none}
+.dnote p{margin:6px 0 4px}
+.chipbar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:0 0 8px}
+.chipbar .chips{margin:0}
+.legend .cnt{margin-left:auto;color:var(--muted)}
+@media (max-width:760px){.phead h2{font-size:18px}.dnote summary .muted{display:none}}
+
+/* 구분 배지: 같은 크기·같은 모양, 색만 다름 */
+.kb{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;flex:none;width:34px;height:18px;border:1px solid var(--k);border-radius:5px;font-size:11px;font-weight:600;line-height:1;letter-spacing:-.02em;color:color-mix(in srgb,var(--k) 62%,var(--fg));background:color-mix(in srgb,var(--k) 15%,transparent)}
+.kb.est{background:transparent}
+.kb.none{border-style:dashed;border-color:var(--muted);color:var(--muted);background:transparent;font-weight:400}
