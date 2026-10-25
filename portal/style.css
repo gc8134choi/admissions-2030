@@ -326,3 +326,22 @@ body.fv-open{overflow:hidden}
 .opinion{background:color-mix(in srgb,var(--muted) 12%,var(--bg));border:1px dashed var(--muted);border-radius:10px;padding:8px 12px;margin:10px 0 14px}
 .opinion th,.opinion td{background:transparent}
 .opinion-label{display:inline-block;font-size:12px;font-weight:600;color:var(--muted);border:1px dotted var(--muted);border-radius:99px;padding:0 8px;vertical-align:middle}
+
+/* 요약 카드: 특이 사항 */
+.sn{margin:8px 0 6px;padding-top:8px;border-top:1px solid var(--line);font-size:12px}
+.sn-h{display:flex;align-items:center;gap:6px;font-size:13px}
+.sn-tag{font-size:11px;font-weight:400;color:var(--muted);border:1px dashed var(--muted);border-radius:99px;padding:0 6px;white-space:nowrap}
+.sn ul{margin:4px 0 0;padding-left:16px;line-height:1.45}
+.sn li{margin:2px 0}
+.sn details{margin:2px 0 0}
+.sn-common{display:block;margin:0 0 10px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--panel);font-size:12px;line-height:1.5}
+
+/* 요약 카드: 창체 블록(표는 항상 펼침, 카드 폭 안에 맞춤) */
+.cre{margin:8px 0 6px;padding-top:8px;border-top:1px solid var(--line);font-size:13px}
+.cre .cr1{color:var(--fg)}
+.crew{overflow-x:auto}
+.crt{border-collapse:collapse;min-width:0;width:100%;font-size:11px;margin:4px 0}
+.crt th,.crt td{border:0;border-bottom:1px solid var(--line);padding:2px 3px;text-align:center;font-size:11px;white-space:nowrap}
+.crt th{background:none;font-weight:400;color:var(--muted)}
+.crt tbody th{text-align:left;color:var(--fg);white-space:normal;word-break:keep-all;width:62px;line-height:1.25}
+#main .crt th,#main .crt td{padding:2px 2px}
