@@ -165,7 +165,7 @@
       "id": "hs-01",
       "topic": "hs-schedule",
       "entryYear": 2027,
-      "title": "기본계획",
+      "title": "서울 기본계획",
       "body": "서울교육청 2027학년도 고입 기본계획 확정(2026.8). 후기고 동일교 배정 확대",
       "status": "보도",
       "sourceKind": "매체",
@@ -183,7 +183,7 @@
       "id": "hs-02",
       "topic": "hs-schedule",
       "entryYear": 2027,
-      "title": "과학고",
+      "title": "서울 과학고",
       "body": "전국 기준 접수 8.18~9.3",
       "status": "보도",
       "sourceKind": "매체",
@@ -201,7 +201,7 @@
       "id": "hs-05",
       "topic": "hs-schedule",
       "entryYear": 2027,
-      "title": "후기 일반고·자사고·외고·국제고",
+      "title": "서울 후기 일반고·자사고·외고·국제고",
       "body": "후기 전형 12월 시작(12.2 개막 보도). 세부 접수·발표일은 확인 못 함",
       "status": "보도",
       "sourceKind": "매체",
@@ -220,7 +220,7 @@
       "id": "hs-06",
       "topic": "hs-schedule",
       "entryYear": 2027,
-      "title": "영재학교",
+      "title": "서울 영재학교",
       "body": "별도 법령 적용, 기본계획 제외. 일정은 확인 못 함",
       "status": "unknown",
       "sourceKind": null,
@@ -1956,6 +1956,199 @@
       "checkedAt": "2026-10-25",
       "unverified": false,
       "statusNote": "학원 자료, 2028학년도 기준"
+    },
+    {
+      "id": "gg-01",
+      "topic": "gg-hs-entry",
+      "entryYear": 2027,
+      "title": "경기 2027학년도 고입 기본계획 발표",
+      "body": "경기도교육청이 2026.3.30 기본계획 발표. 전기 학교는 8.24, 후기 학교(일반고, 자율형 공립고, 외국어고, 국제고, 자율형 사립고)는 12.4부터 전형 시작, 후기 전형은 2027.2.5까지",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "뉴스핌",
+      "sourceUrl": "https://www.newspim.com/news/view/20260330000537",
+      "extraSources": [
+        {
+          "name": "데일리안",
+          "url": "https://www.dailian.co.kr/news/view/1627070/%EA%B2%BD%EA%B8%B0%EB%8F%84%EA%B5%90%EC%9C%A1%EC%B2%AD-2027%ED%95%99%EB%85%84%EB%8F%84-%EA%B2%BD%EA%B8%B0%EB%8F%84-%EA%B3%A0-2026"
+        }
+      ],
+      "checkedAt": "2026-10-25",
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)",
+      "audience": [
+        "common"
+      ],
+      "date": "2026-03-30"
+    },
+    {
+      "id": "gg-02",
+      "topic": "gg-hs-entry",
+      "entryYear": 2027,
+      "title": "경기 후기 전형 일정 불일치",
+      "body": "후기 전형 시작일이 경기도교육청 기본계획 보도에서는 12.4, 전국 자사고 12.2~11 보도도 있음. 학교·유형별로 다를 수 있어 공식 포털에서 확인 필요",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "베리타스알파",
+      "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=604064",
+      "extraSources": [
+        {
+          "name": "뉴스핌",
+          "url": "https://www.newspim.com/news/view/20260330000537"
+        }
+      ],
+      "checkedAt": "2026-10-25",
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)",
+      "audience": [
+        "general",
+        "private"
+      ],
+      "date": "2026-12-02~2026-12-11"
+    },
+    {
+      "id": "gg-03",
+      "topic": "gg-hs-entry",
+      "entryYear": 2027,
+      "title": "경기 외고·국제고·자사고 원서접수",
+      "body": "외대부고·안산동산고(전국 자사고) 12.4~10, 경기·고양·과천·김포·동두천·성남·수원·안양 외고와 고양·동탄·청심 국제고도 12.4~10 접수(2026.10.23 기준 고입캘린더)",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "베리타스알파 고입캘린더",
+      "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=632287",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)",
+      "audience": [
+        "private"
+      ],
+      "date": "2026-12-04~2026-12-10"
+    },
+    {
+      "id": "gg-04",
+      "topic": "gg-hs-entry",
+      "entryYear": 2027,
+      "title": "경기 후기 평준화 일반고 원서접수",
+      "body": "2027학년도 날짜는 확인 못 함. 참고로 2026학년도 기본계획은 2025.12.5~12.11",
+      "status": "보도",
+      "sourceKind": null,
+      "sourceName": null,
+      "sourceUrl": null,
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)",
+      "audience": [
+        "general"
+      ]
+    },
+    {
+      "id": "gg-05",
+      "topic": "gg-hs-entry",
+      "entryYear": 2027,
+      "title": "중1 2학기 성적 반영",
+      "body": "2027학년도 고입부터 중학교 1학년 2학기 성적 반영. 2028학년도 입학전형부터 봉사활동 실적 제외, 출결 반영 강화(현 중3은 중1 2학기 성적 해당)",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "뉴스1",
+      "sourceUrl": "https://www.news1.kr/local/gyeonggi/6118183",
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)",
+      "audience": [
+        "common"
+      ]
+    },
+    {
+      "id": "gg-06",
+      "topic": "gg-hs-entry",
+      "entryYear": 2027,
+      "title": "평준화 일반고 배정 방식",
+      "body": "도내 평준화 일반고는 지원과 추첨 결합 방식. 중학교 내신(200점 만점) 기준으로 학군별 정원만큼 대상자를 뽑은 뒤 지망 순위에 따라 추첨. 용인은 1단계 학군내배정, 2단계 구역내배정",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "분당신문",
+      "sourceUrl": "https://www.bundangnews.co.kr/58587",
+      "extraSources": [
+        {
+          "name": "아시아경제",
+          "url": "https://view.asiae.co.kr/article/2026092812475292099"
+        }
+      ],
+      "checkedAt": "2026-10-25",
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)",
+      "audience": [
+        "general"
+      ]
+    },
+    {
+      "id": "gg-07",
+      "topic": "gg-hs-entry",
+      "entryYear": 2027,
+      "title": "지망 작성 규칙",
+      "body": "외국어고·국제고·자사고 지원자는 1지망에 해당 학교, 2지망부터 학군 또는 구역 내 학교를 희망 순서대로 작성. 1지망 불합격 시 2지망부터 추첨",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "분당신문",
+      "sourceUrl": "https://www.bundangnews.co.kr/58587",
+      "extraSources": [
+        {
+          "name": "아시아경제",
+          "url": "https://view.asiae.co.kr/article/2026092812475292099"
+        }
+      ],
+      "checkedAt": "2026-10-25",
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)",
+      "audience": [
+        "general",
+        "private"
+      ]
+    },
+    {
+      "id": "gg-08",
+      "topic": "gg-hs-entry",
+      "entryYear": 2027,
+      "title": "평준화 배정 설명회",
+      "body": "경기도교육청 2027학년도 고교 평준화 배정 설명회 2026.10.19~11.27, 유튜브 경기고입TV 비대면. 세부 자료는 고입·전학 포털(satp.goe.go.kr)",
+      "status": "보도",
+      "sourceKind": "매체",
+      "sourceName": "아시아경제",
+      "sourceUrl": "https://view.asiae.co.kr/article/2026092812475292099",
+      "extraSources": [
+        {
+          "name": "분당신문",
+          "url": "https://www.bundangnews.co.kr/58587"
+        }
+      ],
+      "checkedAt": "2026-10-25",
+      "unverified": true,
+      "statusNote": "보도(원문 미확인)",
+      "audience": [
+        "general"
+      ],
+      "date": "2026-10-19~2026-11-27"
+    },
+    {
+      "id": "gg-09",
+      "topic": "gg-hs-entry",
+      "entryYear": 2027,
+      "title": "경기·용인 확인 못 함",
+      "body": "2027학년도 용인학군 구역 구성(1·2·3구역)·구역별 지망 가능 학교 수, 후기 일반고 접수일, 외고·국제고·자사고 면접·내신 배점은 확인 못 함",
+      "status": "unknown",
+      "sourceKind": null,
+      "sourceName": null,
+      "sourceUrl": null,
+      "extraSources": [],
+      "checkedAt": "2026-10-25",
+      "unverified": false,
+      "statusNote": "확인 못 함",
+      "audience": [
+        "common"
+      ]
     }
   ]
 }
