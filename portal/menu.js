@@ -20,7 +20,7 @@ export const MENU = [
   { id: "life", title: "고교 생활", icon: "📚", status: "soon",
     desc: "입학 후 단계. 지금은 최소한만.",
     children: [
-      { id: "life/credit", title: "고교학점제 이해", status: "soon", desc: "학점제 개념과 졸업 요건." },
+      { id: "life/credit", title: "고교학점제 이해", status: "v1", view: "credit", desc: "학점제 개념과 졸업 요건." },
       { id: "life/checklist", title: "학년별 체크리스트", status: "soon", desc: "학년별로 챙길 일." },
     ] },
 
