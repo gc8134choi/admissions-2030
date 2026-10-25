@@ -109,20 +109,35 @@ def cmd_merge_ready():
 def cmd_ship(branch, title=None, wait=12):
     pr = cmd_open(branch, title)
     pr = find_pr(branch) or pr
+    n = pr["number"]
     deadline = time.time() + wait * 60
     while time.time() < deadline:
-        m = mergeable(pr)
+        d = gh(f"repos/{REPO}/pulls/{n}")
+        if d.get("merged"):
+            print(f"#{n} merged=True (automerge)", flush=True)
+            return 0
+        if d["state"] != "open":
+            print(f"#{n} closed without merge", flush=True)
+            return 4
+        cur = find_pr(branch) or pr
+        m = d["mergeable"]
         if m is False:
-            print(f"#{pr['number']} CONFLICT: origin/main을 합쳐야 해요")
+            print(f"#{n} CONFLICT: origin/main을 합쳐야 해요", flush=True)
             return 2
-        st = ci_state(find_pr(branch) or pr)
+        st = ci_state(cur)
         if st == "failure":
-            print(f"#{pr['number']} CI-FAILED")
+            print(f"#{n} CI-FAILED", flush=True)
             return 3
         if st == "success" and m:
-            return 0 if merge(pr) else 4
+            # automerge가 곧 머지하지만, 늦으면 직접 머지한다(이미 머지됐으면 위에서 종료).
+            time.sleep(8)
+            d = gh(f"repos/{REPO}/pulls/{n}")
+            if d.get("merged"):
+                print(f"#{n} merged=True (automerge)", flush=True)
+                return 0
+            return 0 if merge(cur) else 4
         time.sleep(10)
-    print(f"#{pr['number']} TIMEOUT({wait}분)")
+    print(f"#{n} TIMEOUT({wait}분)", flush=True)
     return 5
 
 
