@@ -111,7 +111,8 @@ async function curriculumView(el, query, node) {
   const known = (id) => schools.some((x) => x.id === id);
   let sel = query.has("s") ? query.get("s").split(",").filter(known) : schools.map((x) => x.id);
   sel = [...new Set(sel)];
-  let areasSel = AREA7.filter((a) => (query.get("a") || "").split(",").includes(a)); // 비어 있으면 전체
+  const areaIn = (query.get("a") || "").split(",").map((a) => (AREA7.includes(a) ? a : a ? "기타" : "")); // 옛 링크의 체육·예술·기술가정·제2외국어는 기타로
+  let areasSel = AREA7.filter((a) => areaIn.includes(a)); // 비어 있으면 전체
   let tab = ["compare", "univ"].includes(query.get("v")) ? query.get("v") : "summary";
   let compare = null; // 상세 비교 화면(필터 포함)은 한 번만 만들고 탭 전환 때 재사용한다
 

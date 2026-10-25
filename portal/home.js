@@ -129,7 +129,8 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
         <button type="button" class="dday" id="dday"${live || n === 0 ? " disabled" : ""}><span class="sr-only">남은 날. 누르면 단위가 바뀝니다. </span>${num}</button>${sub}
         <h2 class="hero-t">${esc(it.title)}</h2><p class="hero-d num">${it.date}</p>${it.line ? `<p class="hero-s">${esc(it.line)}</p>` : ""}<p class="hero-meta">${it.meta}</p>${photo}${!live && n > 0 ? '<p class="hint">숫자를 누르면 주·달로 바뀌어요.</p>' : ""}`;
     };
-    const rest = () => { const r = feed().slice(1, 4); return r.length ? r.map((it) => `<li class="row"><span class="d${it.sp.start <= t ? " live" : " num"}">${dLabel(it.sp, t)}</span><div><h3>${esc(it.title)}</h3><p class="num">${it.date}</p>${it.meta ? `<div class="meta">${it.meta}</div>` : ""}</div></li>`).join("") : '<li class="row"><div class="empty"><p>이어지는 일정은 아직 없어요.</p></div></li>'; };
+    const rest = () => { const f = feed(), r = (f[0]?.kind === "stone" ? f.slice(1) : f.slice(1).filter((it) => it.kind !== "stone")).slice(0, 3); // 히어로가 졸업·입학이 아니면 그 카드는 "곧 있을 일"에만 둔다
+      return r.length ? r.map((it) => `<li class="row"><span class="d${it.sp.start <= t ? " live" : " num"}">${dLabel(it.sp, t)}</span><div><h3>${esc(it.title)}</h3><p class="num">${it.date}</p>${it.meta ? `<div class="meta">${it.meta}</div>` : ""}</div></li>`).join("") : '<li class="row"><div class="empty"><p>이어지는 일정은 아직 없어요.</p></div></li>'; };
 
     // 4) 바뀐 소식 1줄
     const log = policy.filter((r) => r.topic === "change-log").map((r) => ({ r, d: dateOf(r.title) })).filter((x) => x.d && span(x.d).start <= t).sort((a, b) => span(b.d).start - span(a.d).start);
@@ -194,7 +195,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
         <p class="glance-lead">3년 동안 <mark>${m0.creditsTotal}학점</mark>을 스스로 채웁니다.</p>
         <div class="glance"><div class="g"><span class="v num">${m0.creditsSubject}</span><span class="k">교과 학점</span><span class="n">공통·선택 과목으로 채웁니다</span></div><div class="g"><span class="v num">${m0.creditsCreative}</span><span class="k">창의적 체험활동</span><span class="n">동아리·봉사·진로</span></div></div>
         ${isB ? `<p class="src-line"><span class="pst estimated">추정</span> ${esc(pf.name)}이 입학하는 ${entryYear}학년도에도 같을지는 아직 확인되지 않았어요. 지금 학년도 기준 숫자입니다.</p>` : ""}</section>
-      ${isB ? "" : `<section class="sec"><div class="sec-h"><h2><em>06</em>앞으로 3년</h2><a href="#roadmap" id="rm-link" hidden>학년별 로드맵</a></div><ol class="tl">${tl}</ol></section>`}
+      ${isB ? "" : `<section class="sec"><div class="sec-h"><h2><em>06</em>앞으로 3년</h2><a href="#schedule?t=road" id="rm-link">학년별 로드맵</a></div><ol class="tl">${tl}</ol></section>`}
     </div>`;
 
     // 히어로 숫자 단위 전환(일 → 주 → 개월)과 사진 연결은 히어로를 다시 그릴 때마다 붙인다.
