@@ -42,6 +42,8 @@ export const hasSubjectInfo = (name) => MAP.has(keyOf(name));
 
 // 과목명(이스케이프됨) + 설명이 있으면 ⓘ 버튼
 export function subjectName(name) {
+  // 택일 묶음("미술↔음악")은 구성 과목별로 ⓘ를 붙인다
+  if (String(name).includes("↔")) return String(name).split("↔").map((n) => subjectName(n.trim())).join("↔");
   const k = keyOf(name);
   if (!MAP.has(k)) return esc(name);
   return `${esc(name)}<button type="button" class="si" data-si="${esc(k)}" aria-label="${esc(name)} 과목 설명" aria-haspopup="dialog" aria-expanded="false">ⓘ</button>`;
