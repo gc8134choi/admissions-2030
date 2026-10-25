@@ -98,7 +98,7 @@ async function curriculumView(el, query, node) {
     if (areasSel.length) q.set("a", areasSel.join(","));
     history.replaceState(null, "", `#select/curriculum?${q.toString().replace(/%2C/g, ",")}`);
   };
-  const chipHtml = () => schools.map((x) => `<button type="button" class="chip ${sel.includes(x.id) ? "on" : ""}" data-id="${esc(x.id)}" aria-pressed="${sel.includes(x.id)}">${nm(x.id, x.name, 18)}</button>`).join("");
+  const chipHtml = () => schools.map((x) => `<button type="button" class="chip schip ${sel.includes(x.id) ? "on" : ""}" data-id="${esc(x.id)}" aria-pressed="${sel.includes(x.id)}" title="${esc(x.name)}">${nm(x.id, x.name, 36)}</button>`).join("");
   const drawChips = () => {
     // 요약 탭: 본문 위 칩 줄 / 상세 비교 탭: 필터 패널 안의 "학교" 항목
     $("#chipbar").hidden = tab === "compare";
@@ -262,7 +262,7 @@ async function compareShell(el, onReset, getAreas) {
     }
     need = AW + LW + CW * ids.length;
     $("#tbl").style.minWidth = `${need}px`;
-    $("#tbl").innerHTML = `<thead><tr><th class="ar">교과군</th><th class="l">과목</th>${ids.map((id, i) => `<th>${nm(id, names[i], 22)}</th>`).join("")}</tr></thead><tbody>${html || `<tr><td colspan="${ids.length + 2}">조건에 맞는 과목이 없습니다.</td></tr>`}</tbody>
+    $("#tbl").innerHTML = `<thead><tr><th class="ar">교과군</th><th class="l">과목</th>${ids.map((id, i) => `<th>${nm(id, names[i], 30)}</th>`).join("")}</tr></thead><tbody>${html || `<tr><td colspan="${ids.length + 2}">조건에 맞는 과목이 없습니다.</td></tr>`}</tbody>
       <tfoot><tr><th class="lf" colspan="2">해당 과목 수</th>${ids.map((id) => `<th>${rows.filter((r) => r.cells[id]).length}</th>`).join("")}</tr></tfoot>`;
     fitMode();
     $("#cnt").textContent = `${rows.length}개 과목`;

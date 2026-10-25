@@ -191,3 +191,18 @@ select,input[type=search]{font-size:13px;padding:5px 8px}
 /* 지정/선택 색: 지정=올리브(볼드), 선택=와인(보통). 다크 모드는 밝은 톤 */
 :root{--req:#3f6212;--ele:#831843}
 @media (prefers-color-scheme:dark){:root{--req:#b5d37a;--ele:#f0a0bd}}
+
+/* 학교 로고: 상자 없이 로고 중심. 칩은 켜짐=선명+링, 꺼짐=흐린 흑백 */
+.logo{box-shadow:0 0 0 1px var(--line)}
+.chip.schip{background:transparent;border:0;border-radius:10px;padding:4px 2px;color:var(--fg);font-size:12px;font-weight:600;cursor:pointer;line-height:1.2}
+.chip.schip.on{background:transparent;color:var(--fg)}
+.chip.schip:not(.on){color:var(--muted);font-weight:400}
+.chip.schip:hover{background:transparent}
+.chip.schip .nm{flex-direction:column;align-items:center;gap:4px}
+.chip.schip .logo{width:36px;height:36px;filter:grayscale(1);opacity:.4;box-shadow:0 0 0 2px var(--line);transition:opacity .15s}
+.chip.schip.on .logo{filter:none;opacity:1;box-shadow:0 0 0 2px var(--accent)}
+.chipbar .chip.schip{padding:2px 6px}
+.chipbar .chip.schip .nm{flex-direction:row;gap:7px}
+.chipbar .chip.schip .logo{width:28px;height:28px}
+#tbl thead th .nm{gap:9px;font-weight:600;font-size:14px}
+#tbl thead th .logo{width:30px;height:30px}
