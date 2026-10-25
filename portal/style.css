@@ -136,3 +136,17 @@ table.policy tr.past{opacity:.45}
 .kn{font-size:11px;color:var(--fg);opacity:.8}
 .c1 .kk+.kk{margin-left:2px}
 #tbl th:not(.l),#tbl td:not(.l){min-width:190px}
+
+/* 학교별 편제표 헤더: 제목+탭 한 줄, 안내문 접기 */
+.phead{display:flex;flex-wrap:wrap;align-items:flex-end;gap:0 20px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.phead h2{margin:0 0 6px;font-size:20px;display:flex;align-items:center;gap:8px}
+.phead .subtabs{border-bottom:0;margin:0}
+.phead .subtabs a{padding:8px 14px}
+.dnote{background:var(--warn);border-radius:8px;padding:4px 10px;font-size:12px;margin:0 0 8px}
+.dnote summary{cursor:pointer;color:var(--fg);list-style:none}
+.dnote summary::-webkit-details-marker{display:none}
+.dnote p{margin:6px 0 4px}
+.chipbar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:0 0 8px}
+.chipbar .chips{margin:0}
+.legend .cnt{margin-left:auto;color:var(--muted)}
+@media (max-width:760px){.phead h2{font-size:18px}.dnote summary .muted{display:none}}

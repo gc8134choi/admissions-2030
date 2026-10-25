@@ -31,6 +31,7 @@ const toggleStar = (id) => { const s = stars(); store.set("stars", s.includes(id
 const nameOf = (schools, id) => schools.find((s) => s.id === id)?.name || id;
 const SLOT = { required: "지정", elective: "선택", outside: "교외" };
 const CSAT = { in: "포함", base: "기초", out: "제외", none: "-" };
+const dataNoteShort = '<details class="dnote"><summary><b>ⓘ 데이터 안내</b> AI 전사값 · 일부만 대조 · 수능 범위는 추정 · 개설 후보 <span class="muted">(펼쳐서 보기)</span></summary><p>편제표 값은 AI가 학교 배부 사진에서 옮긴 것으로, 일부(flag 22행)만 사진과 대조했습니다. 수능 범위는 2028 통합형 수능 기준 <b>추정</b>이며, 편제표는 개설 가능 <b>후보</b>입니다. 중요한 결정 전에는 원본으로 확인하세요.</p></details>';
 const dataNote = '<p class="note">편제표 값은 AI가 학교 배부 사진에서 옮긴 것으로, 일부(flag 22행)만 사진과 대조했습니다. 수능 범위는 2028 통합형 수능 기준 <b>추정</b>이며, 편제표는 개설 가능 <b>후보</b>입니다. 중요한 결정 전에는 원본으로 확인하세요.</p>';
 const options = (items, all) => `${all ? `<option value="">${esc(all)}</option>` : ""}${items.map((v) => `<option value="${esc(v.v ?? v)}">${esc(v.t ?? v)}</option>`).join("")}`;
 const POOL = { basic: "기초교과", cross: "교과(군) 간 선택", "in-area": "한 교과 안 선택", life: "기술·가정/정보/제2외국어 등" };
@@ -52,7 +53,7 @@ const kindIcon = (kind, est) => {
 };
 // 아이콘 + 구분 이름(작은 글자). 셀과 범례가 같은 형태를 쓴다.
 const kindBadge = (kind, est) => `<span class="kk">${kindIcon(kind, est)}<span class="kn">${kind ? esc(kind) : "미표기"}</span></span>`;
-const kindLegend = `<div class="legend">${Object.keys(KICON).map((k) => kindBadge(k)).join("")}<span class="kk">${kindIcon("일반", true)}<span class="kn">추정(윤곽선)</span></span>${kindBadge(null)}<span class="kk"><i class="cr">4</i><span class="kn">학점</span></span></div>`;
+const kindLegend = `<div class="legend">${Object.keys(KICON).map((k) => kindBadge(k)).join("")}<span class="kk">${kindIcon("일반", true)}<span class="kn">추정(윤곽선)</span></span>${kindBadge(null)}<span class="kk"><i class="cr">4</i><span class="kn">학점</span></span><span class="cnt" id="cnt"></span></div>`;
 const kindOf = (o) => (o.primaryKind ? o.primaryKind + (o.kindStatus === "inferred" ? "?" : "") : "미표기");
 
 // ---- 뷰 ----
@@ -66,8 +67,8 @@ const views = {
       <div class="panel"><b>이번 달 할 일</b><p class="muted">일정 데이터 연결 예정</p></div>`;
   },
 
-  async curriculum(el, query) {
-    await curriculumView(el, query);
+  async curriculum(el, query, node) {
+    await curriculumView(el, query, node);
   },
 
   async sources(el) {
@@ -85,7 +86,7 @@ const views = {
 // ---- 학교별 편제표: 학교 칩(on/off, 최대 4개교) + 탭(요약 / 상세 비교) ----
 const TERMS = ["1-1", "1-2", "2-1", "2-2", "3-1", "3-2"];
 
-async function curriculumView(el, query) {
+async function curriculumView(el, query, node) {
   const [schools, summary] = await Promise.all([load("schools"), load("summary")]);
   const known = (id) => schools.some((x) => x.id === id);
   let sel = query.has("s") ? query.get("s").split(",").filter(known) : schools.map((x) => x.id);
@@ -93,10 +94,10 @@ async function curriculumView(el, query) {
   let tab = query.get("v") === "compare" ? "compare" : "summary";
   let compare = null; // 상세 비교 화면(필터 포함)은 한 번만 만들고 탭 전환 때 재사용한다
 
-  el.innerHTML = `<div class="chipbar" id="chipbar"><span class="flabel">학교 (눌러서 켜고 끄기)</span>
-      <div class="chips" id="chips"></div></div>
-    <div class="subtabs" id="tabs"><a href="#" data-tab="summary">학교별 요약</a><a href="#" data-tab="compare">상세 비교</a></div>
-    <div class="muted small">${summary[0].entryYear}학년도 입학생(대입 ${summary[0].entryYear + 3}학년도) 편제표 · ${summary.length}개교 등록</div>${dataNote}
+  el.innerHTML = `<div class="phead"><h2>${esc(node?.title || "학교별 편제표")} ${node ? badge(node.status) : ""}</h2>
+      <div class="subtabs" id="tabs"><a href="#" data-tab="summary">학교별 요약</a><a href="#" data-tab="compare">상세 비교</a></div></div>
+    ${dataNoteShort}
+    <div class="chipbar" id="chipbar"><span class="flabel">학교</span><div class="chips" id="chips"></div></div>
     <div id="cview"></div>`;
 
   const syncUrl = () => {
@@ -190,7 +191,7 @@ async function compareShell(el, onReset) {
       <div class="fgroup"><label><input type="checkbox" id="diff"> 학교 간 차이 나는 과목만</label><label><input type="checkbox" id="one"> 한 학교에만 있는 과목</label></div>
       <button id="reset" type="button">필터 초기화</button>
     </div></details>
-    <div class="cmpmain"><div class="tools"><span class="muted" id="cnt"></span></div>${kindLegend}<div class="tw"><table id="tbl"></table></div></div></div>`;
+    <div class="cmpmain">${kindLegend}<div class="tw"><table id="tbl"></table></div></div></div>`;
   const root = el.firstElementChild;
   let ids = [];
   const draw = (next) => {
@@ -256,6 +257,11 @@ function render() {
   const n = byId.get(id) || byId.get("home");
   drawNav(n.id);
   $("#nav").classList.remove("open");
+  if (n.view === "curriculum") { // 표를 위로: 브레드크럼·설명 없이 제목과 탭을 한 줄에
+    $("#main").innerHTML = '<div id="view"></div>';
+    views.curriculum($("#view"), query, n).catch(() => ($("#view").innerHTML = '<p class="note">데이터를 불러오지 못했습니다. 페이지를 새로고침해 보세요.</p>'));
+    return;
+  }
   const kids = n.children
     ? `<div class="cards">${n.children.map((c) => `<a href="#${c.id}"><b>${esc(c.title)}</b> ${badge(c.status)}<div class="muted">${esc(c.desc || (c.children ? c.children.map((x) => x.title).join(" · ") : ""))}</div></a>`).join("")}</div>`
     : "";
