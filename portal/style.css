@@ -147,3 +147,25 @@ table.policy tr.past{opacity:.45}
 .chip .logo{box-shadow:0 0 0 1.5px #fff}
 .school h3 .nm{gap:8px}
 .fgroup .achip{font-size:12px;padding:3px 6px;white-space:normal;line-height:1.25;border-radius:12px;min-height:26px;display:inline-flex;align-items:center;justify-content:center}
+
+/* 본문 글자 한 단계 축소(좌측 메뉴 제외). 최소 11px 유지, 여백·행 높이도 함께 줄임 */
+#nav{font-size:15px}
+#main{font-size:14px;line-height:1.5}
+#main th,#main td{padding:4px 8px}
+#tbl th,#tbl td{font-size:13px}
+#tbl td.l,#tbl th.l{min-width:140px}
+.phead h2{font-size:19px}
+.flabel,.small{font-size:11px}
+.chip{font-size:12px;padding:5px 11px}
+.fgroup .chip{font-size:12px;padding:3px 8px}
+.fgroup .achip{font-size:11px}
+select,input[type=search]{font-size:13px;padding:5px 8px}
+.filters .fbody{gap:9px}
+.filters label{font-size:13px}
+.kb{width:32px;height:17px;font-size:11px}
+.cr{width:14px;height:14px;font-size:10px}
+.c1{gap:5px}
+.btn{font-size:13px;padding:5px 12px}
+.school{padding:12px 14px}
+.stats dd{font-size:15px}
+.subtabs a{padding:7px 14px}

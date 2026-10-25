@@ -218,7 +218,7 @@ async function compareShell(el, onReset, getAreas) {
     const names = ids.map((id) => nameOf(schools, id));
     const uniq = (a) => [...new Set(a)];
     const cell = (os) => {
-      if (!os) return '<td class="no">✕</td>';
+      if (!os) return '<td class="no" title="미개설" aria-label="미개설">-</td>';
       const slots = uniq(os.map((o) => SLOT[o.slot])), tm = uniq(os.map((o) => o.term)).sort().join(",");
       const kinds = uniq(os.map((o) => (o.primaryKind ? `${o.primaryKind}|0` : o.kindGuess ? `${o.kindGuess}|1` : "|0")));
       const icons = kinds.map((k) => { const [n, est] = k.split("|"); return kindBadge(n || null, est === "1"); }).join("");
