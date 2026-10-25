@@ -34,7 +34,8 @@ python3 -m http.server 8000     # http://localhost:8000/portal/
 Playwright는 설치돼 있다(`require('playwright')`). 화면 변경 후 스크린샷과 콘솔 오류를 확인한다.
 
 ## 작업 규칙
-- `main`에 직접 푸시하지 않는다. 작업 브랜치에서 시작하기 전에 `origin/main`을 합치고, 끝나면 푸시한다. PM이 PR을 만들면 CI(`.github/workflows/ci.yml`)를 통과한 뒤 자동 머지된다(사용자 결정, 2026-10-25). 사이트(GitHub Pages)는 `main`에서 배포된다.
+- `main`에 직접 푸시하지 않는다. 작업 브랜치(`dev/*`, `research/*`, `data/*`, `pm/*`)에서 시작하기 전에 `origin/main`을 합치고, 끝나면 푸시한다. **푸시한 세션이 직접 PR을 연다**: `python3 tools/pm/prs.py open <브랜치> "<제목>"`(또는 `ship`). CI(`.github/workflows/ci.yml`)를 통과하면 `.github/workflows/automerge.yml`이 자동 머지한다(PR에 `hold` 라벨을 붙이면 멈춘다, 사용자 결정 2026-10-25). 충돌이 나면 `origin/main`을 합쳐 다시 푸시한다. 사이트(GitHub Pages)는 `main`에서 배포된다.
+- 토큰 절약: 단순·반복·패턴 있는 일은 Python 스크립트(`tools/`, `tools/pm/`)로 자동화하고 출력은 요약만 본다(긴 JSON·스크린샷을 그대로 읽지 않는다). 화면 점검은 `python3 tools/pm/sitecheck.py`, PR 상태는 `python3 tools/pm/prs.py status`. 보고는 커밋 링크 한 줄이면 충분하다.
 - 푸시하면 **클릭 가능한 링크**(브랜치, 커밋, Pages 화면)를 알려준다. Pages 주소: `https://gc8134choi.github.io/admissions-2030/portal/`
 - 이 저장소의 클론은 `main`만 추적한다. 푸시 직후 stop hook 경고를 막으려면 `git fetch origin +refs/heads/<브랜치>:refs/remotes/origin/<브랜치>` 를 실행한다.
 - 메뉴는 단순하게 유지한다(사용자가 하위 메뉴 증가를 싫어함). 새 기능은 기존 화면의 필터·탭으로 먼저 푼다.
