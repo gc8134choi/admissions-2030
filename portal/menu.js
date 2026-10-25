@@ -13,7 +13,7 @@ export const MENU = [
     { id: "select/types", title: "고교 유형·전형 일정", status: "v1", view: "types",
       desc: "일반/자사고/특목 등 유형 개요와 전형 일정·요건.",
       parts: ["유형별 개요", "전형 일정·요건"] },
-    { id: "select/curriculum", title: "학교별 편제표", status: "v1", view: "curriculum",
+    { id: "select/curriculum", title: "학교별 과목표", status: "v1", view: "curriculum",
       desc: "학교별 요약을 보고, 상세 비교에서 여러 필터로 과목을 비교합니다." },
   ] },
 
@@ -39,12 +39,12 @@ export const MENU = [
       { id: "planner/report", title: "목표 학과 요건 충족 리포트", status: "soon", desc: "희망 학과 요건과 내 계획 비교." },
     ] },
 
-  { id: "changelog", title: "제도 변경 로그", icon: "log", status: "v1", view: "changelog",
+  { id: "changelog", title: "바뀐 소식", icon: "log", status: "v1", view: "changelog",
     desc: "날짜·항목·영향 범위. 편제표·요건 갱신도 자동 기록.", parts: ["날짜 / 항목 / 영향 범위"] },
 
   { id: "library", title: "자료실", icon: "folder", status: "v1", view: "links", children: [
     { id: "library/sources", title: "출처 목록", status: "v1", view: "sources", desc: "학교 정보 출처 링크." },
-    { id: "library/status", title: "갱신 현황", status: "v1", view: "status", desc: "학교별 기준연도·수집일·확인 필요 건수." },
+    { id: "library/status", title: "업데이트 기록", status: "v1", view: "status", desc: "학교별 기준연도·수집일·확인 필요 건수." },
     { id: "library/files", title: "원본 파일", status: "v1", view: "files", desc: "학교에서 받은 원본 양식·사진. 눌러서 크게 봅니다." },
   ] },
 ];

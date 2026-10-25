@@ -66,7 +66,7 @@ function open(btn) {
   pop.innerHTML = `<div class="sip-h"><b>${esc(it.name)}</b>${it.area ? ` <span class="muted small">${esc([it.area, it.type].filter(Boolean).join(" · "))}</span>` : ""}<button type="button" class="sip-x" aria-label="닫기">×</button></div>
     <p>${txt(it.summary)}</p>
     ${it.specialPurpose ? '<p class="muted small">특수 목적 고교 과목</p>' : ""}
-    <dl class="sip-d"><dt>학점</dt><dd>${txt(it.credit || META.defaultCredit || "확인 필요")}</dd>${""}${it.old2015 ? `<dt>2015 개정</dt><dd>${txt(it.old2015)}</dd>` : ""}${it.majors ? `<dt>관련 학과</dt><dd>${txt(it.majors)}</dd>` : ""}</dl>
+    <dl class="sip-d"><dt>학점</dt><dd>${txt(it.credit || META.defaultCredit || "학교에 확인해요")}</dd>${""}${it.old2015 ? `<dt>2015 개정</dt><dd>${txt(it.old2015)}</dd>` : ""}${it.majors ? `<dt>관련 학과</dt><dd>${txt(it.majors)}</dd>` : ""}</dl>
     <div class="sip-f small">${srcHtml ? `출처 ${srcHtml}` : ""}${status && status !== "confirmed" ? ` <span class="pst ${esc(status)}">${esc(PST[status] || status)}</span>` : ""}</div>`;
   document.body.appendChild(pop);
   anchor = btn; btn.setAttribute("aria-expanded", "true");
