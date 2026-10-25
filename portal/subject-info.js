@@ -6,6 +6,7 @@
 // 설명(summary)이 없는 과목에는 ⓘ를 만들지 않는다. 팝오버 안에 출처·상태를 표시한다.
 const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "확인 못 함" };
 const esc = (s = "") => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const txt = (s) => esc(String(s ?? "").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&"));
 const keyOf = (n) => String(n ?? "").normalize("NFC").replace(/\s+/g, "");
 
 let MAP = new Map();
@@ -46,7 +47,8 @@ function open(btn) {
   pop = document.createElement("div");
   pop.className = "sip"; pop.setAttribute("role", "dialog"); pop.setAttribute("aria-label", `${it.name} 설명`); pop.tabIndex = -1;
   pop.innerHTML = `<div class="sip-h"><b>${esc(it.name)}</b>${it.area ? ` <span class="muted small">${esc(it.area)}</span>` : ""}<button type="button" class="sip-x" aria-label="닫기">×</button></div>
-    <p>${esc(it.summary)}</p>
+    <p>${txt(it.summary)}</p>
+    ${it.credit || it.old2015 || it.majors ? `<dl class="sip-d">${it.credit ? `<dt>학점</dt><dd>${txt(it.credit)}</dd>` : ""}${it.old2015 ? `<dt>2015 개정</dt><dd>${txt(it.old2015)}</dd>` : ""}${it.majors ? `<dt>관련 학과</dt><dd>${txt(it.majors)}</dd>` : ""}</dl>` : ""}
     <div class="sip-f small">${srcHtml ? `출처 ${srcHtml}` : ""}${status ? ` <span class="pst ${esc(status)}">${esc(PST[status] || status)}</span>` : ""}${unv ? ' <span class="unv">원문 미확인</span>' : ""}</div>`;
   document.body.appendChild(pop);
   anchor = btn; btn.setAttribute("aria-expanded", "true");

@@ -209,7 +209,7 @@ async function summaryBody(el, ids) {
 
 // 상세 비교: 필터 + 선택 학교를 열 단위로 나란히
 async function compareShell(el, onReset, getAreas) {
-  const [schools, facets, subjects, offerings, groups] = await Promise.all([load("schools"), load("facets"), load("subjects"), load("offerings"), load("groups"), preloadSubjectInfo(load)]);
+  const [schools, facets, subjects, offerings, groups] = await Promise.all([load("schools"), load("facets"), load("subjects"), load("offerings"), load("groups")]);
   const subj = new Map(subjects.map((x) => [x.subjectKey, x]));
   const gmap = new Map(groups.map((g) => [g.id, g]));
   el.innerHTML = `<div class="cmp">
@@ -313,6 +313,8 @@ async function compareShell(el, onReset, getAreas) {
     draw();
     onReset?.();
   });
+  // 과목 설명 데이터는 표를 막지 않고 따로 읽는다: 도착하면 ⓘ만 덧붙이도록 한 번 더 그린다.
+  preloadSubjectInfo(load).then(() => { if (ids.length && root.isConnected) draw(); });
   return { root, draw };
 }
 
