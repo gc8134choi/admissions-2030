@@ -3,7 +3,7 @@
   "note": "중학교 교과서 출판사 표(생성물, 손으로 고치지 않는다). research/data/middle-curriculum-draft.json에서 tools/build-middle-curriculum.mjs가 만든다.",
   "checkedAt": "2026-10-26",
   "status": "reported",
-  "count": 1
+  "count": 4
  },
  "schools": [
   {
@@ -193,40 +193,579 @@
     }
    ],
    "unreadable": []
+  },
+  {
+   "placeId": "pl-006",
+   "schoolYear": 2026,
+   "title": "2026학년도 교과서 목록(수지중학교 학교공지 2025.10.27, 첨부 2026교과서목록.xls)",
+   "status": "reported",
+   "confidence": "reported",
+   "sources": [
+    {
+     "name": "2026학년도 교과서 목록(수지중학교 학교공지 2025.10.27, 첨부 2026교과서목록.xls)",
+     "url": "https://suji-m.goeyi.kr/suji-m/na/ntt/selectNttList.do?mi=14234&bbsId=8135"
+    }
+   ],
+   "footnote": "2026학년도 목록이며 2027학년도 안내는 아직 게시 전(2026.10.26 확인). 학교별·연도별로 출판사가 다르다. 저자·교사 이름은 저장하지 않음. AI 전사, 사용자 대조 전",
+   "subjects": [
+    {
+     "order": 1,
+     "subject": "과학",
+     "publishers": {
+      "1": "비상교육",
+      "2": "비상교육",
+      "3": "동아출판"
+     },
+     "note": null
+    },
+    {
+     "order": 2,
+     "subject": "국어",
+     "publishers": {
+      "1": "천재교과서",
+      "2": "천재교과서",
+      "3": "미래엔"
+     },
+     "note": null
+    },
+    {
+     "order": 3,
+     "subject": "도덕",
+     "publishers": {
+      "1": "미래엔",
+      "2": "미래엔",
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 4,
+     "subject": "사회",
+     "publishers": {
+      "1": "비상교육",
+      "2": null,
+      "3": "천재교육"
+     },
+     "note": null
+    },
+    {
+     "order": 5,
+     "subject": "사회과부도",
+     "publishers": {
+      "1": "비상교육",
+      "2": null,
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 6,
+     "subject": "수학",
+     "publishers": {
+      "1": "천재교과서",
+      "2": "천재교과서",
+      "3": "미래엔"
+     },
+     "note": null
+    },
+    {
+     "order": 7,
+     "subject": "영어",
+     "publishers": {
+      "1": "동아출판",
+      "2": "동아출판",
+      "3": "동아출판"
+     },
+     "note": null
+    },
+    {
+     "order": 8,
+     "subject": "기술·가정",
+     "publishers": {
+      "1": "천재교과서",
+      "2": null,
+      "3": "동아출판"
+     },
+     "note": null
+    },
+    {
+     "order": 9,
+     "subject": "미술",
+     "publishers": {
+      "1": "창비교육",
+      "2": "창비교육",
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 10,
+     "subject": "음악",
+     "publishers": {
+      "1": "와이비엠",
+      "2": null,
+      "3": "미래엔"
+     },
+     "note": null
+    },
+    {
+     "order": 11,
+     "subject": "체육",
+     "publishers": {
+      "1": "미래엔",
+      "2": "미래엔",
+      "3": "와이비엠"
+     },
+     "note": "3학년 칸 '1학년때받음'(체육 ①/②를 1학년에 받아 사용)"
+    },
+    {
+     "order": 12,
+     "subject": "역사",
+     "publishers": {
+      "1": null,
+      "2": "미래엔",
+      "3": "미래엔"
+     },
+     "note": null
+    },
+    {
+     "order": 13,
+     "subject": "역사부도",
+     "publishers": {
+      "1": null,
+      "2": "천재교과서",
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 14,
+     "subject": "정보",
+     "publishers": {
+      "1": null,
+      "2": "교문사",
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 15,
+     "subject": "한문",
+     "publishers": {
+      "1": null,
+      "2": "미래엔",
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 16,
+     "subject": "생활 중국어",
+     "publishers": {
+      "1": null,
+      "2": null,
+      "3": "미래엔"
+     },
+     "note": null
+    }
+   ],
+   "unreadable": []
+  },
+  {
+   "placeId": "pl-005",
+   "schoolYear": 2026,
+   "title": "2026학년도 본교 검인정교과서 목록(손곡중학교 학교공지 2025.12.11, 첨부 xlsx)",
+   "status": "reported",
+   "confidence": "reported",
+   "sources": [
+    {
+     "name": "2026학년도 본교 검인정교과서 목록(손곡중학교 학교공지 2025.12.11, 첨부 xlsx)",
+     "url": "https://songok-m.goeyi.kr/songok-m/na/ntt/selectNttList.do?mi=13593&bbsId=7752"
+    }
+   ],
+   "footnote": "2026학년도 목록이며 2027학년도 안내는 아직 게시 전(2026.10.26 확인). 학교별·연도별로 출판사가 다르다. 저자·교사 이름은 저장하지 않음. AI 전사, 사용자 대조 전",
+   "subjects": [
+    {
+     "order": 1,
+     "subject": "과학",
+     "publishers": {
+      "1": "미래엔",
+      "2": "미래엔",
+      "3": "미래엔"
+     },
+     "note": null
+    },
+    {
+     "order": 2,
+     "subject": "국어",
+     "publishers": {
+      "1": "천재교과서",
+      "2": "천재교과서",
+      "3": "천재교육"
+     },
+     "note": null
+    },
+    {
+     "order": 3,
+     "subject": "도덕",
+     "publishers": {
+      "1": "미래엔",
+      "2": "미래엔",
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 4,
+     "subject": "사회",
+     "publishers": {
+      "1": "천재교과서",
+      "2": null,
+      "3": "천재교육"
+     },
+     "note": null
+    },
+    {
+     "order": 5,
+     "subject": "사회과부도",
+     "publishers": {
+      "1": "천재교과서",
+      "2": null,
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 6,
+     "subject": "수학",
+     "publishers": {
+      "1": "동아출판",
+      "2": "동아출판",
+      "3": "천재교육"
+     },
+     "note": null
+    },
+    {
+     "order": 7,
+     "subject": "영어",
+     "publishers": {
+      "1": "동아출판",
+      "2": "동아출판",
+      "3": "천재교육"
+     },
+     "note": null
+    },
+    {
+     "order": 8,
+     "subject": "기술·가정",
+     "publishers": {
+      "1": "미래엔",
+      "2": "미래엔",
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 9,
+     "subject": "음악",
+     "publishers": {
+      "1": "천재교과서",
+      "2": null,
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 10,
+     "subject": "정보",
+     "publishers": {
+      "1": "비상교육",
+      "2": null,
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 11,
+     "subject": "진로와 직업",
+     "publishers": {
+      "1": "비상교육",
+      "2": null,
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 12,
+     "subject": "체육",
+     "publishers": {
+      "1": "성안당",
+      "2": null,
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 13,
+     "subject": "역사",
+     "publishers": {
+      "1": null,
+      "2": "비상교육",
+      "3": "미래엔"
+     },
+     "note": null
+    },
+    {
+     "order": 14,
+     "subject": "역사부도",
+     "publishers": {
+      "1": null,
+      "2": "비상교육",
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 15,
+     "subject": "미술",
+     "publishers": {
+      "1": null,
+      "2": "비상교육",
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 16,
+     "subject": "한문",
+     "publishers": {
+      "1": null,
+      "2": "천재교과서",
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 17,
+     "subject": "생활 중국어",
+     "publishers": {
+      "1": null,
+      "2": null,
+      "3": "엔이능률"
+     },
+     "note": null
+    }
+   ],
+   "unreadable": []
+  },
+  {
+   "placeId": "pl-004",
+   "schoolYear": 2026,
+   "title": "2026학년도 교과용도서 목록(성서중학교 학교공지 2026.1.5, 본문 이미지)",
+   "status": "reported",
+   "confidence": "reported",
+   "sources": [
+    {
+     "name": "2026학년도 교과용도서 목록(성서중학교 학교공지 2026.1.5, 본문 이미지)",
+     "url": "https://seongseo-m.goeyi.kr/seongseo-m/na/ntt/selectNttList.do?mi=2251&bbsId=1103"
+    }
+   ],
+   "footnote": "2026학년도 목록이며 2027학년도 안내는 아직 게시 전(2026.10.26 확인). 학교별·연도별로 출판사가 다르다. 저자·교사 이름은 저장하지 않음. AI 전사, 사용자 대조 전",
+   "subjects": [
+    {
+     "order": 1,
+     "subject": "과학",
+     "publishers": {
+      "1": "동아출판",
+      "2": "동아출판",
+      "3": "미래엔"
+     },
+     "note": null
+    },
+    {
+     "order": 2,
+     "subject": "국어",
+     "publishers": {
+      "1": "미래엔",
+      "2": "미래엔",
+      "3": "천재교육"
+     },
+     "note": null
+    },
+    {
+     "order": 3,
+     "subject": "도덕",
+     "publishers": {
+      "1": "교학사",
+      "2": "교학사",
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 4,
+     "subject": "사회",
+     "publishers": {
+      "1": "미래엔",
+      "2": null,
+      "3": "미래엔"
+     },
+     "note": null
+    },
+    {
+     "order": 5,
+     "subject": "사회과부도",
+     "publishers": {
+      "1": "동아출판",
+      "2": "동아출판",
+      "3": "미래엔"
+     },
+     "note": "1·3학년 사용"
+    },
+    {
+     "order": 6,
+     "subject": "수학",
+     "publishers": {
+      "1": "천재교과서",
+      "2": "천재교과서",
+      "3": "좋은책신사고"
+     },
+     "note": null
+    },
+    {
+     "order": 7,
+     "subject": "영어",
+     "publishers": {
+      "1": "동아출판",
+      "2": "동아출판",
+      "3": "동아출판"
+     },
+     "note": null
+    },
+    {
+     "order": 8,
+     "subject": "체육",
+     "publishers": {
+      "1": "금성출판사",
+      "2": "금성출판사",
+      "3": "금성출판사"
+     },
+     "note": "1·2·3학년 사용(체육①②, 공지 '중요' 안내)"
+    },
+    {
+     "order": 9,
+     "subject": "미술",
+     "publishers": {
+      "1": "창비교육",
+      "2": "창비교육",
+      "3": null
+     },
+     "note": "1·2학년 사용(미술①②)"
+    },
+    {
+     "order": 10,
+     "subject": "음악",
+     "publishers": {
+      "1": "지학사",
+      "2": null,
+      "3": "아침나라"
+     },
+     "note": null
+    },
+    {
+     "order": 11,
+     "subject": "한문",
+     "publishers": {
+      "1": "와이비엠",
+      "2": null,
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 12,
+     "subject": "진로와 직업",
+     "publishers": {
+      "1": "이오미디어",
+      "2": null,
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 13,
+     "subject": "역사",
+     "publishers": {
+      "1": null,
+      "2": "해냄에듀",
+      "3": "비상교육"
+     },
+     "note": null
+    },
+    {
+     "order": 14,
+     "subject": "역사부도",
+     "publishers": {
+      "1": null,
+      "2": "동아출판",
+      "3": "비상교육"
+     },
+     "note": "2·3학년 사용"
+    },
+    {
+     "order": 15,
+     "subject": "기술·가정",
+     "publishers": {
+      "1": null,
+      "2": "미래엔",
+      "3": "미래엔"
+     },
+     "note": null
+    },
+    {
+     "order": 16,
+     "subject": "정보",
+     "publishers": {
+      "1": null,
+      "2": "도서출판길벗",
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 17,
+     "subject": "생활 중국어",
+     "publishers": {
+      "1": null,
+      "2": null,
+      "3": "다락원"
+     },
+     "note": null
+    }
+   ],
+   "unreadable": []
   }
  ],
  "notFound": [
   {
    "placeId": "pl-002",
-   "reason": "공개 검색(학교 공지·학교알리미)에서 2027학년도 교과서 출판사 안내를 찾지 못함. 학교 홈페이지 공지 직접 확인은 하지 않음"
-  },
-  {
-   "placeId": "pl-004",
-   "reason": "공개 검색(학교 공지·학교알리미)에서 2027학년도 교과서 출판사 안내를 찾지 못함. 학교 홈페이지 공지 직접 확인은 하지 않음"
-  },
-  {
-   "placeId": "pl-005",
-   "reason": "공개 검색(학교 공지·학교알리미)에서 2027학년도 교과서 출판사 안내를 찾지 못함. 학교 홈페이지 공지 직접 확인은 하지 않음"
-  },
-  {
-   "placeId": "pl-006",
-   "reason": "공개 검색(학교 공지·학교알리미)에서 2027학년도 교과서 출판사 안내를 찾지 못함. 학교 홈페이지 공지 직접 확인은 하지 않음"
+   "reason": "학교 홈페이지 주소를 찾지 못했거나(문정중·신봉중·정평중·용인한빛중·홍천중) 공개 게시물에 교과서 목록이 없음. 2027학년도 교과서 안내는 성복중만 게시됨"
   },
   {
    "placeId": "pl-007",
-   "reason": "공개 검색(학교 공지·학교알리미)에서 2027학년도 교과서 출판사 안내를 찾지 못함. 학교 홈페이지 공지 직접 확인은 하지 않음"
+   "reason": "학교 홈페이지 주소를 찾지 못했거나(문정중·신봉중·정평중·용인한빛중·홍천중) 공개 게시물에 교과서 목록이 없음. 2027학년도 교과서 안내는 성복중만 게시됨"
   },
   {
    "placeId": "pl-008",
-   "reason": "공개 검색(학교 공지·학교알리미)에서 2027학년도 교과서 출판사 안내를 찾지 못함. 학교 홈페이지 공지 직접 확인은 하지 않음"
+   "reason": "학교 홈페이지 주소를 찾지 못했거나(문정중·신봉중·정평중·용인한빛중·홍천중) 공개 게시물에 교과서 목록이 없음. 2027학년도 교과서 안내는 성복중만 게시됨"
   },
   {
    "placeId": "pl-009",
-   "reason": "공개 검색(학교 공지·학교알리미)에서 2027학년도 교과서 출판사 안내를 찾지 못함. 학교 홈페이지 공지 직접 확인은 하지 않음"
+   "reason": "학교 홈페이지 주소를 찾지 못했거나(문정중·신봉중·정평중·용인한빛중·홍천중) 공개 게시물에 교과서 목록이 없음. 2027학년도 교과서 안내는 성복중만 게시됨"
   },
   {
    "placeId": "pl-010",
-   "reason": "공개 검색(학교 공지·학교알리미)에서 2027학년도 교과서 출판사 안내를 찾지 못함. 학교 홈페이지 공지 직접 확인은 하지 않음"
+   "reason": "학교 홈페이지 주소를 찾지 못했거나(문정중·신봉중·정평중·용인한빛중·홍천중) 공개 게시물에 교과서 목록이 없음. 2027학년도 교과서 안내는 성복중만 게시됨"
   }
  ]
 }
