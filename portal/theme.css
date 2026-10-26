@@ -379,3 +379,11 @@ table.policy tr.past td,table.policy tr.past b{color:var(--mute)}
 .pn .chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;min-height:44px;align-items:center}.pn .chips .chip{flex:none}
 /* 자식이 하나뿐인 .row(바뀐 소식·빈 상태 등)는 D-day 열 없이 전체 폭을 쓴다 */
 .row>:only-child{grid-column:1/-1}
+
+/* 입시 단계 표시: 글자만, 회색. 색을 쓰지 않아 상태색(보도·추정)과 섞이지 않는다 */
+.stg{font-size:11px;font-weight:600;letter-spacing:.02em;color:var(--mute);margin-right:8px}
+.stgline{display:flex;align-items:baseline;gap:14px;padding:14px 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);margin:8px 0 0}
+.stgline a{display:flex;align-items:baseline;gap:8px;text-decoration:none;color:var(--mute);min-height:32px}
+.stgline a b{font-size:15px;font-weight:600}.stgline a small{font-size:12px}
+.stgline a.on{color:var(--ink)}.stgline a.on b{font-weight:800}.stgline a.on b::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:7px;vertical-align:1px}
+.stg-sep{color:var(--hair)}
