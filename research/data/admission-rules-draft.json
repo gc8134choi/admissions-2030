@@ -2727,6 +2727,122 @@
         "careerSubjectsPolicy": null
       },
       "csatMinimumNullReason": "정시 수능위주 일반전형 수능 최저학력기준 없음"
+    },
+    {
+      "ruleId": "ar-2028-khu-susi-gyogwa",
+      "universityId": "s-910",
+      "universityName": "경희대학교",
+      "unitName": "학생부교과 지역균형전형",
+      "admissionYear": 2028,
+      "track": "susi-gyogwa",
+      "announcedAt": "2026-04-30",
+      "announcedAtNote": "대학입학전형시행계획 공표(2026.4.30, 입학처 공지 목록 기준)",
+      "status": "confirmed",
+      "referenceNote": "2028학년도 시행계획(2022 개정 교육과정 첫 수능 세대) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+      "sources": [
+        {
+          "name": "2028학년도 경희대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
+          "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/경희대학교/경희대학교_2028학년도_대학입학전형계획.pdf",
+          "kind": "official",
+          "retrieved": "2026-10-26"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "sourcePage": "시행계획 PDF 변경사항(2~4쪽, 이미지 판독)",
+      "requirements": [],
+      "requirementsNullReason": "교과 이수 권장·필수 과목은 시행계획에서 확인 못 함",
+      "gradeReflection": {
+        "gradeMethod": "2028학년도 변경: 졸업예정자만 지원(2027학년도는 2025년 2월 이후 졸업(예정)자), 반영 교과: 인문은 국어·수학·영어·사회(한국사 포함) 교과 전체 과목, 자연은 국어·수학·영어·과학(한국사 포함) 교과 전체 과목(공통·일반선택·진로·융합선택 포함, 석차등급 활용, 성취도는 등급으로 치환해 상위 성적 반영). 교과성적 반영 학기: 졸업예정자 3학년 1학기까지",
+        "careerSubjectsPolicy": "진로선택·융합선택과목도 반영 교과에 포함, 성취도를 등급으로 치환(A=1등급 …)"
+      },
+      "csatMinimumNullReason": "2028학년도 시행계획 PDF가 이미지 형식이라 글자 추출이 안 되어 최저 기준 수치는 이번에 읽지 못함(변경 요약 쪽만 이미지로 판독)"
+    },
+    {
+      "ruleId": "ar-2028-khu-susi-neo",
+      "universityId": "s-910",
+      "universityName": "경희대학교",
+      "unitName": "학생부종합 네오르네상스전형(면접형·서류형 이원화)",
+      "admissionYear": 2028,
+      "track": "susi-jonghap",
+      "announcedAt": "2026-04-30",
+      "announcedAtNote": "대학입학전형시행계획 공표(2026.4.30, 입학처 공지 목록 기준)",
+      "status": "confirmed",
+      "referenceNote": "2028학년도 시행계획(2022 개정 교육과정 첫 수능 세대) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+      "sources": [
+        {
+          "name": "2028학년도 경희대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
+          "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/경희대학교/경희대학교_2028학년도_대학입학전형계획.pdf",
+          "kind": "official",
+          "retrieved": "2026-10-26"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "sourcePage": "시행계획 PDF 변경사항(3쪽, 이미지 판독)",
+      "requirements": [],
+      "requirementsNullReason": "교과 이수 권장·필수 과목은 시행계획에서 확인 못 함",
+      "gradeReflection": {
+        "gradeMethod": "2028학년도 변경: 면접형(수능최저 없음, 1단계 서류평가 100%[일반학과 4배수, 의예·한의예(인문·자연)·치의예·약학 5배수], 2단계 1단계 70%+면접 30%)과 서류형(수능최저 있음, 서류평가 100% 일괄합산)으로 이원화",
+        "careerSubjectsPolicy": null
+      },
+      "csatMinimumNullReason": "면접형은 수능최저 없음, 서류형은 수능최저 있음(수치는 2028학년도 시행계획 PDF가 이미지 형식이라 글자 추출이 안 되어 최저 기준 수치는 이번에 읽지 못함(변경 요약 쪽만 이미지로 판독))"
+    },
+    {
+      "ruleId": "ar-2028-khu-susi-nonsul",
+      "universityId": "s-910",
+      "universityName": "경희대학교",
+      "unitName": "논술우수자전형(사회계)",
+      "admissionYear": 2028,
+      "track": "susi-nonsul",
+      "announcedAt": "2026-04-30",
+      "announcedAtNote": "대학입학전형시행계획 공표(2026.4.30, 입학처 공지 목록 기준)",
+      "status": "confirmed",
+      "referenceNote": "2028학년도 시행계획(2022 개정 교육과정 첫 수능 세대) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+      "sources": [
+        {
+          "name": "2028학년도 경희대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
+          "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/경희대학교/경희대학교_2028학년도_대학입학전형계획.pdf",
+          "kind": "official",
+          "retrieved": "2026-10-26"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "sourcePage": "시행계획 PDF 변경사항(3쪽, 이미지 판독)",
+      "requirements": [],
+      "requirementsNullReason": "교과 이수 권장·필수 과목은 시행계획에서 확인 못 함",
+      "gradeReflection": {
+        "gradeMethod": "2028학년도 변경: 사회계열 논술 출제 문항 수 3문제 → 2문제로 축소(수리 문항 폐지, 도표·통계 등 제시문을 이용한 문항 출제)",
+        "careerSubjectsPolicy": null
+      },
+      "csatMinimumNullReason": "2028학년도 시행계획 PDF가 이미지 형식이라 글자 추출이 안 되어 최저 기준 수치는 이번에 읽지 못함(변경 요약 쪽만 이미지로 판독)"
+    },
+    {
+      "ruleId": "ar-2028-khu-jeongsi",
+      "universityId": "s-910",
+      "universityName": "경희대학교",
+      "unitName": "정시 수능위주(일반전형) — 수능·학생부형 / 수능형 이원화",
+      "admissionYear": 2028,
+      "track": "jeongsi-csat",
+      "announcedAt": "2026-04-30",
+      "announcedAtNote": "대학입학전형시행계획 공표(2026.4.30, 입학처 공지 목록 기준)",
+      "status": "confirmed",
+      "referenceNote": "2028학년도 시행계획(2022 개정 교육과정 첫 수능 세대) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+      "sources": [
+        {
+          "name": "2028학년도 경희대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
+          "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/경희대학교/경희대학교_2028학년도_대학입학전형계획.pdf",
+          "kind": "official",
+          "retrieved": "2026-10-26"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "sourcePage": "시행계획 PDF 변경사항(2~5쪽, 이미지 판독)",
+      "requirements": [],
+      "requirementsNullReason": "정시는 교과 이수 권장·필수 과목 해당 없음",
+      "gradeReflection": {
+        "gradeMethod": "2028학년도 변경: 수능·학생부형(수능 90% + 학생부 교과·비교과(출결·봉사) 10%, 1,348명)과 수능형(수능 100%, 611명)으로 이원화. 영역 반영비율(국어:수학:탐구): 인문 40:35:25(통합사회·통합과학 중 상위 1과목), 사회 35:35:30(상위 1과목), 자연 30:40:통합사회 10·통합과학 20, 예술·체육 70:-:30(상위 1과목), 영어·한국사 반영(등급 점수 표는 읽지 못함). 수능·학생부형 자연계열에는 학생부 수학·과학 이수 가산점(최대 8점: 수학교과 18학점 또는 5과목 이상 4점, 과학교과 20학점 또는 6과목 이상 4점). 정시 일정(안): 원서접수 2028.1.3~6, 가군 1.10~17, 나군 1.18~25, 다군 1.31~2.7, 합격자 발표 2.10",
+        "careerSubjectsPolicy": null
+      },
+      "csatMinimumNullReason": "정시 수능위주 수능최저 없음(변경 요약에 최저 언급 없음)"
     }
   ]
 }
