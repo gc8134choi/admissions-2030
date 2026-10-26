@@ -416,7 +416,7 @@ function render() {
   const tab = loc.tab;
   document.body.dataset.profile = currentProfile(store).key;
   drawTabs(tab);
-  document.title = `${tab.id === "home" ? "" : tab.title + " · "}대입 포털`;
+  document.title = `${tab.id === "home" ? "" : tab.title + " · "}스쿨 라이프`;
   scrollTo(0, 0);
   const navA = (href, title, on) => `<a href="${href}"${on ? ' aria-current="page"' : ""}>${esc(title)}</a>`;
   const row = (cls, label, links) => `<nav class="subnav${cls}" aria-label="${esc(label)}">${links}</nav>`;
