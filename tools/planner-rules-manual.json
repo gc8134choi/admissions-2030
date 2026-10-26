@@ -1,0 +1,30 @@
+{
+ "_meta": { "note": "과목 선택 플래너의 졸업 요건 정본(손으로 관리). 모든 값은 policy.json의 근거 행(rows)에 적힌 숫자이고, tools/build-planner-rules.mjs가 각 숫자가 근거 행 본문에 실제로 있는지 검증한다. 임의 값 금지, 값을 모르면 null과 사유(nullReason)." },
+ "totalCredits":      { "value": 192, "rows": ["hs-11", "cur-01"], "must": ["192"] },
+ "subjectCredits":    { "value": 174, "rows": ["hs-11", "cur-01", "cur-14"], "must": ["174"] },
+ "creativeCredits":   { "value": 18,  "rows": ["hs-11", "cur-01"], "must": ["18"] },
+ "requiredCredits":   { "value": 84,  "rows": ["cur-03", "cur-14"], "must": ["84"] },
+ "freeElectiveCredits": { "value": 90, "rows": ["cur-14"], "must": ["90", "174−84"], "derived": "174 − 84" },
+ "requiredByArea": {
+  "rows": ["cur-03"],
+  "items": [
+   { "area": "국어", "credits": 8, "must": ["국어"] },
+   { "area": "수학", "credits": 8, "must": ["수학"] },
+   { "area": "영어", "credits": 8, "must": ["영어"] },
+   { "area": "사회", "credits": 8, "must": ["사회"], "note": "한국사 제외" },
+   { "area": "한국사", "credits": 6, "must": ["한국사 6학점"] },
+   { "area": "과학", "credits": 10, "must": ["과학"] },
+   { "area": "체육", "credits": 10, "must": ["체육"] },
+   { "area": "예술", "credits": 10, "must": ["예술"] }
+  ],
+  "groupItems": [
+   { "label": "기술·가정/정보/제2외국어/한문/교양 합", "credits": 16, "must": ["16학점"] }
+  ]
+ },
+ "capKoMaEn": { "value": 81, "rows": ["cur-12", "cur-26"], "must": ["81학점"], "areas": ["국어", "수학", "영어"], "kind": "max" },
+ "completion": {
+  "attendanceMin": { "value": "2/3", "rows": ["cur-02", "hs-12", "cur-16"], "must": ["2/3"] },
+  "commonAchievementMinPercent": { "value": 40, "rows": ["hs-12", "cur-16", "log-16"], "must": ["40%"] },
+  "electiveAchievementRequired": { "value": false, "rows": ["hs-12", "log-16"], "must": ["선택과목은 출석률"], "appliesFrom": "2026학년도 고1·2, 2027학년도 전 학년" }
+ }
+}

@@ -1,0 +1,1446 @@
+{
+ "_meta": {
+  "note": "과목 선택 플래너 규칙(생성물, 손으로 고치지 않는다). tools/planner-rules-manual.json + summary·groups·offerings에서 tools/build-planner-rules.mjs가 만든다. 졸업 요건은 policy.json 근거 행으로 연결한다.",
+  "schoolCount": 4,
+  "pickGroupCount": 41
+ },
+ "graduation": {
+  "totalCredits": {
+   "value": 192,
+   "rows": [
+    "hs-11",
+    "cur-01"
+   ],
+   "status": "confirmed",
+   "regionNote": "경기 적용은 별도 확인"
+  },
+  "subjectCredits": {
+   "value": 174,
+   "rows": [
+    "hs-11",
+    "cur-01",
+    "cur-14"
+   ],
+   "status": "confirmed",
+   "regionNote": "경기 적용은 별도 확인"
+  },
+  "creativeCredits": {
+   "value": 18,
+   "rows": [
+    "hs-11",
+    "cur-01"
+   ],
+   "status": "confirmed",
+   "regionNote": "경기 적용은 별도 확인"
+  },
+  "requiredCredits": {
+   "value": 84,
+   "rows": [
+    "cur-03",
+    "cur-14"
+   ],
+   "status": "confirmed",
+   "regionNote": "경기 적용은 별도 확인"
+  },
+  "freeElectiveCredits": {
+   "value": 90,
+   "derived": "174 − 84",
+   "rows": [
+    "cur-14"
+   ],
+   "status": "confirmed",
+   "regionNote": "경기 적용은 별도 확인"
+  },
+  "requiredByArea": {
+   "rows": [
+    "cur-03"
+   ],
+   "status": "confirmed",
+   "regionNote": "경기 적용은 별도 확인",
+   "items": [
+    {
+     "area": "국어",
+     "credits": 8,
+     "status": "confirmed"
+    },
+    {
+     "area": "수학",
+     "credits": 8,
+     "status": "confirmed"
+    },
+    {
+     "area": "영어",
+     "credits": 8,
+     "status": "confirmed"
+    },
+    {
+     "area": "사회",
+     "credits": 8,
+     "note": "한국사 제외",
+     "status": "confirmed"
+    },
+    {
+     "area": "한국사",
+     "credits": 6,
+     "status": "confirmed"
+    },
+    {
+     "area": "과학",
+     "credits": 10,
+     "status": "confirmed"
+    },
+    {
+     "area": "체육",
+     "credits": 10,
+     "status": "confirmed"
+    },
+    {
+     "area": "예술",
+     "credits": 10,
+     "status": "confirmed"
+    }
+   ],
+   "groupItems": [
+    {
+     "label": "기술·가정/정보/제2외국어/한문/교양 합",
+     "credits": 16
+    }
+   ]
+  },
+  "capKoMaEn": {
+   "value": 81,
+   "kind": "max",
+   "areas": [
+    "국어",
+    "수학",
+    "영어"
+   ],
+   "rows": [
+    "cur-12",
+    "cur-26"
+   ],
+   "status": "seoul-verified",
+   "regionNote": "경기 적용은 별도 확인"
+  },
+  "completion": {
+   "attendanceMin": {
+    "value": "2/3",
+    "rows": [
+     "cur-02",
+     "hs-12",
+     "cur-16"
+    ],
+    "status": "confirmed",
+    "regionNote": "경기 적용은 별도 확인"
+   },
+   "commonAchievementMinPercent": {
+    "value": 40,
+    "rows": [
+     "hs-12",
+     "cur-16",
+     "log-16"
+    ],
+    "status": "confirmed",
+    "regionNote": "경기 적용은 별도 확인"
+   },
+   "electiveAchievementRequired": {
+    "value": false,
+    "rows": [
+     "hs-12",
+     "log-16"
+    ],
+    "status": "confirmed",
+    "regionNote": null,
+    "appliesFrom": "2026학년도 고1·2, 2027학년도 전 학년"
+   }
+  }
+ },
+ "schools": [
+  {
+   "schoolId": "school-pungdeok",
+   "curriculumId": "curriculum-pungdeok-2027",
+   "entryYear": 2027,
+   "credits": {
+    "subject": 174,
+    "creative": 18,
+    "total": 192,
+    "required": 120,
+    "elective": 54,
+    "outside": 0
+   },
+   "byTerm": {
+    "1-1": {
+     "required": 29,
+     "elective": 0,
+     "outside": 0,
+     "total": 29,
+     "groupCount": 0
+    },
+    "1-2": {
+     "required": 29,
+     "elective": 0,
+     "outside": 0,
+     "total": 29,
+     "groupCount": 0
+    },
+    "2-1": {
+     "required": 17,
+     "elective": 12,
+     "outside": 0,
+     "total": 29,
+     "groupCount": 2
+    },
+    "2-2": {
+     "required": 17,
+     "elective": 12,
+     "outside": 0,
+     "total": 29,
+     "groupCount": 2
+    },
+    "3-1": {
+     "required": 14,
+     "elective": 15,
+     "outside": 0,
+     "total": 29,
+     "groupCount": 2
+    },
+    "3-2": {
+     "required": 14,
+     "elective": 15,
+     "outside": 0,
+     "total": 29,
+     "groupCount": 2
+    }
+   },
+   "requiredByArea": {
+    "국어": 24,
+    "수학": 24,
+    "영어": 22,
+    "한국사": 6,
+    "사회": 6,
+    "과학": 10,
+    "체육": 12,
+    "예술": 10,
+    "기술·가정/정보": 6,
+    "제2외국어/한문/교양": 0
+   },
+   "confidence": "reported"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "curriculumId": "curriculum-seongbok-2027",
+   "entryYear": 2027,
+   "credits": {
+    "subject": 174,
+    "creative": 18,
+    "total": 192,
+    "required": 108,
+    "elective": 66,
+    "outside": 0
+   },
+   "byTerm": {
+    "1-1": {
+     "required": 29,
+     "elective": 0,
+     "outside": 0,
+     "total": 29,
+     "groupCount": 0
+    },
+    "1-2": {
+     "required": 29,
+     "elective": 0,
+     "outside": 0,
+     "total": 29,
+     "groupCount": 0
+    },
+    "2-1": {
+     "required": 14,
+     "elective": 15,
+     "outside": 0,
+     "total": 29,
+     "groupCount": 3
+    },
+    "2-2": {
+     "required": 14,
+     "elective": 15,
+     "outside": 0,
+     "total": 29,
+     "groupCount": 3
+    },
+    "3-1": {
+     "required": 12,
+     "elective": 18,
+     "outside": 0,
+     "total": 30,
+     "groupCount": 3
+    },
+    "3-2": {
+     "required": 10,
+     "elective": 18,
+     "outside": 0,
+     "total": 28,
+     "groupCount": 3
+    }
+   },
+   "requiredByArea": {
+    "국어": 22,
+    "수학": 22,
+    "영어": 22,
+    "한국사": 6,
+    "사회": 8,
+    "과학": 8,
+    "체육": 10,
+    "예술": 4,
+    "기술·가정/정보": 6,
+    "제2외국어/한문/교양": 0
+   },
+   "confidence": "reported"
+  },
+  {
+   "schoolId": "school-suji",
+   "curriculumId": "curriculum-suji-2027",
+   "entryYear": 2027,
+   "credits": {
+    "subject": 174,
+    "creative": 18,
+    "total": 192,
+    "required": 99,
+    "elective": 75,
+    "outside": 2
+   },
+   "byTerm": {
+    "1-1": {
+     "required": 29,
+     "elective": 0,
+     "outside": 0,
+     "total": 29,
+     "groupCount": 0
+    },
+    "1-2": {
+     "required": 29,
+     "elective": 0,
+     "outside": 2,
+     "total": 29,
+     "groupCount": 0
+    },
+    "2-1": {
+     "required": 14,
+     "elective": 15,
+     "outside": 0,
+     "total": 29,
+     "groupCount": 2
+    },
+    "2-2": {
+     "required": 14,
+     "elective": 15,
+     "outside": 0,
+     "total": 29,
+     "groupCount": 2
+    },
+    "3-1": {
+     "required": 11,
+     "elective": 18,
+     "outside": 0,
+     "total": 29,
+     "groupCount": 4
+    },
+    "3-2": {
+     "required": 2,
+     "elective": 27,
+     "outside": 0,
+     "total": 29,
+     "groupCount": 4
+    }
+   },
+   "requiredByArea": {
+    "국어": 19,
+    "수학": 19,
+    "영어": 19,
+    "한국사": 6,
+    "사회": 6,
+    "과학": 10,
+    "체육": 10,
+    "예술": 4,
+    "기술·가정/정보": 6,
+    "제2외국어/한문/교양": 0
+   },
+   "confidence": "reported"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "curriculumId": "curriculum-yonginheungcheon-2027",
+   "entryYear": 2027,
+   "credits": {
+    "subject": 174,
+    "creative": 18,
+    "total": 192,
+    "required": 96,
+    "elective": 78,
+    "outside": 0
+   },
+   "byTerm": {
+    "1-1": {
+     "required": 29,
+     "elective": 0,
+     "outside": 0,
+     "total": 29,
+     "groupCount": 0
+    },
+    "1-2": {
+     "required": 29,
+     "elective": 0,
+     "outside": 0,
+     "total": 29,
+     "groupCount": 0
+    },
+    "2-1": {
+     "required": 17,
+     "elective": 12,
+     "outside": 0,
+     "total": 29,
+     "groupCount": 2
+    },
+    "2-2": {
+     "required": 14,
+     "elective": 15,
+     "outside": 0,
+     "total": 29,
+     "groupCount": 3
+    },
+    "3-1": {
+     "required": 5,
+     "elective": 24,
+     "outside": 0,
+     "total": 29,
+     "groupCount": 2
+    },
+    "3-2": {
+     "required": 2,
+     "elective": 27,
+     "outside": 0,
+     "total": 29,
+     "groupCount": 2
+    }
+   },
+   "requiredByArea": {
+    "국어": 17,
+    "수학": 19,
+    "영어": 14,
+    "한국사": 6,
+    "사회": 8,
+    "과학": 10,
+    "체육": 12,
+    "예술": 10,
+    "기술·가정/정보": 0,
+    "제2외국어/한문/교양": 0
+   },
+   "confidence": "reported"
+  }
+ ],
+ "pickGroups": [
+  {
+   "id": "curriculum-pungdeok-2027#2-1-A",
+   "schoolId": "school-pungdeok",
+   "term": "2-1",
+   "pick": 3,
+   "size": 9,
+   "creditsEach": 3,
+   "creditsTotal": 9,
+   "poolType": "cross",
+   "sameArea": false,
+   "areasInPool": [
+    "수학",
+    "사회",
+    "과학"
+   ],
+   "subjectIds": [
+    "sj-0023",
+    "sj-0042",
+    "sj-0048",
+    "sj-0052",
+    "sj-0055",
+    "sj-0067",
+    "sj-0070",
+    "sj-0077",
+    "sj-0082"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-pungdeok-2027#2-1-B",
+   "schoolId": "school-pungdeok",
+   "term": "2-1",
+   "pick": 1,
+   "size": 3,
+   "creditsEach": 3,
+   "creditsTotal": 3,
+   "poolType": "life",
+   "sameArea": false,
+   "areasInPool": [
+    "제2외국어/한문/교양",
+    "기술·가정/정보"
+   ],
+   "subjectIds": [
+    "sj-0111",
+    "sj-0131",
+    "sj-0135"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-pungdeok-2027#2-2-A",
+   "schoolId": "school-pungdeok",
+   "term": "2-2",
+   "pick": 3,
+   "size": 9,
+   "creditsEach": 3,
+   "creditsTotal": 9,
+   "poolType": "cross",
+   "sameArea": false,
+   "areasInPool": [
+    "수학",
+    "사회",
+    "과학"
+   ],
+   "subjectIds": [
+    "sj-0015",
+    "sj-0041",
+    "sj-0044",
+    "sj-0047",
+    "sj-0054",
+    "sj-0069",
+    "sj-0073",
+    "sj-0074",
+    "sj-0078"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-pungdeok-2027#2-2-B",
+   "schoolId": "school-pungdeok",
+   "term": "2-2",
+   "pick": 1,
+   "size": 3,
+   "creditsEach": 3,
+   "creditsTotal": 3,
+   "poolType": "life",
+   "sameArea": false,
+   "areasInPool": [
+    "제2외국어/한문/교양",
+    "기술·가정/정보"
+   ],
+   "subjectIds": [
+    "sj-0110",
+    "sj-0132",
+    "sj-0136"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-pungdeok-2027#3-1-A",
+   "schoolId": "school-pungdeok",
+   "term": "3-1",
+   "pick": 4,
+   "size": 12,
+   "creditsEach": 3,
+   "creditsTotal": 12,
+   "poolType": "cross",
+   "sameArea": false,
+   "areasInPool": [
+    "국어",
+    "수학",
+    "영어",
+    "과학",
+    "사회"
+   ],
+   "subjectIds": [
+    "sj-0007",
+    "sj-0011",
+    "sj-0018",
+    "sj-0029",
+    "sj-0046",
+    "sj-0050",
+    "sj-0060",
+    "sj-0065",
+    "sj-0072",
+    "sj-0076",
+    "sj-0081",
+    "sj-0083"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-pungdeok-2027#3-1-B",
+   "schoolId": "school-pungdeok",
+   "term": "3-1",
+   "pick": 1,
+   "size": 5,
+   "creditsEach": 3,
+   "creditsTotal": 3,
+   "poolType": "life",
+   "sameArea": false,
+   "areasInPool": [
+    "제2외국어/한문/교양",
+    "기술·가정/정보"
+   ],
+   "subjectIds": [
+    "sj-0105",
+    "sj-0115",
+    "sj-0122",
+    "sj-0130",
+    "sj-0134"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-pungdeok-2027#3-2-A",
+   "schoolId": "school-pungdeok",
+   "term": "3-2",
+   "pick": 4,
+   "size": 10,
+   "creditsEach": 3,
+   "creditsTotal": 12,
+   "poolType": "cross",
+   "sameArea": false,
+   "areasInPool": [
+    "국어",
+    "수학",
+    "영어",
+    "사회",
+    "과학"
+   ],
+   "subjectIds": [
+    "sj-0008",
+    "sj-0020",
+    "sj-0032",
+    "sj-0043",
+    "sj-0045",
+    "sj-0049",
+    "sj-0051",
+    "sj-0062",
+    "sj-0066",
+    "sj-0075"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-pungdeok-2027#3-2-B",
+   "schoolId": "school-pungdeok",
+   "term": "3-2",
+   "pick": 1,
+   "size": 5,
+   "creditsEach": 3,
+   "creditsTotal": 3,
+   "poolType": "life",
+   "sameArea": false,
+   "areasInPool": [
+    "제2외국어/한문/교양",
+    "기술·가정/정보"
+   ],
+   "subjectIds": [
+    "sj-0108",
+    "sj-0109",
+    "sj-0118",
+    "sj-0119",
+    "sj-0129"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-seongbok-2027#2-1-A",
+   "schoolId": "school-seongbok",
+   "term": "2-1",
+   "pick": 3,
+   "size": 8,
+   "creditsEach": 3,
+   "creditsTotal": 9,
+   "poolType": "cross",
+   "sameArea": false,
+   "areasInPool": [
+    "사회",
+    "과학"
+   ],
+   "subjectIds": [
+    "sj-0046",
+    "sj-0047",
+    "sj-0048",
+    "sj-0052",
+    "sj-0067",
+    "sj-0070",
+    "sj-0077",
+    "sj-0082"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-seongbok-2027#2-1-B",
+   "schoolId": "school-seongbok",
+   "term": "2-1",
+   "pick": 1,
+   "size": 2,
+   "creditsEach": 3,
+   "creditsTotal": 3,
+   "poolType": "in-area",
+   "sameArea": true,
+   "areasInPool": [
+    "예술"
+   ],
+   "subjectIds": [
+    "sj-0094",
+    "sj-0100"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-seongbok-2027#2-1-C",
+   "schoolId": "school-seongbok",
+   "term": "2-1",
+   "pick": 1,
+   "size": 3,
+   "creditsEach": 3,
+   "creditsTotal": 3,
+   "poolType": "life",
+   "sameArea": false,
+   "areasInPool": [
+    "제2외국어/한문/교양",
+    "기술·가정/정보"
+   ],
+   "subjectIds": [
+    "sj-0110",
+    "sj-0131",
+    "sj-0135"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-seongbok-2027#2-2-A",
+   "schoolId": "school-seongbok",
+   "term": "2-2",
+   "pick": 3,
+   "size": 8,
+   "creditsEach": 3,
+   "creditsTotal": 9,
+   "poolType": "cross",
+   "sameArea": false,
+   "areasInPool": [
+    "사회",
+    "과학"
+   ],
+   "subjectIds": [
+    "sj-0041",
+    "sj-0042",
+    "sj-0044",
+    "sj-0060",
+    "sj-0069",
+    "sj-0073",
+    "sj-0074",
+    "sj-0078"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-seongbok-2027#2-2-B",
+   "schoolId": "school-seongbok",
+   "term": "2-2",
+   "pick": 1,
+   "size": 2,
+   "creditsEach": 3,
+   "creditsTotal": 3,
+   "poolType": "in-area",
+   "sameArea": true,
+   "areasInPool": [
+    "예술"
+   ],
+   "subjectIds": [
+    "sj-0093",
+    "sj-0101"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-seongbok-2027#2-2-C",
+   "schoolId": "school-seongbok",
+   "term": "2-2",
+   "pick": 1,
+   "size": 3,
+   "creditsEach": 3,
+   "creditsTotal": 3,
+   "poolType": "life",
+   "sameArea": false,
+   "areasInPool": [
+    "제2외국어/한문/교양",
+    "기술·가정/정보"
+   ],
+   "subjectIds": [
+    "sj-0105",
+    "sj-0132",
+    "sj-0136"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-seongbok-2027#3-1-A",
+   "schoolId": "school-seongbok",
+   "term": "3-1",
+   "pick": 1,
+   "size": 3,
+   "creditsEach": 3,
+   "creditsTotal": 3,
+   "poolType": "cross",
+   "sameArea": false,
+   "areasInPool": [
+    "국어",
+    "수학",
+    "영어"
+   ],
+   "subjectIds": [
+    "sj-0007",
+    "sj-0018",
+    "sj-0030"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-seongbok-2027#3-1-B",
+   "schoolId": "school-seongbok",
+   "term": "3-1",
+   "pick": 4,
+   "size": 13,
+   "creditsEach": 3,
+   "creditsTotal": 12,
+   "poolType": "cross",
+   "sameArea": false,
+   "areasInPool": [
+    "수학",
+    "사회",
+    "과학",
+    "예술"
+   ],
+   "subjectIds": [
+    "sj-0015",
+    "sj-0050",
+    "sj-0054",
+    "sj-0055",
+    "sj-0059",
+    "sj-0065",
+    "sj-0072",
+    "sj-0075",
+    "sj-0076",
+    "sj-0081",
+    "sj-0083",
+    "sj-0098",
+    "sj-0102"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-seongbok-2027#3-1-C",
+   "schoolId": "school-seongbok",
+   "term": "3-1",
+   "pick": 1,
+   "size": 3,
+   "creditsEach": 3,
+   "creditsTotal": 3,
+   "poolType": "life",
+   "sameArea": false,
+   "areasInPool": [
+    "제2외국어/한문/교양",
+    "기술·가정/정보"
+   ],
+   "subjectIds": [
+    "sj-0107",
+    "sj-0130",
+    "sj-0134"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-seongbok-2027#3-2-A",
+   "schoolId": "school-seongbok",
+   "term": "3-2",
+   "pick": 1,
+   "size": 3,
+   "creditsEach": 3,
+   "creditsTotal": 3,
+   "poolType": "cross",
+   "sameArea": false,
+   "areasInPool": [
+    "국어",
+    "수학",
+    "영어"
+   ],
+   "subjectIds": [
+    "sj-0005",
+    "sj-0021",
+    "sj-0028"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-seongbok-2027#3-2-B",
+   "schoolId": "school-seongbok",
+   "term": "3-2",
+   "pick": 4,
+   "size": 9,
+   "creditsEach": 3,
+   "creditsTotal": 12,
+   "poolType": "cross",
+   "sameArea": false,
+   "areasInPool": [
+    "사회",
+    "과학",
+    "예술"
+   ],
+   "subjectIds": [
+    "sj-0039",
+    "sj-0045",
+    "sj-0049",
+    "sj-0051",
+    "sj-0058",
+    "sj-0062",
+    "sj-0066",
+    "sj-0092",
+    "sj-0099"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-seongbok-2027#3-2-C",
+   "schoolId": "school-seongbok",
+   "term": "3-2",
+   "pick": 1,
+   "size": 3,
+   "creditsEach": 3,
+   "creditsTotal": 3,
+   "poolType": "life",
+   "sameArea": false,
+   "areasInPool": [
+    "제2외국어/한문/교양",
+    "기술·가정/정보"
+   ],
+   "subjectIds": [
+    "sj-0106",
+    "sj-0119",
+    "sj-0127"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-suji-2027#2-1-A",
+   "schoolId": "school-suji",
+   "term": "2-1",
+   "pick": 4,
+   "size": 8,
+   "creditsEach": 3,
+   "creditsTotal": 12,
+   "poolType": "cross",
+   "sameArea": false,
+   "areasInPool": [
+    "사회",
+    "과학"
+   ],
+   "subjectIds": [
+    "sj-0046",
+    "sj-0047",
+    "sj-0048",
+    "sj-0060",
+    "sj-0067",
+    "sj-0070",
+    "sj-0077",
+    "sj-0082"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-suji-2027#2-2-A",
+   "schoolId": "school-suji",
+   "term": "2-2",
+   "pick": 4,
+   "size": 10,
+   "creditsEach": 3,
+   "creditsTotal": 12,
+   "poolType": "cross",
+   "sameArea": false,
+   "areasInPool": [
+    "사회",
+    "과학",
+    "수학"
+   ],
+   "subjectIds": [
+    "sj-0015",
+    "sj-0038",
+    "sj-0042",
+    "sj-0052",
+    "sj-0055",
+    "sj-0059",
+    "sj-0069",
+    "sj-0073",
+    "sj-0074",
+    "sj-0078"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-suji-2027#2-1-B",
+   "schoolId": "school-suji",
+   "term": "2-1",
+   "pick": 1,
+   "size": 4,
+   "creditsEach": 3,
+   "creditsTotal": 3,
+   "poolType": "life",
+   "sameArea": false,
+   "areasInPool": [
+    "제2외국어/한문/교양",
+    "기술·가정/정보"
+   ],
+   "subjectIds": [
+    "sj-0105",
+    "sj-0107",
+    "sj-0123",
+    "sj-0135"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-suji-2027#2-2-B",
+   "schoolId": "school-suji",
+   "term": "2-2",
+   "pick": 1,
+   "size": 4,
+   "creditsEach": 3,
+   "creditsTotal": 3,
+   "poolType": "life",
+   "sameArea": false,
+   "areasInPool": [
+    "제2외국어/한문/교양",
+    "기술·가정/정보"
+   ],
+   "subjectIds": [
+    "sj-0106",
+    "sj-0110",
+    "sj-0124",
+    "sj-0136"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-suji-2027#3-1-A",
+   "schoolId": "school-suji",
+   "term": "3-1",
+   "pick": 1,
+   "size": 4,
+   "creditsEach": 3,
+   "creditsTotal": 3,
+   "poolType": "basic",
+   "sameArea": false,
+   "areasInPool": [
+    "국어",
+    "수학",
+    "영어"
+   ],
+   "subjectIds": [
+    "sj-0008",
+    "sj-0011",
+    "sj-0018",
+    "sj-0031"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-suji-2027#3-2-A",
+   "schoolId": "school-suji",
+   "term": "3-2",
+   "pick": 4,
+   "size": 6,
+   "creditsEach": 3,
+   "creditsTotal": 12,
+   "poolType": "basic",
+   "sameArea": false,
+   "areasInPool": [
+    "국어",
+    "수학",
+    "영어"
+   ],
+   "subjectIds": [
+    "sj-0005",
+    "sj-0007",
+    "sj-0021",
+    "sj-0024",
+    "sj-0029",
+    "sj-0030"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-suji-2027#3-1-B",
+   "schoolId": "school-suji",
+   "term": "3-1",
+   "pick": 3,
+   "size": 9,
+   "creditsEach": 3,
+   "creditsTotal": 9,
+   "poolType": "cross",
+   "sameArea": false,
+   "areasInPool": [
+    "사회",
+    "과학"
+   ],
+   "subjectIds": [
+    "sj-0045",
+    "sj-0049",
+    "sj-0050",
+    "sj-0051",
+    "sj-0061",
+    "sj-0072",
+    "sj-0075",
+    "sj-0076",
+    "sj-0083"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-suji-2027#3-2-B",
+   "schoolId": "school-suji",
+   "term": "3-2",
+   "pick": 3,
+   "size": 7,
+   "creditsEach": 3,
+   "creditsTotal": 9,
+   "poolType": "cross",
+   "sameArea": false,
+   "areasInPool": [
+    "사회",
+    "과학"
+   ],
+   "subjectIds": [
+    "sj-0039",
+    "sj-0040",
+    "sj-0054",
+    "sj-0062",
+    "sj-0065",
+    "sj-0066",
+    "sj-0075"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-suji-2027#3-1-C",
+   "schoolId": "school-suji",
+   "term": "3-1",
+   "pick": 1,
+   "size": 2,
+   "creditsEach": 3,
+   "creditsTotal": 3,
+   "poolType": "in-area",
+   "sameArea": true,
+   "areasInPool": [
+    "예술"
+   ],
+   "subjectIds": [
+    "sj-0094",
+    "sj-0101"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-suji-2027#3-2-C",
+   "schoolId": "school-suji",
+   "term": "3-2",
+   "pick": 1,
+   "size": 2,
+   "creditsEach": 3,
+   "creditsTotal": 3,
+   "poolType": "in-area",
+   "sameArea": true,
+   "areasInPool": [
+    "예술"
+   ],
+   "subjectIds": [
+    "sj-0098",
+    "sj-0100"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-suji-2027#3-1-D",
+   "schoolId": "school-suji",
+   "term": "3-1",
+   "pick": 1,
+   "size": 5,
+   "creditsEach": 3,
+   "creditsTotal": 3,
+   "poolType": "life",
+   "sameArea": false,
+   "areasInPool": [
+    "제2외국어/한문/교양",
+    "기술·가정/정보"
+   ],
+   "subjectIds": [
+    "sj-0114",
+    "sj-0116",
+    "sj-0125",
+    "sj-0133",
+    "sj-0134"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-suji-2027#3-2-D",
+   "schoolId": "school-suji",
+   "term": "3-2",
+   "pick": 1,
+   "size": 4,
+   "creditsEach": 3,
+   "creditsTotal": 3,
+   "poolType": "life",
+   "sameArea": false,
+   "areasInPool": [
+    "제2외국어/한문/교양",
+    "기술·가정/정보"
+   ],
+   "subjectIds": [
+    "sj-0108",
+    "sj-0109",
+    "sj-0126",
+    "sj-0128"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-yonginheungcheon-2027#2-1-A",
+   "schoolId": "school-yonginheungcheon",
+   "term": "2-1",
+   "pick": 1,
+   "size": 3,
+   "creditsEach": 3,
+   "creditsTotal": 3,
+   "poolType": "life",
+   "sameArea": false,
+   "areasInPool": [
+    "제2외국어/한문/교양",
+    "기술·가정/정보"
+   ],
+   "subjectIds": [
+    "sj-0111",
+    "sj-0131",
+    "sj-0135"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-yonginheungcheon-2027#2-2-A",
+   "schoolId": "school-yonginheungcheon",
+   "term": "2-2",
+   "pick": 1,
+   "size": 3,
+   "creditsEach": 3,
+   "creditsTotal": 3,
+   "poolType": "life",
+   "sameArea": false,
+   "areasInPool": [
+    "제2외국어/한문/교양",
+    "기술·가정/정보"
+   ],
+   "subjectIds": [
+    "sj-0110",
+    "sj-0132",
+    "sj-0136"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-yonginheungcheon-2027#2-2-B",
+   "schoolId": "school-yonginheungcheon",
+   "term": "2-2",
+   "pick": 1,
+   "size": 2,
+   "creditsEach": 3,
+   "creditsTotal": 3,
+   "poolType": "in-area",
+   "sameArea": true,
+   "areasInPool": [
+    "수학"
+   ],
+   "subjectIds": [
+    "sj-0015",
+    "sj-0020"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-yonginheungcheon-2027#2-1-B",
+   "schoolId": "school-yonginheungcheon",
+   "term": "2-1",
+   "pick": 3,
+   "size": 8,
+   "creditsEach": 3,
+   "creditsTotal": 9,
+   "poolType": "cross",
+   "sameArea": false,
+   "areasInPool": [
+    "사회",
+    "과학"
+   ],
+   "subjectIds": [
+    "sj-0046",
+    "sj-0047",
+    "sj-0048",
+    "sj-0052",
+    "sj-0067",
+    "sj-0070",
+    "sj-0077",
+    "sj-0082"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-yonginheungcheon-2027#2-2-C",
+   "schoolId": "school-yonginheungcheon",
+   "term": "2-2",
+   "pick": 3,
+   "size": 9,
+   "creditsEach": 3,
+   "creditsTotal": 9,
+   "poolType": "cross",
+   "sameArea": false,
+   "areasInPool": [
+    "사회",
+    "과학"
+   ],
+   "subjectIds": [
+    "sj-0038",
+    "sj-0042",
+    "sj-0054",
+    "sj-0055",
+    "sj-0059",
+    "sj-0069",
+    "sj-0073",
+    "sj-0074",
+    "sj-0078"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-yonginheungcheon-2027#3-1-A",
+   "schoolId": "school-yonginheungcheon",
+   "term": "3-1",
+   "pick": 2,
+   "size": 4,
+   "creditsEach": 3,
+   "creditsTotal": 6,
+   "poolType": "life",
+   "sameArea": false,
+   "areasInPool": [
+    "제2외국어/한문/교양",
+    "기술·가정/정보"
+   ],
+   "subjectIds": [
+    "sj-0105",
+    "sj-0113",
+    "sj-0130",
+    "sj-0134"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-yonginheungcheon-2027#3-2-A",
+   "schoolId": "school-yonginheungcheon",
+   "term": "3-2",
+   "pick": 2,
+   "size": 4,
+   "creditsEach": 3,
+   "creditsTotal": 6,
+   "poolType": "life",
+   "sameArea": false,
+   "areasInPool": [
+    "제2외국어/한문/교양",
+    "기술·가정/정보"
+   ],
+   "subjectIds": [
+    "sj-0108",
+    "sj-0112",
+    "sj-0118",
+    "sj-0119"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-yonginheungcheon-2027#3-1-B",
+   "schoolId": "school-yonginheungcheon",
+   "term": "3-1",
+   "pick": 6,
+   "size": 21,
+   "creditsEach": 3,
+   "creditsTotal": 18,
+   "poolType": "cross",
+   "sameArea": false,
+   "areasInPool": [
+    "국어",
+    "수학",
+    "영어",
+    "과학",
+    "사회",
+    "제2외국어/한문/교양"
+   ],
+   "subjectIds": [
+    "sj-0007",
+    "sj-0012",
+    "sj-0018",
+    "sj-0022",
+    "sj-0030",
+    "sj-0033",
+    "sj-0039",
+    "sj-0041",
+    "sj-0044",
+    "sj-0045",
+    "sj-0060",
+    "sj-0065",
+    "sj-0068",
+    "sj-0071",
+    "sj-0072",
+    "sj-0075",
+    "sj-0076",
+    "sj-0081",
+    "sj-0083",
+    "sj-0084",
+    "sj-0121"
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "curriculum-yonginheungcheon-2027#3-2-B",
+   "schoolId": "school-yonginheungcheon",
+   "term": "3-2",
+   "pick": 7,
+   "size": 12,
+   "creditsEach": 3,
+   "creditsTotal": 21,
+   "poolType": "cross",
+   "sameArea": false,
+   "areasInPool": [
+    "국어",
+    "수학",
+    "영어",
+    "과학",
+    "사회",
+    "제2외국어/한문/교양"
+   ],
+   "subjectIds": [
+    "sj-0003",
+    "sj-0008",
+    "sj-0019",
+    "sj-0021",
+    "sj-0028",
+    "sj-0029",
+    "sj-0040",
+    "sj-0049",
+    "sj-0051",
+    "sj-0062",
+    "sj-0066",
+    "sj-0120"
+   ],
+   "unmatched": []
+  }
+ ]
+}
