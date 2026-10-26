@@ -63,12 +63,13 @@ for (const item of list) {
     const lines = normalize(html, item);
     if (lines.length < 3) throw new Error("본문 텍스트가 너무 짧음(셸 페이지 가능성)");
     const hash = sha(lines.join("\n"));
-    const cur = { hash, lineCount: lines.length, checkedAt: now, status: "ok", failCount: 0, lastChange: prev.lastChange || null, lines: lines.slice(0, MAX_LINES).map((l) => l.slice(0, 160)) };
+    const cur = { hash, lineCount: lines.length, checkedAt: now, status: "ok", failCount: 0, lastChange: prev.lastChange || null, changedAt: prev.changedAt || null, lines: lines.slice(0, MAX_LINES).map((l) => l.slice(0, 160)) };
     if (!prev.hash) { report.new.push({ id: item.id, name: item.name }); cur.lastChange = now; }
     else if (prev.hash !== hash) {
       const before = new Set(prev.lines || []), after = new Set(cur.lines);
       report.changed.push({ id: item.id, name: item.name, url: item.url, importance: item.importance, affects: item.affects, added: cur.lines.filter((l) => !before.has(l)).slice(0, 12), removed: (prev.lines || []).filter((l) => !after.has(l)).slice(0, 12) });
       cur.lastChange = now;
+      cur.changedAt = now; // 첫 기록이 아니라 실제로 바뀐 때만(화면의 "바뀐 소식"이 읽는다)
     } else report.unchanged++;
     state[item.id] = cur;
   } catch (e) {
