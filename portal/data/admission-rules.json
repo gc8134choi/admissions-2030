@@ -2585,6 +2585,288 @@
     ],
     "designatedSubjectIds": []
    }
+  },
+  {
+   "ruleId": "ar-2028-sogang-susi-gyogwa",
+   "universityId": "s-906",
+   "universityName": "서강대학교",
+   "unitName": "학생부교과(지역균형)",
+   "admissionYear": 2028,
+   "track": "susi-gyogwa",
+   "announcedAt": "2026-04-30",
+   "announcedAtNote": "대학입학전형시행계획 공표(2026.4.30, 입학처 공지 목록 기준)",
+   "status": "confirmed",
+   "referenceNote": "2028학년도 시행계획(2022 개정 교육과정 첫 수능 세대) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+   "sources": [
+    {
+     "name": "2028학년도 서강대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
+     "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/서강대학교/서강대학교_2028학년도_대학입학전형계획.pdf",
+     "kind": "official",
+     "retrieved": "2026-10-26"
+    }
+   ],
+   "checkedAt": "2026-10-26",
+   "sourcePage": "시행계획 4쪽, 10쪽",
+   "requirements": [],
+   "requirementsNullReason": "교과 이수 권장·필수 과목은 시행계획에서 확인 못 함",
+   "gradeReflection": {
+    "gradeMethod": "2028학년도 변경: 추천인원 제한 폐지(2027학년도 20명), 전형요소 교과 100 → 교과 90 + 출결 10",
+    "careerSubjectsPolicy": null
+   },
+   "csatMinimum": {
+    "expr": "국어·수학·영어·탐구(1과목) 4개 영역 중 3개 영역 각 3등급 이내, 한국사 4등급 이내",
+    "requiredAreas": [
+     "국어",
+     "수학",
+     "영어",
+     "탐구",
+     "한국사"
+    ],
+    "designatedSubjectIds": []
+   }
+  },
+  {
+   "ruleId": "ar-2028-sogang-susi-jonghap",
+   "universityId": "s-906",
+   "universityName": "서강대학교",
+   "unitName": "학생부종합(일반Ⅰ·일반Ⅱ)",
+   "admissionYear": 2028,
+   "track": "susi-jonghap",
+   "announcedAt": "2026-04-30",
+   "announcedAtNote": "대학입학전형시행계획 공표(2026.4.30, 입학처 공지 목록 기준)",
+   "status": "confirmed",
+   "referenceNote": "2028학년도 시행계획(2022 개정 교육과정 첫 수능 세대) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+   "sources": [
+    {
+     "name": "2028학년도 서강대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
+     "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/서강대학교/서강대학교_2028학년도_대학입학전형계획.pdf",
+     "kind": "official",
+     "retrieved": "2026-10-26"
+    }
+   ],
+   "checkedAt": "2026-10-26",
+   "sourcePage": "시행계획 4쪽, 10쪽",
+   "requirements": [],
+   "requirementsNullReason": "교과 이수 권장·필수 과목은 시행계획에서 확인 못 함",
+   "gradeReflection": {
+    "gradeMethod": "2028학년도 변경: 일반Ⅱ에 수능최저 신설(일반Ⅰ·기회균형·서강가치·특성화고졸은 미적용). 서류평가 중심",
+    "careerSubjectsPolicy": null
+   },
+   "csatMinimum": {
+    "expr": "일반Ⅱ만 적용: 국어·수학·영어·탐구(1과목) 4개 영역 중 3개 영역 등급합 7 이내, 한국사 4등급 이내",
+    "requiredAreas": [
+     "국어",
+     "수학",
+     "영어",
+     "탐구",
+     "한국사"
+    ],
+    "designatedSubjectIds": []
+   }
+  },
+  {
+   "ruleId": "ar-2028-sogang-susi-nonsul",
+   "universityId": "s-906",
+   "universityName": "서강대학교",
+   "unitName": "논술(일반)",
+   "admissionYear": 2028,
+   "track": "susi-nonsul",
+   "announcedAt": "2026-04-30",
+   "announcedAtNote": "대학입학전형시행계획 공표(2026.4.30, 입학처 공지 목록 기준)",
+   "status": "confirmed",
+   "referenceNote": "2028학년도 시행계획(2022 개정 교육과정 첫 수능 세대) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+   "sources": [
+    {
+     "name": "2028학년도 서강대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
+     "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/서강대학교/서강대학교_2028학년도_대학입학전형계획.pdf",
+     "kind": "official",
+     "retrieved": "2026-10-26"
+    }
+   ],
+   "checkedAt": "2026-10-26",
+   "sourcePage": "시행계획 4쪽, 10쪽",
+   "requirements": [],
+   "requirementsNullReason": "교과 이수 권장·필수 과목은 시행계획에서 확인 못 함",
+   "gradeReflection": {
+    "gradeMethod": "2028학년도 변경: 논술 100 → 논술 80 + 교과 10 + 출결 10",
+    "careerSubjectsPolicy": null
+   },
+   "csatMinimum": {
+    "expr": "국어·수학·영어·탐구(1과목) 4개 영역 중 3개 영역 등급합 7 이내, 한국사 4등급 이내",
+    "requiredAreas": [
+     "국어",
+     "수학",
+     "영어",
+     "탐구",
+     "한국사"
+    ],
+    "designatedSubjectIds": []
+   }
+  },
+  {
+   "ruleId": "ar-2028-sogang-jeongsi",
+   "universityId": "s-906",
+   "universityName": "서강대학교",
+   "unitName": "정시 수능(일반)·수능(지역균형 신설)",
+   "admissionYear": 2028,
+   "track": "jeongsi-csat",
+   "announcedAt": "2026-04-30",
+   "announcedAtNote": "대학입학전형시행계획 공표(2026.4.30, 입학처 공지 목록 기준)",
+   "status": "confirmed",
+   "referenceNote": "2028학년도 시행계획(2022 개정 교육과정 첫 수능 세대) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+   "sources": [
+    {
+     "name": "2028학년도 서강대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
+     "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/서강대학교/서강대학교_2028학년도_대학입학전형계획.pdf",
+     "kind": "official",
+     "retrieved": "2026-10-26"
+    }
+   ],
+   "checkedAt": "2026-10-26",
+   "sourcePage": "시행계획 4쪽, 수능 반영",
+   "requirements": [],
+   "requirementsNullReason": "정시는 교과 이수 권장·필수 과목 해당 없음",
+   "gradeReflection": {
+    "gradeMethod": "2028학년도 변경: 수능(지역균형) 신설(고교장추천 인원 제한 없음, 졸업예정자, 수능 전 영역 백분위 + 교과 10% + 출결 10%), 정시 나·다군 모집(수능(일반)은 나·다군, 지역균형·정원외 특별은 나군). 영역 가중치 국어·수학 (1.1·1.3)→(1.2·1.4), 탐구 0.6→0.4",
+    "careerSubjectsPolicy": null
+   },
+   "csatMinimumNullReason": "수능(일반) 수능 최저 적용하지 않음(2027학년도 구조와 같음, 시행계획 최저 표)"
+  },
+  {
+   "ruleId": "ar-2028-uos-susi-gyogwa",
+   "universityId": "s-912",
+   "universityName": "서울시립대학교",
+   "unitName": "학생부교과 지역균형선발전형(346명)",
+   "admissionYear": 2028,
+   "track": "susi-gyogwa",
+   "announcedAt": "2026-04-30",
+   "announcedAtNote": "대학입학전형시행계획 공표(2026.4.30, 입학처 공지 목록 기준)",
+   "status": "confirmed",
+   "referenceNote": "2028학년도 시행계획(2022 개정 교육과정 첫 수능 세대) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+   "sources": [
+    {
+     "name": "2028학년도 서울시립대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
+     "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/서울시립대학교/서울시립대학교_2028학년도_대학입학전형계획.pdf",
+     "kind": "official",
+     "retrieved": "2026-10-26"
+    }
+   ],
+   "checkedAt": "2026-10-26",
+   "sourcePage": "시행계획 1쪽, 전형안내",
+   "requirements": [],
+   "requirementsNullReason": "교과 이수 권장·필수 과목은 시행계획에서 확인 못 함",
+   "gradeReflection": {
+    "gradeMethod": "2028학년도 변경: 학생부 교과 60% + 서류평가 40%(2027학년도 교과 80+교과 정성 20), 고교별 추천인원 제한 폐지, 지원자격 졸업예정자만. 석차등급으로 평가된 전학년·전과목 반영, 서류평가는 교과영역·출결 중심 학업역량·성실성",
+    "careerSubjectsPolicy": null
+   },
+   "csatMinimum": {
+    "expr": "국어·수학·영어·탐구(1과목) 4개 영역 중 3개 영역 등급합 7 이내, 한국사 4등급 이내",
+    "requiredAreas": [
+     "국어",
+     "수학",
+     "영어",
+     "탐구",
+     "한국사"
+    ],
+    "designatedSubjectIds": []
+   }
+  },
+  {
+   "ruleId": "ar-2028-uos-susi-jonghap",
+   "universityId": "s-912",
+   "universityName": "서울시립대학교",
+   "unitName": "학생부종합(면접형, 424명)",
+   "admissionYear": 2028,
+   "track": "susi-jonghap",
+   "announcedAt": "2026-04-30",
+   "announcedAtNote": "대학입학전형시행계획 공표(2026.4.30, 입학처 공지 목록 기준)",
+   "status": "confirmed",
+   "referenceNote": "2028학년도 시행계획(2022 개정 교육과정 첫 수능 세대) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+   "sources": [
+    {
+     "name": "2028학년도 서울시립대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
+     "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/서울시립대학교/서울시립대학교_2028학년도_대학입학전형계획.pdf",
+     "kind": "official",
+     "retrieved": "2026-10-26"
+    }
+   ],
+   "checkedAt": "2026-10-26",
+   "sourcePage": "시행계획 1쪽, 전형안내",
+   "requirements": [],
+   "requirementsNullReason": "교과 이수 권장·필수 과목은 시행계획에서 확인 못 함",
+   "gradeReflection": {
+    "gradeMethod": "학생부종합 서류형 폐지. 1단계(3배수) 서류평가 100%, 2단계 서류 50%+면접 50%",
+    "careerSubjectsPolicy": null
+   },
+   "csatMinimumNullReason": "수능최저학력기준 적용 여부를 표에서 확인한 값 없음(2027학년도 종합전형은 최저 없음)"
+  },
+  {
+   "ruleId": "ar-2028-uos-susi-nonsul",
+   "universityId": "s-912",
+   "universityName": "서울시립대학교",
+   "unitName": "논술전형(86명)",
+   "admissionYear": 2028,
+   "track": "susi-nonsul",
+   "announcedAt": "2026-04-30",
+   "announcedAtNote": "대학입학전형시행계획 공표(2026.4.30, 입학처 공지 목록 기준)",
+   "status": "confirmed",
+   "referenceNote": "2028학년도 시행계획(2022 개정 교육과정 첫 수능 세대) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+   "sources": [
+    {
+     "name": "2028학년도 서울시립대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
+     "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/서울시립대학교/서울시립대학교_2028학년도_대학입학전형계획.pdf",
+     "kind": "official",
+     "retrieved": "2026-10-26"
+    }
+   ],
+   "checkedAt": "2026-10-26",
+   "sourcePage": "시행계획 1쪽, 전형안내",
+   "requirements": [],
+   "requirementsNullReason": "교과 이수 권장·필수 과목은 시행계획에서 확인 못 함",
+   "gradeReflection": {
+    "gradeMethod": "2028학년도 변경: 논술 100%(2027학년도 논술 80+교과 20), 수능최저 신설",
+    "careerSubjectsPolicy": null
+   },
+   "csatMinimum": {
+    "expr": "국어·수학·영어·탐구(1과목) 4개 영역 중 3개 영역 등급합 7 이내, 한국사 4등급 이내",
+    "requiredAreas": [
+     "국어",
+     "수학",
+     "영어",
+     "탐구",
+     "한국사"
+    ],
+    "designatedSubjectIds": []
+   }
+  },
+  {
+   "ruleId": "ar-2028-uos-jeongsi",
+   "universityId": "s-912",
+   "universityName": "서울시립대학교",
+   "unitName": "정시 수능위주 일반전형(인문/자연)",
+   "admissionYear": 2028,
+   "track": "jeongsi-csat",
+   "announcedAt": "2026-04-30",
+   "announcedAtNote": "대학입학전형시행계획 공표(2026.4.30, 입학처 공지 목록 기준)",
+   "status": "confirmed",
+   "referenceNote": "2028학년도 시행계획(2022 개정 교육과정 첫 수능 세대) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+   "sources": [
+    {
+     "name": "2028학년도 서울시립대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
+     "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/서울시립대학교/서울시립대학교_2028학년도_대학입학전형계획.pdf",
+     "kind": "official",
+     "retrieved": "2026-10-26"
+    }
+   ],
+   "checkedAt": "2026-10-26",
+   "sourcePage": "시행계획 1쪽, 정시 변경 표",
+   "requirements": [],
+   "requirementsNullReason": "정시는 교과 이수 권장·필수 과목 해당 없음",
+   "gradeReflection": {
+    "gradeMethod": "2028학년도 변경: 인문/자연계열 수능 100% → 수능 80% + 학생부교과 18% + 출결 2%. 영역 반영 비율(국어·수학·탐구 2과목, 영어·한국사는 등급별 점수 부여): 인문Ⅰ 국어 35·수학 35·탐구 30(수능 800점 기준 280·280·240), 인문Ⅱ 40·25·35, 자연 30·40·30. 표준점수 적용, 인문 사회탐구·자연 과학탐구 2과목 선택 시 3% 가산점. 디자인학과는 정시에서 수시로 이동",
+    "careerSubjectsPolicy": null
+   },
+   "csatMinimumNullReason": "정시 수능위주 일반전형 수능 최저학력기준 없음"
   }
  ]
 }

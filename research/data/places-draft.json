@@ -58,7 +58,7 @@
       "name": "성복중학교",
       "level": "middle",
       "kind": null,
-      "address": "경기도 용인시 수지구 신봉1로71번길 51",
+      "address": "경기도 용인시 수지구 성복2로78번길 51",
       "homepage": null,
       "phone": null,
       "checkedAt": "2026-10-26",
@@ -67,6 +67,10 @@
         {
           "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
           "url": "https://www.openstreetmap.org/copyright"
+        },
+        {
+          "name": "주소 교차 확인: OSM 별도 노드(성복2로78번길 51)와 학교 정보 사이트 표기 일치",
+          "url": null
         }
       ],
       "lat": 37.319441,
