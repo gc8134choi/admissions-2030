@@ -134,7 +134,19 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
       return r.length ? r.map((it) => `<li class="row"><span class="d${it.sp.start <= t ? " live" : " num"}">${dLabel(it.sp, t)}</span><div><h3>${esc(it.title)}</h3><p class="num">${it.date}</p>${it.meta ? `<div class="meta">${it.meta}</div>` : ""}</div></li>`).join("") : '<li class="row"><div class="empty"><p>이어지는 일정은 아직 없어요.</p></div></li>'; };
 
     // 4) 바뀐 소식 1줄
-    const log = policy.filter((r) => r.topic === "change-log").map((r) => ({ r, d: dateOf(r.title) })).filter((x) => x.d && span(x.d).start <= t).sort((a, b) => span(b.d).start - span(a.d).start);
+    const log0 = policy.filter((r) => r.topic === "change-log").map((r) => ({ r, d: dateOf(r.title) })).filter((x) => x.d && span(x.d).start <= t);
+    // 감시 봇이 최근 30일 안에 "바뀌었다"고 기록한 페이지도 같은 목록에 넣는다(내용은 아직 확인 전, 추정 표시). 읽지 못하면 조용히 건너뛴다.
+    const watchLog = await (async () => {
+      try {
+        const [st, wl] = await Promise.all([fetch("../research/data/watch-state.json").then((r) => (r.ok ? r.json() : {})), fetch("../research/data/watchlist.json").then((r) => (r.ok ? r.json() : { items: [] }))]);
+        return Object.entries(st).filter(([, v]) => v.changedAt && t - new Date(v.changedAt) < 30 * DAY).map(([id, v]) => {
+          const it = (wl.items || []).find((x) => x.id === id); if (!it) return null;
+          const c = new Date(v.changedAt), d = `${c.getFullYear()}-${two(c.getMonth() + 1)}-${two(c.getDate())}`;
+          return { d, r: { title: `${d} ${it.name} 페이지가 바뀌었어요`, status: "estimated", unverified: true, reason: "감시 봇이 감지했고 내용은 아직 확인 전", sources: [{ name: "원문 열기", url: it.url }] } };
+        }).filter(Boolean);
+      } catch { return []; }
+    })();
+    const log = [...log0, ...watchLog].sort((a, b) => span(b.d).start - span(a.d).start);
     // 마지막 확인 일시(데이터 checkedAt 최신값)와 새 소식(지난 방문 이후, 이 브라우저에만 저장)
     const checked = policy.map((r) => r.checkedAt).filter(Boolean).sort().pop() || "";
     const VK = "portal.visit"; const iso = `${t.getFullYear()}-${two(t.getMonth() + 1)}-${two(t.getDate())}`;
