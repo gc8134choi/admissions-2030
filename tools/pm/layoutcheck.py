@@ -9,7 +9,7 @@ import json, os, subprocess, sys, tempfile
 BASE = (sys.argv[1] if len(sys.argv) > 1 else "https://gc8134choi.github.io/admissions-2030/portal/").rstrip("/") + "/"
 ROUTES = ["", "#schedule", "#schedule?t=life", "#schedule?t=road", "#select/types", "#select/curriculum", "#select/curriculum?v=compare",
           "#select/curriculum?v=map", "#select/curriculum?v=middle", "#planner/plan", "#life/credit", "#admission/system",
-          "#changelog", "#library/links", "#library/sources", "#library/status", "#library/files", "#select/curriculum?v=univ", "#select/curriculum?v=map&lv=middle"]
+          "#changelog", "#library/links", "#library/sources", "#library/status", "#library/files", "#select/curriculum?v=univ", "#select/curriculum?v=map&lv=middle", "#mid/life"]
 JS = r"""
 const {chromium}=require('playwright');
 (async()=>{const base=process.argv[2];const routes=JSON.parse(process.argv[3]);const out=[];const b=await chromium.launch();

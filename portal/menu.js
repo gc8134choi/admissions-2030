@@ -39,6 +39,8 @@ export const MENU = [
       { id: "planner/report", title: "목표 학과 요건 충족 리포트", status: "soon", desc: "희망 학과 요건과 내 계획 비교." },
     ] },
 
+  { id: "mid/life", title: "중학교 생활", icon: "book", status: "v1", view: "midlife", desc: "중학교 교육과정·교과서·시기 일정." },
+
   { id: "changelog", title: "바뀐 소식", icon: "log", status: "v1", view: "changelog",
     desc: "날짜·항목·영향 범위. 편제표·요건 갱신도 자동 기록.", parts: ["날짜 / 항목 / 영향 범위"] },
 
@@ -53,17 +55,43 @@ export const STATUS = { v1: "1차", v2: "2차", soon: "준비 중" };
 
 // 하단 탭·상단 메뉴(2026-10 개편). 항목 id는 위 MENU의 id를 그대로 쓰므로 기존 링크(#select/curriculum 등)는 깨지지 않는다.
 // soon: 아직 열리지 않은 기능은 메뉴에 두지 않고 해당 탭 맨 아래 한 줄로만 알린다.
+// 단계 중심 5개 탭(오늘 / 중학교 / 고등학교 / 대입 / 일정). 중학교·고등학교는 화면 안 글자 탭 [입학 | 생활], 보관함은 헤더 링크.
+// 항목의 id는 이동 주소(해시)이고 m(id, query)은 지금 화면이 그 항목인지 알려 준다. 기존 주소는 그대로 열린다.
+const cur = (f) => (id, q) => id === "select/curriculum" && f(q.get("v") || "summary", q.get("lv"));
+const at = (rid) => (id) => id === rid;
 export const TABS = [
-  { id: "home", title: "오늘", items: [{ id: "home", title: "오늘" }] },
-  { id: "schedule", title: "일정", items: [{ id: "schedule", title: "일정" }], soon: ["학년별 할 일"] },
-  // 학교: 화면 안 위쪽 글자 탭 "중학교 | 고등학교"(app.js schoolNav). 중학교 = 배정·지도, 고등학교 = 과목표·유형·지도.
-  { id: "school", title: "학교", items: [{ id: "select/curriculum", title: "학교별 과목표" }, { id: "select/types", title: "고교 유형·전형" }], soon: ["교과서"] },
-  { id: "admit", title: "대입", items: [{ id: "life/credit", title: "고교학점제 이해" }, { id: "planner/plan", title: "내 계획표" }, { id: "admission/system", title: "수능·내신 규칙" }, { id: "select/curriculum?v=univ", title: "대학 요건", route: "select/curriculum", v: "univ" }], soon: ["대학·학과 찾기", "학교별 시뮬레이션", "목표 학과 체크"] },
-  { id: "vault", title: "보관함", items: [{ id: "changelog", title: "바뀐 소식" }, { id: "library", title: "바로가기" }, { id: "library/sources", title: "출처 목록" }, { id: "library/status", title: "업데이트 기록" }, { id: "library/files", title: "원본 파일" }] },
+  { id: "home", title: "오늘", groups: [{ key: "", title: "", items: [{ id: "home", title: "오늘", m: at("home") }] }] },
+  { id: "mid", title: "중학교", groups: [
+    { key: "enter", title: "입학", items: [
+      { id: "select/curriculum?v=middle", title: "중학교 배정", m: cur((v) => v === "middle") },
+      { id: "select/curriculum?v=map&lv=middle", title: "학교 지도", m: cur((v, lv) => v === "map" && lv === "middle") }], soon: ["교과서"] },
+    { key: "life", title: "생활", items: [{ id: "mid/life", title: "중학교 생활", m: at("mid/life") }] }] },
+  { id: "high", title: "고등학교", groups: [
+    { key: "enter", title: "입학", items: [
+      { id: "select/types", title: "고교 유형·전형", m: at("select/types") },
+      { id: "select/curriculum", title: "학교별 과목표", m: cur((v) => v === "summary" || v === "compare") },
+      { id: "select/curriculum?v=map", title: "학교 지도", m: cur((v, lv) => v === "map" && lv !== "middle") }] },
+    { key: "life", title: "생활", items: [
+      { id: "life/credit", title: "고교학점제 이해", m: at("life/credit") },
+      { id: "planner/plan", title: "내 계획표", m: at("planner/plan") },
+      { id: "schedule?t=road", title: "학년별 로드맵", m: () => false }] }] },
+  { id: "admit", title: "대입", groups: [{ key: "", title: "", items: [
+    { id: "admission/system", title: "수능·내신 규칙", m: at("admission/system") },
+    { id: "select/curriculum?v=univ", title: "대학 요건", m: cur((v) => v === "univ") },
+    { id: "schedule?t=univ", title: "입시 일정", m: () => false }], soon: ["대학·학과 찾기", "학교별 시뮬레이션", "목표 학과 체크"] }] },
+  { id: "schedule", title: "일정", groups: [{ key: "", title: "", items: [{ id: "schedule", title: "일정", m: at("schedule") }] }], soon: ["학년별 할 일"] },
 ];
-// 항목의 이동 주소(해시)와, 지금 화면(라우트 id·쿼리)이 그 항목인지. 항목에 route·v가 있으면 같은 화면을 쿼리로 나눈 것이다.
+export const VAULT = { id: "vault", title: "보관함", groups: [{ key: "", title: "", items: [
+  { id: "changelog", title: "바뀐 소식", m: at("changelog") }, { id: "library", title: "바로가기", m: at("library") }, { id: "library/sources", title: "출처 목록", m: at("library/sources") },
+  { id: "library/status", title: "업데이트 기록", m: at("library/status") }, { id: "library/files", title: "원본 파일", m: at("library/files") }] }] };
 export const hrefOf = (it) => "#" + it.id;
-export const isItem = (it, id, query) => (it.route ? it.route === id && query.get("v") === it.v : it.id === id && !(id === "select/curriculum" && query.get("v") === "univ"));
-export const tabFor = (id, query) => TABS.find((t) => t.items.some((it) => isItem(it, id, query))) || (id === "select/curriculum" || id === "select/types" ? TABS.find((t) => t.id === "school") : null);
+export const tabHref = (t) => hrefOf(t.groups[0].items[0]);
+export const allItems = () => [...TABS, VAULT].flatMap((t) => t.groups.flatMap((g) => g.items.map((it) => ({ ...it, tab: t.title, group: g.title }))));
+// 지금 화면(라우트 id·쿼리)이 속한 탭·그룹·항목. 어느 항목도 아니면 가까운 탭(과목표 → 고등학교 입학)으로 둔다.
+export function locate(id, query) {
+  for (const t of [...TABS, VAULT]) for (const g of t.groups) for (const it of g.items) if (it.m(id, query)) return { tab: t, group: g, item: it };
+  if (id === "select/curriculum") return { tab: TABS[2], group: TABS[2].groups[0], item: TABS[2].groups[0].items[1] };
+  return null;
+}
 // 메뉴에서 빠진 옛 주소는 가장 가까운 화면으로 보낸다.
 export const REDIRECT = { planner: "planner/plan", select: "select/curriculum", life: "life/credit", "life/checklist": "life/credit", admission: "admission/system", "admission/univ": "admission/system", "planner/sim": "select/curriculum", "planner/report": "select/curriculum" };

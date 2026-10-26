@@ -389,3 +389,7 @@ table.policy tr.past td,table.policy tr.past b{color:var(--mute)}
 .stg-sep{color:var(--hair)}
 /* 학교 탭의 "중학교 | 고등학교" 줄: 아래 화면 탭보다 한 단계 위라는 걸 크기로만 구분 */
 .subnav.lvl a{font-size:15px}.subnav.lvl+.subnav a{font-size:13px;font-weight:500}
+/* 헤더의 보관함 링크(바뀐 소식·바로가기·출처·업데이트 기록·원본 파일) */
+.vl{margin-left:auto;font-size:13px;color:var(--mute);text-decoration:none;padding:8px 6px;white-space:nowrap}.vl[aria-current=page]{color:var(--ink);font-weight:700}
+@media (min-width:900px){.vl{margin-left:16px}}
+.vl+.srbtn{margin-left:0}
