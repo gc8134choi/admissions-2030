@@ -152,7 +152,7 @@ async function curriculumView(el, query, node) {
   const drawBody = async () => {
     const body = $("#cview");
     if (tab === "summary") { compare = null; await summaryBody(body, sel); }
-    else if (tab === "map") { compare = null; body.__map ||= { level: lv === "middle" ? "middle" : "high", view: "map", sel: null }; await mapBody(body, { load, esc, focus: focusP }); }
+    else if (tab === "map") { compare = null; await mapBody(body, { load, esc, focus: focusP, level: lv === "middle" ? "middle" : "high" }); }
     else if (tab === "middle") { compare = null; await middleBody(body, { load, esc }); }
     else if (tab === "univ") { compare = null; await univBody(body, { load, esc, profile: currentProfile(store), schools, sel }); }
     else {
@@ -370,7 +370,13 @@ registerPlanner(views, { esc, load, store });
 const filesApi = registerFiles(views, { esc, load, nm });
 
 // 보관함 > 바로가기: 분류별 헤어라인 목록. 공식·공공은 구분해 적고, 확인일을 함께 보여 준다(data/links.json).
-views.midlife = async (el) => { el.innerHTML = `<div class="ed"><p class="muted">곧 열려요: 중학교 교육과정 · 교과서 · 중학교 시기 일정</p><p><a class="lnk" href="#schedule?t=road">학년별 로드맵 보기</a></p></div>`; };
+views.midlife = async (el) => {
+  el.innerHTML = `<div class="ed"><ul class="rows lk">
+    <li class="row"><div><h3><a href="#select/curriculum?v=middle">교과서·교과 구성</a></h3><p>중학교 배정 화면에서 학교를 열면 나와요.</p></div></li>
+    <li class="row"><div><h3><a href="#schedule?t=life" data-stage="중입">중학교 시기 일정</a></h3><p>중학교 배정·입학 일정을 일정 화면에서 모아 봐요.</p></div></li></ul>
+    <p class="muted small">곧 열려요: 중학교 교육과정</p></div>`;
+  el.onclick = (e) => { if (e.target.closest("[data-stage]")) store.set("portal.schedule.stage", "중입"); };
+};
 views.links = async (el) => {
   const d = await load("links");
   const KIND = { 공식: "공식", 공공: "공공", 매체: "매체", 학원: "학원" };

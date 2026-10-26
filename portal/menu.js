@@ -64,7 +64,7 @@ export const TABS = [
   { id: "mid", title: "중학교", groups: [
     { key: "enter", title: "입학", items: [
       { id: "select/curriculum?v=middle", title: "중학교 배정", m: cur((v) => v === "middle") },
-      { id: "select/curriculum?v=map&lv=middle", title: "학교 지도", m: cur((v, lv) => v === "map" && lv === "middle") }], soon: ["교과서"] },
+      { id: "select/curriculum?v=map&lv=middle", title: "학교 지도", m: cur((v, lv) => v === "map" && lv === "middle") }] },
     { key: "life", title: "생활", items: [{ id: "mid/life", title: "중학교 생활", m: at("mid/life") }] }] },
   { id: "high", title: "고등학교", groups: [
     { key: "enter", title: "입학", items: [
