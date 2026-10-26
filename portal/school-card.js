@@ -16,8 +16,8 @@ export function schoolBand(m, { starred = false, sub = "", logoOk = true } = {})
 export function homeSchoolCard(m, { starred, sub, logoOk, cr }) {
   const total = m.creditsRequired + m.creditsElective;
   return `<section class="hs${starred ? " fav" : ""}" style="--sc:${ACCENT[m.schoolId] || "var(--accent)"}">${schoolBand(m, { starred, sub, logoOk })}
-    <div class="hs-tiles"><div><b>${m.creditsRequired}</b><span>지정 학점</span></div><div><b>${m.creditsElective}</b><span>선택 학점</span></div><div><b>${m.creditsSubject}</b><span>교과 합계</span></div></div>
-    <div class="bar" title="지정 ${m.creditsRequired} / 선택 ${m.creditsElective}"><span class="req" style="width:${(m.creditsRequired / total) * 100}%">지정</span><span class="ele" style="width:${(m.creditsElective / total) * 100}%">선택</span></div>
+    <div class="hs-tiles"><div><b>${m.creditsRequired}</b><span>필수 학점</span></div><div><b>${m.creditsElective}</b><span>내가 고르는 학점</span></div><div><b>${m.creditsSubject}</b><span>교과 합계</span></div></div>
+    <div class="bar" title="필수 ${m.creditsRequired} / 내가 고르는 ${m.creditsElective}"><span class="req" style="width:${(m.creditsRequired / total) * 100}%">필수</span><span class="ele" style="width:${(m.creditsElective / total) * 100}%">내가 고르는</span></div>
     <div class="hs-chips"><span>창체 ${m.creditsCreative}학점</span>${cr ? `<span>${cr.totalHours}시간</span>` : ""}</div>
     <a class="btn primary hs-go" href="#select/curriculum?v=compare&s=${esc(m.schoolId)}">이 학교 과목 보기 →</a></section>`;
 }

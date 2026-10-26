@@ -57,7 +57,7 @@ const nameOf = (schools, id) => schools.find((s) => s.id === id)?.name || id;
 const LOGO_IDS = new Set(["school-pungdeok", "school-seongbok", "school-suji", "school-yonginheungcheon"]);
 const logo = (id, name, px = 20) => (LOGO_IDS.has(id) ? `<img class="logo" src="img/schools/256/${esc(id)}.png" alt="${esc(name)} 로고" width="${px}" height="${px}" style="--lg:${px}px">` : "");
 const nm = (id, name, px) => `<span class="nm">${logo(id, name, px)}<span>${esc(name)}</span></span>`;
-const SLOT = { required: "지정", elective: "선택", outside: "교외" };
+const SLOT = { required: "필수", elective: "내가 고르는", outside: "교외" };
 const CSAT = { in: "포함", base: "기초", out: "제외", none: "-" };
 const options = (items, all) => `${all ? `<option value="">${esc(all)}</option>` : ""}${items.map((v) => `<option value="${esc(v.v ?? v)}">${esc(v.t ?? v)}</option>`).join("")}`;
 const POOL = { basic: "기초교과", cross: "교과(군) 간 선택", "in-area": "한 교과 안 선택", life: "기술·가정/정보/제2외국어 등" };
@@ -98,7 +98,7 @@ const ICON = {
 // 상세 비교 필터 칩의 선택 상태(탭을 오가도 유지). 비어 있으면 전체.
 const FS = { sel: [], kind: [], terms: [], csat: [] };
 const FOPT = {
-  sel: [["school", "학교 지정"], ["student", "학생 선택"], ["outside", "학교 밖"]],
+  sel: [["school", "학교가 정함"], ["student", "내가 고르는"], ["outside", "학교 밖"]],
   kind: ["공통", "일반", "진로", "융합"].map((k) => [k, k]),
   csat: [["in", "출제 범위"], ["base", "기초(공통)"], ["out", "제외"]],
 };
@@ -213,14 +213,14 @@ async function summaryBody(el, ids) {
     const l1 = ["region", "schoolType", "founding", "gender"].filter((k) => vary(k)).map((k) => m[k]).filter(Boolean).join(" · ");
     return `<section class="school"><header>${schoolBand(m, { starred: st.includes(m.schoolId), sub: l1, logoOk: LOGO_IDS.has(m.schoolId) })}
       ${vary("assignment") && m.assignment ? `<div class="muted">${esc(m.assignment)}</div>` : ""}</header>
-      <div class="hs-tiles k3"><div><b>${m.creditsTotal}</b><span title="교과 ${m.creditsSubject} + 창체 ${m.creditsCreative}">총 학점</span></div><div class="kr"><b>${m.creditsRequired}</b><span>지정</span></div><div class="ke"><b>${m.creditsElective}</b><span>선택</span></div></div>
-      <div class="bar" title="지정 ${m.creditsRequired} / 선택 ${m.creditsElective}"><span class="req" style="width:${(m.creditsRequired / total) * 100}%">지정 ${m.creditsRequired}</span><span class="ele" style="width:${(m.creditsElective / total) * 100}%">선택 ${m.creditsElective}</span></div>
+      <div class="hs-tiles k3"><div><b>${m.creditsTotal}</b><span title="교과 ${m.creditsSubject} + 창체 ${m.creditsCreative}">총 학점</span></div><div class="kr"><b>${m.creditsRequired}</b><span>필수</span></div><div class="ke"><b>${m.creditsElective}</b><span>내가 고르는</span></div></div>
+      <div class="bar" title="필수 ${m.creditsRequired} / 내가 고르는 ${m.creditsElective}"><span class="req" style="width:${(m.creditsRequired / total) * 100}%">필수 ${m.creditsRequired}</span><span class="ele" style="width:${(m.creditsElective / total) * 100}%">내가 고르는 ${m.creditsElective}</span></div>
       <details class="fold"><summary>학기별 학점</summary>
       <div class="terms">${TERMS.map((t) => { const b = m.byTerm[t], tot = b.required + b.elective || 1; return `<div><div class="tnum"><b class="r">${b.required}</b><b class="e">${b.elective}</b></div><div class="col"><i class="e" style="height:${(b.elective / tot) * 100}%"></i><i class="r" style="height:${(b.required / tot) * 100}%"></i></div><span>${t}</span></div>`; }).join("")}</div>
       </details>
       <div class="st2">
-        <div class="st-req"><b class="st-l" title="학교가 정해 둔 과목">지정</b> 과목 <b class="st-n">${m.requiredCount}</b></div>
-        <div class="st-ele"><b class="st-l" title="학생이 골라 듣는 과목">선택</b> 후보 <b class="st-n">${m.candidateSubjects}</b> 중 <b class="st-n">${m.pickTotal}</b>개 선택
+        <div class="st-req"><b class="st-l" title="학교가 정함">필수</b> 과목 <b class="st-n">${m.requiredCount}</b></div>
+        <div class="st-ele"><b class="st-l" title="내가 고르는 과목">내가 고르는</b> 후보 <b class="st-n">${m.candidateSubjects}</b> 중 <b class="st-n">${m.pickTotal}</b>개 고르기
           <div class="st-sub">택n 묶음 ${m.groupCount} · 선택 폭 ${m.breadth} · 첫 선택 학기 ${esc(m.firstElectiveTerm || "-")}</div></div>
       </div>
       ${(() => { const cb = creativeBlock(m, curricula.find((x) => x.schoolId === m.schoolId)); return cb ? `<details class="fold"><summary>창체 ${m.creditsCreative}학점 · ${m.creativeHours}시간</summary>${cb}</details>` : ""; })()}
@@ -277,7 +277,7 @@ async function compareShell(el, onReset, getAreas) {
     }
     let rows = [...by.values()];
     if (f.diff) rows = rows.filter((r) => ids.some((id) => !r.cells[id]));
-    // 정렬: 교과군 → 지정 → 선택 → 구분(공통·일반·진로·융합, 미표기 마지막) → 학점 내림차순 → 과목명
+    // 정렬: 교과군 → 필수 → 내가 고르는 → 구분(공통·일반·진로·융합, 미표기 마지막) → 학점 내림차순 → 과목명
     const KORDER = ["공통", "일반", "진로", "융합"];
     for (const r of rows) {
       const os = ids.flatMap((id) => r.cells[id] || []);

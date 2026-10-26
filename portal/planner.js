@@ -57,7 +57,7 @@ export function registerPlanner(views, { esc, load, store }) {
           }).join("")}</ul></div>`;
         }).join("");
         return `<section class="pn-t" id="pn-${t}"><h3><span class="num">${t}</span> <small class="num">${tc}학점</small></h3>
-          <p class="pn-req"><span class="pn-rl">지정</span> ${rs.map((o) => `${esc(o.subject)} <span class="num">${o.credits}</span>`).join(" · ") || "-"}</p>${body}</section>`;
+          <p class="pn-req"><span class="pn-rl" title="학교가 정함">필수</span> ${rs.map((o) => `${esc(o.subject)} <span class="num">${o.credits}</span>`).join(" · ") || "-"}</p>${body}</section>`;
       };
 
       // 필수 이수 학점(교과군별 최소): 계획에 담긴 학점을 군별로 세어 최소치까지만 인정한다
@@ -121,5 +121,12 @@ export function registerPlanner(views, { esc, load, store }) {
       draw();
     };
     draw();
+    // 웹폰트는 글자를 그린 뒤에야 내려받기 시작해 지정 과목 줄의 줄바꿈이 바뀐다(CLS). 폰트가 준비될 때까지(최대 1.5초) 숨긴 채로 둔다.
+    if (document.fonts?.status === "loading" || document.fonts?.ready) {
+      el.style.visibility = "hidden";
+      await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+      await Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 1500))]);
+      el.style.visibility = "";
+    }
   };
 }
