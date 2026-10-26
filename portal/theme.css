@@ -387,3 +387,5 @@ table.policy tr.past td,table.policy tr.past b{color:var(--mute)}
 .stgline a b{font-size:15px;font-weight:600}.stgline a small{font-size:12px}
 .stgline a.on{color:var(--ink)}.stgline a.on b{font-weight:800}.stgline a.on b::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:7px;vertical-align:1px}
 .stg-sep{color:var(--hair)}
+/* 학교 탭의 "중학교 | 고등학교" 줄: 아래 화면 탭보다 한 단계 위라는 걸 크기로만 구분 */
+.subnav.lvl a{font-size:15px}.subnav.lvl+.subnav a{font-size:13px;font-weight:500}
