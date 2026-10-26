@@ -127,7 +127,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
       const sub = live && left > 0 ? `<span class="hh-left num">${left}일 남았어요</span>` : "";
       const photo = it.kind === "stone" ? `<div class="hero-ph ms" data-ms="${esc("life:" + it.m.id)}"><div class="ms-p" aria-hidden="true">${ART[it.m.kind] || ART.graduation}</div><span class="ms-a"><button type="button" class="lnk" data-add>사진 넣기</button><button type="button" class="lnk" data-del hidden>삭제</button><input type="file" accept="image/*" hidden></span><p class="hint">사진은 이 기기에만 저장돼요.</p></div>` : "";
       return `<p class="hello" id="hh">가장 가까운 일이에요.</p>
-        <button type="button" class="dday" id="dday"${live || n === 0 ? " disabled" : ""}><span class="sr-only">남은 날. 누르면 단위가 바뀝니다. </span>${num}</button>${sub}
+        <button type="button" class="dday" id="dday"${live || n === 0 ? " disabled" : ""}><span class="sr-only">남은 날. 누르면 단위가 바뀝니다. </span>${num}<svg class="circ" viewBox="0 0 300 120" preserveAspectRatio="none" aria-hidden="true"><path d="M14 62C10 24 80 8 160 10c88 2 138 22 132 50-6 30-78 48-168 46C52 104 10 90 14 62z"/></svg></button>${sub}
         <h2 class="hero-t">${esc(it.title)}</h2><p class="hero-d num">${it.date}</p>${it.line ? `<p class="hero-s">${esc(it.line)}</p>` : ""}<p class="hero-meta">${it.meta}</p>${photo}${!live && n > 0 ? '<p class="hint">숫자를 누르면 주·달로 바뀌어요.</p>' : ""}`;
     };
     const rest = () => { const f = feed(), r = (f[0]?.kind === "stone" ? f.slice(1) : f.slice(1).filter((it) => it.kind !== "stone")).slice(0, 3); // 히어로가 졸업·입학이 아니면 그 카드는 "곧 있을 일"에만 둔다
