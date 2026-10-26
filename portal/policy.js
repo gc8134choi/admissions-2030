@@ -132,8 +132,21 @@ export function register(views, { $, esc, load, store }) {
     });
   };
 
+  // 감시 봇이 최근 30일 안에 "바뀌었다"고 기록한 페이지(watch-state.json의 changedAt)를 같은 표기(추정·원문 확인 전)로 목록에 넣는다. 홈 "바뀐 소식"과 같은 규칙. 읽지 못하면 조용히 건너뛴다.
+  const watchRows = async () => {
+    try {
+      const [st, wl] = await Promise.all([fetch("../research/data/watch-state.json").then((r) => (r.ok ? r.json() : {})), fetch("../research/data/watchlist.json").then((r) => (r.ok ? r.json() : { items: [] }))]);
+      const now = Date.now();
+      return Object.entries(st).filter(([, v]) => v.changedAt && now - new Date(v.changedAt) < 30 * 86400000).map(([id, v]) => {
+        const it = (wl.items || []).find((x) => x.id === id); if (!it) return null;
+        const c = new Date(v.changedAt), d = `${c.getFullYear()}-${String(c.getMonth() + 1).padStart(2, "0")}-${String(c.getDate()).padStart(2, "0")}`;
+        return { id: `watch-${id}`, topic: "change-log", title: `${d} ${it.name} 페이지가 바뀌었어요`, body: "감시 봇이 감지했어요. 내용은 아직 확인 전이에요.", status: "estimated", unverified: true, reason: "감시 봇이 감지했고 내용은 아직 확인 전", sources: [{ name: "원문 열기", url: it.url }] };
+      }).filter(Boolean);
+    } catch { return []; }
+  };
+
   views.changelog = async (el) => {
-    const rows = (await loadPolicy()).filter((r) => r.topic === "change-log");
+    const rows = [...(await watchRows()), ...(await loadPolicy()).filter((r) => r.topic === "change-log")];
     el.innerHTML = `<div class="ed"><div class="ed-top"><b>바뀐 소식</b><details><summary>자세히</summary>${notice()}</details></div>${statusSelect(rows)}<div id="ptbl"></div></div>`;
     filtered(el, rows, (f) => { $("#ptbl").innerHTML = logTable(rows.filter((r) => stMatch(r, f))); });
   };
