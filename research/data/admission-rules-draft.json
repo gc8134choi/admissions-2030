@@ -11,7 +11,11 @@
       "s-905": "포항공과대학교(POSTECH)",
       "s-907": "성균관대학교",
       "s-906": "서강대학교",
-      "s-908": "한양대학교"
+      "s-908": "한양대학교",
+      "s-909": "중앙대학교",
+      "s-910": "경희대학교",
+      "s-911": "한국외국어대학교",
+      "s-912": "서울시립대학교"
     },
     "blockedSites": []
   },
@@ -1098,8 +1102,8 @@
       "unitName": "정시모집 일반전형(전 모집단위, 가·나군)",
       "admissionYear": 2027,
       "track": "jeongsi-csat",
-      "announcedAt": "2026-09-01",
-      "announcedAtNote": "정시모집요강 게시일은 확인 못 함(검색 결과상 2026년 9월 자료). 9월 초 임시값",
+      "announcedAt": "2026-08-31",
+      "announcedAtNote": "성균관대 입학처 공지 작성일(정시 모집요강 2026-08-31)",
       "status": "confirmed",
       "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
       "sources": [
@@ -1409,8 +1413,8 @@
       "unitName": "정시 수능 가/나/다군(계열별 영역 반영비율)",
       "admissionYear": 2027,
       "track": "jeongsi-csat",
-      "announcedAt": "2026-09-01",
-      "announcedAtNote": "정시모집요강 게시일은 확인 못 함(9월 초 임시값)",
+      "announcedAt": "2026-08-31",
+      "announcedAtNote": "한양대 입학처 공지(신입학 정시모집요강 2026.08.31)",
       "status": "confirmed",
       "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
       "sources": [
@@ -1430,6 +1434,587 @@
         "careerSubjectsPolicy": null
       },
       "csatMinimumNullReason": "정시 수능최저학력기준 없음(수능 90%+학생부종합평가 10%)"
+    },
+    {
+      "ruleId": "ar-2027-cau-susi-gyogwa",
+      "universityId": "s-909",
+      "universityName": "중앙대학교",
+      "unitName": "학생부교과 지역균형(서울·다빈치, 508명)",
+      "admissionYear": 2027,
+      "track": "susi-gyogwa",
+      "announcedAt": "2026-05-31",
+      "announcedAtNote": "수시 요강에 입학전형시행계획 변경 심의 2026.5로 표기. 모집요강 게시일은 확인 못 함(5월 말 임시값)",
+      "status": "confirmed",
+      "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+      "sources": [
+        {
+          "name": "2027학년도 중앙대학교 수시 모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)",
+          "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/중앙대학교/중앙대학교_2027학년도_수시모집요강.pdf",
+          "kind": "official",
+          "retrieved": "2026-10-26"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "sourcePage": "수시요강 16~19쪽",
+      "requirements": [],
+      "requirementsNullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)",
+      "gradeReflection": {
+        "gradeMethod": "학생부 교과 90% + 비교과(출결) 10%(1,000점). 반영교과: 국어·수학·영어·사회·과학 교과 전 과목, 공통/일반선택과목은 석차등급 환산점수를 이수단위로 가중, 진로선택과목은 성취도 환산점수(전체의 10%), 교과별·학년별 가중치 없음. 고교별 추천 20명 이내",
+        "careerSubjectsPolicy": "진로선택과목은 성취도 환산점수로 10% 반영"
+      },
+      "csatMinimum": {
+        "expr": "서울캠퍼스 전체(약학부 제외): 국어·수학·영어·탐구(사/과, 상위 1과목) 3개 영역 등급 합 7 이내 + 한국사 필수. 약학부: 4개 영역 등급 합 5 이내 + 한국사 4등급 이내. 서울캠퍼스에만 적용(다빈치캠퍼스는 수능최저 폐지). 영어 1·2등급을 1등급으로 통합 간주, 제2외국어·한문 미반영. 한국사 필수 응시",
+        "requiredAreas": [
+          "국어",
+          "수학",
+          "영어",
+          "탐구",
+          "한국사"
+        ],
+        "designatedSubjectIds": []
+      }
+    },
+    {
+      "ruleId": "ar-2027-cau-susi-seongjang",
+      "universityId": "s-909",
+      "universityName": "중앙대학교",
+      "unitName": "학생부종합 성장형인재(신설, 108명)",
+      "admissionYear": 2027,
+      "track": "susi-jonghap",
+      "announcedAt": "2026-05-31",
+      "announcedAtNote": "수시 요강에 입학전형시행계획 변경 심의 2026.5로 표기. 모집요강 게시일은 확인 못 함(5월 말 임시값)",
+      "status": "confirmed",
+      "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+      "sources": [
+        {
+          "name": "2027학년도 중앙대학교 수시 모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)",
+          "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/중앙대학교/중앙대학교_2027학년도_수시모집요강.pdf",
+          "kind": "official",
+          "retrieved": "2026-10-26"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "sourcePage": "수시요강 일람표, 30~33쪽",
+      "requirements": [],
+      "requirementsNullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)",
+      "gradeReflection": {
+        "gradeMethod": "학생부종합 정성평가, 면접 실시(1단계 합격자). 탐구형인재(512명)·융합형인재(378명)는 수능최저 미적용이나 성장형인재는 적용",
+        "careerSubjectsPolicy": null
+      },
+      "csatMinimum": {
+        "expr": "인문/자연/간호학과: 국어·수학·영어·탐구(사/과, 상위 1과목) 3개 영역 등급 합 6 이내 + 한국사 필수. 약학부: 4개 영역 등급 합 5 이내 + 한국사 4등급 이내. 의학부: 탐구 2과목 평균, 4개 영역 등급 합 5 이내. 서울캠퍼스에만 적용(다빈치캠퍼스는 수능최저 폐지). 영어 1·2등급을 1등급으로 통합 간주, 제2외국어·한문 미반영. 한국사 필수 응시",
+        "requiredAreas": [
+          "국어",
+          "수학",
+          "영어",
+          "탐구",
+          "한국사"
+        ],
+        "designatedSubjectIds": []
+      }
+    },
+    {
+      "ruleId": "ar-2027-cau-susi-tamgu-yungham",
+      "universityId": "s-909",
+      "universityName": "중앙대학교",
+      "unitName": "학생부종합 탐구형인재·융합형인재",
+      "admissionYear": 2027,
+      "track": "susi-jonghap",
+      "announcedAt": "2026-05-31",
+      "announcedAtNote": "수시 요강에 입학전형시행계획 변경 심의 2026.5로 표기. 모집요강 게시일은 확인 못 함(5월 말 임시값)",
+      "status": "confirmed",
+      "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+      "sources": [
+        {
+          "name": "2027학년도 중앙대학교 수시 모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)",
+          "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/중앙대학교/중앙대학교_2027학년도_수시모집요강.pdf",
+          "kind": "official",
+          "retrieved": "2026-10-26"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "sourcePage": "수시요강 일람표(2027학년도 학생부종합전형)",
+      "requirements": [],
+      "requirementsNullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)",
+      "gradeReflection": {
+        "gradeMethod": "탐구형인재 512명(면접 ○), 융합형인재 378명(의학부는 1단계 합격자 대상 면접). 학생부종합 정성평가",
+        "careerSubjectsPolicy": null
+      },
+      "csatMinimumNullReason": "수능최저학력기준 적용하지 않음(탐구형인재·융합형인재)"
+    },
+    {
+      "ruleId": "ar-2027-cau-susi-nonsul",
+      "universityId": "s-909",
+      "universityName": "중앙대학교",
+      "unitName": "논술 일반형(서울캠퍼스)",
+      "admissionYear": 2027,
+      "track": "susi-nonsul",
+      "announcedAt": "2026-05-31",
+      "announcedAtNote": "수시 요강에 입학전형시행계획 변경 심의 2026.5로 표기. 모집요강 게시일은 확인 못 함(5월 말 임시값)",
+      "status": "confirmed",
+      "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+      "sources": [
+        {
+          "name": "2027학년도 중앙대학교 수시 모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)",
+          "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/중앙대학교/중앙대학교_2027학년도_수시모집요강.pdf",
+          "kind": "official",
+          "retrieved": "2026-10-26"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "sourcePage": "수시요강 일람표, 58쪽",
+      "requirements": [],
+      "requirementsNullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)",
+      "gradeReflection": {
+        "gradeMethod": "논술전형(일반형 403명, 창의형 86명 신설·최저 없음). 일반형은 서울캠퍼스 모집단위에 최저 적용",
+        "careerSubjectsPolicy": null
+      },
+      "csatMinimum": {
+        "expr": "인문/자연: 국어·수학·영어·탐구(사/과, 상위 1과목) 3개 영역 등급 합 6 이내 + 한국사 필수. 약학부: 4개 영역 등급 합 5 이내 + 한국사 4등급 이내. 의학부: 탐구 2과목 평균(소수점 그대로 반영, 4개 영역 등급 합 5.5는 미충족). 서울캠퍼스에만 적용(다빈치캠퍼스는 수능최저 폐지). 영어 1·2등급을 1등급으로 통합 간주, 제2외국어·한문 미반영. 한국사 필수 응시",
+        "requiredAreas": [
+          "국어",
+          "수학",
+          "영어",
+          "탐구",
+          "한국사"
+        ],
+        "designatedSubjectIds": []
+      }
+    },
+    {
+      "ruleId": "ar-2027-cau-jeongsi",
+      "universityId": "s-909",
+      "universityName": "중앙대학교",
+      "unitName": "정시 수능(일반)",
+      "admissionYear": 2027,
+      "track": "jeongsi-csat",
+      "announcedAt": "2026-09-01",
+      "announcedAtNote": "중앙대 입학처 공지(정시 모집요강 2026.9.1)",
+      "status": "confirmed",
+      "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+      "sources": [
+        {
+          "name": "2027학년도 중앙대학교 정시 모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)",
+          "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/중앙대학교/중앙대학교_2027학년도_정시모집요강.pdf",
+          "kind": "official",
+          "retrieved": "2026-10-26"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "sourcePage": "정시요강 일람표, 수능 반영 방법(18~20쪽, 56쪽)",
+      "requirements": [],
+      "requirementsNullReason": "정시는 교과 이수 권장·필수 과목 해당 없음",
+      "gradeReflection": {
+        "gradeMethod": "모든 전형에서 수능최저 미적용. 국어·수학 표준점수, 탐구는 백분위 활용 변환표준점수, 영어·한국사는 등급 가산점. 영역별 반영 비율(국어:수학:탐구): 인문·예체능(인문대·사범대·공연영상창작학부 영화·사진·디자인학부) 35:30:35, 사회과학대·경영경제대·간호학과(인문) 30:40:30, 자연 전체 30:35:35. 인문대·사범대 사회탐구, 자연계열 과학탐구 과목별 변환표준점수 가산점 5%. 탐구는 사/과 2과목, 비교과(출결) 반영",
+        "careerSubjectsPolicy": null
+      },
+      "csatMinimumNullReason": "정시 전 전형 수능최저학력기준 적용하지 않음"
+    },
+    {
+      "ruleId": "ar-2027-khu-susi-gyogwa",
+      "universityId": "s-910",
+      "universityName": "경희대학교",
+      "unitName": "학생부교과 지역균형전형",
+      "admissionYear": 2027,
+      "track": "susi-gyogwa",
+      "announcedAt": "2026-05-13",
+      "announcedAtNote": "경희대 입학처 공지(수시 신입생 모집요강 2026.5.13)",
+      "status": "confirmed",
+      "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+      "sources": [
+        {
+          "name": "2027학년도 경희대학교 수시 신입생 모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)",
+          "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/경희대학교/경희대학교_2027학년도_수시모집요강.pdf",
+          "kind": "official",
+          "retrieved": "2026-10-26"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "sourcePage": "수시요강 지역균형전형 안내(27~29쪽), 반영 교과 표",
+      "requirements": [],
+      "requirementsNullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)",
+      "gradeReflection": {
+        "gradeMethod": "학생부 교과·비교과(출결·봉사) 70% + 교과종합평가 30%. 정량 반영 교과: 인문·자연·자율전공·자유전공은 국어·영어·수학·사회·과학·한국사 교과별 전체 과목(공통·일반선택) + 진로선택은 국어·영어·수학·사회·과학 중 상위 3과목, 예술·체육은 국어·영어 교과",
+        "careerSubjectsPolicy": "진로선택과목은 반영 교과 중 상위 3과목 반영"
+      },
+      "csatMinimum": {
+        "expr": "인문/자연·자율전공학부·자유전공학부(의예과·한의예과(인문·자연)·치의예과·약학과 제외): 국어·수학·영어·사회/과학탐구(2과목) 중 2개 영역 등급의 합 5 이내 + 한국사 5등급 이내. 의예과·한의예과(인문·자연)·치의예과·약학과: 3개 영역 등급의 합 4 이내 + 한국사 5등급 이내. 예술·체육: 1개 영역 이상 3등급 이내. 영역별 필수 응시과목(지정과목) 없음, 한국사 필수 응시(예술·체육은 한국사 미반영), 탐구 2과목 평균(소수점 그대로), 2026년 11월 수능 성적으로 충족",
+        "requiredAreas": [
+          "국어",
+          "수학",
+          "영어",
+          "탐구",
+          "한국사"
+        ],
+        "designatedSubjectIds": []
+      }
+    },
+    {
+      "ruleId": "ar-2027-khu-susi-neo",
+      "universityId": "s-910",
+      "universityName": "경희대학교",
+      "unitName": "학생부종합 네오르네상스전형",
+      "admissionYear": 2027,
+      "track": "susi-jonghap",
+      "announcedAt": "2026-05-13",
+      "announcedAtNote": "경희대 입학처 공지(수시 신입생 모집요강 2026.5.13)",
+      "status": "confirmed",
+      "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+      "sources": [
+        {
+          "name": "2027학년도 경희대학교 수시 신입생 모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)",
+          "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/경희대학교/경희대학교_2027학년도_수시모집요강.pdf",
+          "kind": "official",
+          "retrieved": "2026-10-26"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "sourcePage": "수시요강 네오르네상스전형 안내(최저 표 2356행 부근)",
+      "requirements": [],
+      "requirementsNullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)",
+      "gradeReflection": {
+        "gradeMethod": "1단계 서류평가(모집인원의 3배수, 의·약학 계열 4배수) 후 면접. 학생부종합 정성평가",
+        "careerSubjectsPolicy": null
+      },
+      "csatMinimum": {
+        "expr": "의예과·한의예과(인문·자연)·치의예과·약학과에 한함: 국어·수학·영어·사회/과학탐구(2과목) 중 3개 영역 등급의 합 4 이내 + 한국사 5등급 이내. 그 외 학과는 최저 없음. 영역별 필수 응시과목(지정과목) 없음, 한국사 필수 응시(예술·체육은 한국사 미반영), 탐구 2과목 평균(소수점 그대로), 2026년 11월 수능 성적으로 충족",
+        "requiredAreas": [
+          "국어",
+          "수학",
+          "영어",
+          "탐구",
+          "한국사"
+        ],
+        "designatedSubjectIds": []
+      }
+    },
+    {
+      "ruleId": "ar-2027-khu-susi-nonsul",
+      "universityId": "s-910",
+      "universityName": "경희대학교",
+      "unitName": "논술우수자전형(인문/자연·자율전공)",
+      "admissionYear": 2027,
+      "track": "susi-nonsul",
+      "announcedAt": "2026-05-13",
+      "announcedAtNote": "경희대 입학처 공지(수시 신입생 모집요강 2026.5.13)",
+      "status": "confirmed",
+      "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+      "sources": [
+        {
+          "name": "2027학년도 경희대학교 수시 신입생 모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)",
+          "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/경희대학교/경희대학교_2027학년도_수시모집요강.pdf",
+          "kind": "official",
+          "retrieved": "2026-10-26"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "sourcePage": "수시요강 논술전형 안내(수능 최저 표 4112행 부근)",
+      "requirements": [],
+      "requirementsNullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)",
+      "gradeReflection": {
+        "gradeMethod": "논술고사 100%, 수능 최저 충족자 선발",
+        "careerSubjectsPolicy": null
+      },
+      "csatMinimum": {
+        "expr": "인문/자연·자율전공학부(의예과·한의예과(인문·자연)·치의예과·약학과 제외): 국어·수학·영어·사회/과학탐구(2과목) 중 2개 영역 등급의 합 5 이내 + 한국사 5등급 이내. 의예과·한의예과(인문·자연)·치의예과·약학과: 3개 영역 등급의 합 4 이내 + 한국사 5등급 이내. 체육: 1개 영역 이상 3등급 이내. 영역별 필수 응시과목(지정과목) 없음, 한국사 필수 응시(예술·체육은 한국사 미반영), 탐구 2과목 평균(소수점 그대로), 2026년 11월 수능 성적으로 충족",
+        "requiredAreas": [
+          "국어",
+          "수학",
+          "영어",
+          "탐구",
+          "한국사"
+        ],
+        "designatedSubjectIds": []
+      }
+    },
+    {
+      "ruleId": "ar-2027-khu-jeongsi",
+      "universityId": "s-910",
+      "universityName": "경희대학교",
+      "unitName": "정시 수능위주 일반(가·나군, 인문/사회/자연)",
+      "admissionYear": 2027,
+      "track": "jeongsi-csat",
+      "announcedAt": "2026-09-01",
+      "announcedAtNote": "경희대 입학처 공지(정시 신입생 모집요강 2026.09.01)",
+      "status": "confirmed",
+      "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+      "sources": [
+        {
+          "name": "2027학년도 경희대학교 정시 모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)",
+          "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/경희대학교/경희대학교_2027학년도_정시모집요강.pdf",
+          "kind": "official",
+          "retrieved": "2026-10-26"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "sourcePage": "정시요강 수능 반영 안내(41쪽 전후)",
+      "requirements": [],
+      "requirementsNullReason": "정시는 교과 이수 권장·필수 과목 해당 없음",
+      "gradeReflection": {
+        "gradeMethod": "수능 100%(전형총점 600점). 영역 반영비율: 인문(문과·외국어·생활과학대, 식품영양 제외) 국어 40·수학 25·탐구 35(2과목), 사회(자율전공·정경·경영·국제·호텔관광 등) 국어 35·수학 35·탐구 30(2과목), 자연(자유전공·식품영양·이과·공과·전자정보·소프트웨어융합·응용과학·생명과학·의예·한의예 자연·치의예·약학·간호 등) 국어 25·수학 40·탐구 35(2과목, 과탐 가산점 부여, 자유전공학부 제외), 예술·체육 국어 60·탐구 40(1과목). 영어 감점 1~9등급 0·0·2·4·8·12·18·24·30, 한국사 감점 0·0·0·0·2·4·8·14·20",
+        "careerSubjectsPolicy": null
+      },
+      "csatMinimumNullReason": "정시 수능위주 일반전형은 요강 전형요소 표의 최저학력기준 칸에 기재 없음(수능 100%)"
+    },
+    {
+      "ruleId": "ar-2027-hufs-susi-gyogwa",
+      "universityId": "s-911",
+      "universityName": "한국외국어대학교",
+      "unitName": "학생부교과 학교장추천전형(370명)",
+      "admissionYear": 2027,
+      "track": "susi-gyogwa",
+      "announcedAt": "2026-05-31",
+      "announcedAtNote": "모집요강 게시일은 확인 못 함(5월 말 임시값)",
+      "status": "confirmed",
+      "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+      "sources": [
+        {
+          "name": "2027학년도 한국외국어대학교 수시모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)",
+          "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/한국외국어대학교/한국외국어대학교_2027학년도_수시모집요강.pdf",
+          "kind": "official",
+          "retrieved": "2026-10-26"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "sourcePage": "수시요강 17~23쪽",
+      "requirements": [],
+      "requirementsNullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)",
+      "gradeReflection": {
+        "gradeMethod": "학생부 교과 100%(1,000점 일괄합산). 계열 구분 없이 모든 모집단위에서 국어·수학·영어·사회(역사/도덕 포함)·과학·한국사 전 과목 반영(세부는 요강 38쪽). 면접 등 별도 고사 없음",
+        "careerSubjectsPolicy": null
+      },
+      "csatMinimum": {
+        "expr": "서울캠퍼스(영어·서양어·아시아언어문화·중국학·일본학·사회과학·상경·경영·AI융합 서울 등, 국제학부, Language & Diplomacy·Language & Trade학부, 자유전공학부(서울)): 국어·수학·영어·탐구(사회 또는 과학탐구 1과목) 중 2개 영역 등급 합 4 이내. 글로벌캠퍼스(인문대학, 국가전략언어대학, 경상대학, 자연과학대학, 공과대학, 융합인재대학, Culture & Technology융합대학, AI융합대학 글로벌, 바이오메디컬공학부, 기후변화융합학부, 자유전공학부(글로벌)): 2개 영역 등급 합 6 이내. 한국사 영역 반영 폐지, 탐구는 제2외국어/한문 대체 불가, 일부 영역만 응시해도 충족 인정",
+        "requiredAreas": [
+          "국어",
+          "수학",
+          "영어",
+          "탐구"
+        ],
+        "designatedSubjectIds": []
+      }
+    },
+    {
+      "ruleId": "ar-2027-hufs-susi-jonghap",
+      "universityId": "s-911",
+      "universityName": "한국외국어대학교",
+      "unitName": "학생부종합 면접형(478명)·서류형(585명)·SW인재(34명)",
+      "admissionYear": 2027,
+      "track": "susi-jonghap",
+      "announcedAt": "2026-05-31",
+      "announcedAtNote": "모집요강 게시일은 확인 못 함(5월 말 임시값)",
+      "status": "confirmed",
+      "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+      "sources": [
+        {
+          "name": "2027학년도 한국외국어대학교 수시모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)",
+          "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/한국외국어대학교/한국외국어대학교_2027학년도_수시모집요강.pdf",
+          "kind": "official",
+          "retrieved": "2026-10-26"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "sourcePage": "수시요강 17쪽 전형 요약",
+      "requirements": [],
+      "requirementsNullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)",
+      "gradeReflection": {
+        "gradeMethod": "면접형: 1단계 서류 100%(3배수), 2단계 서류 50%+면접 50%(면접 평가요소가 진로개발역량·협력적소통역량으로 변경). 서류형: 서류 100%. SW인재: 서류 100% 계열",
+        "careerSubjectsPolicy": null
+      },
+      "csatMinimumNullReason": "수능최저학력기준 적용 안 함(학생부종합 전형 요약표의 수능최저 적용 칸이 ×)"
+    },
+    {
+      "ruleId": "ar-2027-hufs-susi-nonsul",
+      "universityId": "s-911",
+      "universityName": "한국외국어대학교",
+      "unitName": "논술전형(452명)",
+      "admissionYear": 2027,
+      "track": "susi-nonsul",
+      "announcedAt": "2026-05-31",
+      "announcedAtNote": "모집요강 게시일은 확인 못 함(5월 말 임시값)",
+      "status": "confirmed",
+      "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+      "sources": [
+        {
+          "name": "2027학년도 한국외국어대학교 수시모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)",
+          "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/한국외국어대학교/한국외국어대학교_2027학년도_수시모집요강.pdf",
+          "kind": "official",
+          "retrieved": "2026-10-26"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "sourcePage": "수시요강 17쪽, 23쪽 수능최저 표",
+      "requirements": [],
+      "requirementsNullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)",
+      "gradeReflection": {
+        "gradeMethod": "논술 100%. 학생부 교과는 동점자 처리에만 활용(학교장추천전형 반영 방식 적용). 국가전략언어대학은 논술로 선발하지 않음",
+        "careerSubjectsPolicy": null
+      },
+      "csatMinimum": {
+        "expr": "서울캠퍼스(영어·서양어·아시아언어문화·중국학·일본학·사회과학·상경·경영·AI융합 서울 등, 국제학부, Language & Diplomacy·Language & Trade학부, 자유전공학부(서울)): 국어·수학·영어·탐구(사회 또는 과학탐구 1과목) 중 2개 영역 등급 합 4 이내. 글로벌캠퍼스(인문대학, 국가전략언어대학, 경상대학, 자연과학대학, 공과대학, 융합인재대학, Culture & Technology융합대학, AI융합대학 글로벌, 바이오메디컬공학부, 기후변화융합학부, 자유전공학부(글로벌)): 2개 영역 등급 합 6 이내. 한국사 영역 반영 폐지, 탐구는 제2외국어/한문 대체 불가, 일부 영역만 응시해도 충족 인정",
+        "requiredAreas": [
+          "국어",
+          "수학",
+          "영어",
+          "탐구"
+        ],
+        "designatedSubjectIds": []
+      }
+    },
+    {
+      "ruleId": "ar-2027-hufs-jeongsi",
+      "universityId": "s-911",
+      "universityName": "한국외국어대학교",
+      "unitName": "정시 일반전형(가·나·다군, 계열별 영역 반영비율)",
+      "admissionYear": 2027,
+      "track": "jeongsi-csat",
+      "announcedAt": "2026-09-01",
+      "announcedAtNote": "정시 요강 게시일은 확인 못 함(9월 초 임시값)",
+      "status": "confirmed",
+      "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+      "sources": [
+        {
+          "name": "2027학년도 한국외국어대학교 정시모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)",
+          "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/한국외국어대학교/한국외국어대학교_2027학년도_정시모집요강.pdf",
+          "kind": "official",
+          "retrieved": "2026-10-26"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "sourcePage": "정시요강 28쪽 전후, 수능 영역별 반영 비율 표",
+      "requirements": [],
+      "requirementsNullReason": "정시는 교과 이수 권장·필수 과목 해당 없음",
+      "gradeReflection": {
+        "gradeMethod": "수능 100%(1,000점). 영역 반영비율(국어:수학:영어:탐구): 인문A(영어·서양어·아시아언어문화·중국학·일본학·인문·국가전략언어·Culture & Technology 일부·자유전공 등) 30:30:20:20, 인문B(사회과학·상경·경영·경상·융합인재·국제학부 등) 30:35:15:20, 자연(자연과학·공과·AI융합 일부·바이오메디컬공학부 등) 20:35:15:30. 탐구는 사회/과학, 영어는 등급 환산점수, 한국사는 감점. 해당 계열 이외 유형 응시 시 해당 영역 0점",
+        "careerSubjectsPolicy": null
+      },
+      "csatMinimumNullReason": "정시 수능 최저학력기준을 요강에서 확인하지 못함(전형요소가 수능 100%)"
+    },
+    {
+      "ruleId": "ar-2027-uos-susi-gyogwa",
+      "universityId": "s-912",
+      "universityName": "서울시립대학교",
+      "unitName": "학생부교과 고교추천전형(254명)",
+      "admissionYear": 2027,
+      "track": "susi-gyogwa",
+      "announcedAt": "2026-05-31",
+      "announcedAtNote": "모집요강 게시일은 확인 못 함(5월 말 임시값)",
+      "status": "confirmed",
+      "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+      "sources": [
+        {
+          "name": "2027학년도 서울시립대학교 수시모집 신입생 모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)",
+          "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/서울시립대학교/서울시립대학교_2027학년도_수시모집요강.pdf",
+          "kind": "official",
+          "retrieved": "2026-10-26"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "sourcePage": "수시요강 변경사항 표(1쪽), 12쪽",
+      "requirements": [],
+      "requirementsNullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)",
+      "gradeReflection": {
+        "gradeMethod": "학생부 교과 80% + 교과 정성평가 20%(교과 정성평가 확대). 공통과목·일반선택과목 70%(석차등급)+진로선택과목 10%(성취도), 석차등급 및 성취도로 평가된 전과목 반영. 고교별 추천 20명 이내. 교과 정성평가는 학업역량을 5구간 척도(A~E)로 평가",
+        "careerSubjectsPolicy": "진로선택과목은 성취도로 10% 반영"
+      },
+      "csatMinimum": {
+        "expr": "국어(화법과작문·언어와매체 중 택1), 수학(확률과통계·미적분·기하 중 택1), 영어, 탐구(사회/과학 중 상위 1과목) 중 3개 영역 등급합 8 이내 및 한국사 4등급 이내(계열 구분 없음)",
+        "requiredAreas": [
+          "국어",
+          "수학",
+          "영어",
+          "탐구",
+          "한국사"
+        ],
+        "designatedSubjectIds": []
+      }
+    },
+    {
+      "ruleId": "ar-2027-uos-susi-jonghap",
+      "universityId": "s-912",
+      "universityName": "서울시립대학교",
+      "unitName": "학생부종합Ⅰ(면접형 410명)·Ⅱ(서류형 99명)",
+      "admissionYear": 2027,
+      "track": "susi-jonghap",
+      "announcedAt": "2026-05-31",
+      "announcedAtNote": "모집요강 게시일은 확인 못 함(5월 말 임시값)",
+      "status": "confirmed",
+      "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+      "sources": [
+        {
+          "name": "2027학년도 서울시립대학교 수시모집 신입생 모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)",
+          "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/서울시립대학교/서울시립대학교_2027학년도_수시모집요강.pdf",
+          "kind": "official",
+          "retrieved": "2026-10-26"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "sourcePage": "수시요강 변경사항 표(1쪽)",
+      "requirements": [],
+      "requirementsNullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)",
+      "gradeReflection": {
+        "gradeMethod": "Ⅰ(면접형): 1단계 서류평가 100%(3배수), 2단계 서류 50%+면접 50%. Ⅱ(서류형): 서류평가 100% 일괄합산. 서류평가는 학생부",
+        "careerSubjectsPolicy": null
+      },
+      "csatMinimumNullReason": "수능최저학력기준 없음(학생부종합Ⅰ·Ⅱ)"
+    },
+    {
+      "ruleId": "ar-2027-uos-susi-nonsul",
+      "universityId": "s-912",
+      "universityName": "서울시립대학교",
+      "unitName": "논술전형(88명)",
+      "admissionYear": 2027,
+      "track": "susi-nonsul",
+      "announcedAt": "2026-05-31",
+      "announcedAtNote": "모집요강 게시일은 확인 못 함(5월 말 임시값)",
+      "status": "confirmed",
+      "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+      "sources": [
+        {
+          "name": "2027학년도 서울시립대학교 수시모집 신입생 모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)",
+          "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/서울시립대학교/서울시립대학교_2027학년도_수시모집요강.pdf",
+          "kind": "official",
+          "retrieved": "2026-10-26"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "sourcePage": "수시요강 변경사항 표(1쪽)",
+      "requirements": [],
+      "requirementsNullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)",
+      "gradeReflection": {
+        "gradeMethod": "논술 80% + 학생부 교과 20%. 학생부 교과는 전학년 전교과 석차등급(원점수·평균·표준편차·석차등급이 모두 기재된 교과만 반영)",
+        "careerSubjectsPolicy": null
+      },
+      "csatMinimumNullReason": "수능최저학력기준 없음(논술전형)"
+    },
+    {
+      "ruleId": "ar-2027-uos-jeongsi",
+      "universityId": "s-912",
+      "universityName": "서울시립대학교",
+      "unitName": "정시 수능위주 일반전형(가/나/다군, 인문·자연계열)",
+      "admissionYear": 2027,
+      "track": "jeongsi-csat",
+      "announcedAt": "2026-08-31",
+      "announcedAtNote": "서울시립대 입학처 공지 2026년 8월 말(정확한 일자는 확인 못 함, 8월 31일 임시값)",
+      "status": "confirmed",
+      "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+      "sources": [
+        {
+          "name": "2027학년도 서울시립대학교 정시모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)",
+          "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/서울시립대학교/서울시립대학교_2027학년도_정시모집요강.pdf",
+          "kind": "official",
+          "retrieved": "2026-10-26"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "sourcePage": "정시요강 6~8쪽, 수능 반영영역별 비율 표",
+      "requirements": [],
+      "requirementsNullReason": "정시는 교과 이수 권장·필수 과목 해당 없음",
+      "gradeReflection": {
+        "gradeMethod": "수능 100%(1,000점, 학생부 반영 없음). 계열별 영역 반영비율 표(국어·수학·영어·한국사·탐구 2과목): 인문계열Ⅰ(경제·사회복지·세무·경영·도시행정·자유전공(인문)) 35·35·15·15%, 인문계열Ⅱ 35·25·20·20%, 자연계열 30·40·10·20%로 적혀 있으나 값이 4개뿐이라 열 대응이 PDF 텍스트에서 확정되지 않아 국어·수학 비율만 신뢰(인문Ⅰ 국어 35·수학 35, 인문Ⅱ 국어 35·수학 25, 자연 국어 30·수학 40). 제2외국어/한문의 탐구 대체 불가",
+        "careerSubjectsPolicy": null
+      },
+      "csatMinimumNullReason": "정시 수능위주 일반전형 수능 최저학력기준 없음(수능 100%)"
     }
   ]
 }

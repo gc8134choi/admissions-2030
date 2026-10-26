@@ -242,6 +242,170 @@
       ],
       "importance": "중간",
       "enabled": true
+    },
+    {
+      "id": "w-u-snu",
+      "name": "서울대 입학본부 학부 공지",
+      "url": "https://admission.snu.ac.kr/undergraduate/notice",
+      "watch": "수시·정시 시행계획·모집요강·수능 최저·응시영역 변경 공지",
+      "method": "list-titles",
+      "interval": "일",
+      "affects": [
+        "ar-2027-snu-jeongsi-areas",
+        "ar-2027-snu-jeongsi-opportunity",
+        "ar-2027-snu-jeongsi-regional",
+        "ar-2028-snu-biz-rec",
+        "ar-2028-snu-eng-rec",
+        "ar-2028-snu-hum-rec",
+        "ar-2028-snu-med-rec",
+        "ar-2028-snu-nsci-rec",
+        "ar-2028-snu-soc-rec"
+      ],
+      "importance": "높음",
+      "enabled": true
+    },
+    {
+      "id": "w-u-kaist",
+      "name": "KAIST 입학처 학부 공지",
+      "url": "https://admission.kaist.ac.kr/undergraduate/notice/sub03",
+      "watch": "전형 개편·모집요강·시행계획 공지(접속이 막히면 실패 횟수만 누적)",
+      "method": "list-titles",
+      "interval": "일",
+      "affects": [
+        "ar-2027-kaist-changdo",
+        "ar-2027-kaist-general"
+      ],
+      "importance": "높음",
+      "enabled": true
+    },
+    {
+      "id": "w-u-postech",
+      "name": "POSTECH 입학처 메인",
+      "url": "https://adm-u.postech.ac.kr/",
+      "watch": "모집요강·시행계획·공지 제목",
+      "method": "list-titles",
+      "interval": "일",
+      "affects": [
+        "ar-2027-postech-general1",
+        "ar-2027-postech-general2"
+      ],
+      "importance": "높음",
+      "enabled": true
+    },
+    {
+      "id": "w-u-sogang",
+      "name": "서강대 입학처 수시 공지",
+      "url": "https://admission.sogang.ac.kr/enter/html/rolling/notice.asp",
+      "watch": "모집요강·시행계획·수능 최저 변경 공지",
+      "method": "list-titles",
+      "interval": "일",
+      "affects": [
+        "ar-2027-sogang-jeongsi",
+        "ar-2027-sogang-susi-gyogwa",
+        "ar-2027-sogang-susi-jonghap",
+        "ar-2027-sogang-susi-nonsul"
+      ],
+      "importance": "높음",
+      "enabled": true
+    },
+    {
+      "id": "w-u-skku",
+      "name": "성균관대 입학처 수시 공지",
+      "url": "https://admission.skku.edu/admission/html/rolling/notice.html",
+      "watch": "모집요강·시행계획·수능 최저 변경 공지",
+      "method": "list-titles",
+      "interval": "일",
+      "affects": [
+        "ar-2027-skku-jeongsi",
+        "ar-2027-skku-susi-gyogwa",
+        "ar-2027-skku-susi-nonsul",
+        "ar-2027-skku-susi-tamgu",
+        "ar-2027-skku-susi-yungham"
+      ],
+      "importance": "높음",
+      "enabled": true
+    },
+    {
+      "id": "w-u-hanyang",
+      "name": "한양대 입학처 수시 공지",
+      "url": "https://go.hanyang.ac.kr/web/notice/notice_list.do?m_type=SUSI",
+      "watch": "모집요강·시행계획·계열별 권장 과목 안내 공지",
+      "method": "list-titles",
+      "interval": "일",
+      "affects": [
+        "ar-2027-hanyang-jeongsi",
+        "ar-2027-hanyang-susi-gyogwa",
+        "ar-2027-hanyang-susi-jonghap-doc",
+        "ar-2027-hanyang-susi-jonghap-rec",
+        "ar-2027-hanyang-susi-nonsul"
+      ],
+      "importance": "높음",
+      "enabled": true
+    },
+    {
+      "id": "w-u-cau",
+      "name": "중앙대 입학처 공지사항",
+      "url": "https://admission.cau.ac.kr/submenu.do?menuurl=shTyaGgSAy79vI5n2yB%2FhA%3D%3D",
+      "watch": "시행계획·모집요강·수능 최저 변경 공지",
+      "method": "list-titles",
+      "interval": "일",
+      "affects": [
+        "ar-2027-cau-jeongsi",
+        "ar-2027-cau-susi-gyogwa",
+        "ar-2027-cau-susi-nonsul",
+        "ar-2027-cau-susi-seongjang",
+        "ar-2027-cau-susi-tamgu-yungham"
+      ],
+      "importance": "높음",
+      "enabled": true
+    },
+    {
+      "id": "w-u-khu",
+      "name": "경희대 입학처 수시 공지",
+      "url": "https://iphak.khu.ac.kr/submenu.do?menuurl=RnNfVbLHUGrJz9kJgEyRDQ%3D%3D&board_seq=7363",
+      "watch": "모집요강·시행계획·수능 최저 변경 공지",
+      "method": "list-titles",
+      "interval": "일",
+      "affects": [
+        "ar-2027-khu-jeongsi",
+        "ar-2027-khu-susi-gyogwa",
+        "ar-2027-khu-susi-neo",
+        "ar-2027-khu-susi-nonsul"
+      ],
+      "importance": "높음",
+      "enabled": true
+    },
+    {
+      "id": "w-u-hufs",
+      "name": "한국외대 입학처 공지사항",
+      "url": "https://adms.hufs.ac.kr/cms/FrCon/index.do?MENU_ID=160",
+      "watch": "모집요강·시행계획·수능 최저 변경 공지",
+      "method": "list-titles",
+      "interval": "일",
+      "affects": [
+        "ar-2027-hufs-jeongsi",
+        "ar-2027-hufs-susi-gyogwa",
+        "ar-2027-hufs-susi-jonghap",
+        "ar-2027-hufs-susi-nonsul"
+      ],
+      "importance": "높음",
+      "enabled": true
+    },
+    {
+      "id": "w-u-uos",
+      "name": "서울시립대 입학처",
+      "url": "https://admission.uos.ac.kr/",
+      "watch": "모집요강·시행계획 공지 제목",
+      "method": "list-titles",
+      "interval": "일",
+      "affects": [
+        "ar-2027-uos-jeongsi",
+        "ar-2027-uos-susi-gyogwa",
+        "ar-2027-uos-susi-jonghap",
+        "ar-2027-uos-susi-nonsul"
+      ],
+      "importance": "높음",
+      "enabled": true
     }
   ]
 }

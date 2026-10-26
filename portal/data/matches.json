@@ -2,7 +2,7 @@
  "_meta": {
   "note": "학교×모집단위 권장 과목 충족 계산(생성물, 손으로 고치지 않는다). tools/build-matches.mjs. 편제표는 개설 '후보'이고 요강은 2028학년도 기준 참고 구조예요.",
   "admissionYear": 2028,
-  "count": 152
+  "count": 220
  },
  "matches": [
   {
@@ -1130,6 +1130,159 @@
    "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
   },
   {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2027-cau-susi-gyogwa",
+   "universityId": "s-909",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2027-cau-susi-seongjang",
+   "universityId": "s-909",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2027-cau-susi-tamgu-yungham",
+   "universityId": "s-909",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2027-cau-susi-nonsul",
+   "universityId": "s-909",
+   "track": "susi-nonsul",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2027-cau-jeongsi",
+   "universityId": "s-909",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2027-khu-susi-gyogwa",
+   "universityId": "s-910",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2027-khu-susi-neo",
+   "universityId": "s-910",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2027-khu-susi-nonsul",
+   "universityId": "s-910",
+   "track": "susi-nonsul",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2027-khu-jeongsi",
+   "universityId": "s-910",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2027-hufs-susi-gyogwa",
+   "universityId": "s-911",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2027-hufs-susi-jonghap",
+   "universityId": "s-911",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2027-hufs-susi-nonsul",
+   "universityId": "s-911",
+   "track": "susi-nonsul",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2027-hufs-jeongsi",
+   "universityId": "s-911",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2027-uos-susi-gyogwa",
+   "universityId": "s-912",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2027-uos-susi-jonghap",
+   "universityId": "s-912",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2027-uos-susi-nonsul",
+   "universityId": "s-912",
+   "track": "susi-nonsul",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2027-uos-jeongsi",
+   "universityId": "s-912",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+  },
+  {
    "schoolId": "school-seongbok",
    "ruleId": "ar-2028-snu-hum-rec",
    "universityId": "s-901",
@@ -2248,6 +2401,159 @@
    "schoolId": "school-seongbok",
    "ruleId": "ar-2027-hanyang-jeongsi",
    "universityId": "s-908",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2027-cau-susi-gyogwa",
+   "universityId": "s-909",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2027-cau-susi-seongjang",
+   "universityId": "s-909",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2027-cau-susi-tamgu-yungham",
+   "universityId": "s-909",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2027-cau-susi-nonsul",
+   "universityId": "s-909",
+   "track": "susi-nonsul",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2027-cau-jeongsi",
+   "universityId": "s-909",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2027-khu-susi-gyogwa",
+   "universityId": "s-910",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2027-khu-susi-neo",
+   "universityId": "s-910",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2027-khu-susi-nonsul",
+   "universityId": "s-910",
+   "track": "susi-nonsul",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2027-khu-jeongsi",
+   "universityId": "s-910",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2027-hufs-susi-gyogwa",
+   "universityId": "s-911",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2027-hufs-susi-jonghap",
+   "universityId": "s-911",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2027-hufs-susi-nonsul",
+   "universityId": "s-911",
+   "track": "susi-nonsul",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2027-hufs-jeongsi",
+   "universityId": "s-911",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2027-uos-susi-gyogwa",
+   "universityId": "s-912",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2027-uos-susi-jonghap",
+   "universityId": "s-912",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2027-uos-susi-nonsul",
+   "universityId": "s-912",
+   "track": "susi-nonsul",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2027-uos-jeongsi",
+   "universityId": "s-912",
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
@@ -3435,6 +3741,159 @@
    "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
   },
   {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2027-cau-susi-gyogwa",
+   "universityId": "s-909",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2027-cau-susi-seongjang",
+   "universityId": "s-909",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2027-cau-susi-tamgu-yungham",
+   "universityId": "s-909",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2027-cau-susi-nonsul",
+   "universityId": "s-909",
+   "track": "susi-nonsul",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2027-cau-jeongsi",
+   "universityId": "s-909",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2027-khu-susi-gyogwa",
+   "universityId": "s-910",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2027-khu-susi-neo",
+   "universityId": "s-910",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2027-khu-susi-nonsul",
+   "universityId": "s-910",
+   "track": "susi-nonsul",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2027-khu-jeongsi",
+   "universityId": "s-910",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2027-hufs-susi-gyogwa",
+   "universityId": "s-911",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2027-hufs-susi-jonghap",
+   "universityId": "s-911",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2027-hufs-susi-nonsul",
+   "universityId": "s-911",
+   "track": "susi-nonsul",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2027-hufs-jeongsi",
+   "universityId": "s-911",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2027-uos-susi-gyogwa",
+   "universityId": "s-912",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2027-uos-susi-jonghap",
+   "universityId": "s-912",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2027-uos-susi-nonsul",
+   "universityId": "s-912",
+   "track": "susi-nonsul",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2027-uos-jeongsi",
+   "universityId": "s-912",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+  },
+  {
    "schoolId": "school-yonginheungcheon",
    "ruleId": "ar-2028-snu-hum-rec",
    "universityId": "s-901",
@@ -4496,6 +4955,159 @@
    "schoolId": "school-yonginheungcheon",
    "ruleId": "ar-2027-hanyang-jeongsi",
    "universityId": "s-908",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2027-cau-susi-gyogwa",
+   "universityId": "s-909",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2027-cau-susi-seongjang",
+   "universityId": "s-909",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2027-cau-susi-tamgu-yungham",
+   "universityId": "s-909",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2027-cau-susi-nonsul",
+   "universityId": "s-909",
+   "track": "susi-nonsul",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2027-cau-jeongsi",
+   "universityId": "s-909",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2027-khu-susi-gyogwa",
+   "universityId": "s-910",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2027-khu-susi-neo",
+   "universityId": "s-910",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2027-khu-susi-nonsul",
+   "universityId": "s-910",
+   "track": "susi-nonsul",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2027-khu-jeongsi",
+   "universityId": "s-910",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2027-hufs-susi-gyogwa",
+   "universityId": "s-911",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2027-hufs-susi-jonghap",
+   "universityId": "s-911",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2027-hufs-susi-nonsul",
+   "universityId": "s-911",
+   "track": "susi-nonsul",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2027-hufs-jeongsi",
+   "universityId": "s-911",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2027-uos-susi-gyogwa",
+   "universityId": "s-912",
+   "track": "susi-gyogwa",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2027-uos-susi-jonghap",
+   "universityId": "s-912",
+   "track": "susi-jonghap",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2027-uos-susi-nonsul",
+   "universityId": "s-912",
+   "track": "susi-nonsul",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "교과 이수 권장·필수 과목은 모집요강에서 확인 못 함(전공 연계 안내 없음)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2027-uos-jeongsi",
+   "universityId": "s-912",
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
