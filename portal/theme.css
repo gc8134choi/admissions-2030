@@ -351,3 +351,20 @@ table.policy tr.past td,table.policy tr.past b{color:var(--mute)}
 .hero-ph .ms-p{width:96px;height:96px;grid-row:1 / 3}
 .hero-ph .hint{margin:0;grid-column:2}
 @media (min-width:900px){.hero-grid{grid-template-columns:7fr 5fr}.dday .big{font-size:clamp(110px,13vw,168px)}.hero{padding-top:28px}}
+
+/* 내 계획표(planner.js): 학기별 구획 + 하단 합계 막대. 상자·알약 없이 선과 글자로 */
+.pn h3{font-size:17px;margin:0 0 6px}.pn h3 small{font-weight:400;color:var(--mute);margin-left:6px}
+.pn-t{padding:22px 0 18px;border-top:1px solid var(--hair)}
+.pn-req{margin:0 0 10px;font-size:13px;color:var(--mute);line-height:1.7}.pn-rl{color:var(--req);font-weight:700;margin-right:4px}
+.pn-g{margin:12px 0 0}.pn-gh{display:flex;justify-content:space-between;margin:0 0 4px;font-size:13px}.pn-gh .done,.pn-um .done{color:var(--ele);font-weight:700}
+.pn-opts{list-style:none;margin:0;padding:0}
+.pn-o{display:flex;justify-content:space-between;align-items:baseline;gap:12px;width:100%;min-height:44px;padding:8px 0;background:none;border:0;border-bottom:1px solid var(--hair);font:inherit;color:var(--ink);text-align:left;cursor:pointer}
+.pn-o .pn-m{font-size:12px;color:var(--mute);white-space:nowrap}
+.pn-o.on{color:var(--ele);font-weight:700;box-shadow:inset 3px 0 0 var(--ele);padding-left:10px}
+.pn-o[aria-disabled=true]{opacity:.4}
+.pn-u{padding:22px 0 8px;border-top:1px solid var(--hair)}.pn-um{list-style:none;margin:12px 0 0;padding:0}.pn-um li{padding:8px 0;border-bottom:1px solid var(--hair)}.pn-um small{display:block;color:var(--mute);font-size:12px;margin-top:2px}.pn-ref{font-size:12px;color:var(--mute)}
+.pn-act{margin:18px 0 4px;display:flex;gap:18px;align-items:baseline}
+.pn-bar{position:fixed;left:0;right:0;bottom:calc(var(--tab-h) + env(safe-area-inset-bottom));z-index:22;display:flex;justify-content:space-around;gap:8px;padding:8px var(--pad);background:var(--paper);border-top:1px solid var(--rule)}
+.pn-bar span{display:flex;flex-direction:column;align-items:center;line-height:1.25}.pn-bar b{font-size:18px}.pn-bar small{font-size:11px;color:var(--mute)}.pn-bar .warn b{color:var(--accent)}
+.pn{padding-bottom:64px}
+@media (min-width:900px){.pn-bar{bottom:0}}
