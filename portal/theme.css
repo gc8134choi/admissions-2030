@@ -368,3 +368,4 @@ table.policy tr.past td,table.policy tr.past b{color:var(--mute)}
 .pn-bar span{display:flex;flex-direction:column;align-items:center;line-height:1.25}.pn-bar b{font-size:18px}.pn-bar small{font-size:11px;color:var(--mute)}.pn-bar .warn b{color:var(--accent)}
 .pn{padding-bottom:64px}
 @media (min-width:900px){.pn-bar{bottom:0}}
+.pn-rq li{display:flex;justify-content:space-between}

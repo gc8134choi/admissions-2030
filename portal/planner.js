@@ -9,10 +9,9 @@ const LAST = "portal.plan.last";
 
 export function registerPlanner(views, { esc, load, store }) {
   views.planner = async (el, query) => {
-    const [schools, offerings, ix, master, summary, groups, ul, rules, matches, policy] = await Promise.all(
-      ["schools", "offerings", "offerings-index", "subject-master", "summary", "groups", "universities", "admission-rules", "matches", "policy"].map((n) => load(n)));
-    const pol = Array.isArray(policy) ? policy : policy.rows || policy;
-    const cap = +((pol.find((r) => r.id === "cur-12")?.body || "").match(/(\d+)학점을 넘을 수/) || [])[1] || null;
+    const [schools, offerings, ix, master, summary, groups, ul, rules, matches, pr] = await Promise.all(
+      ["schools", "offerings", "offerings-index", "subject-master", "summary", "groups", "universities", "admission-rules", "matches", "planner-rules"].map((n) => load(n)));
+    const grad = pr.graduation, cap = grad.capKoMaEn?.value || null, reqTotal = grad.requiredCredits?.value, rba = grad.requiredByArea;
     const univs = ul.universities;
     const name = new Map(master.subjects.map((m) => [m.subjectId, m.name]));
 
@@ -61,6 +60,13 @@ export function registerPlanner(views, { esc, load, store }) {
           <p class="pn-req"><span class="pn-rl">지정</span> ${rs.map((o) => `${esc(o.subject)} <span class="num">${o.credits}</span>`).join(" · ") || "-"}</p>${body}</section>`;
       };
 
+      // 필수 이수 학점(교과군별 최소): 계획에 담긴 학점을 군별로 세어 최소치까지만 인정한다
+      const GROUP_AREAS = ["기술·가정/정보", "제2외국어/한문/교양"];
+      const inArea = (a) => credit(chosen.filter((o) => o.area === a));
+      const reqRows = rba ? [...rba.items.map((i) => ({ t: i.area, need: i.credits, have: inArea(i.area) })), ...(rba.groupItems || []).map((g) => ({ t: g.label.replace(/ 합$/, ""), need: g.credits, have: GROUP_AREAS.reduce((a, x) => a + inArea(x), 0) }))] : [];
+      const reqHave = reqRows.reduce((a, r) => a + Math.min(r.have, r.need), 0);
+      const reqHtml = reqRows.length ? `<section class="pn-u"><h3>필수 이수 학점 <span class="num ${reqHave >= reqTotal ? "done" : ""}">${reqHave}/${reqTotal}</span></h3><ul class="pn-um pn-rq">${reqRows.map((r) => `<li><span>${esc(r.t)}</span><span class="num ${r.have >= r.need ? "done" : ""}">${Math.min(r.have, r.need)}/${r.need}</span></li>`).join("")}</ul><p class="pn-ref">${esc(rba.regionNote || "")}</p></section>` : "";
+
       // 대학 요건: 있는 데이터(match)만 한 줄씩
       const uMatches = st.univ ? matches.matches.filter((m) => m.schoolId === st.school && m.universityId === st.univ && m.requirements) : [];
       const uHtml = () => {
@@ -84,6 +90,7 @@ export function registerPlanner(views, { esc, load, store }) {
         <div class="chipbar"><span class="flabel">학교</span><div class="chips">${chips(schools.map((s) => [s.id, s.name]), "school", st.school)}</div></div>
         <div class="chipbar"><span class="flabel">영역</span><div class="chips">${chips(AREA7.map((a) => [a, a]), "area", st.areas, true)}</div></div>
         <div id="pn-terms">${TERMS.map(termHtml).join("")}</div>
+        ${reqHtml}
         <section class="pn-u"><h3>대학 요건</h3><div class="chips">${chips(univs.map((u) => [u.id, u.name]), "univ", st.univ)}</div>${uHtml()}</section>
         <p class="pn-act"><button type="button" class="lnk" data-act="copy">계획 복사</button> <button type="button" class="lnk" data-act="reset">초기화</button> <span class="muted small" id="pn-msg" role="status">${esc(st.msg)}</span></p>
         <p class="hint">계획은 이 기기에만 저장돼요.</p>
