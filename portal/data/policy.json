@@ -3110,5 +3110,38 @@
   ],
   "stage": "중입",
   "checkedAt": "2026-10-26"
+ },
+ {
+  "id": "life-12",
+  "topic": "life-schedule",
+  "entryYear": 2030,
+  "examYear": 2033,
+  "title": "2027학년도 용인시 중학교 학교군·중학구 개정 의견 수렴(2026.2.19~5.18, 종료)",
+  "body": "용인교육지원청(학생배치과)이 2027학년도 용인시 중학교 학교군 및 중학구 설정(개정)에 관한 의견 수렴을 2026.2.19~5.18에 진행했다(등기우편·전자우편·팩스, 개별 회신 없음, 기한 내 미제출 시 의견 없음으로 간주). 2027학년도 학교군·중학구(안) 행정예고에 앞선 사전 의견 수렴이며, 중학교 배정 방법과 학교군 내 구역 설정(조정)은 이번 수렴 대상이 아니다. 따라서 성복초가 속한 수지1중학군 구성은 개정될 수 있으며, 개정 결과(행정예고·고시)는 이 행에서 확인하지 못했다.",
+  "status": "confirmed",
+  "note": "확정(공식 공고 확인, 2026-10-26). 개정 결과는 미확인",
+  "unverified": false,
+  "sourceKind": "official",
+  "sourceName": "용인시 기흥구청 게시 공고: 2027학년도 용인시 중학교 학교군 및 중학교 설정을 위한 의견수렴(2026.2.19, 용인교육지원청 학생배치과)",
+  "sourceUrl": "https://www.giheunggu.go.kr/_lmth/03_board/board_0701.asp?mode=view&board_idx=MTE2MDAy&page=1",
+  "sources": [
+   {
+    "name": "용인시 기흥구청 게시 공고: 2027학년도 용인시 중학교 학교군 및 중학교 설정을 위한 의견수렴(2026.2.19, 용인교육지원청 학생배치과)",
+    "url": "https://www.giheunggu.go.kr/_lmth/03_board/board_0701.asp?mode=view&board_idx=MTE2MDAy&page=1"
+   },
+   {
+    "name": "용인시청 새소식 상세보기(같은 공고, 접속 실패로 본문 미확인)",
+    "url": "https://www.yongin.go.kr/user/bbs/BD_selectBbs.do?q_bbsCode=1001&q_clCode=1&q_bbscttSn=20260219155410548"
+   }
+  ],
+  "region": "gyeonggi",
+  "audience": [
+   "common"
+  ],
+  "learners": [
+   "B"
+  ],
+  "stage": "중입",
+  "checkedAt": "2026-10-26"
  }
 ]
