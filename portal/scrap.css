@@ -149,3 +149,27 @@ table.policy tr.past{opacity:.55}
 .pl-list li{border-color:var(--line)}
 .pl-list li.on{background:rgba(217,198,160,.5)}
 .pl-map{box-shadow:var(--sh);border:6px solid var(--paper2)}
+
+/* ===== 5/6 대입(수능·내신 규칙, 고교학점제 이해, 내 계획표, 대학 요건) ===== */
+.ed .ed-glance{display:flex;flex-wrap:wrap;justify-content:center;gap:16px 12px;background:none;border:0;padding:8px 0}
+.ed .ed-g,.ed .ed-g+.ed-g{background:none;padding:0;border:0}
+.ed .ed-g.main{flex:1 1 100%;grid-column:auto;grid-row:auto;padding:0 0 6px;text-align:left}
+.ed .ed-g .v,.ed .ed-g.main .v{font-family:var(--serif);font-weight:700}
+.ed .ed-g:not(.main){--s:136px;width:var(--s);height:var(--s);border-radius:50%;border:5px solid #FFFDF7;box-shadow:var(--sh);padding:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;grid-column:auto;overflow:hidden}
+.ed .ed-g:not(.main) .v{font-size:clamp(30px,9vw,46px)}
+.ed .ed-g:not(.main) .k{font:700 15px/1.15 var(--hand);margin-top:2px}
+.ed .ed-g:not(.main) .n{display:none}
+.ed .ed-g:nth-child(4n+2){background:var(--ink);color:var(--paper2);transform:rotate(-6deg)}
+.ed .ed-g:nth-child(4n+3){background:var(--kraft);color:var(--ink);transform:rotate(4deg) translateY(8px);--s:124px}
+.ed .ed-g:nth-child(4n+4){background:#FFFDF7;color:#1D1A16;transform:rotate(-3deg);--s:148px}
+.ed .ed-g:nth-child(4n+5){background:var(--accent);color:#fff;transform:rotate(5deg);--s:128px}
+@media (prefers-color-scheme:dark){.ed .ed-g:nth-child(4n+5){color:#1E1A15}.ed .ed-g:nth-child(4n+3){color:var(--ink)}}
+.ed-big,.ed-b{font-family:var(--serif)}
+/* 계획표: 학기 구획은 줄 쳐진 종이, 하단 합계 막대는 종이 띠 */
+.pn-t{background:var(--paper2);border:0;box-shadow:var(--sh);padding:18px 16px 14px;margin:0 0 22px;transform:rotate(-.35deg)}
+.pn-t:nth-child(even){transform:rotate(.3deg)}
+.pn h3{font-family:var(--serif)}
+.pn-u{background:var(--paper2);border:0;box-shadow:var(--sh);padding:18px 16px 12px;margin:0 0 22px;transform:rotate(.3deg)}
+.pn-o{border-bottom-color:var(--line)}
+.pn-bar{background:var(--paper2) var(--grain);border-top:0;box-shadow:0 -4px 12px -6px rgba(60,40,10,.35)}
+.pn-bar b{font-family:var(--serif)}
