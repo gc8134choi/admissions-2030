@@ -1,8 +1,9 @@
 // 과목 마스터(아키텍처 1단계): 편제표 DB(subjects·offerings)와 교육청 안내(subject-info) → 안정 코드 sj-NNNN.
 //   입력(읽기만): portal/data/subjects.json, offerings.json, subject-info.json
 //   고정:  portal/data/subjects.lock.json   legacyKey → sj 코드(한 번 부여하면 바뀌지 않고, 코드는 재사용하지 않는다)
-//   산출:  portal/data/subject-master.json, portal/data/offerings-index.json, temp/quality/subject-mapping.md
-// 이름 매핑은 정규화 후 완전 일치만 자동으로 잇는다. 모호·불일치는 리포트에만 남기고 임의로 잇지 않는다.
+//   수동:  tools/subject-info-mapping.json  안내 연결 수동 확정(manual: 다른 과목의 안내를 쓰는 과목, schoolOwn: 학교 자체 개설 표시). 재생성해도 유지된다.
+//   산출:  portal/data/subject-master.json, portal/data/offerings-index.json, portal/data/subject-info-links.json, temp/quality/subject-mapping.md
+// 이름 매핑은 정규화 후 완전 일치만 자동으로 잇는다. 모호·불일치는 리포트에만 남기고 임의로 잇지 않으며, 사람이 정한 것만 subject-info-mapping.json으로 잇는다(근거 기록).
 // 사용: node tools/build-subjects.mjs [--check]   (--check: 산출물이 다르거나 검증에 걸리면 종료코드 1)
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 
@@ -44,6 +45,11 @@ const candidates = (name) => {
   const n = norm(name);
   return info.filter((x) => { const m = norm(x.name); return m !== n && ((m.length >= 3 && n.includes(m)) || (n.length >= 3 && m.includes(n)) || jac(n, m) >= 0.5); }).map((x) => x.name);
 };
+const MAPF = "tools/subject-info-mapping.json";
+const mapping = existsSync(MAPF) ? rd(MAPF) : { manual: {}, schoolOwn: {} };
+for (const k of [...Object.keys(mapping.manual), ...Object.keys(mapping.schoolOwn)]) if (!subjects.some((s) => s.subjectKey === k)) errs.push(`subject-info-mapping: ${k}가 subjects.json에 없음`);
+for (const [k, v] of Object.entries(mapping.manual)) { if (!infoBy.has(norm(v.info))) errs.push(`subject-info-mapping: ${k} → 안내 "${v.info}"가 subject-info에 없음`); if (!v.basis) errs.push(`subject-info-mapping: ${k} 근거(basis) 없음`); }
+for (const [k, v] of Object.entries(mapping.schoolOwn)) { if (!v.basis) errs.push(`subject-info-mapping: ${k} 근거(basis) 없음`); if (mapping.manual[k]) errs.push(`subject-info-mapping: ${k}가 manual과 schoolOwn에 모두 있음`); }
 function classify(name) {
   const hit = infoBy.get(norm(name));
   if (hit) return { cls: "auto", info: hit };
@@ -62,10 +68,12 @@ const byName = new Map(subjects.map((s) => [norm(s.name), s]));
 
 // ---- 마스터 ------------------------------------------------------------
 const master = [];
-const rep = { auto: [], ambiguous: [], none: [], composite: [] };
+const rep = { auto: [], manual: [], "school-own": [], ambiguous: [], none: [], composite: [] };
 for (const s of subjects) {
   const id = codes[s.subjectKey];
   const own = s.isComposite ? null : classify(s.name);
+  const man = mapping.manual[s.subjectKey], sown = mapping.schoolOwn[s.subjectKey];
+  if ((man || sown) && own?.cls === "auto") errs.push(`subject-info-mapping: ${s.subjectKey}는 이제 자동 일치라 목록에서 빼야 함`);
   let r = own, infoHit = own?.info;
   if (s.isComposite) {
     // 선택 가능한 묶음 과목: 구성 과목 각각이 자동 일치하면 자동, 아니면 가장 나쁜 쪽
@@ -73,6 +81,8 @@ for (const s of subjects) {
     const worst = parts.some((p) => p.cls === "none") ? "none" : parts.some((p) => p.cls === "ambiguous") ? "ambiguous" : "auto";
     r = { cls: worst, parts };
   }
+  if (man) r = { cls: "manual", info: infoBy.get(norm(man.info)), basis: man.basis };
+  else if (sown) r = { cls: "school-own", basis: sown.basis };
   rep[r.cls].push({ s, r });
   if (s.isComposite) rep.composite.push({ s, r });
   const kind = (infoHit && TYPE2KIND[infoHit.type]) || topKind(s.subjectKey) || "학교지정";
@@ -87,7 +97,9 @@ for (const s of subjects) {
     isComposite: !!s.isComposite,
     ...(s.isComposite ? { components: s.components || [], componentIds: comps } : {}),
     ...(s.csatArea ? { csat: [{ regimeId: "csat-2028", area: s.csatArea, scope: s.csatScope, confidence: s.csatConfidence }] } : {}),
-    infoMatch: r.cls, // auto | ambiguous | none (모호·불일치는 info를 흡수하지 않음)
+    infoMatch: r.cls, // auto | manual(수동 확정) | school-own(학교 자체 개설) | ambiguous | none (모호·불일치는 info를 흡수하지 않음)
+    ...(man || sown ? { infoMatchBasis: (man || sown).basis } : {}),
+    ...(r.cls === "manual" ? { infoName: r.info.name, summary: r.info.summary, ...(r.info.majors ? { majorsHint: r.info.majors } : {}) } : {}),
     ...(infoHit ? { infoName: infoHit.name, summary: infoHit.summary, ...(infoHit.majors ? { majorsHint: infoHit.majors } : {}) } : {}),
     schoolCount: s.schoolCount, offeredBy: s.offeredBy,
   };
@@ -102,6 +114,12 @@ const unusedInfo = info.filter((x) => !usedInfo.has(norm(x.name)));
 const masterOut = {
   _meta: { note: "과목 마스터(생성물, 손으로 고치지 않는다). tools/build-subjects.mjs가 subjects.json·subject-info.json·subjects.lock.json으로 만든다. 기존 subjects.json은 그대로 두고 화면은 아직 이것을 쓰지 않는다.", schemaVersion: "3.0.0-draft", count: master.length, infoCount: info.length, infoMatched: usedInfo.size },
   subjects: master,
+};
+// 화면(과목 설명 ⓘ)이 읽는 수동 연결: 과목 표시 이름(공백 없는 형태) → 다른 과목의 안내를 쓰거나, 학교 자체 개설 표시
+const linksOut = {
+  _meta: { note: "과목 안내 수동 연결(생성물, 손으로 고치지 않는다). tools/subject-info-mapping.json에서 tools/build-subjects.mjs가 만든다. manual: 같은 계열 과목의 안내를 보여 줌, schoolOwn: 안내 없이 '학교 자체 개설' 표시." },
+  manual: Object.fromEntries(Object.entries(mapping.manual).map(([k, v]) => [norm(byKey.get(k)?.name ?? k), { subjectId: codes[k], name: byKey.get(k)?.name ?? k, info: v.info, basis: v.basis }])),
+  schoolOwn: Object.fromEntries(Object.entries(mapping.schoolOwn).map(([k, v]) => [norm(byKey.get(k)?.name ?? k), { subjectId: codes[k], name: byKey.get(k)?.name ?? k, basis: v.basis }])),
 };
 const idxOut = {
   _meta: { note: "offerings.id → subjectId (생성물). offerings.json은 수정하지 않는다.", count: offerings.length },
@@ -131,11 +149,17 @@ const md = `# 과목 이름 매핑 리포트 (subject-mapping)
 규칙: 공백·가운뎃점 표기를 정규화한 뒤 **완전 일치**만 자동으로 잇는다. 모호·불일치는 안내 내용을 흡수하지 않고(\`infoMatch\`로 표시) 여기에 남긴다. 임의 매핑은 하지 않는다.
 
 ## 요약
-자동 일치 ${rep.auto.length} / 모호 ${rep.ambiguous.length} / 불일치 ${rep.none.length} (합계 ${subjects.length}, 묶음 과목 ${rep.composite.length}개는 구성 과목 기준으로 분류)
+자동 일치 ${rep.auto.length} / 수동 확정 ${rep.manual.length} / 학교 자체 개설 ${rep["school-own"].length} / 모호 ${rep.ambiguous.length} / 불일치 ${rep.none.length} (합계 ${subjects.length}, 묶음 과목 ${rep.composite.length}개는 구성 과목 기준으로 분류)
 
 ## 자동 일치 (${rep.auto.length})
 ${rep.auto.length} 과목은 목록을 생략한다(\`subject-master.json\`의 \`infoMatch: "auto"\`).
 묶음 과목 중 자동: ${rep.auto.filter((x) => x.s.isComposite).map((x) => x.s.name).join(", ") || "없음"}
+
+## 수동 확정 (${rep.manual.length}) — 사용자 결정, tools/subject-info-mapping.json
+${rep.manual.map(({ s, r }) => `- \`${s.subjectKey}\` ${s.name} → 안내 "${r.info.name}" (${r.basis})`).join("\n") || "없음"}
+
+## 학교 자체 개설 (${rep["school-own"].length}) — 안내 연결 없이 표시, tools/subject-info-mapping.json
+${rep["school-own"].map(({ s, r }) => `- \`${s.subjectKey}\` ${s.name} (${s.area}, ${s.schoolCount}개교, ${r.basis})`).join("\n") || "없음"}
 
 ## 모호 (${rep.ambiguous.length}) — 후보만 제시, 판단은 사람이
 ${li(rep.ambiguous)}
@@ -155,6 +179,7 @@ const files = [
   [LOCK, JSON.stringify(lockOut, null, 1) + "\n"],
   [D + "subject-master.json", JSON.stringify(masterOut, null, 1) + "\n"],
   [D + "offerings-index.json", JSON.stringify(idxOut, null, 1) + "\n"],
+  [D + "subject-info-links.json", JSON.stringify(linksOut, null, 1) + "\n"],
   ["temp/quality/subject-mapping.md", md],
 ];
 if (errs.length) { console.error(errs.join("\n")); process.exit(1); }
@@ -162,4 +187,4 @@ if (CHECK) {
   const bad = files.filter(([p, t]) => !existsSync(p) || readFileSync(p, "utf8") !== t).map(([p]) => p);
   if (bad.length) { console.error("out of date:", bad.join(", ")); process.exit(1); }
 } else for (const [p, t] of files) writeFileSync(p, t);
-console.log(`자동 일치 ${rep.auto.length} / 모호 ${rep.ambiguous.length} / 불일치 ${rep.none.length}`);
+console.log(`자동 일치 ${rep.auto.length} / 수동 ${rep.manual.length} / 학교 자체 ${rep["school-own"].length} / 모호 ${rep.ambiguous.length} / 불일치 ${rep.none.length}`);
