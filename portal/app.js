@@ -1,4 +1,4 @@
-import { MENU, STATUS, TABS, REDIRECT, hrefOf, isItem, tabFor } from "./menu.js";
+import { MENU, STATUS, TABS, REDIRECT, hrefOf, tabHref, locate } from "./menu.js";
 import { register as registerPolicy } from "./policy.js";
 import { registerHome } from "./home.js";
 import { registerFiles } from "./files.js";
@@ -39,7 +39,8 @@ const MENU_ICON = {
 
 // 상단 메뉴(데스크톱)·하단 탭(모바일): 5개 탭, 글자만. 켜진 탭은 위쪽 선.
 function drawTabs(tab) {
-  const html = TABS.map((t) => `<a href="${hrefOf(t.items[0])}"${t.id === tab.id ? ' aria-current="page"' : ""}>${esc(t.title)}</a>`).join("");
+  const html = TABS.map((t) => `<a href="${tabHref(t)}"${t.id === tab.id ? ' aria-current="page"' : ""}>${esc(t.title)}</a>`).join("");
+  const vl = $("#vaultlink"); if (vl) tab.id === "vault" ? vl.setAttribute("aria-current", "page") : vl.removeAttribute("aria-current");
   $("#topnav").innerHTML = html;
   $("#btabs").innerHTML = html;
 }
@@ -121,11 +122,11 @@ async function curriculumView(el, query, node) {
   const lv = tab === "middle" || query.get("lv") === "middle" ? "middle" : "high"; // 학교 탭의 "중학교 | 고등학교"
   if (lv === "middle" && !["map", "middle"].includes(tab)) tab = "middle";
   if (lv === "high" && tab === "middle") tab = "summary";
-  const TABSET = lv === "middle" ? [["middle", "중학교 배정"], ["map", "학교 지도"]] : [["summary", "학교별 요약"], ["compare", "상세 비교"], ["map", "학교 지도"]];
+  const TABSET = lv === "middle" ? [] : [["summary", "학교별 요약"], ["compare", "상세 비교"]]; // 학교 지도·중학교 배정·대학 요건은 메뉴(학교 탭 안)에서 연다
   let compare = null; // 상세 비교 화면(필터 포함)은 한 번만 만들고 탭 전환 때 재사용한다
 
   el.innerHTML = `<div class="phead">
-      <div class="subtabs" id="tabs"${tab === "univ" ? " hidden" : ""}>${TABSET.map(([k, t]) => `<a href="#" data-tab="${k}">${t}</a>`).join("")}</div></div>
+      <div class="subtabs" id="tabs"${TABSET.some(([k]) => k === tab) ? "" : " hidden"}>${TABSET.map(([k, t]) => `<a href="#" data-tab="${k}">${t}</a>`).join("")}</div></div>
         <div class="chipbar" id="chipbar"><span class="flabel">학교</span><div class="chips" id="chips"></div></div>
     <div id="cview"></div>`;
 
@@ -369,6 +370,7 @@ registerPlanner(views, { esc, load, store });
 const filesApi = registerFiles(views, { esc, load, nm });
 
 // 보관함 > 바로가기: 분류별 헤어라인 목록. 공식·공공은 구분해 적고, 확인일을 함께 보여 준다(data/links.json).
+views.midlife = async (el) => { el.innerHTML = `<div class="ed"><p class="muted">곧 열려요: 중학교 교육과정 · 교과서 · 중학교 시기 일정</p><p><a class="lnk" href="#schedule?t=road">학년별 로드맵 보기</a></p></div>`; };
 views.links = async (el) => {
   const d = await load("links");
   const KIND = { 공식: "공식", 공공: "공공", 매체: "매체", 학원: "학원" };
@@ -404,17 +406,18 @@ function render() {
   let id = path || "home";
   if (REDIRECT[id]) { location.replace("#" + REDIRECT[id] + (qs ? "?" + qs : "")); return; } // 옛 주소 → 가까운 화면
   const n = byId.get(id) || byId.get("home");
-  const tab = tabFor(n.id, query) || TABS[0];
+  const loc = locate(n.id, query) || { tab: TABS[0], group: TABS[0].groups[0], item: TABS[0].groups[0].items[0] };
+  const tab = loc.tab;
   document.body.dataset.profile = currentProfile(store).key;
   drawTabs(tab);
   document.title = `${tab.id === "home" ? "" : tab.title + " · "}대입 포털`;
   scrollTo(0, 0);
-  const isHigh = !(n.id === "select/curriculum" && (query.get("v") === "middle" || query.get("lv") === "middle"));
   const navA = (href, title, on) => `<a href="${href}"${on ? ' aria-current="page"' : ""}>${esc(title)}</a>`;
-  const sub = tab.id === "school"
-    ? `<nav class="subnav lvl" aria-label="학교급">${navA("#select/curriculum?v=middle", "중학교", !isHigh)}${navA("#select/curriculum", "고등학교", isHigh)}</nav>${isHigh ? `<nav class="subnav" aria-label="고등학교 안의 화면">${tab.items.map((x) => navA(hrefOf(x), x.title, isItem(x, n.id, query))).join("")}</nav>` : ""}`
-    : tab.items.length > 1 ? `<nav class="subnav" aria-label="${esc(tab.title)} 안의 화면">${tab.items.map((x) => navA(hrefOf(x), x.title, isItem(x, n.id, query))).join("")}</nav>` : "";
-  const soon = tab.soon ? `<p class="soon">곧 열려요: ${tab.soon.map(esc).join(" · ")}</p>` : "";
+  const row = (cls, label, links) => `<nav class="subnav${cls}" aria-label="${esc(label)}">${links}</nav>`;
+  const sub = (tab.groups.length > 1 ? row(" lvl", `${tab.title} 안의 구분`, tab.groups.map((g) => navA(hrefOf(g.items[0]), g.title, g === loc.group)).join("")) : "")
+    + (loc.group.items.length > 1 ? row("", `${tab.title} 안의 화면`, loc.group.items.map((x) => navA(hrefOf(x), x.title, x === loc.item)).join("")) : "");
+  const soonL = [...(loc.group.soon || []), ...(tab.soon || [])];
+  const soon = soonL.length ? `<p class="soon">곧 열려요: ${soonL.map(esc).join(" · ")}</p>` : "";
   if (n.view === "curriculum" && currentProfile(store).key === "b") { // 프로필 B는 아직 학교가 없다
     $("#main").innerHTML = `${sub}<div id="view"><section class="sec"><div class="empty"><span class="z" aria-hidden="true">0</span><p>${esc(currentProfile(store).name)}의 학교는 아직 없어요.</p><small>고입 이후 학교가 정해지면 과목표가 여기에 들어옵니다.</small><a href="#home">오늘 화면으로 →</a></div></section></div>${soon}`;
     return;
@@ -424,7 +427,7 @@ function render() {
     views[n.view]($("#view"), query, n).catch(() => ($("#view").innerHTML = GO_ERR));
     return;
   }
-  const title = tab.items.find((x) => isItem(x, n.id, query))?.title || n.title;
+  const title = loc.item.title || n.title;
   $("#main").innerHTML = `${sub}<h1 class="ph">${esc(title)}</h1><div id="view"></div>${soon}`;
   if (n.view) views[n.view]($("#view"), query).then(() => { filesApi.afterView(n.view, $("#view")); if (n.view === "credit") decorateSubjectLists($("#view"), load, "4."); if (n.view === "schedule") addCalendar($("#view")); }).catch(() => ($("#view").innerHTML = GO_ERR));
 }
