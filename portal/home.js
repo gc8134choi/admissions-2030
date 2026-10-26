@@ -1,4 +1,5 @@
 import { showProfiles } from "./profile-ui.js";
+import { STAGES, stageOf, stageTag } from "./stage.js";
 // 홈 화면(A안 에디토리얼). 데이터: policy.json(일정·변경 로그·학점제 규칙·마일스톤), summary/curricula/schools(관심 학교).
 // policy.json·policy.js는 읽기만 한다(서브 세션 담당).
 const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "확인 못 함" };
@@ -64,7 +65,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     return s.url && /^https?:\/\//.test(s.url) ? `<a class="src" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)} ↗</a>` : `<span class="src">${esc(s.name)}</span>`;
   };
   // 상태 표시: 확정은 표시하지 않는다(확인된 것은 조용히). 보도·추정·원문 미확인만 점+글자로.
-  const badges = (r) => `${r.status && r.status !== "confirmed" ? `<span class="pst ${r.status}">${PST[r.status] || r.status}</span>` : ""}${r.unverified ? ` <span class="unv-i" tabindex="0" role="img" aria-label="원문은 아직 못 봤어요${r.reason || r.note ? `: ${esc(r.reason || r.note)}` : ""}" title="원문은 아직 못 봤어요${r.reason || r.note ? ` — ${esc(r.reason || r.note)}` : ""}">ⓘ</span>` : ""}`;
+  const badges = (r) => `${stageTag(stageOf(r), esc)}${r.status && r.status !== "confirmed" ? `<span class="pst ${r.status}">${PST[r.status] || r.status}</span>` : ""}${r.unverified ? ` <span class="unv-i" tabindex="0" role="img" aria-label="원문은 아직 못 봤어요${r.reason || r.note ? `: ${esc(r.reason || r.note)}` : ""}" title="원문은 아직 못 봤어요${r.reason || r.note ? ` — ${esc(r.reason || r.note)}` : ""}">ⓘ</span>` : ""}`;
   const DRE = /^\d{4}-\d{2}(-\d{2})?$/;
   const eventsOf = (r) => {
     if (r.events) return r.events;
@@ -170,6 +171,15 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const csDays = cs && !cs.start.endsWith("-") ? (() => { const sp0 = span(cs.start, cs.end); return Math.round(((sp0.month ? new Date(sp0.start.getFullYear(), sp0.start.getMonth(), 15) : sp0.start) - t) / DAY); })() : null;
     const ddline = csDays != null ? `<span class="aux me"><span class="aux-d num">${examYear}학년도 수능 <b>${csDays.toLocaleString()}일</b></span> ${badges(csRow)}</span>` : "";
 
+    // 단계 줄: 지금 가장 가까운 일이 속한 단계를 강조하고, 누르면 그 단계 일정으로 간다(앞으로 90일 안 일정 수 함께).
+    const STG_HREF = { 중입: "#schedule?t=life", 고입: "#schedule?t=hs", 대입: "#schedule?t=univ" };
+    const stageLine = () => {
+      const cnt = Object.fromEntries(STAGES.map((g) => [g, 0]));
+      upRows().forEach((x) => { const g = stageOf(x.r); if (g) cnt[g]++; });
+      const first = feed()[0], cur = first ? (first.kind === "stone" ? stageOf(first.m.row) : stageOf(upcoming.find((x) => x.r.title + (x.e.label ? ` · ${x.e.label}` : "") === first.title)?.r)) : null;
+      return STAGES.map((g) => `<a href="${STG_HREF[g]}"${g === cur ? ' class="on" aria-current="true"' : ""}><b>${g}</b><small class="num">${cnt[g] ? `곧 ${cnt[g]}건` : "—"}</small></a>`).join('<span class="stg-sep" aria-hidden="true">—</span>');
+    };
+
     el.innerHTML = `<div class="hm">
       ${ddline ? `<div class="auxbar" aria-label="수능 D-day">${ddline}</div>` : ""}
       <div class="hero-grid">
@@ -178,6 +188,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
           ${isB ? "" : `<div class="hm-aud-wrap">${audienceChips(aud, esc)}</div>`}
           <ul class="rows" id="hm-up">${rest()}</ul></aside>
       </div>
+      <nav class="stgline" aria-label="입시 단계">${stageLine()}</nav>
       <div class="two">
         <section class="sec"><div class="sec-h"><h2><em>01</em>${isB ? esc(pf.name) + "의 학교" : "우리 " + mine.length + "개교"}</h2>${isB ? "" : '<a href="#select/curriculum?v=compare">과목표 비교</a>'}</div>
           ${isB || !mine.length ? '<div class="empty"><span class="z" aria-hidden="true">0</span><p>학교를 고르면 여기에 모입니다.</p><small>후보 학교를 담아 두면 필수·내가 고르는 학점과 개설 과목을 나란히 볼 수 있어요.</small><a href="#select/curriculum">학교 고르러 가기 →</a></div>' : `<ul class="schools">${mine.map(sch).join("")}</ul><p class="legend">네 학교 모두 <b>${m0.creditsTotal}학점</b>. 막대: <b style="color:var(--req)">필수</b> · <b style="color:var(--ele)">내가 고르는</b> · 나머지는 창의적 체험활동.</p>`}</section>
