@@ -173,3 +173,20 @@ table.policy tr.past{opacity:.55}
 .pn-o{border-bottom-color:var(--line)}
 .pn-bar{background:var(--paper2) var(--grain);border-top:0;box-shadow:0 -4px 12px -6px rgba(60,40,10,.35)}
 .pn-bar b{font-family:var(--serif)}
+
+/* ===== 6/6 보관함(바뀐 소식·바로가기·출처·업데이트 기록·원본 파일) ===== */
+.rows.lk{display:flex;flex-direction:column;gap:16px;padding:4px 2px}
+.rows.lk .row{background:var(--paper2);border:0;box-shadow:var(--sh);padding:14px 16px 12px}
+.rows.lk .row:nth-child(odd){transform:rotate(-.5deg);margin-right:8px}
+.rows.lk .row:nth-child(even){transform:rotate(.45deg);margin-left:8px}
+.rows.lk .row h3{font-family:var(--serif);font-weight:700}
+.sec-h h2{font-family:var(--serif)}
+/* 원본 파일: 사진을 붙인 폴라로이드(모서리 둥근 균일 카드가 아니라 흰 테두리, 각도 제각각) */
+.fl-card{border:0;border-radius:0;background:#FFFDF7;color:#1D1A16;box-shadow:var(--sh);padding:10px 10px 12px;position:relative}
+.fl-card:nth-child(odd){transform:rotate(-1.1deg)}
+.fl-card:nth-child(even){transform:rotate(.9deg)}
+.fl-card:nth-child(3n){transform:rotate(-.4deg)}
+.fl-card::before{content:"";position:absolute;top:-9px;left:50%;width:64px;height:18px;margin-left:-32px;background:rgba(206,176,120,.62);transform:rotate(-3deg);box-shadow:0 1px 2px rgba(0,0,0,.12);clip-path:polygon(0 8%,4% 0,8% 10%,12% 0,100% 0,96% 50%,100% 100%,10% 100%,6% 88%,0 92%);z-index:1}
+.fl-card .muted,.fl-card .fl-meta{color:#6C665B}
+.fl-card .fl-thumb{border-radius:0}
+.fl-card b{font-family:var(--serif)}
