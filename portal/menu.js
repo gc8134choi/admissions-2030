@@ -55,10 +55,15 @@ export const STATUS = { v1: "1차", v2: "2차", soon: "준비 중" };
 // soon: 아직 열리지 않은 기능은 메뉴에 두지 않고 해당 탭 맨 아래 한 줄로만 알린다.
 export const TABS = [
   { id: "home", title: "오늘", items: [{ id: "home", title: "오늘" }] },
-  { id: "schedule", title: "일정", items: [{ id: "schedule", title: "일정" }] },
-  { id: "school", title: "학교", items: [{ id: "select/curriculum", title: "학교별 과목표" }, { id: "select/types", title: "고교 유형·전형" }, { id: "planner/plan", title: "내 계획표" }], soon: ["학교별 시뮬레이션", "목표 학과 체크"] },
-  { id: "know", title: "알아두기", items: [{ id: "life/credit", title: "학점제 한눈에" }, { id: "admission/system", title: "대입 제도" }, { id: "changelog", title: "바뀐 소식" }], soon: ["학년별 할 일", "대학·학과 찾기"] },
-  { id: "vault", title: "내 보관함", items: [{ id: "library", title: "바로가기" }, { id: "library/sources", title: "출처 목록" }, { id: "library/status", title: "업데이트 기록" }, { id: "library/files", title: "원본 파일" }] },
+  { id: "schedule", title: "일정", items: [{ id: "schedule", title: "일정" }], soon: ["학년별 할 일"] },
+  // 학교: 화면 안 위쪽 글자 탭 "중학교 | 고등학교"(app.js schoolNav). 중학교 = 배정·지도, 고등학교 = 과목표·유형·지도.
+  { id: "school", title: "학교", items: [{ id: "select/curriculum", title: "학교별 과목표" }, { id: "select/types", title: "고교 유형·전형" }], soon: ["교과서"] },
+  { id: "admit", title: "대입", items: [{ id: "life/credit", title: "고교학점제 이해" }, { id: "planner/plan", title: "내 계획표" }, { id: "admission/system", title: "수능·내신 규칙" }, { id: "select/curriculum?v=univ", title: "대학 요건", route: "select/curriculum", v: "univ" }], soon: ["대학·학과 찾기", "학교별 시뮬레이션", "목표 학과 체크"] },
+  { id: "vault", title: "보관함", items: [{ id: "changelog", title: "바뀐 소식" }, { id: "library", title: "바로가기" }, { id: "library/sources", title: "출처 목록" }, { id: "library/status", title: "업데이트 기록" }, { id: "library/files", title: "원본 파일" }] },
 ];
+// 항목의 이동 주소(해시)와, 지금 화면(라우트 id·쿼리)이 그 항목인지. 항목에 route·v가 있으면 같은 화면을 쿼리로 나눈 것이다.
+export const hrefOf = (it) => "#" + it.id;
+export const isItem = (it, id, query) => (it.route ? it.route === id && query.get("v") === it.v : it.id === id && !(id === "select/curriculum" && query.get("v") === "univ"));
+export const tabFor = (id, query) => TABS.find((t) => t.items.some((it) => isItem(it, id, query))) || (id === "select/curriculum" || id === "select/types" ? TABS.find((t) => t.id === "school") : null);
 // 메뉴에서 빠진 옛 주소는 가장 가까운 화면으로 보낸다.
-export const REDIRECT = { select: "select/curriculum", life: "life/credit", "life/checklist": "life/credit", admission: "admission/system", "admission/univ": "admission/system", "planner/sim": "select/curriculum", "planner/report": "select/curriculum" };
+export const REDIRECT = { planner: "planner/plan", select: "select/curriculum", life: "life/credit", "life/checklist": "life/credit", admission: "admission/system", "admission/univ": "admission/system", "planner/sim": "select/curriculum", "planner/report": "select/curriculum" };

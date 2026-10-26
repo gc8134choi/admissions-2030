@@ -1,4 +1,4 @@
-import { MENU, STATUS, TABS, REDIRECT } from "./menu.js";
+import { MENU, STATUS, TABS, REDIRECT, hrefOf, isItem, tabFor } from "./menu.js";
 import { register as registerPolicy } from "./policy.js";
 import { registerHome } from "./home.js";
 import { registerFiles } from "./files.js";
@@ -38,9 +38,8 @@ const MENU_ICON = {
 };
 
 // 상단 메뉴(데스크톱)·하단 탭(모바일): 5개 탭, 글자만. 켜진 탭은 위쪽 선.
-const tabOf = (id) => TABS.find((t) => t.items.some((x) => x.id === id));
 function drawTabs(tab) {
-  const html = TABS.map((t) => `<a href="#${t.items[0].id}"${t.id === tab.id ? ' aria-current="page"' : ""}>${esc(t.title)}</a>`).join("");
+  const html = TABS.map((t) => `<a href="${hrefOf(t.items[0])}"${t.id === tab.id ? ' aria-current="page"' : ""}>${esc(t.title)}</a>`).join("");
   $("#topnav").innerHTML = html;
   $("#btabs").innerHTML = html;
 }
@@ -119,16 +118,21 @@ async function curriculumView(el, query, node) {
   let areasSel = AREA7.filter((a) => areaIn.includes(a)); // 비어 있으면 전체
   let focusP = query.get("p"); // 지도 탭에서 강조할 학교
   let tab = ["compare", "univ", "map", "middle"].includes(query.get("v")) ? query.get("v") : "summary";
+  const lv = tab === "middle" || query.get("lv") === "middle" ? "middle" : "high"; // 학교 탭의 "중학교 | 고등학교"
+  if (lv === "middle" && !["map", "middle"].includes(tab)) tab = "middle";
+  if (lv === "high" && tab === "middle") tab = "summary";
+  const TABSET = lv === "middle" ? [["middle", "중학교 배정"], ["map", "학교 지도"]] : [["summary", "학교별 요약"], ["compare", "상세 비교"], ["map", "학교 지도"]];
   let compare = null; // 상세 비교 화면(필터 포함)은 한 번만 만들고 탭 전환 때 재사용한다
 
-  el.innerHTML = `<div class="phead"><h2>${esc(node?.title || "학교별 과목표")} ${node ? badge(node.status) : ""}</h2>
-      <div class="subtabs" id="tabs"><a href="#" data-tab="summary">학교별 요약</a><a href="#" data-tab="compare">상세 비교</a><a href="#" data-tab="univ">대학 요건 맞춰보기</a><a href="#" data-tab="map">학교 지도</a><a href="#" data-tab="middle">중학교 배정</a></div></div>
-    <div class="chipbar" id="chipbar"><span class="flabel">학교</span><div class="chips" id="chips"></div></div>
+  el.innerHTML = `<div class="phead">
+      <div class="subtabs" id="tabs"${tab === "univ" ? " hidden" : ""}>${TABSET.map(([k, t]) => `<a href="#" data-tab="${k}">${t}</a>`).join("")}</div></div>
+        <div class="chipbar" id="chipbar"><span class="flabel">학교</span><div class="chips" id="chips"></div></div>
     <div id="cview"></div>`;
 
   const syncUrl = () => {
     const q = new URLSearchParams();
     if (tab !== "summary") q.set("v", tab);
+    if (lv === "middle" && tab === "map") q.set("lv", "middle");
     if (tab === "map" || tab === "middle") { if (tab === "map" && focusP) q.set("p", focusP); }
     else q.set("s", sel.join(","));
     if (areasSel.length) q.set("a", areasSel.join(","));
@@ -147,7 +151,7 @@ async function curriculumView(el, query, node) {
   const drawBody = async () => {
     const body = $("#cview");
     if (tab === "summary") { compare = null; await summaryBody(body, sel); }
-    else if (tab === "map") { compare = null; await mapBody(body, { load, esc, focus: focusP }); }
+    else if (tab === "map") { compare = null; body.__map ||= { level: lv === "middle" ? "middle" : "high", view: "map", sel: null }; await mapBody(body, { load, esc, focus: focusP }); }
     else if (tab === "middle") { compare = null; await middleBody(body, { load, esc }); }
     else if (tab === "univ") { compare = null; await univBody(body, { load, esc, profile: currentProfile(store), schools, sel }); }
     else {
@@ -400,12 +404,16 @@ function render() {
   let id = path || "home";
   if (REDIRECT[id]) { location.replace("#" + REDIRECT[id] + (qs ? "?" + qs : "")); return; } // 옛 주소 → 가까운 화면
   const n = byId.get(id) || byId.get("home");
-  const tab = tabOf(n.id) || TABS[0];
+  const tab = tabFor(n.id, query) || TABS[0];
   document.body.dataset.profile = currentProfile(store).key;
   drawTabs(tab);
   document.title = `${tab.id === "home" ? "" : tab.title + " · "}대입 포털`;
   scrollTo(0, 0);
-  const sub = tab.items.length > 1 ? `<nav class="subnav" aria-label="${esc(tab.title)} 안의 화면">${tab.items.map((x) => `<a href="#${x.id}"${x.id === n.id ? ' aria-current="page"' : ""}>${esc(x.title)}</a>`).join("")}</nav>` : "";
+  const isHigh = !(n.id === "select/curriculum" && (query.get("v") === "middle" || query.get("lv") === "middle"));
+  const navA = (href, title, on) => `<a href="${href}"${on ? ' aria-current="page"' : ""}>${esc(title)}</a>`;
+  const sub = tab.id === "school"
+    ? `<nav class="subnav lvl" aria-label="학교급">${navA("#select/curriculum?v=middle", "중학교", !isHigh)}${navA("#select/curriculum", "고등학교", isHigh)}</nav>${isHigh ? `<nav class="subnav" aria-label="고등학교 안의 화면">${tab.items.map((x) => navA(hrefOf(x), x.title, isItem(x, n.id, query))).join("")}</nav>` : ""}`
+    : tab.items.length > 1 ? `<nav class="subnav" aria-label="${esc(tab.title)} 안의 화면">${tab.items.map((x) => navA(hrefOf(x), x.title, isItem(x, n.id, query))).join("")}</nav>` : "";
   const soon = tab.soon ? `<p class="soon">곧 열려요: ${tab.soon.map(esc).join(" · ")}</p>` : "";
   if (n.view === "curriculum" && currentProfile(store).key === "b") { // 프로필 B는 아직 학교가 없다
     $("#main").innerHTML = `${sub}<div id="view"><section class="sec"><div class="empty"><span class="z" aria-hidden="true">0</span><p>${esc(currentProfile(store).name)}의 학교는 아직 없어요.</p><small>고입 이후 학교가 정해지면 과목표가 여기에 들어옵니다.</small><a href="#home">오늘 화면으로 →</a></div></section></div>${soon}`;
@@ -416,7 +424,7 @@ function render() {
     views[n.view]($("#view"), query, n).catch(() => ($("#view").innerHTML = GO_ERR));
     return;
   }
-  const title = tab.items.find((x) => x.id === n.id)?.title || n.title;
+  const title = tab.items.find((x) => isItem(x, n.id, query))?.title || n.title;
   $("#main").innerHTML = `${sub}<h1 class="ph">${esc(title)}</h1><div id="view"></div>${soon}`;
   if (n.view) views[n.view]($("#view"), query).then(() => { filesApi.afterView(n.view, $("#view")); if (n.view === "credit") decorateSubjectLists($("#view"), load, "4."); if (n.view === "schedule") addCalendar($("#view")); }).catch(() => ($("#view").innerHTML = GO_ERR));
 }
