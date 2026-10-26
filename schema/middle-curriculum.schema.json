@@ -1,0 +1,24 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "middle-curriculum.schema.json",
+ "title": "middle-curriculum (중학교 교과서·교과 구성) — research/data/middle-curriculum-draft.json 입력 형식 = portal/data/middle-curriculum.json",
+ "description": "중학교별 교과서 출판사 표. 학교는 places의 placeId로 연결한다. 교과서 저자·교사 이름은 저장하지 않고 출판사만 저장한다. 공개 자료를 못 찾은 학교는 notFound에 사유와 함께 둔다(빈 표를 만들지 않는다).",
+ "type": "object",
+ "required": ["schools", "notFound"],
+ "properties": {
+  "schools": { "type": "array", "items": { "type": "object", "required": ["placeId", "schoolYear", "title", "status", "sources", "subjects"], "properties": {
+   "placeId": { "type": "string", "description": "places.json의 중학교 placeId" },
+   "schoolYear": { "type": "integer", "description": "적용 학년도(예: 2027)" },
+   "title": { "type": "string" },
+   "status": { "enum": ["confirmed", "reported", "estimated"] },
+   "confidence": { "type": "string" },
+   "sources": { "type": "array", "minItems": 1, "items": { "type": "object", "required": ["name"], "properties": { "name": { "type": "string" }, "url": { "type": ["string", "null"] }, "file": { "type": ["string", "null"], "description": "portal/ 아래 원본 이미지 경로(files.json의 file과 같음)" } } } },
+   "footnote": { "type": ["string", "null"] },
+   "subjects": { "type": "array", "items": { "type": "object", "required": ["order", "subject", "publishers"], "properties": {
+    "order": { "type": "integer" },
+    "subject": { "type": "string" },
+    "publishers": { "type": "object", "required": ["1", "2", "3"], "description": "학년 → 출판사 이름, 해당 학년에 교과서가 없으면 null", "additionalProperties": { "type": ["string", "null"] } },
+    "note": { "type": ["string", "null"] } } } } } },
+  "notFound": { "type": "array", "items": { "type": "object", "required": ["placeId", "reason"], "properties": { "placeId": { "type": "string" }, "reason": { "type": "string" } } } }
+ }
+}

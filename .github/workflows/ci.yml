@@ -81,4 +81,5 @@ jobs:
           node tools/build-learners.mjs --check
           node tools/build-places.mjs --check
           node tools/build-middle.mjs --check
+          node tools/build-middle-curriculum.mjs --check
           if [ -f research/data/links-draft.json ]; then node tools/build-links.mjs --check; fi
