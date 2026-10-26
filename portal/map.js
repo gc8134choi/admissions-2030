@@ -32,7 +32,7 @@ export function placeInfo(p, esc) {
   const st = ES[p.status] ? `<span class="es ${p.status === "reported" ? "rep" : "est"}">${ES[p.status]}</span>` : "";
   const hp = safeUrl(p.homepage);
   return `<b>${esc(p.name)}</b> <span class="muted small">${esc(LEVEL[p.level][1])}${p.kind ? ` · ${esc(p.kind)}` : ""}</span> ${st}
-    <div class="pl-addr">${esc(p.address)}</div>
+    <div class="pl-addr">${esc(p.address)}${p.coordApprox ? ' <span class="muted small">위치 근사</span>' : ""}</div>
     <div class="pl-links">${hp ? `<a href="${esc(hp)}" target="_blank" rel="noopener">홈페이지</a>` : ""}<a href="${esc(naverUrl(p))}" target="_blank" rel="noopener">네이버 지도에서 열기</a><a href="${esc(kakaoUrl(p))}" target="_blank" rel="noopener">카카오맵에서 열기</a></div>`;
 }
 

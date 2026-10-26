@@ -10,6 +10,7 @@ export async function middleBody(el, { load, esc, mapHref = (id) => `#select/cur
   const place = new Map(pl.places.map((p) => [p.id, p]));
   const flow = policy.filter((r) => r.topic === "life-schedule" && r.stage === "중입");
   if (!mid.from || !mid.zoneSchools.length) { el.innerHTML = `<div class="ed"><h2>중학교 배정</h2><p class="muted">아직 정리 중이에요.</p></div>`; return; }
+  const near = mid.principles.find((p) => /근거리/.test(p.title));
   const from = place.get(mid.from.placeId);
   const zone = mid.zoneSchools.map((z) => {
     const p = place.get(z.placeId);
@@ -21,6 +22,7 @@ export async function middleBody(el, { load, esc, mapHref = (id) => `#select/cur
   el.innerHTML = `<div class="ed"><h2>중학교 배정</h2>
     <p class="ed-b">${from ? `<b>${esc(from.name)}</b> 통학구역에서 갈 수 있는 중학교예요.` : "통학구역에서 갈 수 있는 중학교예요."}${mid.from.note ? ` ${esc(mid.from.note)}` : ""}</p>
     <ul class="pl-zone">${zone}</ul>
+    ${near ? `<p class="muted small">근거리 중학교 명단은 아직 공식 자료로 확인하지 못했어요. 학교 공지로 확인해 주세요.${near.sources?.length ? ` 출처 ${srcs(near.sources, esc)}` : ""}</p>` : ""}
     ${mid.principles.length ? `<h3>배정 원칙</h3><div class="ed-rows">${mid.principles.map((p) => `<article class="ed-row"><div class="ed-st">${tag(p.status, esc)}</div><h3>${esc(p.title)}</h3><p class="ed-b">${esc(p.body)}</p><p class="ed-s">출처 ${srcs(p.sources, esc)}</p></article>`).join("")}</div>` : ""}
     ${flowRows ? `<h3>배정 일정 흐름</h3><ol class="pl-flow">${flowRows}</ol><p class="muted small">날짜는 일정 화면과 같아요. 학교·교육지원청 공지로 다시 확인해 주세요.</p>` : ""}</div>`;
 }
