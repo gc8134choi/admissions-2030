@@ -125,3 +125,27 @@ th{background:rgba(217,198,160,.45);color:var(--ink)}
 table.policy td{border-left:0;border-right:0}
 table.policy tr.past{opacity:.55}
 .lnk{font-weight:700}
+
+/* ===== 4/6 학교(과목표 요약·유형·중학교 배정·지도): 종이 조각 ===== */
+.schoolgrid{padding:16px 0 10px;align-items:flex-start}
+.school{position:relative;background:var(--paper2);border:0;box-shadow:var(--sh);padding:24px 18px 22px;margin:8px 4px 14px;transform:rotate(-.7deg)}
+.school:nth-child(even){transform:rotate(.6deg);margin-top:16px}
+.school:nth-child(3){transform:rotate(-.3deg)}
+.school::before{content:"";position:absolute;top:-10px;left:50%;width:70px;height:20px;margin-left:-35px;background:rgba(206,176,120,.62);transform:rotate(-3deg);box-shadow:0 1px 2px rgba(0,0,0,.12);clip-path:polygon(0 8%,4% 0,8% 10%,12% 0,100% 0,96% 50%,100% 100%,10% 100%,6% 88%,0 92%)}
+.school:nth-child(even)::before{transform:rotate(4deg)}
+.school .sb-t b,.hs-tiles.k3 b,.st-n{font-family:var(--serif);font-weight:700}
+.school .sb-logo{filter:none;opacity:1}
+.school .fold>summary{font-weight:700}
+@media (max-width:760px){.schoolgrid.cols2>.school,.schoolgrid.cols3>.school,.schoolgrid.cols4>.school{margin-top:10px}}
+
+/* 정책·유형·배정 목록의 줄: 어긋나게 붙인 종이 */
+.ed-rows{display:flex;flex-direction:column;gap:18px;padding:6px 2px}
+.ed-row,.ed-row:first-child{background:var(--paper2);border:0;box-shadow:var(--sh);padding:18px 16px 16px}
+.ed-row:nth-child(odd){transform:rotate(-.5deg);margin-right:10px}
+.ed-row:nth-child(even){transform:rotate(.45deg);margin-left:10px}
+.ed-row h3{font-family:var(--serif);font-weight:700}
+.pl-zone>li{background:var(--paper2);border:0!important;box-shadow:var(--sh);padding:12px 14px;margin:0 0 16px;transform:rotate(-.4deg)}
+.pl-zone>li:nth-child(even){transform:rotate(.4deg)}
+.pl-list li{border-color:var(--line)}
+.pl-list li.on{background:rgba(217,198,160,.5)}
+.pl-map{box-shadow:var(--sh);border:6px solid var(--paper2)}
