@@ -2155,6 +2155,436 @@
     "careerSubjectsPolicy": null
    },
    "csatMinimumNullReason": "정시 수능위주 일반전형 수능 최저학력기준 없음(수능 100%)"
+  },
+  {
+   "ruleId": "ar-2028-hanyang-susi-gyogwa",
+   "universityId": "s-908",
+   "universityName": "한양대학교",
+   "unitName": "학생부교과 추천형(506명)",
+   "admissionYear": 2028,
+   "track": "susi-gyogwa",
+   "announcedAt": "2026-04-30",
+   "announcedAtNote": "대학입학전형시행계획 공표(2026.4.30, 입학처 공지 목록 기준)",
+   "status": "confirmed",
+   "referenceNote": "2028학년도 시행계획(2022 개정 교육과정 첫 수능 세대) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+   "sources": [
+    {
+     "name": "2028학년도 한양대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
+     "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/한양대학교/한양대학교_2028학년도_대학입학전형계획.pdf",
+     "kind": "official",
+     "retrieved": "2026-10-26"
+    }
+   ],
+   "checkedAt": "2026-10-26",
+   "sourcePage": "시행계획 5쪽, 10쪽",
+   "requirements": [],
+   "requirementsNullReason": "교과 이수 권장·필수 과목은 시행계획에서 확인 못 함",
+   "gradeReflection": {
+    "gradeMethod": "2028학년도 변경: 학생부교과 60% + 학생부종합평가 40%(2027학년도 교과 90+교과 정성 10). 학교장 추천인원 제한 폐지, 지원자격은 2028년 2월 이후 졸업예정자 + 통산 5개 학기 이상 국내 고교 성적",
+    "careerSubjectsPolicy": null
+   },
+   "csatMinimum": {
+    "expr": "자연·상경·한양인터칼리지학부: 국어·수학·영어·탐구(상위 1개 과목) 중 3개 영역(수학 포함) 각 3등급 이내. 인문·의류학과·실내건축디자인학과: 3개 영역 각 3등급 이내. 수능 필수 응시영역: 국어·수학·영어·사회·과학·한국사",
+    "requiredAreas": [
+     "국어",
+     "수학",
+     "영어",
+     "사회탐구",
+     "과학탐구",
+     "한국사"
+    ],
+    "designatedSubjectIds": []
+   }
+  },
+  {
+   "ruleId": "ar-2028-hanyang-susi-hakeop",
+   "universityId": "s-908",
+   "universityName": "한양대학교",
+   "unitName": "학생부종합 학업형(811명, 구 추천형·서류형 통합)",
+   "admissionYear": 2028,
+   "track": "susi-jonghap",
+   "announcedAt": "2026-04-30",
+   "announcedAtNote": "대학입학전형시행계획 공표(2026.4.30, 입학처 공지 목록 기준)",
+   "status": "confirmed",
+   "referenceNote": "2028학년도 시행계획(2022 개정 교육과정 첫 수능 세대) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+   "sources": [
+    {
+     "name": "2028학년도 한양대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
+     "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/한양대학교/한양대학교_2028학년도_대학입학전형계획.pdf",
+     "kind": "official",
+     "retrieved": "2026-10-26"
+    }
+   ],
+   "checkedAt": "2026-10-26",
+   "sourcePage": "시행계획 5쪽, 10~11쪽",
+   "requirements": [],
+   "requirementsNullReason": "교과 이수 권장·필수 과목은 시행계획에서 확인 못 함",
+   "gradeReflection": {
+    "gradeMethod": "학생부종합평가 100%. 2028학년도 학생부종합(서류형) 폐지, 추천형이 학업형으로 명칭 변경(2027학년도 서류형 481명·추천형 291명). 면접형 모집단위 확대(공과 다수 제시문 기반 면접, 의예과 등)",
+    "careerSubjectsPolicy": null
+   },
+   "csatMinimum": {
+    "expr": "자연·상경·한양인터칼리지학부: 국어·수학·영어·사회·과학 중 3개 영역(수학 포함) 등급합 7 이내. 인문·예체능·의류학과·실내건축디자인학과: 3개 영역 등급합 7 이내. 의예과: 국어·수학·영어·탐구(2개 과목 평균) 중 3개 영역 등급합 4 이내(좌동)",
+    "requiredAreas": [
+     "국어",
+     "수학",
+     "영어",
+     "사회탐구",
+     "과학탐구"
+    ],
+    "designatedSubjectIds": []
+   }
+  },
+  {
+   "ruleId": "ar-2028-skku-susi-yungham",
+   "universityId": "s-907",
+   "universityName": "성균관대학교",
+   "unitName": "학생부종합 서류형 융합인재(전 모집단위)",
+   "admissionYear": 2028,
+   "track": "susi-jonghap",
+   "announcedAt": "2026-04-30",
+   "announcedAtNote": "대학입학전형시행계획 공표(2026.4.30, 입학처 공지 목록 기준)",
+   "status": "confirmed",
+   "referenceNote": "2028학년도 시행계획(2022 개정 교육과정 첫 수능 세대) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+   "sources": [
+    {
+     "name": "2028학년도 성균관대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
+     "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/성균관대학교/성균관대학교_2028학년도_대학입학전형계획.pdf",
+     "kind": "official",
+     "retrieved": "2026-10-26"
+    }
+   ],
+   "checkedAt": "2026-10-26",
+   "sourcePage": "시행계획 변경사항(수능최저 방법), 수능 최저 표",
+   "requirements": [],
+   "requirementsNullReason": "교과 이수 권장·필수 과목은 시행계획에서 확인 못 함",
+   "gradeReflection": {
+    "gradeMethod": "2028학년도 변경: 수능최저 탐구영역 반영을 '탐구 2과목 등급 평균'에서 사회·과학 2개 과목 등급 분리 적용(의예과는 사회·과학 2개 과목 등급 평균)으로 개선(통합사회·통합과학 도입 반영). 수능 필수응시영역: 국어·수학·영어·사회탐구·과학탐구·한국사(직업탐구 제외)",
+    "careerSubjectsPolicy": null
+   },
+   "csatMinimum": {
+    "expr": "국어·수학·영어·사회탐구·과학탐구 5개 영역(과목) 중 3개 등급합 6등급 이내",
+    "requiredAreas": [
+     "국어",
+     "수학",
+     "영어",
+     "사회탐구",
+     "과학탐구"
+    ],
+    "designatedSubjectIds": []
+   }
+  },
+  {
+   "ruleId": "ar-2028-skku-susi-gyogwa",
+   "universityId": "s-907",
+   "universityName": "성균관대학교",
+   "unitName": "학생부교과 추천인재",
+   "admissionYear": 2028,
+   "track": "susi-gyogwa",
+   "announcedAt": "2026-04-30",
+   "announcedAtNote": "대학입학전형시행계획 공표(2026.4.30, 입학처 공지 목록 기준)",
+   "status": "confirmed",
+   "referenceNote": "2028학년도 시행계획(2022 개정 교육과정 첫 수능 세대) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+   "sources": [
+    {
+     "name": "2028학년도 성균관대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
+     "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/성균관대학교/성균관대학교_2028학년도_대학입학전형계획.pdf",
+     "kind": "official",
+     "retrieved": "2026-10-26"
+    }
+   ],
+   "checkedAt": "2026-10-26",
+   "sourcePage": "시행계획 변경사항, 수능 최저 표",
+   "requirements": [],
+   "requirementsNullReason": "교과 이수 권장·필수 과목은 시행계획에서 확인 못 함",
+   "gradeReflection": {
+    "gradeMethod": "2028학년도 변경: 수능최저 탐구영역 반영을 '탐구 2과목 등급 평균'에서 사회·과학 2개 과목 등급 분리 적용(의예과는 사회·과학 2개 과목 등급 평균)으로 개선(통합사회·통합과학 도입 반영). 수능 필수응시영역: 국어·수학·영어·사회탐구·과학탐구·한국사(직업탐구 제외). 지원자격은 당해연도 졸업예정자만(2027학년도는 직전 졸업생 포함). 정량평가를 공통과목·선택과목 분리 계산(공통 35+선택 35), 정성평가 30(2027학년도 정량 80[A군 70·B군 10]+정성 20)",
+    "careerSubjectsPolicy": "선택과목(진로선택 포함)을 정량평가에 분리 반영(선택과목 35점)"
+   },
+   "csatMinimum": {
+    "expr": "인문과학·사회과학계열, 글로벌AI융합학부, 경영학과, 사범대학, 영상학과, 의상학과, 자연과학계열, 공학계열, 건설환경공학부, 건축학과(5년제): 5개 영역(과목) 중 3개 등급합 7 이내. 자유전공계열, 글로벌리더학부, 글로벌경제·경영학과, 전자전기정보공학부, 컴퓨터공학과, 반도체융합공학과, 에너지학과, 글로벌바이오메디컬공학과: 3개 등급합 6 이내",
+    "requiredAreas": [
+     "국어",
+     "수학",
+     "영어",
+     "사회탐구",
+     "과학탐구"
+    ],
+    "designatedSubjectIds": []
+   }
+  },
+  {
+   "ruleId": "ar-2028-skku-susi-nonsul",
+   "universityId": "s-907",
+   "universityName": "성균관대학교",
+   "unitName": "논술위주 언어형/수리형",
+   "admissionYear": 2028,
+   "track": "susi-nonsul",
+   "announcedAt": "2026-04-30",
+   "announcedAtNote": "대학입학전형시행계획 공표(2026.4.30, 입학처 공지 목록 기준)",
+   "status": "confirmed",
+   "referenceNote": "2028학년도 시행계획(2022 개정 교육과정 첫 수능 세대) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+   "sources": [
+    {
+     "name": "2028학년도 성균관대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
+     "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/성균관대학교/성균관대학교_2028학년도_대학입학전형계획.pdf",
+     "kind": "official",
+     "retrieved": "2026-10-26"
+    }
+   ],
+   "checkedAt": "2026-10-26",
+   "sourcePage": "시행계획 수능 최저 표",
+   "requirements": [],
+   "requirementsNullReason": "교과 이수 권장·필수 과목은 시행계획에서 확인 못 함",
+   "gradeReflection": {
+    "gradeMethod": "2028학년도 변경: 수능최저 탐구영역 반영을 '탐구 2과목 등급 평균'에서 사회·과학 2개 과목 등급 분리 적용(의예과는 사회·과학 2개 과목 등급 평균)으로 개선(통합사회·통합과학 도입 반영). 수능 필수응시영역: 국어·수학·영어·사회탐구·과학탐구·한국사(직업탐구 제외). 논술위주 언어형으로 자연과학계열·전자전기정보공학부·공학계열·건설환경공학부·컴퓨터공학과·글로벌AI융합학부 지원 시 최저에 수학영역 필수 반영",
+    "careerSubjectsPolicy": null
+   },
+   "csatMinimum": {
+    "expr": "글로벌AI융합학부, 인문과학·사회과학·자연과학·공학계열, 경영학과, 건설환경공학부: 5개 영역(과목) 중 3개 등급합 6 이내. 자유전공계열, 글로벌리더학부, 글로벌경제·경영학과, 전자전기정보공학부, 반도체시스템공학과, 컴퓨터공학과, 글로벌바이오메디컬공학과, 지능형소프트웨어학과, 약학과, 반도체융합공학과, 에너지학과: 3개 등급합 5 이내. 의예과: 국어·수학·영어·탐구(2개 과목 평균) 4개 영역 등급합 5 이내",
+    "requiredAreas": [
+     "국어",
+     "수학",
+     "영어",
+     "사회탐구",
+     "과학탐구"
+    ],
+    "designatedSubjectIds": []
+   }
+  },
+  {
+   "ruleId": "ar-2028-cau-jeongsi-s67",
+   "universityId": "s-909",
+   "universityName": "중앙대학교",
+   "unitName": "정시 수능(수능89 / 수능67 신설)",
+   "admissionYear": 2028,
+   "track": "jeongsi-csat",
+   "announcedAt": "2026-04-30",
+   "announcedAtNote": "대학입학전형시행계획 공표(2026.4.30, 입학처 공지 목록 기준)",
+   "status": "confirmed",
+   "referenceNote": "2028학년도 시행계획(2022 개정 교육과정 첫 수능 세대) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+   "sources": [
+    {
+     "name": "2028학년도 중앙대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
+     "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/중앙대학교/중앙대학교_2028학년도_대학입학전형계획.pdf",
+     "kind": "official",
+     "retrieved": "2026-10-26"
+    }
+   ],
+   "checkedAt": "2026-10-26",
+   "sourcePage": "시행계획 4쪽, 수능 반영방법 7쪽",
+   "requirements": [],
+   "requirementsNullReason": "정시는 교과 이수 권장·필수 과목 해당 없음",
+   "gradeReflection": {
+    "gradeMethod": "2028학년도 개편: 수능일반(2027학년도 수능 90+출결 10, 1,687명)을 수능89(수능 89+출결 11, 1,459명, 최저 없음)와 수능67(수능 67+서류 33, 251명, 수능최저 적용)로 분리. 전형 간 중복 지원 가능",
+    "careerSubjectsPolicy": null
+   },
+   "csatMinimum": {
+    "expr": "수능(수능67)만 적용. 서울캠퍼스 전체(의/약학부 제외): 국어·수학·영어·사탐·과탐 중 3개 영역 등급 합 7 이내 + 한국사 필수. 약학부: 4개 영역 등급 합 5 이내 + 한국사 4등급 이내. 의학부: 탐구(사/과탐 평균) 포함 기준. 영어 2등급 누적 비율 20% 미만이면 1·2등급 통합 1등급 간주, 인문·사범·사회과학·경영경제대학은 과학탐구 1·2등급 통합 간주, 제2외국어·한문 미반영",
+    "requiredAreas": [
+     "국어",
+     "수학",
+     "영어",
+     "사회탐구",
+     "과학탐구",
+     "한국사"
+    ],
+    "designatedSubjectIds": []
+   }
+  },
+  {
+   "ruleId": "ar-2028-cau-susi-jonghap",
+   "universityId": "s-909",
+   "universityName": "중앙대학교",
+   "unitName": "학생부종합 탐구하는 학종(Core)·모두의 학종(All)·최저 있는 학종(Up)",
+   "admissionYear": 2028,
+   "track": "susi-jonghap",
+   "announcedAt": "2026-04-30",
+   "announcedAtNote": "대학입학전형시행계획 공표(2026.4.30, 입학처 공지 목록 기준)",
+   "status": "confirmed",
+   "referenceNote": "2028학년도 시행계획(2022 개정 교육과정 첫 수능 세대) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+   "sources": [
+    {
+     "name": "2028학년도 중앙대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
+     "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/중앙대학교/중앙대학교_2028학년도_대학입학전형계획.pdf",
+     "kind": "official",
+     "retrieved": "2026-10-26"
+    }
+   ],
+   "checkedAt": "2026-10-26",
+   "sourcePage": "시행계획 4쪽, 수능 반영방법 7쪽",
+   "requirements": [],
+   "requirementsNullReason": "교과 이수 권장·필수 과목은 시행계획에서 확인 못 함",
+   "gradeReflection": {
+    "gradeMethod": "2028학년도 개편: 탐구형인재→탐구하는 학종(Core, 1단계 서류 100·2단계 면접 40, 최저 없음), 융합형인재→모두의 학종(All, 서류 100, 최저 없음), 성장형인재→최저 있는 학종(Up, 서류 100(1단계)·면접 30(2단계), 최저 적용). 의학부는 1단계 합격자 대상 면접",
+    "careerSubjectsPolicy": null
+   },
+   "csatMinimum": {
+    "expr": "최저 있는 학종(Up)에만 적용. 서울캠퍼스 전체(의/약학부 제외): 국어·수학·영어·사탐·과탐 중 3개 영역 등급 합 6 이내 + 한국사 필수. 약학부: 4개 영역 등급 합 5 이내 + 한국사 4등급 이내. 의학부: 탐구(사/과탐 평균) 반영. 영어 2등급 누적 20% 미만이면 1·2등급 통합 간주, 인문·사회과학·경영경제대학·간호학과(인문)는 과학탐구 1·2등급 통합 간주",
+    "requiredAreas": [
+     "국어",
+     "수학",
+     "영어",
+     "사회탐구",
+     "과학탐구",
+     "한국사"
+    ],
+    "designatedSubjectIds": []
+   }
+  },
+  {
+   "ruleId": "ar-2028-cau-susi-gyogwa-nonsul",
+   "universityId": "s-909",
+   "universityName": "중앙대학교",
+   "unitName": "학생부교과 지역균형 + 모두의 논술(서울캠퍼스)",
+   "admissionYear": 2028,
+   "track": "susi-gyogwa",
+   "announcedAt": "2026-04-30",
+   "announcedAtNote": "대학입학전형시행계획 공표(2026.4.30, 입학처 공지 목록 기준)",
+   "status": "confirmed",
+   "referenceNote": "2028학년도 시행계획(2022 개정 교육과정 첫 수능 세대) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+   "sources": [
+    {
+     "name": "2028학년도 중앙대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
+     "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/중앙대학교/중앙대학교_2028학년도_대학입학전형계획.pdf",
+     "kind": "official",
+     "retrieved": "2026-10-26"
+    }
+   ],
+   "checkedAt": "2026-10-26",
+   "sourcePage": "시행계획 4쪽, 수능 반영방법 7쪽",
+   "requirements": [],
+   "requirementsNullReason": "교과 이수 권장·필수 과목은 시행계획에서 확인 못 함",
+   "gradeReflection": {
+    "gradeMethod": "논술 일반형 → 모두의 논술(논술 70→80+교과·출결), 창의형 → 재학생 논술(교과 10+출결 10, 최저 없음). 학생부교과(지역균형) 서울캠퍼스는 최저 적용",
+    "careerSubjectsPolicy": null
+   },
+   "csatMinimum": {
+    "expr": "학생부교과(지역균형): 서울 전체(약학부 제외) 국어·수학·영어·사탐·과탐 중 3개 영역 등급 합 7 이내 + 한국사 필수, 약학부 4개 영역 등급 합 5 이내 + 한국사 4등급 이내. 모두의 논술: 서울 전체(의/약학부 제외) 3개 영역 등급 합 6 이내 + 한국사 필수, 약학부 합 5 이내",
+    "requiredAreas": [
+     "국어",
+     "수학",
+     "영어",
+     "사회탐구",
+     "과학탐구",
+     "한국사"
+    ],
+    "designatedSubjectIds": []
+   }
+  },
+  {
+   "ruleId": "ar-2028-hufs-susi-gyogwa",
+   "universityId": "s-911",
+   "universityName": "한국외국어대학교",
+   "unitName": "학생부교과 학교장추천전형(375명)",
+   "admissionYear": 2028,
+   "track": "susi-gyogwa",
+   "announcedAt": "2026-04-30",
+   "announcedAtNote": "대학입학전형시행계획 공표(2026.4.30, 입학처 공지 목록 기준)",
+   "status": "confirmed",
+   "referenceNote": "2028학년도 시행계획(2022 개정 교육과정 첫 수능 세대) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+   "sources": [
+    {
+     "name": "2028학년도 한국외국어대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
+     "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/한국외국어대학교/한국외국어대학교_2028학년도_대학입학전형계획.pdf",
+     "kind": "official",
+     "retrieved": "2026-10-26"
+    }
+   ],
+   "checkedAt": "2026-10-26",
+   "sourcePage": "시행계획 수시 주요사항, 수능 최저 표",
+   "requirements": [],
+   "requirementsNullReason": "교과 이수 권장·필수 과목은 시행계획에서 확인 못 함",
+   "gradeReflection": {
+    "gradeMethod": "2028학년도 변경: 학생부 교과 70% + 서류(교과종합평가) 30%, 졸업예정자만 지원, 고교별 추천 인원 제한 폐지. 교과 반영은 원점수 환산점수 미적용·석차등급 반영, 계열 구분 없이 동일 교과·동일 반영비율. 학교폭력 가해 조치사항 기록 시 지원 불가",
+    "careerSubjectsPolicy": null
+   },
+   "csatMinimum": {
+    "expr": "국어·수학·영어·탐구(통합사회 혹은 통합과학 1과목) 중 2개 영역 등급 합 5 이내(영어·서양어·아시아언어문화·중국학·일본학·사회과학·상경·경영·사범·국제학부 등 서울캠퍼스 모집단위). 글로벌캠퍼스 모집단위(자연과학·공과·융합인재·Culture & Technology·AI융합 글로벌 등)는 합 6 이내(표 레이아웃 기준 해석, 2027학년도와 같은 캠퍼스 구분)",
+    "requiredAreas": [
+     "국어",
+     "수학",
+     "영어",
+     "탐구"
+    ],
+    "designatedSubjectIds": []
+   }
+  },
+  {
+   "ruleId": "ar-2028-hufs-susi-nonsul",
+   "universityId": "s-911",
+   "universityName": "한국외국어대학교",
+   "unitName": "논술전형(449명)",
+   "admissionYear": 2028,
+   "track": "susi-nonsul",
+   "announcedAt": "2026-04-30",
+   "announcedAtNote": "대학입학전형시행계획 공표(2026.4.30, 입학처 공지 목록 기준)",
+   "status": "confirmed",
+   "referenceNote": "2028학년도 시행계획(2022 개정 교육과정 첫 수능 세대) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+   "sources": [
+    {
+     "name": "2028학년도 한국외국어대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
+     "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/한국외국어대학교/한국외국어대학교_2028학년도_대학입학전형계획.pdf",
+     "kind": "official",
+     "retrieved": "2026-10-26"
+    }
+   ],
+   "checkedAt": "2026-10-26",
+   "sourcePage": "시행계획 수시 주요사항, 수능 최저 표",
+   "requirements": [],
+   "requirementsNullReason": "교과 이수 권장·필수 과목은 시행계획에서 확인 못 함",
+   "gradeReflection": {
+    "gradeMethod": "논술 중심, 학교생활기록부 교과·비교과 미반영. 수능최저 변경(통합사회·통합과학 1과목 탐구 기준)",
+    "careerSubjectsPolicy": null
+   },
+   "csatMinimum": {
+    "expr": "국어·수학·영어·탐구(통합사회 혹은 통합과학 1과목) 중 2개 영역 등급 합 5 이내(서울캠퍼스 모집단위) / 6 이내(글로벌캠퍼스 모집단위), 표 레이아웃 기준 해석",
+    "requiredAreas": [
+     "국어",
+     "수학",
+     "영어",
+     "탐구"
+    ],
+    "designatedSubjectIds": []
+   }
+  },
+  {
+   "ruleId": "ar-2028-hufs-susi-seoryu",
+   "universityId": "s-911",
+   "universityName": "한국외국어대학교",
+   "unitName": "학생부종합 서류형(464명)·면접형(1,288명 일부)·SW인재",
+   "admissionYear": 2028,
+   "track": "susi-jonghap",
+   "announcedAt": "2026-04-30",
+   "announcedAtNote": "대학입학전형시행계획 공표(2026.4.30, 입학처 공지 목록 기준)",
+   "status": "confirmed",
+   "referenceNote": "2028학년도 시행계획(2022 개정 교육과정 첫 수능 세대) 기준 참고 구조. 2030학년도에는 달라질 수 있음",
+   "sources": [
+    {
+     "name": "2028학년도 한국외국어대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
+     "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/한국외국어대학교/한국외국어대학교_2028학년도_대학입학전형계획.pdf",
+     "kind": "official",
+     "retrieved": "2026-10-26"
+    }
+   ],
+   "checkedAt": "2026-10-26",
+   "sourcePage": "시행계획 수시 주요사항, 수능 최저 표",
+   "requirements": [],
+   "requirementsNullReason": "교과 이수 권장·필수 과목은 시행계획에서 확인 못 함",
+   "gradeReflection": {
+    "gradeMethod": "면접형·SW인재는 수능최저 미적용. 서류형은 서류 100%이며 수능최저 적용(2027학년도에는 서류형 최저 없음, 2028학년도 신규)",
+    "careerSubjectsPolicy": null
+   },
+   "csatMinimum": {
+    "expr": "서류형: 국어·수학·영어·탐구(통합사회 혹은 통합과학 1과목) 중 2개 영역 등급 합 6 이내(서울캠퍼스 모집단위, 사범대학 포함 표 기준). 글로벌캠퍼스 모집단위 값은 표에서 확인 못 함",
+    "requiredAreas": [
+     "국어",
+     "수학",
+     "영어",
+     "탐구"
+    ],
+    "designatedSubjectIds": []
+   }
   }
  ]
 }
