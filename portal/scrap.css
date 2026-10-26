@@ -106,3 +106,22 @@ body{background:var(--paper) var(--grain)}
 .subnav.lvl+.subnav{background:var(--paper2);padding:0 14px;margin:0 0 6px;box-shadow:var(--sh)}
 .soon{font:700 17px var(--hand);color:var(--pencil);border-top:2px dotted var(--line)}
 @media (min-width:900px){#topnav a[aria-current=page]{border-bottom:0}}
+
+/* ===== 3/6 일정(+ 모든 화면이 함께 쓰는 칩·안내문·표·버튼) ===== */
+.note,.ed-top{position:relative;background:var(--paper2);border:0;border-radius:0;box-shadow:var(--sh);padding:16px 16px 14px;transform:rotate(-.4deg);margin:22px 2px 14px}
+.note::before,.ed-top::before{content:"";position:absolute;top:-10px;left:50%;width:72px;height:20px;margin-left:-36px;background:rgba(206,176,120,.62);transform:rotate(-3deg);box-shadow:0 1px 2px rgba(0,0,0,.12);clip-path:polygon(0 8%,4% 0,8% 10%,12% 0,100% 0,96% 50%,100% 100%,10% 100%,6% 88%,0 92%)}
+.chip,.fchip{background:var(--paper2);color:var(--ink);border:2px solid var(--ink);border-radius:18px 6px 16px 8px/8px 16px 6px 18px;font-weight:600}
+.chip:hover,.fchip:hover{border-color:var(--accent)}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.fchip.on{background:var(--ink);border-color:var(--ink);color:var(--paper2)}
+@media (prefers-color-scheme:dark){.chip.on{color:#1E1A15}}
+.chip.schip,.chip.schip.on{background:none;border:0;border-radius:0}
+.btn{border:2px solid var(--ink);border-radius:18px 6px 16px 8px/8px 16px 6px 18px;background:var(--paper2);color:var(--ink);font-weight:600}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.tw{background:var(--paper2);box-shadow:var(--sh);padding:4px 6px}
+table{background:none}
+th,td{border-color:var(--line)}
+th{background:rgba(217,198,160,.45);color:var(--ink)}
+table.policy td{border-left:0;border-right:0}
+table.policy tr.past{opacity:.55}
+.lnk{font-weight:700}
