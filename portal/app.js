@@ -212,8 +212,8 @@ async function summaryBody(el, ids) {
       <div class="terms">${TERMS.map((t) => { const b = m.byTerm[t], tot = b.required + b.elective || 1; return `<div><div class="tnum"><b class="r">${b.required}</b><b class="e">${b.elective}</b></div><div class="col"><i class="e" style="height:${(b.elective / tot) * 100}%"></i><i class="r" style="height:${(b.required / tot) * 100}%"></i></div><span>${t}</span></div>`; }).join("")}</div>
       </details>
       <div class="st2">
-        <div class="st-req"><b class="st-l">지정</b> 과목 <b class="st-n">${m.requiredCount}</b></div>
-        <div class="st-ele"><b class="st-l">선택</b> 후보 <b class="st-n">${m.candidateSubjects}</b> 중 <b class="st-n">${m.pickTotal}</b>개 선택
+        <div class="st-req"><b class="st-l" title="학교가 정해 둔 과목">지정</b> 과목 <b class="st-n">${m.requiredCount}</b></div>
+        <div class="st-ele"><b class="st-l" title="학생이 골라 듣는 과목">선택</b> 후보 <b class="st-n">${m.candidateSubjects}</b> 중 <b class="st-n">${m.pickTotal}</b>개 선택
           <div class="st-sub">택n 묶음 ${m.groupCount} · 선택 폭 ${m.breadth} · 첫 선택 학기 ${esc(m.firstElectiveTerm || "-")}</div></div>
       </div>
       ${(() => { const cb = creativeBlock(m, curricula.find((x) => x.schoolId === m.schoolId)); return cb ? `<details class="fold"><summary>창체 ${m.creditsCreative}학점 · ${m.creativeHours}시간</summary>${cb}</details>` : ""; })()}
