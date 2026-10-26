@@ -19,6 +19,7 @@
     "name": "OpenStreetMap Nominatim 검색 '성복초등학교, 52, 성복2로78번길, 신봉동, 수지구' (way 366609276), ODbL 1.0 ⓒ OpenStreetMap contributors",
     "url": "https://www.openstreetmap.org/way/366609276"
    },
+   "coordApprox": false,
    "homepage": null,
    "phone": null,
    "status": "reported",
@@ -44,6 +45,7 @@
     "name": "OpenStreetMap Nominatim 검색 '문정중학교, 455, 포은대로, 풍덕천동, 신봉동, 수' (way 389636150), ODbL 1.0 ⓒ OpenStreetMap contributors",
     "url": "https://www.openstreetmap.org/way/389636150"
    },
+   "coordApprox": false,
    "homepage": null,
    "phone": null,
    "status": "reported",
@@ -69,6 +71,7 @@
     "name": "OpenStreetMap Nominatim 검색 '성복중학교, 51, 신봉1로71번길, 신봉동, 수지구,' (way 366609275), ODbL 1.0 ⓒ OpenStreetMap contributors",
     "url": "https://www.openstreetmap.org/way/366609275"
    },
+   "coordApprox": false,
    "homepage": null,
    "phone": null,
    "status": "reported",
@@ -94,6 +97,7 @@
     "name": "OpenStreetMap Nominatim 검색 '성서중학교, 147, 성복1로, 신봉동, 수지구, 용인' (way 343111630), ODbL 1.0 ⓒ OpenStreetMap contributors",
     "url": "https://www.openstreetmap.org/way/343111630"
    },
+   "coordApprox": false,
    "homepage": null,
    "phone": null,
    "status": "reported",
@@ -119,6 +123,7 @@
     "name": "OpenStreetMap Nominatim 검색 '손곡중학교, 5, 문인로70번길, 동천동, 신봉동, 수' (way 362613063), ODbL 1.0 ⓒ OpenStreetMap contributors",
     "url": "https://www.openstreetmap.org/way/362613063"
    },
+   "coordApprox": false,
    "homepage": null,
    "phone": null,
    "status": "reported",
@@ -144,6 +149,7 @@
     "name": "OpenStreetMap Nominatim 검색 '수지중학교, 102, 수풍로, 풍덕천동, 신봉동, 수지' (way 387557720), ODbL 1.0 ⓒ OpenStreetMap contributors",
     "url": "https://www.openstreetmap.org/way/387557720"
    },
+   "coordApprox": false,
    "homepage": null,
    "phone": null,
    "status": "reported",
@@ -169,6 +175,7 @@
     "name": "OpenStreetMap Nominatim 검색 '신봉중학교, 43, 신봉3로, 신봉동, 수지구, 용인시' (way 366238677), ODbL 1.0 ⓒ OpenStreetMap contributors",
     "url": "https://www.openstreetmap.org/way/366238677"
    },
+   "coordApprox": false,
    "homepage": null,
    "phone": null,
    "status": "reported",
@@ -194,6 +201,7 @@
     "name": "OpenStreetMap Nominatim 검색 '용인한빛중학교, 177, 동천로, 동천동, 신봉동, 수' (way 360331556), ODbL 1.0 ⓒ OpenStreetMap contributors",
     "url": "https://www.openstreetmap.org/way/360331556"
    },
+   "coordApprox": false,
    "homepage": null,
    "phone": null,
    "status": "reported",
@@ -219,6 +227,7 @@
     "name": "OpenStreetMap Nominatim 검색 '정평중학교, 21, 정평로13번길, 풍덕천동, 신봉동,' (way 365694524), ODbL 1.0 ⓒ OpenStreetMap contributors",
     "url": "https://www.openstreetmap.org/way/365694524"
    },
+   "coordApprox": false,
    "homepage": null,
    "phone": null,
    "status": "reported",
@@ -244,6 +253,7 @@
     "name": "OpenStreetMap Nominatim 검색 '홍천중학교, 36, 신봉1로71번길, 신봉동, 수지구,' (way 366609277), ODbL 1.0 ⓒ OpenStreetMap contributors",
     "url": "https://www.openstreetmap.org/way/366609277"
    },
+   "coordApprox": false,
    "homepage": null,
    "phone": null,
    "status": "reported",
@@ -269,6 +279,7 @@
     "name": "OpenStreetMap Nominatim 검색 '풍덕고등학교, 5, 풍덕천로30번길, 풍덕천동, 신봉동' (way 365700433), ODbL 1.0 ⓒ OpenStreetMap contributors",
     "url": "https://www.openstreetmap.org/way/365700433"
    },
+   "coordApprox": false,
    "homepage": "https://pungduck-h.goeyi.kr/",
    "phone": null,
    "status": "confirmed",
@@ -294,6 +305,7 @@
     "name": "OpenStreetMap Nominatim 검색 '성복고등학교, 92, 도마치로, 신봉동, 수지구, 용인' (way 366837924), ODbL 1.0 ⓒ OpenStreetMap contributors",
     "url": "https://www.openstreetmap.org/way/366837924"
    },
+   "coordApprox": false,
    "homepage": "https://seongbok-h.goeyi.kr/",
    "phone": null,
    "status": "confirmed",
@@ -319,6 +331,7 @@
     "name": "OpenStreetMap Nominatim 검색 '수지고등학교, 73, 수풍로, 풍덕천동, 신봉동, 수지' (way 362976419), ODbL 1.0 ⓒ OpenStreetMap contributors",
     "url": "https://www.openstreetmap.org/way/362976419"
    },
+   "coordApprox": false,
    "homepage": "https://suji-h.goeyi.kr/",
    "phone": null,
    "status": "confirmed",
@@ -344,6 +357,7 @@
     "name": "OSM 도로 '수지로227번길'(way 346407546)의 대표 좌표 — 학교 건물 위치가 아닌 근사값(학교 객체를 OSM에서 못 찾음), ODbL 1.0 ⓒ OpenStreetMap contributors",
     "url": "https://www.openstreetmap.org/way/346407546"
    },
+   "coordApprox": true,
    "homepage": "https://yihongcheon-h.goeyi.kr/",
    "phone": null,
    "status": "confirmed",
@@ -369,6 +383,7 @@
     "name": "OpenStreetMap Nominatim 검색 '한국외국어대학교부속 용인외국어고등학교, 백옥대로2332' (way 232201498), ODbL 1.0 ⓒ OpenStreetMap contributors",
     "url": "https://www.openstreetmap.org/way/232201498"
    },
+   "coordApprox": false,
    "homepage": null,
    "phone": null,
    "status": "reported",

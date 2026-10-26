@@ -1,5 +1,6 @@
 // research/data/places-draft.json(조사 세션) → portal/data/places.json (초·중·고 학교 위치, 지도 화면용).
 //   - 초안이 아직 없으면 빈 목록을 만든다(화면은 빈 상태 문구). 좌표가 null이면 지도에서만 빠지고 목록에는 남는다.
+//   - coordSource 설명에 "근사"가 있으면 coordApprox=true(화면에 "위치 근사" 한 줄).
 //   - 지도 링크용 검색어(searchQuery)는 "이름 + 주소"로 만든다. API 키 없이 네이버 지도·카카오맵 검색 URL에 쓴다.
 // 사용: node tools/build-places.mjs [--check]
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
@@ -23,7 +24,7 @@ const places = draft.items.map((it) => {
   if (it.homepage && !/^https?:\/\//.test(it.homepage)) errs.push(`${it.placeId}: homepage는 http(s) 주소`);
   return {
     id: it.placeId, schoolId: it.schoolId ?? null, name: it.name, level: it.level, kind: it.kind ?? null, address: it.address,
-    lat, lng, coordSource: it.coordSource ?? null, homepage: it.homepage ?? null, phone: it.phone ?? null,
+    lat, lng, coordSource: it.coordSource ?? null, coordApprox: lat != null && /근사/.test(it.coordSource?.name || ""), homepage: it.homepage ?? null, phone: it.phone ?? null,
     status: it.status, sources: it.sources, checkedAt: it.checkedAt ?? draft._meta?.checkedAt ?? null,
     searchQuery: `${it.name} ${it.address}`.trim(),
   };
