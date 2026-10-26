@@ -9,5 +9,16 @@
     "topic": "high-school-assignment",
     "source": "학교 배부 가정통신문(사진)",
     "date": "2026"
+  },
+  {
+    "id": "seongbok-mid-textbooks-2027",
+    "title": "성복중학교 2027학년도 교과서 출판사 안내(학교 공지)",
+    "description": "교과별·학년별 출판사 목록 원본 이미지(학교 공지 화면)",
+    "file": "files/seongbok-mid-textbooks-2027.png",
+    "thumb": "",
+    "schoolIds": [],
+    "topic": "middle-school-curriculum",
+    "source": "성복중학교 학교 공지(2026.10.26, 사용자 제공 화면 캡처)",
+    "date": "2026"
   }
 ]
