@@ -970,7 +970,7 @@
   {
    "schoolId": "school-pungdeok",
    "ruleId": "ar-2027-postech-general1",
-   "universityId": "s-905",
+   "universityId": "s-904",
    "track": "susi-jonghap",
    "requirements": null,
    "summary": null,
@@ -979,7 +979,7 @@
   {
    "schoolId": "school-pungdeok",
    "ruleId": "ar-2027-postech-general2",
-   "universityId": "s-905",
+   "universityId": "s-904",
    "track": "susi-jonghap",
    "requirements": null,
    "summary": null,
@@ -988,7 +988,7 @@
   {
    "schoolId": "school-pungdeok",
    "ruleId": "ar-2027-kaist-changdo",
-   "universityId": "s-904",
+   "universityId": "s-905",
    "track": "susi-jonghap",
    "requirements": null,
    "summary": null,
@@ -997,7 +997,7 @@
   {
    "schoolId": "school-pungdeok",
    "ruleId": "ar-2027-kaist-general",
-   "universityId": "s-904",
+   "universityId": "s-905",
    "track": "susi-jonghap",
    "requirements": null,
    "summary": null,
@@ -2247,7 +2247,7 @@
   {
    "schoolId": "school-seongbok",
    "ruleId": "ar-2027-postech-general1",
-   "universityId": "s-905",
+   "universityId": "s-904",
    "track": "susi-jonghap",
    "requirements": null,
    "summary": null,
@@ -2256,7 +2256,7 @@
   {
    "schoolId": "school-seongbok",
    "ruleId": "ar-2027-postech-general2",
-   "universityId": "s-905",
+   "universityId": "s-904",
    "track": "susi-jonghap",
    "requirements": null,
    "summary": null,
@@ -2265,7 +2265,7 @@
   {
    "schoolId": "school-seongbok",
    "ruleId": "ar-2027-kaist-changdo",
-   "universityId": "s-904",
+   "universityId": "s-905",
    "track": "susi-jonghap",
    "requirements": null,
    "summary": null,
@@ -2274,7 +2274,7 @@
   {
    "schoolId": "school-seongbok",
    "ruleId": "ar-2027-kaist-general",
-   "universityId": "s-904",
+   "universityId": "s-905",
    "track": "susi-jonghap",
    "requirements": null,
    "summary": null,
@@ -3581,7 +3581,7 @@
   {
    "schoolId": "school-suji",
    "ruleId": "ar-2027-postech-general1",
-   "universityId": "s-905",
+   "universityId": "s-904",
    "track": "susi-jonghap",
    "requirements": null,
    "summary": null,
@@ -3590,7 +3590,7 @@
   {
    "schoolId": "school-suji",
    "ruleId": "ar-2027-postech-general2",
-   "universityId": "s-905",
+   "universityId": "s-904",
    "track": "susi-jonghap",
    "requirements": null,
    "summary": null,
@@ -3599,7 +3599,7 @@
   {
    "schoolId": "school-suji",
    "ruleId": "ar-2027-kaist-changdo",
-   "universityId": "s-904",
+   "universityId": "s-905",
    "track": "susi-jonghap",
    "requirements": null,
    "summary": null,
@@ -3608,7 +3608,7 @@
   {
    "schoolId": "school-suji",
    "ruleId": "ar-2027-kaist-general",
-   "universityId": "s-904",
+   "universityId": "s-905",
    "track": "susi-jonghap",
    "requirements": null,
    "summary": null,
@@ -4801,7 +4801,7 @@
   {
    "schoolId": "school-yonginheungcheon",
    "ruleId": "ar-2027-postech-general1",
-   "universityId": "s-905",
+   "universityId": "s-904",
    "track": "susi-jonghap",
    "requirements": null,
    "summary": null,
@@ -4810,7 +4810,7 @@
   {
    "schoolId": "school-yonginheungcheon",
    "ruleId": "ar-2027-postech-general2",
-   "universityId": "s-905",
+   "universityId": "s-904",
    "track": "susi-jonghap",
    "requirements": null,
    "summary": null,
@@ -4819,7 +4819,7 @@
   {
    "schoolId": "school-yonginheungcheon",
    "ruleId": "ar-2027-kaist-changdo",
-   "universityId": "s-904",
+   "universityId": "s-905",
    "track": "susi-jonghap",
    "requirements": null,
    "summary": null,
@@ -4828,7 +4828,7 @@
   {
    "schoolId": "school-yonginheungcheon",
    "ruleId": "ar-2027-kaist-general",
-   "universityId": "s-904",
+   "universityId": "s-905",
    "track": "susi-jonghap",
    "requirements": null,
    "summary": null,
