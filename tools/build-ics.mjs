@@ -25,7 +25,7 @@ const isMonth = (d) => /^\d{4}-\d{2}$/.test(d);
 
 const tag = (e) => (e.status === "estimated" ? " (추정)" : e.status === "reported" ? " (보도)" : "");
 
-const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//admissions-2030//schedule//KO", "CALSCALE:GREGORIAN", "METHOD:PUBLISH", "X-WR-CALNAME:대입 일정", "X-WR-TIMEZONE:Asia/Seoul"];
+const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//admissions-2030//schedule//KO", "CALSCALE:GREGORIAN", "METHOD:PUBLISH", "X-WR-CALNAME:스쿨 라이프 일정", "X-WR-TIMEZONE:Asia/Seoul"];
 let n = 0;
 for (const e of events) {
   if ((e.audience || []).includes("grade3")) continue;
