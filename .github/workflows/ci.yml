@@ -73,6 +73,7 @@ jobs:
             node tools/build-roadmap.mjs --check
             node tools/build-rules.mjs --check
             node tools/build-subjects.mjs --check
+            node tools/build-universities.mjs --check
             node tools/build-admission-rules.mjs --check
             node tools/build-matches.mjs --check
           fi

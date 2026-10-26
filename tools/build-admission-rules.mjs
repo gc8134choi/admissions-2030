@@ -2,6 +2,7 @@
 //   - subjectIds: 조사 초안의 legacyKey(공백 없는 과목 키) → subjects.lock.json의 sj 코드로 바꾼다. 못 찾으면 목록을 출력하고 실패한다.
 //   - 교과군 단위 권장(subjectIds가 비고 orGroupLabel만 있는 항목)은 라벨을 읽어 group{area,kind,subjectIds}로 풀어 둔다. 못 읽으면 group을 null로 두고 사유를 적는다.
 //   - 대학 id(s-9xx)는 학교 id(school-*, 새 학교 s-001~)와 겹치지 않도록 s-900~s-999 구간을 대학 전용으로 고정한다.
+//   - 대학 목록은 portal/data/universities.json(build-universities.mjs)이 기준이다. 요강 행이 없는 대학도 _meta.universities에 남는다.
 // 사용: node tools/build-admission-rules.mjs [--check]
 import { readFileSync, writeFileSync } from "node:fs";
 
@@ -12,6 +13,8 @@ const master = rd("portal/data/subject-master.json").subjects;
 const info = rd("portal/data/subject-info.json").subjects;
 const schools = rd("portal/data/schools.json");
 const schema = rd("schema/admission_rules.schema.json");
+const univs = rd("portal/data/universities.json").universities; // tools/build-universities.mjs 산출물(관심 대학 목록)
+const univName = new Map(univs.map((u) => [u.id, u.name]));
 const errs = [];
 const UNIV = /^s-9\d\d$/;
 for (const s of (Array.isArray(schools) ? schools : schools.schools || [])) if (/^s-9\d\d$/.test(s.id)) errs.push(`학교 id ${s.id}가 대학 전용 구간(s-900~999)과 겹침`);
@@ -32,6 +35,8 @@ function groupOf(label) {
 const miss = [];
 const rules = draft.items.map((it) => {
   if (!UNIV.test(it.universityId)) errs.push(`${it.ruleId}: universityId ${it.universityId}는 s-900~999 구간이어야 함`);
+  else if (!univName.has(it.universityId)) errs.push(`${it.ruleId}: universityId ${it.universityId}가 universities.json에 없음`);
+  else if (univName.get(it.universityId) !== it.universityName) errs.push(`${it.ruleId}: 대학 이름 불일치(${it.universityName} / ${univName.get(it.universityId)})`);
   for (const k of schema.required) if (it[k] == null) errs.push(`${it.ruleId}: ${k} 없음`);
   if (!new RegExp(schema.properties.ruleId.pattern).test(it.ruleId)) errs.push(`${it.ruleId}: ruleId 형식`);
   if (!schema.properties.track.enum.includes(it.track)) errs.push(`${it.ruleId}: track ${it.track}`);
@@ -56,7 +61,7 @@ if (new Set(rules.map((r) => r.ruleId)).size !== rules.length) errs.push("ruleId
 if (errs.length) { console.error(errs.join("\n")); process.exit(1); }
 
 const out = {
-  _meta: { note: "대학 요강 참고 구조(생성물, 손으로 고치지 않는다). research/data/admission-rules-draft.json에서 tools/build-admission-rules.mjs가 만든다. 대학 id는 s-900~s-999 전용.", version: draft._meta.version, checkedAt: draft._meta.checkedAt, admissionYear: 2028, universities: draft._meta.universities, referenceNote: "2028학년도 기준 참고 구조이며 2030학년도에는 달라질 수 있어요", blockedSites: draft._meta.blockedSites || [] },
+  _meta: { note: "대학 요강 참고 구조(생성물, 손으로 고치지 않는다). research/data/admission-rules-draft.json에서 tools/build-admission-rules.mjs가 만든다. 대학 id는 s-900~s-999 전용.", version: draft._meta.version, checkedAt: draft._meta.checkedAt, admissionYear: 2028, universities: Object.fromEntries(univs.map((u) => [u.id, u.name])), referenceNote: "2028학년도 기준 참고 구조이며 2030학년도에는 달라질 수 있어요", blockedSites: draft._meta.blockedSites || [] },
   rules,
 };
 const json = JSON.stringify(out, null, 1) + "\n";
@@ -66,4 +71,5 @@ if (process.argv.includes("--check")) {
   if (cur !== json) { console.error("admission-rules.json is out of date"); process.exit(1); }
 } else writeFileSync(target, json);
 const withReq = rules.filter((r) => r.requirements.length).length;
-console.log(`${rules.length} rules (요건 있음 ${withReq}, 없음 ${rules.length - withReq})`);
+const covered = new Set(rules.map((r) => r.universityId));
+console.log(`${rules.length} rules (요건 있음 ${withReq}, 없음 ${rules.length - withReq}), 대학 ${covered.size}/${univs.length}곳에 요강 행 있음`);
