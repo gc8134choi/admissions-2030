@@ -2,7 +2,7 @@
  "_meta": {
   "note": "학교×모집단위 권장 과목 충족 계산(생성물, 손으로 고치지 않는다). tools/build-matches.mjs. 편제표는 개설 '후보'이고 요강은 2028학년도 기준 참고 구조예요.",
   "admissionYear": 2028,
-  "count": 68
+  "count": 80
  },
  "matches": [
   {
@@ -941,6 +941,33 @@
    "nullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
   },
   {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2027-snu-jeongsi-regional",
+   "universityId": "s-901",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "과목 요건이 요강에 없음"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2027-snu-jeongsi-opportunity",
+   "universityId": "s-901",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "과목 요건이 요강에 없음"
+  },
+  {
+   "schoolId": "school-pungdeok",
+   "ruleId": "ar-2027-snu-jeongsi-areas",
+   "universityId": "s-901",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "과목 요건이 요강에 없음"
+  },
+  {
    "schoolId": "school-seongbok",
    "ruleId": "ar-2028-snu-hum-rec",
    "universityId": "s-901",
@@ -1874,6 +1901,33 @@
    "requirements": null,
    "summary": null,
    "nullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2027-snu-jeongsi-regional",
+   "universityId": "s-901",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "과목 요건이 요강에 없음"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2027-snu-jeongsi-opportunity",
+   "universityId": "s-901",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "과목 요건이 요강에 없음"
+  },
+  {
+   "schoolId": "school-seongbok",
+   "ruleId": "ar-2027-snu-jeongsi-areas",
+   "universityId": "s-901",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "과목 요건이 요강에 없음"
   },
   {
    "schoolId": "school-suji",
@@ -2868,6 +2922,33 @@
    "nullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
   },
   {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2027-snu-jeongsi-regional",
+   "universityId": "s-901",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "과목 요건이 요강에 없음"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2027-snu-jeongsi-opportunity",
+   "universityId": "s-901",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "과목 요건이 요강에 없음"
+  },
+  {
+   "schoolId": "school-suji",
+   "ruleId": "ar-2027-snu-jeongsi-areas",
+   "universityId": "s-901",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "과목 요건이 요강에 없음"
+  },
+  {
    "schoolId": "school-yonginheungcheon",
    "ruleId": "ar-2028-snu-hum-rec",
    "universityId": "s-901",
@@ -3744,6 +3825,33 @@
    "requirements": null,
    "summary": null,
    "nullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2027-snu-jeongsi-regional",
+   "universityId": "s-901",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "과목 요건이 요강에 없음"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2027-snu-jeongsi-opportunity",
+   "universityId": "s-901",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "과목 요건이 요강에 없음"
+  },
+  {
+   "schoolId": "school-yonginheungcheon",
+   "ruleId": "ar-2027-snu-jeongsi-areas",
+   "universityId": "s-901",
+   "track": "jeongsi-csat",
+   "requirements": null,
+   "summary": null,
+   "nullReason": "과목 요건이 요강에 없음"
   }
  ]
 }

@@ -1,16 +1,14 @@
 {
   "_meta": {
     "version": "0.1.0",
-    "checkedAt": "2026-10-25",
-    "note": "구조 검증용 참고 데이터. 대학·모집단위는 사용자가 아직 정하지 않음. 전부 2028학년도 기준이며 2030학년도에는 달라질 수 있음. universityId s-901~903은 임시 부여(서울대·연세대·고려대). subjectIds는 sj- 코드 부여 전이라 subjects.json의 legacy subjectKey를 사용하고, 교과(군) 단위 권장은 subjectIds를 비우고 orGroupLabel에 적음. announcedAt은 대학 시행계획 공표 기한(2026-04-30)을 임시로 넣고 announcedAtNote에 사유를 적음",
+    "checkedAt": "2026-10-26",
+    "note": "구조 검증용 참고 데이터. 대학·모집단위는 사용자가 아직 정하지 않음. 전부 2028학년도 기준이며 2030학년도에는 달라질 수 있음. universityId s-901~903은 임시 부여(서울대·연세대·고려대). subjectIds는 sj- 코드 부여 전이라 subjects.json의 legacy subjectKey를 사용하고, 교과(군) 단위 권장은 subjectIds를 비우고 orGroupLabel에 적음. announcedAt은 대학 시행계획 공표 기한(2026-04-30)을 임시로 넣고 announcedAtNote에 사유를 적음 / 2026-10-26: 서울대 입학본부 접속 확인, 2027학년도 정시 요강(공식)에서 응시영역기준·수능 최저 3행 추가. 2027학년도 기준이며 2030학년도 값 아님",
     "universities": {
       "s-901": "서울대학교",
       "s-902": "연세대학교",
       "s-903": "고려대학교"
     },
-    "blockedSites": [
-      "서울대 입학본부 admission.snu.ac.kr 시행계획·모집요강(미접속 또는 미확인)"
-    ]
+    "blockedSites": []
   },
   "items": [
     {
@@ -710,6 +708,93 @@
       },
       "csatMinimumNullReason": "정시 영역별 반영 비율·변환점수 표는 열 구성이 뒤섞여 이번에 옮기지 않음",
       "sourcePage": "시행계획 PDF 23~24쪽"
+    },
+    {
+      "universityId": "s-901",
+      "universityName": "서울대학교",
+      "admissionYear": 2027,
+      "track": "jeongsi-csat",
+      "announcedAt": "2026-04-30",
+      "announcedAtNote": "대학 시행계획 공표 기한(2026-04-30)을 임시로 넣음. 정시 요강 실제 게시일은 확인 못 함",
+      "status": "confirmed",
+      "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음(2015 개정 기준 과학탐구Ⅰ·Ⅱ 체계)",
+      "requirements": [],
+      "sources": [
+        {
+          "name": "서울대학교 2027학년도 정시모집 '나'군 안내(입학본부, PDF, <붙임 1> 75~76쪽)",
+          "url": "https://admission.snu.ac.kr/webdata/admission/files/2027jungsi.pdf",
+          "kind": "official",
+          "retrieved": "2026-10-26"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "ruleId": "ar-2027-snu-jeongsi-regional",
+      "unitName": "정시 수능위주 지역균형전형(전 모집단위)",
+      "csatMinimumNullReason": "수능 최저학력기준 없음(응시영역기준만 적용). 수능 60 + 교과평가 40",
+      "gradeReflection": {
+        "gradeMethod": "수능 영역별 상대 반영비율 국어 100·수학 120(표준점수×1.2)·탐구 80(과목별 표준점수 합×0.8). 영어 1등급 0, 2등급부터 0.5·2·4·6·8·10·12·14 감점, 한국사 3등급 이내 감점 없고 4등급부터 0.4씩, 제2외국어/한문 2등급 이내 감점 없고 3등급부터 0.5씩(유형 해당자). 과학탐구Ⅱ 응시 시 조정점수(Ⅰ+Ⅱ 3, Ⅱ+Ⅱ 5)",
+        "careerSubjectsPolicy": null
+      },
+      "sourcePage": "요강 PDF 19~20쪽, 75~76쪽"
+    },
+    {
+      "universityId": "s-901",
+      "universityName": "서울대학교",
+      "admissionYear": 2027,
+      "track": "jeongsi-csat",
+      "announcedAt": "2026-04-30",
+      "announcedAtNote": "대학 시행계획 공표 기한(2026-04-30)을 임시로 넣음. 정시 요강 실제 게시일은 확인 못 함",
+      "status": "confirmed",
+      "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음(2015 개정 기준 과학탐구Ⅰ·Ⅱ 체계)",
+      "requirements": [],
+      "sources": [
+        {
+          "name": "서울대학교 2027학년도 정시모집 '나'군 안내(입학본부, PDF, <붙임 1> 75~76쪽)",
+          "url": "https://admission.snu.ac.kr/webdata/admission/files/2027jungsi.pdf",
+          "kind": "official",
+          "retrieved": "2026-10-26"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "ruleId": "ar-2027-snu-jeongsi-opportunity",
+      "unitName": "정시 기회균형특별전형(농어촌·저소득, 미술·음악대학 제외)",
+      "csatMinimum": {
+        "expr": "국어·수학·영어·탐구 4개 영역 중 3개 영역 등급 합 7등급 이내(탐구는 2과목 등급 평균)",
+        "requiredAreas": [
+          "국어",
+          "수학",
+          "영어",
+          "탐구"
+        ],
+        "designatedSubjectIds": []
+      },
+      "gradeReflection": null,
+      "sourcePage": "요강 PDF 76쪽"
+    },
+    {
+      "universityId": "s-901",
+      "universityName": "서울대학교",
+      "admissionYear": 2027,
+      "track": "jeongsi-csat",
+      "announcedAt": "2026-04-30",
+      "announcedAtNote": "대학 시행계획 공표 기한(2026-04-30)을 임시로 넣음. 정시 요강 실제 게시일은 확인 못 함",
+      "status": "confirmed",
+      "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음(2015 개정 기준 과학탐구Ⅰ·Ⅱ 체계)",
+      "requirements": [],
+      "sources": [
+        {
+          "name": "서울대학교 2027학년도 정시모집 '나'군 안내(입학본부, PDF, <붙임 1> 75~76쪽)",
+          "url": "https://admission.snu.ac.kr/webdata/admission/files/2027jungsi.pdf",
+          "kind": "official",
+          "retrieved": "2026-10-26"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "ruleId": "ar-2027-snu-jeongsi-areas",
+      "unitName": "정시 응시영역기준(지역균형·일반·기회균형 공통, 유형 구분)",
+      "csatMinimumNullReason": "수능 최저가 아니라 응시영역기준. 인문·사회·사범 일부·생활과학 일부 등(유형 미지정)은 국어·수학·영어·한국사·탐구·제2외국어/한문 모두 응시, 수학은 확률과 통계·미적분·기하 중 택1, 탐구는 사회·과학 구분 없이 2과목. 유형 1(자연·공학·의학 등 일부)은 국어·수학·영어·한국사·탐구, 수학은 미적분·기하 중 택1, 탐구는 과학탐구 8과목 중 2과목(Ⅰ+Ⅰ·Ⅰ+Ⅱ·Ⅱ+Ⅱ, 물리·화학 Ⅰ·Ⅱ 중 1과목 이상), 유형 2는 같은 과학탐구 2과목이되 물리·화학 지정 없음(Ⅰ+Ⅱ는 서로 다른 분야). 모집단위별 유형은 요강 75쪽 표 참조",
+      "gradeReflection": null,
+      "sourcePage": "요강 PDF 75~76쪽"
     }
   ]
 }
