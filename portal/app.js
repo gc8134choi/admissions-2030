@@ -4,6 +4,7 @@ import { registerHome } from "./home.js";
 import { registerFiles } from "./files.js";
 import { currentProfile, allProfiles, initProfiles, mountProfileSwitch, nameSettings, bindNameSettings, showProfiles } from "./profile-ui.js";
 import { univBody } from "./univ-match.js";
+import { registerPlanner } from "./planner.js";
 import { mapBody } from "./map.js";
 import { middleBody } from "./middle.js";
 import { mountSearch } from "./search.js";
@@ -359,6 +360,7 @@ async function compareShell(el, onReset, getAreas) {
 
 registerPolicy(views, { $, esc, load, store });
 registerHome(views, { esc, load, store, nm, stars, toggleStar, nameOf, TERMS, hasLogo: (id) => LOGO_IDS.has(id), profile: () => currentProfile(store), profiles: () => allProfiles(store) });
+registerPlanner(views, { esc, load, store });
 const filesApi = registerFiles(views, { esc, load, nm });
 
 // 보관함 > 바로가기: 분류별 헤어라인 목록. 공식·공공은 구분해 적고, 확인일을 함께 보여 준다(data/links.json).

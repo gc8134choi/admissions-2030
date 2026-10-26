@@ -31,10 +31,10 @@ export const MENU = [
       parts: ["과목 요건 데이터 틀", "상태: 확정 / 예정 / 추정"] },
   ] },
 
-  { id: "planner", title: "과목 선택 플래너", icon: "compass", status: "soon",
+  { id: "planner", title: "과목 선택 플래너", icon: "compass", status: "v1", view: "planner",
     desc: "계획이 구체화되면 사용. 지금은 예약 메뉴.",
     children: [
-      { id: "planner/plan", title: "내 계획표", status: "soon", desc: "학기별 과목 배치, 학점 합계, 졸업 요건 체크." },
+      { id: "planner/plan", title: "내 계획표", status: "v1", view: "planner", desc: "학기별 과목 배치, 학점 합계, 졸업 요건 체크." },
       { id: "planner/sim", title: "학교별 시뮬레이션", status: "soon", desc: "같은 계획을 후보 학교에 적용해 이수 불가 과목 확인." },
       { id: "planner/report", title: "목표 학과 요건 충족 리포트", status: "soon", desc: "희망 학과 요건과 내 계획 비교." },
     ] },
@@ -56,9 +56,9 @@ export const STATUS = { v1: "1차", v2: "2차", soon: "준비 중" };
 export const TABS = [
   { id: "home", title: "오늘", items: [{ id: "home", title: "오늘" }] },
   { id: "schedule", title: "일정", items: [{ id: "schedule", title: "일정" }] },
-  { id: "school", title: "학교", items: [{ id: "select/curriculum", title: "학교별 과목표" }, { id: "select/types", title: "고교 유형·전형" }], soon: ["내 계획표", "학교별 시뮬레이션", "목표 학과 체크"] },
+  { id: "school", title: "학교", items: [{ id: "select/curriculum", title: "학교별 과목표" }, { id: "select/types", title: "고교 유형·전형" }, { id: "planner/plan", title: "내 계획표" }], soon: ["학교별 시뮬레이션", "목표 학과 체크"] },
   { id: "know", title: "알아두기", items: [{ id: "life/credit", title: "학점제 한눈에" }, { id: "admission/system", title: "대입 제도" }, { id: "changelog", title: "바뀐 소식" }], soon: ["학년별 할 일", "대학·학과 찾기"] },
   { id: "vault", title: "내 보관함", items: [{ id: "library", title: "바로가기" }, { id: "library/sources", title: "출처 목록" }, { id: "library/status", title: "업데이트 기록" }, { id: "library/files", title: "원본 파일" }] },
 ];
 // 메뉴에서 빠진 옛 주소는 가장 가까운 화면으로 보낸다.
-export const REDIRECT = { select: "select/curriculum", life: "life/credit", "life/checklist": "life/credit", admission: "admission/system", "admission/univ": "admission/system", planner: "select/curriculum", "planner/plan": "select/curriculum", "planner/sim": "select/curriculum", "planner/report": "select/curriculum" };
+export const REDIRECT = { select: "select/curriculum", life: "life/credit", "life/checklist": "life/credit", admission: "admission/system", "admission/univ": "admission/system", "planner/sim": "select/curriculum", "planner/report": "select/curriculum" };
