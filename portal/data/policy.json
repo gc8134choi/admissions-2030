@@ -812,18 +812,18 @@
   "id": "log-02",
   "topic": "change-log",
   "title": "2023-12-22 국교위 의견 의결",
-  "body": "심화수학 신설 제외, 사회·과학 융합 선택과목은 절대평가만",
+  "body": "심화수학 신설 제외, 사회·과학 융합 선택과목은 절대평가만. 교육부는 2023.12.27 이를 반영한 2028 대입 개편안을 발표(수능 통합형, 심화수학 제외, 통합사회·통합과학 신설, 내신 5등급 상대평가+절대평가 병기, 사회·과학 융합선택 9과목 절대평가만)",
   "status": "confirmed",
-  "unverified": true,
-  "reason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
+  "note": "공식 원문 확인, 2026-10-26",
+  "unverified": false,
   "sourceKind": "official",
-  "sourceName": "교육부 브리핑",
+  "sourceName": "교육부 정책브리핑: 2028 대입제도 개편(2023.12.27, 국가교육위원회 2023.12.22 의견 반영)",
   "sourceUrl": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
   "region": "national",
   "audience": [
    "common"
   ],
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-10-26"
  },
  {
   "id": "log-03",
