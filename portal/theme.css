@@ -377,3 +377,5 @@ table.policy tr.past td,table.policy tr.past b{color:var(--mute)}
 }
 /* 내 계획표: 칩 줄은 한 줄로 두고 옆으로 민다(웹폰트 교체 때 줄바꿈이 달라져 아래가 밀리는 것을 막는다) */
 .pn .chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;min-height:44px;align-items:center}.pn .chips .chip{flex:none}
+/* 자식이 하나뿐인 .row(바뀐 소식·빈 상태 등)는 D-day 열 없이 전체 폭을 쓴다 */
+.row>:only-child{grid-column:1/-1}
