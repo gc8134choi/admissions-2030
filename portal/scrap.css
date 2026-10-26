@@ -197,3 +197,7 @@ table.policy tr.past{opacity:.55}
 .chip:focus-visible,.fchip:focus-visible,.btn:focus-visible,.fl-card:focus-visible,.pn-o:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 /* 넓은 화면에서 학교 4장이 나란할 때 세 숫자가 붙지 않게 */
 @media (min-width:761px){.school .hs-tiles.k3 b{font-size:clamp(26px,2.5vw,36px)}.school .hs-tiles.k3>div{padding-right:8px}.school .hs-tiles.k3>div+div{padding-left:10px}}
+/* 홈 알림 한 줄: 이번 주 일정·새 소식 */
+.hm-ping{display:flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline;margin:12px 2px 0;font:700 18px/1.4 var(--hand)}
+.hm-ping a{text-decoration:none;color:var(--ink)}.hm-ping b{color:var(--accent);font-weight:700}
+.hm-ping a:hover,.hm-ping a:focus-visible{text-decoration:underline wavy var(--accent);text-underline-offset:5px}
