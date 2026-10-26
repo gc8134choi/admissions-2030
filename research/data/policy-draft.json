@@ -3139,6 +3139,35 @@
       "learners": [
         "A"
       ]
+    },
+    {
+      "id": "life-11",
+      "topic": "life-schedule",
+      "entryYear": 2030,
+      "title": "성복초 → 수지1중학군 중학교 배정 원칙(지망·추첨)",
+      "body": "성복초는 수지1중학군(문정·성복·성서·손곡·수지·신봉·용인한빛·정평·홍천 9개 중학교)에 속한다. 학교군 내 모든 중학교를 희망 순으로 지원하고, 2지망 이하는 졸업 초등학교 기준 근거리 중학교 5개교 중에서 고른다. 1지망이 정원을 넘으면 해당 초등학교 졸업(예정)자를 우선하되 경합 시 초등학교 선 입학일 순, 같으면 전산 추첨한다. 2030학년도 입학 시점의 학교군·배정 방식은 그해 고시·시행계획에서 정해지므로 참고 구조다. 근거리 5개교 명단은 첨부파일 확인 전.",
+      "status": "추정",
+      "sourceKind": "공식",
+      "sourceName": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획) · 경기도교육청 고시 제2024-554호 학교군 현황",
+      "sourceUrl": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
+      "extraSources": [
+        {
+          "name": "경기도교육청 고시 제2024-554호 2025학년도 학교군 및 중학구",
+          "url": "https://www.goe.go.kr/resource/old/BBSMSTR_000000000111/BBS_202409250522349970.pdf"
+        }
+      ],
+      "checkedAt": "2026-10-26",
+      "unverified": false,
+      "statusNote": "추정(2027학년도 시행계획·2025학년도 고시를 2030학년도에 준용, 2026-10-26)",
+      "audience": [
+        "common"
+      ],
+      "region": "gyeonggi",
+      "examYear": 2033,
+      "learners": [
+        "B"
+      ],
+      "stage": "중입"
     }
   ],
   "fields": {

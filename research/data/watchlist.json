@@ -406,6 +406,26 @@
       ],
       "importance": "높음",
       "enabled": true
+    },
+    {
+      "id": "w-yi-middle",
+      "name": "용인교육지원청 중학교 신입생 배정 안내",
+      "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
+      "watch": "중학교 배정 일정·지원 원칙·학교군 변경 안내(11.2~6 배정원서 작성 기간 전후 점검)",
+      "method": "page-hash",
+      "interval": "일",
+      "affects": [
+        "life-03",
+        "life-04",
+        "life-05",
+        "life-06",
+        "life-07",
+        "life-08",
+        "life-11",
+        "middle"
+      ],
+      "importance": "높음",
+      "enabled": true
     }
   ]
 }
