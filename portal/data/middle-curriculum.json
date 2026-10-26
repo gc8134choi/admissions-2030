@@ -1,0 +1,232 @@
+{
+ "_meta": {
+  "note": "중학교 교과서 출판사 표(생성물, 손으로 고치지 않는다). research/data/middle-curriculum-draft.json에서 tools/build-middle-curriculum.mjs가 만든다.",
+  "checkedAt": "2026-10-26",
+  "status": "reported",
+  "count": 1
+ },
+ "schools": [
+  {
+   "placeId": "pl-003",
+   "schoolYear": 2027,
+   "title": "2027학년도 교과서 출판사 안내(교과별 출판사 목록)",
+   "status": "reported",
+   "confidence": "reported",
+   "sources": [
+    {
+     "name": "성복중학교 학교공지 '2027학년도 교과서 출판사 안내'(2026.10.26, 사용자 제공 캡처)",
+     "url": null,
+     "file": "files/seongbok-mid-textbooks-2027.png"
+    }
+   ],
+   "footnote": "분실 시 개별 구입처: 국정교과서 - 미래엔도서몰(mall.mirae-n.com), 검인정교과서 - 한국검인정교과서협회(www.ktbook.com)",
+   "subjects": [
+    {
+     "order": 1,
+     "subject": "국어",
+     "publishers": {
+      "1": "비상",
+      "2": "비상",
+      "3": "비상"
+     },
+     "note": null
+    },
+    {
+     "order": 2,
+     "subject": "수학",
+     "publishers": {
+      "1": "동아출판",
+      "2": "동아출판",
+      "3": "동아출판"
+     },
+     "note": null
+    },
+    {
+     "order": 3,
+     "subject": "사회",
+     "publishers": {
+      "1": "동아출판",
+      "2": null,
+      "3": "동아출판"
+     },
+     "note": null
+    },
+    {
+     "order": 3,
+     "subject": "사회과부도",
+     "publishers": {
+      "1": "동아출판",
+      "2": null,
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 4,
+     "subject": "역사",
+     "publishers": {
+      "1": null,
+      "2": "미래엔",
+      "3": "미래엔"
+     },
+     "note": null
+    },
+    {
+     "order": 4,
+     "subject": "역사부도",
+     "publishers": {
+      "1": null,
+      "2": "미래엔",
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 5,
+     "subject": "도덕",
+     "publishers": {
+      "1": "해냄에듀",
+      "2": "해냄에듀",
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 6,
+     "subject": "과학",
+     "publishers": {
+      "1": "비상",
+      "2": "비상",
+      "3": "비상"
+     },
+     "note": null
+    },
+    {
+     "order": 7,
+     "subject": "영어",
+     "publishers": {
+      "1": "엔이능률",
+      "2": "엔이능률",
+      "3": "엔이능률"
+     },
+     "note": null
+    },
+    {
+     "order": 8,
+     "subject": "음악",
+     "publishers": {
+      "1": "미래엔",
+      "2": null,
+      "3": "미래엔"
+     },
+     "note": null
+    },
+    {
+     "order": 9,
+     "subject": "미술",
+     "publishers": {
+      "1": "미진사",
+      "2": null,
+      "3": null
+     },
+     "note": "1학년 때 배부하고 2·3학년까지 사용(비고 칸 병합 표기, 2·3학년 칸은 빈칸)"
+    },
+    {
+     "order": 10,
+     "subject": "체육",
+     "publishers": {
+      "1": "지학사",
+      "2": null,
+      "3": null
+     },
+     "note": "1학년 때 배부하고 2·3학년까지 사용(비고 칸 병합 표기, 2·3학년 칸은 빈칸)"
+    },
+    {
+     "order": 11,
+     "subject": "진로와 직업",
+     "publishers": {
+      "1": "이오미디어",
+      "2": null,
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 12,
+     "subject": "한문",
+     "publishers": {
+      "1": "천재",
+      "2": null,
+      "3": null
+     },
+     "note": "이미지 표기는 '천재'(출판사 정식 명칭은 확인 전)"
+    },
+    {
+     "order": 13,
+     "subject": "정보",
+     "publishers": {
+      "1": "동아출판",
+      "2": null,
+      "3": null
+     },
+     "note": null
+    },
+    {
+     "order": 14,
+     "subject": "기술·가정",
+     "publishers": {
+      "1": null,
+      "2": "미래엔",
+      "3": "미래엔"
+     },
+     "note": null
+    },
+    {
+     "order": 15,
+     "subject": "중국어",
+     "publishers": {
+      "1": null,
+      "2": null,
+      "3": "미래엔"
+     },
+     "note": null
+    }
+   ],
+   "unreadable": []
+  }
+ ],
+ "notFound": [
+  {
+   "placeId": "pl-002",
+   "reason": "공개 검색(학교 공지·학교알리미)에서 2027학년도 교과서 출판사 안내를 찾지 못함. 학교 홈페이지 공지 직접 확인은 하지 않음"
+  },
+  {
+   "placeId": "pl-004",
+   "reason": "공개 검색(학교 공지·학교알리미)에서 2027학년도 교과서 출판사 안내를 찾지 못함. 학교 홈페이지 공지 직접 확인은 하지 않음"
+  },
+  {
+   "placeId": "pl-005",
+   "reason": "공개 검색(학교 공지·학교알리미)에서 2027학년도 교과서 출판사 안내를 찾지 못함. 학교 홈페이지 공지 직접 확인은 하지 않음"
+  },
+  {
+   "placeId": "pl-006",
+   "reason": "공개 검색(학교 공지·학교알리미)에서 2027학년도 교과서 출판사 안내를 찾지 못함. 학교 홈페이지 공지 직접 확인은 하지 않음"
+  },
+  {
+   "placeId": "pl-007",
+   "reason": "공개 검색(학교 공지·학교알리미)에서 2027학년도 교과서 출판사 안내를 찾지 못함. 학교 홈페이지 공지 직접 확인은 하지 않음"
+  },
+  {
+   "placeId": "pl-008",
+   "reason": "공개 검색(학교 공지·학교알리미)에서 2027학년도 교과서 출판사 안내를 찾지 못함. 학교 홈페이지 공지 직접 확인은 하지 않음"
+  },
+  {
+   "placeId": "pl-009",
+   "reason": "공개 검색(학교 공지·학교알리미)에서 2027학년도 교과서 출판사 안내를 찾지 못함. 학교 홈페이지 공지 직접 확인은 하지 않음"
+  },
+  {
+   "placeId": "pl-010",
+   "reason": "공개 검색(학교 공지·학교알리미)에서 2027학년도 교과서 출판사 안내를 찾지 못함. 학교 홈페이지 공지 직접 확인은 하지 않음"
+  }
+ ]
+}
