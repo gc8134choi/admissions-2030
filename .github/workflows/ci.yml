@@ -76,6 +76,7 @@ jobs:
             node tools/build-universities.mjs --check
             node tools/build-admission-rules.mjs --check
             node tools/build-matches.mjs --check
+            node tools/build-planner-rules.mjs --check
           fi
           node tools/build-learners.mjs --check
           node tools/build-places.mjs --check
