@@ -12,7 +12,19 @@
     "cur-01"
    ],
    "status": "confirmed",
-   "regionNote": "경기 적용은 별도 확인"
+   "regionNote": "경기 적용은 별도 확인",
+   "sources": [
+    {
+     "id": "hs-11",
+     "name": "고교학점제 종합지원포털(교육부) 졸업·이수 기준",
+     "url": "https://www.hscredit.kr/about/graduation"
+    },
+    {
+     "id": "cur-01",
+     "name": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
+     "url": null
+    }
+   ]
   },
   "subjectCredits": {
    "value": 174,
@@ -22,7 +34,24 @@
     "cur-14"
    ],
    "status": "confirmed",
-   "regionNote": "경기 적용은 별도 확인"
+   "regionNote": "경기 적용은 별도 확인",
+   "sources": [
+    {
+     "id": "hs-11",
+     "name": "고교학점제 종합지원포털(교육부) 졸업·이수 기준",
+     "url": "https://www.hscredit.kr/about/graduation"
+    },
+    {
+     "id": "cur-01",
+     "name": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
+     "url": null
+    },
+    {
+     "id": "cur-14",
+     "name": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
+     "url": null
+    }
+   ]
   },
   "creativeCredits": {
    "value": 18,
@@ -31,7 +60,19 @@
     "cur-01"
    ],
    "status": "confirmed",
-   "regionNote": "경기 적용은 별도 확인"
+   "regionNote": "경기 적용은 별도 확인",
+   "sources": [
+    {
+     "id": "hs-11",
+     "name": "고교학점제 종합지원포털(교육부) 졸업·이수 기준",
+     "url": "https://www.hscredit.kr/about/graduation"
+    },
+    {
+     "id": "cur-01",
+     "name": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
+     "url": null
+    }
+   ]
   },
   "requiredCredits": {
    "value": 84,
@@ -40,7 +81,19 @@
     "cur-14"
    ],
    "status": "confirmed",
-   "regionNote": "경기 적용은 별도 확인"
+   "regionNote": "경기 적용은 별도 확인",
+   "sources": [
+    {
+     "id": "cur-03",
+     "name": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
+     "url": null
+    },
+    {
+     "id": "cur-14",
+     "name": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
+     "url": null
+    }
+   ]
   },
   "freeElectiveCredits": {
    "value": 90,
@@ -49,7 +102,14 @@
     "cur-14"
    ],
    "status": "confirmed",
-   "regionNote": "경기 적용은 별도 확인"
+   "regionNote": "경기 적용은 별도 확인",
+   "sources": [
+    {
+     "id": "cur-14",
+     "name": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
+     "url": null
+    }
+   ]
   },
   "requiredByArea": {
    "rows": [
@@ -57,53 +117,123 @@
    ],
    "status": "confirmed",
    "regionNote": "경기 적용은 별도 확인",
+   "sources": [
+    {
+     "id": "cur-03",
+     "name": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
+     "url": null
+    }
+   ],
    "items": [
     {
      "area": "국어",
      "credits": 8,
-     "status": "confirmed"
+     "status": "confirmed",
+     "sources": [
+      {
+       "id": "cur-03",
+       "name": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
+       "url": null
+      }
+     ]
     },
     {
      "area": "수학",
      "credits": 8,
-     "status": "confirmed"
+     "status": "confirmed",
+     "sources": [
+      {
+       "id": "cur-03",
+       "name": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
+       "url": null
+      }
+     ]
     },
     {
      "area": "영어",
      "credits": 8,
-     "status": "confirmed"
+     "status": "confirmed",
+     "sources": [
+      {
+       "id": "cur-03",
+       "name": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
+       "url": null
+      }
+     ]
     },
     {
      "area": "사회",
      "credits": 8,
      "note": "한국사 제외",
-     "status": "confirmed"
+     "status": "confirmed",
+     "sources": [
+      {
+       "id": "cur-03",
+       "name": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
+       "url": null
+      }
+     ]
     },
     {
      "area": "한국사",
      "credits": 6,
-     "status": "confirmed"
+     "status": "confirmed",
+     "sources": [
+      {
+       "id": "cur-03",
+       "name": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
+       "url": null
+      }
+     ]
     },
     {
      "area": "과학",
      "credits": 10,
-     "status": "confirmed"
+     "status": "confirmed",
+     "sources": [
+      {
+       "id": "cur-03",
+       "name": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
+       "url": null
+      }
+     ]
     },
     {
      "area": "체육",
      "credits": 10,
-     "status": "confirmed"
+     "status": "confirmed",
+     "sources": [
+      {
+       "id": "cur-03",
+       "name": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
+       "url": null
+      }
+     ]
     },
     {
      "area": "예술",
      "credits": 10,
-     "status": "confirmed"
+     "status": "confirmed",
+     "sources": [
+      {
+       "id": "cur-03",
+       "name": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
+       "url": null
+      }
+     ]
     }
    ],
    "groupItems": [
     {
      "label": "기술·가정/정보/제2외국어/한문/교양 합",
-     "credits": 16
+     "credits": 16,
+     "sources": [
+      {
+       "id": "cur-03",
+       "name": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
+       "url": null
+      }
+     ]
     }
    ]
   },
@@ -120,7 +250,19 @@
     "cur-26"
    ],
    "status": "seoul-verified",
-   "regionNote": "경기 적용은 별도 확인"
+   "regionNote": "경기 적용은 별도 확인",
+   "sources": [
+    {
+     "id": "cur-12",
+     "name": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
+     "url": null
+    },
+    {
+     "id": "cur-26",
+     "name": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
+     "url": null
+    }
+   ]
   },
   "completion": {
    "attendanceMin": {
@@ -131,7 +273,24 @@
      "cur-16"
     ],
     "status": "confirmed",
-    "regionNote": "경기 적용은 별도 확인"
+    "regionNote": "경기 적용은 별도 확인",
+    "sources": [
+     {
+      "id": "cur-02",
+      "name": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
+      "url": null
+     },
+     {
+      "id": "hs-12",
+      "name": "고교학점제 종합지원포털(교육부) 졸업·이수 기준",
+      "url": "https://www.hscredit.kr/about/graduation"
+     },
+     {
+      "id": "cur-16",
+      "name": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
+      "url": null
+     }
+    ]
    },
    "commonAchievementMinPercent": {
     "value": 40,
@@ -141,7 +300,24 @@
      "log-16"
     ],
     "status": "confirmed",
-    "regionNote": "경기 적용은 별도 확인"
+    "regionNote": "경기 적용은 별도 확인",
+    "sources": [
+     {
+      "id": "hs-12",
+      "name": "고교학점제 종합지원포털(교육부) 졸업·이수 기준",
+      "url": "https://www.hscredit.kr/about/graduation"
+     },
+     {
+      "id": "cur-16",
+      "name": "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
+      "url": null
+     },
+     {
+      "id": "log-16",
+      "name": "정책브리핑 정책뉴스: 고교학점제 학점 이수기준 완화…선택과목 출석률만 적용(2026.1.28)",
+      "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148958710"
+     }
+    ]
    },
    "electiveAchievementRequired": {
     "value": false,
@@ -151,6 +327,18 @@
     ],
     "status": "confirmed",
     "regionNote": null,
+    "sources": [
+     {
+      "id": "hs-12",
+      "name": "고교학점제 종합지원포털(교육부) 졸업·이수 기준",
+      "url": "https://www.hscredit.kr/about/graduation"
+     },
+     {
+      "id": "log-16",
+      "name": "정책브리핑 정책뉴스: 고교학점제 학점 이수기준 완화…선택과목 출석률만 적용(2026.1.28)",
+      "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148958710"
+     }
+    ],
     "appliesFrom": "2026학년도 고1·2, 2027학년도 전 학년"
    }
   }

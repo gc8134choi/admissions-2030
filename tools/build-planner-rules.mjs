@@ -27,7 +27,8 @@ function ground(name, node, extraMust = []) {
   const regionNote = rows.some((r) => /경기 적용은 별도 확인/.test(text(r))) ? "경기 적용은 별도 확인" : null;
   const order = ["confirmed", "seoul-verified", "reported", "estimated"];
   const status = rows.map((r) => r.status).sort((a, b) => order.indexOf(b) - order.indexOf(a))[0]; // 가장 낮은 신뢰도
-  return { rows: node.rows, status, regionNote };
+  const sources = rows.map((r) => ({ id: r.id, name: r.sourceName ?? null, url: r.sourceUrl ?? null }));
+  return { rows: node.rows, status, regionNote, sources };
 }
 const val = (name, node) => ({ value: node.value, ...(node.derived ? { derived: node.derived } : {}), ...ground(name, node) });
 
@@ -35,9 +36,9 @@ const byArea = man.requiredByArea;
 const areaGround = ground("requiredByArea", { rows: byArea.rows });
 const areaItems = byArea.items.map((i) => {
   const g = ground(`requiredByArea.${i.area}`, { rows: byArea.rows, must: i.must });
-  return { area: i.area, credits: i.credits, ...(i.note ? { note: i.note } : {}), status: g?.status };
+  return { area: i.area, credits: i.credits, ...(i.note ? { note: i.note } : {}), status: g?.status, sources: g?.sources };
 });
-const groupItems = byArea.groupItems.map((i) => ({ label: i.label, credits: i.credits, ...(ground(`requiredByArea.${i.label}`, { rows: byArea.rows, must: i.must }) ? {} : {}) }));
+const groupItems = byArea.groupItems.map((i) => ({ label: i.label, credits: i.credits, sources: ground(`requiredByArea.${i.label}`, { rows: byArea.rows, must: i.must })?.sources }));
 const areaSum = areaItems.reduce((a, i) => a + i.credits, 0) + groupItems.reduce((a, i) => a + i.credits, 0);
 if (areaSum !== man.requiredCredits.value) errs.push(`교과군별 필수 학점 합 ${areaSum} ≠ 필수 ${man.requiredCredits.value}`);
 if (man.subjectCredits.value + man.creativeCredits.value !== man.totalCredits.value) errs.push("교과 + 창체 ≠ 총 학점");
@@ -50,7 +51,7 @@ const graduation = {
   creativeCredits: val("creativeCredits", man.creativeCredits),
   requiredCredits: val("requiredCredits", man.requiredCredits),
   freeElectiveCredits: val("freeElectiveCredits", man.freeElectiveCredits),
-  requiredByArea: { rows: byArea.rows, status: areaGround?.status, regionNote: areaGround?.regionNote, items: areaItems, groupItems },
+  requiredByArea: { rows: byArea.rows, status: areaGround?.status, regionNote: areaGround?.regionNote, sources: areaGround?.sources, items: areaItems, groupItems },
   capKoMaEn: { value: man.capKoMaEn.value, kind: man.capKoMaEn.kind, areas: man.capKoMaEn.areas, ...ground("capKoMaEn", man.capKoMaEn) },
   completion: {
     attendanceMin: val("attendanceMin", comp.attendanceMin),
