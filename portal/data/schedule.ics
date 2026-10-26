@@ -7,41 +7,61 @@ X-WR-CALNAME:대입 일정
 X-WR-TIMEZONE:Asia/Seoul
 BEGIN:VEVENT
 UID:ev-hs-01-1@admissions-2030
-DTSTAMP:20261025T000000Z
+DTSTAMP:20261026T000000Z
 DTSTART;VALUE=DATE:20260801
 DTEND;VALUE=DATE:20260901
-SUMMARY:서울 기본계획 · 기본계획 확정 (보도) (월 단위)
-DESCRIPTION:서울교육청 2027학년도 고입 기본계획 확정(2026.8
- ). 후기고 동일교 배정 확대\n원문은 아직 못 봤어요.\n사
- 유: 공식 원문 대조 전(매체 보도). 교육청 포털·보도자
- 료에서 해당 항목 미특정\n출처: 교육을 비추다 https://www
- .kyobit.com/news/articleView.html?idxno=5127\n확인일 2026-10-25
+SUMMARY:서울 2027학년도 고입 기본계획 · 기본계획 확정 (
+ 월 단위)
+DESCRIPTION:서울시교육청이 2027학년도 서울특별시 고등학
+ 교 입학전형 기본계획을 2026.3.31 고입자료실에 공고했다
+ (보도 2026.3.30~31). 서울반도체고 2027.3 개교(마이스터고)\,
+  후기고는 일반고·외고·국제고·자사고를 포함하며 교
+ 육감 선발 후기고 합격 발표 2027.1.6\, 배정학교 발표 2027.
+ 1.28\, 입학전 배정 인터넷 접수 2027.2.2~4. 이 행의 '확정 20
+ 26.8'은 서울반도체고 교육부 최종 승인 예정 시점이며 
+ 기본계획 공고 자체는 3월이다.\n출처: 서울특별시교육
+ 청 2027학년도 서울특별시 고등학교 입학전형 기본계획(
+ 공고용\, 고입자료실 2026.3.31 게시\, PDF 붙임-1 주요 일정)
+  https://www.sen.go.kr/user/bbs/BD_selectBbs.do?q_bbsSn=1068&q_bbsDocNo=20
+ 260331091528935\n확인일 2026-10-26
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ev-hs-02-1@admissions-2030
-DTSTAMP:20261025T000000Z
+DTSTAMP:20261026T000000Z
 DTSTART;VALUE=DATE:20260818
 DTEND;VALUE=DATE:20260904
-SUMMARY:서울 과학고 · 접수(전국 기준) (보도)
-DESCRIPTION:전국 기준 접수 8.18~9.3\n원문은 아직 못 봤어요.\
- n사유: 공식 원문 대조 전(매체 보도). 교육청 포털·보도
- 자료에서 해당 항목 미특정\n출처: 베리타스알파 https://w
- ww.veritas-a.com/news/articleView.html?idxno=604064\n확인일 2026-10-25
+SUMMARY:서울 과학고(세종·한성) 전기 일정 · 접수(전국 기
+ 준)
+DESCRIPTION:서울 과학계열 특목고(세종과학고·한성과학고)
+ 는 소속 학교장 추천으로 개별 지원하는 자기주도학습
+ 전형이며\, 서울 기본계획 기준 입학원서 접수 2026.8.24~8.
+ 26\, 합격자 발표 2026.12.2. (이전 초안의 '전국 기준 접수 8
+ .18~9.3'은 서울 공고와 달라 공식 값으로 교체)\n출처: 서
+ 울특별시교육청 2027학년도 서울특별시 고등학교 입학전
+ 형 기본계획(공고용\, 고입자료실 2026.3.31 게시\, PDF 붙임
+ -1 주요 일정) https://www.sen.go.kr/user/bbs/BD_selectBbs.do?q_bbsSn=1
+ 068&q_bbsDocNo=20260331091528935\n확인일 2026-10-26
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ev-hs-05-1@admissions-2030
-DTSTAMP:20261025T000000Z
+DTSTAMP:20261026T000000Z
 DTSTART;VALUE=DATE:20261202
 DTEND;VALUE=DATE:20261203
-SUMMARY:서울 후기 일반고·자사고·외고·국제고 · 후기 전
- 형 개막(보도) (보도)
-DESCRIPTION:후기 전형 12월 시작(12.2 개막 보도). 세부 접수·
- 발표일은 확인 못 함\n원문은 아직 못 봤어요.\n사유: 공
- 식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서
-  해당 항목 미특정\n출처: 베리타스알파 https://www.veritas-a
- .com/news/articleView.html?idxno=604064\n확인일 2026-10-25
+SUMMARY:서울 후기 일반고·자사고·외고·국제고 일정 · 후
+ 기 전형 개막(보도)
+DESCRIPTION:외국어고·국제고: 원서 접수 2026.12.3~12.7\, 합격
+ 자 발표 2026.12.24(면접대상자 자기소개서 제출 12.9~12.11)\,
+  자사고 14교(하나고 제외): 접수 12.3~12.7\, 발표 12.24\, 하
+ 나고: 발표 12.30\, 교육감 선발고(일반고): 접수 12.3~12.7\, 
+ 배정 대상자 발표 2027.1.6\, 배정학교 발표 2027.1.28\, 등록 
+ 1.28~1.29\, 입학전 배정 접수 2.2~2.4·발표 2.18. 외고·국제
+ 고·자사고 추가모집 2027.1.11~1.12(발표 1.15)\n출처: 서울특
+ 별시교육청 2027학년도 서울특별시 고등학교 입학전형 
+ 기본계획(공고용\, 고입자료실 2026.3.31 게시\, PDF 붙임-1 
+ 주요 일정) https://www.sen.go.kr/user/bbs/BD_selectBbs.do?q_bbsSn=1068
+ &q_bbsDocNo=20260331091528935\n확인일 2026-10-26
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -283,20 +303,23 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ev-gg-01-1@admissions-2030
-DTSTAMP:20261025T000000Z
+DTSTAMP:20261026T000000Z
 DTSTART;VALUE=DATE:20260330
 DTEND;VALUE=DATE:20260331
-SUMMARY:경기 2027학년도 고입 기본계획 발표 (보도)
-DESCRIPTION:경기도교육청이 2026.3.30 기본계획 발표. 전기 학
- 교는 8.24\, 후기 학교(일반고\, 자율형 공립고\, 외국어고
- \, 국제고\, 자율형 사립고)는 12.4부터 전형 시작\, 후기 
- 전형은 2027.2.5까지\n원문은 아직 못 봤어요.\n사유: 공식 
- 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해
- 당 항목 미특정\n출처: 뉴스핌 https://www.newspim.com/news/view/
- 20260330000537 / 데일리안 https://www.dailian.co.kr/news/view/1627070/
- %EA%B2%BD%EA%B8%B0%EB%8F%84%EA%B5%90%EC%9C%A1%EC%B2%AD-2027%ED%95%99%EB%85
- %84%EB%8F%84-%EA%B2%BD%EA%B8%B0%EB%8F%84-%EA%B3%A0-2026\n확인일 2026-10
- -25
+SUMMARY:경기 2027학년도 고입 기본계획 발표
+DESCRIPTION:경기도교육청이 2026.3.30 2027학년도 고등학교 입
+ 학전형 기본계획을 발표했다. 전기 학교(과학고·마이스
+ 터고·예술고·체육고·특성화고·일반고 특성화학과) 전
+ 형 2026.8.24~12.1\, 후기 학교(일반고·자율형 공립고·외국
+ 어고·국제고·자율형 사립고) 전형 2026.12.4~2027.2.5. 2027학
+ 년도 고입부터 중1 2학기 성적 반영\, 2028학년도부터 봉
+ 사활동 실적 제외·출결 반영 강화.\n출처: 경기도교육청
+  보도자료: 2027학년도 경기도 고등학교 입학전형 기본계
+ 획(2026.3.30 등록) https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nt
+ tSn=2344685&mi=10102&searchAt1=&searchValue1= / 데일리안 https://www.d
+ ailian.co.kr/news/view/1627070/%EA%B2%BD%EA%B8%B0%EB%8F%84%EA%B5%90%EC%9C%
+ A1%EC%B2%AD-2027%ED%95%99%EB%85%84%EB%8F%84-%EA%B2%BD%EA%B8%B0%EB%8F%84-%E
+ A%B3%A0-2026\n확인일 2026-10-26
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
