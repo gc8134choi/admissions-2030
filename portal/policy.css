@@ -142,3 +142,7 @@ tr.g3,tr.g3 td,tr.g3 a{color:var(--e-mute)}
 @media(max-width:600px){.ed-tbl{font-size:13px;table-layout:fixed}.ed-tbl th,.ed-tbl td{padding-right:6px;overflow-wrap:anywhere}.ed-tbl td:first-child,.ed-tbl th:first-child{width:30%}}
 .ed-tbl{max-width:100%}.ed-tbl th,.ed-tbl td{white-space:normal;min-width:0}
 .ed-tbl{min-width:0}.ed-tbl th,.ed-tbl td{border:0;border-top:1px solid var(--e-hair,#ddd);background:none;text-align:left}.ed-tbl th{border-top:0}
+/* 대학 요건 맞춰보기: 대학 12곳 한 줄 칩(모바일 가로 스크롤) */
+.uv-bar{flex-wrap:nowrap}.uv-bar .flabel{flex:none}
+.uv-chips{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;padding-bottom:4px}
+.uv-chips .chip{flex:none;white-space:nowrap}

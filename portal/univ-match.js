@@ -5,16 +5,27 @@ const STATE = { guaranteed: "학교 지정", reachable: "고를 수 있음", blo
 const TRACK = { "susi-gyogwa": "학생부교과", "susi-jonghap": "학생부종합", "susi-nonsul": "논술", "jeongsi-csat": "정시 수능", special: "특별전형" };
 
 export async function univBody(el, { load, esc, profile, schools, sel, pick }) {
-  const [rules, matches, master] = await Promise.all([load("admission-rules"), load("matches"), load("subject-master")]);
+  const [rules, matches, master, ul] = await Promise.all([load("admission-rules"), load("matches"), load("subject-master"), load("universities")]);
+  const univs = ul.universities;
   const name = new Map(master.subjects.map((m) => [m.subjectId, m.name]));
-  const mine = (profile.schoolIds || []).length ? schools.filter((s) => profile.schoolIds.includes(s.id)) : [];
-  if (!mine.length) { el.innerHTML = `<div class="ed"><p class="muted">아직 학교가 정해지지 않아서 맞춰볼 편제표가 없어요.</p></div>`; return; }
-  const st = (el.__univ ||= { school: (sel.find((id) => mine.some((s) => s.id === id)) || mine[0].id), univ: Object.keys(rules._meta.universities)[0], rule: null });
+  const picked = (profile.schoolIds || []).length ? schools.filter((s) => profile.schoolIds.includes(s.id)) : [];
+  const mine = picked.length ? picked : schools;
+  if (!mine.length) { el.innerHTML = `<div class="ed"><p class="muted">아직 맞춰볼 편제표가 없어요.</p></div>`; return; }
+  const st = (el.__univ ||= { school: (sel.find((id) => mine.some((s) => s.id === id)) || mine[0].id), univ: (univs.find((u) => rules.rules.some((r) => r.universityId === u.id)) || univs[0]).id, rule: null });
   if (!mine.some((s) => s.id === st.school)) st.school = mine[0].id;
   const units = () => rules.rules.filter((r) => r.universityId === st.univ);
-  if (!units().some((r) => r.ruleId === st.rule)) st.rule = (units().find((r) => r.requirements.length) || units()[0]).ruleId;
 
+  const chips = (items, key, cur, cls = "") => items.map(([v, t]) => `<button type="button" class="chip ${v === cur ? "on" : ""}" data-k="${key}" data-v="${esc(v)}" aria-pressed="${v === cur}">${esc(t)}</button>`).join("");
+  const top = () => `<div class="ed-top"><b>${esc(rules._meta.referenceNote)}</b><details><summary>자세히</summary><p>편제표는 개설 후보예요. 학교가 매년 확정하는 개설 과목과 다를 수 있어요. 교과군 요건은 교과군 안의 과목으로 계산했어요.</p></details></div>
+      <div class="chipbar"><span class="flabel">학교</span><div class="chips">${chips(mine.map((s) => [s.id, s.name]), "school", st.school)}</div></div>
+      <div class="chipbar uv-bar"><span class="flabel">대학</span><div class="chips uv-chips">${chips(univs.map((u) => [u.id, u.name]), "univ", st.univ)}</div></div>`;
   const draw = () => {
+    if (!units().some((r) => r.ruleId === st.rule)) st.rule = (units().find((r) => r.requirements.length) || units()[0])?.ruleId ?? null;
+    if (!st.rule) {
+      const u = univs.find((x) => x.id === st.univ);
+      el.innerHTML = `<div class="ed">${top()}<h2>${esc(u.name)}</h2><p class="muted">아직 정리 중이에요.</p>${u.admissionsUrl ? `<p class="ed-src">입학처: <a href="${esc(u.admissionsUrl)}" target="_blank" rel="noopener">${esc(u.admissionsUrl.replace(/^https:\/\//, "").replace(/\/$/, ""))}</a></p>` : ""}</div>`;
+      return;
+    }
     const rule = rules.rules.find((r) => r.ruleId === st.rule);
     const m = matches.matches.find((x) => x.schoolId === st.school && x.ruleId === st.rule);
     const sc = schools.find((s) => s.id === st.school);
@@ -38,14 +49,11 @@ export async function univBody(el, { load, esc, profile, schools, sel, pick }) {
       }).join("");
       body = `<p class="ed-b"><b>${esc(sc.name)}</b>: ${parts.join(", ")}.</p><table class="ed-tbl"><thead><tr><th>요건</th><th>상태</th><th>이 학교 편제표</th></tr></thead><tbody>${rows}</tbody></table>`;
     }
-    const chips = (items, key, cur) => items.map(([v, t]) => `<button type="button" class="chip ${v === cur ? "on" : ""}" data-k="${key}" data-v="${esc(v)}" aria-pressed="${v === cur}">${esc(t)}</button>`).join("");
-    el.innerHTML = `<div class="ed"><div class="ed-top"><b>${esc(rules._meta.referenceNote)}</b><details><summary>자세히</summary><p>편제표는 개설 후보예요. 학교가 매년 확정하는 개설 과목과 다를 수 있어요. 교과군 요건은 교과군 안의 과목으로 계산했어요.</p></details></div>
-      <div class="chipbar"><span class="flabel">학교</span><div class="chips">${chips(mine.map((s) => [s.id, s.name]), "school", st.school)}</div></div>
-      <div class="chipbar"><span class="flabel">대학</span><div class="chips">${chips(Object.entries(rules._meta.universities), "univ", st.univ)}</div></div>
+    el.innerHTML = `<div class="ed">${top()}
       <div class="chipbar"><span class="flabel">모집단위</span><div class="chips">${chips(units().map((r) => [r.ruleId, `${r.unitName} · ${TRACK[r.track] || r.track}`]), "rule", st.rule)}</div></div>
       <h2>${esc(rule.universityName)} ${esc(rule.unitName)} ${stt}</h2>${body}
       <p class="ed-src">출처: ${src || "표기 없음"}</p></div>`;
   };
-  el.onclick = (e) => { const b = e.target.closest("button[data-k]"); if (!b) return; st[b.dataset.k] = b.dataset.v; draw(); };
+  el.onclick = (e) => { const b = e.target.closest("button[data-k]"); if (!b) return; st[b.dataset.k] = b.dataset.v; if (b.dataset.k === "univ") st.rule = null; draw(); };
   draw();
 }
