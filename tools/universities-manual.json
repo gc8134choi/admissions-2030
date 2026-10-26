@@ -1,0 +1,68 @@
+{
+ "_meta": {
+  "note": "관심 대학 목록의 정본(손으로 관리). tools/build-universities.mjs가 portal/data/universities.json을 만든다. 대학 id는 s-900~s-999 전용, 한 번 정한 id는 바꾸지 않는다(임시 id, 정식 학교 코드가 생기면 매핑). admissionsUrl은 입학처 공식 주소이며 확인되지 않은 곳은 null로 두고 조사 세션이 채운다.",
+  "decidedAt": "2026-10-26"
+ },
+ "universities": [
+  {
+   "id": "s-901",
+   "name": "서울대학교",
+   "admissionsUrl": "https://admission.snu.ac.kr/"
+  },
+  {
+   "id": "s-902",
+   "name": "연세대학교",
+   "admissionsUrl": "https://admission.yonsei.ac.kr/"
+  },
+  {
+   "id": "s-903",
+   "name": "고려대학교",
+   "admissionsUrl": null
+  },
+  {
+   "id": "s-904",
+   "name": "포항공과대학교",
+   "admissionsUrl": null
+  },
+  {
+   "id": "s-905",
+   "name": "한국과학기술원",
+   "admissionsUrl": null
+  },
+  {
+   "id": "s-906",
+   "name": "서강대학교",
+   "admissionsUrl": null
+  },
+  {
+   "id": "s-907",
+   "name": "성균관대학교",
+   "admissionsUrl": null
+  },
+  {
+   "id": "s-908",
+   "name": "한양대학교",
+   "admissionsUrl": "https://go.hanyang.ac.kr/"
+  },
+  {
+   "id": "s-909",
+   "name": "중앙대학교",
+   "admissionsUrl": "https://admission.cau.ac.kr/"
+  },
+  {
+   "id": "s-910",
+   "name": "경희대학교",
+   "admissionsUrl": "https://iphak.khu.ac.kr/"
+  },
+  {
+   "id": "s-911",
+   "name": "한국외국어대학교",
+   "admissionsUrl": null
+  },
+  {
+   "id": "s-912",
+   "name": "서울시립대학교",
+   "admissionsUrl": null
+  }
+ ]
+}

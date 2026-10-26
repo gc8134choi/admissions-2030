@@ -4,6 +4,8 @@ import { registerHome } from "./home.js";
 import { registerFiles } from "./files.js";
 import { currentProfile, allProfiles, initProfiles, mountProfileSwitch, nameSettings, bindNameSettings, showProfiles } from "./profile-ui.js";
 import { univBody } from "./univ-match.js";
+import { mapBody } from "./map.js";
+import { middleBody } from "./middle.js";
 import { mountSearch } from "./search.js";
 import { schoolBand } from "./school-card.js";
 import { preloadSubjectInfo, subjectName, decorateSubjectLists } from "./subject-info.js";
@@ -113,18 +115,20 @@ async function curriculumView(el, query, node) {
   sel = [...new Set(sel)];
   const areaIn = (query.get("a") || "").split(",").map((a) => (AREA7.includes(a) ? a : a ? "기타" : "")); // 옛 링크의 체육·예술·기술가정·제2외국어는 기타로
   let areasSel = AREA7.filter((a) => areaIn.includes(a)); // 비어 있으면 전체
-  let tab = ["compare", "univ"].includes(query.get("v")) ? query.get("v") : "summary";
+  let focusP = query.get("p"); // 지도 탭에서 강조할 학교
+  let tab = ["compare", "univ", "map", "middle"].includes(query.get("v")) ? query.get("v") : "summary";
   let compare = null; // 상세 비교 화면(필터 포함)은 한 번만 만들고 탭 전환 때 재사용한다
 
   el.innerHTML = `<div class="phead"><h2>${esc(node?.title || "학교별 과목표")} ${node ? badge(node.status) : ""}</h2>
-      <div class="subtabs" id="tabs"><a href="#" data-tab="summary">학교별 요약</a><a href="#" data-tab="compare">상세 비교</a><a href="#" data-tab="univ">대학 요건 맞춰보기</a></div></div>
+      <div class="subtabs" id="tabs"><a href="#" data-tab="summary">학교별 요약</a><a href="#" data-tab="compare">상세 비교</a><a href="#" data-tab="univ">대학 요건 맞춰보기</a><a href="#" data-tab="map">학교 지도</a><a href="#" data-tab="middle">중학교 배정</a></div></div>
     <div class="chipbar" id="chipbar"><span class="flabel">학교</span><div class="chips" id="chips"></div></div>
     <div id="cview"></div>`;
 
   const syncUrl = () => {
     const q = new URLSearchParams();
     if (tab !== "summary") q.set("v", tab);
-    q.set("s", sel.join(","));
+    if (tab === "map" || tab === "middle") { if (tab === "map" && focusP) q.set("p", focusP); }
+    else q.set("s", sel.join(","));
     if (areasSel.length) q.set("a", areasSel.join(","));
     history.replaceState(null, "", `#select/curriculum?${q.toString().replace(/%2C/g, ",")}`);
   };
@@ -141,6 +145,8 @@ async function curriculumView(el, query, node) {
   const drawBody = async () => {
     const body = $("#cview");
     if (tab === "summary") { compare = null; await summaryBody(body, sel); }
+    else if (tab === "map") { compare = null; await mapBody(body, { load, esc, focus: focusP }); }
+    else if (tab === "middle") { compare = null; await middleBody(body, { load, esc }); }
     else if (tab === "univ") { compare = null; await univBody(body, { load, esc, profile: currentProfile(store), schools, sel }); }
     else {
       if (!compare || !body.contains(compare.root)) compare = await compareShell(body, () => { sel = schools.map((x) => x.id); areasSel = []; refresh(); }, () => areasSel);
@@ -164,7 +170,7 @@ async function curriculumView(el, query, node) {
       return void refresh();
     }
     const t = e.target.closest("#tabs a");
-    if (t) { e.preventDefault(); tab = t.dataset.tab; refresh(); return; }
+    if (t) { e.preventDefault(); tab = t.dataset.tab; if (tab !== "map") focusP = null; refresh(); return; }
     const go = e.target.closest("[data-go]");
     if (go) { e.preventDefault(); sel = [go.dataset.go]; tab = "compare"; refresh(); return; }
     const star = e.target.closest(".star");
@@ -212,8 +218,8 @@ async function summaryBody(el, ids) {
       <div class="terms">${TERMS.map((t) => { const b = m.byTerm[t], tot = b.required + b.elective || 1; return `<div><div class="tnum"><b class="r">${b.required}</b><b class="e">${b.elective}</b></div><div class="col"><i class="e" style="height:${(b.elective / tot) * 100}%"></i><i class="r" style="height:${(b.required / tot) * 100}%"></i></div><span>${t}</span></div>`; }).join("")}</div>
       </details>
       <div class="st2">
-        <div class="st-req"><b class="st-l">지정</b> 과목 <b class="st-n">${m.requiredCount}</b></div>
-        <div class="st-ele"><b class="st-l">선택</b> 후보 <b class="st-n">${m.candidateSubjects}</b> 중 <b class="st-n">${m.pickTotal}</b>개 선택
+        <div class="st-req"><b class="st-l" title="학교가 정해 둔 과목">지정</b> 과목 <b class="st-n">${m.requiredCount}</b></div>
+        <div class="st-ele"><b class="st-l" title="학생이 골라 듣는 과목">선택</b> 후보 <b class="st-n">${m.candidateSubjects}</b> 중 <b class="st-n">${m.pickTotal}</b>개 선택
           <div class="st-sub">택n 묶음 ${m.groupCount} · 선택 폭 ${m.breadth} · 첫 선택 학기 ${esc(m.firstElectiveTerm || "-")}</div></div>
       </div>
       ${(() => { const cb = creativeBlock(m, curricula.find((x) => x.schoolId === m.schoolId)); return cb ? `<details class="fold"><summary>창체 ${m.creditsCreative}학점 · ${m.creativeHours}시간</summary>${cb}</details>` : ""; })()}

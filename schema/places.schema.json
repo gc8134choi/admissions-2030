@@ -1,0 +1,24 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "places.schema.json",
+ "title": "places (학교 위치) — research/data/places-draft.json 입력 형식 = portal/data/places.json 항목",
+ "description": "초·중·고 학교 위치. 좌표를 모르면 lat·lng를 null로 두면 지도에서만 빠지고 목록에는 남는다. 좌표 출처(coordSource)와 주소 출처(sources)를 분리해 적는다.",
+ "type": "object",
+ "required": ["placeId", "name", "level", "address", "status", "sources"],
+ "properties": {
+  "placeId": { "type": "string", "pattern": "^pl-\\d{3,}$", "description": "한 번 정하면 바꾸지 않는다" },
+  "schoolId": { "type": ["string", "null"], "description": "schools.json의 학교 id(편제표 4개교 등). 없으면 null" },
+  "name": { "type": "string" },
+  "level": { "enum": ["elementary", "middle", "high"] },
+  "kind": { "type": ["string", "null"], "description": "공립/사립/국립 등" },
+  "address": { "type": "string" },
+  "lat": { "type": ["number", "null"] },
+  "lng": { "type": ["number", "null"] },
+  "coordSource": { "type": ["object", "null"], "properties": { "name": { "type": "string" }, "url": { "type": ["string", "null"] } } },
+  "homepage": { "type": ["string", "null"] },
+  "phone": { "type": ["string", "null"] },
+  "status": { "enum": ["confirmed", "reported", "estimated"] },
+  "sources": { "type": "array", "minItems": 1, "items": { "type": "object", "required": ["name"], "properties": { "name": { "type": "string" }, "url": { "type": ["string", "null"] } } } },
+  "checkedAt": { "type": "string" }
+ }
+}

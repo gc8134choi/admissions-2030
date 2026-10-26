@@ -142,3 +142,28 @@ tr.g3,tr.g3 td,tr.g3 a{color:var(--e-mute)}
 @media(max-width:600px){.ed-tbl{font-size:13px;table-layout:fixed}.ed-tbl th,.ed-tbl td{padding-right:6px;overflow-wrap:anywhere}.ed-tbl td:first-child,.ed-tbl th:first-child{width:30%}}
 .ed-tbl{max-width:100%}.ed-tbl th,.ed-tbl td{white-space:normal;min-width:0}
 .ed-tbl{min-width:0}.ed-tbl th,.ed-tbl td{border:0;border-top:1px solid var(--e-hair,#ddd);background:none;text-align:left}.ed-tbl th{border-top:0}
+/* 대학 요건 맞춰보기: 대학 12곳 한 줄 칩(모바일 가로 스크롤) */
+.uv-bar{flex-wrap:nowrap}.uv-bar .flabel{flex:none}
+.uv-chips{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;padding-bottom:4px}
+.uv-chips .chip{flex:none;white-space:nowrap}
+/* 학교 지도·중학교 배정 */
+.pl-map{height:60vh;min-height:320px;margin:8px 0;border:1px solid var(--line);background:var(--panel)}
+.pl-map[hidden],.pl-detail[hidden]{display:none}
+.pl-detail{margin:8px 0;padding:8px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pl-addr{margin:2px 0;color:var(--muted)}
+.pl-links{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:4px}
+.pl-list,.pl-zone,.pl-flow{list-style:none;margin:8px 0;padding:0}
+.pl-list li,.pl-zone>li{border-top:1px solid var(--line)}
+.pl-list li:last-child,.pl-zone>li:last-child{border-bottom:1px solid var(--line)}
+.pl-list li.on{background:var(--panel)}
+.pl-row{display:flex;gap:10px;align-items:baseline;width:100%;padding:10px 4px;border:0;background:none;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.pl-lv{flex:none;width:22px;color:var(--accent);font-weight:700;text-align:center}
+.pl-pin{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border:2px solid #fff;background:#6b6b6b;color:#fff;font:700 13px/1 inherit;box-shadow:0 0 0 1px rgba(0,0,0,.35)}
+.pl-pin.lv-elementary{border-radius:50%}.pl-pin.lv-middle{border-radius:4px}.pl-pin.lv-high{border-radius:4px;transform:rotate(45deg)}
+.pl-pin.lv-high{font-size:0}.pl-pin.lv-high::before{content:"고";font-size:13px;transform:rotate(-45deg)}
+.pl-pin.on{background:var(--accent)}
+.pl-zone>li{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:10px 4px}
+.pl-zone .ed-s{grid-column:1/-1}
+.pl-map-btn{padding:4px 12px;border:1px solid var(--line);color:inherit;text-decoration:none}
+.pl-flow li{padding:6px 0;border-top:1px solid var(--line)}
+@media (max-width:600px){.pl-map{height:60vh}}
