@@ -37,11 +37,13 @@ export function placeInfo(p, esc) {
     <div class="pl-links">${hp ? `<a href="${esc(hp)}" target="_blank" rel="noopener">홈페이지</a>` : ""}<a href="${esc(naverUrl(p))}" target="_blank" rel="noopener">네이버 지도에서 열기</a><a href="${esc(kakaoUrl(p))}" target="_blank" rel="noopener">카카오맵에서 열기</a></div>`;
 }
 
-export async function mapBody(el, { load, esc, focus = null }) {
+// level: 처음 보여 줄 학교급(elementary|middle|high). 없으면 주소의 lv= 값을 읽는다(#select/curriculum?v=map&lv=middle).
+export async function mapBody(el, { load, esc, focus = null, level = null }) {
   const data = await load("places");
   const places = data.places;
   if (!places.length) { el.innerHTML = `<div class="ed"><h2>학교 지도</h2><p class="muted">아직 정리 중이에요.</p></div>`; return; }
-  const st = (el.__map ||= { level: "all", view: "map", sel: null });
+  const lv0 = level || new URLSearchParams((location.hash.split("?")[1] || "")).get("lv");
+  const st = (el.__map ||= { level: LEVEL[lv0] ? lv0 : "all", view: "map", sel: null });
   if (focus && places.some((p) => p.id === focus)) { st.sel = focus; st.view = "map"; }
   let map = null, layer = null, markers = new Map(), mapFailed = false;
   const shown = () => places.filter((p) => st.level === "all" || p.level === st.level);
