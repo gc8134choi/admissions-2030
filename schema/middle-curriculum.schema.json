@@ -18,7 +18,7 @@
     "order": { "type": "integer" },
     "subject": { "type": "string" },
     "publishers": { "type": "object", "required": ["1", "2", "3"], "description": "학년 → 출판사 이름, 해당 학년에 교과서가 없으면 null", "additionalProperties": { "type": ["string", "null"] } },
-    "note": { "type": ["string", "null"] } } } } } },
+    "note": { "type": ["string", "null"] } } } } } } },
   "notFound": { "type": "array", "items": { "type": "object", "required": ["placeId", "reason"], "properties": { "placeId": { "type": "string" }, "reason": { "type": "string" } } } }
  }
 }
