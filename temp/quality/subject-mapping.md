@@ -30,7 +30,7 @@
 ## 문서 충돌 목록 (수정하지 않음, 편제표 세션 소관)
 `data-src/curriculum-analysis/docs/db-schema.md`에서 CLAUDE.md와 맞지 않는 곳:
 - data-src/curriculum-analysis/docs/db-schema.md:16 content/data/display-images.json  화면용 이미지(비공개) ─┘
-- data-src/curriculum-analysis/docs/db-schema.md:86 - **새 학교는 비식별 id `s-NNN`**(예: `s-001`, 등록 순서 연번, 3자리 이상, 재사용 금지)을 씁니다. 이름·지역·약어를 id에 넣지 않습니다. 이유: id
+- data-src/curriculum-analysis/docs/db-schema.md:86 - **새 학교는 비식별 id `s-NNN`**(예: `s-001`, 등록 순서 연번, 3자리 이상, 재사용 금지)을 씁니다. 이름·지역·약어를 id에 넣지 않습니다. id는 파일
 - data-src/curriculum-analysis/docs/db-schema.md:356 - DB에는 **`sourceImage` 키와 `_meta.source[].file` 경로를 넣지 않습니다.** 원본 전사 메모(`notes`)와 비공개 메모도 싣지 않습니다.
 - data-src/curriculum-analysis/docs/db-schema.md:444 - **저장 위치는 항상 `content/`(비공개)**이고, 대시보드에는 암호화된 `content/db/` 파생 파일로만 올라갑니다.
 - data-src/curriculum-analysis/docs/db-schema.md:452 대시보드의 편제표 밖 화면(홈, 일정, 고교 선택, 대입 제도, 제도 변경 로그, 자료실)이 쓰는 데이터입니다. 모두 **§10 공통 레코드 필드**(`id`, `source[]`
