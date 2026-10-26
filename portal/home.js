@@ -171,6 +171,14 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const csDays = cs && !cs.start.endsWith("-") ? (() => { const sp0 = span(cs.start, cs.end); return Math.round(((sp0.month ? new Date(sp0.start.getFullYear(), sp0.start.getMonth(), 15) : sp0.start) - t) / DAY); })() : null;
     const ddline = csDays != null ? `<span class="aux me"><span class="aux-d num">${examYear}학년도 수능 <b>${csDays.toLocaleString()}일</b></span> ${badges(csRow)}</span>` : "";
 
+    // 알림 후보: 7일 안에 시작하거나 진행 중인 일정과 지난 방문 이후 새 소식을 한 줄로(없으면 숨김). 브라우저 알림은 쓰지 않는다.
+    const pingLine = () => {
+      const wk = upRows().filter((x) => x.sp.start <= new Date(t.getTime() + 7 * DAY));
+      if (!wk.length && !fresh) return "";
+      const first = wk[0], head = first ? `${esc(first.r.title)}${wk.length > 1 ? ` 외 ${wk.length - 1}건` : ""}` : "";
+      return `<p class="hm-ping" role="status">${wk.length ? `<a href="#schedule"><b>이번 주</b> ${head}</a>` : ""}${wk.length && fresh ? '<span class="stg-sep" aria-hidden="true">·</span>' : ""}${fresh ? `<a href="#changelog"><b>새 소식</b> ${fresh}건</a>` : ""}</p>`;
+    };
+
     // 단계 줄: 지금 가장 가까운 일이 속한 단계를 강조하고, 누르면 그 단계 일정으로 간다(앞으로 90일 안 일정 수 함께).
     const STG_HREF = { 중입: "#schedule?t=life", 고입: "#schedule?t=hs", 대입: "#schedule?t=univ" };
     const stageLine = () => {
@@ -182,6 +190,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
 
     el.innerHTML = `<div class="hm">
       ${ddline ? `<div class="auxbar" aria-label="수능 D-day">${ddline}</div>` : ""}
+      ${pingLine()}
       <div class="hero-grid">
         <section class="hero" aria-labelledby="hh" id="hm-hero">${heroHtml()}</section>
         <aside class="hero-aside" aria-label="이어지는 일정"><div class="sec-h"><h2><em>이어서</em>그다음 일정</h2><a href="#schedule">전체 일정</a></div>
