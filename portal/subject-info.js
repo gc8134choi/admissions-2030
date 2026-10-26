@@ -10,6 +10,7 @@ const txt = (s) => esc(String(s ?? "").replace(/&lt;/g, "<").replace(/&gt;/g, ">
 const keyOf = (n) => String(n ?? "").normalize("NFC").replace(/\s+/g, "");
 
 let MAP = new Map();
+let OWN = new Set(); // 학교 자체 개설 과목(안내 연결 없음)
 let META = {};
 let loading = null;
 
@@ -19,6 +20,10 @@ export function preloadSubjectInfo(load) {
     META = (d && !Array.isArray(d) && d._meta) || {};
     const list = Array.isArray(d) ? d : d?.subjects || Object.entries(d || {}).filter(([k]) => k !== "_meta").map(([k, v]) => ({ name: k, ...v }));
     MAP = new Map(list.filter((x) => x && x.name && String(x.summary || "").trim()).map((x) => [keyOf(x.name), x]));
+  }).catch(() => {}).then(() => load("subject-info-links")).then((l) => {
+    // 수동 연결(data/subject-info-links.json): manual은 같은 계열 과목의 안내를 그 과목 이름으로 보여 주고, schoolOwn은 "학교 자체 개설"만 적는다.
+    for (const [k, v] of Object.entries(l?.manual || {})) { const base = MAP.get(keyOf(v.info)); if (base) MAP.set(keyOf(k), { ...base, name: v.name || k, type: "", old2015: "", linkedFrom: v.info }); }
+    OWN = new Set(Object.keys(l?.schoolOwn || {}).map(keyOf));
   }).catch(() => {});
   return loading;
 }
@@ -45,6 +50,7 @@ export function subjectName(name) {
   // 택일 묶음("미술↔음악")은 구성 과목별로 ⓘ를 붙인다
   if (String(name).includes("↔")) return String(name).split("↔").map((n) => subjectName(n.trim())).join("↔");
   const k = keyOf(name);
+  if (OWN.has(k)) return `${esc(name)} <span class="si-own muted small">학교 자체 개설</span>`;
   if (!MAP.has(k)) return esc(name);
   return `${esc(name)}<button type="button" class="si" data-si="${esc(k)}" aria-label="${esc(name)} 과목 설명" aria-haspopup="dialog" aria-expanded="false">ⓘ</button>`;
 }
@@ -65,6 +71,7 @@ function open(btn) {
   pop.className = "sip"; pop.setAttribute("role", "dialog"); pop.setAttribute("aria-label", `${it.name} 설명`); pop.tabIndex = -1;
   pop.innerHTML = `<div class="sip-h"><b>${esc(it.name)}</b>${it.area ? ` <span class="muted small">${esc([it.area, it.type].filter(Boolean).join(" · "))}</span>` : ""}<button type="button" class="sip-x" aria-label="닫기">×</button></div>
     <p>${txt(it.summary)}</p>
+    ${it.linkedFrom ? `<p class="muted small">같은 계열인 '${esc(it.linkedFrom)}' 과목의 설명이에요.</p>` : ""}
     ${it.specialPurpose ? '<p class="muted small">특수 목적 고교 과목</p>' : ""}
     <dl class="sip-d"><dt>학점</dt><dd>${txt(it.credit || META.defaultCredit || "학교에 확인해요")}</dd>${""}${it.old2015 ? `<dt>2015 개정</dt><dd>${txt(it.old2015)}</dd>` : ""}${it.majors ? `<dt>관련 학과</dt><dd>${txt(it.majors)}</dd>` : ""}</dl>
     <div class="sip-f small">${srcHtml ? `출처 ${srcHtml}` : ""}${status && status !== "confirmed" ? ` <span class="pst ${esc(status)}">${esc(PST[status] || status)}</span>` : ""}</div>`;

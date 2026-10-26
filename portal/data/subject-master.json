@@ -762,7 +762,8 @@
      "confidence": "reported"
     }
    ],
-   "infoMatch": "none",
+   "infoMatch": "school-own",
+   "infoMatchBasis": "사용자 결정 2026-10-26",
    "schoolCount": 1,
    "offeredBy": [
     "school-yonginheungcheon"
@@ -1479,7 +1480,8 @@
      "confidence": "reported"
     }
    ],
-   "infoMatch": "none",
+   "infoMatch": "school-own",
+   "infoMatchBasis": "사용자 결정 2026-10-26",
    "schoolCount": 1,
    "offeredBy": [
     "school-pungdeok"
@@ -2006,7 +2008,8 @@
      "confidence": "reported"
     }
    ],
-   "infoMatch": "none",
+   "infoMatch": "school-own",
+   "infoMatchBasis": "사용자 결정 2026-10-26",
    "schoolCount": 1,
    "offeredBy": [
     "school-seongbok"
@@ -3665,7 +3668,8 @@
     "predecessors2015": []
    },
    "isComposite": false,
-   "infoMatch": "none",
+   "infoMatch": "school-own",
+   "infoMatchBasis": "사용자 결정 2026-10-26",
    "schoolCount": 1,
    "offeredBy": [
     "school-yonginheungcheon"
@@ -3760,7 +3764,8 @@
     "predecessors2015": []
    },
    "isComposite": false,
-   "infoMatch": "none",
+   "infoMatch": "school-own",
+   "infoMatchBasis": "사용자 결정 2026-10-26",
    "schoolCount": 1,
    "offeredBy": [
     "school-suji"
@@ -3780,7 +3785,8 @@
     "predecessors2015": []
    },
    "isComposite": false,
-   "infoMatch": "none",
+   "infoMatch": "school-own",
+   "infoMatchBasis": "사용자 결정 2026-10-26",
    "schoolCount": 1,
    "offeredBy": [
     "school-suji"
@@ -3809,7 +3815,11 @@
      "confidence": "unconfirmed"
     }
    ],
-   "infoMatch": "ambiguous",
+   "infoMatch": "manual",
+   "infoMatchBasis": "사용자 결정 2026-10-26",
+   "infoName": "일본어",
+   "summary": "일본어는 일본어를 처음 배우는 학습자들이 일상생활과 관련된 의사소통 기본 표현을 학습함으로써 기초적인 일본어 의사소통 능력을 함양하고, 일본 문화에 대한 폭넓은 이해를 바탕으로 상호문화적 관점에서 타 문화에 대한 포용력과 이해력을 신장하는 제2외국어/한문 영역의 일반 선택 과목이다.",
+   "majorsHint": "정치외교학과, 일어일문학과, 일어교육과, 아시아학부, 아시아언어문명학과, 유학·동양학과, 언어학과, 언어 인지과학과, 글로벌경영학 등",
    "schoolCount": 2,
    "offeredBy": [
     "school-pungdeok",
@@ -3839,7 +3849,11 @@
      "confidence": "unconfirmed"
     }
    ],
-   "infoMatch": "ambiguous",
+   "infoMatch": "manual",
+   "infoMatchBasis": "사용자 결정 2026-10-26",
+   "infoName": "중국어",
+   "summary": "중국어는 중국어를 처음 접하는 학습자들이 일상생활에서 자주 사용되는 기본 표현을 학습하여 기초적인 중국어 의사 소통 능력을 함양하고, 중국 문화에 대한 이해를 통해 타 문화에 대한 포용성과 문화적 감수성, 공동체 소양을 기를 수 있는 제2외국어/한문 영역의 일반 선택 과목이다.",
+   "majorsHint": "정치외교학과, 중어중문학과, 중국어교육과, 아시아학부, 유학ㆍ동양학과, 한문학과, 한문교육과, 국제학부, 언어학과, 언어인지과학과, 글로벌경영학 등",
    "schoolCount": 3,
    "offeredBy": [
     "school-pungdeok",
@@ -3916,7 +3930,8 @@
      "confidence": "unconfirmed"
     }
    ],
-   "infoMatch": "none",
+   "infoMatch": "school-own",
+   "infoMatchBasis": "사용자 결정 2026-10-26",
    "schoolCount": 1,
    "offeredBy": [
     "school-pungdeok"
@@ -4272,7 +4287,8 @@
     "predecessors2015": []
    },
    "isComposite": false,
-   "infoMatch": "none",
+   "infoMatch": "school-own",
+   "infoMatchBasis": "사용자 결정 2026-10-26",
    "schoolCount": 1,
    "offeredBy": [
     "school-suji"
