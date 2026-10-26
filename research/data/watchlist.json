@@ -303,7 +303,11 @@
         "ar-2027-sogang-jeongsi",
         "ar-2027-sogang-susi-gyogwa",
         "ar-2027-sogang-susi-jonghap",
-        "ar-2027-sogang-susi-nonsul"
+        "ar-2027-sogang-susi-nonsul",
+        "ar-2028-sogang-jeongsi",
+        "ar-2028-sogang-susi-gyogwa",
+        "ar-2028-sogang-susi-jonghap",
+        "ar-2028-sogang-susi-nonsul"
       ],
       "importance": "높음",
       "enabled": true
@@ -320,7 +324,10 @@
         "ar-2027-skku-susi-gyogwa",
         "ar-2027-skku-susi-nonsul",
         "ar-2027-skku-susi-tamgu",
-        "ar-2027-skku-susi-yungham"
+        "ar-2027-skku-susi-yungham",
+        "ar-2028-skku-susi-gyogwa",
+        "ar-2028-skku-susi-nonsul",
+        "ar-2028-skku-susi-yungham"
       ],
       "importance": "높음",
       "enabled": true
@@ -337,7 +344,9 @@
         "ar-2027-hanyang-susi-gyogwa",
         "ar-2027-hanyang-susi-jonghap-doc",
         "ar-2027-hanyang-susi-jonghap-rec",
-        "ar-2027-hanyang-susi-nonsul"
+        "ar-2027-hanyang-susi-nonsul",
+        "ar-2028-hanyang-susi-gyogwa",
+        "ar-2028-hanyang-susi-hakeop"
       ],
       "importance": "높음",
       "enabled": true
@@ -354,7 +363,10 @@
         "ar-2027-cau-susi-gyogwa",
         "ar-2027-cau-susi-nonsul",
         "ar-2027-cau-susi-seongjang",
-        "ar-2027-cau-susi-tamgu-yungham"
+        "ar-2027-cau-susi-tamgu-yungham",
+        "ar-2028-cau-jeongsi-s67",
+        "ar-2028-cau-susi-gyogwa-nonsul",
+        "ar-2028-cau-susi-jonghap"
       ],
       "importance": "높음",
       "enabled": true
@@ -386,7 +398,10 @@
         "ar-2027-hufs-jeongsi",
         "ar-2027-hufs-susi-gyogwa",
         "ar-2027-hufs-susi-jonghap",
-        "ar-2027-hufs-susi-nonsul"
+        "ar-2027-hufs-susi-nonsul",
+        "ar-2028-hufs-susi-gyogwa",
+        "ar-2028-hufs-susi-nonsul",
+        "ar-2028-hufs-susi-seoryu"
       ],
       "importance": "높음",
       "enabled": true
@@ -402,7 +417,11 @@
         "ar-2027-uos-jeongsi",
         "ar-2027-uos-susi-gyogwa",
         "ar-2027-uos-susi-jonghap",
-        "ar-2027-uos-susi-nonsul"
+        "ar-2027-uos-susi-nonsul",
+        "ar-2028-uos-jeongsi",
+        "ar-2028-uos-susi-gyogwa",
+        "ar-2028-uos-susi-jonghap",
+        "ar-2028-uos-susi-nonsul"
       ],
       "importance": "높음",
       "enabled": true
