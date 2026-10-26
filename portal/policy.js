@@ -24,7 +24,7 @@ export function register(views, { $, esc, load, store }) {
   const curProfile = () => profileOf(loadProfile(store));
   const loadPolicy = async () => filterByProfile(await load("policy"), curProfile().id);
   const notice = () => noticeFor(curProfile());
-  const badgeMain = (r) => { const [c, t] = ES[r.status] || ["", r.status]; return `${c === "ok" ? "" : `<span class="es ${c}">${esc(t)}</span>`}${r.unverified ? `<span class="ed-unv"${r.reason ? ` title="${esc(r.reason)}"` : ""}>원문은 아직 못 봤어요</span>` : ""}`; };
+  const badgeMain = (r) => { const [c, t] = ES[r.status] || ["", r.status]; return `${c === "ok" ? "" : `<span class="es ${c}">${esc(t)}</span>`}${r.unverified ? `<span class="ed-unv"${r.reason ? ` title="${esc(r.reason)}"` : ""}>아직 원문 확인 전</span>` : ""}`; };
   // 확인된 항목(확정·원문 확인)은 메모를 "확인 필요/별도 확인"이 있을 때만 보여 준다.
   const badgeNote = (r) => { const ok = (ES[r.status] || [])[0] === "ok"; return `${r.unverified && r.reason ? `<div class="ed-note">사유: ${esc(r.reason)}</div>` : ""}${r.note && (!ok || /확인 필요|별도 확인/.test(r.note)) ? `<div class="ed-note">${esc(r.note)}</div>` : ""}`; };
   const badge = (r) => badgeMain(r) + badgeNote(r);
@@ -177,9 +177,9 @@ export function register(views, { $, esc, load, store }) {
     el.innerHTML = `<div class="ed"><div class="ed-top"><b>고교 유형과 전형이에요.</b><details><summary>자세히</summary>${notice()}</details></div>
       <h2>고교 유형 ${cnt(rows.filter((r) => r.topic === "hs-types").length)}</h2>${cards(rows.filter((r) => r.topic === "hs-types"))}
       ${gg.length ? `<h2>경기 고입 안내 <small>2027학년도</small> ${cnt(gg.length)}</h2>${cards(gg)}` : ""}
-      ${asg.length ? `<h2>용인 평준화 배정 <small>2026학년도 기준 참고</small> ${cnt(asg.length)}</h2>
+      ${asg.length ? `<h2>추첨으로 배정되는 지역의 고교 배정(용인 평준화 배정) <small>2026학년도 기준 참고</small> ${cnt(asg.length)}</h2>
       <p class="ed-big">우리 4개교(풍덕·성복·수지·홍천)는 모두 <em>2구역</em></p>
-      <p class="ed-src">원문은 아직 못 봤어요. 2027 규칙은 한 번 더 확인해요.</p>
+      <p class="ed-src">아직 원문 확인 전이에요. 2027 규칙은 한 번 더 확인해요.</p>
       ${cards(asg, { cls: (r) => (r.id === "asg-02" ? "hl" : "") })}` : ""}
       ${credit ? `<h2>고교학점제 <small>입학 후 제도</small></h2>
       <p class="ed-b">${esc(credit.body)}</p><p class="ed-s">${badgeMain(credit)} · <a href="#life/credit">고교학점제 이해에서 자세히 봐요</a></p>` : ""}
