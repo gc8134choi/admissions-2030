@@ -4,6 +4,7 @@ import { registerHome } from "./home.js";
 import { registerFiles } from "./files.js";
 import { currentProfile, allProfiles, initProfiles, mountProfileSwitch, nameSettings, bindNameSettings, showProfiles } from "./profile-ui.js";
 import { univBody } from "./univ-match.js";
+import { STAGES, linkStage, stageTag } from "./stage.js";
 import { registerPlanner } from "./planner.js";
 import { mapBody } from "./map.js";
 import { middleBody } from "./middle.js";
@@ -367,11 +368,17 @@ const filesApi = registerFiles(views, { esc, load, nm });
 views.links = async (el) => {
   const d = await load("links");
   const KIND = { 공식: "공식", 공공: "공공", 매체: "매체", 학원: "학원" };
-  el.innerHTML = `<p class="muted small">접속을 확인한 곳만 담았어요. 확인일 ${esc((d._meta?.checkedAt || "").replace(/-/g, "."))}</p>
-    ${d.categories.map((c, i) => `<section class="sec"><div class="sec-h"><h2><em>${String(i + 1).padStart(2, "0")}</em>${esc(c)}</h2></div><ul class="rows lk">${d.items.filter((x) => x.category === c).map((x) => `<li class="row"><div><h3><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)} ↗</a></h3><p>${esc(x.purpose)}</p><div class="meta"><span class="kd${x.kind === "공식" ? " off" : ""}">${esc(KIND[x.kind] || x.kind)}</span><span class="muted small">${esc(x.org)} · 확인 ${esc(x.checkedAt.slice(5).replace("-", "."))}</span></div></div></li>`).join("")}</ul></section>`).join("")}
+  const SK = "portal.links.stage";
+  let fs = store.get(SK, ""); if (!STAGES.includes(fs)) fs = "";
+  const paint = () => {
+  el.innerHTML = `<div class="chipbar"><span class="flabel">단계</span><div class="chips">${[["", "전체"], ...STAGES.map((g) => [g, g])].map(([v, t]) => `<button type="button" class="chip${v === fs ? " on" : ""}" data-stage="${v}" aria-pressed="${v === fs}">${t}</button>`).join("")}</div></div><p class="muted small">접속을 확인한 곳만 담았어요. 확인일 ${esc((d._meta?.checkedAt || "").replace(/-/g, "."))}</p>
+    ${d.categories.map((c, i) => [c, i, d.items.filter((x) => x.category === c && (!fs || !linkStage(x) || linkStage(x) === fs))]).filter(([, , xs]) => xs.length).map(([c, i, xs]) => `<section class="sec"><div class="sec-h"><h2><em>${String(i + 1).padStart(2, "0")}</em>${esc(c)}</h2></div><ul class="rows lk">${xs.map((x) => `<li class="row"><div><h3><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)} ↗</a></h3><p>${esc(x.purpose)}</p><div class="meta">${stageTag(linkStage(x), esc)}<span class="kd${x.kind === "공식" ? " off" : ""}">${esc(KIND[x.kind] || x.kind)}</span><span class="muted small">${esc(x.org)} · 확인 ${esc(x.checkedAt.slice(5).replace("-", "."))}</span></div></div></li>`).join("")}</ul></section>`).join("")}
     <section class="sec"><div class="sec-h"><h2><em>앱처럼</em>홈 화면에 추가하는 법</h2></div><p class="muted small">아이폰은 공유 버튼 → "홈 화면에 추가", 안드로이드 크롬은 메뉴 → "홈 화면에 추가"를 누르세요. 한 번 열어 두면 인터넷이 약해도 홈이 열려요.</p></section>
     ${showProfiles() ? `<section class="sec"><div class="sec-h"><h2><em>설정</em>표시 이름</h2></div><p class="muted small">이 브라우저에서만 바뀌어요. 비우면 기본 이름으로 돌아가요.</p>${nameSettings(store)}</section>` : ""}`;
   bindNameSettings(el, store, render);
+  };
+  paint();
+  el.onclick = (e) => { const b = e.target.closest("[data-stage]"); if (!b) return; fs = b.dataset.stage; store.set(SK, fs); paint(); };
 };
 
 // 일정 화면: 캘린더 구독(webcal) 또는 .ics 내려받기
