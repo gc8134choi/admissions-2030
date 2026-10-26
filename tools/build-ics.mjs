@@ -35,7 +35,7 @@ for (const e of events) {
   const monthly = isMonth(e.start) || (e.end && isMonth(e.end));
   const summary = `${e.title}${e.label ? ` · ${e.label}` : ""}${tag(e)}${monthly ? " (월 단위)" : ""}`;
   const src = (e.sources || (e.sourceName ? [{ name: e.sourceName, url: e.sourceUrl }] : [])).map((x) => (x.url ? `${x.name} ${x.url}` : x.name)).join(" / ");
-  const desc = [e.body, e.unverified ? "원문은 아직 못 봤어요." : "", e.reason ? `사유: ${e.reason}` : "", src ? `출처: ${src}` : "", `확인일 ${e.checkedAt}`].filter(Boolean).join("\n");
+  const desc = [e.body, e.unverified ? "아직 원문 확인 전이에요." : "", e.reason ? `사유: ${e.reason}` : "", src ? `출처: ${src}` : "", `확인일 ${e.checkedAt}`].filter(Boolean).join("\n");
   lines.push("BEGIN:VEVENT", `UID:${e.id}@admissions-2030`, `DTSTAMP:${ymd(e.checkedAt)}T000000Z`, `DTSTART;VALUE=DATE:${ymd(s0)}`, `DTEND;VALUE=DATE:${addDay(e0)}`, `SUMMARY:${esc(summary)}`, `DESCRIPTION:${esc(desc)}`, "TRANSP:TRANSPARENT", "END:VEVENT");
   n++;
 }

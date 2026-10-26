@@ -96,8 +96,8 @@ export async function creditView(el, { load, profile, esc, badge, badgeMain, src
   const ymax = Math.max(...summary.flatMap((m) => years.map(([, ts]) => yearSum(m, ts, "required") + yearSum(m, ts, "elective"))), 1);
   if (summary.length && ymax > 1) {
     const mini = (m) => `<div class="ed-ym"><h3>${esc(m.schoolName)}</h3><div class="ed-yc">${years.map(([lab, ts]) => { const r = yearSum(m, ts, "required"), e = yearSum(m, ts, "elective"); return `<div><div class="ed-yb" style="height:${pct(r + e, ymax) * 0.9}px"><span class="ele" style="flex:${e || 0.0001}">${e || ""}</span><span class="req" style="flex:${r || 0.0001}">${r || ""}</span></div><em>${lab}</em></div>`; }).join("")}</div></div>`;
-    out.push(sec(3, "학년별 여정", "1학년은 지정 과목이 중심이고, 학년이 올라갈수록 선택 과목이 늘어요(학교 편제표 기준).",
-      `<p class="ed-ylegend"><span><i style="background:var(--e-req)"></i>지정</span><span><i style="background:var(--e-ele)"></i>선택</span></p><div class="ed-years">${summary.map(mini).join("")}</div><p class="ed-src">학교별 학년 교과 학점이에요. 창의적 체험활동은 빼요. <a href="#select/curriculum">학교별 편제표 보기</a></p>`, [], "credit-03-journey"));
+    out.push(sec(3, "학년별 여정", "1학년은 학교가 정한 필수 과목이 중심이고, 학년이 올라갈수록 내가 고르는 과목이 늘어요(학교 과목 시간표, 편제표 기준).",
+      `<p class="ed-ylegend"><span><i style="background:var(--e-req)"></i>필수(학교가 정함)</span><span><i style="background:var(--e-ele)"></i>내가 고르는</span></p><div class="ed-years">${summary.map(mini).join("")}</div><p class="ed-src">학교별 학년 교과 학점이에요. 창의적 체험활동은 빼요. <a href="#select/curriculum">학교별 과목표 보기</a></p>`, [], "credit-03-journey"));
   }
 
   // ---- 과목 이수 요건: 공통 / 선택 ----
@@ -161,8 +161,8 @@ export async function creditView(el, { load, profile, esc, badge, badgeMain, src
   // ---- 우리 4개교 ----
   if (summary.length) {
     const mx = Math.max(...summary.map((m) => m.creditsSubject), 1);
-    out.push(sec(10, "우리 4개교", "학교 편제표 기준 교과 학점이에요(서울교육청 기준 필수·자율 분류와는 달라요).",
-      `<div>${summary.map((m) => `<div class="ed-sch"><span class="nm">${esc(m.schoolName)}</span><div><div class="ed-bar2" style="width:${pct(m.creditsSubject, mx)}%" role="img" aria-label="${esc(m.schoolName)} 지정 ${m.creditsRequired}, 선택 ${m.creditsElective}"><span class="r" style="width:${pct(m.creditsRequired, m.creditsSubject)}%"></span><span class="e" style="width:${pct(m.creditsElective, m.creditsSubject)}%"></span></div></div><span class="f">지정 ${m.creditsRequired} · 선택 ${m.creditsElective}</span></div>`).join("")}</div><p class="ed-src"><a href="#select/curriculum">학교별 편제표 보기</a></p>`, [], "credit-10-schools"));
+    out.push(sec(10, "우리 4개교", "학교 과목 시간표(편제표) 기준 교과 학점이에요(서울교육청 기준 필수·자율 분류와는 달라요).",
+      `<div>${summary.map((m) => `<div class="ed-sch"><span class="nm">${esc(m.schoolName)}</span><div><div class="ed-bar2" style="width:${pct(m.creditsSubject, mx)}%" role="img" aria-label="${esc(m.schoolName)} 필수 ${m.creditsRequired}, 내가 고르는 ${m.creditsElective}"><span class="r" style="width:${pct(m.creditsRequired, m.creditsSubject)}%"></span><span class="e" style="width:${pct(m.creditsElective, m.creditsSubject)}%"></span></div></div><span class="f">필수 ${m.creditsRequired} · 고르는 ${m.creditsElective}</span></div>`).join("")}</div><p class="ed-src"><a href="#select/curriculum">학교별 과목표 보기</a></p>`, [], "credit-10-schools"));
   }
 
   // 과목표(교과군별): 행만 접어서
