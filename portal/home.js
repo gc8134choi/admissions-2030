@@ -145,7 +145,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     // 5) 학교 · 학점제 숫자
     const mine = summary.filter((m) => pf.schoolIds.includes(m.schoolId));
     const m0 = summary[0];
-    const sch = (m) => { const tot = m.creditsTotal || 1; return `<li><a class="sr" href="#select/curriculum?v=compare&s=${esc(m.schoolId)}">${hasLogo(m.schoolId) ? `<img src="img/schools/256/${esc(m.schoolId)}.png" alt="" width="28" height="28">` : "<span></span>"}<span class="nm">${esc(m.schoolName)}<span class="sub">지정 ${m.requiredCount}과목 · 선택 후보 ${m.candidateSubjects}개</span></span><span class="fig"><b class="num">${m.creditsRequired}+${m.creditsElective}</b>지정 + 선택</span><span class="seg" style="grid-column:2 / 4" aria-hidden="true"><i class="r" style="width:${(m.creditsRequired / tot) * 100}%"></i><i class="e" style="width:${(m.creditsElective / tot) * 100}%"></i><i class="o"></i></span></a></li>`; };
+    const sch = (m) => { const tot = m.creditsTotal || 1; return `<li><a class="sr" href="#select/curriculum?v=compare&s=${esc(m.schoolId)}">${hasLogo(m.schoolId) ? `<img src="img/schools/256/${esc(m.schoolId)}.png" alt="" width="28" height="28">` : "<span></span>"}<span class="nm">${esc(m.schoolName)}<span class="sub">필수 ${m.requiredCount}과목 · 선택 후보 ${m.candidateSubjects}개</span></span><span class="fig"><b class="num">${m.creditsRequired}+${m.creditsElective}</b>필수 + 내가 고르는</span><span class="seg" style="grid-column:2 / 4" aria-hidden="true"><i class="r" style="width:${(m.creditsRequired / tot) * 100}%"></i><i class="e" style="width:${(m.creditsElective / tot) * 100}%"></i><i class="o"></i></span></a></li>`; };
 
     // 6) 앞으로 3년(큰 흐름). 모든 마일스톤을 policy.json 행에서 읽는다.
     const rng = (e) => fmtRange(span(e.start, e.end), t, e);
@@ -180,7 +180,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
       </div>
       <div class="two">
         <section class="sec"><div class="sec-h"><h2><em>01</em>${isB ? esc(pf.name) + "의 학교" : "우리 " + mine.length + "개교"}</h2>${isB ? "" : '<a href="#select/curriculum?v=compare">과목표 비교</a>'}</div>
-          ${isB || !mine.length ? '<div class="empty"><span class="z" aria-hidden="true">0</span><p>학교를 고르면 여기에 모입니다.</p><small>후보 학교를 담아 두면 지정·선택 학점과 개설 과목을 나란히 볼 수 있어요.</small><a href="#select/curriculum">학교 고르러 가기 →</a></div>' : `<ul class="schools">${mine.map(sch).join("")}</ul><p class="legend">네 학교 모두 <b>${m0.creditsTotal}학점</b>. 막대: <b style="color:var(--req)">지정</b> · <b style="color:var(--ele)">선택</b> · 나머지는 창의적 체험활동.</p>`}</section>
+          ${isB || !mine.length ? '<div class="empty"><span class="z" aria-hidden="true">0</span><p>학교를 고르면 여기에 모입니다.</p><small>후보 학교를 담아 두면 필수·내가 고르는 학점과 개설 과목을 나란히 볼 수 있어요.</small><a href="#select/curriculum">학교 고르러 가기 →</a></div>' : `<ul class="schools">${mine.map(sch).join("")}</ul><p class="legend">네 학교 모두 <b>${m0.creditsTotal}학점</b>. 막대: <b style="color:var(--req)">필수</b> · <b style="color:var(--ele)">내가 고르는</b> · 나머지는 창의적 체험활동.</p>`}</section>
         <section class="sec"><div class="sec-h"><h2><em>02</em>곧 있을 일</h2></div>
           ${stones.length && feed()[0]?.kind !== "stone" ? `<ul class="mss">${stones.map(stoneHtml).join("")}</ul><p class="hint">사진은 이 기기에만 저장돼요.</p>` : '<div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p></div>'}</section>
       </div>

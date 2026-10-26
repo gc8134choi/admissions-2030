@@ -375,3 +375,5 @@ table.policy tr.past td,table.policy tr.past b{color:var(--mute)}
   .schoolgrid.cols2,.schoolgrid.cols3,.schoolgrid.cols4{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(var(--pad) * -1);padding:0 var(--pad) 8px;scroll-padding:0 var(--pad)}
   .schoolgrid.cols2>.school,.schoolgrid.cols3>.school,.schoolgrid.cols4>.school{flex:0 0 86%;scroll-snap-align:start}
 }
+/* 내 계획표: 칩 줄은 한 줄로 두고 옆으로 민다(웹폰트 교체 때 줄바꿈이 달라져 아래가 밀리는 것을 막는다) */
+.pn .chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;min-height:44px;align-items:center}.pn .chips .chip{flex:none}
