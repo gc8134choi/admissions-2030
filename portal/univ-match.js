@@ -1,5 +1,6 @@
 // 학교별 과목표 > "대학 요건 맞춰보기" 탭: 학교 × 대학·모집단위를 고르면 권장 과목을 이 학교 편제표(개설 후보)에서 몇 과목 고를 수 있는지 보여 준다.
 // 데이터: matches.json(tools/build-matches.mjs), admission-rules.json, subject-master.json. 확정은 표시하지 않고 보도·추정만 조용히 표시한다.
+import { stageTag } from "./stage.js";
 const ES = { reported: ["rep", "보도"], estimated: ["est", "추정"] };
 const STATE = { guaranteed: "학교 지정", reachable: "고를 수 있음", blocked: "택n 묶음 충돌", absent: "편제표에 없음" };
 const TRACK = { "susi-gyogwa": "학생부교과", "susi-jonghap": "학생부종합", "susi-nonsul": "논술", "jeongsi-csat": "정시 수능", special: "특별전형" };
@@ -51,7 +52,7 @@ export async function univBody(el, { load, esc, profile, schools, sel, pick }) {
     }
     el.innerHTML = `<div class="ed">${top()}
       <div class="chipbar"><span class="flabel">모집단위</span><div class="chips">${chips(units().map((r) => [r.ruleId, `${r.unitName} · ${TRACK[r.track] || r.track}`]), "rule", st.rule)}</div></div>
-      <h2>${esc(rule.universityName)} ${esc(rule.unitName)} ${stt}</h2>${body}
+      <h2>${stageTag("대입", esc)}${esc(rule.universityName)} ${esc(rule.unitName)} ${stt}</h2>${body}
       <p class="ed-src">출처: ${src || "표기 없음"}</p></div>`;
   };
   el.onclick = (e) => { const b = e.target.closest("button[data-k]"); if (!b) return; st[b.dataset.k] = b.dataset.v; if (b.dataset.k === "univ") st.rule = null; draw(); };

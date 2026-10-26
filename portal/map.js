@@ -4,6 +4,7 @@
 // 서비스 워커는 같은 출처만 가로채므로 타일은 캐시하지 않는다.
 const LEAFLET = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/";
 const SRI = { css: "sha256-tXCrvaljxgtN5LT/Syb5Mm9T+yzPFGH98JVcoJT7JTk=", js: "sha256-XJrs/DDkVkUZ29zdzFOkGCJ9zHVo5hnpdi3c7HYJ7Uc=" };
+import { stageTag } from "./stage.js";
 export const LEVEL = { elementary: ["초", "초등학교"], middle: ["중", "중학교"], high: ["고", "고등학교"] };
 const ES = { reported: "보도", estimated: "추정" };
 
@@ -31,7 +32,7 @@ const safeUrl = (u) => (/^https?:\/\//.test(u || "") ? u : null);
 export function placeInfo(p, esc) {
   const st = ES[p.status] ? `<span class="es ${p.status === "reported" ? "rep" : "est"}">${ES[p.status]}</span>` : "";
   const hp = safeUrl(p.homepage);
-  return `<b>${esc(p.name)}</b> <span class="muted small">${esc(LEVEL[p.level][1])}${p.kind ? ` · ${esc(p.kind)}` : ""}</span> ${st}
+  return `${stageTag({ middle: "중입", high: "고입" }[p.level], esc)}<b>${esc(p.name)}</b> <span class="muted small">${esc(LEVEL[p.level][1])}${p.kind ? ` · ${esc(p.kind)}` : ""}</span> ${st}
     <div class="pl-addr">${esc(p.address)}${p.coordApprox ? ' <span class="muted small">위치 근사</span>' : ""}</div>
     <div class="pl-links">${hp ? `<a href="${esc(hp)}" target="_blank" rel="noopener">홈페이지</a>` : ""}<a href="${esc(naverUrl(p))}" target="_blank" rel="noopener">네이버 지도에서 열기</a><a href="${esc(kakaoUrl(p))}" target="_blank" rel="noopener">카카오맵에서 열기</a></div>`;
 }
