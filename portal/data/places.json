@@ -1,0 +1,9 @@
+{
+ "_meta": {
+  "note": "학교 위치(생성물, 손으로 고치지 않는다). research/data/places-draft.json에서 tools/build-places.mjs가 만든다.",
+  "checkedAt": null,
+  "count": 0,
+  "withCoords": 0
+ },
+ "places": []
+}
