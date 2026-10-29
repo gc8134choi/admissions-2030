@@ -1,9 +1,9 @@
 {
  "_meta": {
   "note": "학교 위치(생성물, 손으로 고치지 않는다). research/data/places-draft.json에서 tools/build-places.mjs가 만든다.",
-  "checkedAt": "2026-10-26",
-  "count": 15,
-  "withCoords": 15
+  "checkedAt": "2026-10-29",
+  "count": 25,
+  "withCoords": 23
  },
  "places": [
   {
@@ -399,6 +399,306 @@
    ],
    "checkedAt": "2026-10-26",
    "searchQuery": "한국외국어대학교부속 용인외국어고등학교 경기도 용인시 처인구 모현읍 백옥대로2332번길(번지 미확인)"
+  },
+  {
+   "id": "pl-016",
+   "schoolId": null,
+   "name": "상현중학교",
+   "level": "middle",
+   "kind": null,
+   "address": "경기도 용인시 수지구 광교마을로 61",
+   "lat": 37.299308,
+   "lng": 127.071021,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '상현중학교, 61, 광교마을로, 상현동, 신봉동, ' (way 361618162), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/361618162"
+   },
+   "coordApprox": false,
+   "homepage": null,
+   "phone": null,
+   "status": "reported",
+   "sources": [
+    {
+     "name": "경기도교육청 고시 제2024-554호 2025학년도 경기도 중학교 학교군 및 중학구 고시(학교군 현황표)",
+     "url": "https://www.goe.go.kr/resource/old/BBSMSTR_000000000111/BBS_202409250522349970.pdf"
+    },
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-29",
+   "searchQuery": "상현중학교 경기도 용인시 수지구 광교마을로 61"
+  },
+  {
+   "id": "pl-017",
+   "schoolId": null,
+   "name": "서원중학교",
+   "level": "middle",
+   "kind": null,
+   "address": "경기도 용인시 수지구 상현로42번길 26-8",
+   "lat": 37.301681,
+   "lng": 127.080651,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '서원중학교, 26-8, 상현로42번길, 상현동, 신' (way 763175567), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/763175567"
+   },
+   "coordApprox": false,
+   "homepage": null,
+   "phone": null,
+   "status": "reported",
+   "sources": [
+    {
+     "name": "경기도교육청 고시 제2024-554호 2025학년도 경기도 중학교 학교군 및 중학구 고시(학교군 현황표)",
+     "url": "https://www.goe.go.kr/resource/old/BBSMSTR_000000000111/BBS_202409250522349970.pdf"
+    },
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-29",
+   "searchQuery": "서원중학교 경기도 용인시 수지구 상현로42번길 26-8"
+  },
+  {
+   "id": "pl-018",
+   "schoolId": null,
+   "name": "소현중학교",
+   "level": "middle",
+   "kind": null,
+   "address": "경기도 용인시 만현로133번길 96(OSM은 기흥구로 표기, 행정구 확인 필요)",
+   "lat": 37.301403,
+   "lng": 127.093735,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '소현중학교, 96, 만현로133번길, 기흥구, 용인' (way 1257149423), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/1257149423"
+   },
+   "coordApprox": false,
+   "homepage": null,
+   "phone": null,
+   "status": "reported",
+   "sources": [
+    {
+     "name": "경기도교육청 고시 제2024-554호 2025학년도 경기도 중학교 학교군 및 중학구 고시(학교군 현황표)",
+     "url": "https://www.goe.go.kr/resource/old/BBSMSTR_000000000111/BBS_202409250522349970.pdf"
+    },
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-29",
+   "searchQuery": "소현중학교 경기도 용인시 만현로133번길 96(OSM은 기흥구로 표기, 행정구 확인 필요)"
+  },
+  {
+   "id": "pl-019",
+   "schoolId": null,
+   "name": "이현중학교",
+   "level": "middle",
+   "kind": null,
+   "address": "주소 미확인(OSM에서 학교 건물 객체를 못 찾음)",
+   "lat": null,
+   "lng": null,
+   "coordSource": {
+    "name": "학교 건물 좌표를 OSM에서 찾지 못해 비움(검색 결과가 아파트·정류장 객체)",
+    "url": null
+   },
+   "coordApprox": false,
+   "homepage": null,
+   "phone": null,
+   "status": "reported",
+   "sources": [
+    {
+     "name": "경기도교육청 고시 제2024-554호 2025학년도 경기도 중학교 학교군 및 중학구 고시(학교군 현황표)",
+     "url": "https://www.goe.go.kr/resource/old/BBSMSTR_000000000111/BBS_202409250522349970.pdf"
+    },
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-29",
+   "searchQuery": "이현중학교 주소 미확인(OSM에서 학교 건물 객체를 못 찾음)"
+  },
+  {
+   "id": "pl-020",
+   "schoolId": null,
+   "name": "상현고등학교",
+   "level": "high",
+   "kind": null,
+   "address": "경기도 용인시 수지구 법조로 222",
+   "lat": 37.298856,
+   "lng": 127.07436,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '상현고등학교, 222, 법조로, 상현동, 신봉동, ' (way 361622588), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/361622588"
+   },
+   "coordApprox": false,
+   "homepage": null,
+   "phone": null,
+   "status": "reported",
+   "sources": [
+    {
+     "name": "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)",
+     "url": "https://satp.goe.go.kr/main.do"
+    },
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-29",
+   "searchQuery": "상현고등학교 경기도 용인시 수지구 법조로 222"
+  },
+  {
+   "id": "pl-021",
+   "schoolId": null,
+   "name": "서원고등학교",
+   "level": "high",
+   "kind": null,
+   "address": "경기도 용인시 수지구 상현로42번길 26-7",
+   "lat": 37.302106,
+   "lng": 127.081747,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '서원고등학교, 26-7, 상현로42번길, 상현동, ' (way 763175570), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/763175570"
+   },
+   "coordApprox": false,
+   "homepage": null,
+   "phone": null,
+   "status": "reported",
+   "sources": [
+    {
+     "name": "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)",
+     "url": "https://satp.goe.go.kr/main.do"
+    },
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-29",
+   "searchQuery": "서원고등학교 경기도 용인시 수지구 상현로42번길 26-7"
+  },
+  {
+   "id": "pl-022",
+   "schoolId": null,
+   "name": "신봉고등학교",
+   "level": "high",
+   "kind": null,
+   "address": "경기도 용인시 수지구 신봉3로 45",
+   "lat": 37.327927,
+   "lng": 127.063093,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '신봉고등학교, 45, 도마치로, 신봉동, 수지구, ' (way 347522918), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/347522918"
+   },
+   "coordApprox": false,
+   "homepage": null,
+   "phone": null,
+   "status": "reported",
+   "sources": [
+    {
+     "name": "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)",
+     "url": "https://satp.goe.go.kr/main.do"
+    },
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-29",
+   "searchQuery": "신봉고등학교 경기도 용인시 수지구 신봉3로 45"
+  },
+  {
+   "id": "pl-023",
+   "schoolId": null,
+   "name": "대지고등학교",
+   "level": "high",
+   "kind": null,
+   "address": "주소 미확인(OSM 검색 결과가 정류장이라 학교 위치로 쓰지 않음)",
+   "lat": null,
+   "lng": null,
+   "coordSource": {
+    "name": "학교 건물 좌표를 OSM에서 찾지 못해 비움(검색 결과가 아파트·정류장 객체)",
+    "url": null
+   },
+   "coordApprox": false,
+   "homepage": null,
+   "phone": null,
+   "status": "reported",
+   "sources": [
+    {
+     "name": "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)",
+     "url": "https://satp.goe.go.kr/main.do"
+    },
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-29",
+   "searchQuery": "대지고등학교 주소 미확인(OSM 검색 결과가 정류장이라 학교 위치로 쓰지 않음)"
+  },
+  {
+   "id": "pl-024",
+   "schoolId": null,
+   "name": "죽전고등학교",
+   "level": "high",
+   "kind": null,
+   "address": "경기도 용인시 수지구 용구대로2771번길(번지 미확인)",
+   "lat": 37.332575,
+   "lng": 127.106202,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '죽전고등학교, 용구대로2771번길, 벽산타운4단지,' (way 470223157), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/470223157"
+   },
+   "coordApprox": false,
+   "homepage": null,
+   "phone": null,
+   "status": "reported",
+   "sources": [
+    {
+     "name": "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)",
+     "url": "https://satp.goe.go.kr/main.do"
+    },
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-29",
+   "searchQuery": "죽전고등학교 경기도 용인시 수지구 용구대로2771번길(번지 미확인)"
+  },
+  {
+   "id": "pl-025",
+   "schoolId": null,
+   "name": "현암고등학교",
+   "level": "high",
+   "kind": null,
+   "address": "경기도 용인시 수지구 디지털벨리로(번지 미확인)",
+   "lat": 37.328894,
+   "lng": 127.131934,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '현암고등학교, 디지털벨리로, 수지구, 용인시, 경기' (way 834357357), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/834357357"
+   },
+   "coordApprox": false,
+   "homepage": null,
+   "phone": null,
+   "status": "reported",
+   "sources": [
+    {
+     "name": "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)",
+     "url": "https://satp.goe.go.kr/main.do"
+    },
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-29",
+   "searchQuery": "현암고등학교 경기도 용인시 수지구 디지털벨리로(번지 미확인)"
   }
  ]
 }
