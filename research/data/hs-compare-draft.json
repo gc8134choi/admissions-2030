@@ -1,0 +1,2086 @@
+{
+  "_meta": {
+    "note": "고교 비교표 초안(용인학군 2구역 고교 10곳, 학교알리미 2026 공시·편제표 요약). 확인 못 한 칸은 value null + nullReason. 광고성·비공식 평가는 넣지 않음. 학교알리미 수치는 5월 2차 공시 기준이며 연 1회 갱신된다.",
+    "checkedAt": "2026-10-29",
+    "status": "reported",
+    "shape": "schools[].values[fieldId]={value,asOf,status,source{name,url},nullReason}"
+  },
+  "fields": [
+    {
+      "id": "type",
+      "label": "학교 유형",
+      "group": "기본"
+    },
+    {
+      "id": "founding",
+      "label": "설립(공립/사립·단설)",
+      "group": "기본"
+    },
+    {
+      "id": "coed",
+      "label": "남녀공학",
+      "group": "기본"
+    },
+    {
+      "id": "address",
+      "label": "주소",
+      "group": "기본"
+    },
+    {
+      "id": "classes",
+      "label": "학급수",
+      "group": "규모",
+      "unit": "학급"
+    },
+    {
+      "id": "students",
+      "label": "학생수",
+      "group": "규모",
+      "unit": "명"
+    },
+    {
+      "id": "teachers",
+      "label": "교원수",
+      "group": "규모",
+      "unit": "명"
+    },
+    {
+      "id": "perClass",
+      "label": "학급당 학생수",
+      "group": "규모",
+      "unit": "명"
+    },
+    {
+      "id": "perTeacher",
+      "label": "교원 1인당 학생수",
+      "group": "규모",
+      "unit": "명"
+    },
+    {
+      "id": "admission",
+      "label": "입학 방식",
+      "group": "입학"
+    },
+    {
+      "id": "zone",
+      "label": "학군·구역",
+      "group": "입학"
+    },
+    {
+      "id": "curriculum",
+      "label": "교육과정 특징(편제표 요약)",
+      "group": "교육과정"
+    },
+    {
+      "id": "subjectCount",
+      "label": "개설 후보 과목 수",
+      "group": "교육과정",
+      "unit": "과목"
+    },
+    {
+      "id": "univStats",
+      "label": "대학 진학 현황",
+      "group": "진학"
+    },
+    {
+      "id": "meal",
+      "label": "급식",
+      "group": "생활"
+    },
+    {
+      "id": "canteen",
+      "label": "매점",
+      "group": "생활"
+    },
+    {
+      "id": "dorm",
+      "label": "기숙사",
+      "group": "생활"
+    },
+    {
+      "id": "homepage",
+      "label": "학교 홈페이지",
+      "group": "링크"
+    },
+    {
+      "id": "schoolinfo",
+      "label": "학교알리미",
+      "group": "링크"
+    },
+    {
+      "id": "briefing",
+      "label": "설명회 노트",
+      "group": "링크"
+    }
+  ],
+  "schools": [
+    {
+      "placeId": "pl-014",
+      "schoolId": "school-yonginheungcheon",
+      "name": "용인홍천고등학교",
+      "values": {
+        "type": {
+          "value": "일반고등학교",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005416)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
+          },
+          "nullReason": null
+        },
+        "founding": {
+          "value": "공립·단설(설립 2006년 03월 01일)",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005416)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
+          },
+          "nullReason": null
+        },
+        "coed": {
+          "value": "남녀공학",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005416) 및 편제표 요약",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
+          },
+          "nullReason": null
+        },
+        "address": {
+          "value": "경기도 용인시 수지구 수지로227번길 22",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005416)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
+          },
+          "nullReason": null
+        },
+        "classes": {
+          "value": "일반학급 38(1학년 13·2학년 13·3학년 12) + 특수학급 2",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
+          },
+          "nullReason": null
+        },
+        "students": {
+          "value": "1,165명 (남 619명 , 여 546명)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005416)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
+          },
+          "nullReason": null
+        },
+        "teachers": {
+          "value": "88명 (남 11 명 , 여 77 명)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005416)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
+          },
+          "nullReason": null
+        },
+        "perClass": {
+          "value": "29.1",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005416)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
+          },
+          "nullReason": null
+        },
+        "perTeacher": {
+          "value": "15.3",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005416)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
+          },
+          "nullReason": null
+        },
+        "admission": {
+          "value": "평준화 추첨(구역설정학군, 선복수지원-후추첨)",
+          "asOf": "2027학년도 입학",
+          "status": "reported",
+          "source": {
+            "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조)",
+            "url": "portal/data/summary.json"
+          },
+          "nullReason": null
+        },
+        "zone": {
+          "value": "용인학군 2구역(수지구 고교 10개교)",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+            "url": "https://satp.goe.go.kr/main.do"
+          },
+          "nullReason": null
+        },
+        "curriculum": {
+          "value": "총 192학점(교과 174+창체 18), 필수 32과목, 선택 묶음 9개, 첫 선택과목 학기 2-1",
+          "asOf": "2027학년도 입학 편제표",
+          "status": "reported",
+          "source": {
+            "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조 완료)",
+            "url": "portal/data/summary.json"
+          },
+          "nullReason": null
+        },
+        "subjectCount": {
+          "value": 66,
+          "asOf": "2027학년도 입학 편제표",
+          "status": "reported",
+          "source": {
+            "name": "편제표 요약(개설 후보, 수능 범위는 추정)",
+            "url": "portal/data/summary.json"
+          },
+          "nullReason": null
+        },
+        "univStats": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": {
+            "name": "학교알리미 공시항목 목록",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
+          },
+          "nullReason": "학교알리미 2026 공시 항목 목록(46개)에 졸업생 대학 진학 현황 항목이 없음. 학교 설명회·학교 홈페이지 자료는 별도 확인 필요"
+        },
+        "meal": {
+          "value": "직영 급식(중식), 급식 학생 1,165명 / 전체 1,165명",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
+          },
+          "nullReason": null
+        },
+        "canteen": {
+          "value": "협동조합 매점 운영(수익을 학교·학생에게 환원, 설명회 발표)",
+          "asOf": "2026-10-29 설명회",
+          "status": "reported",
+          "source": {
+            "name": "홍천고 설명회 요약(사용자 참석 녹음, AI 요약) sb-001",
+            "url": null
+          },
+          "nullReason": null
+        },
+        "briefing": {
+          "value": "sb-001",
+          "asOf": "2026-10-29",
+          "status": "reported",
+          "source": {
+            "name": "school-briefings-draft.json",
+            "url": null
+          },
+          "nullReason": null
+        },
+        "dorm": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 확인 못 함"
+        },
+        "homepage": {
+          "value": "http://yihongcheon-h.goeyi.kr",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005416)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
+          },
+          "nullReason": null
+        },
+        "schoolinfo": {
+          "value": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
+          },
+          "nullReason": null
+        }
+      }
+    },
+    {
+      "placeId": "pl-012",
+      "schoolId": "school-seongbok",
+      "name": "성복고등학교",
+      "values": {
+        "type": {
+          "value": "일반고등학교",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005904)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
+          },
+          "nullReason": null
+        },
+        "founding": {
+          "value": "공립·단설(설립 2011년 01월 15일)",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005904)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
+          },
+          "nullReason": null
+        },
+        "coed": {
+          "value": "남녀공학",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005904) 및 편제표 요약",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
+          },
+          "nullReason": null
+        },
+        "address": {
+          "value": "경기도 용인시 수지구 도마치로 92",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005904)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
+          },
+          "nullReason": null
+        },
+        "classes": {
+          "value": "일반학급 36(1학년 12·2학년 12·3학년 12) + 특수학급 2",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
+          },
+          "nullReason": null
+        },
+        "students": {
+          "value": "1,062명 (남 566명 , 여 496명)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005904)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
+          },
+          "nullReason": null
+        },
+        "teachers": {
+          "value": "78명 (남 17 명 , 여 61 명)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005904)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
+          },
+          "nullReason": null
+        },
+        "perClass": {
+          "value": "27.9",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005904)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
+          },
+          "nullReason": null
+        },
+        "perTeacher": {
+          "value": "14.8",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005904)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
+          },
+          "nullReason": null
+        },
+        "admission": {
+          "value": "평준화 추첨(구역설정학군, 선복수지원-후추첨)",
+          "asOf": "2027학년도 입학",
+          "status": "reported",
+          "source": {
+            "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조)",
+            "url": "portal/data/summary.json"
+          },
+          "nullReason": null
+        },
+        "zone": {
+          "value": "용인학군 2구역(수지구 고교 10개교)",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+            "url": "https://satp.goe.go.kr/main.do"
+          },
+          "nullReason": null
+        },
+        "curriculum": {
+          "value": "총 192학점(교과 174+창체 18), 필수 37과목, 선택 묶음 12개, 첫 선택과목 학기 2-1",
+          "asOf": "2027학년도 입학 편제표",
+          "status": "reported",
+          "source": {
+            "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조 완료)",
+            "url": "portal/data/summary.json"
+          },
+          "nullReason": null
+        },
+        "subjectCount": {
+          "value": 60,
+          "asOf": "2027학년도 입학 편제표",
+          "status": "reported",
+          "source": {
+            "name": "편제표 요약(개설 후보, 수능 범위는 추정)",
+            "url": "portal/data/summary.json"
+          },
+          "nullReason": null
+        },
+        "univStats": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": {
+            "name": "학교알리미 공시항목 목록",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
+          },
+          "nullReason": "학교알리미 2026 공시 항목 목록(46개)에 졸업생 대학 진학 현황 항목이 없음. 학교 설명회·학교 홈페이지 자료는 별도 확인 필요"
+        },
+        "meal": {
+          "value": "직영 급식(중식), 급식 학생 1,062명 / 전체 1,062명",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
+          },
+          "nullReason": null
+        },
+        "canteen": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 확인 못 함"
+        },
+        "briefing": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "설명회 노트 없음"
+        },
+        "dorm": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 확인 못 함"
+        },
+        "homepage": {
+          "value": "https://seongbok-h.goeyi.kr",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005904)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
+          },
+          "nullReason": null
+        },
+        "schoolinfo": {
+          "value": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
+          },
+          "nullReason": null
+        }
+      }
+    },
+    {
+      "placeId": "pl-011",
+      "schoolId": "school-pungdeok",
+      "name": "풍덕고등학교",
+      "values": {
+        "type": {
+          "value": "일반고등학교",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000844)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
+          },
+          "nullReason": null
+        },
+        "founding": {
+          "value": "공립·단설(설립 2000년 03월 01일)",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000844)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
+          },
+          "nullReason": null
+        },
+        "coed": {
+          "value": "남녀공학",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000844) 및 편제표 요약",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
+          },
+          "nullReason": null
+        },
+        "address": {
+          "value": "경기도 용인시 수지구 정평로13번길 5",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000844)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
+          },
+          "nullReason": null
+        },
+        "classes": {
+          "value": "일반학급 38(1학년 13·2학년 13·3학년 12) + 특수학급 1",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
+          },
+          "nullReason": null
+        },
+        "students": {
+          "value": "1,244명 (남 653명 , 여 591명)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000844)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
+          },
+          "nullReason": null
+        },
+        "teachers": {
+          "value": "84명 (남 24 명 , 여 60 명)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000844)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
+          },
+          "nullReason": null
+        },
+        "perClass": {
+          "value": "31.9",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000844)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
+          },
+          "nullReason": null
+        },
+        "perTeacher": {
+          "value": "16.2",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000844)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
+          },
+          "nullReason": null
+        },
+        "admission": {
+          "value": "평준화 추첨(구역설정학군, 선복수지원-후추첨)",
+          "asOf": "2027학년도 입학",
+          "status": "reported",
+          "source": {
+            "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조)",
+            "url": "portal/data/summary.json"
+          },
+          "nullReason": null
+        },
+        "zone": {
+          "value": "용인학군 2구역(수지구 고교 10개교)",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+            "url": "https://satp.goe.go.kr/main.do"
+          },
+          "nullReason": null
+        },
+        "curriculum": {
+          "value": "총 192학점(교과 174+창체 18), 필수 38과목, 선택 묶음 8개, 첫 선택과목 학기 2-1",
+          "asOf": "2027학년도 입학 편제표",
+          "status": "reported",
+          "source": {
+            "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조 완료)",
+            "url": "portal/data/summary.json"
+          },
+          "nullReason": null
+        },
+        "subjectCount": {
+          "value": 56,
+          "asOf": "2027학년도 입학 편제표",
+          "status": "reported",
+          "source": {
+            "name": "편제표 요약(개설 후보, 수능 범위는 추정)",
+            "url": "portal/data/summary.json"
+          },
+          "nullReason": null
+        },
+        "univStats": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": {
+            "name": "학교알리미 공시항목 목록",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
+          },
+          "nullReason": "학교알리미 2026 공시 항목 목록(46개)에 졸업생 대학 진학 현황 항목이 없음. 학교 설명회·학교 홈페이지 자료는 별도 확인 필요"
+        },
+        "meal": {
+          "value": "직영 급식(중식), 급식 학생 1,244명 / 전체 1,244명",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
+          },
+          "nullReason": null
+        },
+        "canteen": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 확인 못 함"
+        },
+        "briefing": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "설명회 노트 없음"
+        },
+        "dorm": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 확인 못 함"
+        },
+        "homepage": {
+          "value": "https://pungduck-h.goeyi.kr",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000844)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
+          },
+          "nullReason": null
+        },
+        "schoolinfo": {
+          "value": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
+          },
+          "nullReason": null
+        }
+      }
+    },
+    {
+      "placeId": "pl-013",
+      "schoolId": "school-suji",
+      "name": "수지고등학교",
+      "values": {
+        "type": {
+          "value": "일반고등학교",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000655)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
+          },
+          "nullReason": null
+        },
+        "founding": {
+          "value": "공립·단설(설립 1995년 03월 01일)",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000655)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
+          },
+          "nullReason": null
+        },
+        "coed": {
+          "value": "남녀공학",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000655) 및 편제표 요약",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
+          },
+          "nullReason": null
+        },
+        "address": {
+          "value": "경기도 용인시 수지구 수풍로 73",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000655)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
+          },
+          "nullReason": null
+        },
+        "classes": {
+          "value": "일반학급 41(1학년 14·2학년 14·3학년 13) + 특수학급 1",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
+          },
+          "nullReason": null
+        },
+        "students": {
+          "value": "1,313명 (남 689명 , 여 624명)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000655)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
+          },
+          "nullReason": null
+        },
+        "teachers": {
+          "value": "97명 (남 22 명 , 여 75 명)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000655)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
+          },
+          "nullReason": null
+        },
+        "perClass": {
+          "value": "31.3",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000655)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
+          },
+          "nullReason": null
+        },
+        "perTeacher": {
+          "value": "16.2",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000655)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
+          },
+          "nullReason": null
+        },
+        "admission": {
+          "value": "평준화 추첨(구역설정학군, 선복수지원-후추첨)",
+          "asOf": "2027학년도 입학",
+          "status": "reported",
+          "source": {
+            "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조)",
+            "url": "portal/data/summary.json"
+          },
+          "nullReason": null
+        },
+        "zone": {
+          "value": "용인학군 2구역(수지구 고교 10개교)",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+            "url": "https://satp.goe.go.kr/main.do"
+          },
+          "nullReason": null
+        },
+        "curriculum": {
+          "value": "총 192학점(교과 174+창체 18), 필수 33과목, 선택 묶음 12개, 첫 선택과목 학기 2-1",
+          "asOf": "2027학년도 입학 편제표",
+          "status": "reported",
+          "source": {
+            "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조 완료)",
+            "url": "portal/data/summary.json"
+          },
+          "nullReason": null
+        },
+        "subjectCount": {
+          "value": 64,
+          "asOf": "2027학년도 입학 편제표",
+          "status": "reported",
+          "source": {
+            "name": "편제표 요약(개설 후보, 수능 범위는 추정)",
+            "url": "portal/data/summary.json"
+          },
+          "nullReason": null
+        },
+        "univStats": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": {
+            "name": "학교알리미 공시항목 목록",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
+          },
+          "nullReason": "학교알리미 2026 공시 항목 목록(46개)에 졸업생 대학 진학 현황 항목이 없음. 학교 설명회·학교 홈페이지 자료는 별도 확인 필요"
+        },
+        "meal": {
+          "value": "직영 급식(중식), 급식 학생 1,313명 / 전체 1,313명",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
+          },
+          "nullReason": null
+        },
+        "canteen": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 확인 못 함"
+        },
+        "briefing": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "설명회 노트 없음"
+        },
+        "dorm": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 확인 못 함"
+        },
+        "homepage": {
+          "value": "http://suji-h.goeyi.kr",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000655)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
+          },
+          "nullReason": null
+        },
+        "schoolinfo": {
+          "value": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
+          },
+          "nullReason": null
+        }
+      }
+    },
+    {
+      "placeId": "pl-020",
+      "schoolId": null,
+      "name": "상현고등학교",
+      "values": {
+        "type": {
+          "value": "일반고등학교",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090006522)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
+          },
+          "nullReason": null
+        },
+        "founding": {
+          "value": "공립·단설(설립 2012년 03월 01일)",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090006522)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
+          },
+          "nullReason": null
+        },
+        "coed": {
+          "value": "남녀공학",
+          "asOf": "2026",
+          "status": "estimated",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090006522) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
+          },
+          "nullReason": null
+        },
+        "address": {
+          "value": "경기도 용인시 수지구 법조로 222",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090006522)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
+          },
+          "nullReason": null
+        },
+        "classes": {
+          "value": "일반학급 30(1학년 10·2학년 10·3학년 10) + 특수학급 1",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
+          },
+          "nullReason": null
+        },
+        "students": {
+          "value": "960명 (남 500명 , 여 460명)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090006522)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
+          },
+          "nullReason": null
+        },
+        "teachers": {
+          "value": "71명 (남 14 명 , 여 57 명)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090006522)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
+          },
+          "nullReason": null
+        },
+        "perClass": {
+          "value": "31.0",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090006522)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
+          },
+          "nullReason": null
+        },
+        "perTeacher": {
+          "value": "15.5",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090006522)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
+          },
+          "nullReason": null
+        },
+        "admission": {
+          "value": "용인학군 평준화(일반고, 구역 내 배정)",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+            "url": "https://satp.goe.go.kr/main.do"
+          },
+          "nullReason": null
+        },
+        "zone": {
+          "value": "용인학군 2구역(수지구 고교 10개교)",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+            "url": "https://satp.goe.go.kr/main.do"
+          },
+          "nullReason": null
+        },
+        "curriculum": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": {
+            "name": "학교알리미",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
+          },
+          "nullReason": "편제표를 아직 수집하지 않은 학교(학교알리미 '학교교육과정 편성·운영 및 평가' 항목은 문서 첨부라 이번에 읽지 않음)"
+        },
+        "subjectCount": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "편제표를 아직 수집하지 않아 과목 수 미확인"
+        },
+        "univStats": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": {
+            "name": "학교알리미 공시항목 목록",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
+          },
+          "nullReason": "학교알리미 2026 공시 항목 목록(46개)에 졸업생 대학 진학 현황 항목이 없음. 학교 설명회·학교 홈페이지 자료는 별도 확인 필요"
+        },
+        "meal": {
+          "value": "직영 급식(중식), 급식 학생 959명 / 전체 960명",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
+          },
+          "nullReason": null
+        },
+        "canteen": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 확인 못 함"
+        },
+        "briefing": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "설명회 노트 없음"
+        },
+        "dorm": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 확인 못 함"
+        },
+        "homepage": {
+          "value": "http://sanghyun-h.goeyi.kr",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090006522)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
+          },
+          "nullReason": null
+        },
+        "schoolinfo": {
+          "value": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
+          },
+          "nullReason": null
+        }
+      }
+    },
+    {
+      "placeId": "pl-021",
+      "schoolId": null,
+      "name": "서원고등학교",
+      "values": {
+        "type": {
+          "value": "일반고등학교",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090004893)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
+          },
+          "nullReason": null
+        },
+        "founding": {
+          "value": "공립·단설(설립 2003년 03월 03일)",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090004893)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
+          },
+          "nullReason": null
+        },
+        "coed": {
+          "value": "남녀공학",
+          "asOf": "2026",
+          "status": "estimated",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090004893) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
+          },
+          "nullReason": null
+        },
+        "address": {
+          "value": "경기도 용인시 수지구 상현로42번길 26-7",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090004893)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
+          },
+          "nullReason": null
+        },
+        "classes": {
+          "value": "일반학급 36(1학년 12·2학년 12·3학년 12) + 특수학급 1",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
+          },
+          "nullReason": null
+        },
+        "students": {
+          "value": "1,128명 (남 592명 , 여 536명)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090004893)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
+          },
+          "nullReason": null
+        },
+        "teachers": {
+          "value": "85명 (남 14 명 , 여 71 명)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090004893)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
+          },
+          "nullReason": null
+        },
+        "perClass": {
+          "value": "30.5",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090004893)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
+          },
+          "nullReason": null
+        },
+        "perTeacher": {
+          "value": "15.9",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090004893)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
+          },
+          "nullReason": null
+        },
+        "admission": {
+          "value": "용인학군 평준화(일반고, 구역 내 배정)",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+            "url": "https://satp.goe.go.kr/main.do"
+          },
+          "nullReason": null
+        },
+        "zone": {
+          "value": "용인학군 2구역(수지구 고교 10개교)",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+            "url": "https://satp.goe.go.kr/main.do"
+          },
+          "nullReason": null
+        },
+        "curriculum": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": {
+            "name": "학교알리미",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
+          },
+          "nullReason": "편제표를 아직 수집하지 않은 학교(학교알리미 '학교교육과정 편성·운영 및 평가' 항목은 문서 첨부라 이번에 읽지 않음)"
+        },
+        "subjectCount": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "편제표를 아직 수집하지 않아 과목 수 미확인"
+        },
+        "univStats": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": {
+            "name": "학교알리미 공시항목 목록",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
+          },
+          "nullReason": "학교알리미 2026 공시 항목 목록(46개)에 졸업생 대학 진학 현황 항목이 없음. 학교 설명회·학교 홈페이지 자료는 별도 확인 필요"
+        },
+        "meal": {
+          "value": "직영 급식(중식), 급식 학생 1,128명 / 전체 1,128명",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
+          },
+          "nullReason": null
+        },
+        "canteen": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 확인 못 함"
+        },
+        "briefing": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "설명회 노트 없음"
+        },
+        "dorm": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 확인 못 함"
+        },
+        "homepage": {
+          "value": "http://seowon-h.goeyi.kr",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090004893)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
+          },
+          "nullReason": null
+        },
+        "schoolinfo": {
+          "value": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
+          },
+          "nullReason": null
+        }
+      }
+    },
+    {
+      "placeId": "pl-022",
+      "schoolId": null,
+      "name": "신봉고등학교",
+      "values": {
+        "type": {
+          "value": "일반고등학교",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090006525)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
+          },
+          "nullReason": null
+        },
+        "founding": {
+          "value": "공립·단설(설립 2012년 03월 01일)",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090006525)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
+          },
+          "nullReason": null
+        },
+        "coed": {
+          "value": "남녀공학",
+          "asOf": "2026",
+          "status": "estimated",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090006525) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
+          },
+          "nullReason": null
+        },
+        "address": {
+          "value": "경기도 용인시 수지구 신봉3로 45",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090006525)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
+          },
+          "nullReason": null
+        },
+        "classes": {
+          "value": "일반학급 36(1학년 12·2학년 12·3학년 12) + 특수학급 1",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
+          },
+          "nullReason": null
+        },
+        "students": {
+          "value": "1,122명 (남 595명 , 여 527명)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090006525)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
+          },
+          "nullReason": null
+        },
+        "teachers": {
+          "value": "84명 (남 15 명 , 여 69 명)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090006525)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
+          },
+          "nullReason": null
+        },
+        "perClass": {
+          "value": "30.3",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090006525)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
+          },
+          "nullReason": null
+        },
+        "perTeacher": {
+          "value": "15.8",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090006525)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
+          },
+          "nullReason": null
+        },
+        "admission": {
+          "value": "용인학군 평준화(일반고, 구역 내 배정)",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+            "url": "https://satp.goe.go.kr/main.do"
+          },
+          "nullReason": null
+        },
+        "zone": {
+          "value": "용인학군 2구역(수지구 고교 10개교)",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+            "url": "https://satp.goe.go.kr/main.do"
+          },
+          "nullReason": null
+        },
+        "curriculum": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": {
+            "name": "학교알리미",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
+          },
+          "nullReason": "편제표를 아직 수집하지 않은 학교(학교알리미 '학교교육과정 편성·운영 및 평가' 항목은 문서 첨부라 이번에 읽지 않음)"
+        },
+        "subjectCount": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "편제표를 아직 수집하지 않아 과목 수 미확인"
+        },
+        "univStats": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": {
+            "name": "학교알리미 공시항목 목록",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
+          },
+          "nullReason": "학교알리미 2026 공시 항목 목록(46개)에 졸업생 대학 진학 현황 항목이 없음. 학교 설명회·학교 홈페이지 자료는 별도 확인 필요"
+        },
+        "meal": {
+          "value": "직영 급식(중식), 급식 학생 1,122명 / 전체 1,122명",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
+          },
+          "nullReason": null
+        },
+        "canteen": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 확인 못 함"
+        },
+        "briefing": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "설명회 노트 없음"
+        },
+        "dorm": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 확인 못 함"
+        },
+        "homepage": {
+          "value": "http://shinbong-h.goeyi.kr",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090006525)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
+          },
+          "nullReason": null
+        },
+        "schoolinfo": {
+          "value": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
+          },
+          "nullReason": null
+        }
+      }
+    },
+    {
+      "placeId": "pl-024",
+      "schoolId": null,
+      "name": "죽전고등학교",
+      "values": {
+        "type": {
+          "value": "일반고등학교",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000801)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
+          },
+          "nullReason": null
+        },
+        "founding": {
+          "value": "공립·단설(설립 2001년 01월 05일)",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000801)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
+          },
+          "nullReason": null
+        },
+        "coed": {
+          "value": "남녀공학",
+          "asOf": "2026",
+          "status": "estimated",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000801) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
+          },
+          "nullReason": null
+        },
+        "address": {
+          "value": "경기도 용인시 수지구 용구대로2771번길 23",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000801)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
+          },
+          "nullReason": null
+        },
+        "classes": {
+          "value": "일반학급 36(1학년 12·2학년 12·3학년 12) + 특수학급 0",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
+          },
+          "nullReason": null
+        },
+        "students": {
+          "value": "1,123명 (남 579명 , 여 544명)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000801)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
+          },
+          "nullReason": null
+        },
+        "teachers": {
+          "value": "80명 (남 18 명 , 여 62 명)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000801)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
+          },
+          "nullReason": null
+        },
+        "perClass": {
+          "value": "31.2",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000801)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
+          },
+          "nullReason": null
+        },
+        "perTeacher": {
+          "value": "15.8",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000801)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
+          },
+          "nullReason": null
+        },
+        "admission": {
+          "value": "용인학군 평준화(일반고, 구역 내 배정)",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+            "url": "https://satp.goe.go.kr/main.do"
+          },
+          "nullReason": null
+        },
+        "zone": {
+          "value": "용인학군 2구역(수지구 고교 10개교)",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+            "url": "https://satp.goe.go.kr/main.do"
+          },
+          "nullReason": null
+        },
+        "curriculum": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": {
+            "name": "학교알리미",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
+          },
+          "nullReason": "편제표를 아직 수집하지 않은 학교(학교알리미 '학교교육과정 편성·운영 및 평가' 항목은 문서 첨부라 이번에 읽지 않음)"
+        },
+        "subjectCount": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "편제표를 아직 수집하지 않아 과목 수 미확인"
+        },
+        "univStats": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": {
+            "name": "학교알리미 공시항목 목록",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
+          },
+          "nullReason": "학교알리미 2026 공시 항목 목록(46개)에 졸업생 대학 진학 현황 항목이 없음. 학교 설명회·학교 홈페이지 자료는 별도 확인 필요"
+        },
+        "meal": {
+          "value": "직영 급식(중식), 급식 학생 1,123명 / 전체 1,123명",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
+          },
+          "nullReason": null
+        },
+        "canteen": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 확인 못 함"
+        },
+        "briefing": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "설명회 노트 없음"
+        },
+        "dorm": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 확인 못 함"
+        },
+        "homepage": {
+          "value": "http://jukjeon-h.goeyi.kr",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000801)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
+          },
+          "nullReason": null
+        },
+        "schoolinfo": {
+          "value": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
+          },
+          "nullReason": null
+        }
+      }
+    },
+    {
+      "placeId": "pl-023",
+      "schoolId": null,
+      "name": "대지고등학교",
+      "values": {
+        "type": {
+          "value": "일반고등학교",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005458)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
+          },
+          "nullReason": null
+        },
+        "founding": {
+          "value": "공립·단설(설립 2007년 03월 01일)",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005458)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
+          },
+          "nullReason": null
+        },
+        "coed": {
+          "value": "남녀공학",
+          "asOf": "2026",
+          "status": "estimated",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005458) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
+          },
+          "nullReason": null
+        },
+        "address": {
+          "value": "경기도 용인시 수지구 동백죽전대로 1066",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005458)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
+          },
+          "nullReason": null
+        },
+        "classes": {
+          "value": "일반학급 30(1학년 10·2학년 10·3학년 10) + 특수학급 1",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
+          },
+          "nullReason": null
+        },
+        "students": {
+          "value": "924명 (남 481명 , 여 443명)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005458)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
+          },
+          "nullReason": null
+        },
+        "teachers": {
+          "value": "72명 (남 16 명 , 여 56 명)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005458)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
+          },
+          "nullReason": null
+        },
+        "perClass": {
+          "value": "29.8",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005458)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
+          },
+          "nullReason": null
+        },
+        "perTeacher": {
+          "value": "15.1",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005458)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
+          },
+          "nullReason": null
+        },
+        "admission": {
+          "value": "용인학군 평준화(일반고, 구역 내 배정)",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+            "url": "https://satp.goe.go.kr/main.do"
+          },
+          "nullReason": null
+        },
+        "zone": {
+          "value": "용인학군 2구역(수지구 고교 10개교)",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+            "url": "https://satp.goe.go.kr/main.do"
+          },
+          "nullReason": null
+        },
+        "curriculum": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": {
+            "name": "학교알리미",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
+          },
+          "nullReason": "편제표를 아직 수집하지 않은 학교(학교알리미 '학교교육과정 편성·운영 및 평가' 항목은 문서 첨부라 이번에 읽지 않음)"
+        },
+        "subjectCount": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "편제표를 아직 수집하지 않아 과목 수 미확인"
+        },
+        "univStats": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": {
+            "name": "학교알리미 공시항목 목록",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
+          },
+          "nullReason": "학교알리미 2026 공시 항목 목록(46개)에 졸업생 대학 진학 현황 항목이 없음. 학교 설명회·학교 홈페이지 자료는 별도 확인 필요"
+        },
+        "meal": {
+          "value": "직영 급식(중식), 급식 학생 924명 / 전체 924명",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
+          },
+          "nullReason": null
+        },
+        "canteen": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 확인 못 함"
+        },
+        "briefing": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "설명회 노트 없음"
+        },
+        "dorm": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 확인 못 함"
+        },
+        "homepage": {
+          "value": "https://daeji-h.goeyi.kr",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005458)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
+          },
+          "nullReason": null
+        },
+        "schoolinfo": {
+          "value": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
+          },
+          "nullReason": null
+        }
+      }
+    },
+    {
+      "placeId": "pl-025",
+      "schoolId": null,
+      "name": "현암고등학교",
+      "values": {
+        "type": {
+          "value": "일반고등학교",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005415)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
+          },
+          "nullReason": null
+        },
+        "founding": {
+          "value": "공립·단설(설립 2006년 03월 01일)",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005415)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
+          },
+          "nullReason": null
+        },
+        "coed": {
+          "value": "남녀공학",
+          "asOf": "2026",
+          "status": "estimated",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005415) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
+          },
+          "nullReason": null
+        },
+        "address": {
+          "value": "경기도 용인시 수지구 디지털벨리로 17",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005415)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
+          },
+          "nullReason": null
+        },
+        "classes": {
+          "value": "일반학급 24(1학년 8·2학년 8·3학년 8) + 특수학급 0",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
+          },
+          "nullReason": null
+        },
+        "students": {
+          "value": "604명 (남 314명 , 여 290명)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005415)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
+          },
+          "nullReason": null
+        },
+        "teachers": {
+          "value": "55명 (남 11 명 , 여 44 명)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005415)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
+          },
+          "nullReason": null
+        },
+        "perClass": {
+          "value": "25.2",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005415)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
+          },
+          "nullReason": null
+        },
+        "perTeacher": {
+          "value": "12.9",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005415)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
+          },
+          "nullReason": null
+        },
+        "admission": {
+          "value": "용인학군 평준화(일반고, 구역 내 배정)",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+            "url": "https://satp.goe.go.kr/main.do"
+          },
+          "nullReason": null
+        },
+        "zone": {
+          "value": "용인학군 2구역(수지구 고교 10개교)",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+            "url": "https://satp.goe.go.kr/main.do"
+          },
+          "nullReason": null
+        },
+        "curriculum": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": {
+            "name": "학교알리미",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
+          },
+          "nullReason": "편제표를 아직 수집하지 않은 학교(학교알리미 '학교교육과정 편성·운영 및 평가' 항목은 문서 첨부라 이번에 읽지 않음)"
+        },
+        "subjectCount": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "편제표를 아직 수집하지 않아 과목 수 미확인"
+        },
+        "univStats": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": {
+            "name": "학교알리미 공시항목 목록",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
+          },
+          "nullReason": "학교알리미 2026 공시 항목 목록(46개)에 졸업생 대학 진학 현황 항목이 없음. 학교 설명회·학교 홈페이지 자료는 별도 확인 필요"
+        },
+        "meal": {
+          "value": "직영 급식(중식), 급식 학생 604명 / 전체 604명",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
+          },
+          "nullReason": null
+        },
+        "canteen": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 확인 못 함"
+        },
+        "briefing": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "설명회 노트 없음"
+        },
+        "dorm": {
+          "value": null,
+          "asOf": null,
+          "status": null,
+          "source": null,
+          "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 확인 못 함"
+        },
+        "homepage": {
+          "value": "https://hyunam-h.goeyi.kr",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005415)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
+          },
+          "nullReason": null
+        },
+        "schoolinfo": {
+          "value": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
+          },
+          "nullReason": null
+        }
+      }
+    }
+  ]
+}
