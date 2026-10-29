@@ -2,6 +2,7 @@
 //   - 초안이 아직 없으면 빈 목록을 만든다(화면은 빈 상태 문구). 좌표가 null이면 지도에서만 빠지고 목록에는 남는다.
 //   - coordSource 설명에 "근사"가 있으면 coordApprox=true(화면에 "위치 근사" 한 줄).
 //   - 지도 링크용 검색어(searchQuery)는 "이름 + 주소"로 만든다. API 키 없이 네이버 지도·카카오맵 검색 URL에 쓴다.
+//   - research/data/places-nearby-draft.json(도서관·역 등 주변 시설)은 places.json의 nearby[]로 합친다(level "nearby"). 학교 목록(places[])과 분리해 검색·중학교 화면에는 섞이지 않는다.
 // 사용: node tools/build-places.mjs [--check]
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 
@@ -29,13 +30,30 @@ const places = draft.items.map((it) => {
     searchQuery: `${it.name} ${it.address}`.trim(),
   };
 });
+// ---- 주변 시설(nearby) ----
+const NSRC = "research/data/places-nearby-draft.json";
+const ndraft = existsSync(NSRC) ? JSON.parse(readFileSync(NSRC, "utf8")) : { _meta: {}, items: [] };
+const NKIND = schema.properties.nearbyKind.enum;
+const nids = new Set();
+const nearby = ndraft.items.map((it) => {
+  if (!/^np-\d{3,}$/.test(it.id || "")) errs.push(`${it.id}: nearby id 형식(np-NNN)`);
+  if (nids.has(it.id)) errs.push(`${it.id}: nearby id 중복`); nids.add(it.id);
+  if (!NKIND.includes(it.kind)) errs.push(`${it.id}: kind "${it.kind}"는 ${NKIND.join("|")}`);
+  for (const k of ["name", "address", "status"]) if (!it[k]) errs.push(`${it.id}: ${k} 없음`);
+  if (!schema.properties.status.enum.includes(it.status)) errs.push(`${it.id}: status ${it.status}`);
+  if (!(it.sources || []).length) errs.push(`${it.id}: sources 비어 있음`);
+  const lat = it.lat ?? null, lng = it.lng ?? null;
+  if ((lat == null) !== (lng == null)) errs.push(`${it.id}: lat·lng는 함께 있거나 함께 null`);
+  if (lat != null && !(lat > 33 && lat < 39 && lng > 124 && lng < 132)) errs.push(`${it.id}: 좌표가 한국 범위 밖(${lat}, ${lng})`);
+  return { id: it.id, level: "nearby", kind: it.kind, name: it.name, address: it.address, lat, lng, coordSource: it.coordSource ?? null, coordApprox: lat != null && /근사/.test(it.coordSource?.name || ""), note: it.note ?? null, homepage: it.homepage ?? null, status: it.status, sources: it.sources, checkedAt: it.checkedAt ?? ndraft._meta?.checkedAt ?? null, searchQuery: `${it.name} ${it.address}`.trim() };
+});
 if (errs.length) { console.error(errs.join("\n")); process.exit(1); }
 
-const out = { _meta: { note: "학교 위치(생성물, 손으로 고치지 않는다). research/data/places-draft.json에서 tools/build-places.mjs가 만든다.", checkedAt: draft._meta?.checkedAt ?? null, count: places.length, withCoords: places.filter((p) => p.lat != null).length }, places };
+const out = { _meta: { note: "학교 위치(생성물, 손으로 고치지 않는다). research/data/places-draft.json에서 tools/build-places.mjs가 만든다.", checkedAt: draft._meta?.checkedAt ?? null, count: places.length, withCoords: places.filter((p) => p.lat != null).length, nearbyCount: nearby.length }, places, nearby };
 const json = JSON.stringify(out, null, 1) + "\n";
 const target = "portal/data/places.json";
 if (process.argv.includes("--check")) {
   let cur = ""; try { cur = readFileSync(target, "utf8"); } catch {}
   if (cur !== json) { console.error("places.json is out of date"); process.exit(1); }
 } else writeFileSync(target, json);
-console.log(`${places.length} places (좌표 있음 ${out._meta.withCoords})`);
+console.log(`${places.length} places (좌표 있음 ${out._meta.withCoords}), 주변 시설 ${nearby.length}곳`);

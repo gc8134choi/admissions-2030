@@ -6,7 +6,9 @@ const LEAFLET = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/";
 const SRI = { css: "sha256-tXCrvaljxgtN5LT/Syb5Mm9T+yzPFGH98JVcoJT7JTk=", js: "sha256-XJrs/DDkVkUZ29zdzFOkGCJ9zHVo5hnpdi3c7HYJ7Uc=" };
 import { stageTag } from "./stage.js";
 export const LEVEL = { elementary: ["초", "초등학교"], middle: ["중", "중학교"], high: ["고", "고등학교"] };
+const NEAR = { library: ["도", "도서관"], station: ["역", "지하철역"] }; // 주변 시설(places.json nearby[])
 const ES = { reported: "보도", estimated: "추정" };
+const lvOf = (p) => (p.level === "nearby" ? NEAR[p.kind] || ["·", "주변 시설"] : LEVEL[p.level]);
 
 let leafletP = null;
 function loadLeaflet() {
@@ -32,7 +34,7 @@ const safeUrl = (u) => (/^https?:\/\//.test(u || "") ? u : null);
 export function placeInfo(p, esc) {
   const st = ES[p.status] ? `<span class="es ${p.status === "reported" ? "rep" : "est"}">${ES[p.status]}</span>` : "";
   const hp = safeUrl(p.homepage);
-  return `${stageTag({ middle: "중입", high: "고입" }[p.level], esc)}<b>${esc(p.name)}</b> <span class="muted small">${esc(LEVEL[p.level][1])}${p.kind ? ` · ${esc(p.kind)}` : ""}</span> ${st}
+  return `${stageTag({ middle: "중입", high: "고입" }[p.level], esc)}<b>${esc(p.name)}</b> <span class="muted small">${esc(lvOf(p)[1])}${p.kind && p.level !== "nearby" ? ` · ${esc(p.kind)}` : ""}</span> ${st}${p.level === "nearby" && p.note ? `<div class="muted small">${esc(p.note)}</div>` : ""}
     <div class="pl-addr">${esc(p.address)}${p.coordApprox ? ' <span class="muted small">위치 근사</span>' : ""}</div>
     <div class="pl-links">${hp ? `<a href="${esc(hp)}" target="_blank" rel="noopener">홈페이지</a>` : ""}<a href="${esc(naverUrl(p))}" target="_blank" rel="noopener">네이버 지도에서 열기</a><a href="${esc(kakaoUrl(p))}" target="_blank" rel="noopener">카카오맵에서 열기</a></div>`;
 }
@@ -41,16 +43,19 @@ export function placeInfo(p, esc) {
 export async function mapBody(el, { load, esc, focus = null, level = null }) {
   const data = await load("places");
   const places = data.places;
+  const nearby = data.nearby || [];
+  const all = [...places, ...nearby];
   if (!places.length) { el.innerHTML = `<div class="ed"><h2>학교 지도</h2><p class="muted">아직 정리 중이에요.</p></div>`; return; }
   const lv0 = level || new URLSearchParams((location.hash.split("?")[1] || "")).get("lv");
-  const st = (el.__map ||= { level: LEVEL[lv0] ? lv0 : "all", view: "map", sel: null });
-  if (focus && places.some((p) => p.id === focus)) { st.sel = focus; st.view = "map"; }
+  const st = (el.__map ||= { level: LEVEL[lv0] ? lv0 : "all", view: "map", sel: null, near: false });
+  if (focus && all.some((p) => p.id === focus)) { st.sel = focus; st.view = "map"; }
   let map = null, layer = null, markers = new Map(), mapFailed = false;
-  const shown = () => places.filter((p) => st.level === "all" || p.level === st.level);
+  const shown = () => [...places.filter((p) => st.level === "all" || p.level === st.level), ...(st.near ? nearby : [])];
   const chip = (k, v, t, cur) => `<button type="button" class="chip ${v === cur ? "on" : ""}" data-k="${k}" data-v="${v}" aria-pressed="${v === cur}">${t}</button>`;
 
   el.innerHTML = `<div class="ed pl-wrap"><div class="chipbar"><span class="flabel">보기</span><div class="chips" id="pl-view"></div></div>
     <div class="chipbar"><span class="flabel">학교급</span><div class="chips" id="pl-level"></div></div>
+    <div class="chipbar"><span class="flabel">주변</span><div class="chips" id="pl-near"></div></div>
     <div id="pl-map" class="pl-map" hidden></div><p id="pl-fail" class="muted small" hidden>지도를 불러오지 못했어요. 목록과 링크로 확인해 주세요.</p>
     <div id="pl-detail" class="pl-detail" hidden></div><div id="pl-list"></div>
     <p class="ed-src">지도 © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a> · 위치는 조사 시점 기준이고 좌표는 어림값일 수 있어요.</p></div>`;
@@ -58,16 +63,17 @@ export async function mapBody(el, { load, esc, focus = null, level = null }) {
 
   const drawChips = () => {
     $("#pl-view").innerHTML = chip("view", "map", "지도", st.view) + chip("view", "list", "목록", st.view);
+    $("#pl-near").innerHTML = nearby.length ? `<button type="button" class="chip ${st.near ? "on" : ""}" data-k="near" data-v="${st.near ? "" : "1"}" aria-pressed="${st.near}">주변 시설 보기</button>` : '<span class="muted small">준비 중</span>';
     $("#pl-level").innerHTML = chip("level", "all", "전체", st.level) + Object.entries(LEVEL).map(([k, v]) => chip("level", k, v[1], st.level)).join("");
   };
   const drawList = () => {
-    $("#pl-list").innerHTML = `<ul class="pl-list">${shown().map((p) => `<li class="${p.id === st.sel ? "on" : ""}" data-id="${esc(p.id)}"><button type="button" class="pl-row" data-id="${esc(p.id)}"><span class="pl-lv">${LEVEL[p.level][0]}</span><span><b>${esc(p.name)}</b><span class="muted small"> ${esc(p.address)}</span>${p.lat == null ? ' <span class="muted small">(지도 위치 없음)</span>' : ""}</span></button></li>`).join("")}</ul>`;
+    $("#pl-list").innerHTML = `<ul class="pl-list">${shown().map((p) => `<li class="${p.id === st.sel ? "on" : ""}" data-id="${esc(p.id)}"><button type="button" class="pl-row" data-id="${esc(p.id)}"><span class="pl-lv">${lvOf(p)[0]}</span><span><b>${esc(p.name)}</b><span class="muted small"> ${esc(p.address)}</span>${p.lat == null ? ' <span class="muted small">(지도 위치 없음)</span>' : ""}</span></button></li>`).join("")}</ul>`;
   };
   const drawDetail = () => {
-    const p = places.find((x) => x.id === st.sel), d = $("#pl-detail");
+    const p = all.find((x) => x.id === st.sel), d = $("#pl-detail");
     d.hidden = !p; d.innerHTML = p ? placeInfo(p, esc) : "";
   };
-  const icon = (L, p, on) => L.divIcon({ className: "", html: `<span class="pl-pin lv-${p.level} ${on ? "on" : ""}">${LEVEL[p.level][0]}</span>`, iconSize: [26, 26], iconAnchor: [13, 13] });
+  const icon = (L, p, on) => L.divIcon({ className: "", html: `<span class="pl-pin lv-${p.level} ${on ? "on" : ""}">${lvOf(p)[0]}</span>`, iconSize: [26, 26], iconAnchor: [13, 13] });
   const drawMarkers = () => {
     if (!map) return;
     const L = window.L;
@@ -80,13 +86,13 @@ export async function mapBody(el, { load, esc, focus = null, level = null }) {
   };
   const fit = () => {
     const pts = shown().filter((x) => x.lat != null).map((x) => [x.lat, x.lng]);
-    const p = places.find((x) => x.id === st.sel);
+    const p = all.find((x) => x.id === st.sel);
     if (p && p.lat != null) map.setView([p.lat, p.lng], 15);
     else if (pts.length) map.fitBounds(pts, { padding: [24, 24], maxZoom: 15 });
   };
   const select = (id, pan = true) => {
     st.sel = id; drawDetail(); drawList(); drawMarkers();
-    const p = places.find((x) => x.id === id);
+    const p = all.find((x) => x.id === id);
     if (pan && map && p?.lat != null) map.setView([p.lat, p.lng], Math.max(map.getZoom(), 15));
   };
   const ensureMap = async () => {
@@ -114,9 +120,9 @@ export async function mapBody(el, { load, esc, focus = null, level = null }) {
   el.onclick = (e) => {
     const b = e.target.closest("button[data-k]");
     if (b) {
-      st[b.dataset.k] = b.dataset.v;
+      if (b.dataset.k === "near") { st.near = !!b.dataset.v; if (!st.near && nearby.some((n) => n.id === st.sel)) st.sel = null; } else st[b.dataset.k] = b.dataset.v;
       if (b.dataset.k === "view" && st.view === "map") { mapFailed = false; $("#pl-fail").hidden = true; }
-      drawChips(); drawList(); ensureMap().then(() => { if (map && b.dataset.k === "level") { drawMarkers(); fit(); } });
+      drawChips(); drawList(); drawDetail(); ensureMap().then(() => { if (map && (b.dataset.k === "level" || b.dataset.k === "near")) { drawMarkers(); if (b.dataset.k === "level") fit(); } });
       return;
     }
     const r = e.target.closest("button.pl-row");
