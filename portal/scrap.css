@@ -269,3 +269,14 @@ table.policy tr.past{opacity:.55}
   .ed .ed-glance{justify-content:flex-start}
   .tw.fit{overflow:visible}
 }
+/* 제목 옆 단계 표시(중학교/고등학교 · 입학/생활): 어느 단계 화면인지 한눈에 */
+.lv-tag{display:inline-block;margin-left:14px;vertical-align:middle;font:700 20px/1 var(--hand);color:var(--accent);letter-spacing:0;transform:rotate(-2deg)}
+/* 홈 단계 줄은 맨 위(히어로 위)로 올렸다 */
+.hm>.stgline{margin:10px 0 0;border-top:0;padding:8px 0}
+/* 모바일 한 손: 누르는 칩·목차는 높이 40px 이상 */
+@media (max-width:899px){
+  .chip,.fchip,.hm .hm-aud .fchip{min-height:40px;display:inline-flex;align-items:center}
+  .chip.schip{min-height:44px}
+  .stgline a{min-height:44px}
+  .ed-toc a{display:inline-flex;align-items:center;min-height:40px}
+}
