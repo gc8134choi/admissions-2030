@@ -1,12 +1,13 @@
 // 홈 대시보드 패널. 상황 5허브(=사이트맵), 찾기 줄, 내 계획표 요약, 고교 한눈에, 전형 한눈에, 중학교 배정 미니.
 // 데이터는 모두 portal/data의 생성물이고, 계획표는 이 브라우저(localStorage)에 저장된 것을 읽는다. 패널은 각 화면의 요약일 뿐 계산은 화면과 같은 규칙이다.
 import { stageTag } from "./stage.js";
+import { hsCompareBody, hsCompareSummary } from "./hs-compare.js";
 
 // 상황 5허브: 메뉴(menu.js)와 같은 이름·같은 도착 화면. 링크는 3~4개만 펼친다.
 export const HUBS = [
   { k: "중입", t: "중학교 입학", cls: "hb3", links: [["중학교 배정 절차·일정", "#select/curriculum?v=middle"], ["배정 일정 모아 보기", "#schedule?t=life"], ["학교 지도(중학교)", "#select/curriculum?v=map&lv=middle"], ["교과서·교과 구성", "#select/curriculum?v=middle"]] },
   { k: "중생활", t: "중학교 생활", cls: "hb2", links: [["중학교 시기 일정", "#schedule?t=life"], ["교과서", "#select/curriculum?v=middle"], ["중학교 생활", "#mid/life"]] },
-  { k: "고입", t: "고등학교 입학", cls: "hb3", links: [["학교별 과목표·비교", "#select/curriculum"], ["고교 유형·전형", "#select/types"], ["학교 지도(고등학교)", "#select/curriculum?v=map"], ["설명회 노트(홍천고)", "#select/curriculum?bf=1"]] },
+  { k: "고입", t: "고등학교 입학", cls: "hb3", links: [["학교 비교(유형·과목·지도)", "#select/curriculum?v=hs"], ["학교별 과목표", "#select/curriculum"], ["고교 유형·전형", "#select/types"], ["설명회 노트(홍천고)", "#select/curriculum?bf=1"]] },
   { k: "고생활", t: "고등학교 생활", cls: "hb2", links: [["고교학점제 이해", "#life/credit"], ["내 계획표", "#planner/plan"], ["학년별 로드맵", "#schedule?t=road"]] },
   { k: "대입", t: "대입", cls: "hb2", links: [["수능·내신 규칙", "#admission/system"], ["전형 한눈에", "#admission/system?t=types"], ["대학 요건 맞춰보기", "#select/curriculum?v=univ"], ["입시 일정", "#schedule?t=univ"]] },
 ];
@@ -56,16 +57,18 @@ export async function planPanel({ load, esc, store }) {
     <div class="plan-n"><span class="big ac num">${subj + creative}</span><span class="muted">/ ${goalAll}학점 · ${esc(school.name)}</span></div>
     <div class="pbar" aria-hidden="true"><i class="r" style="width:${Math.min(100, (cr(chosen.filter((o) => o.slot === "required")) / goalAll) * 100)}%"></i><i class="e" style="width:${Math.min(100, (cr(chosen.filter((o) => o.slot !== "required")) / goalAll) * 100)}%"></i></div>
     <ul><li><b>필수 이수</b> <span class="num ${reqHave >= reqTotal ? "done" : ""}">${reqHave}/${reqTotal}</span>${lack.length ? `<small>${lack.map((r) => `${esc(r.t)} ${r.have}/${r.need}`).join(" · ")} 부족</small>` : ""}</li>${uni}
-    ${none ? `<li><small>아직 고른 과목이 없어요. 계획표에서 학기별로 골라 보세요.</small></li>` : ""}</ul></section>`;
+    ${none ? `<li><small>아직 고른 과목이 없어요. 계획표에서 학기별로 골라 보세요.</small></li>` : ""}</ul>
+    <p class="plan-go"><a href="#planner/plan">과목 고르기</a> <a href="#select/curriculum?v=univ">대학 요건 맞춰보기</a></p></section>`;
 }
 
 // 고교 한눈에: 학교별 핵심 지표 한 줄씩 + 지도·설명회 노트 바로가기
 export async function comparePanel({ load, esc }) {
-  const [summary, places, briefings] = await Promise.all([load("summary"), load("places"), load("briefings").catch(() => null)]);
+  const [summary, places, briefings, hs] = await Promise.all([load("summary"), load("places"), load("briefings").catch(() => null), load("hs-compare").catch(() => null)]);
+  const lines = new Map(hsCompareSummary(hs, { max: 5 }).filter((x) => x.schoolId).map((x) => [x.schoolId, x.line]));
   const pl = (sid) => places.places.find((p) => p.schoolId === sid)?.id;
   const bf = (sid) => ((briefings && briefings.briefings) || []).some((b) => b.schoolId === sid);
   return `<section class="dp cmp t2"><h2><em>비교</em>고교 한눈에<a href="#select/curriculum?v=compare">상세 비교 ›</a></h2><div class="dtw"><table><thead><tr><th>학교</th><th>유형</th><th>필수</th><th>내가 고르는</th><th>후보→고름</th><th>선택 폭</th><th>바로가기</th></tr></thead><tbody>${summary.map((m) => `<tr>
-    <td><a href="#select/curriculum?v=compare&s=${esc(m.schoolId)}"><b>${esc(m.schoolName)}</b></a></td><td>${esc(m.schoolType)}·${esc(m.founding)}</td>
+    <td><a href="#select/curriculum?v=compare&s=${esc(m.schoolId)}"><b>${esc(m.schoolName)}</b></a>${lines.get(m.schoolId) ? `<small class="muted">${esc(lines.get(m.schoolId))}</small>` : ""}</td><td>${esc(m.schoolType)}·${esc(m.founding)}</td>
     <td class="r num">${m.creditsRequired}</td><td class="e num">${m.creditsElective}</td><td class="num">${m.candidateSubjects}→${m.pickTotal}</td><td class="num">${m.breadth}</td>
     <td><a href="#select/curriculum?v=map${pl(m.schoolId) ? "&p=" + esc(pl(m.schoolId)) : ""}">지도</a>${bf(m.schoolId) ? ` · <a href="#select/curriculum?v=summary&bf=${esc(m.schoolId)}" data-bf-go="${esc(m.schoolId)}">설명회 노트</a>` : ""}</td></tr>`).join("")}</tbody></table></div></section>`;
 }
@@ -88,4 +91,12 @@ export async function midPanel({ load, esc, policy }) {
   return `<section class="dp mid t1"><h2>${stageTag("중입", esc)}<em>중입</em>중학교 배정<a href="#select/curriculum?v=middle">열기 ›</a></h2>
     <p class="mid-s"><b>성복초 → 수지1중학군</b> <small class="muted">${names.length ? `${esc(names.slice(0, 3).join(" · "))}${names.length > 3 ? ` 외 ${names.length - 3}` : ""}` : "학교 목록은 배정 화면에서"}</small></p>
     <ul>${rows.map((r) => `<li><span>${esc(r.t)}</span> <b class="num">${esc(r.d)}</b></li>`).join("")}</ul></section>`;
+}
+
+// 고등학교 > 입학 > 학교 비교(고교 선택 정보 허브): 지금 있는 지표 표 + 데이터가 모이면 와이드 비교표
+export async function hsHubBody(el, { load, esc }) {
+  const top = await comparePanel({ load, esc }).catch(() => "");
+  el.innerHTML = `<div class="ed hub-hs">${top}<div id="hs-wide"></div><p class="muted small">필수·내가 고르는 학점과 후보 과목 수는 학교 배부 편제표 기준이에요. 학교를 누르면 과목표로 갑니다.</p></div>`;
+  const host = el.querySelector("#hs-wide");
+  try { await hsCompareBody(host, { load, esc }); } catch { host.innerHTML = ""; }
 }

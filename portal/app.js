@@ -7,6 +7,7 @@ import { univBody } from "./univ-match.js";
 import { STAGES, linkStage, stageTag } from "./stage.js";
 import { briefingBlock } from "./briefing.js";
 import { registerPlanner } from "./planner.js";
+import { hsHubBody } from "./dash.js";
 import { mapBody } from "./map.js";
 import { middleBody } from "./middle.js";
 import { mountSearch } from "./search.js";
@@ -119,7 +120,7 @@ async function curriculumView(el, query, node) {
   const areaIn = (query.get("a") || "").split(",").map((a) => (AREA7.includes(a) ? a : a ? "기타" : "")); // 옛 링크의 체육·예술·기술가정·제2외국어는 기타로
   let areasSel = AREA7.filter((a) => areaIn.includes(a)); // 비어 있으면 전체
   let focusP = query.get("p"); // 지도 탭에서 강조할 학교
-  let tab = ["compare", "univ", "map", "middle"].includes(query.get("v")) ? query.get("v") : "summary";
+  let tab = ["compare", "univ", "map", "middle", "hs"].includes(query.get("v")) ? query.get("v") : "summary";
   const lv = tab === "middle" || query.get("lv") === "middle" ? "middle" : "high"; // 학교 탭의 "중학교 | 고등학교"
   if (lv === "middle" && !["map", "middle"].includes(tab)) tab = "middle";
   if (lv === "high" && tab === "middle") tab = "summary";
@@ -153,6 +154,7 @@ async function curriculumView(el, query, node) {
   const drawBody = async () => {
     const body = $("#cview");
     if (tab === "summary") { compare = null; await summaryBody(body, sel); const bf = query.get("bf"); if (bf) { const t = (bf === "1" ? body.querySelector(".bf-area") : body.querySelector(`#bf-${CSS.escape(bf)}`)); if (t) { t.scrollIntoView({ block: "start" }); t.querySelector("details")?.setAttribute("open", ""); } } }
+    else if (tab === "hs") { compare = null; await hsHubBody(body, { load, esc }); }
     else if (tab === "map") { compare = null; await mapBody(body, { load, esc, focus: focusP, level: lv === "middle" ? "middle" : "high" }); }
     else if (tab === "middle") { compare = null; await middleBody(body, { load, esc }); }
     else if (tab === "univ") { compare = null; await univBody(body, { load, esc, profile: currentProfile(store), schools, sel }); }
