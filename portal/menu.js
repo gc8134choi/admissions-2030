@@ -68,6 +68,7 @@ export const TABS = [
     { key: "life", title: "생활", items: [{ id: "mid/life", title: "중학교 생활", m: at("mid/life") }] }] },
   { id: "high", title: "고등학교", groups: [
     { key: "enter", title: "입학", items: [
+      { id: "select/curriculum?v=hs", title: "학교 비교", m: cur((v) => v === "hs") },
       { id: "select/curriculum", title: "학교별 과목표", m: cur((v) => v === "summary" || v === "compare") },
       { id: "select/types", title: "고교 유형·전형", m: at("select/types") },
       { id: "select/curriculum?v=map", title: "학교 지도", m: cur((v, lv) => v === "map" && lv !== "middle") }] },
@@ -90,7 +91,7 @@ export const allItems = () => [...TABS, VAULT].flatMap((t) => t.groups.flatMap((
 // 지금 화면(라우트 id·쿼리)이 속한 탭·그룹·항목. 어느 항목도 아니면 가까운 탭(과목표 → 고등학교 입학)으로 둔다.
 export function locate(id, query) {
   for (const t of [...TABS, VAULT]) for (const g of t.groups) for (const it of g.items) if (it.m(id, query)) return { tab: t, group: g, item: it };
-  if (id === "select/curriculum") return { tab: TABS[2], group: TABS[2].groups[0], item: TABS[2].groups[0].items[0] };
+  if (id === "select/curriculum") return { tab: TABS[2], group: TABS[2].groups[0], item: TABS[2].groups[0].items[1] };
   return null;
 }
 // 메뉴에서 빠진 옛 주소는 가장 가까운 화면으로 보낸다.
