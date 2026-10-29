@@ -1,6 +1,7 @@
 import { showProfiles } from "./profile-ui.js";
 import { STAGES, stageOf, stageTag } from "./stage.js";
-import { searchHtml, hubsHtml, planPanel, comparePanel, admPanel, midPanel } from "./dash.js";
+import { searchHtml, hubsHtml, planPanel, comparePanel, admPanel, midPanel, STAGE_HUB, PIN_KEY } from "./dash.js";
+import { decorateTerms, initTerms } from "./terms.js";
 // 홈 화면(A안 에디토리얼). 데이터: policy.json(일정·변경 로그·학점제 규칙·마일스톤), summary/curricula/schools(관심 학교).
 // policy.json·policy.js는 읽기만 한다(서브 세션 담당).
 const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "확인 못 함" };
@@ -116,8 +117,8 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const oneLine = (b) => { const t1 = String(b || "").split(/(?<=[.。다요])\s/)[0] || ""; return t1.length > 80 ? t1.slice(0, 78) + "…" : t1; };
     const feed = () => {
       const stoneIds = new Set(stones.map((m) => m.id));
-      const evs = upRows().filter((x) => !stoneIds.has(x.r.id)).map((x) => ({ kind: "ev", seoul: x.r.region === "seoul", sp: x.sp, title: x.r.title + (x.e.label ? ` · ${x.e.label}` : ""), date: fmtRange(x.sp, t, x.e), line: oneLine(x.r.body), meta: `${badges(x.r)} ${link(x.r)}` }));
-      const sts = stones.filter((m) => dayN(m.date, t) >= 0).map((m) => ({ kind: "stone", m, sp: span(m.date), title: m.label, date: ymdText(m.date), line: "", meta: `${badges(m.row)} ${link(m.row)}` }));
+      const evs = upRows().filter((x) => !stoneIds.has(x.r.id)).map((x) => ({ kind: "ev", row: x.r, seoul: x.r.region === "seoul", sp: x.sp, title: x.r.title + (x.e.label ? ` · ${x.e.label}` : ""), date: fmtRange(x.sp, t, x.e), line: oneLine(x.r.body), meta: `${badges(x.r)} ${link(x.r)}` }));
+      const sts = stones.filter((m) => dayN(m.date, t) >= 0).map((m) => ({ kind: "stone", row: m.row, m, sp: span(m.date), title: m.label, date: ymdText(m.date), line: "", meta: `${badges(m.row)} ${link(m.row)}` }));
       return [...evs, ...sts].sort((a, b) => !!a.seoul - !!b.seoul || a.sp.start - b.sp.start || a.sp.end - b.sp.end); // 서울 행은 경기·전국 행 다음
     };
     const heroHtml = () => {
@@ -131,8 +132,9 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
         <button type="button" class="dday" id="dday"${live || n === 0 ? " disabled" : ""}><span class="sr-only">남은 날. 누르면 단위가 바뀝니다. </span>${num}<svg class="circ" viewBox="0 0 300 120" preserveAspectRatio="none" aria-hidden="true"><path d="M14 62C10 24 80 8 160 10c88 2 138 22 132 50-6 30-78 48-168 46C52 104 10 90 14 62z"/></svg></button>${sub}
         <h2 class="hero-t">${esc(it.title)}</h2><p class="hero-d num">${it.date}</p>${it.line ? `<p class="hero-s">${esc(it.line)}</p>` : ""}<p class="hero-meta">${it.meta}</p>${photo}${!live && n > 0 ? '<p class="hint">숫자를 누르면 주·달로 바뀌어요.</p>' : ""}`;
     };
-    const rest = () => { const f = feed(), r = (f[0]?.kind === "stone" ? f.slice(1) : f.slice(1).filter((it) => it.kind !== "stone")).slice(0, 3); // 히어로가 졸업·입학이 아니면 그 카드는 "곧 있을 일"에만 둔다
-      return r.length ? r.map((it) => `<li class="row"><span class="d${it.sp.start <= t ? " live" : " num"}">${dLabel(it.sp, t)}</span><div><h3>${esc(it.title)}</h3><p class="num">${it.date}</p>${it.meta ? `<div class="meta">${it.meta}</div>` : ""}</div></li>`).join("") : '<li class="row"><div class="empty"><p>이어지는 일정은 아직 없어요.</p></div></li>'; };
+    // 다음 일정 장부: 히어로 다음 3건을 한 줄씩(D-n · 제목 · 기간 · 단계). 졸업·입학 카드는 히어로가 아닐 때 "곧 있을 일"에만 둔다.
+    const rest = () => { const f = feed(), r = (f[0]?.kind === "stone" ? f.slice(1) : f.slice(1).filter((it) => it.kind !== "stone")).slice(0, 3);
+      return r.length ? r.map((it) => `<li class="lg"><span class="d${it.sp.start <= t ? " live" : " num"}">${dLabel(it.sp, t)}</span><b class="lg-t">${esc(it.title)}</b><span class="lg-d num">${it.date}</span>${stageTag(stageOf(it.row), esc)}</li>`).join("") : '<li class="lg"><span class="muted">이어지는 일정은 아직 없어요.</span></li>'; };
 
     // 4) 바뀐 소식 1줄
     const log0 = policy.filter((r) => r.topic === "change-log").map((r) => ({ r, d: dateOf(r.title) })).filter((x) => x.d && span(x.d).start <= t);
@@ -153,8 +155,12 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const VK = "portal.visit"; const iso = `${t.getFullYear()}-${two(t.getMonth() + 1)}-${two(t.getDate())}`;
     const vis = store.get(VK, null) || { last: null, prev: null };
     if (vis.last !== iso) { vis.prev = vis.last; vis.last = iso; store.set(VK, vis); }
-    const fresh = vis.prev ? log.filter((x) => span(x.d).start > new Date(vis.prev + "T00:00:00")).length : 0;
-    const logRow = (x) => `<li class="row"><div><h3>${esc(x.r.title.slice(x.d.length).trim() || x.r.title)}</h3><p class="num">${esc(ymdText(x.d))}</p><div class="meta">${badges(x.r)} ${link(x.r)}</div></div></li>`;
+    // 읽음 표시: 지난 방문 이후 올라온 소식 중 눌러 보지 않은 것에 "새". 눌러 본 것은 이 브라우저에만 기억한다.
+    const RK = "portal.read", readSet = new Set(store.get(RK, []));
+    const keyOf = (x) => x.r.id || x.r.title;
+    const isNew = (x) => !!vis.prev && span(x.d).start > new Date(vis.prev + "T00:00:00") && !readSet.has(keyOf(x));
+    const fresh = log.filter(isNew).length;
+    const logRow = (x) => `<li class="row nw${isNew(x) ? " is-new" : ""}" data-rk="${esc(keyOf(x))}"><div><h3>${isNew(x) ? '<b class="new">새</b> ' : ""}${esc(x.r.title.slice(x.d.length).trim() || x.r.title)}</h3><p class="num">${esc(ymdText(x.d))}</p><div class="meta">${badges(x.r)} ${link(x.r)}</div></div></li>`;
 
     // 5) 학교 · 학점제 숫자
     const mine = summary.filter((m) => pf.schoolIds.includes(m.schoolId));
@@ -207,37 +213,62 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const [planH, cmpH, admH, midH] = isB ? ["", "", "", ""] : await Promise.all([safe(planPanel), safe(comparePanel), safe(admPanel), safe(midPanel)]);
     const hubCounts = {}; STAGES.forEach((g) => { hubCounts[g] = upRows().filter((x) => stageOf(x.r) === g).length; });
 
+    const pins = (store.get(PIN_KEY, []) || []).filter((x) => typeof x === "string").slice(0, 2);
+    const autoHub = STAGE_HUB[stageOf(feed()[0]?.row)] || null;
     el.innerHTML = `<div class="hm">
       ${ddline ? `<div class="auxbar" aria-label="수능 D-day">${ddline}</div>` : ""}
       ${pingLine()}
-      <div class="dtop">${searchHtml()}${hubsHtml(esc, hubCounts)}</div>
-      <div class="hero-grid">
-        <section class="hero" aria-labelledby="hh" id="hm-hero">${heroHtml()}</section>
-        <aside class="hero-aside" aria-label="이어지는 일정"><div class="sec-h"><h2><em>이어서</em>그다음 일정</h2><a href="#schedule">전체 일정</a></div>
-          ${isB ? "" : `<div class="hm-aud-wrap">${audienceChips(aud, esc)}</div>`}
-          <ul class="rows" id="hm-up">${rest()}</ul></aside>
-      </div>
-      <div class="dgrid">
-        <section class="dp news t0"><div class="sec-h"><h2><em>소식</em>바뀐 소식</h2><a href="#changelog">전체 보기</a></div>
-          <p class="fresh num">${checked ? `마지막 확인 ${esc(ymdText(checked))}` : ""}${vis.prev ? ` · ${fresh ? `<b>새 소식 ${fresh}건</b>` : "새 소식 없음"}` : ""}</p>
-          ${log.length ? `<ul class="rows">${log.slice(0, 3).map(logRow).join("")}</ul>` : '<div class="empty"><p>아직 바뀐 소식이 없어요.</p></div>'}</section>
-        ${planH}
-        ${midH}
-        ${cmpH}
-        ${admH}
-        <section class="dp soonp t2"><div class="sec-h"><h2><em>곧</em>곧 있을 일</h2></div>
-          ${stones.length && feed()[0]?.kind !== "stone" ? `<ul class="mss">${stones.map(stoneHtml).join("")}</ul><p class="hint">사진은 이 기기에만 저장돼요.</p>` : '<div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p></div>'}</section>
+      <div class="h-search">${searchHtml()}</div>
+      <div class="h-row2">
+        <div class="h-main">
+          <section class="hero" aria-labelledby="hh" id="hm-hero">${heroHtml()}</section>
+          <aside class="hero-aside ledger" aria-label="이어지는 일정"><div class="sec-h"><h2><em>이어서</em>그다음 일정</h2><a href="#schedule">전체 ›</a></div>
+            ${isB ? "" : `<div class="hm-aud-wrap">${audienceChips(aud, esc)}</div>`}
+            <ul class="lgs" id="hm-up">${rest()}</ul></aside>
+        </div>
+        <div class="h-side">
+        <section class="dp news t0"><div class="sec-h"><h2><em>소식</em>바뀐 소식</h2><a href="#changelog">전체 ›</a></div>
+          <p class="fresh num">${checked ? `마지막 확인 ${esc(ymdText(checked))}` : ""}${fresh ? ` · <b>새 소식 ${fresh}건</b>` : ""}</p>
+          ${log.length ? `<ul class="rows">${log.slice(0, 2).map(logRow).join("")}</ul>` : '<div class="empty"><p>아직 바뀐 소식이 없어요.</p></div>'}</section>
         <section class="dp todop t1"><div class="sec-h"><h2><em>할 일</em>이번 주 할 일</h2><span class="muted small" id="tdc"></span></div>
           ${ok ? `<ul class="todo" id="todos"></ul><form class="hm-todoform"><input type="text" id="todoin" placeholder="할 일 추가" maxlength="120" autocomplete="off" aria-label="할 일 추가"><button class="btn" type="submit">추가</button></form>` : '<p class="muted">이 브라우저에서는 저장 공간을 쓸 수 없어 메모를 사용할 수 없어요.</p>'}</section>
+        </div>
       </div>
-      <div class="two">
-      <section class="sec"><div class="sec-h"><h2><em>학점</em>학점제 한눈에</h2><a href="#life/credit">자세히</a></div>
+      <div id="hm-hubs">${hubsHtml(esc, hubCounts, { pins, auto: autoHub })}</div>
+      <div class="h-row4">
+        ${planH}
+        ${cmpH}
+      </div>
+      <div class="h-row5">
+        <div class="h-col">${admH}${midH}</div>
+        ${isB ? "" : `<section class="dp road t0"><div class="sec-h"><h2><em>3년</em>앞으로 3년</h2><a href="#schedule?t=road" id="rm-link">학년별 로드맵</a></div><ol class="tl">${tl}</ol></section>`}
+      </div>
+      <div class="h-rest">
+        <section class="dp soonp t2"><div class="sec-h"><h2><em>곧</em>곧 있을 일</h2></div>
+          ${stones.length && feed()[0]?.kind !== "stone" ? `<ul class="mss">${stones.map(stoneHtml).join("")}</ul><p class="hint">사진은 이 기기에만 저장돼요.</p>` : '<div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p></div>'}</section>
+        <section class="dp gl t1"><div class="sec-h"><h2><em>학점</em>학점제 한눈에</h2><a href="#life/credit">자세히</a></div>
         <p class="glance-lead">3년 동안 <mark>${m0.creditsTotal}학점</mark>을 스스로 채웁니다.</p>
         <div class="glance"><div class="g"><span class="v num">${m0.creditsSubject}</span><span class="k">교과 학점</span><span class="n">공통·선택 과목으로 채웁니다</span></div><div class="g"><span class="v num">${m0.creditsCreative}</span><span class="k">창의적 체험활동</span><span class="n">동아리·봉사·진로</span></div></div>
         ${isB ? `<p class="src-line"><span class="pst estimated">추정</span> ${esc(pf.name)}이 입학하는 ${entryYear}학년도에도 같을지는 아직 확인되지 않았어요. 지금 학년도 기준 숫자입니다.</p>` : ""}</section>
-      ${isB ? "" : `<section class="sec"><div class="sec-h"><h2><em>3년</em>앞으로 3년</h2><a href="#schedule?t=road" id="rm-link">학년별 로드맵</a></div><ol class="tl">${tl}</ol></section>`}
       </div>
     </div>`;
+    decorateTerms(el, ".dp");
+    initTerms();
+    // 모바일에서는 덜 급한 패널(3년·학점제·전형)을 접어 두고 제목 줄의 버튼으로 편다(홈 높이를 줄인다)
+    el.querySelectorAll(".road,.gl,.adm").forEach((pn) => { pn.classList.add("m-fold"); const h = pn.querySelector(".sec-h,h2"); if (h) h.insertAdjacentHTML("beforeend", '<button type="button" class="m-tg" aria-expanded="false">펼치기</button>'); });
+
+    // 허브: 고정(자주 보는 단계, 최대 2개) / 모바일 접기·펼치기 / 읽음 표시
+    el.addEventListener("click", (e) => {
+      const pin = e.target.closest("[data-pin]");
+      if (pin) { let ps = store.get(PIN_KEY, []) || []; const id = pin.dataset.pin; ps = ps.includes(id) ? ps.filter((x) => x !== id) : [...ps, id].slice(-2); store.set(PIN_KEY, ps);
+        el.querySelector("#hm-hubs").innerHTML = hubsHtml(esc, hubCounts, { pins: ps, auto: autoHub }); decorateTerms(el.querySelector("#hm-hubs"), ".dp"); return; }
+      const mt = e.target.closest(".m-tg");
+      if (mt) { const pn = mt.closest(".m-fold"), on = !pn.classList.contains("m-open"); pn.classList.toggle("m-open", on); mt.setAttribute("aria-expanded", on); mt.textContent = on ? "접기" : "펼치기"; return; }
+      const tg = e.target.closest(".hub-t");
+      if (tg) { const h = tg.closest(".hub"); const on = !h.classList.contains("open"); h.classList.toggle("open", on); tg.setAttribute("aria-expanded", on); return; }
+      const rk = e.target.closest(".nw a");
+      if (rk) { const k = rk.closest(".nw").dataset.rk; const cur = new Set(store.get(RK, [])); cur.add(k); store.set(RK, [...cur].slice(-200)); rk.closest(".nw").classList.remove("is-new"); rk.closest(".nw").querySelector(".new")?.remove(); }
+    });
 
     // 히어로 숫자 단위 전환(일 → 주 → 개월)과 사진 연결은 히어로를 다시 그릴 때마다 붙인다.
     const bindHero = () => {
