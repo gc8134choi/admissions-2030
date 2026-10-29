@@ -104,7 +104,10 @@
         "str-09",
         "b33-03",
         "str-11",
-        "str-15"
+        "str-15",
+        "str-16",
+        "str-17",
+        "str-18"
       ],
       "importance": "높음",
       "enabled": true
