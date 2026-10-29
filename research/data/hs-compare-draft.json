@@ -3,114 +3,174 @@
     "note": "고교 비교표 초안(용인학군 2구역 고교 10곳, 학교알리미 2026 공시·편제표 요약). 확인 못 한 칸은 value null + nullReason. 광고성·비공식 평가는 넣지 않음. 학교알리미 수치는 5월 2차 공시 기준이며 연 1회 갱신된다.",
     "checkedAt": "2026-10-29",
     "status": "reported",
-    "shape": "schools[].values[fieldId]={value,asOf,status,source{name,url},nullReason}"
+    "shape": "fields[{id,label,group,order,type,unit,needsAsOf}], schools[].values[fieldId]={value,asOf,status,source,nullReason,note}"
   },
   "fields": [
     {
       "id": "type",
       "label": "학교 유형",
-      "group": "기본"
+      "group": "기본",
+      "order": 1,
+      "type": "string"
     },
     {
       "id": "founding",
       "label": "설립(공립/사립·단설)",
-      "group": "기본"
+      "group": "기본",
+      "order": 2,
+      "type": "string"
     },
     {
       "id": "coed",
       "label": "남녀공학",
-      "group": "기본"
+      "group": "기본",
+      "order": 3,
+      "type": "string"
     },
     {
       "id": "address",
       "label": "주소",
-      "group": "기본"
+      "group": "기본",
+      "order": 4,
+      "type": "string"
     },
     {
       "id": "classes",
       "label": "학급수",
       "group": "규모",
-      "unit": "학급"
+      "unit": "학급",
+      "order": 5,
+      "type": "number",
+      "needsAsOf": true
+    },
+    {
+      "id": "classesDetail",
+      "label": "학급 구성",
+      "group": "규모",
+      "order": 6,
+      "type": "text"
     },
     {
       "id": "students",
       "label": "학생수",
       "group": "규모",
-      "unit": "명"
+      "unit": "명",
+      "order": 7,
+      "type": "number",
+      "needsAsOf": true
+    },
+    {
+      "id": "studentsDetail",
+      "label": "남·여 학생수",
+      "group": "규모",
+      "order": 8,
+      "type": "string"
     },
     {
       "id": "teachers",
       "label": "교원수",
       "group": "규모",
-      "unit": "명"
+      "unit": "명",
+      "order": 9,
+      "type": "number",
+      "needsAsOf": true
     },
     {
       "id": "perClass",
       "label": "학급당 학생수",
       "group": "규모",
-      "unit": "명"
+      "unit": "명",
+      "order": 10,
+      "type": "number",
+      "needsAsOf": true
     },
     {
       "id": "perTeacher",
       "label": "교원 1인당 학생수",
       "group": "규모",
-      "unit": "명"
+      "unit": "명",
+      "order": 11,
+      "type": "number",
+      "needsAsOf": true
     },
     {
       "id": "admission",
       "label": "입학 방식",
-      "group": "입학"
+      "group": "입학",
+      "order": 12,
+      "type": "text"
     },
     {
       "id": "zone",
       "label": "학군·구역",
-      "group": "입학"
+      "group": "입학",
+      "order": 13,
+      "type": "string"
     },
     {
       "id": "curriculum",
       "label": "교육과정 특징(편제표 요약)",
-      "group": "교육과정"
+      "group": "교육과정",
+      "order": 14,
+      "type": "text"
     },
     {
       "id": "subjectCount",
       "label": "개설 후보 과목 수",
       "group": "교육과정",
-      "unit": "과목"
+      "unit": "과목",
+      "order": 15,
+      "type": "number",
+      "needsAsOf": true
     },
     {
       "id": "univStats",
       "label": "대학 진학 현황",
-      "group": "진학"
+      "group": "진학",
+      "order": 16,
+      "type": "text"
     },
     {
       "id": "meal",
       "label": "급식",
-      "group": "생활"
+      "group": "생활",
+      "order": 17,
+      "type": "text"
     },
     {
       "id": "canteen",
       "label": "매점",
-      "group": "생활"
+      "group": "생활",
+      "order": 18,
+      "type": "text"
     },
     {
       "id": "dorm",
       "label": "기숙사",
-      "group": "생활"
+      "group": "생활",
+      "order": 19,
+      "type": "text"
     },
     {
       "id": "homepage",
       "label": "학교 홈페이지",
-      "group": "링크"
+      "group": "링크",
+      "order": 20,
+      "type": "link"
     },
     {
       "id": "schoolinfo",
       "label": "학교알리미",
-      "group": "링크"
+      "group": "링크",
+      "order": 21,
+      "type": "link"
     },
     {
       "id": "briefing",
       "label": "설명회 노트",
-      "group": "링크"
+      "group": "링크",
+      "order": 22,
+      "type": "string"
     }
   ],
   "schools": [
@@ -160,17 +220,18 @@
           "nullReason": null
         },
         "classes": {
-          "value": "일반학급 38(1학년 13·2학년 13·3학년 12) + 특수학급 2",
+          "value": 38,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
             "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "일반학급 수(특수학급 제외)"
         },
         "students": {
-          "value": "1,165명 (남 619명 , 여 546명)",
+          "value": 1165,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
@@ -180,7 +241,7 @@
           "nullReason": null
         },
         "teachers": {
-          "value": "88명 (남 11 명 , 여 77 명)",
+          "value": 88,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
@@ -190,7 +251,7 @@
           "nullReason": null
         },
         "perClass": {
-          "value": "29.1",
+          "value": 29.1,
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -200,7 +261,7 @@
           "nullReason": null
         },
         "perTeacher": {
-          "value": "15.3",
+          "value": 15.3,
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -215,7 +276,7 @@
           "status": "reported",
           "source": {
             "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조)",
-            "url": "portal/data/summary.json"
+            "url": null
           },
           "nullReason": null
         },
@@ -235,7 +296,7 @@
           "status": "reported",
           "source": {
             "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조 완료)",
-            "url": "portal/data/summary.json"
+            "url": null
           },
           "nullReason": null
         },
@@ -245,7 +306,7 @@
           "status": "reported",
           "source": {
             "name": "편제표 요약(개설 후보, 수능 범위는 추정)",
-            "url": "portal/data/summary.json"
+            "url": null
           },
           "nullReason": null
         },
@@ -315,6 +376,26 @@
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
           },
           "nullReason": null
+        },
+        "classesDetail": {
+          "value": "일반학급 38개(1학년 13·2학년 13·3학년 12) + 특수학급 2개",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
+          },
+          "nullReason": null
+        },
+        "studentsDetail": {
+          "value": "남 619명, 여 546명",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005416)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
+          },
+          "nullReason": null
         }
       }
     },
@@ -364,17 +445,18 @@
           "nullReason": null
         },
         "classes": {
-          "value": "일반학급 36(1학년 12·2학년 12·3학년 12) + 특수학급 2",
+          "value": 36,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
             "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "일반학급 수(특수학급 제외)"
         },
         "students": {
-          "value": "1,062명 (남 566명 , 여 496명)",
+          "value": 1062,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
@@ -384,7 +466,7 @@
           "nullReason": null
         },
         "teachers": {
-          "value": "78명 (남 17 명 , 여 61 명)",
+          "value": 78,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
@@ -394,7 +476,7 @@
           "nullReason": null
         },
         "perClass": {
-          "value": "27.9",
+          "value": 27.9,
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -404,7 +486,7 @@
           "nullReason": null
         },
         "perTeacher": {
-          "value": "14.8",
+          "value": 14.8,
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -419,7 +501,7 @@
           "status": "reported",
           "source": {
             "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조)",
-            "url": "portal/data/summary.json"
+            "url": null
           },
           "nullReason": null
         },
@@ -439,7 +521,7 @@
           "status": "reported",
           "source": {
             "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조 완료)",
-            "url": "portal/data/summary.json"
+            "url": null
           },
           "nullReason": null
         },
@@ -449,7 +531,7 @@
           "status": "reported",
           "source": {
             "name": "편제표 요약(개설 후보, 수능 범위는 추정)",
-            "url": "portal/data/summary.json"
+            "url": null
           },
           "nullReason": null
         },
@@ -513,6 +595,26 @@
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
           },
           "nullReason": null
+        },
+        "classesDetail": {
+          "value": "일반학급 36개(1학년 12·2학년 12·3학년 12) + 특수학급 2개",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
+          },
+          "nullReason": null
+        },
+        "studentsDetail": {
+          "value": "남 566명, 여 496명",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005904)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
+          },
+          "nullReason": null
         }
       }
     },
@@ -562,17 +664,18 @@
           "nullReason": null
         },
         "classes": {
-          "value": "일반학급 38(1학년 13·2학년 13·3학년 12) + 특수학급 1",
+          "value": 38,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
             "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "일반학급 수(특수학급 제외)"
         },
         "students": {
-          "value": "1,244명 (남 653명 , 여 591명)",
+          "value": 1244,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
@@ -582,7 +685,7 @@
           "nullReason": null
         },
         "teachers": {
-          "value": "84명 (남 24 명 , 여 60 명)",
+          "value": 84,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
@@ -592,7 +695,7 @@
           "nullReason": null
         },
         "perClass": {
-          "value": "31.9",
+          "value": 31.9,
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -602,7 +705,7 @@
           "nullReason": null
         },
         "perTeacher": {
-          "value": "16.2",
+          "value": 16.2,
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -617,7 +720,7 @@
           "status": "reported",
           "source": {
             "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조)",
-            "url": "portal/data/summary.json"
+            "url": null
           },
           "nullReason": null
         },
@@ -637,7 +740,7 @@
           "status": "reported",
           "source": {
             "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조 완료)",
-            "url": "portal/data/summary.json"
+            "url": null
           },
           "nullReason": null
         },
@@ -647,7 +750,7 @@
           "status": "reported",
           "source": {
             "name": "편제표 요약(개설 후보, 수능 범위는 추정)",
-            "url": "portal/data/summary.json"
+            "url": null
           },
           "nullReason": null
         },
@@ -711,6 +814,26 @@
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
           },
           "nullReason": null
+        },
+        "classesDetail": {
+          "value": "일반학급 38개(1학년 13·2학년 13·3학년 12) + 특수학급 1개",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
+          },
+          "nullReason": null
+        },
+        "studentsDetail": {
+          "value": "남 653명, 여 591명",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000844)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
+          },
+          "nullReason": null
         }
       }
     },
@@ -760,17 +883,18 @@
           "nullReason": null
         },
         "classes": {
-          "value": "일반학급 41(1학년 14·2학년 14·3학년 13) + 특수학급 1",
+          "value": 41,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
             "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "일반학급 수(특수학급 제외)"
         },
         "students": {
-          "value": "1,313명 (남 689명 , 여 624명)",
+          "value": 1313,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
@@ -780,7 +904,7 @@
           "nullReason": null
         },
         "teachers": {
-          "value": "97명 (남 22 명 , 여 75 명)",
+          "value": 97,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
@@ -790,7 +914,7 @@
           "nullReason": null
         },
         "perClass": {
-          "value": "31.3",
+          "value": 31.3,
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -800,7 +924,7 @@
           "nullReason": null
         },
         "perTeacher": {
-          "value": "16.2",
+          "value": 16.2,
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -815,7 +939,7 @@
           "status": "reported",
           "source": {
             "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조)",
-            "url": "portal/data/summary.json"
+            "url": null
           },
           "nullReason": null
         },
@@ -835,7 +959,7 @@
           "status": "reported",
           "source": {
             "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조 완료)",
-            "url": "portal/data/summary.json"
+            "url": null
           },
           "nullReason": null
         },
@@ -845,7 +969,7 @@
           "status": "reported",
           "source": {
             "name": "편제표 요약(개설 후보, 수능 범위는 추정)",
-            "url": "portal/data/summary.json"
+            "url": null
           },
           "nullReason": null
         },
@@ -909,6 +1033,26 @@
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
           },
           "nullReason": null
+        },
+        "classesDetail": {
+          "value": "일반학급 41개(1학년 14·2학년 14·3학년 13) + 특수학급 1개",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
+          },
+          "nullReason": null
+        },
+        "studentsDetail": {
+          "value": "남 689명, 여 624명",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000655)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
+          },
+          "nullReason": null
         }
       }
     },
@@ -958,17 +1102,18 @@
           "nullReason": null
         },
         "classes": {
-          "value": "일반학급 30(1학년 10·2학년 10·3학년 10) + 특수학급 1",
+          "value": 30,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
             "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "일반학급 수(특수학급 제외)"
         },
         "students": {
-          "value": "960명 (남 500명 , 여 460명)",
+          "value": 960,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
@@ -978,7 +1123,7 @@
           "nullReason": null
         },
         "teachers": {
-          "value": "71명 (남 14 명 , 여 57 명)",
+          "value": 71,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
@@ -988,7 +1133,7 @@
           "nullReason": null
         },
         "perClass": {
-          "value": "31.0",
+          "value": 31.0,
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -998,7 +1143,7 @@
           "nullReason": null
         },
         "perTeacher": {
-          "value": "15.5",
+          "value": 15.5,
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -1104,6 +1249,26 @@
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
           },
           "nullReason": null
+        },
+        "classesDetail": {
+          "value": "일반학급 30개(1학년 10·2학년 10·3학년 10) + 특수학급 1개",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
+          },
+          "nullReason": null
+        },
+        "studentsDetail": {
+          "value": "남 500명, 여 460명",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090006522)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
+          },
+          "nullReason": null
         }
       }
     },
@@ -1153,17 +1318,18 @@
           "nullReason": null
         },
         "classes": {
-          "value": "일반학급 36(1학년 12·2학년 12·3학년 12) + 특수학급 1",
+          "value": 36,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
             "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "일반학급 수(특수학급 제외)"
         },
         "students": {
-          "value": "1,128명 (남 592명 , 여 536명)",
+          "value": 1128,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
@@ -1173,7 +1339,7 @@
           "nullReason": null
         },
         "teachers": {
-          "value": "85명 (남 14 명 , 여 71 명)",
+          "value": 85,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
@@ -1183,7 +1349,7 @@
           "nullReason": null
         },
         "perClass": {
-          "value": "30.5",
+          "value": 30.5,
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -1193,7 +1359,7 @@
           "nullReason": null
         },
         "perTeacher": {
-          "value": "15.9",
+          "value": 15.9,
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -1299,6 +1465,26 @@
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
           },
           "nullReason": null
+        },
+        "classesDetail": {
+          "value": "일반학급 36개(1학년 12·2학년 12·3학년 12) + 특수학급 1개",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
+          },
+          "nullReason": null
+        },
+        "studentsDetail": {
+          "value": "남 592명, 여 536명",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090004893)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
+          },
+          "nullReason": null
         }
       }
     },
@@ -1348,17 +1534,18 @@
           "nullReason": null
         },
         "classes": {
-          "value": "일반학급 36(1학년 12·2학년 12·3학년 12) + 특수학급 1",
+          "value": 36,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
             "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "일반학급 수(특수학급 제외)"
         },
         "students": {
-          "value": "1,122명 (남 595명 , 여 527명)",
+          "value": 1122,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
@@ -1368,7 +1555,7 @@
           "nullReason": null
         },
         "teachers": {
-          "value": "84명 (남 15 명 , 여 69 명)",
+          "value": 84,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
@@ -1378,7 +1565,7 @@
           "nullReason": null
         },
         "perClass": {
-          "value": "30.3",
+          "value": 30.3,
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -1388,7 +1575,7 @@
           "nullReason": null
         },
         "perTeacher": {
-          "value": "15.8",
+          "value": 15.8,
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -1494,6 +1681,26 @@
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
           },
           "nullReason": null
+        },
+        "classesDetail": {
+          "value": "일반학급 36개(1학년 12·2학년 12·3학년 12) + 특수학급 1개",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
+          },
+          "nullReason": null
+        },
+        "studentsDetail": {
+          "value": "남 595명, 여 527명",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090006525)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
+          },
+          "nullReason": null
         }
       }
     },
@@ -1543,17 +1750,18 @@
           "nullReason": null
         },
         "classes": {
-          "value": "일반학급 36(1학년 12·2학년 12·3학년 12) + 특수학급 0",
+          "value": 36,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
             "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "일반학급 수(특수학급 제외)"
         },
         "students": {
-          "value": "1,123명 (남 579명 , 여 544명)",
+          "value": 1123,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
@@ -1563,7 +1771,7 @@
           "nullReason": null
         },
         "teachers": {
-          "value": "80명 (남 18 명 , 여 62 명)",
+          "value": 80,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
@@ -1573,7 +1781,7 @@
           "nullReason": null
         },
         "perClass": {
-          "value": "31.2",
+          "value": 31.2,
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -1583,7 +1791,7 @@
           "nullReason": null
         },
         "perTeacher": {
-          "value": "15.8",
+          "value": 15.8,
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -1689,6 +1897,26 @@
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
           },
           "nullReason": null
+        },
+        "classesDetail": {
+          "value": "일반학급 36개(1학년 12·2학년 12·3학년 12) + 특수학급 0개",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
+          },
+          "nullReason": null
+        },
+        "studentsDetail": {
+          "value": "남 579명, 여 544명",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090000801)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
+          },
+          "nullReason": null
         }
       }
     },
@@ -1738,17 +1966,18 @@
           "nullReason": null
         },
         "classes": {
-          "value": "일반학급 30(1학년 10·2학년 10·3학년 10) + 특수학급 1",
+          "value": 30,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
             "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "일반학급 수(특수학급 제외)"
         },
         "students": {
-          "value": "924명 (남 481명 , 여 443명)",
+          "value": 924,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
@@ -1758,7 +1987,7 @@
           "nullReason": null
         },
         "teachers": {
-          "value": "72명 (남 16 명 , 여 56 명)",
+          "value": 72,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
@@ -1768,7 +1997,7 @@
           "nullReason": null
         },
         "perClass": {
-          "value": "29.8",
+          "value": 29.8,
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -1778,7 +2007,7 @@
           "nullReason": null
         },
         "perTeacher": {
-          "value": "15.1",
+          "value": 15.1,
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -1884,6 +2113,26 @@
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
           },
           "nullReason": null
+        },
+        "classesDetail": {
+          "value": "일반학급 30개(1학년 10·2학년 10·3학년 10) + 특수학급 1개",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
+          },
+          "nullReason": null
+        },
+        "studentsDetail": {
+          "value": "남 481명, 여 443명",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005458)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
+          },
+          "nullReason": null
         }
       }
     },
@@ -1933,17 +2182,18 @@
           "nullReason": null
         },
         "classes": {
-          "value": "일반학급 24(1학년 8·2학년 8·3학년 8) + 특수학급 0",
+          "value": 24,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
             "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "일반학급 수(특수학급 제외)"
         },
         "students": {
-          "value": "604명 (남 314명 , 여 290명)",
+          "value": 604,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
@@ -1953,7 +2203,7 @@
           "nullReason": null
         },
         "teachers": {
-          "value": "55명 (남 11 명 , 여 44 명)",
+          "value": 55,
           "asOf": "2026.5(2차 공시)",
           "status": "confirmed",
           "source": {
@@ -1963,7 +2213,7 @@
           "nullReason": null
         },
         "perClass": {
-          "value": "25.2",
+          "value": 25.2,
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -1973,7 +2223,7 @@
           "nullReason": null
         },
         "perTeacher": {
-          "value": "12.9",
+          "value": 12.9,
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -2076,6 +2326,26 @@
           "status": "confirmed",
           "source": {
             "name": "학교알리미",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
+          },
+          "nullReason": null
+        },
+        "classesDetail": {
+          "value": "일반학급 24개(1학년 8·2학년 8·3학년 8) + 특수학급 0개",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
+          },
+          "nullReason": null
+        },
+        "studentsDetail": {
+          "value": "남 314명, 여 290명",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 학교정보(2026 공시, GS_CD S090005415)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
           },
           "nullReason": null
