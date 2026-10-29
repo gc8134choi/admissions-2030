@@ -71,11 +71,14 @@ export function register(views, { $, esc, load, store }) {
   const banner = (rows) => `<div class="al-body">2030학년도 제도는 중장기 대입 개편안 공표(2027.3 예정) 후 확정돼요. ${esc(rows.find((r) => r.id === "adm-07")?.body || "수능 세부 범위는 추정")}</div>`;
 
   // 일정 표: events를 펼쳐 날짜순으로, 오늘 이전은 흐리게.
-  const stageChips = (cur) => `<div class="chipbar"><span class="flabel">단계</span><div class="chips">${[["", "전체"], ...STAGES.map((g) => [g, g])].map(([v, t]) => `<button type="button" class="chip${v === cur ? " on" : ""}" data-stage="${v}" aria-pressed="${v === cur}">${t}</button>`).join("")}</div></div>`;
-  const timeline = (rows) => {
+  const stageChips = (cur, week = false) => `<div class="chipbar"><span class="flabel">기간</span><div class="chips"><button type="button" class="chip${week ? " on" : ""}" data-week aria-pressed="${week}">이번 주만</button></div></div><div class="chipbar"><span class="flabel">단계</span><div class="chips">${[["", "전체"], ...STAGES.map((g) => [g, g])].map(([v, t]) => `<button type="button" class="chip${v === cur ? " on" : ""}" data-stage="${v}" aria-pressed="${v === cur}">${t}</button>`).join("")}</div></div>`;
+  const timeline = (rows, { week = false } = {}) => {
     const t = today();
-    const evs = rows.flatMap((r) => (r.events || []).map((e, i) => ({ ...e, r, first: i === 0 }))).sort((a, b) => a.start.localeCompare(b.start));
-    const tr = (e) => `<tr class="${(e.end || e.start) < t ? "past" : ""}"><td class="l">${esc(fmt(e))}</td><td class="l">${stageTag(stageOf(e.r), esc)}<b>${esc(e.r.title)}</b>${e.label ? ` · ${esc(e.label)}` : ""}${e.first ? `<div class="muted small">${esc(e.r.body)}</div>` : ""}</td><td class="l">${badge(e.r)}</td><td class="l">${src(e.r)}</td></tr>`;
+    const dn = (d) => Math.round((new Date(d.length === 7 ? d + "-15" : d.slice(0, 10)) - new Date(t)) / 864e5); // 오늘까지 남은 날(월만 있으면 15일로 어림)
+    const inWeek = (e) => { const s0 = e.start.length === 10 ? dn(e.start) : 99, e0 = (e.end || e.start).length === 10 ? dn(e.end || e.start) : 99; return s0 <= 7 && e0 >= 0; };
+    let evs = rows.flatMap((r) => (r.events || []).map((e, i) => ({ ...e, r, first: i === 0 }))).sort((a, b) => a.start.localeCompare(b.start));
+    if (week) evs = evs.filter(inWeek);
+    const tr = (e) => { const d0 = e.start.length === 10 ? dn(e.start) : null, soon = d0 != null && d0 >= 0 && d0 <= 7, live = e.start.length === 10 && d0 < 0 && (e.end || e.start) >= t; return `<tr class="${(e.end || e.start) < t ? "past" : soon ? "due" : live ? "now" : ""}"><td class="l">${soon ? `<b class="dn num">D-${d0}</b> ` : live ? '<b class="dn">진행 중</b> ' : ""}${esc(fmt(e))}</td><td class="l">${stageTag(stageOf(e.r), esc)}<b>${esc(e.r.title)}</b>${e.label ? ` · ${esc(e.label)}` : ""}${e.first ? `<div class="muted small">${esc(e.r.body)}</div>` : ""}</td><td class="l">${badge(e.r)}</td><td class="l">${src(e.r)}</td></tr>`; };
     const none = rows.filter((r) => !r.events);
     if (!evs.length && !none.length) return '<p class="note">아직 모인 일정이 없어요. 일정이 생기면 이 자리에 떠요.</p>';
     return `<p class="muted">오늘(${t}) 이전 일정은 흐리게 표시해요.</p><div class="tw"><table class="policy"><thead><tr><th class="l">날짜</th><th class="l">항목</th><th class="l">상태</th><th class="l">구분·출처</th></tr></thead><tbody>${evs.map(tr).join("")}</tbody></table></div>${none.length ? `<h2>일정 미확인</h2>${table(none, basic)}` : ""}`;
@@ -174,11 +177,12 @@ export function register(views, { $, esc, load, store }) {
     let sel = loadAudience(store);
     const SK = "portal.schedule.stage"; // 단계 필터(브라우저에만 저장, 바로가기와 같은 규칙: portal.<화면>.stage)
     let fs = store.get(SK, ""); if (!STAGES.includes(fs)) fs = "";
+    let wk = !!store.get("portal.schedule.week", false); // "이번 주만"(7일 안 시작·진행 중)
     const draw = () => {
-      $("#aud").innerHTML = audienceChips(sel, esc) + '<span class="muted small"> 선택 없음 = 전체</span>' + stageChips(fs);
-      $("#tl").innerHTML = timeline(rows.filter((r) => audienceMatch(r.audience, sel) && (!fs || !stageOf(r) || stageOf(r) === fs)));
+      $("#aud").innerHTML = audienceChips(sel, esc) + '<span class="muted small"> 선택 없음 = 전체</span>' + stageChips(fs, wk);
+      $("#tl").innerHTML = timeline(rows.filter((r) => audienceMatch(r.audience, sel) && (!fs || !stageOf(r) || stageOf(r) === fs)), { week: wk });
     };
-    $("#aud").addEventListener("click", (e) => { const b = e.target.closest("[data-stage]"); if (!b) return; fs = b.dataset.stage; store.set(SK, fs); draw(); });
+    $("#aud").addEventListener("click", (e) => { if (e.target.closest("[data-week]")) { wk = !wk; store.set("portal.schedule.week", wk); draw(); return; } const b = e.target.closest("[data-stage]"); if (!b) return; fs = b.dataset.stage; store.set(SK, fs); draw(); });
     $("#aud").addEventListener("click", (e) => {
       const k = e.target.closest("[data-aud]")?.dataset.aud;
       if (!k) return;
