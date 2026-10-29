@@ -14,7 +14,7 @@ JS = r"""
 const {chromium}=require('playwright');
 (async()=>{const base=process.argv[2];const routes=JSON.parse(process.argv[3]);
 const bad=new RegExp(['\uc608\ub098','\uc608\uc740','\ud604\s?\uace03'].join('|'));const out=[];const b=await chromium.launch();
-for(const w of [390,1280]){const p=await b.newPage({viewport:{width:w,height:900}});const errs=[];
+for(const w of [390,1280,1440,1920]){const p=await b.newPage({viewport:{width:w,height:900}});const errs=[];
 p.on('pageerror',e=>errs.push(String(e).slice(0,120)));p.on('console',m=>m.type()==='error'&&errs.push(m.text().slice(0,120)));
 for(const r of routes){errs.length=0;try{await p.goto(base+r,{waitUntil:'load',timeout:20000});await p.waitForTimeout(700);}catch(e){out.push({w,r,err:'load '+String(e).slice(0,80)});continue}
 const d=await p.evaluate(()=>({sx:document.documentElement.scrollWidth>document.documentElement.clientWidth+2,t:document.body.innerText,badge:[...document.querySelectorAll('body *')].some(e=>e.children.length===0&&e.textContent.trim()==='\ud655\uc815')}));
@@ -40,7 +40,7 @@ def main():
         return 2
     out = json.loads(r.stdout.strip().splitlines()[-1])
     if not out:
-        print(f"OK: {len(ROUTES)}화면 × 2폭 이상 없음")
+        print(f"OK: {len(ROUTES)}화면 × 4폭 이상 없음")
         return 0
     for o in out:
         print(json.dumps(o, ensure_ascii=False))

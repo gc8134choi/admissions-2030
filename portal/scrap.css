@@ -207,3 +207,65 @@ table.policy tr.past{opacity:.55}
 /* 하단 탭은 글자가 채워지기 전에도 같은 높이를 차지한다(처음 그릴 때 위로 밀리는 것 방지) */
 @media (max-width:899px){.tabs{min-height:calc(var(--tab-h) + env(safe-area-inset-bottom))}}
 #view:empty+.soon{display:none}
+
+/* ===== PC 와이드(1280~1920px): 넓은 본문, 큰 글자, 2~3단. 스크랩북 톤 유지(균일 격자 금지) ===== */
+@media (min-width:1280px){
+  :root{--maxw:1360px;--pad:56px}
+  body{font-size:16px}
+  .hdr{height:72px}
+  .wm{font-size:22px}
+  #topnav a{font-size:23px}
+  .ph{font-size:clamp(40px,3.4vw,56px)}
+  .hm .hero{padding:44px 52px 40px}
+  .hm .hero-grid{grid-template-columns:7fr 5fr;gap:0 80px}
+  .dday .big{font-size:clamp(150px,13vw,230px)}
+  .hm .hero-t{font-size:clamp(34px,2.6vw,46px)}
+  .hm .hero-aside{padding:30px 28px 18px}
+  .hm .two{gap:0 96px}
+  .hm .sec-h h2{font-size:26px}
+  .hm .row h3,.hm .todo b{font-size:19px}
+  .row p,.hm .row .meta{font-size:14px}
+  .hm .glance-lead{font-size:clamp(40px,3.2vw,56px)}
+  .hm .g{--s:170px}
+  .hm .schools{gap:26px}
+  th,td{padding:9px 14px}
+  .subnav a{font-size:20px}
+  .tabs a{font-size:21px}
+}
+@media (min-width:1600px){
+  :root{--maxw:1640px;--pad:72px}
+  body{font-size:17px}
+  .hm .hero-grid{grid-template-columns:6fr 5fr}
+  .school{padding:28px 24px 26px}
+}
+
+/* --- 와이드 레이아웃 패턴(서브 개발·다른 화면이 같이 쓴다. temp/design/wide-layout.md) ---
+   .w-page          페이지 컨테이너(#view 안). 좁은 화면에서는 1단으로 쌓인다(목록→본문→보조).
+   .w-page.w-2      좌 목록 + 본문          .w-page.w-2r  본문 + 우 보조 정보          .w-page.w-3  좌 목록 + 본문 + 우 보조
+   .w-list/.w-aside 1100px 이상에서 화면 위쪽에 붙어 따라다니는(sticky) 보조 열
+   .piece           종이 조각(흰 종이+그림자). .piece.r1/.r2/.r3 로 각도·어긋남을 달리해 균일 격자를 피한다
+   .w-cols          세로로 긴 조각 목록을 2단 흐름(CSS columns)으로. 높이가 제각각이라 격자가 되지 않는다
+   .w-table         표 감싸개: 가로 여유를 주고 넘치면 안에서만 민다 */
+.w-page{display:block}
+.w-list,.w-aside{margin:0 0 24px}
+.piece{background:var(--paper2);box-shadow:var(--sh);padding:18px 18px 16px;margin:0 0 20px;break-inside:avoid}
+.piece.r1{transform:rotate(-.5deg);margin-right:10px}.piece.r2{transform:rotate(.45deg);margin-left:10px}.piece.r3{transform:rotate(-.25deg)}
+.w-table{overflow-x:auto;background:var(--paper2);box-shadow:var(--sh);padding:6px 10px}
+.w-table table{min-width:640px}
+@media (min-width:1100px){
+  .w-page.w-2{display:grid;grid-template-columns:minmax(260px,320px) minmax(0,1fr);gap:0 56px;align-items:start}
+  .w-page.w-2r{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,380px);gap:0 56px;align-items:start}
+  .w-page.w-3{display:grid;grid-template-columns:minmax(240px,300px) minmax(0,1fr) minmax(280px,340px);gap:0 48px;align-items:start}
+  .w-list,.w-aside{position:sticky;top:88px;max-height:calc(100vh - 110px);overflow:auto;margin:0}
+}
+@media (min-width:1280px){.w-cols{column-count:2;column-gap:44px}}
+@media (min-width:1700px){.w-cols.w-cols3{column-count:3}}
+
+/* 이미 있는 화면에 적용: 줄글은 읽기 좋은 폭으로, 긴 조각 목록은 2단 흐름으로 */
+@media (min-width:1280px){
+  .ed .ed-b,.ed .ed-s,.ed-top{max-width:62em}
+  .ed-rows,.rows.lk{column-count:2;column-gap:44px;display:block}
+  .ed-row,.rows.lk .row{break-inside:avoid;margin-bottom:22px}
+  .ed .ed-glance{justify-content:flex-start}
+  .tw.fit{overflow:visible}
+}

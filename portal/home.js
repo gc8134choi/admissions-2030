@@ -223,11 +223,13 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
           <p class="fresh num">${checked ? `마지막 확인 ${esc(ymdText(checked))}` : ""}${vis.prev ? ` · ${fresh ? `<b>새 소식 ${fresh}건</b>` : "새 소식 없음"}` : ""}</p>
           ${log.length ? `<ul class="rows">${log.slice(0, 3).map(logRow).join("")}</ul>` : '<div class="empty"><p>아직 바뀐 소식이 없어요.</p></div>'}</section>
       </div>
+      <div class="two">
       <section class="sec"><div class="sec-h"><h2><em>05</em>학점제 한눈에</h2><a href="#life/credit">자세히</a></div>
         <p class="glance-lead">3년 동안 <mark>${m0.creditsTotal}학점</mark>을 스스로 채웁니다.</p>
         <div class="glance"><div class="g"><span class="v num">${m0.creditsSubject}</span><span class="k">교과 학점</span><span class="n">공통·선택 과목으로 채웁니다</span></div><div class="g"><span class="v num">${m0.creditsCreative}</span><span class="k">창의적 체험활동</span><span class="n">동아리·봉사·진로</span></div></div>
         ${isB ? `<p class="src-line"><span class="pst estimated">추정</span> ${esc(pf.name)}이 입학하는 ${entryYear}학년도에도 같을지는 아직 확인되지 않았어요. 지금 학년도 기준 숫자입니다.</p>` : ""}</section>
       ${isB ? "" : `<section class="sec"><div class="sec-h"><h2><em>06</em>앞으로 3년</h2><a href="#schedule?t=road" id="rm-link">학년별 로드맵</a></div><ol class="tl">${tl}</ol></section>`}
+      </div>
     </div>`;
 
     // 히어로 숫자 단위 전환(일 → 주 → 개월)과 사진 연결은 히어로를 다시 그릴 때마다 붙인다.
