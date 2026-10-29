@@ -5,6 +5,7 @@ import { registerFiles } from "./files.js";
 import { currentProfile, allProfiles, initProfiles, mountProfileSwitch, nameSettings, bindNameSettings, showProfiles } from "./profile-ui.js";
 import { univBody } from "./univ-match.js";
 import { STAGES, linkStage, stageTag } from "./stage.js";
+import { briefingBlock } from "./briefing.js";
 import { registerPlanner } from "./planner.js";
 import { mapBody } from "./map.js";
 import { middleBody } from "./middle.js";
@@ -212,6 +213,7 @@ function notesBlock(list, status) {
 async function summaryBody(el, ids) {
   const [schools, summary, curricula] = await Promise.all([load("schools"), load("summary"), load("curricula")]);
   const notes = await load("school-notes").catch(() => null); // 특이 사항(없으면 생략)
+  const briefings = await load("briefings").catch(() => null); // 설명회 노트(없으면 생략)
   const st = stars();
   const card = (m) => {
     const sc = schools.find((x) => x.id === m.schoolId) || {};
@@ -231,6 +233,7 @@ async function summaryBody(el, ids) {
       </div>
       ${(() => { const cb = creativeBlock(m, curricula.find((x) => x.schoolId === m.schoolId)); return cb ? `<details class="fold"><summary>창체 ${m.creditsCreative}학점 · ${m.creativeHours}시간</summary>${cb}</details>` : ""; })()}
       ${notesBlock(notes?.schools?.find((x) => x.schoolId === m.schoolId)?.notes, notes?._meta?.status)}
+      ${briefingBlock(briefings, m.schoolId, esc) ? `<p class="bf-go"><a class="lnk" href="#" data-bf="${esc(m.schoolId)}">설명회 노트 보기 ↓</a></p>` : ""}
       <details><summary>메모</summary><textarea data-memo="${esc(m.schoolId)}" placeholder="이 브라우저에만 저장됩니다">${esc(store.get("memo:" + m.schoolId, ""))}</textarea></details>
       <div class="foot"><a class="btn" href="#" data-go="${esc(m.schoolId)}">이 학교 과목 보기</a>
       <span class="muted small">${m.reviewCount ? `직접 확인해 볼 항목 ${m.reviewCount}건 · ` : ""}수집 ${esc(sc._meta?.updated || "-")}</span></div></section>`;
@@ -239,7 +242,8 @@ async function summaryBody(el, ids) {
   // 비교 중인 학교들 사이에 값이 다른 항목만 표시(학교가 하나뿐이면 전부 표시)
   const vary = (k) => shown.length < 2 || new Set(shown.map((x) => x[k] ?? "")).size > 1;
   const common = notes?.common?.length ? `<div class="sn-common">${notes.common.map(esc).join(" ")}</div>` : "";
-  el.innerHTML = shown.length ? `${common}<div class="schoolgrid cols${shown.length > 4 ? "n" : shown.length}">${shown.map(card).join("")}</div>` : '<p class="note">위에서 학교를 하나 이상 선택하세요.</p>';
+  el.innerHTML = shown.length ? `${common}<div class="schoolgrid cols${shown.length > 4 ? "n" : shown.length}">${shown.map(card).join("")}</div>${shown.map((m) => { const b = briefingBlock(briefings, m.schoolId, esc); return b ? `<section class="bf-area w-page" id="bf-${esc(m.schoolId)}"><h3 class="bf-t">${esc(schools.find((x) => x.id === m.schoolId)?.name || m.schoolName)} 설명회</h3>${b}</section>` : ""; }).join("")}` : '<p class="note">위에서 학교를 하나 이상 선택하세요.</p>';
+  el.querySelectorAll("[data-bf]").forEach((a) => a.addEventListener("click", (e) => { e.preventDefault(); const t = el.querySelector(`#bf-${CSS.escape(a.dataset.bf)}`); if (t) { t.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" }); t.querySelector("details")?.setAttribute("open", ""); } }));
 }
 
 // 상세 비교: 필터 + 선택 학교를 열 단위로 나란히
