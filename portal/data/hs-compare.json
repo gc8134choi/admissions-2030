@@ -1,0 +1,9 @@
+{
+ "_meta": {
+  "note": "고교 비교표(생성물, 손으로 고치지 않는다). research/data/hs-compare-draft.json에서 tools/build-hs-compare.mjs가 만든다. 값마다 기준연도·상태·출처가 붙는다.",
+  "checkedAt": null,
+  "schoolCount": 0
+ },
+ "fields": [],
+ "schools": []
+}
