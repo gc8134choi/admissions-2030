@@ -173,3 +173,14 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
   .plan .pbar{margin:var(--sp-1) 0}.plan-n .big{font-size:44px}
 }
 @media (max-width:899px){.cmx li.cmx-h{display:none}.m-fold:not(.m-open) .sec-h>a{display:none}.m-fold .sec-h{flex-wrap:nowrap;align-items:center}}
+
+/* ===== 3단계: 고등학교 입학 ===== */
+.hs-adm{margin:0;font-size:var(--fs-sub)}.hs-adm a{text-underline-offset:3px}
+/* 필터 묶음 6개 초과는 접기 */
+.fgroup.cap:not(.open) #achips .chip:nth-child(n+7),.fgroup.cap:not(.open) .ftg>*:nth-child(n+7){display:none}
+.more-g{background:none;border:0;color:var(--accent);font:700 15px var(--hand);cursor:pointer;min-height:var(--touch);padding:0}
+/* 상세 비교 표: 모바일에서 교과군·과목 열을 왼쪽에 고정해 학교 열만 옆으로 민다 */
+@media (max-width:899px){
+  .tw:not(.fit) #tbl th:nth-child(1),.tw:not(.fit) #tbl td:nth-child(1){position:sticky;left:0;z-index:3;background:var(--paper2)}
+  .tw:not(.fit) #tbl th:nth-child(2),.tw:not(.fit) #tbl td:nth-child(2){position:sticky;left:72px;z-index:3;background:var(--paper2)}
+}
