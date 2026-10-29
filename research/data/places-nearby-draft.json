@@ -1,0 +1,128 @@
+{
+  "_meta": {
+    "note": "상현동·성복동 인근 공공시설(도서관·역) 위치 초안. 상업 시설·학원 정보는 넣지 않음. places.schema의 level은 초·중·고만 허용해 별도 파일로 둠(개발 세션이 level 확장 여부 결정). 좌표는 OSM 지오코딩(ODbL ⓒ OpenStreetMap contributors).",
+    "checkedAt": "2026-10-29",
+    "status": "reported"
+  },
+  "items": [
+    {
+      "id": "np-001",
+      "name": "성복도서관",
+      "kind": "library",
+      "address": "경기도 용인시 수지구 성복1로164번길 6",
+      "lat": 37.316952,
+      "lng": 127.063167,
+      "coordSource": {
+        "name": "OpenStreetMap Nominatim '성복도서관, 6, 성복1로164번길, 신봉동, 수지' (way 1044268276), ODbL 1.0 ⓒ OpenStreetMap contributors",
+        "url": "https://www.openstreetmap.org/way/1044268276"
+      },
+      "note": "성복동 인근 공공도서관(OSM 명칭, 운영 주체·이용 안내는 확인 전)",
+      "status": "reported",
+      "sources": [
+        {
+          "name": "OpenStreetMap",
+          "url": "https://www.openstreetmap.org/copyright"
+        }
+      ],
+      "checkedAt": "2026-10-29"
+    },
+    {
+      "id": "np-002",
+      "name": "수지도서관",
+      "kind": "library",
+      "address": "경기도 용인시 수지구 문정로7번길 23",
+      "lat": 37.320077,
+      "lng": 127.094511,
+      "coordSource": {
+        "name": "OpenStreetMap Nominatim '수지도서관, 23, 문정로7번길, 풍덕천동, 신봉동' (way 389313925), ODbL 1.0 ⓒ OpenStreetMap contributors",
+        "url": "https://www.openstreetmap.org/way/389313925"
+      },
+      "note": "풍덕천동 공공도서관(OSM 명칭, 이용 안내는 확인 전)",
+      "status": "reported",
+      "sources": [
+        {
+          "name": "OpenStreetMap",
+          "url": "https://www.openstreetmap.org/copyright"
+        }
+      ],
+      "checkedAt": "2026-10-29"
+    },
+    {
+      "id": "np-003",
+      "name": "상현역",
+      "kind": "station",
+      "address": "경기도 용인시 수지구 광교중앙로",
+      "lat": 37.296706,
+      "lng": 127.06887,
+      "coordSource": {
+        "name": "OpenStreetMap Nominatim '상현역, 광교중앙로, 상현동, 신봉동, 수지구, 용' (node 6640754635), ODbL 1.0 ⓒ OpenStreetMap contributors",
+        "url": "https://www.openstreetmap.org/node/6640754635"
+      },
+      "note": "상현동 통학 거점 역(노선·운행 정보는 별도 확인)",
+      "status": "reported",
+      "sources": [
+        {
+          "name": "OpenStreetMap",
+          "url": "https://www.openstreetmap.org/copyright"
+        }
+      ],
+      "checkedAt": "2026-10-29"
+    },
+    {
+      "id": "np-004",
+      "name": "동천역",
+      "kind": "station",
+      "address": "경기도 용인시 수지구 신수로",
+      "lat": 37.337635,
+      "lng": 127.102623,
+      "coordSource": {
+        "name": "OpenStreetMap Nominatim '동천역, 신수로, 신봉동, 수지구, 용인시, 경기도' (node 8730033700), ODbL 1.0 ⓒ OpenStreetMap contributors",
+        "url": "https://www.openstreetmap.org/node/8730033700"
+      },
+      "note": "역 위치(노선·운행 정보는 별도 확인)",
+      "status": "reported",
+      "sources": [
+        {
+          "name": "OpenStreetMap",
+          "url": "https://www.openstreetmap.org/copyright"
+        }
+      ],
+      "checkedAt": "2026-10-29"
+    },
+    {
+      "id": "np-005",
+      "name": "수지구청역",
+      "kind": "station",
+      "address": "경기도 용인시 수지구 풍덕천로",
+      "lat": 37.322213,
+      "lng": 127.094328,
+      "coordSource": {
+        "name": "OpenStreetMap Nominatim '수지구청역, 풍덕천로, 풍덕천동, 신봉동, 수지구,' (node 3700770687), ODbL 1.0 ⓒ OpenStreetMap contributors",
+        "url": "https://www.openstreetmap.org/node/3700770687"
+      },
+      "note": "역 위치(노선·운행 정보는 별도 확인)",
+      "status": "reported",
+      "sources": [
+        {
+          "name": "OpenStreetMap",
+          "url": "https://www.openstreetmap.org/copyright"
+        }
+      ],
+      "checkedAt": "2026-10-29"
+    }
+  ],
+  "notFound": [
+    {
+      "name": "성복역",
+      "reason": "OSM 검색 결과가 아파트·상가 명칭이라 역 위치로 쓰지 않음"
+    },
+    {
+      "name": "상현도서관",
+      "reason": "검색 결과가 상현고 교내 도서관으로 보여 공공도서관인지 확인 못 함"
+    },
+    {
+      "name": "풍덕천도서관·용인수지도서관",
+      "reason": "OSM에서 찾지 못함"
+    }
+  ]
+}
