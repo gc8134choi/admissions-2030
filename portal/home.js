@@ -192,7 +192,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     };
 
     // 단계 줄: 지금 가장 가까운 일이 속한 단계를 강조하고, 누르면 그 단계 일정으로 간다(앞으로 90일 안 일정 수 함께).
-    const STG_HREF = { 중입: "#schedule?t=life", 고입: "#schedule?t=hs", 대입: "#schedule?t=univ" };
+    const STG_HREF = { 중입: "#select/curriculum?v=middle", 고입: "#select/curriculum", 대입: "#admission/system" }; // 단계별 첫 화면(중학교 배정 / 학교별 과목표 / 수능·내신 규칙)
     const stageLine = () => {
       const cnt = Object.fromEntries(STAGES.map((g) => [g, 0]));
       upRows().forEach((x) => { const g = stageOf(x.r); if (g) cnt[g]++; });
@@ -203,13 +203,13 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     el.innerHTML = `<div class="hm">
       ${ddline ? `<div class="auxbar" aria-label="수능 D-day">${ddline}</div>` : ""}
       ${pingLine()}
+      <nav class="stgline" aria-label="입시 단계">${stageLine()}</nav>
       <div class="hero-grid">
         <section class="hero" aria-labelledby="hh" id="hm-hero">${heroHtml()}</section>
         <aside class="hero-aside" aria-label="이어지는 일정"><div class="sec-h"><h2><em>이어서</em>그다음 일정</h2><a href="#schedule">전체 일정</a></div>
           ${isB ? "" : `<div class="hm-aud-wrap">${audienceChips(aud, esc)}</div>`}
           <ul class="rows" id="hm-up">${rest()}</ul></aside>
       </div>
-      <nav class="stgline" aria-label="입시 단계">${stageLine()}</nav>
       <div class="two">
         <section class="sec"><div class="sec-h"><h2><em>01</em>${isB ? esc(pf.name) + "의 학교" : "우리 " + mine.length + "개교"}</h2>${isB ? "" : '<a href="#select/curriculum?v=compare">과목표 비교</a>'}</div>
           ${isB || !mine.length ? '<div class="empty"><span class="z" aria-hidden="true">0</span><p>학교를 고르면 여기에 모입니다.</p><small>후보 학교를 담아 두면 필수·내가 고르는 학점과 개설 과목을 나란히 볼 수 있어요.</small><a href="#select/curriculum">학교 고르러 가기 →</a></div>' : `<ul class="schools">${mine.map(sch).join("")}</ul><p class="legend">네 학교 모두 <b>${m0.creditsTotal}학점</b>. 막대: <b style="color:var(--req)">필수</b> · <b style="color:var(--ele)">내가 고르는</b> · 나머지는 창의적 체험활동.</p>`}</section>

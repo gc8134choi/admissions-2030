@@ -434,7 +434,8 @@ function render() {
     return;
   }
   const title = loc.item.title || n.title;
-  $("#main").innerHTML = `${sub}<h1 class="ph">${esc(title)}</h1><div id="view"></div>${soon}`;
+  const lvTag = tab.id === "mid" || tab.id === "high" ? `<span class="lv-tag">${esc(tab.title)} ${esc(loc.group.title)}</span>` : "";
+  $("#main").innerHTML = `${sub}<h1 class="ph">${esc(title)}${lvTag}</h1><div id="view"></div>${soon}`;
   if (n.view) views[n.view]($("#view"), query).then(() => { filesApi.afterView(n.view, $("#view")); if (n.view === "credit") decorateSubjectLists($("#view"), load, "4."); if (n.view === "schedule") addCalendar($("#view")); }).catch(() => ($("#view").innerHTML = GO_ERR));
 }
 
