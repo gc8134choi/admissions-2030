@@ -53,6 +53,7 @@ export async function univBody(el, { load, esc, profile, schools, sel, pick }) {
     el.innerHTML = `<div class="ed">${top()}
       <div class="chipbar"><span class="flabel">모집단위</span><div class="chips">${chips(units().map((r) => [r.ruleId, `${r.unitName} · ${TRACK[r.track] || r.track}`]), "rule", st.rule)}</div></div>
       <h2>${stageTag("대입", esc)}${esc(rule.universityName)} ${esc(rule.unitName)} ${stt}</h2>${body}
+      <p class="ed-go"><a class="btn primary" href="#planner/plan?s=${esc(st.school)}">내 계획표에서 고르기</a></p>
       <p class="ed-src">출처: ${src || "표기 없음"}</p></div>`;
   };
   el.onclick = (e) => { const b = e.target.closest("button[data-k]"); if (!b) return; st[b.dataset.k] = b.dataset.v; if (b.dataset.k === "univ") st.rule = null; draw(); };

@@ -184,3 +184,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
   .tw:not(.fit) #tbl th:nth-child(1),.tw:not(.fit) #tbl td:nth-child(1){position:sticky;left:0;z-index:3;background:var(--paper2)}
   .tw:not(.fit) #tbl th:nth-child(2),.tw:not(.fit) #tbl td:nth-child(2){position:sticky;left:72px;z-index:3;background:var(--paper2)}
 }
+
+/* ===== 4단계: 고교 생활(계획표 ↔ 대학 요건 좌우 2단) ===== */
+.pn-wide{margin-top:var(--sp-3)}
+.pn-aside .pn-u{margin:0 0 var(--sp-3)}
+.pn-go,.ed-go{margin:var(--sp-3) 0 0}
+.ed-top{position:relative;z-index:0}
+.ed .chipbar{margin-top:var(--sp-3)}
+@media (min-width:1100px){.pn-aside{top:88px}.pn-bar{left:0;right:0}.pn-wide{gap:0 var(--sp-6)}}
