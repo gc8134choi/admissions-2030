@@ -16,7 +16,7 @@ export function registerPlanner(views, { esc, load, store }) {
     const name = new Map(master.subjects.map((m) => [m.subjectId, m.name]));
 
     const known = (id) => schools.some((s) => s.id === id);
-    const st = { school: [query.get("s"), store.get(LAST, null), schools[0]?.id].find((x) => x && known(x)), areas: [], univ: null, picks: new Set(), msg: "" };
+    const st = { school: [query.get("s"), store.get(LAST, null), schools[0]?.id].find((x) => x && known(x)), areas: [], univ: store.get("portal.plan.univ", null), picks: new Set(), msg: "" };
     const loadPlan = () => { const p = store.get(KEY(st.school), null); st.picks = new Set(p && Array.isArray(p.picks) ? p.picks : []); };
     const savePlan = () => { store.set(KEY(st.school), { v: 1, picks: [...st.picks], at: new Date().toISOString() }); store.set(LAST, st.school); };
     loadPlan();
@@ -89,9 +89,13 @@ export function registerPlanner(views, { esc, load, store }) {
         <div class="phead"><h2>내 계획표</h2></div>
         <div class="chipbar"><span class="flabel">학교</span><div class="chips">${chips(schools.map((s) => [s.id, s.name]), "school", st.school)}</div></div>
         <div class="chipbar"><span class="flabel">영역</span><div class="chips">${chips(AREA7.map((a) => [a, a]), "area", st.areas, true)}</div></div>
-        <div id="pn-terms">${TERMS.map(termHtml).join("")}</div>
-        ${reqHtml}
-        <section class="pn-u"><h3>대학 요건</h3><div class="chips">${chips(univs.map((u) => [u.id, u.name]), "univ", st.univ)}</div>${uHtml()}</section>
+        <div class="w-page w-2r pn-wide">
+          <div class="w-body"><div id="pn-terms">${TERMS.map(termHtml).join("")}</div></div>
+          <aside class="w-aside pn-aside" aria-label="필수 이수와 대학 요건">
+            ${reqHtml}
+            <section class="pn-u"><h3>대학 요건</h3><div class="chips">${chips(univs.map((u) => [u.id, u.name]), "univ", st.univ)}</div>${uHtml()}${st.univ ? `<p class="pn-go"><a class="lnk" href="#select/curriculum?v=univ">대학 요건 전체 보기</a></p>` : ""}</section>
+          </aside>
+        </div>
         <p class="pn-act"><button type="button" class="lnk" data-act="copy">계획 복사</button> <button type="button" class="lnk" data-act="reset">초기화</button> <span class="muted small" id="pn-msg" role="status">${esc(st.msg)}</span></p>
         <p class="hint">계획은 이 기기에만 저장돼요.</p>
       </div>
@@ -117,7 +121,7 @@ export function registerPlanner(views, { esc, load, store }) {
       const { k, v } = b.dataset;
       if (k === "school") { st.school = v; st.msg = ""; loadPlan(); store.set(LAST, v); }
       else if (k === "area") st.areas = st.areas.includes(v) ? st.areas.filter((x) => x !== v) : [...st.areas, v];
-      else if (k === "univ") st.univ = st.univ === v ? null : v;
+      else if (k === "univ") { st.univ = st.univ === v ? null : v; store.set("portal.plan.univ", st.univ); }
       draw();
     };
     draw();
