@@ -222,3 +222,18 @@ table.policy tr.now .dn{font-family:var(--font);font-size:var(--fs-sub)}
   .ed .ed-rows.c3{column-count:3}
   .ed-glance{max-width:none}
 }
+
+/* ===== 7단계: 전역 정리·QA ===== */
+/* 터치 목표 보정: 패널 머리글 링크, 일정 탭, 대상 칩, 학교 비교 표의 학교 이름 */
+@media (max-width:899px){
+  .dp h2>a,.sec-h>a,.dp .sec-h a{display:inline-flex;align-items:center;min-height:var(--touch)}
+  .hm .hm-aud .fchip,.hm-aud .fchip{min-height:var(--touch)}
+  .tabs-s a,.ed>.tabs a,.subtabs a{min-height:var(--touch)}
+  .w-table td a,.w-table th a,#hs-wide td a,#hs-wide th a,.hub-hs table a{display:inline-flex;align-items:center;min-height:var(--touch)}
+}
+/* 기준연도 배너와 아래 칩이 겹치지 않게 */
+.ed-top{margin-bottom:var(--sp-4)}
+.ed-top+.chipbar,.ed-top~.chipbar{margin-top:var(--sp-3);position:relative;z-index:1}
+/* 상태줄(상태·출처·기준연도)은 모든 목록·표에서 같은 모양: 작은 회색 한 줄 */
+.ed-s,.ed-src{color:var(--pencil)}
+@media (max-width:899px){.ed-tabs a{display:inline-flex;align-items:center;min-height:var(--touch)}}

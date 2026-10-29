@@ -9,7 +9,9 @@ import json, os, subprocess, sys, tempfile
 BASE = (sys.argv[1] if len(sys.argv) > 1 else "https://gc8134choi.github.io/admissions-2030/portal/").rstrip("/") + "/"
 ROUTES = ["", "#schedule", "#select/types", "#select/curriculum", "#select/curriculum?v=compare",
           "#life/credit", "#admission/system", "#changelog", "#library/links", "#library/sources", "#library/status",
-          "#select/curriculum?v=map", "#select/curriculum?v=middle", "#select/curriculum?v=univ", "#planner/plan", "#mid/life", "#select/curriculum?v=map&lv=middle"]
+          "#select/curriculum?v=map", "#select/curriculum?v=middle", "#select/curriculum?v=univ", "#planner/plan", "#mid/life", "#select/curriculum?v=map&lv=middle",
+          # 옛 주소 호환(회귀 방지): 예전에 쓰던 해시가 계속 열려야 한다
+          "#select", "#life", "#admission", "#planner", "#select/curriculum?v=compare&s=school-pungdeok", "#select/curriculum?a=체육,예술", "#select/curriculum?v=hs", "#library/files"]
 JS = r"""
 const {chromium}=require('playwright');
 (async()=>{const base=process.argv[2];const routes=JSON.parse(process.argv[3]);
