@@ -3,19 +3,28 @@
 import { stageTag } from "./stage.js";
 import { hsCompareBody, hsCompareSummary } from "./hs-compare.js";
 
-// 상황 5허브: 메뉴(menu.js)와 같은 이름·같은 도착 화면. 링크는 3~4개만 펼친다.
+// 상황 5허브: 메뉴(menu.js)와 같은 도착 화면. 라벨은 부모가 쓰는 상황 말. 링크 앞 2개는 늘 보이고 나머지는 "현재/고정" 허브에서만 펼쳐진다.
 export const HUBS = [
-  { k: "중입", t: "중학교 입학", cls: "hb3", links: [["중학교 배정 절차·일정", "#select/curriculum?v=middle"], ["배정 일정 모아 보기", "#schedule?t=life"], ["학교 지도(중학교)", "#select/curriculum?v=map&lv=middle"], ["교과서·교과 구성", "#select/curriculum?v=middle"]] },
-  { k: "중생활", t: "중학교 생활", cls: "hb2", links: [["중학교 시기 일정", "#schedule?t=life"], ["교과서", "#select/curriculum?v=middle"], ["중학교 생활", "#mid/life"]] },
-  { k: "고입", t: "고등학교 입학", cls: "hb3", links: [["학교 비교(유형·과목·지도)", "#select/curriculum?v=hs"], ["학교별 과목표", "#select/curriculum"], ["고교 유형·전형", "#select/types"], ["설명회 노트(홍천고)", "#select/curriculum?bf=1"]] },
-  { k: "고생활", t: "고등학교 생활", cls: "hb2", links: [["고교학점제 이해", "#life/credit"], ["내 계획표", "#planner/plan"], ["학년별 로드맵", "#schedule?t=road"]] },
-  { k: "대입", t: "대입", cls: "hb2", links: [["수능·내신 규칙", "#admission/system"], ["전형 한눈에", "#admission/system?t=types"], ["대학 요건 맞춰보기", "#select/curriculum?v=univ"], ["입시 일정", "#schedule?t=univ"]] },
+  { id: "mid-enter", stage: "중입", t: "중학교 배정 준비", sub: "중학교 입학", links: [["중학교 배정 절차·일정", "#select/curriculum?v=middle"], ["학교 지도(중학교)", "#select/curriculum?v=map&lv=middle"], ["배정 일정 모아 보기", "#schedule?t=life"], ["교과서·교과 구성", "#select/curriculum?v=middle"]] },
+  { id: "mid-life", stage: "중입", t: "중학교 생활", sub: "중학교 생활", links: [["중학교 시기 일정", "#schedule?t=life"], ["교과서", "#select/curriculum?v=middle"], ["중학교 생활", "#mid/life"]] },
+  { id: "hs-enter", stage: "고입", t: "고교 고르기", sub: "고등학교 입학", links: [["학교 비교(유형·과목·지도)", "#select/curriculum?v=hs"], ["학교별 과목표", "#select/curriculum"], ["고교 유형·전형", "#select/types"], ["설명회 노트(홍천고)", "#select/curriculum?bf=1"]] },
+  { id: "hs-life", stage: "고입", t: "고교 생활·과목 선택", sub: "고등학교 생활", links: [["내 계획표", "#planner/plan"], ["고교학점제 이해", "#life/credit"], ["학년별 로드맵", "#schedule?t=road"]] },
+  { id: "admit", stage: "대입", t: "대입 준비", sub: "대입", links: [["수능·내신 규칙", "#admission/system"], ["대학 요건 맞춰보기", "#select/curriculum?v=univ"], ["전형 한눈에", "#admission/system?t=types"], ["입시 일정", "#schedule?t=univ"]] },
 ];
+export const STAGE_HUB = { 중입: "mid-enter", 고입: "hs-enter", 대입: "admit" };
+export const PIN_KEY = "portal.home.pins"; // "자주 보는 단계"(브라우저에만 저장, 최대 2개). 프로필이 아니다.
 
 export const searchHtml = () => `<button type="button" class="dp dsearch" data-open-search aria-label="검색 열기"><span class="hand">찾기</span><span class="dsearch-t">학교, 과목, 일정, 용어…</span><kbd>/</kbd></button>`;
 
-export function hubsHtml(esc, counts = {}) {
-  return `<nav class="dhubs" aria-label="상황별 바로가기">${HUBS.map((h, i) => `<section class="dp hub ${h.cls} t${i % 3}"><h2><a href="${esc(h.links[0][1])}"><em>${esc(h.k)}</em>${esc(h.t)}</a>${counts[h.k] ? `<small class="num">곧 ${counts[h.k]}건</small>` : ""}</h2><ul>${h.links.map(([t, u]) => `<li><a href="${esc(u)}">${esc(t)}</a></li>`).join("")}</ul></section>`).join("")}</nav>`;
+// 현재 단계(고정 + 자동) 허브는 크게(.cur), 나머지는 제목+숫자+링크 2개. 모바일은 접어 두고 제목을 누르면 펼친다.
+export function hubsHtml(esc, counts = {}, { pins = [], auto = null } = {}) {
+  const cur = new Set(pins.length ? pins : auto ? [auto] : []);
+  return `<nav class="dhubs" style="--hc:${HUBS.length + cur.size}" aria-label="상황별 바로가기">${HUBS.map((h, i) => {
+    const on = cur.has(h.id), pinned = pins.includes(h.id), n = counts[h.stage];
+    return `<section class="dp hub t${i % 3}${on ? " cur open" : ""}" data-hub="${h.id}"><h2><button type="button" class="hub-t" aria-expanded="${on}" aria-controls="hl-${h.id}"><em>${esc(h.sub)}</em>${esc(h.t)}${n && (h.id === "mid-enter" || h.id === "hs-enter" || h.id === "admit") ? `<small class="num">곧 ${n}건</small>` : ""}</button>
+      <button type="button" class="pin" data-pin="${h.id}" aria-pressed="${pinned}" title="자주 보는 단계로 고정">${pinned ? "고정됨" : "고정"}</button></h2>
+      <ul id="hl-${h.id}">${h.links.map(([t, u], j) => `<li${j >= 2 ? ' class="more"' : ""}><a href="${esc(u)}">${esc(t)}</a></li>`).join("")}</ul></section>`;
+  }).join("")}</nav>`;
 }
 
 const ymd = (s) => String(s || "").slice(5).replace("-", ".");
@@ -67,10 +76,15 @@ export async function comparePanel({ load, esc }) {
   const lines = new Map(hsCompareSummary(hs, { max: 5 }).filter((x) => x.schoolId).map((x) => [x.schoolId, x.line]));
   const pl = (sid) => places.places.find((p) => p.schoolId === sid)?.id;
   const bf = (sid) => ((briefings && briefings.briefings) || []).some((b) => b.schoolId === sid);
-  return `<section class="dp cmp t2"><h2><em>비교</em>고교 한눈에<a href="#select/curriculum?v=compare">상세 비교 ›</a></h2><div class="dtw"><table><thead><tr><th>학교</th><th>유형</th><th>필수</th><th>내가 고르는</th><th>후보→고름</th><th>선택 폭</th><th>바로가기</th></tr></thead><tbody>${summary.map((m) => `<tr>
-    <td><a href="#select/curriculum?v=compare&s=${esc(m.schoolId)}"><b>${esc(m.schoolName)}</b></a>${lines.get(m.schoolId) ? `<small class="muted">${esc(lines.get(m.schoolId))}</small>` : ""}</td><td>${esc(m.schoolType)}·${esc(m.founding)}</td>
-    <td class="r num">${m.creditsRequired}</td><td class="e num">${m.creditsElective}</td><td class="num">${m.candidateSubjects}→${m.pickTotal}</td><td class="num">${m.breadth}</td>
-    <td><a href="#select/curriculum?v=map${pl(m.schoolId) ? "&p=" + esc(pl(m.schoolId)) : ""}">지도</a>${bf(m.schoolId) ? ` · <a href="#select/curriculum?v=summary&bf=${esc(m.schoolId)}" data-bf-go="${esc(m.schoolId)}">설명회 노트</a>` : ""}</td></tr>`).join("")}</tbody></table></div></section>`;
+  const M = [["creditsRequired", "필수 학점", "r"], ["creditsElective", "내가 고르는 학점", "e"], ["candidateSubjects", "후보 과목", ""], ["breadth", "선택 폭", ""]];
+  const stat = M.map(([k]) => { const v = summary.map((m) => +m[k]); return { max: Math.max(...v), min: Math.min(...v) }; });
+  // 차이 먼저: 학교 사이에 가장 크게 다른 두 항목을 맨 위에 적는다
+  const diffs = M.map(([k, l], i) => ({ l, lo: stat[i].min, hi: stat[i].max, d: stat[i].max ? (stat[i].max - stat[i].min) / stat[i].max : 0 })).sort((a, b) => b.d - a.d).slice(0, 2);
+  const cell = (m, i) => { const [k, l, c] = M[i], v = +m[k], st = stat[i]; return `<span class="cm ${c}${v === st.max && st.max !== st.min ? " hi" : ""}" title="${esc(l)}"><b class="num">${v}</b><span class="cm-b"><i style="width:${st.max ? (v / st.max) * 100 : 0}%"></i></span></span>`; };
+  return `<section class="dp hscmp t2 glass"><h2><em>비교</em>고교 한눈에<a href="#select/curriculum?v=hs">자세히 ›</a></h2>
+    <p class="cmx-d"><b>가장 다른 점</b> ${diffs.map((d) => `${esc(d.l)} <span class="num">${d.lo}~${d.hi}</span>`).join(" · ")}</p>
+    <ul class="cmx"><li class="cmx-h" aria-hidden="true"><span>학교</span>${M.map(([, l]) => `<span>${esc(l)}</span>`).join("")}</li>${summary.map((m) => `<li><div class="cmx-n"><a href="#select/curriculum?v=compare&s=${esc(m.schoolId)}"><b>${esc(m.schoolName)}</b></a><small title="${esc(lines.get(m.schoolId) || "")}">${esc(m.schoolType)}·${esc(m.founding)}${lines.get(m.schoolId) ? ` · ${esc(lines.get(m.schoolId))}` : ""}</small>
+      <span class="cmx-g"><a href="#select/curriculum?v=map${pl(m.schoolId) ? "&p=" + esc(pl(m.schoolId)) : ""}">지도</a>${bf(m.schoolId) ? ` · <a href="#select/curriculum?v=summary&bf=${esc(m.schoolId)}">설명회 노트</a>` : ""}</span></div>${M.map((_, i) => cell(m, i)).join("")}</li>`).join("")}</ul></section>`;
 }
 
 // 전형 한눈에 미니 표
