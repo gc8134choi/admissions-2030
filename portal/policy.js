@@ -2,6 +2,7 @@ import { creditView } from "./credit.js";
 import { roadmapView } from "./roadmap.js";
 import { loadProfile, profileOf, filterByProfile } from "./profile.js";
 import { STAGES, stageOf, stageTag } from "./stage.js";
+import { typesBody } from "./admission-types.js";
 import { loadAudience, saveAudience, toggleAudience, audienceMatch, audienceChips } from "./home.js";
 
 // 제도·일정 화면(대입 제도, 일정, 고교 유형·전형, 바뀐 소식). 데이터는 data/policy.json. 스타일은 policy.css(A안 에디토리얼).
@@ -105,12 +106,18 @@ export function register(views, { $, esc, load, store }) {
     return regs.length + gr.length ? `<h2>수능·내신 규칙</h2><div class="ed-rows">${regs.join("")}${gr.join("")}</div>` : "";
   };
 
+  const SYS_TABS = [["sys", "#admission/system", "제도"], ["types", "#admission/system?t=types", "전형 한눈에"], ["log", "#admission/system?t=log", "바뀐 소식"]];
   views.system = async (el, query) => {
+    if (query.get("t") === "types") {
+      el.innerHTML = `<div class="ed">${tabs(SYS_TABS, "types")}</div><div id="tybody"></div>`;
+      await typesBody(el.querySelector("#tybody"), { load, esc });
+      return;
+    }
     const rows = (await loadPolicy()).filter((r) => r.topic.startsWith("admission") || r.topic === "change-log" || CUR_SYS.has(r.id) || ACD_SYS.has(r.id) || r.topic === "profile-2033");
     const log = query.get("t") === "log";
     const body = rows.filter((r) => (r.topic === "change-log") === log);
     // 한 줄 안내(헤어라인 위아래). 나머지 안내는 접어 둔다.
-    el.innerHTML = `<div class="ed"><div class="ed-top"><b>2027.3 공표 전까지는 확정이 아니에요.</b><details><summary>자세히</summary>${banner(rows)}${notice()}${log || curProfile().id !== "A" ? "" : `<p>${curProfile().entryYear}학년도 입학생은 2028 개편안의 직접 대상(2025 입학생)이 아니에요. 2030학년도 제도는 2027.3 공표 내용에 따라 바뀔 수 있어요.</p>`}</details></div>${tabs([["sys", "#admission/system", "제도"], ["log", "#admission/system?t=log", "바뀐 소식"]], log ? "log" : "sys")}
+    el.innerHTML = `<div class="ed"><div class="ed-top"><b>2027.3 공표 전까지는 확정이 아니에요.</b><details><summary>자세히</summary>${banner(rows)}${notice()}${log || curProfile().id !== "A" ? "" : `<p>${curProfile().entryYear}학년도 입학생은 2028 개편안의 직접 대상(2025 입학생)이 아니에요. 2030학년도 제도는 2027.3 공표 내용에 따라 바뀔 수 있어요.</p>`}</details></div>${tabs(SYS_TABS, log ? "log" : "sys")}
       ${log ? "" : await rulesSection()}${statusSelect(body)}<div id="ptbl"></div></div>`;
     const TOPIC = { "admission-system": "2028학년도 개편안과 2030학년도 적용", "admission-outlook": "2030학년도 대상 추가 동향", "admission-structure": "대입 전형 구조", "cur-select": "수능 출제범위(참고)", academy: "학원 설명 자료", "profile-2033": "2033학년도 대입 전망(추정)" };
     const NOTE = { "cur-select": '<p class="ed-src">서울교육청 자료라서 경기 적용은 확인이 필요해요. 수능 출제범위는 추정이고, 2030학년도 확정이 아니에요.</p>' };

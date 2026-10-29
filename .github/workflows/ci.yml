@@ -82,4 +82,6 @@ jobs:
           node tools/build-places.mjs --check
           node tools/build-middle.mjs --check
           node tools/build-middle-curriculum.mjs --check
+          node tools/build-briefings.mjs --check
+          node tools/build-admission-types.mjs --check
           if [ -f research/data/links-draft.json ]; then node tools/build-links.mjs --check; fi

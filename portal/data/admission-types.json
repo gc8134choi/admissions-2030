@@ -1,0 +1,10 @@
+{
+ "_meta": {
+  "note": "전형 한눈에(생성물, 손으로 고치지 않는다). research/data/admission-types-draft.json에서 tools/build-admission-types.mjs가 만든다. 비중은 출처 종류와 상태를 묶음마다 붙인다.",
+  "checkedAt": null
+ },
+ "types": [],
+ "glance": [],
+ "shares": [],
+ "notes": []
+}

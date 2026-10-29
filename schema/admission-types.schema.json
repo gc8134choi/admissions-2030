@@ -1,0 +1,34 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "admission-types.schema.json",
+ "title": "admission-types (전형 한눈에) — research/data/admission-types-draft.json 입력 형식 = portal/data/admission-types.json",
+ "description": "교과·학종·논술·정시·수능 최저 설명, 한눈에 표, 전형별 비중. 비중은 출처 종류(official 공식 / media 매체)와 상태(confirmed / reported / estimated)를 비중 묶음마다 붙이고, 계산한 비율은 percentKind=derived로 구분한다.",
+ "type": "object",
+ "required": ["types", "glance", "shares"],
+ "properties": {
+  "types": { "type": "array", "items": { "type": "object", "required": ["id", "name", "season", "summary"], "properties": {
+   "id": { "enum": ["gyogwa", "jonghap", "nonsul", "jeongsi", "csat-min"], "description": "csat-min = 수능 최저학력기준(전형이 아니라 조건)" },
+   "name": { "type": "string" },
+   "season": { "enum": ["susi", "jeongsi", "both"] },
+   "period": { "type": ["string", "null"], "description": "예: 고3 2학기 초(9월)에 원서, 최대 6곳" },
+   "summary": { "type": "string" },
+   "points": { "type": "array", "items": { "type": "string" } } } } },
+  "glance": { "type": "array", "items": { "type": "object", "required": ["typeId", "focus", "favors"], "properties": { "typeId": { "type": "string" }, "focus": { "type": "string", "description": "주로 보는 것" }, "favors": { "type": "string", "description": "유리한 학생" } } } },
+  "shares": { "type": "array", "items": { "type": "object", "required": ["id", "label", "planYear", "status", "sourceKind", "sources", "rows"], "properties": {
+   "id": { "type": "string" },
+   "label": { "type": "string", "description": "예: 전국 전체(2027학년도 계획)" },
+   "planYear": { "type": "integer", "description": "계획이 속한 학년도" },
+   "status": { "enum": ["confirmed", "reported", "estimated"] },
+   "sourceKind": { "enum": ["official", "media"] },
+   "sources": { "type": "array", "minItems": 1, "items": { "type": "object", "required": ["name"], "properties": { "name": { "type": "string" }, "url": { "type": ["string", "null"] } } } },
+   "note": { "type": ["string", "null"] },
+   "rows": { "type": "array", "items": { "type": "object", "required": ["label"], "properties": {
+    "typeId": { "type": ["string", "null"] },
+    "label": { "type": "string" },
+    "headcount": { "type": ["integer", "null"], "description": "인원(명). 약 N만 명처럼 어림이면 approx=true" },
+    "approx": { "type": "boolean" },
+    "percent": { "type": ["number", "null"] },
+    "percentKind": { "enum": ["reported", "derived", null], "description": "reported = 자료에 적힌 비율, derived = 인원으로 계산한 값" } } } } } } },
+  "notes": { "type": "array", "items": { "type": "object", "required": ["text"], "properties": { "text": { "type": "string" }, "status": { "enum": ["confirmed", "reported", "estimated", null] } } } }
+ }
+}

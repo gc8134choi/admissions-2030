@@ -1,0 +1,27 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "school-briefings.schema.json",
+ "title": "school-briefings (학교 설명회 노트) — research/data/school-briefings-draft.json 입력 형식 = portal/data/briefings.json",
+ "description": "학교 입학설명회 등을 사용자가 녹음해 AI가 요약한 노트. 학교 공식 문서가 아니다. 사람 이름·출생연도는 쓰지 않고 일반화한다(졸업생 A·B). 신뢰도는 항목마다 consistent(여러 구간에서 일관되게 들림) / inferred(일부만 들리거나 맥락으로 추정) / reference(거의 판독 불가, 참고만) 셋 중 하나.",
+ "type": "object",
+ "required": ["briefings"],
+ "properties": {
+  "briefings": { "type": "array", "items": { "type": "object", "required": ["id", "schoolId", "heldAt", "title", "source", "sections"], "properties": {
+   "id": { "type": "string", "pattern": "^bf-\\d{3,}$", "description": "한 번 정하면 바꾸지 않는다" },
+   "schoolId": { "type": "string", "description": "schools.json의 학교 id (예: school-yonginheungcheon)" },
+   "heldAt": { "type": "string", "description": "YYYY-MM-DD" },
+   "title": { "type": "string" },
+   "source": { "type": "object", "required": ["name"], "properties": { "name": { "type": "string", "description": "예: 사용자 녹음 AI 요약(학교 공식 문서 아님)" }, "url": { "type": ["string", "null"] } } },
+   "readingNotes": { "type": "array", "items": { "type": "string" }, "description": "읽는 법(녹음 품질, 숫자 오류 가능성 등)" },
+   "sections": { "type": "array", "items": { "type": "object", "required": ["title", "items"], "properties": {
+    "part": { "type": ["string", "null"], "description": "예: 1부 (18:10~)" },
+    "title": { "type": "string" },
+    "items": { "type": "array", "items": { "$ref": "#/$defs/item" } } } } } } } }
+ },
+ "$defs": {
+  "item": { "type": "object", "required": ["text", "confidence"], "properties": {
+   "text": { "type": "string" },
+   "confidence": { "enum": ["consistent", "inferred", "reference"] },
+   "children": { "type": "array", "items": { "$ref": "#/$defs/item" } } } }
+ }
+}
