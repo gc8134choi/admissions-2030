@@ -1,24 +1,19 @@
 // 대입 제도 > "전형 한눈에": 교과·학종·논술·정시·수능 최저 설명, 한눈에 표, 전형별 비중.
-// 데이터: admission-types.json(tools/build-admission-types.mjs). 확정은 표시하지 않고 보도·추정만 조용히 표시하며, 비중은 출처 종류(공식/매체)와 계산값을 구분한다.
+// 데이터: admission-types.json(tools/build-admission-types.mjs, 용어 설명)과 policy.json의 비중 행(related.policyRows).
+// 확정은 표시하지 않고 보도·추정만 조용히 표시하며, 비중은 출처 종류(공식/매체)를 구분한다.
 import { stageTag } from "./stage.js";
 const ES = { reported: ["rep", "보도"], estimated: ["est", "추정"] };
-const SEASON = { susi: "수시", jeongsi: "정시", both: "수시·정시" };
-const KIND = { official: "공식", media: "매체" };
+const KIND = { official: "공식", media: "매체", opinion: "의견" };
 const tag = (s) => (ES[s] ? `<span class="es ${ES[s][0]}">${ES[s][1]}</span>` : "");
 
 export async function typesBody(el, { load, esc }) {
-  const d = await load("admission-types");
-  if (!d.types.length) { el.innerHTML = `<div class="ed"><h2>${stageTag("대입", esc)}전형 한눈에</h2><p class="muted">아직 정리 중이에요.</p></div>`; return; }
-  const nameOf = new Map(d.types.map((t) => [t.id, t.name]));
-  const types = d.types.map((t) => `<article class="ed-row"><div class="ed-st">${SEASON[t.season] || ""}</div><h3>${esc(t.name)}</h3>${t.period ? `<p class="ed-s">${esc(t.period)}</p>` : ""}<p class="ed-b">${esc(t.summary)}</p>${(t.points || []).length ? `<ul class="ed-ul">${t.points.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>` : ""}</article>`).join("");
-  const glance = d.glance.length ? `<h3>한눈에 보기</h3><div class="tw"><table class="ed-tbl"><thead><tr><th>전형</th><th>주로 보는 것</th><th>유리한 학생</th></tr></thead><tbody>${d.glance.map((g) => `<tr><td>${esc(nameOf.get(g.typeId) || g.typeId)}</td><td>${esc(g.focus)}</td><td>${esc(g.favors)}</td></tr>`).join("")}</tbody></table></div>` : "";
-  const fmtNum = (r) => (r.headcount != null ? `${r.approx ? "약 " : ""}${r.headcount.toLocaleString("ko-KR")}명` : "");
-  const shares = d.shares.map((s) => {
-    const src = s.sources.map((x) => (x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>` : esc(x.name))).join(" · ");
-    const rows = s.rows.map((r) => `<tr><td>${esc(r.label)}</td><td class="num">${esc(fmtNum(r)) || '<span class="muted">-</span>'}</td><td class="num">${r.percent != null ? `${r.percent}%${r.percentKind === "derived" ? ' <span class="muted small">계산값</span>' : ""}` : '<span class="muted">-</span>'}</td></tr>`).join("");
-    return `<section class="ed-share"><h4>${esc(s.label)} ${tag(s.status)}</h4><p class="ed-s">${KIND[s.sourceKind]} 자료 · ${src}</p>${s.note ? `<p class="muted small">${esc(s.note)}</p>` : ""}
-      <div class="tw"><table class="ed-tbl"><thead><tr><th>전형</th><th>인원</th><th>비중</th></tr></thead><tbody>${rows}</tbody></table></div></section>`;
-  }).join("");
-  const notes = (d.notes || []).map((n) => `<p class="muted small">${esc(n.text)} ${tag(n.status)}</p>`).join("");
-  el.innerHTML = `<div class="ed"><h2>${stageTag("대입", esc)}전형 한눈에</h2><div class="ed-rows">${types}</div>${glance}${shares ? `<h3>전형별 비중</h3>${shares}` : ""}${notes}</div>`;
+  const [d, policy] = await Promise.all([load("admission-types"), load("policy")]);
+  if (!d.terms.length) { el.innerHTML = `<div class="ed"><h2>${stageTag("대입", esc)}전형 한눈에</h2><p class="muted">아직 정리 중이에요.</p></div>`; return; }
+  const term = (t) => `<article class="ed-row"><h3>${esc(t.name)}</h3><p class="ed-b">${esc(t.what)}</p>${t.caveat ? `<p class="muted small">${esc(t.caveat)}</p>` : ""}${t.favors ? `<p class="ed-s">유리한 학생: ${esc(t.favors)}</p>` : ""}</article>`;
+  const seasons = d.seasons.map((s) => `<h3>${esc(s.name)} <span class="muted small">${esc(s.when)}</span></h3><div class="ed-rows">${d.terms.filter((t) => t.season === s.id).map(term).join("")}</div>`).join("");
+  const ov = d.overview.rows.length ? `<h3>한눈에 보기</h3><div class="tw"><table class="ed-tbl"><thead><tr>${d.overview.columns.map((c) => `<th>${esc(c)}</th>`).join("")}</tr></thead><tbody>${d.overview.rows.map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>` : "";
+  const rows = (d.related.policyRows || []).map((id) => policy.find((r) => r.id === id)).filter(Boolean);
+  const src = (r) => { const list = r.sources || (r.sourceName ? [{ name: r.sourceName, url: r.sourceUrl }] : []); return `${KIND[r.sourceKind] ? `<span>${KIND[r.sourceKind]}</span> · ` : ""}${list.map((x) => (x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>` : esc(x.name))).join(" · ")}`; };
+  const shares = rows.length ? `<h3>전형별 비중</h3><div class="ed-rows">${rows.map((r) => `<article class="ed-row"><div class="ed-st">${tag(r.status)}</div><h3>${esc(r.title)}</h3><p class="ed-b">${esc(r.body)}</p><p class="ed-s">출처 ${src(r)}</p></article>`).join("")}</div>${d.related.note ? `<p class="muted small">${esc(d.related.note)}</p>` : ""}` : "";
+  el.innerHTML = `<div class="ed"><h2>${stageTag("대입", esc)}전형 한눈에</h2>${seasons}${ov}${shares}</div>`;
 }
