@@ -276,8 +276,8 @@
    "schoolId": "school-pungdeok",
    "name": "풍덕고등학교",
    "level": "high",
-   "kind": null,
-   "address": "경기 용인시 수지구 정평로13번길 5",
+   "kind": "공립(단설)",
+   "address": "경기도 용인시 수지구 정평로13번길 5",
    "lat": 37.316896,
    "lng": 127.088837,
    "coordSource": {
@@ -285,25 +285,29 @@
     "url": "https://www.openstreetmap.org/way/365700433"
    },
    "coordApprox": false,
-   "homepage": "https://pungduck-h.goeyi.kr/",
+   "homepage": "https://pungduck-h.goeyi.kr",
    "phone": null,
    "status": "confirmed",
    "sources": [
+    {
+     "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
+    },
     {
      "name": "portal/data/schools.json 학교 주소(편제표 4개교)",
      "url": null
     }
    ],
    "checkedAt": "2026-10-26",
-   "searchQuery": "풍덕고등학교 경기 용인시 수지구 정평로13번길 5"
+   "searchQuery": "풍덕고등학교 경기도 용인시 수지구 정평로13번길 5"
   },
   {
    "id": "pl-012",
    "schoolId": "school-seongbok",
    "name": "성복고등학교",
    "level": "high",
-   "kind": null,
-   "address": "경기 용인시 수지구 도마치로 92",
+   "kind": "공립(단설)",
+   "address": "경기도 용인시 수지구 도마치로 92",
    "lat": 37.323292,
    "lng": 127.061138,
    "coordSource": {
@@ -311,25 +315,29 @@
     "url": "https://www.openstreetmap.org/way/366837924"
    },
    "coordApprox": false,
-   "homepage": "https://seongbok-h.goeyi.kr/",
+   "homepage": "https://seongbok-h.goeyi.kr",
    "phone": null,
    "status": "confirmed",
    "sources": [
+    {
+     "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
+    },
     {
      "name": "portal/data/schools.json 학교 주소(편제표 4개교)",
      "url": null
     }
    ],
    "checkedAt": "2026-10-26",
-   "searchQuery": "성복고등학교 경기 용인시 수지구 도마치로 92"
+   "searchQuery": "성복고등학교 경기도 용인시 수지구 도마치로 92"
   },
   {
    "id": "pl-013",
    "schoolId": "school-suji",
    "name": "수지고등학교",
    "level": "high",
-   "kind": null,
-   "address": "경기 용인시 수지구 수풍로 73",
+   "kind": "공립(단설)",
+   "address": "경기도 용인시 수지구 수풍로 73",
    "lat": 37.330719,
    "lng": 127.092054,
    "coordSource": {
@@ -337,25 +345,29 @@
     "url": "https://www.openstreetmap.org/way/362976419"
    },
    "coordApprox": false,
-   "homepage": "https://suji-h.goeyi.kr/",
+   "homepage": "http://suji-h.goeyi.kr",
    "phone": null,
    "status": "confirmed",
    "sources": [
+    {
+     "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
+    },
     {
      "name": "portal/data/schools.json 학교 주소(편제표 4개교)",
      "url": null
     }
    ],
    "checkedAt": "2026-10-26",
-   "searchQuery": "수지고등학교 경기 용인시 수지구 수풍로 73"
+   "searchQuery": "수지고등학교 경기도 용인시 수지구 수풍로 73"
   },
   {
    "id": "pl-014",
    "schoolId": "school-yonginheungcheon",
    "name": "홍천고등학교",
    "level": "high",
-   "kind": null,
-   "address": "경기 용인시 수지구 수지로227번길 22",
+   "kind": "공립(단설)",
+   "address": "경기도 용인시 수지구 수지로227번길 22",
    "lat": 37.32144,
    "lng": 127.08228,
    "coordSource": {
@@ -363,17 +375,21 @@
     "url": "https://www.openstreetmap.org/way/346407546"
    },
    "coordApprox": true,
-   "homepage": "https://yihongcheon-h.goeyi.kr/",
+   "homepage": "http://yihongcheon-h.goeyi.kr",
    "phone": null,
    "status": "confirmed",
    "sources": [
+    {
+     "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
+    },
     {
      "name": "portal/data/schools.json 학교 주소(편제표 4개교)",
      "url": null
     }
    ],
    "checkedAt": "2026-10-26",
-   "searchQuery": "홍천고등학교 경기 용인시 수지구 수지로227번길 22"
+   "searchQuery": "홍천고등학교 경기도 용인시 수지구 수지로227번길 22"
   },
   {
    "id": "pl-015",
@@ -526,7 +542,7 @@
    "schoolId": null,
    "name": "상현고등학교",
    "level": "high",
-   "kind": null,
+   "kind": "공립(단설)",
    "address": "경기도 용인시 수지구 법조로 222",
    "lat": 37.298856,
    "lng": 127.07436,
@@ -535,10 +551,14 @@
     "url": "https://www.openstreetmap.org/way/361622588"
    },
    "coordApprox": false,
-   "homepage": null,
+   "homepage": "http://sanghyun-h.goeyi.kr",
    "phone": null,
-   "status": "reported",
+   "status": "confirmed",
    "sources": [
+    {
+     "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
+    },
     {
      "name": "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)",
      "url": "https://satp.goe.go.kr/main.do"
@@ -556,7 +576,7 @@
    "schoolId": null,
    "name": "서원고등학교",
    "level": "high",
-   "kind": null,
+   "kind": "공립(단설)",
    "address": "경기도 용인시 수지구 상현로42번길 26-7",
    "lat": 37.302106,
    "lng": 127.081747,
@@ -565,10 +585,14 @@
     "url": "https://www.openstreetmap.org/way/763175570"
    },
    "coordApprox": false,
-   "homepage": null,
+   "homepage": "http://seowon-h.goeyi.kr",
    "phone": null,
-   "status": "reported",
+   "status": "confirmed",
    "sources": [
+    {
+     "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
+    },
     {
      "name": "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)",
      "url": "https://satp.goe.go.kr/main.do"
@@ -586,7 +610,7 @@
    "schoolId": null,
    "name": "신봉고등학교",
    "level": "high",
-   "kind": null,
+   "kind": "공립(단설)",
    "address": "경기도 용인시 수지구 신봉3로 45",
    "lat": 37.327927,
    "lng": 127.063093,
@@ -595,10 +619,14 @@
     "url": "https://www.openstreetmap.org/way/347522918"
    },
    "coordApprox": false,
-   "homepage": null,
+   "homepage": "http://shinbong-h.goeyi.kr",
    "phone": null,
-   "status": "reported",
+   "status": "confirmed",
    "sources": [
+    {
+     "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
+    },
     {
      "name": "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)",
      "url": "https://satp.goe.go.kr/main.do"
@@ -616,8 +644,8 @@
    "schoolId": null,
    "name": "대지고등학교",
    "level": "high",
-   "kind": null,
-   "address": "주소 미확인(OSM 검색 결과가 정류장이라 학교 위치로 쓰지 않음)",
+   "kind": "공립(단설)",
+   "address": "경기도 용인시 수지구 동백죽전대로 1066",
    "lat": null,
    "lng": null,
    "coordSource": {
@@ -625,10 +653,14 @@
     "url": null
    },
    "coordApprox": false,
-   "homepage": null,
+   "homepage": "https://daeji-h.goeyi.kr",
    "phone": null,
-   "status": "reported",
+   "status": "confirmed",
    "sources": [
+    {
+     "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
+    },
     {
      "name": "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)",
      "url": "https://satp.goe.go.kr/main.do"
@@ -639,15 +671,15 @@
     }
    ],
    "checkedAt": "2026-10-29",
-   "searchQuery": "대지고등학교 주소 미확인(OSM 검색 결과가 정류장이라 학교 위치로 쓰지 않음)"
+   "searchQuery": "대지고등학교 경기도 용인시 수지구 동백죽전대로 1066"
   },
   {
    "id": "pl-024",
    "schoolId": null,
    "name": "죽전고등학교",
    "level": "high",
-   "kind": null,
-   "address": "경기도 용인시 수지구 용구대로2771번길(번지 미확인)",
+   "kind": "공립(단설)",
+   "address": "경기도 용인시 수지구 용구대로2771번길 23",
    "lat": 37.332575,
    "lng": 127.106202,
    "coordSource": {
@@ -655,10 +687,14 @@
     "url": "https://www.openstreetmap.org/way/470223157"
    },
    "coordApprox": false,
-   "homepage": null,
+   "homepage": "http://jukjeon-h.goeyi.kr",
    "phone": null,
-   "status": "reported",
+   "status": "confirmed",
    "sources": [
+    {
+     "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
+    },
     {
      "name": "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)",
      "url": "https://satp.goe.go.kr/main.do"
@@ -669,15 +705,15 @@
     }
    ],
    "checkedAt": "2026-10-29",
-   "searchQuery": "죽전고등학교 경기도 용인시 수지구 용구대로2771번길(번지 미확인)"
+   "searchQuery": "죽전고등학교 경기도 용인시 수지구 용구대로2771번길 23"
   },
   {
    "id": "pl-025",
    "schoolId": null,
    "name": "현암고등학교",
    "level": "high",
-   "kind": null,
-   "address": "경기도 용인시 수지구 디지털벨리로(번지 미확인)",
+   "kind": "공립(단설)",
+   "address": "경기도 용인시 수지구 디지털벨리로 17",
    "lat": 37.328894,
    "lng": 127.131934,
    "coordSource": {
@@ -685,10 +721,14 @@
     "url": "https://www.openstreetmap.org/way/834357357"
    },
    "coordApprox": false,
-   "homepage": null,
+   "homepage": "https://hyunam-h.goeyi.kr",
    "phone": null,
-   "status": "reported",
+   "status": "confirmed",
    "sources": [
+    {
+     "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
+    },
     {
      "name": "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)",
      "url": "https://satp.goe.go.kr/main.do"
@@ -699,7 +739,7 @@
     }
    ],
    "checkedAt": "2026-10-29",
-   "searchQuery": "현암고등학교 경기도 용인시 수지구 디지털벨리로(번지 미확인)"
+   "searchQuery": "현암고등학교 경기도 용인시 수지구 디지털벨리로 17"
   }
  ],
  "nearby": [
