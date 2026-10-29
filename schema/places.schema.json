@@ -6,10 +6,11 @@
  "type": "object",
  "required": ["placeId", "name", "level", "address", "status", "sources"],
  "properties": {
+  "nearbyKind": { "enum": ["library", "station"], "description": "주변 시설 종류. 주변 시설은 research/data/places-nearby-draft.json(id np-NNN)에서 와서 places.json의 nearby[]에 level \"nearby\"로 들어간다(학교 목록과 분리). 상업 시설·학원은 넣지 않는다." },
   "placeId": { "type": "string", "pattern": "^pl-\\d{3,}$", "description": "한 번 정하면 바꾸지 않는다" },
   "schoolId": { "type": ["string", "null"], "description": "schools.json의 학교 id(편제표 4개교 등). 없으면 null" },
   "name": { "type": "string" },
-  "level": { "enum": ["elementary", "middle", "high"] },
+  "level": { "enum": ["elementary", "middle", "high"], "description": "학교급. 주변 시설은 nearby(places.json의 nearby[]에서만)" },
   "kind": { "type": ["string", "null"], "description": "공립/사립/국립 등" },
   "address": { "type": "string" },
   "lat": { "type": ["number", "null"] },

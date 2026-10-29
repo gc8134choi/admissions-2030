@@ -161,7 +161,8 @@ tr.g3,tr.g3 td,tr.g3 a{color:var(--e-mute)}
 .pl-pin{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border:2px solid #fff;background:#6b6b6b;color:#fff;font:700 13px/1 inherit;box-shadow:0 0 0 1px rgba(0,0,0,.35)}
 .pl-pin.lv-elementary{border-radius:50%}.pl-pin.lv-middle{border-radius:4px}.pl-pin.lv-high{border-radius:4px;transform:rotate(45deg)}
 .pl-pin.lv-high{font-size:0}.pl-pin.lv-high::before{content:"고";font-size:13px;transform:rotate(-45deg)}
-.pl-pin.on{background:var(--accent)}
+.pl-pin.lv-nearby{width:22px;height:22px;border-radius:2px;background:#fff;color:#4a4a4a;border:2px solid #6b6b6b;font-size:12px}
+.pl-pin.on{background:var(--accent)}.pl-pin.lv-nearby.on{background:var(--accent);color:#fff;border-color:#fff}
 .pl-zone>li{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:10px 4px}
 .pl-zone .ed-s{grid-column:1/-1}
 .pl-map-btn{padding:4px 12px;border:1px solid var(--line);color:inherit;text-decoration:none}
