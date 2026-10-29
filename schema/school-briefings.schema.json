@@ -1,0 +1,31 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "school-briefings.schema.json",
+ "title": "school-briefings (학교 설명회 노트) — research/data/school-briefings-draft.json = portal/data/briefings.json",
+ "description": "학교 입학설명회 등을 사용자가 녹음해 AI가 요약한 노트(학교 공식 문서 아님). 사람 이름·출생연도는 쓰지 않고 일반화한다(졸업생 A·B). 항목의 level은 일관(여러 구간에서 일관되게 들림) / 추정(일부만 들리거나 맥락 추정) / 참고만(거의 판독 불가) 또는 null(소제목). 숫자 항목은 녹음 품질로 틀렸을 수 있어 verify로 표시한다.",
+ "type": "object",
+ "required": ["briefings"],
+ "properties": {
+  "briefings": { "type": "array", "items": { "type": "object", "required": ["briefingId", "schoolId", "date", "title", "source", "status", "sections"], "properties": {
+   "briefingId": { "type": "string", "pattern": "^sb-\\d{3,}$", "description": "한 번 정하면 바꾸지 않는다" },
+   "schoolId": { "type": "string", "description": "schools.json의 학교 id" },
+   "placeId": { "type": ["string", "null"], "description": "places.json의 placeId(있으면)" },
+   "date": { "type": "string", "description": "YYYY-MM-DD" },
+   "title": { "type": "string" },
+   "source": { "type": "object", "required": ["name"], "properties": { "name": { "type": "string" }, "url": { "type": ["string", "null"] }, "kind": { "type": "string" } } },
+   "status": { "enum": ["confirmed", "reported", "estimated"] },
+   "qualityNote": { "type": ["string", "null"] },
+   "sections": { "type": "array", "items": { "type": "object", "required": ["name", "items"], "properties": {
+    "name": { "type": "string" },
+    "items": { "type": "array", "items": { "type": "object", "required": ["text", "level"], "properties": {
+     "part": { "type": ["string", "null"], "description": "예: 1부" },
+     "topic": { "type": ["string", "null"], "description": "발표 주제(발표자) 제목" },
+     "group": { "type": ["string", "null"], "description": "이 항목이 속한 소제목(같은 topic 안에서 level이 null인 항목의 text)" },
+     "text": { "type": "string" },
+     "level": { "enum": ["일관", "추정", "참고만", null] },
+     "hasNumbers": { "type": "boolean" },
+     "verify": { "type": "boolean" },
+     "numberNote": { "type": ["string", "null"] } } } } } } }
+  } } }
+ }
+}

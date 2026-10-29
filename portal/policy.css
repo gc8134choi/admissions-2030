@@ -168,3 +168,7 @@ tr.g3,tr.g3 td,tr.g3 a{color:var(--e-mute)}
 .pl-flow li{padding:6px 0;border-top:1px solid var(--line)}
 @media (max-width:600px){.pl-map{height:60vh}}
 .pl-tb{margin:6px 0}.pl-tb summary{cursor:pointer;color:var(--accent)}.pl-tbw{overflow-x:auto;max-width:100%}.pl-tb .ed-tbl td:nth-child(-n+4),.pl-tb .ed-tbl th:nth-child(-n+4){white-space:nowrap}.pl-tb .ed-tbl td:nth-child(5){min-width:9em}
+/* 전형 한눈에·설명회 노트 (폭은 컨테이너를 따른다) */
+.ed-ul{margin:6px 0 0;padding-left:1.1em;line-height:1.7}.ed-share{margin:14px 0}.ed-share h4{margin:0 0 2px}
+.bf{margin:8px 0;border-top:1px solid var(--line)}.bf summary{cursor:pointer;padding:8px 0;color:var(--accent)}
+.bf ul{margin:4px 0;padding-left:1.1em;line-height:1.7}.bf-s h4{margin:14px 0 2px}.bf-h{list-style:none;margin-left:-1.1em;margin-top:6px}.bf-h ul{margin-left:0}.bf-part{margin:12px 0 0}.bf-c{color:var(--muted);font-size:11px;margin-left:4px}
