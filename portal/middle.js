@@ -39,11 +39,19 @@ export async function middleBody(el, { load, esc, mapHref = (id) => `#select/cur
       <div class="pl-zb">${p.lat != null ? `<a class="pl-map-btn" href="${esc(mapHref(p.id))}">지도</a>` : ""}</div><div class="ed-s">출처 ${srcs(z.sources, esc)}</div></li>`;
   }).join("");
   const flowRows = flow.map((r) => `<li>${stageTag(stageOf(r), esc)} <b>${esc(r.title)}</b> <span class="muted">${esc(r.body)}</span> ${tag(r.status, esc)}</li>`).join("");
-  el.innerHTML = `<div class="ed"><h2>중학교 배정</h2>
+  // 한 흐름: ① 배정 원칙(절차) → ② 일정 → ③ 갈 수 있는 학교 → ④ 지도. 아직 정해지지 않은 것은 맨 위에 "미정"으로 모아 보인다.
+  const unsettled = [zoneNotice ? "학교군·중학구(용인교육지원청 의견 수렴 중)" : "", near ? "근거리 중학교 명단(공식 자료 확인 전)" : ""].filter(Boolean);
+  const anyMap = mid.zoneSchools.some((z) => place.get(z.placeId)?.lat != null);
+  el.innerHTML = `<div class="ed mid-flow"><h2>${stageTag("중입", esc)}중학교 배정</h2>
     <p class="ed-b">${from ? `<b>${esc(from.name)}</b> 통학구역에서 갈 수 있는 중학교예요.` : "통학구역에서 갈 수 있는 중학교예요."}${mid.from.note ? ` ${esc(mid.from.note)}` : ""}</p>
-    ${zoneNotice ? `<p class="muted small">학교군·중학구가 바뀔 수 있어요(용인교육지원청 의견 수렴 중). ${zoneNotice.sourceUrl ? `<a href="${esc(zoneNotice.sourceUrl)}" target="_blank" rel="noopener">${esc(zoneNotice.sourceName || "출처")}</a>` : esc(zoneNotice.sourceName || "")}</p>` : ""}
-    <ul class="pl-zone">${zone}</ul>
-    ${near ? `<p class="muted small">근거리 중학교 명단은 아직 공식 자료로 확인하지 못했어요. 학교 공지로 확인해 주세요.${near.sources?.length ? ` 출처 ${srcs(near.sources, esc)}` : ""}</p>` : ""}
-    ${mid.principles.length ? `<h3>배정 원칙</h3><div class="ed-rows">${mid.principles.map((p) => `<article class="ed-row"><div class="ed-st">${tag(p.status, esc)}</div><h3>${esc(p.title)}</h3><p class="ed-b">${esc(p.body)}</p><p class="ed-s">출처 ${srcs(p.sources, esc)}</p></article>`).join("")}</div>` : ""}
-    ${flowRows ? `<h3>배정 일정 흐름</h3><ol class="pl-flow">${flowRows}</ol><p class="muted small">날짜는 일정 화면과 같아요. 학교·교육지원청 공지로 다시 확인해 주세요.</p>` : ""}</div>`;
+    ${unsettled.length ? `<p class="mid-un"><b>미정</b> ${unsettled.map(esc).join(" · ")} — 바뀔 수 있어요.${zoneNotice && zoneNotice.sourceUrl ? ` <a href="${esc(zoneNotice.sourceUrl)}" target="_blank" rel="noopener">${esc(zoneNotice.sourceName || "출처")}</a>` : ""}</p>` : ""}
+    <div class="w-page w-2r">
+      <div class="w-body">
+        ${mid.principles.length ? `<section class="mid-step"><h3><em>1</em>배정 원칙(절차)</h3><div class="ed-rows">${mid.principles.map((p) => `<article class="ed-row"><div class="ed-st">${tag(p.status, esc)}</div><h3>${esc(p.title)}</h3><p class="ed-b">${esc(p.body)}</p><p class="ed-s">출처 ${srcs(p.sources, esc)}</p></article>`).join("")}</div></section>` : ""}
+        ${flowRows ? `<section class="mid-step"><h3><em>2</em>배정 일정 흐름</h3><ol class="pl-flow">${flowRows}</ol><p class="muted small">날짜는 일정 화면과 같아요. 학교·교육지원청 공지로 다시 확인해 주세요.</p></section>` : ""}
+      </div>
+      <aside class="w-aside mid-step"><h3><em>3</em>갈 수 있는 학교</h3>${anyMap ? `<p class="mid-map"><em>4</em><a class="lnk" href="${esc(mapHref(mid.zoneSchools.map((z) => z.placeId).find((id) => place.get(id)?.lat != null)))}&lv=middle">지도에서 한꺼번에 보기</a></p>` : ""}
+        <ul class="pl-zone">${zone}</ul>
+        ${near ? `<p class="muted small">근거리 중학교 명단은 아직 공식 자료로 확인하지 못했어요. 학교 공지로 확인해 주세요.${near.sources?.length ? ` 출처 ${srcs(near.sources, esc)}` : ""}</p>` : ""}</aside>
+    </div></div>`;
 }
