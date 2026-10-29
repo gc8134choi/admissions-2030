@@ -1,5 +1,6 @@
 import { showProfiles } from "./profile-ui.js";
 import { STAGES, stageOf, stageTag } from "./stage.js";
+import { searchHtml, hubsHtml, planPanel, comparePanel, admPanel, midPanel } from "./dash.js";
 // 홈 화면(A안 에디토리얼). 데이터: policy.json(일정·변경 로그·학점제 규칙·마일스톤), summary/curricula/schools(관심 학교).
 // policy.json·policy.js는 읽기만 한다(서브 세션 담당).
 const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "확인 못 함" };
@@ -200,35 +201,41 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
       return STAGES.map((g) => `<a href="${STG_HREF[g]}"${g === cur ? ' class="on" aria-current="true"' : ""}><b>${g}</b><small class="num">${cnt[g] ? `곧 ${cnt[g]}건` : "—"}</small></a>`).join('<span class="stg-sep" aria-hidden="true">—</span>');
     };
 
+    // 대시보드 패널(읽지 못한 패널은 조용히 빼고 나머지는 그대로 보여 준다)
+    const ctx = { load, esc, store, policy };
+    const safe = (f) => f(ctx).catch(() => "");
+    const [planH, cmpH, admH, midH] = isB ? ["", "", "", ""] : await Promise.all([safe(planPanel), safe(comparePanel), safe(admPanel), safe(midPanel)]);
+    const hubCounts = {}; STAGES.forEach((g) => { hubCounts[g] = upRows().filter((x) => stageOf(x.r) === g).length; });
+
     el.innerHTML = `<div class="hm">
       ${ddline ? `<div class="auxbar" aria-label="수능 D-day">${ddline}</div>` : ""}
       ${pingLine()}
-      <nav class="stgline" aria-label="입시 단계">${stageLine()}</nav>
+      <div class="dtop">${searchHtml()}${hubsHtml(esc, hubCounts)}</div>
       <div class="hero-grid">
         <section class="hero" aria-labelledby="hh" id="hm-hero">${heroHtml()}</section>
         <aside class="hero-aside" aria-label="이어지는 일정"><div class="sec-h"><h2><em>이어서</em>그다음 일정</h2><a href="#schedule">전체 일정</a></div>
           ${isB ? "" : `<div class="hm-aud-wrap">${audienceChips(aud, esc)}</div>`}
           <ul class="rows" id="hm-up">${rest()}</ul></aside>
       </div>
-      <div class="two">
-        <section class="sec"><div class="sec-h"><h2><em>01</em>${isB ? esc(pf.name) + "의 학교" : "우리 " + mine.length + "개교"}</h2>${isB ? "" : '<a href="#select/curriculum?v=compare">과목표 비교</a>'}</div>
-          ${isB || !mine.length ? '<div class="empty"><span class="z" aria-hidden="true">0</span><p>학교를 고르면 여기에 모입니다.</p><small>후보 학교를 담아 두면 필수·내가 고르는 학점과 개설 과목을 나란히 볼 수 있어요.</small><a href="#select/curriculum">학교 고르러 가기 →</a></div>' : `<ul class="schools">${mine.map(sch).join("")}</ul><p class="legend">네 학교 모두 <b>${m0.creditsTotal}학점</b>. 막대: <b style="color:var(--req)">필수</b> · <b style="color:var(--ele)">내가 고르는</b> · 나머지는 창의적 체험활동.</p>`}</section>
-        <section class="sec"><div class="sec-h"><h2><em>02</em>곧 있을 일</h2></div>
-          ${stones.length && feed()[0]?.kind !== "stone" ? `<ul class="mss">${stones.map(stoneHtml).join("")}</ul><p class="hint">사진은 이 기기에만 저장돼요.</p>` : '<div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p></div>'}</section>
-      </div>
-      <div class="two">
-        <section class="sec"><div class="sec-h"><h2><em>03</em>이번 주 할 일</h2><span class="muted small" id="tdc"></span></div>
-          ${ok ? `<ul class="todo" id="todos"></ul><form class="hm-todoform"><input type="text" id="todoin" placeholder="할 일 추가" maxlength="120" autocomplete="off" aria-label="할 일 추가"><button class="btn" type="submit">추가</button></form>` : '<p class="muted">이 브라우저에서는 저장 공간을 쓸 수 없어 메모를 사용할 수 없어요.</p>'}</section>
-        <section class="sec"><div class="sec-h"><h2><em>04</em>바뀐 소식</h2><a href="#changelog">전체 보기</a></div>
+      <div class="dgrid">
+        <section class="dp news t0"><div class="sec-h"><h2><em>소식</em>바뀐 소식</h2><a href="#changelog">전체 보기</a></div>
           <p class="fresh num">${checked ? `마지막 확인 ${esc(ymdText(checked))}` : ""}${vis.prev ? ` · ${fresh ? `<b>새 소식 ${fresh}건</b>` : "새 소식 없음"}` : ""}</p>
           ${log.length ? `<ul class="rows">${log.slice(0, 3).map(logRow).join("")}</ul>` : '<div class="empty"><p>아직 바뀐 소식이 없어요.</p></div>'}</section>
+        ${planH}
+        ${midH}
+        ${cmpH}
+        ${admH}
+        <section class="dp soonp t2"><div class="sec-h"><h2><em>곧</em>곧 있을 일</h2></div>
+          ${stones.length && feed()[0]?.kind !== "stone" ? `<ul class="mss">${stones.map(stoneHtml).join("")}</ul><p class="hint">사진은 이 기기에만 저장돼요.</p>` : '<div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p></div>'}</section>
+        <section class="dp todop t1"><div class="sec-h"><h2><em>할 일</em>이번 주 할 일</h2><span class="muted small" id="tdc"></span></div>
+          ${ok ? `<ul class="todo" id="todos"></ul><form class="hm-todoform"><input type="text" id="todoin" placeholder="할 일 추가" maxlength="120" autocomplete="off" aria-label="할 일 추가"><button class="btn" type="submit">추가</button></form>` : '<p class="muted">이 브라우저에서는 저장 공간을 쓸 수 없어 메모를 사용할 수 없어요.</p>'}</section>
       </div>
       <div class="two">
-      <section class="sec"><div class="sec-h"><h2><em>05</em>학점제 한눈에</h2><a href="#life/credit">자세히</a></div>
+      <section class="sec"><div class="sec-h"><h2><em>학점</em>학점제 한눈에</h2><a href="#life/credit">자세히</a></div>
         <p class="glance-lead">3년 동안 <mark>${m0.creditsTotal}학점</mark>을 스스로 채웁니다.</p>
         <div class="glance"><div class="g"><span class="v num">${m0.creditsSubject}</span><span class="k">교과 학점</span><span class="n">공통·선택 과목으로 채웁니다</span></div><div class="g"><span class="v num">${m0.creditsCreative}</span><span class="k">창의적 체험활동</span><span class="n">동아리·봉사·진로</span></div></div>
         ${isB ? `<p class="src-line"><span class="pst estimated">추정</span> ${esc(pf.name)}이 입학하는 ${entryYear}학년도에도 같을지는 아직 확인되지 않았어요. 지금 학년도 기준 숫자입니다.</p>` : ""}</section>
-      ${isB ? "" : `<section class="sec"><div class="sec-h"><h2><em>06</em>앞으로 3년</h2><a href="#schedule?t=road" id="rm-link">학년별 로드맵</a></div><ol class="tl">${tl}</ol></section>`}
+      ${isB ? "" : `<section class="sec"><div class="sec-h"><h2><em>3년</em>앞으로 3년</h2><a href="#schedule?t=road" id="rm-link">학년별 로드맵</a></div><ol class="tl">${tl}</ol></section>`}
       </div>
     </div>`;
 
@@ -240,6 +247,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
         d.addEventListener("click", () => { mi = (mi + 1) % 3; el.querySelector("#ddn").textContent = modes[mi][1].toLocaleString(); el.querySelector("#ddu").textContent = modes[mi][0]; });
       }
       bindPhotos(el.querySelector("#hm-hero"));
+      el.querySelector("[data-open-search]")?.addEventListener("click", () => document.getElementById("srbtn")?.click());
     };
     // 대상 칩 → 히어로와 이어지는 일정을 다시 그린다
     const hs = el.querySelector(".hero-aside");

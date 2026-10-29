@@ -152,7 +152,7 @@ async function curriculumView(el, query, node) {
   };
   const drawBody = async () => {
     const body = $("#cview");
-    if (tab === "summary") { compare = null; await summaryBody(body, sel); }
+    if (tab === "summary") { compare = null; await summaryBody(body, sel); const bf = query.get("bf"); if (bf) { const t = (bf === "1" ? body.querySelector(".bf-area") : body.querySelector(`#bf-${CSS.escape(bf)}`)); if (t) { t.scrollIntoView({ block: "start" }); t.querySelector("details")?.setAttribute("open", ""); } } }
     else if (tab === "map") { compare = null; await mapBody(body, { load, esc, focus: focusP, level: lv === "middle" ? "middle" : "high" }); }
     else if (tab === "middle") { compare = null; await middleBody(body, { load, esc }); }
     else if (tab === "univ") { compare = null; await univBody(body, { load, esc, profile: currentProfile(store), schools, sel }); }
