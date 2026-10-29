@@ -1,0 +1,58 @@
+/* dense.css — 화면 개선 최종안(2026-10-29) 1단계: 간격·글자·반투명·터치·포커스 토큰과 밀도 규칙. scrap.css 위에 덮는 층이다.
+   롤백: index.html의 dense.css 링크 한 줄을 지우고(이 파일을 못 쓰게 하면) 필요하면 --glass-blur:0 으로 둔다.
+   원칙: 간격은 4/8/12/16/24/40만, 본문 PC 15px/모바일 16px, 보조 글자 13px 이상, 터치 44px(모바일 48px), 반투명은 패널 바탕에만 .88 + 블러 8px(화면당 3개 이하). */
+:root{
+  --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:24px;--sp-6:40px;
+  --fs-body:15px;--fs-sub:13px;--lh-body:1.55;
+  --touch:44px;
+  --glass-blur:8px;
+  --glass:rgba(251,247,238,.88);--glass-line:rgba(29,26,22,.16);
+}
+@media (prefers-color-scheme:dark){:root{--glass:rgba(42,36,29,.9);--glass-line:rgba(243,235,220,.2)}}
+@media (max-width:899px){:root{--fs-body:16px;--touch:48px}}
+/* 투명도·대비 줄이기 설정이면 반투명을 버리고 불투명 종이색으로 */
+@media (prefers-reduced-transparency:reduce),(prefers-contrast:more){:root{--glass:var(--paper2);--glass-blur:0px;--glass-line:var(--ink)}}
+
+body{font-size:var(--fs-body);line-height:var(--lh-body)}
+/* 보조 글자는 13px 이상(대비 4.5:1은 scrap.css 토큰에서 보장) */
+small,.small,.muted.small,.hint,.src,.src-line,.legend,.pst,.tl-d,.tl-sub,.ms-s,.fl-meta,.stg,.row .meta,.row .meta a,.dp li small,.dp th,.ed-src,.ed-s,.bf .muted,.pn-ref,.pl-addr{font-size:var(--fs-sub)}
+.stg{font-size:var(--fs-sub);letter-spacing:0}
+.hm .row .meta a,.hm .src{font-size:var(--fs-sub)}
+
+/* 반투명 패널: 바탕에만. 블러는 .glass 패널(화면당 3개 이하)에만 걸어 성능을 아낀다 */
+.dp{background:var(--glass);border-color:var(--glass-line);padding:var(--sp-3) var(--sp-4)}
+.dp.glass{-webkit-backdrop-filter:blur(var(--glass-blur));backdrop-filter:blur(var(--glass-blur))}
+.dp h2{margin-bottom:var(--sp-2)}
+.dtop{gap:var(--sp-3);margin:var(--sp-3) 0 var(--sp-4)}
+.dhubs{gap:var(--sp-3)}
+.dgrid{gap:var(--sp-4);margin:var(--sp-4) 0}
+.dp li{padding:var(--sp-1) 0}
+
+/* 간격 줄이기: 장식 여백을 20px 이하로, 패널 간격 12~16px */
+.hm .hero{padding:var(--sp-4) var(--sp-5) var(--sp-4);margin-top:var(--sp-3)}
+.hm .hero-aside{margin-top:var(--sp-4);padding:var(--sp-3) var(--sp-4)}
+.hm .sec-h{margin-bottom:var(--sp-2)}
+.schoolgrid{padding:var(--sp-3) 0 var(--sp-2)}
+.school{padding:var(--sp-4);margin:var(--sp-2) var(--sp-1) var(--sp-3)}
+.ed-rows,.rows.lk{gap:var(--sp-3)}
+.ed-row,.rows.lk .row{padding:var(--sp-3) var(--sp-4)}
+.note,.ed-top{margin:var(--sp-4) var(--sp-1) var(--sp-3);padding:var(--sp-3) var(--sp-4)}
+.pn-t{padding:var(--sp-3) var(--sp-4);margin:0 0 var(--sp-3)}
+.pn-u{padding:var(--sp-3) var(--sp-4);margin:0 0 var(--sp-3)}
+.bf-area{margin:var(--sp-5) 0 var(--sp-2);padding:var(--sp-4) var(--sp-4) var(--sp-3)}
+
+/* 터치 목표: 44px(모바일 48px) */
+.chip,.fchip,.btn,.lnk,.hm-todoform button{min-height:var(--touch)}
+.chip.schip{min-height:var(--touch)}
+.hm .row a,.dhubs .hub li a,.stgline a,.plan-go a,.ed-toc a{min-height:var(--touch);display:inline-flex;align-items:center}
+.dhubs .hub li{padding:0}
+.tabs a{min-height:var(--touch)}
+.subnav a{min-height:var(--touch);display:inline-flex;align-items:center;padding-top:0;padding-bottom:0}
+@media (min-width:900px){:root{--touch:40px}.chip,.fchip{min-height:36px}.hm .row a{min-height:0}}
+
+/* 포커스: 어디서나 굵은 윤곽(포인트색 칩 위에서도 보이게 먹색) */
+:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+
+/* 행 높이: 일정 장부 행 PC 40px, 모바일 48px */
+:root{--row-h:40px}@media (max-width:899px){:root{--row-h:48px}}
