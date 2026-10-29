@@ -13,7 +13,7 @@ ROUTES = ["", "#schedule", "#schedule?t=life", "#schedule?t=road", "#select/type
 JS = r"""
 const {chromium}=require('playwright');
 (async()=>{const base=process.argv[2];const routes=JSON.parse(process.argv[3]);const out=[];const b=await chromium.launch();
-for(const w of [390,1280]){const p=await b.newPage({viewport:{width:w,height:900}});
+for(const w of [390,1280,1440,1920]){const p=await b.newPage({viewport:{width:w,height:900}});
 for(const r of routes){try{await p.goto(base+r,{waitUntil:'load',timeout:20000});await p.waitForTimeout(900);}catch(e){out.push({w,r,issue:'load'});continue;}
 const bad=await p.evaluate(()=>[...document.querySelectorAll('li.row, .row')].filter(li=>li.offsetWidth>0).flatMap(li=>{
   const W=li.getBoundingClientRect().width;return [...li.children].filter(c=>!c.classList.contains('d')&&c.offsetWidth>0&&c.getBoundingClientRect().width<W*0.6&&(c.innerText||'').trim().length>8)
@@ -39,7 +39,7 @@ def main():
         return 2
     out = json.loads(r.stdout.strip().splitlines()[-1])
     if not out:
-        print(f"OK: {len(ROUTES)}화면 × 2폭 좁게 갇힌 .row 없음")
+        print(f"OK: {len(ROUTES)}화면 × 4폭 좁게 갇힌 .row 없음")
         return 0
     for o in out:
         print(json.dumps(o, ensure_ascii=False))
