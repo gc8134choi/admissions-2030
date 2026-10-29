@@ -1,0 +1,28 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "hs-compare.schema.json",
+ "title": "hs-compare (고교 비교표) — research/data/hs-compare-draft.json = portal/data/hs-compare.json",
+ "description": "용인학군 2구역 고교의 항목별 비교 값. 학교는 places의 placeId(level=high)로 연결하고, 편제표 4개교는 schoolId도 함께 적는다. 값마다 기준연도·상태·출처를 붙이고, 확인 못 한 칸은 value null + nullReason. confirmed는 학교알리미·교육청 공식 값에만 쓴다. 합격자 개인·이름·출생연도는 넣지 않는다.",
+ "type": "object",
+ "required": ["fields", "schools"],
+ "properties": {
+  "fields": { "type": "array", "items": { "type": "object", "required": ["id", "label", "group", "order", "type"], "properties": {
+   "id": { "type": "string" },
+   "label": { "type": "string" },
+   "group": { "type": "string", "description": "기본 | 규모 | 입학 | 교육과정 | 진학 | 생활 | 링크" },
+   "order": { "type": "integer" },
+   "type": { "enum": ["string", "number", "boolean", "link", "text"] },
+   "unit": { "type": ["string", "null"] },
+   "needsAsOf": { "type": "boolean", "description": "true면 값마다 asOf(기준연도) 필수. 수치 항목 기본값 true" } } } },
+  "schools": { "type": "array", "items": { "type": "object", "required": ["placeId", "name", "values"], "properties": {
+   "placeId": { "type": "string" },
+   "schoolId": { "type": ["string", "null"] },
+   "name": { "type": "string" },
+   "values": { "type": "object", "additionalProperties": { "type": "object", "properties": {
+    "value": {},
+    "asOf": { "type": ["string", "integer", "null"] },
+    "status": { "enum": ["confirmed", "reported", "estimated"] },
+    "source": { "type": ["object", "null"], "properties": { "name": { "type": "string" }, "url": { "type": ["string", "null"] } } },
+    "nullReason": { "type": ["string", "null"] } } } } } } }
+ }
+}
