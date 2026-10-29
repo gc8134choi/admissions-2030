@@ -280,3 +280,11 @@ table.policy tr.past{opacity:.55}
   .stgline a{min-height:44px}
   .ed-toc a{display:inline-flex;align-items:center;min-height:40px}
 }
+
+/* 설명회 노트: 학교 카드 아래 넓은 종이 한 장. 넓은 화면에서는 본문을 2단으로 흘린다 */
+.bf-area{margin:34px 0 10px;background:var(--paper2);box-shadow:var(--sh);padding:22px 22px 14px;transform:rotate(-.25deg);position:relative}
+.bf-t{margin:0 0 6px;font-family:var(--serif);font-size:24px}
+.bf-area .bf{border:0}
+.bf-go{margin:10px 0 0}
+@media (min-width:1280px){.bf-area .bf[open] .bf-s{break-inside:avoid}.bf-area .bf[open]{column-count:2;column-gap:56px}.bf-area .bf[open]>summary,.bf-area .bf[open]>p{column-span:all}}
+.bf-area{scroll-margin-top:90px}
