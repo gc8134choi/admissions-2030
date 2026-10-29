@@ -124,7 +124,7 @@ async function curriculumView(el, query, node) {
   const lv = tab === "middle" || query.get("lv") === "middle" ? "middle" : "high"; // 학교 탭의 "중학교 | 고등학교"
   if (lv === "middle" && !["map", "middle"].includes(tab)) tab = "middle";
   if (lv === "high" && tab === "middle") tab = "summary";
-  const TABSET = lv === "middle" ? [] : [["summary", "학교별 요약"], ["compare", "상세 비교"]]; // 학교 지도·중학교 배정·대학 요건은 메뉴(학교 탭 안)에서 연다
+  const TABSET = []; // 탭 3겹 → 2겹: 학교별 요약·상세 비교는 위쪽 메뉴 항목으로 올렸다(주소는 그대로) // 학교 지도·중학교 배정·대학 요건은 메뉴(학교 탭 안)에서 연다
   let compare = null; // 상세 비교 화면(필터 포함)은 한 번만 만들고 탭 전환 때 재사용한다
 
   el.innerHTML = `<div class="phead">
@@ -223,6 +223,7 @@ async function summaryBody(el, ids) {
     const l1 = ["region", "schoolType", "founding", "gender"].filter((k) => vary(k)).map((k) => m[k]).filter(Boolean).join(" · ");
     return `<section class="school"><header>${schoolBand(m, { starred: st.includes(m.schoolId), sub: l1, logoOk: LOGO_IDS.has(m.schoolId) })}
       ${vary("assignment") && m.assignment ? `<div class="muted">${esc(m.assignment)}</div>` : ""}</header>
+      <p class="hs-adm"><span class="muted">전형</span> ${m.assignment ? esc(m.assignment) : "추첨 배정(평준화 지역)"} · <a href="#schedule?t=hs">고입 일정</a> · <a href="#select/types">전형 설명</a></p>
       <div class="hs-tiles k3"><div><b>${m.creditsTotal}</b><span title="교과 ${m.creditsSubject} + 창체 ${m.creditsCreative}">총 학점</span></div><div class="kr"><b>${m.creditsRequired}</b><span>필수</span></div><div class="ke"><b>${m.creditsElective}</b><span>내가 고르는</span></div></div>
       <div class="bar" title="필수 ${m.creditsRequired} / 내가 고르는 ${m.creditsElective}"><span class="req" style="width:${(m.creditsRequired / total) * 100}%">필수 ${m.creditsRequired}</span><span class="ele" style="width:${(m.creditsElective / total) * 100}%">내가 고르는 ${m.creditsElective}</span></div>
       <details class="fold"><summary>학기별 학점</summary>
@@ -268,6 +269,9 @@ async function compareShell(el, onReset, getAreas) {
       <button id="reset" type="button">필터 초기화</button>
     </div></div>
     <div class="cmpmain"><div class="tw"><table id="tbl"></table></div></div></div>`;
+  // 필터 묶음이 6개를 넘으면(영역 7, 학년·학기 9) 처음 6개만 보이고 "더 보기"로 편다
+  el.querySelectorAll("#achips,.ftg").forEach((box) => { const g = box.closest(".fgroup"); g.classList.add("cap"); g.insertAdjacentHTML("beforeend", '<button type="button" class="more-g" aria-expanded="false">더 보기</button>'); });
+  el.addEventListener("click", (e) => { const b = e.target.closest(".more-g"); if (!b) return; const g = b.closest(".fgroup"), on = !g.classList.contains("open"); g.classList.toggle("open", on); b.setAttribute("aria-expanded", on); b.textContent = on ? "접기" : "더 보기"; });
   const root = el.firstElementChild;
   let ids = [], need = 0;
   const AW = 72, LW = 150, CW = 190; // 교과군 열·과목 열·학교 열 폭

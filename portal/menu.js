@@ -69,7 +69,8 @@ export const TABS = [
   { id: "high", title: "고등학교", groups: [
     { key: "enter", title: "입학", items: [
       { id: "select/curriculum?v=hs", title: "학교 비교", m: cur((v) => v === "hs") },
-      { id: "select/curriculum", title: "학교별 과목표", m: cur((v) => v === "summary" || v === "compare") },
+      { id: "select/curriculum", title: "학교별 요약", m: cur((v) => v === "summary") },
+      { id: "select/curriculum?v=compare", title: "상세 비교", m: cur((v) => v === "compare") },
       { id: "select/types", title: "고교 유형·전형", m: at("select/types") },
       { id: "select/curriculum?v=map", title: "학교 지도", m: cur((v, lv) => v === "map" && lv !== "middle") }] },
     { key: "life", title: "생활", items: [
