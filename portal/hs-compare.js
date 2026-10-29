@@ -17,8 +17,9 @@ export function formatValue(f, v) {
 export function hsCompareSummary(data, { fields = SUMMARY_FIELDS, max = 4 } = {}) {
   if (!data || !data.schools || !data.schools.length) return [];
   const byId = new Map(data.fields.map((f) => [f.id, f]));
+  // 요약 한 줄에서는 문자열 값의 괄호 설명(설립일 등)을 뺀다
   return data.schools.map((s) => {
-    const parts = fields.map((id) => { const f = byId.get(id), text = f && formatValue(f, s.values[id]); return text ? { id, label: f.label, text: f.type === "number" ? `${f.label} ${text}` : text } : null; }).filter(Boolean).slice(0, max);
+    const parts = fields.map((id) => { const f = byId.get(id), raw = f && formatValue(f, s.values[id]), text = f && raw && f.type !== "number" ? raw.replace(/\s*\([^)]*\)/g, "").trim() : raw; return text ? { id, label: f.label, text: f.type === "number" ? `${f.label} ${text}` : text } : null; }).filter(Boolean).slice(0, max);
     return { placeId: s.placeId, schoolId: s.schoolId || null, name: s.name, line: parts.map((p) => p.text).join(" · "), parts };
   });
 }
