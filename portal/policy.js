@@ -3,15 +3,17 @@ import { roadmapView } from "./roadmap.js";
 import { loadProfile, profileOf, filterByProfile } from "./profile.js";
 import { STAGES, stageOf, stageTag } from "./stage.js";
 import { typesBody } from "./admission-types.js";
+import { plain, plainRow } from "./plain.js";
 import { loadAudience, saveAudience, toggleAudience, audienceMatch, audienceChips } from "./home.js";
 
 // 제도·일정 화면(대입 제도, 일정, 고교 유형·전형, 바뀐 소식). 데이터는 data/policy.json. 스타일은 policy.css(A안 에디토리얼).
 if (typeof document !== "undefined" && !document.getElementById("policy-css")) { const l = document.createElement("link"); l.id = "policy-css"; l.rel = "stylesheet"; l.href = "policy.css"; document.head.appendChild(l); }
 // 상태 점: 확정=채운 점, 보도=반 채움, 추정=빈 점(앰버). 그 밖의 자료 상태는 빈 점 + 글자.
-const ES = { confirmed: ["ok", "확정"], "seoul-verified": ["ok", "서울교육청 원문 확인"], reported: ["rep", "보도"], match: ["rep", "서울·경기 자료 일치"], seoul: ["rep", "서울교육청 자료"], gyeonggi: ["rep", "경기도교육청 자료"], material: ["rep", "학교 배부 자료"], estimated: ["est", "추정"], unknown: ["", "확인 못 함"], opinion: ["", "의견"], academy: ["", "학원 자료"] };
-const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "확인 못 함", material: "학교 배부 자료", seoul: "서울교육청 자료", "seoul-verified": "서울교육청 자료(원문 확인)", match: "서울·경기 자료 일치", gyeonggi: "경기도교육청 자료", opinion: "의견", academy: "학원 자료" };
+// 화면에 나오는 상태는 보도·추정·미정 3종이다(확정은 표시하지 않는다). 자료 종류(학원 의견, 학교 배부 등)는 출처 칸에서 구분한다.
+const ES = { confirmed: ["ok", "확정"], "seoul-verified": ["ok", "확정"], reported: ["rep", "보도"], match: ["rep", "보도"], seoul: ["rep", "보도"], gyeonggi: ["rep", "보도"], material: ["rep", "보도"], estimated: ["est", "추정"], unknown: ["unk", "미정"], opinion: ["unk", "미정"], academy: ["unk", "미정"] };
+const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "미정", material: "학교 배부 자료", seoul: "서울교육청 자료", "seoul-verified": "서울교육청 자료(원문 확인)", match: "서울·경기 자료 일치", gyeonggi: "경기도교육청 자료", opinion: "의견", academy: "학원 자료" };
 const SKIND = { official: "공식", media: "매체", material: "학교 배부", seoul: "서울교육청", "seoul-gyeonggi": "서울·경기교육청", gyeonggi: "경기도교육청", opinion: "학원 의견", academy: "학원 자료" };
-const NOTICE_TPL = '<p class="note">조사일 2026-10-25 · <b>검색 요약 기준이며 공식 사이트로 재확인 필요.</b> 입학학년도 {E} · 대입학년도 {X} 기준. "원문은 아직 못 봤어요"는 원문 페이지를 열람하지 못했다는 뜻이에요.</p>';
+const NOTICE_TPL = '<p class="note">조사일 2026-10-25 · <b>검색 요약 기준이며 공식 사이트로 재확인 필요.</b> 입학학년도 {E} · 대입학년도 {X} 기준. "공식 문서로 확인 중이에요"는 아직 공식 원문과 대조하지 못했다는 뜻이에요.</p>';
 const noticeFor = (p) => NOTICE_TPL.replace("{E}", p.entryYear).replace("{X}", p.examYear);
 
 // 대입 제도 화면에 표로 보여 줄 cur-* 행(수능 출제범위, 전형 구분, 학종 평가요소). 나머지는 고교학점제 이해 화면.
@@ -24,11 +26,11 @@ const CUR_GROUP = { "cur-29": "admission-structure", "cur-30": "admission-struct
 export function register(views, { $, esc, load, store }) {
   // 선택된 프로필(portal.profile)의 행 + 연도 없는 공통 행만 쓴다. 프로필을 바꾸면 셸이 화면을 다시 그린다.
   const curProfile = () => profileOf(loadProfile(store));
-  const loadPolicy = async () => filterByProfile(await load("policy"), curProfile().id);
+  const loadPolicy = async () => filterByProfile(await load("policy"), curProfile().id).map(plainRow); // 내부 사정 문구는 사용자 말로(plain.js)
   const notice = () => noticeFor(curProfile());
-  const badgeMain = (r) => { const [c, t] = ES[r.status] || ["", r.status]; return `${c === "ok" ? "" : `<span class="es ${c}">${esc(t)}</span>`}${r.unverified ? `<span class="ed-unv"${r.reason ? ` title="${esc(r.reason)}"` : ""}>아직 원문 확인 전</span>` : ""}`; };
+  const badgeMain = (r) => { const [c, t] = ES[r.status] || ["", r.status]; return `${c === "ok" ? "" : `<span class="es ${c}">${esc(t)}</span>`}${r.unverified ? `<span class="ed-unv"${r.reason ? ` title="${esc(r.reason)}"` : ""}>공식 문서로 확인 중이에요</span>` : ""}`; };
   // 확인된 항목(확정·원문 확인)은 메모를 "확인 필요/별도 확인"이 있을 때만 보여 준다.
-  const badgeNote = (r) => { const ok = (ES[r.status] || [])[0] === "ok"; return `${r.unverified && r.reason ? `<div class="ed-note">사유: ${esc(r.reason)}</div>` : ""}${r.note && (!ok || /확인 필요|별도 확인/.test(r.note)) ? `<div class="ed-note">${esc(r.note)}</div>` : ""}`; };
+  const badgeNote = (r) => { const ok = (ES[r.status] || [])[0] === "ok"; return `${r.unverified && r.reason ? `<div class="ed-note">${esc(r.reason)}</div>` : ""}${r.note && (!ok || /확인 필요|별도 확인/.test(r.note)) ? `<div class="ed-note">${esc(r.note)}</div>` : ""}`; };
   const badge = (r) => badgeMain(r) + badgeNote(r);
   // 출처: 문장 끝 밑줄 링크. 링크 없는 배부·교육청 자료는 짧은 라벨(전체 설명은 툴팁).
   const src = (r) => {
@@ -62,9 +64,10 @@ export function register(views, { $, esc, load, store }) {
     return `${day(e.start)}~${tail}`;
   };
   // 상태 필터: 확정·원문 확인은 "확인됨"으로 묶는다(화면에는 확정 표시를 하지 않는다).
-  const stKey = (r) => ((ES[r.status] || [])[0] === "ok" ? "ok" : r.status);
+  const SLABEL = { ok: "확인됨", rep: "보도", est: "추정", unk: "미정" };
+  const stKey = (r) => (ES[r.status] || ["unk"])[0] || "unk";
   const stMatch = (r, f) => !f || stKey(r) === f;
-  const statusSelect = (rows) => { const keys = [...new Set(rows.map(stKey))].sort((a, b) => (a === "ok" ? -1 : b === "ok" ? 1 : 0)); return `<div class="ed-filter" id="pstw" role="group" aria-label="상태 필터"><span>상태</span><button type="button" class="on" data-st="">전체 ${rows.length}</button>${keys.map((k) => `<button type="button" data-st="${k}">${k === "ok" ? "확인됨" : ES[k] ? ES[k][1] : k} ${rows.filter((r) => stKey(r) === k).length}</button>`).join("")}</div>`; };
+  const statusSelect = (rows) => { const keys = [...new Set(rows.map(stKey))].sort((a, b) => (a === "ok" ? -1 : b === "ok" ? 1 : 0)); return `<div class="ed-filter" id="pstw" role="group" aria-label="상태 필터"><span>상태</span><button type="button" class="on" data-st="">전체 ${rows.length}</button>${keys.map((k) => `<button type="button" data-st="${k}">${SLABEL[k] || k} ${rows.filter((r) => stKey(r) === k).length}</button>`).join("")}</div>`; };
   const dateOf = (t) => (t.match(/^\d{4}-\d{2}(-\d{2})?/) || [""])[0];
 
   // 상단 안내문은 수능 세부 범위 행(adm-07)의 body를 읽어, 문구를 policy.json 한 곳에서 관리한다.
@@ -150,7 +153,7 @@ export function register(views, { $, esc, load, store }) {
       return Object.entries(st).filter(([, v]) => v.changedAt && now - new Date(v.changedAt) < 30 * 86400000).map(([id, v]) => {
         const it = (wl.items || []).find((x) => x.id === id); if (!it) return null;
         const c = new Date(v.changedAt), d = `${c.getFullYear()}-${String(c.getMonth() + 1).padStart(2, "0")}-${String(c.getDate()).padStart(2, "0")}`;
-        return { id: `watch-${id}`, topic: "change-log", title: `${d} ${it.name} 페이지가 바뀌었어요`, body: "감시 봇이 감지했어요. 내용은 아직 확인 전이에요.", status: "estimated", unverified: true, reason: "감시 봇이 감지했고 내용은 아직 확인 전", sources: [{ name: "원문 열기", url: it.url }] };
+        return { id: `watch-${id}`, topic: "change-log", title: `${d} ${it.name} 페이지가 바뀌었어요`, body: "감시 봇이 감지했어요. 공식 문서로 확인 중이에요.", status: "estimated", unverified: true, reason: "감시 봇이 감지했고 공식 문서로 확인 중이에요", sources: [{ name: "원문 열기", url: it.url }] };
       }).filter(Boolean);
     } catch { return []; }
   };
@@ -169,7 +172,7 @@ export function register(views, { $, esc, load, store }) {
       await roadmapView(el.querySelector("#rdhost"), { load, esc, learner: curProfile(), fmt, badgeMain, notice, store });
       return;
     }
-    const all = filterByProfile(await load("policy"), curProfile().id, { grade3: true }); // 현고3 행은 아래 칩(audience)이 걸러 준다
+    const all = filterByProfile(await load("policy"), curProfile().id, { grade3: true }).map(plainRow); // 현고3 행은 아래 칩(audience)이 걸러 준다
     const rows = all.filter((r) => r.topic === ({ univ: "exam-schedule", life: "life-schedule" }[tab] || "hs-schedule") || (tab === "hs" && r.topic === "gg-hs-entry" && r.events) || (r.topic === "profile-2033" && (tab === "hs" ? /고입/.test(r.title) : tab === "univ" && r.events)));
     const chips = '<div id="aud"></div>'; // 칩 UI·저장(portal.audience)은 home.js와 공유
     el.innerHTML = `${tabs([["hs", "#schedule?t=hs", "고입"], ["univ", "#schedule?t=univ", "대입"], ["life", "#schedule?t=life", "졸업·입학"], ["road", "#schedule?t=road", "학년별"]], tab)}${notice()}
@@ -208,7 +211,7 @@ export function register(views, { $, esc, load, store }) {
       ${gg.length ? `<h2>경기 고입 안내 <small>2027학년도</small> ${cnt(gg.length)}</h2>${cards(gg)}` : ""}
       ${asg.length ? `<h2>추첨으로 배정되는 지역의 고교 배정(용인 평준화 배정) <small>2026학년도 기준 참고</small> ${cnt(asg.length)}</h2>
       <p class="ed-big">우리 4개교(풍덕·성복·수지·홍천)는 모두 <em>2구역</em></p>
-      <p class="ed-src">아직 원문 확인 전이에요. 2027 규칙은 한 번 더 확인해요.</p>
+      <p class="ed-src">공식 문서로 확인 중이에요. 2027 규칙은 한 번 더 확인해요.</p>
       ${cards(asg, { cls: (r) => (r.id === "asg-02" ? "hl" : "") })}` : ""}
       ${credit ? `<h2>고교학점제 <small>입학 후 제도</small></h2>
       <p class="ed-b">${esc(credit.body)}</p><p class="ed-s">${badgeMain(credit)} · <a href="#life/credit">고교학점제 이해에서 자세히 봐요</a></p>` : ""}

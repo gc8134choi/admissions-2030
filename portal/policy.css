@@ -175,3 +175,7 @@ tr.g3,tr.g3 td,tr.g3 a{color:var(--e-mute)}
 .bf ul{margin:4px 0;padding-left:1.1em;line-height:1.7}.bf-s h4{margin:14px 0 2px}.bf-h{list-style:none;margin-left:-1.1em;margin-top:6px}.bf-h ul{margin-left:0}.bf-part{margin:12px 0 0}.bf-c{color:var(--muted);font-size:11px;margin-left:4px}
 /* 고교 비교표: 첫 열(학교 이름)을 고정하고 가로로 밀어 본다 */
 .hsc{overflow-x:auto;max-width:100%}.hsc table{min-width:720px}.hsc .hsc-name{position:sticky;left:0;background:var(--paper2,var(--panel));text-align:left;white-space:nowrap;z-index:1}.hsc-meta{max-width:16em}
+/* 중학교 배정: 초등학교 선택·학교 표·접이식 원칙 */
+.mid-pick{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:8px 0}.mid-pick select{min-height:44px;padding:0 12px;font:inherit;max-width:100%}.mid-btn{min-height:44px;display:inline-flex;align-items:center;color:var(--accent)}
+.mid-tbl table{min-width:0;width:100%}.mid-nm{white-space:nowrap;text-align:left}.mid-lk a{margin-right:10px;white-space:nowrap}
+.mid-pr{border-top:1px solid var(--line)}.mid-pr summary{cursor:pointer;padding:10px 0;min-height:44px;display:flex;align-items:center;gap:8px}
