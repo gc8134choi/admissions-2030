@@ -166,3 +166,30 @@ table.policy td{font-size:14px;line-height:1.5}
   .ledger .lg .stg{display:inline-flex}
 }
 @media (min-width:900px) and (max-width:1279px){.ledger .lg{grid-template-columns:9em minmax(0,1fr) auto}.ledger .lg-m{grid-column:2 / -1;justify-content:flex-start;flex-wrap:wrap;white-space:normal}.ledger .lg-m .src{max-width:none}}
+
+/* ===== v2 완성도 패스(A안): 반경 16·알약, 테두리 1px·그림자 1종, 행 구분선→간격, 3단 타이포, 미세 모션 ===== */
+:root{--gl-sh:0 1px 0 rgba(255,255,255,.06) inset,0 12px 32px -16px rgba(0,0,0,.55);--r1:16px;--r2:16px}
+@media (prefers-color-scheme:light){:root{--gl-sh:0 1px 0 rgba(255,255,255,.7) inset,0 10px 28px -16px rgba(90,50,20,.35)}}
+.dp,.ledger,.hub,.school,.ms,.tw,.note,.ed-top,.piece,.ed-row{border-radius:16px;border:1px solid var(--glass-line);box-shadow:var(--gl-sh)}
+.dp,.ledger{padding:16px 18px}
+.sec-h h2{font-size:15px;font-weight:650;letter-spacing:-.01em}
+.sec-h h2 em{display:block;font-style:normal;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--pencil);margin:0 0 2px}
+.sec-h a{font-size:13px;color:var(--pencil);text-decoration:none}.sec-h a:hover{color:var(--ink)}
+.dp li,.cmx li,.row{border-top:0}
+.ledger .lg{border-top:0;border-radius:10px;padding:6px 8px;margin:0 -8px}
+.ledger .lg:hover{background:var(--glass-in)}
+.ledger .lg.first{background:color-mix(in srgb,var(--accent) 12%,transparent)}
+.ledger .lg.first .d,.ledger .lg.first .lg-t{font-size:17px}
+.ms-n{font-size:34px;letter-spacing:-.03em}
+.hub{padding:14px 16px}
+@media (prefers-reduced-motion:no-preference){
+  .dp,.ledger,.hub,.school,.ms,.ed-row,.chip,.fchip,.btn,#topnav a,.lg{transition:background-color .18s ease,border-color .18s ease,transform .18s ease,box-shadow .18s ease}
+  .hub:hover,.school:hover,.ed-row:hover{transform:translateY(-2px)}
+}
+.chip:focus-visible,.fchip:focus-visible,.btn:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:899px){
+  .ledger .lg+.lg{border-top:1px solid var(--glass-line);border-radius:0}
+  .ledger .lg:nth-child(n+4){display:none}
+  .ledger .lg-m .src{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;display:inline-block}
+  .ledger .lg-m{flex-wrap:nowrap}
+}
