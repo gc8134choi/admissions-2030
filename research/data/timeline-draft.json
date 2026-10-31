@@ -14,7 +14,13 @@
         "name": "경기도용인교육지원청 중학교 신입생 배정 안내",
         "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318"
       },
-      "note": "수지1중학군 9교(2027학년도 고시 제2026-24호 확인)"
+      "note": "수지1중학군 9교(2027학년도 고시 제2026-24호 확인)",
+      "policyIds": [
+        "life-03",
+        "life-04",
+        "life-05",
+        "life-06"
+      ]
     },
     {
       "id": "tl-02",
@@ -26,7 +32,11 @@
         "name": "경기도용인교육지원청 중학교 신입생 배정 안내",
         "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318"
       },
-      "note": null
+      "note": null,
+      "policyIds": [
+        "life-07",
+        "life-08"
+      ]
     },
     {
       "id": "tl-03",
@@ -38,7 +48,10 @@
         "name": "경기도교육청 2027학년도 고등학교 입학 내신성적 반영지침 주요 변경사항(2027~2029학년도)",
         "url": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/133745f2-115e-4a50-b297-e7f2cd7de910.pdf"
       },
-      "note": "자유학기·자유학년 시행 학기 성적은 고입 내신에 반영하지 않음"
+      "note": "자유학기·자유학년 시행 학기 성적은 고입 내신에 반영하지 않음",
+      "policyIds": [
+        "gg-05"
+      ]
     },
     {
       "id": "tl-04",
@@ -98,7 +111,11 @@
         "name": "경기도교육청 보도자료: 2027학년도 경기도 고등학교 입학전형 기본계획(2026.3.30)",
         "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2344685&mi=10102&searchAt1=&searchValue1="
       },
-      "note": "2027학년도 일정을 준용한 추정"
+      "note": "2027학년도 일정을 준용한 추정",
+      "policyIds": [
+        "gg-02",
+        "gg-04"
+      ]
     },
     {
       "id": "tl-09",
@@ -110,7 +127,11 @@
         "name": "고교학점제 종합지원포털(교육부) 졸업·이수 기준",
         "url": "https://www.hscredit.kr/about/graduation"
       },
-      "note": "2030 입학 시점 세부는 그해 기준 확인"
+      "note": "2030 입학 시점 세부는 그해 기준 확인",
+      "policyIds": [
+        "hs-11",
+        "hs-12"
+      ]
     },
     {
       "id": "tl-10",

@@ -1180,7 +1180,7 @@
             "name": "학교알리미",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
           },
-          "nullReason": "편제표를 아직 수집하지 않은 학교(학교알리미 '학교교육과정 편성·운영 및 평가' 항목은 문서 첨부라 이번에 읽지 않음)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
@@ -1396,7 +1396,7 @@
             "name": "학교알리미",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
           },
-          "nullReason": "편제표를 아직 수집하지 않은 학교(학교알리미 '학교교육과정 편성·운영 및 평가' 항목은 문서 첨부라 이번에 읽지 않음)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
@@ -1612,7 +1612,7 @@
             "name": "학교알리미",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
           },
-          "nullReason": "편제표를 아직 수집하지 않은 학교(학교알리미 '학교교육과정 편성·운영 및 평가' 항목은 문서 첨부라 이번에 읽지 않음)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
@@ -1828,7 +1828,7 @@
             "name": "학교알리미",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
           },
-          "nullReason": "편제표를 아직 수집하지 않은 학교(학교알리미 '학교교육과정 편성·운영 및 평가' 항목은 문서 첨부라 이번에 읽지 않음)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
@@ -2044,7 +2044,7 @@
             "name": "학교알리미",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
           },
-          "nullReason": "편제표를 아직 수집하지 않은 학교(학교알리미 '학교교육과정 편성·운영 및 평가' 항목은 문서 첨부라 이번에 읽지 않음)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
@@ -2260,7 +2260,7 @@
             "name": "학교알리미",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
           },
-          "nullReason": "편제표를 아직 수집하지 않은 학교(학교알리미 '학교교육과정 편성·운영 및 평가' 항목은 문서 첨부라 이번에 읽지 않음)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
@@ -2402,49 +2402,49 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "classesDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "students": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "studentsDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "teachers": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perClass": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perTeacher": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
           "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -2471,14 +2471,14 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "univStats": {
           "value": null,
@@ -2492,7 +2492,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "canteen": {
           "value": null,
@@ -2520,7 +2520,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "homepage": {
           "value": "https://koosung-h.goeyi.kr/",
@@ -2584,49 +2584,49 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "classesDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "students": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "studentsDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "teachers": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perClass": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perTeacher": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
           "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -2653,14 +2653,14 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "univStats": {
           "value": null,
@@ -2674,7 +2674,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "canteen": {
           "value": null,
@@ -2702,7 +2702,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "homepage": {
           "value": "https://giheung-h.goeyi.kr/",
@@ -2766,49 +2766,49 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "classesDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "students": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "studentsDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "teachers": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perClass": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perTeacher": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
           "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -2835,14 +2835,14 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "univStats": {
           "value": null,
@@ -2856,7 +2856,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "canteen": {
           "value": null,
@@ -2884,7 +2884,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "homepage": {
           "value": "http://dongbaek-h.goeyi.kr/",
@@ -2948,49 +2948,49 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "classesDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "students": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "studentsDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "teachers": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perClass": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perTeacher": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
           "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -3017,14 +3017,14 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "univStats": {
           "value": null,
@@ -3038,7 +3038,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "canteen": {
           "value": null,
@@ -3066,7 +3066,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "homepage": {
           "value": "http://bora-h.goeyi.kr/",
@@ -3130,49 +3130,49 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "classesDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "students": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "studentsDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "teachers": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perClass": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perTeacher": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
           "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -3199,14 +3199,14 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "univStats": {
           "value": null,
@@ -3220,7 +3220,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "canteen": {
           "value": null,
@@ -3248,7 +3248,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "homepage": {
           "value": "http://bojeong-h.goeyi.kr",
@@ -3312,49 +3312,49 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "classesDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "students": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "studentsDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "teachers": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perClass": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perTeacher": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
           "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -3381,14 +3381,14 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "univStats": {
           "value": null,
@@ -3402,7 +3402,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "canteen": {
           "value": null,
@@ -3430,7 +3430,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "homepage": {
           "value": "http://seocheon-h.goeyi.kr/",
@@ -3494,49 +3494,49 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "classesDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "students": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "studentsDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "teachers": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perClass": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perTeacher": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
           "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -3563,14 +3563,14 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "univStats": {
           "value": null,
@@ -3584,7 +3584,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "canteen": {
           "value": null,
@@ -3612,7 +3612,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "homepage": {
           "value": "https://seongji-h.goeyi.kr",
@@ -3676,49 +3676,49 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "classesDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "students": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "studentsDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "teachers": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perClass": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perTeacher": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
           "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -3745,14 +3745,14 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "univStats": {
           "value": null,
@@ -3766,7 +3766,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "canteen": {
           "value": null,
@@ -3794,7 +3794,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "homepage": {
           "value": "http://shingal-h.goeyi.kr",
@@ -3858,49 +3858,49 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "classesDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "students": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "studentsDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "teachers": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perClass": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perTeacher": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
           "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -3927,14 +3927,14 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "univStats": {
           "value": null,
@@ -3948,7 +3948,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "canteen": {
           "value": null,
@@ -3976,7 +3976,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "homepage": {
           "value": "http://baekhyun-h.goeyi.kr",
@@ -4040,49 +4040,49 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "classesDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "students": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "studentsDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "teachers": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perClass": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perTeacher": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
           "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -4109,14 +4109,14 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "univStats": {
           "value": null,
@@ -4130,7 +4130,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "canteen": {
           "value": null,
@@ -4158,7 +4158,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "homepage": {
           "value": "https://cheongdeok-h.goeyi.kr",
@@ -4222,49 +4222,49 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "classesDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "students": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "studentsDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "teachers": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perClass": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perTeacher": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
           "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -4291,14 +4291,14 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "univStats": {
           "value": null,
@@ -4312,7 +4312,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "canteen": {
           "value": null,
@@ -4340,7 +4340,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "homepage": {
           "value": "http://chodang-h.goeyi.kr",
@@ -4404,49 +4404,49 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "classesDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "students": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "studentsDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "teachers": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perClass": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perTeacher": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
           "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -4473,14 +4473,14 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "univStats": {
           "value": null,
@@ -4494,7 +4494,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "canteen": {
           "value": null,
@@ -4522,7 +4522,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "homepage": {
           "value": "http://hd-h.goeyi.kr",
@@ -4586,49 +4586,49 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "classesDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "students": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "studentsDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "teachers": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perClass": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perTeacher": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
           "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -4655,14 +4655,14 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "univStats": {
           "value": null,
@@ -4676,7 +4676,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "canteen": {
           "value": null,
@@ -4704,7 +4704,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "homepage": {
           "value": "http://gorim-h.goeyi.kr",
@@ -4768,49 +4768,49 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "classesDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "students": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "studentsDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "teachers": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perClass": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perTeacher": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
           "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -4837,14 +4837,14 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "univStats": {
           "value": null,
@@ -4858,7 +4858,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "canteen": {
           "value": null,
@@ -4886,7 +4886,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "homepage": {
           "value": "https://yongin-h.goeyi.kr/",
@@ -4950,49 +4950,49 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "classesDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "students": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "studentsDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "teachers": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perClass": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perTeacher": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
           "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -5019,14 +5019,14 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "univStats": {
           "value": null,
@@ -5040,7 +5040,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "canteen": {
           "value": null,
@@ -5068,7 +5068,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "homepage": {
           "value": "http://yisamgye-h.goeyi.kr",
@@ -5132,49 +5132,49 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "classesDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "students": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "studentsDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "teachers": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perClass": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perTeacher": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
           "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -5201,14 +5201,14 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "univStats": {
           "value": null,
@@ -5222,7 +5222,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "canteen": {
           "value": null,
@@ -5250,7 +5250,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "homepage": {
           "value": "http://www.goeyi.kr/jindeok-h/main.do",
@@ -5314,49 +5314,49 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "classesDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "students": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "studentsDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "teachers": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perClass": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perTeacher": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
           "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -5383,14 +5383,14 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "univStats": {
           "value": null,
@@ -5404,7 +5404,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "canteen": {
           "value": null,
@@ -5432,7 +5432,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "homepage": {
           "value": "http://pogok-h.goeyi.kr",
@@ -5496,49 +5496,49 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "classesDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "students": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "studentsDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "teachers": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perClass": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perTeacher": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
           "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -5565,14 +5565,14 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "univStats": {
           "value": null,
@@ -5586,7 +5586,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "canteen": {
           "value": null,
@@ -5614,7 +5614,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "homepage": {
           "value": "http://taesung-h.goeyi.kr",
@@ -5678,49 +5678,49 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "classesDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "students": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "studentsDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "teachers": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perClass": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perTeacher": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
           "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -5747,14 +5747,14 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "univStats": {
           "value": null,
@@ -5768,7 +5768,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "canteen": {
           "value": null,
@@ -5796,7 +5796,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "homepage": {
           "value": "https://cheoin-h.goeyi.kr/",
@@ -5860,49 +5860,49 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "classesDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "students": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "studentsDetail": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "teachers": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perClass": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "perTeacher": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
           "value": null,
@@ -5923,14 +5923,14 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "univStats": {
           "value": null,
@@ -5944,7 +5944,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "canteen": {
           "value": null,
@@ -5972,7 +5972,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "homepage": {
           "value": "http://baegam-h.goeyi.kr",
@@ -6099,14 +6099,14 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "subjectCount": {
           "value": null,
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "편제표 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "univStats": {
           "value": null,
@@ -6120,7 +6120,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 수치 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "canteen": {
           "value": null,
@@ -6148,7 +6148,7 @@
           "asOf": null,
           "status": null,
           "source": null,
-          "nullReason": "학교알리미 학교 코드 미수집"
+          "nullReason": "공식 문서로 확인 중이에요"
         },
         "homepage": {
           "value": "http://www.hafs.hs.kr",
