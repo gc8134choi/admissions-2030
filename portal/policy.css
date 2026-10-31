@@ -179,3 +179,6 @@ tr.g3,tr.g3 td,tr.g3 a{color:var(--e-mute)}
 .mid-pick{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:8px 0}.mid-pick select{min-height:44px;padding:0 12px;font:inherit;max-width:100%}.mid-btn{min-height:44px;display:inline-flex;align-items:center;color:var(--accent)}
 .mid-tbl table{min-width:0;width:100%}.mid-nm{white-space:nowrap;text-align:left}.mid-lk a{margin-right:10px;white-space:nowrap}
 .mid-pr{border-top:1px solid var(--line)}.mid-pr summary{cursor:pointer;padding:10px 0;min-height:44px;display:flex;align-items:center;gap:8px}
+/* 용어사전 ⓘ (glossary.js): 과목 설명 ⓘ(.si)와 같은 모양, 터치 영역은 넉넉히 */
+.gl-i{border:0;background:none;color:var(--mute,var(--muted));cursor:pointer;font:inherit;font-size:12px;line-height:1;padding:4px 5px;margin-left:1px;border-radius:50%;vertical-align:baseline;min-width:24px;min-height:24px}
+.gl-i:hover,.gl-i[aria-expanded="true"]{background:var(--soft,rgba(0,0,0,.06))}.gl-i:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
