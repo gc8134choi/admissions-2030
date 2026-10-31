@@ -1,7 +1,7 @@
 {
  "_meta": {
   "note": "학습자별 학년별 시기표(생성물, 손으로 고치지 않는다). research/data/roadmap-draft.json에서 tools/build-roadmap.mjs가 만든다.",
-  "checkedAt": "2026-10-25",
+  "checkedAt": "2026-10-31",
   "learners": {
    "A": {
     "entryYear": 2027,
@@ -372,6 +372,81 @@
    "checkedAt": "2026-10-25"
   },
   {
+   "id": "rm-b-09",
+   "learner": "B",
+   "when": "2026-11-02~2026-11-13",
+   "start": "2026-11-02",
+   "end": "2026-11-13",
+   "stage": "초6",
+   "stageKey": "-4",
+   "stageOrder": -8,
+   "who": [
+    "학생",
+    "학부모"
+   ],
+   "what": "중학교 배정원서 작성(출신 초등학교 11.2~11.6)·접수(용인교육지원청 11.9~11.13). 수지1중학군은 학교군 내 희망 순 지망, 2지망부터 근거리 5개교",
+   "status": "confirmed",
+   "unverified": false,
+   "note": "현 초6의 중학교 배정 일정(2027학년도 중입)",
+   "sourceName": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획 일정, 2030학년도는 참고)",
+   "sourceUrl": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
+   "refs": [
+    "life-03",
+    "life-04",
+    "life-11"
+   ],
+   "region": "gyeonggi",
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "rm-b-10",
+   "learner": "B",
+   "when": "2026-12-31",
+   "start": "2026-12-31",
+   "stage": "초6 겨울",
+   "stageKey": "-4w",
+   "stageOrder": -7,
+   "who": [
+    "학생",
+    "학부모"
+   ],
+   "what": "중학교 배정학교 발표(12.31, 출신 초등학교)",
+   "status": "confirmed",
+   "unverified": false,
+   "sourceName": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획 일정, 2030학년도는 참고)",
+   "sourceUrl": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
+   "refs": [
+    "life-06"
+   ],
+   "region": "gyeonggi",
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "rm-b-11",
+   "learner": "B",
+   "when": "2027-01-04~2027-01-22",
+   "start": "2027-01-04",
+   "end": "2027-01-22",
+   "stage": "초6 겨울",
+   "stageKey": "-4w",
+   "stageOrder": -7,
+   "who": [
+    "학생",
+    "학부모"
+   ],
+   "what": "중학교 신입생 등록 1.4~1.7, 재배정 접수 1.11~1.15·발표 1.22",
+   "status": "confirmed",
+   "unverified": false,
+   "sourceName": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획 일정, 2030학년도는 참고)",
+   "sourceUrl": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
+   "refs": [
+    "life-07",
+    "life-08"
+   ],
+   "region": "gyeonggi",
+   "checkedAt": "2026-10-31"
+  },
+  {
    "id": "rm-b-01",
    "learner": "B",
    "when": "2027-03",
@@ -395,6 +470,148 @@
    ],
    "region": "national",
    "checkedAt": "2026-10-25"
+  },
+  {
+   "id": "rm-b-12",
+   "learner": "B",
+   "when": "2027-03",
+   "start": "2027-03",
+   "stage": "중1",
+   "stageKey": "-3",
+   "stageOrder": -6,
+   "who": [
+    "학생"
+   ],
+   "what": "중학교 입학(중1). 자유학기제·자유학년제 시행 학기의 교과 성적은 고입 내신에 반영하지 않음(2027학년도 경기 지침 기준)",
+   "status": "confirmed",
+   "unverified": false,
+   "sourceName": "경기도교육청 2027학년도 고등학교 입학 내신성적 반영지침 주요 변경사항(2027~2029학년도)",
+   "sourceUrl": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/133745f2-115e-4a50-b297-e7f2cd7de910.pdf",
+   "refs": [
+    "gg-05"
+   ],
+   "region": "gyeonggi",
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "rm-b-13",
+   "learner": "B",
+   "when": "2027-03",
+   "start": "2027-03",
+   "stage": "중1",
+   "stageKey": "-3",
+   "stageOrder": -6,
+   "who": [
+    "학부모"
+   ],
+   "what": "경기 2030학년도 고입 내신성적 반영지침 예고(안) 게시 무렵(지침 변경은 적용 연도 3년 전 사전예고가 원칙)",
+   "status": "estimated",
+   "unverified": false,
+   "note": "2029학년도 예고(안)이 2026.3에 게시된 간격을 근거로 한 추정",
+   "sourceName": "경기도교육청 2027학년도 고등학교 입학 내신성적 반영지침 주요 변경사항(2027~2029학년도)",
+   "sourceUrl": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/133745f2-115e-4a50-b297-e7f2cd7de910.pdf",
+   "refs": [
+    "gg-05"
+   ],
+   "region": "gyeonggi",
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "rm-b-14",
+   "learner": "B",
+   "when": "2027-09~2027-12",
+   "start": "2027-09",
+   "end": "2027-12",
+   "stage": "중1",
+   "stageKey": "-3",
+   "stageOrder": -6,
+   "who": [
+    "학생"
+   ],
+   "what": "중1 2학기: 고입 내신에 반영되는 첫 학기(일반교과 12점, 2027학년도 지침 기준)",
+   "status": "estimated",
+   "unverified": false,
+   "note": "2030학년도 고입 지침은 예고 전이라 2027학년도 구조를 참고로만 씀",
+   "sourceName": "경기도교육청 2027학년도 고등학교 입학 내신성적 반영지침 주요 변경사항(2027~2029학년도)",
+   "sourceUrl": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/133745f2-115e-4a50-b297-e7f2cd7de910.pdf",
+   "refs": [
+    "gg-05"
+   ],
+   "region": "gyeonggi",
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "rm-b-15",
+   "learner": "B",
+   "when": "2028-03~2029-02",
+   "start": "2028-03",
+   "end": "2029-02",
+   "stage": "중2",
+   "stageKey": "-2",
+   "stageOrder": -4,
+   "who": [
+    "학생"
+   ],
+   "what": "중2: 일반교과 48점(24%) 반영 학년. 학교 활동·출결·봉사 기록 관리",
+   "status": "estimated",
+   "unverified": false,
+   "note": "2028학년도 입학전형부터 봉사활동 실적 미반영·출결 강화 예고 → 2030학년도 입학 시점 구조는 달라질 수 있음",
+   "sourceName": "경기도교육청 2027학년도 고등학교 입학 내신성적 반영지침 주요 변경사항(2027~2029학년도)",
+   "sourceUrl": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/133745f2-115e-4a50-b297-e7f2cd7de910.pdf",
+   "refs": [
+    "gg-05"
+   ],
+   "region": "gyeonggi",
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "rm-b-16",
+   "learner": "B",
+   "when": "2029-03~2029-12",
+   "start": "2029-03",
+   "end": "2029-12",
+   "stage": "중3",
+   "stageKey": "-1",
+   "stageOrder": -2,
+   "who": [
+    "학생"
+   ],
+   "what": "중3: 일반교과 60점(30%) 반영 학년, 3학년 2학기 1차 정기시험까지 반영(2027학년도 기준). 고교 유형(일반고·외고·자사고 등) 결정과 설명회 참석",
+   "status": "estimated",
+   "unverified": false,
+   "sourceName": "경기도교육청 2027학년도 고등학교 입학 내신성적 반영지침 주요 변경사항(2027~2029학년도)",
+   "sourceUrl": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/133745f2-115e-4a50-b297-e7f2cd7de910.pdf",
+   "refs": [
+    "gg-05",
+    "gg-06",
+    "gg-07"
+   ],
+   "region": "gyeonggi",
+   "checkedAt": "2026-10-31"
+  },
+  {
+   "id": "rm-b-17",
+   "learner": "B",
+   "when": "2029-10~2029-11",
+   "start": "2029-10",
+   "end": "2029-11",
+   "stage": "중3",
+   "stageKey": "-1",
+   "stageOrder": -2,
+   "who": [
+    "학부모"
+   ],
+   "what": "경기 평준화 학군별 학생배정방안 온라인 설명회 시기 무렵(2027학년도는 2026.10.19~11.27)",
+   "status": "estimated",
+   "unverified": true,
+   "note": "2027학년도 시기를 3년 뒤로 옮긴 추정",
+   "sourceName": "경기도교육청 고입·전학 포털(2027학년도 평준화 배정 방안, 시기 참고)",
+   "sourceUrl": "https://satp.goe.go.kr/main.do",
+   "refs": [
+    "gg-08"
+   ],
+   "region": "gyeonggi",
+   "checkedAt": "2026-10-31"
   },
   {
    "id": "rm-b-02",
