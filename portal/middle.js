@@ -4,6 +4,7 @@
 import { placeInfo } from "./map.js";
 import { stageOf, stageTag } from "./stage.js";
 import { plain } from "./plain.js";
+import { preloadGlossary, decorateGlossary } from "./glossary.js";
 const ES = { reported: ["rep", "보도"], estimated: ["est", "추정"] };
 const tag = (s, esc) => (ES[s] ? `<span class="es ${ES[s][0]}">${ES[s][1]}</span>` : "");
 const srcs = (a, esc) => (a || []).map((x) => (x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>` : esc(x.name))).join(" · ");
@@ -72,6 +73,8 @@ export async function middleBody(el, { load, esc, mapHref = (id) => `#select/cur
         ${near ? `<p class="muted small">근거리 중학교 명단은 교육지원청 공지 첨부에서 확인할 수 있어요.${near.sources?.length ? ` 출처 ${srcs(near.sources, esc)}` : ""}</p>` : ""}</aside>
     </div></div>`;
     el.querySelector("#mid-from").onchange = (e) => { st.from = e.target.value; draw(); };
+    decorateGlossary(el); // 학교군·지망·재배정 등 용어 ⓘ
   };
+  await preloadGlossary(load);
   draw();
 }
