@@ -1,0 +1,18 @@
+/* A안 정돈된 유리: 반경 2종(16/999), 테두리 1px 하나, 그림자 하나, 행 구분선 제거(간격으로), 라벨 12.5/제목 16/숫자 28~36 3단 대비 */
+:root{--r1:16px;--r2:16px;--r3:999px;--gl-sh:0 1px 0 rgba(255,255,255,.06) inset,0 12px 32px -16px rgba(0,0,0,.55)}
+.dp,.ledger,.hub,.school,.ms,.tw,.note,.ed-top,.piece,.ed-row{border-radius:16px!important;box-shadow:var(--gl-sh)!important;border:1px solid var(--glass-line)!important}
+.dp,.ledger{padding:16px 18px!important}
+.sec-h{margin-bottom:10px}
+.sec-h h2{font-size:15px!important;font-weight:650!important;letter-spacing:-.01em}
+.sec-h h2 em{display:block;font-style:normal;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--pencil);margin:0 0 2px}
+.sec-h a{font-size:13px;color:var(--pencil);text-decoration:none}.sec-h a:hover{color:var(--ink)}
+.ledger .lg,.dp li,.cmx li,.row{border-top:0!important}
+.ledger .lg{min-height:44px;border-radius:10px;padding:6px 8px!important;margin:0 -8px;transition:background .15s}
+.ledger .lg:hover{background:var(--glass-in)}
+.ledger .lg .d.num{font-size:18px}
+.ledger .lg.first{background:color-mix(in srgb,var(--accent) 12%,transparent);}
+.ledger .lg.first .d,.ledger .lg.first .lg-t{font-size:17px}
+.ms-t b,.ms-n{font-size:34px!important;letter-spacing:-.03em}
+.auxbar,.ping{opacity:.9}
+.hub{padding:14px 16px!important}
+body::before{filter:saturate(.9)}

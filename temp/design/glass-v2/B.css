@@ -1,0 +1,16 @@
+/* B안 에디토리얼: 패널은 테두리 없이 위 헤어라인만, 큰 숫자·넓은 간격, 유리는 강조 패널(가까운 일정·허브)에만 */
+:root{--r1:20px;--r2:20px;--r3:999px}
+.dp,.hub,.school,.tw,.note,.ed-top,.piece,.ed-row{background:transparent!important;border:0!important;border-top:1px solid var(--glass-line)!important;border-radius:0!important;box-shadow:none!important;padding:16px 0 20px!important}
+.ledger{border-radius:22px!important;padding:20px 24px!important;border:1px solid var(--glass-line)!important;background:var(--glass)!important;box-shadow:0 18px 40px -20px rgba(0,0,0,.6)!important}
+.ms{border-radius:20px!important}
+.sec-h h2{font-size:20px!important;font-weight:700!important;letter-spacing:-.02em}
+.sec-h h2 em{display:none}
+.sec-h a{font-size:13px;color:var(--pencil)}
+.ledger .lg{border-top:0!important;min-height:48px}
+.ledger .lg+.lg{border-top:1px dashed var(--glass-line)!important}
+.ledger .lg .d.num{font-size:22px;font-weight:700}
+.ledger .lg.first .d{font-size:26px}.ledger .lg.first .lg-t{font-size:22px}
+.ms-t b,.ms-n{font-size:44px!important;letter-spacing:-.04em}
+.hub{padding:16px 0!important}
+.hub.open,.hub.cur{border:1px solid var(--accent)!important;border-radius:20px!important;padding:16px!important}
+.hm .h-row2,.h-row4,.h-row5,.h-rest{gap:var(--sp-5)!important}
