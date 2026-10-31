@@ -4,6 +4,7 @@ import { loadProfile, profileOf, filterByProfile } from "./profile.js";
 import { STAGES, stageOf, stageTag } from "./stage.js";
 import { typesBody } from "./admission-types.js";
 import { plain, plainRow } from "./plain.js";
+import { preloadGlossary, decorateGlossary } from "./glossary.js";
 import { loadAudience, saveAudience, toggleAudience, audienceMatch, audienceChips } from "./home.js";
 
 // 제도·일정 화면(대입 제도, 일정, 고교 유형·전형, 바뀐 소식). 데이터는 data/policy.json. 스타일은 policy.css(A안 에디토리얼).
@@ -222,4 +223,10 @@ export function register(views, { $, esc, load, store }) {
       <div class="ed-op"><p>학원 설명회의 의견이에요. 확인된 사실이 아니라서 위 내용과 구분해서 봐요.</p>${cards(opn)}</div>` : ""}
       <p class="ed-src">고입 전형 일정은 <a href="#schedule">일정</a>의 고입 탭에서 볼 수 있어요.</p></div>`;
   };
+  // 용어사전: 본문에 나온 어려운 용어(학교군·지망·평준화 등)의 첫 등장에 ⓘ 풀이를 붙인다(glossary.js). 풀이가 없으면 아무것도 바꾸지 않는다.
+  for (const name of ["system", "schedule", "types", "credit"]) {
+    const orig = views[name];
+    if (typeof orig !== "function") continue;
+    views[name] = async (el, ...a) => { const r = await orig(el, ...a); await preloadGlossary(load); decorateGlossary(el); return r; };
+  }
 }
