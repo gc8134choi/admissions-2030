@@ -81,7 +81,7 @@ export function register(views, { $, esc, load, store }) {
     const inWeek = (e) => { const s0 = e.start.length === 10 ? dn(e.start) : 99, e0 = (e.end || e.start).length === 10 ? dn(e.end || e.start) : 99; return s0 <= 7 && e0 >= 0; };
     let evs = rows.flatMap((r) => (r.events || []).map((e, i) => ({ ...e, r, first: i === 0 }))).sort((a, b) => a.start.localeCompare(b.start));
     if (week) evs = evs.filter(inWeek);
-    const tr = (e) => { const d0 = e.start.length === 10 ? dn(e.start) : null, soon = d0 != null && d0 >= 0 && d0 <= 7, live = e.start.length === 10 && d0 < 0 && (e.end || e.start) >= t; return `<tr class="${(e.end || e.start) < t ? "past" : soon ? "due" : live ? "now" : ""}"><td class="l">${soon ? `<b class="dn num">D-${d0}</b> ` : live ? '<b class="dn">진행 중</b> ' : ""}${esc(fmt(e))}</td><td class="l">${stageTag(stageOf(e.r), esc)}<b>${esc(e.r.title)}</b>${e.label ? ` · ${esc(e.label)}` : ""}${e.first ? `<div class="muted small">${esc(e.r.body)}</div>` : ""}</td><td class="l">${badge(e.r)}</td><td class="l">${src(e.r)}</td></tr>`; };
+    const tr = (e) => { const d0 = e.start.length === 10 ? dn(e.start) : null, soon = d0 != null && d0 >= 0 && d0 <= 7, live = e.start.length === 10 && d0 < 0 && (e.end || e.start) >= t; return `<tr class="${(e.end || e.start) < t ? "past" : soon ? "due" : live ? "now" : ""}"><td class="l">${stageTag(stageOf(e.r), esc)}${soon ? `<b class="dn num">D-${d0}</b> ` : live ? '<b class="dn">진행 중</b> ' : ""}${esc(fmt(e))}</td><td class="l"><b>${esc(e.r.title)}</b>${e.label ? ` · ${esc(e.label)}` : ""}${e.first ? `<div class="muted small">${esc(e.r.body)}</div>` : ""}</td><td class="l">${badge(e.r)}</td><td class="l">${src(e.r)}</td></tr>`; };
     const none = rows.filter((r) => !r.events);
     if (!evs.length && !none.length) return '<p class="note">아직 모인 일정이 없어요. 일정이 생기면 이 자리에 떠요.</p>';
     return `<p class="muted">오늘(${t}) 이전 일정은 흐리게 표시해요.</p><div class="tw"><table class="policy"><thead><tr><th class="l">날짜</th><th class="l">항목</th><th class="l">상태</th><th class="l">구분·출처</th></tr></thead><tbody>${evs.map(tr).join("")}</tbody></table></div>${none.length ? `<h2>일정 미확인</h2>${table(none, basic)}` : ""}`;
@@ -179,13 +179,16 @@ export function register(views, { $, esc, load, store }) {
       <p class="muted">${{ univ: "수능·대교협 일정이에요. 2030학년도분은 대부분 추정이에요.", life: "졸업·배정·입학 일정이에요. 추정은 (추정)으로 표시해요. 겨울방학·졸업식·신입생 예비소집 날짜는 학교마다 달라서 학교 공지로 확인해 주세요." }[tab] || "2027학년도 고입(서울 기준). 연도는 2027학년도 고입이 2026년 하반기에 진행되는 것을 기준으로 붙였어요."}</p>${chips}<div id="tl"></div>`;
     let sel = loadAudience(store);
     const SK = "portal.schedule.stage"; // 단계 필터(브라우저에만 저장, 바로가기와 같은 규칙: portal.<화면>.stage)
-    let fs = store.get(SK, ""); if (!STAGES.includes(fs)) fs = "";
+    const fsv = store.get(SK, null); let fs = STAGES.includes(fsv) ? fsv : "";
+    if (fsv === null) { const fo = store.get("portal.focus", null); if (Array.isArray(fo) && fo.length === 1 && STAGES.includes(fo[0])) fs = fo[0]; } // 홈에서 고른 "주로 보는 단계"가 하나면 처음 필터로
+    const SEK = "portal.schedule.seoul"; let seoul = !!store.get(SEK, false); // 서울 일정은 기본으로 접는다(경기 기준 화면)
+    const nSeoul = rows.filter((r) => r.region === "seoul").length;
     let wk = !!store.get("portal.schedule.week", false); // "이번 주만"(7일 안 시작·진행 중)
     const draw = () => {
-      $("#aud").innerHTML = audienceChips(sel, esc) + '<span class="muted small"> 선택 없음 = 전체</span>' + stageChips(fs, wk);
-      $("#tl").innerHTML = timeline(rows.filter((r) => audienceMatch(r.audience, sel) && (!fs || !stageOf(r) || stageOf(r) === fs)), { week: wk });
+      $("#aud").innerHTML = audienceChips(sel, esc) + '<span class="muted small"> 선택 없음 = 전체</span>' + stageChips(fs, wk) + (nSeoul ? `<div class="chipbar"><span class="flabel">지역</span><div class="chips"><button type="button" class="chip${seoul ? " on" : ""}" data-seoul aria-pressed="${seoul}">서울 일정도 보기 (${nSeoul})</button></div></div>` : "");
+      $("#tl").innerHTML = timeline(rows.filter((r) => (seoul || r.region !== "seoul") && audienceMatch(r.audience, sel) && (!fs || !stageOf(r) || stageOf(r) === fs)), { week: wk });
     };
-    $("#aud").addEventListener("click", (e) => { if (e.target.closest("[data-week]")) { wk = !wk; store.set("portal.schedule.week", wk); draw(); return; } const b = e.target.closest("[data-stage]"); if (!b) return; fs = b.dataset.stage; store.set(SK, fs); draw(); });
+    $("#aud").addEventListener("click", (e) => { if (e.target.closest("[data-seoul]")) { seoul = !seoul; store.set(SEK, seoul); draw(); return; } if (e.target.closest("[data-week]")) { wk = !wk; store.set("portal.schedule.week", wk); draw(); return; } const b = e.target.closest("[data-stage]"); if (!b) return; fs = b.dataset.stage; store.set(SK, fs); draw(); });
     $("#aud").addEventListener("click", (e) => {
       const k = e.target.closest("[data-aud]")?.dataset.aud;
       if (!k) return;
