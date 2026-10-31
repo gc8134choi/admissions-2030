@@ -41,6 +41,9 @@ for (const s of draft.schools) {
 }
 if (errs.length) { console.error(errs.join("\n")); process.exit(1); }
 
+const { plain } = await import("../portal/plain.js"); // 출처명 안의 내부 행 번호(policy gg-10 등)를 사람이 읽는 말로
+const cleanSrc = (v) => (v ? { ...v, ...(v.source?.name ? { source: { ...v.source, name: plain(v.source.name) } } : {}), ...(v.nullReason ? { nullReason: plain(v.nullReason) } : {}) } : v);
+for (const s of draft.schools) for (const k of Object.keys(s.values || {})) s.values[k] = cleanSrc(s.values[k]);
 const fields = [...draft.fields].sort((a, b) => a.order - b.order);
 const out = { _meta: { note: "고교 비교표(생성물, 손으로 고치지 않는다). research/data/hs-compare-draft.json에서 tools/build-hs-compare.mjs가 만든다. 값마다 기준연도·상태·출처가 붙는다.", checkedAt: draft._meta?.checkedAt ?? null, schoolCount: draft.schools.length }, fields, schools: draft.schools };
 const json = JSON.stringify(out, null, 1) + "\n";

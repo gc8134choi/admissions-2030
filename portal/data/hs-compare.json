@@ -2,7 +2,7 @@
  "_meta": {
   "note": "고교 비교표(생성물, 손으로 고치지 않는다). research/data/hs-compare-draft.json에서 tools/build-hs-compare.mjs가 만든다. 값마다 기준연도·상태·출처가 붙는다.",
   "checkedAt": "2026-10-29",
-  "schoolCount": 10
+  "schoolCount": 31
  },
  "fields": [
   {
@@ -284,7 +284,7 @@
      "asOf": "2027학년도",
      "status": "confirmed",
      "source": {
-      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
      "nullReason": null
@@ -354,7 +354,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 확인 못 함"
+     "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 공식 문서로 확인 중이에요"
     },
     "homepage": {
      "value": "http://yihongcheon-h.goeyi.kr",
@@ -509,7 +509,7 @@
      "asOf": "2027학년도",
      "status": "confirmed",
      "source": {
-      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
      "nullReason": null
@@ -559,7 +559,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 확인 못 함"
+     "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 공식 문서로 확인 중이에요"
     },
     "briefing": {
      "value": null,
@@ -573,7 +573,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 확인 못 함"
+     "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 공식 문서로 확인 중이에요"
     },
     "homepage": {
      "value": "https://seongbok-h.goeyi.kr",
@@ -728,7 +728,7 @@
      "asOf": "2027학년도",
      "status": "confirmed",
      "source": {
-      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
      "nullReason": null
@@ -778,7 +778,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 확인 못 함"
+     "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 공식 문서로 확인 중이에요"
     },
     "briefing": {
      "value": null,
@@ -792,7 +792,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 확인 못 함"
+     "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 공식 문서로 확인 중이에요"
     },
     "homepage": {
      "value": "https://pungduck-h.goeyi.kr",
@@ -947,7 +947,7 @@
      "asOf": "2027학년도",
      "status": "confirmed",
      "source": {
-      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
      "nullReason": null
@@ -997,7 +997,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 확인 못 함"
+     "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 공식 문서로 확인 중이에요"
     },
     "briefing": {
      "value": null,
@@ -1011,7 +1011,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 확인 못 함"
+     "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 공식 문서로 확인 중이에요"
     },
     "homepage": {
      "value": "http://suji-h.goeyi.kr",
@@ -1156,7 +1156,7 @@
      "asOf": "2027학년도",
      "status": "confirmed",
      "source": {
-      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
      "nullReason": null
@@ -1166,7 +1166,7 @@
      "asOf": "2027학년도",
      "status": "confirmed",
      "source": {
-      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
      "nullReason": null
@@ -1213,7 +1213,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 확인 못 함"
+     "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 공식 문서로 확인 중이에요"
     },
     "briefing": {
      "value": null,
@@ -1227,7 +1227,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 확인 못 함"
+     "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 공식 문서로 확인 중이에요"
     },
     "homepage": {
      "value": "http://sanghyun-h.goeyi.kr",
@@ -1372,7 +1372,7 @@
      "asOf": "2027학년도",
      "status": "confirmed",
      "source": {
-      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
      "nullReason": null
@@ -1382,7 +1382,7 @@
      "asOf": "2027학년도",
      "status": "confirmed",
      "source": {
-      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
      "nullReason": null
@@ -1429,7 +1429,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 확인 못 함"
+     "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 공식 문서로 확인 중이에요"
     },
     "briefing": {
      "value": null,
@@ -1443,7 +1443,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 확인 못 함"
+     "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 공식 문서로 확인 중이에요"
     },
     "homepage": {
      "value": "http://seowon-h.goeyi.kr",
@@ -1588,7 +1588,7 @@
      "asOf": "2027학년도",
      "status": "confirmed",
      "source": {
-      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
      "nullReason": null
@@ -1598,7 +1598,7 @@
      "asOf": "2027학년도",
      "status": "confirmed",
      "source": {
-      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
      "nullReason": null
@@ -1645,7 +1645,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 확인 못 함"
+     "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 공식 문서로 확인 중이에요"
     },
     "briefing": {
      "value": null,
@@ -1659,7 +1659,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 확인 못 함"
+     "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 공식 문서로 확인 중이에요"
     },
     "homepage": {
      "value": "http://shinbong-h.goeyi.kr",
@@ -1804,7 +1804,7 @@
      "asOf": "2027학년도",
      "status": "confirmed",
      "source": {
-      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
      "nullReason": null
@@ -1814,7 +1814,7 @@
      "asOf": "2027학년도",
      "status": "confirmed",
      "source": {
-      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
      "nullReason": null
@@ -1861,7 +1861,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 확인 못 함"
+     "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 공식 문서로 확인 중이에요"
     },
     "briefing": {
      "value": null,
@@ -1875,7 +1875,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 확인 못 함"
+     "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 공식 문서로 확인 중이에요"
     },
     "homepage": {
      "value": "http://jukjeon-h.goeyi.kr",
@@ -2020,7 +2020,7 @@
      "asOf": "2027학년도",
      "status": "confirmed",
      "source": {
-      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
      "nullReason": null
@@ -2030,7 +2030,7 @@
      "asOf": "2027학년도",
      "status": "confirmed",
      "source": {
-      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
      "nullReason": null
@@ -2077,7 +2077,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 확인 못 함"
+     "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 공식 문서로 확인 중이에요"
     },
     "briefing": {
      "value": null,
@@ -2091,7 +2091,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 확인 못 함"
+     "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 공식 문서로 확인 중이에요"
     },
     "homepage": {
      "value": "https://daeji-h.goeyi.kr",
@@ -2236,7 +2236,7 @@
      "asOf": "2027학년도",
      "status": "confirmed",
      "source": {
-      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
      "nullReason": null
@@ -2246,7 +2246,7 @@
      "asOf": "2027학년도",
      "status": "confirmed",
      "source": {
-      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
      "nullReason": null
@@ -2293,7 +2293,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 확인 못 함"
+     "nullReason": "학교알리미 공시 항목에 매점 현황이 없고 다른 공개 자료도 공식 문서로 확인 중이에요"
     },
     "briefing": {
      "value": null,
@@ -2307,7 +2307,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 확인 못 함"
+     "nullReason": "학교알리미 공시 항목에 기숙사 현황이 없고 일반고 기숙사 운영 여부는 공식 문서로 확인 중이에요"
     },
     "homepage": {
      "value": "https://hyunam-h.goeyi.kr",
@@ -2346,6 +2346,3816 @@
      "source": {
       "name": "학교알리미 학교정보(2026 공시, GS_CD S090005415)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-026",
+   "schoolId": null,
+   "name": "구성고등학교",
+   "values": {
+    "type": {
+     "value": "일반고",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "founding": {
+     "value": "공립(설립 2004.03)",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 기흥구 연원로42번길 47",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "classesDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "studentsDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "teachers": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perClass": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perTeacher": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "admission": {
+     "value": "용인학군 평준화 일반고(구역 내 배정)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "용인학군 1구역(기흥구)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "curriculum": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "subjectCount": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "univStats": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 2026 공시 항목에 졸업생 진학 현황 항목이 없음"
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치 미수집"
+    },
+    "canteen": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "dorm": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "briefing": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "설명회 노트 없음"
+    },
+    "schoolinfo": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+    },
+    "homepage": {
+     "value": "https://koosung-h.goeyi.kr/",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-027",
+   "schoolId": null,
+   "name": "기흥고등학교",
+   "values": {
+    "type": {
+     "value": "일반고",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "founding": {
+     "value": "공립(설립 2001.01)",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 기흥구 관곡로 20",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "classesDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "studentsDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "teachers": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perClass": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perTeacher": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "admission": {
+     "value": "용인학군 평준화 일반고(구역 내 배정)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "용인학군 1구역(기흥구)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "curriculum": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "subjectCount": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "univStats": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 2026 공시 항목에 졸업생 진학 현황 항목이 없음"
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치 미수집"
+    },
+    "canteen": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "dorm": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "briefing": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "설명회 노트 없음"
+    },
+    "schoolinfo": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+    },
+    "homepage": {
+     "value": "https://giheung-h.goeyi.kr/",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-028",
+   "schoolId": null,
+   "name": "동백고등학교",
+   "values": {
+    "type": {
+     "value": "일반고",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "founding": {
+     "value": "공립(설립 2007.03)",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 기흥구 동백7로 61",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "classesDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "studentsDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "teachers": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perClass": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perTeacher": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "admission": {
+     "value": "용인학군 평준화 일반고(구역 내 배정)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "용인학군 1구역(기흥구)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "curriculum": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "subjectCount": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "univStats": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 2026 공시 항목에 졸업생 진학 현황 항목이 없음"
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치 미수집"
+    },
+    "canteen": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "dorm": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "briefing": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "설명회 노트 없음"
+    },
+    "schoolinfo": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+    },
+    "homepage": {
+     "value": "http://dongbaek-h.goeyi.kr/",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-029",
+   "schoolId": null,
+   "name": "보라고등학교",
+   "values": {
+    "type": {
+     "value": "일반고",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "founding": {
+     "value": "공립(설립 2009.03)",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 기흥구 한보라1로43번길 7",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "classesDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "studentsDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "teachers": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perClass": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perTeacher": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "admission": {
+     "value": "용인학군 평준화 일반고(구역 내 배정)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "용인학군 1구역(기흥구)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "curriculum": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "subjectCount": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "univStats": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 2026 공시 항목에 졸업생 진학 현황 항목이 없음"
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치 미수집"
+    },
+    "canteen": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "dorm": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "briefing": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "설명회 노트 없음"
+    },
+    "schoolinfo": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+    },
+    "homepage": {
+     "value": "http://bora-h.goeyi.kr/",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-030",
+   "schoolId": null,
+   "name": "보정고등학교",
+   "values": {
+    "type": {
+     "value": "일반고",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "founding": {
+     "value": "공립(설립 2005.03)",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 기흥구 보정로 22",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "classesDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "studentsDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "teachers": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perClass": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perTeacher": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "admission": {
+     "value": "용인학군 평준화 일반고(구역 내 배정)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "용인학군 1구역(기흥구)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "curriculum": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "subjectCount": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "univStats": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 2026 공시 항목에 졸업생 진학 현황 항목이 없음"
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치 미수집"
+    },
+    "canteen": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "dorm": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "briefing": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "설명회 노트 없음"
+    },
+    "schoolinfo": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+    },
+    "homepage": {
+     "value": "http://bojeong-h.goeyi.kr",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-031",
+   "schoolId": null,
+   "name": "서천고등학교",
+   "values": {
+    "type": {
+     "value": "일반고",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "founding": {
+     "value": "공립(설립 2013.01)",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 기흥구 서천서로 126",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "classesDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "studentsDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "teachers": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perClass": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perTeacher": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "admission": {
+     "value": "용인학군 평준화 일반고(구역 내 배정)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "용인학군 1구역(기흥구)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "curriculum": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "subjectCount": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "univStats": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 2026 공시 항목에 졸업생 진학 현황 항목이 없음"
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치 미수집"
+    },
+    "canteen": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "dorm": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "briefing": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "설명회 노트 없음"
+    },
+    "schoolinfo": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+    },
+    "homepage": {
+     "value": "http://seocheon-h.goeyi.kr/",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-032",
+   "schoolId": null,
+   "name": "성지고등학교",
+   "values": {
+    "type": {
+     "value": "일반고",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "founding": {
+     "value": "공립(설립 2006.03)",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 기흥구 갈곡로12번길 13",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "classesDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "studentsDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "teachers": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perClass": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perTeacher": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "admission": {
+     "value": "용인학군 평준화 일반고(구역 내 배정)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "용인학군 1구역(기흥구)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "curriculum": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "subjectCount": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "univStats": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 2026 공시 항목에 졸업생 진학 현황 항목이 없음"
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치 미수집"
+    },
+    "canteen": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "dorm": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "briefing": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "설명회 노트 없음"
+    },
+    "schoolinfo": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+    },
+    "homepage": {
+     "value": "https://seongji-h.goeyi.kr",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-033",
+   "schoolId": null,
+   "name": "신갈고등학교",
+   "values": {
+    "type": {
+     "value": "일반고",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "founding": {
+     "value": "사립(설립 1984.12)",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 기흥구 백남준로 13",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "classesDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "studentsDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "teachers": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perClass": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perTeacher": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "admission": {
+     "value": "용인학군 평준화 일반고(구역 내 배정)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "용인학군 1구역(기흥구)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "curriculum": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "subjectCount": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "univStats": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 2026 공시 항목에 졸업생 진학 현황 항목이 없음"
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치 미수집"
+    },
+    "canteen": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "dorm": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "briefing": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "설명회 노트 없음"
+    },
+    "schoolinfo": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+    },
+    "homepage": {
+     "value": "http://shingal-h.goeyi.kr",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-034",
+   "schoolId": null,
+   "name": "용인백현고등학교",
+   "values": {
+    "type": {
+     "value": "일반고",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "founding": {
+     "value": "공립(설립 2006.03)",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 기흥구 동백7로 112",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "classesDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "studentsDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "teachers": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perClass": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perTeacher": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "admission": {
+     "value": "용인학군 평준화 일반고(구역 내 배정)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "용인학군 1구역(기흥구)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "curriculum": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "subjectCount": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "univStats": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 2026 공시 항목에 졸업생 진학 현황 항목이 없음"
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치 미수집"
+    },
+    "canteen": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "dorm": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "briefing": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "설명회 노트 없음"
+    },
+    "schoolinfo": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+    },
+    "homepage": {
+     "value": "http://baekhyun-h.goeyi.kr",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-035",
+   "schoolId": null,
+   "name": "청덕고등학교",
+   "values": {
+    "type": {
+     "value": "일반고",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "founding": {
+     "value": "공립(설립 2009.03)",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 기흥구 구성1로 21",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "classesDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "studentsDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "teachers": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perClass": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perTeacher": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "admission": {
+     "value": "용인학군 평준화 일반고(구역 내 배정)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "용인학군 1구역(기흥구)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "curriculum": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "subjectCount": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "univStats": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 2026 공시 항목에 졸업생 진학 현황 항목이 없음"
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치 미수집"
+    },
+    "canteen": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "dorm": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "briefing": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "설명회 노트 없음"
+    },
+    "schoolinfo": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+    },
+    "homepage": {
+     "value": "https://cheongdeok-h.goeyi.kr",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-036",
+   "schoolId": null,
+   "name": "초당고등학교",
+   "values": {
+    "type": {
+     "value": "일반고",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "founding": {
+     "value": "공립(설립 2009.03)",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 기흥구 동백중앙로 21",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "classesDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "studentsDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "teachers": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perClass": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perTeacher": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "admission": {
+     "value": "용인학군 평준화 일반고(구역 내 배정)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "용인학군 1구역(기흥구)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "curriculum": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "subjectCount": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "univStats": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 2026 공시 항목에 졸업생 진학 현황 항목이 없음"
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치 미수집"
+    },
+    "canteen": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "dorm": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "briefing": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "설명회 노트 없음"
+    },
+    "schoolinfo": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+    },
+    "homepage": {
+     "value": "http://chodang-h.goeyi.kr",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-037",
+   "schoolId": null,
+   "name": "흥덕고등학교",
+   "values": {
+    "type": {
+     "value": "일반고",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "founding": {
+     "value": "공립(설립 2010.03)",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 기흥구 흥덕2로 36",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "classesDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "studentsDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "teachers": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perClass": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perTeacher": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "admission": {
+     "value": "용인학군 평준화 일반고(구역 내 배정)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "용인학군 1구역(기흥구)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "curriculum": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "subjectCount": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "univStats": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 2026 공시 항목에 졸업생 진학 현황 항목이 없음"
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치 미수집"
+    },
+    "canteen": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "dorm": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "briefing": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "설명회 노트 없음"
+    },
+    "schoolinfo": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+    },
+    "homepage": {
+     "value": "http://hd-h.goeyi.kr",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-038",
+   "schoolId": null,
+   "name": "고림고등학교",
+   "values": {
+    "type": {
+     "value": "일반고",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "founding": {
+     "value": "공립(설립 2016.03)",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 처인구 고림로165",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "classesDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "studentsDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "teachers": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perClass": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perTeacher": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "admission": {
+     "value": "용인학군 평준화 일반고(구역 내 배정)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "용인학군 3구역(처인구)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "curriculum": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "subjectCount": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "univStats": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 2026 공시 항목에 졸업생 진학 현황 항목이 없음"
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치 미수집"
+    },
+    "canteen": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "dorm": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "briefing": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "설명회 노트 없음"
+    },
+    "schoolinfo": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+    },
+    "homepage": {
+     "value": "http://gorim-h.goeyi.kr",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-039",
+   "schoolId": null,
+   "name": "용인고등학교",
+   "values": {
+    "type": {
+     "value": "일반고",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "founding": {
+     "value": "공립(설립 1954.02)",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 처인구 금학로253번길 20-21",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "classesDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "studentsDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "teachers": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perClass": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perTeacher": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "admission": {
+     "value": "용인학군 평준화 일반고(구역 내 배정)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "용인학군 3구역(처인구)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "curriculum": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "subjectCount": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "univStats": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 2026 공시 항목에 졸업생 진학 현황 항목이 없음"
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치 미수집"
+    },
+    "canteen": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "dorm": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "briefing": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "설명회 노트 없음"
+    },
+    "schoolinfo": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+    },
+    "homepage": {
+     "value": "https://yongin-h.goeyi.kr/",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-040",
+   "schoolId": null,
+   "name": "용인삼계고등학교",
+   "values": {
+    "type": {
+     "value": "일반고",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "founding": {
+     "value": "공립(설립 2015.03)",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 처인구 포곡읍 백옥대로1898번길 34-42",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "classesDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "studentsDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "teachers": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perClass": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perTeacher": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "admission": {
+     "value": "용인학군 평준화 일반고(구역 내 배정)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "용인학군 3구역(처인구)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "curriculum": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "subjectCount": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "univStats": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 2026 공시 항목에 졸업생 진학 현황 항목이 없음"
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치 미수집"
+    },
+    "canteen": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "dorm": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "briefing": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "설명회 노트 없음"
+    },
+    "schoolinfo": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+    },
+    "homepage": {
+     "value": "http://yisamgye-h.goeyi.kr",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-041",
+   "schoolId": null,
+   "name": "진덕고등학교",
+   "values": {
+    "type": {
+     "value": "일반고",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "founding": {
+     "value": "공립(설립 2026.03)",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 처인구 고림로186번길 93",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "classesDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "studentsDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "teachers": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perClass": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perTeacher": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "admission": {
+     "value": "용인학군 평준화 일반고(구역 내 배정)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "용인학군 3구역(처인구)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "curriculum": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "subjectCount": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "univStats": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 2026 공시 항목에 졸업생 진학 현황 항목이 없음"
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치 미수집"
+    },
+    "canteen": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "dorm": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "briefing": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "설명회 노트 없음"
+    },
+    "schoolinfo": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+    },
+    "homepage": {
+     "value": "http://www.goeyi.kr/jindeok-h/main.do",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-042",
+   "schoolId": null,
+   "name": "포곡고등학교",
+   "values": {
+    "type": {
+     "value": "일반고",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "founding": {
+     "value": "공립(설립 2009.03)",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 처인구 포곡읍 포곡로210번길 26",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "classesDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "studentsDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "teachers": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perClass": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perTeacher": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "admission": {
+     "value": "용인학군 평준화 일반고(구역 내 배정)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "용인학군 3구역(처인구)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "curriculum": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "subjectCount": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "univStats": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 2026 공시 항목에 졸업생 진학 현황 항목이 없음"
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치 미수집"
+    },
+    "canteen": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "dorm": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "briefing": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "설명회 노트 없음"
+    },
+    "schoolinfo": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+    },
+    "homepage": {
+     "value": "http://pogok-h.goeyi.kr",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-043",
+   "schoolId": null,
+   "name": "태성고등학교",
+   "values": {
+    "type": {
+     "value": "일반고",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "founding": {
+     "value": "사립(설립 1952.10)",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남학교",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 처인구 백옥대로 1059-2",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "classesDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "studentsDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "teachers": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perClass": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perTeacher": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "admission": {
+     "value": "용인학군 평준화 일반고(구역 내 배정)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "용인학군 3구역(처인구)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "curriculum": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "subjectCount": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "univStats": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 2026 공시 항목에 졸업생 진학 현황 항목이 없음"
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치 미수집"
+    },
+    "canteen": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "dorm": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "briefing": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "설명회 노트 없음"
+    },
+    "schoolinfo": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+    },
+    "homepage": {
+     "value": "http://taesung-h.goeyi.kr",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-044",
+   "schoolId": null,
+   "name": "처인고등학교",
+   "values": {
+    "type": {
+     "value": "일반고",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "founding": {
+     "value": "공립(설립 2021.03)",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 처인구 남사읍 한숲로 32",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "classesDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "studentsDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "teachers": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perClass": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perTeacher": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "admission": {
+     "value": "용인학군 평준화 일반고(구역 내 배정)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "용인학군 3구역(처인구)",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy 경기 고입 안내)",
+      "url": "https://satp.goe.go.kr/main.do"
+     },
+     "nullReason": null
+    },
+    "curriculum": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "subjectCount": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "univStats": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 2026 공시 항목에 졸업생 진학 현황 항목이 없음"
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치 미수집"
+    },
+    "canteen": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "dorm": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "briefing": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "설명회 노트 없음"
+    },
+    "schoolinfo": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+    },
+    "homepage": {
+     "value": "https://cheoin-h.goeyi.kr/",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-045",
+   "schoolId": null,
+   "name": "백암고등학교",
+   "values": {
+    "type": {
+     "value": "일반고",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "founding": {
+     "value": "공립(설립 1964.02)",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 처인구 백암면 백원로 519-9",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "classesDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "studentsDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "teachers": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perClass": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "perTeacher": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집(이번 확대는 NEIS 기본정보)"
+    },
+    "admission": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "평준화 비적용 학교(자율형 공립·사립)라 배정 방식이 달라 학교별 전형요강 확인 필요"
+    },
+    "zone": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "평준화 구역 밖 학교"
+    },
+    "curriculum": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "subjectCount": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "univStats": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 2026 공시 항목에 졸업생 진학 현황 항목이 없음"
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치 미수집"
+    },
+    "canteen": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "dorm": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "briefing": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "설명회 노트 없음"
+    },
+    "schoolinfo": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 학교 코드(GS_CD) 미수집"
+    },
+    "homepage": {
+     "value": "http://baegam-h.goeyi.kr",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-015",
+   "schoolId": null,
+   "name": "용인한국외국어대학교부설고등학교",
+   "values": {
+    "type": {
+     "value": "자율고",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "founding": {
+     "value": "사립(설립 2005.03)",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 처인구 모현읍 외대로54번길 50",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집"
+    },
+    "classesDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집"
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집"
+    },
+    "studentsDetail": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집"
+    },
+    "teachers": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집"
+    },
+    "perClass": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집"
+    },
+    "perTeacher": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치는 수지구 10개교만 수집"
+    },
+    "admission": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "자율형 사립고 후기 전형(자기주도학습전형)이며 학교별 전형요강 확인 필요"
+    },
+    "zone": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "평준화 구역 밖 학교"
+    },
+    "curriculum": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "subjectCount": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "편제표 미수집"
+    },
+    "univStats": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 2026 공시 항목에 졸업생 진학 현황 항목이 없음"
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 수치 미수집"
+    },
+    "canteen": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "공시 항목 범위 밖"
+    },
+    "dorm": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "기숙사 운영 여부는 학교 공식 자료 확인 필요"
+    },
+    "briefing": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "설명회 노트 없음"
+    },
+    "schoolinfo": {
+     "value": null,
+     "asOf": null,
+     "status": null,
+     "source": null,
+     "nullReason": "학교알리미 학교 코드 미수집"
+    },
+    "homepage": {
+     "value": "http://www.hafs.hs.kr",
+     "asOf": "2026-04",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
      "nullReason": null
     }

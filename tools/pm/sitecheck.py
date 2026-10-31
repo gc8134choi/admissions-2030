@@ -14,12 +14,13 @@ ROUTES = ["", "#schedule", "#select/types", "#select/curriculum", "#select/curri
           "#select", "#life", "#admission", "#planner", "#select/curriculum?v=compare&s=school-pungdeok", "#select/curriculum?a=체육,예술", "#select/curriculum?v=hs", "#library/files"]
 JS = r"""
 const {chromium}=require('playwright');
+async function ev(p,f){for(let i=0;i<4;i++){try{return await p.evaluate(f)}catch(e){await p.waitForTimeout(900)}}return await p.evaluate(f)}
 (async()=>{const base=process.argv[2];const routes=JSON.parse(process.argv[3]);
 const bad=new RegExp(['\uc608\ub098','\uc608\uc740','\ud604\s?\uace03'].join('|'));const out=[];const b=await chromium.launch();
 for(const w of [390,1280,1440,1920]){const p=await b.newPage({viewport:{width:w,height:900}});const errs=[];
 p.on('pageerror',e=>errs.push(String(e).slice(0,120)));p.on('console',m=>m.type()==='error'&&errs.push(m.text().slice(0,120)));
 for(const r of routes){errs.length=0;try{await p.goto(base+r,{waitUntil:'load',timeout:20000});await p.waitForTimeout(700);}catch(e){out.push({w,r,err:'load '+String(e).slice(0,80)});continue}
-const d=await p.evaluate(()=>({sx:document.documentElement.scrollWidth>document.documentElement.clientWidth+2,t:document.body.innerText,badge:[...document.querySelectorAll('body *')].some(e=>e.children.length===0&&e.textContent.trim()==='\ud655\uc815')}));
+const d=await ev(p,()=>({sx:document.documentElement.scrollWidth>document.documentElement.clientWidth+2,t:document.body.innerText,badge:[...document.querySelectorAll('body *')].some(e=>e.children.length===0&&e.textContent.trim()==='\ud655\uc815')}));
 const issues=[];if(errs.length)issues.push('console:'+errs[0]);if(d.sx)issues.push('가로스크롤');const m=d.t.match(bad);if(m)issues.push('금지문구:'+m[0]);
 if(d.badge)issues.push('확정배지');if(issues.length)out.push({w,r,issues});}
 await p.close()}
@@ -27,7 +28,7 @@ await p.close()}
 for(const [mode,sys] of [['dark','light'],['light','dark']])for(const w of [390,1440]){const c=await b.newContext({viewport:{width:w,height:900},colorScheme:sys});await c.addInitScript(m=>{try{localStorage.setItem('portal.theme',m)}catch(e){}},mode);const p=await c.newPage();const errs=[];
 p.on('pageerror',e=>errs.push(String(e).slice(0,120)));
 for(const r of routes){errs.length=0;try{await p.goto(base+r,{waitUntil:'load',timeout:20000});await p.waitForTimeout(600);}catch(e){out.push({w,r,mode,err:'load '+String(e).slice(0,80)});continue}
-const d=await p.evaluate(()=>{const m=getComputedStyle(document.body).backgroundColor.match(/\d+/g).map(Number);return {L:(m[0]*.3+m[1]*.59+m[2]*.11)/255,a:document.documentElement.dataset.theme,sx:document.documentElement.scrollWidth>document.documentElement.clientWidth+2}});
+const d=await ev(p,()=>{const m=getComputedStyle(document.body).backgroundColor.match(/\d+/g).map(Number);return {L:(m[0]*.3+m[1]*.59+m[2]*.11)/255,a:document.documentElement.dataset.theme,sx:document.documentElement.scrollWidth>document.documentElement.clientWidth+2}});
 const issues=[];if(errs.length)issues.push('console:'+errs[0]);if(d.sx)issues.push('가로스크롤');if(d.a!==mode)issues.push('data-theme 없음');if(mode==='dark'&&d.L>0.25)issues.push('다크인데 밝은 배경');if(mode==='light'&&d.L<0.6)issues.push('라이트인데 어두운 배경');
 if(issues.length)out.push({w,r,mode,issues});}
 await c.close()}

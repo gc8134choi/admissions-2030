@@ -4,8 +4,10 @@
  "title": "middle (초등학교 → 중학교 배정) — research/data/middle-school-draft.json 입력 형식 = portal/data/middle.json",
  "description": "출발 초등학교(placeId)의 통학구역 중학교 목록과 배정 원칙. 배정 일정은 policy.json의 life-* 행(stage 중입)을 화면이 그대로 쓴다. 학교 위치·주소는 places에서 placeId로 찾는다.",
  "type": "object",
- "required": ["from", "zoneSchools", "principles"],
+ "required": ["principles"],
+ "anyOf": [ { "required": ["from", "zoneSchools"] }, { "required": ["areas"] } ],
  "properties": {
+  "areas": { "type": "array", "description": "초등학교 여러 곳이면 구역별로(없으면 from·zoneSchools 한 곳). 출력 middle.json은 항상 areas[]를 가진다.", "items": { "type": "object", "required": ["from", "zoneSchools"], "properties": { "from": { "$ref": "#/properties/from" }, "zoneSchools": { "$ref": "#/properties/zoneSchools" } } } },
   "from": { "type": "object", "required": ["placeId"], "properties": { "placeId": { "type": "string" }, "note": { "type": ["string", "null"] } } },
   "zoneSchools": { "type": "array", "items": { "type": "object", "required": ["placeId", "status", "sources"], "properties": { "placeId": { "type": "string" }, "note": { "type": ["string", "null"], "description": "예: 학군 일부, 거리 기준 등" }, "status": { "enum": ["confirmed", "reported", "estimated"] }, "sources": { "type": "array", "minItems": 1 } } } },
   "principles": { "type": "array", "items": { "type": "object", "required": ["id", "title", "body", "status", "sources"], "properties": { "id": { "type": "string" }, "title": { "type": "string" }, "body": { "type": "string" }, "status": { "enum": ["confirmed", "reported", "estimated"] }, "sources": { "type": "array", "minItems": 1 } } } }
