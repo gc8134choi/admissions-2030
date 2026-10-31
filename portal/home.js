@@ -122,11 +122,21 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
       return [...evs, ...sts].sort((a, b) => !!a.seoul - !!b.seoul || a.sp.start - b.sp.start || a.sp.end - b.sp.end); // 서울 행은 경기·전국 행 다음
     };
     // 가까운 일정 장부: 히어로 없이 한 줄씩(D-day · 제목 · 기간 · 단계/상태·출처). 가장 가까운 일은 같은 줄에서 굵기·색으로만 강조.
-    const rest = () => { const f = feed().slice(0, 5);
+    // 주로 보는 단계(이름·프로필 아님, 이 브라우저에만 저장). 처음 한 번 고르고 언제든 바꾼다. 고른 단계는 "자주 보는 단계"(허브 고정)와 합쳐진다.
+    const FK = "portal.focus", FOPT = [["중입", "중학교 입학 준비"], ["고입", "고교 고르기·고교 생활"], ["대입", "대입 준비"]];
+    const fsaved = store.get(FK, null);
+    let focus = Array.isArray(fsaved) && fsaved.filter((x) => STAGES.includes(x)).length ? fsaved.filter((x) => STAGES.includes(x)) : [...STAGES];
+    let fpicking = !Array.isArray(fsaved);
+    const feedF = () => { const f = feed(), m = f.filter((it) => { const g = stageOf(it.row); return !g || focus.includes(g); }); return m.length ? m : f; };
+    const rest = () => { const f = feedF().slice(0, 3);
       if (!f.length) return `<li class="lg"><div class="empty"><p>아직 모인 일정이 없어요.</p><small>${isB ? "학교를 고르면 그 학교 일정이 여기에 모입니다." : "앞으로 90일 안에 해당하는 일정이 없어요."}</small></div></li>`;
-      return f.map((it, i) => { const live = it.sp.start <= t, left = Math.round((it.sp.end - t) / DAY);
+      return f.map((it, i) => { const live = it.sp.start <= t, left = Math.round((it.sp.end - t) / DAY), g = stageOf(it.row);
         const dl = live ? (left > 0 ? `진행 중 · ${left}일 남음` : "진행 중") : dLabel(it.sp, t);
-        return `<li class="lg${i === 0 ? " first" : ""}"><span class="d${live ? " live" : " num"}">${dl}</span><b class="lg-t">${esc(it.title)}</b><span class="lg-d num">${it.date}</span><span class="lg-m">${it.meta}</span></li>`; }).join(""); };
+        const meta = String(it.meta).replace(/<span class="stg">.*?<\/span>/, "").trim();
+        return `<li class="lg${i === 0 ? " first" : ""}"><span class="lg-s">${g ? esc(g) : ""}</span><span class="d${live ? " live" : " num"}">${dl}</span><b class="lg-t">${esc(it.title)}</b><span class="lg-d num">${it.date}</span><span class="lg-m">${meta}</span></li>`; }).join(""); };
+    const focusBar = () => fpicking
+      ? `<div class="fpick" role="group" aria-label="주로 보는 단계"><p class="fpick-q">주로 보는 단계를 골라 주세요. 여러 개 고를 수 있고, 언제든 바꿀 수 있어요.</p><div class="chips">${FOPT.map(([k, t]) => `<button type="button" class="fchip${focus.includes(k) ? " on" : ""}" data-f="${k}" aria-pressed="${focus.includes(k)}">${t}</button>`).join("")}</div><button type="button" class="btn primary" data-fsave>이대로 보기</button></div>`
+      : `<p class="fbar muted">보는 단계 <b>${FOPT.filter(([k]) => focus.includes(k)).map(([, t]) => esc(t)).join(" · ")}</b> <button type="button" class="lnk" data-fedit>바꾸기</button></p>`;
 
     // 4) 바뀐 소식 1줄
     const log0 = policy.filter((r) => r.topic === "change-log").map((r) => ({ r, d: dateOf(r.title) })).filter((x) => x.d && span(x.d).start <= t);
@@ -206,14 +216,14 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const hubCounts = {}; STAGES.forEach((g) => { hubCounts[g] = upRows().filter((x) => stageOf(x.r) === g).length; });
 
     const pins = (store.get(PIN_KEY, []) || []).filter((x) => typeof x === "string").slice(0, 2);
-    const autoHub = STAGE_HUB[stageOf(feed()[0]?.row)] || null;
+    const autoHub = STAGE_HUB[stageOf(feedF()[0]?.row)] || null;
     el.innerHTML = `<div class="hm">
       ${ddline ? `<div class="auxbar" aria-label="수능 D-day">${ddline}</div>` : ""}
       ${pingLine()}
       <div class="h-row2">
         <div class="h-main">
-          <section class="dp ledger" aria-labelledby="lgh"><div class="sec-h"><h2 id="lgh"><em>일정</em>가까운 일정</h2><a href="#schedule">전체 ›</a></div>
-            <ul class="lgs" id="hm-up">${rest()}</ul></section>
+          <section class="dp ledger" aria-labelledby="lgh"><div class="sec-h"><h2 id="lgh"><em>지금</em>지금 할 일 3가지</h2><a href="#schedule">전체 일정 ›</a></div>
+            <div id="hm-focus">${focusBar()}</div><ul class="lgs" id="hm-up">${rest()}</ul></section>
         <section class="dp soonp t2"><div class="sec-h"><h2><em>곧</em>곧 있을 일</h2></div>
           ${stones.length ? `<ul class="mss">${stones.map(stoneHtml).join("")}</ul><p class="hint">사진은 이 기기에만 저장돼요.</p>` : '<div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p></div>'}</section>
         </div>
@@ -258,6 +268,22 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
       const rk = e.target.closest(".nw a");
       if (rk) { const k = rk.closest(".nw").dataset.rk; const cur = new Set(store.get(RK, [])); cur.add(k); store.set(RK, [...cur].slice(-200)); rk.closest(".nw").classList.remove("is-new"); rk.closest(".nw").querySelector(".new")?.remove(); }
     });
+
+    // 주로 보는 단계 선택·변경: 저장하면 허브 고정(자주 보는 단계)도 같이 맞춘다
+    const fRedraw = () => { el.querySelector("#hm-focus").innerHTML = focusBar(); el.querySelector("#hm-up").innerHTML = rest(); };
+    el.querySelector("#hm-focus").addEventListener("click", (e) => {
+      const ch = e.target.closest("[data-f]");
+      if (ch) { const k = ch.dataset.f; focus = focus.includes(k) ? focus.filter((x) => x !== k) : [...focus, k]; if (!focus.length) focus = [k]; fRedraw(); return; }
+      if (e.target.closest("[data-fsave]")) { fpicking = false; store.set(FK, focus);
+        const ps = STAGES.filter((g) => focus.includes(g)).map((g) => STAGE_HUB[g]).slice(0, 2); store.set(PIN_KEY, ps);
+        el.querySelector("#hm-hubs").innerHTML = hubsHtml(esc, hubCounts, { pins: ps, auto: autoHub }); decorateTerms(el.querySelector("#hm-hubs"), ".dp"); fRedraw(); return; }
+      if (e.target.closest("[data-fedit]")) { fpicking = true; fRedraw(); }
+    });
+    // 중학교 입학 준비만 고르면 수능 D-day·학점제·3년 로드맵은 아래로 접는다
+    if (focus.length === 1 && focus[0] === "중입" && !fpicking) {
+      const rest2 = [el.querySelector(".auxbar"), el.querySelector(".gl"), el.querySelector(".road")].filter(Boolean);
+      if (rest2.length) { const d = document.createElement("details"); d.className = "dp more-panels"; d.innerHTML = "<summary>다른 단계 정보 보기 (수능 D-day · 학점제 · 3년 로드맵)</summary>"; rest2.forEach((n) => { n.classList.remove("m-fold"); d.appendChild(n); }); el.querySelector(".hm").appendChild(d); }
+    }
 
     // 보조 D-day 줄: 그 사람 화면으로 전환
     el.querySelector(".auxbar")?.addEventListener("click", (e) => { const b = e.target.closest("[data-pf]"); if (b) document.querySelector(`#pf [data-pf="${b.dataset.pf}"]`)?.click(); });
