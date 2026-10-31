@@ -112,3 +112,16 @@ table.policy tr.due{background:rgba(255,127,50,.12)}
   #topnav a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 }
 @media (min-width:1100px) and (prefers-reduced-transparency:reduce),(min-width:1100px) and (prefers-contrast:more){#topnav{background:var(--paper2)}}
+
+/* ===== 3단계: 일정 — 표·필터 압축, 고정 칩 줄 ===== */
+table.policy td,table.policy th{padding:7px 10px;border-color:var(--glass-line)}
+table.policy th{font-size:13px;font-weight:600;color:var(--pencil);letter-spacing:.02em}
+table.policy tbody tr{border-top:1px solid var(--glass-line)}
+table.policy tbody tr:hover{background:var(--glass-in)}
+table.policy tr.due{background:color-mix(in srgb,var(--accent) 12%,transparent)}
+table.policy tr.now td:first-child,table.policy tr.due td:first-child{color:var(--accent);font-weight:700}
+table.policy td{font-size:14px;line-height:1.5}
+@media (max-width:899px){
+  .chipbar{background:color-mix(in srgb,var(--paper) 86%,transparent);border-bottom:1px solid var(--glass-line);box-shadow:none;padding:6px 0}
+  table.policy td,table.policy th{padding:6px 8px}
+}
