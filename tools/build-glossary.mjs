@@ -15,6 +15,8 @@ for (const t of draft.terms) {
   if (ids.has(t.id)) errs.push(`${t.id}: id 중복`); ids.add(t.id);
   if (!T.properties.category.enum.includes(t.category)) errs.push(`${t.id}: category "${t.category}"`);
   if (!T.properties.status.enum.includes(t.status)) errs.push(`${t.id}: status ${t.status}`);
+  if (!t.source?.name) errs.push(`${t.id}: source.name 없음`);
+  for (const r of t.related || []) if (!draft.terms.some((x) => x.id === r)) errs.push(`${t.id}: related ${r}가 terms에 없음`);
   for (const w of [t.term, ...(t.aliases || [])]) {
     if (!w || w.length < 2) { errs.push(`${t.id}: 표기 "${w}"는 2자 이상`); continue; }
     if (words.has(w)) errs.push(`${t.id}: 표기 "${w}"가 ${words.get(w)}와 겹침`);

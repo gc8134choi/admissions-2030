@@ -29,7 +29,7 @@ export function termHtml(name, escFn = esc) {
 }
 
 // 이미 그려진 DOM 안의 글자에서 용어를 찾아 첫 등장 뒤에 ⓘ를 붙인다(링크·버튼·제목 안은 건너뜀). 같은 요소를 두 번 불러도 중복되지 않는다.
-export function decorateGlossary(root, { skip = "a,button,script,style,textarea,input,select,.gl-i,.si,h1,h2,h3,summary" } = {}) {
+export function decorateGlossary(root, { skip = "a,button,script,style,textarea,input,select,.gl-i,.gl-rel,.si,h1,h2,h3,summary" } = {}) {
   if (!root || !WORDS.length) return;
   const done = new Set([...root.querySelectorAll(".gl-i")].map((b) => b.dataset.gl));
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: (n) => (!n.nodeValue.trim() || n.parentElement.closest(skip) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT) });
@@ -62,16 +62,17 @@ function close(refocus) {
 }
 function open(b) {
   const t = BY_ID.get(b.dataset.gl); if (!t) return;
+  const ref = b.classList.contains("gl-rel") && anchor ? anchor : b; // "함께 보기" 버튼은 원래 ⓘ 자리에서 다시 연다
   close(false);
-  const srcs = (t.sources || []).map((x) => (x.url && /^https?:\/\//.test(x.url) ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>` : esc(x.name))).join(" · ");
+  const srcs = [t.source].filter(Boolean).map((x) => (x.url && /^https?:\/\//.test(x.url) ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>` : esc(x.name))).join(" · ");
   pop = document.createElement("div");
   pop.className = "sip"; pop.setAttribute("role", "dialog"); pop.setAttribute("aria-label", `${t.term} 뜻`); pop.tabIndex = -1;
-  pop.innerHTML = `<div class="sip-h"><b>${esc(t.term)}</b>${t.official && t.official !== t.term ? ` <span class="muted small">공식 명칭: ${esc(t.official)}</span>` : ""}<button type="button" class="sip-x" aria-label="닫기">×</button></div>
-    <p>${esc(t.short)}</p>${t.detail ? `<p class="muted small">${esc(t.detail)}</p>` : ""}
+  pop.innerHTML = `<div class="sip-h"><b>${esc(t.term)}</b><button type="button" class="sip-x" aria-label="닫기">×</button></div>
+    <p>${esc(t.plain)}</p>${t.detail ? `<p class="muted small">${esc(t.detail)}</p>` : ""}${(t.related || []).map((id) => BY_ID.get(id)).filter(Boolean).length ? `<p class="muted small">함께 보기: ${(t.related || []).map((id) => BY_ID.get(id)).filter(Boolean).map((r) => `<button type="button" class="gl-rel" data-gl="${esc(r.id)}">${esc(r.term)}</button>`).join(" · ")}</p>` : ""}
     <div class="sip-f small">${srcs ? `출처 ${srcs}` : ""}${ES[t.status] ? ` <span class="pst ${esc(t.status)}">${ES[t.status]}</span>` : ""}</div>`;
   document.body.appendChild(pop);
-  anchor = b; b.setAttribute("aria-expanded", "true");
-  const r = b.getBoundingClientRect(), w = Math.min(340, innerWidth - 16);
+  anchor = ref; ref.setAttribute("aria-expanded", "true");
+  const r = ref.getBoundingClientRect(), w = Math.min(340, innerWidth - 16);
   pop.style.width = `${w}px`;
   pop.style.left = `${Math.max(8, Math.min(r.left, innerWidth - w - 8))}px`;
   const h = pop.offsetHeight, below = r.bottom + 6, top = below + h > innerHeight - 8 ? Math.max(8, r.top - h - 6) : below;
@@ -81,7 +82,7 @@ function open(b) {
 if (typeof document !== "undefined" && !window.__glBound) {
   window.__glBound = true;
   document.addEventListener("click", (e) => {
-    const b = e.target.closest?.(".gl-i");
+    const b = e.target.closest?.(".gl-i, .gl-rel");
     if (b) { e.preventDefault(); e.stopPropagation(); return anchor === b ? close(false) : open(b); }
     if (pop && e.target.closest?.(".sip-x")) return close(true);
     if (pop && !pop.contains(e.target)) close(false);
