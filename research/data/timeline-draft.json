@@ -1,0 +1,209 @@
+{
+  "_meta": {
+    "note": "초6 기준 큰 그림 연표(중학교 입학 2027 → 고교 입학 2030 → 대입 2033). confirmed는 공식 자료로 확인된 일정·규칙, estimated는 관행·참고 연도 준용 추정. 2030학년도 이후 세부는 그해 고시·시행계획에서 정해진다.",
+    "checkedAt": "2026-10-31"
+  },
+  "events": [
+    {
+      "id": "tl-01",
+      "when": "2026-11~2026-12",
+      "stage": "초6",
+      "what": "중학교 배정원서 작성·접수(11.2~11.13), 추가배정(12.7~12.16), 배정학교 발표 12.31",
+      "status": "confirmed",
+      "source": {
+        "name": "경기도용인교육지원청 중학교 신입생 배정 안내",
+        "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318"
+      },
+      "note": "수지1중학군 9교(2027학년도 고시 제2026-24호 확인)",
+      "policyIds": [
+        "life-03",
+        "life-04",
+        "life-05",
+        "life-06"
+      ]
+    },
+    {
+      "id": "tl-02",
+      "when": "2027-01",
+      "stage": "초6",
+      "what": "중학교 신입생 등록(1.4~1.7), 재배정 접수 1.11~1.15·발표 1.22",
+      "status": "confirmed",
+      "source": {
+        "name": "경기도용인교육지원청 중학교 신입생 배정 안내",
+        "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318"
+      },
+      "note": null,
+      "policyIds": [
+        "life-07",
+        "life-08"
+      ]
+    },
+    {
+      "id": "tl-03",
+      "when": "2027-03",
+      "stage": "중1",
+      "what": "중학교 입학(2027.3). 중1 2학기부터 고입 내신에 반영(일반교과 12점)",
+      "status": "confirmed",
+      "source": {
+        "name": "경기도교육청 2027학년도 고등학교 입학 내신성적 반영지침 주요 변경사항(2027~2029학년도)",
+        "url": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/133745f2-115e-4a50-b297-e7f2cd7de910.pdf"
+      },
+      "note": "자유학기·자유학년 시행 학기 성적은 고입 내신에 반영하지 않음",
+      "policyIds": [
+        "gg-05"
+      ]
+    },
+    {
+      "id": "tl-04",
+      "when": "2027-03",
+      "stage": "중1",
+      "what": "정부 중장기 대입 개편안(국가교육위원회) 공표 예정 — 수능 방식·적용 시기 확정 여부를 이때 확인",
+      "status": "reported",
+      "source": {
+        "name": "M이코노미뉴스 (국가교육위원회 대입 개편 최종안 2027.3 확정 예정 보도, 정책 행 log-10)",
+        "url": "https://www.m-economynews.com/news/article.html?no=69490"
+      },
+      "note": "보도 기준 예정일이며 확정이 아님. 2028 대입 개편(2023.12.27 교육부)에서 수능·수시/정시 시기 조정은 추후 검토로 남음"
+    },
+    {
+      "id": "tl-05",
+      "when": "2027-03",
+      "stage": "중1",
+      "what": "경기 2030학년도 고입 내신성적 반영지침 예고(안) 게시 무렵(변경은 적용 연도 3년 전 사전예고 원칙)",
+      "status": "estimated",
+      "source": {
+        "name": "경기도교육청 2027학년도 고등학교 입학 내신성적 반영지침 주요 변경사항(2027~2029학년도)",
+        "url": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/133745f2-115e-4a50-b297-e7f2cd7de910.pdf"
+      },
+      "note": "2029학년도 예고(안)이 2026.3 게시된 간격 기준 추정"
+    },
+    {
+      "id": "tl-06",
+      "when": "2028-03",
+      "stage": "중2",
+      "what": "중2: 일반교과 48점 반영 학년. 2028학년도 입학전형부터 봉사 미반영·출결 강화 예고(2030학년도 구조는 달라질 수 있음)",
+      "status": "reported",
+      "source": {
+        "name": "경기도교육청 보도자료: 2027학년도 경기도 고등학교 입학전형 기본계획(2026.3.30)",
+        "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2344685&mi=10102&searchAt1=&searchValue1="
+      },
+      "note": null
+    },
+    {
+      "id": "tl-07",
+      "when": "2029-03",
+      "stage": "중3",
+      "what": "중3: 일반교과 60점 반영 학년, 3학년 2학기 1차 정기시험까지 반영(2027학년도 기준). 고교 유형 결정",
+      "status": "estimated",
+      "source": {
+        "name": "경기도교육청 2027학년도 고등학교 입학 내신성적 반영지침 주요 변경사항(2027~2029학년도)",
+        "url": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/133745f2-115e-4a50-b297-e7f2cd7de910.pdf"
+      },
+      "note": null
+    },
+    {
+      "id": "tl-08",
+      "when": "2029-12",
+      "stage": "중3",
+      "what": "고입 후기 전형 원서접수 무렵(2027학년도 경기는 12.4~12.10)",
+      "status": "estimated",
+      "source": {
+        "name": "경기도교육청 보도자료: 2027학년도 경기도 고등학교 입학전형 기본계획(2026.3.30)",
+        "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2344685&mi=10102&searchAt1=&searchValue1="
+      },
+      "note": "2027학년도 일정을 준용한 추정",
+      "policyIds": [
+        "gg-02",
+        "gg-04"
+      ]
+    },
+    {
+      "id": "tl-09",
+      "when": "2030-03",
+      "stage": "고1",
+      "what": "고교 입학. 고교학점제: 3년 192학점 이수, 공통과목 출석률 2/3·학업성취율 40%(선택과목은 출석률 중심 완화 적용 중)",
+      "status": "confirmed",
+      "source": {
+        "name": "고교학점제 종합지원포털(교육부) 졸업·이수 기준",
+        "url": "https://www.hscredit.kr/about/graduation"
+      },
+      "note": "2030 입학 시점 세부는 그해 기준 확인",
+      "policyIds": [
+        "hs-11",
+        "hs-12"
+      ]
+    },
+    {
+      "id": "tl-10",
+      "when": "2030-08",
+      "stage": "고1",
+      "what": "대교협 2033학년도 대학입학전형기본사항 발표 무렵(2028학년도는 2025.8.28 발표)",
+      "status": "estimated",
+      "source": {
+        "name": "대교협 2028학년도 대학입학전형기본사항(2025.8.28, 개정 2026.7.31)",
+        "url": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf"
+      },
+      "note": "N-3년 8월 관행"
+    },
+    {
+      "id": "tl-11",
+      "when": "2031-04",
+      "stage": "고2",
+      "what": "대교협 2033학년도 대학입학전형시행계획 공표 무렵(2028학년도는 2026.4.30)",
+      "status": "estimated",
+      "source": {
+        "name": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.30)",
+        "url": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf"
+      },
+      "note": "입시 2년 전 4월 말 관행"
+    },
+    {
+      "id": "tl-12",
+      "when": "2032-03",
+      "stage": "고3",
+      "what": "평가원 2033학년도 수능 시행 기본계획 공고 무렵(수능 세부 범위 확정)",
+      "status": "estimated",
+      "source": {
+        "name": "교육부·대교협·평가원 관행(2027학년도 수능 시행 기본계획 2026.3.31 공고 등)",
+        "url": "https://www.suneung.re.kr/main.do?s=suneung"
+      },
+      "note": "2027학년도 수능은 2026.3.31 공고"
+    },
+    {
+      "id": "tl-13",
+      "when": "2032-09",
+      "stage": "고3",
+      "what": "수시 원서접수 무렵(2027학년도는 9월)",
+      "status": "estimated",
+      "source": {
+        "name": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.30)",
+        "url": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf"
+      },
+      "note": null
+    },
+    {
+      "id": "tl-14",
+      "when": "2032-11",
+      "stage": "고3",
+      "what": "2033학년도 수능(11월 셋째 주 목요일 관행, 평가원 공고 후 확정)",
+      "status": "estimated",
+      "source": {
+        "name": "교육부·대교협·평가원 관행(2027학년도 수능 시행 기본계획 2026.3.31 공고 등)",
+        "url": "https://www.suneung.re.kr/main.do?s=suneung"
+      },
+      "note": null
+    },
+    {
+      "id": "tl-15",
+      "when": "2033-01",
+      "stage": "대입",
+      "what": "정시 원서접수 무렵",
+      "status": "estimated",
+      "source": {
+        "name": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.30)",
+        "url": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf"
+      },
+      "note": null
+    }
+  ]
+}
