@@ -9,9 +9,9 @@ import { loadAudience, saveAudience, toggleAudience, audienceMatch, audienceChip
 if (typeof document !== "undefined" && !document.getElementById("policy-css")) { const l = document.createElement("link"); l.id = "policy-css"; l.rel = "stylesheet"; l.href = "policy.css"; document.head.appendChild(l); }
 // 상태 점: 확정=채운 점, 보도=반 채움, 추정=빈 점(앰버). 그 밖의 자료 상태는 빈 점 + 글자.
 const ES = { confirmed: ["ok", "확정"], "seoul-verified": ["ok", "서울교육청 원문 확인"], reported: ["rep", "보도"], match: ["rep", "서울·경기 자료 일치"], seoul: ["rep", "서울교육청 자료"], gyeonggi: ["rep", "경기도교육청 자료"], material: ["rep", "학교 배부 자료"], estimated: ["est", "추정"], unknown: ["", "확인 못 함"], opinion: ["", "의견"], academy: ["", "학원 자료"] };
-const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "확인 못 함", material: "학교 배부 자료", seoul: "서울교육청 자료", "seoul-verified": "서울교육청 자료(원문 확인)", match: "서울·경기 자료 일치", gyeonggi: "경기도교육청 자료", opinion: "의견", academy: "학원 자료" };
+const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "미정", material: "학교 배부 자료", seoul: "서울교육청 자료", "seoul-verified": "서울교육청 자료(원문 확인)", match: "서울·경기 자료 일치", gyeonggi: "경기도교육청 자료", opinion: "의견", academy: "학원 자료" };
 const SKIND = { official: "공식", media: "매체", material: "학교 배부", seoul: "서울교육청", "seoul-gyeonggi": "서울·경기교육청", gyeonggi: "경기도교육청", opinion: "학원 의견", academy: "학원 자료" };
-const NOTICE_TPL = '<p class="note">조사일 2026-10-25 · <b>검색 요약 기준이며 공식 사이트로 재확인 필요.</b> 입학학년도 {E} · 대입학년도 {X} 기준. "원문은 아직 못 봤어요"는 원문 페이지를 열람하지 못했다는 뜻이에요.</p>';
+const NOTICE_TPL = '<p class="note">조사일 2026-10-25 · <b>검색 요약 기준이며 공식 사이트로 재확인 필요.</b> 입학학년도 {E} · 대입학년도 {X} 기준. "공식 문서로 확인 중이에요"는 교육청·평가원 원문을 아직 직접 확인하지 못했다는 뜻이에요.</p>';
 const noticeFor = (p) => NOTICE_TPL.replace("{E}", p.entryYear).replace("{X}", p.examYear);
 
 // 대입 제도 화면에 표로 보여 줄 cur-* 행(수능 출제범위, 전형 구분, 학종 평가요소). 나머지는 고교학점제 이해 화면.
@@ -26,9 +26,9 @@ export function register(views, { $, esc, load, store }) {
   const curProfile = () => profileOf(loadProfile(store));
   const loadPolicy = async () => filterByProfile(await load("policy"), curProfile().id);
   const notice = () => noticeFor(curProfile());
-  const badgeMain = (r) => { const [c, t] = ES[r.status] || ["", r.status]; return `${c === "ok" ? "" : `<span class="es ${c}">${esc(t)}</span>`}${r.unverified ? `<span class="ed-unv"${r.reason ? ` title="${esc(r.reason)}"` : ""}>아직 원문 확인 전</span>` : ""}`; };
+  const badgeMain = (r) => { const [c, t] = ES[r.status] || ["", r.status]; return `${c === "ok" ? "" : `<span class="es ${c}">${esc(t)}</span>`}${r.unverified ? `<span class="ed-unv">공식 문서로 확인 중이에요</span>` : ""}`; };
   // 확인된 항목(확정·원문 확인)은 메모를 "확인 필요/별도 확인"이 있을 때만 보여 준다.
-  const badgeNote = (r) => { const ok = (ES[r.status] || [])[0] === "ok"; return `${r.unverified && r.reason ? `<div class="ed-note">사유: ${esc(r.reason)}</div>` : ""}${r.note && (!ok || /확인 필요|별도 확인/.test(r.note)) ? `<div class="ed-note">${esc(r.note)}</div>` : ""}`; };
+  const badgeNote = (r) => { const ok = (ES[r.status] || [])[0] === "ok"; return `${r.note && (!ok || /확인 필요|별도 확인/.test(r.note)) ? `<div class="ed-note">${esc(r.note)}</div>` : ""}`; };
   const badge = (r) => badgeMain(r) + badgeNote(r);
   // 출처: 문장 끝 밑줄 링크. 링크 없는 배부·교육청 자료는 짧은 라벨(전체 설명은 툴팁).
   const src = (r) => {
@@ -211,7 +211,7 @@ export function register(views, { $, esc, load, store }) {
       ${gg.length ? `<h2>경기 고입 안내 <small>2027학년도</small> ${cnt(gg.length)}</h2>${cards(gg)}` : ""}
       ${asg.length ? `<h2>추첨으로 배정되는 지역의 고교 배정(용인 평준화 배정) <small>2026학년도 기준 참고</small> ${cnt(asg.length)}</h2>
       <p class="ed-big">우리 4개교(풍덕·성복·수지·홍천)는 모두 <em>2구역</em></p>
-      <p class="ed-src">아직 원문 확인 전이에요. 2027 규칙은 한 번 더 확인해요.</p>
+      <p class="ed-src">공식 문서로 확인 중이에요. 2027 규칙은 한 번 더 확인해요.</p>
       ${cards(asg, { cls: (r) => (r.id === "asg-02" ? "hl" : "") })}` : ""}
       ${credit ? `<h2>고교학점제 <small>입학 후 제도</small></h2>
       <p class="ed-b">${esc(credit.body)}</p><p class="ed-s">${badgeMain(credit)} · <a href="#life/credit">고교학점제 이해에서 자세히 봐요</a></p>` : ""}

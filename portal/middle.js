@@ -21,7 +21,7 @@ export async function middleBody(el, { load, esc, mapHref = (id) => `#select/cur
     const img = (c.sources || []).map((x) => (x.file && fileId(x.file) ? `<a href="#library/files?open=${encodeURIComponent(fileId(x.file))}">원본 이미지 보기</a>` : "")).filter(Boolean)[0] || "";
     const rows = c.subjects.map((j) => `<tr><td>${esc(j.subject)}</td><td>${g(j.publishers[1])}</td><td>${g(j.publishers[2])}</td><td>${g(j.publishers[3])}</td>${j.note ? `<td class="muted small">${esc(j.note)}</td>` : "<td></td>"}</tr>`).join("");
     return `<details class="pl-tb"><summary>${stageTag("중입", esc)} 교과서·교과 구성 ${tag(c.status, esc)}</summary>
-      <p class="muted small">학교 공지 기준(AI가 옮김, 확인 전) · ${esc(c.schoolYear)}학년도</p>
+      <p class="muted small">학교 공지 기준(공식 문서로 확인 중이에요) · ${esc(c.schoolYear)}학년도</p>
       <div class="pl-tbw"><table class="ed-tbl"><thead><tr><th>교과</th><th>1학년</th><th>2학년</th><th>3학년</th><th>비고</th></tr></thead><tbody>${rows}</tbody></table></div>
       <p class="muted small">1학년 때 배부하고 2·3학년까지 사용해요.${c.footnote ? ` ${esc(c.footnote)}` : ""}</p>
       <p class="ed-s">출처 ${srcs(c.sources, esc)} ${img}</p></details>`;

@@ -225,7 +225,8 @@ table.policy td{font-size:14px;line-height:1.5}
 /* 일정: 모바일은 표 대신 카드 타임라인 */
 @media (max-width:899px){
   #tl .tw{background:none;border:0;box-shadow:none;overflow:visible}
-  #tl table.policy,#tl table.policy tbody,#tl table.policy tr,#tl table.policy td{display:block;width:auto}
+  #tl table.policy,#tl table.policy tbody,#tl table.policy tr,#tl table.policy td{display:block;width:auto;min-width:0;max-width:100%}
+  #tl .tw{max-width:100%}#tl table.policy td{overflow-wrap:anywhere}
   #tl table.policy thead{display:none}
   #tl table.policy tbody tr{margin:0 0 var(--sp-2);padding:var(--sp-2) var(--sp-3);border:1px solid var(--glass-line);border-radius:16px;background:var(--glass);box-shadow:var(--gl-sh)}
   #tl table.policy tbody tr:hover{background:var(--glass)}
@@ -237,3 +238,9 @@ table.policy td{font-size:14px;line-height:1.5}
   #tl table.policy td:nth-child(3):empty{display:none}
   #tl table.policy tr.past{opacity:.6}
 }
+
+/* 상태 표시 안내(상시 한 줄) */
+.legend{margin:0 auto;padding-top:var(--sp-1);padding-bottom:0;font-size:var(--fs-sub);color:var(--pencil);display:flex;flex-wrap:wrap;gap:2px 10px;align-items:center;line-height:1.5}
+.legend .pst{margin:0 -4px 0 0}
+@media (min-width:1100px){.legend{padding-left:calc(var(--pad) + 0px)}}
+@media (max-width:899px){.legend{font-size:12.5px;padding-top:6px;margin-bottom:-6px}}

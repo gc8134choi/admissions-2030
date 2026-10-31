@@ -1,6 +1,6 @@
 // 서비스 워커: 정적 파일은 네트워크 우선(실패하면 캐시), 데이터 JSON은 캐시를 먼저 보여 주고 뒤에서 갱신(stale-while-revalidate).
 // 범위는 이 파일이 있는 폴더(/admissions-2030/portal/)다. 캐시 이름의 버전을 올리면 옛 캐시를 지운다.
-const VERSION = "2026-10-31-12";
+const VERSION = "2026-10-31-14";
 const STATIC = `static-${VERSION}`, DATA = `data-${VERSION}`;
 const CORE = ["./", "index.html", "style.css", "theme.css", "scrap.css", "dense.css", "glass.css", "fonts/gaegu-700.woff2", "fonts/gowun-batang-700.woff2", "app.js", "menu.js", "home.js", "profile.js", "profile-ui.js", "subject-info.js", "files.js", "policy.js", "credit.js", "school-card.js", "roadmap.js", "search.js", "univ-match.js", "map.js", "planner.js", "stage.js", "briefing.js", "dash.js", "terms.js", "hs-compare.js", "middle.js", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png"];
 
