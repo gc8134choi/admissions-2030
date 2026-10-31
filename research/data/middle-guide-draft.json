@@ -1,0 +1,114 @@
+{
+  "_meta": {
+    "note": "중학교 입학 준비 가이드 초안(공식·학교 공지 위주). 확인 못 한 항목은 사유를 적음.",
+    "checkedAt": "2026-10-31"
+  },
+  "sections": [
+    {
+      "id": "mg-1",
+      "title": "배정부터 등록까지(2027학년도 용인)",
+      "items": [
+        {
+          "text": "배정원서 작성: 출신 초등학교에서 2026.11.2~11.6",
+          "when": "2026-11-02~2026-11-06",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도)",
+            "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318"
+          }
+        },
+        {
+          "text": "배정원서 접수: 용인교육지원청 2026.11.9~11.13",
+          "when": "2026-11-09~2026-11-13",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도)",
+            "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318"
+          }
+        },
+        {
+          "text": "추가배정원서 작성 12.7~12.11, 접수 12.14~12.16",
+          "when": "2026-12-07~2026-12-16",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도)",
+            "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318"
+          }
+        },
+        {
+          "text": "배정학교 발표 2026.12.31(출신 초등학교에서 확인)",
+          "when": "2026-12-31",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도)",
+            "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318"
+          }
+        },
+        {
+          "text": "신입생 등록: 각 중학교 2027.1.4~1.7",
+          "when": "2027-01-04~2027-01-07",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도)",
+            "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318"
+          }
+        },
+        {
+          "text": "재배정 원서 접수 1.11~1.15, 재배정 발표 1.22(등록도 1.22)",
+          "when": "2027-01-11~2027-01-22",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도)",
+            "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg-2",
+      "title": "교복",
+      "items": [
+        {
+          "text": "교복은 학교주관구매로 업체를 정하는 학교가 있어요. 수지중은 2027학년도 신입생 동·하복 학교주관구매 낙찰 결과를 2026.9.9 공개했고(동·하복 낙찰금액 413,300원), 손곡중도 2026.9.16 신입생 교복·생활복 낙찰자 결정을 공개했어요. 배정 학교가 정해진 뒤 그 학교 공지를 확인하세요.",
+          "when": "2026-09",
+          "status": "confirmed",
+          "source": {
+            "name": "수지중학교·손곡중학교 학교 공지(2026.9)",
+            "url": "https://suji-m.goeyi.kr/suji-m/na/ntt/selectNttList.do?mi=14367&bbsId=8205"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg-3",
+      "title": "교과서",
+      "items": [
+        {
+          "text": "교과서 출판사는 학교·학년마다 달라요. 성복중은 2027학년도 교과서 출판사 목록을 2026.10.26 학교 공지로 안내했어요(미술·체육은 1학년 때 배부하고 2·3학년까지 사용). 다른 학교는 2027학년도 안내가 아직 없어 2026학년도 목록이 참고예요.",
+          "when": "2026-10-26",
+          "status": "reported",
+          "source": {
+            "name": "성복중학교 학교공지(사용자 제공 캡처)",
+            "url": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "mg-4",
+      "title": "예비소집·준비물·방과후",
+      "items": [
+        {
+          "text": "예비소집·준비물·방과후학교 신청은 배정 학교가 정해진 뒤(2027.1월) 각 중학교가 공지해요. 2027학년도 신입생 안내가 게시된 학교는 아직 확인하지 못했어요.",
+          "when": null,
+          "status": "estimated",
+          "source": {
+            "name": "용인 중학교 홈페이지 공지 확인(2026.10.31, 성서중·손곡중·수지중에서 해당 공지 없음)",
+            "url": null
+          },
+          "nullReason": "학교 공지 미게시"
+        }
+      ]
+    }
+  ]
+}
