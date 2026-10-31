@@ -255,3 +255,7 @@ table.policy td{font-size:14px;line-height:1.5}
 .srch .sr-h{margin:var(--sp-4) 0 var(--sp-1);font-size:var(--fs-sub);font-weight:700;color:var(--pencil)}
 .srch li a{min-height:var(--touch)}
 @media (prefers-reduced-transparency:reduce),(prefers-contrast:more){.srch{background:var(--paper);-webkit-backdrop-filter:none;backdrop-filter:none}}
+
+/* 용어 풀이 말풍선 */
+.tip{background:var(--paper2);color:var(--ink);border:1px solid var(--glass-line);border-radius:14px;box-shadow:var(--gl-sh);padding:10px 12px;font-size:14px;line-height:1.55}
+.term{text-decoration:underline dotted;text-underline-offset:3px;text-decoration-color:var(--pencil);min-height:0}

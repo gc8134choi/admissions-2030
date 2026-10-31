@@ -1,3 +1,4 @@
+import { decorateTerms, initTerms, setTerms } from "./terms.js";
 import { MENU, STATUS, TABS, REDIRECT, hrefOf, tabHref, locate } from "./menu.js";
 import { register as registerPolicy } from "./policy.js";
 import { registerHome } from "./home.js";
@@ -466,6 +467,15 @@ await initProfiles(load);
 }
 mountProfileSwitch([$("#pf")], store, render);
 mountSearch($("#srbtn"), { load, store, esc });
+// 용어 ⓘ를 모든 화면으로: 화면이 그려지거나 바뀔 때(필터 등) 사전의 용어를 묶음마다 처음 한 번 누르는 말로 바꾼다
+load("glossary").then((g) => {
+  setTerms(g.terms); initTerms();
+  const main = $("#main"); let tm = null;
+  // 화면마다 용어당 처음 한 번만(홈은 패널마다 따로 붙인다)
+  const run = () => { mo.disconnect(); if (location.hash.replace(/^#/, "").split("?")[0] !== "" && location.hash !== "#home") { try { decorateTerms(main, null); } catch {} } mo.observe(main, { childList: true, subtree: true }); };
+  const mo = new MutationObserver(() => { clearTimeout(tm); tm = setTimeout(run, 250); });
+  mo.observe(main, { childList: true, subtree: true });
+}).catch(() => {});
 render();
 
 // 서비스 워커: 한 번 열어 두면 오프라인에서도 홈이 열린다. 새 버전이 오면 한 줄로 알린다.
