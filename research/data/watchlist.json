@@ -315,7 +315,8 @@
         "ar-2028-sogang-susi-nonsul"
       ],
       "importance": "높음",
-      "enabled": true
+      "enabled": false,
+      "disabledReason": "2026-10-31 서버 인증서 체인 불완전(UNABLE_TO_VERIFY_LEAF_SIGNATURE)으로 안전하게 접속할 수 없음. TLS 검증을 끄지 않고 수동 점검(입학처 수시 공지)으로 대체"
     },
     {
       "id": "w-u-skku",
@@ -335,7 +336,8 @@
         "ar-2028-skku-susi-yungham"
       ],
       "importance": "높음",
-      "enabled": true
+      "enabled": false,
+      "disabledReason": "2026-10-31 입학처 모든 경로가 404(접속 차단 추정, 대교협·교육청 경유 자료로 확인). 수동 점검으로 대체"
     },
     {
       "id": "w-u-hanyang",
@@ -374,7 +376,8 @@
         "ar-2028-cau-susi-jonghap"
       ],
       "importance": "높음",
-      "enabled": true
+      "enabled": true,
+      "note": "2026-10-31 타임아웃은 일시 오류로 확인(재접속 200), 계속 감시"
     },
     {
       "id": "w-u-khu",
@@ -429,7 +432,8 @@
         "ar-2028-uos-susi-nonsul"
       ],
       "importance": "높음",
-      "enabled": true
+      "enabled": false,
+      "disabledReason": "2026-10-31 입학처가 'Access Blocked'(접근 정책상 차단)로 응답함. 우회하지 않고 수동 점검으로 대체"
     },
     {
       "id": "w-yi-middle",
@@ -447,6 +451,20 @@
         "life-08",
         "life-11",
         "middle"
+      ],
+      "importance": "높음",
+      "enabled": true
+    },
+    {
+      "id": "w-yi-hs-curriculum",
+      "name": "용인교육지원청 '용인 고등학교 학교별 교육과정' 게시판",
+      "url": "https://www.goeyi.kr/goeyi/na/ntt/selectNttList.do?mi=25305&bbsId=15728",
+      "watch": "학교별 교육과정 자료 게시 여부(2026-10-31 현재 등록 게시물 없음)",
+      "method": "list-titles",
+      "interval": "일",
+      "affects": [
+        "hs-compare",
+        "links"
       ],
       "importance": "높음",
       "enabled": true
