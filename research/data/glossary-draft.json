@@ -1,0 +1,445 @@
+{
+  "_meta": {
+    "note": "용어사전 초안. 초등학부모가 이해할 한두 문장 + 출처. confirmed는 공식 자료에 근거, reported는 사용자 제공·매체 근거, estimated는 일정표 이름 기준 설명·설명회 요약이라 공식 확인 필요.",
+    "checkedAt": "2026-10-31"
+  },
+  "terms": [
+    {
+      "id": "gl-001",
+      "term": "학교군",
+      "category": "배정",
+      "plain": "중학교를 배정하는 지역 묶음이에요. 성복초는 '수지1중학군'에 속하고, 이 안의 중학교 9곳 중에서 지망해요.",
+      "detail": null,
+      "related": [
+        "gl-002",
+        "gl-003",
+        "gl-004"
+      ],
+      "source": {
+        "name": "경기도교육청 고시 제2026-24호 2027학년도 중학교 학교군 및 중학구 고시",
+        "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+      },
+      "status": "confirmed",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-002",
+      "term": "중학구",
+      "category": "배정",
+      "plain": "학교군 안에서 따로 정한 구역이에요. 구역이 정해진 학교군은 구역 안 중학교를 먼저 1지망으로 써요. 수지1중학군은 고시 표에 구역이 따로 없어요.",
+      "detail": null,
+      "related": [
+        "gl-001",
+        "gl-003"
+      ],
+      "source": {
+        "name": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도)",
+        "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318"
+      },
+      "status": "confirmed",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-003",
+      "term": "지망",
+      "category": "배정",
+      "plain": "가고 싶은 중학교(고교)를 순서대로 적는 거예요. 1지망 지원이 정원보다 많으면 해당 초등학교 졸업자를 우선하고, 겹치면 초등학교 먼저 입학한 순, 같으면 컴퓨터 추첨이에요.",
+      "detail": null,
+      "related": [
+        "gl-001",
+        "gl-004"
+      ],
+      "source": {
+        "name": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도)",
+        "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318"
+      },
+      "status": "confirmed",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-004",
+      "term": "근거리 지망",
+      "category": "배정",
+      "plain": "수지1중학군에서만 쓰는 방식이에요. 2지망부터는 졸업한 초등학교에서 가까운 중학교 5곳 안에서 골라요. 5곳 명단은 용인교육지원청 안내의 '근거리표'에 있어요.",
+      "detail": null,
+      "related": [
+        "gl-003",
+        "gl-001"
+      ],
+      "source": {
+        "name": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도)",
+        "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318"
+      },
+      "status": "confirmed",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-005",
+      "term": "배정원서",
+      "category": "배정",
+      "plain": "중학교 배정을 받기 위해 쓰는 원서예요. 2027학년도는 출신 초등학교에서 11.2~11.6에 작성하고, 용인교육지원청이 11.9~11.13에 접수해요.",
+      "detail": null,
+      "related": [
+        "gl-006",
+        "gl-007"
+      ],
+      "source": {
+        "name": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도)",
+        "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318"
+      },
+      "status": "confirmed",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-006",
+      "term": "추가배정",
+      "category": "배정",
+      "plain": "정해진 기간에 배정원서를 내지 못한 경우를 위한 추가 일정이에요(2027학년도 작성 12.7~12.11, 접수 12.14~12.16). 일정표 이름 기준 설명이라 자세한 대상은 안내문에서 확인하세요.",
+      "detail": null,
+      "related": [
+        "gl-005",
+        "gl-007"
+      ],
+      "source": {
+        "name": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도)",
+        "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318"
+      },
+      "status": "estimated",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-007",
+      "term": "재배정",
+      "category": "배정",
+      "plain": "배정 발표 뒤 등록을 마친 다음 따로 신청하는 단계예요(2027학년도 접수 1.11~1.15, 발표 1.22). 대상·사유는 일정표 이름 기준이라 안내문 확인이 필요해요.",
+      "detail": null,
+      "related": [
+        "gl-006",
+        "gl-005"
+      ],
+      "source": {
+        "name": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도)",
+        "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318"
+      },
+      "status": "estimated",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-008",
+      "term": "선지원 후추첨",
+      "category": "배정",
+      "plain": "먼저 지원서를 낸 뒤, 인원이 넘치면 추첨으로 배정하는 방식이에요. 경기 평준화 지역 일반고는 중학교 내신(200점)으로 선발·컴퓨터 배정을 하는 선지원 후추첨 방식으로 안내돼요.",
+      "detail": null,
+      "related": [
+        "gl-009"
+      ],
+      "source": {
+        "name": "경기도교육청 고입·전학 포털(2027학년도 평준화 배정 방안)",
+        "url": "https://satp.goe.go.kr/main.do"
+      },
+      "status": "confirmed",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-009",
+      "term": "평준화",
+      "category": "배정",
+      "plain": "같은 지역 일반고를 시험 성적 순이 아니라 지망과 추첨 중심으로 배정하는 제도예요. 용인은 평준화 학군이고 수지구 고교는 2구역이에요. 평준화가 아닌 지역은 학교별 전형으로 뽑아요.",
+      "detail": null,
+      "related": [
+        "gl-008"
+      ],
+      "source": {
+        "name": "경기도교육청 고입·전학 포털(2027학년도 평준화 배정 방안)",
+        "url": "https://satp.goe.go.kr/main.do"
+      },
+      "status": "confirmed",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-010",
+      "term": "학군내배정·구역내배정",
+      "category": "배정",
+      "plain": "용인 고교 배정은 2단계예요. 1단계 학군내배정(용인 50%)에서 5개 고교를, 2단계 구역내배정에서 그 구역 전체 고교를 지망 순으로 써요.",
+      "detail": null,
+      "related": [
+        "gl-009",
+        "gl-003"
+      ],
+      "source": {
+        "name": "경기도교육청 고입·전학 포털(2027학년도 평준화 배정 방안)",
+        "url": "https://satp.goe.go.kr/main.do"
+      },
+      "status": "confirmed",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-011",
+      "term": "중입·고입·대입",
+      "category": "제도",
+      "plain": "이 포털에서 쓰는 말이에요. 중입=중학교 입학·배정, 고입=고등학교 입학·배정, 대입=대학 입시(수시·정시)를 뜻해요.",
+      "detail": null,
+      "related": [
+        "gl-012",
+        "gl-013"
+      ],
+      "source": {
+        "name": "이 포털의 용어(스쿨 라이프)",
+        "url": null
+      },
+      "status": "confirmed",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-012",
+      "term": "수시",
+      "category": "입시",
+      "plain": "고3 2학기 초(9월)에 원서를 내는 대학 입시예요. 최대 6곳까지 지원하고 학생부교과·학생부종합·논술 등이 있어요.",
+      "detail": null,
+      "related": [
+        "gl-014",
+        "gl-015",
+        "gl-016",
+        "gl-017"
+      ],
+      "source": {
+        "name": "사용자 제공 정리(전형 설명, 2026-10-29)",
+        "url": null
+      },
+      "status": "reported",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-013",
+      "term": "정시",
+      "category": "입시",
+      "plain": "수능 점수로 뽑는 입시예요. 수능은 11월 셋째 목요일에 치르고 원서는 12월 말~1월에 내요. 최대 3곳 지원해요.",
+      "detail": null,
+      "related": [
+        "gl-017",
+        "gl-012"
+      ],
+      "source": {
+        "name": "사용자 제공 정리(전형 설명, 2026-10-29)",
+        "url": null
+      },
+      "status": "reported",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-014",
+      "term": "교과전형",
+      "category": "입시",
+      "plain": "학생부교과전형이에요. 내신 등급 위주로 뽑아서 숫자로 거의 결정돼요. 2028학년도 전국 모집인원의 45.3%가 학생부교과예요.",
+      "detail": null,
+      "related": [
+        "gl-015",
+        "gl-012"
+      ],
+      "source": {
+        "name": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29 기준)",
+        "url": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf"
+      },
+      "status": "confirmed",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-015",
+      "term": "학종",
+      "category": "입시",
+      "plain": "학생부종합전형이에요. 내신에 더해 생활기록부 전체(세특·동아리·진로 활동)를 보고 서류·면접으로 뽑아요. 2028학년도 전국 모집인원의 24.3%예요.",
+      "detail": null,
+      "related": [
+        "gl-014",
+        "gl-012"
+      ],
+      "source": {
+        "name": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29 기준)",
+        "url": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf"
+      },
+      "status": "confirmed",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-016",
+      "term": "논술전형",
+      "category": "입시",
+      "plain": "대학이 직접 내는 논술 시험 점수 위주예요. 인문은 글쓰기, 자연은 수학 풀이 형태가 많아요. 2028학년도 전국 3.6%, 수도권은 11,443명이에요.",
+      "detail": null,
+      "related": [
+        "gl-017",
+        "gl-012"
+      ],
+      "source": {
+        "name": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29 기준)",
+        "url": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf"
+      },
+      "status": "confirmed",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-017",
+      "term": "수능 최저",
+      "category": "입시",
+      "plain": "수시 전형인데도 '수능에서 몇 등급 이상'을 요구하는 조건이에요(예: 국·수·영·탐 중 3개 등급 합 7 이내). 내신이 좋아도 못 맞추면 탈락해요. 대학·전형마다 달라요.",
+      "detail": null,
+      "related": [
+        "gl-012",
+        "gl-013"
+      ],
+      "source": {
+        "name": "사용자 제공 정리(전형 설명, 2026-10-29)",
+        "url": null
+      },
+      "status": "reported",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-018",
+      "term": "전형유형",
+      "category": "입시",
+      "plain": "대교협은 전형을 학생부위주(교과)·학생부위주(종합)·논술위주·실기/실적위주·수능위주·기타로 나눠요.",
+      "detail": null,
+      "related": [
+        "gl-014",
+        "gl-015",
+        "gl-016"
+      ],
+      "source": {
+        "name": "대교협 2028학년도 대학입학전형기본사항(개정 2026.7.31)",
+        "url": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf"
+      },
+      "status": "confirmed",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-019",
+      "term": "시행계획",
+      "category": "입시",
+      "plain": "대학이 입시 2년 전 4월 말에 대교협을 통해 공개하는 입시 계획이에요. 2028학년도 시행계획은 2026.4.30에 발표됐어요.",
+      "detail": null,
+      "related": [
+        "gl-018"
+      ],
+      "source": {
+        "name": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29 기준)",
+        "url": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf"
+      },
+      "status": "confirmed",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-020",
+      "term": "이수·학점제",
+      "category": "교육과정",
+      "plain": "고등학교에서 3년간 192학점(교과 174+창의적 체험활동 18)을 채우면 졸업하는 제도예요. 학생이 과목을 골라 듣는 고교학점제의 바탕이에요.",
+      "detail": null,
+      "related": [
+        "gl-022"
+      ],
+      "source": {
+        "name": "고교학점제 종합지원포털(교육부)",
+        "url": "https://www.hscredit.kr/about/graduation"
+      },
+      "status": "confirmed",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-021",
+      "term": "과목 이수 기준",
+      "category": "교육과정",
+      "plain": "공통과목은 출석률 2/3 이상과 학업성취율 40% 이상이어야 이수예요. 선택과목은 2027학년도 전 학년에서 출석률(2/3)만 봐요.",
+      "detail": null,
+      "related": [
+        "gl-020"
+      ],
+      "source": {
+        "name": "고교학점제 종합지원포털(교육부)",
+        "url": "https://www.hscredit.kr/about/graduation"
+      },
+      "status": "confirmed",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-022",
+      "term": "택n",
+      "category": "교육과정",
+      "plain": "선택과목 묶음에서 n개를 고르는 방식이에요. 이 포털 편제표에서 '택3'처럼 써요(학교별 편제표 기준).",
+      "detail": null,
+      "related": [
+        "gl-020"
+      ],
+      "source": {
+        "name": "이 포털의 용어(스쿨 라이프)",
+        "url": null
+      },
+      "status": "confirmed",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-023",
+      "term": "성취평가제와 5등급",
+      "category": "교육과정",
+      "plain": "과목 점수를 A~E 성취도로 매기고, 상대평가 과목은 5등급을 함께 적어요. 사회·과학 융합선택 9과목은 5등급 없이 절대평가만 해요.",
+      "detail": null,
+      "related": [
+        "gl-020"
+      ],
+      "source": {
+        "name": "교육부 정책브리핑: 2028 대입제도 개편(2023.12.27)",
+        "url": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888"
+      },
+      "status": "confirmed",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-024",
+      "term": "통합형 수능",
+      "category": "입시",
+      "plain": "2028학년도 수능부터 선택과목 없이 모두 같은 내용으로 보는 수능이에요. 사회·과학탐구는 통합사회·통합과학이 출제돼요.",
+      "detail": null,
+      "related": [
+        "gl-017"
+      ],
+      "source": {
+        "name": "교육부 정책브리핑: 2028 대입제도 개편(2023.12.27)",
+        "url": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888"
+      },
+      "status": "confirmed",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-025",
+      "term": "고입 내신(중학교)",
+      "category": "고입",
+      "plain": "경기 고입 내신은 200점이에요. 2027학년도부터 중1 2학기 성적(12점)이 반영되고 2·3학년 성적과 출결·봉사·학교활동을 합해요.",
+      "detail": null,
+      "related": [
+        "gl-009"
+      ],
+      "source": {
+        "name": "경기도교육청 2027학년도 고등학교 입학 내신성적 반영지침 주요 변경사항",
+        "url": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/133745f2-115e-4a50-b297-e7f2cd7de910.pdf"
+      },
+      "status": "confirmed",
+      "asOf": "2026-10-31"
+    },
+    {
+      "id": "gl-026",
+      "term": "공동교육과정",
+      "category": "교육과정",
+      "plain": "학교에 없는 과목을 다른 학교와 함께(온라인 포함) 듣는 제도예요. 홍천고 설명회에서 온라인 수강이 늘었다고 했지만 공식 기준은 학교·교육청 안내를 확인하세요.",
+      "detail": null,
+      "related": [
+        "gl-020",
+        "gl-022"
+      ],
+      "source": {
+        "name": "홍천고 설명회 요약(사용자 참석 녹음, AI 요약)",
+        "url": null
+      },
+      "status": "estimated",
+      "asOf": "2026-10-31"
+    }
+  ]
+}
