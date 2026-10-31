@@ -244,3 +244,14 @@ table.policy td{font-size:14px;line-height:1.5}
 .legend .pst{margin:0 -4px 0 0}
 @media (min-width:1100px){.legend{padding-left:calc(var(--pad) + 0px)}}
 @media (max-width:899px){.legend{font-size:12.5px;padding-top:6px;margin-bottom:-6px}}
+
+/* 검색 오버레이: 크게 열리고 바로 입력 */
+.srch{background:color-mix(in srgb,var(--paper) 88%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.srch .sr-in{max-width:760px;margin:0 auto;padding:var(--sp-5) var(--pad)}
+.srch .sr-bar{display:flex;gap:var(--sp-3);align-items:center;padding:var(--sp-2) var(--sp-3);border:1px solid var(--glass-line);border-radius:999px;background:var(--glass);box-shadow:var(--gl-sh)}
+.srch input[type=search]{flex:1;min-width:0;min-height:var(--touch);font:600 20px var(--font);color:var(--ink);background:transparent;border:0;outline:0}
+.srch input::placeholder{color:var(--pencil);font-weight:500}
+.srch .sr-bar:focus-within{border-color:var(--accent)}
+.srch .sr-h{margin:var(--sp-4) 0 var(--sp-1);font-size:var(--fs-sub);font-weight:700;color:var(--pencil)}
+.srch li a{min-height:var(--touch)}
+@media (prefers-reduced-transparency:reduce),(prefers-contrast:more){.srch{background:var(--paper);-webkit-backdrop-filter:none;backdrop-filter:none}}
