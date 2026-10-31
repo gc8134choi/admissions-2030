@@ -125,3 +125,10 @@ table.policy td{font-size:14px;line-height:1.5}
   .chipbar{background:color-mix(in srgb,var(--paper) 86%,transparent);border-bottom:1px solid var(--glass-line);box-shadow:none;padding:6px 0}
   table.policy td,table.policy th{padding:6px 8px}
 }
+
+/* ===== 4단계: 학교 — 카드 간격 압축, 비교표 행 높이 ===== */
+.schoolgrid>*,.schoolgrid>*:nth-child(n){margin-top:0;transform:none}
+.school{gap:6px;padding:var(--sp-3) var(--sp-3)}
+.school details{margin:0}
+.school details>summary{padding:6px 0}
+.hs-wide td,#hs-wide td,.hub-hs td{padding:6px 8px}
