@@ -193,3 +193,11 @@ table.policy td{font-size:14px;line-height:1.5}
   .ledger .lg-m .src{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;display:inline-block}
   .ledger .lg-m{flex-wrap:nowrap}
 }
+
+/* ===== 화면 모드 전환(자동/밝게/어둡게) ===== */
+.tsw{display:flex;gap:2px;padding:2px;border:1px solid var(--glass-line);border-radius:999px;background:var(--glass-in);flex:none}
+.tsw button{min-height:40px;min-width:44px;padding:0 10px;border:0;border-radius:999px;background:transparent;color:var(--pencil);font:600 13px var(--font);cursor:pointer}
+.tsw button:hover{color:var(--ink)}
+.tsw button[aria-pressed=true]{background:var(--accent);color:var(--on-accent)}
+.tsw button:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+@media (max-width:899px){.tsw button{min-height:44px;min-width:44px;padding:0 8px;font-size:13px}.barin{gap:6px}}
