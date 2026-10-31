@@ -1,6 +1,6 @@
 import { showProfiles } from "./profile-ui.js";
 import { STAGES, stageOf, stageTag } from "./stage.js";
-import { searchHtml, hubsHtml, planPanel, comparePanel, admPanel, midPanel, STAGE_HUB, PIN_KEY } from "./dash.js";
+import { hubsHtml, planPanel, comparePanel, admPanel, midPanel, STAGE_HUB, PIN_KEY } from "./dash.js";
 import { decorateTerms, initTerms } from "./terms.js";
 // 홈 화면(A안 에디토리얼). 데이터: policy.json(일정·변경 로그·학점제 규칙·마일스톤), summary/curricula/schools(관심 학교).
 // policy.json·policy.js는 읽기만 한다(서브 세션 담당).
@@ -121,20 +121,12 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
       const sts = stones.filter((m) => dayN(m.date, t) >= 0).map((m) => ({ kind: "stone", row: m.row, m, sp: span(m.date), title: m.label, date: ymdText(m.date), line: "", meta: `${badges(m.row)} ${link(m.row)}` }));
       return [...evs, ...sts].sort((a, b) => !!a.seoul - !!b.seoul || a.sp.start - b.sp.start || a.sp.end - b.sp.end); // 서울 행은 경기·전국 행 다음
     };
-    const heroHtml = () => {
-      const it = feed()[0];
-      if (!it) return `<p class="hello" id="hh">오늘도 한 칸씩.</p><div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p><small>${isB ? "학교를 고르면 그 학교 일정이 여기에 모입니다." : "앞으로 90일 안에 해당하는 일정이 없어요."}</small></div>`;
-      const live = it.sp.start <= t, n = Math.round((it.sp.start - t) / DAY), left = Math.round((it.sp.end - t) / DAY);
-      const num = live ? `<span class="big live">진행 중</span>` : n === 0 ? `<span class="big live">오늘</span>` : `<span class="big num" id="ddn">${n.toLocaleString()}</span><span class="unit" id="ddu">일 남음</span>`;
-      const sub = live && left > 0 ? `<span class="hh-left num">${left}일 남았어요</span>` : "";
-      const photo = it.kind === "stone" ? `<div class="hero-ph ms" data-ms="${esc("life:" + it.m.id)}"><div class="ms-p" aria-hidden="true">${ART[it.m.kind] || ART.graduation}</div><span class="ms-a"><button type="button" class="lnk" data-add>사진 넣기</button><button type="button" class="lnk" data-del hidden>삭제</button><input type="file" accept="image/*" hidden></span><p class="hint">사진은 이 기기에만 저장돼요.</p></div>` : "";
-      return `<p class="hello" id="hh">가장 가까운 일이에요.</p>
-        <button type="button" class="dday" id="dday"${live || n === 0 ? " disabled" : ""}><span class="sr-only">남은 날. 누르면 단위가 바뀝니다. </span>${num}<svg class="circ" viewBox="0 0 300 120" preserveAspectRatio="none" aria-hidden="true"><path d="M14 62C10 24 80 8 160 10c88 2 138 22 132 50-6 30-78 48-168 46C52 104 10 90 14 62z"/></svg></button>${sub}
-        <h2 class="hero-t">${esc(it.title)}</h2><p class="hero-d num">${it.date}</p>${it.line ? `<p class="hero-s">${esc(it.line)}</p>` : ""}<p class="hero-meta">${it.meta}</p>${photo}${!live && n > 0 ? '<p class="hint">숫자를 누르면 주·달로 바뀌어요.</p>' : ""}`;
-    };
-    // 다음 일정 장부: 히어로 다음 3건을 한 줄씩(D-n · 제목 · 기간 · 단계). 졸업·입학 카드는 히어로가 아닐 때 "곧 있을 일"에만 둔다.
-    const rest = () => { const f = feed(), r = (f[0]?.kind === "stone" ? f.slice(1) : f.slice(1).filter((it) => it.kind !== "stone")).slice(0, 3);
-      return r.length ? r.map((it) => `<li class="lg"><span class="d${it.sp.start <= t ? " live" : " num"}">${dLabel(it.sp, t)}</span><b class="lg-t">${esc(it.title)}</b><span class="lg-d num">${it.date}</span>${stageTag(stageOf(it.row), esc)}</li>`).join("") : '<li class="lg"><span class="muted">이어지는 일정은 아직 없어요.</span></li>'; };
+    // 가까운 일정 장부: 히어로 없이 한 줄씩(D-day · 제목 · 기간 · 단계/상태·출처). 가장 가까운 일은 같은 줄에서 굵기·색으로만 강조.
+    const rest = () => { const f = feed().slice(0, 5);
+      if (!f.length) return `<li class="lg"><div class="empty"><p>아직 모인 일정이 없어요.</p><small>${isB ? "학교를 고르면 그 학교 일정이 여기에 모입니다." : "앞으로 90일 안에 해당하는 일정이 없어요."}</small></div></li>`;
+      return f.map((it, i) => { const live = it.sp.start <= t, left = Math.round((it.sp.end - t) / DAY);
+        const dl = live ? (left > 0 ? `진행 중 · ${left}일 남음` : "진행 중") : dLabel(it.sp, t);
+        return `<li class="lg${i === 0 ? " first" : ""}"><span class="d${live ? " live" : " num"}">${dl}</span><b class="lg-t">${esc(it.title)}</b><span class="lg-d num">${it.date}</span><span class="lg-m">${it.meta}</span></li>`; }).join(""); };
 
     // 4) 바뀐 소식 1줄
     const log0 = policy.filter((r) => r.topic === "change-log").map((r) => ({ r, d: dateOf(r.title) })).filter((x) => x.d && span(x.d).start <= t);
@@ -218,13 +210,12 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     el.innerHTML = `<div class="hm">
       ${ddline ? `<div class="auxbar" aria-label="수능 D-day">${ddline}</div>` : ""}
       ${pingLine()}
-      <div class="h-search">${searchHtml()}</div>
       <div class="h-row2">
         <div class="h-main">
-          <section class="hero" aria-labelledby="hh" id="hm-hero">${heroHtml()}</section>
-          <aside class="hero-aside ledger" aria-label="이어지는 일정"><div class="sec-h"><h2><em>이어서</em>그다음 일정</h2><a href="#schedule">전체 ›</a></div>
-            ${isB ? "" : `<div class="hm-aud-wrap">${audienceChips(aud, esc)}</div>`}
-            <ul class="lgs" id="hm-up">${rest()}</ul></aside>
+          <section class="dp ledger" aria-labelledby="lgh"><div class="sec-h"><h2 id="lgh"><em>일정</em>가까운 일정</h2><a href="#schedule">전체 ›</a></div>
+            <ul class="lgs" id="hm-up">${rest()}</ul></section>
+        <section class="dp soonp t2"><div class="sec-h"><h2><em>곧</em>곧 있을 일</h2></div>
+          ${stones.length ? `<ul class="mss">${stones.map(stoneHtml).join("")}</ul><p class="hint">사진은 이 기기에만 저장돼요.</p>` : '<div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p></div>'}</section>
         </div>
         <div class="h-side">
         <section class="dp news t0"><div class="sec-h"><h2><em>소식</em>바뀐 소식</h2><a href="#changelog">전체 ›</a></div>
@@ -244,8 +235,6 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
         ${isB ? "" : `<section class="dp road t0"><div class="sec-h"><h2><em>3년</em>앞으로 3년</h2><a href="#schedule?t=road" id="rm-link">학년별 로드맵</a></div><ol class="tl">${tl}</ol></section>`}
       </div>
       <div class="h-rest">
-        <section class="dp soonp t2"><div class="sec-h"><h2><em>곧</em>곧 있을 일</h2></div>
-          ${stones.length && feed()[0]?.kind !== "stone" ? `<ul class="mss">${stones.map(stoneHtml).join("")}</ul><p class="hint">사진은 이 기기에만 저장돼요.</p>` : '<div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p></div>'}</section>
         <section class="dp gl t1"><div class="sec-h"><h2><em>학점</em>학점제 한눈에</h2><a href="#life/credit">자세히</a></div>
         <p class="glance-lead">3년 동안 <mark>${m0.creditsTotal}학점</mark>을 스스로 채웁니다.</p>
         <div class="glance"><div class="g"><span class="v num">${m0.creditsSubject}</span><span class="k">교과 학점</span><span class="n">공통·선택 과목으로 채웁니다</span></div><div class="g"><span class="v num">${m0.creditsCreative}</span><span class="k">창의적 체험활동</span><span class="n">동아리·봉사·진로</span></div></div>
@@ -270,26 +259,6 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
       if (rk) { const k = rk.closest(".nw").dataset.rk; const cur = new Set(store.get(RK, [])); cur.add(k); store.set(RK, [...cur].slice(-200)); rk.closest(".nw").classList.remove("is-new"); rk.closest(".nw").querySelector(".new")?.remove(); }
     });
 
-    // 히어로 숫자 단위 전환(일 → 주 → 개월)과 사진 연결은 히어로를 다시 그릴 때마다 붙인다.
-    const bindHero = () => {
-      const it = feed()[0], d = el.querySelector("#dday");
-      if (it && d && !d.disabled) {
-        const n = Math.round((it.sp.start - t) / DAY), modes = [["일 남음", n], ["주 남음", Math.floor(n / 7)], ["개월 안팎", Math.round(n / 30.44)]]; let mi = 0;
-        d.addEventListener("click", () => { mi = (mi + 1) % 3; el.querySelector("#ddn").textContent = modes[mi][1].toLocaleString(); el.querySelector("#ddu").textContent = modes[mi][0]; });
-      }
-      bindPhotos(el.querySelector("#hm-hero"));
-      el.querySelector("[data-open-search]")?.addEventListener("click", () => document.getElementById("srbtn")?.click());
-    };
-    // 대상 칩 → 히어로와 이어지는 일정을 다시 그린다
-    const hs = el.querySelector(".hero-aside");
-    hs.addEventListener("click", (e) => {
-      const b = e.target.closest("[data-aud]"); if (!b) return;
-      aud = toggleAudience(aud, b.dataset.aud); saveAudience(store, aud);
-      hs.querySelector(".hm-aud").outerHTML = audienceChips(aud, esc);
-      el.querySelector("#hm-hero").innerHTML = heroHtml();
-      hs.querySelector("#hm-up").innerHTML = rest();
-      bindHero();
-    });
     // 보조 D-day 줄: 그 사람 화면으로 전환
     el.querySelector(".auxbar")?.addEventListener("click", (e) => { const b = e.target.closest("[data-pf]"); if (b) document.querySelector(`#pf [data-pf="${b.dataset.pf}"]`)?.click(); });
 
@@ -305,7 +274,6 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
       del.addEventListener("click", async () => { await photoDel(key).catch(() => {}); show(null); });
     }); }
     bindPhotos(el.querySelector(".mss"));
-    bindHero();
 
     // 이번 주 할 일(체크리스트, 이 브라우저에만 저장)
     if (ok) {
