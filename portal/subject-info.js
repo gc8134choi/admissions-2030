@@ -4,7 +4,7 @@
 //   await preloadSubjectInfo(load);            // 화면을 그리기 전에 한 번(파일이 없어도 오류 없이 지나감)
 //   html += subjectName("화법과 언어");        // 이름 + (설명이 있을 때만) ⓘ 버튼
 // 설명(summary)이 없는 과목에는 ⓘ를 만들지 않는다. 팝오버 안에 출처·상태를 표시한다.
-const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "확인 못 함" };
+const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "미정" };
 const esc = (s = "") => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const txt = (s) => esc(String(s ?? "").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&"));
 const keyOf = (n) => String(n ?? "").normalize("NFC").replace(/\s+/g, "");

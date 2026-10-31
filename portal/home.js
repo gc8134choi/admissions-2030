@@ -4,7 +4,7 @@ import { hubsHtml, planPanel, comparePanel, admPanel, midPanel, STAGE_HUB, PIN_K
 import { decorateTerms, initTerms } from "./terms.js";
 // 홈 화면(A안 에디토리얼). 데이터: policy.json(일정·변경 로그·학점제 규칙·마일스톤), summary/curricula/schools(관심 학교).
 // policy.json·policy.js는 읽기만 한다(서브 세션 담당).
-const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "확인 못 함" };
+const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "미정" };
 const DAY = 864e5;
 
 // ---- 일정 대상 필터(칩): 일정 화면 등 다른 화면에서 같은 키·함수를 재사용할 수 있게 분리 ----
@@ -67,7 +67,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     return s.url && /^https?:\/\//.test(s.url) ? `<a class="src" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)} ↗</a>` : `<span class="src">${esc(s.name)}</span>`;
   };
   // 상태 표시: 확정은 표시하지 않는다(확인된 것은 조용히). 보도·추정·원문 미확인만 점+글자로.
-  const badges = (r) => `${stageTag(stageOf(r), esc)}${r.status && r.status !== "confirmed" ? `<span class="pst ${r.status}">${PST[r.status] || r.status}</span>` : ""}${r.unverified ? ` <span class="unv-i" tabindex="0" role="img" aria-label="원문은 아직 못 봤어요${r.reason || r.note ? `: ${esc(r.reason || r.note)}` : ""}" title="원문은 아직 못 봤어요${r.reason || r.note ? ` — ${esc(r.reason || r.note)}` : ""}">ⓘ</span>` : ""}`;
+  const badges = (r) => `${stageTag(stageOf(r), esc)}${r.status && r.status !== "confirmed" ? `<span class="pst ${r.status}">${PST[r.status] || r.status}</span>` : ""}${r.unverified ? ` <span class="unv-i" tabindex="0" role="img" aria-label="공식 문서로 확인 중이에요" title="공식 문서로 확인 중이에요">ⓘ</span>` : ""}`;
   const DRE = /^\d{4}-\d{2}(-\d{2})?$/;
   const eventsOf = (r) => {
     if (r.events) return r.events;
