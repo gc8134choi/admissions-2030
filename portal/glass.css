@@ -99,3 +99,16 @@ table.policy tr.due{background:rgba(255,127,50,.12)}
 .stgline,.stg{color:var(--pencil)}
 .hm .hero{-webkit-mask:none;mask:none;filter:none;transform:none!important;background:var(--glass);border:1px solid var(--glass-line);border-radius:var(--r2)}
 .hm .hero-aside,.hm .ledger{transform:none!important}
+
+/* ===== 2단계: PC 왼쪽 세로 알약 메뉴(≥1100px). 모바일 하단 탭·좁은 폭 상단 메뉴는 그대로 ===== */
+@media (min-width:1100px){
+  body{padding-left:116px}
+  .hdr .vl{margin-left:auto}
+  #topnav{position:fixed;left:14px;top:50%;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;gap:8px;margin:0;padding:8px;width:92px;border:1px solid var(--glass-line);border-radius:36px;background:var(--glass);box-shadow:0 10px 30px rgba(0,0,0,.28)}
+  #topnav a{display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 6px;border-radius:999px;font-size:14px;font-weight:600;line-height:1.2;text-align:center;color:var(--pencil);border:1px solid transparent;transition:background .15s,color .15s}
+  #topnav a:hover{color:var(--ink);background:var(--glass-in)}
+  #topnav a[aria-current=page]{background:var(--accent);color:var(--on-accent);font-weight:700}
+  #topnav a[aria-current=page]::after{display:none}
+  #topnav a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+}
+@media (min-width:1100px) and (prefers-reduced-transparency:reduce),(min-width:1100px) and (prefers-contrast:more){#topnav{background:var(--paper2)}}
