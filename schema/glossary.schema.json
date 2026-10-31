@@ -2,100 +2,19 @@
  "$schema": "https://json-schema.org/draft/2020-12/schema",
  "$id": "glossary.schema.json",
  "title": "glossary (용어사전) — research/data/glossary-draft.json = portal/data/glossary.json",
- "description": "학부모가 헷갈리는 입시·학교 용어의 쉬운 풀이. 화면의 용어 옆 ⓘ를 누르면 plain(1~2문장)과 detail(자세히)이 뜬다. 공식 명칭은 풀이에 괄호로 유지한다. 사람 이름·출생연도는 쓰지 않는다.",
+ "description": "학부모가 헷갈리는 입시·학교 용어의 쉬운 풀이. 화면의 용어 옆 ⓘ를 누르면 short(한 줄)와 detail(자세히)이 뜬다. 공식 명칭은 official에 따로 적고 풀이에 괄호로 유지한다. 사람 이름·출생연도는 쓰지 않는다.",
  "type": "object",
- "required": [
-  "terms"
- ],
+ "required": ["terms"],
  "properties": {
-  "terms": {
-   "type": "array",
-   "items": {
-    "type": "object",
-    "required": [
-     "id",
-     "term",
-     "plain",
-     "category",
-     "status",
-     "source"
-    ],
-    "properties": {
-     "id": {
-      "type": "string",
-      "pattern": "^gl-\\d{3,}$",
-      "description": "한 번 정하면 바꾸지 않는다"
-     },
-     "term": {
-      "type": "string",
-      "description": "화면에 나오는 표기(2자 이상)"
-     },
-     "aliases": {
-      "type": "array",
-      "items": {
-       "type": "string"
-      },
-      "description": "같은 뜻의 다른 표기. 본문 자동 ⓘ에 쓰며 다른 용어의 term·aliases와 겹치지 않고 각 2자 이상"
-     },
-     "detail": {
-      "type": [
-       "string",
-       "null"
-      ],
-      "description": "자세한 설명(선택)"
-     },
-     "category": {
-      "enum": [
-       "제도",
-       "배정",
-       "입시",
-       "교육과정"
-      ]
-     },
-     "status": {
-      "enum": [
-       "confirmed",
-       "reported",
-       "estimated"
-      ]
-     },
-     "plain": {
-      "type": "string",
-      "description": "초등학부모용 1~2문장 풀이(쉬운 말)"
-     },
-     "related": {
-      "type": "array",
-      "items": {
-       "type": "string",
-       "description": "다른 용어 id(gl-NNN)"
-      }
-     },
-     "source": {
-      "type": "object",
-      "required": [
-       "name"
-      ],
-      "properties": {
-       "name": {
-        "type": "string"
-       },
-       "url": {
-        "type": [
-         "string",
-         "null"
-        ]
-       }
-      }
-     },
-     "asOf": {
-      "type": [
-       "string",
-       "null"
-      ],
-      "description": "기준일(YYYY-MM-DD)"
-     }
-    }
-   }
-  }
+  "terms": { "type": "array", "items": { "type": "object", "required": ["id", "term", "short", "category", "status", "sources"], "properties": {
+   "id": { "type": "string", "pattern": "^gl-\\d{3,}$", "description": "한 번 정하면 바꾸지 않는다" },
+   "term": { "type": "string", "description": "화면에 나오는 표기(2자 이상)" },
+   "aliases": { "type": "array", "items": { "type": "string" }, "description": "같은 뜻의 다른 표기. 다른 용어의 term·aliases와 겹치지 않는다" },
+   "short": { "type": "string", "description": "한 줄 풀이(쉬운 말)" },
+   "detail": { "type": ["string", "null"], "description": "자세한 설명(선택)" },
+   "official": { "type": ["string", "null"], "description": "공식 명칭이 따로 있으면" },
+   "category": { "enum": ["배정", "고입", "입시", "학점제", "평가", "과목", "기타"] },
+   "status": { "enum": ["confirmed", "reported", "estimated"] },
+   "sources": { "type": "array", "minItems": 1, "items": { "type": "object", "required": ["name"], "properties": { "name": { "type": "string" }, "url": { "type": ["string", "null"] } } } } } } }
  }
 }
