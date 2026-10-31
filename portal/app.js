@@ -47,6 +47,15 @@ function drawTabs(tab) {
   $("#btabs").innerHTML = html;
 }
 
+// 화면 모드 전환(자동·라이트·다크). 선택은 이 브라우저에만 저장한다.
+function drawTheme() {
+  const box = $("#themesw"); if (!box || !window.__theme) return;
+  const cur = window.__theme.get();
+  box.innerHTML = [["auto", "자동"], ["light", "밝게"], ["dark", "어둡게"]].map(([k, t]) => `<button type="button" data-th="${k}" aria-pressed="${k === cur}">${t}</button>`).join("");
+  box.onclick = (e) => { const b = e.target.closest("[data-th]"); if (!b) return; window.__theme.set(b.dataset.th); drawTheme(); };
+}
+drawTheme();
+
 // ---- 데이터 ----
 const cache = new Map();
 const load = (name) => {

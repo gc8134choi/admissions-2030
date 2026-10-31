@@ -23,6 +23,14 @@ const d=await p.evaluate(()=>({sx:document.documentElement.scrollWidth>document.
 const issues=[];if(errs.length)issues.push('console:'+errs[0]);if(d.sx)issues.push('가로스크롤');const m=d.t.match(bad);if(m)issues.push('금지문구:'+m[0]);
 if(d.badge)issues.push('확정배지');if(issues.length)out.push({w,r,issues});}
 await p.close()}
+// 화면 모드 강제(자동 아님): 기기 설정과 반대로 둔 최악 조건에서 배경 밝기와 오류를 점검한다
+for(const [mode,sys] of [['dark','light'],['light','dark']])for(const w of [390,1440]){const c=await b.newContext({viewport:{width:w,height:900},colorScheme:sys});await c.addInitScript(m=>{try{localStorage.setItem('portal.theme',m)}catch(e){}},mode);const p=await c.newPage();const errs=[];
+p.on('pageerror',e=>errs.push(String(e).slice(0,120)));
+for(const r of routes){errs.length=0;try{await p.goto(base+r,{waitUntil:'load',timeout:20000});await p.waitForTimeout(600);}catch(e){out.push({w,r,mode,err:'load '+String(e).slice(0,80)});continue}
+const d=await p.evaluate(()=>{const m=getComputedStyle(document.body).backgroundColor.match(/\d+/g).map(Number);return {L:(m[0]*.3+m[1]*.59+m[2]*.11)/255,a:document.documentElement.dataset.theme,sx:document.documentElement.scrollWidth>document.documentElement.clientWidth+2}});
+const issues=[];if(errs.length)issues.push('console:'+errs[0]);if(d.sx)issues.push('가로스크롤');if(d.a!==mode)issues.push('data-theme 없음');if(mode==='dark'&&d.L>0.25)issues.push('다크인데 밝은 배경');if(mode==='light'&&d.L<0.6)issues.push('라이트인데 어두운 배경');
+if(issues.length)out.push({w,r,mode,issues});}
+await c.close()}
 await b.close();console.log(JSON.stringify(out));})();
 """
 
@@ -42,7 +50,7 @@ def main():
         return 2
     out = json.loads(r.stdout.strip().splitlines()[-1])
     if not out:
-        print(f"OK: {len(ROUTES)}화면 × 4폭 이상 없음")
+        print(f"OK: {len(ROUTES)}화면 × 4폭 이상 없음(+ 다크·라이트 강제 2모드×2폭)")
         return 0
     for o in out:
         print(json.dumps(o, ensure_ascii=False))

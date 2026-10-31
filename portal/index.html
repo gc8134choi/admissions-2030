@@ -26,6 +26,23 @@
   <link rel="stylesheet" href="scrap.css">
   <link rel="stylesheet" href="dense.css">
   <link rel="stylesheet" href="glass.css">
+  <script>
+  /* 화면 모드(자동/라이트/다크): 첫 페인트 전에 적용. 자동이면 아무것도 바꾸지 않는다. prefers-color-scheme 미디어 규칙은 CSSOM으로 켜고 끈다. */
+  (function(){var K="portal.theme",D=document.documentElement,M="prefers-color-scheme",orig=new WeakMap();
+  function get(){try{var v=localStorage.getItem(K);return v==="light"||v==="dark"?v:"auto"}catch(e){return"auto"}}
+  function fix(rules,mode){for(var i=0;i<rules.length;i++){var r=rules[i];
+    if(r.media&&r.media.mediaText&&(orig.has(r)||r.media.mediaText.indexOf(M)>-1)){if(!orig.has(r))orig.set(r,r.media.mediaText);var o=orig.get(r);
+      if(mode==="auto")r.media.mediaText=o;else r.media.mediaText=o.replace(/\(\s*prefers-color-scheme\s*:\s*(dark|light)\s*\)/g,function(_,w){return w===mode?"(min-width:0px)":"(max-width:0px)"});}
+    if(r.cssRules&&r.cssRules.length)fix(r.cssRules,mode)}}
+  function sheets(mode){for(var i=0;i<document.styleSheets.length;i++){try{fix(document.styleSheets[i].cssRules,mode)}catch(e){}}}
+  function apply(mode){mode=mode||get();if(mode==="auto"){D.removeAttribute("data-theme");D.style.colorScheme=""}else{D.setAttribute("data-theme",mode);D.style.colorScheme=mode}
+    sheets(mode);var m=document.querySelectorAll('meta[name=theme-color]');for(var j=0;j<m.length;j++){if(!m[j].hasAttribute("data-orig"))m[j].setAttribute("data-orig",m[j].getAttribute("content")+"|"+(m[j].getAttribute("media")||""));
+      var p=m[j].getAttribute("data-orig").split("|");if(mode==="auto"){m[j].setAttribute("content",p[0]);if(p[1])m[j].setAttribute("media",p[1])}else{m[j].setAttribute("content",mode==="dark"?"#15110d":"#EEE5D8");m[j].removeAttribute("media")}}}
+  window.__theme={get:get,set:function(v){try{if(v==="auto")localStorage.removeItem(K);else localStorage.setItem(K,v)}catch(e){}apply(v)},apply:apply};
+  apply();
+  document.addEventListener("load",function(e){if(e.target&&e.target.tagName==="LINK"&&get()!=="auto")apply()},true);
+  })();
+  </script>
 </head>
 <body>
   <header class="hdr" aria-label="포털 상단">
@@ -33,6 +50,7 @@
       <a class="wm" href="#home" aria-label="스쿨 라이프 홈">스쿨 <i>라이프</i></a>
       <nav id="topnav" aria-label="주 메뉴"></nav>
       <a id="vaultlink" class="vl" href="#changelog">보관함</a>
+      <div id="themesw" class="tsw" role="group" aria-label="화면 모드"></div>
       <button type="button" id="srbtn" class="srbtn" aria-label="검색" title="검색 (/)"><svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
       <div id="pf" class="sw" role="tablist" aria-label="누구 화면"></div>
       <span class="num" id="today"></span>
