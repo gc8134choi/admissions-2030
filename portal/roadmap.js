@@ -5,7 +5,12 @@ import { STAGES, stageTag } from "./stage.js";
 const rdStage = (x) => (/중학교 (배정|입학)|초등/.test(x.what) ? "중입" : x.stageKey === "csat" || Number(x.stageKey) >= 2 || /수시|정시|수능|대입/.test(x.what) ? "대입" : "고입");
 export async function roadmapView(el, { load, esc, learner, fmt, badgeMain, notice, store }) {
   const d = await load("roadmap");
-  const items = d.items.filter((x) => x.learner === learner.id);
+  // 기준 학년(현재 중3 / 초6): 화면에 이름은 없고 입학연도 기준이다. 선택은 이 브라우저에만 저장한다.
+  const BK = "portal.roadmap.base", ids = Object.keys(d._meta?.learners || {});
+  const sv = store ? store.get(BK, null) : null;
+  const base = ids.includes(sv) ? sv : (ids.includes(learner.id) ? learner.id : ids[0]);
+  const BASES = [["A", "현재 중3 기준", "중3 기준 학년별 로드맵이에요."], ["B", "현재 초6 기준", "초6 기준 큰 그림이에요. 중학교 입학 2027 → 고교 입학 2030 → 대입 2033 순서예요. 먼 일정은 대부분 추정이라 바뀔 수 있어요."]].filter(([k]) => ids.includes(k));
+  const items = d.items.filter((x) => x.learner === base);
   const now = new Date();
   const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
   const stages = [];
@@ -30,7 +35,8 @@ export async function roadmapView(el, { load, esc, learner, fmt, badgeMain, noti
       return rs.length ? `<section id="rd-${esc(s.key)}"><h2>${esc(s.label)}${s.key === cur.key ? '<span class="ed-tag">지금</span>' : ""}</h2>${rs.map(rowHtml).join("")}</section>` : "";
     }).join("") || '<p class="ed-src">이 조건에 맞는 항목이 없어요.</p>';
   };
-  el.innerHTML = `<div class="ed"><p class="ed-top"><b>중3 기준 학년별 로드맵이에요.</b> 추정은 아직 공고 전이라 바뀔 수 있어요.</p>
+  el.innerHTML = `<div class="ed"><div class="ed-filter" id="rdbase" role="group" aria-label="기준 학년"><span>기준 학년</span>${BASES.map(([k, t]) => `<button type="button" class="${k === base ? "on" : ""}" data-b="${k}" aria-pressed="${k === base}">${t}</button>`).join("")}</div>
+    <p class="ed-top"><b>${esc((BASES.find(([k]) => k === base) || [0, 0, "학년별 로드맵이에요."])[2])}</b> 추정은 아직 공고 전이라 바뀔 수 있어요.</p>
     <nav class="ed-toc" aria-label="시기 축">${stages.map((s) => `<button type="button" data-go="rd-${esc(s.key)}"${s.key === cur.key ? ' aria-current="true"' : ""}>${esc(s.label)}</button>`).join("")}</nav>
     <div class="ed-filter" id="rdw" role="group" aria-label="누구 할 일"><span>보기</span><button type="button" class="on" data-w="">전체</button><button type="button" data-w="학생">학생</button><button type="button" data-w="학부모">학부모</button></div>
     <div class="chipbar" id="rdstg"></div>
@@ -38,6 +44,7 @@ export async function roadmapView(el, { load, esc, learner, fmt, badgeMain, noti
   const $sections = el.querySelector("#rdsec");
   const drawStage = () => { el.querySelector("#rdstg").innerHTML = `<span class="flabel">단계</span><div class="chips">${[["", "전체"], ...STAGES.map((g) => [g, g])].map(([v, t]) => `<button type="button" class="chip${v === fs ? " on" : ""}" data-stage="${v}" aria-pressed="${v === fs}">${t}</button>`).join("")}</div>`; };
   drawStage(); draw();
+  el.querySelector("#rdbase").addEventListener("click", (e) => { const b = e.target.closest("[data-b]"); if (!b || b.dataset.b === base) return; if (store) store.set(BK, b.dataset.b); roadmapView(el, { load, esc, learner, fmt, badgeMain, notice, store }); });
   el.querySelector("#rdstg").addEventListener("click", (e) => { const b = e.target.closest("[data-stage]"); if (!b) return; fs = b.dataset.stage; if (store) store.set(SK, fs); drawStage(); draw(); });
   el.querySelector("#rdw").addEventListener("click", (e) => { const b = e.target.closest("[data-w]"); if (!b) return; who = b.dataset.w; el.querySelectorAll("#rdw button").forEach((x) => x.classList.toggle("on", x === b)); draw(); });
   el.querySelector(".ed-toc").addEventListener("click", (e) => { const b = e.target.closest("[data-go]"); if (b) document.getElementById(b.dataset.go)?.scrollIntoView({ behavior: "smooth", block: "start" }); });
