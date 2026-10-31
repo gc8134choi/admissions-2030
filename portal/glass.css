@@ -1,0 +1,101 @@
+/* glass.css — 글래스 테마 층(사용자 요청 2026-10-31, 참고 이미지 temp/design/glass/reference.webp).
+   scrap.css(종이)·dense.css(밀도) 위에 얹는다. 롤백: index.html의 glass.css 링크 한 줄을 지운다.
+   구조·정보·접근성 기준(터치 44/48, 본문 15/16, 보조 13, 대비 AA)은 그대로 두고 색·표면·배경·패널 크기만 바꾼다.
+   배경은 외부 이미지 없이 CSS로 그린 따뜻한 보케 한 겹(고정 1개). 패널은 반투명 rgba + 1px 테두리(패널마다 backdrop-filter 금지, 블러는 .glass 3개 이하). */
+
+/* ---- 토큰: 다크(기본 느낌) ---- */
+:root{
+  --paper:#15110d;--paper2:#201913;--kraft:#3a2c1f;--ink:#F3ECE3;--pencil:#BCAF9F;--line:rgba(255,255,255,.14);
+  --accent:#FF7F32;--accent-a:#FF7F32;--accent-b:#FF7F32;--on-accent:#1a1008;
+  --req:#7DAEF5;--ele:#34D3A8;--st-est:#F0B04A;
+  --glass:rgba(255,244,230,.08);--glass-line:rgba(255,255,255,.16);--glass-in:rgba(255,244,230,.06);
+  --sh:0 8px 28px -12px rgba(0,0,0,.6);
+  --r1:14px;--r2:20px;--r3:10px;
+  --serif:var(--font);--hand:var(--font);
+  --bokeh:radial-gradient(520px 420px at 14% 12%,rgba(255,150,60,.30),transparent 70%),radial-gradient(420px 360px at 86% 8%,rgba(255,196,120,.22),transparent 70%),radial-gradient(640px 520px at 78% 92%,rgba(255,120,40,.16),transparent 72%),radial-gradient(380px 380px at 6% 86%,rgba(120,160,150,.14),transparent 70%);
+}
+/* ---- 토큰: 밝은 모드(따뜻한 밝은 글래스) ---- */
+@media (prefers-color-scheme:light){:root{
+  --paper:#EEE5D8;--paper2:#F7F1E8;--kraft:#E3D3BF;--ink:#231a12;--pencil:#5c5348;--line:rgba(60,40,20,.16);
+  --accent:#C4310D;--accent-a:#C4310D;--accent-b:#C4310D;--on-accent:#ffffff;
+  --req:#1B3A6B;--ele:#0A7860;--st-est:#935600;
+  --glass:rgba(255,255,255,.58);--glass-line:rgba(60,40,20,.14);--glass-in:rgba(255,255,255,.5);
+  --sh:0 8px 24px -14px rgba(80,50,20,.35);
+  --bokeh:radial-gradient(520px 420px at 14% 12%,rgba(255,170,90,.32),transparent 70%),radial-gradient(420px 360px at 86% 8%,rgba(255,205,140,.35),transparent 70%),radial-gradient(640px 520px at 78% 92%,rgba(240,150,90,.2),transparent 72%);
+}}
+@media (prefers-reduced-transparency:reduce),(prefers-contrast:more){:root{--glass:var(--paper2);--glass-in:var(--paper2);--glass-line:var(--ink)}}
+
+/* ---- 배경: 보케 한 겹(고정) ---- */
+body{background:var(--paper);background-image:none}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:var(--bokeh);pointer-events:none}
+.hdr{background:transparent;border-bottom:1px solid var(--line);-webkit-backdrop-filter:none;backdrop-filter:none}
+.wm,.hdr a,.hdr button{color:var(--ink)}.wm i{color:var(--accent)}
+.hdr,.hdr *{font-family:var(--font)}
+
+/* ---- 표면: 종이 조각 → 반투명 글래스(각도·테이프·찢김·질감 제거) ---- */
+.dp,.hero,.ledger,.hero-aside,.school,.ed-row,.rows.lk .row,.pn-t,.pn-u,.note,.ed-top,.piece,.bf-area,.pl-zone>li,.ms,.fl-card,.tw,.w-table,.dsearch,.mid-flow .mid-un,.hub{
+  background:var(--glass);border:1px solid var(--glass-line);box-shadow:var(--sh);border-radius:var(--r1);
+  transform:none!important;clip-path:none;-webkit-mask:none;mask:none;filter:none;color:var(--ink)}
+.hero{background:var(--glass);filter:none}
+.dp.t1,.school:nth-child(even){border-radius:var(--r2)}.dp.t2{border-radius:var(--r3) var(--r2) var(--r1) var(--r2)}
+.note::before,.ed-top::before,.school::before,.fl-card::before,.bf-area::before,.tape{display:none}
+.dp li,.cmx li,.lg,.row{border-color:var(--line)}
+.hero .ddwrap,.dday .circ{display:none}
+.dday .big{color:var(--accent);font-family:var(--font);font-weight:800;letter-spacing:-.04em}
+.dday .unit{color:var(--ink);font-family:var(--font)}
+.dday .circ{stroke:var(--accent)}
+/* 제목·숫자 글꼴은 본문 글꼴 하나(굵기로 위계) */
+.hm .sec-h h2,.dp h2,.ph,.phead h2,.hero-t,.bf-t,.hub-t,.school .sb-t b,.hs-tiles b,.st-n,.cm b,.lg .d,.plan-n .big,.mid-step h3,.pn h3{font-family:var(--font);font-weight:700;letter-spacing:-.02em}
+.dp h2 em,.hub-t em,.new,.m-tg,.pin,.more-g,.mid-step h3 em,.mid-map em,.dn,.lv-tag,.term,.plan-go,.hm-ping,.hm-ping b{font-family:var(--font);letter-spacing:0}
+.dp h2 em,.hub-t em{font-size:13px;font-weight:600;color:var(--accent)}
+.hero-d,.hello,.tabs a,#topnav a,.subnav a,.subnav.lvl a,.vl,.soon,.lv-tag{font-family:var(--font)}
+
+/* ---- 칩·버튼·입력: 얇은 선 + 둥근 사각, 켜면 주황 채움 ---- */
+.chip,.fchip,.btn{background:var(--glass-in);color:var(--ink);border:1px solid var(--glass-line);border-radius:999px;font-weight:600}
+.chip:hover,.fchip:hover{border-color:var(--accent)}
+.chip.on,.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.fchip.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.chip.schip,.chip.schip.on{background:none;border:0}
+input,select,textarea{background:var(--glass-in);color:var(--ink);border:1px solid var(--glass-line);border-radius:var(--r3)}
+.lnk,a{color:inherit}
+.dp h2>a:last-child:not(:first-child),.sec-h>a{color:var(--pencil);font-family:var(--font);font-weight:600;font-size:13px}
+
+/* ---- 내비(하단 탭·소메뉴) ---- */
+.tabs{background:var(--glass);border-top:1px solid var(--glass-line);box-shadow:none;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.tabs a{font-family:var(--font);font-weight:600;font-size:14px;color:var(--pencil)}
+.tabs a[aria-current=page]{color:var(--ink)}
+.tabs a[aria-current=page]::before{background:var(--accent);height:3px;bottom:auto;top:0;left:20%;right:20%;border-radius:0 0 3px 3px}
+#topnav a{font-size:15px;font-weight:600;color:var(--pencil)}#topnav a[aria-current=page]{color:var(--ink)}#topnav a[aria-current=page]::after{background:var(--accent);height:3px;bottom:-6px;border-radius:3px}
+.subnav{border-bottom:1px solid var(--line)}
+.subnav a{font-size:14px;font-weight:600;color:var(--pencil)}.subnav a[aria-current=page]{color:var(--ink);text-decoration:none;box-shadow:inset 0 -3px 0 var(--accent)}
+.subnav.lvl a{background:var(--glass-in);border:1px solid var(--glass-line);border-bottom:0;border-radius:var(--r1) var(--r1) 0 0;box-shadow:none;transform:none;font-size:14px}
+.subnav.lvl a[aria-current=page]{background:var(--glass);box-shadow:inset 0 3px 0 var(--accent)}
+.subnav.lvl::after{background:var(--glass-line)}
+.subnav.lvl a[aria-current=page]::before{display:none}
+.subnav.lvl+.subnav{background:var(--glass);border:1px solid var(--glass-line);border-radius:0 0 var(--r1) var(--r1);box-shadow:none}
+
+/* ---- 표·구분선·상태 ---- */
+th{background:var(--glass-in);color:var(--pencil)}th,td{border-color:var(--line)}
+table.policy tr.due{background:rgba(255,127,50,.12)}
+.pst,.es{font-weight:600}
+.pbar .r,.cm.r .cm-b i{background:var(--req)}.pbar .e,.cm.e .cm-b i{background:var(--ele)}
+.cm-b{background:var(--line)}.cm-b i{background:var(--pencil)}
+
+/* ---- 패널 크기: 안쪽 여백 8~10, 제목·숫자 축소, 행 높이 축소(터치 44/48·본문 15/16·보조 13 하한 유지) ---- */
+.dp,.ledger,.school,.pn-t,.pn-u,.bf-area,.note,.ed-top{padding:var(--sp-2) var(--sp-3)}
+.dp h2{font-size:16px;margin-bottom:var(--sp-1)}
+.hm .hero{padding:var(--sp-3) var(--sp-4)}
+.dday .big{font-size:clamp(56px,10vw,88px)}
+.hm .hero-t{font-size:clamp(20px,2.2vw,26px)}
+.plan-n .big{font-size:38px}
+.cmx-n b{font-size:15px}
+.dp li{padding:2px 0}
+.dgrid,.h-row2,.h-row4,.h-row5,.h-rest,.dhubs{gap:var(--sp-3)}
+.dhubs .hub{padding:var(--sp-2) var(--sp-3)}
+.hm .hm-aud .fchip{background:var(--glass-in)}
+.hm .sec-h h2 em,.hm .dp h2 em{font-size:13px;font-weight:600;color:var(--accent);margin-right:var(--sp-1)}
+.hm .sec-h h2{font-size:16px}
+.ledger .sec-h h2{font-size:16px}
+.stgline,.stg{color:var(--pencil)}
+.hm .hero{-webkit-mask:none;mask:none;filter:none;transform:none!important;background:var(--glass);border:1px solid var(--glass-line);border-radius:var(--r2)}
+.hm .hero-aside,.hm .ledger{transform:none!important}
