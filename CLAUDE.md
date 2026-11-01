@@ -38,6 +38,7 @@ Playwright는 설치돼 있다(`require('playwright')`). 화면 변경 후 스�
 - 평가자는 만든 세션과 다른 세션. 항목마다 근거 없이 점수를 주지 않는다. 배포 기준: 총점 85 이상, 모든 항목 75% 이상, 사실 정확성 만점. 매주 1회와 큰 변경 직후 평가하고 낮은 항목부터 개선한다. 같은 항목이 두 번 연속 오르지 않으면 원인을 보고한다.
 
 ## 작업 규칙
+- 작업 흐름·보고 방식·피드백 수집(함께 보기)은 `WORKFLOW.md`. 자율 범위: 내용·버그·점수 개선. 디자인 방향·메뉴 구조는 사용자 확인. 보고는 완료 한 줄과 변화 있는 날 요약(사용자 확정 2026-11-01).
 - `main`에 직접 푸시하지 않는다. 작업 브랜치(`dev/*`, `research/*`, `data/*`, `pm/*`)에서 시작하기 전에 `origin/main`을 합치고, 끝나면 푸시한다. **푸시한 세션이 직접 PR을 연다**: `python3 tools/pm/prs.py open <브랜치> "<제목>"`(또는 `ship`). CI(`.github/workflows/ci.yml`)를 통과하면 `.github/workflows/automerge.yml`이 자동 머지한다(PR에 `hold` 라벨을 붙이면 멈춘다, 사용자 결정 2026-10-25). 충돌이 나면 `origin/main`을 합쳐 다시 푸시한다. 사이트(GitHub Pages)는 `main`에서 배포된다.
 - 토큰 절약: 단순·반복·패턴 있는 일은 Python 스크립트(`tools/`, `tools/pm/`)로 자동화하고 출력은 요약만 본다(긴 JSON·스크린샷을 그대로 읽지 않는다). 화면 점검은 `python3 tools/pm/sitecheck.py`, PR 상태는 `python3 tools/pm/prs.py status`. 보고는 커밋 링크 한 줄이면 충분하다.
 - 푸시하면 **클릭 가능한 링크**(브랜치, 커밋, Pages 화면)를 알려준다. Pages 주소: `https://gc8134choi.github.io/admissions-2030/portal/`
