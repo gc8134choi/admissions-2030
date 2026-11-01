@@ -19,7 +19,7 @@ export async function middleBody(el, { load, esc, mapHref = (id) => `#select/cur
   const fileId = (f) => (Array.isArray(files) ? files : files.files || []).find((x) => x.file === f)?.id;
   const place = new Map(pl.places.map((p) => [p.id, p]));
   const areas = mid.areas && mid.areas.length ? mid.areas : mid.from ? [{ from: mid.from, zoneSchools: mid.zoneSchools }] : [];
-  if (!areas.length || !areas[0].zoneSchools.length) { el.innerHTML = `<div class="ed"><h2>중학교 배정</h2><p class="muted">아직 정리 중이에요.</p></div>`; return; }
+  if (!areas.length || !areas[0].zoneSchools.length) { el.innerHTML = `<div class="ed"><h2>중학교 배정</h2><p class="muted">아직 정리 중이에요. 배정 일정은 일정 화면에서 먼저 볼 수 있어요.</p></div>`; return; }
   const st = (el.__mid ||= { from: areas[0].from.placeId });
   if (!areas.some((a) => a.from.placeId === st.from)) st.from = areas[0].from.placeId;
 

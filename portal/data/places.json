@@ -294,7 +294,7 @@
      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
     },
     {
-     "name": "portal/data/schools.json 학교 주소(편제표 4개교)",
+     "name": "학교 주소(편제표 4개교)",
      "url": null
     }
    ],
@@ -324,7 +324,7 @@
      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
     },
     {
-     "name": "portal/data/schools.json 학교 주소(편제표 4개교)",
+     "name": "학교 주소(편제표 4개교)",
      "url": null
     }
    ],
@@ -354,7 +354,7 @@
      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
     },
     {
-     "name": "portal/data/schools.json 학교 주소(편제표 4개교)",
+     "name": "학교 주소(편제표 4개교)",
      "url": null
     }
    ],
@@ -384,7 +384,7 @@
      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
     },
     {
-     "name": "portal/data/schools.json 학교 주소(편제표 4개교)",
+     "name": "학교 주소(편제표 4개교)",
      "url": null
     }
    ],

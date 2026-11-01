@@ -49,6 +49,10 @@ const nearby = ndraft.items.map((it) => {
 });
 if (errs.length) { console.error(errs.join("\n")); process.exit(1); }
 
+const { plain } = await import("../portal/plain.js"); // 출처 이름의 내부 파일 경로 등을 사람이 읽는 말로
+const cleanSrc = (list) => (list || []).map((s) => ({ ...s, name: plain(s.name) }));
+for (const p of places) p.sources = cleanSrc(p.sources);
+for (const p of nearby) p.sources = cleanSrc(p.sources);
 const out = { _meta: { note: "학교 위치(생성물, 손으로 고치지 않는다). research/data/places-draft.json에서 tools/build-places.mjs가 만든다.", checkedAt: draft._meta?.checkedAt ?? null, count: places.length, withCoords: places.filter((p) => p.lat != null).length, nearbyCount: nearby.length }, places, nearby };
 const json = JSON.stringify(out, null, 1) + "\n";
 const target = "portal/data/places.json";

@@ -89,4 +89,5 @@ jobs:
           node tools/build-hs-types.mjs --check
           node tools/build-middle-guide.mjs --check
           node tools/build-timeline.mjs --check
+          node tools/check-exposed.mjs
           if [ -f research/data/links-draft.json ]; then node tools/build-links.mjs --check; fi
