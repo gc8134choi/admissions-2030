@@ -453,7 +453,10 @@
         "middle"
       ],
       "importance": "높음",
-      "enabled": true
+      "enabled": true,
+      "startMarker": "향후 주요 일정",
+      "endMarker": "초등학교 통학구역 및 관내 학교 현황",
+      "note": "2026-11-01 메뉴 항목 추가로 줄 수 제한(300줄)에 걸려 일정 줄이 잘린 오탐이 있어, 본문 일정 표만 비교하도록 범위 지정"
     },
     {
       "id": "w-yi-hs-curriculum",
