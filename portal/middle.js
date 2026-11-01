@@ -46,6 +46,30 @@ export async function middleBody(el, { load, esc, mapHref = (id) => `#select/cur
   };
 
   const optHtml = () => { const q = st.q.trim(); const list = areas.filter((a) => a.from.placeId === st.from || !q || (place.get(a.from.placeId)?.name || "").includes(q)); return list.map((a) => `<option value="${esc(a.from.placeId)}"${a.from.placeId === st.from ? " selected" : ""}>${esc(place.get(a.from.placeId)?.name || a.from.placeId)}</option>`).join(""); };
+  // 선택한 초등학교에 맞춘 배정 원칙: 학교군 이름·중학교 수·공동학군은 구역 데이터에서 만들고, 성복초 이름이 박힌 문장은 선택 학교로 바꾼다.
+  // 수지1중학군에만 해당하는 문장(근거리 5교 지망)은 수지1중학군 소속일 때만 보이고, 그 밖에는 "이 학교군의 규정은 교육지원청 안내에서 확인"으로 바꾼다.
+  const principlesFor = (area, zs) => {
+    const fromName = place.get(area.from.placeId)?.name || "이 초등학교";
+    const short = fromName.replace(/초등학교$/, "초");
+    const text = `${area.from.note || ""} ${area.zoneSchools.map((z) => z.note || "").join(" ")}`;
+    const groups = [...new Set(text.match(/수지\d중학군/g) || [])];
+    const joint = /공동학군/.test(text);
+    const s1 = groups.includes("수지1중학군");
+    const names = zs.map(({ p }) => p.name.replace(/중학교$/, "중"));
+    const group = groups.length ? groups.join("·") : "정해진 학교군";
+    return mid.principles.map((p) => {
+      if (/수지1중학군/.test(p.title) || p.id === "mp-01") {
+        return { ...p, title: `${short}는 ${group}${joint ? "(공동학군)" : ""}`, body: `${fromName}는 ${group}에 속해요.${joint ? " 공동학군이라 두 학교군의 중학교를 함께 지원할 수 있어요." : ""} 갈 수 있는 중학교는 ${names.join("·")} ${names.length}교예요. 2027학년도 고시 기준이고, 2030학년도 입학 시점 구성은 그해 고시에서 정해져요.` };
+      }
+      const fix = (t) => String(t).replaceAll("성복초등학교", fromName).replaceAll("성복초", short);
+      if (s1) return { ...p, title: fix(p.title), body: fix(p.body) };
+      if (/근거리/.test(p.title) || /수지1중학군/.test(p.body)) {
+        const general = String(p.body).split(/(?<=[.다])\s+/).filter((x) => !/수지1중학군|성복초|근거리/.test(x)).join(" ");
+        return { ...p, title: /근거리/.test(p.title) ? `${short}의 근거리 중학교 명단은 교육지원청 안내에서 확인` : p.title, body: general || `이 학교군의 지망·근거리 규정은 용인교육지원청 중학교 신입생 배정 안내에서 확인할 수 있어요.` };
+      }
+      return { ...p, title: fix(p.title), body: fix(p.body) };
+    });
+  };
   const draw = () => {
     const area = areas.find((a) => a.from.placeId === st.from);
     const from = place.get(area.from.placeId);
@@ -79,7 +103,7 @@ export async function middleBody(el, { load, esc, mapHref = (id) => `#select/cur
     ${unsettled.length ? `<p class="mid-un"><b>미정</b> ${unsettled.map(esc).join(" · ")} — 바뀔 수 있어요.${zoneNotice && zoneNotice.sourceUrl ? ` <a href="${esc(zoneNotice.sourceUrl)}" target="_blank" rel="noopener">${esc(zoneNotice.sourceName || "출처")}</a>` : ""}</p>` : ""}
     <div class="w-page w-2r">
       <div class="w-body">
-        ${mid.principles.length ? `<section class="mid-step"><h3><em>1</em>배정 원칙(절차)</h3>${mid.principles.map((p, i) => `<details class="mid-pr"${i === 0 ? " open" : ""}><summary>${esc(plain(p.title))} ${tag(p.status, esc)}</summary><p class="ed-b">${esc(plain(p.body))}</p><p class="ed-s0">${srcb(p.sources, esc)}</p></details>`).join("")}</section>` : ""}
+        ${mid.principles.length ? `<section class="mid-step"><h3><em>1</em>배정 원칙(절차)</h3>${principlesFor(area, zs).map((p, i) => `<details class="mid-pr"${i === 0 ? " open" : ""}><summary>${esc(plain(p.title))} ${tag(p.status, esc)}</summary><p class="ed-b">${esc(plain(p.body))}</p><p class="ed-s0">${srcb(p.sources, esc)}</p></details>`).join("")}</section>` : ""}
         ${flowRows ? `<section class="mid-step"><h3><em>2</em>배정 일정 흐름</h3><ol class="pl-flow">${flowRows}</ol><p class="muted small">날짜는 일정 화면과 같아요. 학교·교육지원청 공지로 다시 확인해 주세요.</p></section>` : ""}
         ${cmpHtml}${guideHtml}${tlHtml}
       </div>

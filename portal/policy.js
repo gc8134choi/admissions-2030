@@ -7,6 +7,7 @@ import { typesBody } from "./admission-types.js";
 import { plain, plainRow } from "./plain.js";
 import { preloadGlossary, decorateGlossary } from "./glossary.js";
 import { densify } from "./fold.js";
+import { emptyLine, nextLink } from "./empty.js";
 import { loadAudience, saveAudience, toggleAudience, audienceMatch, audienceChips } from "./home.js";
 
 // 제도·일정 화면(대입 제도, 일정, 고교 유형·전형, 바뀐 소식). 데이터는 data/policy.json. 스타일은 policy.css(A안 에디토리얼).
@@ -43,7 +44,7 @@ export function register(views, { $, esc, load, store }) {
     if (r.status === "seoul-verified") { const no = (r.sourceName || "").match(/서교연 [\d-]+/); return `<span title="${esc(r.sourceName || "")}">서울교육청 선택 과목 안내서${no ? `(${no[0]})` : ""}</span>`; }
     if (label) return `<span title="${esc(r.sourceName || "")}">${label}</span>`;
     if (r.sourceKind === "opinion" || r.sourceKind === "academy") return `<span>${esc(r.sourceName || "미표기")}</span>`;
-    if (!list.length) return "<span>없음</span>";
+    if (!list.length) return "<span>출처 확인 중이에요 · 학교·교육청 공지에서 확인해요</span>";
     return `${r.sourceKind ? `<span>${SKIND[r.sourceKind]}</span> · ` : ""}${list.map((x) => (x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>` : esc(x.name))).join(" · ")}`;
   };
   const table = (rows, cols, cls = () => "") => `<div class="tw"><table class="policy"><thead><tr>${cols.map((c) => `<th class="l">${c[0]}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => `<tr class="${cls(r)}">${cols.map((c) => `<td class="l">${c[1](r)}</td>`).join("")}</tr>`).join("") || `<tr><td colspan="${cols.length}">해당 항목이 없어요.</td></tr>`}</tbody></table></div>`;
@@ -184,7 +185,7 @@ export function register(views, { $, esc, load, store }) {
     const rows = all.filter((r) => r.topic === ({ univ: "exam-schedule", life: "life-schedule" }[tab] || "hs-schedule") || (tab === "hs" && r.topic === "gg-hs-entry" && r.events) || (r.topic === "profile-2033" && (tab === "hs" ? /고입/.test(r.title) : tab === "univ" && r.events)));
     const chips = '<div id="aud"></div>'; // 칩 UI·저장(portal.audience)은 home.js와 공유
     el.innerHTML = `${tabs([["hs", "#schedule?t=hs", "고입"], ["univ", "#schedule?t=univ", "대입"], ["life", "#schedule?t=life", "졸업·입학"], ["road", "#schedule?t=road", "학년별"]], tab)}${notice()}
-      <p class="muted">${{ univ: "수능·대교협 일정이에요. 2030학년도분은 대부분 추정이에요.", life: "졸업·배정·입학 일정이에요. 추정은 (추정)으로 표시해요. 겨울방학·졸업식·신입생 예비소집 날짜는 학교마다 달라서 학교 공지로 확인해 주세요." }[tab] || "2027학년도 고입(서울 기준). 연도는 2027학년도 고입이 2026년 하반기에 진행되는 것을 기준으로 붙였어요."}</p>${chips}<div id="tl"></div>`;
+      <p class="muted">${{ univ: "수능·대교협 일정이에요. 2030학년도분은 대부분 추정이에요.", life: "졸업·배정·입학 일정이에요. 추정은 (추정)으로 표시해요. 겨울방학·졸업식·신입생 예비소집 날짜는 학교마다 달라서 학교 공지로 확인해 주세요." }[tab] || "2027학년도 고입(서울 기준). 연도는 2027학년도 고입이 2026년 하반기에 진행되는 것을 기준으로 붙였어요."}</p>${tab === "hs" ? emptyLine(esc, { why: "학교별 입학설명회 일정은 학교마다 달라 아직 모으지 못했어요.", next: { label: "학교 홈페이지 공지에서 확인(학교 비교)", url: "#select/curriculum?v=hs" } }) : ""}${chips}<div id="tl"></div>`;
     let sel = loadAudience(store);
     const SK = "portal.schedule.stage"; // 단계 필터(브라우저에만 저장, 바로가기와 같은 규칙: portal.<화면>.stage)
     const fsv = store.get(SK, null); let fs = STAGES.includes(fsv) ? fsv : "";

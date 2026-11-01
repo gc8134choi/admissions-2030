@@ -29,21 +29,26 @@ export function termHtml(name, escFn = esc) {
 }
 
 // 이미 그려진 DOM 안의 글자에서 용어를 찾아 첫 등장 뒤에 ⓘ를 붙인다(링크·버튼·제목 안은 건너뜀). 같은 요소를 두 번 불러도 중복되지 않는다.
-export function decorateGlossary(root, { skip = "a,button,script,style,textarea,input,select,.gl-i,.si,h1,h2,h3,summary" } = {}) {
+export function decorateGlossary(root, { skip = "a,button,script,style,textarea,input,select,.gl-i,.gl-rel,.si,.term,h1,.srcp,.srcb" } = {}) {
   if (!root || !WORDS.length) return;
-  const done = new Set([...root.querySelectorAll(".gl-i")].map((b) => b.dataset.gl));
+  // 용어마다 "구역"(접이식·섹션·카드·표) 안에서 첫 등장에 ⓘ를 붙인다. 화면 전체에서 한 번만이 아니라 구역마다 한 번이라 긴 화면에서도 풀이가 가까이 있다.
+  const scopeOf = (n) => n.parentElement.closest("details, section, article, .ed-row, table, .w-aside, .w-body") || root;
+  const done = new Map(); // scope → Set(termId)
+  const has = (sc) => done.get(sc) || done.set(sc, new Set()).get(sc);
+  root.querySelectorAll(".gl-i").forEach((b) => has(scopeOf(b)).add(b.dataset.gl)); // 이미 붙은 ⓘ는 다시 붙이지 않는다
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: (n) => (!n.nodeValue.trim() || n.parentElement.closest(skip) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT) });
   const nodes = []; for (let n = walker.nextNode(); n; n = walker.nextNode()) nodes.push(n);
   for (const node of nodes) {
+    const sc = scopeOf(node), seen = has(sc);
     const text = node.nodeValue;
     let hit = null;
     for (const w of WORDS) {
-      const t = BY_KEY.get(w); if (done.has(t.id)) continue;
-      const i = text.replace(/\s+/g, " ").indexOf(w) >= 0 ? text.indexOf(w) : -1; // 공백이 낀 표기는 건너뜀(단어 그대로 일치만)
+      const t = BY_KEY.get(w); if (seen.has(t.id)) continue;
+      const i = text.indexOf(w);
       if (i >= 0 && (!hit || i < hit.i || (i === hit.i && w.length > hit.w.length))) hit = { i, w, t };
     }
     if (!hit) continue;
-    done.add(hit.t.id);
+    seen.add(hit.t.id);
     const end = hit.i + hit.w.length;
     const frag = document.createDocumentFragment();
     frag.append(text.slice(0, end));
