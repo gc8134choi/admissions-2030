@@ -7,6 +7,9 @@ import { plain } from "./plain.js";
 import { fmtWhen } from "./when.js";
 import { densify } from "./fold.js";
 import { srcWrap } from "./src-ref.js";
+import { cmpTable } from "./compare-table.js";
+import { compareRows } from "./hs-compare.js";
+import { WHERE } from "./empty.js";
 import { preloadGlossary, decorateGlossary } from "./glossary.js";
 const ES = { reported: ["rep", "보도"], estimated: ["est", "추정"] };
 const tag = (s, esc) => (ES[s] ? `<span class="es ${ES[s][0]}">${ES[s][1]}</span>` : "");
@@ -14,13 +17,15 @@ const srcs = (a, esc) => (a || []).map((x) => (x.url ? `<a href="${esc(x.url)}" 
 const srcb = (a, esc, extra = "") => srcWrap(`${srcs(a, esc)}${extra ? ` ${extra}` : ""}`); // 출처는 항목 끝 "출처" 버튼 뒤로
 
 export async function middleBody(el, { load, esc, mapHref = (id) => `#select/curriculum?v=map&p=${encodeURIComponent(id)}` }) {
-  const [mid, pl, policy, cur, files, guide, tl] = await Promise.all([load("middle"), load("places"), load("policy"), load("middle-curriculum"), load("files"), load("middle-guide").catch(() => ({ sections: [] })), load("timeline").catch(() => ({ events: [] }))]);
+  const [mid, pl, policy, cur, files, guide, tl, mc] = await Promise.all([load("middle"), load("places"), load("policy"), load("middle-curriculum"), load("files"), load("middle-guide").catch(() => ({ sections: [] })), load("timeline").catch(() => ({ events: [] })), load("middle-compare").catch(() => ({ fields: [], schools: [] }))]);
   const curBy = new Map(cur.schools.map((c) => [c.placeId, c]));
   const fileId = (f) => (Array.isArray(files) ? files : files.files || []).find((x) => x.file === f)?.id;
   const place = new Map(pl.places.map((p) => [p.id, p]));
   const areas = mid.areas && mid.areas.length ? mid.areas : mid.from ? [{ from: mid.from, zoneSchools: mid.zoneSchools }] : [];
   if (!areas.length || !areas[0].zoneSchools.length) { el.innerHTML = `<div class="ed"><h2>중학교 배정</h2><p class="muted">아직 정리 중이에요. 배정 일정은 일정 화면에서 먼저 볼 수 있어요.</p></div>`; return; }
-  const st = (el.__mid ||= { from: areas[0].from.placeId });
+  const LSK = "portal.mid.from"; // 마지막으로 고른 초등학교(이 브라우저에만 저장, 기본은 첫 구역=성복초)
+  const lsFrom = () => { try { return localStorage.getItem(LSK); } catch { return null; } };
+  const st = (el.__mid ||= { from: areas.some((a) => a.from.placeId === lsFrom()) ? lsFrom() : areas[0].from.placeId, q: "" });
   if (!areas.some((a) => a.from.placeId === st.from)) st.from = areas[0].from.placeId;
 
   const zoneNotice = policy.find((r) => /중학구/.test(r.title + r.body) && /의견 ?수렴/.test(r.title + r.body));
@@ -40,6 +45,7 @@ export async function middleBody(el, { load, esc, mapHref = (id) => `#select/cur
       <p class="ed-s0">${srcb(c.sources, esc, img)}</p></details>`;
   };
 
+  const optHtml = () => { const q = st.q.trim(); const list = areas.filter((a) => a.from.placeId === st.from || !q || (place.get(a.from.placeId)?.name || "").includes(q)); return list.map((a) => `<option value="${esc(a.from.placeId)}"${a.from.placeId === st.from ? " selected" : ""}>${esc(place.get(a.from.placeId)?.name || a.from.placeId)}</option>`).join(""); };
   const draw = () => {
     const area = areas.find((a) => a.from.placeId === st.from);
     const from = place.get(area.from.placeId);
@@ -62,17 +68,20 @@ export async function middleBody(el, { load, esc, mapHref = (id) => `#select/cur
     const guideHtml = (guide.sections || []).length ? `<details class="hst mid-sec"><summary>${stageTag("중입", esc)}입학 준비 가이드 <span class="muted small">${guide.sections.reduce((n, s) => n + s.items.length, 0)}개</span></summary>${guide.sections.map((s) => `<section class="mg-s"><h4>${esc(s.title)}</h4><ul class="mg-l">${s.items.map((it) => `<li>${it.when ? `<b class="hst-d">${esc(fmtWhen(it.when))}</b> ` : ""}${esc(it.text)} ${tag(it.status, esc)}${it.source ? gsrc(it.source) : it.nullReason ? ` <span class="muted small">${esc(it.nullReason)}</span>` : ""}</li>`).join("")}</ul></section>`).join("")}</details>` : "";
     const STG = ["초6", "중1", "중2", "중3", "고1", "고2", "고3", "대입"];
     const tlHtml = (tl.events || []).length ? `<details class="hst mid-sec"><summary>${stageTag("중입", esc)}큰 그림 연표 (초6 → 대입) <span class="muted small">${tl.events.length}건</span></summary>${STG.map((g) => { const es = tl.events.filter((e) => e.stage === g).sort((a, b) => a.when.localeCompare(b.when)); return es.length ? `<p class="tl-st">${g}</p><ul class="mg-l">${es.map((e) => `<li><b class="hst-d">${esc(fmtWhen(e.when))}</b> ${esc(e.what)} ${tag(e.status, esc)}${e.note ? `<div class="muted small">${esc(e.note)}</div>` : ""}${e.source ? gsrc(e.source) : ""}</li>`).join("")}</ul>` : ""; }).join("")}<p class="muted small">2030학년도 이후 세부는 그해 고시·시행계획에서 정해져요.</p></details>` : "";
+    // 중학교 비교: 공용 비교 표(대상=중학교 열). 접이식을 처음 열 때 그린다.
+    const cmpHtml = mc.schools.length ? `<details class="hst mid-sec" id="mid-cmpd"><summary>${stageTag("중입", esc)}중학교 비교 <span class="muted small">${mc.schools.length}교</span></summary><div id="mid-cmp"></div></details>` : "";
     el.innerHTML = `<div class="ed mid-flow"><h2>${stageTag("중입", esc)}중학교 배정</h2>
     <div class="mid-pick"><label class="flabel" for="mid-from">초등학교</label>
-      <select id="mid-from" aria-label="초등학교 선택">${areas.map((a) => `<option value="${esc(a.from.placeId)}"${a.from.placeId === st.from ? " selected" : ""}>${esc(place.get(a.from.placeId)?.name || a.from.placeId)}</option>`).join("")}</select>
+      <input type="search" id="mid-q" class="mid-q" placeholder="초등학교 검색" value="${esc(st.q)}" aria-label="초등학교 검색"><select id="mid-from" aria-label="초등학교 선택">${optHtml()}</select>
       ${nearUrl ? `<a class="mid-btn" href="${esc(nearUrl)}" target="_blank" rel="noopener">다른 초등학교는 교육지원청 근거리표에서 확인</a>` : ""}</div>
     <p class="ed-b">${from ? `<b>${esc(from.name)}</b> 통학구역에서 갈 수 있는 중학교예요.` : ""}${area.from.note ? ` ${esc(area.from.note)}` : ""}</p>
+    ${from ? `<p class="muted small mid-fi">${esc(from.address)}${/^https?:\/\//.test(from.homepage || "") ? ` · <a href="${esc(from.homepage)}" target="_blank" rel="noopener">학교 홈페이지</a>` : ""}${from.lat != null ? ` · <a href="${esc(mapHref(from.id))}">지도에서 보기</a>` : " · 지도 위치는 확인 중이에요"}</p>` : ""}
     ${unsettled.length ? `<p class="mid-un"><b>미정</b> ${unsettled.map(esc).join(" · ")} — 바뀔 수 있어요.${zoneNotice && zoneNotice.sourceUrl ? ` <a href="${esc(zoneNotice.sourceUrl)}" target="_blank" rel="noopener">${esc(zoneNotice.sourceName || "출처")}</a>` : ""}</p>` : ""}
     <div class="w-page w-2r">
       <div class="w-body">
         ${mid.principles.length ? `<section class="mid-step"><h3><em>1</em>배정 원칙(절차)</h3>${mid.principles.map((p, i) => `<details class="mid-pr"${i === 0 ? " open" : ""}><summary>${esc(plain(p.title))} ${tag(p.status, esc)}</summary><p class="ed-b">${esc(plain(p.body))}</p><p class="ed-s0">${srcb(p.sources, esc)}</p></details>`).join("")}</section>` : ""}
         ${flowRows ? `<section class="mid-step"><h3><em>2</em>배정 일정 흐름</h3><ol class="pl-flow">${flowRows}</ol><p class="muted small">날짜는 일정 화면과 같아요. 학교·교육지원청 공지로 다시 확인해 주세요.</p></section>` : ""}
-        ${guideHtml}${tlHtml}
+        ${cmpHtml}${guideHtml}${tlHtml}
       </div>
       <aside class="w-aside mid-step"><h3><em>3</em>갈 수 있는 학교 <span class="muted small">${zs.length}개교</span></h3>${commonNote ? `<p class="muted small">${esc(commonNote)}</p>` : ""}
         ${anyMap ? `<p class="mid-map"><em>4</em><a class="lnk" href="${esc(mapHref(zs.find(({ p }) => p.lat != null).p.id))}&lv=middle">지도에서 한꺼번에 보기</a></p>` : ""}
@@ -81,7 +90,13 @@ export async function middleBody(el, { load, esc, mapHref = (id) => `#select/cur
         ${tbs ? `<p class="muted small">교과서 표는 학교 공지를 옮겨 적은 것이라 공식 문서로 확인 중이에요(${esc(cur.schools[0]?.schoolYear ?? "")}학년도).</p>` : ""}${tbs}${noTb ? `<p class="muted small">교과서 출판사 표가 없는 학교(${noTb}개교)는 학교 공지에서 확인해 주세요.</p>` : ""}
         ${near ? `<p class="muted small">근거리 중학교 명단은 교육지원청 공지 첨부에서 확인할 수 있어요.${near.sources?.length ? ` ${srcb(near.sources, esc)}` : ""}</p>` : ""}</aside>
     </div></div>`;
-    el.querySelector("#mid-from").onchange = (e) => { st.from = e.target.value; draw(); };
+    el.querySelector("#mid-from").onchange = (e) => { st.from = e.target.value; st.q = ""; try { localStorage.setItem(LSK, st.from); } catch {} draw(); };
+    el.querySelector("#mid-q").oninput = (e) => { st.q = e.target.value; const sel = el.querySelector("#mid-from"); sel.innerHTML = optHtml(); };
+    const cd = el.querySelector("#mid-cmpd");
+    if (cd) { let done = false; const fill = () => { if (done || !cd.open) return; done = true; cmpTable(el.querySelector("#mid-cmp"), { esc, title: "중학교 비교", summary: "중학교를 가로로 놓고 견줘요", stage: "중입",
+      targets: mc.schools.map((s) => ({ id: s.placeId, name: s.name.replace(/중학교$/, "중"), sub: [s.values.founding?.value, s.values.coed?.value].filter(Boolean).join("·"), href: `${mapHref(s.placeId)}&lv=middle`, search: `${s.name} ${s.values.address?.value || ""}` })),
+      rows: compareRows(mc, esc), select: { key: "portal.mid.compare", param: "m", def: zs.map(({ p }) => p.id).filter((id) => mc.schools.some((s) => s.placeId === id)), defN: 4, max: 8, min: 2, always: true, addLabel: "중학교 추가·빼기" },
+      emptyNext: WHERE.schoolinfo, sources: mc.schools.flatMap((sc) => Object.values(sc.values).map((v) => v?.source).filter(Boolean)) }); }; cd.addEventListener("toggle", fill); fill(); }
     densify(el, { open: [0], keep: 5, chars: 100, groups: false }); // 첫 섹션(배정 원칙)만 펼치고 나머지는 한 줄 요약
     decorateGlossary(el); // 학교군·지망·재배정 등 용어 ⓘ
   };
