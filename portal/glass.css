@@ -377,3 +377,10 @@ table.policy tr.past td,table.policy tr.past b,table.policy tr.past .stg,table.p
 button.term{padding:13px 11px;margin:-13px -11px}
 .ed-filter button,.ed-filter button[data-st]{min-width:44px;min-height:44px}
 .lnk{display:inline-flex;align-items:center;min-height:44px}
+
+/* 곧 열려요: 사유+다음 행동 */
+.soon{margin:var(--sp-4) 0 0;font-size:var(--fs-sub);color:var(--pencil)}
+.soon>b{display:block;color:var(--ink);margin-bottom:var(--sp-1)}
+.soon-i{margin:0 0 var(--sp-2)}
+.soon-i>span{font-weight:650;color:var(--ink)}
+.soon-i .gap{margin:2px 0 0}
