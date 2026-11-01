@@ -7,6 +7,9 @@ const BASIC = ["국어", "수학", "영어"];
 const KEY = (id) => `portal.plan.${id}`;
 const LAST = "portal.plan.last";
 
+// 밀도: 학기 칸은 접이식. 처음엔 1-1만 열고, 사용자가 연 학기는 다시 그려도 유지한다.
+let openTerms = null;
+if (typeof document !== "undefined") document.addEventListener("toggle", (e) => { const d = e.target; if (d.classList?.contains("pn-t") && d.id.startsWith("pn-")) { openTerms ||= new Set(["1-1"]); const k = d.id.slice(3); d.open ? openTerms.add(k) : openTerms.delete(k); } }, true);
 export function registerPlanner(views, { esc, load, store }) {
   views.planner = async (el, query) => {
     const [schools, offerings, ix, master, summary, groups, ul, rules, matches, pr] = await Promise.all(
@@ -56,8 +59,8 @@ export function registerPlanner(views, { esc, load, store }) {
             return `<li><button type="button" class="pn-o${on ? " on" : ""}" data-pick="${esc(o.id)}" aria-pressed="${on}"${off ? ' aria-disabled="true"' : ""}><span class="pn-n">${esc(o.subject)}</span><span class="pn-m">${esc(area7(o.area))} · <span class="num">${o.credits}</span>학점</span></button></li>`;
           }).join("")}</ul></div>`;
         }).join("");
-        return `<section class="pn-t" id="pn-${t}"><h3><span class="num">${t}</span> <small class="num">${tc}학점</small></h3>
-          <p class="pn-req"><span class="pn-rl" title="학교가 정함">필수</span> ${rs.map((o) => `${esc(o.subject)} <span class="num">${o.credits}</span>`).join(" · ") || "-"}</p>${body}</section>`;
+        return `<details class="pn-t" id="pn-${t}"${(openTerms ? openTerms.has(t) : t === "1-1") ? " open" : ""}><summary><h3><span class="num">${t}</span> <small class="num">${tc}학점</small></h3></summary>
+          <p class="pn-req"><span class="pn-rl" title="학교가 정함">필수</span> ${rs.map((o) => `${esc(o.subject)} <span class="num">${o.credits}</span>`).join(" · ") || "-"}</p>${body}</details>`;
       };
 
       // 필수 이수 학점(교과군별 최소): 계획에 담긴 학점을 군별로 세어 최소치까지만 인정한다

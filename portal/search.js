@@ -26,7 +26,7 @@ export function mountSearch(btn, { load, store, esc }) {
     const ks = expand(k);
     const has = (...xs) => xs.some((x) => { const n = norm(x); return ks.some((w) => n.includes(w)); });
     const rows = data.policy.filter((r) => has(r.title, r.body)).slice(0, 12).map((r) => ({ href: routeOf(r), t: r.title, s: (r.body || "").slice(0, 90) }));
-    const sch = data.summary.filter((m) => has(m.schoolName, m.region)).map((m) => ({ href: `#select/curriculum?v=compare&s=${m.schoolId}`, t: m.schoolName, s: `${m.creditsRequired}+${m.creditsElective}학점 · ${m.region}` }));
+    const sch = data.summary.filter((m) => has(m.schoolName, m.region)).map((m) => ({ href: `#select/curriculum?v=summary&s=${m.schoolId}`, t: m.schoolName, s: `${m.creditsRequired}+${m.creditsElective}학점 · ${m.region}` }));
     const sub = data.subjects.filter((x) => has(x.name, x.summary)).slice(0, 10).map((x) => ({ href: `#select/curriculum?v=compare`, t: x.name, s: `${x.area || ""} · ${(x.summary || "").slice(0, 70)}` }));
     const lk = data.links.filter((x) => has(x.name, x.purpose, x.org)).map((x) => ({ href: x.url, ext: true, t: x.name, s: `${x.org} · ${x.purpose}` }));
     const pages = allItems().filter((i) => has(i.title, i.tab)).map((i) => ({ href: `#${i.id}`, t: i.title, s: i.tab }));

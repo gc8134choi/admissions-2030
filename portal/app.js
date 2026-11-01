@@ -130,21 +130,22 @@ async function curriculumView(el, query, node) {
   const areaIn = (query.get("a") || "").split(",").map((a) => (AREA7.includes(a) ? a : a ? "기타" : "")); // 옛 링크의 체육·예술·기술가정·제2외국어는 기타로
   let areasSel = AREA7.filter((a) => areaIn.includes(a)); // 비어 있으면 전체
   let focusP = query.get("p"); // 지도 탭에서 강조할 학교
-  let tab = ["compare", "univ", "map", "middle", "hs"].includes(query.get("v")) ? query.get("v") : "summary";
+  let tab = ["compare", "univ", "map", "middle", "hs"].includes(query.get("v")) ? query.get("v") : "hs"; // 학교별 요약(summary)은 학교 비교(hs)에 합쳤다
   const lv = tab === "middle" || query.get("lv") === "middle" ? "middle" : "high"; // 학교 탭의 "중학교 | 고등학교"
   if (lv === "middle" && !["map", "middle"].includes(tab)) tab = "middle";
-  if (lv === "high" && tab === "middle") tab = "summary";
+  if (lv === "high" && tab === "middle") tab = "hs";
   const TABSET = []; // 탭 3겹 → 2겹: 학교별 요약·상세 비교는 위쪽 메뉴 항목으로 올렸다(주소는 그대로) // 학교 지도·중학교 배정·대학 요건은 메뉴(학교 탭 안)에서 연다
   let compare = null; // 상세 비교 화면(필터 포함)은 한 번만 만들고 탭 전환 때 재사용한다
 
   el.innerHTML = `<div class="phead">
       <div class="subtabs" id="tabs"${TABSET.some(([k]) => k === tab) ? "" : " hidden"}>${TABSET.map(([k, t]) => `<a href="#" data-tab="${k}">${t}</a>`).join("")}</div></div>
+    <div class="vtog" id="vtoggle" role="group" aria-label="보기" hidden><span>보기</span><button type="button" data-vt="hs">요약</button><button type="button" data-vt="compare">상세</button></div>
         <div class="chipbar" id="chipbar"><span class="flabel">학교</span><div class="chips" id="chips"></div></div>
     <div id="cview"></div>`;
 
   const syncUrl = () => {
     const q = new URLSearchParams();
-    if (tab !== "summary") q.set("v", tab);
+    q.set("v", tab);
     if (lv === "middle" && tab === "map") q.set("lv", "middle");
     if (tab === "map" || tab === "middle") { if (tab === "map" && focusP) q.set("p", focusP); }
     else q.set("s", sel.join(","));
@@ -154,7 +155,8 @@ async function curriculumView(el, query, node) {
   const chipHtml = () => schools.map((x) => `<button type="button" class="chip schip ${sel.includes(x.id) ? "on" : ""}" data-id="${esc(x.id)}" aria-pressed="${sel.includes(x.id)}" title="${esc(x.name)}">${nm(x.id, x.name, 36)}</button>`).join("");
   const drawChips = () => {
     // 요약 탭: 본문 위 칩 줄 / 상세 비교 탭: 필터 패널 안의 "학교" 항목
-    $("#chipbar").hidden = tab !== "summary";
+    $("#chipbar").hidden = tab !== "hs";
+    const vt = $("#vtoggle"); vt.hidden = !(tab === "hs" || tab === "compare"); vt.querySelectorAll("[data-vt]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.vt === tab));
     $("#chips").innerHTML = chipHtml();
     const fc = $("#fchips"); if (fc) fc.innerHTML = chipHtml();
     // 표시 순서: 국어·영어·수학 / 한국사·사회·과학(한 줄 3개), 나머지는 한 줄 4개. 표의 교과군 정렬은 그대로.
@@ -163,8 +165,24 @@ async function curriculumView(el, query, node) {
   };
   const drawBody = async () => {
     const body = $("#cview");
-    if (tab === "summary") { compare = null; await summaryBody(body, sel); const bf = query.get("bf"); if (bf) { const t = (bf === "1" ? body.querySelector(".bf-area") : body.querySelector(`#bf-${CSS.escape(bf)}`)); if (t) { t.scrollIntoView({ block: "start" }); t.querySelector("details")?.setAttribute("open", ""); } } }
-    else if (tab === "hs") { compare = null; await hsHubBody(body, { load, esc }); }
+    if (tab === "hs") {
+      compare = null;
+      body.innerHTML = `<details class="dp ty-top" id="tyd"><summary>고교 유형·전형 한눈에</summary><div id="tybody"></div></details><div id="hsmain"></div><section class="dp sum-sec" id="sumsec"><div class="sec-h"><h2><em>편제표</em>편제표 학교 요약</h2></div><div id="sumhost"></div></section>`;
+      const tyd = body.querySelector("#tyd"); let tyDone = false;
+      const fillTy = async () => { if (tyDone) return; tyDone = true; try { await views.types(body.querySelector("#tybody"), query); } catch { body.querySelector("#tybody").innerHTML = '<p class="muted">불러오지 못했어요.</p>'; } };
+      tyd.addEventListener("toggle", () => { if (tyd.open) fillTy(); });
+      if (query.get("ty") === "1") { tyd.open = true; fillTy(); }
+      const fillWide = await hsHubBody(body.querySelector("#hsmain"), { load, esc, lazy: true });
+      await summaryBody(body.querySelector("#sumhost"), sel);
+      // 밀도: 학교 요약 카드는 번호·막대만 보이게 접고(자세히로 펼침), 31교 기본 정보 표는 접이식, 요약 카드는 한눈에 패널 바로 아래로
+      const hub = body.querySelector("#hsmain .hub-hs"), wide = body.querySelector("#hs-wide"), sec = body.querySelector("#sumsec");
+      if (hub && wide) {
+        const dt = document.createElement("details"); dt.className = "dp wide-fold"; dt.innerHTML = "<summary>학교 31곳 기본 정보 표 (규모·입학·교육과정·진학)</summary>"; wide.before(dt); dt.appendChild(wide); let wd = false; dt.addEventListener("toggle", () => { if (dt.open && !wd) { wd = true; fillWide(); } });
+        hub.insertBefore(sec, dt);
+      }
+      body.querySelectorAll(".school").forEach((c) => { c.classList.add("cp"); const f = c.querySelector(".foot"); if (f) f.insertAdjacentHTML("afterbegin", '<button type="button" class="btn sc-more" aria-expanded="false">자세히</button>'); });
+      const bf = query.get("bf"); if (bf) { const t = (bf === "1" ? body.querySelector(".bf-area") : body.querySelector(`#bf-${CSS.escape(bf)}`)); if (t) { t.scrollIntoView({ block: "start" }); t.querySelector("details")?.setAttribute("open", ""); } }
+    }
     else if (tab === "map") { compare = null; await mapBody(body, { load, esc, focus: focusP, level: lv === "middle" ? "middle" : "high" }); }
     else if (tab === "middle") { compare = null; await middleBody(body, { load, esc }); }
     else if (tab === "univ") { compare = null; await univBody(body, { load, esc, profile: currentProfile(store), schools, sel }); }
@@ -189,6 +207,10 @@ async function curriculumView(el, query, node) {
       else sel = schools.map((x) => x.id).filter((x) => sel.includes(x) || x === id);
       return void refresh();
     }
+    const scm = e.target.closest(".sc-more");
+    if (scm) { const c = scm.closest(".school"), on = !c.classList.contains("sc-open"); c.classList.toggle("sc-open", on); scm.setAttribute("aria-expanded", on); scm.textContent = on ? "접기" : "자세히"; return; }
+    const vtb = e.target.closest("[data-vt]");
+    if (vtb) { tab = vtb.dataset.vt; focusP = null; return void refresh(); }
     const t = e.target.closest("#tabs a");
     if (t) { e.preventDefault(); tab = t.dataset.tab; if (tab !== "map") focusP = null; refresh(); return; }
     const go = e.target.closest("[data-go]");
@@ -338,14 +360,21 @@ async function compareShell(el, onReset, getAreas) {
     }
     need = AW + LW + CW * ids.length;
     $("#tbl").style.minWidth = `${need}px`;
-    const CH = 24, token = (drawToken = Symbol());
+    const CH = 30, token = (drawToken = Symbol());
     const head = `<thead><tr><th class="ar">교과군</th><th class="l">과목</th>${ids.map((id, i) => `<th>${nm(id, names[i], 30)}</th>`).join("")}</tr></thead>`;
     const foot = `<tfoot><tr><th class="lf" colspan="2">해당 과목 수</th>${ids.map((id) => `<th>${rows.filter((r) => r.cells[id]).length}</th>`).join("")}</tr></tfoot>`;
     const chunk = (i) => trs.slice(i, i + CH).map((f) => f()).join("");
     $("#tbl").innerHTML = `${head}<tbody>${trs.length ? chunk(0) : `<tr><td colspan="${ids.length + 2}">조건에 맞는 과목이 없어요.</td></tr>`}</tbody>${foot}`;
-    const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 16));
-    const more = (i) => { if (token !== drawToken || i >= trs.length) return; idle(() => { if (token !== drawToken) return; $("#tbl tbody").insertAdjacentHTML("beforeend", chunk(i)); more(i + CH); }); };
-    more(CH);
+    // 밀도: 처음 한 덩어리만 보이고 나머지는 "과목 더 보기"로 이어 붙인다(136행을 한 번에 그리지 않는다).
+    let shown = Math.min(CH, trs.length);
+    root.querySelector("#rowsmore")?.remove();
+    if (trs.length > CH) {
+      const wrap = document.createElement("div"); wrap.id = "rowsmore"; wrap.className = "more-rows";
+      const paint = () => { wrap.innerHTML = shown < trs.length ? `<button type="button" class="btn">과목 더 보기 (${shown}/${trs.length})</button> <button type="button" class="btn lnk" data-all>모두 보기</button>` : ""; };
+      paint();
+      wrap.addEventListener("click", (e) => { if (token !== drawToken) return; const all = e.target.closest("[data-all]"); if (!all && !e.target.closest("button")) return; const to = all ? trs.length : Math.min(trs.length, shown + CH); $("#tbl tbody").insertAdjacentHTML("beforeend", trs.slice(shown, to).map((f) => f()).join("")); shown = to; paint(); });
+      $("#tbl").closest(".tw,.cmp-wrap,div")?.after(wrap);
+    }
     fitMode();
   };
   let dbt; root.addEventListener("input", () => { clearTimeout(dbt); dbt = setTimeout(() => draw(), 120); }); // 글자 입력은 잠깐 모아서 한 번만
@@ -430,7 +459,7 @@ function render() {
   const [path, qs] = decodeURIComponent(location.hash.slice(1)).split("?");
   const query = new URLSearchParams(qs || "");
   let id = path || "home";
-  if (REDIRECT[id]) { location.replace("#" + REDIRECT[id] + (qs ? "?" + qs : "")); return; } // 옛 주소 → 가까운 화면
+  if (REDIRECT[id]) { location.replace("#" + REDIRECT[id] + (qs ? (REDIRECT[id].includes("?") ? "&" : "?") + qs : "")); return; } // 옛 주소 → 가까운 화면
   const n = byId.get(id) || byId.get("home");
   const loc = locate(n.id, query) || { tab: TABS[0], group: TABS[0].groups[0], item: TABS[0].groups[0].items[0] };
   const tab = loc.tab;
@@ -454,7 +483,7 @@ function render() {
     return;
   }
   const title = loc.item.title || n.title;
-  const lvTag = tab.id === "mid" || tab.id === "high" ? `<span class="lv-tag">${esc(tab.title)} ${esc(loc.group.title)}</span>` : "";
+  const lvTag = tab.id === "mid" || tab.id === "high" ? `<span class="lv-tag">${esc(tab.title)}${loc.group.title ? " " + esc(loc.group.title) : ""}</span>` : "";
   $("#main").innerHTML = `${sub}<h1 class="ph">${esc(title)}${lvTag}</h1><div id="view"></div>${soon}`;
   if (n.view) views[n.view]($("#view"), query).then(() => { filesApi.afterView(n.view, $("#view")); if (n.view === "credit") decorateSubjectLists($("#view"), load, "4."); if (n.view === "schedule") addCalendar($("#view")); }).catch(() => ($("#view").innerHTML = GO_ERR));
 }
