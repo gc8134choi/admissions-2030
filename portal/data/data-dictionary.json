@@ -1,0 +1,2609 @@
+{
+ "_meta": {
+  "note": "데이터 사전(생성물, 손으로 고치지 않는다). schema/*.schema.json에서 tools/build-data-dictionary.mjs가 만든다.",
+  "count": 18
+ },
+ "rules": [
+  {
+   "key": "status",
+   "text": "제도·일정 정보의 상태: confirmed(확정)·reported(보도)·estimated(추정). 화면에는 확정을 표시하지 않고 보도·추정만 표시한다."
+  },
+  {
+   "key": "sources",
+   "text": "제도·일정 정보에는 출처 URL과 공식(교육부·평가원·대교협·교육청)/매체 구분을 붙인다."
+  },
+  {
+   "key": "ids",
+   "text": "id는 한 번 정하면 바꾸지 않는다. 학교는 schoolId, 과목은 sj-NNNN, 학교 신규는 s-NNN."
+  },
+  {
+   "key": "years",
+   "text": "entryYear=입학학년도, examYear=대입학년도=entryYear+3. 섞어 쓰지 않는다."
+  },
+  {
+   "key": "display",
+   "text": "내부 식별자·파일명·사람 이름은 화면 문구에 쓰지 않는다(tools/check-exposed.mjs)."
+  }
+ ],
+ "datasets": [
+  {
+   "id": "admission-types",
+   "schema": "schema/admission-types.schema.json",
+   "data": "portal/data/admission-types.json",
+   "title": "admission-types (전형 한눈에) — research/data/admission-types-draft.json = portal/data/admission-types.json",
+   "description": "대입 전형 용어 설명(시점과 무관한 일반 설명). 전형별 모집 비중 수치는 시점이 있는 자료라 policy.json의 행(related.policyRows, 예: str-16~18)에 두고 화면이 거기서 읽는다(상태와 공식/매체 구분은 그 행의 status·sourceKind).",
+   "fieldCount": 26,
+   "fields": [
+    {
+     "path": "seasons",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "seasons[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "seasons[].id",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "susi",
+      "jeongsi"
+     ]
+    },
+    {
+     "path": "seasons[].name",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "seasons[].when",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "seasons[].contains",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "seasons[].contains[]",
+     "type": "string",
+     "required": false,
+     "description": "terms[].id"
+    },
+    {
+     "path": "terms",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "terms[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "terms[].id",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "terms[].name",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "terms[].season",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "susi",
+      "jeongsi"
+     ]
+    },
+    {
+     "path": "terms[].what",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "terms[].caveat",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "terms[].favors",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "overview",
+     "type": "object",
+     "required": true
+    },
+    {
+     "path": "overview.columns",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "overview.columns[]",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "overview.rows",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "overview.rows[]",
+     "type": "array",
+     "required": false
+    },
+    {
+     "path": "overview.rows[][]",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "related",
+     "type": "object",
+     "required": true
+    },
+    {
+     "path": "related.policyRows",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "related.policyRows[]",
+     "type": "string",
+     "required": false,
+     "description": "policy.json 행 id"
+    },
+    {
+     "path": "related.note",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "related.briefing",
+     "type": "string|null",
+     "required": false,
+     "description": "연결된 설명회 노트 id"
+    }
+   ]
+  },
+  {
+   "id": "admission_rules",
+   "schema": "schema/admission_rules.schema.json",
+   "data": null,
+   "title": "admission_rules (대학 요강) + csat_regimes + grading_rules",
+   "description": "구조화 필드 우선(A안), 조건식 DSL은 requirements[].expr 에 선택적으로. 판정은 tools/match-rules.mjs가 offerings와 결합해 계산(생성물 matches.json).",
+   "fieldCount": 29,
+   "fields": [
+    {
+     "path": "ruleId",
+     "type": "string",
+     "required": true,
+     "pattern": "^ar-\\d{4}-[a-z0-9-]+$"
+    },
+    {
+     "path": "universityId",
+     "type": "string",
+     "required": true,
+     "pattern": "^s-\\d{3,}$"
+    },
+    {
+     "path": "unitName",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "admissionYear",
+     "type": "integer",
+     "required": true,
+     "description": "대입학년도(examYear)"
+    },
+    {
+     "path": "track",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "susi-gyogwa",
+      "susi-jonghap",
+      "susi-nonsul",
+      "jeongsi-csat",
+      "special"
+     ]
+    },
+    {
+     "path": "announcedAt",
+     "type": "string",
+     "required": true,
+     "format": "date"
+    },
+    {
+     "path": "status",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "confirmed",
+      "reported",
+      "estimated"
+     ],
+     "description": "확정/보도/추정. 화면 표시: confirmed는 표시 안 함, 나머지만 표시"
+    },
+    {
+     "path": "requirements",
+     "type": "array",
+     "required": false
+    },
+    {
+     "path": "requirements[]",
+     "type": "ref",
+     "required": false
+    },
+    {
+     "path": "gradeReflection",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "gradeReflection.areas",
+     "type": "array",
+     "required": false
+    },
+    {
+     "path": "gradeReflection.areas[]",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "gradeReflection.subjectsCounted",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "gradeReflection.gradeMethod",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "gradeReflection.careerSubjectsPolicy",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "csatMinimum",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "csatMinimum.expr",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "csatMinimum.requiredAreas",
+     "type": "array",
+     "required": false
+    },
+    {
+     "path": "csatMinimum.requiredAreas[]",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "csatMinimum.designatedSubjectIds",
+     "type": "array",
+     "required": false
+    },
+    {
+     "path": "csatMinimum.designatedSubjectIds[]",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "sources",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "sources[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "sources[].name",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "sources[].url",
+     "type": "string",
+     "required": false,
+     "format": "uri"
+    },
+    {
+     "path": "sources[].kind",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "official",
+      "media",
+      "school",
+      "self"
+     ]
+    },
+    {
+     "path": "sources[].retrieved",
+     "type": "string",
+     "required": false,
+     "format": "date"
+    },
+    {
+     "path": "sourcePage",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "_example",
+     "type": "boolean",
+     "required": false
+    }
+   ]
+  },
+  {
+   "id": "events",
+   "schema": "schema/events.schema.json",
+   "data": "portal/data/events.json",
+   "title": "events (일정)",
+   "description": "policy.json 안에 섞여 있던 events[] 와 build-policy.mjs의 EVENTS 하드코딩을 독립 엔티티로 분리한다.",
+   "fieldCount": 24,
+   "fields": [
+    {
+     "path": "id",
+     "type": "string",
+     "required": true,
+     "pattern": "^ev-[a-z0-9-]+$"
+    },
+    {
+     "path": "title",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "stage",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "elem",
+      "mid",
+      "hs-entry",
+      "hs1",
+      "hs2",
+      "hs3",
+      "csat",
+      "susi",
+      "jeongsi",
+      "univ",
+      "life"
+     ]
+    },
+    {
+     "path": "region",
+     "type": "enum",
+     "required": false,
+     "enum": [
+      "national",
+      "gyeonggi",
+      "seoul",
+      "school"
+     ]
+    },
+    {
+     "path": "audience",
+     "type": "array",
+     "required": false,
+     "description": "고입 유형 등 대상. 비면 common"
+    },
+    {
+     "path": "audience[]",
+     "type": "enum",
+     "required": false,
+     "enum": [
+      "common",
+      "general",
+      "science",
+      "gifted",
+      "private",
+      "foreign",
+      "international",
+      "specialized",
+      "meister",
+      "grade3"
+     ]
+    },
+    {
+     "path": "learnerIds",
+     "type": "array",
+     "required": false,
+     "description": "비어 있으면 아래 연도 규칙으로 해석"
+    },
+    {
+     "path": "learnerIds[]",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "entryYear",
+     "type": "integer|null",
+     "required": false
+    },
+    {
+     "path": "examYear",
+     "type": "integer|null",
+     "required": false
+    },
+    {
+     "path": "start",
+     "type": "string",
+     "required": true,
+     "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$",
+     "description": "YYYY | YYYY-MM | YYYY-MM-DD"
+    },
+    {
+     "path": "end",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "precision",
+     "type": "enum",
+     "required": false,
+     "enum": [
+      "day",
+      "month",
+      "year"
+     ]
+    },
+    {
+     "path": "status",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "confirmed",
+      "reported",
+      "estimated"
+     ],
+     "description": "확정/보도/추정. 화면 표시: confirmed는 표시 안 함, 나머지만 표시"
+    },
+    {
+     "path": "sources",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "sources[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "sources[].name",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "sources[].url",
+     "type": "string",
+     "required": false,
+     "format": "uri"
+    },
+    {
+     "path": "sources[].kind",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "official",
+      "media",
+      "school",
+      "self"
+     ]
+    },
+    {
+     "path": "sources[].retrieved",
+     "type": "string",
+     "required": false,
+     "format": "date"
+    },
+    {
+     "path": "checkedAt",
+     "type": "string",
+     "required": true,
+     "format": "date"
+    },
+    {
+     "path": "policyRef",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "supersedes",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "unverified",
+     "type": "boolean",
+     "required": false
+    }
+   ]
+  },
+  {
+   "id": "glossary",
+   "schema": "schema/glossary.schema.json",
+   "data": "portal/data/glossary.json",
+   "title": "glossary (용어사전) — research/data/glossary-draft.json = portal/data/glossary.json",
+   "description": "학부모가 헷갈리는 입시·학교 용어의 쉬운 풀이. 화면의 용어 옆 ⓘ를 누르면 short(한 줄)와 detail(자세히)이 뜬다. 공식 명칭은 official에 따로 적고 풀이에 괄호로 유지한다. 사람 이름·출생연도는 쓰지 않는다.",
+   "fieldCount": 15,
+   "fields": [
+    {
+     "path": "terms",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "terms[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "terms[].id",
+     "type": "string",
+     "required": true,
+     "pattern": "^gl-\\d{3,}$",
+     "description": "한 번 정하면 바꾸지 않는다"
+    },
+    {
+     "path": "terms[].term",
+     "type": "string",
+     "required": true,
+     "description": "화면에 나오는 표기(2자 이상)"
+    },
+    {
+     "path": "terms[].aliases",
+     "type": "array",
+     "required": false,
+     "description": "같은 뜻의 다른 표기. 다른 용어의 term·aliases와 겹치지 않는다"
+    },
+    {
+     "path": "terms[].aliases[]",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "terms[].short",
+     "type": "string",
+     "required": true,
+     "description": "한 줄 풀이(쉬운 말)"
+    },
+    {
+     "path": "terms[].detail",
+     "type": "string|null",
+     "required": false,
+     "description": "자세한 설명(선택)"
+    },
+    {
+     "path": "terms[].official",
+     "type": "string|null",
+     "required": false,
+     "description": "공식 명칭이 따로 있으면"
+    },
+    {
+     "path": "terms[].category",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "배정",
+      "고입",
+      "입시",
+      "학점제",
+      "평가",
+      "과목",
+      "기타"
+     ]
+    },
+    {
+     "path": "terms[].status",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "confirmed",
+      "reported",
+      "estimated"
+     ]
+    },
+    {
+     "path": "terms[].sources",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "terms[].sources[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "terms[].sources[].name",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "terms[].sources[].url",
+     "type": "string|null",
+     "required": false
+    }
+   ]
+  },
+  {
+   "id": "hs-compare",
+   "schema": "schema/hs-compare.schema.json",
+   "data": "portal/data/hs-compare.json",
+   "title": "hs-compare (고교 비교표) — research/data/hs-compare-draft.json = portal/data/hs-compare.json",
+   "description": "용인학군 2구역 고교의 항목별 비교 값. 학교는 places의 placeId(level=high)로 연결하고, 편제표 4개교는 schoolId도 함께 적는다. 값마다 기준연도·상태·출처를 붙이고, 확인 못 한 칸은 value null + nullReason. confirmed는 학교알리미·교육청 공식 값에만 쓴다. 합격자 개인·이름·출생연도는 넣지 않는다.",
+   "fieldCount": 23,
+   "fields": [
+    {
+     "path": "fields",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "fields[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "fields[].id",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "fields[].label",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "fields[].group",
+     "type": "string",
+     "required": true,
+     "description": "기본 | 규모 | 입학 | 교육과정 | 진학 | 생활 | 링크"
+    },
+    {
+     "path": "fields[].order",
+     "type": "integer",
+     "required": true
+    },
+    {
+     "path": "fields[].type",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "string",
+      "number",
+      "boolean",
+      "link",
+      "text"
+     ]
+    },
+    {
+     "path": "fields[].unit",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "fields[].needsAsOf",
+     "type": "boolean",
+     "required": false,
+     "description": "true면 값마다 asOf(기준연도) 필수. 수치 항목 기본값 true"
+    },
+    {
+     "path": "schools",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "schools[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "schools[].placeId",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "schools[].schoolId",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "schools[].name",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "schools[].values",
+     "type": "object",
+     "required": true
+    },
+    {
+     "path": "schools[].values.*",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "schools[].values.*.value",
+     "type": "any",
+     "required": false
+    },
+    {
+     "path": "schools[].values.*.asOf",
+     "type": "string|integer|null",
+     "required": false
+    },
+    {
+     "path": "schools[].values.*.status",
+     "type": "enum",
+     "required": false,
+     "enum": [
+      "confirmed",
+      "reported",
+      "estimated"
+     ]
+    },
+    {
+     "path": "schools[].values.*.source",
+     "type": "object|null",
+     "required": false
+    },
+    {
+     "path": "schools[].values.*.source.name",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "schools[].values.*.source.url",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "schools[].values.*.nullReason",
+     "type": "string|null",
+     "required": false
+    }
+   ]
+  },
+  {
+   "id": "hs-types",
+   "schema": "schema/hs-types.schema.json",
+   "data": "portal/data/hs-types.json",
+   "title": "hs-types (고교 유형 비교·경기 고입 달력·원서 절차·서류) — research/data/hs-types-draft.json = portal/data/hs-types.json",
+   "description": "경기도교육청 공식 자료 기준(서울 방식은 참고). 칸마다 value·status·source를 붙이고, 확인 못 한 칸은 value null + nullReason. 장단점은 공식 규칙에서 도출한 최소 정리이며 학교 선호·진학 성과 평가는 넣지 않는다.",
+   "fieldCount": 36,
+   "fields": [
+    {
+     "path": "types",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "types[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "types[].id",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "types[].name",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "types[].order",
+     "type": "integer",
+     "required": true
+    },
+    {
+     "path": "types[].selection",
+     "type": "ref",
+     "required": true
+    },
+    {
+     "path": "types[].timing",
+     "type": "ref",
+     "required": true
+    },
+    {
+     "path": "types[].cost",
+     "type": "ref",
+     "required": true
+    },
+    {
+     "path": "types[].curriculum",
+     "type": "ref",
+     "required": true
+    },
+    {
+     "path": "types[].admissionTraits",
+     "type": "ref",
+     "required": true
+    },
+    {
+     "path": "types[].pros",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "types[].pros[]",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "types[].cons",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "types[].cons[]",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "types[].proConNote",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "calendar",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "calendar[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "calendar[].id",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "calendar[].when",
+     "type": "string",
+     "required": true,
+     "description": "YYYY-MM[-DD][~YYYY-MM[-DD]]"
+    },
+    {
+     "path": "calendar[].what",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "calendar[].who",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "calendar[].status",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "confirmed",
+      "reported",
+      "estimated"
+     ]
+    },
+    {
+     "path": "calendar[].source",
+     "type": "ref",
+     "required": true
+    },
+    {
+     "path": "procedure",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "procedure[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "procedure[].step",
+     "type": "integer",
+     "required": true
+    },
+    {
+     "path": "procedure[].title",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "procedure[].text",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "procedure[].source",
+     "type": "ref",
+     "required": true
+    },
+    {
+     "path": "documents",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "documents[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "documents[].id",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "documents[].item",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "documents[].when",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "documents[].note",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "documents[].source",
+     "type": "ref",
+     "required": true
+    }
+   ]
+  },
+  {
+   "id": "learners",
+   "schema": "schema/learners.schema.json",
+   "data": "portal/data/learners.json",
+   "title": "learners (프로필)",
+   "description": "사람이 관리하는 설정. 출생연도·주민정보 금지, 이름은 사용자 허용(2026-10-25). profiles.json의 후속(v3).",
+   "fieldCount": 28,
+   "fields": [
+    {
+     "path": "schemaVersion",
+     "type": "any",
+     "required": true
+    },
+    {
+     "path": "learners",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "learners[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "learners[].id",
+     "type": "string",
+     "required": true,
+     "pattern": "^(A|B|lrn-\\d{2,})$",
+     "description": "기존 A/B 유지, 3번째부터 lrn-03"
+    },
+    {
+     "path": "learners[].name",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "learners[].label",
+     "type": "string",
+     "required": false,
+     "description": "'현 중3' 같은 표시 문구(해마다 생성)"
+    },
+    {
+     "path": "learners[].enabled",
+     "type": "boolean",
+     "required": true,
+     "description": "false면 UI에서 숨김. 한 명만 쓰는 설정"
+    },
+    {
+     "path": "learners[].primary",
+     "type": "boolean",
+     "required": false,
+     "description": "기본 화면 대상. 1명만 true"
+    },
+    {
+     "path": "learners[].entryYear",
+     "type": "integer",
+     "required": true
+    },
+    {
+     "path": "learners[].examYear",
+     "type": "integer",
+     "required": true,
+     "description": "= entryYear + 3 (CI 검증)"
+    },
+    {
+     "path": "learners[].stageNow",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "elem",
+      "mid",
+      "hs1",
+      "hs2",
+      "hs3",
+      "post"
+     ]
+    },
+    {
+     "path": "learners[].accent",
+     "type": "string",
+     "required": false,
+     "pattern": "^#[0-9A-Fa-f]{6}$"
+    },
+    {
+     "path": "learners[].schoolIds",
+     "type": "array",
+     "required": false
+    },
+    {
+     "path": "learners[].schoolIds[]",
+     "type": "ref",
+     "required": false
+    },
+    {
+     "path": "learners[].lifeEvents",
+     "type": "array",
+     "required": false,
+     "description": "졸업·입학 등 생활 일정 -> events 로 생성되는 입력"
+    },
+    {
+     "path": "learners[].lifeEvents[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "learners[].lifeEvents[].kind",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "elem-graduation",
+      "mid-graduation",
+      "hs-entrance"
+     ]
+    },
+    {
+     "path": "learners[].lifeEvents[].date",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "learners[].lifeEvents[].source",
+     "type": "object",
+     "required": true
+    },
+    {
+     "path": "learners[].lifeEvents[].source.name",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "learners[].lifeEvents[].source.url",
+     "type": "string",
+     "required": false,
+     "format": "uri"
+    },
+    {
+     "path": "learners[].lifeEvents[].source.kind",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "official",
+      "media",
+      "school",
+      "self"
+     ]
+    },
+    {
+     "path": "learners[].lifeEvents[].source.retrieved",
+     "type": "string",
+     "required": false,
+     "format": "date"
+    },
+    {
+     "path": "learners[].csat",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "learners[].csat.date",
+     "type": "string",
+     "required": false,
+     "format": "date"
+    },
+    {
+     "path": "learners[].csat.status",
+     "type": "enum",
+     "required": false,
+     "enum": [
+      "confirmed",
+      "reported",
+      "estimated"
+     ],
+     "description": "확정/보도/추정. 화면 표시: confirmed는 표시 안 함, 나머지만 표시"
+    },
+    {
+     "path": "learners[].csat.policyRowId",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "learners[].csat.note",
+     "type": "string",
+     "required": false
+    }
+   ]
+  },
+  {
+   "id": "middle-compare",
+   "schema": "schema/middle-compare.schema.json",
+   "data": "portal/data/middle-compare.json",
+   "title": "middle-compare (중학교 비교표) — research/data/middle-compare-draft.json = portal/data/middle-compare.json",
+   "description": "용인학군 2구역 고교의 항목별 비교 값. 학교는 places의 placeId(level=high)로 연결하고, 편제표 4개교는 schoolId도 함께 적는다. 값마다 기준연도·상태·출처를 붙이고, 확인 못 한 칸은 value null + nullReason. confirmed는 학교알리미·교육청 공식 값에만 쓴다. 합격자 개인·이름·출생연도는 넣지 않는다.",
+   "fieldCount": 23,
+   "fields": [
+    {
+     "path": "fields",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "fields[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "fields[].id",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "fields[].label",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "fields[].group",
+     "type": "string",
+     "required": true,
+     "description": "기본 | 규모 | 입학 | 교육과정 | 진학 | 생활 | 링크"
+    },
+    {
+     "path": "fields[].order",
+     "type": "integer",
+     "required": true
+    },
+    {
+     "path": "fields[].type",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "string",
+      "number",
+      "boolean",
+      "link",
+      "text"
+     ]
+    },
+    {
+     "path": "fields[].unit",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "fields[].needsAsOf",
+     "type": "boolean",
+     "required": false,
+     "description": "true면 값마다 asOf(기준연도) 필수. 수치 항목 기본값 true"
+    },
+    {
+     "path": "schools",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "schools[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "schools[].placeId",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "schools[].schoolId",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "schools[].name",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "schools[].values",
+     "type": "object",
+     "required": true
+    },
+    {
+     "path": "schools[].values.*",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "schools[].values.*.value",
+     "type": "any",
+     "required": false
+    },
+    {
+     "path": "schools[].values.*.asOf",
+     "type": "string|integer|null",
+     "required": false
+    },
+    {
+     "path": "schools[].values.*.status",
+     "type": "enum",
+     "required": false,
+     "enum": [
+      "confirmed",
+      "reported",
+      "estimated"
+     ]
+    },
+    {
+     "path": "schools[].values.*.source",
+     "type": "object|null",
+     "required": false
+    },
+    {
+     "path": "schools[].values.*.source.name",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "schools[].values.*.source.url",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "schools[].values.*.nullReason",
+     "type": "string|null",
+     "required": false
+    }
+   ]
+  },
+  {
+   "id": "middle-curriculum",
+   "schema": "schema/middle-curriculum.schema.json",
+   "data": "portal/data/middle-curriculum.json",
+   "title": "middle-curriculum (중학교 교과서·교과 구성) — research/data/middle-curriculum-draft.json 입력 형식 = portal/data/middle-curriculum.json",
+   "description": "중학교별 교과서 출판사 표. 학교는 places의 placeId로 연결한다. 교과서 저자·교사 이름은 저장하지 않고 출판사만 저장한다. 공개 자료를 못 찾은 학교는 notFound에 사유와 함께 둔다(빈 표를 만들지 않는다).",
+   "fieldCount": 24,
+   "fields": [
+    {
+     "path": "schools",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "schools[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "schools[].placeId",
+     "type": "string",
+     "required": true,
+     "description": "places.json의 중학교 placeId"
+    },
+    {
+     "path": "schools[].schoolYear",
+     "type": "integer",
+     "required": true,
+     "description": "적용 학년도(예: 2027)"
+    },
+    {
+     "path": "schools[].title",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "schools[].status",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "confirmed",
+      "reported",
+      "estimated"
+     ]
+    },
+    {
+     "path": "schools[].confidence",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "schools[].sources",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "schools[].sources[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "schools[].sources[].name",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "schools[].sources[].url",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "schools[].sources[].file",
+     "type": "string|null",
+     "required": false,
+     "description": "portal/ 아래 원본 이미지 경로(files.json의 file과 같음)"
+    },
+    {
+     "path": "schools[].footnote",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "schools[].subjects",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "schools[].subjects[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "schools[].subjects[].order",
+     "type": "integer",
+     "required": true
+    },
+    {
+     "path": "schools[].subjects[].subject",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "schools[].subjects[].publishers",
+     "type": "object",
+     "required": true,
+     "description": "학년 → 출판사 이름, 해당 학년에 교과서가 없으면 null"
+    },
+    {
+     "path": "schools[].subjects[].publishers.*",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "schools[].subjects[].note",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "notFound",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "notFound[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "notFound[].placeId",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "notFound[].reason",
+     "type": "string",
+     "required": true
+    }
+   ]
+  },
+  {
+   "id": "middle-guide",
+   "schema": "schema/middle-guide.schema.json",
+   "data": "portal/data/middle-guide.json",
+   "title": "middle-guide (중학교 입학 준비 가이드) — research/data/middle-guide-draft.json = portal/data/middle-guide.json",
+   "description": "배정부터 등록·교복·교과서·준비물까지 체크리스트. 항목마다 status와 source를 붙이고, 확인 못 한 항목은 source 없이 nullReason(내부 점검 사정 대신 '공식 문서로 확인 중이에요')을 적는다.",
+   "fieldCount": 13,
+   "fields": [
+    {
+     "path": "sections",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "sections[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "sections[].id",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "sections[].title",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "sections[].items",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "sections[].items[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "sections[].items[].text",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "sections[].items[].when",
+     "type": "string|null",
+     "required": false,
+     "description": "YYYY-MM[-DD][~YYYY-MM[-DD]]"
+    },
+    {
+     "path": "sections[].items[].status",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "confirmed",
+      "reported",
+      "estimated"
+     ]
+    },
+    {
+     "path": "sections[].items[].source",
+     "type": "object|null",
+     "required": false
+    },
+    {
+     "path": "sections[].items[].source.name",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "sections[].items[].source.url",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "sections[].items[].nullReason",
+     "type": "string|null",
+     "required": false
+    }
+   ]
+  },
+  {
+   "id": "middle",
+   "schema": "schema/middle.schema.json",
+   "data": "portal/data/middle.json",
+   "title": "middle (초등학교 → 중학교 배정) — research/data/middle-school-draft.json 입력 형식 = portal/data/middle.json",
+   "description": "출발 초등학교(placeId)의 통학구역 중학교 목록과 배정 원칙. 배정 일정은 policy.json의 life-* 행(stage 중입)을 화면이 그대로 쓴다. 학교 위치·주소는 places에서 placeId로 찾는다.",
+   "fieldCount": 20,
+   "fields": [
+    {
+     "path": "areas",
+     "type": "array",
+     "required": false,
+     "description": "초등학교 여러 곳이면 구역별로(없으면 from·zoneSchools 한 곳). 출력 middle.json은 항상 areas[]를 가진다."
+    },
+    {
+     "path": "areas[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "areas[].from",
+     "type": "ref",
+     "required": true
+    },
+    {
+     "path": "areas[].zoneSchools",
+     "type": "ref",
+     "required": true
+    },
+    {
+     "path": "from",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "from.placeId",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "from.note",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "zoneSchools",
+     "type": "array",
+     "required": false
+    },
+    {
+     "path": "zoneSchools[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "zoneSchools[].placeId",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "zoneSchools[].note",
+     "type": "string|null",
+     "required": false,
+     "description": "예: 학군 일부, 거리 기준 등"
+    },
+    {
+     "path": "zoneSchools[].status",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "confirmed",
+      "reported",
+      "estimated"
+     ]
+    },
+    {
+     "path": "zoneSchools[].sources",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "principles",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "principles[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "principles[].id",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "principles[].title",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "principles[].body",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "principles[].status",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "confirmed",
+      "reported",
+      "estimated"
+     ]
+    },
+    {
+     "path": "principles[].sources",
+     "type": "array",
+     "required": true
+    }
+   ]
+  },
+  {
+   "id": "offerings",
+   "schema": "schema/offerings.schema.json",
+   "data": "portal/data/offerings.json",
+   "title": "offerings (학교 개설)",
+   "description": "학교×학기×과목 1행. 전사본에서만 생성. subjectId 참조 추가, 나머지는 v2 필드 유지.",
+   "fieldCount": 28,
+   "fields": [
+    {
+     "path": "id",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "curriculumId",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "schoolId",
+     "type": "ref",
+     "required": true
+    },
+    {
+     "path": "entryYear",
+     "type": "integer",
+     "required": true
+    },
+    {
+     "path": "term",
+     "type": "string",
+     "required": true,
+     "pattern": "^[1-3]-[1-2]$"
+    },
+    {
+     "path": "grade",
+     "type": "integer",
+     "required": false
+    },
+    {
+     "path": "semester",
+     "type": "integer",
+     "required": false
+    },
+    {
+     "path": "slot",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "required",
+      "elective",
+      "outside"
+     ]
+    },
+    {
+     "path": "selection",
+     "type": "enum",
+     "required": false,
+     "enum": [
+      "school",
+      "student",
+      "outside"
+     ]
+    },
+    {
+     "path": "subjectId",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "subjectKey",
+     "type": "string",
+     "required": false,
+     "description": "v2 호환 필드(제거 예정 v4)"
+    },
+    {
+     "path": "subject",
+     "type": "string",
+     "required": false,
+     "description": "인쇄 표기 그대로"
+    },
+    {
+     "path": "credits",
+     "type": "number",
+     "required": true
+    },
+    {
+     "path": "basicCredits",
+     "type": "number",
+     "required": false
+    },
+    {
+     "path": "groupId",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "pick",
+     "type": "integer",
+     "required": false
+    },
+    {
+     "path": "groupSize",
+     "type": "integer",
+     "required": false
+    },
+    {
+     "path": "availability",
+     "type": "enum",
+     "required": false,
+     "enum": [
+      "candidate",
+      "confirmed",
+      "closed"
+     ],
+     "description": "편제표=candidate. 학교 수강신청 확정 자료가 생기면 confirmed"
+    },
+    {
+     "path": "openYears",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "openYears.from",
+     "type": "integer",
+     "required": false
+    },
+    {
+     "path": "openYears.to",
+     "type": "integer|null",
+     "required": false
+    },
+    {
+     "path": "provenance",
+     "type": "object",
+     "required": true
+    },
+    {
+     "path": "provenance.sourceFile",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "provenance.sourceKind",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "school-photo",
+      "school-site",
+      "schoolinfo"
+     ]
+    },
+    {
+     "path": "provenance.transcribedBy",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "provenance.verifiedBy",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "provenance.verifiedAt",
+     "type": "string",
+     "required": false,
+     "format": "date"
+    },
+    {
+     "path": "confidence",
+     "type": "enum",
+     "required": false,
+     "enum": [
+      "unverified",
+      "checked",
+      "verified",
+      "reported"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "places",
+   "schema": "schema/places.schema.json",
+   "data": "portal/data/places.json",
+   "title": "places (학교 위치) — research/data/places-draft.json 입력 형식 = portal/data/places.json 항목",
+   "description": "초·중·고 학교 위치. 좌표를 모르면 lat·lng를 null로 두면 지도에서만 빠지고 목록에는 남는다. 좌표 출처(coordSource)와 주소 출처(sources)를 분리해 적는다.",
+   "fieldCount": 20,
+   "fields": [
+    {
+     "path": "nearbyKind",
+     "type": "enum",
+     "required": false,
+     "enum": [
+      "library",
+      "station"
+     ],
+     "description": "주변 시설 종류. 주변 시설은 research/data/places-nearby-draft.json(id np-NNN)에서 와서 places.json의 nearby[]에 level \"nearby\"로 들어간다(학교 목록과 분리). 상업 시설·학원은 넣지 않는다."
+    },
+    {
+     "path": "placeId",
+     "type": "string",
+     "required": true,
+     "pattern": "^pl-\\d{3,}$",
+     "description": "한 번 정하면 바꾸지 않는다"
+    },
+    {
+     "path": "schoolId",
+     "type": "string|null",
+     "required": false,
+     "description": "schools.json의 학교 id(편제표 4개교 등). 없으면 null"
+    },
+    {
+     "path": "name",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "level",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "elementary",
+      "middle",
+      "high"
+     ],
+     "description": "학교급. 주변 시설은 nearby(places.json의 nearby[]에서만)"
+    },
+    {
+     "path": "kind",
+     "type": "string|null",
+     "required": false,
+     "description": "공립/사립/국립 등"
+    },
+    {
+     "path": "address",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "lat",
+     "type": "number|null",
+     "required": false
+    },
+    {
+     "path": "lng",
+     "type": "number|null",
+     "required": false
+    },
+    {
+     "path": "coordSource",
+     "type": "object|null",
+     "required": false
+    },
+    {
+     "path": "coordSource.name",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "coordSource.url",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "homepage",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "phone",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "status",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "confirmed",
+      "reported",
+      "estimated"
+     ]
+    },
+    {
+     "path": "sources",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "sources[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "sources[].name",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "sources[].url",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "checkedAt",
+     "type": "string",
+     "required": false
+    }
+   ]
+  },
+  {
+   "id": "policies",
+   "schema": "schema/policies.schema.json",
+   "data": null,
+   "title": "policies (제도·변경 로그)",
+   "description": "현행 policy.json 필드 유지(v2 호환) + 구조화 확장. 일정(events[])은 events.json으로 이전하고 eventIds 로 참조.",
+   "fieldCount": 19,
+   "fields": [
+    {
+     "path": "id",
+     "type": "string",
+     "required": true,
+     "pattern": "^[a-z0-9]+-\\d{2,}$"
+    },
+    {
+     "path": "topic",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "admission-system",
+      "hs-types",
+      "hs-credit-system",
+      "exam-schedule",
+      "change-log",
+      "admission-structure",
+      "gg-hs-entry",
+      "high-school-assignment",
+      "hs-schedule",
+      "hs-choice-opinion",
+      "curriculum-guide",
+      "academy-material",
+      "admission-outlook"
+     ]
+    },
+    {
+     "path": "entryYear",
+     "type": "integer|null",
+     "required": false
+    },
+    {
+     "path": "examYear",
+     "type": "integer|null",
+     "required": false
+    },
+    {
+     "path": "region",
+     "type": "enum",
+     "required": false,
+     "enum": [
+      "national",
+      "gyeonggi",
+      "seoul"
+     ]
+    },
+    {
+     "path": "title",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "body",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "status",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "confirmed",
+      "reported",
+      "estimated",
+      "material",
+      "seoul",
+      "seoul-verified",
+      "gyeonggi",
+      "match",
+      "academy",
+      "opinion",
+      "unknown"
+     ]
+    },
+    {
+     "path": "unverified",
+     "type": "boolean",
+     "required": false
+    },
+    {
+     "path": "reason",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "sourceKind",
+     "type": "string|null",
+     "required": true
+    },
+    {
+     "path": "sourceName",
+     "type": "string|null",
+     "required": true
+    },
+    {
+     "path": "sourceUrl",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "sources",
+     "type": "array",
+     "required": false
+    },
+    {
+     "path": "eventIds",
+     "type": "array",
+     "required": false
+    },
+    {
+     "path": "eventIds[]",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "supersedes",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "changedAt",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "checkedAt",
+     "type": "string",
+     "required": true,
+     "format": "date"
+    }
+   ]
+  },
+  {
+   "id": "school-briefings",
+   "schema": "schema/school-briefings.schema.json",
+   "data": null,
+   "title": "school-briefings (학교 설명회 노트) — research/data/school-briefings-draft.json = portal/data/briefings.json",
+   "description": "학교 입학설명회 등을 사용자가 녹음해 AI가 요약한 노트(학교 공식 문서 아님). 사람 이름·출생연도는 쓰지 않고 일반화한다(졸업생 A·B). 항목의 level은 일관(여러 구간에서 일관되게 들림) / 추정(일부만 들리거나 맥락 추정) / 참고만(거의 판독 불가) 또는 null(소제목). 숫자 항목은 녹음 품질로 틀렸을 수 있어 verify로 표시한다.",
+   "fieldCount": 26,
+   "fields": [
+    {
+     "path": "briefings",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "briefings[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "briefings[].briefingId",
+     "type": "string",
+     "required": true,
+     "pattern": "^sb-\\d{3,}$",
+     "description": "한 번 정하면 바꾸지 않는다"
+    },
+    {
+     "path": "briefings[].schoolId",
+     "type": "string",
+     "required": true,
+     "description": "schools.json의 학교 id"
+    },
+    {
+     "path": "briefings[].placeId",
+     "type": "string|null",
+     "required": false,
+     "description": "places.json의 placeId(있으면)"
+    },
+    {
+     "path": "briefings[].date",
+     "type": "string",
+     "required": true,
+     "description": "YYYY-MM-DD"
+    },
+    {
+     "path": "briefings[].title",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "briefings[].source",
+     "type": "object",
+     "required": true
+    },
+    {
+     "path": "briefings[].source.name",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "briefings[].source.url",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "briefings[].source.kind",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "briefings[].status",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "confirmed",
+      "reported",
+      "estimated"
+     ]
+    },
+    {
+     "path": "briefings[].qualityNote",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "briefings[].sections",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "briefings[].sections[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "briefings[].sections[].name",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "briefings[].sections[].items",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "briefings[].sections[].items[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "briefings[].sections[].items[].part",
+     "type": "string|null",
+     "required": false,
+     "description": "예: 1부"
+    },
+    {
+     "path": "briefings[].sections[].items[].topic",
+     "type": "string|null",
+     "required": false,
+     "description": "발표 주제(발표자) 제목"
+    },
+    {
+     "path": "briefings[].sections[].items[].group",
+     "type": "string|null",
+     "required": false,
+     "description": "이 항목이 속한 소제목(같은 topic 안에서 level이 null인 항목의 text)"
+    },
+    {
+     "path": "briefings[].sections[].items[].text",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "briefings[].sections[].items[].level",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "일관",
+      "추정",
+      "참고만",
+      null
+     ]
+    },
+    {
+     "path": "briefings[].sections[].items[].hasNumbers",
+     "type": "boolean",
+     "required": false
+    },
+    {
+     "path": "briefings[].sections[].items[].verify",
+     "type": "boolean",
+     "required": false
+    },
+    {
+     "path": "briefings[].sections[].items[].numberNote",
+     "type": "string|null",
+     "required": false
+    }
+   ]
+  },
+  {
+   "id": "schools",
+   "schema": "schema/schools.schema.json",
+   "data": "portal/data/schools.json",
+   "title": "schools",
+   "description": null,
+   "fieldCount": 10,
+   "fields": [
+    {
+     "path": "id",
+     "type": "ref",
+     "required": true
+    },
+    {
+     "path": "name",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "level",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "elem",
+      "mid",
+      "hs",
+      "univ"
+     ]
+    },
+    {
+     "path": "schoolType",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "founding",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "region",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "learnerIds",
+     "type": "array",
+     "required": false,
+     "description": "이 학교를 보는 학습자(관심 학교)"
+    },
+    {
+     "path": "learnerIds[]",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "curriculumIds",
+     "type": "array",
+     "required": false
+    },
+    {
+     "path": "curriculumIds[]",
+     "type": "string",
+     "required": false
+    }
+   ]
+  },
+  {
+   "id": "subjects",
+   "schema": "schema/subjects.schema.json",
+   "data": "portal/data/subjects.json",
+   "title": "subjects (과목 마스터)",
+   "description": "안정 코드 subjectId가 기준. 기존 subjectKey(공백 제거 이름)는 legacyKey로 보존.",
+   "fieldCount": 24,
+   "fields": [
+    {
+     "path": "subjectId",
+     "type": "string",
+     "required": true,
+     "pattern": "^sj-\\d{4}$",
+     "description": "한 번 부여하면 불변·재사용 금지"
+    },
+    {
+     "path": "legacyKey",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "name",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "aliases",
+     "type": "array",
+     "required": false
+    },
+    {
+     "path": "aliases[]",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "area",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "국어",
+      "수학",
+      "영어",
+      "한국사",
+      "사회",
+      "과학",
+      "체육",
+      "예술",
+      "기술·가정/정보",
+      "제2외국어/한문/교양"
+     ],
+     "description": "현행 DB 교과군 10종. 영역 7개 필터(국어·수학·영어·한국사·사회·과학·기타)는 areaGroup으로 파생"
+    },
+    {
+     "path": "areaGroup",
+     "type": "enum",
+     "required": false,
+     "enum": [
+      "국어",
+      "수학",
+      "영어",
+      "한국사",
+      "사회",
+      "과학",
+      "기타"
+     ]
+    },
+    {
+     "path": "subArea",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "kind",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "공통",
+      "일반",
+      "진로",
+      "융합",
+      "전문교과",
+      "학교지정"
+     ]
+    },
+    {
+     "path": "defaultCredits",
+     "type": "integer",
+     "required": false,
+     "description": "교육청 안내 기본 4학점(3~5 편성 가능)"
+    },
+    {
+     "path": "rev",
+     "type": "object",
+     "required": true
+    },
+    {
+     "path": "rev.r2022",
+     "type": "boolean",
+     "required": false
+    },
+    {
+     "path": "rev.predecessors2015",
+     "type": "array",
+     "required": false,
+     "description": "2015 개정 대응 과목명"
+    },
+    {
+     "path": "rev.predecessors2015[]",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "isComposite",
+     "type": "boolean",
+     "required": false
+    },
+    {
+     "path": "components",
+     "type": "array",
+     "required": false
+    },
+    {
+     "path": "components[]",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "csat",
+     "type": "array",
+     "required": false,
+     "description": "수능 체제 버전별 범위. 전 버전에서 같으면 1개"
+    },
+    {
+     "path": "csat[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "csat[].regimeId",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "csat[].area",
+     "type": "enum",
+     "required": false,
+     "enum": [
+      "국어",
+      "수학",
+      "영어",
+      "한국사",
+      "통사",
+      "통과",
+      "제2외"
+     ]
+    },
+    {
+     "path": "csat[].scope",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "in",
+      "base",
+      "out",
+      "none"
+     ]
+    },
+    {
+     "path": "csat[].confidence",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "confirmed",
+      "reported",
+      "unconfirmed"
+     ]
+    },
+    {
+     "path": "majorsHint",
+     "type": "string",
+     "required": false,
+     "description": "커리어넷 예시 관련 학과(subject-info 이관)"
+    }
+   ]
+  },
+  {
+   "id": "timeline",
+   "schema": "schema/timeline.schema.json",
+   "data": "portal/data/timeline.json",
+   "title": "timeline (초6 기준 큰 그림 연표 2026→2033) — research/data/timeline-draft.json = portal/data/timeline.json",
+   "description": "중학교 입학(2027) → 고교 입학(2030) → 대입(2033)까지의 큰 그림. 이미 policy/events.json에 있는 일정은 중복해서 적지 않고 policyIds로 연결한다. 2030학년도 이후 세부는 그해 고시·시행계획에서 정해진다.",
+   "fieldCount": 13,
+   "fields": [
+    {
+     "path": "events",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "events[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "events[].id",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "events[].when",
+     "type": "string",
+     "required": true,
+     "description": "YYYY-MM[~YYYY-MM]"
+    },
+    {
+     "path": "events[].stage",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "초6",
+      "중1",
+      "중2",
+      "중3",
+      "고1",
+      "고2",
+      "고3",
+      "대입"
+     ]
+    },
+    {
+     "path": "events[].what",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "events[].status",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "confirmed",
+      "reported",
+      "estimated"
+     ]
+    },
+    {
+     "path": "events[].source",
+     "type": "object|null",
+     "required": true
+    },
+    {
+     "path": "events[].source.name",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "events[].source.url",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "events[].note",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "events[].policyIds",
+     "type": "array",
+     "required": false
+    },
+    {
+     "path": "events[].policyIds[]",
+     "type": "string",
+     "required": false
+    }
+   ]
+  }
+ ]
+}
