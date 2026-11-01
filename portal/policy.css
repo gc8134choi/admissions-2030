@@ -183,3 +183,14 @@ tr.g3,tr.g3 td,tr.g3 a{color:var(--e-mute)}
 .gl-i{border:0;background:none;color:var(--mute,var(--muted));cursor:pointer;font:inherit;font-size:12px;line-height:1;padding:4px 5px;margin-left:1px;border-radius:50%;vertical-align:baseline;min-width:24px;min-height:24px}
 .gl-rel{border:0;background:none;color:var(--accent);cursor:pointer;font:inherit;padding:2px 0;text-decoration:underline}
 .gl-i:hover,.gl-i[aria-expanded="true"]{background:var(--soft,rgba(0,0,0,.06))}.gl-i:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+/* 고등학교 입학 접이식 섹션(유형 비교·달력·절차·서류) */
+.hst{border-top:1px solid var(--line);margin:0}.hst>summary{cursor:pointer;min-height:48px;display:flex;align-items:center;gap:8px;font-weight:700}
+.hst-t{border-top:1px dashed var(--line);margin:4px 0}.hst-t>summary{cursor:pointer;min-height:44px;display:flex;align-items:center}
+.hst-dl{margin:6px 0}.hst-dl dt{font-weight:700;margin-top:8px}.hst-dl dd{margin:2px 0 0}
+.hst-pc{display:grid;grid-template-columns:1fr 1fr;gap:12px}.hst-pc h5{margin:8px 0 2px}.hst-pc ul{margin:0;padding-left:1.1em;line-height:1.6}
+@media (max-width:640px){.hst-pc{grid-template-columns:1fr}}
+.hst-cal,.hst-proc,.hst-doc{list-style:none;margin:6px 0;padding:0}.hst-cal li{display:grid;grid-template-columns:9.5em 1fr;gap:8px;padding:8px 0;border-top:1px solid var(--line)}.hst-d{font-family:var(--hand,inherit);color:var(--accent)}
+.hst-proc{counter-reset:s}.hst-proc li,.hst-doc li{padding:8px 0;border-top:1px solid var(--line)}.hst-proc li::before{counter-increment:s;content:counter(s) ". ";font-weight:700;color:var(--accent)}
+@media (max-width:640px){.hst-cal li{grid-template-columns:1fr}}
+/* 입학 준비 가이드·큰 그림 연표(중학교 배정) */
+.mg-s h4{margin:10px 0 2px}.mg-l{list-style:none;margin:4px 0;padding:0}.mg-l li{padding:6px 0;border-top:1px solid var(--line)}.tl-st{margin:10px 0 2px;font-weight:700;color:var(--accent)}
