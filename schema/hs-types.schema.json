@@ -1,0 +1,21 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "hs-types.schema.json",
+ "title": "hs-types (고교 유형 비교·경기 고입 달력·원서 절차·서류) — research/data/hs-types-draft.json = portal/data/hs-types.json",
+ "description": "경기도교육청 공식 자료 기준(서울 방식은 참고). 칸마다 value·status·source를 붙이고, 확인 못 한 칸은 value null + nullReason. 장단점은 공식 규칙에서 도출한 최소 정리이며 학교 선호·진학 성과 평가는 넣지 않는다.",
+ "type": "object",
+ "required": ["types", "calendar", "procedure", "documents"],
+ "$defs": {
+  "source": { "type": "object", "required": ["name"], "properties": { "name": { "type": "string" }, "url": { "type": ["string", "null"] } } },
+  "cell": { "type": "object", "properties": { "value": { "type": ["string", "null"] }, "status": { "enum": ["confirmed", "reported", "estimated"] }, "source": { "$ref": "#/$defs/source" }, "nullReason": { "type": ["string", "null"] } } }
+ },
+ "properties": {
+  "types": { "type": "array", "items": { "type": "object", "required": ["id", "name", "order", "selection", "timing", "cost", "curriculum", "admissionTraits", "pros", "cons"], "properties": {
+   "id": { "type": "string" }, "name": { "type": "string" }, "order": { "type": "integer" },
+   "selection": { "$ref": "#/$defs/cell" }, "timing": { "$ref": "#/$defs/cell" }, "cost": { "$ref": "#/$defs/cell" }, "curriculum": { "$ref": "#/$defs/cell" }, "admissionTraits": { "$ref": "#/$defs/cell" },
+   "pros": { "type": "array", "items": { "type": "string" } }, "cons": { "type": "array", "items": { "type": "string" } }, "proConNote": { "type": ["string", "null"] } } } },
+  "calendar": { "type": "array", "items": { "type": "object", "required": ["id", "when", "what", "status", "source"], "properties": { "id": { "type": "string" }, "when": { "type": "string", "description": "YYYY-MM[-DD][~YYYY-MM[-DD]]" }, "what": { "type": "string" }, "who": { "type": ["string", "null"] }, "status": { "enum": ["confirmed", "reported", "estimated"] }, "source": { "$ref": "#/$defs/source" } } } },
+  "procedure": { "type": "array", "items": { "type": "object", "required": ["step", "title", "text", "source"], "properties": { "step": { "type": "integer" }, "title": { "type": "string" }, "text": { "type": "string" }, "source": { "$ref": "#/$defs/source" } } } },
+  "documents": { "type": "array", "items": { "type": "object", "required": ["id", "item", "source"], "properties": { "id": { "type": "string" }, "item": { "type": "string" }, "when": { "type": ["string", "null"] }, "note": { "type": ["string", "null"] }, "source": { "$ref": "#/$defs/source" } } } }
+ }
+}
