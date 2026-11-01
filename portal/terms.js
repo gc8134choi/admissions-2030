@@ -13,12 +13,11 @@ const TERMS = [
 // 용어사전(data/glossary.json)을 불러와 합친다. 긴 말부터 찾아야 "수능 최저"가 "수능"보다 먼저 잡힌다.
 export function setTerms(list) {
   const have = new Set(TERMS.map((t) => t[0]));
-  const ALIAS_OK = new Set(["학교군", "지망", "택n", "성취평가제와 5등급", "이수·학점제"]); // 사전 데이터의 별칭이 일부 항목에서 어긋나 있어 확인된 항목만 쓴다
   for (const x of list || []) {
     if (!x?.short) continue;
     const words = x.term.includes("·") && x.term !== "이수·학점제" && !/^중입/.test(x.term) ? x.term.split("·") : [x.term];
     if (/^중입/.test(x.term)) continue; // 중입·고입·대입은 화면 곳곳에 쓰여 풀이를 붙이면 번잡하다
-    if (ALIAS_OK.has(x.term)) words.push(...(x.aliases || []));
+    words.push(...(x.aliases || []));
     for (const w of words) { if (w && w.length >= 2 && !have.has(w)) { have.add(w); TERMS.push([w, x.short]); } }
   }
   TERMS.sort((a, b) => b[0].length - a[0].length);
