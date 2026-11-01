@@ -204,6 +204,8 @@
   "start": "2029-11-15",
   "status": "estimated",
   "unverified": false,
+  "sourceName": "평가원 수능 홈페이지(시행 관행 참고)",
+  "sourceUrl": "https://www.suneung.re.kr/main.do?s=suneung",
   "region": "national",
   "audience": [
    "common"
@@ -447,6 +449,8 @@
   "end": "2030-02",
   "status": "estimated",
   "unverified": false,
+  "sourceName": "대교협 대학입학전형기본사항(정시 관행 참고)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf",
   "region": "national",
   "audience": [
    "common"
@@ -612,6 +616,8 @@
   "start": "2032-11-18",
   "status": "estimated",
   "unverified": false,
+  "sourceName": "평가원 수능 홈페이지(시행 관행 참고)",
+  "sourceUrl": "https://www.suneung.re.kr/main.do?s=suneung",
   "region": "national",
   "audience": [
    "common"
@@ -632,6 +638,8 @@
   "start": "2032-03",
   "status": "estimated",
   "unverified": false,
+  "sourceName": "평가원 수능 홈페이지(시행 기본계획 공고 관행 참고)",
+  "sourceUrl": "https://www.suneung.re.kr/main.do?s=suneung",
   "region": "national",
   "audience": [
    "common"
@@ -652,6 +660,8 @@
   "start": "2030-08",
   "status": "estimated",
   "unverified": false,
+  "sourceName": "대교협 대학입학전형기본사항(발표 시기 관행 참고)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf",
   "region": "national",
   "audience": [
    "common"
@@ -672,6 +682,8 @@
   "start": "2029-12",
   "status": "estimated",
   "unverified": false,
+  "sourceName": "경기도교육청 2027학년도 고입 기본계획(고입 시기 관행 참고)",
+  "sourceUrl": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2344685&mi=10102&searchAt1=&searchValue1=",
   "region": "national",
   "audience": [
    "common"
@@ -730,6 +742,8 @@
   "start": "2032-09",
   "status": "estimated",
   "unverified": false,
+  "sourceName": "대교협 대학입학전형기본사항(수시·정시 시기 관행 참고)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf",
   "region": "national",
   "audience": [
    "common"
