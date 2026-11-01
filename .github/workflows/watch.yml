@@ -22,6 +22,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: carry over open watch/auto baseline (같은 변경 반복 보고 방지)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          n=$(gh pr list --head watch/auto --state open --json number --jq '.[0].number')
+          if [ -n "$n" ]; then
+            git fetch origin watch/auto
+            git checkout origin/watch/auto -- research/data/watch-state.json
+            echo "열린 watch/auto PR #$n 의 기준선을 이어받음"
+          fi
       - name: run watch
         id: watch
         run: |
