@@ -245,7 +245,15 @@
      "sourceId": "src-841a2f14",
      "nullReason": null
     }
-   }
+   },
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751025",
+     "asOf": "2026-11-01"
+    }
+   ]
   },
   {
    "placeId": "pl-003",
@@ -375,7 +383,15 @@
      "source": null,
      "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
     }
-   }
+   },
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751031",
+     "asOf": "2026-11-01"
+    }
+   ]
   },
   {
    "placeId": "pl-004",
@@ -505,7 +521,15 @@
      "source": null,
      "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
     }
-   }
+   },
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751303",
+     "asOf": "2026-11-01"
+    }
+   ]
   },
   {
    "placeId": "pl-005",
@@ -639,7 +663,15 @@
      "sourceId": "src-82c123ee",
      "nullReason": null
     }
-   }
+   },
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751017",
+     "asOf": "2026-11-01"
+    }
+   ]
   },
   {
    "placeId": "pl-006",
@@ -773,7 +805,15 @@
      "sourceId": "src-8729a9a3",
      "nullReason": null
     }
-   }
+   },
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751032",
+     "asOf": "2026-11-01"
+    }
+   ]
   },
   {
    "placeId": "pl-007",
@@ -903,7 +943,15 @@
      "source": null,
      "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
     }
-   }
+   },
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751314",
+     "asOf": "2026-11-01"
+    }
+   ]
   },
   {
    "placeId": "pl-008",
@@ -1037,7 +1085,15 @@
      "sourceId": "src-a5bdbdfc",
      "nullReason": null
     }
-   }
+   },
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751297",
+     "asOf": "2026-11-01"
+    }
+   ]
   },
   {
    "placeId": "pl-009",
@@ -1167,7 +1223,15 @@
      "source": null,
      "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
     }
-   }
+   },
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751039",
+     "asOf": "2026-11-01"
+    }
+   ]
   },
   {
    "placeId": "pl-010",
@@ -1297,7 +1361,15 @@
      "source": null,
      "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
     }
-   }
+   },
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751044",
+     "asOf": "2026-11-01"
+    }
+   ]
   },
   {
    "placeId": "pl-016",
@@ -1427,7 +1499,15 @@
      "source": null,
      "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
     }
-   }
+   },
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751029",
+     "asOf": "2026-11-01"
+    }
+   ]
   },
   {
    "placeId": "pl-017",
@@ -1557,7 +1637,15 @@
      "source": null,
      "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
     }
-   }
+   },
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751030",
+     "asOf": "2026-11-01"
+    }
+   ]
   },
   {
    "placeId": "pl-018",
@@ -1691,7 +1779,15 @@
      "sourceId": "src-4a334623",
      "nullReason": null
     }
-   }
+   },
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751034",
+     "asOf": "2026-11-01"
+    }
+   ]
   },
   {
    "placeId": "pl-019",
@@ -1821,7 +1917,15 @@
      "source": null,
      "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
     }
-   }
+   },
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751035",
+     "asOf": "2026-11-01"
+    }
+   ]
   }
  ]
 }

@@ -4,6 +4,7 @@
 //   - 지도 링크용 검색어(searchQuery)는 "이름 + 주소"로 만든다. API 키 없이 네이버 지도·카카오맵 검색 URL에 쓴다.
 //   - research/data/places-nearby-draft.json(도서관·역 등 주변 시설)은 places.json의 nearby[]로 합친다(level "nearby"). 학교 목록(places[])과 분리해 검색·중학교 화면에는 섞이지 않는다.
 // 사용: node tools/build-places.mjs [--check]
+import { externalIdsFor } from "./lib/external-ids.mjs";
 import { withSourceIds } from "./lib/source-ids.mjs";
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 
@@ -24,9 +25,10 @@ const places = draft.items.map((it) => {
   if ((lat == null) !== (lng == null)) errs.push(`${it.placeId}: lat·lng는 함께 있거나 함께 null이어야 함`);
   if (lat != null && !(lat > 33 && lat < 39 && lng > 124 && lng < 132)) errs.push(`${it.placeId}: 좌표가 한국 범위 밖(${lat}, ${lng}) — 위도·경도가 바뀌었는지 확인`);
   if (it.homepage && !/^https?:\/\//.test(it.homepage)) errs.push(`${it.placeId}: homepage는 http(s) 주소`);
+  const externalIds = externalIdsFor(it.placeId);
   return {
     id: it.placeId, schoolId: it.schoolId ?? null, name: it.name, level: it.level, kind: it.kind ?? null, address: it.address,
-    lat, lng, coordSource: it.coordSource ?? null, coordApprox: lat != null && /근사/.test(it.coordSource?.name || ""), homepage: it.homepage ?? null, phone: it.phone ?? null,
+    lat, lng, coordSource: it.coordSource ?? null, coordApprox: lat != null && /근사/.test(it.coordSource?.name || ""), homepage: it.homepage ?? null, phone: it.phone ?? null, ...(externalIds ? { externalIds } : {}),
     status: it.status, sources: it.sources, checkedAt: it.checkedAt ?? draft._meta?.checkedAt ?? null,
     searchQuery: `${it.name} ${it.address}`.trim(),
   };

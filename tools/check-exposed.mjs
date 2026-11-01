@@ -14,7 +14,7 @@ const walk = (v, f, path) => {
   else if (v && typeof v === "object") for (const [k, x] of Object.entries(v)) if (!SKIP.test(k)) walk(x, f, `${path}.${k}`);
 };
 for (const f of readdirSync("portal/data").filter((x) => x.endsWith(".json"))) {
-  if (/^(index|subjects|offerings|offerings-index|subject-master|subjects\.lock|curricula|facets|groups|summary|school-notes|files|subject-matrix|image-credits|flags|admission-rules|matches|planner-rules|rules|roadmap|data-dictionary|sources|changes)\.json$/.test(f)) continue; // 내부 구조 데이터(화면 문구가 아님)
+  if (/^(index|subjects|offerings|offerings-index|subject-master|subjects\.lock|curricula|facets|groups|summary|school-notes|files|subject-matrix|image-credits|flags|admission-rules|matches|planner-rules|rules|roadmap|data-dictionary|sources|changes|school-codes)\.json$/.test(f)) continue; // 내부 구조 데이터(화면 문구가 아님)
   try { walk(JSON.parse(readFileSync(`portal/data/${f}`, "utf8")), f, ""); } catch {}
 }
 if (hits.length) { console.error(`화면에 나가는 데이터에 내부 식별자 ${hits.length}건:\n` + hits.slice(0, 30).join("\n")); process.exit(1); }

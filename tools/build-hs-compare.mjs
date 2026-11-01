@@ -3,6 +3,7 @@
 //   - value가 null이면 nullReason 필수, 수치 항목(type number 또는 needsAsOf)은 asOf 필수, link 항목은 https 주소.
 //   - 초안이 없으면 빈 구조를 만든다(화면은 "아직 정리 중이에요").
 // 사용: node tools/build-hs-compare.mjs [--check]
+import { externalIdsFor } from "./lib/external-ids.mjs";
 import { withSourceIds } from "./lib/source-ids.mjs";
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 
@@ -46,6 +47,7 @@ const { plain } = await import("../portal/plain.js"); // 출처명 안의 내부
 const cleanSrc = (v) => (v ? { ...v, ...(v.source?.name ? { source: { ...v.source, name: plain(v.source.name) } } : {}), ...(v.nullReason ? { nullReason: plain(v.nullReason) } : {}) } : v);
 for (const s of draft.schools) for (const k of Object.keys(s.values || {})) s.values[k] = cleanSrc(s.values[k]);
 const fields = [...draft.fields].sort((a, b) => a.order - b.order);
+for (const s of draft.schools) { const x = externalIdsFor(s.placeId); if (x) s.externalIds = x; } // 외부 코드(NEIS·학교알리미)
 const out = { _meta: { note: "고교 비교표(생성물, 손으로 고치지 않는다). research/data/hs-compare-draft.json에서 tools/build-hs-compare.mjs가 만든다. 값마다 기준연도·상태·출처가 붙는다.", checkedAt: draft._meta?.checkedAt ?? null, schoolCount: draft.schools.length }, fields, schools: draft.schools };
 const json = JSON.stringify(withSourceIds(out), null, 1) + "\n";
 const target = "portal/data/hs-compare.json";

@@ -23,6 +23,14 @@
    "coordApprox": false,
    "homepage": null,
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751092",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "reported",
    "sources": [
     {
@@ -52,6 +60,14 @@
    "coordApprox": false,
    "homepage": null,
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751025",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "reported",
    "sources": [
     {
@@ -81,6 +97,14 @@
    "coordApprox": false,
    "homepage": null,
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751031",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "reported",
    "sources": [
     {
@@ -115,6 +139,14 @@
    "coordApprox": false,
    "homepage": null,
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751303",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "reported",
    "sources": [
     {
@@ -144,6 +176,14 @@
    "coordApprox": false,
    "homepage": null,
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751017",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "reported",
    "sources": [
     {
@@ -173,6 +213,14 @@
    "coordApprox": false,
    "homepage": null,
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751032",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "reported",
    "sources": [
     {
@@ -202,6 +250,14 @@
    "coordApprox": false,
    "homepage": null,
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751314",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "reported",
    "sources": [
     {
@@ -231,6 +287,14 @@
    "coordApprox": false,
    "homepage": null,
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751297",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "reported",
    "sources": [
     {
@@ -260,6 +324,14 @@
    "coordApprox": false,
    "homepage": null,
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751039",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "reported",
    "sources": [
     {
@@ -289,6 +361,14 @@
    "coordApprox": false,
    "homepage": null,
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751044",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "reported",
    "sources": [
     {
@@ -318,6 +398,19 @@
    "coordApprox": false,
    "homepage": "https://pungduck-h.goeyi.kr",
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530482",
+     "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090000844",
+     "asOf": "2026-10-29"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -352,6 +445,19 @@
    "coordApprox": false,
    "homepage": "https://seongbok-h.goeyi.kr",
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530973",
+     "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090005904",
+     "asOf": "2026-10-29"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -386,6 +492,19 @@
    "coordApprox": false,
    "homepage": "http://suji-h.goeyi.kr",
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530093",
+     "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090000655",
+     "asOf": "2026-10-29"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -420,6 +539,14 @@
    "coordApprox": true,
    "homepage": "http://yihongcheon-h.goeyi.kr",
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7531379",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -454,6 +581,14 @@
    "coordApprox": false,
    "homepage": "http://www.hafs.hs.kr",
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7531146",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -488,6 +623,14 @@
    "coordApprox": false,
    "homepage": null,
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751029",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "reported",
    "sources": [
     {
@@ -522,6 +665,14 @@
    "coordApprox": false,
    "homepage": null,
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751030",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "reported",
    "sources": [
     {
@@ -556,6 +707,14 @@
    "coordApprox": false,
    "homepage": null,
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751034",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "reported",
    "sources": [
     {
@@ -587,6 +746,14 @@
    "coordApprox": false,
    "homepage": null,
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751035",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "reported",
    "sources": [
     {
@@ -621,6 +788,19 @@
    "coordApprox": false,
    "homepage": "http://sanghyun-h.goeyi.kr",
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7531014",
+     "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090006522",
+     "asOf": "2026-10-29"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -660,6 +840,19 @@
    "coordApprox": false,
    "homepage": "http://seowon-h.goeyi.kr",
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530574",
+     "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090004893",
+     "asOf": "2026-10-29"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -699,6 +892,19 @@
    "coordApprox": false,
    "homepage": "http://shinbong-h.goeyi.kr",
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7531013",
+     "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090006525",
+     "asOf": "2026-10-29"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -738,6 +944,19 @@
    "coordApprox": false,
    "homepage": "https://daeji-h.goeyi.kr",
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530824",
+     "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090005458",
+     "asOf": "2026-10-29"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -777,6 +996,19 @@
    "coordApprox": false,
    "homepage": "http://jukjeon-h.goeyi.kr",
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530525",
+     "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090000801",
+     "asOf": "2026-10-29"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -816,6 +1048,19 @@
    "coordApprox": false,
    "homepage": "https://hyunam-h.goeyi.kr",
    "phone": null,
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530769",
+     "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090005415",
+     "asOf": "2026-10-29"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -855,6 +1100,14 @@
    "coordApprox": false,
    "homepage": "https://koosung-h.goeyi.kr/",
    "phone": "031-284-1380",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530611",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -889,6 +1142,14 @@
    "coordApprox": false,
    "homepage": "https://giheung-h.goeyi.kr/",
    "phone": "031-679-1940",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530522",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -923,6 +1184,14 @@
    "coordApprox": false,
    "homepage": "http://dongbaek-h.goeyi.kr/",
    "phone": "031-303-4100",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530823",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -957,6 +1226,14 @@
    "coordApprox": false,
    "homepage": "http://bora-h.goeyi.kr/",
    "phone": "031-8005-8780",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530882",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -991,6 +1268,14 @@
    "coordApprox": false,
    "homepage": "http://bojeong-h.goeyi.kr",
    "phone": "031-270-7257",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530658",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1025,6 +1310,14 @@
    "coordApprox": false,
    "homepage": "http://seocheon-h.goeyi.kr/",
    "phone": "031-546-7200",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7531096",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1059,6 +1352,14 @@
    "coordApprox": false,
    "homepage": "https://seongji-h.goeyi.kr",
    "phone": "031-547-3320",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530767",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1093,6 +1394,14 @@
    "coordApprox": false,
    "homepage": "http://shingal-h.goeyi.kr",
    "phone": "031-281-7004",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530177",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1127,6 +1436,14 @@
    "coordApprox": false,
    "homepage": "http://baekhyun-h.goeyi.kr",
    "phone": "031-693-9311",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530778",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1161,6 +1478,14 @@
    "coordApprox": false,
    "homepage": "https://cheongdeok-h.goeyi.kr",
    "phone": "031-546-2500",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530884",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1195,6 +1520,14 @@
    "coordApprox": false,
    "homepage": "http://chodang-h.goeyi.kr",
    "phone": "031-547-9100",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530883",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1229,6 +1562,14 @@
    "coordApprox": false,
    "homepage": "http://hd-h.goeyi.kr",
    "phone": "031-218-0200",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530924",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1263,6 +1604,14 @@
    "coordApprox": false,
    "homepage": "http://gorim-h.goeyi.kr",
    "phone": "031-525-0500",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7531242",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1297,6 +1646,14 @@
    "coordApprox": false,
    "homepage": "https://yongin-h.goeyi.kr/",
    "phone": "031-330-8309",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530102",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1331,6 +1688,14 @@
    "coordApprox": false,
    "homepage": "http://yisamgye-h.goeyi.kr",
    "phone": "031-329-1000",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7531161",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1365,6 +1730,14 @@
    "coordApprox": false,
    "homepage": "http://www.goeyi.kr/jindeok-h/main.do",
    "phone": "031-526-6598",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7531606",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1394,6 +1767,14 @@
    "coordApprox": false,
    "homepage": "http://pogok-h.goeyi.kr",
    "phone": "031-329-3700",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530881",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1428,6 +1809,14 @@
    "coordApprox": false,
    "homepage": "http://taesung-h.goeyi.kr",
    "phone": "031-335-9181~7",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530209",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1462,6 +1851,14 @@
    "coordApprox": false,
    "homepage": "https://cheoin-h.goeyi.kr/",
    "phone": "031-724-2100",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7531389",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1496,6 +1893,14 @@
    "coordApprox": false,
    "homepage": "http://baegam-h.goeyi.kr",
    "phone": "031-326-0010",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530650",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1530,6 +1935,14 @@
    "coordApprox": false,
    "homepage": "https://kogi-e.goeyi.kr/",
    "phone": "031-263-9775",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751063",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1559,6 +1972,14 @@
    "coordApprox": false,
    "homepage": "https://www.goeyi.kr/dongcheon1-e/main.do",
    "phone": "031-272-1279",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751075",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1588,6 +2009,14 @@
    "coordApprox": false,
    "homepage": "https://www.goeyi.kr/yimb-e/main.do",
    "phone": "031-265-9403",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751326",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1617,6 +2046,14 @@
    "coordApprox": false,
    "homepage": "https://sungseocho-e.goeyi.kr/sungseocho-e/main.do",
    "phone": "031-896-7243",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751295",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1646,6 +2083,14 @@
    "coordApprox": false,
    "homepage": "https://songok-e.goeyi.kr",
    "phone": "031-262-4962",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751052",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1675,6 +2120,14 @@
    "coordApprox": false,
    "homepage": "https://suji-e.goeyi.kr/suji-e/main.do",
    "phone": "031-262-0055",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751096",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1704,6 +2157,14 @@
    "coordApprox": false,
    "homepage": "http://shin-ri-e.goeyi.kr",
    "phone": "031-264-9396",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751053",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1733,6 +2194,14 @@
    "coordApprox": false,
    "homepage": "https://sinwol-e.goeyi.kr",
    "phone": "031-265-7015,7014",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751098",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1762,6 +2231,14 @@
    "coordApprox": false,
    "homepage": "https://sinil4u-e.goeyi.kr",
    "phone": "031-896-4812",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751045",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1791,6 +2268,14 @@
    "coordApprox": false,
    "homepage": "https://yongin-sinbong-e.goeyi.kr",
    "phone": "031-262-2190",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751296",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1817,6 +2302,14 @@
    "coordApprox": false,
    "homepage": "https://yisimgok-e.goeyi.kr/yisimgok-e/main.do",
    "phone": "031-263-4430",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751193",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1846,6 +2339,14 @@
    "coordApprox": false,
    "homepage": "https://yonginhanbit-e.goeyi.kr/",
    "phone": "031-896-7483",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751294",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1875,6 +2376,14 @@
    "coordApprox": false,
    "homepage": "https://e-hyun-e.goeyi.kr",
    "phone": "031-276-0972",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751104",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1904,6 +2413,14 @@
    "coordApprox": false,
    "homepage": "http://jp-e.goeyi.kr",
    "phone": "031-266-0172",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751112",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1933,6 +2450,14 @@
    "coordApprox": false,
    "homepage": "http://to-wol-e.goeyi.kr",
    "phone": "031-261-4582",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751118",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1962,6 +2487,14 @@
    "coordApprox": false,
    "homepage": "https://pungduk-e.goeyi.kr",
    "phone": "031-261-0052",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751120",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -1991,6 +2524,14 @@
    "coordApprox": false,
    "homepage": "https://pung1000-e.goeyi.kr",
    "phone": "031-272-4745",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751121",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -2020,6 +2561,14 @@
    "coordApprox": false,
    "homepage": "https://hongcheon-e.goeyi.kr",
    "phone": "031-326-3706",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751123",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -2049,6 +2598,14 @@
    "coordApprox": false,
    "homepage": "https://hyojacho-e.goeyi.kr/hyojacho-e/main.do",
    "phone": "031-276-3038",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751124",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -2078,6 +2635,14 @@
    "coordApprox": false,
    "homepage": "https://sanghy-e.goeyi.kr/",
    "phone": "031-265-4564",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751088",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -2107,6 +2672,14 @@
    "coordApprox": false,
    "homepage": "http://saebit-e.goeyi.kr",
    "phone": "031-8007-0802",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751313",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -2136,6 +2709,14 @@
    "coordApprox": false,
    "homepage": "https://seowon-e.goeyi.kr",
    "phone": "031-266-2292",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751090",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -2165,6 +2746,14 @@
    "coordApprox": false,
    "homepage": "https://sohyun-e.goeyi.kr",
    "phone": "031-261-8141",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751093",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {
@@ -2194,6 +2783,14 @@
    "coordApprox": false,
    "homepage": "https://solgae-e.goeyi.kr",
    "phone": "031-8014-9368,9",
+   "externalIds": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751094",
+     "asOf": "2026-11-01"
+    }
+   ],
    "status": "confirmed",
    "sources": [
     {

@@ -16,6 +16,7 @@
    "needsAsOf": { "type": "boolean", "description": "true면 값마다 asOf(기준연도) 필수. 수치 항목 기본값 true" } } } },
   "schools": { "type": "array", "items": { "type": "object", "required": ["placeId", "name", "values"], "properties": {
    "placeId": { "type": "string" },
+   "externalIds": { "type": "array", "description": "외부 기관 학교 코드(생성: research/data/school-codes-draft.json). 못 구한 코드는 넣지 않고 school-codes에 사유를 둔다", "items": { "type": "object", "required": ["system", "code", "asOf"], "properties": { "system": { "enum": ["neis", "schoolinfo"], "description": "neis=NEIS(시도교육청코드 atptCode + 표준학교코드 code), schoolinfo=학교알리미 학교코드" }, "atptCode": { "type": "string", "pattern": "^[A-Z]\\d{2}$", "description": "시도교육청코드(system=neis일 때)" }, "code": { "type": "string", "description": "neis ^\\d{7}$ / schoolinfo ^[A-Z]\\d{9}$" }, "asOf": { "type": "string", "format": "date" } } } },
    "schoolId": { "type": ["string", "null"] },
    "name": { "type": "string" },
    "values": { "type": "object", "additionalProperties": { "type": "object", "properties": {

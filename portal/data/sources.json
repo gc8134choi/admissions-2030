@@ -170,7 +170,7 @@
    "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415",
    "kind": "official",
    "org": "학교알리미(교육부·한국교육개발원)",
-   "checked": "2026-10-29",
+   "checked": "2026-11-01",
    "names": [
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
@@ -178,11 +178,13 @@
     "학교알리미",
     "학교알리미 공시항목 목록",
     "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
-    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)"
+    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+    "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)"
    ],
    "usedIn": {
     "hs-compare.json": 16,
-    "places.json": 1
+    "places.json": 1,
+    "school-codes.json": 1
    }
   },
   {
@@ -261,7 +263,7 @@
    "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525",
    "kind": "official",
    "org": "학교알리미(교육부·한국교육개발원)",
-   "checked": "2026-10-29",
+   "checked": "2026-11-01",
    "names": [
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
@@ -269,11 +271,13 @@
     "학교알리미",
     "학교알리미 공시항목 목록",
     "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
-    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)"
+    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+    "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)"
    ],
    "usedIn": {
     "hs-compare.json": 16,
-    "places.json": 1
+    "places.json": 1,
+    "school-codes.json": 1
    }
   },
   {
@@ -281,7 +285,7 @@
    "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893",
    "kind": "official",
    "org": "학교알리미(교육부·한국교육개발원)",
-   "checked": "2026-10-29",
+   "checked": "2026-11-01",
    "names": [
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
@@ -289,11 +293,13 @@
     "학교알리미",
     "학교알리미 공시항목 목록",
     "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
-    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)"
+    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+    "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)"
    ],
    "usedIn": {
     "hs-compare.json": 16,
-    "places.json": 1
+    "places.json": 1,
+    "school-codes.json": 1
    }
   },
   {
@@ -691,7 +697,7 @@
    "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904",
    "kind": "official",
    "org": "학교알리미(교육부·한국교육개발원)",
-   "checked": "2026-10-29",
+   "checked": "2026-11-01",
    "names": [
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) 및 편제표 요약",
@@ -699,11 +705,13 @@
     "학교알리미 공시항목 목록",
     "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
     "학교알리미",
-    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)"
+    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+    "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)"
    ],
    "usedIn": {
     "hs-compare.json": 15,
-    "places.json": 1
+    "places.json": 1,
+    "school-codes.json": 1
    }
   },
   {
@@ -711,7 +719,7 @@
    "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655",
    "kind": "official",
    "org": "학교알리미(교육부·한국교육개발원)",
-   "checked": "2026-10-29",
+   "checked": "2026-11-01",
    "names": [
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) 및 편제표 요약",
@@ -719,11 +727,13 @@
     "학교알리미 공시항목 목록",
     "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
     "학교알리미",
-    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)"
+    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+    "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)"
    ],
    "usedIn": {
     "hs-compare.json": 15,
-    "places.json": 1
+    "places.json": 1,
+    "school-codes.json": 1
    }
   },
   {
@@ -784,7 +794,7 @@
    "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458",
    "kind": "official",
    "org": "학교알리미(교육부·한국교육개발원)",
-   "checked": "2026-10-29",
+   "checked": "2026-11-01",
    "names": [
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
@@ -792,11 +802,13 @@
     "학교알리미",
     "학교알리미 공시항목 목록",
     "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
-    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)"
+    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+    "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)"
    ],
    "usedIn": {
     "hs-compare.json": 16,
-    "places.json": 1
+    "places.json": 1,
+    "school-codes.json": 1
    }
   },
   {
@@ -1051,7 +1063,7 @@
    "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844",
    "kind": "official",
    "org": "학교알리미(교육부·한국교육개발원)",
-   "checked": "2026-10-29",
+   "checked": "2026-11-01",
    "names": [
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) 및 편제표 요약",
@@ -1059,11 +1071,13 @@
     "학교알리미 공시항목 목록",
     "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
     "학교알리미",
-    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)"
+    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+    "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)"
    ],
    "usedIn": {
     "hs-compare.json": 15,
-    "places.json": 1
+    "places.json": 1,
+    "school-codes.json": 1
    }
   },
   {
@@ -1264,11 +1278,14 @@
    "checked": "2026-11-01",
    "names": [
     "NEIS 학교기본정보(2026-11-01 조회)",
-    "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)"
+    "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+    "NEIS 교육정보 개방포털 학교기본정보",
+    "NEIS 교육정보 개방포털 학교기본정보(정식 이름 용인홍천고등학교)"
    ],
    "usedIn": {
     "middle-compare.json": 65,
-    "places.json": 24
+    "places.json": 24,
+    "school-codes.json": 69
    }
   },
   {
@@ -1361,7 +1378,7 @@
    "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801",
    "kind": "official",
    "org": "학교알리미(교육부·한국교육개발원)",
-   "checked": "2026-10-29",
+   "checked": "2026-11-01",
    "names": [
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
@@ -1369,11 +1386,13 @@
     "학교알리미",
     "학교알리미 공시항목 목록",
     "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
-    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)"
+    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+    "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)"
    ],
    "usedIn": {
     "hs-compare.json": 16,
-    "places.json": 1
+    "places.json": 1,
+    "school-codes.json": 1
    }
   },
   {
@@ -1515,7 +1534,7 @@
    "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522",
    "kind": "official",
    "org": "학교알리미(교육부·한국교육개발원)",
-   "checked": "2026-10-29",
+   "checked": "2026-11-01",
    "names": [
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
@@ -1523,11 +1542,13 @@
     "학교알리미",
     "학교알리미 공시항목 목록",
     "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
-    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)"
+    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+    "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)"
    ],
    "usedIn": {
     "hs-compare.json": 16,
-    "places.json": 1
+    "places.json": 1,
+    "school-codes.json": 1
    }
   },
   {
