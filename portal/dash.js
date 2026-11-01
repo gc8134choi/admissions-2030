@@ -18,9 +18,10 @@ export const PIN_KEY = "portal.home.pins"; // "자주 보는 단계"(브라우�
 export const searchHtml = () => `<button type="button" class="dp dsearch" data-open-search aria-label="검색 열기"><span class="hand">찾기</span><span class="dsearch-t">학교, 과목, 일정, 용어…</span><kbd>/</kbd></button>`;
 
 // 현재 단계(고정 + 자동) 허브는 크게(.cur), 나머지는 제목+숫자+링크 2개. 모바일은 접어 두고 제목을 누르면 펼친다.
-export function hubsHtml(esc, counts = {}, { pins = [], auto = null } = {}) {
+export function hubsHtml(esc, counts = {}, { pins = [], auto = null, only = null } = {}) {
+  const HS = HUBS.filter((h) => !only || only.has(h.stage));
   const cur = new Set(pins.length ? pins : auto ? [auto] : []);
-  return `<nav class="dhubs" style="--hc:${HUBS.length + cur.size}" aria-label="상황별 바로가기">${HUBS.map((h, i) => {
+  return `<nav class="dhubs" style="--hc:${HS.length + cur.size}" aria-label="상황별 바로가기">${HS.map((h, i) => {
     const on = cur.has(h.id), pinned = pins.includes(h.id), n = counts[h.stage];
     return `<section class="dp hub t${i % 3}${on ? " cur open" : ""}" data-hub="${h.id}"><h2><button type="button" class="hub-t" aria-expanded="${on}" aria-controls="hl-${h.id}"><em>${esc(h.sub)}</em>${esc(h.t)}${n && (h.id === "mid-enter" || h.id === "hs-enter" || h.id === "admit") ? `<small class="num">곧 ${n}건</small>` : ""}</button>
       <button type="button" class="pin" data-pin="${h.id}" aria-pressed="${pinned}" title="자주 보는 단계로 고정">${pinned ? "고정됨" : "고정"}</button></h2>
