@@ -141,7 +141,8 @@ DTSTART;VALUE=DATE:20291115
 DTEND;VALUE=DATE:20291116
 SUMMARY:2030학년도 수능 시행일 · 시행일(잠정 예상) (추정)
 DESCRIPTION:2029.11.15(목) 잠정 예상. 공식 공고 전이며 확정 
- 아님\n확인일 2026-10-25
+ 아님\n출처: 평가원 수능 홈페이지(시행 관행 참고) https:
+ //www.suneung.re.kr/main.do?s=suneung\n확인일 2026-10-25
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -298,7 +299,9 @@ SUMMARY:2030학년도 정시 · 원서접수·전형(추정) (추정) (월
  단위)
 DESCRIPTION:원서접수 2029.12 말~2030.1 초\, 전형 2030.1~2월로 추
  정(2028학년도분 기준). 정시 접수가 12월이라는 근거는 
- 없음\n확인일 2026-10-25
+ 없음\n출처: 대교협 대학입학전형기본사항(정시 관행 참
+ 고) https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab19427058
+ 12e69b5fd5bd8277987ab3.pdf\n확인일 2026-10-25
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
