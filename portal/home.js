@@ -254,7 +254,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     decorateTerms(el, ".dp");
     initTerms();
     // 모바일에서는 덜 급한 패널(3년·학점제·전형)을 접어 두고 제목 줄의 버튼으로 편다(홈 높이를 줄인다)
-    el.querySelectorAll(".road,.gl,.adm").forEach((pn) => { pn.classList.add("m-fold"); const h = pn.querySelector(".sec-h,h2"); if (h) h.insertAdjacentHTML("beforeend", '<button type="button" class="m-tg" aria-expanded="false">펼치기</button>'); });
+    el.querySelectorAll(".road,.gl,.adm,.hscmp,.plan,.mid").forEach((pn) => { pn.classList.add("m-fold"); const h = pn.querySelector(".sec-h,h2"); if (h) h.insertAdjacentHTML("beforeend", '<button type="button" class="m-tg" aria-expanded="false">펼치기</button>'); });
 
     // 허브: 고정(자주 보는 단계, 최대 2개) / 모바일 접기·펼치기 / 읽음 표시
     el.addEventListener("click", (e) => {
