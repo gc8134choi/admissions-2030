@@ -363,3 +363,4 @@ button.term{padding:13px 2px;margin:-13px -2px}
 .sum-sec .school.cp>.bar span{font-size:0;min-width:0}
 @media (max-width:899px){.sum-sec .school.cp{grid-template-columns:minmax(0,1fr) auto}}
 .sum-sec .school.cp>.bar .req,.sum-sec .school.cp>.bar .ele{font-size:0!important;color:transparent}
+#tl:not(.all) tr.more-r{display:none}
