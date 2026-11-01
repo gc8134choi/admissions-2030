@@ -3,7 +3,7 @@
   "note": "학교 위치(생성물, 손으로 고치지 않는다). research/data/places-draft.json에서 tools/build-places.mjs가 만든다.",
   "checkedAt": "2026-10-29",
   "count": 69,
-  "withCoords": 63,
+  "withCoords": 65,
   "nearbyCount": 5
  },
  "places": [
@@ -1732,9 +1732,12 @@
    "level": "elementary",
    "kind": "공립",
    "address": "경기도 용인시 수지구 수지로 367",
-   "lat": null,
-   "lng": null,
-   "coordSource": null,
+   "lat": 37.3298463,
+   "lng": 127.0954937,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim, 정밀도: 건물 단위(OSM 학교 객체), 확인 2026-11-01, ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/363535208"
+   },
    "coordApprox": false,
    "homepage": "https://pungduk-e.goeyi.kr",
    "phone": "031-261-0052",
@@ -1908,9 +1911,12 @@
    "level": "elementary",
    "kind": "공립",
    "address": "경기도 용인시 수지구 만현로133번길 78",
-   "lat": null,
-   "lng": null,
-   "coordSource": null,
+   "lat": 37.3016671,
+   "lng": 127.0925139,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim, 정밀도: 건물 단위(OSM 학교 객체), 확인 2026-11-01, ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/1257147791"
+   },
    "coordApprox": false,
    "homepage": "https://sohyun-e.goeyi.kr",
    "phone": "031-261-8141",
