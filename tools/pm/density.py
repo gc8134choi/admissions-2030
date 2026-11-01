@@ -10,10 +10,11 @@ ROUTES = ["", "#schedule", "#schedule?t=road", "#select/curriculum?v=hs", "#sele
           "#select/curriculum?v=univ", "#changelog", "#library/links", "#library/sources", "#library/status", "#library/files"]
 JS = r"""
 const {chromium}=require('playwright');
+async function ev(p,f){for(let i=0;i<4;i++){try{return await p.evaluate(f)}catch(e){await p.waitForTimeout(900)}}return await p.evaluate(f)}
 (async()=>{const base=process.argv[2];const routes=JSON.parse(process.argv[3]);const out=[];const b=await chromium.launch();
 for(const w of [390,1440]){const p=await b.newPage({viewport:{width:w,height:w==390?844:900}});
-for(const r of routes){try{await p.goto(base+r,{waitUntil:'load',timeout:20000});await p.waitForTimeout(1600);}catch(e){continue}
-const d=await p.evaluate(()=>{const m=document.querySelector('#main');const t=(m.innerText||'').replace(/\s+/g,' ').trim();
+for(const r of routes){try{await p.goto(base+r,{waitUntil:'load',timeout:20000});await p.waitForSelector('#main *',{timeout:8000}).catch(()=>{});await p.waitForTimeout(1800);}catch(e){continue}
+const d=await ev(p,()=>{const m=document.querySelector('#main');const t=(m.innerText||'').replace(/\s+/g,' ').trim();
  const fold=innerHeight;let first=0;for(const e of m.querySelectorAll('*')){const r=e.getBoundingClientRect();if(r.top<fold&&r.bottom>0&&e.children.length===0)first+=(e.textContent||'').trim().length}
  const vis=(e)=>e.getClientRects().length>0&&getComputedStyle(e).visibility!=='hidden';
  const links=[...m.querySelectorAll('a[target=_blank]')].filter(vis).length;
