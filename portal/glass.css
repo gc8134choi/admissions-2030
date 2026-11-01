@@ -364,3 +364,9 @@ button.term{padding:13px 2px;margin:-13px -2px}
 @media (max-width:899px){.sum-sec .school.cp{grid-template-columns:minmax(0,1fr) auto}}
 .sum-sec .school.cp>.bar .req,.sum-sec .school.cp>.bar .ele{font-size:0!important;color:transparent}
 #tl:not(.all) tr.more-r{display:none}
+
+/* 야간 보강: 남은 12px 이하 글자·터치 44px 미달 */
+.rd-who,.rd-w,.kd,.ed-tag,td.ar,.h,.n,sup,figcaption,.sec-h h2 em{font-size:max(13px,1em)!important}
+.cmp-x,.pl-row{min-height:44px!important;min-width:44px!important}
+.leaflet-control-zoom a{width:44px!important;height:44px!important;line-height:44px!important}
+.srcp a,.srcf a,.ed-b a,.ed-s a{display:inline-block;padding:11px 0}
