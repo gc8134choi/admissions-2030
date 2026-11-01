@@ -18,7 +18,7 @@
 @media (prefers-color-scheme:light){:root{
   --paper:#EEE5D8;--paper2:#F7F1E8;--kraft:#E3D3BF;--ink:#231a12;--pencil:#5c5348;--line:rgba(60,40,20,.16);
   --accent:#B02A0A;--accent-a:#B02A0A;--accent-b:#B02A0A;--on-accent:#ffffff;
-  --req:#1B3A6B;--ele:#0A7860;--st-est:#935600;
+  --req:#1B3A6B;--ele:#0A6B54;--st-est:#935600;
   --glass:rgba(255,255,255,.58);--glass-line:rgba(60,40,20,.14);--glass-in:rgba(255,255,255,.5);
   --sh:0 8px 24px -14px rgba(80,50,20,.35);
   --bokeh:radial-gradient(520px 420px at 14% 12%,rgba(255,170,90,.32),transparent 70%),radial-gradient(420px 360px at 86% 8%,rgba(255,205,140,.35),transparent 70%),radial-gradient(640px 520px at 78% 92%,rgba(240,150,90,.2),transparent 72%);
@@ -409,3 +409,18 @@ button.term{text-decoration:none!important;background-image:repeating-linear-gra
 .pg-srcf>summary{display:inline-flex}
 .pg-srcf ul{position:static}
 @media print{.pgfoot .pg-issue,.crumb{display:none}}
+
+/* 모바일 홈 높이: 안내는 제목+보기만, 바뀐 소식은 최신 1건 */
+@media (max-width:899px){
+  .must-l span{display:none}
+  .must-l li{min-height:48px}
+  .news .rows>li:nth-child(n+2){display:none}
+  .pgfoot{margin-top:var(--sp-3)}
+}
+@media (max-width:899px){.hm-ping{display:none}.ledger .lg{padding-block:var(--sp-1)}.ledger .lg.first{padding-block:var(--sp-2)}.hub{padding-block:var(--sp-1)}}
+@media (max-width:899px){.must-l{gap:0}.must-l li{min-height:44px}}
+
+/* 보관함: 출처 목록·바로가기의 링크는 한 줄 전체를 눌러도 되게 44px */
+.panel li{margin:0}
+.panel li>a{display:flex;align-items:center;min-height:44px}
+.rows.lk .row h3 a{display:inline-flex;align-items:center;min-height:44px}

@@ -27,3 +27,6 @@ python3 tools/pm/preserve-check.py http://localhost:8000/portal/
 ## 알려진 환경 차이
 - `node tools/build-db.mjs --check`는 `content/curriculum/*.json`(정본 전사본)이 있어야 한다. 평가용으로 content/ 없이 복사된 환경에서는 "content/curriculum 없음"으로 실패하는데, 이는 코드 오류가 아니라 환경 문제다(이 저장소의 main에도 `content/curriculum/`이 없다. 정본이 있는 브랜치·클론에서만 통과하므로 정본 위치를 확인한 뒤 돌린다). 평가 환경에서는 `portal/data`만으로 가능한 점검(sitecheck·layoutcheck·density·preserve-check·codescan)을 쓰고, 데이터 `--check`는 정본이 있는 클론에서 한다.
 - density.py는 본문 글자·요소 수가 두 번 연속 같아질 때까지 기다려서(최대 6초) 렌더링 전 0 값이 나오지 않도록 했다.
+
+## CI에서 정본이 없을 때
+`.github/workflows/ci.yml`의 "편제표 DB 검증" 단계는 `tools/build-db.mjs`가 있는 디렉터리만 검사하고, 없으면 `::notice::… 가 없어 build-db 검증을 건너뜁니다.`를 남기고 통과한다(정본 전사본이 없는 클론을 실패로 막지 않는다). 그 밖의 `--check`(policy·ics·roadmap·rules·learners 등)는 항상 실행된다. 건너뛴 사실은 CI 로그의 notice로 확인한다.
