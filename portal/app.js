@@ -1,17 +1,12 @@
 import { decorateTerms, initTerms, setTerms } from "./terms.js";
 import { foldSources, initSrcRef } from "./src-ref.js";
 import { MENU, STATUS, TABS, REDIRECT, hrefOf, tabHref, locate } from "./menu.js";
-import { register as registerPolicy } from "./policy.js";
 import { registerHome } from "./home.js";
 import { registerFiles } from "./files.js";
 import { currentProfile, allProfiles, initProfiles, mountProfileSwitch, nameSettings, bindNameSettings, showProfiles } from "./profile-ui.js";
-import { univBody } from "./univ-match.js";
 import { STAGES, linkStage, stageTag } from "./stage.js";
 import { briefingBlock } from "./briefing.js";
-import { registerPlanner } from "./planner.js";
 import { hsHubBody } from "./dash.js";
-import { mapBody } from "./map.js";
-import { middleBody } from "./middle.js";
 import { mountSearch } from "./search.js";
 import { schoolBand } from "./school-card.js";
 import { preloadSubjectInfo, subjectName, decorateSubjectLists } from "./subject-info.js";
@@ -186,9 +181,9 @@ async function curriculumView(el, query, node) {
       body.querySelectorAll(".school").forEach((c) => { c.classList.add("cp"); const f = c.querySelector(".foot"); if (f) f.insertAdjacentHTML("afterbegin", '<button type="button" class="btn sc-more" aria-expanded="false">자세히</button>'); });
       const bf = query.get("bf"); if (bf) { const t = (bf === "1" ? body.querySelector(".bf-area") : body.querySelector(`#bf-${CSS.escape(bf)}`)); if (t) { t.scrollIntoView({ block: "start" }); t.querySelector("details")?.setAttribute("open", ""); } }
     }
-    else if (tab === "map") { compare = null; await mapBody(body, { load, esc, focus: focusP, level: lv === "middle" ? "middle" : "high" }); }
-    else if (tab === "middle") { compare = null; await middleBody(body, { load, esc }); }
-    else if (tab === "univ") { compare = null; await univBody(body, { load, esc, profile: currentProfile(store), schools, sel }); }
+    else if (tab === "map") { compare = null; await (await import("./map.js")).mapBody(body, { load, esc, focus: focusP, level: lv === "middle" ? "middle" : "high" }); }
+    else if (tab === "middle") { compare = null; await (await import("./middle.js")).middleBody(body, { load, esc }); }
+    else if (tab === "univ") { compare = null; await (await import("./univ-match.js")).univBody(body, { load, esc, profile: currentProfile(store), schools, sel }); }
     else {
       if (!compare || !body.contains(compare.root)) compare = await compareShell(body, () => { sel = schools.map((x) => x.id); areasSel = []; refresh(); }, () => areasSel);
       compare.draw(sel);
@@ -364,7 +359,7 @@ async function compareShell(el, onReset, getAreas) {
     need = AW + LW + CW * ids.length;
     $("#tbl").style.minWidth = `${need}px`;
     const CH = 30, token = (drawToken = Symbol());
-    const head = `<thead><tr><th class="ar">교과군</th><th class="l">과목</th>${ids.map((id, i) => `<th>${nm(id, names[i], 30)}</th>`).join("")}</tr></thead>`;
+    const head = `<caption class="sr-only">학교별 개설 과목 비교(열=학교, 행=과목)</caption><thead><tr><th class="ar" scope="col">교과군</th><th class="l" scope="col">과목</th>${ids.map((id, i) => `<th scope="col">${nm(id, names[i], 30)}</th>`).join("")}</tr></thead>`;
     const foot = `<tfoot><tr><th class="lf" colspan="2">해당 과목 수</th>${ids.map((id) => `<th>${rows.filter((r) => r.cells[id]).length}</th>`).join("")}</tr></tfoot>`;
     const chunk = (i) => trs.slice(i, i + CH).map((f) => f()).join("");
     $("#tbl").innerHTML = `${head}<tbody>${trs.length ? chunk(0) : `<tr><td colspan="${ids.length + 2}">조건에 맞는 과목이 없어요.</td></tr>`}</tbody>${foot}`;
@@ -416,9 +411,11 @@ async function compareShell(el, onReset, getAreas) {
   return { root, draw };
 }
 
-registerPolicy(views, { $, esc, load, store });
+// 첫 화면에 필요 없는 큰 화면 모듈(일정·제도·학점제·계획표)은 처음 열 때 불러온다(홈 로딩 단축)
+const lazyReg = (names, loader) => { let p; for (const n of names) { const w = async (...args) => { p ||= loader(); await p; if (views[n] === w) throw new Error("view not registered: " + n); return views[n](...args); }; views[n] = w; } };
+lazyReg(["changelog", "credit", "schedule", "system", "types"], () => import("./policy.js").then((m) => m.register(views, { $, esc, load, store })));
 registerHome(views, { esc, load, store, nm, stars, toggleStar, nameOf, TERMS, hasLogo: (id) => LOGO_IDS.has(id), profile: () => currentProfile(store), profiles: () => allProfiles(store) });
-registerPlanner(views, { esc, load, store });
+lazyReg(["planner"], () => import("./planner.js").then((m) => m.registerPlanner(views, { esc, load, store })));
 const filesApi = registerFiles(views, { esc, load, nm });
 
 // 보관함 > 바로가기: 분류별 헤어라인 목록. 공식·공공은 구분해 적고, 확인일을 함께 보여 준다(data/links.json).
