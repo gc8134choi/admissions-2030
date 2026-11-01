@@ -105,25 +105,26 @@
   "entryYear": 2027,
   "examYear": 2030,
   "title": "중장기 대입 개편안",
-  "body": "교육부 장관·국교위원장이 서술·논술형 도입, 절대평가 전환 등을 담은 안을 2026 하반기 공론화 후 2027.3 공표하겠다고 밝힘",
+  "body": "국가교육위원회는 올해 하반기 대국민 공론화를 거쳐 2027년 3월 국가교육발전계획 최종안을 확정할 계획이며, 대입제도(수능 서·논술형 도입, 절대평가 전환, 전형 시기 조정 등)는 공론화 대상이라고 보도됨",
   "status": "reported",
+  "note": "기사 본문 대조 2026-11-01",
   "unverified": true,
   "reason": "공식 문서로 확인 중이에요(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
   "sourceKind": "media",
-  "sourceName": "다음뉴스",
-  "sourceUrl": "https://v.daum.net/v/20251210100131836",
+  "sourceName": "중앙이코노미뉴스(joongangenews) 국교위 국가교육발전계획 보도(2026.8.5)",
+  "sourceUrl": "https://www.joongangenews.com/news/articleView.html?idxno=537981",
   "sources": [
    {
-    "name": "다음뉴스",
-    "url": "https://v.daum.net/v/20251210100131836"
+    "name": "중앙이코노미뉴스(joongangenews) 국교위 국가교육발전계획 보도(2026.8.5)",
+    "url": "https://www.joongangenews.com/news/articleView.html?idxno=537981"
    },
    {
-    "name": "네이트(왜냐면)",
-    "url": "https://m.news.nate.com/view/20260817n13532"
+    "name": "MBC 뉴스 국교위 대입 개편 공론화 보도(2026.8.5)",
+    "url": "https://imnews.imbc.com/news/2026/society/article/6842663_36918.html"
    }
   ],
   "region": "national",
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-01"
  },
  {
   "id": "adm-09",
@@ -131,23 +132,24 @@
   "entryYear": 2027,
   "examYear": 2030,
   "title": "시기조정 적용 시점",
-  "body": "교육부는 \"2030년도 등 특정 시기를 예단할 수 없다\"고 설명",
+  "body": "새 대입제도의 구체적인 적용 학년도는 교육 현장에 미칠 영향과 준비 기간 등을 고려해 추후 결정한다고 보도됨",
   "status": "reported",
+  "note": "기사 본문 대조 2026-11-01",
   "unverified": true,
   "reason": "공식 문서로 확인 중이에요(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
   "sourceKind": "media",
-  "sourceName": "교육을 비추다",
-  "sourceUrl": "https://www.kyobit.com/news/articleView.html?idxno=5130",
+  "sourceName": "중앙이코노미뉴스(joongangenews) 국교위 국가교육발전계획 보도(2026.8.5)",
+  "sourceUrl": "https://www.joongangenews.com/news/articleView.html?idxno=537981",
   "region": "national",
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-01"
  },
  {
   "id": "adm-10",
   "topic": "admission-outlook",
   "entryYear": 2027,
   "examYear": 2030,
-  "title": "서울교육감 제안",
-  "body": "수시·정시 통합, 2030학년도 이후 내신 서·논술형 50% 이상, 2033학년도 내신 완전 절대평가",
+  "title": "서울교육감 제안(2025.12, 정부안 아님)",
+  "body": "서울시교육감 제안: 수시·정시 통합, 2030학년도 고1부터 내신 서·논술형 50% 이상, 2033학년도 내신 완전 절대평가. 서울시교육청의 구상이며 확정된 제도가 아님",
   "status": "reported",
   "note": "개인 제안, 정부안 아님",
   "unverified": true,
@@ -156,7 +158,7 @@
   "sourceName": "다음뉴스",
   "sourceUrl": "https://v.daum.net/v/20251210100131836",
   "region": "national",
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-01"
  },
  {
   "id": "hs-01",
@@ -281,8 +283,9 @@
   "entryYear": 2027,
   "examYear": 2030,
   "title": "외고·국제고",
-  "body": "2027학년도에도 모집. 외고 28개교 5,518명, 국제고 8개교 1,172명",
+  "body": "2027학년도에도 모집. 외고 28개교 정원 내 5,518명(전년보다 4명 감소), 국제고 8개교 1,172명(전년과 동일)",
   "status": "reported",
+  "note": "외고·국제고 수치는 각 기사 본문 대조 2026-11-01, 외고=veritas 627933, 국제고=veritas 626898",
   "unverified": true,
   "reason": "공식 문서로 확인 중이에요(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
   "sourceKind": "media",
@@ -294,12 +297,12 @@
     "url": "https://www.veritas-a.com/news/articleView.html?idxno=627933"
    },
    {
-    "name": "국제고",
+    "name": "베리타스알파 2027 국제고 모집(8개교 1,172명)",
     "url": "https://www.veritas-a.com/news/articleView.html?idxno=626898"
    }
   ],
   "region": "national",
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-01"
  },
  {
   "id": "hs-08",
@@ -849,6 +852,7 @@
   "title": "2024-04 2028 수능 예시문항·반영과목 안내",
   "body": "국·수·사·과 예시문항과 대입전형 반영과목 조기 안내",
   "status": "reported",
+  "note": "기사 본문 대조 2026-11-01",
   "unverified": true,
   "reason": "공식 문서로 확인 중이에요(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
   "sourceKind": "media",
@@ -858,7 +862,7 @@
   "audience": [
    "common"
   ],
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-01"
  },
  {
   "id": "log-05",
@@ -893,7 +897,7 @@
   "title": "2025-12 서울교육감 대입 제안",
   "body": "수시·정시 통합, 2033학년도 내신 절대평가 등. 정부안 아님",
   "status": "reported",
-  "note": "개인 제안",
+  "note": "기사 본문 대조 2026-11-01",
   "unverified": true,
   "reason": "공식 문서로 확인 중이에요(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
   "sourceKind": "media",
@@ -903,7 +907,7 @@
   "audience": [
    "common"
   ],
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-01"
  },
  {
   "id": "log-07",
@@ -928,8 +932,9 @@
   "entryYear": 2027,
   "examYear": 2030,
   "title": "2026-08 초 국교위 대입 공론화",
-  "body": "수능 전 과목 절대평가·서논술형 도입을 검토, 하반기 의견 수렴. 국교위는 확정된 개편안 없음이라고 밝힘",
+  "body": "수능 전 과목 절대평가·서논술형 도입을 고려 중이며 하반기 국민 의견을 수렴한다고 보도됨. 국교위는 새 대입제도의 적용 시기가 아직 확정된 바 없다고 밝힘",
   "status": "reported",
+  "note": "기사 본문 대조 2026-11-01",
   "unverified": true,
   "reason": "공식 문서로 확인 중이에요(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
   "sourceKind": "media",
@@ -952,7 +957,7 @@
   "learners": [
    "A"
   ],
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-01"
  },
  {
   "id": "log-09",
@@ -960,23 +965,14 @@
   "entryYear": 2027,
   "examYear": 2030,
   "title": "국가교육발전계획 시안 공개",
-  "body": "10월 말 공개 예정이었으나 연말로 연기 보도",
+  "body": "국가교육발전계획 시안은 10월 말 공개 예정이었으나 2026.10.21 국교위 회의에서 연내 공개로 연기됨(날짜 미정). 최종안은 예정대로 2027년 3월 말까지 마칠 방침",
   "status": "reported",
+  "note": "기사 본문 대조 2026-11-01",
   "unverified": true,
   "reason": "공식 문서로 확인 중이에요(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
   "sourceKind": "media",
-  "sourceName": "네이트(왜냐면)",
-  "sourceUrl": "https://m.news.nate.com/view/20260817n13532",
-  "sources": [
-   {
-    "name": "네이트(왜냐면)",
-    "url": "https://m.news.nate.com/view/20260817n13532"
-   },
-   {
-    "name": "네이트",
-    "url": "https://m.news.nate.com/view/20260805n25953"
-   }
-  ],
+  "sourceName": "스페셜타임스(연합뉴스 제공) 국교위 시안 연내 발표로 연기(2026.10.21)",
+  "sourceUrl": "https://www.specialtimes.co.kr/news/articleView.html?idxno=476928",
   "region": "national",
   "audience": [
    "common"
@@ -984,7 +980,7 @@
   "learners": [
    "A"
   ],
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-01"
  },
  {
   "id": "log-10",
@@ -992,8 +988,9 @@
   "entryYear": 2027,
   "examYear": 2030,
   "title": "2027-03 대입 개편 최종안 확정 예정",
-  "body": "국교위 확정 목표(보도에 따라 3월 말). 적용 시기 미정",
+  "body": "국교위는 올해 하반기 공론화를 거쳐 2027년 3월 최종안을 확정할 방침(계획안 수립은 3월 말까지라는 보도도 있음). 구체적인 적용 학년도는 추후 결정",
   "status": "reported",
+  "note": "기사 본문 대조 2026-11-01",
   "unverified": true,
   "reason": "공식 문서로 확인 중이에요(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
   "sourceKind": "media",
@@ -1016,7 +1013,7 @@
   "learners": [
    "A"
   ],
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-01"
  },
  {
   "id": "log-11",
@@ -1121,7 +1118,7 @@
   "title": "정시에 학생부 반영 확대",
   "body": "경희대 수능90+학생부10 트랙 신설, 서울대 정시 2단계 수능60+교과역량평가40, 중앙대 수능위주 2분할",
   "status": "reported",
-  "note": "중앙대 부분은 공식 시행계획으로 확인 2026-10-26, 경희·서울대는 공식 문서로 확인 중",
+  "note": "기사 본문 대조 2026-11-01",
   "unverified": true,
   "reason": "공식 문서로 확인 중이에요(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
   "sourceKind": "media",
@@ -1146,23 +1143,23 @@
    }
   ],
   "region": "national",
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-01"
  },
  {
   "id": "str-06",
   "topic": "admission-structure",
-  "title": "수시 수능최저",
-  "body": "서울대 수시 전 전형 폐지, 고려대 학교추천 일부 폐지, 성균관대 융합인재 신설(3개 합 6). 대학별로 방향이 엇갈림",
+  "title": "수시 수능최저(2028학년도 서·연·고 변경, 성균관대 2027 요강)",
+  "body": "2028학년도 수시에서 서울대 지역균형전형은 수능최저를 폐지하고(1단계 서류 3배수, 2단계 면접 30%), 고려대 학교추천은 의학과를 제외하고 폐지하며, 연세대 논술전형은 약학과를 제외하고 새로 수능최저(3개 영역 등급 합 6 이내, 영어 3등급·한국사 4등급 이내)를 적용한다고 보도됨. 연세대 추천형(교과)·학생부종합 주요 트랙은 유지. 참고로 성균관대 2027학년도 학생부종합(융합인재)은 요강상 국·수·영·탐 중 3개 등급 합 6(2028학년도는 시행계획 공표 후 확인). 대학별로 방향이 엇갈림",
   "status": "reported",
-  "note": "성균관대 부분은 공식 모집요강으로 확인 2026-10-26, 서울대·고려대는 공식 문서로 확인 중",
+  "note": "서울대·고려대·연세대 부분은 기사 본문 대조 2026-11-01, 원문 모집요강 대조 전. 성균관대 2027 요강 부분은 공식 요강으로 확인",
   "unverified": true,
   "reason": "공식 문서로 확인 중이에요(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
   "sourceKind": "media",
-  "sourceName": "교육을 비추다",
+  "sourceName": "교육을 비추다 「2028 서·연·고 수시, '수능최저 폐지' 이면... 입시 난이도는 오히려 상승 우려」(2026.5.21)",
   "sourceUrl": "https://www.kyobit.com/news/articleView.html?idxno=5440",
   "sources": [
    {
-    "name": "교육을 비추다",
+    "name": "교육을 비추다 「2028 서·연·고 수시, '수능최저 폐지' 이면... 입시 난이도는 오히려 상승 우려」(2026.5.21)",
     "url": "https://www.kyobit.com/news/articleView.html?idxno=5440"
    },
    {
@@ -1175,21 +1172,22 @@
    }
   ],
   "region": "national",
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-01"
  },
  {
   "id": "str-07",
   "topic": "admission-structure",
   "title": "수능최저 완화 유도",
-  "body": "교육부가 최저기준을 낮춘 대학에 가점을 주는 방향",
+  "body": "교육부가 대학 재정지원 평가(기여대학 사업)에서 '최저기준의 합리적 운영' 배점을 5점에서 6점으로 높여 수능최저를 낮추도록 유도한다고 보도됨",
   "status": "reported",
+  "note": "기사 본문 대조 2026-11-01",
   "unverified": true,
   "reason": "공식 문서로 확인 중이에요(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
   "sourceKind": "media",
-  "sourceName": "국민일보",
+  "sourceName": "국민일보 「정부, 허들 낮춘 대학에 가점」(2026.2.24)",
   "sourceUrl": "https://www.kmib.co.kr/article/view.asp?arcid=1771923523",
   "region": "national",
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-01"
  },
  {
   "id": "str-08",
@@ -1197,13 +1195,14 @@
   "title": "권장 이수 과목",
   "body": "모집단위별 권장과목 제시가 수시·정시에서 확산. 구체 과목은 공식 문서로 확인 중이에요",
   "status": "reported",
+  "note": "기사 본문 대조 2026-11-01",
   "unverified": true,
   "reason": "공식 문서로 확인 중이에요(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
   "sourceKind": "media",
   "sourceName": "베리타스알파",
   "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=600481",
   "region": "national",
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-01"
  },
  {
   "id": "str-09",
@@ -1310,7 +1309,7 @@
   "note": "2026학년도 기준, 2027 규칙은 경기 고입 안내 참고",
   "unverified": false,
   "sourceKind": "material",
-  "sourceName": "학교 배부 가정통신문 사진(분석 세션 판독)",
+  "sourceName": "자료 유형: 학교 배부 종이 자료(사진, 사용자 제공) · 자료명: 「2026학년도 고교평준화 용인학군 일반고 지망 조사(최종)」 · 제공일: 2026-10-25(저장소 등록일) · 원본: portal/files/yongin-assign-2026.jpg(분석 세션 판독)",
   "sourceUrl": null,
   "region": "gyeonggi",
   "checkedAt": "2026-10-25"
@@ -1324,7 +1323,7 @@
   "note": "2026학년도 기준, 2027 규칙은 경기 고입 안내 참고",
   "unverified": false,
   "sourceKind": "material",
-  "sourceName": "학교 배부 가정통신문 사진(분석 세션 판독)",
+  "sourceName": "자료 유형: 학교 배부 종이 자료(사진, 사용자 제공) · 자료명: 「2026학년도 고교평준화 용인학군 일반고 지망 조사(최종)」 · 제공일: 2026-10-25(저장소 등록일) · 원본: portal/files/yongin-assign-2026.jpg(분석 세션 판독)",
   "sourceUrl": null,
   "region": "gyeonggi",
   "checkedAt": "2026-10-25"
@@ -1338,7 +1337,7 @@
   "note": "2026학년도 기준, 2027 규칙은 경기 고입 안내 참고",
   "unverified": false,
   "sourceKind": "material",
-  "sourceName": "학교 배부 가정통신문 사진(분석 세션 판독)",
+  "sourceName": "자료 유형: 학교 배부 종이 자료(사진, 사용자 제공) · 자료명: 「2026학년도 고교평준화 용인학군 일반고 지망 조사(최종)」 · 제공일: 2026-10-25(저장소 등록일) · 원본: portal/files/yongin-assign-2026.jpg(분석 세션 판독)",
   "sourceUrl": null,
   "region": "gyeonggi",
   "checkedAt": "2026-10-25"
@@ -1352,7 +1351,7 @@
   "note": "2026학년도 기준, 2027 규칙은 경기 고입 안내 참고",
   "unverified": false,
   "sourceKind": "material",
-  "sourceName": "학교 배부 가정통신문 사진(분석 세션 판독)",
+  "sourceName": "자료 유형: 학교 배부 종이 자료(사진, 사용자 제공) · 자료명: 「2026학년도 고교평준화 용인학군 일반고 지망 조사(최종)」 · 제공일: 2026-10-25(저장소 등록일) · 원본: portal/files/yongin-assign-2026.jpg(분석 세션 판독)",
   "sourceUrl": null,
   "region": "gyeonggi",
   "checkedAt": "2026-10-25"
@@ -1366,7 +1365,7 @@
   "note": "2026학년도 기준, 2027 규칙은 경기 고입 안내 참고. \"학군 내 11지망\"은 2027 공식(학군내 5지망)과 달라 확인 필요",
   "unverified": false,
   "sourceKind": "material",
-  "sourceName": "학교 배부 가정통신문 사진(분석 세션 판독)",
+  "sourceName": "자료 유형: 학교 배부 종이 자료(사진, 사용자 제공) · 자료명: 「2026학년도 고교평준화 용인학군 일반고 지망 조사(최종)」 · 제공일: 2026-10-25(저장소 등록일) · 원본: portal/files/yongin-assign-2026.jpg(분석 세션 판독)",
   "sourceUrl": null,
   "region": "gyeonggi",
   "checkedAt": "2026-10-25"
@@ -1380,7 +1379,7 @@
   "note": "2026학년도 기준, 2027 규칙은 경기 고입 안내 참고",
   "unverified": false,
   "sourceKind": "material",
-  "sourceName": "학교 배부 가정통신문 사진(분석 세션 판독)",
+  "sourceName": "자료 유형: 학교 배부 종이 자료(사진, 사용자 제공) · 자료명: 「2026학년도 고교평준화 용인학군 일반고 지망 조사(최종)」 · 제공일: 2026-10-25(저장소 등록일) · 원본: portal/files/yongin-assign-2026.jpg(분석 세션 판독)",
   "sourceUrl": null,
   "region": "gyeonggi",
   "checkedAt": "2026-10-25"
@@ -1395,7 +1394,7 @@
   "unverified": true,
   "reason": "공식 문서로 확인 중이에요(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
   "sourceKind": "material",
-  "sourceName": "학교 배부 가정통신문 사진(분석 세션 판독)",
+  "sourceName": "자료 유형: 학교 배부 종이 자료(사진, 사용자 제공) · 자료명: 「2026학년도 고교평준화 용인학군 일반고 지망 조사(최종)」 · 제공일: 2026-10-25(저장소 등록일) · 원본: portal/files/yongin-assign-2026.jpg(분석 세션 판독)",
   "sourceUrl": null,
   "region": "gyeonggi",
   "checkedAt": "2026-10-25"
@@ -2266,6 +2265,7 @@
   "title": "평준화 배정 설명회",
   "body": "경기도교육청 2027학년도 고교 평준화 배정 설명회 2026.10.19~11.27, 유튜브 경기고입TV 비대면. 세부 자료는 고입·전학 포털(satp.goe.go.kr) 경기도교육청 포털 자료실에 학군별 학생배정방안 온라인 설명회 자료가 2026.9.18 게시됨(공식)",
   "status": "reported",
+  "note": "경기도교육청 설명회는 유튜브 경기고입TV 비대면, 기사 본문 대조 2026-11-01",
   "unverified": true,
   "reason": "공식 문서로 확인 중이에요(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
   "sourceKind": "media",
@@ -2288,7 +2288,7 @@
   "learners": [
    "A"
   ],
-  "checkedAt": "2026-10-25",
+  "checkedAt": "2026-11-01",
   "events": [
    {
     "label": "",
@@ -2328,8 +2328,9 @@
   "entryYear": 2027,
   "examYear": 2030,
   "title": "2026-08 수능 개편안 적용 시기 검토",
-  "body": "수능 절대평가·서·논술형 도입은 2033학년도 대입(현 초6)부터 적용하는 안이 유력하게 검토됨. 국교위는 특별위원회가 논의 중인 복수 방안이며 확정된 사안이 아니라고 설명. 현 중3의 2030학년도 수능에는 해당하지 않을 가능성이 큼(보도 기준)",
+  "body": "수능 절대평가·서·논술형 도입은 2033학년도 대입(현 초6)부터 적용하는 안이 유력하게 검토됨. 국교위 관계자는 현재 논의 중인 사안으로 아직 확정된 것은 아니라고 설명. 현 중3의 2030학년도 수능에는 해당하지 않을 가능성이 큼(보도 기준)",
   "status": "reported",
+  "note": "기사 본문 대조 2026-11-01",
   "unverified": true,
   "reason": "공식 문서로 확인 중이에요(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
   "sourceKind": "media",
@@ -2356,7 +2357,7 @@
   "learners": [
    "A"
   ],
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-01"
  },
  {
   "id": "log-13",
@@ -2366,21 +2367,12 @@
   "title": "2030학년도 고교 내신 석차등급 폐지안(초안)",
   "body": "2030학년도부터 고교 내신 석차등급제를 폐지하고 성취평가제로 일원화하는 방안이 초안에 담겼다고 보도됨. 국교위 관계자는 초안 단계이며 확정이 아니라고 설명. 확정되면 현 중3의 고교 내신에 직접 영향",
   "status": "reported",
+  "note": "기사 본문 대조 2026-11-01: 2030학년도부터 석차등급제 폐지·성취평가제 일원화 초안",
   "unverified": true,
   "reason": "공식 문서로 확인 중이에요(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
   "sourceKind": "media",
-  "sourceName": "교육을 비추다",
-  "sourceUrl": "https://www.kyobit.com/news/articleView.html?idxno=6335",
-  "sources": [
-   {
-    "name": "교육을 비추다",
-    "url": "https://www.kyobit.com/news/articleView.html?idxno=6335"
-   },
-   {
-    "name": "한국교육신문(te.co.kr)",
-    "url": "https://www.te.co.kr/news/article.html?no=29318"
-   }
-  ],
+  "sourceName": "더에듀(한국교육신문) 「국가교육발전계획안 초안」 보도",
+  "sourceUrl": "https://www.te.co.kr/news/article.html?no=29318",
   "region": "national",
   "audience": [
    "common"
@@ -2388,16 +2380,17 @@
   "learners": [
    "A"
   ],
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-01"
  },
  {
   "id": "log-14",
   "topic": "change-log",
   "entryYear": 2027,
   "examYear": 2030,
-  "title": "2026-08~09 국교위 의견 수렴",
-  "body": "대입 특위가 현장 토론회(인천·전남광주·대구), 국민의견플랫폼(9.14~28), 국민참여위원 203명 1박 2일 숙의토론(화성)으로 의견을 수렴. 결과는 국가교육발전계획에 반영 예정",
+  "title": "2026-08 국교위 의견 수렴",
+  "body": "국교위 대입특위가 현장 토론회(인천 8.11, 전남·광주 8.20, 대구 8.26), 국민의견플랫폼(8.14부터 운영), 국민참여위원 숙의토론(8.29~30 화성 연수원, 500명 중 203명 신청 예정)으로 의견을 수렴. 결과는 국가교육발전계획과 향후 대입제도 설계의 참고자료로 활용(구속력 아님)",
   "status": "reported",
+  "note": "newspim 2026.8.28 기사 본문 대조 2026-11-01. 숙의토론은 기사 작성 시점 예정 행사",
   "unverified": true,
   "reason": "공식 문서로 확인 중이에요(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
   "sourceKind": "media",
@@ -2420,7 +2413,7 @@
   "learners": [
    "A"
   ],
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-01"
  },
  {
   "id": "log-15",
@@ -2615,7 +2608,7 @@
   "learners": [
    "B"
   ],
-  "checkedAt": "2026-10-25",
+  "checkedAt": "2026-11-01",
   "events": [
    {
     "label": "",
@@ -2637,18 +2630,8 @@
   "unverified": true,
   "reason": "공식 문서로 확인 중이에요(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
   "sourceKind": "media",
-  "sourceName": "교육을 비추다",
-  "sourceUrl": "https://www.kyobit.com/news/articleView.html?idxno=6335",
-  "sources": [
-   {
-    "name": "교육을 비추다",
-    "url": "https://www.kyobit.com/news/articleView.html?idxno=6335"
-   },
-   {
-    "name": "한국교육신문(te.co.kr)",
-    "url": "https://www.te.co.kr/news/article.html?no=29318"
-   }
-  ],
+  "sourceName": "더에듀(한국교육신문) 「국가교육발전계획안 초안」 보도",
+  "sourceUrl": "https://www.te.co.kr/news/article.html?no=29318",
   "region": "national",
   "audience": [
    "common"
@@ -2656,7 +2639,7 @@
   "learners": [
    "B"
   ],
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-01"
  },
  {
   "id": "b33-07",
@@ -2740,7 +2723,7 @@
   "status": "confirmed",
   "unverified": false,
   "sourceKind": null,
-  "sourceName": "사용자 제공",
+  "sourceName": "자료 유형: 사용자 제공 학교 일정 안내 · 자료명: 졸업식 일정 안내(학교 공지) · 제공일: 2026-10-25(저장소 등록일) · 학교 공지로 재확인 필요",
   "sourceUrl": null,
   "region": "gyeonggi",
   "audience": [
@@ -2771,7 +2754,7 @@
   "status": "confirmed",
   "unverified": false,
   "sourceKind": null,
-  "sourceName": "사용자 제공",
+  "sourceName": "자료 유형: 사용자 제공 학교 일정 안내 · 자료명: 졸업식 일정 안내(학교 공지) · 제공일: 2026-10-25(저장소 등록일) · 학교 공지로 재확인 필요",
   "sourceUrl": null,
   "region": "gyeonggi",
   "audience": [
