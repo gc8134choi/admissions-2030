@@ -1,6 +1,7 @@
 // research/data/rules-draft.json(조사 세션) → portal/data/rules.json (수능 체제·내신 산출 시점별 버전).
 // 검사: id 중복 없음, status 어휘, sources(name·kind) 필수, appliesTo.learner가 learners.json에 있음, areas 숫자 필드.
 // 사용: node tools/build-rules.mjs  (--check: 파일과 결과가 다르면 종료코드 1)
+import { withSourceIds } from "./lib/source-ids.mjs";
 import { readFileSync, writeFileSync } from "node:fs";
 
 const draft = JSON.parse(readFileSync("research/data/rules-draft.json", "utf8"));
@@ -25,7 +26,7 @@ for (const r of draft.csatRegimes) for (const a of r.areas || []) for (const k o
 if (errs.length) { console.error(errs.join("\n")); process.exit(1); }
 
 const out = { _meta: { note: "수능 체제·내신 산출 시점별 버전(생성물, 손으로 고치지 않는다). research/data/rules-draft.json에서 tools/build-rules.mjs가 만든다.", version: draft._meta?.version, checkedAt: draft._meta?.checkedAt }, csatRegimes: draft.csatRegimes, gradingRules: draft.gradingRules };
-const json = JSON.stringify(out, null, 1) + "\n";
+const json = JSON.stringify(withSourceIds(out), null, 1) + "\n";
 const target = "portal/data/rules.json";
 if (process.argv.includes("--check")) {
   let cur = ""; try { cur = readFileSync(target, "utf8"); } catch {}

@@ -123,6 +123,10 @@
     "url": "https://imnews.imbc.com/news/2026/society/article/6842663_36918.html"
    }
   ],
+  "sourceIds": [
+   "src-028de273",
+   "src-fcd2f5fd"
+  ],
   "region": "national",
   "checkedAt": "2026-11-01"
  },
@@ -301,6 +305,10 @@
     "url": "https://www.veritas-a.com/news/articleView.html?idxno=626898"
    }
   ],
+  "sourceIds": [
+   "src-ce245c26",
+   "src-245bff65"
+  ],
   "region": "national",
   "checkedAt": "2026-11-01"
  },
@@ -378,6 +386,10 @@
     "name": "정책브리핑 정책뉴스(2026.1.28)",
     "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148958710"
    }
+  ],
+  "sourceIds": [
+   "src-683c5c07",
+   "src-dbb6e004"
   ],
   "region": "national",
   "checkedAt": "2026-10-25"
@@ -464,6 +476,10 @@
     "url": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf"
    }
   ],
+  "sourceIds": [
+   "src-3d73b988",
+   "src-4a089aa6"
+  ],
   "region": "national",
   "audience": [
    "common"
@@ -500,6 +516,10 @@
     "name": "대교협 2028학년도 대학입학전형기본사항(개정 2026.7.31)",
     "url": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf"
    }
+  ],
+  "sourceIds": [
+   "src-3d73b988",
+   "src-1168bb7e"
   ],
   "region": "national",
   "audience": [
@@ -746,6 +766,10 @@
     "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512"
    }
   ],
+  "sourceIds": [
+   "src-ed6c51a2",
+   "src-a5860564"
+  ],
   "region": "national",
   "audience": [
    "common"
@@ -885,6 +909,10 @@
     "url": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf"
    }
   ],
+  "sourceIds": [
+   "src-3d73b988",
+   "src-1168bb7e"
+  ],
   "region": "national",
   "audience": [
    "common"
@@ -950,6 +978,10 @@
     "url": "https://m.news.nate.com/view/20260803n19506"
    }
   ],
+  "sourceIds": [
+   "src-fcd2f5fd",
+   "src-9d31395b"
+  ],
   "region": "national",
   "audience": [
    "common"
@@ -1006,6 +1038,10 @@
     "url": "https://www.joongangenews.com/news/articleView.html?idxno=537981"
    }
   ],
+  "sourceIds": [
+   "src-63fb73ae",
+   "src-028de273"
+  ],
   "region": "national",
   "audience": [
    "common"
@@ -1057,6 +1093,10 @@
     "url": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf"
    }
   ],
+  "sourceIds": [
+   "src-1168bb7e",
+   "src-4acc94c1"
+  ],
   "region": "national",
   "checkedAt": "2026-10-25"
  },
@@ -1080,6 +1120,10 @@
     "name": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29)",
     "url": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf"
    }
+  ],
+  "sourceIds": [
+   "src-1168bb7e",
+   "src-4a089aa6"
   ],
   "region": "national",
   "checkedAt": "2026-10-25"
@@ -1142,6 +1186,12 @@
     "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/중앙대학교/중앙대학교_2028학년도_대학입학전형계획.pdf"
    }
   ],
+  "sourceIds": [
+   "src-0e5c59ab",
+   "src-bf63e20f",
+   "src-25b44965",
+   "src-0d620696"
+  ],
   "region": "national",
   "checkedAt": "2026-11-01"
  },
@@ -1170,6 +1220,11 @@
     "name": "성균관대학교 2027학년도 수시모집요강: 학생부종합(융합인재) 수능최저 적용(국·수·영·탐 중 3개 등급합 6), 입학처 2026.5 발행",
     "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/성균관대학교/성균관대학교_2027학년도_수시모집요강.pdf"
    }
+  ],
+  "sourceIds": [
+   "src-116e6018",
+   "src-38e60ada",
+   "src-2701dc5b"
   ],
   "region": "national",
   "checkedAt": "2026-11-01"
@@ -1224,6 +1279,10 @@
     "name": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29)",
     "url": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf"
    }
+  ],
+  "sourceIds": [
+   "src-4acc94c1",
+   "src-4a089aa6"
   ],
   "region": "national",
   "checkedAt": "2026-10-29"
@@ -1531,6 +1590,10 @@
     "name": "고교학점제 종합지원포털(교육부) 고교학점제란",
     "url": "https://www.hscredit.kr/about/intro"
    }
+  ],
+  "sourceIds": [
+   "src-683c5c07",
+   "src-942c8ec8"
   ],
   "region": "national",
   "checkedAt": "2026-10-25"
@@ -2001,6 +2064,10 @@
     "url": "https://www.dailian.co.kr/news/view/1627070/%EA%B2%BD%EA%B8%B0%EB%8F%84%EA%B5%90%EC%9C%A1%EC%B2%AD-2027%ED%95%99%EB%85%84%EB%8F%84-%EA%B2%BD%EA%B8%B0%EB%8F%84-%EA%B3%A0-2026"
    }
   ],
+  "sourceIds": [
+   "src-0200fd90",
+   "src-678b68aa"
+  ],
   "region": "gyeonggi",
   "audience": [
    "common"
@@ -2281,6 +2348,10 @@
     "url": "https://www.bundangnews.co.kr/58587"
    }
   ],
+  "sourceIds": [
+   "src-f06d55c5",
+   "src-5aa7e9d0"
+  ],
   "region": "gyeonggi",
   "audience": [
    "general"
@@ -2350,6 +2421,11 @@
     "url": "https://news.nate.com/view/20260806n01096?mid=n1101"
    }
   ],
+  "sourceIds": [
+   "src-a0a951fb",
+   "src-c5113910",
+   "src-5fefc3ba"
+  ],
   "region": "national",
   "audience": [
    "common"
@@ -2405,6 +2481,10 @@
     "name": "뉴스핌(업무보고)",
     "url": "https://www.newspim.com/news/view/20260805000395"
    }
+  ],
+  "sourceIds": [
+   "src-ae7eee98",
+   "src-b9740430"
   ],
   "region": "national",
   "audience": [
@@ -2600,6 +2680,11 @@
     "name": "네이트",
     "url": "https://news.nate.com/view/20260806n01096?mid=n1101"
    }
+  ],
+  "sourceIds": [
+   "src-a0a951fb",
+   "src-c5113910",
+   "src-5fefc3ba"
   ],
   "region": "national",
   "audience": [
@@ -3159,6 +3244,10 @@
     "url": "https://www.goe.go.kr/resource/old/BBSMSTR_000000000111/BBS_202409250522349970.pdf"
    }
   ],
+  "sourceIds": [
+   "src-ea04335e",
+   "src-c19fea53"
+  ],
   "region": "gyeonggi",
   "audience": [
    "common"
@@ -3191,6 +3280,10 @@
     "name": "용인시 기흥구청 게시 공고: 2027학년도 용인시 중학교 학교군 및 중학교 설정을 위한 의견수렴(2026.2.19)",
     "url": "https://www.giheunggu.go.kr/_lmth/03_board/board_0701.asp?mode=view&board_idx=MTE2MDAy&page=1"
    }
+  ],
+  "sourceIds": [
+   "src-1e20e3f9",
+   "src-fd558061"
   ],
   "region": "gyeonggi",
   "audience": [

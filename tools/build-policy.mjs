@@ -1,6 +1,7 @@
 // research/data/policy-draft.json(조사 세션 산출) → portal/data/policy.json. 편제표 DB(build-db)와 별개다.
 // 값은 draft에서 그대로 옮기고, 화면용 필드(entryYear, events, note)만 더한다.
 // 사용: node tools/build-policy.mjs  (--check: 파일과 결과가 다르면 종료코드 1)
+import { withSourceIds } from "./lib/source-ids.mjs";
 import { readFileSync, writeFileSync, copyFileSync, mkdirSync, existsSync } from "node:fs";
 import { loadManual, specFor, makeEvents } from "./build-events.mjs";
 
@@ -62,7 +63,7 @@ for (const r of out) {
   const mine = events.filter((e) => e.policyId === r.id);
   if (mine.length) { r.events = mine.map((e) => ({ label: e.label, start: e.start, ...(e.end ? { end: e.end } : {}) })); r.eventIds = mine.map((e) => e.id); }
 }
-const json = JSON.stringify(out, null, 1) + "\n";
+const json = JSON.stringify(withSourceIds(out), null, 1) + "\n";
 const target = "portal/data/policy.json";
 if (process.argv.includes("--check")) {
   let cur = ""; try { cur = readFileSync(target, "utf8"); } catch {}
@@ -70,7 +71,7 @@ if (process.argv.includes("--check")) {
 } else writeFileSync(target, json);
 console.log(out.length, "rows");
 {
-  const j = JSON.stringify(events, null, 1) + "\n", t = "portal/data/events.json";
+  const j = JSON.stringify(withSourceIds(events), null, 1) + "\n", t = "portal/data/events.json";
   if (process.argv.includes("--check")) { let cur = ""; try { cur = readFileSync(t, "utf8"); } catch {} if (cur !== j) { console.error("events.json is out of date"); process.exit(1); } }
   else writeFileSync(t, j);
   console.log(events.length, "events");
@@ -87,7 +88,7 @@ console.log(out.length, "rows");
     const { file, imageUrl, ...rest } = c;
     return { ...rest, file: usable ? base : null, usable: !!usable };
   });
-  const j2 = JSON.stringify(out2, null, 1) + "\n";
+  const j2 = JSON.stringify(withSourceIds(out2), null, 1) + "\n";
   const t2 = "portal/data/image-credits.json";
   if (process.argv.includes("--check")) {
     let cur = ""; try { cur = readFileSync(t2, "utf8"); } catch {}
