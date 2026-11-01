@@ -47,10 +47,10 @@ END:VEVENT
 BEGIN:VEVENT
 UID:ev-hs-05-1@admissions-2030
 DTSTAMP:20261026T000000Z
-DTSTART;VALUE=DATE:20261202
-DTEND;VALUE=DATE:20261203
+DTSTART;VALUE=DATE:20261203
+DTEND;VALUE=DATE:20261208
 SUMMARY:서울 후기 일반고·자사고·외고·국제고 일정 · 후
- 기 전형 개막(보도)
+ 기 원서접수(외·국·자·교육감 선발 일반고)
 DESCRIPTION:외국어고·국제고: 원서 접수 2026.12.3~12.7\, 합격
  자 발표 2026.12.24(면접대상자 자기소개서 제출 12.9~12.11)\,
   자사고 14교(하나고 제외): 접수 12.3~12.7\, 발표 12.24\, 하
