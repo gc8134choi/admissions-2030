@@ -3,6 +3,7 @@
 //   html += briefingBlock(await load("briefings"), schoolId, esc);   // 노트가 없으면 빈 문자열
 // 신뢰도는 배지 없이 조용한 글자(일관/추정/참고만)로 항목 끝에 붙인다. 학교 공식 문서가 아니라 녹음을 AI가 요약한 내용이다.
 import { stageTag } from "./stage.js";
+import { srcWrap } from "./src-ref.js";
 const dot = (d) => d.replace(/-/g, ".");
 
 export function briefingBlock(data, schoolId, esc) {
@@ -26,5 +27,5 @@ export function briefingBlock(data, schoolId, esc) {
     <p class="muted small">설명회 녹음을 AI가 요약한 내용이에요. 숫자는 틀렸을 수 있어요.</p>
     ${b.qualityNote ? `<p class="muted small">${esc(b.qualityNote)}</p>` : ""}
     ${b.sections.map(section).join("")}
-    <p class="ed-s">출처 ${b.source.url ? `<a href="${esc(b.source.url)}" target="_blank" rel="noopener">${esc(b.source.name)}</a>` : esc(b.source.name)}</p></details>`).join("");
+    <p class="ed-s0">${srcWrap(b.source.url ? `<a href="${esc(b.source.url)}" target="_blank" rel="noopener">${esc(b.source.name)} ↗</a>` : esc(b.source.name))}</p></details>`).join("");
 }

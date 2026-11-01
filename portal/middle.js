@@ -6,10 +6,12 @@ import { stageOf, stageTag } from "./stage.js";
 import { plain } from "./plain.js";
 import { fmtWhen } from "./when.js";
 import { densify } from "./fold.js";
+import { srcWrap } from "./src-ref.js";
 import { preloadGlossary, decorateGlossary } from "./glossary.js";
 const ES = { reported: ["rep", "보도"], estimated: ["est", "추정"] };
 const tag = (s, esc) => (ES[s] ? `<span class="es ${ES[s][0]}">${ES[s][1]}</span>` : "");
-const srcs = (a, esc) => (a || []).map((x) => (x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>` : esc(x.name))).join(" · ");
+const srcs = (a, esc) => (a || []).map((x) => (x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)} ↗</a>` : esc(x.name))).join(" · ");
+const srcb = (a, esc, extra = "") => srcWrap(`${srcs(a, esc)}${extra ? ` ${extra}` : ""}`); // 출처는 항목 끝 "출처" 버튼 뒤로
 
 export async function middleBody(el, { load, esc, mapHref = (id) => `#select/curriculum?v=map&p=${encodeURIComponent(id)}` }) {
   const [mid, pl, policy, cur, files, guide, tl] = await Promise.all([load("middle"), load("places"), load("policy"), load("middle-curriculum"), load("files"), load("middle-guide").catch(() => ({ sections: [] })), load("timeline").catch(() => ({ events: [] }))]);
@@ -33,10 +35,9 @@ export async function middleBody(el, { load, esc, mapHref = (id) => `#select/cur
     const img = (c.sources || []).map((x) => (x.file && fileId(x.file) ? `<a href="#library/files?open=${encodeURIComponent(fileId(x.file))}">원본 이미지 보기</a>` : "")).filter(Boolean)[0] || "";
     const rows = c.subjects.map((j) => `<tr><td>${esc(j.subject)}</td><td>${g(j.publishers[1])}</td><td>${g(j.publishers[2])}</td><td>${g(j.publishers[3])}</td>${j.note ? `<td class="muted small">${esc(j.note)}</td>` : "<td></td>"}</tr>`).join("");
     return `<details class="pl-tb"><summary>${esc(p.name)} 교과서·교과 구성 ${tag(c.status, esc)}</summary>
-      <p class="muted small">학교 공지를 옮겨 적은 표예요 · 공식 문서로 확인 중이에요 · ${esc(c.schoolYear)}학년도</p>
       <div class="pl-tbw"><table class="ed-tbl"><thead><tr><th>교과</th><th>1학년</th><th>2학년</th><th>3학년</th><th>비고</th></tr></thead><tbody>${rows}</tbody></table></div>
       <p class="muted small">1학년 때 배부하고 2·3학년까지 사용해요.${c.footnote ? ` ${esc(c.footnote)}` : ""}</p>
-      <p class="ed-s">출처 ${srcs(c.sources, esc)} ${img}</p></details>`;
+      <p class="ed-s0">${srcb(c.sources, esc, img)}</p></details>`;
   };
 
   const draw = () => {
@@ -50,14 +51,14 @@ export async function middleBody(el, { load, esc, mapHref = (id) => `#select/cur
     const commonSt = same((x) => x.z.status) ? zs[0].z.status : null;
     const hp = (p) => (/^https?:\/\//.test(p.homepage || "") ? `<a href="${esc(p.homepage)}" target="_blank" rel="noopener">홈페이지</a>` : `<a href="https://search.naver.com/search.naver?query=${encodeURIComponent(p.name + " 홈페이지")}" target="_blank" rel="noopener">홈페이지 찾기</a>`);
     const rows = zs.map(({ z, p }) => `<tr><th scope="row" class="mid-nm">${esc(p.name)}${commonSt ? "" : ` ${tag(z.status, esc)}`}${!commonNote && z.note ? `<div class="muted small">${esc(z.note)}</div>` : ""}</th>
-      <td class="muted small">${esc(p.address)}${p.coordApprox ? " (위치 근사)" : ""}</td><td class="mid-lk">${p.lat != null ? `<a href="${esc(mapHref(p.id))}">지도</a>` : ""} ${hp(p)}${!commonSrc ? `<div class="ed-s">출처 ${srcs(z.sources, esc)}</div>` : ""}</td></tr>`).join("");
+      <td class="muted small">${esc(p.address)}${p.coordApprox ? " (위치 근사)" : ""}</td><td class="mid-lk">${p.lat != null ? `<a href="${esc(mapHref(p.id))}">지도</a>` : ""} ${hp(p)}${!commonSrc ? srcb(z.sources, esc) : ""}</td></tr>`).join("");
     const tbs = zs.map(({ p }) => textbook(p)).join("");
     const noTb = zs.filter(({ p }) => !curBy.has(p.id)).length;
     const unsettled = [zoneNotice ? "학교군·중학구(용인교육지원청 의견 수렴 중)" : "", near ? "근거리 중학교 명단(교육지원청 공지 첨부에서 확인)" : ""].filter(Boolean);
     const anyMap = zs.some(({ p }) => p.lat != null);
     const flowRows = flow.map((r) => `<li>${stageTag(stageOf(r), esc)} <b>${esc(plain(r.title))}</b> <span class="muted">${esc(plain(r.body))}</span> ${tag(r.status, esc)}</li>`).join("");
     // 입학 준비 가이드(체크리스트)와 초6 기준 큰 그림 연표: 접이식 섹션
-    const gsrc = (s) => (s && s.name ? ` <span class="ed-s">출처 ${s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>` : esc(s.name)}</span>` : "");
+    const gsrc = (s) => (s && s.name ? ` ${srcWrap(s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)} ↗</a>` : esc(s.name))}` : "");
     const guideHtml = (guide.sections || []).length ? `<details class="hst mid-sec"><summary>${stageTag("중입", esc)}입학 준비 가이드 <span class="muted small">${guide.sections.reduce((n, s) => n + s.items.length, 0)}개</span></summary>${guide.sections.map((s) => `<section class="mg-s"><h4>${esc(s.title)}</h4><ul class="mg-l">${s.items.map((it) => `<li>${it.when ? `<b class="hst-d">${esc(fmtWhen(it.when))}</b> ` : ""}${esc(it.text)} ${tag(it.status, esc)}${it.source ? gsrc(it.source) : it.nullReason ? ` <span class="muted small">${esc(it.nullReason)}</span>` : ""}</li>`).join("")}</ul></section>`).join("")}</details>` : "";
     const STG = ["초6", "중1", "중2", "중3", "고1", "고2", "고3", "대입"];
     const tlHtml = (tl.events || []).length ? `<details class="hst mid-sec"><summary>${stageTag("중입", esc)}큰 그림 연표 (초6 → 대입) <span class="muted small">${tl.events.length}건</span></summary>${STG.map((g) => { const es = tl.events.filter((e) => e.stage === g).sort((a, b) => a.when.localeCompare(b.when)); return es.length ? `<p class="tl-st">${g}</p><ul class="mg-l">${es.map((e) => `<li><b class="hst-d">${esc(fmtWhen(e.when))}</b> ${esc(e.what)} ${tag(e.status, esc)}${e.note ? `<div class="muted small">${esc(e.note)}</div>` : ""}${e.source ? gsrc(e.source) : ""}</li>`).join("")}</ul>` : ""; }).join("")}<p class="muted small">2030학년도 이후 세부는 그해 고시·시행계획에서 정해져요.</p></details>` : "";
@@ -69,16 +70,16 @@ export async function middleBody(el, { load, esc, mapHref = (id) => `#select/cur
     ${unsettled.length ? `<p class="mid-un"><b>미정</b> ${unsettled.map(esc).join(" · ")} — 바뀔 수 있어요.${zoneNotice && zoneNotice.sourceUrl ? ` <a href="${esc(zoneNotice.sourceUrl)}" target="_blank" rel="noopener">${esc(zoneNotice.sourceName || "출처")}</a>` : ""}</p>` : ""}
     <div class="w-page w-2r">
       <div class="w-body">
-        ${mid.principles.length ? `<section class="mid-step"><h3><em>1</em>배정 원칙(절차)</h3>${mid.principles.map((p, i) => `<details class="mid-pr"${i === 0 ? " open" : ""}><summary>${esc(plain(p.title))} ${tag(p.status, esc)}</summary><p class="ed-b">${esc(plain(p.body))}</p><p class="ed-s">출처 ${srcs(p.sources, esc)}</p></details>`).join("")}</section>` : ""}
+        ${mid.principles.length ? `<section class="mid-step"><h3><em>1</em>배정 원칙(절차)</h3>${mid.principles.map((p, i) => `<details class="mid-pr"${i === 0 ? " open" : ""}><summary>${esc(plain(p.title))} ${tag(p.status, esc)}</summary><p class="ed-b">${esc(plain(p.body))}</p><p class="ed-s0">${srcb(p.sources, esc)}</p></details>`).join("")}</section>` : ""}
         ${flowRows ? `<section class="mid-step"><h3><em>2</em>배정 일정 흐름</h3><ol class="pl-flow">${flowRows}</ol><p class="muted small">날짜는 일정 화면과 같아요. 학교·교육지원청 공지로 다시 확인해 주세요.</p></section>` : ""}
         ${guideHtml}${tlHtml}
       </div>
       <aside class="w-aside mid-step"><h3><em>3</em>갈 수 있는 학교 <span class="muted small">${zs.length}개교</span></h3>${commonNote ? `<p class="muted small">${esc(commonNote)}</p>` : ""}
         ${anyMap ? `<p class="mid-map"><em>4</em><a class="lnk" href="${esc(mapHref(zs.find(({ p }) => p.lat != null).p.id))}&lv=middle">지도에서 한꺼번에 보기</a></p>` : ""}
         <div class="w-table mid-tbl"><table class="ed-tbl"><thead><tr><th>학교</th><th>주소</th><th>바로가기</th></tr></thead><tbody>${rows}</tbody></table></div>
-        ${commonSrc ? `<p class="ed-s">출처 ${srcs(commonSrc, esc)} ${commonSt ? tag(commonSt, esc) : ""}</p>` : ""}
-        ${tbs}${noTb ? `<p class="muted small">교과서 출판사 표가 없는 학교(${noTb}개교)는 학교 공지에서 확인해 주세요.</p>` : ""}
-        ${near ? `<p class="muted small">근거리 중학교 명단은 교육지원청 공지 첨부에서 확인할 수 있어요.${near.sources?.length ? ` 출처 ${srcs(near.sources, esc)}` : ""}</p>` : ""}</aside>
+        ${commonSrc ? `<p class="ed-s0">${commonSt ? tag(commonSt, esc) + " " : ""}${srcb(commonSrc, esc)}</p>` : ""}
+        ${tbs ? `<p class="muted small">교과서 표는 학교 공지를 옮겨 적은 것이라 공식 문서로 확인 중이에요(${esc(cur.schools[0]?.schoolYear ?? "")}학년도).</p>` : ""}${tbs}${noTb ? `<p class="muted small">교과서 출판사 표가 없는 학교(${noTb}개교)는 학교 공지에서 확인해 주세요.</p>` : ""}
+        ${near ? `<p class="muted small">근거리 중학교 명단은 교육지원청 공지 첨부에서 확인할 수 있어요.${near.sources?.length ? ` ${srcb(near.sources, esc)}` : ""}</p>` : ""}</aside>
     </div></div>`;
     el.querySelector("#mid-from").onchange = (e) => { st.from = e.target.value; draw(); };
     densify(el, { open: [0], keep: 5, chars: 100, groups: false }); // 첫 섹션(배정 원칙)만 펼치고 나머지는 한 줄 요약
