@@ -86,4 +86,7 @@ jobs:
           node tools/build-admission-types.mjs --check
           node tools/build-hs-compare.mjs --check
           node tools/build-glossary.mjs --check
+          node tools/build-hs-types.mjs --check
+          node tools/build-middle-guide.mjs --check
+          node tools/build-timeline.mjs --check
           if [ -f research/data/links-draft.json ]; then node tools/build-links.mjs --check; fi

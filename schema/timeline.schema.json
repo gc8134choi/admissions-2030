@@ -1,0 +1,14 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "timeline.schema.json",
+ "title": "timeline (초6 기준 큰 그림 연표 2026→2033) — research/data/timeline-draft.json = portal/data/timeline.json",
+ "description": "중학교 입학(2027) → 고교 입학(2030) → 대입(2033)까지의 큰 그림. 이미 policy/events.json에 있는 일정은 중복해서 적지 않고 policyIds로 연결한다. 2030학년도 이후 세부는 그해 고시·시행계획에서 정해진다.",
+ "type": "object",
+ "required": ["events"],
+ "properties": { "events": { "type": "array", "items": { "type": "object", "required": ["id", "when", "stage", "what", "status", "source"], "properties": {
+  "id": { "type": "string" }, "when": { "type": "string", "description": "YYYY-MM[~YYYY-MM]" },
+  "stage": { "enum": ["초6", "중1", "중2", "중3", "고1", "고2", "고3", "대입"] },
+  "what": { "type": "string" }, "status": { "enum": ["confirmed", "reported", "estimated"] },
+  "source": { "type": ["object", "null"], "properties": { "name": { "type": "string" }, "url": { "type": ["string", "null"] } } },
+  "note": { "type": ["string", "null"] }, "policyIds": { "type": "array", "items": { "type": "string" } } } } } }
+}

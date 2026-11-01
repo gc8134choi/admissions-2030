@@ -1,0 +1,12 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "middle-guide.schema.json",
+ "title": "middle-guide (중학교 입학 준비 가이드) — research/data/middle-guide-draft.json = portal/data/middle-guide.json",
+ "description": "배정부터 등록·교복·교과서·준비물까지 체크리스트. 항목마다 status와 source를 붙이고, 확인 못 한 항목은 source 없이 nullReason(내부 점검 사정 대신 '공식 문서로 확인 중이에요')을 적는다.",
+ "type": "object",
+ "required": ["sections"],
+ "properties": { "sections": { "type": "array", "items": { "type": "object", "required": ["id", "title", "items"], "properties": {
+  "id": { "type": "string" }, "title": { "type": "string" },
+  "items": { "type": "array", "items": { "type": "object", "required": ["text", "status"], "properties": { "text": { "type": "string" }, "when": { "type": ["string", "null"], "description": "YYYY-MM[-DD][~YYYY-MM[-DD]]" }, "status": { "enum": ["confirmed", "reported", "estimated"] }, "source": { "type": ["object", "null"], "properties": { "name": { "type": "string" }, "url": { "type": ["string", "null"] } } }, "nullReason": { "type": ["string", "null"] } } } } } } }
+ }
+}
