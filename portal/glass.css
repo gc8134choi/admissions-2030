@@ -17,7 +17,7 @@
 /* ---- 토큰: 밝은 모드(따뜻한 밝은 글래스) ---- */
 @media (prefers-color-scheme:light){:root{
   --paper:#EEE5D8;--paper2:#F7F1E8;--kraft:#E3D3BF;--ink:#231a12;--pencil:#5c5348;--line:rgba(60,40,20,.16);
-  --accent:#C4310D;--accent-a:#C4310D;--accent-b:#C4310D;--on-accent:#ffffff;
+  --accent:#B02A0A;--accent-a:#B02A0A;--accent-b:#B02A0A;--on-accent:#ffffff;
   --req:#1B3A6B;--ele:#0A7860;--st-est:#935600;
   --glass:rgba(255,255,255,.58);--glass-line:rgba(60,40,20,.14);--glass-in:rgba(255,255,255,.5);
   --sh:0 8px 24px -14px rgba(80,50,20,.35);
@@ -306,3 +306,22 @@ details.pn-t[open]{padding-bottom:var(--sp-3)}
 .srcf ul{margin:0 0 var(--sp-2);padding-left:1.1em}
 .hsc td{vertical-align:top}
 @media print{.srcp[hidden]{display:block!important}.srcb{display:none}.srcf:not([open])>*:not(summary){display:block}}
+
+/* ===== 접근성 보강(독립 평가 D·E): 보조 글자 13px 이상, 터치 영역 44px(모바일 48) ===== */
+.srcb,.bf-c,.kb,.pn-m,.ed-note,.es,.ed-unv,.ed-src,.ed-meta,.req,.ele,.cr,.gl-i,.si,.hsc-meta,.pst,.srcd,th,.chip,.fchip,.num,small,.small,.flabel,.lg-s,em,h5,.hm .sec-h h2 em{font-size:max(13px,1em)!important}
+i.cr,.ed-note,.kb,.bf-c,th{font-size:13px!important}
+.srcb{font-size:13px}
+.si,.gl-i,.ib{min-width:44px;min-height:44px;margin:-14px -12px;display:inline-flex;align-items:center;justify-content:center}
+button.term{display:inline-block;padding:11px 2px;margin:-11px -2px}
+.wm{display:inline-flex;align-items:center;min-height:var(--touch)}
+.vl{display:inline-flex;align-items:center;min-height:var(--touch)}
+details>summary{padding-block:11px;min-height:44px}
+.gl-i{height:44px!important;width:44px!important}
+.star,.sb-star{min-width:44px;min-height:44px}
+@media (max-width:899px){.srcb,.chip,.fchip,.btn,.vtog button{min-height:48px}}
+button.term{padding:13px 2px;margin:-13px -2px}
+.ed-filter button,.hm-aud .fchip{min-height:44px}
+.cmx-n a,.ping a,.hub-t,.hscmp a{display:inline-flex;align-items:center;min-height:44px}
+.unv-i{font-size:13px}
+.hm-ping a{display:inline-flex;align-items:center;min-height:44px}
+.ed-toc button{min-height:44px;display:inline-flex;align-items:center}
