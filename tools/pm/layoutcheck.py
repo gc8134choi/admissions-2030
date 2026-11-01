@@ -18,7 +18,9 @@ for(const r of routes){try{await p.goto(base+r,{waitUntil:'load',timeout:20000})
 const bad=await p.evaluate(()=>[...document.querySelectorAll('li.row, .row')].filter(li=>li.offsetWidth>0).flatMap(li=>{
   const W=li.getBoundingClientRect().width;return [...li.children].filter(c=>!c.classList.contains('d')&&c.offsetWidth>0&&c.getBoundingClientRect().width<W*0.6&&(c.innerText||'').trim().length>8)
   .map(c=>({t:(c.innerText||'').trim().replace(/\s+/g,' ').slice(0,24),pct:Math.round(c.getBoundingClientRect().width/W*100)}))}));
-if(bad.length)out.push({w,r,n:bad.length,first:bad[0]});}
+if(bad.length)out.push({w,r,n:bad.length,first:bad[0]});
+const ov=await p.evaluate(()=>{const W=document.documentElement.clientWidth;const e=[...document.querySelectorAll('#main *')].find(x=>x.getBoundingClientRect().right>W+2&&x.offsetWidth>0&&!x.closest('.tw,.hsc,.pl-tbw,.schoolgrid,.mss,.ed-toc,.chips,[style*=overflow]'));return {sx:document.documentElement.scrollWidth>W+2,el:e?(e.tagName+'.'+e.className):''}});
+if(ov.sx)out.push({w,r,issue:'가로 스크롤',el:ov.el});}
 await p.close()}
 await b.close();console.log(JSON.stringify(out));})();
 """
@@ -39,7 +41,7 @@ def main():
         return 2
     out = json.loads(r.stdout.strip().splitlines()[-1])
     if not out:
-        print(f"OK: {len(ROUTES)}화면 × 4폭 좁게 갇힌 .row 없음")
+        print(f"OK: {len(ROUTES)}화면 × 4폭 좁게 갇힌 .row·가로 스크롤 없음")
         return 0
     for o in out:
         print(json.dumps(o, ensure_ascii=False))
