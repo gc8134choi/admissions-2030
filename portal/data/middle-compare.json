@@ -1,0 +1,1604 @@
+{
+ "_meta": {
+  "note": "중학교 비교표(생성물, 손으로 고치지 않는다). research/data/middle-compare-draft.json에서 tools/build-middle-compare.mjs가 만든다. 값마다 기준연도·상태·출처가 붙는다.",
+  "checkedAt": "2026-11-01",
+  "schoolCount": 13
+ },
+ "fields": [
+  {
+   "id": "founding",
+   "label": "설립(공립/사립)",
+   "group": "기본",
+   "order": 1,
+   "type": "string",
+   "needsAsOf": true
+  },
+  {
+   "id": "coed",
+   "label": "남녀공학",
+   "group": "기본",
+   "order": 2,
+   "type": "string",
+   "needsAsOf": true
+  },
+  {
+   "id": "address",
+   "label": "주소",
+   "group": "기본",
+   "order": 3,
+   "type": "string",
+   "needsAsOf": true
+  },
+  {
+   "id": "zone",
+   "label": "학교군",
+   "group": "배정",
+   "order": 4,
+   "type": "string",
+   "needsAsOf": true
+  },
+  {
+   "id": "classes",
+   "label": "학급수(2026학년도 전체)",
+   "group": "규모",
+   "order": 5,
+   "type": "number",
+   "unit": "학급",
+   "needsAsOf": true
+  },
+  {
+   "id": "classesDetail",
+   "label": "학년별 학급수",
+   "group": "규모",
+   "order": 6,
+   "type": "string",
+   "needsAsOf": true
+  },
+  {
+   "id": "students",
+   "label": "학생수",
+   "group": "규모",
+   "order": 7,
+   "type": "number",
+   "unit": "명",
+   "needsAsOf": true
+  },
+  {
+   "id": "meal",
+   "label": "급식 방식",
+   "group": "생활",
+   "order": 8,
+   "type": "string",
+   "needsAsOf": true
+  },
+  {
+   "id": "uniform",
+   "label": "교복(구입 방식·가격)",
+   "group": "생활",
+   "order": 9,
+   "type": "string",
+   "needsAsOf": true
+  },
+  {
+   "id": "commute",
+   "label": "통학(거리·시간)",
+   "group": "생활",
+   "order": 10,
+   "type": "string",
+   "needsAsOf": true
+  },
+  {
+   "id": "homepage",
+   "label": "학교 홈페이지",
+   "group": "링크",
+   "order": 11,
+   "type": "link",
+   "needsAsOf": true
+  },
+  {
+   "id": "phone",
+   "label": "대표 전화",
+   "group": "링크",
+   "order": 12,
+   "type": "string",
+   "needsAsOf": true
+  }
+ ],
+ "schools": [
+  {
+   "placeId": "pl-002",
+   "schoolId": null,
+   "name": "문정중학교",
+   "values": {
+    "founding": {
+     "value": "사립",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 수지구 포은대로 455",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "수지1중학군",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": 17,
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "classesDetail": {
+     "value": "1학년 7학급 · 2학년 5학급 · 3학년 5학급",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+    },
+    "uniform": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+    },
+    "commute": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+    },
+    "homepage": {
+     "value": "https://munjung-m.goeyi.kr",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "phone": {
+     "value": "031-899-1300",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-003",
+   "schoolId": null,
+   "name": "성복중학교",
+   "values": {
+    "founding": {
+     "value": "공립",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 수지구 성복2로78번길 51",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "수지1중학군",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": 30,
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "classesDetail": {
+     "value": "1학년 10학급 · 2학년 11학급 · 3학년 9학급",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+    },
+    "uniform": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+    },
+    "commute": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+    },
+    "homepage": {
+     "value": "https://sungbok-m.goeyi.kr",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "phone": {
+     "value": "031-272-6255",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-004",
+   "schoolId": null,
+   "name": "성서중학교",
+   "values": {
+    "founding": {
+     "value": "공립",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 수지구 성복1로 137",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "수지1중학군",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": 30,
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "classesDetail": {
+     "value": "1학년 10학급 · 2학년 10학급 · 3학년 10학급",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+    },
+    "uniform": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+    },
+    "commute": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+    },
+    "homepage": {
+     "value": "https://seongseo-m.goeyi.kr",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "phone": {
+     "value": "031-8008-1500",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-005",
+   "schoolId": null,
+   "name": "손곡중학교",
+   "values": {
+    "founding": {
+     "value": "공립",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 수지구 수풍로116번길 5",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "수지1중학군",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": 21,
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "classesDetail": {
+     "value": "1학년 7학급 · 2학년 7학급 · 3학년 7학급",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+    },
+    "uniform": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+    },
+    "commute": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+    },
+    "homepage": {
+     "value": "https://songok-m.goeyi.kr/",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "phone": {
+     "value": "031-264-9834",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-006",
+   "schoolId": null,
+   "name": "수지중학교",
+   "values": {
+    "founding": {
+     "value": "공립",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 수지구 수풍로 102",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "수지1중학군",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": 32,
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "classesDetail": {
+     "value": "1학년 10학급 · 2학년 10학급 · 3학년 12학급",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+    },
+    "uniform": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+    },
+    "commute": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+    },
+    "homepage": {
+     "value": "https://suji-m.goeyi.kr",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "phone": {
+     "value": "031-261-0236",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-007",
+   "schoolId": null,
+   "name": "신봉중학교",
+   "values": {
+    "founding": {
+     "value": "공립",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 수지구 신봉3로 43",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "수지1중학군",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": 21,
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "classesDetail": {
+     "value": "1학년 7학급 · 2학년 7학급 · 3학년 7학급",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+    },
+    "uniform": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+    },
+    "commute": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+    },
+    "homepage": {
+     "value": "https://shinbong-m.goeyi.kr",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "phone": {
+     "value": "031-8019-0100",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-008",
+   "schoolId": null,
+   "name": "용인한빛중학교",
+   "values": {
+    "founding": {
+     "value": "공립",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 수지구 동천로 177",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "수지1중학군",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": 17,
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "classesDetail": {
+     "value": "1학년 6학급 · 2학년 6학급 · 3학년 5학급",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+    },
+    "uniform": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+    },
+    "commute": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+    },
+    "homepage": {
+     "value": "https://yhanbit-m.goeyi.kr",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "phone": {
+     "value": "031-896-7250",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-009",
+   "schoolId": null,
+   "name": "정평중학교",
+   "values": {
+    "founding": {
+     "value": "공립",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 수지구 정평로 21",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "수지1중학군",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": 34,
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "classesDetail": {
+     "value": "1학년 11학급 · 2학년 12학급 · 3학년 11학급",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+    },
+    "uniform": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+    },
+    "commute": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+    },
+    "homepage": {
+     "value": "https://jp-m.goeyi.kr",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "phone": {
+     "value": "031-265-9812",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-010",
+   "schoolId": null,
+   "name": "홍천중학교",
+   "values": {
+    "founding": {
+     "value": "공립",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 수지구 신봉1로71번길 36",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "수지1중학군",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": 28,
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "classesDetail": {
+     "value": "1학년 9학급 · 2학년 9학급 · 3학년 10학급",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+    },
+    "uniform": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+    },
+    "commute": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+    },
+    "homepage": {
+     "value": "https://hongcheon-m.goeyi.kr",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "phone": {
+     "value": "031-260-8888",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-016",
+   "schoolId": null,
+   "name": "상현중학교",
+   "values": {
+    "founding": {
+     "value": "공립",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 수지구 광교마을로 61",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "수지2중학군",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": 27,
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "classesDetail": {
+     "value": "1학년 8학급 · 2학년 9학급 · 3학년 10학급",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+    },
+    "uniform": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+    },
+    "commute": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+    },
+    "homepage": {
+     "value": "https://sanghyeon-m.goeyi.kr",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "phone": {
+     "value": "031-266-7948",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-017",
+   "schoolId": null,
+   "name": "서원중학교",
+   "values": {
+    "founding": {
+     "value": "공립",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 수지구 상현로42번길 26-8",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "수지2중학군",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": 33,
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "classesDetail": {
+     "value": "1학년 11학급 · 2학년 11학급 · 3학년 11학급",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+    },
+    "uniform": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+    },
+    "commute": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+    },
+    "homepage": {
+     "value": "https://seowon-m.goeyi.kr",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "phone": {
+     "value": "031-8031-1400",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-018",
+   "schoolId": null,
+   "name": "소현중학교",
+   "values": {
+    "founding": {
+     "value": "공립",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 기흥구 만현로133번길 96",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "수지2중학군",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": 23,
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "classesDetail": {
+     "value": "1학년 6학급 · 2학년 8학급 · 3학년 9학급",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+    },
+    "uniform": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+    },
+    "commute": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+    },
+    "homepage": {
+     "value": "https://sohyeon-m.goeyi.kr",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "phone": {
+     "value": "031-270-6420",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    }
+   }
+  },
+  {
+   "placeId": "pl-019",
+   "schoolId": null,
+   "name": "이현중학교",
+   "values": {
+    "founding": {
+     "value": "공립",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "coed": {
+     "value": "남녀공학",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "address": {
+     "value": "경기도 용인시 수지구 진산로34번길 39",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "zone": {
+     "value": "수지2중학군",
+     "asOf": "2027학년도",
+     "status": "confirmed",
+     "source": {
+      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+     },
+     "nullReason": null
+    },
+    "classes": {
+     "value": 34,
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "classesDetail": {
+     "value": "1학년 11학급 · 2학년 11학급 · 3학년 12학급",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "students": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+    },
+    "meal": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+    },
+    "uniform": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+    },
+    "commute": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+    },
+    "homepage": {
+     "value": "https://www.goeyi.kr/e-hyun-m/main.do",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "phone": {
+     "value": "031-266-8032",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "NEIS 학교기본정보(2026-11-01 조회)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    }
+   }
+  }
+ ]
+}
