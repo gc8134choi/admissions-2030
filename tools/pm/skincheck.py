@@ -8,8 +8,8 @@ SHOTS = sys.argv[sys.argv.index("--shots") + 1] if "--shots" in sys.argv else ""
 JS = r"""
 const {chromium}=require('playwright');
 (async()=>{const base=process.argv[2],shots=process.argv[3];const out=[];const b=await chromium.launch();
-const ROUTES=[['home',''],['hs','#select/curriculum?v=hs'],['sched','#schedule']];
-for(const skin of ['','paper','tool'])for(const mode of ['light','dark'])for(const w of [1440,390]){
+const ROUTES=__ROUTES__;
+for(const skin of __SKINS__)for(const mode of ['light','dark'])for(const w of [1440,390]){
  const c=await b.newContext({viewport:{width:w,height:w==390?844:900},colorScheme:mode});
  await c.addInitScript(([s,m])=>{try{if(s)localStorage.setItem('portal.skin',s);localStorage.setItem('portal.theme',m)}catch(e){}},[skin,mode]);
  const p=await c.newPage();
@@ -24,13 +24,15 @@ for(const skin of ['','paper','tool'])for(const mode of ['light','dark'])for(con
     if(!e.getClientRects().length)continue;const own=[...e.childNodes].some(x=>x.nodeType===3&&x.textContent.trim());if(!own)continue;
     const cs=getComputedStyle(e);if(cs.visibility==='hidden'||+cs.opacity===0||parseFloat(cs.fontSize)<1||cs.color==='rgba(0, 0, 0, 0)')continue;const fs=parseFloat(cs.fontSize),bold=+cs.fontWeight>=700;
     const fg=parse(cs.color),bg=bgOf(e),f=blend(fg,bg);const a=L(f),bb=L(bg);const cr=(Math.max(a,bb)+.05)/(Math.min(a,bb)+.05);n++;
-    const need=(fs>=24||(fs>=18.66&&bold))?3:4.5;if(cr<need)bad.push([+cr.toFixed(2),(e.className||e.tagName)+'',(e.textContent||'').trim().slice(0,14)])}
+    const need=(fs>=24||(fs>=18.66&&bold))?__NEEDL__:__NEED__;if(cr<need)bad.push([+cr.toFixed(2),(e.className||e.tagName)+'',(e.textContent||'').trim().slice(0,14)])}
    bad.sort((x,y)=>x[0]-y[0]);return {n,bad:bad.length,top:bad.slice(0,3),sx:document.documentElement.scrollWidth>innerWidth+2}});
   out.push({skin:skin||'default',mode,w,r:nm,n:d.n,bad:d.bad,sx:d.sx,top:d.top});
   if(shots&&(nm==='home'||nm==='hs'))await p.screenshot({path:`${shots}/${skin||'default'}-${nm}-${mode}-${w}.png`})}
  await c.close()}
 await b.close();console.log(JSON.stringify(out))})();
 """
+JS = (JS.replace("__NEEDL__", os.environ.get("NEED_L", "3")).replace("__NEED__", os.environ.get("NEED", "4.5"))
+      .replace("__ROUTES__", os.environ.get("ROUTES", "[['home',''],['hs','#select/curriculum?v=hs'],['sched','#schedule']]")).replace("__SKINS__", os.environ.get("SKINS", "['','paper','tool']")))
 f = tempfile.NamedTemporaryFile("w", suffix=".js", delete=False); f.write(JS); f.close()
 env = dict(os.environ); env["NODE_PATH"] = subprocess.run(["npm", "root", "-g"], capture_output=True, text=True).stdout.strip()
 r = subprocess.run(["node", f.name, BASE, SHOTS], capture_output=True, text=True, env=env); os.unlink(f.name)

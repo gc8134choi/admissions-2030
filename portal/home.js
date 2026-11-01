@@ -127,7 +127,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     // "켜는 방식": 아무것도 안 고르면 전체, 단계를 누르면 그 단계만 켜진다(여러 개 가능).
     let focus = Array.isArray(fsaved) ? fsaved.filter((x) => STAGES.includes(x)) : [];
     if (focus.length === STAGES.length) focus = [];
-    let fpicking = HOME_PICK || !Array.isArray(fsaved);
+    let fpicking = HOME_PICK; // 처음 방문도 한 줄("전체 · 고르기")로 시작해 홈을 짧게 둔다
     const inF = (g) => !focus.length || !g || focus.includes(g);
     const feedF = () => { const f = feed(), m = f.filter((it) => inF(stageOf(it.row))); return m.length ? m : f; };
     const rest = () => { const f = feedF().slice(0, 3);
@@ -138,7 +138,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
         return `<li class="lg${i === 0 ? " first" : ""}"><span class="lg-s">${g ? esc(g) : ""}</span><span class="d${live ? " live" : " num"}">${dl}</span><b class="lg-t">${esc(it.title)}</b><span class="lg-d num">${it.date}</span><span class="lg-m">${meta}</span></li>`; }).join(""); };
     const focusBar = () => fpicking
       ? `<div class="fpick" role="group" aria-label="주로 보는 단계"><p class="fpick-q">보고 싶은 단계를 눌러 켜세요. 여러 개 켤 수 있고, 안 고르면 전체예요. 언제든 바꿀 수 있어요.</p><div class="chips"><button type="button" class="fchip${!focus.length ? " on" : ""}" data-f="" aria-pressed="${!focus.length}">전체</button>${FOPT.map(([k, t]) => `<button type="button" class="fchip${focus.includes(k) ? " on" : ""}" data-f="${k}" aria-pressed="${focus.includes(k)}">${t}</button>`).join("")}</div><button type="button" class="btn primary" data-fsave>이대로 보기</button></div>`
-      : `<p class="fbar muted">보는 단계 <b>${focus.length ? FOPT.filter(([k]) => focus.includes(k)).map(([, t]) => esc(t)).join(" · ") : "전체"}</b> <button type="button" class="lnk" data-fedit>바꾸기</button></p>`;
+      : `<p class="fbar muted">보는 단계 <b>${focus.length ? FOPT.filter(([k]) => focus.includes(k)).map(([, t]) => esc(t)).join(" · ") : "전체"}</b> <button type="button" class="lnk" data-fedit>${Array.isArray(fsaved) ? "바꾸기" : "단계 고르기"}</button></p>`;
 
     // 4) 바뀐 소식 1줄
     const log0 = policy.filter((r) => r.topic === "change-log").map((r) => ({ r, d: dateOf(r.title) })).filter((x) => x.d && span(x.d).start <= t);
