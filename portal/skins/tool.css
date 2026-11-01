@@ -1,0 +1,37 @@
+/* 스킨 '조용한 도구' — 무채색 + 포인트 1색·넉넉한 여백·큰 D-day 숫자. glass.css 위에 얹는다(스킨은 토큰과 장식만 바꾼다). */
+:root{
+  --paper:#F4F4F1;--paper2:#FFFFFF;--kraft:#E6E6E1;--ink:#1A1A18;--pencil:#585853;--line:rgba(26,26,24,.14);
+  --accent:#B02A0A;--accent-a:#B02A0A;--accent-b:#B02A0A;--on-accent:#ffffff;--req:#27408B;--ele:#0B6B57;--st-est:#7A4A00;
+  --glass:#FFFFFF;--glass-line:rgba(26,26,24,.16);--glass-in:rgba(26,26,24,.04);--sh:none;--gl-sh:none;
+  --r1:10px;--r2:10px;--r3:8px;--bokeh:none;--serif:var(--font);--hand:var(--font);
+}
+@media (prefers-color-scheme:dark){:root{
+  --paper:#101010;--paper2:#181818;--kraft:#262626;--ink:#ECECE8;--pencil:#A9A9A2;--line:rgba(236,236,232,.14);
+  --accent:#FF7B4D;--accent-a:#FF7B4D;--accent-b:#FF7B4D;--on-accent:#101010;--req:#8DB0F5;--ele:#5FD3B0;--st-est:#E0A94A;
+  --glass:#181818;--glass-line:rgba(236,236,232,.16);--glass-in:rgba(236,236,232,.05)}}
+body{background:var(--paper)}
+body::before{display:none}
+.dp,.hero,.ledger,.hero-aside,.school,.ed-row,.rows.lk .row,.pn-t,.pn-u,.note,.ed-top,.piece,.bf-area,.pl-zone>li,.ms,.fl-card,.tw,.w-table,.dsearch,.mid-flow .mid-un,.hub,.srcp,.rd-sec,.past-fold,.wide-fold,.ty-top,.more-panels{
+  background:var(--glass)!important;border:1px solid var(--glass-line)!important;border-radius:10px!important;box-shadow:none!important;-webkit-backdrop-filter:none;backdrop-filter:none}
+.dp,.ledger{padding:18px 20px!important}
+.hm .h-row2,.h-row4,.h-row5,.h-rest{gap:20px!important}
+/* 큰 D-day 숫자·절제된 제목 */
+.ledger .lg .d.num{font-size:26px!important;font-weight:700;letter-spacing:-.02em}
+.ledger .lg.first .d{font-size:26px!important;color:var(--accent)}
+.ledger .lg.first .lg-t{font-size:20px}
+.ms-n{font-size:64px!important;font-weight:700;letter-spacing:-.04em}
+.sec-h h2{font-size:16px!important;font-weight:650}
+.sec-h h2 em{color:var(--pencil);font-weight:500}
+h1.ph{font-size:clamp(26px,4.5vw,36px);font-weight:700;letter-spacing:-.02em}
+/* 조작: 무채색 + 포인트 1색(켜진 것만) */
+.chip,.fchip,.btn,.vtog button{background:transparent;border:1px solid var(--glass-line);color:var(--ink);border-radius:8px!important}
+.chip.on,.fchip.on,.btn.primary,.vtog button[aria-pressed=true],.tsw button[aria-pressed=true]{background:var(--ink)!important;color:var(--paper2)!important;border-color:var(--ink)}
+.tsw{border-radius:10px;background:transparent}.tsw button{border-radius:8px}
+#topnav{background:var(--paper2)!important;border-radius:14px!important;box-shadow:none!important;-webkit-backdrop-filter:none;backdrop-filter:none}
+#topnav a[aria-current=page]{background:var(--ink)!important;color:var(--paper2)!important}
+.tabs{background:var(--paper2)!important;-webkit-backdrop-filter:none;backdrop-filter:none;border-top:1px solid var(--glass-line)!important}
+.tabs a[aria-current=page]::before{background:var(--accent)}
+.hdr{border-bottom:1px solid var(--line)!important}
+.ledger .lg.first{background:transparent!important}
+.srch{background:var(--paper)!important;-webkit-backdrop-filter:none;backdrop-filter:none}
+.srch .sr-bar{background:var(--paper2);border-radius:12px}
