@@ -9,6 +9,7 @@ const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unkn
 const DAY = 864e5;
 
 // ---- 일정 대상 필터(칩): 일정 화면 등 다른 화면에서 같은 키·함수를 재사용할 수 있게 분리 ----
+let HOME_PICK = false; // 단계 선택 창을 열어 둔 상태(홈을 다시 그려도 유지)
 export const AUDIENCES = [["general", "일반고"], ["science", "과학·영재"], ["private", "자사·외·국제"]];
 export const AUDIENCE_KEY = "portal.audience"; // localStorage 키(값: audience 키 배열 JSON)
 export const AUDIENCE_DEFAULT = ["general", "science", "private"];
@@ -122,9 +123,12 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     // 주로 보는 단계(이름·프로필 아님, 이 브라우저에만 저장). 처음 한 번 고르고 언제든 바꾼다. 고른 단계는 "자주 보는 단계"(허브 고정)와 합쳐진다.
     const FK = "portal.focus", FOPT = [["중입", "중학교 입학 준비"], ["고입", "고교 고르기·고교 생활"], ["대입", "대입 준비"]];
     const fsaved = store.get(FK, null);
-    let focus = Array.isArray(fsaved) && fsaved.filter((x) => STAGES.includes(x)).length ? fsaved.filter((x) => STAGES.includes(x)) : [...STAGES];
-    let fpicking = !Array.isArray(fsaved);
-    const feedF = () => { const f = feed(), m = f.filter((it) => { const g = stageOf(it.row); return !g || focus.includes(g); }); return m.length ? m : f; };
+    // "켜는 방식": 아무것도 안 고르면 전체, 단계를 누르면 그 단계만 켜진다(여러 개 가능).
+    let focus = Array.isArray(fsaved) ? fsaved.filter((x) => STAGES.includes(x)) : [];
+    if (focus.length === STAGES.length) focus = [];
+    let fpicking = HOME_PICK || !Array.isArray(fsaved);
+    const inF = (g) => !focus.length || !g || focus.includes(g);
+    const feedF = () => { const f = feed(), m = f.filter((it) => inF(stageOf(it.row))); return m.length ? m : f; };
     const rest = () => { const f = feedF().slice(0, 3);
       if (!f.length) return `<li class="lg"><div class="empty"><p>아직 모인 일정이 없어요.</p><small>${isB ? "학교를 고르면 그 학교 일정이 여기에 모입니다." : "앞으로 90일 안에 해당하는 일정이 없어요."}</small></div></li>`;
       return f.map((it, i) => { const live = it.sp.start <= t, left = Math.round((it.sp.end - t) / DAY), g = stageOf(it.row);
@@ -132,8 +136,8 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
         const meta = String(it.meta).replace(/<span class="stg">.*?<\/span>/, "").trim();
         return `<li class="lg${i === 0 ? " first" : ""}"><span class="lg-s">${g ? esc(g) : ""}</span><span class="d${live ? " live" : " num"}">${dl}</span><b class="lg-t">${esc(it.title)}</b><span class="lg-d num">${it.date}</span><span class="lg-m">${meta}</span></li>`; }).join(""); };
     const focusBar = () => fpicking
-      ? `<div class="fpick" role="group" aria-label="주로 보는 단계"><p class="fpick-q">주로 보는 단계를 골라 주세요. 여러 개 고를 수 있고, 언제든 바꿀 수 있어요.</p><div class="chips">${FOPT.map(([k, t]) => `<button type="button" class="fchip${focus.includes(k) ? " on" : ""}" data-f="${k}" aria-pressed="${focus.includes(k)}">${t}</button>`).join("")}</div><button type="button" class="btn primary" data-fsave>이대로 보기</button></div>`
-      : `<p class="fbar muted">보는 단계 <b>${FOPT.filter(([k]) => focus.includes(k)).map(([, t]) => esc(t)).join(" · ")}</b> <button type="button" class="lnk" data-fedit>바꾸기</button></p>`;
+      ? `<div class="fpick" role="group" aria-label="주로 보는 단계"><p class="fpick-q">보고 싶은 단계를 눌러 켜세요. 여러 개 켤 수 있고, 안 고르면 전체예요. 언제든 바꿀 수 있어요.</p><div class="chips"><button type="button" class="fchip${!focus.length ? " on" : ""}" data-f="" aria-pressed="${!focus.length}">전체</button>${FOPT.map(([k, t]) => `<button type="button" class="fchip${focus.includes(k) ? " on" : ""}" data-f="${k}" aria-pressed="${focus.includes(k)}">${t}</button>`).join("")}</div><button type="button" class="btn primary" data-fsave>이대로 보기</button></div>`
+      : `<p class="fbar muted">보는 단계 <b>${focus.length ? FOPT.filter(([k]) => focus.includes(k)).map(([, t]) => esc(t)).join(" · ") : "전체"}</b> <button type="button" class="lnk" data-fedit>바꾸기</button></p>`;
 
     // 4) 바뀐 소식 1줄
     const log0 = policy.filter((r) => r.topic === "change-log").map((r) => ({ r, d: dateOf(r.title) })).filter((x) => x.d && span(x.d).start <= t);
@@ -191,7 +195,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
 
     // 알림 후보: 7일 안에 시작하거나 진행 중인 일정과 지난 방문 이후 새 소식을 한 줄로(없으면 숨김). 브라우저 알림은 쓰지 않는다.
     const pingLine = () => {
-      const wk = upRows().filter((x) => x.sp.start <= new Date(t.getTime() + 7 * DAY));
+      const wk = upRows().filter((x) => x.sp.start <= new Date(t.getTime() + 7 * DAY) && inF(stageOf(x.r)));
       if (!wk.length && !fresh) return "";
       const first = wk[0], head = first ? `${esc(first.r.title)}${wk.length > 1 ? ` 외 ${wk.length - 1}건` : ""}` : "";
       return `<p class="hm-ping" role="status">${wk.length ? `<a href="#schedule"><b>이번 주</b> ${head}</a>` : ""}${wk.length && fresh ? '<span class="stg-sep" aria-hidden="true">·</span>' : ""}${fresh ? `<a href="#changelog"><b>새 소식</b> ${fresh}건</a>` : ""}</p>`;
@@ -222,7 +226,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
           <section class="dp ledger" aria-labelledby="lgh"><div class="sec-h"><h2 id="lgh"><em>지금</em>지금 할 일 3가지</h2><a href="#schedule">전체 일정 ›</a></div>
             <div id="hm-focus">${focusBar()}</div><ul class="lgs" id="hm-up">${rest()}</ul></section>
         <section class="dp soonp t2"><div class="sec-h"><h2><em>곧</em>곧 있을 일</h2></div>
-          ${stones.length ? `<ul class="mss">${stones.map(stoneHtml).join("")}</ul><p class="hint">사진은 이 기기에만 저장돼요.</p>` : '<div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p></div>'}</section>
+          ${stones.filter((m) => inF(stageOf(m.row))).length ? `<ul class="mss">${stones.filter((m) => inF(stageOf(m.row))).map(stoneHtml).join("")}</ul><p class="hint">사진은 이 기기에만 저장돼요.</p>` : '<div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p></div>'}</section>
         </div>
         <div class="h-side">
         <section class="dp news t0"><div class="sec-h"><h2><em>소식</em>바뀐 소식</h2><a href="#changelog">전체 ›</a></div>
@@ -232,7 +236,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
           ${ok ? `<ul class="todo" id="todos"></ul><form class="hm-todoform"><input type="text" id="todoin" placeholder="할 일 추가" maxlength="120" autocomplete="off" aria-label="할 일 추가"><button class="btn" type="submit">추가</button></form>` : '<p class="muted">이 브라우저에서는 저장 공간을 쓸 수 없어 메모를 사용할 수 없어요.</p>'}</section>
         </div>
       </div>
-      <div id="hm-hubs">${hubsHtml(esc, hubCounts, { pins, auto: autoHub })}</div>
+      <div id="hm-hubs">${hubsHtml(esc, hubCounts, { pins, auto: autoHub, only: focus.length ? new Set(focus) : null })}</div>
       <div class="h-row4">
         ${planH}
         ${cmpH}
@@ -258,7 +262,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     el.addEventListener("click", (e) => {
       const pin = e.target.closest("[data-pin]");
       if (pin) { let ps = store.get(PIN_KEY, []) || []; const id = pin.dataset.pin; ps = ps.includes(id) ? ps.filter((x) => x !== id) : [...ps, id].slice(-2); store.set(PIN_KEY, ps);
-        el.querySelector("#hm-hubs").innerHTML = hubsHtml(esc, hubCounts, { pins: ps, auto: autoHub }); decorateTerms(el.querySelector("#hm-hubs"), ".dp"); return; }
+        el.querySelector("#hm-hubs").innerHTML = hubsHtml(esc, hubCounts, { pins: ps, auto: autoHub, only: focus.length ? new Set(focus) : null }); decorateTerms(el.querySelector("#hm-hubs"), ".dp"); return; }
       const mt = e.target.closest(".m-tg");
       if (mt) { const pn = mt.closest(".m-fold"), on = !pn.classList.contains("m-open"); pn.classList.toggle("m-open", on); mt.setAttribute("aria-expanded", on); mt.textContent = on ? "접기" : "펼치기"; return; }
       const tg = e.target.closest(".hub-t");
@@ -268,17 +272,17 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     });
 
     // 주로 보는 단계 선택·변경: 저장하면 허브 고정(자주 보는 단계)도 같이 맞춘다
-    const fRedraw = () => { el.querySelector("#hm-focus").innerHTML = focusBar(); el.querySelector("#hm-up").innerHTML = rest(); };
+    // 주로 보는 단계: 누르면 바로 저장하고 홈을 다시 그린다(패널·핑·허브가 모두 선택 단계로 바뀐다)
+    const reHome = () => dispatchEvent(new Event("hashchange"));
     el.querySelector("#hm-focus").addEventListener("click", (e) => {
       const ch = e.target.closest("[data-f]");
-      if (ch) { const k = ch.dataset.f; focus = focus.includes(k) ? focus.filter((x) => x !== k) : [...focus, k]; if (!focus.length) focus = [k]; fRedraw(); return; }
-      if (e.target.closest("[data-fsave]")) { fpicking = false; store.set(FK, focus);
-        const ps = STAGES.filter((g) => focus.includes(g)).map((g) => STAGE_HUB[g]).slice(0, 2); store.set(PIN_KEY, ps);
-        el.querySelector("#hm-hubs").innerHTML = hubsHtml(esc, hubCounts, { pins: ps, auto: autoHub }); decorateTerms(el.querySelector("#hm-hubs"), ".dp"); fRedraw(); return; }
-      if (e.target.closest("[data-fedit]")) { fpicking = true; fRedraw(); }
+      if (ch) { const k = ch.dataset.f; focus = !k ? [] : focus.includes(k) ? focus.filter((x) => x !== k) : [...focus, k]; store.set(FK, focus); HOME_PICK = true;
+        store.set(PIN_KEY, STAGES.filter((g) => focus.includes(g)).map((g) => STAGE_HUB[g]).slice(0, 2)); reHome(); return; }
+      if (e.target.closest("[data-fsave]")) { HOME_PICK = false; store.set(FK, focus); reHome(); return; }
+      if (e.target.closest("[data-fedit]")) { HOME_PICK = true; reHome(); }
     });
     // 중학교 입학 준비만 고르면 수능 D-day·학점제·3년 로드맵은 아래로 접는다
-    if (focus.length === 1 && focus[0] === "중입" && !fpicking) {
+    if (focus.length && focus.every((g) => g === "중입") && !fpicking) {
       const rest2 = [el.querySelector(".auxbar"), el.querySelector(".gl"), el.querySelector(".road")].filter(Boolean);
       if (rest2.length) { const d = document.createElement("details"); d.className = "dp more-panels"; d.innerHTML = "<summary>다른 단계 정보 보기 (수능 D-day · 학점제 · 3년 로드맵)</summary>"; rest2.forEach((n) => { n.classList.remove("m-fold"); d.appendChild(n); }); el.querySelector(".hm").appendChild(d); }
     }
