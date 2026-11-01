@@ -30,6 +30,12 @@ export function hsCompareSummary(data, { fields = SUMMARY_FIELDS, max = 4 } = {}
 const km = (a, b) => { const R = 6371, r = Math.PI / 180, dLat = (b.lat - a.lat) * r, dLng = (b.lng - a.lng) * r; const h = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * r) * Math.cos(b.lat * r) * Math.sin(dLng / 2) ** 2; return 2 * R * Math.asin(Math.sqrt(h)); };
 const short = (t) => String(t || "").replace(/\s*\([^)]*\)/g, "").replace(/고등학교$/, "고");
 
+// 비교 데이터(fields + schools[].values)를 공용 비교 표의 행으로. 고교·중학교 비교가 같이 쓴다.
+export function compareRows(d, esc) {
+  return d.fields.map((f) => ({ id: f.id, label: f.label, unit: f.type === "number" ? f.unit : "", group: f.group, kind: f.type === "number" ? "number" : f.type === "boolean" ? "bool" : "text",
+    get: (t) => { const v = d.schools.find((s) => s.placeId === t.id)?.values[f.id]; if (!v || v.value == null) return { empty: true, why: v?.nullReason }; const text = f.type === "boolean" ? (v.value ? "있음" : "없음") : f.type === "number" ? String(v.value) : formatValue(f, v); return { text: f.type === "number" ? Number(v.value).toLocaleString("ko-KR") : text, num: f.type === "number" ? Number(v.value) : undefined, status: v.status, html: f.type === "link" ? `<a href="${esc(v.value)}" target="_blank" rel="noopener">열기</a>` : undefined }; } }));
+}
+
 export async function hsCompareBody(el, { load, esc, schoolHref = (s) => (s.schoolId ? `#select/curriculum?s=${encodeURIComponent(s.schoolId)}` : `#select/curriculum?v=map&p=${encodeURIComponent(s.placeId)}`) }) {
   const [d, pl] = await Promise.all([load("hs-compare"), load("places").catch(() => ({ places: [] }))]);
   if (!d.schools.length) { el.innerHTML = `<div class="ed"><h2>${stageTag("고입", esc)}학교 비교</h2><p class="muted">아직 정리 중이에요.</p></div>`; return; }
@@ -42,8 +48,7 @@ export async function hsCompareBody(el, { load, esc, schoolHref = (s) => (s.scho
   cmpTable(el, {
     esc, stage: "고입", title: "학교 비교", summary: "학교를 가로로 놓고 항목을 견줘요",
     targets: d.schools.map((s) => ({ id: s.placeId, name: s.name.replace(/^용인/, ""), sub: typeOf(s), href: schoolHref(s), search: `${s.name} ${s.values.address?.value || ""}`, filterVal: { type: typeOf(s) } })),
-    rows: d.fields.map((f) => ({ id: f.id, label: f.label, unit: f.type === "number" ? f.unit : "", group: f.group, kind: f.type === "number" ? "number" : f.type === "boolean" ? "bool" : "text",
-      get: (t) => { const v = d.schools.find((s) => s.placeId === t.id)?.values[f.id]; if (!v || v.value == null) return { empty: true, why: v?.nullReason }; const text = f.type === "boolean" ? (v.value ? "있음" : "없음") : f.type === "number" ? String(v.value) : formatValue(f, v); return { text: f.type === "number" ? Number(v.value).toLocaleString("ko-KR") : text, num: f.type === "number" ? Number(v.value) : undefined, status: v.status, html: f.type === "link" ? `<a href="${esc(v.value)}" target="_blank" rel="noopener">열기</a>` : undefined }; } })),
+    rows: compareRows(d, esc),
     select: { key: "portal.hs.compare", param: "c", def: nearest.slice(0, 4), max: 8, min: 2, always: true, addLabel: "학교 추가·빼기", filters: [{ id: "type", label: "유형", options: types }] },
     emptyNext: WHERE.schoolinfo,
     sources: d.schools.flatMap((sc) => Object.values(sc.values).map((v) => v?.source).filter(Boolean)),
