@@ -17,7 +17,7 @@ for(const r of routes){try{await p.goto(base+r,{waitUntil:'load',timeout:20000})
 const d=await ev(p,()=>{const m=document.querySelector('#main');const t=(m.innerText||'').replace(/\s+/g,' ').trim();
  const fold=innerHeight;let first=0;for(const e of m.querySelectorAll('*')){const r=e.getBoundingClientRect();if(r.top<fold&&r.bottom>0&&e.children.length===0)first+=(e.textContent||'').trim().length}
  const vis=(e)=>e.getClientRects().length>0&&getComputedStyle(e).visibility!=='hidden';
- const links=[...m.querySelectorAll('a[target=_blank]')].filter(vis).length;
+ const ACT='.gap-next,.mid-btn,.mid-fi a,.mid-lk a,.cmp a,.pl-links a,.uv-chips a,.srcf a,.ed-fig a'; /* 행동 링크(홈페이지·입학처·학교알리미 안내), 출처 모음 접이식(.srcf), 공공누리 이미지 캡션은 제외 */ const links=[...m.querySelectorAll('a[target=_blank]')].filter((e)=>vis(e)&&!e.matches(ACT)).length;
  const labels=[...m.querySelectorAll('*')].filter(e=>e.children.length===0&&vis(e)&&!e.classList.contains('srcb')&&/^\s*출처/.test(e.textContent||'')).length;
  return {chars:t.length,h:document.documentElement.scrollHeight,dom:m.querySelectorAll('*').length,first,src:links+labels,btn:m.querySelectorAll('.srcb').length}});
 out.push({w,r:r||'#home',...d});}
