@@ -31,9 +31,10 @@ export function register(views, { $, esc, load, store }) {
   const curProfile = () => profileOf(loadProfile(store));
   const loadPolicy = async () => filterByProfile(await load("policy"), curProfile().id).map(plainRow); // 내부 사정 문구는 사용자 말로(plain.js)
   const notice = () => noticeFor(curProfile());
-  const badgeMain = (r) => { const [c, t] = ES[r.status] || ["", r.status]; return `${c === "ok" ? "" : `<span class="es ${c}">${esc(t)}</span>`}${r.unverified ? `<span class="ed-unv"${r.reason ? ` title="${esc(r.reason)}"` : ""}>공식 문서로 확인 중이에요</span>` : ""}`; };
+  const badgeMain = (r) => { const [c, t] = ES[r.status] || ["", r.status]; return `${c === "ok" ? "" : `<span class="es ${c}">${esc(t)}</span>`}${r.unverified ? `<span class="ed-unv" title="${esc(r.reason || "공식 문서로 확인 중이에요")}">확인 중</span>` : ""}`; };
   // 확인된 항목(확정·원문 확인)은 메모를 "확인 필요/별도 확인"이 있을 때만 보여 준다.
-  const badgeNote = (r) => { const ok = (ES[r.status] || [])[0] === "ok"; return `${r.unverified && r.reason ? `<div class="ed-note">${esc(r.reason)}</div>` : ""}${r.note && (!ok || /확인 필요|별도 확인/.test(r.note)) ? `<div class="ed-note">${esc(r.note)}</div>` : ""}`; };
+  const badgeNote = (r) => { const ok = (ES[r.status] || [])[0] === "ok"; // 근거·메모 문장은 기본 숨김: 항목 끝 작은 "근거" 버튼 뒤로 접는다(출처 정리 지시).
+    const parts = [r.unverified && r.reason ? esc(r.reason) : "", r.note && (!ok || /확인 필요|별도 확인/.test(r.note)) ? esc(r.note) : ""].filter(Boolean); return parts.length ? `<div class="ed-note">${srcWrap(parts.join("<br>"), { label: "근거" })}</div>` : ""; };
   const badge = (r) => badgeMain(r) + badgeNote(r);
   // 출처: 문장 끝 밑줄 링크. 링크 없는 배부·교육청 자료는 짧은 라벨(전체 설명은 툴팁).
   const src = (r) => {
