@@ -8,6 +8,7 @@
  "properties": {
   "nearbyKind": { "enum": ["library", "station"], "description": "주변 시설 종류. 주변 시설은 research/data/places-nearby-draft.json(id np-NNN)에서 와서 places.json의 nearby[]에 level \"nearby\"로 들어간다(학교 목록과 분리). 상업 시설·학원은 넣지 않는다." },
   "placeId": { "type": "string", "pattern": "^pl-\\d{3,}$", "description": "한 번 정하면 바꾸지 않는다" },
+  "externalIds": { "type": "array", "description": "외부 기관 학교 코드(생성: research/data/school-codes-draft.json). 못 구한 코드는 넣지 않고 school-codes에 사유를 둔다", "items": { "type": "object", "required": ["system", "code", "asOf"], "properties": { "system": { "enum": ["neis", "schoolinfo"], "description": "neis=NEIS(시도교육청코드 atptCode + 표준학교코드 code), schoolinfo=학교알리미 학교코드" }, "atptCode": { "type": "string", "pattern": "^[A-Z]\\d{2}$", "description": "시도교육청코드(system=neis일 때)" }, "code": { "type": "string", "description": "neis ^\\d{7}$ / schoolinfo ^[A-Z]\\d{9}$" }, "asOf": { "type": "string", "format": "date" } } } },
   "schoolId": { "type": ["string", "null"], "description": "schools.json의 학교 id(편제표 4개교 등). 없으면 null" },
   "name": { "type": "string" },
   "level": { "enum": ["elementary", "middle", "high"], "description": "학교급. 주변 시설은 nearby(places.json의 nearby[]에서만)" },

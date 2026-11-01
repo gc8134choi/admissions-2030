@@ -655,7 +655,7 @@
    "data": "portal/data/hs-compare.json",
    "title": "hs-compare (고교 비교표) — research/data/hs-compare-draft.json = portal/data/hs-compare.json",
    "description": "용인학군 2구역 고교의 항목별 비교 값. 학교는 places의 placeId(level=high)로 연결하고, 편제표 4개교는 schoolId도 함께 적는다. 값마다 기준연도·상태·출처를 붙이고, 확인 못 한 칸은 value null + nullReason. confirmed는 학교알리미·교육청 공식 값에만 쓴다. 합격자 개인·이름·출생연도는 넣지 않는다.",
-   "fieldCount": 23,
+   "fieldCount": 29,
    "fields": [
     {
      "path": "fields",
@@ -725,6 +725,46 @@
      "path": "schools[].placeId",
      "type": "string",
      "required": true
+    },
+    {
+     "path": "schools[].externalIds",
+     "type": "array",
+     "required": false,
+     "description": "외부 기관 학교 코드(생성: research/data/school-codes-draft.json). 못 구한 코드는 넣지 않고 school-codes에 사유를 둔다"
+    },
+    {
+     "path": "schools[].externalIds[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "schools[].externalIds[].system",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "neis",
+      "schoolinfo"
+     ],
+     "description": "neis=NEIS(시도교육청코드 atptCode + 표준학교코드 code), schoolinfo=학교알리미 학교코드"
+    },
+    {
+     "path": "schools[].externalIds[].atptCode",
+     "type": "string",
+     "required": false,
+     "pattern": "^[A-Z]\\d{2}$",
+     "description": "시도교육청코드(system=neis일 때)"
+    },
+    {
+     "path": "schools[].externalIds[].code",
+     "type": "string",
+     "required": true,
+     "description": "neis ^\\d{7}$ / schoolinfo ^[A-Z]\\d{9}$"
+    },
+    {
+     "path": "schools[].externalIds[].asOf",
+     "type": "string",
+     "required": true,
+     "format": "date"
     },
     {
      "path": "schools[].schoolId",
@@ -1176,7 +1216,7 @@
    "data": "portal/data/middle-compare.json",
    "title": "middle-compare (중학교 비교표) — research/data/middle-compare-draft.json = portal/data/middle-compare.json",
    "description": "용인학군 2구역 고교의 항목별 비교 값. 학교는 places의 placeId(level=high)로 연결하고, 편제표 4개교는 schoolId도 함께 적는다. 값마다 기준연도·상태·출처를 붙이고, 확인 못 한 칸은 value null + nullReason. confirmed는 학교알리미·교육청 공식 값에만 쓴다. 합격자 개인·이름·출생연도는 넣지 않는다.",
-   "fieldCount": 23,
+   "fieldCount": 29,
    "fields": [
     {
      "path": "fields",
@@ -1246,6 +1286,46 @@
      "path": "schools[].placeId",
      "type": "string",
      "required": true
+    },
+    {
+     "path": "schools[].externalIds",
+     "type": "array",
+     "required": false,
+     "description": "외부 기관 학교 코드(생성: research/data/school-codes-draft.json). 못 구한 코드는 넣지 않고 school-codes에 사유를 둔다"
+    },
+    {
+     "path": "schools[].externalIds[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "schools[].externalIds[].system",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "neis",
+      "schoolinfo"
+     ],
+     "description": "neis=NEIS(시도교육청코드 atptCode + 표준학교코드 code), schoolinfo=학교알리미 학교코드"
+    },
+    {
+     "path": "schools[].externalIds[].atptCode",
+     "type": "string",
+     "required": false,
+     "pattern": "^[A-Z]\\d{2}$",
+     "description": "시도교육청코드(system=neis일 때)"
+    },
+    {
+     "path": "schools[].externalIds[].code",
+     "type": "string",
+     "required": true,
+     "description": "neis ^\\d{7}$ / schoolinfo ^[A-Z]\\d{9}$"
+    },
+    {
+     "path": "schools[].externalIds[].asOf",
+     "type": "string",
+     "required": true,
+     "format": "date"
     },
     {
      "path": "schools[].schoolId",
@@ -1838,7 +1918,7 @@
    "data": "portal/data/places.json",
    "title": "places (학교 위치) — research/data/places-draft.json 입력 형식 = portal/data/places.json 항목",
    "description": "초·중·고 학교 위치. 좌표를 모르면 lat·lng를 null로 두면 지도에서만 빠지고 목록에는 남는다. 좌표 출처(coordSource)와 주소 출처(sources)를 분리해 적는다.",
-   "fieldCount": 20,
+   "fieldCount": 26,
    "fields": [
     {
      "path": "nearbyKind",
@@ -1856,6 +1936,46 @@
      "required": true,
      "pattern": "^pl-\\d{3,}$",
      "description": "한 번 정하면 바꾸지 않는다"
+    },
+    {
+     "path": "externalIds",
+     "type": "array",
+     "required": false,
+     "description": "외부 기관 학교 코드(생성: research/data/school-codes-draft.json). 못 구한 코드는 넣지 않고 school-codes에 사유를 둔다"
+    },
+    {
+     "path": "externalIds[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "externalIds[].system",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "neis",
+      "schoolinfo"
+     ],
+     "description": "neis=NEIS(시도교육청코드 atptCode + 표준학교코드 code), schoolinfo=학교알리미 학교코드"
+    },
+    {
+     "path": "externalIds[].atptCode",
+     "type": "string",
+     "required": false,
+     "pattern": "^[A-Z]\\d{2}$",
+     "description": "시도교육청코드(system=neis일 때)"
+    },
+    {
+     "path": "externalIds[].code",
+     "type": "string",
+     "required": true,
+     "description": "neis ^\\d{7}$ / schoolinfo ^[A-Z]\\d{9}$"
+    },
+    {
+     "path": "externalIds[].asOf",
+     "type": "string",
+     "required": true,
+     "format": "date"
     },
     {
      "path": "schoolId",
