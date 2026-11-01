@@ -194,3 +194,10 @@ tr.g3,tr.g3 td,tr.g3 a{color:var(--e-mute)}
 @media (max-width:640px){.hst-cal li{grid-template-columns:1fr}}
 /* 입학 준비 가이드·큰 그림 연표(중학교 배정) */
 .mg-s h4{margin:10px 0 2px}.mg-l{list-style:none;margin:4px 0;padding:0}.mg-l li{padding:6px 0;border-top:1px solid var(--line)}.tl-st{margin:10px 0 2px;font-weight:700;color:var(--accent)}
+/* 밀도 도구(fold.js): 접이식 섹션·더 보기·문단 줄이기 */
+.dn{border-top:1px solid var(--line);margin:0}.dn>summary{cursor:pointer;min-height:48px;display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:6px 0}.dn>summary b{font-size:16px}.dn-h{flex:1 1 12em;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dn-clamp{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.dn-more{border:0;background:none;color:var(--accent);cursor:pointer;font:inherit;font-size:14px;min-height:44px;padding:0 4px}
+[hidden]{display:none!important}
+.w-body,.w-aside{min-width:0}.dn>summary{min-width:0;max-width:100%}.dn-h{max-width:100%}
+.dn,.hst,.hst-t,.mid-pr,.pl-tb{display:block;width:100%;box-sizing:border-box}
