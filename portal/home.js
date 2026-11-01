@@ -121,6 +121,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     };
     // 가까운 일정 장부: 히어로 없이 한 줄씩(D-day · 제목 · 기간 · 단계/상태·출처). 가장 가까운 일은 같은 줄에서 굵기·색으로만 강조.
     // 주로 보는 단계(이름·프로필 아님, 이 브라우저에만 저장). 처음 한 번 고르고 언제든 바꾼다. 고른 단계는 "자주 보는 단계"(허브 고정)와 합쳐진다.
+    const MUST = [["중입", "중학교 입학 준비 가이드", "배정부터 등록까지 순서, 지망·추첨 방식, 준비물", "#select/curriculum?v=middle"], ["고입", "고교 유형·전형 한눈에", "일반고와 특목·자사고 비교, 경기 고입 달력·원서 절차·서류", "#select/curriculum?v=hs&ty=1"], ["대입", "수능·내신 규칙", "통합형 수능과 내신 5등급 (추정, 2027.3 공표 전)", "#admission/system"]];
     const FK = "portal.focus", FOPT = [["중입", "중학교 입학 준비"], ["고입", "고교 고르기·고교 생활"], ["대입", "대입 준비"]];
     const fsaved = store.get(FK, null);
     // "켜는 방식": 아무것도 안 고르면 전체, 단계를 누르면 그 단계만 켜진다(여러 개 가능).
@@ -225,6 +226,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
         <div class="h-main">
           <section class="dp ledger" aria-labelledby="lgh"><div class="sec-h"><h2 id="lgh"><em>지금</em>지금 할 일 3가지</h2><a href="#schedule">전체 일정 ›</a></div>
             <div id="hm-focus">${focusBar()}</div><ul class="lgs" id="hm-up">${rest()}</ul></section>
+          <section class="dp must" aria-label="먼저 읽어 둘 안내"><div class="sec-h"><h2><em>안내</em>먼저 읽어 둘 안내</h2></div><ul class="must-l">${MUST.filter(([g]) => inF(g)).map(([, t, d, h]) => `<li><div><b>${esc(t)}</b><span>${esc(d)}</span></div><a class="btn" href="${h}">보기</a></li>`).join("")}</ul></section>
         <section class="dp soonp t2"><div class="sec-h"><h2><em>곧</em>곧 있을 일</h2></div>
           ${stones.filter((m) => inF(stageOf(m.row))).length ? `<ul class="mss">${stones.filter((m) => inF(stageOf(m.row))).map(stoneHtml).join("")}</ul><p class="hint">사진은 이 기기에만 저장돼요.</p>` : '<div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p></div>'}</section>
         </div>
