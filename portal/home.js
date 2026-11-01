@@ -214,7 +214,8 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     // 대시보드 패널(읽지 못한 패널은 조용히 빼고 나머지는 그대로 보여 준다)
     const ctx = { load, esc, store, policy };
     const safe = (f) => f(ctx).catch(() => "");
-    const [planH, cmpH, admH, midH] = isB ? ["", "", "", ""] : await Promise.all([safe(planPanel), safe(comparePanel), safe(admPanel), safe(midPanel)]);
+    // 계획·학교 비교·전형·중학교 패널은 첫 화면 뒤에 채운다(데이터 11개를 기다리지 않고 먼저 그린다)
+    const panelsP = isB ? Promise.resolve(["", "", "", ""]) : Promise.all([safe(planPanel), safe(comparePanel), safe(admPanel), safe(midPanel)]);
     const hubCounts = {}; STAGES.forEach((g) => { hubCounts[g] = upRows().filter((x) => stageOf(x.r) === g).length; });
 
     const pins = (store.get(PIN_KEY, []) || []).filter((x) => typeof x === "string").slice(0, 2);
@@ -239,12 +240,9 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
         </div>
       </div>
       <div id="hm-hubs">${hubsHtml(esc, hubCounts, { pins, auto: autoHub, only: focus.length ? new Set(focus) : null })}</div>
-      <div class="h-row4">
-        ${planH}
-        ${cmpH}
-      </div>
+      <div class="h-row4" id="hm-r4"></div>
       <div class="h-row5">
-        <div class="h-col">${admH}${midH}</div>
+        <div class="h-col" id="hm-col"></div>
         ${isB ? "" : `<section class="dp road t0"><div class="sec-h"><h2><em>3년</em>앞으로 3년</h2><a href="#schedule?t=road" id="rm-link">학년별 로드맵</a></div><ol class="tl">${tl}</ol></section>`}
       </div>
       <div class="h-rest">
@@ -258,7 +256,8 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     initTerms();
     if (matchMedia("(max-width:899px)").matches) el.querySelectorAll(".hub.open").forEach((h) => { h.classList.remove("open"); h.querySelector(".hub-t")?.setAttribute("aria-expanded", "false"); }); // 모바일 홈 높이: 열린 허브는 눌러서 연다
     // 모바일에서는 덜 급한 패널(3년·학점제·전형)을 접어 두고 제목 줄의 버튼으로 편다(홈 높이를 줄인다)
-    el.querySelectorAll(".road,.gl,.adm,.hscmp,.plan,.mid,.soonp,.todop").forEach((pn) => { pn.classList.add("m-fold"); const h = pn.querySelector(".sec-h,h2"); if (h) h.insertAdjacentHTML("beforeend", '<button type="button" class="m-tg" aria-expanded="false">펼치기</button>'); });
+    const foldPanels = (root) => root.querySelectorAll(".road,.gl,.adm,.hscmp,.plan,.mid,.soonp,.todop").forEach((pn) => { if (pn.querySelector(".m-tg")) return; pn.classList.add("m-fold"); const h = pn.querySelector(".sec-h,h2"); if (h) h.insertAdjacentHTML("beforeend", '<button type="button" class="m-tg" aria-expanded="false">펼치기</button>'); });
+    foldPanels(el);
 
     // 허브: 고정(자주 보는 단계, 최대 2개) / 모바일 접기·펼치기 / 읽음 표시
     el.addEventListener("click", (e) => {
@@ -322,5 +321,6 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
       });
       draw();
     }
+    panelsP.then(([a, b, c, d]) => { const r4 = el.querySelector("#hm-r4"), cl = el.querySelector("#hm-col"); if (!r4 || !cl) return; r4.innerHTML = a + b; cl.innerHTML = c + d; foldPanels(el); decorateTerms(r4, ".dp"); decorateTerms(cl, ".dp"); });
   };
 }
