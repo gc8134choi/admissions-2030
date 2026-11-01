@@ -21,6 +21,17 @@ for (const t of draft.terms) {
     words.set(w, t.id);
   }
 }
+// 별칭이 엉뚱한 용어에 붙지 않았는지 검사한다(표가 한 칸씩 밀린 사고 방지):
+//  ① 별칭이 다른 용어의 풀이에는 나오는데 자기 용어의 풀이·표기에는 없으면 오류
+//  ② 별칭이 다른 용어의 이름(term)을 통째로 포함하는데 자기 용어 이름은 포함하지 않으면 오류
+const own = (t) => [t.term, t.short, t.detail, t.official, ...(t.aliases || [])].filter(Boolean).join(" ");
+for (const t of draft.terms) for (const al of t.aliases || []) {
+  const inOwn = [t.term, t.short, t.detail, t.official].filter(Boolean).join(" ").includes(al);
+  const where = draft.terms.filter((u) => u.id !== t.id && [u.term, u.short, u.detail].filter(Boolean).join(" ").includes(al)).map((u) => u.id);
+  if (!inOwn && where.length && !al.includes(t.term) && !t.term.includes(al)) errs.push(`${t.id} ${t.term}: 별칭 "${al}"가 자기 풀이에는 없고 ${where.join(", ")}의 풀이에 있음 — 별칭이 밀렸는지 확인`);
+  const other = draft.terms.filter((u) => u.id !== t.id && al.includes(u.term) && !al.includes(t.term) && !t.term.includes(al));
+  if (other.length) errs.push(`${t.id} ${t.term}: 별칭 "${al}"가 다른 용어 이름(${other.map((u) => `${u.id} ${u.term}`).join(", ")})을 포함 — 별칭이 밀렸는지 확인`);
+}
 if (errs.length) { console.error(errs.join("\n")); process.exit(1); }
 
 const out = { _meta: { note: "용어사전(생성물, 손으로 고치지 않는다). research/data/glossary-draft.json에서 tools/build-glossary.mjs가 만든다.", checkedAt: draft._meta?.checkedAt ?? null, count: draft.terms.length }, terms: draft.terms };
