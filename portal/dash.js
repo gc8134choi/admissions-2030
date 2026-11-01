@@ -109,10 +109,12 @@ export async function midPanel({ load, esc, policy }) {
 }
 
 // 고등학교 > 입학 > 학교 비교(고교 선택 정보 허브): 지금 있는 지표 표 + 데이터가 모이면 와이드 비교표
-export async function hsHubBody(el, { load, esc }) {
+export async function hsHubBody(el, { load, esc, lazy = false }) {
   const top = await comparePanel({ load, esc }).catch(() => "");
   el.innerHTML = `<div class="ed hub-hs">${top}<div id="hs-wide"></div><p class="muted small">필수·내가 고르는 학점과 후보 과목 수는 학교 배부 편제표 기준이에요. 학교를 누르면 과목표로 갑니다.</p></div>`;
   const host = el.querySelector("#hs-wide");
-  try { await hsCompareBody(host, { load, esc }); } catch { host.innerHTML = ""; }
+  const fillWide = async () => { try { await hsCompareBody(host, { load, esc }); } catch { host.innerHTML = ""; } };
+  if (lazy) { try { const h = document.createElement("div"); host.after(h); await hsTypesBody(h, { load, esc }); } catch {} return fillWide; } // 31교 표는 접이식을 열 때 그린다(DOM 절약)
+  await fillWide();
   try { const h = document.createElement("div"); host.after(h); await hsTypesBody(h, { load, esc }); } catch {}
 }

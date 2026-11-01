@@ -268,3 +268,10 @@ table.policy td{font-size:14px;line-height:1.5}
 .ty-top{padding:0 var(--sp-3)}
 .ty-top>summary{cursor:pointer;min-height:var(--touch);display:flex;align-items:center;font-weight:650}
 .sum-sec{margin-top:var(--sp-4)}
+
+/* 학교 비교 밀도: 요약 카드는 접어 두고 숫자만 */
+.school.cp:not(.sc-open) .hs-adm,.school.cp:not(.sc-open) .fold,.school.cp:not(.sc-open) .st2,.school.cp:not(.sc-open) .bf-go,.school.cp:not(.sc-open)>details,.school.cp:not(.sc-open) .foot .muted,.school.cp:not(.sc-open) .notes,.school.cp:not(.sc-open) [class*="note"]{display:none}
+.school.cp .foot{display:flex;gap:var(--sp-2);align-items:center;flex-wrap:wrap}
+.wide-fold{padding:0 var(--sp-3);margin-top:var(--sp-3)}
+.wide-fold>summary{cursor:pointer;min-height:var(--touch);display:flex;align-items:center;font-weight:650}
+.wide-fold>#hs-wide{padding-bottom:var(--sp-3)}
