@@ -224,7 +224,7 @@ table.policy td{font-size:14px;line-height:1.5}
 
 /* 일정: 모바일은 표 대신 카드 타임라인 */
 @media (max-width:899px){
-  #tl .tw{background:none;border:0;box-shadow:none;overflow:visible}
+  #tl .tw{background:none;border:0;box-shadow:none;overflow:visible;max-height:none!important}
   #tl table.policy,#tl table.policy tbody,#tl table.policy tr,#tl table.policy td{display:block;width:auto;min-width:0;max-width:100%}
   #tl .tw{max-width:100%}#tl table.policy td{overflow-wrap:anywhere}
   #tl table.policy thead{display:none}
@@ -394,3 +394,18 @@ button.term{padding:13px 11px;margin:-13px -11px}
 button.term{text-decoration:none!important;background-image:repeating-linear-gradient(90deg,var(--pencil) 0 2px,transparent 2px 4px);background-repeat:no-repeat;background-position:11px calc(100% - 15px);background-size:calc(100% - 22px) 1px}
 .chip.on .muted,.fchip.on .muted,.btn.primary .muted,.tsw button[aria-pressed=true] .muted{color:inherit!important}
 .cmp-gb{background:var(--glass-in);color:var(--ink)}
+
+/* 빵부스러기·같이 볼 것·화면 꼬리 */
+.crumb{display:flex;align-items:center;flex-wrap:nowrap;overflow:hidden;white-space:nowrap;margin:0 0 var(--sp-2);font-size:var(--fs-sub);color:var(--pencil)}
+.crumb a{color:var(--pencil);text-decoration:none;display:inline-flex;align-items:center;min-height:44px;padding:0 2px}
+.crumb a:hover{color:var(--ink);text-decoration:underline}
+.crumb-s{display:inline;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.pgfoot{margin:var(--sp-5) 0 var(--sp-3);padding-top:var(--sp-3);border-top:1px solid var(--glass-line);font-size:var(--fs-sub);color:var(--pencil)}
+.pg-rel{display:flex;flex-wrap:wrap;align-items:center;gap:0 var(--sp-3);margin:0}
+.pg-rel b{color:var(--ink);margin-right:var(--sp-2)}
+.pg-rel a,.pg-issue{display:inline-flex;align-items:center;min-height:44px;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.pg-meta{display:flex;flex-wrap:wrap;align-items:center;gap:0 var(--sp-1);margin:0}
+.pg-srcf{display:inline-block;margin:0}
+.pg-srcf>summary{display:inline-flex}
+.pg-srcf ul{position:static}
+@media print{.pgfoot .pg-issue,.crumb{display:none}}
