@@ -3,7 +3,7 @@
 import { stageTag } from "./stage.js";
 import { fmtWhen } from "./when.js";
 import { srcWrap } from "./src-ref.js";
-import { WHERE } from "./empty.js";
+import { WHERE, emptyLine } from "./empty.js";
 import { cmpTable } from "./compare-table.js";
 const ES = { reported: ["rep", "보도"], estimated: ["est", "추정"] };
 const tag = (s) => (ES[s] ? `<span class="es ${ES[s][0]}">${ES[s][1]}</span>` : "");
@@ -29,7 +29,7 @@ export async function hsTypesBody(el, { load, esc }) {
   el.innerHTML = `<div class="ed hst-wrap">
     ${sec("일반고 vs 특목·자사고 비교", `${d.types.length}종`, typesBox, true)}
     ${sec("경기 고입 달력", `${d.calendar.length}건`, `<ul class="hst-cal">${cal}</ul><p class="muted small">날짜는 공식 공고 기준이에요. 학교·교육청 공지로 다시 확인해 주세요.</p>`)}
-    ${sec("원서 절차", `${d.procedure.length}단계`, `<ol class="hst-proc">${proc}</ol>`)}
+    ${sec("원서 절차", `${d.procedure.length}단계`, `<ol class="hst-proc">${proc}</ol>${emptyLine(esc, { why: "우리 집 주소로 배정 구역을 바로 알려 주는 기능은 아직 없어요.", next: WHERE.goePortal })}`)}
     ${sec("준비 서류", `${d.documents.length}개`, `<ul class="hst-doc">${docs}</ul>`)}</div>`;
   const host = el.querySelector("#hst-cmp");
   if (host) cmpTable(host, { esc, title: "고교 유형 비교", summary: "유형을 가로로 놓고 선발·비용·교육과정을 견줘요",

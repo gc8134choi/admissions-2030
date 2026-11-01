@@ -7,5 +7,5 @@ export const WHERE = {
   schoolinfo: { label: "학교알리미에서 확인", url: "https://www.schoolinfo.go.kr/" },
   goePortal: { label: "경기도 고입·전학 포털에서 확인", url: "https://satp.goe.go.kr/main.do" },
 };
-export const nextLink = (n, esc = esc0) => (n && n.url ? ` <a class="gap-next" href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.label)} ↗</a>` : n && n.label ? ` <span class="gap-next">${esc(n.label)}</span>` : "");
+export const nextLink = (n, esc = esc0) => (n && n.url ? (String(n.url).startsWith("#") ? ` <a class="gap-next" href="${esc(n.url)}">${esc(n.label)}</a>` : ` <a class="gap-next" href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.label)} ↗</a>`) : n && n.label ? ` <span class="gap-next">${esc(n.label)}</span>` : "");
 export const emptyLine = (esc, { why, next } = {}) => `<p class="muted gap">${esc(why || "아직 정리 중이에요")}${nextLink(next, esc)}</p>`;
