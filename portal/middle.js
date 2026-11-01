@@ -100,7 +100,7 @@ export async function middleBody(el, { load, esc, mapHref = (id) => `#select/cur
       ${nearUrl ? `<a class="mid-btn" href="${esc(nearUrl)}" target="_blank" rel="noopener">다른 초등학교는 교육지원청 근거리표에서 확인</a>` : ""}</div>
     <p class="ed-b">${from ? `<b>${esc(from.name)}</b> 통학구역에서 갈 수 있는 중학교예요.` : ""}${area.from.note ? ` ${esc(area.from.note)}` : ""}</p>
     ${from ? `<p class="muted small mid-fi">${esc(from.address)}${/^https?:\/\//.test(from.homepage || "") ? ` · <a href="${esc(from.homepage)}" target="_blank" rel="noopener">학교 홈페이지</a>` : ""}${from.lat != null ? ` · <a href="${esc(mapHref(from.id))}">지도에서 보기</a>` : " · 지도 위치는 확인 중이에요"}</p>` : ""}
-    ${unsettled.length ? `<p class="mid-un"><b>미정</b> ${unsettled.map(esc).join(" · ")} — 바뀔 수 있어요.${zoneNotice && zoneNotice.sourceUrl ? ` <a href="${esc(zoneNotice.sourceUrl)}" target="_blank" rel="noopener">${esc(zoneNotice.sourceName || "출처")}</a>` : ""}</p>` : ""}
+    ${unsettled.length ? `<p class="mid-un"><b>미정</b> ${unsettled.map(esc).join(" · ")} — 바뀔 수 있어요.${zoneNotice && zoneNotice.sourceUrl ? ` ${srcWrap(`<a href="${esc(zoneNotice.sourceUrl)}" target="_blank" rel="noopener">${esc(zoneNotice.sourceName || "출처")} ↗</a>`)}` : ""}</p>` : ""}
     <div class="w-page w-2r">
       <div class="w-body">
         ${mid.principles.length ? `<section class="mid-step"><h3><em>1</em>배정 원칙(절차)</h3>${principlesFor(area, zs).map((p, i) => `<details class="mid-pr"${i === 0 ? " open" : ""}><summary>${esc(plain(p.title))} ${tag(p.status, esc)}</summary><p class="ed-b">${esc(plain(p.body))}</p><p class="ed-s0">${srcb(p.sources, esc)}</p></details>`).join("")}</section>` : ""}
