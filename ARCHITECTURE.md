@@ -203,3 +203,35 @@ A의 근거: 제도·수능·대학 요강은 두 아이가 **공유**하는 데
 
 ## 부록 B. 실제 수치 근거 (portal/data 실측)
 편제표 4개교, 과목 136개, offerings 388행, groups 41개, flags 12건, 정책 128행(확정 52·보도 24·추정 11), 조사 로드맵 초안 23행(예나 15, 예은 8), 링크 초안 22개, 감시 항목 13개.
+
+## 부록 C. 데이터 계층 보강(2026-11-01) — 구현분과 설계안
+
+### C-1. 구현한 것(화면 영향 없음, 모두 `--check`가 CI에 있다)
+| 파일 | 생성기 | 내용 |
+|---|---|---|
+| `school-codes.json` + 행의 `externalIds` | `build-school-codes.mjs` | NEIS(시도교육청코드 `atptCode` + 표준학교코드 `code`)·학교알리미 코드. 형식·중복·placeId/schoolId 참조 점검, 코드 없음은 `nullReason` 필수. places·hs-compare·middle-compare 행에는 코드가 있는 것만 붙는다 |
+| `sources.json` + 행의 `sourceIds`/`sourceId` | `build-sources.mjs`, `lib/source-ids.mjs` | 출처 등록부(id=URL 기준 `src-xxxxxxxx`, kind, org, checked, usedIn). 기존 `sources`·`source` 필드는 그대로 두고 옆에 병행 필드만 추가(점진 이전) |
+| `data-dictionary.json` | `build-data-dictionary.mjs` | `schema/*.schema.json`에서 필드 경로·형식·필수·허용값·설명을 평탄화 + 공통 규칙 |
+| `changes.json` | `build-changes.mjs` | 직전 기록(`tools/state/changes-state.json`)과 값을 비교해 {대상·필드·이전/새 값·일시·사유}를 맨 앞에 쌓는다. 기록은 `--reason "…"`로 수동 실행, `--check`는 미기록 변경이 있어도 실패시키지 않고 개수만 알린다(다른 세션의 데이터 PR을 막지 않으려고) |
+
+다음 이전 단계(제안): ① 화면의 출처 렌더링(`src-ref.js`)을 `sourceIds` → `sources.json`로 읽게 바꿔 이름 변경 한 곳 반영 ② `build-db.mjs` 산출물(schools·curricula·facets)에도 `sourceIds` ③ 감시 봇이 데이터 갱신 PR을 만들 때 `build-changes.mjs --reason`을 함께 실행 ④ "바뀐 소식"에 `changes.json` 최근 항목 연결(디자인·메뉴 영향 → 사용자 확인).
+
+### C-2. 설계안(구현 보류, 확인 후 진행)
+
+**① 지표 시계열 `metrics.json`(롱 포맷)**
+- 행: `{ id, subject: {kind: school|univ|unit|system, id}, metricKey, period, value, unit, asOf, sourceId, status }`. 한 행 = 한 지표 × 한 시점. 예: `{subject: school:pl-014, metricKey: "students", period: "2026", value: 612, unit: "명", asOf: "2026-04-01", sourceId: src-…, status: reported}`.
+- `metricKey` 사전은 `metric-keys.json`(키·한글명·단위·방향(높을수록 좋음 여부 아님, 표시용)·공시 주기)에 둔다. 입력 원본은 `research/data/metrics-draft.json`, 생성기는 키 존재·단위 일치·`(subject, metricKey, period)` 중복·status 점검.
+- hs-compare의 `values.<항목>.{value,year}`는 지금처럼 "최신 1점"으로 유지하고, 생성기가 metrics에서 최신 시점을 뽑아 채우는 방향으로 점진 이전(화면 변경 없음). 시점이 2개 이상 쌓이는 지표부터 추이 표시 후보(학생 수·학급 수·경쟁률·충원율).
+- 위험: 학교알리미 공시 기준일이 항목마다 다름(미검증) → `asOf`와 `period`를 분리해 둔다. 비용은 중간.
+
+**② 전형(tracks)·모집단위(units) 엔티티 분리**
+- 지금: `admission_rules`가 `track` 열거 + `unitName` 문자열로 평탄. 목표: `tracks.json`(`trk-NNN`: univId, 전형명, 유형(학종·교과·논술·정시…), 학년도, 선발 요소 비중 `elements[]`)과 `units.json`(`unit-NNN`: univId, 이름, 계열, 정원, 학년도) 분리, `admission-rules` 행은 `trackId`·`unitId`로 참조.
+- 마이그레이션: 기존 `track`·`unitName`은 병행 유지, 생성기가 두 값을 엔티티로 승격해 id를 부여(`lock` 파일로 id 고정, subjects.lock.json과 같은 방식). `matches.json`은 trackId·unitId를 함께 싣는다. 화면(대학 요건)은 변경 없음.
+- 위험: 같은 전형이 학년도마다 이름이 바뀌는 문제 → 엔티티는 학년도별 행, `successorOf`로 연결. 비용은 중간.
+
+**③ 대학 요건 정규화**
+- `csatMinimum` 자유 문장을 `{ areas: [국|수|영|탐|한], grade: 2, count: 3, ofAreas: 4, subjectsRule: "탐구 2과목 평균" , combineWith: "and|or" }` 구조로 바꾸고 원문은 `rawText`로 남긴다(원문 대조 가능성 유지). 전형 요소 비중과 정원도 같은 방식으로 속성화.
+- 단계: (a) 스키마·열거만 추가하고 기존 문장 필드는 그대로 (b) 서울대·성균관대 등 관심 대학 순으로 정규화 값 입력 (c) 정규화 값이 있으면 univ-match가 "충족/미충족" 계산 정확도를 올리는 데 사용. 원문 대조 인력이 필요하므로 (b)부터는 사용자 확인 후 진행.
+- 위험: 요강 해석 오류가 곧 잘못된 안내가 된다 → `status`가 reported/estimated인 값만 두고, 정규화 값마다 `rawText`·출처 쪽 번호를 필수로 한다. 비용은 높음.
+
+권장 순서: ② → ① → ③(②의 id가 ①·③의 대상 키가 된다).
