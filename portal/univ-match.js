@@ -1,6 +1,8 @@
 // 학교별 과목표 > "대학 요건 맞춰보기" 탭: 학교 × 대학·모집단위를 고르면 권장 과목을 이 학교 편제표(개설 후보)에서 몇 과목 고를 수 있는지 보여 준다.
 // 데이터: matches.json(tools/build-matches.mjs), admission-rules.json, subject-master.json. 확정은 표시하지 않고 보도·추정만 조용히 표시한다.
 import { stageTag } from "./stage.js";
+import { emptyLine } from "./empty.js";
+import { srcWrap } from "./src-ref.js";
 const ES = { reported: ["rep", "보도"], estimated: ["est", "추정"] };
 const STATE = { guaranteed: "학교 지정", reachable: "고를 수 있음", blocked: "택n 묶음 충돌", absent: "편제표에 없음" };
 const TRACK = { "susi-gyogwa": "학생부교과", "susi-jonghap": "학생부종합", "susi-nonsul": "논술", "jeongsi-csat": "정시 수능", special: "특별전형" };
@@ -24,7 +26,7 @@ export async function univBody(el, { load, esc, profile, schools, sel, pick }) {
     if (!units().some((r) => r.ruleId === st.rule)) st.rule = (units().find((r) => r.requirements.length) || units()[0])?.ruleId ?? null;
     if (!st.rule) {
       const u = univs.find((x) => x.id === st.univ);
-      el.innerHTML = `<div class="ed">${top()}<h2>${esc(u.name)}</h2><p class="muted">아직 정리 중이에요.</p>${u.admissionsUrl ? `<p class="ed-src">입학처: <a href="${esc(u.admissionsUrl)}" target="_blank" rel="noopener">${esc(u.admissionsUrl.replace(/^https:\/\//, "").replace(/\/$/, ""))}</a></p>` : ""}</div>`;
+      el.innerHTML = `<div class="ed">${top()}<h2>${esc(u.name)}</h2>${emptyLine(esc, { why: "이 대학 모집요강은 아직 정리하지 못했어요. 공개되면 채워요.", next: u.admissionsUrl ? { label: "입학처에서 먼저 확인", url: u.admissionsUrl } : { label: "대학 이름으로 검색", url: `https://search.naver.com/search.naver?query=${encodeURIComponent(u.name + " 입학처 모집요강")}` } })}</div>`;
       return;
     }
     const rule = rules.rules.find((r) => r.ruleId === st.rule);
@@ -34,7 +36,7 @@ export async function univBody(el, { load, esc, profile, schools, sel, pick }) {
     const src = (rule.sources || []).map((x) => (x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>` : esc(x.name))).join(" · ");
     const nm = (id) => esc(name.get(id) || id);
     let body;
-    if (!m || !m.summary) body = `<p class="muted">이 모집단위는 과목 요건 정보가 아직 없어요.</p><p class="ed-src">${esc(m?.nullReason || "")}</p>`;
+    if (!m || !m.summary) { const u = univs.find((x) => x.id === st.univ); body = emptyLine(esc, { why: "이 모집단위는 과목 요건이 요강에 아직 없어요. 요강이 공개되면 채워요.", next: u?.admissionsUrl ? { label: "입학처에서 먼저 확인", url: u.admissionsUrl } : { label: "대학 이름으로 검색", url: `https://search.naver.com/search.naver?query=${encodeURIComponent((u?.name || "") + " 입학처 모집요강")}` } }) + (m?.nullReason ? `<p class="ed-s0">${srcWrap(esc(m.nullReason), { label: "사유" })}</p>` : ""); }
     else {
       const s = m.summary;
       const parts = [`권장 ${s.need}과목 중 <b>${s.reachable}과목</b>을 개설 후보에서 고를 수 있어요`];
