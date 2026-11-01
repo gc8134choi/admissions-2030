@@ -222,3 +222,9 @@ tr.g3,tr.g3 td,tr.g3 a{color:var(--e-mute)}
 @media print{.cmp{max-height:none;overflow:visible}.cmp-r[hidden]{display:table-row!important}.cmp-add,.cmp-diff,.cmp-x{display:none}}
 .cmp-ul{margin:0;padding-left:1.1em;line-height:1.6}
 .mid-q{min-height:44px;font:inherit;padding:0 10px;max-width:11em}.mid-fi{margin:2px 0 8px}
+/* 접근성(2차 평가 D·E): 지난 일정 대비 4.5:1, 터치 대상 44px(레이아웃은 그대로, 눌리는 영역만 키움) */
+table.policy tr.past,#tl table.policy tr.past{opacity:1}
+table.policy tr.past td,table.policy tr.past b,table.policy tr.past .stg,table.policy tr.past .muted,.tl li.past{color:#6a6157}
+.cmp-x{min-width:44px;min-height:44px}.cmp-s a,.cmp-tbl td a,.gap-next,.cmp-v a{display:inline-flex;align-items:center;min-height:44px}
+.cmp-diff input,.hsc-diff input{width:44px;height:44px;margin:0}.cmp-f2 input,.mid-q{min-height:44px}
+.ed p a,.ed li a,.ed dd a,.ed .ed-s a,.ed h3 a,.ed .ed-src a,.ed figcaption a{padding-block:15px}.srcf li a,.srcp a{display:inline-flex;align-items:center;min-height:44px;padding-block:0}

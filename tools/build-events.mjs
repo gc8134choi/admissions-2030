@@ -31,5 +31,6 @@ export function makeEvents(rows, specOf) {
       out.push(ev);
     });
   }
+  { const seen = new Set(); for (const e of out) { if (seen.has(e.id)) throw new Error(`일정 id 중복: ${e.id}`); seen.add(e.id); } }
   return out;
 }

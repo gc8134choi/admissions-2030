@@ -2,6 +2,7 @@
 // 숫자는 policy.json 행의 본문에서 코드로 읽고(못 읽으면 그 그림은 뺀다), 학년별·학교별 학점은 편제표 DB(summary.json)에서 읽는다.
 // 각 섹션 끝에 "근거·상태" 행(상태·출처 포함)을 접어 둔다. 공식 이미지 슬롯: portal/img/credit/manifest.json (README.md 참고).
 import { preloadSubjectInfo, subjectName, hasSubjectInfo } from "./subject-info.js";
+import { srcWrap } from "./src-ref.js";
 
 // 섹션 머리 옆의 작은 선 그림(직접 그림). 번호는 섹션 번호와 같고, 선은 먹색·강조 1곳만 포인트색(policy.css가 칠한다).
 const SPOT = {
@@ -78,7 +79,7 @@ export async function creditView(el, { load, profile, esc, badge, badgeMain, src
     ach && [`${ach[0]}<sup>%</sup>`, "공통과목 학업성취율", "선택과목은 출석률만 봐요", relax ? "log-16" : "cur-16"],
   ].filter(Boolean) : [];
   const spanFor = (cols) => cols - ((tiles.length - 1) % cols);
-  const glance = grad ? `<div class="ed-glance">${g(grad[0], "졸업까지 채울 학점", `교과 ${grad[1]} + 창의적 체험활동 ${grad[2]}`, "cur-01", " main")}${tiles.map((t, i) => g(t[0], t[1], t[2], t[3], i === tiles.length - 1 ? " last" : "", i === tiles.length - 1 ? `--sp-d:${spanFor(3)};--sp-m:${spanFor(2)}` : "")).join("")}</div><p class="ed-src">출처 ${get("cur-01") ? src(get("cur-01")) : ""}</p>` : "";
+  const glance = grad ? `<div class="ed-glance">${g(grad[0], "졸업까지 채울 학점", `교과 ${grad[1]} + 창의적 체험활동 ${grad[2]}`, "cur-01", " main")}${tiles.map((t, i) => g(t[0], t[1], t[2], t[3], i === tiles.length - 1 ? " last" : "", i === tiles.length - 1 ? `--sp-d:${spanFor(3)};--sp-m:${spanFor(2)}` : "")).join("")}</div><p class="ed-s0">${get("cur-01") ? srcWrap(src(get("cur-01"))) : ""}</p>` : "";
   const lead = grad ? `<p class="ed-lead">3년 동안 <mark>${grad[0]}학점</mark>을 스스로 채웁니다.</p>` : "";
   const profNote = profile && profile.id !== "A" ? `<p class="ed-src">${profile.entryYear}학년도 입학생에게도 같은 틀일지는 아직 확정이 아니에요. 바뀔 수 있어요(추정).</p>` : "";
 

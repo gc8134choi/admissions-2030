@@ -109,7 +109,7 @@ export function register(views, { $, esc, load, store }) {
     const rules = await load("rules"); const id = curProfile().id; const me = curProfile();
     const mine = (r) => (r.appliesTo || []).find((a) => a.learner === id);
     const stat = (st, unv) => badgeMain({ status: st, unverified: unv });
-    const links = (list) => (list || []).length ? `<div class="ed-src">${list.map((x) => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a> (${SKIND[x.kind] || x.kind})`).join(" · ")}</div>` : "";
+    const links = (list) => (list || []).length ? `<div class="ed-s0">${srcWrap(list.map((x) => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)} ↗</a> (${SKIND[x.kind] || x.kind})`).join(" · "))}</div>` : "";
     const regs = rules.csatRegimes.filter(mine).map((r) => { const a = mine(r);
       const tbl = r.areas ? `<table class="ed-tbl"><thead><tr><th>영역</th><th>문항</th><th>배점</th><th>시간</th><th>성적</th></tr></thead><tbody>${r.areas.map((x) => `<tr><td>${esc(x.area)}${x.scope ? `<div class="muted small">${esc(x.scope.join("·"))}</div>` : ""}</td><td>${x.items ?? ""}</td><td>${x.points ?? ""}</td><td>${x.minutes ?? ""}분</td><td>${x.scoring === "absolute" ? "절대평가" : "상대평가"}</td></tr>`).join("")}</tbody></table>` : "";
       return `<div class="ed-row"><div class="ed-st">${stat(a.status, r.unverified)}</div><h3>${esc(r.label)}</h3><p>${esc(a.note || r.note || "")}</p>${tbl}${links(a.sources && a.sources.length ? a.sources : r.sources)}</div>`; });
