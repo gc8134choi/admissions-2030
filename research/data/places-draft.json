@@ -1652,10 +1652,12 @@
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
-   "lat": null,
-   "lng": null,
-   "coordSource": null,
-   "coordNote": "OSM(Nominatim)에서 학교 객체를 못 찾았거나 요청 한도로 조회하지 못해 좌표 없음(2026-11-01)"
+   "lat": 37.3298463,
+   "lng": 127.0954937,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim, 정밀도: 건물 단위(OSM 학교 객체), 확인 2026-11-01, ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/363535208"
+   }
   },
   {
    "placeId": "pl-062",
@@ -1816,10 +1818,12 @@
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
-   "lat": null,
-   "lng": null,
-   "coordSource": null,
-   "coordNote": "OSM(Nominatim)에서 학교 객체를 못 찾았거나 요청 한도로 조회하지 못해 좌표 없음(2026-11-01)"
+   "lat": 37.3016671,
+   "lng": 127.0925139,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim, 정밀도: 건물 단위(OSM 학교 객체), 확인 2026-11-01, ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/1257147791"
+   }
   },
   {
    "placeId": "pl-069",
