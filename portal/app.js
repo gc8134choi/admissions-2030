@@ -172,8 +172,15 @@ async function curriculumView(el, query, node) {
       const fillTy = async () => { if (tyDone) return; tyDone = true; try { await views.types(body.querySelector("#tybody"), query); } catch { body.querySelector("#tybody").innerHTML = '<p class="muted">불러오지 못했어요.</p>'; } };
       tyd.addEventListener("toggle", () => { if (tyd.open) fillTy(); });
       if (query.get("ty") === "1") { tyd.open = true; fillTy(); }
-      await hsHubBody(body.querySelector("#hsmain"), { load, esc });
+      const fillWide = await hsHubBody(body.querySelector("#hsmain"), { load, esc, lazy: true });
       await summaryBody(body.querySelector("#sumhost"), sel);
+      // 밀도: 학교 요약 카드는 번호·막대만 보이게 접고(자세히로 펼침), 31교 기본 정보 표는 접이식, 요약 카드는 한눈에 패널 바로 아래로
+      const hub = body.querySelector("#hsmain .hub-hs"), wide = body.querySelector("#hs-wide"), sec = body.querySelector("#sumsec");
+      if (hub && wide) {
+        const dt = document.createElement("details"); dt.className = "dp wide-fold"; dt.innerHTML = "<summary>학교 31곳 기본 정보 표 (규모·입학·교육과정·진학)</summary>"; wide.before(dt); dt.appendChild(wide); let wd = false; dt.addEventListener("toggle", () => { if (dt.open && !wd) { wd = true; fillWide(); } });
+        hub.insertBefore(sec, dt);
+      }
+      body.querySelectorAll(".school").forEach((c) => { c.classList.add("cp"); const f = c.querySelector(".foot"); if (f) f.insertAdjacentHTML("afterbegin", '<button type="button" class="btn sc-more" aria-expanded="false">자세히</button>'); });
       const bf = query.get("bf"); if (bf) { const t = (bf === "1" ? body.querySelector(".bf-area") : body.querySelector(`#bf-${CSS.escape(bf)}`)); if (t) { t.scrollIntoView({ block: "start" }); t.querySelector("details")?.setAttribute("open", ""); } }
     }
     else if (tab === "map") { compare = null; await mapBody(body, { load, esc, focus: focusP, level: lv === "middle" ? "middle" : "high" }); }
@@ -200,6 +207,8 @@ async function curriculumView(el, query, node) {
       else sel = schools.map((x) => x.id).filter((x) => sel.includes(x) || x === id);
       return void refresh();
     }
+    const scm = e.target.closest(".sc-more");
+    if (scm) { const c = scm.closest(".school"), on = !c.classList.contains("sc-open"); c.classList.toggle("sc-open", on); scm.setAttribute("aria-expanded", on); scm.textContent = on ? "접기" : "자세히"; return; }
     const vtb = e.target.closest("[data-vt]");
     if (vtb) { tab = vtb.dataset.vt; focusP = null; return void refresh(); }
     const t = e.target.closest("#tabs a");
