@@ -408,7 +408,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ev-life-03-1@admissions-2030
-DTSTAMP:20261025T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20261102
 DTEND;VALUE=DATE:20261107
 SUMMARY:중학교 배정원서 작성(출신 초등학교)
@@ -416,24 +416,24 @@ DESCRIPTION:2027학년도 용인 중학교 신입생 배정원서 작성 20
  26.11.2(월)~11.6(금). 학교군 내 모든 중학교를 희망 순으로
   지원\n출처: 경기도용인교육지원청 중학교 신입생 배정
   안내(2027학년도 시행계획 일정) https://www.goeyi.kr/goeyi/cm/c
- ntnts/cntntsView.do?mi=20137&cntntsId=3318\n확인일 2026-10-25
+ ntnts/cntntsView.do?mi=20137&cntntsId=3318\n확인일 2026-11-01
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ev-life-04-1@admissions-2030
-DTSTAMP:20261025T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20261109
 DTEND;VALUE=DATE:20261114
 SUMMARY:중학교 배정원서 접수(용인교육지원청)
 DESCRIPTION:2026.11.9(월)~11.13(금)\, 출신 초등학교에서 접수\n
  출처: 경기도용인교육지원청 중학교 신입생 배정 안내(2
  027학년도 시행계획 일정) https://www.goeyi.kr/goeyi/cm/cntnts/cnt
- ntsView.do?mi=20137&cntntsId=3318\n확인일 2026-10-25
+ ntsView.do?mi=20137&cntntsId=3318\n확인일 2026-11-01
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ev-life-05-1@admissions-2030
-DTSTAMP:20261025T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20261207
 DTEND;VALUE=DATE:20261217
 SUMMARY:중학교 추가배정
@@ -441,36 +441,36 @@ DESCRIPTION:추가배정원서 작성 2026.12.7~12.11(출신 초등학교)\
  , 접수 12.14~12.16(용인교육지원청)\n출처: 경기도용인교육
  지원청 중학교 신입생 배정 안내(2027학년도 시행계획 일
  정) https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=
- 3318\n확인일 2026-10-25
+ 3318\n확인일 2026-11-01
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ev-life-06-1@admissions-2030
-DTSTAMP:20261025T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270101
 SUMMARY:중학교 배정학교 발표
 DESCRIPTION:2026.12.31(목) 출신 초등학교에서 발표\n출처: 경
  기도용인교육지원청 중학교 신입생 배정 안내(2027학년
  도 시행계획 일정) https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.d
- o?mi=20137&cntntsId=3318\n확인일 2026-10-25
+ o?mi=20137&cntntsId=3318\n확인일 2026-11-01
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ev-life-07-1@admissions-2030
-DTSTAMP:20261025T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270104
 DTEND;VALUE=DATE:20270108
 SUMMARY:중학교 신입생 등록
 DESCRIPTION:2027.1.4(월)~1.7(목) 각 중학교\n출처: 경기도용인
  교육지원청 중학교 신입생 배정 안내(2027학년도 시행계
  획 일정) https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cn
- tntsId=3318\n확인일 2026-10-25
+ tntsId=3318\n확인일 2026-11-01
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ev-life-08-1@admissions-2030
-DTSTAMP:20261025T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270111
 DTEND;VALUE=DATE:20270123
 SUMMARY:중학교 재배정
@@ -479,7 +479,7 @@ DESCRIPTION:재배정 원서 접수 2027.1.11~1.15(용인교육지원청)\,
  등록 1.22(각 중학교)\n출처: 경기도용인교육지원청 중학
  교 신입생 배정 안내(2027학년도 시행계획 일정) https://www
  .goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318\n확인일 
- 2026-10-25
+ 2026-11-01
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
