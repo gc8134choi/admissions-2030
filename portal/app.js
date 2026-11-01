@@ -359,7 +359,7 @@ async function compareShell(el, onReset, getAreas) {
     need = AW + LW + CW * ids.length;
     $("#tbl").style.minWidth = `${need}px`;
     const CH = 30, token = (drawToken = Symbol());
-    const head = `<thead><tr><th class="ar">교과군</th><th class="l">과목</th>${ids.map((id, i) => `<th>${nm(id, names[i], 30)}</th>`).join("")}</tr></thead>`;
+    const head = `<caption class="sr-only">학교별 개설 과목 비교(열=학교, 행=과목)</caption><thead><tr><th class="ar" scope="col">교과군</th><th class="l" scope="col">과목</th>${ids.map((id, i) => `<th scope="col">${nm(id, names[i], 30)}</th>`).join("")}</tr></thead>`;
     const foot = `<tfoot><tr><th class="lf" colspan="2">해당 과목 수</th>${ids.map((id) => `<th>${rows.filter((r) => r.cells[id]).length}</th>`).join("")}</tr></tfoot>`;
     const chunk = (i) => trs.slice(i, i + CH).map((f) => f()).join("");
     $("#tbl").innerHTML = `${head}<tbody>${trs.length ? chunk(0) : `<tr><td colspan="${ids.length + 2}">조건에 맞는 과목이 없어요.</td></tr>`}</tbody>${foot}`;
