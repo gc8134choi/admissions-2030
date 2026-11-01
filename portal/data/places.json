@@ -2,7 +2,7 @@
  "_meta": {
   "note": "학교 위치(생성물, 손으로 고치지 않는다). research/data/places-draft.json에서 tools/build-places.mjs가 만든다.",
   "checkedAt": "2026-10-29",
-  "count": 45,
+  "count": 69,
   "withCoords": 42,
   "nearbyCount": 5
  },
@@ -1340,6 +1340,558 @@
    ],
    "checkedAt": "2026-10-31",
    "searchQuery": "백암고등학교 경기도 용인시 처인구 백암면 백원로 519-9"
+  },
+  {
+   "id": "pl-046",
+   "schoolId": null,
+   "name": "고기초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 고기로 385",
+   "lat": null,
+   "lng": null,
+   "coordSource": null,
+   "coordApprox": false,
+   "homepage": "https://kogi-e.goeyi.kr/",
+   "phone": "031-263-9775",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "checkedAt": "2026-11-01",
+   "searchQuery": "고기초등학교 경기도 용인시 수지구 고기로 385"
+  },
+  {
+   "id": "pl-047",
+   "schoolId": null,
+   "name": "동천초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 고기로 71",
+   "lat": null,
+   "lng": null,
+   "coordSource": null,
+   "coordApprox": false,
+   "homepage": "https://www.goeyi.kr/dongcheon1-e/main.do",
+   "phone": "031-272-1279",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "checkedAt": "2026-11-01",
+   "searchQuery": "동천초등학교 경기도 용인시 수지구 고기로 71"
+  },
+  {
+   "id": "pl-048",
+   "schoolId": null,
+   "name": "매봉초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 수지로 75-1",
+   "lat": null,
+   "lng": null,
+   "coordSource": null,
+   "coordApprox": false,
+   "homepage": "https://www.goeyi.kr/yimb-e/main.do",
+   "phone": "031-265-9403",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "checkedAt": "2026-11-01",
+   "searchQuery": "매봉초등학교 경기도 용인시 수지구 수지로 75-1"
+  },
+  {
+   "id": "pl-049",
+   "schoolId": null,
+   "name": "성서초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 성복2로 210",
+   "lat": null,
+   "lng": null,
+   "coordSource": null,
+   "coordApprox": false,
+   "homepage": "https://sungseocho-e.goeyi.kr/sungseocho-e/main.do",
+   "phone": "031-896-7243",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "checkedAt": "2026-11-01",
+   "searchQuery": "성서초등학교 경기도 용인시 수지구 성복2로 210"
+  },
+  {
+   "id": "pl-050",
+   "schoolId": null,
+   "name": "손곡초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 손곡로 68",
+   "lat": null,
+   "lng": null,
+   "coordSource": null,
+   "coordApprox": false,
+   "homepage": "https://songok-e.goeyi.kr",
+   "phone": "031-262-4962",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "checkedAt": "2026-11-01",
+   "searchQuery": "손곡초등학교 경기도 용인시 수지구 손곡로 68"
+  },
+  {
+   "id": "pl-051",
+   "schoolId": null,
+   "name": "수지초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 정평로13번길 30",
+   "lat": null,
+   "lng": null,
+   "coordSource": null,
+   "coordApprox": false,
+   "homepage": "https://suji-e.goeyi.kr/suji-e/main.do",
+   "phone": "031-262-0055",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "checkedAt": "2026-11-01",
+   "searchQuery": "수지초등학교 경기도 용인시 수지구 정평로13번길 30"
+  },
+  {
+   "id": "pl-052",
+   "schoolId": null,
+   "name": "신리초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 신봉1로48번길 6",
+   "lat": null,
+   "lng": null,
+   "coordSource": null,
+   "coordApprox": false,
+   "homepage": "http://shin-ri-e.goeyi.kr",
+   "phone": "031-264-9396",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "checkedAt": "2026-11-01",
+   "searchQuery": "신리초등학교 경기도 용인시 수지구 신봉1로48번길 6"
+  },
+  {
+   "id": "pl-053",
+   "schoolId": null,
+   "name": "신월초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 풍덕천로 86",
+   "lat": null,
+   "lng": null,
+   "coordSource": null,
+   "coordApprox": false,
+   "homepage": "https://sinwol-e.goeyi.kr",
+   "phone": "031-265-7015,7014",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "checkedAt": "2026-11-01",
+   "searchQuery": "신월초등학교 경기도 용인시 수지구 풍덕천로 86"
+  },
+  {
+   "id": "pl-054",
+   "schoolId": null,
+   "name": "신일초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 신봉2로48번길 28",
+   "lat": null,
+   "lng": null,
+   "coordSource": null,
+   "coordApprox": false,
+   "homepage": "https://sinil4u-e.goeyi.kr",
+   "phone": "031-896-4812",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "checkedAt": "2026-11-01",
+   "searchQuery": "신일초등학교 경기도 용인시 수지구 신봉2로48번길 28"
+  },
+  {
+   "id": "pl-055",
+   "schoolId": null,
+   "name": "용인신봉초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 신봉2로 115",
+   "lat": null,
+   "lng": null,
+   "coordSource": null,
+   "coordApprox": false,
+   "homepage": "https://yongin-sinbong-e.goeyi.kr",
+   "phone": "031-262-2190",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "checkedAt": "2026-11-01",
+   "searchQuery": "용인신봉초등학교 경기도 용인시 수지구 신봉2로 115"
+  },
+  {
+   "id": "pl-056",
+   "schoolId": null,
+   "name": "용인심곡초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 심곡로 59",
+   "lat": null,
+   "lng": null,
+   "coordSource": null,
+   "coordApprox": false,
+   "homepage": "https://yisimgok-e.goeyi.kr/yisimgok-e/main.do",
+   "phone": "031-263-4430",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "checkedAt": "2026-11-01",
+   "searchQuery": "용인심곡초등학교 경기도 용인시 수지구 심곡로 59"
+  },
+  {
+   "id": "pl-057",
+   "schoolId": null,
+   "name": "용인한빛초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 동천로 153번길 23",
+   "lat": null,
+   "lng": null,
+   "coordSource": null,
+   "coordApprox": false,
+   "homepage": "https://yonginhanbit-e.goeyi.kr/",
+   "phone": "031-896-7483",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "checkedAt": "2026-11-01",
+   "searchQuery": "용인한빛초등학교 경기도 용인시 수지구 동천로 153번길 23"
+  },
+  {
+   "id": "pl-058",
+   "schoolId": null,
+   "name": "이현초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 기흥구 이현로 83",
+   "lat": null,
+   "lng": null,
+   "coordSource": null,
+   "coordApprox": false,
+   "homepage": "https://e-hyun-e.goeyi.kr",
+   "phone": "031-276-0972",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "checkedAt": "2026-11-01",
+   "searchQuery": "이현초등학교 경기도 용인시 기흥구 이현로 83"
+  },
+  {
+   "id": "pl-059",
+   "schoolId": null,
+   "name": "정평초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 정평로 64",
+   "lat": null,
+   "lng": null,
+   "coordSource": null,
+   "coordApprox": false,
+   "homepage": "http://jp-e.goeyi.kr",
+   "phone": "031-266-0172",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "checkedAt": "2026-11-01",
+   "searchQuery": "정평초등학교 경기도 용인시 수지구 정평로 64"
+  },
+  {
+   "id": "pl-060",
+   "schoolId": null,
+   "name": "토월초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 수지로296번길 3",
+   "lat": null,
+   "lng": null,
+   "coordSource": null,
+   "coordApprox": false,
+   "homepage": "http://to-wol-e.goeyi.kr",
+   "phone": "031-261-4582",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "checkedAt": "2026-11-01",
+   "searchQuery": "토월초등학교 경기도 용인시 수지구 수지로296번길 3"
+  },
+  {
+   "id": "pl-061",
+   "schoolId": null,
+   "name": "풍덕초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 수지로 367",
+   "lat": null,
+   "lng": null,
+   "coordSource": null,
+   "coordApprox": false,
+   "homepage": "https://pungduk-e.goeyi.kr",
+   "phone": "031-261-0052",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "checkedAt": "2026-11-01",
+   "searchQuery": "풍덕초등학교 경기도 용인시 수지구 수지로 367"
+  },
+  {
+   "id": "pl-062",
+   "schoolId": null,
+   "name": "풍천초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 진산로66번길 20",
+   "lat": null,
+   "lng": null,
+   "coordSource": null,
+   "coordApprox": false,
+   "homepage": "https://pung1000-e.goeyi.kr",
+   "phone": "031-272-4745",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "checkedAt": "2026-11-01",
+   "searchQuery": "풍천초등학교 경기도 용인시 수지구 진산로66번길 20"
+  },
+  {
+   "id": "pl-063",
+   "schoolId": null,
+   "name": "홍천초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 신봉2로14번길 49",
+   "lat": null,
+   "lng": null,
+   "coordSource": null,
+   "coordApprox": false,
+   "homepage": "https://hongcheon-e.goeyi.kr",
+   "phone": "031-326-3706",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "checkedAt": "2026-11-01",
+   "searchQuery": "홍천초등학교 경기도 용인시 수지구 신봉2로14번길 49"
+  },
+  {
+   "id": "pl-064",
+   "schoolId": null,
+   "name": "효자초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 성복1로 106-1",
+   "lat": null,
+   "lng": null,
+   "coordSource": null,
+   "coordApprox": false,
+   "homepage": "https://hyojacho-e.goeyi.kr/hyojacho-e/main.do",
+   "phone": "031-276-3038",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "checkedAt": "2026-11-01",
+   "searchQuery": "효자초등학교 경기도 용인시 수지구 성복1로 106-1"
+  },
+  {
+   "id": "pl-065",
+   "schoolId": null,
+   "name": "상현초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 만현로67번길 23",
+   "lat": null,
+   "lng": null,
+   "coordSource": null,
+   "coordApprox": false,
+   "homepage": "https://sanghy-e.goeyi.kr/",
+   "phone": "031-265-4564",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "checkedAt": "2026-11-01",
+   "searchQuery": "상현초등학교 경기도 용인시 수지구 만현로67번길 23"
+  },
+  {
+   "id": "pl-066",
+   "schoolId": null,
+   "name": "새빛초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 광교마을로 63",
+   "lat": null,
+   "lng": null,
+   "coordSource": null,
+   "coordApprox": false,
+   "homepage": "http://saebit-e.goeyi.kr",
+   "phone": "031-8007-0802",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "checkedAt": "2026-11-01",
+   "searchQuery": "새빛초등학교 경기도 용인시 수지구 광교마을로 63"
+  },
+  {
+   "id": "pl-067",
+   "schoolId": null,
+   "name": "서원초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기 용인시 수지구 상현로 45",
+   "lat": null,
+   "lng": null,
+   "coordSource": null,
+   "coordApprox": false,
+   "homepage": "https://seowon-e.goeyi.kr",
+   "phone": "031-266-2292",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "checkedAt": "2026-11-01",
+   "searchQuery": "서원초등학교 경기 용인시 수지구 상현로 45"
+  },
+  {
+   "id": "pl-068",
+   "schoolId": null,
+   "name": "소현초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 만현로133번길 78",
+   "lat": null,
+   "lng": null,
+   "coordSource": null,
+   "coordApprox": false,
+   "homepage": "https://sohyun-e.goeyi.kr",
+   "phone": "031-261-8141",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "checkedAt": "2026-11-01",
+   "searchQuery": "소현초등학교 경기도 용인시 수지구 만현로133번길 78"
+  },
+  {
+   "id": "pl-069",
+   "schoolId": null,
+   "name": "솔개초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 상현로 79",
+   "lat": null,
+   "lng": null,
+   "coordSource": null,
+   "coordApprox": false,
+   "homepage": "https://solgae-e.goeyi.kr",
+   "phone": "031-8014-9368,9",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "checkedAt": "2026-11-01",
+   "searchQuery": "솔개초등학교 경기도 용인시 수지구 상현로 79"
   }
  ],
  "nearby": [
