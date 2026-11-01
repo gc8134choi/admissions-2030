@@ -1,1282 +1,1786 @@
 {
-  "_meta": {
-    "note": "학교 위치 조사 초안. 개인 주소는 넣지 않는다(학교 공공 주소만). 설립 구분(kind)·홈페이지는 공식 확인 전이라 null. 좌표는 OSM 지오코딩(소량 요청)이며 공식 좌표가 아니다.",
-    "checkedAt": "2026-10-29"
-  },
-  "items": [
+ "_meta": {
+  "note": "학교 위치 조사 초안. 개인 주소는 넣지 않는다(학교 공공 주소만). 설립 구분(kind)·홈페이지는 공식 확인 전이라 null. 좌표는 OSM 지오코딩(소량 요청)이며 공식 좌표가 아니다.",
+  "checkedAt": "2026-10-29"
+ },
+ "items": [
+  {
+   "placeId": "pl-001",
+   "schoolId": null,
+   "name": "성복초등학교",
+   "level": "elementary",
+   "kind": null,
+   "address": "경기도 용인시 수지구 성복2로78번길 52",
+   "homepage": null,
+   "phone": null,
+   "checkedAt": "2026-10-26",
+   "status": "reported",
+   "sources": [
     {
-      "placeId": "pl-001",
-      "schoolId": null,
-      "name": "성복초등학교",
-      "level": "elementary",
-      "kind": null,
-      "address": "경기도 용인시 수지구 성복2로78번길 52",
-      "homepage": null,
-      "phone": null,
-      "checkedAt": "2026-10-26",
-      "status": "reported",
-      "sources": [
-        {
-          "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "lat": 37.31933,
-      "lng": 127.077974,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim 검색 '성복초등학교, 52, 성복2로78번길, 신봉동, 수지구' (way 366609276), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/366609276"
-      }
-    },
-    {
-      "placeId": "pl-002",
-      "schoolId": null,
-      "name": "문정중학교",
-      "level": "middle",
-      "kind": null,
-      "address": "경기도 용인시 수지구 포은대로 455",
-      "homepage": null,
-      "phone": null,
-      "checkedAt": "2026-10-26",
-      "status": "reported",
-      "sources": [
-        {
-          "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "lat": 37.32306,
-      "lng": 127.099256,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim 검색 '문정중학교, 455, 포은대로, 풍덕천동, 신봉동, 수' (way 389636150), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/389636150"
-      }
-    },
-    {
-      "placeId": "pl-003",
-      "schoolId": null,
-      "name": "성복중학교",
-      "level": "middle",
-      "kind": null,
-      "address": "경기도 용인시 수지구 성복2로78번길 51",
-      "homepage": null,
-      "phone": null,
-      "checkedAt": "2026-10-26",
-      "status": "reported",
-      "sources": [
-        {
-          "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-          "url": "https://www.openstreetmap.org/copyright"
-        },
-        {
-          "name": "주소 교차 확인: OSM 별도 노드(성복2로78번길 51)와 학교 정보 사이트 표기 일치",
-          "url": null
-        }
-      ],
-      "lat": 37.319441,
-      "lng": 127.076428,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim 검색 '성복중학교, 51, 신봉1로71번길, 신봉동, 수지구,' (way 366609275), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/366609275"
-      }
-    },
-    {
-      "placeId": "pl-004",
-      "schoolId": null,
-      "name": "성서중학교",
-      "level": "middle",
-      "kind": null,
-      "address": "경기도 용인시 수지구 성복1로 147",
-      "homepage": null,
-      "phone": null,
-      "checkedAt": "2026-10-26",
-      "status": "reported",
-      "sources": [
-        {
-          "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "lat": 37.315029,
-      "lng": 127.064146,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim 검색 '성서중학교, 147, 성복1로, 신봉동, 수지구, 용인' (way 343111630), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/343111630"
-      }
-    },
-    {
-      "placeId": "pl-005",
-      "schoolId": null,
-      "name": "손곡중학교",
-      "level": "middle",
-      "kind": null,
-      "address": "경기도 용인시 수지구 문인로70번길 5",
-      "homepage": null,
-      "phone": null,
-      "checkedAt": "2026-10-26",
-      "status": "reported",
-      "sources": [
-        {
-          "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "lat": 37.334671,
-      "lng": 127.094401,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim 검색 '손곡중학교, 5, 문인로70번길, 동천동, 신봉동, 수' (way 362613063), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/362613063"
-      }
-    },
-    {
-      "placeId": "pl-006",
-      "schoolId": null,
-      "name": "수지중학교",
-      "level": "middle",
-      "kind": null,
-      "address": "경기도 용인시 수지구 수풍로 102",
-      "homepage": null,
-      "phone": null,
-      "checkedAt": "2026-10-26",
-      "status": "reported",
-      "sources": [
-        {
-          "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "lat": 37.332561,
-      "lng": 127.094286,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim 검색 '수지중학교, 102, 수풍로, 풍덕천동, 신봉동, 수지' (way 387557720), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/387557720"
-      }
-    },
-    {
-      "placeId": "pl-007",
-      "schoolId": null,
-      "name": "신봉중학교",
-      "level": "middle",
-      "kind": null,
-      "address": "경기도 용인시 수지구 신봉3로 43",
-      "homepage": null,
-      "phone": null,
-      "checkedAt": "2026-10-26",
-      "status": "reported",
-      "sources": [
-        {
-          "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "lat": 37.327292,
-      "lng": 127.064243,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim 검색 '신봉중학교, 43, 신봉3로, 신봉동, 수지구, 용인시' (way 366238677), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/366238677"
-      }
-    },
-    {
-      "placeId": "pl-008",
-      "schoolId": null,
-      "name": "용인한빛중학교",
-      "level": "middle",
-      "kind": null,
-      "address": "경기도 용인시 수지구 동천로 177",
-      "homepage": null,
-      "phone": null,
-      "checkedAt": "2026-10-26",
-      "status": "reported",
-      "sources": [
-        {
-          "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "lat": 37.337088,
-      "lng": 127.084815,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim 검색 '용인한빛중학교, 177, 동천로, 동천동, 신봉동, 수' (way 360331556), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/360331556"
-      }
-    },
-    {
-      "placeId": "pl-009",
-      "schoolId": null,
-      "name": "정평중학교",
-      "level": "middle",
-      "kind": null,
-      "address": "경기도 용인시 수지구 정평로13번길 21",
-      "homepage": null,
-      "phone": null,
-      "checkedAt": "2026-10-26",
-      "status": "reported",
-      "sources": [
-        {
-          "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "lat": 37.317831,
-      "lng": 127.088011,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim 검색 '정평중학교, 21, 정평로13번길, 풍덕천동, 신봉동,' (way 365694524), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/365694524"
-      }
-    },
-    {
-      "placeId": "pl-010",
-      "schoolId": null,
-      "name": "홍천중학교",
-      "level": "middle",
-      "kind": null,
-      "address": "경기도 용인시 수지구 신봉1로71번길 36",
-      "homepage": null,
-      "phone": null,
-      "checkedAt": "2026-10-26",
-      "status": "reported",
-      "sources": [
-        {
-          "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "lat": 37.320884,
-      "lng": 127.076583,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim 검색 '홍천중학교, 36, 신봉1로71번길, 신봉동, 수지구,' (way 366609277), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/366609277"
-      }
-    },
-    {
-      "placeId": "pl-011",
-      "schoolId": "school-pungdeok",
-      "name": "풍덕고등학교",
-      "level": "high",
-      "kind": "공립(단설)",
-      "address": "경기도 용인시 수지구 정평로13번길 5",
-      "homepage": "https://pungduck-h.goeyi.kr",
-      "phone": null,
-      "checkedAt": "2026-10-26",
-      "status": "confirmed",
-      "sources": [
-        {
-          "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
-          "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
-        },
-        {
-          "name": "portal/data/schools.json 학교 주소(편제표 4개교)",
-          "url": null
-        }
-      ],
-      "lat": 37.316896,
-      "lng": 127.088837,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim 검색 '풍덕고등학교, 5, 풍덕천로30번길, 풍덕천동, 신봉동' (way 365700433), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/365700433"
-      }
-    },
-    {
-      "placeId": "pl-012",
-      "schoolId": "school-seongbok",
-      "name": "성복고등학교",
-      "level": "high",
-      "kind": "공립(단설)",
-      "address": "경기도 용인시 수지구 도마치로 92",
-      "homepage": "https://seongbok-h.goeyi.kr",
-      "phone": null,
-      "checkedAt": "2026-10-26",
-      "status": "confirmed",
-      "sources": [
-        {
-          "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
-          "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
-        },
-        {
-          "name": "portal/data/schools.json 학교 주소(편제표 4개교)",
-          "url": null
-        }
-      ],
-      "lat": 37.323292,
-      "lng": 127.061138,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim 검색 '성복고등학교, 92, 도마치로, 신봉동, 수지구, 용인' (way 366837924), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/366837924"
-      }
-    },
-    {
-      "placeId": "pl-013",
-      "schoolId": "school-suji",
-      "name": "수지고등학교",
-      "level": "high",
-      "kind": "공립(단설)",
-      "address": "경기도 용인시 수지구 수풍로 73",
-      "homepage": "http://suji-h.goeyi.kr",
-      "phone": null,
-      "checkedAt": "2026-10-26",
-      "status": "confirmed",
-      "sources": [
-        {
-          "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
-          "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
-        },
-        {
-          "name": "portal/data/schools.json 학교 주소(편제표 4개교)",
-          "url": null
-        }
-      ],
-      "lat": 37.330719,
-      "lng": 127.092054,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim 검색 '수지고등학교, 73, 수풍로, 풍덕천동, 신봉동, 수지' (way 362976419), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/362976419"
-      }
-    },
-    {
-      "placeId": "pl-014",
-      "schoolId": "school-yonginheungcheon",
-      "name": "홍천고등학교",
-      "level": "high",
-      "kind": "공립(단설)",
-      "address": "경기도 용인시 수지구 수지로227번길 22",
-      "homepage": "http://yihongcheon-h.goeyi.kr",
-      "phone": null,
-      "checkedAt": "2026-10-26",
-      "status": "confirmed",
-      "sources": [
-        {
-          "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
-          "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
-        },
-        {
-          "name": "portal/data/schools.json 학교 주소(편제표 4개교)",
-          "url": null
-        }
-      ],
-      "lat": 37.32144,
-      "lng": 127.08228,
-      "coordSource": {
-        "name": "OSM 도로 '수지로227번길'(way 346407546)의 대표 좌표 — 학교 건물 위치가 아닌 근사값(학교 객체를 OSM에서 못 찾음), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/346407546"
-      }
-    },
-    {
-      "placeId": "pl-015",
-      "schoolId": null,
-      "name": "용인한국외국어대학교부설고등학교",
-      "level": "high",
-      "kind": "사립(자율고)",
-      "address": "경기도 용인시 처인구 모현읍 외대로54번길 50",
-      "homepage": "http://www.hafs.hs.kr",
-      "phone": null,
-      "checkedAt": "2026-10-26",
-      "status": "confirmed",
-      "sources": [
-        {
-          "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
-          "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
-        },
-        {
-          "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "lat": 37.329856,
-      "lng": 127.25506,
-      "coordSource": {
-        "name": "OSM의 '한국외국어대학교부속 용인외국어고등학교' 객체(모현읍) 좌표 — 교육청 공식 명칭 '용인한국외국어대학교부설고등학교'와 같은 캠퍼스로 추정, ODbL ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/232201498"
-      }
-    },
-    {
-      "placeId": "pl-016",
-      "schoolId": null,
-      "name": "상현중학교",
-      "level": "middle",
-      "kind": null,
-      "address": "경기도 용인시 수지구 광교마을로 61",
-      "homepage": null,
-      "phone": null,
-      "status": "reported",
-      "note": "수지2중학군(상현동 인근) — 설립 구분·홈페이지는 공식 확인 전이라 null",
-      "sources": [
-        {
-          "name": "경기도교육청 고시 제2024-554호 2025학년도 경기도 중학교 학교군 및 중학구 고시(학교군 현황표)",
-          "url": "https://www.goe.go.kr/resource/old/BBSMSTR_000000000111/BBS_202409250522349970.pdf"
-        },
-        {
-          "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-29",
-      "lat": 37.299308,
-      "lng": 127.071021,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '상현중학교, 61, 광교마을로, 상현동, 신봉동, ' (way 361618162), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/361618162"
-      }
-    },
-    {
-      "placeId": "pl-017",
-      "schoolId": null,
-      "name": "서원중학교",
-      "level": "middle",
-      "kind": null,
-      "address": "경기도 용인시 수지구 상현로42번길 26-8",
-      "homepage": null,
-      "phone": null,
-      "status": "reported",
-      "note": "수지2중학군 — 설립 구분·홈페이지는 공식 확인 전이라 null",
-      "sources": [
-        {
-          "name": "경기도교육청 고시 제2024-554호 2025학년도 경기도 중학교 학교군 및 중학구 고시(학교군 현황표)",
-          "url": "https://www.goe.go.kr/resource/old/BBSMSTR_000000000111/BBS_202409250522349970.pdf"
-        },
-        {
-          "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-29",
-      "lat": 37.301681,
-      "lng": 127.080651,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '서원중학교, 26-8, 상현로42번길, 상현동, 신' (way 763175567), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/763175567"
-      }
-    },
-    {
-      "placeId": "pl-018",
-      "schoolId": null,
-      "name": "소현중학교",
-      "level": "middle",
-      "kind": null,
-      "address": "경기도 용인시 만현로133번길 96(OSM은 기흥구로 표기, 행정구 확인 필요)",
-      "homepage": null,
-      "phone": null,
-      "status": "reported",
-      "note": "수지2중학군 — 설립 구분·홈페이지는 공식 확인 전이라 null",
-      "sources": [
-        {
-          "name": "경기도교육청 고시 제2024-554호 2025학년도 경기도 중학교 학교군 및 중학구 고시(학교군 현황표)",
-          "url": "https://www.goe.go.kr/resource/old/BBSMSTR_000000000111/BBS_202409250522349970.pdf"
-        },
-        {
-          "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-29",
-      "lat": 37.301403,
-      "lng": 127.093735,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '소현중학교, 96, 만현로133번길, 기흥구, 용인' (way 1257149423), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/1257149423"
-      }
-    },
-    {
-      "placeId": "pl-019",
-      "schoolId": null,
-      "name": "이현중학교",
-      "level": "middle",
-      "kind": null,
-      "address": "주소 미확인(OSM에서 학교 건물 객체를 못 찾음)",
-      "homepage": null,
-      "phone": null,
-      "status": "reported",
-      "note": "수지2중학군 — 설립 구분·홈페이지는 공식 확인 전이라 null",
-      "sources": [
-        {
-          "name": "경기도교육청 고시 제2024-554호 2025학년도 경기도 중학교 학교군 및 중학구 고시(학교군 현황표)",
-          "url": "https://www.goe.go.kr/resource/old/BBSMSTR_000000000111/BBS_202409250522349970.pdf"
-        },
-        {
-          "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-29",
-      "lat": null,
-      "lng": null,
-      "coordSource": {
-        "name": "학교 건물 좌표를 OSM에서 찾지 못해 비움(검색 결과가 아파트·정류장 객체)",
-        "url": null
-      }
-    },
-    {
-      "placeId": "pl-020",
-      "schoolId": null,
-      "name": "상현고등학교",
-      "level": "high",
-      "kind": "공립(단설)",
-      "address": "경기도 용인시 수지구 법조로 222",
-      "homepage": "http://sanghyun-h.goeyi.kr",
-      "phone": null,
-      "status": "confirmed",
-      "note": "용인학군 2구역(수지구) 평준화 일반고",
-      "sources": [
-        {
-          "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
-          "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
-        },
-        {
-          "name": "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)",
-          "url": "https://satp.goe.go.kr/main.do"
-        },
-        {
-          "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-29",
-      "lat": 37.298856,
-      "lng": 127.07436,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '상현고등학교, 222, 법조로, 상현동, 신봉동, ' (way 361622588), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/361622588"
-      }
-    },
-    {
-      "placeId": "pl-021",
-      "schoolId": null,
-      "name": "서원고등학교",
-      "level": "high",
-      "kind": "공립(단설)",
-      "address": "경기도 용인시 수지구 상현로42번길 26-7",
-      "homepage": "http://seowon-h.goeyi.kr",
-      "phone": null,
-      "status": "confirmed",
-      "note": "용인학군 2구역(수지구) 평준화 일반고",
-      "sources": [
-        {
-          "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
-          "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
-        },
-        {
-          "name": "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)",
-          "url": "https://satp.goe.go.kr/main.do"
-        },
-        {
-          "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-29",
-      "lat": 37.302106,
-      "lng": 127.081747,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '서원고등학교, 26-7, 상현로42번길, 상현동, ' (way 763175570), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/763175570"
-      }
-    },
-    {
-      "placeId": "pl-022",
-      "schoolId": null,
-      "name": "신봉고등학교",
-      "level": "high",
-      "kind": "공립(단설)",
-      "address": "경기도 용인시 수지구 신봉3로 45",
-      "homepage": "http://shinbong-h.goeyi.kr",
-      "phone": null,
-      "status": "confirmed",
-      "note": "용인학군 2구역(수지구) 평준화 일반고",
-      "sources": [
-        {
-          "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
-          "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
-        },
-        {
-          "name": "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)",
-          "url": "https://satp.goe.go.kr/main.do"
-        },
-        {
-          "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-29",
-      "lat": 37.327927,
-      "lng": 127.063093,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '신봉고등학교, 45, 도마치로, 신봉동, 수지구, ' (way 347522918), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/347522918"
-      }
-    },
-    {
-      "placeId": "pl-023",
-      "schoolId": null,
-      "name": "대지고등학교",
-      "level": "high",
-      "kind": "공립(단설)",
-      "address": "경기도 용인시 수지구 동백죽전대로 1066",
-      "homepage": "https://daeji-h.goeyi.kr",
-      "phone": null,
-      "status": "confirmed",
-      "note": "용인학군 2구역(수지구) 평준화 일반고",
-      "sources": [
-        {
-          "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
-          "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
-        },
-        {
-          "name": "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)",
-          "url": "https://satp.goe.go.kr/main.do"
-        },
-        {
-          "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-29",
-      "lat": null,
-      "lng": null,
-      "coordSource": {
-        "name": "학교 건물 좌표를 OSM에서 찾지 못해 비움(검색 결과가 아파트·정류장 객체)",
-        "url": null
-      }
-    },
-    {
-      "placeId": "pl-024",
-      "schoolId": null,
-      "name": "죽전고등학교",
-      "level": "high",
-      "kind": "공립(단설)",
-      "address": "경기도 용인시 수지구 용구대로2771번길 23",
-      "homepage": "http://jukjeon-h.goeyi.kr",
-      "phone": null,
-      "status": "confirmed",
-      "note": "용인학군 2구역(수지구) 평준화 일반고",
-      "sources": [
-        {
-          "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
-          "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
-        },
-        {
-          "name": "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)",
-          "url": "https://satp.goe.go.kr/main.do"
-        },
-        {
-          "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-29",
-      "lat": 37.332575,
-      "lng": 127.106202,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '죽전고등학교, 용구대로2771번길, 벽산타운4단지,' (way 470223157), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/470223157"
-      }
-    },
-    {
-      "placeId": "pl-025",
-      "schoolId": null,
-      "name": "현암고등학교",
-      "level": "high",
-      "kind": "공립(단설)",
-      "address": "경기도 용인시 수지구 디지털벨리로 17",
-      "homepage": "https://hyunam-h.goeyi.kr",
-      "phone": null,
-      "status": "confirmed",
-      "note": "용인학군 2구역(수지구) 평준화 일반고",
-      "sources": [
-        {
-          "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
-          "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
-        },
-        {
-          "name": "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)",
-          "url": "https://satp.goe.go.kr/main.do"
-        },
-        {
-          "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-29",
-      "lat": 37.328894,
-      "lng": 127.131934,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '현암고등학교, 디지털벨리로, 수지구, 용인시, 경기' (way 834357357), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/834357357"
-      }
-    },
-    {
-      "placeId": "pl-026",
-      "schoolId": null,
-      "name": "구성고등학교",
-      "level": "high",
-      "kind": "공립(일반고)",
-      "address": "경기도 용인시 기흥구 연원로42번길 47",
-      "homepage": "https://koosung-h.goeyi.kr/",
-      "phone": "031-284-1380",
-      "status": "confirmed",
-      "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
-      "sources": [
-        {
-          "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
-          "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
-        },
-        {
-          "name": "좌표: OpenStreetMap",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-31",
-      "lat": 37.299,
-      "lng": 127.11559,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '구성고등학교, 47, 연원로42번길, 마북동, 기흥' (way 424228656), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/424228656"
-      }
-    },
-    {
-      "placeId": "pl-027",
-      "schoolId": null,
-      "name": "기흥고등학교",
-      "level": "high",
-      "kind": "공립(일반고)",
-      "address": "경기도 용인시 기흥구 관곡로 20",
-      "homepage": "https://giheung-h.goeyi.kr/",
-      "phone": "031-679-1940",
-      "status": "confirmed",
-      "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
-      "sources": [
-        {
-          "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
-          "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
-        },
-        {
-          "name": "좌표: OpenStreetMap",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-31",
-      "lat": 37.282561,
-      "lng": 127.108629,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '기흥고등학교, 관곡로, 신갈동, 기흥구, 용인시, ' (way 551380092), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/551380092"
-      }
-    },
-    {
-      "placeId": "pl-028",
-      "schoolId": null,
-      "name": "동백고등학교",
-      "level": "high",
-      "kind": "공립(일반고)",
-      "address": "경기도 용인시 기흥구 동백7로 61",
-      "homepage": "http://dongbaek-h.goeyi.kr/",
-      "phone": "031-303-4100",
-      "status": "confirmed",
-      "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
-      "sources": [
-        {
-          "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
-          "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
-        },
-        {
-          "name": "좌표: OpenStreetMap",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-31",
-      "lat": 37.282977,
-      "lng": 127.158567,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '동백고등학교, 61, 동백7로, 동백동, 기흥구, ' (way 469908293), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/469908293"
-      }
-    },
-    {
-      "placeId": "pl-029",
-      "schoolId": null,
-      "name": "보라고등학교",
-      "level": "high",
-      "kind": "공립(일반고)",
-      "address": "경기도 용인시 기흥구 한보라1로43번길 7",
-      "homepage": "http://bora-h.goeyi.kr/",
-      "phone": "031-8005-8780",
-      "status": "confirmed",
-      "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
-      "sources": [
-        {
-          "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
-          "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
-        },
-        {
-          "name": "좌표: OpenStreetMap",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-31",
-      "lat": 37.251318,
-      "lng": 127.110388,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '보라고등학교, 한보라1로, 한보라6단지 더힐, 보라' (way 170825590), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/170825590"
-      }
-    },
-    {
-      "placeId": "pl-030",
-      "schoolId": null,
-      "name": "보정고등학교",
-      "level": "high",
-      "kind": "공립(일반고)",
-      "address": "경기도 용인시 기흥구 보정로 22",
-      "homepage": "http://bojeong-h.goeyi.kr",
-      "phone": "031-270-7257",
-      "status": "confirmed",
-      "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
-      "sources": [
-        {
-          "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
-          "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
-        },
-        {
-          "name": "좌표: OpenStreetMap",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-31",
-      "lat": 37.313592,
-      "lng": 127.109472,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '보정고등학교, 22, 보정로, 보정동, 기흥구, 용' (way 423124512), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/423124512"
-      }
-    },
-    {
-      "placeId": "pl-031",
-      "schoolId": null,
-      "name": "서천고등학교",
-      "level": "high",
-      "kind": "공립(일반고)",
-      "address": "경기도 용인시 기흥구 서천서로 126",
-      "homepage": "http://seocheon-h.goeyi.kr/",
-      "phone": "031-546-7200",
-      "status": "confirmed",
-      "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
-      "sources": [
-        {
-          "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
-          "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
-        },
-        {
-          "name": "좌표: OpenStreetMap",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-31",
-      "lat": 37.233884,
-      "lng": 127.069455,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '서천고등학교, 서천로, 농서동, 기흥구, 용인시, ' (way 470199321), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/470199321"
-      }
-    },
-    {
-      "placeId": "pl-032",
-      "schoolId": null,
-      "name": "성지고등학교",
-      "level": "high",
-      "kind": "공립(일반고)",
-      "address": "경기도 용인시 기흥구 갈곡로12번길 13",
-      "homepage": "https://seongji-h.goeyi.kr",
-      "phone": "031-547-3320",
-      "status": "confirmed",
-      "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
-      "sources": [
-        {
-          "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
-          "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
-        },
-        {
-          "name": "좌표: OpenStreetMap",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-31",
-      "lat": 37.272081,
-      "lng": 127.131181,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '성지고등학교, 강남동로, 구갈동, 기흥구, 용인시,' (way 711066080), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/711066080"
-      }
-    },
-    {
-      "placeId": "pl-033",
-      "schoolId": null,
-      "name": "신갈고등학교",
-      "level": "high",
-      "kind": "사립(일반고)",
-      "address": "경기도 용인시 기흥구 백남준로 13",
-      "homepage": "http://shingal-h.goeyi.kr",
-      "phone": "031-281-7004",
-      "status": "confirmed",
-      "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
-      "sources": [
-        {
-          "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
-          "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
-        },
-        {
-          "name": "좌표: OpenStreetMap",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-31",
-      "lat": 37.270227,
-      "lng": 127.111659,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '신갈고등학교, 신중부대로, 상갈동, 기흥구, 용인시' (way 711066071), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/711066071"
-      }
-    },
-    {
-      "placeId": "pl-034",
-      "schoolId": null,
-      "name": "용인백현고등학교",
-      "level": "high",
-      "kind": "공립(일반고)",
-      "address": "경기도 용인시 기흥구 동백7로 112",
-      "homepage": "http://baekhyun-h.goeyi.kr",
-      "phone": "031-693-9311",
-      "status": "confirmed",
-      "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
-      "sources": [
-        {
-          "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
-          "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
-        },
-        {
-          "name": "좌표: OpenStreetMap",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-31",
-      "lat": 37.279147,
-      "lng": 127.162563,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '용인백현고등학교, 112, 동백7로, 동백동, 기흥' (way 472092448), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/472092448"
-      }
-    },
-    {
-      "placeId": "pl-035",
-      "schoolId": null,
-      "name": "청덕고등학교",
-      "level": "high",
-      "kind": "공립(일반고)",
-      "address": "경기도 용인시 기흥구 구성1로 21",
-      "homepage": "https://cheongdeok-h.goeyi.kr",
-      "phone": "031-546-2500",
-      "status": "confirmed",
-      "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
-      "sources": [
-        {
-          "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
-          "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
-        },
-        {
-          "name": "좌표: OpenStreetMap",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-31",
-      "lat": 37.292533,
-      "lng": 127.144192,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '청덕고등학교, 구성1로, 청덕동, 기흥구, 용인시,' (way 421777297), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/421777297"
-      }
-    },
-    {
-      "placeId": "pl-036",
-      "schoolId": null,
-      "name": "초당고등학교",
-      "level": "high",
-      "kind": "공립(일반고)",
-      "address": "경기도 용인시 기흥구 동백중앙로 21",
-      "homepage": "http://chodang-h.goeyi.kr",
-      "phone": "031-547-9100",
-      "status": "confirmed",
-      "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
-      "sources": [
-        {
-          "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
-          "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
-        },
-        {
-          "name": "좌표: OpenStreetMap",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-31",
-      "lat": 37.258551,
-      "lng": 127.163226,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '초당고등학교, 동백죽전대로, 기흥구, 용인시, 경기' (way 729321280), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/729321280"
-      }
-    },
-    {
-      "placeId": "pl-037",
-      "schoolId": null,
-      "name": "흥덕고등학교",
-      "level": "high",
-      "kind": "공립(일반고)",
-      "address": "경기도 용인시 기흥구 흥덕2로 36",
-      "homepage": "http://hd-h.goeyi.kr",
-      "phone": "031-218-0200",
-      "status": "confirmed",
-      "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
-      "sources": [
-        {
-          "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
-          "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
-        },
-        {
-          "name": "좌표: OpenStreetMap",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-31",
-      "lat": 37.270384,
-      "lng": 127.074428,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '흥덕고등학교, 흥덕2로, 영덕동, 기흥구, 용인시,' (way 471455095), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/471455095"
-      }
-    },
-    {
-      "placeId": "pl-038",
-      "schoolId": null,
-      "name": "고림고등학교",
-      "level": "high",
-      "kind": "공립(일반고)",
-      "address": "경기도 용인시 처인구 고림로165",
-      "homepage": "http://gorim-h.goeyi.kr",
-      "phone": "031-525-0500",
-      "status": "confirmed",
-      "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
-      "sources": [
-        {
-          "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
-          "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
-        },
-        {
-          "name": "좌표: OpenStreetMap",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-31",
-      "lat": 37.246768,
-      "lng": 127.21942,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '고림고등학교, 165, 고림로, 양우내안애더센트럴3' (way 836944136), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/836944136"
-      }
-    },
-    {
-      "placeId": "pl-039",
-      "schoolId": null,
-      "name": "용인고등학교",
-      "level": "high",
-      "kind": "공립(일반고)",
-      "address": "경기도 용인시 처인구 금학로253번길 20-21",
-      "homepage": "https://yongin-h.goeyi.kr/",
-      "phone": "031-330-8309",
-      "status": "confirmed",
-      "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
-      "sources": [
-        {
-          "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
-          "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
-        },
-        {
-          "name": "좌표: OpenStreetMap",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-31",
-      "lat": 37.240469,
-      "lng": 127.192992,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '용인고등학교, 금학로253번길, 역북동, 처인구, ' (node 368625694), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/node/368625694"
-      }
-    },
-    {
-      "placeId": "pl-040",
-      "schoolId": null,
-      "name": "용인삼계고등학교",
-      "level": "high",
-      "kind": "공립(일반고)",
-      "address": "경기도 용인시 처인구 포곡읍 백옥대로1898번길 34-42",
-      "homepage": "http://yisamgye-h.goeyi.kr",
-      "phone": "031-329-1000",
-      "status": "confirmed",
-      "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
-      "sources": [
-        {
-          "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
-          "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
-        },
-        {
-          "name": "좌표: OpenStreetMap",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-31",
-      "lat": 37.294761,
-      "lng": 127.240574,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '용인삼계고등학교, 백옥대로1898번길, 처인구, 용' (way 903176571), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/903176571"
-      }
-    },
-    {
-      "placeId": "pl-041",
-      "schoolId": null,
-      "name": "진덕고등학교",
-      "level": "high",
-      "kind": "공립(일반고)",
-      "address": "경기도 용인시 처인구 고림로186번길 93",
-      "homepage": "http://www.goeyi.kr/jindeok-h/main.do",
-      "phone": "031-526-6598",
-      "status": "confirmed",
-      "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
-      "sources": [
-        {
-          "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
-          "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
-        }
-      ],
-      "checkedAt": "2026-10-31",
-      "lat": null,
-      "lng": null,
-      "coordSource": {
-        "name": "OSM에서 학교 객체를 찾지 못해 비움",
-        "url": null
-      }
-    },
-    {
-      "placeId": "pl-042",
-      "schoolId": null,
-      "name": "포곡고등학교",
-      "level": "high",
-      "kind": "공립(일반고)",
-      "address": "경기도 용인시 처인구 포곡읍 포곡로210번길 26",
-      "homepage": "http://pogok-h.goeyi.kr",
-      "phone": "031-329-3700",
-      "status": "confirmed",
-      "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
-      "sources": [
-        {
-          "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
-          "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
-        },
-        {
-          "name": "좌표: OpenStreetMap",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-31",
-      "lat": 37.27274,
-      "lng": 127.227989,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '포곡고등학교, 포곡로210번길, 처인구, 용인시, ' (node 4646472072), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/node/4646472072"
-      }
-    },
-    {
-      "placeId": "pl-043",
-      "schoolId": null,
-      "name": "태성고등학교",
-      "level": "high",
-      "kind": "사립(일반고)",
-      "address": "경기도 용인시 처인구 백옥대로 1059-2",
-      "homepage": "http://taesung-h.goeyi.kr",
-      "phone": "031-335-9181~7",
-      "status": "confirmed",
-      "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
-      "sources": [
-        {
-          "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
-          "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
-        },
-        {
-          "name": "좌표: OpenStreetMap",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-31",
-      "lat": 37.229391,
-      "lng": 127.208671,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '태성고등학교, 백옥대로, 구미마을삼라마이다스빌아파트' (way 469737067), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/469737067"
-      }
-    },
-    {
-      "placeId": "pl-044",
-      "schoolId": null,
-      "name": "처인고등학교",
-      "level": "high",
-      "kind": "공립(일반고)",
-      "address": "경기도 용인시 처인구 남사읍 한숲로 32",
-      "homepage": "https://cheoin-h.goeyi.kr/",
-      "phone": "031-724-2100",
-      "status": "confirmed",
-      "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
-      "sources": [
-        {
-          "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
-          "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
-        },
-        {
-          "name": "좌표: OpenStreetMap",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-31",
-      "lat": 37.15091,
-      "lng": 127.170625,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '처인고등학교, 한숲로, 처인구, 용인시, 경기도, ' (way 636746631), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/636746631"
-      }
-    },
-    {
-      "placeId": "pl-045",
-      "schoolId": null,
-      "name": "백암고등학교",
-      "level": "high",
-      "kind": "공립(일반고)",
-      "address": "경기도 용인시 처인구 백암면 백원로 519-9",
-      "homepage": "http://baegam-h.goeyi.kr",
-      "phone": "031-326-0010",
-      "status": "confirmed",
-      "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
-      "sources": [
-        {
-          "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
-          "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
-        },
-        {
-          "name": "좌표: OpenStreetMap",
-          "url": "https://www.openstreetmap.org/copyright"
-        }
-      ],
-      "checkedAt": "2026-10-31",
-      "lat": 37.165062,
-      "lng": 127.368645,
-      "coordSource": {
-        "name": "OpenStreetMap Nominatim '백암중학교·백암고등학교, 백원로, 처인구, 용인시,' (way 974855520), ODbL 1.0 ⓒ OpenStreetMap contributors",
-        "url": "https://www.openstreetmap.org/way/974855520"
-      }
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
     }
-  ]
+   ],
+   "lat": 37.31933,
+   "lng": 127.077974,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim 검색 '성복초등학교, 52, 성복2로78번길, 신봉동, 수지구' (way 366609276), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/366609276"
+   }
+  },
+  {
+   "placeId": "pl-002",
+   "schoolId": null,
+   "name": "문정중학교",
+   "level": "middle",
+   "kind": null,
+   "address": "경기도 용인시 수지구 포은대로 455",
+   "homepage": null,
+   "phone": null,
+   "checkedAt": "2026-10-26",
+   "status": "reported",
+   "sources": [
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "lat": 37.32306,
+   "lng": 127.099256,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim 검색 '문정중학교, 455, 포은대로, 풍덕천동, 신봉동, 수' (way 389636150), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/389636150"
+   }
+  },
+  {
+   "placeId": "pl-003",
+   "schoolId": null,
+   "name": "성복중학교",
+   "level": "middle",
+   "kind": null,
+   "address": "경기도 용인시 수지구 성복2로78번길 51",
+   "homepage": null,
+   "phone": null,
+   "checkedAt": "2026-10-26",
+   "status": "reported",
+   "sources": [
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    },
+    {
+     "name": "주소 교차 확인: OSM 별도 노드(성복2로78번길 51)와 학교 정보 사이트 표기 일치",
+     "url": null
+    }
+   ],
+   "lat": 37.319441,
+   "lng": 127.076428,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim 검색 '성복중학교, 51, 신봉1로71번길, 신봉동, 수지구,' (way 366609275), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/366609275"
+   }
+  },
+  {
+   "placeId": "pl-004",
+   "schoolId": null,
+   "name": "성서중학교",
+   "level": "middle",
+   "kind": null,
+   "address": "경기도 용인시 수지구 성복1로 147",
+   "homepage": null,
+   "phone": null,
+   "checkedAt": "2026-10-26",
+   "status": "reported",
+   "sources": [
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "lat": 37.315029,
+   "lng": 127.064146,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim 검색 '성서중학교, 147, 성복1로, 신봉동, 수지구, 용인' (way 343111630), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/343111630"
+   }
+  },
+  {
+   "placeId": "pl-005",
+   "schoolId": null,
+   "name": "손곡중학교",
+   "level": "middle",
+   "kind": null,
+   "address": "경기도 용인시 수지구 문인로70번길 5",
+   "homepage": null,
+   "phone": null,
+   "checkedAt": "2026-10-26",
+   "status": "reported",
+   "sources": [
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "lat": 37.334671,
+   "lng": 127.094401,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim 검색 '손곡중학교, 5, 문인로70번길, 동천동, 신봉동, 수' (way 362613063), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/362613063"
+   }
+  },
+  {
+   "placeId": "pl-006",
+   "schoolId": null,
+   "name": "수지중학교",
+   "level": "middle",
+   "kind": null,
+   "address": "경기도 용인시 수지구 수풍로 102",
+   "homepage": null,
+   "phone": null,
+   "checkedAt": "2026-10-26",
+   "status": "reported",
+   "sources": [
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "lat": 37.332561,
+   "lng": 127.094286,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim 검색 '수지중학교, 102, 수풍로, 풍덕천동, 신봉동, 수지' (way 387557720), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/387557720"
+   }
+  },
+  {
+   "placeId": "pl-007",
+   "schoolId": null,
+   "name": "신봉중학교",
+   "level": "middle",
+   "kind": null,
+   "address": "경기도 용인시 수지구 신봉3로 43",
+   "homepage": null,
+   "phone": null,
+   "checkedAt": "2026-10-26",
+   "status": "reported",
+   "sources": [
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "lat": 37.327292,
+   "lng": 127.064243,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim 검색 '신봉중학교, 43, 신봉3로, 신봉동, 수지구, 용인시' (way 366238677), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/366238677"
+   }
+  },
+  {
+   "placeId": "pl-008",
+   "schoolId": null,
+   "name": "용인한빛중학교",
+   "level": "middle",
+   "kind": null,
+   "address": "경기도 용인시 수지구 동천로 177",
+   "homepage": null,
+   "phone": null,
+   "checkedAt": "2026-10-26",
+   "status": "reported",
+   "sources": [
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "lat": 37.337088,
+   "lng": 127.084815,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim 검색 '용인한빛중학교, 177, 동천로, 동천동, 신봉동, 수' (way 360331556), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/360331556"
+   }
+  },
+  {
+   "placeId": "pl-009",
+   "schoolId": null,
+   "name": "정평중학교",
+   "level": "middle",
+   "kind": null,
+   "address": "경기도 용인시 수지구 정평로13번길 21",
+   "homepage": null,
+   "phone": null,
+   "checkedAt": "2026-10-26",
+   "status": "reported",
+   "sources": [
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "lat": 37.317831,
+   "lng": 127.088011,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim 검색 '정평중학교, 21, 정평로13번길, 풍덕천동, 신봉동,' (way 365694524), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/365694524"
+   }
+  },
+  {
+   "placeId": "pl-010",
+   "schoolId": null,
+   "name": "홍천중학교",
+   "level": "middle",
+   "kind": null,
+   "address": "경기도 용인시 수지구 신봉1로71번길 36",
+   "homepage": null,
+   "phone": null,
+   "checkedAt": "2026-10-26",
+   "status": "reported",
+   "sources": [
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "lat": 37.320884,
+   "lng": 127.076583,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim 검색 '홍천중학교, 36, 신봉1로71번길, 신봉동, 수지구,' (way 366609277), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/366609277"
+   }
+  },
+  {
+   "placeId": "pl-011",
+   "schoolId": "school-pungdeok",
+   "name": "풍덕고등학교",
+   "level": "high",
+   "kind": "공립(단설)",
+   "address": "경기도 용인시 수지구 정평로13번길 5",
+   "homepage": "https://pungduck-h.goeyi.kr",
+   "phone": null,
+   "checkedAt": "2026-10-26",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
+    },
+    {
+     "name": "portal/data/schools.json 학교 주소(편제표 4개교)",
+     "url": null
+    }
+   ],
+   "lat": 37.316896,
+   "lng": 127.088837,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim 검색 '풍덕고등학교, 5, 풍덕천로30번길, 풍덕천동, 신봉동' (way 365700433), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/365700433"
+   }
+  },
+  {
+   "placeId": "pl-012",
+   "schoolId": "school-seongbok",
+   "name": "성복고등학교",
+   "level": "high",
+   "kind": "공립(단설)",
+   "address": "경기도 용인시 수지구 도마치로 92",
+   "homepage": "https://seongbok-h.goeyi.kr",
+   "phone": null,
+   "checkedAt": "2026-10-26",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
+    },
+    {
+     "name": "portal/data/schools.json 학교 주소(편제표 4개교)",
+     "url": null
+    }
+   ],
+   "lat": 37.323292,
+   "lng": 127.061138,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim 검색 '성복고등학교, 92, 도마치로, 신봉동, 수지구, 용인' (way 366837924), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/366837924"
+   }
+  },
+  {
+   "placeId": "pl-013",
+   "schoolId": "school-suji",
+   "name": "수지고등학교",
+   "level": "high",
+   "kind": "공립(단설)",
+   "address": "경기도 용인시 수지구 수풍로 73",
+   "homepage": "http://suji-h.goeyi.kr",
+   "phone": null,
+   "checkedAt": "2026-10-26",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
+    },
+    {
+     "name": "portal/data/schools.json 학교 주소(편제표 4개교)",
+     "url": null
+    }
+   ],
+   "lat": 37.330719,
+   "lng": 127.092054,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim 검색 '수지고등학교, 73, 수풍로, 풍덕천동, 신봉동, 수지' (way 362976419), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/362976419"
+   }
+  },
+  {
+   "placeId": "pl-014",
+   "schoolId": "school-yonginheungcheon",
+   "name": "홍천고등학교",
+   "level": "high",
+   "kind": "공립(단설)",
+   "address": "경기도 용인시 수지구 수지로227번길 22",
+   "homepage": "http://yihongcheon-h.goeyi.kr",
+   "phone": null,
+   "checkedAt": "2026-10-26",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
+    },
+    {
+     "name": "portal/data/schools.json 학교 주소(편제표 4개교)",
+     "url": null
+    }
+   ],
+   "lat": 37.32144,
+   "lng": 127.08228,
+   "coordSource": {
+    "name": "OSM 도로 '수지로227번길'(way 346407546)의 대표 좌표 — 학교 건물 위치가 아닌 근사값(학교 객체를 OSM에서 못 찾음), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/346407546"
+   }
+  },
+  {
+   "placeId": "pl-015",
+   "schoolId": null,
+   "name": "용인한국외국어대학교부설고등학교",
+   "level": "high",
+   "kind": "사립(자율고)",
+   "address": "경기도 용인시 처인구 모현읍 외대로54번길 50",
+   "homepage": "http://www.hafs.hs.kr",
+   "phone": null,
+   "checkedAt": "2026-10-26",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+    },
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "lat": 37.329856,
+   "lng": 127.25506,
+   "coordSource": {
+    "name": "OSM의 '한국외국어대학교부속 용인외국어고등학교' 객체(모현읍) 좌표 — 교육청 공식 명칭 '용인한국외국어대학교부설고등학교'와 같은 캠퍼스로 추정, ODbL ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/232201498"
+   }
+  },
+  {
+   "placeId": "pl-016",
+   "schoolId": null,
+   "name": "상현중학교",
+   "level": "middle",
+   "kind": null,
+   "address": "경기도 용인시 수지구 광교마을로 61",
+   "homepage": null,
+   "phone": null,
+   "status": "reported",
+   "note": "수지2중학군(상현동 인근) — 설립 구분·홈페이지는 공식 확인 전이라 null",
+   "sources": [
+    {
+     "name": "경기도교육청 고시 제2024-554호 2025학년도 경기도 중학교 학교군 및 중학구 고시(학교군 현황표)",
+     "url": "https://www.goe.go.kr/resource/old/BBSMSTR_000000000111/BBS_202409250522349970.pdf"
+    },
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-29",
+   "lat": 37.299308,
+   "lng": 127.071021,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '상현중학교, 61, 광교마을로, 상현동, 신봉동, ' (way 361618162), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/361618162"
+   }
+  },
+  {
+   "placeId": "pl-017",
+   "schoolId": null,
+   "name": "서원중학교",
+   "level": "middle",
+   "kind": null,
+   "address": "경기도 용인시 수지구 상현로42번길 26-8",
+   "homepage": null,
+   "phone": null,
+   "status": "reported",
+   "note": "수지2중학군 — 설립 구분·홈페이지는 공식 확인 전이라 null",
+   "sources": [
+    {
+     "name": "경기도교육청 고시 제2024-554호 2025학년도 경기도 중학교 학교군 및 중학구 고시(학교군 현황표)",
+     "url": "https://www.goe.go.kr/resource/old/BBSMSTR_000000000111/BBS_202409250522349970.pdf"
+    },
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-29",
+   "lat": 37.301681,
+   "lng": 127.080651,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '서원중학교, 26-8, 상현로42번길, 상현동, 신' (way 763175567), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/763175567"
+   }
+  },
+  {
+   "placeId": "pl-018",
+   "schoolId": null,
+   "name": "소현중학교",
+   "level": "middle",
+   "kind": null,
+   "address": "경기도 용인시 만현로133번길 96(OSM은 기흥구로 표기, 행정구 확인 필요)",
+   "homepage": null,
+   "phone": null,
+   "status": "reported",
+   "note": "수지2중학군 — 설립 구분·홈페이지는 공식 확인 전이라 null",
+   "sources": [
+    {
+     "name": "경기도교육청 고시 제2024-554호 2025학년도 경기도 중학교 학교군 및 중학구 고시(학교군 현황표)",
+     "url": "https://www.goe.go.kr/resource/old/BBSMSTR_000000000111/BBS_202409250522349970.pdf"
+    },
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-29",
+   "lat": 37.301403,
+   "lng": 127.093735,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '소현중학교, 96, 만현로133번길, 기흥구, 용인' (way 1257149423), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/1257149423"
+   }
+  },
+  {
+   "placeId": "pl-019",
+   "schoolId": null,
+   "name": "이현중학교",
+   "level": "middle",
+   "kind": null,
+   "address": "주소 미확인(OSM에서 학교 건물 객체를 못 찾음)",
+   "homepage": null,
+   "phone": null,
+   "status": "reported",
+   "note": "수지2중학군 — 설립 구분·홈페이지는 공식 확인 전이라 null",
+   "sources": [
+    {
+     "name": "경기도교육청 고시 제2024-554호 2025학년도 경기도 중학교 학교군 및 중학구 고시(학교군 현황표)",
+     "url": "https://www.goe.go.kr/resource/old/BBSMSTR_000000000111/BBS_202409250522349970.pdf"
+    },
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-29",
+   "lat": null,
+   "lng": null,
+   "coordSource": {
+    "name": "학교 건물 좌표를 OSM에서 찾지 못해 비움(검색 결과가 아파트·정류장 객체)",
+    "url": null
+   }
+  },
+  {
+   "placeId": "pl-020",
+   "schoolId": null,
+   "name": "상현고등학교",
+   "level": "high",
+   "kind": "공립(단설)",
+   "address": "경기도 용인시 수지구 법조로 222",
+   "homepage": "http://sanghyun-h.goeyi.kr",
+   "phone": null,
+   "status": "confirmed",
+   "note": "용인학군 2구역(수지구) 평준화 일반고",
+   "sources": [
+    {
+     "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
+    },
+    {
+     "name": "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)",
+     "url": "https://satp.goe.go.kr/main.do"
+    },
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-29",
+   "lat": 37.298856,
+   "lng": 127.07436,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '상현고등학교, 222, 법조로, 상현동, 신봉동, ' (way 361622588), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/361622588"
+   }
+  },
+  {
+   "placeId": "pl-021",
+   "schoolId": null,
+   "name": "서원고등학교",
+   "level": "high",
+   "kind": "공립(단설)",
+   "address": "경기도 용인시 수지구 상현로42번길 26-7",
+   "homepage": "http://seowon-h.goeyi.kr",
+   "phone": null,
+   "status": "confirmed",
+   "note": "용인학군 2구역(수지구) 평준화 일반고",
+   "sources": [
+    {
+     "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
+    },
+    {
+     "name": "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)",
+     "url": "https://satp.goe.go.kr/main.do"
+    },
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-29",
+   "lat": 37.302106,
+   "lng": 127.081747,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '서원고등학교, 26-7, 상현로42번길, 상현동, ' (way 763175570), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/763175570"
+   }
+  },
+  {
+   "placeId": "pl-022",
+   "schoolId": null,
+   "name": "신봉고등학교",
+   "level": "high",
+   "kind": "공립(단설)",
+   "address": "경기도 용인시 수지구 신봉3로 45",
+   "homepage": "http://shinbong-h.goeyi.kr",
+   "phone": null,
+   "status": "confirmed",
+   "note": "용인학군 2구역(수지구) 평준화 일반고",
+   "sources": [
+    {
+     "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
+    },
+    {
+     "name": "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)",
+     "url": "https://satp.goe.go.kr/main.do"
+    },
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-29",
+   "lat": 37.327927,
+   "lng": 127.063093,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '신봉고등학교, 45, 도마치로, 신봉동, 수지구, ' (way 347522918), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/347522918"
+   }
+  },
+  {
+   "placeId": "pl-023",
+   "schoolId": null,
+   "name": "대지고등학교",
+   "level": "high",
+   "kind": "공립(단설)",
+   "address": "경기도 용인시 수지구 동백죽전대로 1066",
+   "homepage": "https://daeji-h.goeyi.kr",
+   "phone": null,
+   "status": "confirmed",
+   "note": "용인학군 2구역(수지구) 평준화 일반고",
+   "sources": [
+    {
+     "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
+    },
+    {
+     "name": "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)",
+     "url": "https://satp.goe.go.kr/main.do"
+    },
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-29",
+   "lat": null,
+   "lng": null,
+   "coordSource": {
+    "name": "학교 건물 좌표를 OSM에서 찾지 못해 비움(검색 결과가 아파트·정류장 객체)",
+    "url": null
+   }
+  },
+  {
+   "placeId": "pl-024",
+   "schoolId": null,
+   "name": "죽전고등학교",
+   "level": "high",
+   "kind": "공립(단설)",
+   "address": "경기도 용인시 수지구 용구대로2771번길 23",
+   "homepage": "http://jukjeon-h.goeyi.kr",
+   "phone": null,
+   "status": "confirmed",
+   "note": "용인학군 2구역(수지구) 평준화 일반고",
+   "sources": [
+    {
+     "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
+    },
+    {
+     "name": "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)",
+     "url": "https://satp.goe.go.kr/main.do"
+    },
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-29",
+   "lat": 37.332575,
+   "lng": 127.106202,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '죽전고등학교, 용구대로2771번길, 벽산타운4단지,' (way 470223157), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/470223157"
+   }
+  },
+  {
+   "placeId": "pl-025",
+   "schoolId": null,
+   "name": "현암고등학교",
+   "level": "high",
+   "kind": "공립(단설)",
+   "address": "경기도 용인시 수지구 디지털벨리로 17",
+   "homepage": "https://hyunam-h.goeyi.kr",
+   "phone": null,
+   "status": "confirmed",
+   "note": "용인학군 2구역(수지구) 평준화 일반고",
+   "sources": [
+    {
+     "name": "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
+    },
+    {
+     "name": "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)",
+     "url": "https://satp.goe.go.kr/main.do"
+    },
+    {
+     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-29",
+   "lat": 37.328894,
+   "lng": 127.131934,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '현암고등학교, 디지털벨리로, 수지구, 용인시, 경기' (way 834357357), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/834357357"
+   }
+  },
+  {
+   "placeId": "pl-026",
+   "schoolId": null,
+   "name": "구성고등학교",
+   "level": "high",
+   "kind": "공립(일반고)",
+   "address": "경기도 용인시 기흥구 연원로42번길 47",
+   "homepage": "https://koosung-h.goeyi.kr/",
+   "phone": "031-284-1380",
+   "status": "confirmed",
+   "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+    },
+    {
+     "name": "좌표: OpenStreetMap",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "lat": 37.299,
+   "lng": 127.11559,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '구성고등학교, 47, 연원로42번길, 마북동, 기흥' (way 424228656), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/424228656"
+   }
+  },
+  {
+   "placeId": "pl-027",
+   "schoolId": null,
+   "name": "기흥고등학교",
+   "level": "high",
+   "kind": "공립(일반고)",
+   "address": "경기도 용인시 기흥구 관곡로 20",
+   "homepage": "https://giheung-h.goeyi.kr/",
+   "phone": "031-679-1940",
+   "status": "confirmed",
+   "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+    },
+    {
+     "name": "좌표: OpenStreetMap",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "lat": 37.282561,
+   "lng": 127.108629,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '기흥고등학교, 관곡로, 신갈동, 기흥구, 용인시, ' (way 551380092), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/551380092"
+   }
+  },
+  {
+   "placeId": "pl-028",
+   "schoolId": null,
+   "name": "동백고등학교",
+   "level": "high",
+   "kind": "공립(일반고)",
+   "address": "경기도 용인시 기흥구 동백7로 61",
+   "homepage": "http://dongbaek-h.goeyi.kr/",
+   "phone": "031-303-4100",
+   "status": "confirmed",
+   "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+    },
+    {
+     "name": "좌표: OpenStreetMap",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "lat": 37.282977,
+   "lng": 127.158567,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '동백고등학교, 61, 동백7로, 동백동, 기흥구, ' (way 469908293), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/469908293"
+   }
+  },
+  {
+   "placeId": "pl-029",
+   "schoolId": null,
+   "name": "보라고등학교",
+   "level": "high",
+   "kind": "공립(일반고)",
+   "address": "경기도 용인시 기흥구 한보라1로43번길 7",
+   "homepage": "http://bora-h.goeyi.kr/",
+   "phone": "031-8005-8780",
+   "status": "confirmed",
+   "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+    },
+    {
+     "name": "좌표: OpenStreetMap",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "lat": 37.251318,
+   "lng": 127.110388,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '보라고등학교, 한보라1로, 한보라6단지 더힐, 보라' (way 170825590), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/170825590"
+   }
+  },
+  {
+   "placeId": "pl-030",
+   "schoolId": null,
+   "name": "보정고등학교",
+   "level": "high",
+   "kind": "공립(일반고)",
+   "address": "경기도 용인시 기흥구 보정로 22",
+   "homepage": "http://bojeong-h.goeyi.kr",
+   "phone": "031-270-7257",
+   "status": "confirmed",
+   "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+    },
+    {
+     "name": "좌표: OpenStreetMap",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "lat": 37.313592,
+   "lng": 127.109472,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '보정고등학교, 22, 보정로, 보정동, 기흥구, 용' (way 423124512), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/423124512"
+   }
+  },
+  {
+   "placeId": "pl-031",
+   "schoolId": null,
+   "name": "서천고등학교",
+   "level": "high",
+   "kind": "공립(일반고)",
+   "address": "경기도 용인시 기흥구 서천서로 126",
+   "homepage": "http://seocheon-h.goeyi.kr/",
+   "phone": "031-546-7200",
+   "status": "confirmed",
+   "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+    },
+    {
+     "name": "좌표: OpenStreetMap",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "lat": 37.233884,
+   "lng": 127.069455,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '서천고등학교, 서천로, 농서동, 기흥구, 용인시, ' (way 470199321), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/470199321"
+   }
+  },
+  {
+   "placeId": "pl-032",
+   "schoolId": null,
+   "name": "성지고등학교",
+   "level": "high",
+   "kind": "공립(일반고)",
+   "address": "경기도 용인시 기흥구 갈곡로12번길 13",
+   "homepage": "https://seongji-h.goeyi.kr",
+   "phone": "031-547-3320",
+   "status": "confirmed",
+   "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+    },
+    {
+     "name": "좌표: OpenStreetMap",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "lat": 37.272081,
+   "lng": 127.131181,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '성지고등학교, 강남동로, 구갈동, 기흥구, 용인시,' (way 711066080), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/711066080"
+   }
+  },
+  {
+   "placeId": "pl-033",
+   "schoolId": null,
+   "name": "신갈고등학교",
+   "level": "high",
+   "kind": "사립(일반고)",
+   "address": "경기도 용인시 기흥구 백남준로 13",
+   "homepage": "http://shingal-h.goeyi.kr",
+   "phone": "031-281-7004",
+   "status": "confirmed",
+   "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+    },
+    {
+     "name": "좌표: OpenStreetMap",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "lat": 37.270227,
+   "lng": 127.111659,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '신갈고등학교, 신중부대로, 상갈동, 기흥구, 용인시' (way 711066071), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/711066071"
+   }
+  },
+  {
+   "placeId": "pl-034",
+   "schoolId": null,
+   "name": "용인백현고등학교",
+   "level": "high",
+   "kind": "공립(일반고)",
+   "address": "경기도 용인시 기흥구 동백7로 112",
+   "homepage": "http://baekhyun-h.goeyi.kr",
+   "phone": "031-693-9311",
+   "status": "confirmed",
+   "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+    },
+    {
+     "name": "좌표: OpenStreetMap",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "lat": 37.279147,
+   "lng": 127.162563,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '용인백현고등학교, 112, 동백7로, 동백동, 기흥' (way 472092448), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/472092448"
+   }
+  },
+  {
+   "placeId": "pl-035",
+   "schoolId": null,
+   "name": "청덕고등학교",
+   "level": "high",
+   "kind": "공립(일반고)",
+   "address": "경기도 용인시 기흥구 구성1로 21",
+   "homepage": "https://cheongdeok-h.goeyi.kr",
+   "phone": "031-546-2500",
+   "status": "confirmed",
+   "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+    },
+    {
+     "name": "좌표: OpenStreetMap",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "lat": 37.292533,
+   "lng": 127.144192,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '청덕고등학교, 구성1로, 청덕동, 기흥구, 용인시,' (way 421777297), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/421777297"
+   }
+  },
+  {
+   "placeId": "pl-036",
+   "schoolId": null,
+   "name": "초당고등학교",
+   "level": "high",
+   "kind": "공립(일반고)",
+   "address": "경기도 용인시 기흥구 동백중앙로 21",
+   "homepage": "http://chodang-h.goeyi.kr",
+   "phone": "031-547-9100",
+   "status": "confirmed",
+   "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+    },
+    {
+     "name": "좌표: OpenStreetMap",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "lat": 37.258551,
+   "lng": 127.163226,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '초당고등학교, 동백죽전대로, 기흥구, 용인시, 경기' (way 729321280), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/729321280"
+   }
+  },
+  {
+   "placeId": "pl-037",
+   "schoolId": null,
+   "name": "흥덕고등학교",
+   "level": "high",
+   "kind": "공립(일반고)",
+   "address": "경기도 용인시 기흥구 흥덕2로 36",
+   "homepage": "http://hd-h.goeyi.kr",
+   "phone": "031-218-0200",
+   "status": "confirmed",
+   "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+    },
+    {
+     "name": "좌표: OpenStreetMap",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "lat": 37.270384,
+   "lng": 127.074428,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '흥덕고등학교, 흥덕2로, 영덕동, 기흥구, 용인시,' (way 471455095), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/471455095"
+   }
+  },
+  {
+   "placeId": "pl-038",
+   "schoolId": null,
+   "name": "고림고등학교",
+   "level": "high",
+   "kind": "공립(일반고)",
+   "address": "경기도 용인시 처인구 고림로165",
+   "homepage": "http://gorim-h.goeyi.kr",
+   "phone": "031-525-0500",
+   "status": "confirmed",
+   "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+    },
+    {
+     "name": "좌표: OpenStreetMap",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "lat": 37.246768,
+   "lng": 127.21942,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '고림고등학교, 165, 고림로, 양우내안애더센트럴3' (way 836944136), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/836944136"
+   }
+  },
+  {
+   "placeId": "pl-039",
+   "schoolId": null,
+   "name": "용인고등학교",
+   "level": "high",
+   "kind": "공립(일반고)",
+   "address": "경기도 용인시 처인구 금학로253번길 20-21",
+   "homepage": "https://yongin-h.goeyi.kr/",
+   "phone": "031-330-8309",
+   "status": "confirmed",
+   "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+    },
+    {
+     "name": "좌표: OpenStreetMap",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "lat": 37.240469,
+   "lng": 127.192992,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '용인고등학교, 금학로253번길, 역북동, 처인구, ' (node 368625694), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/node/368625694"
+   }
+  },
+  {
+   "placeId": "pl-040",
+   "schoolId": null,
+   "name": "용인삼계고등학교",
+   "level": "high",
+   "kind": "공립(일반고)",
+   "address": "경기도 용인시 처인구 포곡읍 백옥대로1898번길 34-42",
+   "homepage": "http://yisamgye-h.goeyi.kr",
+   "phone": "031-329-1000",
+   "status": "confirmed",
+   "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+    },
+    {
+     "name": "좌표: OpenStreetMap",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "lat": 37.294761,
+   "lng": 127.240574,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '용인삼계고등학교, 백옥대로1898번길, 처인구, 용' (way 903176571), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/903176571"
+   }
+  },
+  {
+   "placeId": "pl-041",
+   "schoolId": null,
+   "name": "진덕고등학교",
+   "level": "high",
+   "kind": "공립(일반고)",
+   "address": "경기도 용인시 처인구 고림로186번길 93",
+   "homepage": "http://www.goeyi.kr/jindeok-h/main.do",
+   "phone": "031-526-6598",
+   "status": "confirmed",
+   "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "lat": null,
+   "lng": null,
+   "coordSource": {
+    "name": "OSM에서 학교 객체를 찾지 못해 비움",
+    "url": null
+   }
+  },
+  {
+   "placeId": "pl-042",
+   "schoolId": null,
+   "name": "포곡고등학교",
+   "level": "high",
+   "kind": "공립(일반고)",
+   "address": "경기도 용인시 처인구 포곡읍 포곡로210번길 26",
+   "homepage": "http://pogok-h.goeyi.kr",
+   "phone": "031-329-3700",
+   "status": "confirmed",
+   "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+    },
+    {
+     "name": "좌표: OpenStreetMap",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "lat": 37.27274,
+   "lng": 127.227989,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '포곡고등학교, 포곡로210번길, 처인구, 용인시, ' (node 4646472072), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/node/4646472072"
+   }
+  },
+  {
+   "placeId": "pl-043",
+   "schoolId": null,
+   "name": "태성고등학교",
+   "level": "high",
+   "kind": "사립(일반고)",
+   "address": "경기도 용인시 처인구 백옥대로 1059-2",
+   "homepage": "http://taesung-h.goeyi.kr",
+   "phone": "031-335-9181~7",
+   "status": "confirmed",
+   "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+    },
+    {
+     "name": "좌표: OpenStreetMap",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "lat": 37.229391,
+   "lng": 127.208671,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '태성고등학교, 백옥대로, 구미마을삼라마이다스빌아파트' (way 469737067), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/469737067"
+   }
+  },
+  {
+   "placeId": "pl-044",
+   "schoolId": null,
+   "name": "처인고등학교",
+   "level": "high",
+   "kind": "공립(일반고)",
+   "address": "경기도 용인시 처인구 남사읍 한숲로 32",
+   "homepage": "https://cheoin-h.goeyi.kr/",
+   "phone": "031-724-2100",
+   "status": "confirmed",
+   "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+    },
+    {
+     "name": "좌표: OpenStreetMap",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "lat": 37.15091,
+   "lng": 127.170625,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '처인고등학교, 한숲로, 처인구, 용인시, 경기도, ' (way 636746631), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/636746631"
+   }
+  },
+  {
+   "placeId": "pl-045",
+   "schoolId": null,
+   "name": "백암고등학교",
+   "level": "high",
+   "kind": "공립(일반고)",
+   "address": "경기도 용인시 처인구 백암면 백원로 519-9",
+   "homepage": "http://baegam-h.goeyi.kr",
+   "phone": "031-326-0010",
+   "status": "confirmed",
+   "note": "용인학군 고교(수지 외) — 학교기본정보는 NEIS 개방 API 기준",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+    },
+    {
+     "name": "좌표: OpenStreetMap",
+     "url": "https://www.openstreetmap.org/copyright"
+    }
+   ],
+   "checkedAt": "2026-10-31",
+   "lat": 37.165062,
+   "lng": 127.368645,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '백암중학교·백암고등학교, 백원로, 처인구, 용인시,' (way 974855520), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/way/974855520"
+   }
+  },
+  {
+   "placeId": "pl-046",
+   "schoolId": null,
+   "name": "고기초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 고기로 385",
+   "homepage": "https://kogi-e.goeyi.kr/",
+   "phone": "031-263-9775",
+   "checkedAt": "2026-11-01",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "lat": null,
+   "lng": null,
+   "coordSource": null
+  },
+  {
+   "placeId": "pl-047",
+   "schoolId": null,
+   "name": "동천초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 고기로 71",
+   "homepage": "https://www.goeyi.kr/dongcheon1-e/main.do",
+   "phone": "031-272-1279",
+   "checkedAt": "2026-11-01",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "lat": null,
+   "lng": null,
+   "coordSource": null
+  },
+  {
+   "placeId": "pl-048",
+   "schoolId": null,
+   "name": "매봉초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 수지로 75-1",
+   "homepage": "https://www.goeyi.kr/yimb-e/main.do",
+   "phone": "031-265-9403",
+   "checkedAt": "2026-11-01",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "lat": null,
+   "lng": null,
+   "coordSource": null
+  },
+  {
+   "placeId": "pl-049",
+   "schoolId": null,
+   "name": "성서초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 성복2로 210",
+   "homepage": "https://sungseocho-e.goeyi.kr/sungseocho-e/main.do",
+   "phone": "031-896-7243",
+   "checkedAt": "2026-11-01",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "lat": null,
+   "lng": null,
+   "coordSource": null
+  },
+  {
+   "placeId": "pl-050",
+   "schoolId": null,
+   "name": "손곡초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 손곡로 68",
+   "homepage": "https://songok-e.goeyi.kr",
+   "phone": "031-262-4962",
+   "checkedAt": "2026-11-01",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "lat": null,
+   "lng": null,
+   "coordSource": null
+  },
+  {
+   "placeId": "pl-051",
+   "schoolId": null,
+   "name": "수지초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 정평로13번길 30",
+   "homepage": "https://suji-e.goeyi.kr/suji-e/main.do",
+   "phone": "031-262-0055",
+   "checkedAt": "2026-11-01",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "lat": null,
+   "lng": null,
+   "coordSource": null
+  },
+  {
+   "placeId": "pl-052",
+   "schoolId": null,
+   "name": "신리초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 신봉1로48번길 6",
+   "homepage": "http://shin-ri-e.goeyi.kr",
+   "phone": "031-264-9396",
+   "checkedAt": "2026-11-01",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "lat": null,
+   "lng": null,
+   "coordSource": null
+  },
+  {
+   "placeId": "pl-053",
+   "schoolId": null,
+   "name": "신월초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 풍덕천로 86",
+   "homepage": "https://sinwol-e.goeyi.kr",
+   "phone": "031-265-7015,7014",
+   "checkedAt": "2026-11-01",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "lat": null,
+   "lng": null,
+   "coordSource": null
+  },
+  {
+   "placeId": "pl-054",
+   "schoolId": null,
+   "name": "신일초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 신봉2로48번길 28",
+   "homepage": "https://sinil4u-e.goeyi.kr",
+   "phone": "031-896-4812",
+   "checkedAt": "2026-11-01",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "lat": null,
+   "lng": null,
+   "coordSource": null
+  },
+  {
+   "placeId": "pl-055",
+   "schoolId": null,
+   "name": "용인신봉초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 신봉2로 115",
+   "homepage": "https://yongin-sinbong-e.goeyi.kr",
+   "phone": "031-262-2190",
+   "checkedAt": "2026-11-01",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "lat": null,
+   "lng": null,
+   "coordSource": null
+  },
+  {
+   "placeId": "pl-056",
+   "schoolId": null,
+   "name": "용인심곡초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 심곡로 59",
+   "homepage": "https://yisimgok-e.goeyi.kr/yisimgok-e/main.do",
+   "phone": "031-263-4430",
+   "checkedAt": "2026-11-01",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "lat": null,
+   "lng": null,
+   "coordSource": null
+  },
+  {
+   "placeId": "pl-057",
+   "schoolId": null,
+   "name": "용인한빛초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 동천로 153번길 23",
+   "homepage": "https://yonginhanbit-e.goeyi.kr/",
+   "phone": "031-896-7483",
+   "checkedAt": "2026-11-01",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "lat": null,
+   "lng": null,
+   "coordSource": null
+  },
+  {
+   "placeId": "pl-058",
+   "schoolId": null,
+   "name": "이현초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 기흥구 이현로 83",
+   "homepage": "https://e-hyun-e.goeyi.kr",
+   "phone": "031-276-0972",
+   "checkedAt": "2026-11-01",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "lat": null,
+   "lng": null,
+   "coordSource": null
+  },
+  {
+   "placeId": "pl-059",
+   "schoolId": null,
+   "name": "정평초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 정평로 64",
+   "homepage": "http://jp-e.goeyi.kr",
+   "phone": "031-266-0172",
+   "checkedAt": "2026-11-01",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "lat": null,
+   "lng": null,
+   "coordSource": null
+  },
+  {
+   "placeId": "pl-060",
+   "schoolId": null,
+   "name": "토월초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 수지로296번길 3",
+   "homepage": "http://to-wol-e.goeyi.kr",
+   "phone": "031-261-4582",
+   "checkedAt": "2026-11-01",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "lat": null,
+   "lng": null,
+   "coordSource": null
+  },
+  {
+   "placeId": "pl-061",
+   "schoolId": null,
+   "name": "풍덕초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 수지로 367",
+   "homepage": "https://pungduk-e.goeyi.kr",
+   "phone": "031-261-0052",
+   "checkedAt": "2026-11-01",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "lat": null,
+   "lng": null,
+   "coordSource": null
+  },
+  {
+   "placeId": "pl-062",
+   "schoolId": null,
+   "name": "풍천초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 진산로66번길 20",
+   "homepage": "https://pung1000-e.goeyi.kr",
+   "phone": "031-272-4745",
+   "checkedAt": "2026-11-01",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "lat": null,
+   "lng": null,
+   "coordSource": null
+  },
+  {
+   "placeId": "pl-063",
+   "schoolId": null,
+   "name": "홍천초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 신봉2로14번길 49",
+   "homepage": "https://hongcheon-e.goeyi.kr",
+   "phone": "031-326-3706",
+   "checkedAt": "2026-11-01",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "lat": null,
+   "lng": null,
+   "coordSource": null
+  },
+  {
+   "placeId": "pl-064",
+   "schoolId": null,
+   "name": "효자초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 성복1로 106-1",
+   "homepage": "https://hyojacho-e.goeyi.kr/hyojacho-e/main.do",
+   "phone": "031-276-3038",
+   "checkedAt": "2026-11-01",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "lat": null,
+   "lng": null,
+   "coordSource": null
+  },
+  {
+   "placeId": "pl-065",
+   "schoolId": null,
+   "name": "상현초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 만현로67번길 23",
+   "homepage": "https://sanghy-e.goeyi.kr/",
+   "phone": "031-265-4564",
+   "checkedAt": "2026-11-01",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "lat": null,
+   "lng": null,
+   "coordSource": null
+  },
+  {
+   "placeId": "pl-066",
+   "schoolId": null,
+   "name": "새빛초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 광교마을로 63",
+   "homepage": "http://saebit-e.goeyi.kr",
+   "phone": "031-8007-0802",
+   "checkedAt": "2026-11-01",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "lat": null,
+   "lng": null,
+   "coordSource": null
+  },
+  {
+   "placeId": "pl-067",
+   "schoolId": null,
+   "name": "서원초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기 용인시 수지구 상현로 45",
+   "homepage": "https://seowon-e.goeyi.kr",
+   "phone": "031-266-2292",
+   "checkedAt": "2026-11-01",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "lat": null,
+   "lng": null,
+   "coordSource": null
+  },
+  {
+   "placeId": "pl-068",
+   "schoolId": null,
+   "name": "소현초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 만현로133번길 78",
+   "homepage": "https://sohyun-e.goeyi.kr",
+   "phone": "031-261-8141",
+   "checkedAt": "2026-11-01",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "lat": null,
+   "lng": null,
+   "coordSource": null
+  },
+  {
+   "placeId": "pl-069",
+   "schoolId": null,
+   "name": "솔개초등학교",
+   "level": "elementary",
+   "kind": "공립",
+   "address": "경기도 용인시 수지구 상현로 79",
+   "homepage": "https://solgae-e.goeyi.kr",
+   "phone": "031-8014-9368,9",
+   "checkedAt": "2026-11-01",
+   "status": "confirmed",
+   "sources": [
+    {
+     "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    }
+   ],
+   "lat": null,
+   "lng": null,
+   "coordSource": null
+  }
+ ]
 }

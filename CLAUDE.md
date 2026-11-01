@@ -42,6 +42,7 @@ Playwright는 설치돼 있다(`require('playwright')`). 화면 변경 후 스�
 - 토큰 절약: 단순·반복·패턴 있는 일은 Python 스크립트(`tools/`, `tools/pm/`)로 자동화하고 출력은 요약만 본다(긴 JSON·스크린샷을 그대로 읽지 않는다). 화면 점검은 `python3 tools/pm/sitecheck.py`, PR 상태는 `python3 tools/pm/prs.py status`. 보고는 커밋 링크 한 줄이면 충분하다.
 - 푸시하면 **클릭 가능한 링크**(브랜치, 커밋, Pages 화면)를 알려준다. Pages 주소: `https://gc8134choi.github.io/admissions-2030/portal/`
 - 이 저장소의 클론은 `main`만 추적한다. 푸시 직후 stop hook 경고를 막으려면 `git fetch origin +refs/heads/<브랜치>:refs/remotes/origin/<브랜치>` 를 실행한다.
+- 비교 표는 `COMPARE-TABLE.md` 기준(대상=열, 항목=행, 항목 열·대상 줄 고정, 대상 선택, 출처는 1탭 뒤)과 공용 컴포넌트 `portal/compare-table.js`만 쓴다(사용자 지시 2026-11-01).
 - 메뉴는 단순하게 유지한다(사용자가 하위 메뉴 증가를 싫어함). 새 기능은 기존 화면의 필터·탭으로 먼저 푼다.
 - 세션은 PM에 중간 진행을 보내지 않는다. 작업 완료(브랜치·커밋 링크와 확인 결과 1건)와 막힘·문의(질문 하나와 선택지)만 보낸다. 사용자에게 묻는 질문은 의사결정 세션이 옵션 다이얼로그로 대신 묻는다.
 
