@@ -1,6 +1,7 @@
 // research/data/glossary-draft.json(조사 세션) → portal/data/glossary.json (용어사전, ⓘ 풀이).
 //   - term·aliases는 서로 겹치지 않아야 한다(화면이 본문에서 용어를 찾아 ⓘ를 붙이기 때문). 초안이 없으면 빈 목록을 만든다.
 // 사용: node tools/build-glossary.mjs [--check]
+import { withSourceIds } from "./lib/source-ids.mjs";
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 
 const SRC = "research/data/glossary-draft.json";
@@ -35,7 +36,7 @@ for (const t of draft.terms) for (const al of t.aliases || []) {
 if (errs.length) { console.error(errs.join("\n")); process.exit(1); }
 
 const out = { _meta: { note: "용어사전(생성물, 손으로 고치지 않는다). research/data/glossary-draft.json에서 tools/build-glossary.mjs가 만든다.", checkedAt: draft._meta?.checkedAt ?? null, count: draft.terms.length }, terms: draft.terms };
-const json = JSON.stringify(out, null, 1) + "\n";
+const json = JSON.stringify(withSourceIds(out), null, 1) + "\n";
 const target = "portal/data/glossary.json";
 if (process.argv.includes("--check")) {
   let cur = ""; try { cur = readFileSync(target, "utf8"); } catch {}

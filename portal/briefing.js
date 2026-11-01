@@ -2,6 +2,7 @@
 //   import { briefingBlock } from "./briefing.js";
 //   html += briefingBlock(await load("briefings"), schoolId, esc);   // 노트가 없으면 빈 문자열
 // 신뢰도는 배지 없이 조용한 글자(일관/추정/참고만)로 항목 끝에 붙인다. 학교 공식 문서가 아니라 녹음을 AI가 요약한 내용이다.
+import "./policy-css.js";
 import { stageTag } from "./stage.js";
 import { srcWrap } from "./src-ref.js";
 const dot = (d) => d.replace(/-/g, ".");

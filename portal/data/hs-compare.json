@@ -186,6 +186,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
      },
+     "sourceId": "src-23491a33",
      "nullReason": null
     },
     "founding": {
@@ -196,6 +197,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
      },
+     "sourceId": "src-23491a33",
      "nullReason": null
     },
     "coed": {
@@ -206,6 +208,7 @@
       "name": "학교알리미 학교정보(2026 공시) 및 편제표 요약",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
      },
+     "sourceId": "src-23491a33",
      "nullReason": null
     },
     "address": {
@@ -216,6 +219,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
      },
+     "sourceId": "src-23491a33",
      "nullReason": null
     },
     "classes": {
@@ -226,6 +230,7 @@
       "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
      },
+     "sourceId": "src-23491a33",
      "nullReason": null,
      "note": "일반학급 수(특수학급 제외)"
     },
@@ -237,6 +242,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
      },
+     "sourceId": "src-23491a33",
      "nullReason": null
     },
     "teachers": {
@@ -247,6 +253,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
      },
+     "sourceId": "src-23491a33",
      "nullReason": null
     },
     "perClass": {
@@ -257,6 +264,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
      },
+     "sourceId": "src-23491a33",
      "nullReason": null
     },
     "perTeacher": {
@@ -267,6 +275,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
      },
+     "sourceId": "src-23491a33",
      "nullReason": null
     },
     "admission": {
@@ -277,6 +286,7 @@
       "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조)",
       "url": null
      },
+     "sourceId": "src-473b60be",
      "nullReason": null
     },
     "zone": {
@@ -287,6 +297,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -297,6 +308,7 @@
       "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조 완료)",
       "url": null
      },
+     "sourceId": "src-439a21a5",
      "nullReason": null
     },
     "subjectCount": {
@@ -307,6 +319,7 @@
       "name": "편제표 요약(개설 후보, 수능 범위는 추정)",
       "url": null
      },
+     "sourceId": "src-7be73070",
      "nullReason": null
     },
     "univStats": {
@@ -317,6 +330,7 @@
       "name": "학교알리미 공시항목 목록",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
      },
+     "sourceId": "src-23491a33",
      "nullReason": "학교알리미 2026 공시 항목 목록(46개)에 졸업생 대학 진학 현황 항목이 없음. 학교 설명회·학교 홈페이지 자료는 별도 확인 필요"
     },
     "meal": {
@@ -327,6 +341,7 @@
       "name": "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
      },
+     "sourceId": "src-23491a33",
      "nullReason": null
     },
     "canteen": {
@@ -337,6 +352,7 @@
       "name": "홍천고 설명회 요약(사용자 참석 녹음, AI 요약)",
       "url": null
      },
+     "sourceId": "src-54692cf1",
      "nullReason": null
     },
     "briefing": {
@@ -347,6 +363,7 @@
       "name": "조사 자료",
       "url": null
      },
+     "sourceId": "src-d8226f95",
      "nullReason": null
     },
     "dorm": {
@@ -364,6 +381,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
      },
+     "sourceId": "src-23491a33",
      "nullReason": null
     },
     "schoolinfo": {
@@ -374,6 +392,7 @@
       "name": "학교알리미",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
      },
+     "sourceId": "src-23491a33",
      "nullReason": null
     },
     "classesDetail": {
@@ -384,6 +403,7 @@
       "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
      },
+     "sourceId": "src-23491a33",
      "nullReason": null
     },
     "studentsDetail": {
@@ -394,6 +414,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
      },
+     "sourceId": "src-23491a33",
      "nullReason": null
     }
    }
@@ -411,6 +432,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
      },
+     "sourceId": "src-5b6184f8",
      "nullReason": null
     },
     "founding": {
@@ -421,6 +443,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
      },
+     "sourceId": "src-5b6184f8",
      "nullReason": null
     },
     "coed": {
@@ -431,6 +454,7 @@
       "name": "학교알리미 학교정보(2026 공시) 및 편제표 요약",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
      },
+     "sourceId": "src-5b6184f8",
      "nullReason": null
     },
     "address": {
@@ -441,6 +465,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
      },
+     "sourceId": "src-5b6184f8",
      "nullReason": null
     },
     "classes": {
@@ -451,6 +476,7 @@
       "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
      },
+     "sourceId": "src-5b6184f8",
      "nullReason": null,
      "note": "일반학급 수(특수학급 제외)"
     },
@@ -462,6 +488,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
      },
+     "sourceId": "src-5b6184f8",
      "nullReason": null
     },
     "teachers": {
@@ -472,6 +499,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
      },
+     "sourceId": "src-5b6184f8",
      "nullReason": null
     },
     "perClass": {
@@ -482,6 +510,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
      },
+     "sourceId": "src-5b6184f8",
      "nullReason": null
     },
     "perTeacher": {
@@ -492,6 +521,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
      },
+     "sourceId": "src-5b6184f8",
      "nullReason": null
     },
     "admission": {
@@ -502,6 +532,7 @@
       "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조)",
       "url": null
      },
+     "sourceId": "src-473b60be",
      "nullReason": null
     },
     "zone": {
@@ -512,6 +543,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -522,6 +554,7 @@
       "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조 완료)",
       "url": null
      },
+     "sourceId": "src-439a21a5",
      "nullReason": null
     },
     "subjectCount": {
@@ -532,6 +565,7 @@
       "name": "편제표 요약(개설 후보, 수능 범위는 추정)",
       "url": null
      },
+     "sourceId": "src-7be73070",
      "nullReason": null
     },
     "univStats": {
@@ -542,6 +576,7 @@
       "name": "학교알리미 공시항목 목록",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
      },
+     "sourceId": "src-5b6184f8",
      "nullReason": "학교알리미 2026 공시 항목 목록(46개)에 졸업생 대학 진학 현황 항목이 없음. 학교 설명회·학교 홈페이지 자료는 별도 확인 필요"
     },
     "meal": {
@@ -552,6 +587,7 @@
       "name": "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
      },
+     "sourceId": "src-5b6184f8",
      "nullReason": null
     },
     "canteen": {
@@ -583,6 +619,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
      },
+     "sourceId": "src-5b6184f8",
      "nullReason": null
     },
     "schoolinfo": {
@@ -593,6 +630,7 @@
       "name": "학교알리미",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
      },
+     "sourceId": "src-5b6184f8",
      "nullReason": null
     },
     "classesDetail": {
@@ -603,6 +641,7 @@
       "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
      },
+     "sourceId": "src-5b6184f8",
      "nullReason": null
     },
     "studentsDetail": {
@@ -613,6 +652,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
      },
+     "sourceId": "src-5b6184f8",
      "nullReason": null
     }
    }
@@ -630,6 +670,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
      },
+     "sourceId": "src-9db376ea",
      "nullReason": null
     },
     "founding": {
@@ -640,6 +681,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
      },
+     "sourceId": "src-9db376ea",
      "nullReason": null
     },
     "coed": {
@@ -650,6 +692,7 @@
       "name": "학교알리미 학교정보(2026 공시) 및 편제표 요약",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
      },
+     "sourceId": "src-9db376ea",
      "nullReason": null
     },
     "address": {
@@ -660,6 +703,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
      },
+     "sourceId": "src-9db376ea",
      "nullReason": null
     },
     "classes": {
@@ -670,6 +714,7 @@
       "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
      },
+     "sourceId": "src-9db376ea",
      "nullReason": null,
      "note": "일반학급 수(특수학급 제외)"
     },
@@ -681,6 +726,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
      },
+     "sourceId": "src-9db376ea",
      "nullReason": null
     },
     "teachers": {
@@ -691,6 +737,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
      },
+     "sourceId": "src-9db376ea",
      "nullReason": null
     },
     "perClass": {
@@ -701,6 +748,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
      },
+     "sourceId": "src-9db376ea",
      "nullReason": null
     },
     "perTeacher": {
@@ -711,6 +759,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
      },
+     "sourceId": "src-9db376ea",
      "nullReason": null
     },
     "admission": {
@@ -721,6 +770,7 @@
       "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조)",
       "url": null
      },
+     "sourceId": "src-473b60be",
      "nullReason": null
     },
     "zone": {
@@ -731,6 +781,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -741,6 +792,7 @@
       "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조 완료)",
       "url": null
      },
+     "sourceId": "src-439a21a5",
      "nullReason": null
     },
     "subjectCount": {
@@ -751,6 +803,7 @@
       "name": "편제표 요약(개설 후보, 수능 범위는 추정)",
       "url": null
      },
+     "sourceId": "src-7be73070",
      "nullReason": null
     },
     "univStats": {
@@ -761,6 +814,7 @@
       "name": "학교알리미 공시항목 목록",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
      },
+     "sourceId": "src-9db376ea",
      "nullReason": "학교알리미 2026 공시 항목 목록(46개)에 졸업생 대학 진학 현황 항목이 없음. 학교 설명회·학교 홈페이지 자료는 별도 확인 필요"
     },
     "meal": {
@@ -771,6 +825,7 @@
       "name": "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
      },
+     "sourceId": "src-9db376ea",
      "nullReason": null
     },
     "canteen": {
@@ -802,6 +857,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
      },
+     "sourceId": "src-9db376ea",
      "nullReason": null
     },
     "schoolinfo": {
@@ -812,6 +868,7 @@
       "name": "학교알리미",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
      },
+     "sourceId": "src-9db376ea",
      "nullReason": null
     },
     "classesDetail": {
@@ -822,6 +879,7 @@
       "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
      },
+     "sourceId": "src-9db376ea",
      "nullReason": null
     },
     "studentsDetail": {
@@ -832,6 +890,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
      },
+     "sourceId": "src-9db376ea",
      "nullReason": null
     }
    }
@@ -849,6 +908,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
      },
+     "sourceId": "src-5b647dcd",
      "nullReason": null
     },
     "founding": {
@@ -859,6 +919,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
      },
+     "sourceId": "src-5b647dcd",
      "nullReason": null
     },
     "coed": {
@@ -869,6 +930,7 @@
       "name": "학교알리미 학교정보(2026 공시) 및 편제표 요약",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
      },
+     "sourceId": "src-5b647dcd",
      "nullReason": null
     },
     "address": {
@@ -879,6 +941,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
      },
+     "sourceId": "src-5b647dcd",
      "nullReason": null
     },
     "classes": {
@@ -889,6 +952,7 @@
       "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
      },
+     "sourceId": "src-5b647dcd",
      "nullReason": null,
      "note": "일반학급 수(특수학급 제외)"
     },
@@ -900,6 +964,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
      },
+     "sourceId": "src-5b647dcd",
      "nullReason": null
     },
     "teachers": {
@@ -910,6 +975,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
      },
+     "sourceId": "src-5b647dcd",
      "nullReason": null
     },
     "perClass": {
@@ -920,6 +986,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
      },
+     "sourceId": "src-5b647dcd",
      "nullReason": null
     },
     "perTeacher": {
@@ -930,6 +997,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
      },
+     "sourceId": "src-5b647dcd",
      "nullReason": null
     },
     "admission": {
@@ -940,6 +1008,7 @@
       "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조)",
       "url": null
      },
+     "sourceId": "src-473b60be",
      "nullReason": null
     },
     "zone": {
@@ -950,6 +1019,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -960,6 +1030,7 @@
       "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조 완료)",
       "url": null
      },
+     "sourceId": "src-439a21a5",
      "nullReason": null
     },
     "subjectCount": {
@@ -970,6 +1041,7 @@
       "name": "편제표 요약(개설 후보, 수능 범위는 추정)",
       "url": null
      },
+     "sourceId": "src-7be73070",
      "nullReason": null
     },
     "univStats": {
@@ -980,6 +1052,7 @@
       "name": "학교알리미 공시항목 목록",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
      },
+     "sourceId": "src-5b647dcd",
      "nullReason": "학교알리미 2026 공시 항목 목록(46개)에 졸업생 대학 진학 현황 항목이 없음. 학교 설명회·학교 홈페이지 자료는 별도 확인 필요"
     },
     "meal": {
@@ -990,6 +1063,7 @@
       "name": "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
      },
+     "sourceId": "src-5b647dcd",
      "nullReason": null
     },
     "canteen": {
@@ -1021,6 +1095,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
      },
+     "sourceId": "src-5b647dcd",
      "nullReason": null
     },
     "schoolinfo": {
@@ -1031,6 +1106,7 @@
       "name": "학교알리미",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
      },
+     "sourceId": "src-5b647dcd",
      "nullReason": null
     },
     "classesDetail": {
@@ -1041,6 +1117,7 @@
       "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
      },
+     "sourceId": "src-5b647dcd",
      "nullReason": null
     },
     "studentsDetail": {
@@ -1051,6 +1128,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
      },
+     "sourceId": "src-5b647dcd",
      "nullReason": null
     }
    }
@@ -1068,6 +1146,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
      },
+     "sourceId": "src-e0d3a017",
      "nullReason": null
     },
     "founding": {
@@ -1078,6 +1157,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
      },
+     "sourceId": "src-e0d3a017",
      "nullReason": null
     },
     "coed": {
@@ -1088,6 +1168,7 @@
       "name": "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
      },
+     "sourceId": "src-e0d3a017",
      "nullReason": null
     },
     "address": {
@@ -1098,6 +1179,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
      },
+     "sourceId": "src-e0d3a017",
      "nullReason": null
     },
     "classes": {
@@ -1108,6 +1190,7 @@
       "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
      },
+     "sourceId": "src-e0d3a017",
      "nullReason": null,
      "note": "일반학급 수(특수학급 제외)"
     },
@@ -1119,6 +1202,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
      },
+     "sourceId": "src-e0d3a017",
      "nullReason": null
     },
     "teachers": {
@@ -1129,6 +1213,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
      },
+     "sourceId": "src-e0d3a017",
      "nullReason": null
     },
     "perClass": {
@@ -1139,6 +1224,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
      },
+     "sourceId": "src-e0d3a017",
      "nullReason": null
     },
     "perTeacher": {
@@ -1149,6 +1235,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
      },
+     "sourceId": "src-e0d3a017",
      "nullReason": null
     },
     "admission": {
@@ -1159,6 +1246,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -1169,6 +1257,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -1179,6 +1268,7 @@
       "name": "학교알리미",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
      },
+     "sourceId": "src-e0d3a017",
      "nullReason": "공식 문서로 확인 중이에요"
     },
     "subjectCount": {
@@ -1196,6 +1286,7 @@
       "name": "학교알리미 공시항목 목록",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
      },
+     "sourceId": "src-e0d3a017",
      "nullReason": "학교알리미 2026 공시 항목 목록(46개)에 졸업생 대학 진학 현황 항목이 없음. 학교 설명회·학교 홈페이지 자료는 별도 확인 필요"
     },
     "meal": {
@@ -1206,6 +1297,7 @@
       "name": "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
      },
+     "sourceId": "src-e0d3a017",
      "nullReason": null
     },
     "canteen": {
@@ -1237,6 +1329,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
      },
+     "sourceId": "src-e0d3a017",
      "nullReason": null
     },
     "schoolinfo": {
@@ -1247,6 +1340,7 @@
       "name": "학교알리미",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
      },
+     "sourceId": "src-e0d3a017",
      "nullReason": null
     },
     "classesDetail": {
@@ -1257,6 +1351,7 @@
       "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
      },
+     "sourceId": "src-e0d3a017",
      "nullReason": null
     },
     "studentsDetail": {
@@ -1267,6 +1362,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
      },
+     "sourceId": "src-e0d3a017",
      "nullReason": null
     }
    }
@@ -1284,6 +1380,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
      },
+     "sourceId": "src-1d8d9c24",
      "nullReason": null
     },
     "founding": {
@@ -1294,6 +1391,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
      },
+     "sourceId": "src-1d8d9c24",
      "nullReason": null
     },
     "coed": {
@@ -1304,6 +1402,7 @@
       "name": "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
      },
+     "sourceId": "src-1d8d9c24",
      "nullReason": null
     },
     "address": {
@@ -1314,6 +1413,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
      },
+     "sourceId": "src-1d8d9c24",
      "nullReason": null
     },
     "classes": {
@@ -1324,6 +1424,7 @@
       "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
      },
+     "sourceId": "src-1d8d9c24",
      "nullReason": null,
      "note": "일반학급 수(특수학급 제외)"
     },
@@ -1335,6 +1436,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
      },
+     "sourceId": "src-1d8d9c24",
      "nullReason": null
     },
     "teachers": {
@@ -1345,6 +1447,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
      },
+     "sourceId": "src-1d8d9c24",
      "nullReason": null
     },
     "perClass": {
@@ -1355,6 +1458,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
      },
+     "sourceId": "src-1d8d9c24",
      "nullReason": null
     },
     "perTeacher": {
@@ -1365,6 +1469,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
      },
+     "sourceId": "src-1d8d9c24",
      "nullReason": null
     },
     "admission": {
@@ -1375,6 +1480,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -1385,6 +1491,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -1395,6 +1502,7 @@
       "name": "학교알리미",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
      },
+     "sourceId": "src-1d8d9c24",
      "nullReason": "공식 문서로 확인 중이에요"
     },
     "subjectCount": {
@@ -1412,6 +1520,7 @@
       "name": "학교알리미 공시항목 목록",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
      },
+     "sourceId": "src-1d8d9c24",
      "nullReason": "학교알리미 2026 공시 항목 목록(46개)에 졸업생 대학 진학 현황 항목이 없음. 학교 설명회·학교 홈페이지 자료는 별도 확인 필요"
     },
     "meal": {
@@ -1422,6 +1531,7 @@
       "name": "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
      },
+     "sourceId": "src-1d8d9c24",
      "nullReason": null
     },
     "canteen": {
@@ -1453,6 +1563,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
      },
+     "sourceId": "src-1d8d9c24",
      "nullReason": null
     },
     "schoolinfo": {
@@ -1463,6 +1574,7 @@
       "name": "학교알리미",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
      },
+     "sourceId": "src-1d8d9c24",
      "nullReason": null
     },
     "classesDetail": {
@@ -1473,6 +1585,7 @@
       "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
      },
+     "sourceId": "src-1d8d9c24",
      "nullReason": null
     },
     "studentsDetail": {
@@ -1483,6 +1596,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
      },
+     "sourceId": "src-1d8d9c24",
      "nullReason": null
     }
    }
@@ -1500,6 +1614,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
      },
+     "sourceId": "src-1be5261a",
      "nullReason": null
     },
     "founding": {
@@ -1510,6 +1625,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
      },
+     "sourceId": "src-1be5261a",
      "nullReason": null
     },
     "coed": {
@@ -1520,6 +1636,7 @@
       "name": "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
      },
+     "sourceId": "src-1be5261a",
      "nullReason": null
     },
     "address": {
@@ -1530,6 +1647,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
      },
+     "sourceId": "src-1be5261a",
      "nullReason": null
     },
     "classes": {
@@ -1540,6 +1658,7 @@
       "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
      },
+     "sourceId": "src-1be5261a",
      "nullReason": null,
      "note": "일반학급 수(특수학급 제외)"
     },
@@ -1551,6 +1670,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
      },
+     "sourceId": "src-1be5261a",
      "nullReason": null
     },
     "teachers": {
@@ -1561,6 +1681,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
      },
+     "sourceId": "src-1be5261a",
      "nullReason": null
     },
     "perClass": {
@@ -1571,6 +1692,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
      },
+     "sourceId": "src-1be5261a",
      "nullReason": null
     },
     "perTeacher": {
@@ -1581,6 +1703,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
      },
+     "sourceId": "src-1be5261a",
      "nullReason": null
     },
     "admission": {
@@ -1591,6 +1714,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -1601,6 +1725,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -1611,6 +1736,7 @@
       "name": "학교알리미",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
      },
+     "sourceId": "src-1be5261a",
      "nullReason": "공식 문서로 확인 중이에요"
     },
     "subjectCount": {
@@ -1628,6 +1754,7 @@
       "name": "학교알리미 공시항목 목록",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
      },
+     "sourceId": "src-1be5261a",
      "nullReason": "학교알리미 2026 공시 항목 목록(46개)에 졸업생 대학 진학 현황 항목이 없음. 학교 설명회·학교 홈페이지 자료는 별도 확인 필요"
     },
     "meal": {
@@ -1638,6 +1765,7 @@
       "name": "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
      },
+     "sourceId": "src-1be5261a",
      "nullReason": null
     },
     "canteen": {
@@ -1669,6 +1797,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
      },
+     "sourceId": "src-1be5261a",
      "nullReason": null
     },
     "schoolinfo": {
@@ -1679,6 +1808,7 @@
       "name": "학교알리미",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
      },
+     "sourceId": "src-1be5261a",
      "nullReason": null
     },
     "classesDetail": {
@@ -1689,6 +1819,7 @@
       "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
      },
+     "sourceId": "src-1be5261a",
      "nullReason": null
     },
     "studentsDetail": {
@@ -1699,6 +1830,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
      },
+     "sourceId": "src-1be5261a",
      "nullReason": null
     }
    }
@@ -1716,6 +1848,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
      },
+     "sourceId": "src-d05050e2",
      "nullReason": null
     },
     "founding": {
@@ -1726,6 +1859,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
      },
+     "sourceId": "src-d05050e2",
      "nullReason": null
     },
     "coed": {
@@ -1736,6 +1870,7 @@
       "name": "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
      },
+     "sourceId": "src-d05050e2",
      "nullReason": null
     },
     "address": {
@@ -1746,6 +1881,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
      },
+     "sourceId": "src-d05050e2",
      "nullReason": null
     },
     "classes": {
@@ -1756,6 +1892,7 @@
       "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
      },
+     "sourceId": "src-d05050e2",
      "nullReason": null,
      "note": "일반학급 수(특수학급 제외)"
     },
@@ -1767,6 +1904,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
      },
+     "sourceId": "src-d05050e2",
      "nullReason": null
     },
     "teachers": {
@@ -1777,6 +1915,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
      },
+     "sourceId": "src-d05050e2",
      "nullReason": null
     },
     "perClass": {
@@ -1787,6 +1926,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
      },
+     "sourceId": "src-d05050e2",
      "nullReason": null
     },
     "perTeacher": {
@@ -1797,6 +1937,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
      },
+     "sourceId": "src-d05050e2",
      "nullReason": null
     },
     "admission": {
@@ -1807,6 +1948,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -1817,6 +1959,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -1827,6 +1970,7 @@
       "name": "학교알리미",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
      },
+     "sourceId": "src-d05050e2",
      "nullReason": "공식 문서로 확인 중이에요"
     },
     "subjectCount": {
@@ -1844,6 +1988,7 @@
       "name": "학교알리미 공시항목 목록",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
      },
+     "sourceId": "src-d05050e2",
      "nullReason": "학교알리미 2026 공시 항목 목록(46개)에 졸업생 대학 진학 현황 항목이 없음. 학교 설명회·학교 홈페이지 자료는 별도 확인 필요"
     },
     "meal": {
@@ -1854,6 +1999,7 @@
       "name": "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
      },
+     "sourceId": "src-d05050e2",
      "nullReason": null
     },
     "canteen": {
@@ -1885,6 +2031,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
      },
+     "sourceId": "src-d05050e2",
      "nullReason": null
     },
     "schoolinfo": {
@@ -1895,6 +2042,7 @@
       "name": "학교알리미",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
      },
+     "sourceId": "src-d05050e2",
      "nullReason": null
     },
     "classesDetail": {
@@ -1905,6 +2053,7 @@
       "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
      },
+     "sourceId": "src-d05050e2",
      "nullReason": null
     },
     "studentsDetail": {
@@ -1915,6 +2064,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
      },
+     "sourceId": "src-d05050e2",
      "nullReason": null
     }
    }
@@ -1932,6 +2082,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
      },
+     "sourceId": "src-61d0636c",
      "nullReason": null
     },
     "founding": {
@@ -1942,6 +2093,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
      },
+     "sourceId": "src-61d0636c",
      "nullReason": null
     },
     "coed": {
@@ -1952,6 +2104,7 @@
       "name": "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
      },
+     "sourceId": "src-61d0636c",
      "nullReason": null
     },
     "address": {
@@ -1962,6 +2115,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
      },
+     "sourceId": "src-61d0636c",
      "nullReason": null
     },
     "classes": {
@@ -1972,6 +2126,7 @@
       "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
      },
+     "sourceId": "src-61d0636c",
      "nullReason": null,
      "note": "일반학급 수(특수학급 제외)"
     },
@@ -1983,6 +2138,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
      },
+     "sourceId": "src-61d0636c",
      "nullReason": null
     },
     "teachers": {
@@ -1993,6 +2149,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
      },
+     "sourceId": "src-61d0636c",
      "nullReason": null
     },
     "perClass": {
@@ -2003,6 +2160,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
      },
+     "sourceId": "src-61d0636c",
      "nullReason": null
     },
     "perTeacher": {
@@ -2013,6 +2171,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
      },
+     "sourceId": "src-61d0636c",
      "nullReason": null
     },
     "admission": {
@@ -2023,6 +2182,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -2033,6 +2193,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -2043,6 +2204,7 @@
       "name": "학교알리미",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
      },
+     "sourceId": "src-61d0636c",
      "nullReason": "공식 문서로 확인 중이에요"
     },
     "subjectCount": {
@@ -2060,6 +2222,7 @@
       "name": "학교알리미 공시항목 목록",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
      },
+     "sourceId": "src-61d0636c",
      "nullReason": "학교알리미 2026 공시 항목 목록(46개)에 졸업생 대학 진학 현황 항목이 없음. 학교 설명회·학교 홈페이지 자료는 별도 확인 필요"
     },
     "meal": {
@@ -2070,6 +2233,7 @@
       "name": "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
      },
+     "sourceId": "src-61d0636c",
      "nullReason": null
     },
     "canteen": {
@@ -2101,6 +2265,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
      },
+     "sourceId": "src-61d0636c",
      "nullReason": null
     },
     "schoolinfo": {
@@ -2111,6 +2276,7 @@
       "name": "학교알리미",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
      },
+     "sourceId": "src-61d0636c",
      "nullReason": null
     },
     "classesDetail": {
@@ -2121,6 +2287,7 @@
       "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
      },
+     "sourceId": "src-61d0636c",
      "nullReason": null
     },
     "studentsDetail": {
@@ -2131,6 +2298,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
      },
+     "sourceId": "src-61d0636c",
      "nullReason": null
     }
    }
@@ -2148,6 +2316,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
      },
+     "sourceId": "src-11e53ef6",
      "nullReason": null
     },
     "founding": {
@@ -2158,6 +2327,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
      },
+     "sourceId": "src-11e53ef6",
      "nullReason": null
     },
     "coed": {
@@ -2168,6 +2338,7 @@
       "name": "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
      },
+     "sourceId": "src-11e53ef6",
      "nullReason": null
     },
     "address": {
@@ -2178,6 +2349,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
      },
+     "sourceId": "src-11e53ef6",
      "nullReason": null
     },
     "classes": {
@@ -2188,6 +2360,7 @@
       "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
      },
+     "sourceId": "src-11e53ef6",
      "nullReason": null,
      "note": "일반학급 수(특수학급 제외)"
     },
@@ -2199,6 +2372,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
      },
+     "sourceId": "src-11e53ef6",
      "nullReason": null
     },
     "teachers": {
@@ -2209,6 +2383,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
      },
+     "sourceId": "src-11e53ef6",
      "nullReason": null
     },
     "perClass": {
@@ -2219,6 +2394,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
      },
+     "sourceId": "src-11e53ef6",
      "nullReason": null
     },
     "perTeacher": {
@@ -2229,6 +2405,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
      },
+     "sourceId": "src-11e53ef6",
      "nullReason": null
     },
     "admission": {
@@ -2239,6 +2416,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -2249,6 +2427,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -2259,6 +2438,7 @@
       "name": "학교알리미",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
      },
+     "sourceId": "src-11e53ef6",
      "nullReason": "공식 문서로 확인 중이에요"
     },
     "subjectCount": {
@@ -2276,6 +2456,7 @@
       "name": "학교알리미 공시항목 목록",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
      },
+     "sourceId": "src-11e53ef6",
      "nullReason": "학교알리미 2026 공시 항목 목록(46개)에 졸업생 대학 진학 현황 항목이 없음. 학교 설명회·학교 홈페이지 자료는 별도 확인 필요"
     },
     "meal": {
@@ -2286,6 +2467,7 @@
       "name": "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
      },
+     "sourceId": "src-11e53ef6",
      "nullReason": null
     },
     "canteen": {
@@ -2317,6 +2499,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
      },
+     "sourceId": "src-11e53ef6",
      "nullReason": null
     },
     "schoolinfo": {
@@ -2327,6 +2510,7 @@
       "name": "학교알리미",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
      },
+     "sourceId": "src-11e53ef6",
      "nullReason": null
     },
     "classesDetail": {
@@ -2337,6 +2521,7 @@
       "name": "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
      },
+     "sourceId": "src-11e53ef6",
      "nullReason": null
     },
     "studentsDetail": {
@@ -2347,6 +2532,7 @@
       "name": "학교알리미 학교정보(2026 공시)",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
      },
+     "sourceId": "src-11e53ef6",
      "nullReason": null
     }
    }
@@ -2364,6 +2550,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "founding": {
@@ -2374,6 +2561,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "coed": {
@@ -2384,6 +2572,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "address": {
@@ -2394,6 +2583,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "classes": {
@@ -2453,6 +2643,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -2463,6 +2654,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -2529,6 +2721,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     }
    }
@@ -2546,6 +2739,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "founding": {
@@ -2556,6 +2750,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "coed": {
@@ -2566,6 +2761,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "address": {
@@ -2576,6 +2772,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "classes": {
@@ -2635,6 +2832,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -2645,6 +2843,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -2711,6 +2910,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     }
    }
@@ -2728,6 +2928,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "founding": {
@@ -2738,6 +2939,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "coed": {
@@ -2748,6 +2950,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "address": {
@@ -2758,6 +2961,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "classes": {
@@ -2817,6 +3021,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -2827,6 +3032,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -2893,6 +3099,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     }
    }
@@ -2910,6 +3117,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "founding": {
@@ -2920,6 +3128,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "coed": {
@@ -2930,6 +3139,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "address": {
@@ -2940,6 +3150,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "classes": {
@@ -2999,6 +3210,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -3009,6 +3221,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -3075,6 +3288,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     }
    }
@@ -3092,6 +3306,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "founding": {
@@ -3102,6 +3317,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "coed": {
@@ -3112,6 +3328,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "address": {
@@ -3122,6 +3339,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "classes": {
@@ -3181,6 +3399,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -3191,6 +3410,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -3257,6 +3477,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     }
    }
@@ -3274,6 +3495,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "founding": {
@@ -3284,6 +3506,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "coed": {
@@ -3294,6 +3517,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "address": {
@@ -3304,6 +3528,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "classes": {
@@ -3363,6 +3588,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -3373,6 +3599,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -3439,6 +3666,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     }
    }
@@ -3456,6 +3684,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "founding": {
@@ -3466,6 +3695,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "coed": {
@@ -3476,6 +3706,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "address": {
@@ -3486,6 +3717,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "classes": {
@@ -3545,6 +3777,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -3555,6 +3788,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -3621,6 +3855,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     }
    }
@@ -3638,6 +3873,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "founding": {
@@ -3648,6 +3884,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "coed": {
@@ -3658,6 +3895,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "address": {
@@ -3668,6 +3906,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "classes": {
@@ -3727,6 +3966,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -3737,6 +3977,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -3803,6 +4044,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     }
    }
@@ -3820,6 +4062,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "founding": {
@@ -3830,6 +4073,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "coed": {
@@ -3840,6 +4084,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "address": {
@@ -3850,6 +4095,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "classes": {
@@ -3909,6 +4155,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -3919,6 +4166,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -3985,6 +4233,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     }
    }
@@ -4002,6 +4251,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "founding": {
@@ -4012,6 +4262,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "coed": {
@@ -4022,6 +4273,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "address": {
@@ -4032,6 +4284,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "classes": {
@@ -4091,6 +4344,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -4101,6 +4355,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -4167,6 +4422,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     }
    }
@@ -4184,6 +4440,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "founding": {
@@ -4194,6 +4451,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "coed": {
@@ -4204,6 +4462,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "address": {
@@ -4214,6 +4473,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "classes": {
@@ -4273,6 +4533,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -4283,6 +4544,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -4349,6 +4611,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     }
    }
@@ -4366,6 +4629,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "founding": {
@@ -4376,6 +4640,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "coed": {
@@ -4386,6 +4651,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "address": {
@@ -4396,6 +4662,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "classes": {
@@ -4455,6 +4722,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -4465,6 +4733,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -4531,6 +4800,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     }
    }
@@ -4548,6 +4818,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "founding": {
@@ -4558,6 +4829,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "coed": {
@@ -4568,6 +4840,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "address": {
@@ -4578,6 +4851,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "classes": {
@@ -4637,6 +4911,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -4647,6 +4922,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -4713,6 +4989,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     }
    }
@@ -4730,6 +5007,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "founding": {
@@ -4740,6 +5018,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "coed": {
@@ -4750,6 +5029,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "address": {
@@ -4760,6 +5040,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "classes": {
@@ -4819,6 +5100,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -4829,6 +5111,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -4895,6 +5178,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     }
    }
@@ -4912,6 +5196,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "founding": {
@@ -4922,6 +5207,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "coed": {
@@ -4932,6 +5218,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "address": {
@@ -4942,6 +5229,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "classes": {
@@ -5001,6 +5289,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -5011,6 +5300,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -5077,6 +5367,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     }
    }
@@ -5094,6 +5385,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "founding": {
@@ -5104,6 +5396,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "coed": {
@@ -5114,6 +5407,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "address": {
@@ -5124,6 +5418,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "classes": {
@@ -5183,6 +5478,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -5193,6 +5489,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -5259,6 +5556,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     }
    }
@@ -5276,6 +5574,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "founding": {
@@ -5286,6 +5585,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "coed": {
@@ -5296,6 +5596,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "address": {
@@ -5306,6 +5607,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "classes": {
@@ -5365,6 +5667,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -5375,6 +5678,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -5441,6 +5745,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     }
    }
@@ -5458,6 +5763,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "founding": {
@@ -5468,6 +5774,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "coed": {
@@ -5478,6 +5785,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "address": {
@@ -5488,6 +5796,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "classes": {
@@ -5547,6 +5856,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -5557,6 +5867,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -5623,6 +5934,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     }
    }
@@ -5640,6 +5952,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "founding": {
@@ -5650,6 +5963,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "coed": {
@@ -5660,6 +5974,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "address": {
@@ -5670,6 +5985,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "classes": {
@@ -5729,6 +6045,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "zone": {
@@ -5739,6 +6056,7 @@
       "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
       "url": "https://satp.goe.go.kr/main.do"
      },
+     "sourceId": "src-184eecc3",
      "nullReason": null
     },
     "curriculum": {
@@ -5805,6 +6123,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     }
    }
@@ -5822,6 +6141,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "founding": {
@@ -5832,6 +6152,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "coed": {
@@ -5842,6 +6163,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "address": {
@@ -5852,6 +6174,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "classes": {
@@ -5981,6 +6304,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     }
    }
@@ -5998,6 +6322,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "founding": {
@@ -6008,6 +6333,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "coed": {
@@ -6018,6 +6344,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "address": {
@@ -6028,6 +6355,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     },
     "classes": {
@@ -6157,6 +6485,7 @@
       "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
      },
+     "sourceId": "src-d58e0251",
      "nullReason": null
     }
    }

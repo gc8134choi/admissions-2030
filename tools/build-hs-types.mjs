@@ -1,6 +1,7 @@
 // research/data/hs-types-draft.json(조사 세션) → portal/data/hs-types.json (고교 유형 비교·경기 고입 달력·원서 절차·서류).
 //   내부 점검 사정 문구는 portal/plain.js 규칙으로 사용자 말로 바꿔 내보낸다. 초안이 없으면 빈 구조를 만든다.
 // 사용: node tools/build-hs-types.mjs [--check]
+import { withSourceIds } from "./lib/source-ids.mjs";
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 
 const SRC = "research/data/hs-types-draft.json";
@@ -30,7 +31,7 @@ if (errs.length) { console.error(errs.join("\n")); process.exit(1); }
 const clean = (v) => (typeof v === "string" ? plain(v) : Array.isArray(v) ? v.map(clean) : v && typeof v === "object" ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, k === "url" ? x : clean(x)])) : v);
 const body = clean(Object.fromEntries(Object.entries(draft).filter(([k]) => k !== "_meta")));
 const out = { _meta: { note: "고교 유형 비교·경기 고입 달력·원서 절차·서류(생성물, 손으로 고치지 않는다). research/data/hs-types-draft.json에서 tools/build-hs-types.mjs가 만든다.", checkedAt: draft._meta?.checkedAt ?? null }, ...body };
-const json = JSON.stringify(out, null, 1) + "\n";
+const json = JSON.stringify(withSourceIds(out), null, 1) + "\n";
 const target = "portal/data/hs-types.json";
 if (process.argv.includes("--check")) {
   let cur = ""; try { cur = readFileSync(target, "utf8"); } catch {}
