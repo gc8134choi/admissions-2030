@@ -28,6 +28,7 @@ const rawDate = new Map();
 // 현고3(audience grade3) 일정은 화면에 내지 않는다(사용자 결정 2026-10-25). 초안에는 남아 있고, 다시 쓰려면 INCLUDE_GRADE3=1 로 생성한다.
 const INCLUDE_GRADE3 = process.env.INCLUDE_GRADE3 === "1";
 const draft = JSON.parse(readFileSync("research/data/policy-draft.json", "utf8")).items.filter((d) => INCLUDE_GRADE3 || !(d.audience || []).includes("grade3"));
+{ const seen = new Set(); for (const d of draft) { if (seen.has(d.id)) { console.error(`정책 행 id 중복: ${d.id}`); process.exit(1); } seen.add(d.id); } }
 // 화면에 나가는 문구에서 내부 사정(점검 방식, 내부 행 번호)을 사용자 말로 바꾼다. 규칙은 portal/plain.js 한 곳(research 초안은 그대로 둔다).
 const { plainRow } = await import("../portal/plain.js");
 const out = draft.map((d) => {
