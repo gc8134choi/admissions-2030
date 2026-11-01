@@ -36,6 +36,13 @@
   function apply(mode){mode=mode||get();if(mode==="auto"){D.removeAttribute("data-theme");D.style.colorScheme=""}else{D.setAttribute("data-theme",mode);D.style.colorScheme=mode}
     sheets(mode);var m=document.querySelectorAll('meta[name=theme-color]');for(var j=0;j<m.length;j++){if(!m[j].hasAttribute("data-orig"))m[j].setAttribute("data-orig",m[j].getAttribute("content")+"|"+(m[j].getAttribute("media")||""));
       var p=m[j].getAttribute("data-orig").split("|");if(mode==="auto"){m[j].setAttribute("content",p[0]);if(p[1])m[j].setAttribute("media",p[1])}else{m[j].setAttribute("content",mode==="dark"?"#15110d":"#EEE5D8");m[j].removeAttribute("media")}}}
+  // 스킨: 선택한 것만 glass.css 뒤에 불러온다(기본은 아무것도 안 붙임). 값: "" | paper | tool
+  var SK="portal.skin",SKINS={paper:1,tool:1};
+  function skin(){try{var v=localStorage.getItem(SK);return SKINS[v]?v:""}catch(e){return""}}
+  function applySkin(v){var l=document.getElementById("skin-css");if(!v){if(l)l.remove();D.removeAttribute("data-skin");return}
+    D.setAttribute("data-skin",v);if(!l){l=document.createElement("link");l.id="skin-css";l.rel="stylesheet";document.head.appendChild(l)}l.href="skins/"+v+".css"}
+  window.__skin={get:skin,set:function(v){try{if(!v)localStorage.removeItem(SK);else localStorage.setItem(SK,v)}catch(e){}applySkin(SKINS[v]?v:"")}};
+  applySkin(skin());
   window.__theme={get:get,set:function(v){try{if(v==="auto")localStorage.removeItem(K);else localStorage.setItem(K,v)}catch(e){}apply(v)},apply:apply};
   apply();
   document.addEventListener("load",function(e){if(e.target&&e.target.tagName==="LINK"&&get()!=="auto")apply()},true);

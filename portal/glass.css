@@ -384,3 +384,13 @@ button.term{padding:13px 11px;margin:-13px -11px}
 .soon-i{margin:0 0 var(--sp-2)}
 .soon-i>span{font-weight:650;color:var(--ink)}
 .soon-i .gap{margin:2px 0 0}
+
+/* 스킨 고르기 */
+.skin-opts{display:flex;flex-wrap:wrap;gap:var(--sp-2)}
+.skin-opts .chip{display:grid;gap:2px;text-align:left;min-height:64px;padding:var(--sp-2) var(--sp-3);border-radius:12px;min-width:min(100%,220px)}
+.skin-opts .chip span{font-size:var(--fs-sub);font-weight:400;opacity:.85}
+.muted,.muted.small{color:var(--pencil)!important}
+/* 용어 버튼: 눌림 영역(패딩)과 점선 밑줄을 분리 */
+button.term{text-decoration:none!important;background-image:repeating-linear-gradient(90deg,var(--pencil) 0 2px,transparent 2px 4px);background-repeat:no-repeat;background-position:11px calc(100% - 15px);background-size:calc(100% - 22px) 1px}
+.chip.on .muted,.fchip.on .muted,.btn.primary .muted,.tsw button[aria-pressed=true] .muted{color:inherit!important}
+.cmp-gb{background:var(--glass-in);color:var(--ink)}

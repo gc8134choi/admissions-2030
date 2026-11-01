@@ -1,0 +1,40 @@
+/* 스킨 '가정통신문' — 신문형: 세리프 제목·괘선 중심·카드/배지 없음·절제된 포인트색.
+   스킨은 토큰과 장식만 바꾼다. 레이아웃·정보·접근성(대비 AA, 터치 44/48, 포커스, reduced-motion)은 공통 CSS가 지킨다. glass.css 위에 얹는다. */
+:root{
+  --paper:#F5F1E6;--paper2:#F5F1E6;--kraft:#E8E1D0;--ink:#1E1B16;--pencil:#4F483C;--line:rgba(30,27,22,.28);
+  --accent:#9E2A0E;--accent-a:#9E2A0E;--accent-b:#9E2A0E;--on-accent:#ffffff;--req:#1B3A6B;--ele:#0A6B54;--st-est:#7A4A00;
+  --glass:transparent;--glass-line:rgba(30,27,22,.55);--glass-in:rgba(30,27,22,.05);--sh:none;--gl-sh:none;
+  --r1:0;--r2:0;--r3:0;--bokeh:none;--serif:"Gowun Batang","Noto Serif KR",Georgia,serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --paper:#17150F;--paper2:#17150F;--kraft:#26221A;--ink:#EDE7D6;--pencil:#B9B09B;--line:rgba(237,231,214,.3);
+  --accent:#F0825A;--accent-a:#F0825A;--accent-b:#F0825A;--on-accent:#17150F;--req:#8AB4F8;--ele:#5FD3B0;--st-est:#E0A94A;
+  --glass-line:rgba(237,231,214,.55);--glass-in:rgba(237,231,214,.07)}}
+body{background:var(--paper)}
+body::before{display:none}
+/* 면: 상자 대신 위 괘선 */
+.dp,.hero,.ledger,.hero-aside,.school,.ed-row,.rows.lk .row,.pn-t,.pn-u,.note,.ed-top,.piece,.bf-area,.pl-zone>li,.ms,.fl-card,.tw,.w-table,.dsearch,.mid-flow .mid-un,.hub,.srcp,.rd-sec,.past-fold,.wide-fold,.ty-top,.more-panels{
+  background:transparent!important;border:0!important;border-top:2px solid var(--ink)!important;border-radius:0!important;box-shadow:none!important;-webkit-backdrop-filter:none;backdrop-filter:none}
+.ed-row,.rows.lk .row,.srcp,.pl-zone>li{border-top:1px solid var(--line)!important}
+.dp,.ledger{padding:10px 0 14px!important}
+/* 제목: 세리프 */
+h1,.ph,.sec-h h2,.hero-t,.hub-t,.ledger .lg.first .lg-t,.ms-n,.dday .big{font-family:var(--serif)!important;letter-spacing:-.01em}
+h1.ph{font-size:clamp(28px,5vw,40px);border-bottom:3px double var(--ink);padding-bottom:8px}
+.sec-h h2 em{color:var(--accent);font-style:normal;letter-spacing:.04em}
+/* 조작: 네모·밑줄 */
+.chip,.fchip,.btn,.tsw,.tsw button,.vtog button,.srcb{border-radius:0!important}
+.chip,.fchip,.btn,.vtog button{background:transparent;border:1px solid var(--ink);color:var(--ink)}
+.chip.on,.fchip.on,.btn.primary,.vtog button[aria-pressed=true],.tsw button[aria-pressed=true]{background:var(--ink)!important;color:var(--paper)!important;border-color:var(--ink)}
+.tsw{background:transparent;border:1px solid var(--ink)}
+/* 메뉴: 평평한 세로 목록·하단 줄 */
+#topnav{background:var(--paper)!important;border:0!important;border-right:2px solid var(--ink)!important;border-radius:0!important;box-shadow:none!important}
+#topnav a{border-radius:0!important}
+#topnav a[aria-current=page]{background:var(--ink)!important;color:var(--paper)!important}
+.tabs{background:var(--paper)!important;border-top:2px solid var(--ink)!important;-webkit-backdrop-filter:none;backdrop-filter:none}
+.tabs a[aria-current=page]::before{background:var(--accent)}
+.hdr{border-bottom:3px double var(--ink)!important}
+.ledger .lg.first{background:transparent!important;border-left:0}
+.ledger .lg.first .d{color:var(--accent)}
+.srch{background:var(--paper)!important;-webkit-backdrop-filter:none;backdrop-filter:none}
+.srch .sr-bar{border-radius:0;border:1px solid var(--ink);background:transparent}
+.tip{border-radius:0!important;border:1px solid var(--ink)!important;box-shadow:none!important}

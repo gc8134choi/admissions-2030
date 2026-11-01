@@ -62,6 +62,15 @@ function drawTheme() {
   box.onclick = (e) => { const b = e.target.closest("[data-th]"); if (!b) return; window.__theme.set(b.dataset.th); drawTheme(); };
 }
 drawTheme();
+// 스킨(보이는 모습만 바꾸는 선택): 보관함 맨 위에서 고른다. 구조·정보는 그대로다.
+const SKIN_OPT = [["", "기본", "스크랩북 글래스(지금 모습)"], ["paper", "가정통신문", "신문처럼: 세리프 제목, 괘선, 카드 없음"], ["tool", "조용한 도구", "무채색과 포인트 한 색, 큰 숫자"]];
+function skinPanel(host) {
+  if (!host || !window.__skin) return;
+  const cur = window.__skin.get();
+  const html = `<section class="dp skinp" aria-label="스킨"><div class="sec-h"><h2><em>보기</em>스킨 고르기</h2></div><p class="muted small">모양만 바뀌어요. 메뉴와 내용은 그대로예요. 이 브라우저에만 저장돼요.</p><div class="skin-opts" role="group" aria-label="스킨">${SKIN_OPT.map(([k, t, d]) => `<button type="button" class="chip${k === cur ? " on" : ""}" data-skin="${k}" aria-pressed="${k === cur}"><b>${t}</b><span>${d}</span></button>`).join("")}</div></section>`;
+  let box = host.querySelector(".skinp"); if (box) box.outerHTML = html; else host.insertAdjacentHTML("afterbegin", html);
+  host.querySelector(".skinp").onclick = (e) => { const b = e.target.closest("[data-skin]"); if (!b) return; window.__skin.set(b.dataset.skin); skinPanel(host); };
+}
 
 // ---- 데이터 ----
 const cache = new Map();
@@ -497,7 +506,7 @@ function render() {
   const title = loc.item.title || n.title;
   const lvTag = tab.id === "mid" || tab.id === "high" ? `<span class="lv-tag">${esc(tab.title)}${loc.group.title ? " " + esc(loc.group.title) : ""}</span>` : "";
   $("#main").innerHTML = `${sub}<h1 class="ph">${esc(title)}${lvTag}</h1><div id="view"></div>${soon}`;
-  if (n.view) views[n.view]($("#view"), query).then(() => { filesApi.afterView(n.view, $("#view")); if (n.view === "credit") decorateSubjectLists($("#view"), load, "4."); if (n.view === "schedule") addCalendar($("#view")); }).catch(() => ($("#view").innerHTML = GO_ERR));
+  if (n.view) views[n.view]($("#view"), query).then(() => { filesApi.afterView(n.view, $("#view")); if (n.view === "credit") decorateSubjectLists($("#view"), load, "4."); if (n.id === "changelog") skinPanel($("#view")); if (n.view === "schedule") addCalendar($("#view")); }).catch(() => ($("#view").innerHTML = GO_ERR));
 }
 
 addEventListener("hashchange", render);
