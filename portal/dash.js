@@ -1,6 +1,7 @@
 // 홈 대시보드 패널. 상황 5허브(=사이트맵), 찾기 줄, 내 계획표 요약, 고교 한눈에, 전형 한눈에, 중학교 배정 미니.
 // 데이터는 모두 portal/data의 생성물이고, 계획표는 이 브라우저(localStorage)에 저장된 것을 읽는다. 패널은 각 화면의 요약일 뿐 계산은 화면과 같은 규칙이다.
 import { stageTag } from "./stage.js";
+import { hsTypesBody } from "./hs-types.js";
 import { hsCompareBody, hsCompareSummary } from "./hs-compare.js";
 
 // 상황 5허브: 메뉴(menu.js)와 같은 도착 화면. 라벨은 부모가 쓰는 상황 말. 링크 앞 2개는 늘 보이고 나머지는 "현재/고정" 허브에서만 펼쳐진다.
@@ -113,4 +114,5 @@ export async function hsHubBody(el, { load, esc }) {
   el.innerHTML = `<div class="ed hub-hs">${top}<div id="hs-wide"></div><p class="muted small">필수·내가 고르는 학점과 후보 과목 수는 학교 배부 편제표 기준이에요. 학교를 누르면 과목표로 갑니다.</p></div>`;
   const host = el.querySelector("#hs-wide");
   try { await hsCompareBody(host, { load, esc }); } catch { host.innerHTML = ""; }
+  try { const h = document.createElement("div"); host.after(h); await hsTypesBody(h, { load, esc }); } catch {}
 }
