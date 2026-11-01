@@ -14,6 +14,7 @@
 import { stageTag } from "./stage.js";
 import { srcFooter } from "./src-ref.js";
 import { nextLink } from "./empty.js";
+import "./policy-css.js";
 
 const ES = { reported: ["rep", "보도"], estimated: ["est", "추정"] };
 const lsGet = (k) => { try { const v = JSON.parse(localStorage.getItem(k) || "null"); return Array.isArray(v) ? v : null; } catch { return null; } };

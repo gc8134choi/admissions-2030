@@ -1,3 +1,4 @@
+import "./policy-css.js";
 // 용어사전 ⓘ 팝오버 공용 모듈. 데이터: glossary.json(tools/build-glossary.mjs).
 // 사용법(다른 화면/세션):
 //   import { preloadGlossary, termHtml, decorateGlossary } from "./glossary.js";
