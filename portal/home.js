@@ -94,7 +94,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
       .flatMap((r) => eventsOf(r).map((e) => ({ r, e, sp: span(e.start, e.end) })))
       .filter((x) => x.sp.end >= t && x.sp.start <= limit)
       .sort((a, b) => (a.r.region === "seoul") - (b.r.region === "seoul") || a.sp.start - b.sp.start || a.sp.end - b.sp.end);
-    const upRows = () => upcoming.filter((x) => !isG3(x.r, x.e) && related(x.r) && audienceMatch(x.e.audience || x.r.audience, aud));
+    const upRows = () => upcoming.filter((x) => !isG3(x.r, x.e) && x.r.region !== "seoul" && related(x.r) && audienceMatch(x.e.audience || x.r.audience, aud));
     const row = (x) => `<li class="row"><span class="d${x.sp.start <= t ? " live" : " num"}">${dLabel(x.sp, t)}</span>
       <div><h3>${esc(x.r.title)}${x.e.label ? ` · ${esc(x.e.label)}` : ""}</h3><p class="num">${fmtRange(x.sp, t, x.e)}</p><div class="meta">${badges(x.r)} ${link(x.r)}</div></div></li>`;
     const upList = () => { const rs = upRows().slice(0, 4); return rs.length ? rs.map(row).join("") : `<li class="row"><div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p><small>${isB ? "학교를 고르면 그 학교 일정이 여기에 모입니다." : "앞으로 90일 안에 해당하는 일정이 없어요."}</small></div></li>`; };
@@ -176,7 +176,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const mk = (id, label, suffix = "") => { const r = P.get(id), e = ev0(id); return { label, row: r, key: e?.start, date: e ? rng(e) + suffix : "" }; };
     const subs = ["sch-11", "sch-12", "sch-13"].map((id) => ({ r: P.get(id), e: ev0(id) })).filter((x) => x.r && x.e);
     const ms = [
-      mk("hs-05", "고입 후기 전형"),
+      mk("gg-02", "고입 후기 전형"),
       { label: "중장기 대입 개편안 공표", row: P.get("log-10"), key: dateOf(P.get("log-10")?.title || ""), date: dateOf(P.get("log-10")?.title || "").replace("-", ".") },
       mk("sch-09", "입학"),
       mk("sch-08", "수능 시행 기본계획 공고", " 전후"),
@@ -283,7 +283,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
       if (e.target.closest("[data-fedit]")) { HOME_PICK = true; reHome(); }
     });
     // 중학교 입학 준비만 고르면 수능 D-day·학점제·3년 로드맵은 아래로 접는다
-    if (focus.length && focus.every((g) => g === "중입") && !fpicking) {
+    if (focus.length && focus.every((g) => g === "중입")) {
       const rest2 = [el.querySelector(".auxbar"), el.querySelector(".gl"), el.querySelector(".road")].filter(Boolean);
       if (rest2.length) { const d = document.createElement("details"); d.className = "dp more-panels"; d.innerHTML = "<summary>다른 단계 정보 보기 (수능 D-day · 학점제 · 3년 로드맵)</summary>"; rest2.forEach((n) => { n.classList.remove("m-fold"); d.appendChild(n); }); el.querySelector(".hm").appendChild(d); }
     }

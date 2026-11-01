@@ -174,7 +174,9 @@ export function register(views, { $, esc, load, store }) {
   };
 
   views.schedule = async (el, query) => {
-    const tab = ["univ", "life", "road"].includes(query.get("t")) ? query.get("t") : "hs";
+    // 주소에 t가 없으면 홈에서 고른 "주로 보는 단계"에 맞는 탭으로 연다(중학교 입학 준비→졸업·입학, 대입 준비→대입)
+    const fo0 = store.get("portal.focus", null), foc0 = Array.isArray(fo0) && fo0.length === 1 ? fo0[0] : "";
+    const tab = ["hs", "univ", "life", "road"].includes(query.get("t")) ? query.get("t") : ({ 중입: "life", 대입: "univ" }[foc0] || "hs");
     if (tab === "road") {
       const tb = `<div class="ed">${tabs([["hs", "#schedule?t=hs", "고입"], ["univ", "#schedule?t=univ", "대입"], ["life", "#schedule?t=life", "졸업·입학"], ["road", "#schedule?t=road", "학년별"]], "road")}</div>`;
       el.innerHTML = tb + '<div id="rdhost"></div>';

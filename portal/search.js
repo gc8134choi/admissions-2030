@@ -37,10 +37,14 @@ export function mountSearch(btn, { load, store, esc }) {
   const recent = () => store.get(RECENT_KEY, []);
   const remember = (q) => { if (q.trim().length < 2) return; store.set(RECENT_KEY, [q.trim(), ...recent().filter((x) => x !== q.trim())].slice(0, 6)); };
 
-  const search = (q) => {
+  let any = false;
+  const searchOnce = (q, orMode) => {
+    any = orMode;
     const k = norm(q); if (!k) return [];
     const ks = expand(k);
-    const has = (...xs) => xs.some((x) => { const n = norm(x); return ks.some((w) => n.includes(w)); });
+    // 띄어 쓴 검색어는 낱말마다(동의어 포함) 모두 들어 있어야 맞는다. 하나도 못 찾으면 낱말 중 하나만 맞아도 보여 준다.
+    const toks = String(q).split(/\s+/).map(norm).filter(Boolean);
+    const has = (...xs) => { const n = xs.map(norm).join(" "); if (toks.length < 2) return ks.some((w) => n.includes(w)); const hit = toks.map((tk) => expand(tk).some((w) => n.includes(w))); return any ? hit.some(Boolean) : hit.every(Boolean); };
     const fo = store.get("portal.focus", []), foc = Array.isArray(fo) ? fo : [];
     const rank = (title, body, row) => (norm(title).includes(k) ? 6 : ks.some((w) => norm(title).includes(w)) ? 4 : 1) - (row && (row.region === "seoul" || /^서울/.test(title || "")) ? 3 : 0) + (row && foc.includes(stageOf(row)) ? 1 : 0) + (norm(body || "").includes(k) ? 0.5 : 0);
     const rows = data.policy.filter((r) => has(r.title, r.body)).map((r) => ({ href: routeOf(r), t: r.title, s: (r.body || "").slice(0, 90), sc: rank(r.title, r.body, r) })).sort((a, b) => b.sc - a.sc).slice(0, 12);
@@ -53,6 +57,7 @@ export function mountSearch(btn, { load, store, esc }) {
     const maps = [["학교 지도", "#select/curriculum?v=map"], ["중학교 배정", "#select/curriculum?v=middle"]].filter(([n]) => has(n, "지도", "중학교", "배정")).map(([n, h]) => ({ href: h, t: n, s: "학교" }));
     return [["가이드·용어", gd], ["일정·제도", rows], ["학교", [...sch, ...plc]], ["과목", sub], ["바로가기", lk], ["화면", [...pages, ...maps]]].filter(([, l]) => l.length);
   };
+  const search = (q) => { let r = searchOnce(q, false); if (!r.length && String(q).trim().includes(" ")) r = searchOnce(q, true); return r; };
   const item = (x) => `<li><a href="${esc(x.href)}"${x.ext ? ' target="_blank" rel="noopener"' : ""} data-go><b>${esc(x.t)}${x.ext ? " ↗" : ""}</b><span>${esc(x.s)}</span></a></li>`;
   const paint = () => {
     const q = box.querySelector("input").value, out = box.querySelector(".sr-out");

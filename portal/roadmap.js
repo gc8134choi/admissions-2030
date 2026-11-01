@@ -9,7 +9,9 @@ export async function roadmapView(el, { load, esc, learner, fmt, badgeMain, noti
   const BK = "portal.roadmap.base", ids = Object.keys(d._meta?.learners || {});
   const hq = new URLSearchParams((location.hash.split("?")[1] || "")); // 주소의 b(기준 학년)·st(단계)·w(대상)가 저장값보다 우선
   const sv = hq.get("b") || (store ? store.get(BK, null) : null);
-  const base = ids.includes(sv) ? sv : (ids.includes(learner.id) ? learner.id : ids[0]);
+  const fo0 = store ? store.get("portal.focus", null) : null; // 홈에서 "중학교 입학 준비"만 켰으면 초6 기준을 먼저
+  const byFocus = Array.isArray(fo0) && fo0.length === 1 && fo0[0] === "중입" && ids.includes("B") ? "B" : "";
+  const base = ids.includes(sv) ? sv : byFocus || (ids.includes(learner.id) ? learner.id : ids[0]);
   const BASES = [["A", "현재 중3 기준", "중3 기준 학년별 로드맵이에요."], ["B", "현재 초6 기준", "초6 기준 큰 그림이에요. 중학교 입학 2027 → 고교 입학 2030 → 대입 2033 순서예요. 먼 일정은 대부분 추정이라 바뀔 수 있어요."]].filter(([k]) => ids.includes(k));
   const items = d.items.filter((x) => x.learner === base);
   const now = new Date();
