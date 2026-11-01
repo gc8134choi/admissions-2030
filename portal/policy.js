@@ -89,8 +89,8 @@ export function register(views, { $, esc, load, store }) {
     const none = rows.filter((r) => !r.events);
     if (!evs.length && !none.length) return '<p class="note">아직 모인 일정이 없어요. 일정이 생기면 이 자리에 떠요.</p>';
     return `${(() => { const isPast = (e) => (e.end || e.start) < t, up = evs.filter((e) => !isPast(e)), pa = evs.filter(isPast).reverse();
-      const tbl = (l) => `<div class="tw"><table class="policy"><thead><tr><th class="l">날짜</th><th class="l">항목</th><th class="l">상태</th><th class="l">구분·출처</th></tr></thead><tbody>${l.map(tr).join("")}</tbody></table></div>`;
-      return (up.length ? tbl(up) : '<p class="note">앞으로 예정된 일정이 없어요.</p>') + (pa.length ? `<details class="dp past-fold"><summary>지난 일정 ${pa.length}건 (가까운 순)</summary>${tbl(pa)}</details>` : ""); })()}${none.length ? `<h2>일정 미확인</h2>${table(none, basic)}` : ""}`;
+      const tbl = (l, lim = 0) => `<div class="tw"><table class="policy"><thead><tr><th class="l">날짜</th><th class="l">항목</th><th class="l">상태</th><th class="l">구분·출처</th></tr></thead><tbody>${l.map((e, i) => (lim && i >= lim ? tr(e).replace('<tr class="', '<tr class="more-r ') : tr(e))).join("")}</tbody></table></div>${lim && l.length > lim ? `<p class="more-rows"><button type="button" class="btn" data-allrows>다음 일정 ${l.length - lim}건 더 보기</button></p>` : ""}`;
+      return (up.length ? tbl(up, 10) : '<p class="note">앞으로 예정된 일정이 없어요.</p>') + (pa.length ? `<details class="dp past-fold"><summary>지난 일정 ${pa.length}건 (가까운 순)</summary>${tbl(pa)}</details>` : ""); })()}${none.length ? `<h2>일정 미확인</h2>${table(none, basic)}` : ""}`;
   };
 
   const logTable = (rows) => cards(rows, { meta: (r) => (dateOf(r.title) ? fmtDate(dateOf(r.title)) : "날짜 미정"), title: (r) => r.title.slice(dateOf(r.title).length).trim() || r.title });
@@ -199,6 +199,7 @@ export function register(views, { $, esc, load, store }) {
       $("#aud").innerHTML = audienceChips(sel, esc) + '<span class="muted small"> 선택 없음 = 전체</span>' + stageChips(fs, wk) + (nSeoul ? `<div class="chipbar"><span class="flabel">지역</span><div class="chips"><button type="button" class="chip${seoul ? " on" : ""}" data-seoul aria-pressed="${seoul}">서울 일정도 보기 (${nSeoul})</button></div></div>` : "");
       $("#tl").innerHTML = timeline(rows.filter((r) => (seoul || r.region !== "seoul") && audienceMatch(r.audience, sel) && (!fs || !stageOf(r) || stageOf(r) === fs)), { week: wk });
     };
+    $("#tl").addEventListener("click", (e) => { const b = e.target.closest("[data-allrows]"); if (b) { $("#tl").classList.add("all"); b.closest(".more-rows").remove(); } });
     $("#aud").addEventListener("click", (e) => { if (e.target.closest("[data-seoul]")) { seoul = !seoul; store.set(SEK, seoul); draw(); return; } if (e.target.closest("[data-week]")) { wk = !wk; store.set("portal.schedule.week", wk); draw(); return; } const b = e.target.closest("[data-stage]"); if (!b) return; fs = b.dataset.stage; store.set(SK, fs); draw(); });
     $("#aud").addEventListener("click", (e) => {
       const k = e.target.closest("[data-aud]")?.dataset.aud;
