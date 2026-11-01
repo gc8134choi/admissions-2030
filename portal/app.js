@@ -151,6 +151,8 @@ async function curriculumView(el, query, node) {
     if (tab === "map" || tab === "middle") { if (tab === "map" && focusP) q.set("p", focusP); }
     else q.set("s", sel.join(","));
     if (areasSel.length) q.set("a", areasSel.join(","));
+    const cur = new URLSearchParams((location.hash.split("?")[1] || "")); // 학교 비교 표(c)·유형(t)·전형(ty)·대학 요건(us)의 선택은 지우지 않는다
+    for (const k of ["c", "t", "ty", "us"]) if (cur.has(k) && !q.has(k)) q.set(k, cur.get(k));
     history.replaceState(null, "", `#select/curriculum?${q.toString().replace(/%2C/g, ",")}`);
   };
   const chipHtml = () => schools.map((x) => `<button type="button" class="chip schip ${sel.includes(x.id) ? "on" : ""}" data-id="${esc(x.id)}" aria-pressed="${sel.includes(x.id)}" title="${esc(x.name)}">${nm(x.id, x.name, 36)}</button>`).join("");

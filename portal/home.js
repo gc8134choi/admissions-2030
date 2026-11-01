@@ -228,7 +228,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
             <div id="hm-focus">${focusBar()}</div><ul class="lgs" id="hm-up">${rest()}</ul></section>
           <section class="dp must" aria-label="먼저 읽어 둘 안내"><div class="sec-h"><h2><em>안내</em>먼저 읽어 둘 안내</h2></div><ul class="must-l">${MUST.filter(([g]) => inF(g)).map(([, t, d, h]) => `<li><div><b>${esc(t)}</b><span>${esc(d)}</span></div><a class="btn" href="${h}">보기</a></li>`).join("")}</ul></section>
         <section class="dp soonp t2"><div class="sec-h"><h2><em>곧</em>곧 있을 일</h2></div>
-          ${stones.filter((m) => inF(stageOf(m.row))).length ? `<ul class="mss">${stones.filter((m) => inF(stageOf(m.row))).map(stoneHtml).join("")}</ul><p class="hint">사진은 이 기기에만 저장돼요.</p>` : '<div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p></div>'}</section>
+          ${stones.filter((m) => inF(stageOf(m.row)) && dayN(m.date, t) >= 0).length ? `<ul class="mss">${stones.filter((m) => inF(stageOf(m.row)) && dayN(m.date, t) >= 0).map(stoneHtml).join("")}</ul><p class="hint">사진은 이 기기에만 저장돼요.</p>` : '<div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p></div>'}</section>
         </div>
         <div class="h-side">
         <section class="dp news t0"><div class="sec-h"><h2><em>소식</em>바뀐 소식</h2><a href="#changelog">전체 ›</a></div>
