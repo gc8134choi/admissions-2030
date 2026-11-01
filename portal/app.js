@@ -1,4 +1,5 @@
 import { decorateTerms, initTerms, setTerms } from "./terms.js";
+import { foldSources, initSrcRef } from "./src-ref.js";
 import { MENU, STATUS, TABS, REDIRECT, hrefOf, tabHref, locate } from "./menu.js";
 import { register as registerPolicy } from "./policy.js";
 import { registerHome } from "./home.js";
@@ -497,6 +498,13 @@ await initProfiles(load);
 mountProfileSwitch([$("#pf")], store, render);
 mountSearch($("#srbtn"), { load, store, esc });
 // 용어 ⓘ를 모든 화면으로: 화면이 그려지거나 바뀔 때(필터 등) 사전의 용어를 묶음마다 처음 한 번 누르는 말로 바꾼다
+initSrcRef();
+{ // 화면마다 "출처 …" 줄을 버튼으로 접는다(필터·펼침으로 다시 그려져도 따라간다)
+  const main = $("#main"); let tf = null;
+  const fold = () => { so.disconnect(); try { foldSources(main); } catch {} so.observe(main, { childList: true, subtree: true }); };
+  const so = new MutationObserver(() => { clearTimeout(tf); tf = setTimeout(fold, 120); });
+  so.observe(main, { childList: true, subtree: true });
+}
 load("glossary").then((g) => {
   setTerms(g.terms); initTerms();
   const main = $("#main"); let tm = null;

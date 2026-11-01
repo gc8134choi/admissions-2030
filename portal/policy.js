@@ -1,4 +1,5 @@
 import { creditView } from "./credit.js";
+import { srcWrap } from "./src-ref.js";
 import { roadmapView } from "./roadmap.js";
 import { loadProfile, profileOf, filterByProfile } from "./profile.js";
 import { STAGES, stageOf, stageTag } from "./stage.js";
@@ -45,10 +46,10 @@ export function register(views, { $, esc, load, store }) {
     return `${r.sourceKind ? `<span>${SKIND[r.sourceKind]}</span> · ` : ""}${list.map((x) => (x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>` : esc(x.name))).join(" · ")}`;
   };
   const table = (rows, cols, cls = () => "") => `<div class="tw"><table class="policy"><thead><tr>${cols.map((c) => `<th class="l">${c[0]}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => `<tr class="${cls(r)}">${cols.map((c) => `<td class="l">${c[1](r)}</td>`).join("")}</tr>`).join("") || `<tr><td colspan="${cols.length}">해당 항목이 없어요.</td></tr>`}</tbody></table></div>`;
-  const basic = [["항목", (r) => `<b>${esc(r.title)}</b>`], ["내용", (r) => esc(r.body)], ["상태", badge], ["구분·출처", src]];
+  const basic = [["항목", (r) => `<b>${esc(r.title)}</b>`], ["내용", (r) => esc(r.body)], ["상태", badgeMain], ["구분·출처", (r) => srcWrap(src(r) + badgeNote(r), { checked: r.checkedAt })]];
   // 행 리스트(표 대체, A안): 왼쪽 상태 점, 오른쪽 제목·내용·출처. 구분은 헤어라인만. 옵션: meta(r)=제목 위 작은 글씨, cls(r)=추가 클래스, title(r)=제목.
   const cards = (rows, { meta, cls = () => "", title = (r) => r.title } = {}) => rows.length
-    ? `<div class="ed-rows">${rows.map((r) => `<article class="ed-row ${cls(r)}">${meta && meta(r) ? `<div class="ed-meta">${esc(meta(r))}</div>` : ""}<div class="ed-st">${stageTag(stageOf(r), esc)}${badgeMain(r)}</div><h3>${esc(title(r))}</h3><p class="ed-b">${esc(r.body)}</p>${badgeNote(r)}<p class="ed-s">출처 ${src(r)}</p></article>`).join("")}</div>`
+    ? `<div class="ed-rows">${rows.map((r) => `<article class="ed-row ${cls(r)}">${meta && meta(r) ? `<div class="ed-meta">${esc(meta(r))}</div>` : ""}<div class="ed-st">${stageTag(stageOf(r), esc)}${badgeMain(r)}</div><h3>${esc(title(r))}</h3><p class="ed-b">${esc(r.body)}</p><p class="ed-s">출처 ${src(r)}${badgeNote(r)}</p></article>`).join("")}</div>`
     : '<p class="muted">해당 항목이 없어요.</p>';
   const cnt = (n) => `<span class="cnt">${n}</span>`;
   const tabs = (items, on) => `<div class="ed-tabs">${items.map(([k, h, t]) => `<a href="${h}" class="${k === on ? "on" : ""}">${t}</a>`).join("")}</div>`;
@@ -83,7 +84,7 @@ export function register(views, { $, esc, load, store }) {
     const inWeek = (e) => { const s0 = e.start.length === 10 ? dn(e.start) : 99, e0 = (e.end || e.start).length === 10 ? dn(e.end || e.start) : 99; return s0 <= 7 && e0 >= 0; };
     let evs = rows.flatMap((r) => (r.events || []).map((e, i) => ({ ...e, r, first: i === 0 }))).sort((a, b) => a.start.localeCompare(b.start));
     if (week) evs = evs.filter(inWeek);
-    const tr = (e) => { const d0 = e.start.length === 10 ? dn(e.start) : null, soon = d0 != null && d0 >= 0 && d0 <= 7, live = e.start.length === 10 && d0 < 0 && (e.end || e.start) >= t; return `<tr class="${(e.end || e.start) < t ? "past" : soon ? "due" : live ? "now" : ""}"><td class="l">${stageTag(stageOf(e.r), esc)}${soon ? `<b class="dn num">D-${d0}</b> ` : live ? '<b class="dn">진행 중</b> ' : ""}${esc(fmt(e))}</td><td class="l"><b>${esc(e.r.title)}</b>${e.label ? ` · ${esc(e.label)}` : ""}${e.first ? `<div class="muted small">${esc(e.r.body)}</div>` : ""}</td><td class="l">${badge(e.r)}</td><td class="l">${src(e.r)}</td></tr>`; };
+    const tr = (e) => { const d0 = e.start.length === 10 ? dn(e.start) : null, soon = d0 != null && d0 >= 0 && d0 <= 7, live = e.start.length === 10 && d0 < 0 && (e.end || e.start) >= t; return `<tr class="${(e.end || e.start) < t ? "past" : soon ? "due" : live ? "now" : ""}"><td class="l">${stageTag(stageOf(e.r), esc)}${soon ? `<b class="dn num">D-${d0}</b> ` : live ? '<b class="dn">진행 중</b> ' : ""}${esc(fmt(e))}</td><td class="l"><b>${esc(e.r.title)}</b>${e.label ? ` · ${esc(e.label)}` : ""}${e.first ? `<div class="muted small">${esc(e.r.body)}</div>` : ""}</td><td class="l">${badgeMain(e.r)}</td><td class="l">${srcWrap(src(e.r) + badgeNote(e.r), { checked: e.r.checkedAt })}</td></tr>`; };
     const none = rows.filter((r) => !r.events);
     if (!evs.length && !none.length) return '<p class="note">아직 모인 일정이 없어요. 일정이 생기면 이 자리에 떠요.</p>';
     return `<p class="muted">오늘(${t}) 이전 일정은 흐리게 표시해요.</p><div class="tw"><table class="policy"><thead><tr><th class="l">날짜</th><th class="l">항목</th><th class="l">상태</th><th class="l">구분·출처</th></tr></thead><tbody>${evs.map(tr).join("")}</tbody></table></div>${none.length ? `<h2>일정 미확인</h2>${table(none, basic)}` : ""}`;

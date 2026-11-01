@@ -290,3 +290,19 @@ details.pn-t{padding:0 var(--sp-3)}
 details.pn-t>summary{cursor:pointer;min-height:var(--touch);display:flex;align-items:center}
 details.pn-t>summary h3{margin:0}
 details.pn-t[open]{padding-bottom:var(--sp-3)}
+
+/* 출처: 기본은 숨기고 "출처" 버튼으로 펼친다 */
+.srcw{display:inline}
+.srcb{display:inline-flex;align-items:center;min-height:var(--touch);min-width:44px;justify-content:center;padding:0 6px;border:0;background:none;color:var(--pencil);font:500 12.5px var(--font);text-decoration:underline dotted;text-underline-offset:3px;cursor:pointer}
+.srcb:hover,.srcb[aria-expanded=true]{color:var(--ink)}
+.srcb:focus-visible{outline:2px solid var(--accent);outline-offset:1px;border-radius:6px}
+.srcp{display:block;margin:2px 0 6px;padding:6px 10px;border:1px solid var(--glass-line);border-radius:10px;background:var(--glass-in);font-size:var(--fs-sub);line-height:1.5;color:var(--ink)}
+.srcp[hidden]{display:none}
+.srcp a{color:var(--ink)}
+.srcd{color:var(--pencil);font-size:12.5px;margin-left:6px}
+.ed-s-fold{margin:0;line-height:1}
+.srcf{margin:var(--sp-3) 0 0;font-size:var(--fs-sub);color:var(--pencil)}
+.srcf>summary{cursor:pointer;min-height:var(--touch);display:flex;align-items:center}
+.srcf ul{margin:0 0 var(--sp-2);padding-left:1.1em}
+.hsc td{vertical-align:top}
+@media print{.srcp[hidden]{display:block!important}.srcb{display:none}.srcf:not([open])>*:not(summary){display:block}}
