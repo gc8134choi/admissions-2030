@@ -370,3 +370,10 @@ button.term{padding:13px 2px;margin:-13px -2px}
 .cmp-x,.pl-row{min-height:44px!important;min-width:44px!important}
 .leaflet-control-zoom a{width:44px!important;height:44px!important;line-height:44px!important}
 .srcp a,.srcf a,.ed-b a,.ed-s a{display:inline-block;padding:11px 0}
+
+/* 평가 R2: 지난 일정·단계 라벨 대비 4.5 이상, 짧은 용어 버튼·필터 버튼 너비 44px */
+table.policy tr.past td,table.policy tr.past b,table.policy tr.past .stg,table.policy tr.past .muted,.tl li.past,.stg{color:var(--pencil)!important}
+#tl table.policy tr.past{opacity:1}
+button.term{padding:13px 11px;margin:-13px -11px}
+.ed-filter button,.ed-filter button[data-st]{min-width:44px;min-height:44px}
+.lnk{display:inline-flex;align-items:center;min-height:44px}
