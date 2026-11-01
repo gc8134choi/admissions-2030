@@ -370,7 +370,7 @@ DESCRIPTION:원서접수 2026.12.4~12.10(해당 지역 교육지원청)\,
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:ev-gg-12-1@admissions-2030
+UID:ev-gg-14-1@admissions-2030
 DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20261102
 DTEND;VALUE=DATE:20261103
@@ -393,7 +393,7 @@ DESCRIPTION:과학고: 원서접수 2026.8.24~8.28\, 소집면접 11.20\,
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:ev-gg-12-2@admissions-2030
+UID:ev-gg-14-2@admissions-2030
 DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20261109
 DTEND;VALUE=DATE:20261110
@@ -416,7 +416,7 @@ DESCRIPTION:과학고: 원서접수 2026.8.24~8.28\, 소집면접 11.20\,
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:ev-gg-12-3@admissions-2030
+UID:ev-gg-14-3@admissions-2030
 DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20261103
 DTEND;VALUE=DATE:20261106
@@ -440,7 +440,7 @@ DESCRIPTION:과학고: 원서접수 2026.8.24~8.28\, 소집면접 11.20\,
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:ev-gg-12-4@admissions-2030
+UID:ev-gg-14-4@admissions-2030
 DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
@@ -463,7 +463,7 @@ DESCRIPTION:과학고: 원서접수 2026.8.24~8.28\, 소집면접 11.20\,
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:ev-gg-12-5@admissions-2030
+UID:ev-gg-14-5@admissions-2030
 DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20261112
 DTEND;VALUE=DATE:20261114
@@ -487,7 +487,7 @@ DESCRIPTION:과학고: 원서접수 2026.8.24~8.28\, 소집면접 11.20\,
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:ev-gg-12-6@admissions-2030
+UID:ev-gg-14-6@admissions-2030
 DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
@@ -510,7 +510,7 @@ DESCRIPTION:과학고: 원서접수 2026.8.24~8.28\, 소집면접 11.20\,
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:ev-gg-12-7@admissions-2030
+UID:ev-gg-14-7@admissions-2030
 DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20261123
 DTEND;VALUE=DATE:20261124
@@ -533,7 +533,7 @@ DESCRIPTION:과학고: 원서접수 2026.8.24~8.28\, 소집면접 11.20\,
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:ev-gg-12-8@admissions-2030
+UID:ev-gg-14-8@admissions-2030
 DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20261126
 DTEND;VALUE=DATE:20261127
@@ -556,7 +556,7 @@ DESCRIPTION:과학고: 원서접수 2026.8.24~8.28\, 소집면접 11.20\,
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:ev-gg-12-9@admissions-2030
+UID:ev-gg-14-9@admissions-2030
 DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20261126
 DTEND;VALUE=DATE:20261128
@@ -718,152 +718,9 @@ END:VEVENT
 BEGIN:VEVENT
 UID:ev-gg-12-1@admissions-2030
 DTSTAMP:20261025T000000Z
-DTSTART;VALUE=DATE:20261102
-DTEND;VALUE=DATE:20261103
-SUMMARY:용인 배정 비율·원서 접수 방식 · 마이스터고 발
- 표
-DESCRIPTION:학군내배정 정원은 고교별 모집정원의 50%(서천
- 고 80%\, 처인고 100%)\, 구역내배정은 모집정원 × 구역별 
- 지원율 − 학군내 배정 인원. 경기도 내 중학교 졸업예
- 정자는 재학 중학교에서 고교입학시스템으로 원서 작성
- ·전송 후 용인교육지원청에 종이원서 제출\, 원서접수 
- 마감 2026.12.10(목) 17:00\n출처: 경기도교육청 고입·전학 
- 포털 자료실: 2027학년도 경기도 고교 평준화학군 리플렛
- (9개 학군) 중 용인학군(2026.9.18 게시\, 공식) https://satp.goe
- .go.kr/main.do\n확인일 2026-10-25
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:ev-gg-12-2@admissions-2030
-DTSTAMP:20261025T000000Z
-DTSTART;VALUE=DATE:20261109
-DTEND;VALUE=DATE:20261110
-SUMMARY:용인 배정 비율·원서 접수 방식 · 체육고 발표
-DESCRIPTION:학군내배정 정원은 고교별 모집정원의 50%(서천
- 고 80%\, 처인고 100%)\, 구역내배정은 모집정원 × 구역별 
- 지원율 − 학군내 배정 인원. 경기도 내 중학교 졸업예
- 정자는 재학 중학교에서 고교입학시스템으로 원서 작성
- ·전송 후 용인교육지원청에 종이원서 제출\, 원서접수 
- 마감 2026.12.10(목) 17:00\n출처: 경기도교육청 고입·전학 
- 포털 자료실: 2027학년도 경기도 고교 평준화학군 리플렛
- (9개 학군) 중 용인학군(2026.9.18 게시\, 공식) https://satp.goe
- .go.kr/main.do\n확인일 2026-10-25
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:ev-gg-12-3@admissions-2030
-DTSTAMP:20261025T000000Z
-DTSTART;VALUE=DATE:20261103
-DTEND;VALUE=DATE:20261106
-SUMMARY:용인 배정 비율·원서 접수 방식 · 특성화고 특별
- 전형 원서접수
-DESCRIPTION:학군내배정 정원은 고교별 모집정원의 50%(서천
- 고 80%\, 처인고 100%)\, 구역내배정은 모집정원 × 구역별 
- 지원율 − 학군내 배정 인원. 경기도 내 중학교 졸업예
- 정자는 재학 중학교에서 고교입학시스템으로 원서 작성
- ·전송 후 용인교육지원청에 종이원서 제출\, 원서접수 
- 마감 2026.12.10(목) 17:00\n출처: 경기도교육청 고입·전학 
- 포털 자료실: 2027학년도 경기도 고교 평준화학군 리플렛
- (9개 학군) 중 용인학군(2026.9.18 게시\, 공식) https://satp.goe
- .go.kr/main.do\n확인일 2026-10-25
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:ev-gg-12-4@admissions-2030
-DTSTAMP:20261025T000000Z
-DTSTART;VALUE=DATE:20261111
-DTEND;VALUE=DATE:20261112
-SUMMARY:용인 배정 비율·원서 접수 방식 · 특성화고 특별
- 전형 발표
-DESCRIPTION:학군내배정 정원은 고교별 모집정원의 50%(서천
- 고 80%\, 처인고 100%)\, 구역내배정은 모집정원 × 구역별 
- 지원율 − 학군내 배정 인원. 경기도 내 중학교 졸업예
- 정자는 재학 중학교에서 고교입학시스템으로 원서 작성
- ·전송 후 용인교육지원청에 종이원서 제출\, 원서접수 
- 마감 2026.12.10(목) 17:00\n출처: 경기도교육청 고입·전학 
- 포털 자료실: 2027학년도 경기도 고교 평준화학군 리플렛
- (9개 학군) 중 용인학군(2026.9.18 게시\, 공식) https://satp.goe
- .go.kr/main.do\n확인일 2026-10-25
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:ev-gg-12-5@admissions-2030
-DTSTAMP:20261025T000000Z
-DTSTART;VALUE=DATE:20261112
-DTEND;VALUE=DATE:20261114
-SUMMARY:용인 배정 비율·원서 접수 방식 · 특성화고 일반
- 전형 원서접수
-DESCRIPTION:학군내배정 정원은 고교별 모집정원의 50%(서천
- 고 80%\, 처인고 100%)\, 구역내배정은 모집정원 × 구역별 
- 지원율 − 학군내 배정 인원. 경기도 내 중학교 졸업예
- 정자는 재학 중학교에서 고교입학시스템으로 원서 작성
- ·전송 후 용인교육지원청에 종이원서 제출\, 원서접수 
- 마감 2026.12.10(목) 17:00\n출처: 경기도교육청 고입·전학 
- 포털 자료실: 2027학년도 경기도 고교 평준화학군 리플렛
- (9개 학군) 중 용인학군(2026.9.18 게시\, 공식) https://satp.goe
- .go.kr/main.do\n확인일 2026-10-25
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:ev-gg-12-6@admissions-2030
-DTSTAMP:20261025T000000Z
-DTSTART;VALUE=DATE:20261120
-DTEND;VALUE=DATE:20261121
-SUMMARY:용인 배정 비율·원서 접수 방식 · 과학고 소집면
- 접
-DESCRIPTION:학군내배정 정원은 고교별 모집정원의 50%(서천
- 고 80%\, 처인고 100%)\, 구역내배정은 모집정원 × 구역별 
- 지원율 − 학군내 배정 인원. 경기도 내 중학교 졸업예
- 정자는 재학 중학교에서 고교입학시스템으로 원서 작성
- ·전송 후 용인교육지원청에 종이원서 제출\, 원서접수 
- 마감 2026.12.10(목) 17:00\n출처: 경기도교육청 고입·전학 
- 포털 자료실: 2027학년도 경기도 고교 평준화학군 리플렛
- (9개 학군) 중 용인학군(2026.9.18 게시\, 공식) https://satp.goe
- .go.kr/main.do\n확인일 2026-10-25
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:ev-gg-12-7@admissions-2030
-DTSTAMP:20261025T000000Z
-DTSTART;VALUE=DATE:20261123
-DTEND;VALUE=DATE:20261124
-SUMMARY:용인 배정 비율·원서 접수 방식 · 특성화고 일반
- 전형 발표
-DESCRIPTION:학군내배정 정원은 고교별 모집정원의 50%(서천
- 고 80%\, 처인고 100%)\, 구역내배정은 모집정원 × 구역별 
- 지원율 − 학군내 배정 인원. 경기도 내 중학교 졸업예
- 정자는 재학 중학교에서 고교입학시스템으로 원서 작성
- ·전송 후 용인교육지원청에 종이원서 제출\, 원서접수 
- 마감 2026.12.10(목) 17:00\n출처: 경기도교육청 고입·전학 
- 포털 자료실: 2027학년도 경기도 고교 평준화학군 리플렛
- (9개 학군) 중 용인학군(2026.9.18 게시\, 공식) https://satp.goe
- .go.kr/main.do\n확인일 2026-10-25
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:ev-gg-12-8@admissions-2030
-DTSTAMP:20261025T000000Z
-DTSTART;VALUE=DATE:20261126
-DTEND;VALUE=DATE:20261127
-SUMMARY:용인 배정 비율·원서 접수 방식 · 과학고 발표
-DESCRIPTION:학군내배정 정원은 고교별 모집정원의 50%(서천
- 고 80%\, 처인고 100%)\, 구역내배정은 모집정원 × 구역별 
- 지원율 − 학군내 배정 인원. 경기도 내 중학교 졸업예
- 정자는 재학 중학교에서 고교입학시스템으로 원서 작성
- ·전송 후 용인교육지원청에 종이원서 제출\, 원서접수 
- 마감 2026.12.10(목) 17:00\n출처: 경기도교육청 고입·전학 
- 포털 자료실: 2027학년도 경기도 고교 평준화학군 리플렛
- (9개 학군) 중 용인학군(2026.9.18 게시\, 공식) https://satp.goe
- .go.kr/main.do\n확인일 2026-10-25
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:ev-gg-12-9@admissions-2030
-DTSTAMP:20261025T000000Z
-DTSTART;VALUE=DATE:20261126
-DTEND;VALUE=DATE:20261128
-SUMMARY:용인 배정 비율·원서 접수 방식 · 전기 미달교 추
- 가모집 원서접수
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261211
+SUMMARY:용인 배정 비율·원서 접수 방식
 DESCRIPTION:학군내배정 정원은 고교별 모집정원의 50%(서천
  고 80%\, 처인고 100%)\, 구역내배정은 모집정원 × 구역별 
  지원율 − 학군내 배정 인원. 경기도 내 중학교 졸업예
