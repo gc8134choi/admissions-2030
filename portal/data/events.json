@@ -204,6 +204,8 @@
   "start": "2029-11-15",
   "status": "estimated",
   "unverified": false,
+  "sourceName": "평가원 수능 홈페이지(시행 관행 참고)",
+  "sourceUrl": "https://www.suneung.re.kr/main.do?s=suneung",
   "region": "national",
   "audience": [
    "common"
@@ -447,6 +449,8 @@
   "end": "2030-02",
   "status": "estimated",
   "unverified": false,
+  "sourceName": "대교협 대학입학전형기본사항(정시 관행 참고)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf",
   "region": "national",
   "audience": [
    "common"
@@ -612,6 +616,8 @@
   "start": "2032-11-18",
   "status": "estimated",
   "unverified": false,
+  "sourceName": "평가원 수능 홈페이지(시행 관행 참고)",
+  "sourceUrl": "https://www.suneung.re.kr/main.do?s=suneung",
   "region": "national",
   "audience": [
    "common"
@@ -632,6 +638,8 @@
   "start": "2032-03",
   "status": "estimated",
   "unverified": false,
+  "sourceName": "평가원 수능 홈페이지(시행 기본계획 공고 관행 참고)",
+  "sourceUrl": "https://www.suneung.re.kr/main.do?s=suneung",
   "region": "national",
   "audience": [
    "common"
@@ -652,6 +660,8 @@
   "start": "2030-08",
   "status": "estimated",
   "unverified": false,
+  "sourceName": "대교협 대학입학전형기본사항(발표 시기 관행 참고)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf",
   "region": "national",
   "audience": [
    "common"
@@ -672,6 +682,8 @@
   "start": "2029-12",
   "status": "estimated",
   "unverified": false,
+  "sourceName": "경기도교육청 2027학년도 고입 기본계획(고입 시기 관행 참고)",
+  "sourceUrl": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2344685&mi=10102&searchAt1=&searchValue1=",
   "region": "national",
   "audience": [
    "common"
@@ -730,6 +742,8 @@
   "start": "2032-09",
   "status": "estimated",
   "unverified": false,
+  "sourceName": "대교협 대학입학전형기본사항(수시·정시 시기 관행 참고)",
+  "sourceUrl": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf",
   "region": "national",
   "audience": [
    "common"
@@ -795,7 +809,7 @@
   "end": "2026-11-06",
   "status": "confirmed",
   "unverified": false,
-  "note": "공식 원문 확인, 2026-10-25",
+  "note": "공식 원문 확인, 2026-11-01",
   "sourceKind": "official",
   "sourceName": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획 일정)",
   "sourceUrl": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
@@ -810,7 +824,7 @@
   "entryYear": 2030,
   "examYear": 2033,
   "body": "2027학년도 용인 중학교 신입생 배정원서 작성 2026.11.2(월)~11.6(금). 학교군 내 모든 중학교를 희망 순으로 지원",
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-01"
  },
  {
   "id": "ev-life-04-1",
@@ -821,7 +835,7 @@
   "end": "2026-11-13",
   "status": "confirmed",
   "unverified": false,
-  "note": "공식 원문 확인, 2026-10-25",
+  "note": "공식 원문 확인, 2026-11-01",
   "sourceKind": "official",
   "sourceName": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획 일정)",
   "sourceUrl": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
@@ -836,7 +850,7 @@
   "entryYear": 2030,
   "examYear": 2033,
   "body": "2026.11.9(월)~11.13(금), 출신 초등학교에서 접수",
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-01"
  },
  {
   "id": "ev-life-05-1",
@@ -847,7 +861,7 @@
   "end": "2026-12-16",
   "status": "confirmed",
   "unverified": false,
-  "note": "공식 원문 확인, 2026-10-25",
+  "note": "공식 원문 확인, 2026-11-01",
   "sourceKind": "official",
   "sourceName": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획 일정)",
   "sourceUrl": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
@@ -862,7 +876,7 @@
   "entryYear": 2030,
   "examYear": 2033,
   "body": "추가배정원서 작성 2026.12.7~12.11(출신 초등학교), 접수 12.14~12.16(용인교육지원청)",
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-01"
  },
  {
   "id": "ev-life-06-1",
@@ -872,7 +886,7 @@
   "start": "2026-12-31",
   "status": "confirmed",
   "unverified": false,
-  "note": "공식 원문 확인, 2026-10-25",
+  "note": "공식 원문 확인, 2026-11-01",
   "sourceKind": "official",
   "sourceName": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획 일정)",
   "sourceUrl": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
@@ -887,7 +901,7 @@
   "entryYear": 2030,
   "examYear": 2033,
   "body": "2026.12.31(목) 출신 초등학교에서 발표",
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-01"
  },
  {
   "id": "ev-life-07-1",
@@ -898,7 +912,7 @@
   "end": "2027-01-07",
   "status": "confirmed",
   "unverified": false,
-  "note": "공식 원문 확인, 2026-10-25",
+  "note": "공식 원문 확인, 2026-11-01",
   "sourceKind": "official",
   "sourceName": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획 일정)",
   "sourceUrl": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
@@ -913,7 +927,7 @@
   "entryYear": 2030,
   "examYear": 2033,
   "body": "2027.1.4(월)~1.7(목) 각 중학교",
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-01"
  },
  {
   "id": "ev-life-08-1",
@@ -924,7 +938,7 @@
   "end": "2027-01-22",
   "status": "confirmed",
   "unverified": false,
-  "note": "공식 원문 확인, 2026-10-25",
+  "note": "공식 원문 확인, 2026-11-01",
   "sourceKind": "official",
   "sourceName": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획 일정)",
   "sourceUrl": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
@@ -939,7 +953,7 @@
   "entryYear": 2030,
   "examYear": 2033,
   "body": "재배정 원서 접수 2027.1.11~1.15(용인교육지원청), 재배정 발표 1.22(용인교육지원청 홈페이지), 재배정자 등록 1.22(각 중학교)",
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-01"
  },
  {
   "id": "ev-life-09-1",
