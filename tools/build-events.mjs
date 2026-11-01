@@ -32,5 +32,15 @@ export function makeEvents(rows, specOf) {
     });
   }
   { const seen = new Set(); for (const e of out) { if (seen.has(e.id)) throw new Error(`일정 id 중복: ${e.id}`); seen.add(e.id); } }
+  // 라벨이 있는 일정(하루 단위)은 본문에 그 날짜(M.D, M월 D일, YYYY.M.D)가 적혀 있어야 한다 — 제목·본문이 라벨·날짜와 어긋난 행(id가 겹치면서 생긴 사고)을 막는다.
+  const bad = [];
+  for (const e of out) {
+    if (!e.title || (e.end && e.end < e.start)) bad.push(`${e.id}: 제목 없음 또는 끝날짜가 시작보다 앞`);
+    const m = e.label && /^(\d{4})-(\d{2})-(\d{2})$/.exec(e.start);
+    if (!m) continue;
+    const [y, mo, d] = [m[1], +m[2], +m[3]], b = String(e.body || "");
+    if (![`${mo}.${d}`, `${mo}월 ${d}일`, `${mo}/${d}`, `${y}.${mo}.${d}`].some((p) => b.includes(p))) bad.push(`${e.id}: 라벨 "${e.label}"의 날짜 ${e.start}가 본문에 없음 — 제목·본문이 라벨·날짜와 어긋났는지 확인`);
+  }
+  if (bad.length) throw new Error("일정 점검 실패:\n" + bad.join("\n"));
   return out;
 }
