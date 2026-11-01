@@ -1,6 +1,7 @@
 import { decorateTerms, initTerms, setTerms } from "./terms.js";
 import { foldSources, initSrcRef } from "./src-ref.js";
 import { emptyLine, WHERE } from "./empty.js";
+import { crumbHtml, footHtml, sourcesHtml } from "./pagefoot.js";
 import { preloadGlossary, decorateGlossary } from "./glossary.js";
 // "곧 열려요"에는 왜 아직인지와 지금 할 수 있는 행동을 한 줄로 적는다
 const SOON_WHY = {
@@ -160,6 +161,9 @@ async function curriculumView(el, query, node) {
         <div class="chipbar" id="chipbar"><span class="flabel">학교</span><div class="chips" id="chips"></div></div>
     <div id="cview"></div>`;
 
+  // 상세 비교 필터(f=sel:school|student;kind:공통 …)도 주소에 남겨 같은 화면을 링크로 다시 열 수 있게 한다
+  if (query.get("f")) for (const part of query.get("f").split(";")) { const [k, v] = part.split(":"); if (FS[k] && v) FS[k] = v.split("|").filter(Boolean); }
+  const fsParam = () => Object.entries(FS).filter(([, v]) => v.length).map(([k, v]) => `${k}:${v.join("|")}`).join(";");
   const syncUrl = () => {
     const q = new URLSearchParams();
     q.set("v", tab);
@@ -167,6 +171,7 @@ async function curriculumView(el, query, node) {
     if (tab === "map" || tab === "middle") { if (tab === "map" && focusP) q.set("p", focusP); }
     else q.set("s", sel.join(","));
     if (areasSel.length) q.set("a", areasSel.join(","));
+    if (tab === "compare" && fsParam()) q.set("f", fsParam());
     const cur = new URLSearchParams((location.hash.split("?")[1] || "")); // 학교 비교 표(c)·유형(t)·전형(ty)·대학 요건(us)의 선택은 지우지 않는다
     for (const k of ["c", "t", "ty", "us"]) if (cur.has(k) && !q.has(k)) q.set(k, cur.get(k));
     history.replaceState(null, "", `#select/curriculum?${q.toString().replace(/%2C/g, ",")}`);
@@ -237,6 +242,7 @@ async function curriculumView(el, query, node) {
     const star = e.target.closest(".star");
     if (star) { toggleStar(star.dataset.id); star.textContent = stars().includes(star.dataset.id) ? "★" : "☆"; }
   });
+  el.addEventListener("cmpchange", () => { if (tab === "compare") syncUrl(); });
   el.addEventListener("input", (e) => { if (e.target.dataset.memo) store.set("memo:" + e.target.dataset.memo, e.target.value); });
   await refresh();
 }
@@ -329,6 +335,7 @@ async function compareShell(el, onReset, getAreas) {
   const fitMode = () => $(".tw")?.classList.toggle("fit", $(".cmpmain").clientWidth >= need);
   window.addEventListener("resize", fitMode);
   const draw = (next) => {
+    root.dispatchEvent(new CustomEvent("cmpchange", { bubbles: true }));
     if (next) ids = next;
     const f = { q: $("#q").value.replace(/\s/g, ""), areas: getAreas(), sel: FS.sel, kind: FS.kind, terms: FS.terms, pool: $("#pool").value, csat: FS.csat, diff: $("#diff").checked, one: $("#one").checked };
     if (!ids.length) { $("#tbl").innerHTML = '<tbody><tr><td class="l" style="padding:12px">필터에서 학교를 하나 이상 선택하세요.</td></tr></tbody>'; return; }
@@ -476,6 +483,15 @@ function addCalendar(el) {
 }
 
 const GO_ERR = '<p class="note">정보를 못 가져왔어요. 잠시 뒤 다시 열어 주세요.</p>';
+// 빵부스러기 끝의 학교 이름, 자료 확인일, 출처 모음을 채운다(출처 버튼이 늦게 생겨도 따라간다)
+function pageExtras(loc, query) {
+  if (!loc || loc.tab.id === "home") return;
+  const sid = (query.get("s") || "").split(",").filter(Boolean);
+  if (sid.length === 1) load("schools").then((ss) => { const x = ss.find((y) => y.id === sid[0]); const el = $("#crumb .crumb-s"); if (x && el) el.innerHTML = `<span aria-hidden="true"> › </span>${esc(x.name)}`; }).catch(() => {});
+  load("policy").then((rows) => { const d = rows.map((r) => r.checkedAt).filter(Boolean).sort().pop(); const el = $(".pgfoot .pg-date"); if (d && el) el.textContent = `자료 확인 ${d.replace(/-/g, ".")} · `; }).catch(() => {});
+}
+const refreshPageSources = () => { const f = $(".pgfoot .pg-src"); if (f) f.innerHTML = sourcesHtml($("#main")) + " · "; };
+
 function render() {
   const [path, qs] = decodeURIComponent(location.hash.slice(1)).split("?");
   const query = new URLSearchParams(qs || "");
@@ -499,13 +515,15 @@ function render() {
     return;
   }
   if (n.view === "curriculum" || n.view === "home") { // 위쪽 공간 절약: 제목 없이 화면이 바로 시작
-    $("#main").innerHTML = `${sub}<div id="view"></div>${soon}`;
+    $("#main").innerHTML = `${sub}${crumbHtml(loc, hrefOf, tabHref)}<div id="view"></div>${soon}${footHtml(loc)}`;
+    pageExtras(loc, query);
     views[n.view]($("#view"), query, n).catch(() => ($("#view").innerHTML = GO_ERR));
     return;
   }
   const title = loc.item.title || n.title;
   const lvTag = tab.id === "mid" || tab.id === "high" ? `<span class="lv-tag">${esc(tab.title)}${loc.group.title ? " " + esc(loc.group.title) : ""}</span>` : "";
-  $("#main").innerHTML = `${sub}<h1 class="ph">${esc(title)}${lvTag}</h1><div id="view"></div>${soon}`;
+  $("#main").innerHTML = `${sub}<h1 class="ph">${esc(title)}${lvTag}</h1>${crumbHtml(loc, hrefOf, tabHref)}<div id="view"></div>${soon}${footHtml(loc)}`;
+  pageExtras(loc, query);
   if (n.view) views[n.view]($("#view"), query).then(() => { filesApi.afterView(n.view, $("#view")); if (n.view === "credit") decorateSubjectLists($("#view"), load, "4."); if (n.id === "changelog") skinPanel($("#view")); if (n.view === "schedule") addCalendar($("#view")); }).catch(() => ($("#view").innerHTML = GO_ERR));
 }
 
@@ -521,7 +539,7 @@ mountSearch($("#srbtn"), { load, store, esc });
 initSrcRef();
 { // 화면마다 "출처 …" 줄을 버튼으로 접는다(필터·펼침으로 다시 그려져도 따라간다)
   const main = $("#main"); let tf = null;
-  const fold = () => { so.disconnect(); try { foldSources(main); } catch {} so.observe(main, { childList: true, subtree: true }); };
+  const fold = () => { so.disconnect(); try { foldSources(main); refreshPageSources(); } catch {} so.observe(main, { childList: true, subtree: true }); };
   const so = new MutationObserver(() => { clearTimeout(tf); tf = setTimeout(fold, 120); });
   so.observe(main, { childList: true, subtree: true });
 }

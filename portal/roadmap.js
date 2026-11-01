@@ -7,7 +7,8 @@ export async function roadmapView(el, { load, esc, learner, fmt, badgeMain, noti
   const d = await load("roadmap");
   // 기준 학년(현재 중3 / 초6): 화면에 이름은 없고 입학연도 기준이다. 선택은 이 브라우저에만 저장한다.
   const BK = "portal.roadmap.base", ids = Object.keys(d._meta?.learners || {});
-  const sv = store ? store.get(BK, null) : null;
+  const hq = new URLSearchParams((location.hash.split("?")[1] || "")); // 주소의 b(기준 학년)·st(단계)·w(대상)가 저장값보다 우선
+  const sv = hq.get("b") || (store ? store.get(BK, null) : null);
   const base = ids.includes(sv) ? sv : (ids.includes(learner.id) ? learner.id : ids[0]);
   const BASES = [["A", "현재 중3 기준", "중3 기준 학년별 로드맵이에요."], ["B", "현재 초6 기준", "초6 기준 큰 그림이에요. 중학교 입학 2027 → 고교 입학 2030 → 대입 2033 순서예요. 먼 일정은 대부분 추정이라 바뀔 수 있어요."]].filter(([k]) => ids.includes(k));
   const items = d.items.filter((x) => x.learner === base);
@@ -19,8 +20,9 @@ export async function roadmapView(el, { load, esc, learner, fmt, badgeMain, noti
   // 지금 시기: 시작일이 오늘 이전인 마지막 시기(없으면 첫 시기).
   const cur = [...stages].reverse().find((s) => s.first.slice(0, 7) <= today.slice(0, 7)) || stages[0];
   const SK = "portal.roadmap.stage"; // 단계 필터(브라우저에만 저장, portal.<화면>.stage 규칙)
-  let fs = store ? store.get(SK, "") : ""; if (!STAGES.includes(fs)) fs = "";
-  let who = "";
+  let fs = hq.has("st") ? hq.get("st") : store ? store.get(SK, "") : ""; if (!STAGES.includes(fs)) fs = "";
+  let who = ["학생", "학부모"].includes(hq.get("w")) ? hq.get("w") : "";
+  const syncRd = () => { try { history.replaceState(null, "", `#schedule?t=road&b=${base}${fs ? "&st=" + encodeURIComponent(fs) : ""}${who ? "&w=" + encodeURIComponent(who) : ""}`); } catch {} };
   const rowHtml = (x) => {
     const last = x.end || x.start;
     const past = last < (last.length === 7 ? today.slice(0, 7) : today); // 월 단위 날짜는 그 달이 지나야 지난 일정
@@ -31,6 +33,7 @@ export async function roadmapView(el, { load, esc, learner, fmt, badgeMain, noti
   };
   const opened = new Set(); // 눌러서 펼친 시기(필터를 바꿔도 유지)
   const draw = () => {
+    syncRd();
     $sections.innerHTML = stages.map((s) => {
       const rs = items.filter((x) => x.stageKey === s.key && (!who || x.who.includes(who)) && (!fs || rdStage(x) === fs));
       return rs.length ? `<details class="rd-sec" id="rd-${esc(s.key)}"${s.key === cur.key || opened.has(s.key) ? " open" : ""}><summary><h2>${esc(s.label)}${s.key === cur.key ? '<span class="ed-tag">지금</span>' : ""} <span class="rd-n">${rs.length}건</span></h2></summary>${rs.map(rowHtml).join("")}</details>` : "";
@@ -44,8 +47,9 @@ export async function roadmapView(el, { load, esc, learner, fmt, badgeMain, noti
     <div id="rdsec"></div></div>`;
   const $sections = el.querySelector("#rdsec");
   const drawStage = () => { el.querySelector("#rdstg").innerHTML = `<span class="flabel">단계</span><div class="chips">${[["", "전체"], ...STAGES.map((g) => [g, g])].map(([v, t]) => `<button type="button" class="chip${v === fs ? " on" : ""}" data-stage="${v}" aria-pressed="${v === fs}">${t}</button>`).join("")}</div>`; };
+  el.querySelectorAll("#rdw button").forEach((x) => x.classList.toggle("on", x.dataset.w === who));
   drawStage(); draw();
-  el.querySelector("#rdbase").addEventListener("click", (e) => { const b = e.target.closest("[data-b]"); if (!b || b.dataset.b === base) return; if (store) store.set(BK, b.dataset.b); roadmapView(el, { load, esc, learner, fmt, badgeMain, notice, store }); });
+  el.querySelector("#rdbase").addEventListener("click", (e) => { const b = e.target.closest("[data-b]"); if (!b || b.dataset.b === base) return; if (store) store.set(BK, b.dataset.b); try { history.replaceState(null, "", `#schedule?t=road&b=${b.dataset.b}`); } catch {} roadmapView(el, { load, esc, learner, fmt, badgeMain, notice, store }); });
   $sections.addEventListener("toggle", (e) => { const d = e.target; if (d.classList?.contains("rd-sec")) { const k = d.id.slice(3); d.open ? opened.add(k) : opened.delete(k); } }, true);
   el.querySelector("#rdstg").addEventListener("click", (e) => { const b = e.target.closest("[data-stage]"); if (!b) return; fs = b.dataset.stage; if (store) store.set(SK, fs); drawStage(); draw(); });
   el.querySelector("#rdw").addEventListener("click", (e) => { const b = e.target.closest("[data-w]"); if (!b) return; who = b.dataset.w; el.querySelectorAll("#rdw button").forEach((x) => x.classList.toggle("on", x === b)); draw(); });
