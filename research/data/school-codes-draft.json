@@ -1,0 +1,1617 @@
+{
+ "_meta": {
+  "note": "학교 외부 코드 매핑 초안. 학교는 placeId(필요하면 schoolId)로 연결. system=neis(시도교육청코드 atptCode + 표준학교코드 code), schoolinfo(학교알리미 GS_CD). 못 구한 코드는 code null + nullReason.",
+  "checkedAt": "2026-11-01",
+  "shape": "items[{placeId,schoolId,name,ids[{system,atptCode?,code,asOf,source?,nullReason?}]}]"
+ },
+ "items": [
+  {
+   "placeId": "pl-001",
+   "schoolId": null,
+   "name": "성복초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751092",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-002",
+   "schoolId": null,
+   "name": "문정중학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751025",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-003",
+   "schoolId": null,
+   "name": "성복중학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751031",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-004",
+   "schoolId": null,
+   "name": "성서중학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751303",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-005",
+   "schoolId": null,
+   "name": "손곡중학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751017",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-006",
+   "schoolId": null,
+   "name": "수지중학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751032",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-007",
+   "schoolId": null,
+   "name": "신봉중학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751314",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-008",
+   "schoolId": null,
+   "name": "용인한빛중학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751297",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-009",
+   "schoolId": null,
+   "name": "정평중학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751039",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-010",
+   "schoolId": null,
+   "name": "홍천중학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751044",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-011",
+   "schoolId": "school-pungdeok",
+   "name": "풍덕고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530482",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090000844",
+     "asOf": "2026-10-29",
+     "source": {
+      "name": "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
+     }
+    }
+   ]
+  },
+  {
+   "placeId": "pl-012",
+   "schoolId": "school-seongbok",
+   "name": "성복고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530973",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090005904",
+     "asOf": "2026-10-29",
+     "source": {
+      "name": "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
+     }
+    }
+   ]
+  },
+  {
+   "placeId": "pl-013",
+   "schoolId": "school-suji",
+   "name": "수지고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530093",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090000655",
+     "asOf": "2026-10-29",
+     "source": {
+      "name": "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
+     }
+    }
+   ]
+  },
+  {
+   "placeId": "pl-014",
+   "schoolId": "school-yonginheungcheon",
+   "name": "홍천고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7531379",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보(정식 이름 용인홍천고등학교)",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    }
+   ]
+  },
+  {
+   "placeId": "pl-015",
+   "schoolId": null,
+   "name": "용인한국외국어대학교부설고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7531146",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-016",
+   "schoolId": null,
+   "name": "상현중학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751029",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-017",
+   "schoolId": null,
+   "name": "서원중학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751030",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-018",
+   "schoolId": null,
+   "name": "소현중학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751034",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-019",
+   "schoolId": null,
+   "name": "이현중학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751035",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-020",
+   "schoolId": null,
+   "name": "상현고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7531014",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090006522",
+     "asOf": "2026-10-29",
+     "source": {
+      "name": "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
+     }
+    }
+   ]
+  },
+  {
+   "placeId": "pl-021",
+   "schoolId": null,
+   "name": "서원고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530574",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090004893",
+     "asOf": "2026-10-29",
+     "source": {
+      "name": "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
+     }
+    }
+   ]
+  },
+  {
+   "placeId": "pl-022",
+   "schoolId": null,
+   "name": "신봉고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7531013",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090006525",
+     "asOf": "2026-10-29",
+     "source": {
+      "name": "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
+     }
+    }
+   ]
+  },
+  {
+   "placeId": "pl-023",
+   "schoolId": null,
+   "name": "대지고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530824",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090005458",
+     "asOf": "2026-10-29",
+     "source": {
+      "name": "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
+     }
+    }
+   ]
+  },
+  {
+   "placeId": "pl-024",
+   "schoolId": null,
+   "name": "죽전고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530525",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090000801",
+     "asOf": "2026-10-29",
+     "source": {
+      "name": "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
+     }
+    }
+   ]
+  },
+  {
+   "placeId": "pl-025",
+   "schoolId": null,
+   "name": "현암고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530769",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090005415",
+     "asOf": "2026-10-29",
+     "source": {
+      "name": "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
+     }
+    }
+   ]
+  },
+  {
+   "placeId": "pl-026",
+   "schoolId": null,
+   "name": "구성고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530611",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-027",
+   "schoolId": null,
+   "name": "기흥고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530522",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-028",
+   "schoolId": null,
+   "name": "동백고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530823",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-029",
+   "schoolId": null,
+   "name": "보라고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530882",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-030",
+   "schoolId": null,
+   "name": "보정고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530658",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-031",
+   "schoolId": null,
+   "name": "서천고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7531096",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-032",
+   "schoolId": null,
+   "name": "성지고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530767",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-033",
+   "schoolId": null,
+   "name": "신갈고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530177",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-034",
+   "schoolId": null,
+   "name": "용인백현고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530778",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-035",
+   "schoolId": null,
+   "name": "청덕고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530884",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-036",
+   "schoolId": null,
+   "name": "초당고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530883",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-037",
+   "schoolId": null,
+   "name": "흥덕고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530924",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-038",
+   "schoolId": null,
+   "name": "고림고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7531242",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-039",
+   "schoolId": null,
+   "name": "용인고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530102",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-040",
+   "schoolId": null,
+   "name": "용인삼계고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7531161",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-041",
+   "schoolId": null,
+   "name": "진덕고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7531606",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-042",
+   "schoolId": null,
+   "name": "포곡고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530881",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-043",
+   "schoolId": null,
+   "name": "태성고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530209",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-044",
+   "schoolId": null,
+   "name": "처인고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7531389",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-045",
+   "schoolId": null,
+   "name": "백암고등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7530650",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-046",
+   "schoolId": null,
+   "name": "고기초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751063",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-047",
+   "schoolId": null,
+   "name": "동천초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751075",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-048",
+   "schoolId": null,
+   "name": "매봉초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751326",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-049",
+   "schoolId": null,
+   "name": "성서초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751295",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-050",
+   "schoolId": null,
+   "name": "손곡초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751052",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-051",
+   "schoolId": null,
+   "name": "수지초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751096",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-052",
+   "schoolId": null,
+   "name": "신리초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751053",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-053",
+   "schoolId": null,
+   "name": "신월초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751098",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-054",
+   "schoolId": null,
+   "name": "신일초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751045",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-055",
+   "schoolId": null,
+   "name": "용인신봉초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751296",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-056",
+   "schoolId": null,
+   "name": "용인심곡초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751193",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-057",
+   "schoolId": null,
+   "name": "용인한빛초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751294",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-058",
+   "schoolId": null,
+   "name": "이현초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751104",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-059",
+   "schoolId": null,
+   "name": "정평초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751112",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-060",
+   "schoolId": null,
+   "name": "토월초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751118",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-061",
+   "schoolId": null,
+   "name": "풍덕초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751120",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-062",
+   "schoolId": null,
+   "name": "풍천초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751121",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-063",
+   "schoolId": null,
+   "name": "홍천초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751123",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-064",
+   "schoolId": null,
+   "name": "효자초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751124",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-065",
+   "schoolId": null,
+   "name": "상현초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751088",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-066",
+   "schoolId": null,
+   "name": "새빛초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751313",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-067",
+   "schoolId": null,
+   "name": "서원초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751090",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-068",
+   "schoolId": null,
+   "name": "소현초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751093",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  },
+  {
+   "placeId": "pl-069",
+   "schoolId": null,
+   "name": "솔개초등학교",
+   "ids": [
+    {
+     "system": "neis",
+     "atptCode": "J10",
+     "code": "7751094",
+     "asOf": "2026-11-01",
+     "source": {
+      "name": "NEIS 교육정보 개방포털 학교기본정보",
+      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": null,
+     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
+     "asOf": "2026-11-01"
+    }
+   ]
+  }
+ ]
+}
