@@ -15,7 +15,10 @@ for(const w of [390,1440]){const p=await b.newPage({viewport:{width:w,height:w==
 for(const r of routes){try{await p.goto(base+r,{waitUntil:'load',timeout:20000});await p.waitForTimeout(1600);}catch(e){continue}
 const d=await p.evaluate(()=>{const m=document.querySelector('#main');const t=(m.innerText||'').replace(/\s+/g,' ').trim();
  const fold=innerHeight;let first=0;for(const e of m.querySelectorAll('*')){const r=e.getBoundingClientRect();if(r.top<fold&&r.bottom>0&&e.children.length===0)first+=(e.textContent||'').trim().length}
- return {chars:t.length,h:document.documentElement.scrollHeight,dom:m.querySelectorAll('*').length,first}});
+ const vis=(e)=>e.getClientRects().length>0&&getComputedStyle(e).visibility!=='hidden';
+ const links=[...m.querySelectorAll('a[target=_blank]')].filter(vis).length;
+ const labels=[...m.querySelectorAll('*')].filter(e=>e.children.length===0&&vis(e)&&!e.classList.contains('srcb')&&/^\s*출처/.test(e.textContent||'')).length;
+ return {chars:t.length,h:document.documentElement.scrollHeight,dom:m.querySelectorAll('*').length,first,src:links+labels,btn:m.querySelectorAll('.srcb').length}});
 out.push({w,r:r||'#home',...d});}
 await p.close()}
 await b.close();console.log(JSON.stringify(out));})();
@@ -29,7 +32,7 @@ def main():
     if r.returncode: print("실패:", (r.stderr or r.stdout)[-300:]); return 2
     rows = json.loads(r.stdout.strip().splitlines()[-1])
     rows.sort(key=lambda x: -x["chars"])
-    lines = ["| 폭 | 화면 | 본문 글자 | 첫 화면 글자 | 높이(px) | DOM |", "|---|---|---:|---:|---:|---:|"] + [f"| {x['w']} | `{x['r']}` | {x['chars']:,} | {x['first']:,} | {x['h']:,} | {x['dom']:,} |" for x in rows]
+    lines = ["| 폭 | 화면 | 본문 글자 | 첫 화면 글자 | 높이(px) | DOM | 보이는 출처 | 출처 버튼 |", "|---|---|---:|---:|---:|---:|---:|---:|"] + [f"| {x['w']} | `{x['r']}` | {x['chars']:,} | {x['first']:,} | {x['h']:,} | {x['dom']:,} | {x.get('src',0)} | {x.get('btn',0)} |" for x in rows]
     txt = "\n".join(lines)
     print(txt)
     if MD:
