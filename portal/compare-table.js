@@ -27,7 +27,7 @@ export function cmpTable(el, cfg) {
   const byId = new Map(cfg.targets.map((t) => [t.id, t]));
   const valid = (a) => (a || []).filter((id) => byId.has(id)).slice(0, MAX);
   const groups = [...new Set(cfg.rows.map((r) => r.group || ""))];
-  const st = (el.__cmp ||= { sel: valid(urlGet(param)).length ? valid(urlGet(param)) : valid(lsGet(key)).length ? valid(lsGet(key)) : valid(sel0.def || cfg.targets.map((t) => t.id)).slice(0, 4), diff: false, open: new Set([groups[0]]), addOpen: false, q: "", f: {} });
+  const st = (el.__cmp ||= { sel: valid(urlGet(param)).length ? valid(urlGet(param)) : valid(lsGet(key)).length ? valid(lsGet(key)) : valid(sel0.def || cfg.targets.map((t) => t.id)).slice(0, sel0.defN || 4), diff: false, open: new Set([groups[0]]), addOpen: false, q: "", f: {} });
   const selectable = cfg.targets.length > Math.min(MAX, 4) || !!sel0.always;
   const save = () => { lsSet(key, st.sel); urlSet(param, st.sel); };
 
