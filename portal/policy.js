@@ -189,7 +189,7 @@ export function register(views, { $, esc, load, store }) {
     let sel = loadAudience(store);
     const SK = "portal.schedule.stage"; // 단계 필터(브라우저에만 저장, 바로가기와 같은 규칙: portal.<화면>.stage)
     const fsv = store.get(SK, null); let fs = STAGES.includes(fsv) ? fsv : "";
-    if (fsv === null) { const fo = store.get("portal.focus", null); if (Array.isArray(fo) && fo.length === 1 && STAGES.includes(fo[0])) fs = fo[0]; } // 홈에서 고른 "주로 보는 단계"가 하나면 처음 필터로
+    if (fsv === null) { const fo = store.get("portal.focus", null); if (Array.isArray(fo) && fo.length === 1 && STAGES.includes(fo[0])) fs = fo[0]; } if (fs && !rows.some((r) => !stageOf(r) || stageOf(r) === fs)) fs = ""; // 그 단계 일정이 이 탭에 없으면 전체로(빈 화면 방지) // 홈에서 고른 "주로 보는 단계"가 하나면 처음 필터로
     const SEK = "portal.schedule.seoul"; let seoul = !!store.get(SEK, false); // 서울 일정은 기본으로 접는다(경기 기준 화면)
     const nSeoul = rows.filter((r) => r.region === "seoul").length;
     let wk = !!store.get("portal.schedule.week", false); // "이번 주만"(7일 안 시작·진행 중)

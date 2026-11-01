@@ -1,5 +1,15 @@
 import { decorateTerms, initTerms, setTerms } from "./terms.js";
 import { foldSources, initSrcRef } from "./src-ref.js";
+import { emptyLine, WHERE } from "./empty.js";
+import { preloadGlossary, decorateGlossary } from "./glossary.js";
+// "곧 열려요"에는 왜 아직인지와 지금 할 수 있는 행동을 한 줄로 적는다
+const SOON_WHY = {
+  "학년별 할 일": { why: "학년마다 챙길 일을 모으는 중이에요. 11월 안에 학년별 로드맵에 먼저 담을게요.", next: { label: "학년별 로드맵 보기", url: "#schedule?t=road" } },
+  "대학·학과 찾기": { why: "대학 모집요강을 정리하는 중이에요. 2030학년도 요강은 2028년에 공개되고, 지금은 2027학년도 기준 참고예요.", next: { label: "대학 요건 보기", url: "#select/curriculum?v=univ" } },
+  "학교별 시뮬레이션": { why: "내 계획표를 후보 학교에 맞춰 보는 기능이에요. 학교별 개설 과목 자료를 더 모아야 해요.", next: { label: "내 계획표로 먼저 확인", url: "#planner/plan" } },
+  "목표 학과 체크": { why: "희망 학과 요건과 내 계획을 견주는 기능이에요. 대학 요건 자료를 모으는 중이에요.", next: { label: "대학 요건 보기", url: "#select/curriculum?v=univ" } },
+  "중학교 교육과정": { why: "중학교별 교육과정은 학교 공지를 모으는 중이에요. 11월 안에 중학교 비교에 먼저 담을게요.", next: { label: "중학교 배정에서 학교 찾기", url: "#select/curriculum?v=middle" } },
+};
 import { MENU, STATUS, TABS, REDIRECT, hrefOf, tabHref, locate } from "./menu.js";
 import { registerHome } from "./home.js";
 import { registerFiles } from "./files.js";
@@ -55,8 +65,10 @@ drawTheme();
 
 // ---- 데이터 ----
 const cache = new Map();
+// 같은 id의 행·같은 날짜의 일정이 두 번 나오지 않게 화면에서도 한 번만 남긴다(데이터 정정과 별개로)
+const dedupePolicy = (rows) => { if (!Array.isArray(rows)) return rows; const seen = new Set(); return rows.filter((r) => { const k = r.id || r.title; if (seen.has(k)) return false; seen.add(k); return true; }).map((r) => { if (!r.events) return r; const e = new Set(); return { ...r, events: r.events.filter((x) => { const k = `${x.start}|${x.end || ""}|${x.label || ""}`; if (e.has(k)) return false; e.add(k); return true; }) }; }); };
 const load = (name) => {
-  if (!cache.has(name)) cache.set(name, fetch(`data/${name}.json`).then((r) => { if (!r.ok) throw new Error(name); return r.json(); }));
+  if (!cache.has(name)) cache.set(name, fetch(`data/${name}.json`).then((r) => { if (!r.ok) throw new Error(name); return r.json(); }).then((d) => (name === "policy" ? dedupePolicy(d) : d)));
   return cache.get(name);
 };
 const stars = () => store.get("stars", []);
@@ -423,7 +435,7 @@ views.midlife = async (el) => {
   el.innerHTML = `<div class="ed"><ul class="rows lk">
     <li class="row"><div><h3><a href="#select/curriculum?v=middle">교과서·교과 구성</a></h3><p>중학교 배정 화면에서 학교를 열면 나와요.</p></div></li>
     <li class="row"><div><h3><a href="#schedule?t=life" data-stage="중입">중학교 시기 일정</a></h3><p>중학교 배정·입학 일정을 일정 화면에서 모아 봐요.</p></div></li></ul>
-    <p class="muted small">곧 열려요: 중학교 교육과정</p></div>`;
+    ${emptyLine(esc, SOON_WHY["중학교 교육과정"])}</div>`;
   el.onclick = (e) => { if (e.target.closest("[data-stage]")) store.set("portal.schedule.stage", "중입"); };
 };
 views.links = async (el) => {
@@ -472,7 +484,7 @@ function render() {
   const sub = (tab.groups.length > 1 ? row(" lvl", `${tab.title} 안의 구분`, tab.groups.map((g) => navA(hrefOf(g.items[0]), g.title, g === loc.group)).join("")) : "")
     + (loc.group.items.length > 1 ? row("", `${tab.title} 안의 화면`, loc.group.items.map((x) => navA(hrefOf(x), x.title, x === loc.item)).join("")) : "");
   const soonL = [...(loc.group.soon || []), ...(tab.soon || [])];
-  const soon = soonL.length ? `<p class="soon">곧 열려요: ${soonL.map(esc).join(" · ")}</p>` : "";
+  const soon = soonL.length ? `<div class="soon"><b>곧 열려요</b>${soonL.map((n) => `<div class="soon-i"><span>${esc(n)}</span>${emptyLine(esc, SOON_WHY[n] || { why: "준비 중이에요. 자료를 모으는 대로 열어요." })}</div>`).join("")}</div>` : "";
   if (n.view === "curriculum" && currentProfile(store).key === "b") { // 프로필 B는 아직 학교가 없다
     $("#main").innerHTML = `${sub}<div id="view"><section class="sec"><div class="empty"><span class="z" aria-hidden="true">0</span><p>${esc(currentProfile(store).name)}의 학교는 아직 없어요.</p><small>고입 이후 학교가 정해지면 과목표가 여기에 들어옵니다.</small><a href="#home">오늘 화면으로 →</a></div></section></div>${soon}`;
     return;
@@ -505,10 +517,10 @@ initSrcRef();
   so.observe(main, { childList: true, subtree: true });
 }
 load("glossary").then((g) => {
-  setTerms(g.terms); initTerms();
+  setTerms(g.terms); initTerms(); preloadGlossary(load).catch(() => {});
   const main = $("#main"); let tm = null;
   // 화면마다 용어당 처음 한 번만(홈은 패널마다 따로 붙인다)
-  const run = () => { mo.disconnect(); if (location.hash.replace(/^#/, "").split("?")[0] !== "" && location.hash !== "#home") { try { decorateTerms(main, "section,.ed-row,.dp,.piece,details,.school,.note,.tw"); } catch {} } mo.observe(main, { childList: true, subtree: true }); };
+  const run = () => { mo.disconnect(); if (location.hash.replace(/^#/, "").split("?")[0] !== "" && location.hash !== "#home") { try { decorateTerms(main, "section,.ed-row,.dp,.piece,details,.school,.note,.tw"); } catch {} try { decorateGlossary(main); } catch {} } mo.observe(main, { childList: true, subtree: true }); };
   const mo = new MutationObserver(() => { clearTimeout(tm); tm = setTimeout(run, 250); });
   mo.observe(main, { childList: true, subtree: true });
 }).catch(() => {});
