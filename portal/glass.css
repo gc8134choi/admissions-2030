@@ -275,3 +275,18 @@ table.policy td{font-size:14px;line-height:1.5}
 .wide-fold{padding:0 var(--sp-3);margin-top:var(--sp-3)}
 .wide-fold>summary{cursor:pointer;min-height:var(--touch);display:flex;align-items:center;font-weight:650}
 .wide-fold>#hs-wide{padding-bottom:var(--sp-3)}
+.more-rows{display:flex;gap:var(--sp-2);align-items:center;flex-wrap:wrap;padding:var(--sp-3) 0}
+.more-rows .btn{min-height:var(--touch)}
+
+/* 로드맵: 시기별 접이식(지금 시기만 열림) */
+.rd-sec{margin:0 0 var(--sp-2);padding:0 var(--sp-3);border:1px solid var(--glass-line);border-radius:16px;background:var(--glass)}
+.rd-sec>summary{cursor:pointer;min-height:var(--touch);display:flex;align-items:center;list-style:none}
+.rd-sec>summary h2{margin:0;font-size:16px;display:flex;gap:var(--sp-2);align-items:center}
+.rd-sec .rd-n{font-size:var(--fs-sub);font-weight:500;color:var(--pencil)}
+.rd-sec[open]{padding-bottom:var(--sp-2)}
+
+/* 내 계획표: 학기 접이식 */
+details.pn-t{padding:0 var(--sp-3)}
+details.pn-t>summary{cursor:pointer;min-height:var(--touch);display:flex;align-items:center}
+details.pn-t>summary h3{margin:0}
+details.pn-t[open]{padding-bottom:var(--sp-3)}
