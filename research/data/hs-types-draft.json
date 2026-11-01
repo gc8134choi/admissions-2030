@@ -197,11 +197,11 @@
         }
       },
       "timing": {
-        "value": "경기 전기 학교 전형 2026.8.24~12.1",
+        "value": "특성화고·일반고 특성화학과: 특별전형 접수 11.3~11.5, 일반전형 접수 11.12~11.13(합격자 발표 11.23), 미달교 추가모집 11.26~11.27. 마이스터고·예술고·체육고·과학고는 학교 종류별로 달라 일정 표 참고",
         "status": "confirmed",
         "source": {
-          "name": "경기도교육청 보도자료: 2027학년도 경기도 고등학교 입학전형 기본계획(2026.3.30)",
-          "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2344685&mi=10102&searchAt1=&searchValue1="
+          "name": "경기도교육청 2027학년도 경기도 고등학교 입학전형 기본계획(2026.3, 입학전형 일정 3쪽)",
+          "url": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/e88abfe2-8daa-494e-9cb8-a2d030225b45.pdf"
         }
       },
       "cost": {
@@ -301,6 +301,46 @@
       "source": {
         "name": "경기도교육청 고입·전학 포털 공지: 2027학년도 경기도 고등학교 신입생 전형요강(2026.8.19)·고교 평준화지역 학생 배정 방안(2026.8.21)",
         "url": "https://satp.goe.go.kr/main.do"
+      }
+    },
+    {
+      "id": "hc-09",
+      "when": "2026-11-03~2026-11-05",
+      "what": "특성화고·일반고 특성화학과 특별전형 원서접수(발표 11.11)",
+      "status": "confirmed",
+      "source": {
+        "name": "경기도교육청 2027학년도 경기도 고등학교 입학전형 기본계획(2026.3, 입학전형 일정 3쪽)",
+        "url": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/e88abfe2-8daa-494e-9cb8-a2d030225b45.pdf"
+      }
+    },
+    {
+      "id": "hc-10",
+      "when": "2026-11-12~2026-11-13",
+      "what": "특성화고·일반고 특성화학과 일반전형 원서접수(전형 11.14~17, 발표 11.23)",
+      "status": "confirmed",
+      "source": {
+        "name": "경기도교육청 2027학년도 경기도 고등학교 입학전형 기본계획(2026.3, 입학전형 일정 3쪽)",
+        "url": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/e88abfe2-8daa-494e-9cb8-a2d030225b45.pdf"
+      }
+    },
+    {
+      "id": "hc-11",
+      "when": "2026-11-20",
+      "what": "과학고 소집면접(발표 11.26)",
+      "status": "confirmed",
+      "source": {
+        "name": "경기도교육청 2027학년도 경기도 고등학교 입학전형 기본계획(2026.3, 입학전형 일정 3쪽)",
+        "url": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/e88abfe2-8daa-494e-9cb8-a2d030225b45.pdf"
+      }
+    },
+    {
+      "id": "hc-12",
+      "when": "2026-11-26~2026-11-27",
+      "what": "전기학교 미달교 추가모집 원서접수(발표 12.1)",
+      "status": "confirmed",
+      "source": {
+        "name": "경기도교육청 2027학년도 경기도 고등학교 입학전형 기본계획(2026.3, 입학전형 일정 3쪽)",
+        "url": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/e88abfe2-8daa-494e-9cb8-a2d030225b45.pdf"
       }
     }
   ],
