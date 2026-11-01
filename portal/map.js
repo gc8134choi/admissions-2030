@@ -4,6 +4,7 @@
 // 서비스 워커는 같은 출처만 가로채므로 타일은 캐시하지 않는다.
 const LEAFLET = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/";
 const SRI = { css: "sha256-tXCrvaljxgtN5LT/Syb5Mm9T+yzPFGH98JVcoJT7JTk=", js: "sha256-XJrs/DDkVkUZ29zdzFOkGCJ9zHVo5hnpdi3c7HYJ7Uc=" };
+import "./policy-css.js";
 import { stageTag } from "./stage.js";
 export const LEVEL = { elementary: ["초", "초등학교"], middle: ["중", "중학교"], high: ["고", "고등학교"] };
 const NEAR = { library: ["도", "도서관"], station: ["역", "지하철역"] }; // 주변 시설(places.json nearby[])

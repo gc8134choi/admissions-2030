@@ -15,7 +15,8 @@
      "source": {
       "name": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도)",
       "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318"
-     }
+     },
+     "sourceId": "src-ea04335e"
     },
     {
      "text": "배정원서 접수: 용인교육지원청 2026.11.9~11.13",
@@ -24,7 +25,8 @@
      "source": {
       "name": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도)",
       "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318"
-     }
+     },
+     "sourceId": "src-ea04335e"
     },
     {
      "text": "추가배정원서 작성 12.7~12.11, 접수 12.14~12.16",
@@ -33,7 +35,8 @@
      "source": {
       "name": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도)",
       "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318"
-     }
+     },
+     "sourceId": "src-ea04335e"
     },
     {
      "text": "배정학교 발표 2026.12.31(출신 초등학교에서 확인)",
@@ -42,7 +45,8 @@
      "source": {
       "name": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도)",
       "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318"
-     }
+     },
+     "sourceId": "src-ea04335e"
     },
     {
      "text": "신입생 등록: 각 중학교 2027.1.4~1.7",
@@ -51,7 +55,8 @@
      "source": {
       "name": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도)",
       "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318"
-     }
+     },
+     "sourceId": "src-ea04335e"
     },
     {
      "text": "재배정 원서 접수 1.11~1.15, 재배정 발표 1.22(등록도 1.22)",
@@ -60,7 +65,8 @@
      "source": {
       "name": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도)",
       "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318"
-     }
+     },
+     "sourceId": "src-ea04335e"
     }
    ]
   },
@@ -75,7 +81,8 @@
      "source": {
       "name": "수지중학교·손곡중학교 학교 공지(2026.9)",
       "url": "https://suji-m.goeyi.kr/suji-m/na/ntt/selectNttList.do?mi=14367&bbsId=8205"
-     }
+     },
+     "sourceId": "src-69894aca"
     }
    ]
   },
@@ -90,7 +97,8 @@
      "source": {
       "name": "성복중학교 학교공지(사용자 제공 캡처)",
       "url": null
-     }
+     },
+     "sourceId": "src-19db82b1"
     }
    ]
   },
@@ -106,6 +114,7 @@
       "name": "용인 중학교 홈페이지 공지 확인(2026.10.31, 성서중·손곡중·수지중에서 해당 공지 없음)",
       "url": null
      },
+     "sourceId": "src-e8397ad2",
      "nullReason": "학교 공지 미게시"
     }
    ]

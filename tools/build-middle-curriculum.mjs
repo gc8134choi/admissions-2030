@@ -2,6 +2,7 @@
 //   - placeId는 places-draft.json의 중학교여야 하고, sources[].file이 있으면 portal/ 아래에 실제 파일이 있어야 한다.
 //   - 초안이 없으면 빈 구조를 만든다. 교과서 저자·교사 이름은 저장하지 않는다(출판사만).
 // 사용: node tools/build-middle-curriculum.mjs [--check]
+import { withSourceIds } from "./lib/source-ids.mjs";
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 
 const SRC = "research/data/middle-curriculum-draft.json", PL = "research/data/places-draft.json";
@@ -31,7 +32,7 @@ for (const n of draft.notFound) { place(n.placeId, "notFound"); if (!n.reason) e
 if (errs.length) { console.error(errs.join("\n")); process.exit(1); }
 
 const out = { _meta: { note: "중학교 교과서 출판사 표(생성물, 손으로 고치지 않는다). research/data/middle-curriculum-draft.json에서 tools/build-middle-curriculum.mjs가 만든다.", checkedAt: draft._meta?.checkedAt ?? null, status: draft._meta?.status ?? null, count: draft.schools.length }, schools: draft.schools, notFound: draft.notFound };
-const json = JSON.stringify(out, null, 1) + "\n";
+const json = JSON.stringify(withSourceIds(out), null, 1) + "\n";
 const target = "portal/data/middle-curriculum.json";
 if (process.argv.includes("--check")) {
   let cur = ""; try { cur = readFileSync(target, "utf8"); } catch {}

@@ -4,6 +4,7 @@
 //   schools      학교별 지정/선택 학점 합계(summary.json)와 학기별 지정/선택 학점. 값이 서로 맞는지(지정+선택=교과, 교과+창체=총) 검증한다. outside는 지정·선택에 포함된 교외 개설 학점이다.
 //   pickGroups   택n 묶음 제약 목록(groups.json + offerings.json + offerings-index.json): 학기, 고를 개수, 학점, 후보 과목 코드.
 //   입력은 읽기만 하며 손으로 고치지 않는다. 사용: node tools/build-planner-rules.mjs [--check]
+import { withSourceIds } from "./lib/source-ids.mjs";
 import { readFileSync, writeFileSync } from "node:fs";
 
 const rd = (p) => JSON.parse(readFileSync(p, "utf8"));
@@ -89,7 +90,7 @@ const pickGroups = groups.map((g) => {
 
 if (errs.length) { console.error(errs.join("\n")); process.exit(1); }
 const out = { _meta: { note: "과목 선택 플래너 규칙(생성물, 손으로 고치지 않는다). tools/planner-rules-manual.json + summary·groups·offerings에서 tools/build-planner-rules.mjs가 만든다. 졸업 요건은 policy.json 근거 행으로 연결한다.", schoolCount: schools.length, pickGroupCount: pickGroups.length }, graduation, schools, pickGroups };
-const json = JSON.stringify(out, null, 1) + "\n";
+const json = JSON.stringify(withSourceIds(out), null, 1) + "\n";
 const target = D + "planner-rules.json";
 if (process.argv.includes("--check")) {
   let cur = ""; try { cur = readFileSync(target, "utf8"); } catch {}

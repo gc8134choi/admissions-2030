@@ -1,0 +1,1689 @@
+{
+ "_meta": {
+  "note": "출처 등록부(생성물, 손으로 고치지 않는다). tools/build-sources.mjs가 portal/data의 출처 항목에서 만든다. 데이터 행의 sourceIds가 이 id를 가리킨다.",
+  "count": 117,
+  "kinds": {
+   "official": 75,
+   "media": 25,
+   "user": 14,
+   "self": 0,
+   "other": 3
+  }
+ },
+ "sources": [
+  {
+   "id": "src-0200fd90",
+   "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2344685&mi=10102&searchAt1=&searchValue1=",
+   "kind": "official",
+   "org": "경기도교육청",
+   "checked": "2026-10-31",
+   "names": [
+    "경기도교육청 보도자료: 2027학년도 경기도 고등학교 입학전형 기본계획(2026.3.30 등록)",
+    "경기도교육청 보도자료: 2027학년도 경기도 고등학교 입학전형 기본계획(2026.3.30)"
+   ],
+   "usedIn": {
+    "events.json": 1,
+    "hs-types.json": 2,
+    "policy.json": 1,
+    "timeline.json": 2
+   }
+  },
+  {
+   "id": "src-02701867",
+   "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148924193",
+   "kind": "official",
+   "org": "대한민국 정책브리핑",
+   "checked": "2026-10-25",
+   "names": [
+    "정책브리핑 정책뉴스: 올해 중2부터 선택과목 없는 통합형 수능…내신 5등급 체제로(표=교육부, 2023.12.27)"
+   ],
+   "usedIn": {
+    "rules.json": 2
+   }
+  },
+  {
+   "id": "src-028de273",
+   "url": "https://www.joongangenews.com/news/articleView.html?idxno=537981",
+   "kind": "media",
+   "org": "www.joongangenews.com",
+   "checked": null,
+   "names": [
+    "중앙이코노미뉴스(joongangenews) 국교위 국가교육발전계획 보도(2026.8.5)",
+    "중앙이코노미뉴스"
+   ],
+   "usedIn": {
+    "policy.json": 2
+   }
+  },
+  {
+   "id": "src-0459bd37",
+   "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/한양대학교/한양대학교_2027학년도_정시모집요강.pdf",
+   "kind": "official",
+   "org": "cdn013.negagea.net",
+   "checked": "2026-10-26",
+   "names": [
+    "2027학년도 한양대학교 신입학 정시모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 1
+   }
+  },
+  {
+   "id": "src-0b67c4c1",
+   "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/경희대학교/경희대학교_2027학년도_정시모집요강.pdf",
+   "kind": "official",
+   "org": "cdn013.negagea.net",
+   "checked": "2026-10-26",
+   "names": [
+    "2027학년도 경희대학교 정시 모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 1
+   }
+  },
+  {
+   "id": "src-0d620696",
+   "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/중앙대학교/중앙대학교_2028학년도_대학입학전형계획.pdf",
+   "kind": "official",
+   "org": "cdn013.negagea.net",
+   "checked": "2026-10-26",
+   "names": [
+    "2028학년도 중앙대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
+    "중앙대학교 2028학년도 입학전형 계획: 정시 수능일반을 수능89(수능 89+출결 11)와 수능67(수능 67+서류 33)로 분리(입학처 2026.4.30 공표본)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 3,
+    "policy.json": 1
+   }
+  },
+  {
+   "id": "src-0e5c59ab",
+   "url": "https://www.kyobit.com/news/articleView.html?idxno=5130",
+   "kind": "media",
+   "org": "www.kyobit.com",
+   "checked": null,
+   "names": [
+    "교육을 비추다"
+   ],
+   "usedIn": {
+    "policy.json": 1
+   }
+  },
+  {
+   "id": "src-0f7bc8cd",
+   "url": null,
+   "kind": "user",
+   "org": null,
+   "checked": "2026-10-29",
+   "names": [
+    "학교 주소(편제표 4개교)"
+   ],
+   "usedIn": {
+    "places.json": 4
+   }
+  },
+  {
+   "id": "src-0ff77a8a",
+   "url": "https://songok-m.goeyi.kr/songok-m/na/ntt/selectNttList.do?mi=13593&bbsId=7752",
+   "kind": "official",
+   "org": "경기도용인교육지원청",
+   "checked": "2026-10-26",
+   "names": [
+    "2026학년도 본교 검인정교과서 목록(손곡중학교 학교공지 2025.12.11, 첨부 xlsx)"
+   ],
+   "usedIn": {
+    "middle-curriculum.json": 1
+   }
+  },
+  {
+   "id": "src-1168bb7e",
+   "url": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf",
+   "kind": "official",
+   "org": "한국대학교육협의회",
+   "checked": "2026-10-31",
+   "names": [
+    "대교협 2028학년도 대학입학전형기본사항(개정 2026.7.31)",
+    "대교협 2028학년도 대학입학전형기본사항(2025.8.28, 개정 2026.7.31)"
+   ],
+   "usedIn": {
+    "events.json": 1,
+    "glossary.json": 1,
+    "policy.json": 4,
+    "timeline.json": 1
+   }
+  },
+  {
+   "id": "src-116e6018",
+   "url": "https://www.kyobit.com/news/articleView.html?idxno=5440",
+   "kind": "media",
+   "org": "www.kyobit.com",
+   "checked": null,
+   "names": [
+    "교육을 비추다 「2028 서·연·고 수시, '수능최저 폐지' 이면... 입시 난이도는 오히려 상승 우려」(2026.5.21)"
+   ],
+   "usedIn": {
+    "policy.json": 1
+   }
+  },
+  {
+   "id": "src-11e53ef6",
+   "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415",
+   "kind": "official",
+   "org": "학교알리미(교육부·한국교육개발원)",
+   "checked": "2026-10-29",
+   "names": [
+    "학교알리미 학교정보(2026 공시)",
+    "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
+    "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+    "학교알리미",
+    "학교알리미 공시항목 목록",
+    "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
+    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)"
+   ],
+   "usedIn": {
+    "hs-compare.json": 16,
+    "places.json": 1
+   }
+  },
+  {
+   "id": "src-144d0ed8",
+   "url": "https://adm-u.postech.ac.kr/wp-content/uploads/2026/05/2027학년도-POSTECH-모집요강.pdf",
+   "kind": "official",
+   "org": "포스텍",
+   "checked": "2026-10-26",
+   "names": [
+    "2027학년도 POSTECH 모집요강(입학처, PDF)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 2
+   }
+  },
+  {
+   "id": "src-16d7b0e4",
+   "url": "https://www2.yonsei.ac.kr/entrance/plan/2028_plan.pdf",
+   "kind": "official",
+   "org": "연세대학교",
+   "checked": "2026-10-25",
+   "names": [
+    "연세대학교 2028학년도 서울캠퍼스 입학전형 시행계획(2026.4)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 6
+   }
+  },
+  {
+   "id": "src-184eecc3",
+   "url": "https://satp.goe.go.kr/main.do",
+   "kind": "official",
+   "org": "경기도교육청",
+   "checked": "2026-10-31",
+   "names": [
+    "경기도교육청 고입·전학 포털(2027학년도 평준화 배정 방안)",
+    "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
+    "경기도교육청 고입·전학 포털 공지: 2027학년도 경기도 고등학교 신입생 전형요강(2026.8.19)·고교 평준화지역 학생 배정 방안(2026.8.21)",
+    "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)"
+   ],
+   "usedIn": {
+    "glossary.json": 3,
+    "hs-compare.json": 54,
+    "hs-types.json": 20,
+    "places.json": 6
+   }
+  },
+  {
+   "id": "src-18bf5659",
+   "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/서강대학교/서강대학교_2027학년도_수시모집요강.pdf",
+   "kind": "official",
+   "org": "cdn013.negagea.net",
+   "checked": "2026-10-26",
+   "names": [
+    "2027학년도 서강대학교 수시모집요강(2026.5.29, 입학처, 서울시교육청 대입정보 게시본 PDF)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 3
+   }
+  },
+  {
+   "id": "src-19db82b1",
+   "url": null,
+   "kind": "user",
+   "org": null,
+   "checked": "2026-10-31",
+   "names": [
+    "성복중학교 학교공지(사용자 제공 캡처)"
+   ],
+   "usedIn": {
+    "middle-guide.json": 1
+   }
+  },
+  {
+   "id": "src-1be5261a",
+   "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525",
+   "kind": "official",
+   "org": "학교알리미(교육부·한국교육개발원)",
+   "checked": "2026-10-29",
+   "names": [
+    "학교알리미 학교정보(2026 공시)",
+    "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
+    "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+    "학교알리미",
+    "학교알리미 공시항목 목록",
+    "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
+    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)"
+   ],
+   "usedIn": {
+    "hs-compare.json": 16,
+    "places.json": 1
+   }
+  },
+  {
+   "id": "src-1d8d9c24",
+   "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893",
+   "kind": "official",
+   "org": "학교알리미(교육부·한국교육개발원)",
+   "checked": "2026-10-29",
+   "names": [
+    "학교알리미 학교정보(2026 공시)",
+    "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
+    "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+    "학교알리미",
+    "학교알리미 공시항목 목록",
+    "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
+    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)"
+   ],
+   "usedIn": {
+    "hs-compare.json": 16,
+    "places.json": 1
+   }
+  },
+  {
+   "id": "src-1e20e3f9",
+   "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962",
+   "kind": "official",
+   "org": "경기도교육청",
+   "checked": "2026-11-01",
+   "names": [
+    "경기도교육청 고시 제2026-24호 2027학년도 중학교 학교군 및 중학구 고시",
+    "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+    "경기도교육청 고시 제2026-24호 2027학년도 경기도 중학교 무시험입학 추첨방법과 학교군 및 중학구 고시(2026.9.22, 학교군 현황표 33쪽)"
+   ],
+   "usedIn": {
+    "glossary.json": 1,
+    "middle-compare.json": 13,
+    "middle.json": 226,
+    "policy.json": 1
+   }
+  },
+  {
+   "id": "src-23491a33",
+   "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416",
+   "kind": "official",
+   "org": "학교알리미(교육부·한국교육개발원)",
+   "checked": "2026-10-29",
+   "names": [
+    "학교알리미 학교정보(2026 공시)",
+    "학교알리미 학교정보(2026 공시) 및 편제표 요약",
+    "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+    "학교알리미 공시항목 목록",
+    "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
+    "학교알리미",
+    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)"
+   ],
+   "usedIn": {
+    "hs-compare.json": 15,
+    "places.json": 1
+   }
+  },
+  {
+   "id": "src-236437da",
+   "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/중앙대학교/중앙대학교_2027학년도_수시모집요강.pdf",
+   "kind": "official",
+   "org": "cdn013.negagea.net",
+   "checked": "2026-10-26",
+   "names": [
+    "2027학년도 중앙대학교 수시 모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 4
+   }
+  },
+  {
+   "id": "src-2394de72",
+   "url": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/133745f2-115e-4a50-b297-e7f2cd7de910.pdf",
+   "kind": "official",
+   "org": "경기도교육청",
+   "checked": "2026-10-31",
+   "names": [
+    "경기도교육청 2027학년도 고등학교 입학 내신성적 반영지침 주요 변경사항",
+    "경기도교육청 2027학년도 고등학교 입학 내신성적 반영지침 주요 변경사항(2027~2029학년도)"
+   ],
+   "usedIn": {
+    "glossary.json": 1,
+    "hs-types.json": 2,
+    "timeline.json": 3
+   }
+  },
+  {
+   "id": "src-245bff65",
+   "url": "https://www.veritas-a.com/news/articleView.html?idxno=626898",
+   "kind": "media",
+   "org": "www.veritas-a.com",
+   "checked": null,
+   "names": [
+    "베리타스알파 2027 국제고 모집(8개교 1,172명)"
+   ],
+   "usedIn": {
+    "policy.json": 1
+   }
+  },
+  {
+   "id": "src-2486f910",
+   "url": "https://www.bokjiro.go.kr/ssis-tbu/cms/pc/news/promotion/1301777_1118.html",
+   "kind": "official",
+   "org": "복지로",
+   "checked": "2026-10-31",
+   "names": [
+    "복지로 '고등학교 무상교육 안내'(2021.7.12 등록 안내문, 2026-11-01 확인)"
+   ],
+   "usedIn": {
+    "hs-types.json": 5
+   }
+  },
+  {
+   "id": "src-259d7ef8",
+   "url": "https://seongseo-m.goeyi.kr/seongseo-m/na/ntt/selectNttList.do?mi=2251&bbsId=1103",
+   "kind": "official",
+   "org": "경기도용인교육지원청",
+   "checked": "2026-10-26",
+   "names": [
+    "2026학년도 교과용도서 목록(성서중학교 학교공지 2026.1.5, 본문 이미지)"
+   ],
+   "usedIn": {
+    "middle-curriculum.json": 1
+   }
+  },
+  {
+   "id": "src-25b44965",
+   "url": "https://www.megastudy.net/Entinfo/ipsi_News/news_view_ax.asp?idx=7506",
+   "kind": "media",
+   "org": "www.megastudy.net",
+   "checked": null,
+   "names": [
+    "메가스터디"
+   ],
+   "usedIn": {
+    "policy.json": 1
+   }
+  },
+  {
+   "id": "src-2701dc5b",
+   "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/성균관대학교/성균관대학교_2027학년도_수시모집요강.pdf",
+   "kind": "official",
+   "org": "cdn013.negagea.net",
+   "checked": "2026-10-26",
+   "names": [
+    "2027학년도 성균관대학교 수시모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)",
+    "성균관대학교 2027학년도 수시모집요강: 학생부종합(융합인재) 수능최저 적용(국·수·영·탐 중 3개 등급합 6), 입학처 2026.5 발행"
+   ],
+   "usedIn": {
+    "admission-rules.json": 4,
+    "policy.json": 1
+   }
+  },
+  {
+   "id": "src-27eefb81",
+   "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/서울시립대학교/서울시립대학교_2028학년도_대학입학전형계획.pdf",
+   "kind": "official",
+   "org": "cdn013.negagea.net",
+   "checked": "2026-10-26",
+   "names": [
+    "2028학년도 서울시립대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 4
+   }
+  },
+  {
+   "id": "src-2a94f115",
+   "url": "https://times.kaist.ac.kr/news/articleView.html?idxno=22812",
+   "kind": "media",
+   "org": "KAIST",
+   "checked": "2026-10-26",
+   "names": [
+    "카이스트신문: KAIST, 2027·2028학년도 입학전형 개편(2026.5.19)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 2
+   }
+  },
+  {
+   "id": "src-31f98efd",
+   "url": null,
+   "kind": "official",
+   "org": null,
+   "checked": "2026-10-25",
+   "names": [
+    "서울특별시교육청교육연구정보원 2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서교연 2026-13, 2026.4)"
+   ],
+   "usedIn": {
+    "rules.json": 2
+   }
+  },
+  {
+   "id": "src-37d4ee6f",
+   "url": "https://suji-m.goeyi.kr/suji-m/na/ntt/selectNttList.do?mi=14234&bbsId=8135",
+   "kind": "official",
+   "org": "경기도용인교육지원청",
+   "checked": "2026-10-26",
+   "names": [
+    "2026학년도 교과서 목록(수지중학교 학교공지 2025.10.27, 첨부 2026교과서목록.xls)"
+   ],
+   "usedIn": {
+    "middle-curriculum.json": 1
+   }
+  },
+  {
+   "id": "src-38e60ada",
+   "url": "https://riroschool.kr/kceenews/detail/242",
+   "kind": "media",
+   "org": "riroschool.kr",
+   "checked": null,
+   "names": [
+    "리로스쿨"
+   ],
+   "usedIn": {
+    "policy.json": 1
+   }
+  },
+  {
+   "id": "src-3992fd64",
+   "url": null,
+   "kind": "user",
+   "org": null,
+   "checked": "2026-10-25",
+   "names": [
+    "경기도교육청 안내자료(사용자 제공 원문)"
+   ],
+   "usedIn": {
+    "subject-info.json": 1
+   }
+  },
+  {
+   "id": "src-3cf4ef29",
+   "url": "https://e-book.sen.go.kr/Viewer/BXV19NU2F3W6",
+   "kind": "official",
+   "org": "서울특별시교육청",
+   "checked": null,
+   "names": [
+    "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)"
+   ],
+   "usedIn": {
+    "planner-rules.json": 22
+   }
+  },
+  {
+   "id": "src-3d73b988",
+   "url": "https://www.kcue.or.kr/_upload/news/2025/08/28/application_b244345d6cc72f7e172df15e831c276e.pdf",
+   "kind": "official",
+   "org": "한국대학교육협의회",
+   "checked": null,
+   "names": [
+    "대교협 보도자료: 2028학년도 대학입학전형기본사항 발표(2025.8.28)"
+   ],
+   "usedIn": {
+    "events.json": 2,
+    "policy.json": 3
+   }
+  },
+  {
+   "id": "src-439a21a5",
+   "url": null,
+   "kind": "user",
+   "org": null,
+   "checked": "2026-10-29",
+   "names": [
+    "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조 완료)"
+   ],
+   "usedIn": {
+    "hs-compare.json": 4
+   }
+  },
+  {
+   "id": "src-473b60be",
+   "url": null,
+   "kind": "user",
+   "org": null,
+   "checked": "2026-10-29",
+   "names": [
+    "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조)"
+   ],
+   "usedIn": {
+    "hs-compare.json": 4
+   }
+  },
+  {
+   "id": "src-4a089aa6",
+   "url": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf",
+   "kind": "official",
+   "org": "한국대학교육협의회",
+   "checked": "2026-10-31",
+   "names": [
+    "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29)",
+    "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29 기준)",
+    "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.30)"
+   ],
+   "usedIn": {
+    "events.json": 1,
+    "glossary.json": 4,
+    "policy.json": 3,
+    "timeline.json": 3
+   }
+  },
+  {
+   "id": "src-4a334623",
+   "url": "https://sohyeon-m.goeyi.kr/sohyeon-m/cm/cntnts/cntntsView.do?mi=12766&cntntsId=2084",
+   "kind": "official",
+   "org": "경기도용인교육지원청",
+   "checked": "2026-11-01",
+   "names": [
+    "소현중학교 홈페이지 '특색 및 역점사업'(2026-11-01 확인, 요약은 조사 세션)"
+   ],
+   "usedIn": {
+    "middle-compare.json": 1
+   }
+  },
+  {
+   "id": "src-4acc94c1",
+   "url": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
+   "kind": "official",
+   "org": "한국대학교육협의회",
+   "checked": null,
+   "names": [
+    "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)"
+   ],
+   "usedIn": {
+    "policy.json": 2
+   }
+  },
+  {
+   "id": "src-511386d3",
+   "url": null,
+   "kind": "user",
+   "org": null,
+   "checked": "2026-10-29",
+   "names": [
+    "사용자 제공 정리(AI와 정리한 내용)"
+   ],
+   "usedIn": {
+    "admission-types.json": 1
+   }
+  },
+  {
+   "id": "src-54692cf1",
+   "url": null,
+   "kind": "user",
+   "org": null,
+   "checked": "2026-10-31",
+   "names": [
+    "홍천고 설명회 요약(사용자 참석 녹음, AI 요약)"
+   ],
+   "usedIn": {
+    "glossary.json": 1,
+    "hs-compare.json": 1
+   }
+  },
+  {
+   "id": "src-56ce5d88",
+   "url": "https://www.sen.go.kr/user/bbs/BD_selectBbs.do?q_bbsSn=1068&q_bbsDocNo=20260331091528935",
+   "kind": "official",
+   "org": "서울특별시교육청",
+   "checked": "2026-10-31",
+   "names": [
+    "서울특별시교육청 2027학년도 서울특별시 고등학교 입학전형 기본계획(공고용, 2026.3.31) — 서울 방식 참고",
+    "서울특별시교육청 2027학년도 서울특별시 고등학교 입학전형 기본계획(공고용, 2026.3.31)"
+   ],
+   "usedIn": {
+    "hs-types.json": 5
+   }
+  },
+  {
+   "id": "src-579edc52",
+   "url": "https://admission.kaist.ac.kr/wz/api/common/files/view/undergraduate/pdf/2027%ED%95%99%EB%85%84%EB%8F%84%20%ED%95%99%EC%82%AC%EA%B3%BC%EC%A0%95%20%EB%AA%A8%EC%A7%91%EC%9A%94%EA%B0%95_%EC%9D%BC%EB%B0%98%EC%A0%84%ED%98%95.pdf",
+   "kind": "official",
+   "org": "KAIST",
+   "checked": "2026-10-26",
+   "names": [
+    "KAIST 2027학년도 학사과정 모집요강 일반전형(PDF, 접속 실패로 검색 요약만 확인)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 1
+   }
+  },
+  {
+   "id": "src-5aa7e9d0",
+   "url": "https://www.bundangnews.co.kr/58587",
+   "kind": "media",
+   "org": "www.bundangnews.co.kr",
+   "checked": null,
+   "names": [
+    "분당신문"
+   ],
+   "usedIn": {
+    "events.json": 1,
+    "policy.json": 1
+   }
+  },
+  {
+   "id": "src-5ac6f75d",
+   "url": "https://namu.wiki/w/2028%ED%95%99%EB%85%84%EB%8F%84%20%EB%8C%80%ED%95%99%EC%88%98%ED%95%99%EB%8A%A5%EB%A0%A5%EC%8B%9C%ED%97%98",
+   "kind": "media",
+   "org": "나무위키",
+   "checked": "2026-10-25",
+   "names": [
+    "나무위키 2028학년도 대학수학능력시험(2차 자료)"
+   ],
+   "usedIn": {
+    "facets.json": 1
+   }
+  },
+  {
+   "id": "src-5b6184f8",
+   "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904",
+   "kind": "official",
+   "org": "학교알리미(교육부·한국교육개발원)",
+   "checked": "2026-10-29",
+   "names": [
+    "학교알리미 학교정보(2026 공시)",
+    "학교알리미 학교정보(2026 공시) 및 편제표 요약",
+    "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+    "학교알리미 공시항목 목록",
+    "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
+    "학교알리미",
+    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)"
+   ],
+   "usedIn": {
+    "hs-compare.json": 15,
+    "places.json": 1
+   }
+  },
+  {
+   "id": "src-5b647dcd",
+   "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655",
+   "kind": "official",
+   "org": "학교알리미(교육부·한국교육개발원)",
+   "checked": "2026-10-29",
+   "names": [
+    "학교알리미 학교정보(2026 공시)",
+    "학교알리미 학교정보(2026 공시) 및 편제표 요약",
+    "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+    "학교알리미 공시항목 목록",
+    "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
+    "학교알리미",
+    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)"
+   ],
+   "usedIn": {
+    "hs-compare.json": 15,
+    "places.json": 1
+   }
+  },
+  {
+   "id": "src-5b78bf2f",
+   "url": "https://admission.kaist.ac.kr/undergraduate/admission/rsub/2027",
+   "kind": "official",
+   "org": "KAIST",
+   "checked": "2026-10-26",
+   "names": [
+    "KAIST 입학처 2027학년도 전형별 지원현황(접속 실패로 검색 요약만 확인)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 1
+   }
+  },
+  {
+   "id": "src-5ce3a509",
+   "url": "https://www.suneung.re.kr",
+   "kind": "official",
+   "org": "한국교육과정평가원",
+   "checked": "2026-10-25",
+   "names": [
+    "한국교육과정평가원 2028학년도 시행 기본계획(2027.3 공고 예정, 미공고)"
+   ],
+   "usedIn": {
+    "facets.json": 1
+   }
+  },
+  {
+   "id": "src-5fefc3ba",
+   "url": "https://news.nate.com/view/20260806n01096?mid=n1101",
+   "kind": "media",
+   "org": "news.nate.com",
+   "checked": null,
+   "names": [
+    "네이트"
+   ],
+   "usedIn": {
+    "events.json": 1,
+    "policy.json": 2
+   }
+  },
+  {
+   "id": "src-6192282c",
+   "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/한양대학교/한양대학교_2028학년도_대학입학전형계획.pdf",
+   "kind": "official",
+   "org": "cdn013.negagea.net",
+   "checked": "2026-10-26",
+   "names": [
+    "2028학년도 한양대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 2
+   }
+  },
+  {
+   "id": "src-61d0636c",
+   "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458",
+   "kind": "official",
+   "org": "학교알리미(교육부·한국교육개발원)",
+   "checked": "2026-10-29",
+   "names": [
+    "학교알리미 학교정보(2026 공시)",
+    "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
+    "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+    "학교알리미",
+    "학교알리미 공시항목 목록",
+    "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
+    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)"
+   ],
+   "usedIn": {
+    "hs-compare.json": 16,
+    "places.json": 1
+   }
+  },
+  {
+   "id": "src-635ac469",
+   "url": "https://admission.snu.ac.kr/webdata/admission/files/2027jungsi.pdf",
+   "kind": "official",
+   "org": "서울대학교",
+   "checked": "2026-10-26",
+   "names": [
+    "서울대학교 2027학년도 정시모집 '나'군 안내(입학본부, PDF, <붙임 1> 75~76쪽)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 3
+   }
+  },
+  {
+   "id": "src-63fb73ae",
+   "url": "https://www.m-economynews.com/news/article.html?no=69490",
+   "kind": "media",
+   "org": "www.m-economynews.com",
+   "checked": "2026-10-31",
+   "names": [
+    "M이코노미뉴스",
+    "M이코노미뉴스: 국가교육위원회, 대입제도 전면 개편 공론화 2027년 3월 확정",
+    "M이코노미뉴스 (국가교육위원회 대입 개편 최종안 2027.3 확정 예정 보도)"
+   ],
+   "usedIn": {
+    "policy.json": 1,
+    "rules.json": 2,
+    "timeline.json": 1
+   }
+  },
+  {
+   "id": "src-676f9b43",
+   "url": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
+   "kind": "official",
+   "org": "대한민국 정책브리핑",
+   "checked": "2026-10-31",
+   "names": [
+    "교육부 정책브리핑: 2028 대입제도 개편(2023.12.27)",
+    "교육부 2028 대입제도 개편안 발표(2023.12.27)"
+   ],
+   "usedIn": {
+    "glossary.json": 2,
+    "rules.json": 1
+   }
+  },
+  {
+   "id": "src-678b68aa",
+   "url": "https://www.dailian.co.kr/news/view/1627070/%EA%B2%BD%EA%B8%B0%EB%8F%84%EA%B5%90%EC%9C%A1%EC%B2%AD-2027%ED%95%99%EB%85%84%EB%8F%84-%EA%B2%BD%EA%B8%B0%EB%8F%84-%EA%B3%A0-2026",
+   "kind": "media",
+   "org": "www.dailian.co.kr",
+   "checked": null,
+   "names": [
+    "데일리안"
+   ],
+   "usedIn": {
+    "events.json": 1,
+    "policy.json": 1
+   }
+  },
+  {
+   "id": "src-683c5c07",
+   "url": "https://www.hscredit.kr/about/graduation",
+   "kind": "official",
+   "org": "교육부 고교학점제 종합지원포털",
+   "checked": "2026-10-31",
+   "names": [
+    "고교학점제 종합지원포털(교육부)",
+    "고교학점제 종합지원포털(교육부) 졸업·이수 기준",
+    "고교학점제 종합지원포털 졸업·이수 기준"
+   ],
+   "usedIn": {
+    "glossary.json": 2,
+    "planner-rules.json": 6,
+    "policy.json": 2,
+    "rules.json": 1,
+    "timeline.json": 1
+   }
+  },
+  {
+   "id": "src-69894aca",
+   "url": "https://suji-m.goeyi.kr/suji-m/na/ntt/selectNttList.do?mi=14367&bbsId=8205",
+   "kind": "official",
+   "org": "경기도용인교육지원청",
+   "checked": "2026-10-31",
+   "names": [
+    "수지중학교·손곡중학교 학교 공지(2026.9)"
+   ],
+   "usedIn": {
+    "middle-guide.json": 1
+   }
+  },
+  {
+   "id": "src-7be73070",
+   "url": null,
+   "kind": "user",
+   "org": null,
+   "checked": "2026-10-29",
+   "names": [
+    "편제표 요약(개설 후보, 수능 범위는 추정)"
+   ],
+   "usedIn": {
+    "hs-compare.json": 4
+   }
+  },
+  {
+   "id": "src-7c58ddf1",
+   "url": null,
+   "kind": "user",
+   "org": null,
+   "checked": "2026-10-31",
+   "names": [
+    "이 포털의 용어(스쿨 라이프)"
+   ],
+   "usedIn": {
+    "glossary.json": 2
+   }
+  },
+  {
+   "id": "src-81e71219",
+   "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=97551&lev=0&searchType=null&statusYN=W&page=1&s=moe&m=020402&opType=N",
+   "kind": "official",
+   "org": "교육부",
+   "checked": "2026-10-25",
+   "names": [
+    "교육부 2028 대입제도 개편 확정안 보도자료(2023.12.27)"
+   ],
+   "usedIn": {
+    "facets.json": 1
+   }
+  },
+  {
+   "id": "src-82c123ee",
+   "url": "https://songok-m.goeyi.kr/songok-m/cm/cntnts/cntntsView.do?mi=13296&cntntsId=2187",
+   "kind": "official",
+   "org": "경기도용인교육지원청",
+   "checked": "2026-11-01",
+   "names": [
+    "손곡중학교 홈페이지 '역점 및 특색교육활동'(2026-11-01 확인, 요약은 조사 세션)"
+   ],
+   "usedIn": {
+    "middle-compare.json": 1
+   }
+  },
+  {
+   "id": "src-8380f4e8",
+   "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/서울시립대학교/서울시립대학교_2027학년도_수시모집요강.pdf",
+   "kind": "official",
+   "org": "cdn013.negagea.net",
+   "checked": "2026-10-26",
+   "names": [
+    "2027학년도 서울시립대학교 수시모집 신입생 모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 3
+   }
+  },
+  {
+   "id": "src-841a2f14",
+   "url": "https://munjung-m.goeyi.kr/munjung-m/cm/cntnts/cntntsView.do?mi=19113&cntntsId=3069",
+   "kind": "official",
+   "org": "경기도용인교육지원청",
+   "checked": "2026-11-01",
+   "names": [
+    "문정중학교 홈페이지 '노력중점 및 특색사업'(2026-11-01 확인, 요약은 조사 세션)"
+   ],
+   "usedIn": {
+    "middle-compare.json": 1
+   }
+  },
+  {
+   "id": "src-8489fbb6",
+   "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/한양대학교/한양대학교_2027학년도_수시모집요강.pdf",
+   "kind": "official",
+   "org": "cdn013.negagea.net",
+   "checked": "2026-10-26",
+   "names": [
+    "2027학년도 한양대학교 신입학 수시모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 4
+   }
+  },
+  {
+   "id": "src-8729a9a3",
+   "url": "https://suji-m.goeyi.kr/suji-m/cm/cntnts/cntntsView.do?mi=14150&cntntsId=2287",
+   "kind": "official",
+   "org": "경기도용인교육지원청",
+   "checked": "2026-11-01",
+   "names": [
+    "수지중학교 홈페이지 '노력중점 및 특색사업'(2026-11-01 확인, 요약은 조사 세션)"
+   ],
+   "usedIn": {
+    "middle-compare.json": 1
+   }
+  },
+  {
+   "id": "src-89481b2c",
+   "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/한국외국어대학교/한국외국어대학교_2027학년도_수시모집요강.pdf",
+   "kind": "official",
+   "org": "cdn013.negagea.net",
+   "checked": "2026-10-26",
+   "names": [
+    "2027학년도 한국외국어대학교 수시모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 3
+   }
+  },
+  {
+   "id": "src-942c8ec8",
+   "url": "https://www.hscredit.kr/about/intro",
+   "kind": "official",
+   "org": "교육부 고교학점제 종합지원포털",
+   "checked": null,
+   "names": [
+    "고교학점제 종합지원포털(교육부) 고교학점제란"
+   ],
+   "usedIn": {
+    "policy.json": 1
+   }
+  },
+  {
+   "id": "src-97777716",
+   "url": null,
+   "kind": "user",
+   "org": null,
+   "checked": "2026-10-26",
+   "names": [
+    "성복중학교 학교공지 '2027학년도 교과서 출판사 안내'(2026.10.26, 사용자 제공 캡처)"
+   ],
+   "usedIn": {
+    "middle-curriculum.json": 1
+   }
+  },
+  {
+   "id": "src-9d31395b",
+   "url": "https://m.news.nate.com/view/20260803n19506",
+   "kind": "media",
+   "org": "m.news.nate.com",
+   "checked": null,
+   "names": [
+    "네이트"
+   ],
+   "usedIn": {
+    "policy.json": 1
+   }
+  },
+  {
+   "id": "src-9db376ea",
+   "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844",
+   "kind": "official",
+   "org": "학교알리미(교육부·한국교육개발원)",
+   "checked": "2026-10-29",
+   "names": [
+    "학교알리미 학교정보(2026 공시)",
+    "학교알리미 학교정보(2026 공시) 및 편제표 요약",
+    "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+    "학교알리미 공시항목 목록",
+    "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
+    "학교알리미",
+    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)"
+   ],
+   "usedIn": {
+    "hs-compare.json": 15,
+    "places.json": 1
+   }
+  },
+  {
+   "id": "src-9e98b50f",
+   "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/서울시립대학교/서울시립대학교_2027학년도_정시모집요강.pdf",
+   "kind": "official",
+   "org": "cdn013.negagea.net",
+   "checked": "2026-10-26",
+   "names": [
+    "2027학년도 서울시립대학교 정시모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 1
+   }
+  },
+  {
+   "id": "src-a0a951fb",
+   "url": "https://v.daum.net/v/20260803100648087",
+   "kind": "media",
+   "org": "v.daum.net",
+   "checked": "2026-10-25",
+   "names": [
+    "다음뉴스",
+    "다음뉴스: 초6 대입 확 바뀌나…수능 절대평가 전환하고 서논술형 도입 검토"
+   ],
+   "usedIn": {
+    "events.json": 1,
+    "policy.json": 2,
+    "rules.json": 3
+   }
+  },
+  {
+   "id": "src-a5860564",
+   "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512",
+   "kind": "official",
+   "org": "교육부",
+   "checked": "2026-10-25",
+   "names": [
+    "교육부 보도자료",
+    "교육부 보도자료: 2028학년도 대학수학능력시험은 2027년 11월 18일(목)에 시행됩니다(붙임 2028학년도 수능 영역별 문항 수·시험시간·출제범위, 공공누리 제1유형)"
+   ],
+   "usedIn": {
+    "events.json": 1,
+    "policy.json": 1,
+    "rules.json": 1
+   }
+  },
+  {
+   "id": "src-a5bdbdfc",
+   "url": "https://yhanbit-m.goeyi.kr/yhanbit-m/cm/cntnts/cntntsView.do?mi=10467&cntntsId=1782",
+   "kind": "official",
+   "org": "경기도용인교육지원청",
+   "checked": "2026-11-01",
+   "names": [
+    "용인한빛중학교 홈페이지 '노력중점 및 특색사업'(2026-11-01 확인, 요약은 조사 세션)"
+   ],
+   "usedIn": {
+    "middle-compare.json": 1
+   }
+  },
+  {
+   "id": "src-ada23be6",
+   "url": null,
+   "kind": "user",
+   "org": null,
+   "checked": "2026-10-31",
+   "names": [
+    "사용자 제공 정리(전형 설명, 2026-10-29)"
+   ],
+   "usedIn": {
+    "glossary.json": 3
+   }
+  },
+  {
+   "id": "src-ae7eee98",
+   "url": "https://www.newspim.com/news/view/20260828000191",
+   "kind": "media",
+   "org": "www.newspim.com",
+   "checked": null,
+   "names": [
+    "뉴스핌"
+   ],
+   "usedIn": {
+    "policy.json": 1
+   }
+  },
+  {
+   "id": "src-b368745e",
+   "url": "https://www.kyobit.com/news/articleView.html?idxno=6335",
+   "kind": "media",
+   "org": "www.kyobit.com",
+   "checked": "2026-10-25",
+   "names": [
+    "교육을 비추다: 정근식표 대입개혁 다시 움직인다"
+   ],
+   "usedIn": {
+    "rules.json": 1
+   }
+  },
+  {
+   "id": "src-b3db06ca",
+   "url": null,
+   "kind": "user",
+   "org": null,
+   "checked": "2026-10-29",
+   "names": [
+    "사용자 참석 설명회 녹음(AI 요약)"
+   ],
+   "usedIn": {
+    "briefings.json": 1
+   }
+  },
+  {
+   "id": "src-b5318a70",
+   "url": "https://www.openstreetmap.org/copyright",
+   "kind": "other",
+   "org": "OpenStreetMap",
+   "checked": "2026-10-29",
+   "names": [
+    "주소: OpenStreetMap 주소 정보(공식 확인 전)",
+    "좌표: OpenStreetMap",
+    "OpenStreetMap"
+   ],
+   "usedIn": {
+    "places.json": 45
+   }
+  },
+  {
+   "id": "src-b54316d3",
+   "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/서강대학교/서강대학교_2028학년도_대학입학전형계획.pdf",
+   "kind": "official",
+   "org": "cdn013.negagea.net",
+   "checked": "2026-10-26",
+   "names": [
+    "2028학년도 서강대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 4
+   }
+  },
+  {
+   "id": "src-b640abaf",
+   "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/성균관대학교/성균관대학교_2028학년도_대학입학전형계획.pdf",
+   "kind": "official",
+   "org": "cdn013.negagea.net",
+   "checked": "2026-10-26",
+   "names": [
+    "2028학년도 성균관대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 3
+   }
+  },
+  {
+   "id": "src-b6893041",
+   "url": "https://oku.korea.ac.kr/oku/cms/FR_BBS_CON/BoardView.do?MENU_ID=750&CONTENTS_NO=2&SITE_NO=2&BOARD_SEQ=5&BBS_SEQ=1791",
+   "kind": "official",
+   "org": "고려대학교",
+   "checked": "2026-10-25",
+   "names": [
+    "고려대학교 2028학년도 입학전형시행계획(2026.04.) 입학처 공지"
+   ],
+   "usedIn": {
+    "admission-rules.json": 5
+   }
+  },
+  {
+   "id": "src-b9740430",
+   "url": "https://www.newspim.com/news/view/20260805000395",
+   "kind": "media",
+   "org": "www.newspim.com",
+   "checked": null,
+   "names": [
+    "뉴스핌(업무보고)"
+   ],
+   "usedIn": {
+    "policy.json": 1
+   }
+  },
+  {
+   "id": "src-baa08ecc",
+   "url": null,
+   "kind": "other",
+   "org": null,
+   "checked": "2026-10-29",
+   "names": [
+    "주소 교차 확인: OSM 별도 노드(성복2로78번길 51)와 학교 정보 사이트 표기 일치"
+   ],
+   "usedIn": {
+    "places.json": 1
+   }
+  },
+  {
+   "id": "src-bec62516",
+   "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1",
+   "kind": "official",
+   "org": "교육행정정보시스템(NEIS)",
+   "checked": "2026-11-01",
+   "names": [
+    "NEIS 학교기본정보(2026-11-01 조회)",
+    "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)"
+   ],
+   "usedIn": {
+    "middle-compare.json": 65,
+    "places.json": 24
+   }
+  },
+  {
+   "id": "src-bf63e20f",
+   "url": "https://www.veritas-a.com/news/articleView.html?idxno=600481",
+   "kind": "media",
+   "org": "www.veritas-a.com",
+   "checked": null,
+   "names": [
+    "베리타스알파"
+   ],
+   "usedIn": {
+    "policy.json": 1
+   }
+  },
+  {
+   "id": "src-c127f100",
+   "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/중앙대학교/중앙대학교_2027학년도_정시모집요강.pdf",
+   "kind": "official",
+   "org": "cdn013.negagea.net",
+   "checked": "2026-10-26",
+   "names": [
+    "2027학년도 중앙대학교 정시 모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 1
+   }
+  },
+  {
+   "id": "src-c19fea53",
+   "url": "https://www.goe.go.kr/resource/old/BBSMSTR_000000000111/BBS_202409250522349970.pdf",
+   "kind": "official",
+   "org": "경기도교육청",
+   "checked": "2026-10-29",
+   "names": [
+    "경기도교육청 고시 제2024-554호 2025학년도 경기도 중학교 무시험입학 추첨방법과 학교군 및 중학구 고시(학교군 현황표 31~32쪽)",
+    "경기도교육청 고시 제2024-554호 2025학년도 경기도 중학교 학교군 및 중학구 고시(학교군 현황표)",
+    "경기도교육청 고시 제2024-554호 2025학년도 학교군 및 중학구"
+   ],
+   "usedIn": {
+    "middle.json": 190,
+    "places.json": 4,
+    "policy.json": 1
+   }
+  },
+  {
+   "id": "src-c5113910",
+   "url": "https://www.edpl.co.kr/news/articleView.html?idxno=21218",
+   "kind": "media",
+   "org": "www.edpl.co.kr",
+   "checked": "2026-10-25",
+   "names": [
+    "교육플러스",
+    "교육플러스: 국교위 수능 절대평가·서논술형 보도에 교육계 촉각 \"확정안 아냐\""
+   ],
+   "usedIn": {
+    "events.json": 1,
+    "policy.json": 2,
+    "rules.json": 3
+   }
+  },
+  {
+   "id": "src-ce245c26",
+   "url": "https://www.veritas-a.com/news/articleView.html?idxno=627933",
+   "kind": "media",
+   "org": "www.veritas-a.com",
+   "checked": null,
+   "names": [
+    "외고"
+   ],
+   "usedIn": {
+    "policy.json": 1
+   }
+  },
+  {
+   "id": "src-d0211bec",
+   "url": null,
+   "kind": "user",
+   "org": null,
+   "checked": "2026-10-31",
+   "names": [
+    "이 포털 편제표 요약(학교 배부 자료 AI 전사, 사용자 대조)"
+   ],
+   "usedIn": {
+    "hs-types.json": 1
+   }
+  },
+  {
+   "id": "src-d05050e2",
+   "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801",
+   "kind": "official",
+   "org": "학교알리미(교육부·한국교육개발원)",
+   "checked": "2026-10-29",
+   "names": [
+    "학교알리미 학교정보(2026 공시)",
+    "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
+    "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+    "학교알리미",
+    "학교알리미 공시항목 목록",
+    "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
+    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)"
+   ],
+   "usedIn": {
+    "hs-compare.json": 16,
+    "places.json": 1
+   }
+  },
+  {
+   "id": "src-d0fae26c",
+   "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1",
+   "kind": "official",
+   "org": "교육행정정보시스템(NEIS)",
+   "checked": "2026-11-01",
+   "names": [
+    "NEIS 학급정보(2026학년도, 2026-11-01 조회)"
+   ],
+   "usedIn": {
+    "middle-compare.json": 26
+   }
+  },
+  {
+   "id": "src-d20570bf",
+   "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/한국외국어대학교/한국외국어대학교_2028학년도_대학입학전형계획.pdf",
+   "kind": "official",
+   "org": "cdn013.negagea.net",
+   "checked": "2026-10-26",
+   "names": [
+    "2028학년도 한국외국어대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 3
+   }
+  },
+  {
+   "id": "src-d50f4b45",
+   "url": "https://www.snu.ac.kr/snunow/press?md=v&bbsidx=156226",
+   "kind": "official",
+   "org": "서울대학교",
+   "checked": "2026-10-25",
+   "names": [
+    "서울대학교 보도자료: 2028학년도 서울대학교 전공 연계 과목 선택 안내 발표(2025.6.30, 첨부 PDF)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 6
+   }
+  },
+  {
+   "id": "src-d557dbec",
+   "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/경희대학교/경희대학교_2027학년도_수시모집요강.pdf",
+   "kind": "official",
+   "org": "cdn013.negagea.net",
+   "checked": "2026-10-26",
+   "names": [
+    "2027학년도 경희대학교 수시 신입생 모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 3
+   }
+  },
+  {
+   "id": "src-d58e0251",
+   "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2",
+   "kind": "official",
+   "org": "교육행정정보시스템(NEIS)",
+   "checked": "2026-10-29",
+   "names": [
+    "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)"
+   ],
+   "usedIn": {
+    "hs-compare.json": 105,
+    "places.json": 21
+   }
+  },
+  {
+   "id": "src-d8226f95",
+   "url": null,
+   "kind": "user",
+   "org": null,
+   "checked": "2026-10-29",
+   "names": [
+    "조사 자료"
+   ],
+   "usedIn": {
+    "hs-compare.json": 1
+   }
+  },
+  {
+   "id": "src-d913fec6",
+   "url": "https://www.incheontoday.com/news/articleView.html?idxno=261614",
+   "kind": "media",
+   "org": "www.incheontoday.com",
+   "checked": "2026-10-25",
+   "names": [
+    "교육부·평가원 2028학년도 수능 시험·점수 체제 발표(2025.1.20) 보도"
+   ],
+   "usedIn": {
+    "facets.json": 1
+   }
+  },
+  {
+   "id": "src-da21bff9",
+   "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/경희대학교/경희대학교_2028학년도_대학입학전형계획.pdf",
+   "kind": "official",
+   "org": "cdn013.negagea.net",
+   "checked": "2026-10-26",
+   "names": [
+    "2028학년도 경희대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 4
+   }
+  },
+  {
+   "id": "src-db326565",
+   "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/한국외국어대학교/한국외국어대학교_2027학년도_정시모집요강.pdf",
+   "kind": "official",
+   "org": "cdn013.negagea.net",
+   "checked": "2026-10-26",
+   "names": [
+    "2027학년도 한국외국어대학교 정시모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 1
+   }
+  },
+  {
+   "id": "src-dbb6e004",
+   "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148958710",
+   "kind": "official",
+   "org": "대한민국 정책브리핑",
+   "checked": "2026-10-25",
+   "names": [
+    "정책브리핑 정책뉴스: 고교학점제 학점 이수기준 완화…선택과목 출석률만 적용(2026.1.28)",
+    "정책브리핑 정책뉴스(2026.1.28)"
+   ],
+   "usedIn": {
+    "planner-rules.json": 2,
+    "policy.json": 1,
+    "rules.json": 1
+   }
+  },
+  {
+   "id": "src-e0d3a017",
+   "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522",
+   "kind": "official",
+   "org": "학교알리미(교육부·한국교육개발원)",
+   "checked": "2026-10-29",
+   "names": [
+    "학교알리미 학교정보(2026 공시)",
+    "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
+    "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
+    "학교알리미",
+    "학교알리미 공시항목 목록",
+    "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
+    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)"
+   ],
+   "usedIn": {
+    "hs-compare.json": 16,
+    "places.json": 1
+   }
+  },
+  {
+   "id": "src-e71409df",
+   "url": "https://www.localnaeil.com/News/View/652739",
+   "kind": "media",
+   "org": "www.localnaeil.com",
+   "checked": "2026-10-25",
+   "names": [
+    "교육부 '2028학년도 대입제도 개편에 따른 안내사항' 공개 보도(2025.6)"
+   ],
+   "usedIn": {
+    "facets.json": 1
+   }
+  },
+  {
+   "id": "src-e8397ad2",
+   "url": null,
+   "kind": "other",
+   "org": null,
+   "checked": "2026-10-31",
+   "names": [
+    "용인 중학교 홈페이지 공지 확인(2026.10.31, 성서중·손곡중·수지중에서 해당 공지 없음)"
+   ],
+   "usedIn": {
+    "middle-guide.json": 1
+   }
+  },
+  {
+   "id": "src-ea04335e",
+   "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
+   "kind": "official",
+   "org": "경기도용인교육지원청",
+   "checked": "2026-10-31",
+   "names": [
+    "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도)",
+    "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획, 지원 원칙 및 배정 방법)",
+    "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획) · 경기도교육청 고시 제2024-554호 학교군 현황",
+    "경기도용인교육지원청 중학교 신입생 배정 안내"
+   ],
+   "usedIn": {
+    "glossary.json": 6,
+    "middle-guide.json": 6,
+    "middle.json": 4,
+    "policy.json": 1,
+    "timeline.json": 2
+   }
+  },
+  {
+   "id": "src-eaaf8a3e",
+   "url": "https://www.dhnews.co.kr/news/view/1065578177989020",
+   "kind": "media",
+   "org": "www.dhnews.co.kr",
+   "checked": "2026-10-25",
+   "names": [
+    "2028학년도 수능 시행일·성적 통지일 보도(2025.6)"
+   ],
+   "usedIn": {
+    "facets.json": 1
+   }
+  },
+  {
+   "id": "src-ebf590bb",
+   "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/서강대학교/서강대학교_2027학년도_정시모집요강.pdf",
+   "kind": "official",
+   "org": "cdn013.negagea.net",
+   "checked": "2026-10-26",
+   "names": [
+    "2027학년도 서강대학교 정시모집요강(2026.9.1, 입학처, 서울시교육청 대입정보 게시본 PDF)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 1
+   }
+  },
+  {
+   "id": "src-ed6c51a2",
+   "url": "https://www.suneung.re.kr/main.do?s=suneung",
+   "kind": "official",
+   "org": "한국교육과정평가원",
+   "checked": "2026-10-31",
+   "names": [
+    "평가원 수능 홈페이지",
+    "교육부·대교협·평가원 관행(2027학년도 수능 시행 기본계획 2026.3.31 공고 등)"
+   ],
+   "usedIn": {
+    "events.json": 1,
+    "policy.json": 1,
+    "timeline.json": 2
+   }
+  },
+  {
+   "id": "src-f06d55c5",
+   "url": "https://view.asiae.co.kr/article/2026092812475292099",
+   "kind": "media",
+   "org": "view.asiae.co.kr",
+   "checked": null,
+   "names": [
+    "아시아경제"
+   ],
+   "usedIn": {
+    "events.json": 1,
+    "policy.json": 1
+   }
+  },
+  {
+   "id": "src-f11446ea",
+   "url": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/e88abfe2-8daa-494e-9cb8-a2d030225b45.pdf",
+   "kind": "official",
+   "org": "경기도교육청",
+   "checked": "2026-10-31",
+   "names": [
+    "경기도교육청 2027학년도 경기도 고등학교 입학전형 기본계획(2026.3, 입학전형 일정 3쪽)"
+   ],
+   "usedIn": {
+    "hs-types.json": 5
+   }
+  },
+  {
+   "id": "src-f5b96cae",
+   "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/성균관대학교/성균관대학교_2027학년도_정시모집요강.pdf",
+   "kind": "official",
+   "org": "cdn013.negagea.net",
+   "checked": "2026-10-26",
+   "names": [
+    "2027학년도 성균관대학교 정시모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)"
+   ],
+   "usedIn": {
+    "admission-rules.json": 1
+   }
+  },
+  {
+   "id": "src-fcd2f5fd",
+   "url": "https://imnews.imbc.com/news/2026/society/article/6842663_36918.html",
+   "kind": "media",
+   "org": "imnews.imbc.com",
+   "checked": null,
+   "names": [
+    "MBC 뉴스 국교위 대입 개편 공론화 보도(2026.8.5)",
+    "MBC"
+   ],
+   "usedIn": {
+    "policy.json": 2
+   }
+  },
+  {
+   "id": "src-fd558061",
+   "url": "https://www.giheunggu.go.kr/_lmth/03_board/board_0701.asp?mode=view&board_idx=MTE2MDAy&page=1",
+   "kind": "official",
+   "org": "용인시 기흥구",
+   "checked": null,
+   "names": [
+    "용인시 기흥구청 게시 공고: 2027학년도 용인시 중학교 학교군 및 중학교 설정을 위한 의견수렴(2026.2.19)"
+   ],
+   "usedIn": {
+    "policy.json": 1
+   }
+  }
+ ]
+}

@@ -136,6 +136,10 @@
     "url": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf"
    }
   ],
+  "sourceIds": [
+   "src-3d73b988",
+   "src-4a089aa6"
+  ],
   "region": "national",
   "audience": [
    "common"
@@ -165,6 +169,10 @@
     "name": "대교협 2028학년도 대학입학전형기본사항(개정 2026.7.31)",
     "url": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf"
    }
+  ],
+  "sourceIds": [
+   "src-3d73b988",
+   "src-1168bb7e"
   ],
   "region": "national",
   "audience": [
@@ -428,6 +436,10 @@
     "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512"
    }
   ],
+  "sourceIds": [
+   "src-ed6c51a2",
+   "src-a5860564"
+  ],
   "region": "national",
   "audience": [
    "common"
@@ -484,6 +496,10 @@
     "name": "데일리안",
     "url": "https://www.dailian.co.kr/news/view/1627070/%EA%B2%BD%EA%B8%B0%EB%8F%84%EA%B5%90%EC%9C%A1%EC%B2%AD-2027%ED%95%99%EB%85%84%EB%8F%84-%EA%B2%BD%EA%B8%B0%EB%8F%84-%EA%B3%A0-2026"
    }
+  ],
+  "sourceIds": [
+   "src-0200fd90",
+   "src-678b68aa"
   ],
   "region": "gyeonggi",
   "audience": [
@@ -816,6 +832,10 @@
     "url": "https://www.bundangnews.co.kr/58587"
    }
   ],
+  "sourceIds": [
+   "src-f06d55c5",
+   "src-5aa7e9d0"
+  ],
   "region": "gyeonggi",
   "audience": [
    "general"
@@ -941,6 +961,11 @@
     "name": "네이트",
     "url": "https://news.nate.com/view/20260806n01096?mid=n1101"
    }
+  ],
+  "sourceIds": [
+   "src-a0a951fb",
+   "src-c5113910",
+   "src-5fefc3ba"
   ],
   "region": "national",
   "audience": [

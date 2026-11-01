@@ -4,6 +4,7 @@
 //   - 대학 id(s-9xx)는 학교 id(school-*, 새 학교 s-001~)와 겹치지 않도록 s-900~s-999 구간을 대학 전용으로 고정한다.
 //   - 대학 목록은 portal/data/universities.json(build-universities.mjs)이 기준이다. 요강 행이 없는 대학도 _meta.universities에 남는다.
 // 사용: node tools/build-admission-rules.mjs [--check]
+import { withSourceIds } from "./lib/source-ids.mjs";
 import { readFileSync, writeFileSync } from "node:fs";
 
 const rd = (p) => JSON.parse(readFileSync(p, "utf8"));
@@ -64,7 +65,7 @@ const out = {
   _meta: { note: "대학 요강 참고 구조(생성물, 손으로 고치지 않는다). research/data/admission-rules-draft.json에서 tools/build-admission-rules.mjs가 만든다. 대학 id는 s-900~s-999 전용.", version: draft._meta.version, checkedAt: draft._meta.checkedAt, admissionYear: 2028, universities: Object.fromEntries(univs.map((u) => [u.id, u.name])), referenceNote: "2028학년도 기준 참고 구조이며 2030학년도에는 달라질 수 있어요", blockedSites: draft._meta.blockedSites || [] },
   rules,
 };
-const json = JSON.stringify(out, null, 1) + "\n";
+const json = JSON.stringify(withSourceIds(out), null, 1) + "\n";
 const target = "portal/data/admission-rules.json";
 if (process.argv.includes("--check")) {
   let cur = ""; try { cur = readFileSync(target, "utf8"); } catch {}

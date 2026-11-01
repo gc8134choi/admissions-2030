@@ -4,6 +4,7 @@
 //   - 지도 링크용 검색어(searchQuery)는 "이름 + 주소"로 만든다. API 키 없이 네이버 지도·카카오맵 검색 URL에 쓴다.
 //   - research/data/places-nearby-draft.json(도서관·역 등 주변 시설)은 places.json의 nearby[]로 합친다(level "nearby"). 학교 목록(places[])과 분리해 검색·중학교 화면에는 섞이지 않는다.
 // 사용: node tools/build-places.mjs [--check]
+import { withSourceIds } from "./lib/source-ids.mjs";
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 
 const SRC = "research/data/places-draft.json";
@@ -54,7 +55,7 @@ const cleanSrc = (list) => (list || []).map((s) => ({ ...s, name: plain(s.name) 
 for (const p of places) p.sources = cleanSrc(p.sources);
 for (const p of nearby) p.sources = cleanSrc(p.sources);
 const out = { _meta: { note: "학교 위치(생성물, 손으로 고치지 않는다). research/data/places-draft.json에서 tools/build-places.mjs가 만든다.", checkedAt: draft._meta?.checkedAt ?? null, count: places.length, withCoords: places.filter((p) => p.lat != null).length, nearbyCount: nearby.length }, places, nearby };
-const json = JSON.stringify(out, null, 1) + "\n";
+const json = JSON.stringify(withSourceIds(out), null, 1) + "\n";
 const target = "portal/data/places.json";
 if (process.argv.includes("--check")) {
   let cur = ""; try { cur = readFileSync(target, "utf8"); } catch {}

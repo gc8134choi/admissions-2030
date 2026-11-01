@@ -2,6 +2,7 @@
 //   - placeId는 places-draft.json에 있어야 한다. 초안이 없으면 빈 구조를 만든다(화면은 빈 상태 문구).
 //   - 배정 일정은 policy.json의 life-* 행(stage 중입)을 화면이 그대로 쓰므로 여기에 넣지 않는다.
 // 사용: node tools/build-middle.mjs [--check]
+import { withSourceIds } from "./lib/source-ids.mjs";
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 
 const SRC = "research/data/middle-school-draft.json", PL = "research/data/places-draft.json";
@@ -38,7 +39,7 @@ else {
   out = { _meta: { note: "초등학교 → 중학교 배정(생성물, 손으로 고치지 않는다). research/data/middle-school-draft.json에서 tools/build-middle.mjs가 만든다.", checkedAt: draft._meta?.checkedAt ?? null, count: outAreas.reduce((n, a) => n + a.zoneSchools.length, 0), areaCount: outAreas.length }, areas: outAreas, from: outAreas[0].from, zoneSchools: outAreas[0].zoneSchools, principles: (draft.principles || []).map((p) => ({ ...p, title: plain(p.title), body: plain(p.body) })) };
 }
 if (errs.length) { console.error(errs.join("\n")); process.exit(1); }
-const json = JSON.stringify(out, null, 1) + "\n";
+const json = JSON.stringify(withSourceIds(out), null, 1) + "\n";
 const target = "portal/data/middle.json";
 if (process.argv.includes("--check")) {
   let cur = ""; try { cur = readFileSync(target, "utf8"); } catch {}
