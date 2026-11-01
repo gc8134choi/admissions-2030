@@ -221,3 +221,4 @@ tr.g3,tr.g3 td,tr.g3 a{color:var(--e-mute)}
 .cmp-bar{display:block;height:4px;margin-top:4px;background:var(--accent);opacity:.55}.cmp-few{padding:12px 0}
 @media print{.cmp{max-height:none;overflow:visible}.cmp-r[hidden]{display:table-row!important}.cmp-add,.cmp-diff,.cmp-x{display:none}}
 .cmp-ul{margin:0;padding-left:1.1em;line-height:1.6}
+.mid-q{min-height:44px;font:inherit;padding:0 10px;max-width:11em}.mid-fi{margin:2px 0 8px}
