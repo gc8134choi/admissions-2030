@@ -85,6 +85,7 @@ jobs:
           node tools/build-briefings.mjs --check
           node tools/build-admission-types.mjs --check
           node tools/build-hs-compare.mjs --check
+          node tools/build-middle-compare.mjs --check
           node tools/build-glossary.mjs --check
           node tools/build-hs-types.mjs --check
           node tools/build-middle-guide.mjs --check
