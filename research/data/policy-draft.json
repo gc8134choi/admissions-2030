@@ -302,17 +302,17 @@
       "body": "2027학년도에도 모집. 외고 28개교 정원 내 5,518명(전년보다 4명 감소), 국제고 8개교 1,172명(전년과 동일)",
       "status": "보도",
       "sourceKind": "매체",
-      "sourceName": "외고",
+      "sourceName": "베리타스알파 「2027 외고 모집, 28개교 5,518명」(2026.9.15)",
       "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=627933",
       "extraSources": [
         {
-          "name": "베리타스알파 2027 국제고 모집(8개교 1,172명)",
+          "name": "베리타스알파 「2027 국제고 모집, 8개교 1,172명 동일」(2026.9.9)",
           "url": "https://www.veritas-a.com/news/articleView.html?idxno=626898"
         }
       ],
       "checkedAt": "2026-11-01",
       "unverified": true,
-      "statusNote": "보도(외고·국제고 수치는 각 기사 본문 대조 2026-11-01, 외고=veritas 627933, 국제고=veritas 626898)",
+      "statusNote": "보도(외고·국제고 수치를 각 기사 본문과 대조 2026-11-01)",
       "unverifiedReason": "공식 원문 대조 전(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
       "region": "national",
       "examYear": 2030

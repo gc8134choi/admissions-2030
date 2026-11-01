@@ -288,7 +288,7 @@
   "checkedAt": "2026-10-26",
   "events": [
    {
-    "label": "후기 원서접수(외·국·자·교육감 선발 일반고)",
+    "label": "서울 후기 원서접수(외·국·자·교육감 선발 일반고, 경기와 다름)",
     "start": "2026-12-03",
     "end": "2026-12-07"
    }
@@ -326,19 +326,19 @@
   "title": "외고·국제고",
   "body": "2027학년도에도 모집. 외고 28개교 정원 내 5,518명(전년보다 4명 감소), 국제고 8개교 1,172명(전년과 동일)",
   "status": "reported",
-  "note": "외고·국제고 수치는 각 기사 본문 대조 2026-11-01, 외고=veritas 627933, 국제고=veritas 626898",
+  "note": "외고·국제고 수치를 각 기사 본문과 대조 2026-11-01",
   "unverified": true,
   "reason": "공식 문서로 확인 중이에요(매체 보도). 교육청 포털·보도자료에서 해당 항목 미특정",
   "sourceKind": "media",
-  "sourceName": "외고",
+  "sourceName": "베리타스알파 「2027 외고 모집, 28개교 5,518명」(2026.9.15)",
   "sourceUrl": "https://www.veritas-a.com/news/articleView.html?idxno=627933",
   "sources": [
    {
-    "name": "외고",
+    "name": "베리타스알파 「2027 외고 모집, 28개교 5,518명」(2026.9.15)",
     "url": "https://www.veritas-a.com/news/articleView.html?idxno=627933"
    },
    {
-    "name": "베리타스알파 2027 국제고 모집(8개교 1,172명)",
+    "name": "베리타스알파 「2027 국제고 모집, 8개교 1,172명 동일」(2026.9.9)",
     "url": "https://www.veritas-a.com/news/articleView.html?idxno=626898"
    }
   ],
@@ -2147,7 +2147,7 @@
   "checkedAt": "2026-10-25",
   "events": [
    {
-    "label": "",
+    "label": "경기 후기 원서접수(일반고·외고·국제고·자사고)",
     "start": "2026-12-04",
     "end": "2026-12-10"
    }
@@ -2211,7 +2211,7 @@
   "checkedAt": "2026-10-25",
   "events": [
    {
-    "label": "",
+    "label": "경기 평준화 일반고 원서접수~추가배정",
     "start": "2026-12-04",
     "end": "2027-02-05"
    }
