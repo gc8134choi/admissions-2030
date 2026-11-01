@@ -88,7 +88,9 @@ export function register(views, { $, esc, load, store }) {
     const tr = (e) => { const d0 = e.start.length === 10 ? dn(e.start) : null, soon = d0 != null && d0 >= 0 && d0 <= 7, live = e.start.length === 10 && d0 < 0 && (e.end || e.start) >= t; return `<tr class="${(e.end || e.start) < t ? "past" : soon ? "due" : live ? "now" : ""}"><td class="l">${stageTag(stageOf(e.r), esc)}${soon ? `<b class="dn num">D-${d0}</b> ` : live ? '<b class="dn">진행 중</b> ' : ""}${esc(fmt(e))}</td><td class="l"><b>${esc(e.r.title)}</b>${e.label ? ` · ${esc(e.label)}` : ""}${e.first ? `<div class="muted small">${esc(e.r.body)}</div>` : ""}</td><td class="l">${badgeMain(e.r)}</td><td class="l">${srcWrap(src(e.r) + badgeNote(e.r), { checked: e.r.checkedAt })}</td></tr>`; };
     const none = rows.filter((r) => !r.events);
     if (!evs.length && !none.length) return '<p class="note">아직 모인 일정이 없어요. 일정이 생기면 이 자리에 떠요.</p>';
-    return `<p class="muted">오늘(${t}) 이전 일정은 흐리게 표시해요.</p><div class="tw"><table class="policy"><thead><tr><th class="l">날짜</th><th class="l">항목</th><th class="l">상태</th><th class="l">구분·출처</th></tr></thead><tbody>${evs.map(tr).join("")}</tbody></table></div>${none.length ? `<h2>일정 미확인</h2>${table(none, basic)}` : ""}`;
+    return `${(() => { const isPast = (e) => (e.end || e.start) < t, up = evs.filter((e) => !isPast(e)), pa = evs.filter(isPast).reverse();
+      const tbl = (l) => `<div class="tw"><table class="policy"><thead><tr><th class="l">날짜</th><th class="l">항목</th><th class="l">상태</th><th class="l">구분·출처</th></tr></thead><tbody>${l.map(tr).join("")}</tbody></table></div>`;
+      return (up.length ? tbl(up) : '<p class="note">앞으로 예정된 일정이 없어요.</p>') + (pa.length ? `<details class="dp past-fold"><summary>지난 일정 ${pa.length}건 (가까운 순)</summary>${tbl(pa)}</details>` : ""); })()}${none.length ? `<h2>일정 미확인</h2>${table(none, basic)}` : ""}`;
   };
 
   const logTable = (rows) => cards(rows, { meta: (r) => (dateOf(r.title) ? fmtDate(dateOf(r.title)) : "날짜 미정"), title: (r) => r.title.slice(dateOf(r.title).length).trim() || r.title });
