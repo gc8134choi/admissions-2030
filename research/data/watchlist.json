@@ -281,7 +281,8 @@
         "ar-2027-kaist-general"
       ],
       "importance": "높음",
-      "enabled": true
+      "enabled": false,
+      "disabledReason": "서버가 연결을 끊음(Connection reset/UND_ERR_CONNECT_TIMEOUT, 감시 봇·조사 세션 모두 2026-11-01 접속 불가). 우회하지 않고 수동 점검으로 대체"
     },
     {
       "id": "w-u-postech",
