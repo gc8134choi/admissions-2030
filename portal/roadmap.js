@@ -29,10 +29,11 @@ export async function roadmapView(el, { load, esc, learner, fmt, badgeMain, noti
     const src = x.sourceName ? `<p class="ed-s">출처 ${x.sourceUrl ? `<a href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">${esc(x.sourceName)}</a>` : esc(x.sourceName)}</p>` : "";
     return `<article class="rd-row${past ? " past" : ""}" data-who="${esc(x.who.join(","))}"><div class="rd-d">${lbl.split("~").map((t, i) => `<span>${i ? "~" : ""}${esc(t)}</span>`).join("")}</div><div><p class="rd-w">${stageTag(rdStage(x), esc)}${tags}</p><p class="ed-b">${esc(x.what)}</p><div class="ed-st">${badgeMain(x)}</div>${x.note ? `<div class="ed-note">${esc(x.note)}</div>` : ""}${src}</div></article>`;
   };
+  const opened = new Set(); // 눌러서 펼친 시기(필터를 바꿔도 유지)
   const draw = () => {
     $sections.innerHTML = stages.map((s) => {
       const rs = items.filter((x) => x.stageKey === s.key && (!who || x.who.includes(who)) && (!fs || rdStage(x) === fs));
-      return rs.length ? `<section id="rd-${esc(s.key)}"><h2>${esc(s.label)}${s.key === cur.key ? '<span class="ed-tag">지금</span>' : ""}</h2>${rs.map(rowHtml).join("")}</section>` : "";
+      return rs.length ? `<details class="rd-sec" id="rd-${esc(s.key)}"${s.key === cur.key || opened.has(s.key) ? " open" : ""}><summary><h2>${esc(s.label)}${s.key === cur.key ? '<span class="ed-tag">지금</span>' : ""} <span class="rd-n">${rs.length}건</span></h2></summary>${rs.map(rowHtml).join("")}</details>` : "";
     }).join("") || '<p class="ed-src">이 조건에 맞는 항목이 없어요.</p>';
   };
   el.innerHTML = `<div class="ed"><div class="ed-filter" id="rdbase" role="group" aria-label="기준 학년"><span>기준 학년</span>${BASES.map(([k, t]) => `<button type="button" class="${k === base ? "on" : ""}" data-b="${k}" aria-pressed="${k === base}">${t}</button>`).join("")}</div>
@@ -45,7 +46,8 @@ export async function roadmapView(el, { load, esc, learner, fmt, badgeMain, noti
   const drawStage = () => { el.querySelector("#rdstg").innerHTML = `<span class="flabel">단계</span><div class="chips">${[["", "전체"], ...STAGES.map((g) => [g, g])].map(([v, t]) => `<button type="button" class="chip${v === fs ? " on" : ""}" data-stage="${v}" aria-pressed="${v === fs}">${t}</button>`).join("")}</div>`; };
   drawStage(); draw();
   el.querySelector("#rdbase").addEventListener("click", (e) => { const b = e.target.closest("[data-b]"); if (!b || b.dataset.b === base) return; if (store) store.set(BK, b.dataset.b); roadmapView(el, { load, esc, learner, fmt, badgeMain, notice, store }); });
+  $sections.addEventListener("toggle", (e) => { const d = e.target; if (d.classList?.contains("rd-sec")) { const k = d.id.slice(3); d.open ? opened.add(k) : opened.delete(k); } }, true);
   el.querySelector("#rdstg").addEventListener("click", (e) => { const b = e.target.closest("[data-stage]"); if (!b) return; fs = b.dataset.stage; if (store) store.set(SK, fs); drawStage(); draw(); });
   el.querySelector("#rdw").addEventListener("click", (e) => { const b = e.target.closest("[data-w]"); if (!b) return; who = b.dataset.w; el.querySelectorAll("#rdw button").forEach((x) => x.classList.toggle("on", x === b)); draw(); });
-  el.querySelector(".ed-toc").addEventListener("click", (e) => { const b = e.target.closest("[data-go]"); if (b) document.getElementById(b.dataset.go)?.scrollIntoView({ behavior: "smooth", block: "start" }); });
+  el.querySelector(".ed-toc").addEventListener("click", (e) => { const b = e.target.closest("[data-go]"); if (b) { const t = document.getElementById(b.dataset.go); if (t) { t.open = true; t.scrollIntoView({ behavior: "smooth", block: "start" }); } } });
 }

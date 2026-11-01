@@ -360,14 +360,21 @@ async function compareShell(el, onReset, getAreas) {
     }
     need = AW + LW + CW * ids.length;
     $("#tbl").style.minWidth = `${need}px`;
-    const CH = 24, token = (drawToken = Symbol());
+    const CH = 30, token = (drawToken = Symbol());
     const head = `<thead><tr><th class="ar">교과군</th><th class="l">과목</th>${ids.map((id, i) => `<th>${nm(id, names[i], 30)}</th>`).join("")}</tr></thead>`;
     const foot = `<tfoot><tr><th class="lf" colspan="2">해당 과목 수</th>${ids.map((id) => `<th>${rows.filter((r) => r.cells[id]).length}</th>`).join("")}</tr></tfoot>`;
     const chunk = (i) => trs.slice(i, i + CH).map((f) => f()).join("");
     $("#tbl").innerHTML = `${head}<tbody>${trs.length ? chunk(0) : `<tr><td colspan="${ids.length + 2}">조건에 맞는 과목이 없어요.</td></tr>`}</tbody>${foot}`;
-    const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 16));
-    const more = (i) => { if (token !== drawToken || i >= trs.length) return; idle(() => { if (token !== drawToken) return; $("#tbl tbody").insertAdjacentHTML("beforeend", chunk(i)); more(i + CH); }); };
-    more(CH);
+    // 밀도: 처음 한 덩어리만 보이고 나머지는 "과목 더 보기"로 이어 붙인다(136행을 한 번에 그리지 않는다).
+    let shown = Math.min(CH, trs.length);
+    root.querySelector("#rowsmore")?.remove();
+    if (trs.length > CH) {
+      const wrap = document.createElement("div"); wrap.id = "rowsmore"; wrap.className = "more-rows";
+      const paint = () => { wrap.innerHTML = shown < trs.length ? `<button type="button" class="btn">과목 더 보기 (${shown}/${trs.length})</button> <button type="button" class="btn lnk" data-all>모두 보기</button>` : ""; };
+      paint();
+      wrap.addEventListener("click", (e) => { if (token !== drawToken) return; const all = e.target.closest("[data-all]"); if (!all && !e.target.closest("button")) return; const to = all ? trs.length : Math.min(trs.length, shown + CH); $("#tbl tbody").insertAdjacentHTML("beforeend", trs.slice(shown, to).map((f) => f()).join("")); shown = to; paint(); });
+      $("#tbl").closest(".tw,.cmp-wrap,div")?.after(wrap);
+    }
     fitMode();
   };
   let dbt; root.addEventListener("input", () => { clearTimeout(dbt); dbt = setTimeout(() => draw(), 120); }); // 글자 입력은 잠깐 모아서 한 번만
