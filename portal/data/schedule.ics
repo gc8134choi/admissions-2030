@@ -602,8 +602,10 @@ DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20261218
 DTEND;VALUE=DATE:20261219
 SUMMARY:중학교 졸업
-DESCRIPTION:2026.12.18(금) 중학교 졸업\n출처: 사용자 제공\n확
- 인일 2026-10-25
+DESCRIPTION:2026.12.18(금) 중학교 졸업\n출처: 자료 유형: 사용
+ 자 제공 학교 일정 안내 · 자료명: 졸업식 일정 안내(학
+ 교 공지) · 제공일: 2026-10-25(저장소 등록일) · 학교 공지
+ 로 재확인 필요\n확인일 2026-10-25
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -612,8 +614,10 @@ DTSTAMP:20261025T000000Z
 DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270101
 SUMMARY:초등학교 졸업
-DESCRIPTION:2026.12.31(목) 초등학교 졸업\n출처: 사용자 제공\n
- 확인일 2026-10-25
+DESCRIPTION:2026.12.31(목) 초등학교 졸업\n출처: 자료 유형: 사
+ 용자 제공 학교 일정 안내 · 자료명: 졸업식 일정 안내(
+ 학교 공지) · 제공일: 2026-10-25(저장소 등록일) · 학교 공
+ 지로 재확인 필요\n확인일 2026-10-25
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
