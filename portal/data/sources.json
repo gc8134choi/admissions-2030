@@ -1,9 +1,9 @@
 {
  "_meta": {
   "note": "출처 등록부(생성물, 손으로 고치지 않는다). tools/build-sources.mjs가 portal/data의 출처 항목에서 만든다. 데이터 행의 sourceIds가 이 id를 가리킨다.",
-  "count": 117,
+  "count": 119,
   "kinds": {
-   "official": 75,
+   "official": 77,
    "media": 25,
    "user": 14,
    "self": 0,
@@ -66,6 +66,20 @@
    ],
    "usedIn": {
     "admission-rules.json": 1
+   }
+  },
+  {
+   "id": "src-06b2c22e",
+   "url": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_cad46b04f4b3e5fef44b540969308744.pdf",
+   "kind": "official",
+   "org": "한국대학교육협의회",
+   "checked": null,
+   "names": [
+    "대교협 2029학년도 대학입학전형기본사항 전문(2026.8, 보도자료 붙임 PDF)"
+   ],
+   "usedIn": {
+    "events.json": 1,
+    "policy.json": 1
    }
   },
   {
@@ -1242,6 +1256,20 @@
    ],
    "usedIn": {
     "admission-rules.json": 5
+   }
+  },
+  {
+   "id": "src-b6d08f51",
+   "url": "https://www.kcue.or.kr/news/sub02/sub01.php?pagenumber=1&at=view&idx=2765226",
+   "kind": "official",
+   "org": "한국대학교육협의회",
+   "checked": null,
+   "names": [
+    "한국대학교육협의회 보도자료 「2029학년도 대학입학전형기본사항 발표」(2026.8.27)"
+   ],
+   "usedIn": {
+    "events.json": 1,
+    "policy.json": 1
    }
   },
   {

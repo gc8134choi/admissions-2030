@@ -6,12 +6,36 @@ METHOD:PUBLISH
 X-WR-CALNAME:스쿨 라이프 일정
 X-WR-TIMEZONE:Asia/Seoul
 BEGIN:VEVENT
+UID:ev-adm-11-1@admissions-2030
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20260827
+DTEND;VALUE=DATE:20260828
+SUMMARY:2029학년도 대학입학전형기본사항 발표(대교협) · 
+ 대교협 발표
+DESCRIPTION:대교협이 2026.8.27 2029학년도 대학입학전형기본
+ 사항을 확정·발표. 주요 변경: 소규모학교 등 과목수강 
+ 노력 고려 권장\, 원서접수 중 전산오류 구제방안 신설\,
+  농어촌학생 특별전형 거주요건 개정\, 등록포기 절차 
+ 안내 강화. 일정은 예년 수준: 수시 원서접수 2028.9.18~21 
+ 중 3일 이상(전형 88일\, 합격자 발표 12.19까지)\, 정시 원
+ 서접수 2029.1.2~5 중 3일 이상(가·나·다군 각 8일)\, 추가
+ 모집 2029.2.21~28. 2030학년도(현 중3) 대입 기본사항은 입학
+ 연도 2년 전 학년도 개시 6개월 전까지 공표하는 규정에 
+ 따라 2027년 8월 전후 발표가 예상되며 지금 값은 참고용\
+ n출처: 한국대학교육협의회 보도자료 「2029학년도 대학
+ 입학전형기본사항 발표」(2026.8.27) https://www.kcue.or.kr/news/
+ sub02/sub01.php?pagenumber=1&at=view&idx=2765226 / 대교협 2029학년도
+  대학입학전형기본사항 전문(2026.8\, 보도자료 붙임 PDF) h
+ ttps://www.kcue.or.kr/_upload/news/2026/10/20/application_cad46b04f4b3e5fe
+ f44b540969308744.pdf\n확인일 2026-11-01
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:ev-hs-01-1@admissions-2030
 DTSTAMP:20261026T000000Z
-DTSTART;VALUE=DATE:20260801
-DTEND;VALUE=DATE:20260901
-SUMMARY:서울 2027학년도 고입 기본계획 · 기본계획 확정 (
- 월 단위)
+DTSTART;VALUE=DATE:20260331
+DTEND;VALUE=DATE:20260401
+SUMMARY:서울 2027학년도 고입 기본계획 · 기본계획 공고
 DESCRIPTION:서울시교육청이 2027학년도 서울특별시 고등학
  교 입학전형 기본계획을 2026.3.31 고입자료실에 공고했다
  (보도 2026.3.30~31). 서울반도체고 2027.3 개교(마이스터고)\,
