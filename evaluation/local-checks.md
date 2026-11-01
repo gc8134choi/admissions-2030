@@ -23,3 +23,7 @@ python3 tools/pm/preserve-check.py http://localhost:8000/portal/
 
 ## 4. 배포 뒤(Pages)
 배포 주소를 인자로 같은 스크립트를 돌리고, Lighthouse(모바일) 3회 중앙값을 기록한다(기준: 홈 63 이상, 접근성 95 이상).
+
+## 알려진 환경 차이
+- `node tools/build-db.mjs --check`는 `content/curriculum/*.json`(정본 전사본)이 있어야 한다. 평가용으로 content/ 없이 복사된 환경에서는 "content/curriculum 없음"으로 실패하는데, 이는 코드 오류가 아니라 환경 문제다(이 저장소의 main에도 `content/curriculum/`이 없다. 정본이 있는 브랜치·클론에서만 통과하므로 정본 위치를 확인한 뒤 돌린다). 평가 환경에서는 `portal/data`만으로 가능한 점검(sitecheck·layoutcheck·density·preserve-check·codescan)을 쓰고, 데이터 `--check`는 정본이 있는 클론에서 한다.
+- density.py는 본문 글자·요소 수가 두 번 연속 같아질 때까지 기다려서(최대 6초) 렌더링 전 0 값이 나오지 않도록 했다.
