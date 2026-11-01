@@ -103,6 +103,14 @@
    "order": 12,
    "type": "string",
    "needsAsOf": true
+  },
+  {
+   "id": "feature",
+   "label": "교육 특색·노력중점(학교 홈페이지)",
+   "group": "교육",
+   "order": 13,
+   "type": "text",
+   "needsAsOf": true
   }
  ],
  "schools": [
@@ -216,6 +224,16 @@
      "source": {
       "name": "NEIS 학교기본정보(2026-11-01 조회)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "feature": {
+     "value": "노력중점: 학생자치·학부모회 활성화, 인권 친화적 학교문화, 독서·논술·토론 교육, 교과별 책임지도로 학력 향상. 교육 기본방향: 단정한 용의·수업 준비·배려.",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "문정중학교 홈페이지 '노력중점 및 특색사업'(2026-11-01 확인, 요약은 조사 세션)",
+      "url": "https://munjung-m.goeyi.kr/munjung-m/cm/cntnts/cntntsView.do?mi=19113&cntntsId=3069"
      },
      "nullReason": null
     }
@@ -333,6 +351,13 @@
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
      },
      "nullReason": null
+    },
+    "feature": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
     }
    }
   },
@@ -448,6 +473,13 @@
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
      },
      "nullReason": null
+    },
+    "feature": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
     }
    }
   },
@@ -561,6 +593,16 @@
      "source": {
       "name": "NEIS 학교기본정보(2026-11-01 조회)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "feature": {
+     "value": "노력중점: 학년별 교과 융합 프로그램·학년별 축제, 진로체험 교육, 독서골든벨·1인 1책 읽기, 토론·발표·프로젝트 수업.",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "손곡중학교 홈페이지 '역점 및 특색교육활동'(2026-11-01 확인, 요약은 조사 세션)",
+      "url": "https://songok-m.goeyi.kr/songok-m/cm/cntnts/cntntsView.do?mi=13296&cntntsId=2187"
      },
      "nullReason": null
     }
@@ -678,6 +720,16 @@
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
      },
      "nullReason": null
+    },
+    "feature": {
+     "value": "노력중점: 책 읽는 배움 공동체와 학생 자치, 인성·기본생활 교육. 특색: 체육·문화예술 활동, 진로교육과 자유학년제 운영.",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "수지중학교 홈페이지 '노력중점 및 특색사업'(2026-11-01 확인, 요약은 조사 세션)",
+      "url": "https://suji-m.goeyi.kr/suji-m/cm/cntnts/cntntsView.do?mi=14150&cntntsId=2287"
+     },
+     "nullReason": null
     }
    }
   },
@@ -793,6 +845,13 @@
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
      },
      "nullReason": null
+    },
+    "feature": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
     }
    }
   },
@@ -906,6 +965,16 @@
      "source": {
       "name": "NEIS 학교기본정보(2026-11-01 조회)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "feature": {
+     "value": "노력중점: 민주적 학교문화·학생자치, 다문화 이해와 회복적 생활교육. 특색: 교과 연계 독서교육(한빛 꿈나루 등).",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "용인한빛중학교 홈페이지 '노력중점 및 특색사업'(2026-11-01 확인, 요약은 조사 세션)",
+      "url": "https://yhanbit-m.goeyi.kr/yhanbit-m/cm/cntnts/cntntsView.do?mi=10467&cntntsId=1782"
      },
      "nullReason": null
     }
@@ -1023,6 +1092,13 @@
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
      },
      "nullReason": null
+    },
+    "feature": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
     }
    }
   },
@@ -1138,6 +1214,13 @@
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
      },
      "nullReason": null
+    },
+    "feature": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
     }
    }
   },
@@ -1253,6 +1336,13 @@
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
      },
      "nullReason": null
+    },
+    "feature": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
     }
    }
   },
@@ -1368,6 +1458,13 @@
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
      },
      "nullReason": null
+    },
+    "feature": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
     }
    }
   },
@@ -1481,6 +1578,16 @@
      "source": {
       "name": "NEIS 학교기본정보(2026-11-01 조회)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     },
+     "nullReason": null
+    },
+    "feature": {
+     "value": "특색: 몸·마음 건강, 바른 인성, 창의 미래 3영역(학생 주도 공연·전시, 탐구 동아리). 역점: 학년별 진로·인성 교육(1학년 자유학년제와 창의진로교육).",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "소현중학교 홈페이지 '특색 및 역점사업'(2026-11-01 확인, 요약은 조사 세션)",
+      "url": "https://sohyeon-m.goeyi.kr/sohyeon-m/cm/cntnts/cntntsView.do?mi=12766&cntntsId=2084"
      },
      "nullReason": null
     }
@@ -1598,6 +1705,13 @@
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
      },
      "nullReason": null
+    },
+    "feature": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
     }
    }
   }
