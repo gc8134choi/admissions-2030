@@ -165,7 +165,7 @@
    "short": "용인 고교 배정은 2단계예요. 1단계 학군내배정(용인 50%)에서 5개 고교를, 2단계 구역내배정에서 그 구역 전체 고교를 지망 순으로 써요.",
    "detail": null,
    "official": null,
-   "category": "기타",
+   "category": "배정",
    "status": "confirmed",
    "sources": [
     {
@@ -185,7 +185,7 @@
    "short": "이 포털에서 쓰는 말이에요. 중입=중학교 입학·배정, 고입=고등학교 입학·배정, 대입=대학 입시(수시·정시)를 뜻해요.",
    "detail": null,
    "official": null,
-   "category": "입시",
+   "category": "기타",
    "status": "confirmed",
    "sources": [
     {
