@@ -16,6 +16,9 @@ print(f"자료 있는 질의 {len(has)}: 3위 안 적중 {pct(has,'ok')}% · 엄
 print(f"자료 없는 질의 {len(none)}: 안내 1위 {pct(none,'ok')}%")
 print(f"합산(개발용 {len(dev)}): {pct(dev,'ok')}% · 엄격 {pct(dev,'strict')}%")
 if hold: print(f"홀드아웃 {len(hold)}(수정 때 맞춰 보지 않은 새 표현): {pct(hold,'ok')}% · 엄격 {pct(hold,'strict')}%")
+for tag, nm in (("dev", "r20 개발용"), ("hold", "r20 홀드아웃(고정·수정 때 보지 않음)")):
+    a = [x for x in res if x.get("r20") == tag]
+    if a: print(f"{nm} {len(a)}: {pct(a,'ok')}% · 엄격 {pct(a,'strict')}%")
 base_path = os.path.join(ROOT, "tools/pm/searchgold.baseline.json")
 if "--save" in sys.argv:
     json.dump({x["q"]: x["ok"] for x in res}, open(base_path, "w"), ensure_ascii=False, indent=0); print("기준값 기록:", base_path)
@@ -23,6 +26,6 @@ elif os.path.exists(base_path):
     base = json.load(open(base_path)); reg = [x["q"] for x in res if base.get(x["q"]) and not x["ok"]]; up = [x["q"] for x in res if base.get(x["q"]) is False and x["ok"]]
     print(f"기준값 대비: 새로 맞음 {len(up)}건, 퇴보 {len(reg)}건" + (": " + " / ".join(reg) if reg else ""))
     if reg: sys.exit(1)
-miss = [x for x in res if not x["ok"]]
+miss = [x for x in res if not x["ok"] and not x.get("holdout")]  # 홀드아웃 미스는 출력하지 않는다(맞춰 고치지 않기 위해)
 print(f"미스 {len(miss)}건:")
 for x in miss: print(f"  [{x['kind']}] {x['q']} → {x['top'][:90]}")

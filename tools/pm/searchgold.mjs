@@ -22,6 +22,6 @@ for (const g of gold) {
     const f = flat[0]; ok = !!f && (f._g === "안내" || f._g === "바로 안내") && NOTICE.test(f.t + " " + f.s); strict = ok;
     if (!ok && !flat.length) { ok = true; strict = true; } // 빈 응답은 화면에서 '찾는 정보가 없어요'+확인처가 나온다
   }
-  res.push({ q: g.q, kind: g.kind, ok, strict, top, holdout: !!g.holdout });
+  res.push({ q: g.q, kind: g.kind, ok, strict, top, holdout: !!g.holdout, r20: g.r20 || '' });
 }
 console.log(JSON.stringify(res));
