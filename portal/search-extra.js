@@ -6,8 +6,29 @@
 const J = (a) => a.filter(Boolean).join(" ");
 const ok = (p) => p.catch(() => null);
 
+
+// "이 포털에 아직 없어요" 류 안내는 하드코딩하지 않는다: 해당 데이터가 있으면 그 데이터로 연결하고(found), 없을 때만 "없음 + 어디서 확인"(none)을 낸다.
+// tools/check-search-notices.mjs가 같은 규칙을 데이터로 점검한다(안내가 가리키는 주제의 데이터가 실제로 없는지).
+const cnt = (d, k) => (d?.schools || []).filter((s) => s.values?.[k] && s.values[k].value != null && s.values[k].value !== "").length;
+const row = (D, id) => (D.pol || []).find((r) => r.id === id);
+const firstSent = (s, n = 80) => String(s || "").replace(/\s+/g, " ").slice(0, n);
+export const GAPS = [
+  { id: "transfer", words: "전학 이사 배정 전입 배정 전입 이사 가는 지역 교육지원청 문의 고입 전학 포털", found: (D) => row(D, "gg-18") && { href: "#schedule?t=hs", t: "전학 · 이사(전입) 배정 · 경기 평준화 고교", s: firstSent(row(D, "gg-18").body) }, none: { href: "#library/links", t: "전학 · 이사 배정(전입 배정)", s: "전학·이사 때의 배정 안내는 이 포털에 아직 없어요 → 이사 갈 지역 교육지원청에 문의하고 경기도 고입·전학 포털에서 확인해요" } },
+  { id: "failover", words: "외고 불합격 국제고 자사고 불합격 일반고 배정 절차 동시 지원 후기", found: (D) => row(D, "gg-17") && { href: "#schedule?t=hs", t: "외·국·자 불합격 시 일반고 배정 절차", s: firstSent(row(D, "gg-17").body) } },
+  { id: "uniform", words: "교복 체육복 하복 동복 구입 가격 낙찰가 학교주관구매", found: (D) => cnt(D.mc, "uniform") > 0 && { href: "#select/curriculum?v=middle&g=%EC%83%9D%ED%99%9C", t: "교복 낙찰가 · 중학교 비교", s: `중학교 ${cnt(D.mc, "uniform")}곳의 교복 유형·구입 지원금·낙찰가를 비교해요. 체육복·최종 안내는 배정 뒤 학교 공지에서 확인해요` }, none: { href: "#select/curriculum?v=middle", t: "교복 · 체육복", s: "학교별 값은 배정 뒤 학교 공지에서만 확인돼요 → 학교 홈페이지 공지·입학 안내" } },
+  { id: "meal-mid", words: "급식 중학교 급식 급식 방식 급식 현황", found: (D) => cnt(D.mc, "meal") > 0 && { href: "#select/curriculum?v=middle&g=%EC%83%9D%ED%99%9C", t: "중학교 급식 · 비교", s: `중학교 ${cnt(D.mc, "meal")}곳의 급식 방식을 비교해요` }, none: { href: "#select/curriculum?v=middle", t: "중학교 급식 안내", s: "학교별 공시·게시 자료라 학교알리미 급식 현황이나 학교 홈페이지 급식 게시판에서 확인해요" } },
+  { id: "commute", words: "통학 통학 거리 통학 시간 등교 집에서 학교까지", found: (D) => cnt(D.mc, "commute") > 0 && { href: "#select/curriculum?v=middle&g=%EC%83%9D%ED%99%9C", t: "통학 · 중학교 비교", s: `중학교 ${cnt(D.mc, "commute")}곳의 통학 정보를 비교해요` }, none: { href: "#select/curriculum?v=middle", t: "통학(거리·시간)", s: "집 주소에 따라 달라서 학교별 값은 없어요 → 학교 지도에서 위치를 보고 지도 앱으로 확인" } },
+  { id: "dorm", words: "기숙사 기숙사 있는 학교 운영 여부", found: (D) => cnt(D.hc, "dorm") > 0 && { href: "#select/curriculum?v=hs&g=%EC%83%9D%ED%99%9C", t: "기숙사 · 학교 비교(생활)", s: `고교 ${cnt(D.hc, "dorm")}곳의 기숙사 정보를 비교해요` }, none: { href: "#select/curriculum?v=hs&g=%EC%83%9D%ED%99%9C", t: "기숙사 · 학교 비교(생활)", s: "학교알리미 공시 항목에 없어요 → 학교 설명회·학교 홈페이지에서 확인" } },
+  { id: "univ-result", words: "대학 진학 대학 진학 현황 진학 실적 합격 실적 졸업생 진학", found: (D) => cnt(D.hc, "univStats") > 0 && { href: "#select/curriculum?v=hs&g=%EC%A7%84%ED%95%99", t: "대학 진학 현황 · 학교 비교", s: `고교 ${cnt(D.hc, "univStats")}곳의 진학 현황을 비교해요` }, none: { href: "#select/curriculum?v=hs&g=%EC%A7%84%ED%95%99", t: "대학 진학 현황 · 학교 비교", s: "학교알리미 공시 목록에 없어요 → 학교 설명회·학교 홈페이지 자료에서 확인" } },
+  { id: "vacation", words: "방학 일정 겨울방학 여름방학 학사일정 개학 종업식", found: (D) => (D.pol || []).find((r) => /방학/.test(r.title + (r.body || ""))) && { href: "#schedule?t=life", t: "방학 · 학사 일정", s: firstSent((D.pol || []).find((r) => /방학/.test(r.title + (r.body || ""))).title) }, none: { href: "#schedule?t=life", t: "방학 · 학사 일정", s: "학교별 방학 날짜는 아직 없어요 → 학교 홈페이지 학사일정·가정통신문에서 확인" } },
+  { id: "briefing-sched", words: "설명회 일정 입학설명회 학교 설명회 배정 설명회 신입생 설명회 예비소집 날짜 공고", found: (D) => row(D, "gg-08") && { href: "#schedule?t=hs", t: "고교 평준화 배정 설명회 일정", s: firstSent(row(D, "gg-08").body) + " · 학교별 설명회는 각 학교 홈페이지 공고에서 확인해요" }, none: { href: "#schedule?t=life", t: "학교 설명회 일정", s: "학교별 설명회 날짜는 공고가 나오면 일정에 올라와요 → 배정 학교 홈페이지 공지에서 확인" } },
+];
+export function gapDocs(D) {
+  return GAPS.map((g) => { const f = g.found(D); const d = f || g.none; return d ? { gap: g.id, found: !!f, href: d.href, t: d.t, s: d.s, text: J([g.words, d.t, d.s]) } : null; }).filter(Boolean);
+}
+
 export async function loadSearchExtra(load) {
-  const [guide, tl, ht, gl, hc, bf, mc, el, ex, rl, pol] = await Promise.all([ok(load("middle-guide")), ok(load("timeline")), ok(load("hs-types")), ok(load("glossary")), ok(load("hs-compare")), ok(load("briefings")), ok(load("middle-compare")), ok(load("electives")), ok(load("exam-trends")), ok(load("rules")), ok(load("policy"))]);
+  const [guide, tl, ht, gl, hc, bf, mc, el, ex, rl, pol, evs] = await Promise.all([ok(load("middle-guide")), ok(load("timeline")), ok(load("hs-types")), ok(load("glossary")), ok(load("hs-compare")), ok(load("briefings")), ok(load("middle-compare")), ok(load("electives")), ok(load("exam-trends")), ok(load("rules")), ok(load("policy")), ok(load("events"))]);
   const out = [];
   for (const s of guide?.sections || []) for (const it of s.items) out.push({ href: "#select/curriculum?v=middle", t: s.title, s: it.text.slice(0, 80), text: J([s.title, it.text]) });
   for (const e of tl?.events || []) out.push({ href: "#select/curriculum?v=middle", t: `${e.stage} · 큰 그림 연표`, s: e.what.slice(0, 80), text: J([e.stage, e.what, e.note]) });
@@ -21,14 +42,6 @@ export async function loadSearchExtra(load) {
   for (const b of bf?.briefings || []) for (const sec of b.sections) for (const it of sec.items) if (it.text.length > 8) out.push({ href: "#select/curriculum?v=hs", t: `설명회 노트 · ${sec.name}`, s: it.text.slice(0, 80), text: J([sec.name, it.topic, it.text]) });
   for (const e of el?.items || []) if (e.summary) out.push({ href: "#select/curriculum?v=hs&g=%EC%84%A0%ED%83%9D%EA%B3%BC%EB%AA%A9", t: `${e.name} · 선택과목 현황`, s: `탐구 ${e.summary.tendency}(과학 ${e.summary.scienceShare}%, 사회 ${e.summary.socialShare}%)`, text: J([e.name, "선택과목 탐구 사회 과학 문과 이과 성향 선택 인원 수강 인원 인원수", e.summary.tendency, ...e.terms.flatMap((x) => x.subjects.map((s) => s.name))]) });
   for (const e of ex?.items || []) if ((e.plans || []).length) out.push({ href: "#select/curriculum?v=hs&g=%EB%82%B4%EC%8B%A0%20%EC%B6%9C%EC%A0%9C", t: `${e.name} · 내신 평가계획`, s: "교과별 지필·수행 반영 비율", text: J([e.name, "내신 시험 평가계획 지필 수행평가 반영 비율 서술형 출제", ...e.plans.flatMap((p) => p.rows.map((r) => r.subject))]) });
-  // 이 포털에 학교별 값이 아직 없는 생활 정보: 검색하면 "없음 + 어디서 확인"으로 안내한다
-  out.push({ href: "#select/curriculum?v=hs&g=%EC%83%9D%ED%99%9C", t: "기숙사 · 학교 비교(생활)", s: "학교알리미 공시 항목에 없어요 → 학교 설명회·학교 홈페이지에서 확인", text: "기숙사 기숙사 있는 학교 운영 여부 생활 공시 항목에 없음 설명회 학교 홈페이지" });
-  out.push({ href: "#select/curriculum?v=middle", t: "교복 · 체육복", s: "학교별 값은 배정 뒤 학교 공지에서만 확인돼요 → 학교 홈페이지 공지·입학 안내", text: "교복 체육복 하복 동복 구입 방식 가격 학교주관구매 학교 공지" });
-  out.push({ href: "#schedule?t=life", t: "방학 · 학사 일정", s: "학교별 방학 날짜는 아직 없어요 → 학교 홈페이지 학사일정·가정통신문에서 확인", text: "방학 일정 겨울방학 여름방학 학사일정 개학 종업식 학교 공지" });
-  out.push({ href: "#select/curriculum?v=middle", t: "통학(거리·시간)", s: "집 주소에 따라 달라서 학교별 값은 없어요 → 학교 지도에서 위치를 보고 지도 앱으로 확인", text: "통학 통학 거리 통학 시간 등교 학교 지도 집에서 학교까지" });
-  out.push({ href: "#select/curriculum?v=hs&g=%EC%A7%84%ED%95%99", t: "대학 진학 현황 · 학교 비교", s: "학교알리미 공시 목록에 없어요 → 학교 설명회·학교 홈페이지 자료에서 확인", text: "대학 진학 대학 진학 현황 진학 실적 합격 실적 졸업생 진학 서울대 학교 설명회" });
-  out.push({ href: "#schedule?t=life", t: "학교 설명회 일정", s: "학교별 설명회 날짜는 공고가 나오면 일정에 올라와요 → 배정 학교 홈페이지 공지에서 확인", text: "설명회 일정 입학설명회 학교 설명회 신입생 설명회 예비소집 날짜 공고" });
-  out.push({ href: "#select/curriculum?v=middle", t: "중학교 급식 안내", s: "학교별 공시·게시 자료라 학교알리미 급식 현황이나 학교 홈페이지 급식 게시판에서 확인해요", text: "급식 중학교 급식 급식 방식 급식 현황 학교 홈페이지 급식 게시판 학교알리미" });
   for (const r of rl?.csatRegimes || []) if ((r.areas || []).some((a) => a.minutes)) out.push({ href: "#admission/system", t: `${r.label} · 영역별 시험 시간·문항 수`, s: r.areas.filter((a) => a.minutes).map((a) => `${a.area} ${a.minutes}분`).join(" · "), text: J(["수능 시간 시험시간 시험 시간 영역별 문항 수", r.label, ...r.areas.map((a) => `${a.area} ${a.items ?? ""}문항 ${a.minutes ?? ""}분`)]) });
   for (const ty of ht?.types || []) if (ty.cost?.value) out.push({ href: "#select/curriculum?v=hs", t: `${ty.name} · 학비·비용`, s: String(ty.cost.value).slice(0, 80), text: J(["학비 등록금 수업료 비용 무상교육 급식비 기숙사비", ty.name, ty.cost.value]) });
   out.push({ href: "#life/credit", t: "한국사 · 필수 과목", s: "한국사는 공통과목으로 필수예요(졸업 필수 학점 중 6학점)", text: "한국사 필수 필수 과목 한국사 6학점 졸업 필수 학점 공통과목" });
@@ -37,7 +50,7 @@ export async function loadSearchExtra(load) {
   // 경기 후기 평준화 일반고 배정 발표(정책 행 gg-04에서 날짜를 읽는다)
   const gg04 = (pol || []).find((r) => r.id === "gg-04"), m04 = gg04 && String(gg04.body).match(/배정 대상자 발표[^,]*,\s*배정 학교 발표[^,]*/);
   if (m04) out.push({ href: "#schedule?t=hs", t: "경기 후기 배정 학교 발표 · 합격자 발표", s: m04[0].slice(0, 80), text: J(["후기 합격자 발표 후기 배정 발표 배정 학교 발표 배정 대상자 발표 경기 후기 평준화 일반고 합격 발표", m04[0]]) });
-  out.push({ href: "#library/links", t: "전학 · 이사 배정(전입 배정)", s: "전학·이사 때의 배정 안내는 이 포털에 아직 없어요 → 이사 갈 지역 교육지원청에 문의하고 경기도 고입·전학 포털에서 확인해요", text: "전학 이사 배정 전입 배정 전입 이사 가는 지역 교육지원청 문의 고입 전학 포털" });
   out.push({ href: "#select/curriculum?v=middle", t: "중학교 입학 서류 · 준비물", s: "예비소집·준비물·방과후학교 신청은 배정 학교가 정해진 뒤(2027.1월) 각 중학교가 공지해요 → 배정 학교 홈페이지 공지에서 확인", text: "중학교 입학 서류 입학 서류 제출 서류 준비물 예비소집 방과후 신입생 등록 배정 학교 공지" });
+  out.push(...gapDocs({ pol, mc, hc, ev: evs }));
   return out;
 }
