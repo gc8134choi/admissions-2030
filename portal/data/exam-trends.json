@@ -1,0 +1,702 @@
+{
+ "_meta": {
+  "note": "내신 출제·평가 경향(생성물, 손으로 고치지 않는다). research/data/exam-trends-draft.json에서 tools/build-exam-trends.mjs가 만든다. 경향 한 줄은 평균·표준편차 기준 추정이다.",
+  "rule": "평균 70 미만 또는 표준편차 17 이상 = 변별 강함, 평균 80 이상이고 표준편차 12 미만 = 무난, 그 밖 = 보통",
+  "checkedAt": "2026-11-02",
+  "count": 10,
+  "withData": 2
+ },
+ "guide": {
+  "intro": "지필·수행 비율은 학교 선택이 아니라 과목 계획의 공개값이지만, 난이도·변별력은 이 표만으로 판단하기 어려워요. 학업성취 사항(과목 평균·표준편차)이 있어야 대략 가늠할 수 있고, 그 값은 학교알리미에서 직접 확인해야 해요.",
+  "questions": [
+   "국어·수학·영어 중간·기말 평균과 표준편차(최근 학기)를 알려 줄 수 있나요?",
+   "수학·과학 선택과목의 수강자 수와 성취도 분포는 어떤가요?",
+   "지필 평가의 서·논술형 비율과 채점 기준 공개 방식은 어떤가요?",
+   "수행평가 비중이 큰 과목은 어느 것이며 반영 시기가 몰리지 않나요?",
+   "2학년 수학·탐구 부담이 큰데 학교는 어떤 학습 지원(보충·멘토링)을 하나요?"
+  ],
+  "basis": [
+   {
+    "text": "내신은 5등급 상대평가이고 성취도(A~E)가 함께 표기됨. 사회·과학 융합선택 9과목은 석차등급 없이 절대평가만 실시",
+    "source": {
+     "name": "교육부 브리핑(2023.12.27)",
+     "url": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888"
+    },
+    "sourceId": "src-676f9b43"
+   },
+   {
+    "text": "석차 5등급 누적비율은 1등급 ~10%, 2등급 ~34%, 3등급 ~66%, 4등급 ~90%, 5등급 ~100%(구간 10/24/32/24/10%). 등급별 인원 비율이 정해져 있어 시험이 어려워도 상위 10%가 1등급이고, 난이도는 성취도 분포와 과목 평균에 더 크게 나타남(이 문장 후반은 비율 구조에서 나온 해석이라 추정)",
+    "source": {
+     "name": "서울특별시교육청 선택 과목 안내서(서교연 2026-13)",
+     "url": "https://e-book.sen.go.kr/Viewer/BXV19NU2F3W6"
+    },
+    "sourceId": "src-3cf4ef29"
+   }
+  ],
+  "commonRules": {
+   "text": "풍덕고 평가운영계획 원문에 따르면 정기시험은 학기당 2회 이내이고 1회만 실시할 땐 학기 성적의 50% 이하, 수행평가는 30% 이상, 모든 교과는 논술형 평가를 학기 성적의 30% 이상 포함(체육·예술은 20% 이상 가능)으로 적혀 있음. 교육청 지침을 학교가 옮긴 문구로 보이며 학교 문서에서 확인한 값",
+   "source": {
+    "name": "풍덕고 2026학년도 2학기 2학년 교수학습 평가운영계획(안).pdf",
+    "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
+   },
+   "sourceId": "src-9db376ea"
+  }
+ },
+ "items": [
+  {
+   "placeId": "pl-014",
+   "name": "홍천고등학교",
+   "term": "2026학년도 2학기",
+   "asOf": "2026-11-02",
+   "sourceKind": "학교알리미 공시 평가계획",
+   "status": "reported",
+   "sources": [
+    {
+     "name": "용인홍천고 2026학년도 2학기 1학년 전과목 교수학습 및 평가운영 계획.hwp",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
+    },
+    {
+     "name": "용인홍천고 2026학년도 2학기 2학년 전과목 교수학습 및 평가운영 계획.hwp",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
+    },
+    {
+     "name": "용인홍천고 2026학년도 2학기 3학년 전과목 교수학습 및 평가운영 계획.hwp",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
+    }
+   ],
+   "sourceIds": [
+    "src-23491a33",
+    "src-23491a33",
+    "src-23491a33"
+   ],
+   "fileIds": [],
+   "briefingNote": null,
+   "plans": [
+    {
+     "term": "2026학년도 2학기",
+     "grade": 1,
+     "rows": [
+      {
+       "subject": "공통국어",
+       "area": "국어",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      },
+      {
+       "subject": "공통수학",
+       "area": "수학",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      },
+      {
+       "subject": "공통영어",
+       "area": "영어",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      },
+      {
+       "subject": "통합사회",
+       "area": "사회",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "통합과학",
+       "area": "과학",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      }
+     ],
+     "gaps": [
+      {
+       "subject": "한국사",
+       "area": "사회"
+      }
+     ]
+    },
+    {
+     "term": "2026학년도 2학기",
+     "grade": 2,
+     "rows": [
+      {
+       "subject": "독서와 작문",
+       "area": "국어",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      },
+      {
+       "subject": "미적분Ⅰ",
+       "area": "수학",
+       "paperPct": 70,
+       "performancePct": 30,
+       "essayPct": null
+      },
+      {
+       "subject": "수학과제 탐구",
+       "area": "수학",
+       "paperPct": 30,
+       "performancePct": 70,
+       "essayPct": null
+      },
+      {
+       "subject": "영어Ⅱ",
+       "area": "영어",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      },
+      {
+       "subject": "동아시아 역사 기행",
+       "area": "사회",
+       "paperPct": 35,
+       "performancePct": 65,
+       "essayPct": null
+      },
+      {
+       "subject": "인문학과 윤리",
+       "area": "사회",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      },
+      {
+       "subject": "정치",
+       "area": "사회",
+       "paperPct": 70,
+       "performancePct": 30,
+       "essayPct": null
+      },
+      {
+       "subject": "경제",
+       "area": "사회",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      },
+      {
+       "subject": "한국지리 탐구",
+       "area": "사회",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      },
+      {
+       "subject": "역학과 에너지",
+       "area": "과학",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      },
+      {
+       "subject": "물질과 에너지",
+       "area": "과학",
+       "paperPct": 70,
+       "performancePct": 30,
+       "essayPct": null
+      },
+      {
+       "subject": "세포와 물질대사",
+       "area": "과학",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "지구시스템과학",
+       "area": "과학",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      },
+      {
+       "subject": "중국어 회화",
+       "area": "제2외국어",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      }
+     ],
+     "gaps": []
+    },
+    {
+     "term": "2026학년도 2학기",
+     "grade": 3,
+     "rows": [
+      {
+       "subject": "언어와 매체",
+       "area": "국어",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "화법과 작문",
+       "area": "국어",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "미적분",
+       "area": "수학",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "심화 영어 독해Ⅰ",
+       "area": "영어",
+       "paperPct": 40,
+       "performancePct": 60,
+       "essayPct": null
+      },
+      {
+       "subject": "진로 영어",
+       "area": "영어",
+       "paperPct": 40,
+       "performancePct": 60,
+       "essayPct": null
+      },
+      {
+       "subject": "영어권 문화",
+       "area": "영어",
+       "paperPct": 40,
+       "performancePct": 60,
+       "essayPct": null
+      },
+      {
+       "subject": "동아시아사",
+       "area": "사회",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "생활과 윤리",
+       "area": "사회",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "경제",
+       "area": "사회",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "사회문화",
+       "area": "사회",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "세계지리",
+       "area": "사회",
+       "paperPct": 40,
+       "performancePct": 60,
+       "essayPct": null
+      }
+     ],
+     "gaps": []
+    }
+   ],
+   "qualitative": [
+    {
+     "text": "설명회 발표자는 '시험이 너무 어렵다'는 말에 대해 본인도 2학년 1학기 문학 중간고사 3등급에서 기말 후 1등급 후반까지 올렸다고 말함(발언 요약, 신뢰도 중간)",
+     "source": "용인홍천고 진로진학 설명회 2026.10.29 (research/inbox/2026-10-29-hongcheon-briefing.md)",
+     "status": "reported"
+    },
+    {
+     "text": "2학년 수학 비중을 주 7시간으로 늘리고 국어·영어 학점을 일부 줄여 수학·탐구에 더 배분, 대신 2학년 내신 부담이 크다는 점은 인정함(발언 요약)",
+     "source": "같은 설명회 요약",
+     "status": "reported"
+    },
+    {
+     "text": "성적표에는 성취도·석차등급·과목평균·수강자 수가 함께 나와 대학이 시험 난이도와 상대 위치를 볼 수 있다는 설명",
+     "source": "같은 설명회 요약",
+     "status": "reported"
+    }
+   ],
+   "nullReason": null,
+   "nextAction": null,
+   "achievementNull": "학교알리미 '교과별 학업성취 사항'(4-나)은 화면에서 자동입력 방지 숫자 입력을 요구해 우회하지 않았고, 공개 다운로드 파일 경로도 찾지 못했어요. 과목별 평균·표준편차·성취도 분포·수강자 수는 학교알리미에서 직접 확인하거나 학교 설명회에서 질문하세요.",
+   "subjects": [],
+   "summary": null
+  },
+  {
+   "placeId": "pl-011",
+   "name": "풍덕고등학교",
+   "term": "2026학년도 2학기",
+   "asOf": "2026-11-02",
+   "sourceKind": "학교알리미 공시 평가계획",
+   "status": "reported",
+   "sources": [
+    {
+     "name": "1. 풍덕고_2026학년도 2학기 1학년 풍덕고등학교 교수학습 평가운영계획(안).pdf",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
+    },
+    {
+     "name": "2. 풍덕고_2026학년도 2학기 2학년 풍덕고등학교 교수학습 평가운영계획(안).pdf",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
+    },
+    {
+     "name": "3. 풍덕고_2026학년도 2학기 3학년 풍덕고등학교 교수학습 평가운영계획(안).pdf",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
+    }
+   ],
+   "sourceIds": [
+    "src-9db376ea",
+    "src-9db376ea",
+    "src-9db376ea"
+   ],
+   "fileIds": [],
+   "briefingNote": null,
+   "plans": [
+    {
+     "term": "2026학년도 2학기",
+     "grade": 1,
+     "rows": [
+      {
+       "subject": "공통국어",
+       "area": "국어",
+       "paperPct": 70,
+       "performancePct": 30,
+       "essayPct": null
+      },
+      {
+       "subject": "공통영어",
+       "area": "영어",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      },
+      {
+       "subject": "한국사",
+       "area": "사회",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      },
+      {
+       "subject": "통합사회",
+       "area": "사회",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      },
+      {
+       "subject": "통합과학",
+       "area": "과학",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      }
+     ],
+     "gaps": [
+      {
+       "subject": "공통수학",
+       "area": "수학"
+      }
+     ]
+    },
+    {
+     "term": "2026학년도 2학기",
+     "grade": 2,
+     "rows": [
+      {
+       "subject": "독서와 작문",
+       "area": "국어",
+       "paperPct": 70,
+       "performancePct": 30,
+       "essayPct": null
+      },
+      {
+       "subject": "미적분Ⅰ",
+       "area": "수학",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      },
+      {
+       "subject": "기하",
+       "area": "수학",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      },
+      {
+       "subject": "영어Ⅱ",
+       "area": "영어",
+       "paperPct": 70,
+       "performancePct": 30,
+       "essayPct": null
+      },
+      {
+       "subject": "세계사",
+       "area": "사회",
+       "paperPct": 70,
+       "performancePct": 30,
+       "essayPct": null
+      },
+      {
+       "subject": "인문학과 윤리",
+       "area": "사회",
+       "paperPct": 70,
+       "performancePct": 30,
+       "essayPct": null
+      },
+      {
+       "subject": "역학과 에너지",
+       "area": "과학",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      },
+      {
+       "subject": "물질과 에너지",
+       "area": "과학",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      },
+      {
+       "subject": "세포와 물질대사",
+       "area": "과학",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      },
+      {
+       "subject": "지구시스템과학",
+       "area": "과학",
+       "paperPct": 70,
+       "performancePct": 30,
+       "essayPct": null
+      },
+      {
+       "subject": "중국어 회화",
+       "area": "제2외국어",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      }
+     ],
+     "gaps": []
+    },
+    {
+     "term": "2026학년도 2학기",
+     "grade": 3,
+     "rows": [
+      {
+       "subject": "화법과 작문",
+       "area": "국어",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "심화 국어",
+       "area": "국어",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "고전 읽기",
+       "area": "국어",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "기하",
+       "area": "수학",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "영미문학 읽기",
+       "area": "영어",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "사회·문화",
+       "area": "사회",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      }
+     ],
+     "gaps": [
+      {
+       "subject": "생활과 윤리",
+       "area": "사회"
+      }
+     ]
+    }
+   ],
+   "qualitative": [],
+   "nullReason": null,
+   "nextAction": null,
+   "achievementNull": "학교알리미 '교과별 학업성취 사항'(4-나)은 화면에서 자동입력 방지 숫자 입력을 요구해 우회하지 않았고, 공개 다운로드 파일 경로도 찾지 못했어요. 과목별 평균·표준편차·성취도 분포·수강자 수는 학교알리미에서 직접 확인하거나 학교 설명회에서 질문하세요.",
+   "subjects": [],
+   "summary": null
+  },
+  {
+   "placeId": "pl-012",
+   "name": "성복고등학교",
+   "term": null,
+   "asOf": null,
+   "sourceKind": null,
+   "status": "reported",
+   "sources": [],
+   "fileIds": [],
+   "briefingNote": null,
+   "plans": [],
+   "qualitative": [],
+   "nullReason": "평가계획 공시 파일(2026학년도 성복고 2학기 1학년 전과목 교수·학습 및 평가계획.zip, 2026학년도 성복고 2학기 2학년 전과목 교수·학습 및 평가계획.zip, 2026학년도 성복고 2학기 3학년 전과목 교수·학습 및 평가계획.zip)은 있으나 표 형식이 학교마다 달라 과목별 지필·수행 비율을 아직 자동으로 정리하지 못했어요.",
+   "nextAction": "학교알리미 4-가 항목의 평가계획 파일을 열어 확인하거나, 다음 조사에서 해당 학교 표 형식에 맞춰 정리",
+   "achievementNull": null,
+   "subjects": [],
+   "summary": null
+  },
+  {
+   "placeId": "pl-013",
+   "name": "수지고등학교",
+   "term": null,
+   "asOf": null,
+   "sourceKind": null,
+   "status": "reported",
+   "sources": [],
+   "fileIds": [],
+   "briefingNote": null,
+   "plans": [],
+   "qualitative": [],
+   "nullReason": "평가계획 공시 파일(2026학년도 수지고 1학년 2학기 교수학습 및 평가 운영계획 통합본.hwpx, 2026학년도 수지고 2학년 2학기 교수학습 및 평가 운영계획 통합본.hwpx, 2026학년도 수지고 3학년 2학기 교수학습 및 평가 운영계획 통합본.hwpx)은 있으나 표 형식이 학교마다 달라 과목별 지필·수행 비율을 아직 자동으로 정리하지 못했어요.",
+   "nextAction": "학교알리미 4-가 항목의 평가계획 파일을 열어 확인하거나, 다음 조사에서 해당 학교 표 형식에 맞춰 정리",
+   "achievementNull": null,
+   "subjects": [],
+   "summary": null
+  },
+  {
+   "placeId": "pl-020",
+   "name": "상현고등학교",
+   "term": null,
+   "asOf": null,
+   "sourceKind": null,
+   "status": "reported",
+   "sources": [],
+   "fileIds": [],
+   "briefingNote": null,
+   "plans": [],
+   "qualitative": [],
+   "nullReason": "평가계획 공시 파일(2026학년도 2학기 교수학습 및 평가 운영 계획(환경과) 1부..hwp, 2026학년도 2학기 교수학습 및 평가계획(심리학과) 1부..hwp, 2026학년도 2학기 교수학습 및 평가 운영 계획(영어과) 1부..hwp…)은 있으나 표 형식이 학교마다 달라 과목별 지필·수행 비율을 아직 자동으로 정리하지 못했어요.",
+   "nextAction": "학교알리미 4-가 항목의 평가계획 파일을 열어 확인하거나, 다음 조사에서 해당 학교 표 형식에 맞춰 정리",
+   "achievementNull": null,
+   "subjects": [],
+   "summary": null
+  },
+  {
+   "placeId": "pl-021",
+   "name": "서원고등학교",
+   "term": null,
+   "asOf": null,
+   "sourceKind": null,
+   "status": "reported",
+   "sources": [],
+   "fileIds": [],
+   "briefingNote": null,
+   "plans": [],
+   "qualitative": [],
+   "nullReason": "평가계획 공시 파일(2026학년도 서원고등학교 2학기 교수학습 및 평가 운영계획.zip)은 있으나 표 형식이 학교마다 달라 과목별 지필·수행 비율을 아직 자동으로 정리하지 못했어요.",
+   "nextAction": "학교알리미 4-가 항목의 평가계획 파일을 열어 확인하거나, 다음 조사에서 해당 학교 표 형식에 맞춰 정리",
+   "achievementNull": null,
+   "subjects": [],
+   "summary": null
+  },
+  {
+   "placeId": "pl-022",
+   "name": "신봉고등학교",
+   "term": null,
+   "asOf": null,
+   "sourceKind": null,
+   "status": "reported",
+   "sources": [],
+   "fileIds": [],
+   "briefingNote": null,
+   "plans": [],
+   "qualitative": [],
+   "nullReason": "평가계획 공시 파일(2026학년도 2학기 1학년 교수·학습 및 평가 운영 계획.pdf, 2026학년도 2학기 2학년 교수·학습 및 평가 운영 계획.pdf, 2026학년도 2학기 3학년 교수·학습 및 평가 운영 계획.pdf)은 있으나 표 형식이 학교마다 달라 과목별 지필·수행 비율을 아직 자동으로 정리하지 못했어요.",
+   "nextAction": "학교알리미 4-가 항목의 평가계획 파일을 열어 확인하거나, 다음 조사에서 해당 학교 표 형식에 맞춰 정리",
+   "achievementNull": null,
+   "subjects": [],
+   "summary": null
+  },
+  {
+   "placeId": "pl-023",
+   "name": "대지고등학교",
+   "term": null,
+   "asOf": null,
+   "sourceKind": null,
+   "status": "reported",
+   "sources": [],
+   "fileIds": [],
+   "briefingNote": null,
+   "plans": [],
+   "qualitative": [],
+   "nullReason": "평가계획 공시 파일(2026학년도 2학기 교수학습 및 평가운영 계획(1학년)-정보공시.hwp, 2026학년도 2학기 교수학습 및 평가운영 계획(2학년)-정보공시.hwp, 2026학년도 2학기 교수학습 및 평가운영 계획(3학년)-정보공시.hwp)은 있으나 표 형식이 학교마다 달라 과목별 지필·수행 비율을 아직 자동으로 정리하지 못했어요.",
+   "nextAction": "학교알리미 4-가 항목의 평가계획 파일을 열어 확인하거나, 다음 조사에서 해당 학교 표 형식에 맞춰 정리",
+   "achievementNull": null,
+   "subjects": [],
+   "summary": null
+  },
+  {
+   "placeId": "pl-024",
+   "name": "죽전고등학교",
+   "term": null,
+   "asOf": null,
+   "sourceKind": null,
+   "status": "reported",
+   "sources": [],
+   "fileIds": [],
+   "briefingNote": null,
+   "plans": [],
+   "qualitative": [],
+   "nullReason": "평가계획 공시 파일(2026학년도 죽전고등학교 2학기 교수학습 및 평가 운영계획(1학년)-정보공시용.hwp, 2026학년도 죽전고등학교 2학기 교수학습 및 평가 운영계획(2학년)-정보공시용.hwp, 2026학년도 죽전고등학교 2학기 교수학습 및 평가 운영계획(3학년)-정보공시용.hwpx)은 있으나 표 형식이 학교마다 달라 과목별 지필·수행 비율을 아직 자동으로 정리하지 못했어요.",
+   "nextAction": "학교알리미 4-가 항목의 평가계획 파일을 열어 확인하거나, 다음 조사에서 해당 학교 표 형식에 맞춰 정리",
+   "achievementNull": null,
+   "subjects": [],
+   "summary": null
+  },
+  {
+   "placeId": "pl-025",
+   "name": "현암고등학교",
+   "term": null,
+   "asOf": null,
+   "sourceKind": null,
+   "status": "reported",
+   "sources": [],
+   "fileIds": [],
+   "briefingNote": null,
+   "plans": [],
+   "qualitative": [],
+   "nullReason": "평가계획 공시 파일(1학년.zip, 2학년.zip, 3학년.zip)은 있으나 표 형식이 학교마다 달라 과목별 지필·수행 비율을 아직 자동으로 정리하지 못했어요.",
+   "nextAction": "학교알리미 4-가 항목의 평가계획 파일을 열어 확인하거나, 다음 조사에서 해당 학교 표 형식에 맞춰 정리",
+   "achievementNull": null,
+   "subjects": [],
+   "summary": null
+  }
+ ]
+}

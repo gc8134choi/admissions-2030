@@ -1,6 +1,6 @@
 // 자료실 > 원본 파일: data/files.json 목록을 썸네일 카드로 보여 주고, 눌러서 전체 화면 뷰어로 연다.
 // 뷰어는 어느 화면에서든 열 수 있다(예: 고교 유형·전형 일정의 "원본 양식 보기" 버튼).
-const TOPIC = { "high-school-assignment": "고교 배정" };
+const TOPIC = { "high-school-assignment": "고교 배정", "middle-school-curriculum": "중학교 교육과정", "school-electives": "선택과목 현황" };
 
 export function registerFiles(views, { esc, load, nm }) {
   let last = null; // 뷰어를 닫을 때 포커스를 돌려줄 요소

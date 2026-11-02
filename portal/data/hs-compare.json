@@ -190,7 +190,7 @@
      "nullReason": null
     },
     "founding": {
-     "value": "공립·단설(설립 2006년 03월 01일)",
+     "value": "공립(설립 2006년 03월 01일)",
      "asOf": "2026",
      "status": "confirmed",
      "source": {
@@ -424,6 +424,11 @@
      "atptCode": "J10",
      "code": "7531379",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090005416",
+     "asOf": "2026-11-02"
     }
    ]
   },

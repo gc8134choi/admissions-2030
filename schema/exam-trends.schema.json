@@ -1,0 +1,36 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "exam-trends.schema.json",
+ "title": "exam-trends (내신 출제·평가 경향) — portal/data/exam-trends.json (입력: research/data/exam-trends-draft.json을 tools/build-exam-trends.mjs가 이 모양으로 바꾼다)",
+ "description": "학교별·교과별(국어·영어·수학·과학·사회) 내신 평균·표준편차·성취도 분포·수강자 수·지필/수행 비율·서술형 비율. 학교는 places의 placeId로 연결한다. 값의 범위와 합계(성취도 분포 합 100%, 지필+수행 100%)는 생성기가 검사한다. '경향 한 줄'(변별 강함/보통/무난)은 평균·표준편차 기준의 추정이며 학교가 어렵다는 단정이 아니다. 사람 이름은 쓰지 않는다.",
+ "type": "object",
+ "required": ["items"],
+ "properties": {
+  "guide": { "type": "object", "properties": { "intro": { "type": ["string", "null"] }, "questions": { "type": "array", "items": { "type": "string" } }, "basis": { "type": "array", "description": "공식 근거 문장", "items": { "type": "object", "required": ["text"], "properties": { "text": { "type": "string" }, "source": { "type": "object", "properties": { "name": { "type": "string" }, "url": { "type": ["string", "null"] } } } } } }, "commonRules": { "type": ["object", "null"], "description": "학교 평가운영계획에 공통으로 적힌 규칙(정기시험 횟수·수행 비율 등)", "properties": { "text": { "type": "string" }, "source": { "type": ["object", "null"] } } } } },
+  "items": { "type": "array", "items": { "type": "object", "required": ["placeId", "name", "status"], "properties": {
+   "placeId": { "type": "string", "pattern": "^pl-\\d{3,}$" },
+   "name": { "type": "string" },
+   "term": { "type": ["string", "null"], "description": "기준 학기(예: 2026학년도 2학년 1학기)" },
+   "asOf": { "type": ["string", "null"], "format": "date", "description": "자료 기준일" },
+   "sourceKind": { "type": ["string", "null"], "description": "학교알리미 공시 / 학교 평가계획 / 설명회 슬라이드 등" },
+   "status": { "enum": ["confirmed", "reported", "estimated"] },
+   "sources": { "type": "array", "items": { "type": "object", "required": ["name"], "properties": { "name": { "type": "string" }, "url": { "type": ["string", "null"] } } } },
+   "fileIds": { "type": "array", "items": { "type": "string" } },
+   "briefingNote": { "type": ["string", "null"], "description": "설명회에서 나온 발언 요약(있으면)" },
+   "nullReason": { "type": ["string", "null"], "description": "자료가 없을 때 사유(subjects가 비어 있으면 필수)" },
+   "nextAction": { "type": ["string", "null"] },
+   "achievementNull": { "type": ["string", "null"], "description": "성취도(평균·표준편차·분포) 자료가 없는 사유" },
+   "qualitative": { "type": "array", "description": "설명회 발언 등 정성 근거", "items": { "type": "object", "required": ["text"], "properties": { "text": { "type": "string" }, "source": { "type": ["string", "null"] }, "status": { "enum": ["confirmed", "reported", "estimated"] } } } },
+   "plans": { "type": "array", "description": "학년별 평가계획(과목별 지필·수행 반영 비율)", "items": { "type": "object", "required": ["term", "grade", "rows"], "properties": { "term": { "type": "string" }, "grade": { "type": "integer" }, "gaps": { "type": "array", "description": "공시 평가계획에 있으나 값을 아직 못 옮긴 과목(화면: 평가계획 정리 중)", "items": { "type": "object", "required": ["subject", "area"], "properties": { "subject": { "type": "string" }, "area": { "type": "string" } } } }, "rows": { "type": "array", "items": { "type": "object", "required": ["subject", "area", "paperPct", "performancePct"], "properties": { "subject": { "type": "string" }, "area": { "type": "string", "description": "교과(국어·영어·수학·과학·사회·제2외국어). 선택과목 현황의 분류와 일치해야 한다" }, "paperPct": { "type": "number", "minimum": 0, "maximum": 100 }, "performancePct": { "type": "number", "minimum": 0, "maximum": 100 }, "essayPct": { "type": ["number", "null"] } } } } } } },
+   "subjects": { "type": "array", "items": { "type": "object", "required": ["subject"], "properties": {
+    "subject": { "enum": ["국어", "영어", "수학", "과학", "사회"] },
+    "mean": { "type": ["number", "null"], "minimum": 0, "maximum": 100, "description": "원점수 평균" },
+    "sd": { "type": ["number", "null"], "minimum": 0, "maximum": 50, "description": "표준편차" },
+    "takers": { "type": ["integer", "null"], "minimum": 1, "description": "수강자 수(명)" },
+    "dist": { "type": ["object", "null"], "description": "성취도 분포(%): A·B·C·D·E(·I) 합 100", "additionalProperties": { "type": "number", "minimum": 0, "maximum": 100 } },
+    "paperPct": { "type": ["number", "null"], "minimum": 0, "maximum": 100, "description": "지필평가 반영 비율(%)" },
+    "performancePct": { "type": ["number", "null"], "minimum": 0, "maximum": 100, "description": "수행평가 반영 비율(%)" },
+    "essayPct": { "type": ["number", "null"], "minimum": 0, "maximum": 100, "description": "지필 중 서술형 비율(%)" },
+    "plan": { "type": ["string", "null"], "description": "평가계획 요약" } } } } } } }
+ }
+}

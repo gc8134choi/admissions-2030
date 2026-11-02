@@ -5,6 +5,7 @@
 //     targets: [{ id, name, sub: "유형·지역", href: "#…", search: "검색용 글자", filterVal: { type: "일반고" } }],
 //     rows: [{ id, label, unit, group, kind: "text|number|bool", get: (t) => ({ html?, text, num?, status?, empty?, why? }) }],
 //     select: { key: "portal.xx", param: "s", def: ["id", …], max: 8, min: 2, filters: [{ id: "type", label: "유형", options: [...] }] },
+//     jump: ["선택과목", "내신 출제"],                                      // 표 위 '바로 열기' 칩으로 만들 그룹 이름(일부만 써도 됨, 선택)
 //     diff: true,                                                              // "차이만 보기" 토글(기본 꺼짐)
 //     emptyNext: { label, url },                                               // 빈칸 안내의 다음 행동(empty.js)
 //     sources: [{ name, url }], esc,
@@ -41,7 +42,7 @@ export function cmpTable(el, cfg) {
 
   const draw = () => {
     const S = st.sel.map((id) => byId.get(id)).filter(Boolean);
-    const rows = cfg.rows.map((r) => { const rr = { ...r }; if (r.kind === "number") rr._max = Math.max(0, ...S.map((t) => r.get(t)?.num ?? 0)); return rr; });
+    const rows = cfg.rows.map((r) => { const rr = { ...r }; if (r.kind === "number") rr._max = r.max ?? Math.max(0, ...S.map((t) => r.get(t)?.num ?? 0)); /* max: 막대 기준값 고정(비중 %는 100) */ return rr; });
     const cells = new Map(); for (const r of rows) for (const t of S) cells.set(r.id + "|" + t.id, r.get(t));
     const same = (r) => { const vs = S.map((t) => { const c = cells.get(r.id + "|" + t.id); return !c || c.empty ? "∅" : c.text ?? c.html; }); return vs.every((x) => x === vs[0]); };
     const gHtml = groups.map((g) => {
@@ -55,17 +56,20 @@ export function cmpTable(el, cfg) {
     const picker = selectable ? `<details class="cmp-add"${st.addOpen ? " open" : ""}><summary>${esc(sel0.addLabel || "추가·빼기")} <span class="muted small">(최대 ${MAX}개)</span></summary>
       <div class="cmp-f2"><input type="search" placeholder="이름 검색" value="${esc(st.q)}" data-q aria-label="검색">${(sel0.filters || []).map((f) => `<select data-f="${esc(f.id)}" aria-label="${esc(f.label)}"><option value="">모든 ${esc(f.label)}</option>${f.options.map((o) => `<option${o === st.f[f.id] ? " selected" : ""}>${esc(o)}</option>`).join("")}</select>`).join("")}</div>
       <ul class="cmp-pick">${addList.map((t) => `<li><button type="button" data-add="${esc(t.id)}"${st.sel.length >= MAX ? " disabled" : ""}>＋ ${esc(t.name)}${t.sub ? `<span class="muted small"> ${esc(t.sub)}</span>` : ""}</button></li>`).join("") || '<li class="muted small">조건에 맞는 항목이 없어요.</li>'}</ul></details>` : "";
+    const gl = (cfg.jump || []).map((j) => groups.find((x) => x && x.includes(j))).filter(Boolean), gjump = gl.length && S.length >= MIN ? `<p class="cmp-gj"><span class="muted small">바로 열기</span> ${gl.map((g) => `<button type="button" class="cmp-gjb" data-gj="${esc(g)}">${esc(g.replace(/\(.*$/, ""))}</button>`).join("")}</p>` : "";
     const table = S.length >= MIN ? `<div class="w-table cmp" tabindex="0" role="region" aria-label="${esc(cfg.title)} 표(가로로 밀어 보세요)"><table class="ed-tbl cmp-tbl" style="--n:${S.length}"><caption class="cmp-cap"><b>${esc(cfg.title)}</b>${cfg.summary ? ` <span class="muted small">${esc(cfg.summary)}</span>` : ""}</caption><colgroup><col style="width:88px">${S.map(() => "<col>").join("")}</colgroup>
       <thead><tr><th scope="col" class="cmp-f cmp-corner">항목</th>${S.map((t) => `<th scope="col" class="cmp-s"><a href="${esc(t.href || "#")}">${esc(t.name)}</a>${t.sub ? `<div class="muted small">${esc(t.sub)}</div>` : ""}${selectable ? `<button type="button" class="cmp-x" data-rm="${esc(t.id)}" aria-label="${esc(t.name)} 빼기">×</button>` : ""}</th>`).join("")}</tr></thead><tbody>${gHtml}</tbody></table></div>`
       : `<p class="muted cmp-few">${S.length ? "하나 더 골라 보세요." : "비교할 것을 골라 주세요."}</p>`;
     el.innerHTML = `<div class="ed cmp-wrap"><h2>${cfg.stage ? stageTag(cfg.stage, esc) : ""}${esc(cfg.title)} <span class="muted small">${S.length}개</span></h2>
-      <div class="cmp-bar2">${picker}${cfg.diff !== false ? `<label class="cmp-diff"><input type="checkbox" data-diff${st.diff ? " checked" : ""}> 차이만 보기</label>` : ""}</div>${table}
+      <div class="cmp-bar2">${picker}${cfg.diff !== false ? `<label class="cmp-diff"><input type="checkbox" data-diff${st.diff ? " checked" : ""}> 차이만 보기</label>` : ""}</div>${gjump}${table}
       <p class="muted small">이름을 누르면 상세 화면으로 가요. 같은 값은 흐리게, 다른 값은 진하게 보여요. "–"는 아직 확인하지 못한 칸이에요.${nextLink(cfg.emptyNext, esc)}</p>${cfg.sources?.length ? srcFooter(cfg.sources, "이 표의 출처") : ""}</div>`;
   };
+  const jump = (g) => { const b = [...el.querySelectorAll("[data-gt]")].find((x) => x.dataset.gt === g); if (b) { b.scrollIntoView({ block: "center" }); b.focus({ preventScroll: true }); } };
   el.onclick = (e) => {
-    const rm = e.target.closest("[data-rm]"), add = e.target.closest("[data-add]"), gt = e.target.closest("[data-gt]");
+    const rm = e.target.closest("[data-rm]"), add = e.target.closest("[data-add]"), gt = e.target.closest("[data-gt]"), gj = e.target.closest("[data-gj]");
     if (rm) { st.sel = st.sel.filter((id) => id !== rm.dataset.rm); save(); draw(); }
     else if (add && st.sel.length < MAX) { st.sel = [...st.sel, add.dataset.add]; save(); draw(); }
+    else if (gj) { st.open.add(gj.dataset.gj); draw(); jump(gj.dataset.gj); }
     else if (gt) { const g = gt.dataset.gt; st.open.has(g) ? st.open.delete(g) : st.open.add(g); draw(); }
     else { const t = e.target.closest(".cmp-v"); if (t) t.classList.toggle("open"); }
   };
@@ -73,4 +77,7 @@ export function cmpTable(el, cfg) {
   el.onchange = (e) => { if (e.target.matches("[data-diff]")) { st.diff = e.target.checked; draw(); } else if (e.target.matches("[data-f]")) { st.f[e.target.dataset.f] = e.target.value; draw(); } };
   el.oninput = (e) => { if (e.target.matches("[data-q]")) { st.q = e.target.value; const pos = e.target.selectionStart; draw(); const q = el.querySelector("[data-q]"); q.focus(); q.setSelectionRange(pos, pos); } };
   draw();
+  // 주소의 g(그룹 이름 일부)가 있으면 그 그룹을 펼치고 그 자리로 간다(검색·바로가기 링크용)
+  const gq = (urlGet("g") || [])[0], gm = gq && groups.find((x) => x && x.includes(gq));
+  if (gm && !st.__g) { st.__g = 1; st.open.add(gm); draw(); setTimeout(() => jump(gm), 60); }
 }

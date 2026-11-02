@@ -1,11 +1,11 @@
 {
  "_meta": {
   "note": "출처 등록부(생성물, 손으로 고치지 않는다). tools/build-sources.mjs가 portal/data의 출처 항목에서 만든다. 데이터 행의 sourceIds가 이 id를 가리킨다.",
-  "count": 119,
+  "count": 122,
   "kinds": {
-   "official": 77,
+   "official": 78,
    "media": 25,
-   "user": 14,
+   "user": 16,
    "self": 0,
    "other": 3
   }
@@ -235,12 +235,13 @@
    "checked": "2026-10-31",
    "names": [
     "경기도교육청 고입·전학 포털(2027학년도 평준화 배정 방안)",
+    "경기도교육청 고입·전학 포털 공지: 2027학년도 경기도 고등학교 신입생 전형요강",
     "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(경기 고입 안내)",
     "경기도교육청 고입·전학 포털 공지: 2027학년도 경기도 고등학교 신입생 전형요강(2026.8.19)·고교 평준화지역 학생 배정 방안(2026.8.21)",
     "경기도교육청 고입·전학 포털: 2027학년도 경기도 고교 평준화학군 리플렛(용인학군 2구역 수지구 고교 10개교)"
    ],
    "usedIn": {
-    "glossary.json": 3,
+    "glossary.json": 4,
     "hs-compare.json": 54,
     "hs-types.json": 20,
     "places.json": 6
@@ -270,6 +271,19 @@
    ],
    "usedIn": {
     "middle-guide.json": 1
+   }
+  },
+  {
+   "id": "src-1a58a138",
+   "url": "https://www.schoolinfo.go.kr/",
+   "kind": "official",
+   "org": "학교알리미(교육부·한국교육개발원)",
+   "checked": "2026-10-31",
+   "names": [
+    "풍덕고 2026학년도 2학기 평가운영계획(학교알리미 공시)"
+   ],
+   "usedIn": {
+    "glossary.json": 2
    }
   },
   {
@@ -339,19 +353,25 @@
    "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416",
    "kind": "official",
    "org": "학교알리미(교육부·한국교육개발원)",
-   "checked": "2026-10-29",
+   "checked": "2026-11-02",
    "names": [
+    "용인홍천고 2026학년도 2학기 1학년 전과목 교수학습 및 평가운영 계획.hwp",
+    "용인홍천고 2026학년도 2학기 2학년 전과목 교수학습 및 평가운영 계획.hwp",
+    "용인홍천고 2026학년도 2학기 3학년 전과목 교수학습 및 평가운영 계획.hwp",
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) 및 편제표 요약",
     "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
     "학교알리미 공시항목 목록",
     "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
     "학교알리미",
-    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)"
+    "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
+    "학교알리미 학교정보(고교 비교표의 학교알리미 주소)"
    ],
    "usedIn": {
+    "exam-trends.json": 3,
     "hs-compare.json": 15,
-    "places.json": 1
+    "places.json": 1,
+    "school-codes.json": 1
    }
   },
   {
@@ -477,6 +497,19 @@
    }
   },
   {
+   "id": "src-31c1b950",
+   "url": null,
+   "kind": "user",
+   "org": null,
+   "checked": "2026-10-31",
+   "names": [
+    "학교 배부 편제표(사용자 제공)"
+   ],
+   "usedIn": {
+    "glossary.json": 1
+   }
+  },
+  {
    "id": "src-31f98efd",
    "url": null,
    "kind": "official",
@@ -533,11 +566,14 @@
    "url": "https://e-book.sen.go.kr/Viewer/BXV19NU2F3W6",
    "kind": "official",
    "org": "서울특별시교육청",
-   "checked": null,
+   "checked": "2026-11-02",
    "names": [
+    "서울특별시교육청 선택 과목 안내서(서교연 2026-13)",
     "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)"
    ],
    "usedIn": {
+    "exam-trends.json": 1,
+    "glossary.json": 3,
     "planner-rules.json": 22
    }
   },
@@ -594,7 +630,7 @@
    ],
    "usedIn": {
     "events.json": 1,
-    "glossary.json": 4,
+    "glossary.json": 6,
     "policy.json": 3,
     "timeline.json": 3
    }
@@ -860,13 +896,16 @@
    "url": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
    "kind": "official",
    "org": "대한민국 정책브리핑",
-   "checked": "2026-10-31",
+   "checked": "2026-11-02",
    "names": [
+    "교육부 브리핑(2023.12.27)",
     "교육부 정책브리핑: 2028 대입제도 개편(2023.12.27)",
     "교육부 2028 대입제도 개편안 발표(2023.12.27)"
    ],
    "usedIn": {
-    "glossary.json": 2,
+    "electives.json": 2,
+    "exam-trends.json": 1,
+    "glossary.json": 7,
     "rules.json": 1
    }
   },
@@ -1034,6 +1073,19 @@
    }
   },
   {
+   "id": "src-8a3136df",
+   "url": null,
+   "kind": "user",
+   "org": null,
+   "checked": "2026-11-02",
+   "names": [
+    "용인홍천고등학교 2026 진로진학 아카데미 시즌4(2026.10.29 설명회) 슬라이드 p.53·54 촬영 사진"
+   ],
+   "usedIn": {
+    "electives.json": 1
+   }
+  },
+  {
    "id": "src-942c8ec8",
    "url": "https://www.hscredit.kr/about/intro",
    "kind": "official",
@@ -1077,8 +1129,12 @@
    "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844",
    "kind": "official",
    "org": "학교알리미(교육부·한국교육개발원)",
-   "checked": "2026-11-01",
+   "checked": "2026-11-02",
    "names": [
+    "풍덕고 2026학년도 2학기 2학년 교수학습 평가운영계획(안).pdf",
+    "1. 풍덕고_2026학년도 2학기 1학년 풍덕고등학교 교수학습 평가운영계획(안).pdf",
+    "2. 풍덕고_2026학년도 2학기 2학년 풍덕고등학교 교수학습 평가운영계획(안).pdf",
+    "3. 풍덕고_2026학년도 2학기 3학년 풍덕고등학교 교수학습 평가운영계획(안).pdf",
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) 및 편제표 요약",
     "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
@@ -1089,6 +1145,7 @@
     "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)"
    ],
    "usedIn": {
+    "exam-trends.json": 4,
     "hs-compare.json": 15,
     "places.json": 1,
     "school-codes.json": 1

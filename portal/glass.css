@@ -122,7 +122,7 @@ table.policy tr.due{background:color-mix(in srgb,var(--accent) 12%,transparent)}
 table.policy tr.now td:first-child,table.policy tr.due td:first-child{color:var(--accent);font-weight:700}
 table.policy td{font-size:14px;line-height:1.5}
 @media (max-width:899px){
-  .chipbar{background:color-mix(in srgb,var(--paper) 86%,transparent);border-bottom:1px solid var(--glass-line);box-shadow:none;padding:6px 0}
+  .chipbar{background:var(--paper);border-bottom:1px solid var(--glass-line);box-shadow:none;padding:6px 0}
   table.policy td,table.policy th{padding:6px 8px}
 }
 
@@ -374,7 +374,7 @@ button.term{padding:13px 2px;margin:-13px -2px}
 /* 평가 R2: 지난 일정·단계 라벨 대비 4.5 이상, 짧은 용어 버튼·필터 버튼 너비 44px */
 table.policy tr.past td,table.policy tr.past b,table.policy tr.past .stg,table.policy tr.past .muted,.tl li.past,.stg{color:var(--pencil)!important}
 #tl table.policy tr.past{opacity:1}
-button.term{padding:13px 11px;margin:-13px -11px}
+button.term{padding:14px 11px;margin:-14px -11px}
 .ed-filter button,.ed-filter button[data-st]{min-width:44px;min-height:44px}
 .lnk{display:inline-flex;align-items:center;min-height:44px}
 

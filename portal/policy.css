@@ -11,9 +11,9 @@
 
 .ed{color:var(--e-ink);counter-reset:edsec;letter-spacing:-.01em;word-break:keep-all}
 .ed a{color:inherit;text-underline-offset:3px}
-.ed h2{margin:40px 0 18px;padding-top:22px;border-top:1px solid var(--e-rule);font-size:12px;font-weight:700;letter-spacing:.06em;display:flex;align-items:baseline;gap:10px;counter-increment:edsec}
+.ed h2{margin:40px 0 18px;padding-top:22px;border-top:1px solid var(--e-rule);font-size:13px;font-weight:700;letter-spacing:.06em;display:flex;align-items:baseline;gap:10px;counter-increment:edsec}
 .ed h2::before{content:counter(edsec,decimal-leading-zero);color:var(--e-accent)}
-.ed h2 .cnt{margin-left:auto;font-size:12px;font-weight:400;color:var(--e-mute);background:none;padding:0;min-width:0}
+.ed h2 .cnt{margin-left:auto;font-size:13px;font-weight:400;color:var(--e-mute);background:none;padding:0;min-width:0}
 .ed h2 .muted,.ed h2 small{font-weight:400;letter-spacing:0;color:var(--e-mute)}
 
 /* 상태: 알약 대신 점 + 글자 (확정=채운 점, 보도=반 채움, 추정=빈 점, 그 밖=빈 점) */
@@ -109,7 +109,7 @@
 .ed-years{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:22px;margin-top:10px}.ed-ym h3{margin:0 0 8px;font-size:14px}
 .ed-yc{display:flex;gap:10px;align-items:flex-end;height:110px}.ed-yc>div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%;gap:4px}.ed-yb{display:flex;flex-direction:column}.ed-yb span{display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--e-paper);min-height:0}
 .ed-yb .ele{background:var(--e-ele)}.ed-yb .req{background:var(--e-req)}.ed-yc em{font-style:normal;font-size:11px;color:var(--e-mute);text-align:center}
-.ed-ylegend{display:flex;gap:16px;font-size:12px;color:var(--e-mute);margin:2px 0 0}.ed-ylegend i{display:inline-block;width:9px;height:9px;margin-right:5px}
+.ed-ylegend{display:flex;gap:16px;font-size:13px;color:var(--e-mute);margin:2px 0 0}.ed-ylegend i{display:inline-block;width:9px;height:9px;margin-right:5px}
 .ed-bar2{display:flex;height:6px;margin:8px 0 4px}.ed-bar2 .r{background:var(--e-req)}.ed-bar2 .e{background:var(--e-ele)}
 .ed-sch{display:grid;grid-template-columns:70px 1fr auto;gap:14px;align-items:center;padding:12px 0;border-top:1px solid var(--e-hair);font-size:14px}.ed-sch:first-child{border-top:0}
 .ed-sch .nm{font-size:18px;font-weight:800;letter-spacing:-.04em}.ed-sch .f{font-size:13px;color:var(--e-mute);text-align:right}
@@ -179,7 +179,7 @@ tr.g3,tr.g3 td,tr.g3 a{color:var(--e-mute)}
 .mid-tbl table{min-width:0;width:100%}.mid-nm{white-space:nowrap;text-align:left}.mid-lk a{margin-right:10px;white-space:nowrap}
 .mid-pr{border-top:1px solid var(--line)}.mid-pr summary{cursor:pointer;padding:10px 0;min-height:44px;display:flex;align-items:center;gap:8px}
 /* 용어사전 ⓘ (glossary.js): 과목 설명 ⓘ(.si)와 같은 모양, 터치 영역은 넉넉히 */
-.gl-i{border:0;background:none;color:var(--mute,var(--muted));cursor:pointer;font:inherit;font-size:12px;line-height:1;padding:4px 5px;margin-left:1px;border-radius:50%;vertical-align:baseline;min-width:24px;min-height:24px}
+.gl-i{border:0;background:none;color:inherit;cursor:pointer;font:inherit;font-size:13px;line-height:1;padding:4px 5px;margin-left:1px;border-radius:50%;vertical-align:baseline;min-width:24px;min-height:24px}
 .gl-rel{border:0;background:none;color:var(--accent);cursor:pointer;font:inherit;padding:2px 0;text-decoration:underline}
 .gl-i:hover,.gl-i[aria-expanded="true"]{background:var(--soft,rgba(0,0,0,.06))}.gl-i:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 /* 고등학교 입학 접이식 섹션(유형 비교·달력·절차·서류) */
@@ -228,3 +228,24 @@ table.policy tr.past td,table.policy tr.past b,table.policy tr.past .stg,table.p
 .cmp-x{min-width:44px;min-height:44px}.cmp-s a,.cmp-tbl td a,.gap-next,.cmp-v a{display:inline-flex;align-items:center;min-height:44px}
 .cmp-diff input,.hsc-diff input{width:44px;height:44px;margin:0}.cmp-f2 input,.mid-q{min-height:44px}
 .ed p a,.ed li a,.ed dd a,.ed .ed-s a,.ed h3 a,.ed .ed-src a,.ed figcaption a{padding-block:15px}.srcf li a,.srcp a{display:inline-flex;align-items:center;min-height:44px;padding-block:0}
+
+/* 선택과목 현황(학교 비교) */
+.el-sec{margin:18px 0 0}.el-sec .dn{display:block;width:100%}
+.el-pick{display:flex;gap:8px;align-items:center;margin:8px 0;font-size:14px}.el-pick select{min-height:44px;font:inherit;max-width:100%}
+.el-h{font-size:15px;margin:14px 0 6px}.el-h .sma{font-weight:400}
+.el-list{list-style:none;margin:0;padding:0}
+.el-r{display:grid;grid-template-columns:minmax(96px,150px) 1fr auto;gap:8px;align-items:center;padding:4px 0;font-size:14px}
+.el-b{display:block;height:10px;background:var(--line,#ddd);position:relative;min-width:40px}
+.el-b i{position:absolute;left:0;top:0;bottom:0;display:block}.el-b i.sci{background:var(--ink,#333)}.el-b i.soc{background:var(--muted,#8a8176)}
+.el-v{font-variant-numeric:tabular-nums;white-space:nowrap;font-size:13px}
+.el-note{margin:12px 0 6px;font-size:14px}.el-links{margin:6px 0;font-size:14px}.el-links a{display:inline-block;min-height:44px;line-height:44px}
+.el-est{white-space:normal}
+@media (max-width:480px){.el-r{grid-template-columns:1fr auto}.el-b{grid-column:1/-1;order:3}}
+.el-sec .el-h,.el-sec .el-r span,.el-sec .el-note,.el-sec .el-links,.el-sec .el-body>p{color:var(--ink,#2b2620)}.el-sec .el-h .muted,.el-sec .muted{color:var(--muted,#6a6157)}
+.el-sec .el-r .el-n{font-weight:600}.el-sec .el-links a{color:var(--accent,#B02A0A)}
+.ex-dist{display:flex;gap:2px;margin:4px 0 6px;font-size:12px;min-height:24px}.ex-dist i{font-style:normal;background:var(--line,#ddd);color:var(--ink,#2b2620);padding:2px 4px;overflow:hidden;white-space:nowrap;min-width:0}.ex-dist i b{font-weight:700}
+.ex-plan{margin:2px 0 8px;font-size:14px;color:var(--ink,#2b2620)}
+.el-sec li,.el-sec li b{color:var(--ink,#2b2620)}
+.el-rules{margin:8px 0;font-size:14px;color:var(--ink,#2b2620)}.el-rules b{display:block}
+.el-pick{color:var(--ink,#2b2620)}
+.cmp-gj{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}.cmp-gjb{min-height:44px;padding:0 14px;border:1px solid var(--ink,#2b2620);background:transparent;color:var(--ink,#2b2620);font:inherit;font-size:14px;cursor:pointer}.cmp-gjb:focus-visible{outline:3px solid var(--ink,#2b2620);outline-offset:2px}

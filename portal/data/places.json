@@ -528,7 +528,7 @@
    "schoolId": "school-yonginheungcheon",
    "name": "홍천고등학교",
    "level": "high",
-   "kind": "공립(단설)",
+   "kind": "공립",
    "address": "경기도 용인시 수지구 수지로227번길 22",
    "lat": 37.32144,
    "lng": 127.08228,
@@ -545,6 +545,11 @@
      "atptCode": "J10",
      "code": "7531379",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090005416",
+     "asOf": "2026-11-02"
     }
    ],
    "status": "confirmed",
