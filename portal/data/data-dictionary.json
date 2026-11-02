@@ -363,7 +363,7 @@
    "data": "portal/data/electives.json",
    "title": "electives (선택과목 현황) — portal/data/electives.json (입력: research/data/electives-draft.json, 조사 초안 모양을 tools/build-electives.mjs가 이 모양으로 바꾼다)",
    "description": "학교별 현 2학년의 학기별 선택과목 인원. 학교는 places의 placeId로 연결한다. 한 학생이 pick(택n)개 과목을 고르므로 한 학기 인원 합계 = 현원 × pick이어야 한다(생성기가 검산). 화면은 사회·과학 선택 비중과 성향 한 줄을 보여 준다. 성향은 '선택 비중 기준 추정'이지 문과·이과 학생 수가 아니다. 사람 이름은 쓰지 않는다. 사용자 제공 자료에 '원문 미확인'은 쓰지 않는다.",
-   "fieldCount": 54,
+   "fieldCount": 39,
    "fields": [
     {
      "path": "guide",
@@ -545,87 +545,6 @@
      "type": "string|null",
      "required": false,
      "description": "자료가 없을 때 다음 행동(어디서 어떻게 확인하는지)"
-    },
-    {
-     "path": "items[].classProxy",
-     "type": "object|null",
-     "required": false,
-     "description": "인원 자료가 없는 학교의 대리 지표: 평가계획의 탐구 과목별 개설 학급 수(학생 수가 아님). 성향은 '학급 수 기준 추정'"
-    },
-    {
-     "path": "items[].classProxy.term",
-     "type": "string|null",
-     "required": false
-    },
-    {
-     "path": "items[].classProxy.unit",
-     "type": "string",
-     "required": false
-    },
-    {
-     "path": "items[].classProxy.rows",
-     "type": "array",
-     "required": false
-    },
-    {
-     "path": "items[].classProxy.rows[]",
-     "type": "object",
-     "required": false
-    },
-    {
-     "path": "items[].classProxy.rows[].name",
-     "type": "string",
-     "required": true
-    },
-    {
-     "path": "items[].classProxy.rows[].area",
-     "type": "enum",
-     "required": true,
-     "enum": [
-      "사회",
-      "과학"
-     ]
-    },
-    {
-     "path": "items[].classProxy.rows[].classes",
-     "type": "integer",
-     "required": true,
-     "minimum": 1
-    },
-    {
-     "path": "items[].classProxy.totals",
-     "type": "object",
-     "required": false
-    },
-    {
-     "path": "items[].classProxy.shares",
-     "type": "object",
-     "required": false
-    },
-    {
-     "path": "items[].classProxy.tendency",
-     "type": "string",
-     "required": false
-    },
-    {
-     "path": "items[].classProxy.basis",
-     "type": "string",
-     "required": false
-    },
-    {
-     "path": "items[].classProxy.note",
-     "type": "string|null",
-     "required": false
-    },
-    {
-     "path": "items[].classProxy.nullReason",
-     "type": "string|null",
-     "required": false
-    },
-    {
-     "path": "items[].classProxy.nextAction",
-     "type": "string|null",
-     "required": false
     },
     {
      "path": "items[].terms",
@@ -867,7 +786,7 @@
    "data": "portal/data/exam-trends.json",
    "title": "exam-trends (내신 출제·평가 경향) — portal/data/exam-trends.json (입력: research/data/exam-trends-draft.json을 tools/build-exam-trends.mjs가 이 모양으로 바꾼다)",
    "description": "학교별·교과별(국어·영어·수학·과학·사회) 내신 평균·표준편차·성취도 분포·수강자 수·지필/수행 비율·서술형 비율. 학교는 places의 placeId로 연결한다. 값의 범위와 합계(성취도 분포 합 100%, 지필+수행 100%)는 생성기가 검사한다. '경향 한 줄'(변별 강함/보통/무난)은 평균·표준편차 기준의 추정이며 학교가 어렵다는 단정이 아니다. 사람 이름은 쓰지 않는다.",
-   "fieldCount": 64,
+   "fieldCount": 68,
    "fields": [
     {
      "path": "guide",
@@ -1091,6 +1010,27 @@
      "type": "integer|null",
      "required": false,
      "description": "학년 구분이 파일에 없으면 null"
+    },
+    {
+     "path": "items[].plans[].excluded",
+     "type": "array",
+     "required": false,
+     "description": "원문과 대조해 확인하지 못해 뺀 과목과 사유(화면: 확인 못 한 과목 있음)"
+    },
+    {
+     "path": "items[].plans[].excluded[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "items[].plans[].excluded[].subject",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "items[].plans[].excluded[].reason",
+     "type": "string",
+     "required": true
     },
     {
      "path": "items[].plans[].partial",

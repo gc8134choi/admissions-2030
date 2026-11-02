@@ -15,20 +15,14 @@ export function electiveRows(data, esc) {
   const m = by(data);
   const g = (t) => m.get(t.id);
   const none = { empty: true, why: NO_DATA };
-  const whyOf = (e) => [e.classProxy?.held ? e.classProxy.nullReason : e.nullReason || NO_DATA, e.classProxy?.nextAction || e.nextAction].filter(Boolean).join(" → ");
-  const px = (e) => (e?.classProxy?.rows?.length ? e.classProxy : null);
-  const share = (area) => (t) => {
-    const e = g(t), k = area === "사회" ? "socialShare" : "scienceShare";
-    if (e?.summary) return { text: String(e.summary[k]), num: e.summary[k], status: e.status };
-    const p = px(e); if (p) return { text: String(p.shares[area]), num: p.shares[area], html: `${p.shares[area]}<span class="muted sma el-est"> 학급 수 기준</span>`, status: "estimated" };
-    return e ? { empty: true, why: whyOf(e) } : none;
-  };
+  const whyOf = (e) => [e.nullReason || NO_DATA, e.nextAction].filter(Boolean).join(" → ");
+  const share = (area) => (t) => { const e = g(t), k = area === "사회" ? "socialShare" : "scienceShare"; return e?.summary ? { text: String(e.summary[k]), num: e.summary[k], status: e.status } : e ? { empty: true, why: whyOf(e) } : none; };
   return [
     { id: "el-soc", label: "탐구 사회 선택 비중", unit: "%", group: EL_GROUP, kind: "number", max: 100, get: share("사회") },
     { id: "el-sci", label: "탐구 과학 선택 비중", unit: "%", group: EL_GROUP, kind: "number", max: 100, get: share("과학") },
-    { id: "el-tend", label: "성향", group: EL_GROUP, kind: "text", get: (t) => { const e = g(t); if (e?.summary) return { text: e.summary.tendency, html: `${esc(e.summary.tendency)}<span class="muted sma el-est"> 인원 기준 추정</span>` }; const p = px(e); if (p) return { text: p.tendency, html: `${esc(p.tendency)}<span class="muted sma el-est"> ${esc(p.basis)}</span>` }; return e ? { empty: true, why: whyOf(e) } : none; } },
-    { id: "el-n", label: "현원", unit: "명", group: EL_GROUP, kind: "number", get: (t) => { const e = g(t); return e?.summary && e.headcount ? { text: e.headcount.toLocaleString("ko-KR"), num: e.headcount } : e && px(e) ? { empty: true, why: "선택 인원이 아니라 개설 학급 수로 본 값이라 현원은 없어요" } : none; } },
-    { id: "el-d", label: "자료 기준일", group: EL_GROUP, kind: "text", get: (t) => { const e = g(t); const d = e?.summary ? e.asOf : px(e)?.asOf; return d ? { text: ymd(d) } : none; } },
+    { id: "el-tend", label: "성향", group: EL_GROUP, kind: "text", get: (t) => { const e = g(t); return e?.summary ? { text: e.summary.tendency, html: `${esc(e.summary.tendency)}<span class="muted sma el-est"> ${esc(e.summary.basis)}</span>` } : e ? { empty: true, why: whyOf(e) } : none; } },
+    { id: "el-n", label: "현원", unit: "명", group: EL_GROUP, kind: "number", get: (t) => { const e = g(t); return e?.summary && e.headcount ? { text: e.headcount.toLocaleString("ko-KR"), num: e.headcount } : e ? { empty: true, why: whyOf(e) } : none; } },
+    { id: "el-d", label: "자료 기준일", group: EL_GROUP, kind: "text", get: (t) => { const e = g(t); return e?.summary && e.asOf ? { text: ymd(e.asOf) } : e ? { empty: true, why: whyOf(e) } : none; } },
   ];
 }
 
@@ -45,28 +39,20 @@ function detail(e, esc, files) {
     <p class="el-links">${pics.map((f, i) => `<a href="${esc(f.file)}" target="_blank" rel="noopener">원본 사진 보기${pics.length > 1 ? ` ${i + 1}` : ""}</a>`).join(" · ")}${pics.length && src ? " " : ""}${srcWrap(src)}</p></div>`;
 }
 
-function proxyDetail(e, esc) {
-  const p = e.classProxy, max = Math.max(1, ...p.rows.map((x) => x.classes));
-  const src = (e.sources || []).map((s) => (s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)} ↗</a>` : esc(s.name))).join(" · ");
-  return `<div class="el-body"><p class="el-note"><b>학생 수가 아니에요.</b> 학교 평가계획에 적힌 탐구 과목별 개설 학급 수(${esc(p.term || "")})를 센 대리 지표예요. 실제 선택 인원과 다를 수 있어요.</p>
-    <h4 class="el-h">${esc(p.term || "2학년")} <span class="muted sma">사회 ${p.totals.사회}학급(${p.shares.사회}%) · 과학 ${p.totals.과학}학급(${p.shares.과학}%) · ${esc(p.tendency)}(${esc(p.basis)})</span></h4>
-    <ul class="el-list">${p.rows.map((s) => `<li class="el-r"><span class="el-n">${esc(s.name)}<span class="muted sma"> ${esc(s.area)}</span></span><span class="el-b" aria-hidden="true"><i class="${s.area === "과학" ? "sci" : "soc"}" style="width:${Math.max(2, Math.round((s.classes / max) * 100))}%"></i></span><span class="el-v">${s.classes}학급</span></li>`).join("")}</ul>
-    ${p.note ? `<p class="muted sma">${esc(p.note)}</p>` : ""}<p class="el-links">${srcWrap(src)}</p></div>`;
-}
-const body = (e, esc, files) => (e.terms.length ? detail(e, esc, files) : proxyDetail(e, esc));
+const body = (e, esc, files) => detail(e, esc, files);
 
 export function electivesPanel(data, esc, files = new Map()) {
-  const have = (data?.items ?? []).filter((i) => i.terms.length || i.classProxy?.rows?.length).sort((a, b) => !!b.terms.length - !!a.terms.length);
+  const have = (data?.items ?? []).filter((i) => i.terms.length);
   const g = data?.guide;
   const guide = g && ((g.basis || []).length || (g.questions || []).length) ? `<details class="dn el-guide"><summary>유불리 보는 법</summary>
     <p>${esc(g.intro || "학교마다 고르는 과목이 달라서, 어느 쪽이 유리한지는 이 표만으로는 판단하기 어려워요.")}</p>
     ${(g.basis || []).length ? `<h4 class="el-h">공식 근거</h4><ul>${g.basis.map((b) => `<li>${esc(b.text)}${b.source ? srcWrap(b.source.url ? `<a href="${esc(b.source.url)}" target="_blank" rel="noopener">${esc(b.source.name)} ↗</a>` : esc(b.source.name)) : ""}</li>`).join("")}</ul>` : ""}
     ${(g.questions || []).length ? `<h4 class="el-h">설명회에서 물어볼 질문</h4><ul>${g.questions.map((q) => `<li>${esc(q)}</li>`).join("")}</ul>` : ""}</details>` : "";
-  const none = (data?.items ?? []).filter((i) => !i.terms.length && !i.classProxy?.rows?.length);
-  const noneHtml = none.length ? `<details class="dn el-none"><summary>자료 없는 학교 ${none.length}곳</summary><ul>${none.map((e) => emptyLine(esc, { why: `${e.name}: ${e.classProxy?.held ? e.classProxy.nullReason : e.nullReason || NO_DATA}` }).replace(/^<p class="muted gap">/, '<li class="muted gap">').replace(/<\/p>$/, e.nextAction ? ` <b>다음</b> ${esc(e.nextAction)}</li>` : "</li>")).join("")}</ul></details>` : "";
+  const none = (data?.items ?? []).filter((i) => !i.terms.length);
+  const noneHtml = none.length ? `<details class="dn el-none"><summary>자료 없는 학교 ${none.length}곳</summary><ul>${none.map((e) => emptyLine(esc, { why: `${e.name}: ${e.nullReason || NO_DATA}` }).replace(/^<p class="muted gap">/, '<li class="muted gap">').replace(/<\/p>$/, e.nextAction ? ` <b>다음</b> ${esc(e.nextAction)}</li>` : "</li>")).join("")}</ul></details>` : "";
   if (!have.length) return `<section class="el-sec">${emptyLine(esc, { why: "학교별 선택과목 현황은 설명회·학교 안내 자료를 정리하는 대로 채워요", next: { label: "학교 상세에서 설명회 노트 보기", url: "#select/curriculum?v=hs" } })}${guide}</section>`;
   return `<section class="el-sec"><details class="dn el-d" id="el-detail"><summary>선택과목 현황 (현 2학년)</summary>
-    ${have.length > 1 ? `<label class="el-pick">학교 <select data-el-pick aria-label="학교 고르기">${have.map((e) => `<option value="${esc(e.placeId)}">${esc(e.name)}${e.terms.length ? "" : " (학급 수 기준)"}</option>`).join("")}</select></label>` : ""}
+    ${have.length > 1 ? `<label class="el-pick">학교 <select data-el-pick aria-label="학교 고르기">${have.map((e) => `<option value="${esc(e.placeId)}">${esc(e.name)}</option>`).join("")}</select></label>` : ""}
     <div data-el-body>${body(have[0], esc, files)}</div>${noneHtml}</details>${guide}</section>`;
 }
 
