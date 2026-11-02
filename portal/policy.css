@@ -243,3 +243,8 @@ table.policy tr.past td,table.policy tr.past b,table.policy tr.past .stg,table.p
 @media (max-width:480px){.el-r{grid-template-columns:1fr auto}.el-b{grid-column:1/-1;order:3}}
 .el-sec .el-h,.el-sec .el-r span,.el-sec .el-note,.el-sec .el-links,.el-sec .el-body>p{color:var(--ink,#2b2620)}.el-sec .el-h .muted,.el-sec .muted{color:var(--muted,#6a6157)}
 .el-sec .el-r .el-n{font-weight:600}.el-sec .el-links a{color:var(--accent,#B02A0A)}
+.ex-dist{display:flex;gap:2px;margin:4px 0 6px;font-size:12px;min-height:24px}.ex-dist i{font-style:normal;background:var(--line,#ddd);color:var(--ink,#2b2620);padding:2px 4px;overflow:hidden;white-space:nowrap;min-width:0}.ex-dist i b{font-weight:700}
+.ex-plan{margin:2px 0 8px;font-size:14px;color:var(--ink,#2b2620)}
+.el-sec li,.el-sec li b{color:var(--ink,#2b2620)}
+.el-rules{margin:8px 0;font-size:14px;color:var(--ink,#2b2620)}.el-rules b{display:block}
+.el-pick{color:var(--ink,#2b2620)}
