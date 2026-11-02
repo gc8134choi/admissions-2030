@@ -454,3 +454,4 @@ button.term{display:inline!important} /* 인라인 용어 버튼의 박스가 �
 #main li>b,#main .ed-ym,#main .ed-ln b,#main .ed-g .k,#main .ed-g .n,#main .panel b,#main .cmp-cap,#main .cmp-cap .muted,#main .cmp-v.num{font-size:15px}
 #main .ed-ym h3{font-size:15px!important}
 @media (min-width:900px){#main .g .v,#main .plan-n .big,#main .mid-s b,#main .mid-s small{font-size:15px!important}} /* 데스크톱 홈의 14px대 값 글자(모바일 홈 높이는 그대로) */
+.srch [data-x]{min-width:44px;min-height:44px} /* 검색 닫기 버튼 터치 크기 */
