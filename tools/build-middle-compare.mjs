@@ -54,6 +54,8 @@ const REASON = {
 for (const s of draft.schools) for (const [k, r] of Object.entries(REASON)) if (s.values?.[k] && s.values[k].value == null) s.values[k].nullReason = r;
 // 학교알리미 학생수는 특수학급을 뺀 수라 다른 자료(급식 전체 인원 등)와 달라 보일 수 있다: 항목 이름에 밝힌다
 for (const f of draft.fields) if (f.id === "students" && !/특수/.test(f.label)) f.label += "(특수학급 제외)";
+// 교복: 낙찰가와 공시 품목 합이 맞지 않는 학교는 낙찰가만 기준이라고 밝힌다(소현 생활형, 이현 정장·생활형, 정평 단가 입력 이상)
+for (const s of draft.schools) if (/^(소현|이현|정평)중학교$/.test(s.name) && typeof s.values?.uniform?.value === "string" && !/낙찰가만 기준/.test(s.values.uniform.value)) s.values.uniform.value += " · 낙찰가만 기준이에요(공시 품목 합과 다를 수 있어요)";
 const fields = [...draft.fields].sort((a, b) => a.order - b.order);
 for (const s of draft.schools) { const x = externalIdsFor(s.placeId); if (x) s.externalIds = x; } // 외부 코드(NEIS·학교알리미)
 const out = { _meta: { note: "중학교 비교표(생성물, 손으로 고치지 않는다). research/data/middle-compare-draft.json에서 tools/build-middle-compare.mjs가 만든다. 값마다 기준연도·상태·출처가 붙는다.", checkedAt: draft._meta?.checkedAt ?? null, schoolCount: draft.schools.length }, fields, schools: draft.schools };
