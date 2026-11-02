@@ -1078,7 +1078,8 @@
       "url": null
      },
      "sourceId": "src-439a21a5",
-     "nullReason": null
+     "nullReason": null,
+     "note": "학교 홍보 리플렛(2026.11.2 게시)에서 경기 과학중점학교(과학중점과정)·폰 프리 스쿨 선도 실천학교 운영을 확인함. 3개년 편제는 위 편제표 요약과 같은 구조(2학년 1학기부터 선택)"
     },
     "subjectCount": {
      "value": 64,
@@ -1572,15 +1573,15 @@
      "nullReason": null
     },
     "curriculum": {
-     "value": null,
-     "asOf": null,
-     "status": null,
+     "value": "2027학년도 입학생 편제표: 총 192학점(교과 174+창체 18), 학생 선택 69학점, 첫 선택과목 학기 2-1, 학기별 교과+창체 33·33·32·32·32·30학점(학기별 차등 학점)",
+     "asOf": "2027학년도 신입생 홍보자료(2026.11.2 게시)",
+     "status": "confirmed",
      "source": {
-      "name": "학교알리미",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
+      "name": "서원고 리플릿 PDF 2쪽 편제표(용인교육지원청 게시판)",
+      "url": "https://www.goeyi.kr/goeyi/na/ntt/selectNttInfo.do?mi=25305&bbsId=15728&nttSn=1581751"
      },
-     "sourceId": "src-1d8d9c24",
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "sourceId": "src-f5f0304c",
+     "nullReason": null
     },
     "subjectCount": {
      "value": null,
@@ -4188,11 +4189,15 @@
      "nullReason": null
     },
     "curriculum": {
-     "value": null,
-     "asOf": null,
-     "status": null,
-     "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "value": "2027학년도 입학생 편제표: 총 192학점(교과 174+창체 18), 학생 선택 66학점, 첫 선택과목 학기 2-1, 학기별 교과+창체 32학점",
+     "asOf": "2027학년도 신입생 홍보자료(2026.11.2 게시)",
+     "status": "confirmed",
+     "source": {
+      "name": "신갈고 2027학년도 입학생 교육과정 편제표 PDF(용인교육지원청 게시판)",
+      "url": "https://www.goeyi.kr/goeyi/na/ntt/selectNttInfo.do?mi=25305&bbsId=15728&nttSn=1581475"
+     },
+     "sourceId": "src-05347f2e",
+     "nullReason": null
     },
     "subjectCount": {
      "value": null,
