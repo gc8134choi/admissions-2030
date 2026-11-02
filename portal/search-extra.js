@@ -78,9 +78,16 @@ export const GAPS = [
   { id: "plan-make", q: "계획표|(과목|선택).*(계획).*(만들|짜|세우|작성)|내 ?계획", words: "과목 선택 계획표 만들기 내 계획표 과목 계획 짜기 선택과목 계획 고교 계획표", found: () => ({ href: "#planner/plan", t: "내 계획표(과목 선택 계획)", s: "후보 과목을 골라 학기별 계획표를 만들고 대학 요건과 맞춰 볼 수 있어요(브라우저에만 저장)" }) },
   { id: "csat-dday", q: "d-?day|디데이|남은 ?(일|날)|며칠 ?남", words: "수능 D-day 수능 디데이 수능까지 남은 날 남은 일수 D-day", found: () => ({ href: "#home", t: "수능 D-day(홈)", s: "홈 맨 위에 2030학년도 수능(2029.11.15 잠정)까지 남은 날이 있어요. 졸업·입학 D-day도 같이 보여요" }) },
   { id: "font-size", only: true, q: "글자 ?(크기|키|확대|작)|글씨|폰트", words: "글자 크기 글자 키우기 글씨 크게 폰트 크기 글자 확대", found: () => false, none: { href: "#home", t: "글자 크기", s: "이 포털에는 글자 크기 설정이 따로 없어요 → 브라우저 확대(Ctrl/⌘ +)를 쓰면 화면이 같이 커져요. 밝게·어둡게·스킨은 위쪽 '화면 모드'에서 바꿔요" } },
+  // 19차: 골드셋에서 드러난 공백 안내
+  { id: "seoul-mid", only: true, q: "서울.*(중학교|중학|초등)", words: "서울 중학교 배정 서울 초등학교 서울 중학교 입학", found: () => false, none: { href: "#schedule?t=hs", t: "서울 중학교 배정", s: "이 포털에 아직 없어요(서울은 고입 일정만 있고, 중학교 배정은 용인만 다뤄요) → 서울시교육청·해당 교육지원청 안내에서 확인해요" } },
+  { id: "ged", only: true, q: "검정고시", words: "검정고시 일정 검정고시 접수 검정고시 원서", found: () => false, none: { href: "#library/links", t: "검정고시", s: "이 포털에 아직 없어요 → 시·도교육청 검정고시 공고에서 일정과 접수 방법을 확인해요" } },
+  { id: "med-quota", only: true, q: "의대|의과대|약대|한의대|치대|수의대|의학", words: "의대 정원 의과대학 약대 한의대 치대 수의대", found: () => false, none: { href: "#admission/system", t: "의대·약대 등 정원", s: "이 포털에 아직 없어요(대입 전형 구조와 일정까지 다뤄요) → 대학별 모집요강·대학어디가에서 확인해요" } },
+  { id: "club", only: true, q: "동아리", words: "동아리 활동 동아리 가입 동아리 종류 학교 동아리", found: () => false, none: { href: "#select/curriculum?v=map", t: "동아리 활동", s: "이 포털에 아직 없어요 → 학교 누리집·학교알리미(학교 특색 활동)에서 확인해요" } },
+  { id: "avg-grade", only: true, q: "(학교|우리 ?학교).*평균 ?등급|평균 ?등급|학교 ?평균", words: "학교 평균 등급 학교 평균 성적 평균 내신", found: () => false, none: { href: "#library/links", t: "학교별 평균 등급", s: "이 포털에 아직 없어요(내신은 5등급 상대평가라는 규칙만 있어요) → 학교알리미 공시(성적 분포)에서 확인해요" } },
+  { id: "print", q: "인쇄|프린트|출력|pdf", words: "화면 인쇄 인쇄하기 프린트 출력 PDF 저장", found: () => ({ href: "#home", t: "화면 인쇄", s: "브라우저 메뉴의 인쇄(Ctrl/⌘ + P)를 쓰면 접힌 내용까지 펼쳐서 인쇄돼요. 인쇄 화면에서 PDF로 저장할 수도 있어요" }) },
 ];
 export function gapDocs(D) {
-  return GAPS.map((g) => { const f = g.found(D); const d = f || g.none; return d ? { gap: g.id, found: !!f, href: d.href, t: d.t, s: d.s, q: g.q, only: !!g.only, text: J([g.words, d.t, d.s]) } : null; }).filter(Boolean);
+  return GAPS.map((g) => { const f = g.found(D); const d = f || g.none; return d ? { gap: g.id, found: !!f, href: d.href, t: d.t, s: d.s, q: g.q, only: !!g.only, text: g.q ? J([g.words]) : J([g.words, d.t, d.s]) } : null; }).filter(Boolean);
 }
 
 export async function loadSearchExtra(load) {
@@ -95,6 +102,7 @@ export async function loadSearchExtra(load) {
   for (const g of gl?.terms || []) out.push({ href: "#select/curriculum?v=middle", t: `${g.term} (용어)`, s: g.short.slice(0, 80), text: J([g.term, ...(g.aliases || []), g.short]) });
   // 학교 비교 값 전부(학생수·학급수·교원수·급식·매점·기숙사·진학·입학 방식 …): 링크는 빼고 "학교 · 항목" 이름으로 찾는다
   for (const [data, view] of [[hc, "#select/curriculum?v=hs"], [mc, "#select/curriculum?v=middle"]]) for (const fd of data?.fields || []) { if (fd.type === "link" || fd.id === "briefing") continue; for (const s of data.schools) { const v = s.values[fd.id]; if (v?.value != null && v.value !== "") { const val = fd.type === "number" ? `${Number(v.value).toLocaleString("ko-KR")}${fd.unit || ""}` : String(v.value); out.push({ href: fd.group ? `${view}&g=${encodeURIComponent(fd.group)}` : view, t: `${s.name} · ${fd.label}`, s: val.slice(0, 80), text: J([s.name, fd.label, val]) }); } } }
+  for (const b of bf?.briefings || []) out.push({ href: `#select/curriculum?v=hs&bf=${b.schoolId}`, t: `${b.title.split(' ')[0]} 설명회 노트`, s: String(b.title).slice(0, 60), text: J([b.title, "설명회 노트 설명회 요약 입학설명회"]) });
   for (const b of bf?.briefings || []) for (const sec of b.sections) for (const it of sec.items) if (it.text.length > 8) out.push({ href: "#select/curriculum?v=hs", t: `설명회 노트 · ${sec.name}`, s: it.text.slice(0, 80), text: J([sec.name, it.topic, it.text]) });
   for (const e of el?.items || []) if (e.summary) out.push({ href: "#select/curriculum?v=hs&g=%EC%84%A0%ED%83%9D%EA%B3%BC%EB%AA%A9", t: `${e.name} · 선택과목 현황`, s: `탐구 ${e.summary.tendency}(과학 ${e.summary.scienceShare}%, 사회 ${e.summary.socialShare}%)`, text: J([e.name, "선택과목 탐구 사회 과학 문과 이과 성향 선택 인원 수강 인원 인원수", e.summary.tendency, ...e.terms.flatMap((x) => x.subjects.map((s) => s.name))]) });
   for (const e of ex?.items || []) if ((e.plans || []).length) out.push({ href: "#select/curriculum?v=hs&g=%EB%82%B4%EC%8B%A0%20%EC%B6%9C%EC%A0%9C", t: `${e.name} · 내신 평가계획`, s: "교과별 지필·수행 반영 비율", text: J([e.name, "내신 시험 평가계획 지필 수행평가 반영 비율 서술형 출제", ...e.plans.flatMap((p) => p.rows.map((r) => r.subject))]) });
