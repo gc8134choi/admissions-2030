@@ -50,6 +50,10 @@ if(c.none){if(!STICKY.includes(r))out.push({w,r,issue:'비교표 없음'});}else
    const d0=await diffAt(false),d1=await diffAt(true);wr.scrollLeft=0;tested++;if(Math.max(d0,d1)>1.5)return {bad:'사본 열이 원본과 어긋남 '+Math.round(Math.max(d0,d1)*10)/10+'px'}}
   return {ok:1,tested}});
  if(s&&s.bad)out.push({w,r,issue:'스크롤 후 대상 줄',bad:[s.bad]});}
+// 주소로 늦게 그려지는 구역을 찾아가는 경우(?bf= 설명회 노트): 화면 안에 도달해 열렸는지
+for(const r of ['#select/curriculum?v=hs&bf=1','#select/curriculum?v=hs&bf=school-yonginheungcheon']){try{await p.goto(base+r,{waitUntil:'load',timeout:20000});await p.reload();await p.waitForTimeout(3500);}catch(e){out.push({w,r,issue:'앵커 load'});continue}
+ const bfv=r.split('bf=')[1];const a=await p.evaluate((bf)=>{const t=bf==='1'?document.querySelector('[id^="bf-"]'):document.querySelector('#bf-'+CSS.escape(bf));if(!t)return {bad:'대상 구역이 없음'};const top=t.getBoundingClientRect().top;if(top<0||top>innerHeight-100)return {bad:'대상이 화면 밖(top '+Math.round(top)+', scrollY '+Math.round(scrollY)+')'};return {ok:1}},bfv);
+ if(a&&a.bad)out.push({w,r,issue:'앵커 도달',bad:[a.bad]});}
 await p.close()}
 await b.close();console.log(JSON.stringify(out));})();
 """

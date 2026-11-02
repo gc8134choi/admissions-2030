@@ -121,7 +121,9 @@ export async function hsHubBody(el, { load, esc, lazy = false }) {
   if (lazy) { // 고교 유형 본문(화면 맨 아래)은 가까이 오면 그린다: 첫 화면의 DOM·계산량을 줄인다
     const h = document.createElement("div"); h.style.minHeight = "1100px"; host.after(h);
     const draw = () => import("./hs-types.js").then((m) => m.hsTypesBody(h, { load, esc })).then(() => { h.style.minHeight = ""; try { import("./glossary.js").then((g) => g.decorateGlossary(h)); } catch {} }).catch(() => { h.style.minHeight = ""; });
-    if ("IntersectionObserver" in window) { const io = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { io.disconnect(); draw(); } }, { rootMargin: "900px 0px" }); io.observe(h); } else draw();
+    let drawn = false; const go = () => { if (!drawn) { drawn = true; draw(); } };
+    window.__onPrint?.(go); // 인쇄할 때는 멀리 있어도 바로 그린다
+    if ("IntersectionObserver" in window) { const io = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { io.disconnect(); go(); } }, { rootMargin: "900px 0px" }); io.observe(h); } else go();
     return fillWide;
   } // 31교 표는 접이식을 열 때 그린다(DOM 절약)
   await Promise.all([topP, fillWide()]);

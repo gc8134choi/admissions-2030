@@ -24,6 +24,14 @@ import { schoolBand } from "./school-card.js";
 import { preloadSubjectInfo, subjectName, decorateSubjectLists } from "./subject-info.js";
 
 const $ = (s) => document.querySelector(s);
+// 인쇄: 늦게 그리는 구역을 바로 그리고 접힌 구역(details)을 모두 펼친다. 끝나면 원래대로(print 미디어 에뮬레이션도 같이 처리)
+{ const fns = [], opened = new Set();
+  window.__onPrint = (fn) => fns.push(fn);
+  const openAll = () => document.querySelectorAll("details:not([open])").forEach((d) => { opened.add(d); d.open = true; });
+  const start = () => { fns.forEach((f) => { try { f(); } catch {} }); openAll(); setTimeout(openAll, 600); setTimeout(openAll, 1600); }; // 열면서 새로 그려진 접이식도 다시 펼친다
+  const end = () => { opened.forEach((d) => { d.open = false; }); opened.clear(); };
+  const mq = matchMedia("print"); mq.addEventListener?.("change", (e) => (e.matches ? start() : end()));
+  addEventListener("beforeprint", start); addEventListener("afterprint", end); }
 const esc = (s = "") => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const store = {
   get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
@@ -196,7 +204,7 @@ async function curriculumView(el, query, node) {
       const tyd = body.querySelector("#tyd"); let tyDone = false;
       const fillTy = async () => { if (tyDone) return; tyDone = true; try { await views.types(body.querySelector("#tybody"), query); } catch { body.querySelector("#tybody").innerHTML = '<p class="muted">불러오지 못했어요.</p>'; } };
       tyd.addEventListener("toggle", () => { if (tyd.open) fillTy(); });
-      if (query.get("ty") === "1") { tyd.open = true; fillTy(); }
+      if (query.get("ty") === "1") { tyd.open = true; await fillTy(); } // 유형 패널을 먼저 채운 뒤 아래 구역을 그려서 늦게 들어온 본문이 아래를 밀지 않게
       const fillWide = await hsHubBody(body.querySelector("#hsmain"), { load, esc, lazy: true });
       // 밀도: 학교 요약 카드는 번호·막대만 보이게 접고(자세히로 펼침), 31교 기본 정보 표는 접이식, 요약 카드는 한눈에 패널 바로 아래로
       const hub = body.querySelector("#hsmain .hub-hs"), wide = body.querySelector("#hs-wide"), sec = body.querySelector("#sumsec");
@@ -209,9 +217,11 @@ async function curriculumView(el, query, node) {
         const fillSum = async () => { await summaryBody(host, sel); host.style.minHeight = "";
   body.querySelectorAll(".school").forEach((c) => { c.classList.add("cp"); const f = c.querySelector(".foot"); if (f) f.insertAdjacentHTML("afterbegin", '<button type="button" class="btn sc-more" aria-expanded="false">자세히</button>'); });
           try { (await import("./glossary.js")).decorateGlossary(host); } catch {} };
-        if ("IntersectionObserver" in window) { const io = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { io.disconnect(); fillSum(); } }, { rootMargin: "900px 0px" }); io.observe(host); } else await fillSum();
+        let filled = false; const goSum = () => { if (!filled) { filled = true; return fillSum(); } };
+        window.__onPrint?.(goSum); // 인쇄할 때는 멀리 있어도 바로 그린다
+        if ("IntersectionObserver" in window && !query.get("bf")) { const io = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { io.disconnect(); goSum(); } }, { rootMargin: "900px 0px" }); io.observe(host); } else await goSum(); // ?bf= 주소는 설명회 노트가 요약 안에 있어 바로 그린 뒤 그 자리로 간다
       }
-      const bf = query.get("bf"); if (bf) { const t = (bf === "1" ? body.querySelector(".bf-area") : body.querySelector(`#bf-${CSS.escape(bf)}`)); if (t) { t.scrollIntoView({ block: "start" }); t.querySelector("details")?.setAttribute("open", ""); } }
+      const bf = query.get("bf"); if (bf) { const t = (bf === "1" ? body.querySelector("[id^=\"bf-\"]") : body.querySelector(`#bf-${CSS.escape(bf)}`)); if (t) { t.scrollIntoView({ block: "start" }); t.querySelector("details")?.setAttribute("open", ""); } }
     }
     else if (tab === "map") { compare = null; await (await import("./map.js")).mapBody(body, { load, esc, focus: focusP, level: lv === "middle" ? "middle" : "high" }); }
     else if (tab === "middle") { compare = null; await (await import("./middle.js")).middleBody(body, { load, esc }); }
