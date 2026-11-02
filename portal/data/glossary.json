@@ -2,7 +2,7 @@
  "_meta": {
   "note": "용어사전(생성물, 손으로 고치지 않는다). research/data/glossary-draft.json에서 tools/build-glossary.mjs가 만든다.",
   "checkedAt": "2026-10-31",
-  "count": 40
+  "count": 43
  },
  "terms": [
   {
@@ -802,6 +802,68 @@
    ],
    "sourceIds": [
     "src-31c1b950"
+   ]
+  },
+  {
+   "id": "gl-041",
+   "term": "표준편차",
+   "aliases": [],
+   "short": "점수가 평균에서 얼마나 퍼져 있는지 보여 주는 값이에요. 클수록 학생들 점수 차이가 커서 등수가 갈리기 쉬워요.",
+   "detail": null,
+   "official": null,
+   "category": "평가",
+   "status": "reported",
+   "sources": [
+    {
+     "name": "학교알리미 공시 4-가(교과별 교수·학습 및 평가계획)",
+     "url": "https://www.schoolinfo.go.kr/"
+    }
+   ],
+   "sourceIds": [
+    "src-1a58a138"
+   ]
+  },
+  {
+   "id": "gl-042",
+   "term": "서술형·논술형 평가",
+   "aliases": [
+    "서술형",
+    "논술형"
+   ],
+   "short": "답을 직접 글로 쓰는 시험 문항이에요. 학교 평가운영계획에는 모든 교과가 학기 성적의 30% 이상 포함으로 적혀 있어요.",
+   "detail": null,
+   "official": null,
+   "category": "평가",
+   "status": "reported",
+   "sources": [
+    {
+     "name": "풍덕고 2026학년도 2학기 평가운영계획(학교알리미 공시)",
+     "url": "https://www.schoolinfo.go.kr/"
+    }
+   ],
+   "sourceIds": [
+    "src-1a58a138"
+   ]
+  },
+  {
+   "id": "gl-043",
+   "term": "평가계획",
+   "aliases": [
+    "평가운영계획"
+   ],
+   "short": "평가운영계획이라고도 해요. 학교가 교과별로 평가 방법과 지필·수행 반영 비율을 적어 학기 초에 공개하는 표예요. 학교알리미에 공시돼요.",
+   "detail": null,
+   "official": null,
+   "category": "평가",
+   "status": "reported",
+   "sources": [
+    {
+     "name": "학교알리미 공시 4-가(교과별 교수·학습 및 평가계획)",
+     "url": "https://www.schoolinfo.go.kr/"
+    }
+   ],
+   "sourceIds": [
+    "src-1a58a138"
    ]
   }
  ]

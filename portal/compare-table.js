@@ -60,9 +60,13 @@ export function cmpTable(el, cfg) {
     const table = S.length >= MIN ? `<div class="w-table cmp" tabindex="0" role="region" aria-label="${esc(cfg.title)} 표(가로로 밀어 보세요)"><table class="ed-tbl cmp-tbl" style="--n:${S.length}"><caption class="cmp-cap"><b>${esc(cfg.title)}</b>${cfg.summary ? ` <span class="muted small">${esc(cfg.summary)}</span>` : ""}</caption><colgroup><col style="width:88px">${S.map(() => "<col>").join("")}</colgroup>
       <thead><tr><th scope="col" class="cmp-f cmp-corner">항목</th>${S.map((t) => `<th scope="col" class="cmp-s"><a href="${esc(t.href || "#")}">${esc(t.name)}</a>${t.sub ? `<div class="muted small">${esc(t.sub)}</div>` : ""}${selectable ? `<button type="button" class="cmp-x" data-rm="${esc(t.id)}" aria-label="${esc(t.name)} 빼기">×</button>` : ""}</th>`).join("")}</tr></thead><tbody>${gHtml}</tbody></table></div>`
       : `<p class="muted cmp-few">${S.length ? "하나 더 골라 보세요." : "비교할 것을 골라 주세요."}</p>`;
+    // 비어 있는 항목은 왜 비었는지와 다음 행동을 항목마다 한 줄로 적는다(칸에 마우스를 올려야만 보이지 않게)
+    const gapRows = S.length >= MIN ? rows.map((r) => { const ec = S.map((tg) => cells.get(r.id + "|" + tg.id)).filter((c) => c && c.empty && c.why); const n = S.filter((tg) => { const c = cells.get(r.id + "|" + tg.id); return !c || c.empty; }).length; return n && ec.length ? { label: r.label, why: ec[0].why, n } : null; }).filter(Boolean) : [];
+    const gapHtml = gapRows.length ? `<div class="cmp-gaps"><b>빈 칸 안내</b><ul>${gapRows.slice(0, 8).map((g) => `<li><span>${esc(g.label)}</span> ${esc(g.why)}${g.why.length < 30 ? nextLink(cfg.emptyNext, esc) : ""}</li>`).join("")}</ul>${gapRows.length > 8 ? `<p class="muted small">그 밖에 ${gapRows.length - 8}개 항목도 비어 있어요.</p>` : ""}</div>` : "";
     el.innerHTML = `<div class="ed cmp-wrap"><h2>${cfg.stage ? stageTag(cfg.stage, esc) : ""}${esc(cfg.title)} <span class="muted small">${S.length}개</span></h2>
       <div class="cmp-bar2">${picker}${cfg.diff !== false ? `<label class="cmp-diff"><input type="checkbox" data-diff${st.diff ? " checked" : ""}> 차이만 보기</label>` : ""}</div>${gjump}${table}
-      <p class="muted small">이름을 누르면 상세 화면으로 가요. 같은 값은 흐리게, 다른 값은 진하게 보여요. "–"는 아직 확인하지 못한 칸이에요.${nextLink(cfg.emptyNext, esc)}</p>${cfg.sources?.length ? srcFooter(cfg.sources, "이 표의 출처") : ""}</div>`;
+      <p class="muted small">이름을 누르면 상세 화면으로 가요. 같은 값은 흐리게, 다른 값은 진하게 보여요. "–"는 아직 확인하지 못한 칸이에요.${nextLink(cfg.emptyNext, esc)}</p>${gapHtml}${cfg.sources?.length ? srcFooter(cfg.sources, "이 표의 출처") : ""}</div>`;
+    if (cfg.afterDraw) { try { cfg.afterDraw(el); } catch {} } /* 그린 뒤 덧붙일 일(예: 용어 ⓘ) */
   };
   const jump = (g) => { const b = [...el.querySelectorAll("[data-gt]")].find((x) => x.dataset.gt === g); if (b) { b.scrollIntoView({ block: "center" }); b.focus({ preventScroll: true }); } };
   el.onclick = (e) => {

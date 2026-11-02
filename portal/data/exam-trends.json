@@ -680,7 +680,12 @@
        "essayPct": null
       }
      ],
-     "gaps": [],
+     "gaps": [
+      {
+       "subject": "공통영어",
+       "area": "영어"
+      }
+     ],
      "partial": "일부 과목이 빠졌을 수 있어요"
     },
     {

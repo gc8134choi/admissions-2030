@@ -53,16 +53,18 @@ export async function hsCompareBody(el, { load, esc, schoolHref = (s) => (s.scho
   const typeOf = (s) => short(formatValue(F.get("type") || {}, s.values.type));
   const types = [...new Set(d.schools.map(typeOf).filter(Boolean))];
   if (!el.querySelector("[data-hsc-t]")) el.innerHTML = `<div data-hsc-t></div><div data-hsc-e></div>`; // 표는 다시 그려져도 아래 상세가 지워지지 않게 따로 둔다
+  const gl = await import("./glossary.js"); await gl.preloadGlossary(load).catch(() => {}); const deco = (r) => { try { gl.decorateGlossary(r); } catch {} };
   const host = el.querySelector("[data-hsc-t]"), extra = el.querySelector("[data-hsc-e]");
   extra.innerHTML = electivesPanel(elec, esc, files); bindElectives(extra, elec, esc, files);
   const exOpts = { hrefOf: (e) => { const s = d.schools.find((x) => x.placeId === e.placeId); return s ? schoolHref(s) : null; } };
-  extra.insertAdjacentHTML("beforeend", examPanel(exam, esc, exOpts)); bindExam(extra, exam, esc, exOpts); // 선택과목 현황 바로 아래, 같은 화면
+  extra.insertAdjacentHTML("beforeend", examPanel(exam, esc, exOpts)); bindExam(extra, exam, esc, exOpts); deco(extra); // 선택과목 현황 바로 아래, 같은 화면
   cmpTable(host, {
+    afterDraw: deco,
     esc, stage: "고입", title: "학교 비교", summary: "학교를 가로로 놓고 항목을 견줘요",
-    targets: d.schools.map((s) => ({ id: s.placeId, name: s.name.replace(/^용인/, ""), sub: typeOf(s), href: schoolHref(s), search: `${s.name} ${s.values.address?.value || ""}`, filterVal: { type: typeOf(s) } })),
+    targets: d.schools.map((s) => ({ id: s.placeId, name: s.name.replace(/^용인(?!고등학교$)/, ""), sub: typeOf(s), href: schoolHref(s), search: `${s.name} ${s.values.address?.value || ""}`, filterVal: { type: typeOf(s) } })),
     rows: [...compareRows(d, esc, (v, t) => t.href), ...electiveRows(elec, esc), ...examRows(exam, esc)],
     jump: ["선택과목 현황", "내신 출제"],
-    select: { key: "portal.hs.compare", param: "c", def: nearest.slice(0, 4), max: 8, min: 2, always: true, addLabel: "학교 추가·빼기", filters: [{ id: "type", label: "유형", options: types }] },
+    select: { key: "portal.hs.compare", param: "c", def: ["pl-014", "pl-011", "pl-012", "pl-013", "pl-022"].filter((id) => d.schools.some((s) => s.placeId === id)).length >= 2 ? ["pl-014", "pl-011", "pl-012", "pl-013", "pl-022"].filter((id) => d.schools.some((s) => s.placeId === id)) : nearest.slice(0, 4), max: 8, min: 2, always: true, defN: 5, addLabel: "학교 추가·빼기", filters: [{ id: "type", label: "유형", options: types }] },
     emptyNext: WHERE.schoolinfo,
     sources: d.schools.flatMap((sc) => Object.values(sc.values).map((v) => v?.source).filter(Boolean)),
   });
