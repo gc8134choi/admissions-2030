@@ -1,9 +1,69 @@
 {
  "_meta": {
   "note": "데이터 변경 이력(생성물). tools/build-changes.mjs가 직전 기록과 비교해 만든다. 최신이 맨 앞.",
-  "count": 796
+  "count": 801
  },
  "changes": [
+  {
+   "id": "chg-20261102-797",
+   "at": "2026-11-02T12:53:53+09:00",
+   "file": "exam-trends",
+   "target": "items[2].plans[0].gaps[0]",
+   "label": null,
+   "field": null,
+   "kind": "added",
+   "old": null,
+   "new": null,
+   "reason": "용어 3개·평가계획 1학년 누락 표기 보강"
+  },
+  {
+   "id": "chg-20261102-798",
+   "at": "2026-11-02T12:53:53+09:00",
+   "file": "exam-trends",
+   "target": "items[3].plans[0].gaps[0]",
+   "label": null,
+   "field": null,
+   "kind": "added",
+   "old": null,
+   "new": null,
+   "reason": "용어 3개·평가계획 1학년 누락 표기 보강"
+  },
+  {
+   "id": "chg-20261102-799",
+   "at": "2026-11-02T12:53:53+09:00",
+   "file": "glossary",
+   "target": "terms[gl-041]",
+   "label": "표준편차",
+   "field": null,
+   "kind": "added",
+   "old": null,
+   "new": null,
+   "reason": "용어 3개·평가계획 1학년 누락 표기 보강"
+  },
+  {
+   "id": "chg-20261102-800",
+   "at": "2026-11-02T12:53:53+09:00",
+   "file": "glossary",
+   "target": "terms[gl-042]",
+   "label": "서술형·논술형 평가",
+   "field": null,
+   "kind": "added",
+   "old": null,
+   "new": null,
+   "reason": "용어 3개·평가계획 1학년 누락 표기 보강"
+  },
+  {
+   "id": "chg-20261102-801",
+   "at": "2026-11-02T12:53:53+09:00",
+   "file": "glossary",
+   "target": "terms[gl-043]",
+   "label": "평가계획",
+   "field": null,
+   "kind": "added",
+   "old": null,
+   "new": null,
+   "reason": "용어 3개·평가계획 1학년 누락 표기 보강"
+  },
   {
    "id": "chg-20261102-724",
    "at": "2026-11-02T12:49:17+09:00",
