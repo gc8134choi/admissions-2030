@@ -1,12 +1,13 @@
 {
  "$schema": "https://json-schema.org/draft/2020-12/schema",
  "$id": "electives.schema.json",
- "title": "electives (선택과목 현황) — research/data/electives-draft.json = portal/data/electives.json",
+ "title": "electives (선택과목 현황) — portal/data/electives.json (입력: research/data/electives-draft.json, 조사 초안 모양을 tools/build-electives.mjs가 이 모양으로 바꾼다)",
  "description": "학교별 현 2학년의 학기별 선택과목 인원. 학교는 places의 placeId로 연결한다. 한 학생이 pick(택n)개 과목을 고르므로 한 학기 인원 합계 = 현원 × pick이어야 한다(생성기가 검산). 화면은 사회·과학 선택 비중과 성향 한 줄을 보여 준다. 성향은 '선택 비중 기준 추정'이지 문과·이과 학생 수가 아니다. 사람 이름은 쓰지 않는다. 사용자 제공 자료에 '원문 미확인'은 쓰지 않는다.",
  "type": "object",
  "required": ["items"],
  "properties": {
   "guide": { "type": "object", "description": "'유불리 보는 법' 접이식 내용. 학교별 유불리를 단정하지 않는다", "properties": {
+   "intro": { "type": ["string", "null"], "description": "맨 위 한 줄(이 표만으로 판단하기 어렵다는 안내)" },
    "basis": { "type": "array", "description": "공식 근거 문장", "items": { "type": "object", "required": ["text"], "properties": { "text": { "type": "string" }, "source": { "type": "object", "properties": { "name": { "type": "string" }, "url": { "type": ["string", "null"] }, "kind": { "enum": ["official", "media"] } } } } } },
    "questions": { "type": "array", "description": "설명회에서 물어볼 질문", "items": { "type": "string" } } } },
   "items": { "type": "array", "items": { "type": "object", "required": ["placeId", "name", "status"], "properties": {
@@ -23,6 +24,7 @@
    "fileIds": { "type": "array", "items": { "type": "string" }, "description": "원본 사진·문서(files.json의 id). 있으면 portal/data/files.json에 있어야 한다" },
    "note": { "type": ["string", "null"] },
    "nullReason": { "type": ["string", "null"], "description": "자료가 없을 때 사유(terms가 비어 있으면 필수)" },
+   "nextAction": { "type": ["string", "null"], "description": "자료가 없을 때 다음 행동(어디서 어떻게 확인하는지)" },
    "terms": { "type": "array", "items": { "type": "object", "required": ["label", "subjects"], "properties": {
     "label": { "type": "string", "description": "예: 2학년 1학기" },
     "subjects": { "type": "array", "minItems": 1, "items": { "type": "object", "required": ["name", "area", "count"], "properties": { "name": { "type": "string" }, "area": { "enum": ["사회", "과학"] }, "count": { "type": "integer", "minimum": 0 } } } } } } } } } }

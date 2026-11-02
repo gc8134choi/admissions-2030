@@ -14,7 +14,8 @@ export function electiveRows(data, esc) {
   const m = by(data);
   const g = (t) => m.get(t.id);
   const none = { empty: true, why: NO_DATA };
-  const share = (area) => (t) => { const e = g(t); return e?.summary ? { text: String(e.summary[area === "사회" ? "socialShare" : "scienceShare"]), num: e.summary[area === "사회" ? "socialShare" : "scienceShare"], status: e.status } : e ? { empty: true, why: e.nullReason || NO_DATA } : none; };
+  const whyOf = (e) => [e.nullReason || NO_DATA, e.nextAction].filter(Boolean).join(" → ");
+  const share = (area) => (t) => { const e = g(t); return e?.summary ? { text: String(e.summary[area === "사회" ? "socialShare" : "scienceShare"]), num: e.summary[area === "사회" ? "socialShare" : "scienceShare"], status: e.status } : e ? { empty: true, why: whyOf(e) } : none; };
   return [
     { id: "el-soc", label: "탐구 사회 선택 비중", unit: "%", group: EL_GROUP, kind: "number", max: 100, get: share("사회") },
     { id: "el-sci", label: "탐구 과학 선택 비중", unit: "%", group: EL_GROUP, kind: "number", max: 100, get: share("과학") },
@@ -41,13 +42,15 @@ export function electivesPanel(data, esc, files = new Map()) {
   const have = (data?.items ?? []).filter((i) => i.terms.length);
   const g = data?.guide;
   const guide = g && ((g.basis || []).length || (g.questions || []).length) ? `<details class="dn el-guide"><summary>유불리 보는 법</summary>
-    <p>학교마다 고르는 과목이 달라서, 어느 쪽이 유리한지는 이 표만으로는 판단하기 어려워요.</p>
+    <p>${esc(g.intro || "학교마다 고르는 과목이 달라서, 어느 쪽이 유리한지는 이 표만으로는 판단하기 어려워요.")}</p>
     ${(g.basis || []).length ? `<h4 class="el-h">공식 근거</h4><ul>${g.basis.map((b) => `<li>${esc(b.text)}${b.source ? srcWrap(b.source.url ? `<a href="${esc(b.source.url)}" target="_blank" rel="noopener">${esc(b.source.name)} ↗</a>` : esc(b.source.name)) : ""}</li>`).join("")}</ul>` : ""}
     ${(g.questions || []).length ? `<h4 class="el-h">설명회에서 물어볼 질문</h4><ul>${g.questions.map((q) => `<li>${esc(q)}</li>`).join("")}</ul>` : ""}</details>` : "";
+  const none = (data?.items ?? []).filter((i) => !i.terms.length);
+  const noneHtml = none.length ? `<details class="dn el-none"><summary>자료 없는 학교 ${none.length}곳</summary><ul>${none.map((e) => emptyLine(esc, { why: `${e.name}: ${e.nullReason || NO_DATA}` }).replace(/^<p class="muted gap">/, '<li class="muted gap">').replace(/<\/p>$/, e.nextAction ? ` <b>다음</b> ${esc(e.nextAction)}</li>` : "</li>")).join("")}</ul></details>` : "";
   if (!have.length) return `<section class="el-sec">${emptyLine(esc, { why: "학교별 선택과목 현황은 설명회·학교 안내 자료를 정리하는 대로 채워요", next: { label: "학교 상세에서 설명회 노트 보기", url: "#select/curriculum?v=hs" } })}${guide}</section>`;
   return `<section class="el-sec"><details class="dn el-d" id="el-detail"><summary>선택과목 현황 (현 2학년)</summary>
     ${have.length > 1 ? `<label class="el-pick">학교 <select data-el-pick aria-label="학교 고르기">${have.map((e) => `<option value="${esc(e.placeId)}">${esc(e.name)}</option>`).join("")}</select></label>` : ""}
-    <div data-el-body>${detail(have[0], esc, files)}</div></details>${guide}</section>`;
+    <div data-el-body>${detail(have[0], esc, files)}</div>${noneHtml}</details>${guide}</section>`;
 }
 
 export function bindElectives(root, data, esc, files = new Map()) {

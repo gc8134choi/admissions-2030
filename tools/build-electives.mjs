@@ -8,13 +8,36 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 
 const argv = process.argv.slice(2);
 const SRC = argv.includes("--src") ? argv[argv.indexOf("--src") + 1] : "research/data/electives-draft.json";
-const draft = existsSync(SRC) ? JSON.parse(readFileSync(SRC, "utf8")) : { _meta: {}, items: [] };
+const raw = existsSync(SRC) ? JSON.parse(readFileSync(SRC, "utf8")) : { _meta: {}, items: [] };
+const FILES = existsSync("portal/data/files.json") ? JSON.parse(readFileSync("portal/data/files.json", "utf8")) : [];
+const fileIdOf = (p) => FILES.find((f) => f.file === String(p).replace(/^portal\//, ""))?.id ?? null; // "portal/files/x.jpg" → files.json id
+// 조사 초안(schools[{terms[{rows[{area:탐구-사회,subject,count}]}]}], readingAids) → 이 파일의 입력 모양(items·guide)으로 바꾼다
+function convert(r) {
+  if (!r.schools) return r;
+  const areaOf = (a) => String(a).replace(/^.*-/, "");
+  const items = r.schools.map((s) => {
+    const ts = s.terms ?? [], first = ts[0];
+    const pickN = (t) => Number(String(t.pick ?? "").match(/택\s*(\d+)/)?.[1]) || null;
+    const files = [...new Set(ts.flatMap((t) => t.source?.files ?? []))];
+    const unknown = files.filter((f) => !fileIdOf(f));
+    if (unknown.length) errs0.push(`${s.placeId}: 파일 ${unknown.join(", ")}이 files.json에 없음`);
+    const srcs = []; for (const t of ts) { const x = t.source; if (x?.name && !srcs.some((y) => y.name === x.name)) srcs.push({ name: x.name, url: x.url ?? null }); }
+    return { placeId: s.placeId, name: s.name, grade: s.cohort?.currentGrade ? `${s.cohort.currentGrade}학년` : null, area: first ? String(first.pick ?? "").replace(/\s*택.*$/, "") || "탐구" : null,
+      headcount: s.enrolled ?? null, pick: first ? pickN(first) : null, asOf: ts.map((t) => t.source?.asOf).filter(Boolean).sort().pop() ?? null, sourceKind: first?.source?.type ?? null,
+      status: first?.status ?? "reported", sources: srcs, fileIds: files.map(fileIdOf).filter(Boolean), nullReason: s.nullReason ?? null, nextAction: s.nextAction ?? null, _rawTerms: ts,
+      terms: ts.map((t) => ({ label: t.term, enrolled: t.enrolled ?? null, indicators: t.indicators ?? null, subjects: (t.rows ?? []).map((x) => ({ name: x.subject, area: areaOf(x.area), count: x.count })) })) };
+  });
+  const a = r.readingAids ?? {};
+  return { _meta: r._meta, items, guide: { intro: a.verdict ?? null, basis: (a.official ?? []).map((o) => ({ text: o.text, source: o.source ? { name: o.source.name, url: o.source.url ?? null, kind: "official" } : undefined })), questions: a.questions ?? [] } };
+}
+const errs0 = [];
+const draft = convert(raw);
 const schema = JSON.parse(readFileSync("schema/electives.schema.json", "utf8"));
 const I = schema.properties.items.items;
 const { plain } = await import("../portal/plain.js");
 const places = new Map(JSON.parse(readFileSync("portal/data/places.json", "utf8")).places.map((p) => [p.id, p]));
 const fileIds = new Set((existsSync("portal/data/files.json") ? JSON.parse(readFileSync("portal/data/files.json", "utf8")) : []).map((f) => f.id));
-const errs = [], seen = new Set();
+const errs = [...errs0], seen = new Set();
 const AREAS = ["사회", "과학"];
 const pct = (a, b) => (b ? Math.round((a / b) * 1000) / 10 : null);
 const tendency = (sci) => (sci >= 60 ? "과학 중심" : sci <= 40 ? "사회 중심" : "균형");
@@ -32,7 +55,7 @@ const items = draft.items.map((it) => {
   const out = { placeId: it.placeId, name: it.name, grade: it.grade ?? null, area: it.area ?? null, headcount: it.headcount ?? null, pick: it.pick ?? null, asOf: it.asOf ?? null, sourceKind: it.sourceKind ?? null, status: it.status, sources: (it.sources ?? []).map((s) => ({ ...s, name: plain(s.name) })), fileIds: it.fileIds ?? [], note: it.note ? plain(it.note) : null };
   if (!(it.terms ?? []).length) {
     if (!it.nullReason) errs.push(`${w}: terms가 없으면 nullReason 필수`);
-    return { ...out, nullReason: it.nullReason ? plain(it.nullReason) : null, terms: [], summary: null };
+    return { ...out, nullReason: it.nullReason ? plain(it.nullReason) : null, nextAction: it.nextAction ? plain(it.nextAction) : null, terms: [], summary: null };
   }
   if (!(it.sources ?? []).length) errs.push(`${w}: sources 비어 있음`);
   if (!it.headcount || !it.pick) errs.push(`${w}: headcount·pick 필요(합계 검산)`);
@@ -48,15 +71,17 @@ const items = draft.items.map((it) => {
     const sum = t.subjects.reduce((a, s) => a + s.count, 0);
     if (it.headcount && it.pick && sum !== it.headcount * it.pick) errs.push(`${w} ${t.label}: 합계 ${sum} ≠ 현원 ${it.headcount} × 택${it.pick} = ${it.headcount * it.pick}`);
     const tot = Object.fromEntries(AREAS.map((a) => [a, t.subjects.filter((s) => s.area === a).reduce((x, s) => x + s.count, 0)]));
+    if (t.enrolled != null && it.headcount != null && t.enrolled !== it.headcount) errs.push(`${w} ${t.label}: 학기 현원 ${t.enrolled} ≠ 학교 현원 ${it.headcount}`);
+    if (t.indicators?.selectionTotal != null && t.indicators.selectionTotal !== sum) errs.push(`${w} ${t.label}: 초안 selectionTotal ${t.indicators.selectionTotal} ≠ 합계 ${sum}`);
     return { label: t.label, total: sum, areaTotals: tot, shares: { 사회: pct(tot.사회, sum), 과학: pct(tot.과학, sum) }, subjects: [...t.subjects].sort((a, b) => b.count - a.count || a.name.localeCompare(b.name)).map((s) => ({ ...s, share: pct(s.count, sum) })) };
   });
   const all = terms.reduce((a, t) => a + t.total, 0), soc = terms.reduce((a, t) => a + t.areaTotals.사회, 0), sci = terms.reduce((a, t) => a + t.areaTotals.과학, 0);
   const sciShare = pct(sci, all);
-  return { ...out, nullReason: null, terms, summary: { socialShare: pct(soc, all), scienceShare: sciShare, tendency: tendency(sciShare), basis: "선택 비중 기준 추정" } };
+  return { ...out, nullReason: null, nextAction: null, terms, summary: { socialShare: pct(soc, all), scienceShare: sciShare, tendency: tendency(sciShare), basis: "선택 비중 기준 추정" } };
 });
 if (errs.length) { console.error(errs.slice(0, 30).join("\n")); process.exit(1); }
 
-const guide = draft.guide ? { basis: (draft.guide.basis ?? []).map((b) => ({ ...b, text: plain(b.text) })), questions: (draft.guide.questions ?? []).map((q) => plain(q)) } : { basis: [], questions: [] };
+const guide = draft.guide ? { intro: draft.guide.intro ? plain(draft.guide.intro) : null, basis: (draft.guide.basis ?? []).map((b) => ({ ...b, text: plain(b.text) })), questions: (draft.guide.questions ?? []).map((q) => plain(q)) } : { basis: [], questions: [] };
 const out = { _meta: { note: "선택과목 현황(생성물, 손으로 고치지 않는다). research/data/electives-draft.json에서 tools/build-electives.mjs가 만든다. 성향은 선택 비중 기준 추정이다.", checkedAt: draft._meta?.checkedAt ?? null, count: items.length, withData: items.filter((i) => i.terms.length).length }, guide, items };
 const json = JSON.stringify(withSourceIds(out), null, 1) + "\n";
 const target = "portal/data/electives.json";

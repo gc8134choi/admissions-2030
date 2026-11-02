@@ -1,13 +1,277 @@
 {
  "_meta": {
   "note": "선택과목 현황(생성물, 손으로 고치지 않는다). research/data/electives-draft.json에서 tools/build-electives.mjs가 만든다. 성향은 선택 비중 기준 추정이다.",
-  "checkedAt": null,
-  "count": 0,
-  "withData": 0
+  "checkedAt": "2026-11-02",
+  "count": 5,
+  "withData": 1
  },
  "guide": {
-  "basis": [],
-  "questions": []
+  "intro": "이 표만으로 어느 쪽이 유리한지 판단하기 어려워요. 선택 인원은 학교 안의 분포일 뿐이고, 대학·모집단위별 권장과목과 5등급 상대평가에서 같은 과목을 고른 학생 수가 등급 경쟁에 영향을 줄 수 있으나 학교별 유불리는 추정이에요.",
+  "basis": [
+   {
+    "text": "2028학년도 수능부터 국어·수학·사회·과학탐구 영역에서 선택과목 없이 동일한 내용·기준으로 평가하고, 사회·과학탐구는 통합사회·통합과학에서 출제됨(현 고2부터 적용). 따라서 탐구 과목 선택이 수능 응시 과목을 정하지는 않음",
+    "source": {
+     "name": "교육부 브리핑(2023.12.27)",
+     "url": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
+     "kind": "official"
+    },
+    "sourceId": "src-676f9b43"
+   },
+   {
+    "text": "내신은 5등급 상대평가이며 사회·과학 융합선택 과목은 석차등급 없이 절대평가만 실시",
+    "source": {
+     "name": "교육부 브리핑(2023.12.27)",
+     "url": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
+     "kind": "official"
+    },
+    "sourceId": "src-676f9b43"
+   }
+  ],
+  "questions": [
+   "우리 학교 2학년 탐구 선택에서 사회·과학 비율과 과목별 인원은 어떻게 되나요?",
+   "희망 대학·모집단위의 권장과목을 모두 들으려면 어떤 조합이 가능한가요(개설 학급 수·시간표 충돌 포함)?",
+   "선택 인원이 적은 과목은 폐강되나요, 공동교육과정·온라인학교로 이수할 수 있나요?",
+   "같은 과목을 고른 학생 수가 적거나 많을 때 5등급 상대평가 산출은 어떻게 되고 학교는 어떤 점을 안내하나요?",
+   "3학년 선택과목은 어떻게 신청·배정하고, 희망이 몰릴 때 기준은 무엇인가요?"
+  ]
  },
- "items": []
+ "items": [
+  {
+   "placeId": "pl-014",
+   "name": "홍천고등학교",
+   "grade": "2학년",
+   "area": "탐구",
+   "headcount": 388,
+   "pick": 3,
+   "asOf": "2026-10-29",
+   "sourceKind": "사용자 촬영 설명회 슬라이드",
+   "status": "reported",
+   "sources": [
+    {
+     "name": "용인홍천고등학교 2026 진로진학 아카데미 시즌4(2026.10.29 설명회) 슬라이드 p.53·54 촬영 사진",
+     "url": null
+    }
+   ],
+   "sourceIds": [
+    "src-8a3136df"
+   ],
+   "fileIds": [
+    "hongcheon-electives-2026-g2s1",
+    "hongcheon-electives-2026-g2s2"
+   ],
+   "note": null,
+   "nullReason": null,
+   "nextAction": null,
+   "terms": [
+    {
+     "label": "2026학년도 2학년 1학기",
+     "total": 1164,
+     "areaTotals": {
+      "사회": 380,
+      "과학": 784
+     },
+     "shares": {
+      "사회": 32.6,
+      "과학": 67.4
+     },
+     "subjects": [
+      {
+       "name": "생명과학",
+       "area": "과학",
+       "count": 243,
+       "share": 20.9
+      },
+      {
+       "name": "화학",
+       "area": "과학",
+       "count": 237,
+       "share": 20.4
+      },
+      {
+       "name": "물리학",
+       "area": "과학",
+       "count": 212,
+       "share": 18.2
+      },
+      {
+       "name": "사회와문화",
+       "area": "사회",
+       "count": 153,
+       "share": 13.1
+      },
+      {
+       "name": "윤리와사상",
+       "area": "사회",
+       "count": 124,
+       "share": 10.7
+      },
+      {
+       "name": "지구과학",
+       "area": "과학",
+       "count": 92,
+       "share": 7.9
+      },
+      {
+       "name": "세계시민과지리",
+       "area": "사회",
+       "count": 59,
+       "share": 5.1
+      },
+      {
+       "name": "세계사",
+       "area": "사회",
+       "count": 44,
+       "share": 3.8
+      }
+     ]
+    },
+    {
+     "label": "2026학년도 2학년 2학기",
+     "total": 1164,
+     "areaTotals": {
+      "사회": 408,
+      "과학": 756
+     },
+     "shares": {
+      "사회": 35.1,
+      "과학": 64.9
+     },
+     "subjects": [
+      {
+       "name": "물질과에너지",
+       "area": "과학",
+       "count": 233,
+       "share": 20
+      },
+      {
+       "name": "세포와물질대사",
+       "area": "과학",
+       "count": 233,
+       "share": 20
+      },
+      {
+       "name": "역학과에너지",
+       "area": "과학",
+       "count": 207,
+       "share": 17.8
+      },
+      {
+       "name": "인문학과윤리",
+       "area": "사회",
+       "count": 134,
+       "share": 11.5
+      },
+      {
+       "name": "정치",
+       "area": "사회",
+       "count": 93,
+       "share": 8
+      },
+      {
+       "name": "지구시스템과학",
+       "area": "과학",
+       "count": 83,
+       "share": 7.1
+      },
+      {
+       "name": "경제",
+       "area": "사회",
+       "count": 69,
+       "share": 5.9
+      },
+      {
+       "name": "한국지리탐구",
+       "area": "사회",
+       "count": 68,
+       "share": 5.8
+      },
+      {
+       "name": "동아시아역사기행",
+       "area": "사회",
+       "count": 44,
+       "share": 3.8
+      }
+     ]
+    }
+   ],
+   "summary": {
+    "socialShare": 33.8,
+    "scienceShare": 66.2,
+    "tendency": "과학 중심",
+    "basis": "선택 비중 기준 추정"
+   }
+  },
+  {
+   "placeId": "pl-011",
+   "name": "풍덕고등학교",
+   "grade": "2학년",
+   "area": null,
+   "headcount": null,
+   "pick": null,
+   "asOf": null,
+   "sourceKind": null,
+   "status": "reported",
+   "sources": [],
+   "fileIds": [],
+   "note": null,
+   "nullReason": "학교 홈페이지(교육과정 게시판)와 학교알리미에서 현 2학년 선택과목별 수강 인원을 공개한 자료를 찾지 못했어요(홈페이지에는 편제표·선택과목 안내서·설명회 영상만 있음, 학교알리미 학교 코드 조회 경로는 막혀 있음).",
+   "nextAction": "학교 진로진학 설명회·교육과정 설명회에서 '현 2학년 탐구 선택 인원 분포'를 질문하거나 학교에 문의",
+   "terms": [],
+   "summary": null
+  },
+  {
+   "placeId": "pl-012",
+   "name": "성복고등학교",
+   "grade": "2학년",
+   "area": null,
+   "headcount": null,
+   "pick": null,
+   "asOf": null,
+   "sourceKind": null,
+   "status": "reported",
+   "sources": [],
+   "fileIds": [],
+   "note": null,
+   "nullReason": "학교 홈페이지(교육과정 게시판)와 학교알리미에서 현 2학년 선택과목별 수강 인원을 공개한 자료를 찾지 못했어요(홈페이지에는 편제표·선택과목 안내서·설명회 영상만 있음, 학교알리미 학교 코드 조회 경로는 막혀 있음).",
+   "nextAction": "학교 진로진학 설명회·교육과정 설명회에서 '현 2학년 탐구 선택 인원 분포'를 질문하거나 학교에 문의",
+   "terms": [],
+   "summary": null
+  },
+  {
+   "placeId": "pl-013",
+   "name": "수지고등학교",
+   "grade": "2학년",
+   "area": null,
+   "headcount": null,
+   "pick": null,
+   "asOf": null,
+   "sourceKind": null,
+   "status": "reported",
+   "sources": [],
+   "fileIds": [],
+   "note": null,
+   "nullReason": "학교 홈페이지(교육과정 게시판)와 학교알리미에서 현 2학년 선택과목별 수강 인원을 공개한 자료를 찾지 못했어요(홈페이지에는 편제표·선택과목 안내서·설명회 영상만 있음, 학교알리미 학교 코드 조회 경로는 막혀 있음).",
+   "nextAction": "학교 진로진학 설명회·교육과정 설명회에서 '현 2학년 탐구 선택 인원 분포'를 질문하거나 학교에 문의",
+   "terms": [],
+   "summary": null
+  },
+  {
+   "placeId": "pl-022",
+   "name": "신봉고등학교",
+   "grade": "2학년",
+   "area": null,
+   "headcount": null,
+   "pick": null,
+   "asOf": null,
+   "sourceKind": null,
+   "status": "reported",
+   "sources": [],
+   "fileIds": [],
+   "note": null,
+   "nullReason": "학교 홈페이지(교육과정 게시판)와 학교알리미에서 현 2학년 선택과목별 수강 인원을 공개한 자료를 찾지 못했어요(홈페이지에는 편제표·선택과목 안내서·설명회 영상만 있음, 학교알리미 학교 코드 조회 경로는 막혀 있음).",
+   "nextAction": "학교 진로진학 설명회·교육과정 설명회에서 '현 2학년 탐구 선택 인원 분포'를 질문하거나 학교에 문의",
+   "terms": [],
+   "summary": null
+  }
+ ]
 }

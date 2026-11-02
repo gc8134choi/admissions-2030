@@ -48,10 +48,11 @@ function diff(prev, cur) {
     const m = path.match(/^(.*\[[^\]]+\])(?:\.(.*))?$/); // 마지막으로 id가 있는 항목까지가 대상
     let target = m ? m[1] : "", field = m ? (m[2] ?? "") : path;
     // 대상은 가장 깊은 id 항목(라벨 보유)으로 정한다
-    const lbls = cur.labels, plb = prev.labels;
+    const lbls = cur.labels, plb = prev.labels; // 대상 id가 없으면 파일 전체 값
     let t = path, found = null;
     while (t) { const cand = `${file}|${t}`; if (lbls[cand] || plb[cand]) { found = t; break; } const i = Math.max(t.lastIndexOf("."), t.lastIndexOf("[")); if (i < 0) break; t = t.slice(0, i); }
     if (found) { target = found; field = path.slice(found.length).replace(/^\./, ""); }
+    if (!target) { target = "(파일 전체)"; }
     out.push({ file, target, label: (lbls[`${file}|${target}`] ?? plb[`${file}|${target}`]) ?? null, field: field || null, kind: !a ? "added" : !b ? "removed" : "changed", old: a ? a[1] : null, new: b ? b[1] : null });
   }
   // 항목 하나가 통째로 생기거나 사라진 경우는 한 줄로 합친다

@@ -1,11 +1,11 @@
 {
  "_meta": {
   "note": "출처 등록부(생성물, 손으로 고치지 않는다). tools/build-sources.mjs가 portal/data의 출처 항목에서 만든다. 데이터 행의 sourceIds가 이 id를 가리킨다.",
-  "count": 119,
+  "count": 120,
   "kinds": {
    "official": 77,
    "media": 25,
-   "user": 14,
+   "user": 15,
    "self": 0,
    "other": 3
   }
@@ -860,12 +860,14 @@
    "url": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888",
    "kind": "official",
    "org": "대한민국 정책브리핑",
-   "checked": "2026-10-31",
+   "checked": "2026-11-02",
    "names": [
+    "교육부 브리핑(2023.12.27)",
     "교육부 정책브리핑: 2028 대입제도 개편(2023.12.27)",
     "교육부 2028 대입제도 개편안 발표(2023.12.27)"
    ],
    "usedIn": {
+    "electives.json": 2,
     "glossary.json": 2,
     "rules.json": 1
    }
@@ -1031,6 +1033,19 @@
    ],
    "usedIn": {
     "admission-rules.json": 3
+   }
+  },
+  {
+   "id": "src-8a3136df",
+   "url": null,
+   "kind": "user",
+   "org": null,
+   "checked": "2026-11-02",
+   "names": [
+    "용인홍천고등학교 2026 진로진학 아카데미 시즌4(2026.10.29 설명회) 슬라이드 p.53·54 촬영 사진"
+   ],
+   "usedIn": {
+    "electives.json": 1
    }
   },
   {
