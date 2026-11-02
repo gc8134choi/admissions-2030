@@ -175,11 +175,13 @@ DTSTAMP:20261102T000000Z
 DTSTART;VALUE=DATE:20270801
 DTEND;VALUE=DATE:20270901
 SUMMARY:2030학년도 대입전형 기본사항 발표 · 발표 가능성(
- 추정) (추정) (월 단위)
+ 추정\, 월만 알 수 있음·관행은 8월 말) (추정) (월 단위)
 DESCRIPTION:2027.8 무렵 발표 가능성(최근 관행: 2028학년도분 
  2025.8.28\, 2029학년도분 2026.8.27). 법정 기한은 2027.9.1 이전(
- 8월 말)\n출처: 대교협 기본사항 안내 https://www.kcue.or.kr/wo
- rk/sub06/sub01.php\n확인일 2026-11-02
+ 8월 말). 일정 표시는 월(2027.8)만 알 수 있어 일 단위 계
+ 산은 8월 1일 기준이며\, 관행(8월 말)과 약 4주 차이가 날
+  수 있음\n출처: 대교협 기본사항 안내 https://www.kcue.or.kr/
+ work/sub06/sub01.php\n확인일 2026-11-02
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -353,9 +355,16 @@ SUMMARY:2030학년도 정시 · 원서접수·전형(추정\, 1월 초 접
  수) (추정) (월 단위)
 DESCRIPTION:원서접수 2030.1 초 전후\, 전형 2030.1~2월로 추정(2
  027~2029학년도분 정시 접수가 모두 1월 초). 12월 접수 근
- 거는 없음\n출처: 대교협 대학입학전형기본사항(정시 관
- 행 참고) https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1
- 942705812e69b5fd5bd8277987ab3.pdf\n확인일 2026-11-02
+ 거는 없음\n출처: 대교협 2028학년도 대학입학전형기본사
+ 항(개정 2026.7.31\, 정시 원서접수 2028.1.3~6) 외 2027·2029학
+ 년도 자료 https://www.kcue.or.kr/_upload/news/2026/10/20/application_a
+ b1942705812e69b5fd5bd8277987ab3.pdf / 대교협 2027학년도 대학입학
+ 전형시행계획 주요사항(2025.4.30\, 정시 원서접수 2027.1.4~7
+ ) https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d
+ 6ba316a2c7d398ff944.pdf / 대교협 2029학년도 대학입학전형기본
+ 사항 전문(정시 원서접수 2029.1.2~5) https://www.kcue.or.kr/_uplo
+ ad/news/2026/10/20/application_cad46b04f4b3e5fef44b540969308744.pdf\n확
+ 인일 2026-11-02
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
