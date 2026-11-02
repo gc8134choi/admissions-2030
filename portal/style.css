@@ -678,4 +678,4 @@ body[data-profile=b]{--accent:var(--accent-b);--soft:var(--soft-b);--hero1:#4B2A
 @media (max-width:760px){.hm-dd2 b{font-size:28px}.hm-dd2>div+div{padding-left:14px}}
 #tbl tr.grp>th.gh{position:sticky;left:0;text-align:left;background:var(--soft);font-size:13px;font-weight:700;color:var(--accent);padding:4px 8px;border-bottom:1px solid var(--line)} /* 교과군 그룹 머리글 행 */
 #tbl{table-layout:fixed;width:100%} /* 고정 레이아웃: 과목명 열은 th.l의 폭(120px)을 그대로 쓴다 */
-@media (max-width:599px){#tbl th:not(.l),#tbl td:not(.l){min-width:150px}}
+@media (max-width:599px){#tbl th:not(.l),#tbl td:not(.l){min-width:116px}#tbl th.l,#tbl td.l{width:100px;min-width:100px;max-width:100px}}

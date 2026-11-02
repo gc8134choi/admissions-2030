@@ -311,7 +311,8 @@ details.pn-t[open]{padding-bottom:var(--sp-3)}
 .srcb,.bf-c,.kb,.pn-m,.ed-note,.es,.ed-unv,.ed-src,.ed-meta,.req,.ele,.cr,.gl-i,.si,.hsc-meta,.pst,.srcd,th,.chip,.fchip,.num,small,.small,.flabel,.lg-s,em,h5,.hm .sec-h h2 em{font-size:max(13px,1em)!important}
 i.cr,.ed-note,.kb,.bf-c,th{font-size:13px!important}
 .srcb{font-size:13px}
-.si,.ib{min-width:44px;min-height:44px;margin:-14px -12px;display:inline-flex;align-items:center;justify-content:center}
+.ib{min-width:44px;min-height:44px;margin:-14px -12px;display:inline-flex;align-items:center;justify-content:center}
+.si{min-width:24px;min-height:24px;margin:0 1px;padding:0;display:inline-flex;align-items:center;justify-content:center;vertical-align:middle} /* 과목 안내 ⓘ: 24×24 상자를 글자 높이 안에(음수 여백으로 이웃 글자·행을 덮지 않는다) */
 button.term{display:inline;padding:0;margin:0}
 .wm{display:inline-flex;align-items:center;min-height:var(--touch)}
 .vl{display:inline-flex;align-items:center;min-height:var(--touch)}
