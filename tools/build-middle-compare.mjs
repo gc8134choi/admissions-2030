@@ -46,6 +46,12 @@ if (errs.length) { console.error(errs.join("\n")); process.exit(1); }
 const { plain } = await import("../portal/plain.js"); // 출처명 안의 내부 행 번호(policy gg-10 등)를 사람이 읽는 말로
 const cleanSrc = (v) => (v ? { ...v, ...(v.source?.name ? { source: { ...v.source, name: plain(v.source.name) } } : {}), ...(v.nullReason ? { nullReason: plain(v.nullReason) } : {}) } : v);
 for (const s of draft.schools) for (const k of Object.keys(s.values || {})) s.values[k] = cleanSrc(s.values[k]);
+// 값이 비는 이유와 다음 행동을 분명히 적는다(수집 미완료로 읽히지 않게): 학교알리미는 학교 코드가 있어야 가져올 수 있다
+const REASON = {
+  students: "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교알리미 학생 현황에서 확인",
+  meal: "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교 홈페이지 급식 게시판에서 확인",
+};
+for (const s of draft.schools) for (const [k, r] of Object.entries(REASON)) if (s.values?.[k] && s.values[k].value == null) s.values[k].nullReason = r;
 const fields = [...draft.fields].sort((a, b) => a.order - b.order);
 for (const s of draft.schools) { const x = externalIdsFor(s.placeId); if (x) s.externalIds = x; } // 외부 코드(NEIS·학교알리미)
 const out = { _meta: { note: "중학교 비교표(생성물, 손으로 고치지 않는다). research/data/middle-compare-draft.json에서 tools/build-middle-compare.mjs가 만든다. 값마다 기준연도·상태·출처가 붙는다.", checkedAt: draft._meta?.checkedAt ?? null, schoolCount: draft.schools.length }, fields, schools: draft.schools };

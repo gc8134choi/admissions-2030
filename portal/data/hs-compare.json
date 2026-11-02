@@ -6702,7 +6702,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "자율형 사립고 후기 전형(자기주도학습전형)이며 학교별 전형요강 확인 필요"
+     "nullReason": "학교별 모집요강(입학전형 시행계획)에만 있고 학교알리미 공시 목록에 없어요 → 학교 입학처 요강 공고(보통 6~7월)에서 확인"
     },
     "zone": {
      "value": null,
@@ -6716,14 +6716,14 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "공식 문서로 확인 중이에요"
+     "nullReason": "학교별 모집요강(입학전형 시행계획)에만 있고 학교알리미 공시 목록에 없어요 → 학교 입학처 요강 공고(보통 6~7월)에서 확인"
     },
     "subjectCount": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "공식 문서로 확인 중이에요"
+     "nullReason": "학교별 모집요강(입학전형 시행계획)에만 있고 학교알리미 공시 목록에 없어요 → 학교 입학처 요강 공고(보통 6~7월)에서 확인"
     },
     "univStats": {
      "value": null,
