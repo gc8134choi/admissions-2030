@@ -100,6 +100,18 @@ const items = draft.items.map((it) => {
   const summary = m.length ? { meanAvg: round1(avg(m.map((s) => s.mean))), sdAvg: round1(avg(m.map((s) => s.sd))), tendency: tendency(avg(m.map((s) => s.mean)), avg(m.map((s) => s.sd))), basis: "평균·표준편차 기준 추정", subjectCount: m.length } : null;
   return { ...base, nullReason: null, nextAction: null, achievementNull: subjects.length ? null : it.achievementNull ? plain(it.achievementNull) : null, subjects, summary };
 });
+// 학년 대응 검증: ① 제외 사유와 모순(제외했다는 과목이 같은 학년 표에 있음) ② 같은 학교·학기·과목이 다른 학년에 중복(원문에서 두 학년 모두 확인한 것만 아래에 등록) ③ 과목이 1개 이하인 학년은 화면이 '일부 과목만 수록'을 표시해야 함
+const DUP_REVIEWED = new Set(["홍천고등학교|경제", "풍덕고등학교|기하", "수지고등학교|기하", "수지고등학교|경제", "신봉고등학교|기하"]); // 원문 평가계획에 2·3학년 모두 있고 독립 파서(research/tools/exam-trends/verify2.py)와 일치
+const viewSrc = existsSync("portal/exam-trends.js") ? readFileSync("portal/exam-trends.js", "utf8") : "";
+for (const it of items) {
+  const seenSub = new Map();
+  for (const pl of it.plans ?? []) {
+    for (const x of pl.excluded ?? []) if (pl.rows.some((r) => r.subject === x.subject)) errs.push(`${it.name} ${pl.grade}학년: 제외한 과목 "${x.subject}"이 같은 학년 표에도 있음(제외 사유와 모순)`);
+    for (const r of pl.rows) { const k = `${pl.term}|${r.subject}`; (seenSub.get(k) ?? seenSub.set(k, []).get(k)).push(pl.grade); }
+    if (pl.rows.length <= 1 && !pl.partial && !/일부 과목만 수록/.test(viewSrc)) errs.push(`${it.name} ${pl.grade}학년: 과목 ${pl.rows.length}개뿐인데 화면에 '일부 과목만 수록' 표기가 없음`);
+  }
+  for (const [k, g] of seenSub) if (g.length > 1 && !DUP_REVIEWED.has(`${it.name}|${k.split("|")[1]}`)) errs.push(`${it.name} ${k}: ${g.join("·")}학년에 중복 배치 — 원문 확인 후 DUP_REVIEWED에 등록하거나 바로잡기`);
+}
 if (errs.length) { console.error(errs.slice(0, 30).join("\n")); process.exit(1); }
 
 const g = draft.guide;
