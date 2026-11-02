@@ -421,18 +421,19 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ev-gg-04-1@admissions-2030
-DTSTAMP:20261025T000000Z
+DTSTAMP:20261102T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20270206
 SUMMARY:경기 후기 평준화 일반고 일정 · 경기 평준화 일반
  고 원서접수~추가배정
 DESCRIPTION:원서접수 2026.12.4~12.10(해당 지역 교육지원청)\, 
- 전형기간 12.11~2027.1.5\, 배정 대상자 발표 1.6\, 배정 학교 
- 발표 1.22\, 등록 1.25~27\, 추가 배정·발표 2.4\, 추가 배정
- 학교 등록 2.4~5\n출처: 경기도교육청 고등학교 입학전학 
- 포털 공지: 2027학년도 경기도 고등학교 신입생 전형요강
- (2026.8.19\, 첨부 PDF) https://satp.goe.go.kr/main.do\n확인일 2026-10
- -25
+ 배정 대상자 발표 2027.1.6\, 배정 학교 발표 1.22\, 등록 1.25
+ ~27\, 추가 배정·발표 2.4\, 추가 배정학교 등록 2.4~5\n출처
+ : 경기도교육청 2027학년도 경기도 고등학교 입학전형 기
+ 본계획(2026.3) PDF 5쪽 후기 평준화지역 정시모집 일정 http
+ s://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/e88abfe2-8daa-494e-9cb8
+ -a2d030225b45.pdf / 경기도교육청 고입 포털 공지(2026.8.19) htt
+ ps://satp.goe.go.kr/main.do\n확인일 2026-11-02
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
