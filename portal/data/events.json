@@ -689,11 +689,11 @@
   "note": "확정(전형요강 PDF 10쪽 일정표 확인 2026-11-02; 기본계획 PDF 5쪽 표에는 전형기간 행이 없음)",
   "sourceKind": "official",
   "sourceName": "경기도교육청 2027학년도 경기도 고등학교 신입생 전형요강(고입 포털 공지 2026.8.19) PDF 10쪽 평준화 지역 정시모집 일정",
-  "sourceUrl": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/e88abfe2-8daa-494e-9cb8-a2d030225b45.pdf",
+  "sourceUrl": "https://satp.goe.go.kr/main.do",
   "sources": [
    {
     "name": "경기도교육청 2027학년도 경기도 고등학교 신입생 전형요강(고입 포털 공지 2026.8.19) PDF 10쪽 평준화 지역 정시모집 일정",
-    "url": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/e88abfe2-8daa-494e-9cb8-a2d030225b45.pdf"
+    "url": "https://satp.goe.go.kr/main.do"
    },
    {
     "name": "경기도교육청 2027학년도 경기도 고등학교 입학전형 기본계획(2026.3) PDF 5쪽",
@@ -701,7 +701,7 @@
    }
   ],
   "sourceIds": [
-   "src-f11446ea",
+   "src-184eecc3",
    "src-f11446ea"
   ],
   "region": "gyeonggi",
@@ -1389,11 +1389,15 @@
   "unverified": false,
   "note": "접수처·기간은 공식 원문, 용인 마감 17:00은 용인학군 리플렛 2쪽 확인 2026-11-02",
   "sourceKind": "official",
-  "sourceName": "경기도교육청 2027학년도 경기도 고교 평준화 학군 학생 배정 방안(2026.8) PDF 58쪽, 고입·전학 포털 자료실 용인학군 리플렛(2026.9.18) 2쪽",
-  "sourceUrl": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf",
+  "sourceName": "경기도교육청 고입·전학 포털 자료실 용인학군 리플렛(2026.9.18) 2쪽(접수 마감 17:00·접수 방법), 학생 배정 방안(2026.8) PDF 58쪽(접수처)",
+  "sourceUrl": "https://satp.goe.go.kr/main.do",
   "sources": [
    {
-    "name": "경기도교육청 2027학년도 경기도 고교 평준화 학군 학생 배정 방안(2026.8) PDF 58쪽, 고입·전학 포털 자료실 용인학군 리플렛(2026.9.18) 2쪽",
+    "name": "경기도교육청 고입·전학 포털 자료실 용인학군 리플렛(2026.9.18) 2쪽(접수 마감 17:00·접수 방법), 학생 배정 방안(2026.8) PDF 58쪽(접수처)",
+    "url": "https://satp.goe.go.kr/main.do"
+   },
+   {
+    "name": "경기도교육청 2027학년도 경기도 고교 평준화 학군 학생 배정 방안(2026.8) PDF 58쪽",
     "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
    },
    {
@@ -1402,6 +1406,7 @@
    }
   ],
   "sourceIds": [
+   "src-184eecc3",
    "src-e1e929fa",
    "src-f11446ea"
   ],
