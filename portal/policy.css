@@ -234,7 +234,7 @@ table.policy tr.past td,table.policy tr.past b,table.policy tr.past .stg,table.p
 .el-b{display:block;height:10px;background:var(--line,#ddd);position:relative;min-width:40px}
 .el-b i{position:absolute;left:0;top:0;bottom:0;display:block}.el-b i.sci{background:var(--ink,#333)}.el-b i.soc{background:var(--muted,#8a8176)}
 .el-v{font-variant-numeric:tabular-nums;white-space:nowrap;font-size:13px}
-.el-note{margin:12px 0 6px;font-size:14px}.el-links{margin:6px 0;font-size:14px}.el-links a{display:inline-block;min-height:44px;line-height:44px}
+.el-note{margin:12px 0 6px;font-size:15px}.el-links{margin:6px 0;font-size:15px}.el-links a{display:inline-block;min-height:44px;line-height:44px}
 .el-est{white-space:normal}
 @media (max-width:480px){.el-r{grid-template-columns:1fr auto}.el-b{grid-column:1/-1;order:3}}
 .el-sec .el-h,.el-sec .el-r span,.el-sec .el-note,.el-sec .el-links,.el-sec .el-body>p{color:var(--ink,#2b2620)}.el-sec .el-h .muted,.el-sec .muted{color:var(--muted,#6a6157)}
@@ -245,11 +245,8 @@ table.policy tr.past td,table.policy tr.past b,table.policy tr.past .stg,table.p
 .el-rules{margin:8px 0;font-size:14px;color:var(--ink,#2b2620)}.el-rules b{display:block}
 .el-pick{color:var(--ink,#2b2620)}
 .cmp-gj{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}.cmp-gjb{min-height:44px;padding:0 14px;border:1px solid var(--ink,#2b2620);background:transparent;color:var(--ink,#2b2620);font:inherit;font-size:14px;cursor:pointer}.cmp-gjb:focus-visible{outline:3px solid var(--ink,#2b2620);outline-offset:2px}
-.cmp-gaps{margin:10px 0}.cmp-gaps>summary{min-height:44px;display:flex;align-items:center;cursor:pointer;font-weight:700;font-size:14px}.cmp-gaps ul{margin:4px 0 0;padding-left:18px}.cmp-gaps li{font-size:14px;margin:4px 0;color:var(--ink,#2b2620)}.cmp-gaps li span{font-weight:700}
+.cmp-gaps{margin:10px 0}.cmp-gaps>summary{min-height:44px;display:flex;align-items:center;cursor:pointer;font-weight:700;font-size:15px}.cmp-gaps ul{margin:4px 0 0;padding-left:18px}.cmp-gaps li{font-size:15px;margin:4px 0;color:var(--ink,#2b2620)}.cmp-gaps li span{font-weight:700}
 /* 비교 표 머리 행 사본(sticky-head.js): 머리글 바로 아래에 고정 */
-.sh-fixed{position:fixed;z-index:20;overflow:hidden;background:var(--paper2,var(--paper,#fff));border-bottom:2px solid var(--ink,#333);pointer-events:auto}
-.sh-fixed table{table-layout:fixed}
-.sh-fixed[hidden]{display:none!important}
 
 .ed-ol{margin:6px 0 0;padding:0 0 0 1.5em;max-width:46em;font-size:15px;line-height:1.7}.ed-ol li{margin:0 0 6px;padding-left:2px}.ed-ol li::marker{color:var(--e-accent,var(--accent));font-weight:700}
 .ed .ed-ol li,.dp .ed-ol li{font-size:15px;line-height:1.7;border:0;padding:0 0 6px 2px}

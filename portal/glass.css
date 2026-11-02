@@ -312,13 +312,13 @@ details.pn-t[open]{padding-bottom:var(--sp-3)}
 i.cr,.ed-note,.kb,.bf-c,th{font-size:13px!important}
 .srcb{font-size:13px}
 .si,.ib{min-width:44px;min-height:44px;margin:-14px -12px;display:inline-flex;align-items:center;justify-content:center}
-button.term{display:inline-block;padding:11px 2px;margin:-11px -2px}
+button.term{display:inline;padding:0;margin:0}
 .wm{display:inline-flex;align-items:center;min-height:var(--touch)}
 .vl{display:inline-flex;align-items:center;min-height:var(--touch)}
 details>summary{padding-block:11px;min-height:44px}
 .star,.sb-star{min-width:44px;min-height:44px}
 @media (max-width:899px){.srcb,.chip,.fchip,.btn,.vtog button{min-height:48px}}
-button.term{padding:13px 2px;margin:-13px -2px}
+button.term{padding:0;margin:0}
 .ed-filter button,.hm-aud .fchip{min-height:44px}
 .cmx-n a,.ping a,.hub-t,.hscmp a{display:inline-flex;align-items:center;min-height:44px}
 .unv-i{font-size:13px}
@@ -373,7 +373,7 @@ button.term{padding:13px 2px;margin:-13px -2px}
 /* 평가 R2: 지난 일정·단계 라벨 대비 4.5 이상, 짧은 용어 버튼·필터 버튼 너비 44px */
 table.policy tr.past td,table.policy tr.past b,table.policy tr.past .stg,table.policy tr.past .muted,.tl li.past,.stg{color:var(--pencil)!important}
 #tl table.policy tr.past{opacity:1}
-button.term{padding:14px 11px;margin:-14px -11px}
+button.term{padding:0;margin:0}
 .ed-filter button,.ed-filter button[data-st]{min-width:44px;min-height:44px}
 .lnk{display:inline-flex;align-items:center;min-height:44px}
 
@@ -390,7 +390,7 @@ button.term{padding:14px 11px;margin:-14px -11px}
 .skin-opts .chip span{font-size:var(--fs-sub);font-weight:400;opacity:.85}
 .muted,.muted.small{color:var(--pencil)!important}
 /* 용어 버튼: 눌림 영역(패딩)과 점선 밑줄을 분리 */
-button.term{text-decoration:none!important;background-image:repeating-linear-gradient(90deg,var(--pencil) 0 2px,transparent 2px 4px);background-repeat:no-repeat;background-position:11px calc(100% - 19px);background-size:calc(100% - 22px) 1px}
+button.term{text-decoration:underline dotted!important;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:var(--pencil);background:none;border:0} /* 점선은 글자 바로 아래(밑줄)로, 줄바꿈되어도 어긋나지 않게 */
 .chip.on .muted,.fchip.on .muted,.btn.primary .muted,.tsw button[aria-pressed=true] .muted{color:inherit!important}
 .cmp-gb{background:var(--glass-in);color:var(--ink)}
 
@@ -430,4 +430,4 @@ button.term{text-decoration:none!important;background-image:repeating-linear-gra
 
 /* 고교 한눈에 상단 패널은 늦게 채워지므로 자리를 미리 잡아 아래 내용이 밀리지 않게 한다(CLS) */
 #hs-top{min-height:1000px}@media (min-width:900px){#hs-top{min-height:665px}}
-#chipbar:not([hidden]){min-height:88px}@media (min-width:900px){#chipbar:not([hidden]){min-height:40px}} /* 학교 칩이 채워질 때 아래가 밀리지 않게 */
+#chipbar:not([hidden]){min-height:88px;max-height:88px;overflow:hidden}@media (min-width:900px){#chipbar:not([hidden]){min-height:40px;max-height:40px}} /* 학교 칩이 채워질 때 아래가 밀리지 않게 */

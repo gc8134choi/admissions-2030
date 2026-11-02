@@ -130,7 +130,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .road .tl li{padding:var(--sp-2) 0}.gl .glance-lead{margin:0 0 var(--sp-3);font-size:clamp(24px,5vw,34px)}
 
 /* 용어 팝오버 */
-.term{background:none;border:0;border-bottom:1px dotted var(--ink);padding:0;margin:0;font:inherit;color:inherit;cursor:help;min-height:0}
+.term{background:none;border:0;padding:0;margin:0;font:inherit;color:inherit;cursor:help;min-height:0}
 .term:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 .tip{position:absolute;z-index:60;background:var(--paper2);color:var(--ink);border:2px solid var(--ink);box-shadow:var(--sh);padding:var(--sp-2) var(--sp-3);font-size:var(--fs-sub);line-height:1.5;max-width:calc(100vw - 24px)}
 
