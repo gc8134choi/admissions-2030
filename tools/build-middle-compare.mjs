@@ -52,6 +52,8 @@ const REASON = {
   meal: "학교별 공시·게시 자료라 학교알리미 급식 현황이나 학교 홈페이지 급식 게시판에서 확인해요",
 };
 for (const s of draft.schools) for (const [k, r] of Object.entries(REASON)) if (s.values?.[k] && s.values[k].value == null) s.values[k].nullReason = r;
+// 학교알리미 학생수는 특수학급을 뺀 수라 다른 자료(급식 전체 인원 등)와 달라 보일 수 있다: 항목 이름에 밝힌다
+for (const f of draft.fields) if (f.id === "students" && !/특수/.test(f.label)) f.label += "(특수학급 제외)";
 const fields = [...draft.fields].sort((a, b) => a.order - b.order);
 for (const s of draft.schools) { const x = externalIdsFor(s.placeId); if (x) s.externalIds = x; } // 외부 코드(NEIS·학교알리미)
 const out = { _meta: { note: "중학교 비교표(생성물, 손으로 고치지 않는다). research/data/middle-compare-draft.json에서 tools/build-middle-compare.mjs가 만든다. 값마다 기준연도·상태·출처가 붙는다.", checkedAt: draft._meta?.checkedAt ?? null, schoolCount: draft.schools.length }, fields, schools: draft.schools };
