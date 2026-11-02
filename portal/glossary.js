@@ -1,5 +1,5 @@
-// ⓘ 스타일(policy.css)은 풀이를 실제로 붙일 때 불러온다(홈 첫 화면에서는 받지 않음)
-const ensureCss = () => { if (typeof document !== "undefined" && !document.getElementById("policy-css")) { const l = document.createElement("link"); l.id = "policy-css"; l.rel = "stylesheet"; l.href = "policy.css"; document.head.appendChild(l); } };
+// ⓘ 스타일(glossary.css, 작은 파일)은 풀이를 실제로 붙일 때 불러온다(홈 첫 화면에서는 받지 않음)
+const ensureCss = () => { if (typeof document !== "undefined" && !document.getElementById("glossary-css")) { const l = document.createElement("link"); l.id = "glossary-css"; l.rel = "stylesheet"; l.href = "glossary.css"; document.head.appendChild(l); } };
 // 용어사전 ⓘ 팝오버 공용 모듈. 데이터: glossary.json(tools/build-glossary.mjs).
 // 사용법(다른 화면/세션):
 //   import { preloadGlossary, termHtml, decorateGlossary } from "./glossary.js";

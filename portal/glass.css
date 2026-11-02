@@ -311,12 +311,11 @@ details.pn-t[open]{padding-bottom:var(--sp-3)}
 .srcb,.bf-c,.kb,.pn-m,.ed-note,.es,.ed-unv,.ed-src,.ed-meta,.req,.ele,.cr,.gl-i,.si,.hsc-meta,.pst,.srcd,th,.chip,.fchip,.num,small,.small,.flabel,.lg-s,em,h5,.hm .sec-h h2 em{font-size:max(13px,1em)!important}
 i.cr,.ed-note,.kb,.bf-c,th{font-size:13px!important}
 .srcb{font-size:13px}
-.si,.gl-i,.ib{min-width:44px;min-height:44px;margin:-14px -12px;display:inline-flex;align-items:center;justify-content:center}
+.si,.ib{min-width:44px;min-height:44px;margin:-14px -12px;display:inline-flex;align-items:center;justify-content:center}
 button.term{display:inline-block;padding:11px 2px;margin:-11px -2px}
 .wm{display:inline-flex;align-items:center;min-height:var(--touch)}
 .vl{display:inline-flex;align-items:center;min-height:var(--touch)}
 details>summary{padding-block:11px;min-height:44px}
-.gl-i{height:44px!important;width:44px!important}
 .star,.sb-star{min-width:44px;min-height:44px}
 @media (max-width:899px){.srcb,.chip,.fchip,.btn,.vtog button{min-height:48px}}
 button.term{padding:13px 2px;margin:-13px -2px}
