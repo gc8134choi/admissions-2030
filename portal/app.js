@@ -211,7 +211,7 @@ async function curriculumView(el, query, node) {
           try { (await import("./glossary.js")).decorateGlossary(host); } catch {} };
         if ("IntersectionObserver" in window && !query.get("bf")) { const io = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { io.disconnect(); fillSum(); } }, { rootMargin: "900px 0px" }); io.observe(host); } else await fillSum(); // ?bf= 주소는 설명회 노트가 요약 안에 있어 바로 그린 뒤 그 자리로 간다
       }
-      const bf = query.get("bf"); if (bf) { const t = (bf === "1" ? body.querySelector(".bf-area") : body.querySelector(`#bf-${CSS.escape(bf)}`)); if (t) { t.scrollIntoView({ block: "start" }); t.querySelector("details")?.setAttribute("open", ""); } }
+      const bf = query.get("bf"); if (bf) { const t = (bf === "1" ? body.querySelector("[id^=\"bf-\"]") : body.querySelector(`#bf-${CSS.escape(bf)}`)); if (t) { t.scrollIntoView({ block: "start" }); t.querySelector("details")?.setAttribute("open", ""); } }
     }
     else if (tab === "map") { compare = null; await (await import("./map.js")).mapBody(body, { load, esc, focus: focusP, level: lv === "middle" ? "middle" : "high" }); }
     else if (tab === "middle") { compare = null; await (await import("./middle.js")).middleBody(body, { load, esc }); }
