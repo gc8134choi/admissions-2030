@@ -20,5 +20,31 @@
     "topic": "middle-school-curriculum",
     "source": "성복중학교 학교 공지(2026.10.26, 사용자 제공 화면 캡처)",
     "date": "2026"
+  },
+  {
+    "id": "hongcheon-electives-2026-g2s1",
+    "title": "용인홍천고 2학년 1학기 탐구 선택과목 현황(설명회 슬라이드 p.53)",
+    "description": "2026 진로진학 아카데미 시즌4 발표 슬라이드를 촬영한 사진(현원 388명, 탐구 택3)",
+    "file": "files/hongcheon-electives-2026-g2s1.jpg",
+    "thumb": "",
+    "schoolIds": [
+      "school-yonginheungcheon"
+    ],
+    "topic": "school-electives",
+    "source": "용인홍천고등학교 2026 진로진학 아카데미 시즌4(2026.10.29 설명회, 사용자 제공 촬영 사진)",
+    "date": "2026"
+  },
+  {
+    "id": "hongcheon-electives-2026-g2s2",
+    "title": "용인홍천고 2학년 2학기 탐구 선택과목 현황(설명회 슬라이드 p.54)",
+    "description": "2026 진로진학 아카데미 시즌4 발표 슬라이드를 촬영한 사진(현원 388명, 탐구 택3)",
+    "file": "files/hongcheon-electives-2026-g2s2.jpg",
+    "thumb": "",
+    "schoolIds": [
+      "school-yonginheungcheon"
+    ],
+    "topic": "school-electives",
+    "source": "용인홍천고등학교 2026 진로진학 아카데미 시즌4(2026.10.29 설명회, 사용자 제공 촬영 사진)",
+    "date": "2026"
   }
 ]
