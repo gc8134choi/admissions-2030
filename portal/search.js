@@ -40,7 +40,7 @@ const HELP = [["경기도교육청", "https://www.goe.go.kr", "도 단위 공지
 
 export function mountSearch(btn, { load, store, esc }) {
   let box = null, data = null, loading = null, last = null;
-  const prep = () => (loading ??= Promise.all([load("policy"), load("summary"), load("links").catch(() => ({ items: [] })), load("subject-info").catch(() => ({ subjects: [] })), load("places").catch(() => ({ places: [] })), loadSearchExtra(load).catch(() => [])]).then(([policy0, summary, links, si, pl, extra]) => { const policy = filterByProfile(policy0, loadProfile(store), { grade3: true }); /* 화면이 보여 주는 행만 검색 결과로(화면에 없는 행으로 링크되지 않게) */ data = { places: pl.places || [], guide: extra.map((d) => ({ t: d.t, text: d.text, href: d.href, from: "", s: d.s })), policy, summary, links: links.items || [], subjects: si.subjects || (Array.isArray(si) ? si : []) }; }));
+  const prep = () => (loading ??= Promise.all([load("policy"), load("summary"), load("links").catch(() => ({ items: [] })), load("subject-info").catch(() => ({ subjects: [] })), load("places").catch(() => ({ places: [] })), loadSearchExtra(load).catch(() => [])]).then(([policy0, summary, links, si, pl, extra]) => { const policy = filterByProfile(policy0, loadProfile(store), { grade3: true }); /* 화면이 보여 주는 행만 검색 결과로(화면에 없는 행으로 링크되지 않게) */ data = { places: pl.places || [], guide: extra.map((d) => ({ t: d.t, text: d.text, href: d.href, from: "", s: d.s, q: d.q, only: d.only })), policy, summary, links: links.items || [], subjects: si.subjects || (Array.isArray(si) ? si : []) }; }));
   const recent = () => store.get(RECENT_KEY, []);
   const remember = (q) => { if (q.trim().length < 2) return; store.set(RECENT_KEY, [q.trim(), ...recent().filter((x) => x !== q.trim())].slice(0, 6)); };
 
@@ -68,7 +68,9 @@ export function mountSearch(btn, { load, store, esc }) {
     const maps = [["학교 지도", "#select/curriculum?v=map"], ["중학교 배정", "#select/curriculum?v=middle"]].filter(([n]) => has(n, "지도", "중학교", "배정")).map(([n, h]) => ({ href: h, t: n, s: "학교" }));
     return [["가이드·용어", gd], ["일정·제도", rows], ["학교", [...sch, ...plc]], ["과목", sub], ["바로가기", lk], ["화면", [...pages, ...maps]]].filter(([, l]) => l.length);
   };
-  const search = (q) => { let r = searchOnce(q, false); if (!r.length && String(q).trim().includes(" ")) r = searchOnce(q, true); return r; };
+  // 안내가 정해진 주제(이사·배정 서류·자사고 배점·재수 …)는 느슨하게 맞는 다른 행보다 먼저 보여 준다. 없는 주제는 엉뚱한 행 대신 안내만 보인다.
+  const priority = (q) => { const nq = norm(q); const hit = data.guide.filter((g) => g.q && new RegExp(g.q).test(nq)); return hit.length ? { list: hit.map((g) => ({ href: g.href, t: g.t, s: g.s })), only: hit.some((g) => g.only) } : null; };
+  const search = (q) => { const p = priority(q); if (p && p.only) return [["바로 안내", p.list]]; let r = searchOnce(q, false); if (!r.length && String(q).trim().includes(" ")) r = searchOnce(q, true); if (p) r = [["바로 안내", p.list], ...r.map(([h, l]) => [h, l.filter((x) => !p.list.some((y) => y.t === x.t))]).filter(([, l]) => l.length)]; return r; };
   const item = (x) => `<li><a href="${esc(x.href)}"${x.ext ? ' target="_blank" rel="noopener"' : ""} data-go><b>${esc(x.t)}${x.ext ? " ↗" : ""}</b><span>${esc(x.s)}</span></a></li>`;
   const paint = () => {
     const q = box.querySelector("input").value, out = box.querySelector(".sr-out");

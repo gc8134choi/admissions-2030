@@ -21,7 +21,7 @@ for(const r of rows.length?sel:[]){const title=r.title;await p.fill('.srch input
  const EQ={'hs-11':['192학점']};const keys=[...(EQ[r.id]||[]).map(norm),norm(title.replace(/^\d{4}-\d{2}(-\d{2})?\s*/,'')).slice(0,12),norm(r.body).slice(0,14),...(r.events||[]).map(e=>norm(e.label||e.title).slice(0,12))].filter(x=>x.length>=4);
  const found=await page.evaluate((ks)=>{const t=document.body.textContent.replace(/[^0-9A-Za-z가-힣]/g,'');return ks.some(k=>t.includes(k))},keys);
  if(found)ok++;else bad.push(r.id+' '+title.slice(0,24)+' → '+hit.href);await page.close()}
-console.log(JSON.stringify({ok,bad,skipped:skipped.length}));await b.close()})();
+console.log(JSON.stringify({ok,bad,skipped:skipped.length,sk:skipped}));await b.close()})();
 """
 env = dict(os.environ)
 try: env["NODE_PATH"] = subprocess.run(["npm", "root", "-g"], capture_output=True, text=True).stdout.strip()
@@ -32,4 +32,5 @@ if r.returncode != 0: print("점검 실행 실패:", (r.stderr or r.stdout)[-300
 out = json.loads(r.stdout.strip().splitlines()[-1])
 print(f"링크 확인 {out['ok']}건 통과, 잘못된 링크 {len(out['bad'])}건, 검색에 제목이 안 나온 행 {out['skipped']}건")
 for b in out["bad"]: print(" ✗", b)
+for b in out.get("sk", []): print(" ·", b)
 sys.exit(1 if out["bad"] else 0)

@@ -24,13 +24,20 @@ export const GAPS = [
   { id: "briefing-sched", words: "설명회 일정 입학설명회 학교 설명회 배정 설명회 신입생 설명회 예비소집 날짜 공고", found: (D) => row(D, "gg-08") && { href: "#schedule?t=hs", t: "고교 평준화 배정 설명회 일정", s: firstSent(row(D, "gg-08").body) + " · 학교별 설명회는 각 학교 홈페이지 공고에서 확인해요" }, none: { href: "#schedule?t=life", t: "학교 설명회 일정", s: "학교별 설명회 날짜는 공고가 나오면 일정에 올라와요 → 배정 학교 홈페이지 공지에서 확인" } },
   { id: "early-grad", words: "조기졸업 조기 졸업 학점 초과 이수 졸업 앞당기기", found: (D) => (D.pol || []).find((r) => /조기 ?졸업/.test(r.title + (r.body || ""))) && { href: "#life/credit", t: "조기졸업", s: firstSent((D.pol || []).find((r) => /조기 ?졸업/.test(r.title + (r.body || ""))).title) }, none: { href: "#life/credit", t: "조기졸업", s: "조기졸업 안내는 이 포털에 아직 없어요 → 학교 교육과정 안내와 경기도교육청 공지에서 확인해요" } },
   { id: "parent-consult", words: "학부모 상담 상담 주간 학부모 면담 담임 상담 학부모 총회", found: (D) => (D.pol || []).find((r) => /학부모 (상담|총회)|상담 주간/.test(r.title + (r.body || ""))) && { href: "#schedule?t=life", t: "학부모 상담", s: firstSent((D.pol || []).find((r) => /학부모 (상담|총회)|상담 주간/.test(r.title + (r.body || ""))).title) }, none: { href: "#schedule?t=life", t: "학부모 상담 · 총회", s: "학교별 상담 주간·총회 날짜는 아직 없어요 → 학교 홈페이지 공지·가정통신문에서 확인해요" } },
+  // 아래 항목은 q(공백 뺀 검색어에 맞는 정규식)가 맞으면 다른 결과보다 앞에 "바로 안내"로 나온다. only면 엉뚱한 행을 섞지 않고 안내만 보인다.
+  { id: "mid-move", q: "^(?!.*(고교|고등|평준화|외고|자사고)).*(이사|전입)", words: "중학교 이사 이사 전입 중학교 배정 후 변경 재배정 졸업 초등학교 주소지", found: (D) => (D.mid || []).find((r) => r.id === "mp-06") && { href: "#select/curriculum?v=middle", t: "중학교 이사·전입과 배정 후 변경", s: firstSent((D.mid || []).find((r) => r.id === "mp-06").body, 110) } },
+  { id: "hs-assign-docs", q: "^(?!.*중학교).*배정.*(서류|준비물)", words: "배정원서 서류 배정 원서 제출 서류 배정 제출 서류 고교 배정 서류 준비물", found: (D) => row(D, "gg-19") && { href: "#select/curriculum?v=hs&ty=1", t: "경기 평준화 고교 배정 제출 서류", s: firstSent(row(D, "gg-19").body, 100) } },
+  { id: "mid-assign-docs", q: "중학교.*배정.*(서류|준비물)", words: "중학교 배정원서 제출 서류 중학교 배정 서류 초등학교 배정원서 서류", found: (D) => (D.mid || []).find((r) => /제출 ?서류/.test(r.title)) && { href: "#select/curriculum?v=middle", t: "중학교 배정원서 제출 서류", s: "" }, none: { href: "#select/curriculum?v=middle", t: "중학교 배정원서 제출 서류", s: "이 포털에 아직 없어요(교육지원청 안내 본문에 서류 목록이 적혀 있지 않았어요) → 배정원서 작성은 출신 초등학교(2026.11.2~11.6), 서류는 용인교육지원청 031-8020-9113~4로 확인해요" } },
+  { id: "sa-score", q: "(자사고|외고|국제고|외국어고).*(면접|점수|배점)", words: "자사고 면접 점수 외고 국제고 면접 배점 외국어고 자기주도학습전형 배점 용인외대부고", found: (D) => row(D, "gg-21") && { href: "#select/curriculum?v=hs&ty=1", t: "외고·국제고·자사고 전형 배점(용인외대부고 예시)", s: firstSent(row(D, "gg-21").body, 100) } },
+  { id: "retake", only: true, q: "재수|n수|삼수|반수", words: "재수 n수 재수생 반수 삼수 재도전", found: () => false, none: { href: "#library/links", t: "재수·N수", s: "이 포털에 아직 없어요(현재는 고입·고교학점제·대입 제도까지 다뤄요) → 대입 제도는 대교협 대입정보포털 어디가·평가원 수능 안내에서 확인해요" } },
+  { id: "hs-list", only: true, q: "(수지구?|용인|우리동네|근처).*(고교|고등학교|고등).*(목록|리스트|명단|어디|몇)|(고교|고등학교).*(목록|리스트|명단)", words: "수지구 고교 목록 고등학교 목록 고교 명단 수지구 고등학교 용인 고교 리스트", found: (D) => (D.hc?.schools || []).length > 0 && { href: "#select/curriculum?v=hs", t: "고교 기본 정보 표", s: `고교 ${(D.hc.schools || []).length}곳의 규모·입학 방식·교육과정·진학을 한 표로 보여요(학교 31곳 기본 정보 표)` }, none: { href: "#library/links", t: "고교 목록", s: "이 포털에 아직 없어요 → 경기도교육청 학교 정보·학교알리미에서 지역별 학교 목록을 확인해요" } },
 ];
 export function gapDocs(D) {
-  return GAPS.map((g) => { const f = g.found(D); const d = f || g.none; return d ? { gap: g.id, found: !!f, href: d.href, t: d.t, s: d.s, text: J([g.words, d.t, d.s]) } : null; }).filter(Boolean);
+  return GAPS.map((g) => { const f = g.found(D); const d = f || g.none; return d ? { gap: g.id, found: !!f, href: d.href, t: d.t, s: d.s, q: g.q, only: !!g.only, text: J([g.words, d.t, d.s]) } : null; }).filter(Boolean);
 }
 
 export async function loadSearchExtra(load) {
-  const [guide, tl, ht, gl, hc, bf, mc, el, ex, rl, pol, evs, un, ar] = await Promise.all([ok(load("middle-guide")), ok(load("timeline")), ok(load("hs-types")), ok(load("glossary")), ok(load("hs-compare")), ok(load("briefings")), ok(load("middle-compare")), ok(load("electives")), ok(load("exam-trends")), ok(load("rules")), ok(load("policy")), ok(load("events")), ok(load("universities")), ok(load("admission-rules"))]);
+  const [guide, tl, ht, gl, hc, bf, mc, el, ex, rl, pol, evs, un, ar, mid] = await Promise.all([ok(load("middle-guide")), ok(load("timeline")), ok(load("hs-types")), ok(load("glossary")), ok(load("hs-compare")), ok(load("briefings")), ok(load("middle-compare")), ok(load("electives")), ok(load("exam-trends")), ok(load("rules")), ok(load("policy")), ok(load("events")), ok(load("universities")), ok(load("admission-rules")), ok(load("middle"))]);
   const out = [];
   for (const s of guide?.sections || []) for (const it of s.items) out.push({ href: "#select/curriculum?v=middle", t: s.title, s: it.text.slice(0, 80), text: J([s.title, it.text]) });
   for (const e of tl?.events || []) out.push({ href: "#select/curriculum?v=middle", t: `${e.stage} · 큰 그림 연표`, s: e.what.slice(0, 80), text: J([e.stage, e.what, e.note]) });
@@ -54,6 +61,7 @@ export async function loadSearchExtra(load) {
   if (m04) out.push({ href: "#schedule?t=hs", t: "경기 후기 배정 학교 발표 · 합격자 발표", s: m04[0].slice(0, 80), text: J(["후기 합격자 발표 후기 배정 발표 배정 학교 발표 배정 대상자 발표 경기 후기 평준화 일반고 합격 발표", m04[0]]) });
   out.push({ href: "#select/curriculum?v=middle", t: "중학교 입학 서류 · 준비물", s: "예비소집·준비물·방과후학교 신청은 배정 학교가 정해진 뒤(2027.1월) 각 중학교가 공지해요 → 배정 학교 홈페이지 공지에서 확인", text: "중학교 입학 서류 입학 서류 제출 서류 준비물 예비소집 방과후 신입생 등록 배정 학교 공지" });
   for (const u of un?.universities || []) { const n = (ar?.rules || []).filter((r) => r.universityId === u.id).length; if (n) out.push({ href: "#select/curriculum?v=univ", t: `${u.name} · 과목 요건(대학 요건)`, s: `${n}개 전형·모집단위의 필수·권장 과목을 우리 학교 편제표와 맞춰 볼 수 있어요`, text: J([u.name, "과목 요건 필수 권장 과목 모집단위 전형 대학 요건", ...(u.aliases || [])]) }); }
-  out.push(...gapDocs({ pol, mc, hc, ev: evs }));
+  for (const r of mid?.principles || []) out.push({ href: "#select/curriculum?v=middle", t: `중학교 배정 · ${r.title}`, s: String(r.body).slice(0, 80), text: J([r.title, r.body, r.id === "mp-06" ? "중학교 이사 이사 전입 재배정" : ""]) });
+  out.push(...gapDocs({ pol, mc, hc, ev: evs, mid: mid?.principles }));
   return out;
 }
