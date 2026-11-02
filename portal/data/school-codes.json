@@ -4,7 +4,7 @@
   "checkedAt": "2026-11-01",
   "count": 69,
   "withNeis": 69,
-  "withSchoolinfo": 10
+  "withSchoolinfo": 21
  },
  "items": [
   {
@@ -47,9 +47,13 @@
     },
     {
      "system": "schoolinfo",
-     "code": null,
-     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
-     "asOf": "2026-11-01"
+     "code": "S090003474",
+     "param": "GS_CD",
+     "asOf": "2026-11-02",
+     "source": {
+      "name": "학교 홈페이지 학교알리미 링크 또는 학교알리미 학교 페이지(같은 학교명 확인)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003474"
+     }
     }
    ]
   },
@@ -70,9 +74,13 @@
     },
     {
      "system": "schoolinfo",
-     "code": null,
-     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
-     "asOf": "2026-11-01"
+     "code": "S090003479",
+     "param": "GS_CD",
+     "asOf": "2026-11-02",
+     "source": {
+      "name": "학교 홈페이지 학교알리미 링크 또는 학교알리미 학교 페이지(같은 학교명 확인)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003479"
+     }
     }
    ]
   },
@@ -116,9 +124,13 @@
     },
     {
      "system": "schoolinfo",
-     "code": null,
-     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
-     "asOf": "2026-11-01"
+     "code": "J100004974",
+     "param": "HG_CD",
+     "asOf": "2026-11-02",
+     "source": {
+      "name": "학교 홈페이지 학교알리미 링크 또는 학교알리미 학교 페이지(같은 학교명 확인)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100004974"
+     }
     }
    ]
   },
@@ -139,9 +151,13 @@
     },
     {
      "system": "schoolinfo",
-     "code": null,
-     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
-     "asOf": "2026-11-01"
+     "code": "S090003482",
+     "param": "GS_CD",
+     "asOf": "2026-11-02",
+     "source": {
+      "name": "학교 홈페이지 학교알리미 링크 또는 학교알리미 학교 페이지(같은 학교명 확인)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003482"
+     }
     }
    ]
   },
@@ -162,9 +178,13 @@
     },
     {
      "system": "schoolinfo",
-     "code": null,
-     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
-     "asOf": "2026-11-01"
+     "code": "J100006035",
+     "param": "HG_CD",
+     "asOf": "2026-11-02",
+     "source": {
+      "name": "학교 홈페이지 학교알리미 링크 또는 학교알리미 학교 페이지(같은 학교명 확인)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100006035"
+     }
     }
    ]
   },
@@ -208,9 +228,13 @@
     },
     {
      "system": "schoolinfo",
-     "code": null,
-     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
-     "asOf": "2026-11-01"
+     "code": "S090003490",
+     "param": "GS_CD",
+     "asOf": "2026-11-02",
+     "source": {
+      "name": "학교 홈페이지 학교알리미 링크 또는 학교알리미 학교 페이지(같은 학교명 확인)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003490"
+     }
     }
    ]
   },
@@ -231,9 +255,13 @@
     },
     {
      "system": "schoolinfo",
-     "code": null,
-     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
-     "asOf": "2026-11-01"
+     "code": "S090003494",
+     "param": "GS_CD",
+     "asOf": "2026-11-02",
+     "source": {
+      "name": "학교 홈페이지 학교알리미 링크 또는 학교알리미 학교 페이지(같은 학교명 확인)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003494"
+     }
     }
    ]
   },
@@ -381,9 +409,13 @@
     },
     {
      "system": "schoolinfo",
-     "code": null,
-     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
-     "asOf": "2026-11-01"
+     "code": "S090003477",
+     "param": "GS_CD",
+     "asOf": "2026-11-02",
+     "source": {
+      "name": "학교 홈페이지 학교알리미 링크 또는 학교알리미 학교 페이지(같은 학교명 확인)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003477"
+     }
     }
    ]
   },
@@ -404,9 +436,13 @@
     },
     {
      "system": "schoolinfo",
-     "code": null,
-     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
-     "asOf": "2026-11-01"
+     "code": "S090003478",
+     "param": "GS_CD",
+     "asOf": "2026-11-02",
+     "source": {
+      "name": "학교 홈페이지 학교알리미 링크 또는 학교알리미 학교 페이지(같은 학교명 확인)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003478"
+     }
     }
    ]
   },
@@ -427,9 +463,13 @@
     },
     {
      "system": "schoolinfo",
-     "code": null,
-     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
-     "asOf": "2026-11-01"
+     "code": "S090003480",
+     "param": "GS_CD",
+     "asOf": "2026-11-02",
+     "source": {
+      "name": "학교 홈페이지 학교알리미 링크 또는 학교알리미 학교 페이지(같은 학교명 확인)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003480"
+     }
     }
    ]
   },
@@ -450,9 +490,13 @@
     },
     {
      "system": "schoolinfo",
-     "code": null,
-     "nullReason": "학교알리미는 학교 이름 검색 경로를 코드 없이 열 수 없어 아직 못 구함(수지구 고교 10곳만 확인됨)",
-     "asOf": "2026-11-01"
+     "code": "S090003489",
+     "param": "GS_CD",
+     "asOf": "2026-11-02",
+     "source": {
+      "name": "학교 홈페이지 학교알리미 링크 또는 학교알리미 학교 페이지(같은 학교명 확인)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003489"
+     }
     }
    ]
   },
