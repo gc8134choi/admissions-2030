@@ -108,7 +108,7 @@ for (const it of items) {
   for (const pl of it.plans ?? []) {
     for (const x of pl.excluded ?? []) if (pl.rows.some((r) => r.subject === x.subject)) errs.push(`${it.name} ${pl.grade}학년: 제외한 과목 "${x.subject}"이 같은 학년 표에도 있음(제외 사유와 모순)`);
     for (const r of pl.rows) { const k = `${pl.term}|${r.subject}`; (seenSub.get(k) ?? seenSub.set(k, []).get(k)).push(pl.grade); }
-    if (pl.rows.length <= 1 && !pl.partial && !/일부 과목만 수록/.test(viewSrc)) errs.push(`${it.name} ${pl.grade}학년: 과목 ${pl.rows.length}개뿐인데 화면에 '일부 과목만 수록' 표기가 없음`);
+    if (pl.rows.length <= 1 && !/일부 과목만 수록/.test(viewSrc)) errs.push(`${it.name} ${pl.grade}학년: 과목 ${pl.rows.length}개뿐인데 화면에 '일부 과목만 수록' 표기가 없음`);
   }
   for (const [k, g] of seenSub) if (g.length > 1 && !DUP_REVIEWED.has(`${it.name}|${k.split("|")[1]}`)) errs.push(`${it.name} ${k}: ${g.join("·")}학년에 중복 배치 — 원문 확인 후 DUP_REVIEWED에 등록하거나 바로잡기`);
 }
