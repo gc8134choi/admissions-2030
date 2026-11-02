@@ -30,6 +30,8 @@ if (errs.length) { console.error(errs.join("\n")); process.exit(1); }
 
 const clean = (v) => (typeof v === "string" ? plain(v) : Array.isArray(v) ? v.map(clean) : v && typeof v === "object" ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, k === "url" ? x : clean(x)])) : v);
 const body = clean(Object.fromEntries(Object.entries(draft).filter(([k]) => k !== "_meta")));
+// 외국어고·국제고: 교육과정·면접·내신 배점은 학교별 모집요강에만 있다
+for (const ty of body.types ?? []) if (/외국어고/.test(ty.name) && ty.curriculum?.value == null) ty.curriculum.nullReason = "교육과정·면접·내신 배점은 학교별 모집요강(입학전형 시행계획)에만 있고 학교알리미 공시 목록에 없어요 → 학교 입학처 요강 공고(보통 6~7월)에서 확인";
 const out = { _meta: { note: "고교 유형 비교·경기 고입 달력·원서 절차·서류(생성물, 손으로 고치지 않는다). research/data/hs-types-draft.json에서 tools/build-hs-types.mjs가 만든다.", checkedAt: draft._meta?.checkedAt ?? null }, ...body };
 const json = JSON.stringify(withSourceIds(out), null, 1) + "\n";
 const target = "portal/data/hs-types.json";

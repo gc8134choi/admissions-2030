@@ -189,14 +189,14 @@
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교알리미 학생 현황에서 확인"
     },
     "meal": {
      "value": null,
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교 홈페이지 급식 게시판에서 확인"
     },
     "uniform": {
      "value": null,
@@ -331,14 +331,14 @@
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교알리미 학생 현황에서 확인"
     },
     "meal": {
      "value": null,
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교 홈페이지 급식 게시판에서 확인"
     },
     "uniform": {
      "value": null,
@@ -469,14 +469,14 @@
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교알리미 학생 현황에서 확인"
     },
     "meal": {
      "value": null,
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교 홈페이지 급식 게시판에서 확인"
     },
     "uniform": {
      "value": null,
@@ -607,14 +607,14 @@
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교알리미 학생 현황에서 확인"
     },
     "meal": {
      "value": null,
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교 홈페이지 급식 게시판에서 확인"
     },
     "uniform": {
      "value": null,
@@ -749,14 +749,14 @@
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교알리미 학생 현황에서 확인"
     },
     "meal": {
      "value": null,
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교 홈페이지 급식 게시판에서 확인"
     },
     "uniform": {
      "value": null,
@@ -891,14 +891,14 @@
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교알리미 학생 현황에서 확인"
     },
     "meal": {
      "value": null,
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교 홈페이지 급식 게시판에서 확인"
     },
     "uniform": {
      "value": null,
@@ -1029,14 +1029,14 @@
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교알리미 학생 현황에서 확인"
     },
     "meal": {
      "value": null,
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교 홈페이지 급식 게시판에서 확인"
     },
     "uniform": {
      "value": null,
@@ -1171,14 +1171,14 @@
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교알리미 학생 현황에서 확인"
     },
     "meal": {
      "value": null,
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교 홈페이지 급식 게시판에서 확인"
     },
     "uniform": {
      "value": null,
@@ -1309,14 +1309,14 @@
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교알리미 학생 현황에서 확인"
     },
     "meal": {
      "value": null,
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교 홈페이지 급식 게시판에서 확인"
     },
     "uniform": {
      "value": null,
@@ -1447,14 +1447,14 @@
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교알리미 학생 현황에서 확인"
     },
     "meal": {
      "value": null,
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교 홈페이지 급식 게시판에서 확인"
     },
     "uniform": {
      "value": null,
@@ -1585,14 +1585,14 @@
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교알리미 학생 현황에서 확인"
     },
     "meal": {
      "value": null,
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교 홈페이지 급식 게시판에서 확인"
     },
     "uniform": {
      "value": null,
@@ -1723,14 +1723,14 @@
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교알리미 학생 현황에서 확인"
     },
     "meal": {
      "value": null,
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교 홈페이지 급식 게시판에서 확인"
     },
     "uniform": {
      "value": null,
@@ -1865,14 +1865,14 @@
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 공시값을 아직 못 가져왔어요. 학교알리미(schoolinfo.go.kr) 학교 페이지의 학생 현황에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교알리미 학생 현황에서 확인"
     },
     "meal": {
      "value": null,
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교알리미 급식 현황은 학교별 페이지에서만 열려 아직 못 모았어요. 학교 홈페이지 급식 안내에서 확인하세요."
+     "nullReason": "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교 홈페이지 급식 게시판에서 확인"
     },
     "uniform": {
      "value": null,
