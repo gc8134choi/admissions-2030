@@ -1,9 +1,9 @@
 {
  "_meta": {
   "note": "출처 등록부(생성물, 손으로 고치지 않는다). tools/build-sources.mjs가 portal/data의 출처 항목에서 만든다. 데이터 행의 sourceIds가 이 id를 가리킨다.",
-  "count": 135,
+  "count": 137,
   "kinds": {
-   "official": 91,
+   "official": 93,
    "media": 25,
    "user": 16,
    "self": 0,
@@ -1480,6 +1480,23 @@
    }
   },
   {
+   "id": "src-b7b8f4d7",
+   "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005749",
+   "kind": "official",
+   "org": "학교알리미(교육부·한국교육개발원)",
+   "checked": "2026-11-02",
+   "names": [
+    "학교알리미 공시 3-가-3 학년별·학급별 학생수(용인한빛중학교)",
+    "학교알리미 공시 9-가-1 급식 실시 현황(용인한빛중학교)",
+    "학교알리미 공시 15-카 교복 구매 유형 및 단가(용인한빛중학교)",
+    "학교알리미 학교 페이지(학교명 확인, 코드는 외부 안내 페이지에서 찾고 학교알리미에서 이름으로 검증)"
+   ],
+   "usedIn": {
+    "middle-compare.json": 4,
+    "school-codes.json": 1
+   }
+  },
+  {
    "id": "src-b9740430",
    "url": "https://www.newspim.com/news/view/20260805000395",
    "kind": "media",
@@ -1942,6 +1959,23 @@
     "events.json": 1,
     "policy.json": 1,
     "timeline.json": 2
+   }
+  },
+  {
+   "id": "src-f061ddaf",
+   "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005868",
+   "kind": "official",
+   "org": "학교알리미(교육부·한국교육개발원)",
+   "checked": "2026-11-02",
+   "names": [
+    "학교알리미 공시 3-가-3 학년별·학급별 학생수(성서중학교)",
+    "학교알리미 공시 9-가-1 급식 실시 현황(성서중학교)",
+    "학교알리미 공시 15-카 교복 구매 유형 및 단가(성서중학교)",
+    "학교알리미 학교 페이지(학교명 확인, 코드는 외부 안내 페이지에서 찾고 학교알리미에서 이름으로 검증)"
+   ],
+   "usedIn": {
+    "middle-compare.json": 4,
+    "school-codes.json": 1
    }
   },
   {
