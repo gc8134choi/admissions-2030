@@ -238,7 +238,8 @@
             "name": "학교알리미 학교정보(2026 공시, GS_CD S090005416)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "일반 1~3학년 1149명 + 특수학급 16명 포함한 전체 학생수(학교알리미 3-가-3, 2026.5 2차 공시). 특수학급이 없는 학교는 0명"
         },
         "teachers": {
           "value": 88,
@@ -395,7 +396,8 @@
             "name": "학교알리미 학교정보(2026 공시, GS_CD S090005416)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
         }
       }
     },
@@ -463,7 +465,8 @@
             "name": "학교알리미 학교정보(2026 공시, GS_CD S090005904)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "일반 1~3학년 1053명 + 특수학급 8명 + 순회학급 1명 포함한 전체 학생수(학교알리미 3-가-3, 2026.5 2차 공시). 특수학급이 없는 학교는 0명"
         },
         "teachers": {
           "value": 78,
@@ -614,7 +617,8 @@
             "name": "학교알리미 학교정보(2026 공시, GS_CD S090005904)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
         }
       }
     },
@@ -682,7 +686,8 @@
             "name": "학교알리미 학교정보(2026 공시, GS_CD S090000844)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "일반 1~3학년 1234명 + 특수학급 10명 포함한 전체 학생수(학교알리미 3-가-3, 2026.5 2차 공시). 특수학급이 없는 학교는 0명"
         },
         "teachers": {
           "value": 84,
@@ -833,7 +838,8 @@
             "name": "학교알리미 학교정보(2026 공시, GS_CD S090000844)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
         }
       }
     },
@@ -901,7 +907,8 @@
             "name": "학교알리미 학교정보(2026 공시, GS_CD S090000655)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "일반 1~3학년 1307명 + 특수학급 6명 포함한 전체 학생수(학교알리미 3-가-3, 2026.5 2차 공시). 특수학급이 없는 학교는 0명"
         },
         "teachers": {
           "value": 97,
@@ -1052,7 +1059,8 @@
             "name": "학교알리미 학교정보(2026 공시, GS_CD S090000655)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
         }
       }
     },
@@ -1120,7 +1128,8 @@
             "name": "학교알리미 학교정보(2026 공시, GS_CD S090006522)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "일반 1~3학년 951명 + 특수학급 9명 포함한 전체 학생수(학교알리미 3-가-3, 2026.5 2차 공시). 특수학급이 없는 학교는 0명"
         },
         "teachers": {
           "value": 71,
@@ -1268,7 +1277,8 @@
             "name": "학교알리미 학교정보(2026 공시, GS_CD S090006522)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
         }
       }
     },
@@ -1336,7 +1346,8 @@
             "name": "학교알리미 학교정보(2026 공시, GS_CD S090004893)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "일반 1~3학년 1119명 + 특수학급 9명 포함한 전체 학생수(학교알리미 3-가-3, 2026.5 2차 공시). 특수학급이 없는 학교는 0명"
         },
         "teachers": {
           "value": 85,
@@ -1484,7 +1495,8 @@
             "name": "학교알리미 학교정보(2026 공시, GS_CD S090004893)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
         }
       }
     },
@@ -1552,7 +1564,8 @@
             "name": "학교알리미 학교정보(2026 공시, GS_CD S090006525)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "일반 1~3학년 1113명 + 특수학급 9명 포함한 전체 학생수(학교알리미 3-가-3, 2026.5 2차 공시). 특수학급이 없는 학교는 0명"
         },
         "teachers": {
           "value": 84,
@@ -1700,7 +1713,8 @@
             "name": "학교알리미 학교정보(2026 공시, GS_CD S090006525)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
         }
       }
     },
@@ -1768,7 +1782,8 @@
             "name": "학교알리미 학교정보(2026 공시, GS_CD S090000801)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "일반 1~3학년 1123명 + 특수학급 0명 포함한 전체 학생수(학교알리미 3-가-3, 2026.5 2차 공시). 특수학급이 없는 학교는 0명"
         },
         "teachers": {
           "value": 80,
@@ -1916,7 +1931,8 @@
             "name": "학교알리미 학교정보(2026 공시, GS_CD S090000801)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
         }
       }
     },
@@ -1984,7 +2000,8 @@
             "name": "학교알리미 학교정보(2026 공시, GS_CD S090005458)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "일반 1~3학년 916명 + 특수학급 8명 포함한 전체 학생수(학교알리미 3-가-3, 2026.5 2차 공시). 특수학급이 없는 학교는 0명"
         },
         "teachers": {
           "value": 72,
@@ -2132,7 +2149,8 @@
             "name": "학교알리미 학교정보(2026 공시, GS_CD S090005458)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
         }
       }
     },
@@ -2200,7 +2218,8 @@
             "name": "학교알리미 학교정보(2026 공시, GS_CD S090005415)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "일반 1~3학년 604명 + 특수학급 0명 포함한 전체 학생수(학교알리미 3-가-3, 2026.5 2차 공시). 특수학급이 없는 학교는 0명"
         },
         "teachers": {
           "value": 55,
@@ -2348,7 +2367,8 @@
             "name": "학교알리미 학교정보(2026 공시, GS_CD S090005415)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
         }
       }
     },
