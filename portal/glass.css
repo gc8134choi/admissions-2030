@@ -435,7 +435,7 @@ button.term{text-decoration:underline dotted!important;text-decoration-thickness
 
 /* 용어 ⓘ(glossary.css와 같은 내용): 늦게 불러오면 ⓘ가 붙을 때 글이 밀려서 항상 불러오는 이 파일에도 둔다 */
 /* 용어사전 ⓘ (glossary.js): 과목 설명 ⓘ(.si)와 같은 모양, 터치 영역은 넉넉히 */
-.gl-i{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;width:24px;height:24px;min-width:24px;min-height:24px;margin:-2px 1px -2px 0;padding:0;border:0;background:none;color:inherit;cursor:pointer;font:inherit;font-size:14px;line-height:1;border-radius:50%;vertical-align:middle;position:relative;top:-1px;z-index:2} /* 실제 요소를 24×24px(WCAG 2.5.8)로 하고, 위아래 음수 여백으로 줄 간격은 벌리지 않는다 */
+.gl-i{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;width:24px;height:24px;min-width:24px;min-height:24px;margin:-4px 1px -4px 0;padding:0;border:0;background:none;color:inherit;cursor:pointer;font:inherit;font-size:14px;line-height:1;border-radius:50%;vertical-align:middle;position:relative;top:-1px;z-index:2} /* 실제 요소를 24×24px(WCAG 2.5.8)로 하고, 위아래 음수 여백으로 줄 간격은 벌리지 않는다 */
 .gl-rel{border:0;background:none;color:var(--accent);cursor:pointer;font:inherit;padding:2px 0;text-decoration:underline}
 .gl-i:hover,.gl-i[aria-expanded="true"]{background:var(--soft,rgba(0,0,0,.06))}.gl-i:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 /* 본문급 14px대 정리(15차): 바로가기 설명 글·출처 목록·상태 표 칸·과목 나열·중학교 비교 표 칸은 15px. 라벨·출처·상태 칩은 그대로 */
@@ -455,3 +455,4 @@ button.term{display:inline!important} /* 인라인 용어 버튼의 박스가 �
 #main .ed-ym h3{font-size:15px!important}
 @media (min-width:900px){#main .g .v,#main .plan-n .big,#main .mid-s b,#main .mid-s small{font-size:15px!important}} /* 데스크톱 홈의 14px대 값 글자(모바일 홈 높이는 그대로) */
 .srch [data-x]{min-width:44px;min-height:44px} /* 검색 닫기 버튼 터치 크기 */
+.srch li a{text-decoration:none} .srch li a b{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px} /* 검색 결과: 제목만 밑줄, 요약 문장은 밑줄 없음 */

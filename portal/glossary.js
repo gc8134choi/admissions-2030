@@ -37,7 +37,7 @@ export function termHtml(name, escFn = esc) {
 const SCANNED = new WeakSet();
 let RE = null, RE_N = -1;
 const reOf = () => { if (RE_N !== ORIG.length) { RE_N = ORIG.length; RE = ORIG.length ? new RegExp(ORIG.map((w) => w.trim().replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/\s+/g, "\\s*")).join("|"), "g") : null; } return RE; }; // 띄어쓰기가 있는 용어(수능 최저·창의적 체험활동)도 본문에서 찾는다
-export function decorateGlossary(root, { skip = "a,button,script,style,textarea,input,select,.gl-i,.gl-rel,.si,.term,h1,.srcp,.srcb" } = {}) {
+export function decorateGlossary(root, { skip = "a,button,script,style,textarea,input,select,label,summary,[role=button],.pn-o,.gl-i,.gl-rel,.si,.term,h1,.srcp,.srcb" } = {}) {
   const re = reOf();
   if (!root || !re) return;
   // 용어마다 "구역"(접이식·섹션·카드·표) 안에서 첫 등장에 ⓘ를 붙인다. 화면 전체에서 한 번만이 아니라 구역마다 한 번이라 긴 화면에서도 풀이가 가까이 있다.

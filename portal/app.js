@@ -26,12 +26,12 @@ const $ = (s) => document.querySelector(s);
 // 인쇄: 늦게 그리는 구역을 바로 그리고 접힌 구역(details)을 모두 펼친다. 끝나면 원래대로(print 미디어 에뮬레이션도 같이 처리)
 { const fns = [], opened = new Set(); let printing = false, timers = [];
   window.__onPrint = (fn) => fns.push(fn); window.__printing = false; window.__printUndo = []; // 인쇄 때문에 새로 그린 구역은 끝나면 원래(안 그린) 상태로 되돌린다
-  const snaps = new Map(); // 접이식을 열기 직전의 안쪽 모습(열면서 늦게 채워지는 내용이 인쇄 뒤에 남지 않게)
+  const snaps = new Map(); let footSnap = null; // 접이식을 열기 직전의 안쪽 모습(열면서 늦게 채워지는 내용이 인쇄 뒤에 남지 않게)
   const openAll = () => { if (!printing) return; document.querySelectorAll("details:not([open])").forEach((d) => { if (!opened.has(d)) { opened.add(d); snaps.set(d, d.innerHTML); } d.open = true; }); }; // 인쇄 중에 새로 생긴 접이식도 기록해 두었다가 되돌린다
   let mo = null;
-  const start = () => { if (printing) return; printing = true; window.__printing = true; fns.forEach((f) => { try { f(); } catch {} }); openAll(); const main = document.querySelector("#main"); if (main) { mo = new MutationObserver(openAll); mo.observe(main, { childList: true, subtree: true }); } // 인쇄 중에 새로 그려지는 접이식도 바로 펼치고 기록한다
+  const start = () => { if (printing) return; printing = true; window.__printing = true; footSnap = document.querySelector(".pgfoot")?.innerHTML ?? null; fns.forEach((f) => { try { f(); } catch {} }); openAll(); const main = document.querySelector("#main"); if (main) { mo = new MutationObserver(openAll); mo.observe(main, { childList: true, subtree: true }); } // 인쇄 중에 새로 그려지는 접이식도 바로 펼치고 기록한다
     timers = [setTimeout(openAll, 600), setTimeout(openAll, 1600)]; }; // 열면서 새로 그려진 접이식도 다시 펼친다
-  const end = () => { printing = false; window.__printing = false; mo?.disconnect(); mo = null; timers.forEach(clearTimeout); timers = []; opened.forEach((d) => { d.open = false; if (d.isConnected && snaps.has(d) && d.innerHTML !== snaps.get(d)) d.innerHTML = snaps.get(d); }); opened.clear(); snaps.clear(); const undo = window.__printUndo.splice(0); undo.forEach((f) => { try { f(); } catch {} }); };
+  const end = () => { printing = false; window.__printing = false; mo?.disconnect(); mo = null; timers.forEach(clearTimeout); timers = []; opened.forEach((d) => { d.open = false; if (d.isConnected && snaps.has(d) && d.innerHTML !== snaps.get(d)) d.innerHTML = snaps.get(d); }); opened.clear(); snaps.clear(); { const f = document.querySelector(".pgfoot"); if (f && footSnap != null && f.innerHTML !== footSnap) f.innerHTML = footSnap; footSnap = null; } const undo = window.__printUndo.splice(0); undo.forEach((f) => { try { f(); } catch {} }); };
   const mq = matchMedia("print"); mq.addEventListener?.("change", (e) => (e.matches ? start() : end()));
   addEventListener("beforeprint", start); addEventListener("afterprint", end); }
 const esc = (s = "") => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -555,13 +555,13 @@ await initProfiles(load);
 }
 mountProfileSwitch([$("#pf")], store, render);
 // 검색(약 64KB)은 처음 열 때(또는 한가할 때) 불러온다: 홈 첫 화면의 스크립트를 줄인다
-{ const btn = $("#srbtn"); let mounted = false, mod = null;
+{ const btn = $("#srbtn"); let mounted = false, mod = null, handle = null;
   const loadMod = () => (mod ||= import("./search.js"));
-  const mount = async () => { const m = await loadMod(); if (!mounted) { mounted = true; btn.removeEventListener("click", first, true); removeEventListener("keydown", slash, true); m.mountSearch(btn, { load, store, esc }); } };
+  const mount = async () => { const m = await loadMod(); if (!mounted) { mounted = true; btn.removeEventListener("click", first, true); removeEventListener("keydown", slash, true); handle = m.mountSearch(btn, { load, store, esc }); } return handle; };
   const first = async (e) => { if (mounted) return; e.stopImmediatePropagation(); e.preventDefault(); await mount(); btn.click(); };
   const slash = async (e) => { if (e.key !== "/" || mounted || /INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName)) return; e.preventDefault(); await mount(); btn.click(); };
   btn.addEventListener("click", first, true); addEventListener("keydown", slash, true);
-  (window.requestIdleCallback || ((f) => setTimeout(f, 2500)))(() => { loadMod().catch(() => {}); }); }
+  (window.requestIdleCallback || ((f) => setTimeout(f, 2500)))(async () => { try { await mount(); handle?.warm?.(); } catch {} }); } // 한가할 때 모듈을 불러 붙이고 데이터까지 미리 읽는다(첫 검색 대기 단축)
 // 용어 ⓘ를 모든 화면으로: 화면이 그려지거나 바뀔 때(필터 등) 사전의 용어를 묶음마다 처음 한 번 누르는 말로 바꾼다
 initSrcRef();
 { // 화면마다 "출처 …" 줄을 버튼으로 접는다(필터·펼침으로 다시 그려져도 따라간다)
