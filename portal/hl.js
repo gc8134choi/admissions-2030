@@ -7,7 +7,7 @@ export function applyHl() {
   let tries = 0; const at = location.hash.split("?")[0]; // 화면이 주소의 ?뒤를 다시 쓰므로(필터 동기화) 처음 읽은 값을 쓰고, 다른 화면으로 가면 멈춘다
   const t = setInterval(() => {
     if (++tries > 25 || location.hash.split("?")[0] !== at) return clearInterval(t);
-    const cand = [...document.querySelectorAll("#main .ed-row, #main tr, #main li, #main summary, #main dd, #main td, #main p")].filter((e) => key(e.textContent).includes(k));
+    const cand = [...document.querySelectorAll("#main .ed-row, #main tr, #main li, #main summary, #main dd, #main td, #main p, #main .aux")].filter((e) => key(e.textContent).includes(k));
     const el = cand.find((c) => !cand.some((o) => o !== c && c.contains(o)));
     if (!el) return;
     clearInterval(t);
