@@ -81,7 +81,13 @@ export function mountSearch(btn, { load, store, esc }) {
     if (hs) { const i = r.findIndex(([h]) => h.startsWith("일정")), j = r.findIndex(([h]) => h.startsWith("가이드")); if (i > j && j >= 0) { const [g] = r.splice(i, 1); r.splice(j, 0, g); } }
     return r;
   };
-  const search = (q) => { const p = priority(q); if (p && p.only) return [["바로 안내", p.list]]; let r = searchOnce(q, false); if (!r.length && String(q).trim().includes(" ")) r = searchOnce(q, true); r = reweight(r, q); if (p) r = [["바로 안내", p.list], ...r.map(([h, l]) => [h, l.filter((x) => !p.list.some((y) => y.t === x.t))]).filter(([, l]) => l.length)]; return r; };
+  const search = (q) => { const p = priority(q); if (p && p.only) return [["바로 안내", p.list]]; let r = searchOnce(q, false); if (!r.length && String(q).trim().includes(" ")) r = searchOnce(q, true); r = reweight(r, q);
+    // 학교 이름과 앞부분이 맞는 말이 있으면(예: 상현중) 그 학교를 맨 위에 두고, 이름이 다른 학교(상현고 등) 행은 걷어 낸다
+    const toks0 = String(q).split(/\s+/).map(norm).filter((t) => t.length >= 3 && !STOP.has(t));
+    const ex = data.places.filter((x) => toks0.some((t) => norm(x.name).startsWith(t)));
+    if (ex.length) { const keys = toks0.filter((t) => ex.some((x) => norm(x.name).startsWith(t))); r = r.map(([h, l]) => [h, h === "학교" ? l : l.filter((x) => keys.some((k) => norm(x.t + " " + x.s).includes(k)))]).filter(([, l]) => l.length); r = [["학교", ex.map((x) => ({ href: `#select/curriculum?v=map&p=${encodeURIComponent(x.id)}`, t: x.name, s: `${x.level === "middle" ? "중학교" : x.level === "elementary" ? "초등학교" : "고등학교"} · ${x.address || ""}` }))], ...r.filter(([h]) => h !== "학교")]; }
+    if (p || any) r = r.map(([h, l]) => (["과목", "학교", "바로가기"].includes(h) ? [h, l.slice(0, 3)] : [h, l])); // 안내가 있거나 느슨하게 맞은 검색은 곁가지 결과를 짧게
+    if (p) r = [["바로 안내", p.list], ...r.map(([h, l]) => [h, l.filter((x) => !p.list.some((y) => y.t === x.t))]).filter(([, l]) => l.length)]; return r; };
   const item = (x) => `<li><a href="${esc(x.href)}"${x.ext ? ' target="_blank" rel="noopener"' : ""} data-go><b>${esc(x.t)}${x.ext ? " ↗" : ""}</b><span>${esc(x.s)}</span></a></li>`;
   const paint = () => {
     const q = box.querySelector("input").value, out = box.querySelector(".sr-out");
