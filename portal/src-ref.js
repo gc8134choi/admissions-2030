@@ -8,10 +8,13 @@ export function srcWrap(inner, { checked = "", label = "출처" } = {}) {
   return `<span class="srcw"><button type="button" class="srcb" aria-expanded="false" aria-label="${esc(label)} 보기">${esc(label)}</button><span class="srcp" hidden>${inner}${checked ? ` <span class="srcd">확인 ${esc(checked)}</span>` : ""}</span></span>`;
 }
 
+// 고입 포털(satp) 공지 링크는 공지 목록 화면으로 열리므로 찾을 글번호를 한 줄 덧붙인다
+export const noticeHint = (url) => { const m = /satp\.goe\.go\.kr\/pt\/ar\/ggpt_d01_s1\.do\?[^#]*\bsn=(\d+)/.exec(String(url || "")); return m ? ` <span class="srcd">고입 포털 → 공지사항 글번호 ${m[1]}</span>` : ""; };
+
 // 행 하나의 출처 → 버튼. r: { sources[]|sourceName+sourceUrl, checkedAt }
 export function srcRef(r) {
   const list = r.sources || (r.sourceName ? [{ name: r.sourceName, url: r.sourceUrl }] : []);
-  const html = list.map((x) => (x.url && /^https?:\/\//.test(x.url) ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)} ↗</a>` : esc(x.name))).join(" · ");
+  const html = list.map((x) => (x.url && /^https?:\/\//.test(x.url) ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)} ↗</a>${noticeHint(x.url)}` : esc(x.name))).join(" · ");
   return srcWrap(html, { checked: r.checkedAt || "" });
 }
 
@@ -21,7 +24,7 @@ export function srcFooter(items, title = "이 화면의 출처") {
   for (const x of items || []) { if (x?.name && !seen.has(x.name + "|" + (x.url || ""))) seen.set(x.name + "|" + (x.url || ""), x); }
   const l = [...seen.values()];
   if (!l.length) return "";
-  return `<details class="srcf"><summary>${esc(title)} ${l.length}건</summary><ul>${l.map((x) => `<li>${x.url && /^https?:\/\//.test(x.url) ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)} ↗</a>` : esc(x.name)}${x.asOf ? ` <span class="srcd">${esc(x.asOf)} 기준</span>` : ""}</li>`).join("")}</ul></details>`;
+  return `<details class="srcf"><summary>${esc(title)} ${l.length}건</summary><ul>${l.map((x) => `<li>${x.url && /^https?:\/\//.test(x.url) ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)} ↗</a>${noticeHint(x.url)}` : esc(x.name)}${x.asOf ? ` <span class="srcd">${esc(x.asOf)} 기준</span>` : ""}</li>`).join("")}</ul></details>`;
 }
 
 // 이미 그려진 "출처 …" 줄(.ed-s)을 버튼으로 바꾼다. 화면마다 자기 방식으로 쓴 출처 줄을 한 곳에서 정리한다.

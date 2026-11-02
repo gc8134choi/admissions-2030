@@ -1,5 +1,5 @@
 import { creditView } from "./credit.js";
-import { srcWrap } from "./src-ref.js";
+import { srcWrap, noticeHint } from "./src-ref.js";
 import { roadmapView } from "./roadmap.js";
 import { loadProfile, profileOf, filterByProfile } from "./profile.js";
 import { STAGES, stageOf, stageTag } from "./stage.js";
@@ -45,7 +45,7 @@ export function register(views, { $, esc, load, store }) {
     if (label) return `<span title="${esc(r.sourceName || "")}">${label}</span>`;
     if (r.sourceKind === "opinion" || r.sourceKind === "academy") return `<span>${esc(r.sourceName || "미표기")}</span>`;
     if (!list.length) return "<span>출처 확인 중이에요 · 학교·교육청 공지에서 확인해요</span>";
-    return `${r.sourceKind ? `<span>${SKIND[r.sourceKind]}</span> · ` : ""}${list.map((x) => (x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>` : esc(x.name))).join(" · ")}`;
+    return `${r.sourceKind ? `<span>${SKIND[r.sourceKind]}</span> · ` : ""}${list.map((x) => (x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>${noticeHint(x.url)}` : esc(x.name))).join(" · ")}`;
   };
   const table = (rows, cols, cls = () => "") => `<div class="tw"><table class="policy"><thead><tr>${cols.map((c) => `<th class="l">${c[0]}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => `<tr class="${cls(r)}">${cols.map((c) => `<td class="l">${c[1](r)}</td>`).join("")}</tr>`).join("") || `<tr><td colspan="${cols.length}">해당 항목이 없어요.</td></tr>`}</tbody></table></div>`;
   const basic = [["항목", (r) => `<b>${esc(r.title)}</b>`], ["내용", (r) => esc(r.body)], ["상태", badgeMain], ["구분·출처", (r) => srcWrap(src(r) + badgeNote(r), { checked: r.checkedAt })]];
