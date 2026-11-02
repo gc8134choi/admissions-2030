@@ -41,7 +41,7 @@ export function cmpTable(el, cfg) {
 
   const draw = () => {
     const S = st.sel.map((id) => byId.get(id)).filter(Boolean);
-    const rows = cfg.rows.map((r) => { const rr = { ...r }; if (r.kind === "number") rr._max = Math.max(0, ...S.map((t) => r.get(t)?.num ?? 0)); return rr; });
+    const rows = cfg.rows.map((r) => { const rr = { ...r }; if (r.kind === "number") rr._max = r.max ?? Math.max(0, ...S.map((t) => r.get(t)?.num ?? 0)); /* max: 막대 기준값 고정(비중 %는 100) */ return rr; });
     const cells = new Map(); for (const r of rows) for (const t of S) cells.set(r.id + "|" + t.id, r.get(t));
     const same = (r) => { const vs = S.map((t) => { const c = cells.get(r.id + "|" + t.id); return !c || c.empty ? "∅" : c.text ?? c.html; }); return vs.every((x) => x === vs[0]); };
     const gHtml = groups.map((g) => {

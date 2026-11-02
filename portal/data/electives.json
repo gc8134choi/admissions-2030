@@ -1,0 +1,13 @@
+{
+ "_meta": {
+  "note": "선택과목 현황(생성물, 손으로 고치지 않는다). research/data/electives-draft.json에서 tools/build-electives.mjs가 만든다. 성향은 선택 비중 기준 추정이다.",
+  "checkedAt": null,
+  "count": 0,
+  "withData": 0
+ },
+ "guide": {
+  "basis": [],
+  "questions": []
+ },
+ "items": []
+}

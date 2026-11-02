@@ -9,7 +9,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
 import { createHash } from "node:crypto";
 
-const FILES = ["policy", "events", "hs-compare", "middle-compare", "middle", "glossary", "admission-types", "hs-types", "timeline", "middle-guide", "places", "rules", "universities", "planner-rules", "admission-rules", "briefings", "schools"];
+const FILES = ["policy", "events", "hs-compare", "middle-compare", "middle", "glossary", "admission-types", "hs-types", "timeline", "middle-guide", "places", "rules", "universities", "planner-rules", "admission-rules", "briefings", "schools", "electives"];
 const STATE = "tools/state/changes-state.json", OUT = "portal/data/changes.json";
 const IDK = ["id", "schoolId", "briefingId", "ruleId", "key"], LABK = ["name", "term", "label", "title", "unitName"];
 const hash = (v) => createHash("sha1").update(JSON.stringify(v)).digest("hex").slice(0, 10);

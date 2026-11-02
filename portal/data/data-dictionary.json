@@ -1,7 +1,7 @@
 {
  "_meta": {
   "note": "데이터 사전(생성물, 손으로 고치지 않는다). schema/*.schema.json에서 tools/build-data-dictionary.mjs가 만든다.",
-  "count": 18
+  "count": 19
  },
  "rules": [
   {
@@ -354,6 +354,231 @@
      "path": "_example",
      "type": "boolean",
      "required": false
+    }
+   ]
+  },
+  {
+   "id": "electives",
+   "schema": "schema/electives.schema.json",
+   "data": "portal/data/electives.json",
+   "title": "electives (선택과목 현황) — research/data/electives-draft.json = portal/data/electives.json",
+   "description": "학교별 현 2학년의 학기별 선택과목 인원. 학교는 places의 placeId로 연결한다. 한 학생이 pick(택n)개 과목을 고르므로 한 학기 인원 합계 = 현원 × pick이어야 한다(생성기가 검산). 화면은 사회·과학 선택 비중과 성향 한 줄을 보여 준다. 성향은 '선택 비중 기준 추정'이지 문과·이과 학생 수가 아니다. 사람 이름은 쓰지 않는다. 사용자 제공 자료에 '원문 미확인'은 쓰지 않는다.",
+   "fieldCount": 37,
+   "fields": [
+    {
+     "path": "guide",
+     "type": "object",
+     "required": false,
+     "description": "'유불리 보는 법' 접이식 내용. 학교별 유불리를 단정하지 않는다"
+    },
+    {
+     "path": "guide.basis",
+     "type": "array",
+     "required": false,
+     "description": "공식 근거 문장"
+    },
+    {
+     "path": "guide.basis[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "guide.basis[].text",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "guide.basis[].source",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "guide.basis[].source.name",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "guide.basis[].source.url",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "guide.basis[].source.kind",
+     "type": "enum",
+     "required": false,
+     "enum": [
+      "official",
+      "media"
+     ]
+    },
+    {
+     "path": "guide.questions",
+     "type": "array",
+     "required": false,
+     "description": "설명회에서 물어볼 질문"
+    },
+    {
+     "path": "guide.questions[]",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "items",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "items[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "items[].placeId",
+     "type": "string",
+     "required": true,
+     "pattern": "^pl-\\d{3,}$"
+    },
+    {
+     "path": "items[].name",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "items[].grade",
+     "type": "string",
+     "required": false,
+     "description": "대상 학년(예: 2학년)"
+    },
+    {
+     "path": "items[].headcount",
+     "type": "integer|null",
+     "required": false,
+     "minimum": 1,
+     "description": "현원(명)"
+    },
+    {
+     "path": "items[].pick",
+     "type": "integer|null",
+     "required": false,
+     "minimum": 1,
+     "description": "학생 1명이 고르는 과목 수(택n)"
+    },
+    {
+     "path": "items[].area",
+     "type": "string",
+     "required": false,
+     "description": "과목 묶음 이름(예: 탐구)"
+    },
+    {
+     "path": "items[].asOf",
+     "type": "string|null",
+     "required": false,
+     "format": "date",
+     "description": "자료 기준일"
+    },
+    {
+     "path": "items[].sourceKind",
+     "type": "string",
+     "required": false,
+     "description": "자료 유형(예: 설명회 슬라이드, 학교 안내문)"
+    },
+    {
+     "path": "items[].status",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "confirmed",
+      "reported",
+      "estimated"
+     ]
+    },
+    {
+     "path": "items[].sources",
+     "type": "array",
+     "required": false
+    },
+    {
+     "path": "items[].sources[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "items[].sources[].name",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "items[].sources[].url",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "items[].fileIds",
+     "type": "array",
+     "required": false,
+     "description": "원본 사진·문서(files.json의 id). 있으면 portal/data/files.json에 있어야 한다"
+    },
+    {
+     "path": "items[].fileIds[]",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "items[].note",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "items[].nullReason",
+     "type": "string|null",
+     "required": false,
+     "description": "자료가 없을 때 사유(terms가 비어 있으면 필수)"
+    },
+    {
+     "path": "items[].terms",
+     "type": "array",
+     "required": false
+    },
+    {
+     "path": "items[].terms[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "items[].terms[].label",
+     "type": "string",
+     "required": true,
+     "description": "예: 2학년 1학기"
+    },
+    {
+     "path": "items[].terms[].subjects",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "items[].terms[].subjects[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "items[].terms[].subjects[].name",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "items[].terms[].subjects[].area",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "사회",
+      "과학"
+     ]
+    },
+    {
+     "path": "items[].terms[].subjects[].count",
+     "type": "integer",
+     "required": true,
+     "minimum": 0
     }
    ]
   },
