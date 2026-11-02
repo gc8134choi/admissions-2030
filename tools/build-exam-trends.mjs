@@ -28,7 +28,7 @@ function convert(r) {
     const q = (s.qualitative ?? []).map((x) => ({ text: x.text, source: x.source?.name ?? null, status: x.status ?? "reported" }));
     const hasData = ap.length || rows.length;
     return { placeId: s.placeId, name: s.name, term: first?.term ?? null, asOf: first?.checkedAt ?? null, sourceKind: first ? "학교알리미 공시 평가계획" : null, status: first?.status === "confirmed" ? "reported" : first?.status ?? "reported",
-      sources: srcs, plans: ap.map((a) => ({ term: a.term, grade: a.grade, note: a.note ?? null, gaps: MAN.gaps.filter((g) => g.placeId === s.placeId && g.grade === a.grade).map((g) => ({ subject: g.subject, area: g.area })), rows: a.rows.map((x) => ({ subject: x.subject, area: MAN.areaOverrides[ns(x.subject)] ?? x.area, paperPct: x.writtenPct, performancePct: x.performancePct, essayPct: x.essayPct ?? null })) })),
+      sources: srcs, plans: ap.map((a) => ({ term: a.term, grade: a.grade, note: a.note ?? null, excluded: (s.assessmentPlanExcluded ?? []).filter((x) => x.grade === a.grade).map((x) => ({ subject: x.subject, reason: x.reason })), gaps: MAN.gaps.filter((g) => g.placeId === s.placeId && g.grade === a.grade).map((g) => ({ subject: g.subject, area: g.area })), rows: a.rows.map((x) => ({ subject: x.subject, area: MAN.areaOverrides[ns(x.subject)] ?? x.area, paperPct: x.writtenPct, performancePct: x.performancePct, essayPct: x.essayPct ?? null })) })),
       subjects: rows, qualitative: q, nullReason: hasData ? null : noUrl(s.assessmentPlanNullReason ?? s.achievement?.nullReason ?? null), nextAction: hasData ? null : noUrl(s.assessmentPlanNextAction ?? s.achievement?.nextAction ?? null), achievementNull: rows.length ? null : noUrl(s.achievement?.nullReason ?? null) };
   });
   const a = r.readingAids ?? {};
@@ -72,7 +72,8 @@ const items = draft.items.map((it) => {
     const partial = pl.note ? (/많은 과목이 빠/.test(pl.note) ? "많은 과목이 빠졌어요. 학교알리미 파일에서 직접 확인해 주세요" : "일부 과목이 빠졌을 수 있어요") : null;
     // 1학년 공통과목(국어·수학·영어·통합사회·통합과학)이 빠졌으면 '평가계획 정리 중'으로 알린다
     if (pl.grade === 1) for (const [key, area] of [["공통국어", "국어"], ["공통수학", "수학"], ["공통영어", "영어"], ["통합사회", "사회"], ["통합과학", "과학"]]) if (!rows.some((x) => ns(x.subject).includes(key)) && !gaps.some((g) => ns(g.subject).includes(key))) gaps.push({ subject: key, area });
-    return { term: pl.term, grade: pl.grade ?? null, rows, gaps, partial };
+    const excluded = (pl.excluded ?? []).map((x) => ({ subject: plain(x.subject), reason: plain(x.reason) }));
+    return { term: pl.term, grade: pl.grade ?? null, rows, gaps, partial, excluded };
   });
   base.plans = plans; base.qualitative = (it.qualitative ?? []).map((x) => ({ text: plain(x.text), source: x.source ? plain(x.source) : null, status: x.status ?? "reported" }));
   if (!(it.subjects ?? []).length && !plans.length) {

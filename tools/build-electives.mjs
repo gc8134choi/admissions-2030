@@ -8,7 +8,6 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 
 const argv = process.argv.slice(2);
 const SRC = argv.includes("--src") ? argv[argv.indexOf("--src") + 1] : "research/data/electives-draft.json";
-const MAN = JSON.parse(readFileSync("tools/electives-manual.json", "utf8"));
 const raw = existsSync(SRC) ? JSON.parse(readFileSync(SRC, "utf8")) : { _meta: {}, items: [] };
 const FILES = existsSync("portal/data/files.json") ? JSON.parse(readFileSync("portal/data/files.json", "utf8")) : [];
 const fileIdOf = (p) => FILES.find((f) => f.file === String(p).replace(/^portal\//, ""))?.id ?? null; // "portal/files/x.jpg" → files.json id
@@ -26,7 +25,6 @@ function convert(r) {
     return { placeId: s.placeId, name: s.name, grade: s.cohort?.currentGrade ? `${s.cohort.currentGrade}학년` : null, area: first ? String(first.pick ?? "").replace(/\s*택.*$/, "") || "탐구" : null,
       headcount: s.enrolled ?? null, pick: first ? pickN(first) : null, asOf: ts.map((t) => t.source?.asOf).filter(Boolean).sort().pop() ?? null, sourceKind: first?.source?.type ?? null,
       status: first?.status ?? "reported", sources: srcs, fileIds: files.map(fileIdOf).filter(Boolean), nullReason: s.nullReason ?? null, nextAction: s.nextAction ?? null, _rawTerms: ts,
-      proxy: s.classProxy ?? null,
       terms: ts.map((t) => ({ label: t.term, enrolled: t.enrolled ?? null, indicators: t.indicators ?? null, subjects: (t.rows ?? []).map((x) => ({ name: x.subject, area: areaOf(x.area), count: x.count })) })) };
   });
   const a = r.readingAids ?? {};
@@ -44,29 +42,6 @@ const AREAS = ["사회", "과학"];
 const pct = (a, b) => (b ? Math.round((a / b) * 1000) / 10 : null);
 const tendency = (sci) => (sci >= 60 ? "과학 중심" : sci <= 40 ? "사회 중심" : "균형");
 
-// 인원 자료가 없는 학교의 대리 지표: 평가계획 파일의 탐구 과목별 개설 학급 수(학생 수가 아님). 성향은 '학급 수 기준 추정'
-function proxyOf(it, w, out) {
-  const p = it.proxy;
-  if (!p) return null;
-  if (MAN.holdProxy.includes(it.placeId)) return { rows: [], held: true, nullReason: plain(MAN.holdReason), nextAction: "학교 설명회에서 탐구 선택 인원을 질문하세요" }; // 정정 대기: 값은 감춘다
-  if (!(p.rows ?? []).length) return { nullReason: p.nullReason ? plain(p.nullReason) : null, nextAction: p.nextAction ? plain(p.nextAction) : null, rows: [] };
-  const rows = p.rows.map((x) => {
-    const area = String(x.area).replace(/^.*-/, "");
-    if (!AREAS.includes(area)) errs.push(`${w} 학급 수 ${x.subject}: area "${x.area}"`);
-    if (!Number.isInteger(x.classes) || x.classes < 1) errs.push(`${w} 학급 수 ${x.subject}: classes ${x.classes}`);
-    return { name: x.subject, area, classes: x.classes };
-  });
-  const tot = Object.fromEntries(AREAS.map((a) => [a, rows.filter((r) => r.area === a).reduce((s, r) => s + r.classes, 0)]));
-  const sum = tot.사회 + tot.과학;
-  const ind = p.indicators;
-  if (ind?.socialClasses != null && ind.socialClasses !== tot.사회) errs.push(`${w}: 초안 사회 학급 수 ${ind.socialClasses} ≠ 합계 ${tot.사회}`);
-  if (ind?.scienceClasses != null && ind.scienceClasses !== tot.과학) errs.push(`${w}: 초안 과학 학급 수 ${ind.scienceClasses} ≠ 합계 ${tot.과학}`);
-  const shares = { 사회: pct(tot.사회, sum), 과학: pct(tot.과학, sum) };
-  if (ind?.sciencePct != null && Math.abs(ind.sciencePct - shares.과학) > 0.2) errs.push(`${w}: 초안 과학 비중 ${ind.sciencePct} ≠ 계산 ${shares.과학}`);
-  const src = p.source?.name ? { name: plain(p.source.name), url: p.source.url ?? null } : null;
-  if (src && !out.sources.some((s) => s.name === src.name)) out.sources.push(src);
-  return { term: p.term ?? null, unit: "개설 학급 수(학생 수가 아님)", rows: [...rows].sort((a, b) => b.classes - a.classes || a.name.localeCompare(b.name)), totals: tot, shares, tendency: tendency(shares.과학), basis: "학급 수 기준 추정", note: p.indicators?.note ? plain(p.indicators.note) : null, status: p.status === "confirmed" ? "reported" : p.status ?? "reported", asOf: p.checkedAt ?? null };
-}
 const items = draft.items.map((it) => {
   const w = it.placeId ?? it.name ?? "?";
   for (const k of I.required) if (it[k] == null || it[k] === "") errs.push(`${w}: ${k} 없음`);
@@ -80,7 +55,7 @@ const items = draft.items.map((it) => {
   const out = { placeId: it.placeId, name: it.name, grade: it.grade ?? null, area: it.area ?? null, headcount: it.headcount ?? null, pick: it.pick ?? null, asOf: it.asOf ?? null, sourceKind: it.sourceKind ?? null, status: it.status, sources: (it.sources ?? []).map((s) => ({ ...s, name: plain(s.name) })), fileIds: it.fileIds ?? [], note: it.note ? plain(it.note) : null };
   if (!(it.terms ?? []).length) {
     if (!it.nullReason) errs.push(`${w}: terms가 없으면 nullReason 필수`);
-    return { ...out, nullReason: it.nullReason ? plain(it.nullReason) : null, nextAction: it.nextAction ? plain(it.nextAction) : null, terms: [], summary: null, classProxy: proxyOf(it, w, out) };
+    return { ...out, nullReason: it.nullReason ? plain(it.nullReason) : null, nextAction: it.nextAction ? plain(it.nextAction) : null, terms: [], summary: null };
   }
   if (!(it.sources ?? []).length) errs.push(`${w}: sources 비어 있음`);
   if (!it.headcount || !it.pick) errs.push(`${w}: headcount·pick 필요(합계 검산)`);
@@ -107,7 +82,7 @@ const items = draft.items.map((it) => {
 if (errs.length) { console.error(errs.slice(0, 30).join("\n")); process.exit(1); }
 
 const guide = draft.guide ? { intro: draft.guide.intro ? plain(draft.guide.intro) : null, basis: (draft.guide.basis ?? []).map((b) => ({ ...b, text: plain(b.text) })), questions: (draft.guide.questions ?? []).map((q) => plain(q)) } : { basis: [], questions: [] };
-const out = { _meta: { note: "선택과목 현황(생성물, 손으로 고치지 않는다). research/data/electives-draft.json에서 tools/build-electives.mjs가 만든다. 성향은 선택 비중 기준 추정이다.", checkedAt: draft._meta?.checkedAt ?? null, count: items.length, withData: items.filter((i) => i.terms.length).length, withProxy: items.filter((i) => i.classProxy?.rows?.length).length }, guide, items };
+const out = { _meta: { note: "선택과목 현황(생성물, 손으로 고치지 않는다). research/data/electives-draft.json에서 tools/build-electives.mjs가 만든다. 성향은 선택 비중 기준 추정이다.", checkedAt: draft._meta?.checkedAt ?? null, count: items.length, withData: items.filter((i) => i.terms.length).length }, guide, items };
 const json = JSON.stringify(withSourceIds(out), null, 1) + "\n";
 const target = "portal/data/electives.json";
 if (argv.includes("--check")) {
