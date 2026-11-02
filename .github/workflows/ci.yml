@@ -69,6 +69,7 @@ jobs:
           # learners.json은 손으로 관리하는 정본이고 build-learners가 규칙(examYear=entryYear+3 등)만 검증한다.
           if [ -f research/data/policy-draft.json ]; then
             node tools/build-policy.mjs --check
+            node tools/check-event-dates.mjs
             node tools/build-ics.mjs --check
             node tools/build-roadmap.mjs --check
             node tools/build-rules.mjs --check

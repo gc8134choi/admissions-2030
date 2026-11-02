@@ -815,12 +815,12 @@
    "status": "reported",
    "sources": [
     {
-     "name": "학교알리미 공시 4-가(교과별 교수·학습 및 평가계획)",
-     "url": "https://www.schoolinfo.go.kr/"
+     "name": "한국교육과정평가원 '2027학년도 대학수학능력시험 이렇게 준비하세요' 9쪽: 표준점수 평균 100·표준편차 20 등 표준편차 표기(정의 예시). 학교 내신의 과목별 평균·표준편차는 학교알리미 공시 4-나 '교과별 학업성취 사항'에서 공시",
+     "url": "https://www.ice.go.kr/upload/ice/na/bbs_1482/2026/04/a9620d369e3d03ffaa7e1e2b0a069a0f.pdf"
     }
    ],
    "sourceIds": [
-    "src-1a58a138"
+    "src-43d7c5ba"
    ]
   },
   {
@@ -874,15 +874,15 @@
    "detail": null,
    "official": null,
    "category": "고입",
-   "status": "reported",
+   "status": "confirmed",
    "sources": [
     {
-     "name": "경기도교육청 고입·전학 포털 공지: 2027학년도 경기도 고등학교 신입생 전형요강",
-     "url": "https://satp.goe.go.kr/main.do"
+     "name": "경기도교육청 2027학년도 경기도 고등학교 입학전형 기본계획(2026.3) 9~10쪽: 외국어고·국제고·자사고는 입학전형위원에 의한 자기주도학습전형 실시, 1단계·2단계 일정은 3쪽",
+     "url": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/e88abfe2-8daa-494e-9cb8-a2d030225b45.pdf"
     }
    ],
    "sourceIds": [
-    "src-184eecc3"
+    "src-f11446ea"
    ]
   }
  ]

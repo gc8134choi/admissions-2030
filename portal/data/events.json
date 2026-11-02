@@ -57,9 +57,33 @@
   "id": "ev-hs-02-1",
   "policyId": "hs-02",
   "title": "서울 과학고(세종·한성) 전기 일정",
-  "label": "접수(전국 기준)",
-  "start": "2026-08-18",
-  "end": "2026-09-03",
+  "label": "서울 과학고(세종·한성) 입학원서 접수",
+  "start": "2026-08-24",
+  "end": "2026-08-26",
+  "status": "confirmed",
+  "unverified": false,
+  "note": "공식 원문 확인, 2026-10-26",
+  "sourceKind": "official",
+  "sourceName": "서울특별시교육청 2027학년도 서울특별시 고등학교 입학전형 기본계획(공고용, 고입자료실 2026.3.31 게시, PDF 붙임-1 주요 일정)",
+  "sourceUrl": "https://www.sen.go.kr/user/bbs/BD_selectBbs.do?q_bbsSn=1068&q_bbsDocNo=20260331091528935",
+  "region": "seoul",
+  "audience": [
+   "science"
+  ],
+  "learners": [
+   "A"
+  ],
+  "entryYear": 2027,
+  "examYear": 2030,
+  "body": "서울 과학계열 특목고(세종과학고·한성과학고)는 소속 학교장 추천으로 개별 지원하는 자기주도학습전형이며, 서울 기본계획 기준 입학원서 접수 2026.8.24~8.26, 합격자 발표 2026.12.2. (이전 초안의 '전국 기준 접수 8.18~9.3'은 서울 공고와 달라 공식 값으로 교체)",
+  "checkedAt": "2026-10-26"
+ },
+ {
+  "id": "ev-hs-02-2",
+  "policyId": "hs-02",
+  "title": "서울 과학고(세종·한성) 전기 일정",
+  "label": "서울 과학고 합격자 발표",
+  "start": "2026-12-02",
   "status": "confirmed",
   "unverified": false,
   "note": "공식 원문 확인, 2026-10-26",
@@ -112,17 +136,31 @@
   "start": "2027-11-18",
   "status": "confirmed",
   "unverified": false,
-  "note": "공식 원문 확인, 2026-10-25",
+  "note": "교육부 보도자료 원문에서 시행일 2027.11.18·성적통지일 2027.12.10 재확인 2026-11-02, 대교협 자료로 성적통지일 교차 확인",
   "sourceKind": "official",
-  "sourceName": "교육부 보도자료: 2028학년도 수능 시행일 발표",
+  "sourceName": "교육부 보도자료 「2028학년도 대학수학능력시험은 2027년 11월 18일(목)에 시행됩니다」(2025.6.1)",
   "sourceUrl": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512",
+  "sources": [
+   {
+    "name": "교육부 보도자료 「2028학년도 대학수학능력시험은 2027년 11월 18일(목)에 시행됩니다」(2025.6.1)",
+    "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512"
+   },
+   {
+    "name": "대교협 2028학년도 대학입학전형기본사항 보도자료 4쪽(수능성적통지일 2027.12.10 예정, 2025.8.28)",
+    "url": "https://www.kcue.or.kr/_upload/news/2025/08/28/application_b244345d6cc72f7e172df15e831c276e.pdf"
+   }
+  ],
+  "sourceIds": [
+   "src-a5860564",
+   "src-3d73b988"
+  ],
   "region": "national",
   "audience": [
    "common"
   ],
   "examYear": 2028,
   "body": "시험 2027.11.18(목), 성적통지 2027.12.10(금). 통합형 수능체제(국어·수학·탐구 선택과목 폐지) 적용",
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-02"
  },
  {
   "id": "ev-sch-03-2",
@@ -132,17 +170,31 @@
   "start": "2027-12-10",
   "status": "confirmed",
   "unverified": false,
-  "note": "공식 원문 확인, 2026-10-25",
+  "note": "교육부 보도자료 원문에서 시행일 2027.11.18·성적통지일 2027.12.10 재확인 2026-11-02, 대교협 자료로 성적통지일 교차 확인",
   "sourceKind": "official",
-  "sourceName": "교육부 보도자료: 2028학년도 수능 시행일 발표",
+  "sourceName": "교육부 보도자료 「2028학년도 대학수학능력시험은 2027년 11월 18일(목)에 시행됩니다」(2025.6.1)",
   "sourceUrl": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512",
+  "sources": [
+   {
+    "name": "교육부 보도자료 「2028학년도 대학수학능력시험은 2027년 11월 18일(목)에 시행됩니다」(2025.6.1)",
+    "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512"
+   },
+   {
+    "name": "대교협 2028학년도 대학입학전형기본사항 보도자료 4쪽(수능성적통지일 2027.12.10 예정, 2025.8.28)",
+    "url": "https://www.kcue.or.kr/_upload/news/2025/08/28/application_b244345d6cc72f7e172df15e831c276e.pdf"
+   }
+  ],
+  "sourceIds": [
+   "src-a5860564",
+   "src-3d73b988"
+  ],
   "region": "national",
   "audience": [
    "common"
   ],
   "examYear": 2028,
   "body": "시험 2027.11.18(목), 성적통지 2027.12.10(금). 통합형 수능체제(국어·수학·탐구 선택과목 폐지) 적용",
-  "checkedAt": "2026-10-25"
+  "checkedAt": "2026-11-02"
  },
  {
   "id": "ev-sch-04-1",
