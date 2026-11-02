@@ -7,7 +7,8 @@
   "인문학과윤리": "사회",
   "중국어회화": "제2외국어",
   "영미문학읽기": "영어",
-  "영어독해와작문": "영어"
+  "영어독해와작문": "영어",
+  "중국어Ⅱ": "제2외국어"
  },
  "gaps": [
   {
@@ -41,6 +42,102 @@
    "grade": 3,
    "subject": "중국어Ⅱ",
    "why": "원문 '수행평가 100%'(정기시험 열 없음) — 파서가 논술형 60%를 수행으로 읽음"
+  },
+  {
+   "placeId": "pl-024",
+   "grade": 3,
+   "subject": "경제",
+   "why": "기존 파서가 3학년 hwpx를 읽지 못해 1과목만 수록 → verify2 독립 읽기 값 추가"
+  },
+  {
+   "placeId": "pl-024",
+   "grade": 3,
+   "subject": "물리학Ⅱ",
+   "why": "기존 파서가 3학년 hwpx를 읽지 못해 1과목만 수록 → verify2 독립 읽기 값 추가"
+  },
+  {
+   "placeId": "pl-024",
+   "grade": 3,
+   "subject": "미적분",
+   "why": "기존 파서가 3학년 hwpx를 읽지 못해 1과목만 수록 → verify2 독립 읽기 값 추가"
+  },
+  {
+   "placeId": "pl-024",
+   "grade": 3,
+   "subject": "사회·문화",
+   "why": "기존 파서가 3학년 hwpx를 읽지 못해 1과목만 수록 → verify2 독립 읽기 값 추가"
+  },
+  {
+   "placeId": "pl-024",
+   "grade": 3,
+   "subject": "생명과학Ⅱ",
+   "why": "기존 파서가 3학년 hwpx를 읽지 못해 1과목만 수록 → verify2 독립 읽기 값 추가"
+  },
+  {
+   "placeId": "pl-024",
+   "grade": 3,
+   "subject": "생활과 과학",
+   "why": "기존 파서가 3학년 hwpx를 읽지 못해 1과목만 수록 → verify2 독립 읽기 값 추가"
+  },
+  {
+   "placeId": "pl-024",
+   "grade": 3,
+   "subject": "생활과 윤리",
+   "why": "기존 파서가 3학년 hwpx를 읽지 못해 1과목만 수록 → verify2 독립 읽기 값 추가"
+  },
+  {
+   "placeId": "pl-024",
+   "grade": 3,
+   "subject": "심화 수학Ⅰ",
+   "why": "기존 파서가 3학년 hwpx를 읽지 못해 1과목만 수록 → verify2 독립 읽기 값 추가"
+  },
+  {
+   "placeId": "pl-024",
+   "grade": 3,
+   "subject": "여행지리",
+   "why": "기존 파서가 3학년 hwpx를 읽지 못해 1과목만 수록 → verify2 독립 읽기 값 추가"
+  },
+  {
+   "placeId": "pl-024",
+   "grade": 3,
+   "subject": "지구과학Ⅱ",
+   "why": "기존 파서가 3학년 hwpx를 읽지 못해 1과목만 수록 → verify2 독립 읽기 값 추가"
+  },
+  {
+   "placeId": "pl-024",
+   "grade": 3,
+   "subject": "한국지리",
+   "why": "기존 파서가 3학년 hwpx를 읽지 못해 1과목만 수록 → verify2 독립 읽기 값 추가"
+  },
+  {
+   "placeId": "pl-024",
+   "grade": 3,
+   "subject": "화법과 작문",
+   "why": "기존 파서가 3학년 hwpx를 읽지 못해 1과목만 수록 → verify2 독립 읽기 값 추가"
+  },
+  {
+   "placeId": "pl-024",
+   "grade": 3,
+   "subject": "화학Ⅱ",
+   "why": "기존 파서가 3학년 hwpx를 읽지 못해 1과목만 수록 → verify2 독립 읽기 값 추가(제목이 '화학/Ⅱ'로 갈라져 표지 표의 과목 칸으로 확인)"
+  },
+  {
+   "placeId": "pl-024",
+   "grade": 3,
+   "subject": "기하",
+   "why": "기존 파서가 3학년 hwpx를 읽지 못해 1과목만 수록 → verify2 독립 읽기 값 추가"
+  },
+  {
+   "placeId": "pl-024",
+   "grade": 3,
+   "subject": "독서",
+   "why": "기존 파서가 3학년 hwpx를 읽지 못해 1과목만 수록 → verify2 독립 읽기 값 추가"
+  },
+  {
+   "placeId": "pl-024",
+   "grade": 3,
+   "subject": "동아시아사",
+   "why": "기존 파서가 3학년 hwpx를 읽지 못해 1과목만 수록 → verify2 독립 읽기 값 추가"
   }
  ]
 }
