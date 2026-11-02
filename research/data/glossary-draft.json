@@ -230,6 +230,7 @@
       "id": "gl-014",
       "term": "교과전형",
       "aliases": [
+        "학생부교과",
         "학생부교과전형"
       ],
       "short": "학생부교과전형이에요. 내신 등급 위주로 뽑아서 숫자로 거의 결정돼요. 2028학년도 전국 모집인원의 45.3%가 학생부교과예요.",
@@ -752,6 +753,184 @@
         {
           "name": "경기도교육청 2027학년도 경기도 고등학교 입학전형 기본계획(2026.3) 9~10쪽: 외국어고·국제고·자사고는 입학전형위원에 의한 자기주도학습전형 실시, 1단계·2단계 일정은 3쪽",
           "url": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/e88abfe2-8daa-494e-9cb8-a2d030225b45.pdf"
+        }
+      ]
+    },
+    {
+      "id": "gl-045",
+      "term": "학점",
+      "aliases": [],
+      "short": "교과를 이수한 양을 세는 단위예요. 1학점은 50분 수업 16회가 기준이에요(2·3학년은 17회 중 1회 자율 운영 가능).",
+      "detail": null,
+      "official": null,
+      "category": "학점제",
+      "status": "reported",
+      "sources": [
+        {
+          "name": "고교학점제 종합지원포털(교육부)",
+          "url": "https://www.hscredit.kr/about/graduation"
+        }
+      ]
+    },
+    {
+      "id": "gl-046",
+      "term": "대교협",
+      "aliases": [
+        "한국대학교육협의회"
+      ],
+      "short": "한국대학교육협의회(대교협)를 줄인 말이에요. 대학들이 낸 입시 시행계획의 주요사항을 모아 공개해요.",
+      "detail": null,
+      "official": null,
+      "category": "입시",
+      "status": "reported",
+      "sources": [
+        {
+          "name": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29 기준)",
+          "url": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf"
+        }
+      ]
+    },
+    {
+      "id": "gl-047",
+      "term": "교육지원청",
+      "aliases": [],
+      "short": "시·군·구 단위로 학교를 지원하는 교육청 기관이에요. 용인 중학교 배정원서는 용인교육지원청이 접수해요.",
+      "detail": null,
+      "official": null,
+      "category": "배정",
+      "status": "reported",
+      "sources": [
+        {
+          "name": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도)",
+          "url": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318"
+        }
+      ]
+    },
+    {
+      "id": "gl-048",
+      "term": "학교알리미",
+      "aliases": [],
+      "short": "교육부가 운영하는 초·중·고 학교 정보 공시 사이트예요. 학생 수·학급 수·교육과정·평가계획 같은 학교별 공시가 올라와요.",
+      "detail": null,
+      "official": null,
+      "category": "기타",
+      "status": "reported",
+      "sources": [
+        {
+          "name": "학교알리미",
+          "url": "https://www.schoolinfo.go.kr/"
+        }
+      ]
+    },
+    {
+      "id": "gl-049",
+      "term": "특성화고·마이스터고",
+      "aliases": [
+        "특성화고",
+        "마이스터고"
+      ],
+      "short": "직업·특정 분야 교육을 하는 고교예요(특성화고·마이스터고). 경기에서는 전기 전형으로 뽑아요.",
+      "detail": null,
+      "official": null,
+      "category": "고입",
+      "status": "reported",
+      "sources": [
+        {
+          "name": "경기도교육청 고입·전학 포털 공지: 2027학년도 경기도 고등학교 신입생 전형요강",
+          "url": "https://satp.goe.go.kr/main.do"
+        }
+      ]
+    },
+    {
+      "id": "gl-050",
+      "term": "과학고·영재학교",
+      "aliases": [
+        "과학고",
+        "영재학교"
+      ],
+      "short": "과학 분야 인재를 뽑는 고교예요(과학고·영재학교). 경기 과학고는 전기 전형으로 뽑아요.",
+      "detail": null,
+      "official": null,
+      "category": "고입",
+      "status": "reported",
+      "sources": [
+        {
+          "name": "경기도교육청 고입·전학 포털 공지: 2027학년도 경기도 고등학교 신입생 전형요강",
+          "url": "https://satp.goe.go.kr/main.do"
+        }
+      ]
+    },
+    {
+      "id": "gl-051",
+      "term": "외·국·자",
+      "aliases": [
+        "외국자",
+        "외고",
+        "국제고",
+        "자사고",
+        "자율형 사립고"
+      ],
+      "short": "외국어고(외고)·국제고·자율형 사립고(자사고)를 줄여 부르는 말이에요(외국자). 경기에서는 후기에 자기주도학습전형으로 뽑아요.",
+      "detail": null,
+      "official": null,
+      "category": "고입",
+      "status": "reported",
+      "sources": [
+        {
+          "name": "경기도교육청 고입·전학 포털 공지: 2027학년도 경기도 고등학교 신입생 전형요강",
+          "url": "https://satp.goe.go.kr/main.do"
+        }
+      ]
+    },
+    {
+      "id": "gl-052",
+      "term": "창의적 체험활동",
+      "aliases": [
+        "창체"
+      ],
+      "short": "교과 말고 하는 활동(창체)을 이수하는 영역이에요. 졸업에 필요한 192학점 가운데 18학점이에요.",
+      "detail": null,
+      "official": null,
+      "category": "학점제",
+      "status": "reported",
+      "sources": [
+        {
+          "name": "고교학점제 종합지원포털(교육부)",
+          "url": "https://www.hscredit.kr/about/graduation"
+        }
+      ]
+    },
+    {
+      "id": "gl-053",
+      "term": "평가원",
+      "aliases": [
+        "한국교육과정평가원"
+      ],
+      "short": "한국교육과정평가원을 줄인 말이에요. 수능 시행 기본계획을 공고하고 시험을 출제해요.",
+      "detail": null,
+      "official": null,
+      "category": "입시",
+      "status": "reported",
+      "sources": [
+        {
+          "name": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29 기준)",
+          "url": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf"
+        }
+      ]
+    },
+    {
+      "id": "gl-054",
+      "term": "모집단위",
+      "aliases": [],
+      "short": "대학이 학생을 뽑는 학과·학부 단위예요. 모집단위마다 전형과 요건이 달라질 수 있어요.",
+      "detail": null,
+      "official": null,
+      "category": "입시",
+      "status": "reported",
+      "sources": [
+        {
+          "name": "대교협 2028학년도 대학입학전형시행계획 주요사항(2026.4.29 기준)",
+          "url": "https://www.kcue.or.kr/_upload/news/2026/04/30/application_ea0382f8ef4d92cda46a7e015aec3fef.pdf"
         }
       ]
     }

@@ -548,7 +548,7 @@ load("glossary").then((g) => {
   setTerms(g.terms); initTerms(); preloadGlossary(load).catch(() => {});
   const main = $("#main"); let tm = null;
   // 화면마다 용어당 처음 한 번만(홈은 패널마다 따로 붙인다)
-  const run = () => { mo.disconnect(); if (location.hash.replace(/^#/, "").split("?")[0] !== "" && location.hash !== "#home") { try { decorateTerms(main, "section,.ed-row,.dp,.piece,details,.school,.note,.tw"); } catch {} try { decorateGlossary(main); } catch {} } mo.observe(main, { childList: true, subtree: true }); };
+  const run = () => { mo.disconnect(); if (location.hash.replace(/^#/, "").split("?")[0] !== "" && location.hash !== "#home") { try { decorateTerms(main, "section,.ed-row,.dp,.piece,details,.school,.note,.tw"); } catch {} } try { decorateGlossary(main); } catch {} /* 용어 풀이(ⓘ)는 홈을 포함한 모든 화면에 */ mo.observe(main, { childList: true, subtree: true }); };
   const mo = new MutationObserver(() => { clearTimeout(tm); tm = setTimeout(run, 250); });
   mo.observe(main, { childList: true, subtree: true });
 }).catch(() => {});

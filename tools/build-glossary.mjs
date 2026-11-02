@@ -31,7 +31,8 @@ for (const t of draft.terms) for (const al of t.aliases || []) {
   const where = draft.terms.filter((u) => u.id !== t.id && [u.term, u.short, u.detail].filter(Boolean).join(" ").includes(al)).map((u) => u.id);
   if (!inOwn && where.length && !al.includes(t.term) && !t.term.includes(al)) errs.push(`${t.id} ${t.term}: 별칭 "${al}"가 자기 풀이에는 없고 ${where.join(", ")}의 풀이에 있음 — 별칭이 밀렸는지 확인`);
   const other = draft.terms.filter((u) => u.id !== t.id && al.includes(u.term) && !al.includes(t.term) && !t.term.includes(al) && al !== t.term.replace(/\s+/g, "")); // 띄어쓰기만 다른 표기는 허용
-  if (other.length) errs.push(`${t.id} ${t.term}: 별칭 "${al}"가 다른 용어 이름(${other.map((u) => `${u.id} ${u.term}`).join(", ")})을 포함 — 별칭이 밀렸는지 확인`);
+  const inOwn2 = [t.term, t.short, t.detail, t.official].filter(Boolean).join(" ").includes(al); // 자기 풀이에 그대로 나오는 별칭은 다른 용어 이름이 들어 있어도 허용
+  if (other.length && !inOwn2) errs.push(`${t.id} ${t.term}: 별칭 "${al}"가 다른 용어 이름(${other.map((u) => `${u.id} ${u.term}`).join(", ")})을 포함 — 별칭이 밀렸는지 확인`);
 }
 if (errs.length) { console.error(errs.join("\n")); process.exit(1); }
 

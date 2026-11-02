@@ -49,6 +49,11 @@ for (const s of draft.schools) for (const k of Object.keys(s.values || {})) s.va
 const fields = [...draft.fields].sort((a, b) => a.order - b.order);
 // 확인하지 못한 표기는 화면에서 뺀다: 용인홍천고의 '단설'(단독 설립) 구분은 확인 전이라 설립(공립)과 설립일만 보인다
 for (const s of draft.schools) if (s.placeId === "pl-014" && typeof s.values?.founding?.value === "string") s.values.founding.value = s.values.founding.value.replace("·단설", "");
+// 사유 없이 '공식 문서로 확인 중'만 있는 칸은 항목별 사유+다음 행동으로
+const GEN = /공식 문서로 확인 중/;
+const BY = { classes: "S", classesDetail: "S", students: "S", studentsDetail: "S", teachers: "S", perClass: "S", perTeacher: "S", meal: "S", schoolinfo: "S", curriculum: "C", subjectCount: "C", canteen: "D", dorm: "D" };
+const TXT = { S: "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)", C: "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요", D: "학교알리미 공시 항목에 없어요 → 학교 설명회·학교 홈페이지에서 확인해요" };
+for (const s of draft.schools) for (const [k, v] of Object.entries(s.values || {})) if (v && v.value == null && BY[k] && (GEN.test(v.nullReason || ""))) v.nullReason = TXT[BY[k]];
 // 외·국·자(용인한국외국어대부설고)의 배점·교육과정 칸: 모집요강에만 있다는 사유와 다음 행동
 const ADM = "학교별 모집요강(입학전형 시행계획)에만 있고 학교알리미 공시 목록에 없어요 → 학교 입학처 요강 공고(보통 6~7월)에서 확인";
 for (const s of draft.schools) if (s.placeId === "pl-015") for (const k of ["admission", "curriculum", "subjectCount"]) if (s.values?.[k] && s.values[k].value == null) s.values[k].nullReason = ADM;
