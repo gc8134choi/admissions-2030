@@ -61,6 +61,7 @@ export async function hsCompareBody(el, { load, esc, schoolHref = (s) => (s.scho
     esc, stage: "고입", title: "학교 비교", summary: "학교를 가로로 놓고 항목을 견줘요",
     targets: d.schools.map((s) => ({ id: s.placeId, name: s.name.replace(/^용인/, ""), sub: typeOf(s), href: schoolHref(s), search: `${s.name} ${s.values.address?.value || ""}`, filterVal: { type: typeOf(s) } })),
     rows: [...compareRows(d, esc, (v, t) => t.href), ...electiveRows(elec, esc), ...examRows(exam, esc)],
+    jump: ["선택과목 현황", "내신 출제"],
     select: { key: "portal.hs.compare", param: "c", def: nearest.slice(0, 4), max: 8, min: 2, always: true, addLabel: "학교 추가·빼기", filters: [{ id: "type", label: "유형", options: types }] },
     emptyNext: WHERE.schoolinfo,
     sources: d.schools.flatMap((sc) => Object.values(sc.values).map((v) => v?.source).filter(Boolean)),
