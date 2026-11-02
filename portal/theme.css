@@ -238,7 +238,7 @@ html[data-profile=b] .aux-n{color:var(--accent-a)}
 .hs-tiles.k3>div{background:none;border-radius:0;padding:4px 12px 4px 0;display:flex;flex-direction:column}
 .hs-tiles.k3>div+div{padding-left:12px;border-left:1px solid var(--hair)}
 .hs-tiles.k3 b{font-size:clamp(34px,4vw,48px);font-weight:800;letter-spacing:-.05em;line-height:1}
-.hs-tiles.k3 span{font-size:12px;color:var(--mute);margin-top:6px}
+.hs-tiles.k3 span{font-size:13px;color:var(--mute);margin-top:6px}
 .school .bar{height:3px;line-height:0;font-size:0;border-radius:0;background:var(--hair);margin-top:-6px}
 .school .bar span{font-size:0;padding:0}
 .school .bar .req{background:var(--req)}.school .bar .ele{background:var(--ele)}

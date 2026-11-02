@@ -2,12 +2,14 @@
 //   import { briefingBlock } from "./briefing.js";
 //   html += briefingBlock(await load("briefings"), schoolId, esc);   // 노트가 없으면 빈 문자열
 // 신뢰도는 배지 없이 조용한 글자(일관/추정/참고만)로 항목 끝에 붙인다. 학교 공식 문서가 아니라 녹음을 AI가 요약한 내용이다.
-import "./policy-css.js";
+// 설명회 노트 스타일(policy.css)은 노트를 그릴 때 불러온다(홈 첫 화면에서는 받지 않음)
+const ensureCss = () => { if (typeof document !== "undefined" && !document.getElementById("policy-css")) { const l = document.createElement("link"); l.id = "policy-css"; l.rel = "stylesheet"; l.href = "policy.css"; document.head.appendChild(l); } };
 import { stageTag } from "./stage.js";
 import { srcWrap } from "./src-ref.js";
 const dot = (d) => d.replace(/-/g, ".");
 
 export function briefingBlock(data, schoolId, esc) {
+  ensureCss();
   const list = ((data && data.briefings) || []).filter((b) => b.schoolId === schoolId);
   if (!list.length) return "";
   const lv = (it) => (it.level ? `<span class="bf-c">${esc(it.level)}</span>` : "") + (it.verify ? '<span class="bf-c">숫자 확인 필요</span>' : "");

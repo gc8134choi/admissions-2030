@@ -143,7 +143,8 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     // 4) 바뀐 소식 1줄
     const log0 = policy.filter((r) => r.topic === "change-log").map((r) => ({ r, d: dateOf(r.title) })).filter((x) => x.d && span(x.d).start <= t);
     // 감시 봇이 최근 30일 안에 "바뀌었다"고 기록한 페이지도 같은 목록에 넣는다(내용은 아직 확인 전, 추정 표시). 읽지 못하면 조용히 건너뛴다.
-    const watchLog = await (async () => {
+    // 이 목록은 첫 화면을 막지 않는다: 먼저 그리고, 읽히면 소식 칸만 다시 채운다(데이터 100KB를 기다리지 않음)
+    const watchP = (async () => {
       try {
         const [st, wl] = await Promise.all([fetch("../research/data/watch-state.json").then((r) => (r.ok ? r.json() : {})), fetch("../research/data/watchlist.json").then((r) => (r.ok ? r.json() : { items: [] }))]);
         return Object.entries(st).filter(([, v]) => v.changedAt && t - new Date(v.changedAt) < 30 * DAY).map(([id, v]) => {
@@ -153,6 +154,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
         }).filter(Boolean);
       } catch { return []; }
     })();
+    const watchLog = [];
     const log = [...log0, ...watchLog].sort((a, b) => span(b.d).start - span(a.d).start);
     // 마지막 확인 일시(데이터 checkedAt 최신값)와 새 소식(지난 방문 이후, 이 브라우저에만 저장)
     const checked = policy.map((r) => r.checkedAt).filter(Boolean).sort().pop() || "";
@@ -215,7 +217,8 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const ctx = { load, esc, store, policy };
     const safe = (f) => f(ctx).catch(() => "");
     // 계획·학교 비교·전형·중학교 패널은 첫 화면 뒤에 채운다(데이터 11개를 기다리지 않고 먼저 그린다)
-    const panelsP = isB ? Promise.resolve(["", "", "", ""]) : Promise.all([safe(planPanel), safe(comparePanel), safe(admPanel), safe(midPanel)]);
+    const later = (f) => new Promise((res) => { const go = () => f().then(res, res); (window.requestIdleCallback || ((c) => setTimeout(c, 300)))(go, { timeout: 2500 }); }); // 아래쪽 패널 데이터는 첫 화면을 그린 뒤 한가할 때 받는다
+    const panelsP = isB ? Promise.resolve(["", "", "", ""]) : later(() => Promise.all([safe(planPanel), safe(comparePanel), safe(admPanel), safe(midPanel)]));
     const hubCounts = {}; STAGES.forEach((g) => { hubCounts[g] = upRows().filter((x) => stageOf(x.r) === g).length; });
 
     const pins = (store.get(PIN_KEY, []) || []).filter((x) => typeof x === "string").slice(0, 2);
@@ -321,6 +324,12 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
       });
       draw();
     }
+    watchP.then((w) => { // 감시 봇 소식이 있으면 소식 칸(목록·새 소식 수)만 갱신
+      const sec = el.querySelector(".news"); if (!w.length || !sec || !el.isConnected) return;
+      const lg = [...log0, ...w].sort((a, b) => span(b.d).start - span(a.d).start), fr = lg.filter(isNew).length;
+      const fe = sec.querySelector(".fresh"); if (fe) fe.innerHTML = `${checked ? `마지막 확인 ${esc(ymdText(checked))}` : ""}${fr ? ` · <b>새 소식 ${fr}건</b>` : ""}`;
+      const box = sec.querySelector("ul.rows") || sec.querySelector(".empty"); if (box) box.outerHTML = `<ul class="rows">${lg.slice(0, 2).map(logRow).join("")}</ul>`;
+    });
     panelsP.then(([a, b, c, d]) => { const r4 = el.querySelector("#hm-r4"), cl = el.querySelector("#hm-col"); if (!r4 || !cl) return; r4.innerHTML = a + b; cl.innerHTML = c + d; foldPanels(el); decorateTerms(r4, ".dp"); decorateTerms(cl, ".dp"); });
   };
 }

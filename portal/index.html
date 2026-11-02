@@ -16,6 +16,30 @@
   <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
   <title>스쿨 라이프</title>
+  <!-- 첫 화면에 필요한 모듈·데이터를 미리 받아 둔다(모듈 가져오기 단계가 줄어듦) -->
+  <link rel="modulepreload" href="app.js">
+  <link rel="modulepreload" href="terms.js">
+  <link rel="modulepreload" href="src-ref.js">
+  <link rel="modulepreload" href="empty.js">
+  <link rel="modulepreload" href="pagefoot.js">
+  <link rel="modulepreload" href="glossary.js">
+  <link rel="modulepreload" href="menu.js">
+  <link rel="modulepreload" href="home.js">
+  <link rel="modulepreload" href="files.js">
+  <link rel="modulepreload" href="profile-ui.js">
+  <link rel="modulepreload" href="profile.js">
+  <link rel="modulepreload" href="stage.js">
+  <link rel="modulepreload" href="briefing.js">
+  <link rel="modulepreload" href="dash.js">
+  <link rel="modulepreload" href="search.js">
+  <link rel="modulepreload" href="search-extra.js">
+  <link rel="modulepreload" href="school-card.js">
+  <link rel="modulepreload" href="subject-info.js">
+  <link rel="preload" as="fetch" href="data/learners.json" crossorigin="anonymous">
+  <link rel="preload" as="fetch" href="data/schools.json" crossorigin="anonymous">
+  <link rel="preload" as="fetch" href="data/summary.json" crossorigin="anonymous">
+  <link rel="preload" as="fetch" href="data/curricula.json" crossorigin="anonymous">
+  <link rel="preload" as="fetch" href="data/policy.json" crossorigin="anonymous">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css"></noscript>
