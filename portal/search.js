@@ -3,6 +3,7 @@
 import { allItems } from "./menu.js";
 import { stageOf } from "./stage.js";
 import { loadSearchExtra } from "./search-extra.js";
+import { loadProfile, filterByProfile } from "./profile.js";
 const RECENT_KEY = "portal.search.recent";
 // 안내 데이터(중학교 배정 가이드·고교 유형·전형)를 제목+본문 단위로 펼쳐 색인한다. 출처·주소·코드 필드는 뺀다.
 const SKIP = new Set(["id", "url", "source", "sources", "status", "_meta", "nullReason", "checkedAt"]);
@@ -34,7 +35,7 @@ const HELP = [["경기도교육청", "https://www.goe.go.kr", "도 단위 공지
 
 export function mountSearch(btn, { load, store, esc }) {
   let box = null, data = null, loading = null, last = null;
-  const prep = () => (loading ??= Promise.all([load("policy"), load("summary"), load("links").catch(() => ({ items: [] })), load("subject-info").catch(() => ({ subjects: [] })), load("places").catch(() => ({ places: [] })), loadSearchExtra(load).catch(() => [])]).then(([policy, summary, links, si, pl, extra]) => { data = { places: pl.places || [], guide: extra.map((d) => ({ t: d.t, text: d.text, href: d.href, from: "", s: d.s })), policy, summary, links: links.items || [], subjects: si.subjects || (Array.isArray(si) ? si : []) }; }));
+  const prep = () => (loading ??= Promise.all([load("policy"), load("summary"), load("links").catch(() => ({ items: [] })), load("subject-info").catch(() => ({ subjects: [] })), load("places").catch(() => ({ places: [] })), loadSearchExtra(load).catch(() => [])]).then(([policy0, summary, links, si, pl, extra]) => { const policy = filterByProfile(policy0, loadProfile(store), { grade3: true }); /* 화면이 보여 주는 행만 검색 결과로(화면에 없는 행으로 링크되지 않게) */ data = { places: pl.places || [], guide: extra.map((d) => ({ t: d.t, text: d.text, href: d.href, from: "", s: d.s })), policy, summary, links: links.items || [], subjects: si.subjects || (Array.isArray(si) ? si : []) }; }));
   const recent = () => store.get(RECENT_KEY, []);
   const remember = (q) => { if (q.trim().length < 2) return; store.set(RECENT_KEY, [q.trim(), ...recent().filter((x) => x !== q.trim())].slice(0, 6)); };
 

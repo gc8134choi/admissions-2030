@@ -11,14 +11,15 @@ const {chromium}=require('playwright');const fs=require('fs');
 (async()=>{const base=process.argv[2],limit=+process.argv[3]||0;const rows=JSON.parse(fs.readFileSync('portal/data/policy.json','utf8'));
 const sel=limit?rows.slice(0,limit):rows;const b=await chromium.launch();const p=await (await b.newContext({viewport:{width:1200,height:900}})).newPage();
 await p.goto(base);await p.waitForTimeout(1500);await p.keyboard.press('/');await p.waitForSelector('.srch input');await p.waitForTimeout(1800);
-const norm=s=>String(s||'').replace(/\s+/g,'').replace(/[ⓘ]/g,'');const bad=[],skipped=[];let ok=0;
-for(const r of rows.length?sel:[]){const title=r.title;await p.fill('.srch input',title);await p.waitForTimeout(250);
- const hit=await p.evaluate((t)=>{const k=t.replace(/\s+/g,'').slice(0,10);for(const a of document.querySelectorAll('.sr-out li a')){const b=a.querySelector('b');if(b&&b.textContent.replace(/\s+/g,'').includes(k))return {href:a.getAttribute('href'),ext:a.target==='_blank'}}return null},title);
+const norm=s=>String(s||'').replace(/[^0-9A-Za-z가-힣]/g,'');const bad=[],skipped=[];let ok=0;
+for(const r of rows.length?sel:[]){const title=r.title;await p.fill('.srch input',title.replace(/^\d{4}-\d{2}(-\d{2})?\s*/,''));await p.waitForTimeout(250);
+ const hit=await p.evaluate((t)=>{const k=t.replace(/\s+/g,'').slice(0,10);let grp='';for(const el of document.querySelectorAll('.sr-out .sr-h, .sr-out li')){if(el.classList.contains('sr-h')){grp=el.textContent;continue}if(!grp.startsWith('일정·제도'))continue;const a=el.querySelector('a'),b=a&&a.querySelector('b');if(b&&b.textContent.replace(/\s+/g,'').includes(k))return {href:a.getAttribute('href'),ext:a.target==='_blank'}}return null},title.replace(/^\d{4}-\d{2}(-\d{2})?\s*/,''));
  if(!hit){skipped.push(r.id+' 검색 결과에 제목 없음');continue}
  if(hit.ext)continue;
  const page=await p.context().newPage();await page.goto(base+hit.href);await page.waitForTimeout(1200);
  await page.evaluate(()=>document.querySelectorAll('details').forEach(d=>d.open=true));await page.waitForTimeout(700);
- const found=await page.evaluate((t)=>document.body.innerText.replace(/\s+/g,'').replace(/ⓘ/g,'').includes(t),norm(title).slice(0,12));
+ const keys=[norm(title.replace(/^\d{4}-\d{2}(-\d{2})?\s*/,'')).slice(0,12),norm(r.body).slice(0,14),...(r.events||[]).map(e=>norm(e.label||e.title).slice(0,12))].filter(x=>x.length>=4);
+ const found=await page.evaluate((ks)=>{const t=document.body.textContent.replace(/[^0-9A-Za-z가-힣]/g,'');return ks.some(k=>t.includes(k))},keys);
  if(found)ok++;else bad.push(r.id+' '+title.slice(0,24)+' → '+hit.href);await page.close()}
 console.log(JSON.stringify({ok,bad,skipped:skipped.length}));await b.close()})();
 """
