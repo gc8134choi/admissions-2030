@@ -32,7 +32,8 @@ function update(wrap) {
   const head = table.tHead; if (!head) { box.hidden = true; return; }
   const off = topOffset(), wr = wrap.getBoundingClientRect(), hr = head.getBoundingClientRect();
   const H = hr.height;
-  const show = wr.width > 0 && wr.top < off - 1 && wr.bottom > off + H + 8 && hr.top < off - 1;
+  const vis = hr.width > 1 && hr.height > 1 && [...head.querySelectorAll("th")].some((n) => n.getBoundingClientRect().width > 1) && getComputedStyle(head).display !== "none"; // 카드형(모바일)으로 바뀌어 머리줄이 안 보이면 사본도 만들지 않는다
+  const show = vis && wr.width > 0 && wr.top < off - 1 && wr.bottom > off + H + 8 && hr.top < off - 1;
   if (!show) { box.hidden = true; return; }
   if (!box.firstChild || box.dataset.sig !== String(table.rows.length) + ":" + head.innerText.length) {
     const clone = table.cloneNode(false); clone.removeAttribute("id"); clone.style.margin = "0"; clone.style.maxWidth = "none";

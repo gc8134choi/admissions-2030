@@ -250,3 +250,6 @@ table.policy tr.past td,table.policy tr.past b,table.policy tr.past .stg,table.p
 .sh-fixed{position:fixed;z-index:20;overflow:hidden;background:var(--paper2,var(--paper,#fff));border-bottom:2px solid var(--ink,#333);pointer-events:auto}
 .sh-fixed table{table-layout:fixed}
 .sh-fixed[hidden]{display:none!important}
+
+.ed-ol{margin:6px 0 0;padding:0 0 0 1.5em;max-width:46em;font-size:15px;line-height:1.7}.ed-ol li{margin:0 0 6px;padding-left:2px}.ed-ol li::marker{color:var(--e-accent,var(--accent));font-weight:700}
+.ed .ed-ol li,.dp .ed-ol li{font-size:15px;line-height:1.7;border:0;padding:0 0 6px 2px}

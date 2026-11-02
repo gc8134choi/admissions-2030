@@ -3,13 +3,13 @@
 사용: python3 tools/pm/searchlinks.py [기본주소=http://localhost:8000/portal/] [--limit N]
 (Playwright 필요. 서버를 먼저 띄운다: python3 -m http.server 8000)"""
 import json, os, subprocess, sys, tempfile
-args = [a for a in sys.argv[1:] if not a.startswith("--")]
+args = [a for a in sys.argv[1:] if not a.startswith("--") and not (sys.argv[sys.argv.index(a) - 1] in ("--only", "--limit"))]
 BASE = (args[0] if args else "http://localhost:8000/portal/").rstrip("/") + "/"
 LIMIT = int(sys.argv[sys.argv.index("--limit") + 1]) if "--limit" in sys.argv else 0
 JS = r"""
 const {chromium}=require('playwright');const fs=require('fs');
 (async()=>{const base=process.argv[2],limit=+process.argv[3]||0;const rows=JSON.parse(fs.readFileSync('portal/data/policy.json','utf8'));
-const sel=limit?rows.slice(0,limit):rows;const b=await chromium.launch();const p=await (await b.newContext({viewport:{width:1200,height:900}})).newPage();
+const only=process.argv[4];const sel=only?rows.filter(r=>r.id.startsWith(only)):limit?rows.slice(0,limit):rows;const b=await chromium.launch();const p=await (await b.newContext({viewport:{width:1200,height:900}})).newPage();
 await p.goto(base);await p.waitForTimeout(1500);await p.keyboard.press('/');await p.waitForSelector('.srch input');await p.waitForTimeout(1800);
 const norm=s=>String(s||'').replace(/[^0-9A-Za-z가-힣]/g,'');const bad=[],skipped=[];let ok=0;
 for(const r of rows.length?sel:[]){const title=r.title;await p.fill('.srch input',title.replace(/^\d{4}-\d{2}(-\d{2})?\s*/,''));await p.waitForTimeout(250);
@@ -18,7 +18,7 @@ for(const r of rows.length?sel:[]){const title=r.title;await p.fill('.srch input
  if(hit.ext)continue;
  const page=await p.context().newPage();await page.goto(base+hit.href);await page.waitForTimeout(1200);
  await page.evaluate(()=>document.querySelectorAll('details').forEach(d=>d.open=true));await page.waitForTimeout(700);
- const keys=[norm(title.replace(/^\d{4}-\d{2}(-\d{2})?\s*/,'')).slice(0,12),norm(r.body).slice(0,14),...(r.events||[]).map(e=>norm(e.label||e.title).slice(0,12))].filter(x=>x.length>=4);
+ const EQ={'hs-11':['192학점']};const keys=[...(EQ[r.id]||[]).map(norm),norm(title.replace(/^\d{4}-\d{2}(-\d{2})?\s*/,'')).slice(0,12),norm(r.body).slice(0,14),...(r.events||[]).map(e=>norm(e.label||e.title).slice(0,12))].filter(x=>x.length>=4);
  const found=await page.evaluate((ks)=>{const t=document.body.textContent.replace(/[^0-9A-Za-z가-힣]/g,'');return ks.some(k=>t.includes(k))},keys);
  if(found)ok++;else bad.push(r.id+' '+title.slice(0,24)+' → '+hit.href);await page.close()}
 console.log(JSON.stringify({ok,bad,skipped:skipped.length}));await b.close()})();
@@ -27,7 +27,7 @@ env = dict(os.environ)
 try: env["NODE_PATH"] = subprocess.run(["npm", "root", "-g"], capture_output=True, text=True).stdout.strip()
 except Exception: pass
 with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as f: f.write(JS); path = f.name
-r = subprocess.run(["node", path, BASE, str(LIMIT)], capture_output=True, text=True, env=env); os.unlink(path)
+r = subprocess.run(["node", path, BASE, str(LIMIT)] + ([sys.argv[sys.argv.index("--only") + 1]] if "--only" in sys.argv else []), capture_output=True, text=True, env=env); os.unlink(path)
 if r.returncode != 0: print("점검 실행 실패:", (r.stderr or r.stdout)[-300:]); sys.exit(2)
 out = json.loads(r.stdout.strip().splitlines()[-1])
 print(f"링크 확인 {out['ok']}건 통과, 잘못된 링크 {len(out['bad'])}건, 검색에 제목이 안 나온 행 {out['skipped']}건")
