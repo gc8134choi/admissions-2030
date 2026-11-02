@@ -1,9 +1,9 @@
 {
  "_meta": {
   "note": "출처 등록부(생성물, 손으로 고치지 않는다). tools/build-sources.mjs가 portal/data의 출처 항목에서 만든다. 데이터 행의 sourceIds가 이 id를 가리킨다.",
-  "count": 146,
+  "count": 148,
   "kinds": {
-   "official": 100,
+   "official": 102,
    "media": 25,
    "user": 17,
    "self": 0,
@@ -72,17 +72,31 @@
    }
   },
   {
+   "id": "src-05347f2e",
+   "url": "https://www.goeyi.kr/goeyi/na/ntt/selectNttInfo.do?mi=25305&bbsId=15728&nttSn=1581475",
+   "kind": "official",
+   "org": "경기도용인교육지원청",
+   "checked": "2026-10-29",
+   "names": [
+    "신갈고 2027학년도 입학생 교육과정 편제표 PDF(용인교육지원청 게시판)"
+   ],
+   "usedIn": {
+    "hs-compare.json": 1
+   }
+  },
+  {
    "id": "src-06b2c22e",
    "url": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_cad46b04f4b3e5fef44b540969308744.pdf",
    "kind": "official",
    "org": "한국대학교육협의회",
    "checked": null,
    "names": [
-    "대교협 2029학년도 대학입학전형기본사항 전문(2026.8, 보도자료 붙임 PDF)"
+    "대교협 2029학년도 대학입학전형기본사항 전문(2026.8, 보도자료 붙임 PDF)",
+    "대교협 2029학년도 대학입학전형기본사항 전문(정시 원서접수 2029.1.2~5)"
    ],
    "usedIn": {
-    "events.json": 1,
-    "policy.json": 1
+    "events.json": 2,
+    "policy.json": 2
    }
   },
   {
@@ -173,12 +187,13 @@
    "checked": "2026-10-31",
    "names": [
     "대교협 2028학년도 대학입학전형기본사항(개정 2026.7.31)",
+    "대교협 2028학년도 대학입학전형기본사항(개정 2026.7.31, 정시 원서접수 2028.1.3~6) 외 2027·2029학년도 자료",
     "대교협 2028학년도 대학입학전형기본사항(2025.8.28, 개정 2026.7.31)"
    ],
    "usedIn": {
-    "events.json": 1,
+    "events.json": 2,
     "glossary.json": 1,
-    "policy.json": 4,
+    "policy.json": 5,
     "timeline.json": 1
    }
   },
@@ -346,15 +361,15 @@
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
     "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
-    "학교알리미",
     "학교알리미 공시항목 목록",
     "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
+    "학교알리미",
     "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
     "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)"
    ],
    "usedIn": {
     "exam-trends.json": 1,
-    "hs-compare.json": 16,
+    "hs-compare.json": 15,
     "places.json": 1,
     "school-codes.json": 1
    }
@@ -734,10 +749,12 @@
    "org": "한국대학교육협의회",
    "checked": null,
    "names": [
+    "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30, 정시 원서접수 2027.1.4~7)",
     "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)"
    ],
    "usedIn": {
-    "policy.json": 2
+    "events.json": 1,
+    "policy.json": 3
    }
   },
   {
@@ -2132,6 +2149,19 @@
    ],
    "usedIn": {
     "admission-rules.json": 1
+   }
+  },
+  {
+   "id": "src-f5f0304c",
+   "url": "https://www.goeyi.kr/goeyi/na/ntt/selectNttInfo.do?mi=25305&bbsId=15728&nttSn=1581751",
+   "kind": "official",
+   "org": "경기도용인교육지원청",
+   "checked": "2026-10-29",
+   "names": [
+    "서원고 리플릿 PDF 2쪽 편제표(용인교육지원청 게시판)"
+   ],
+   "usedIn": {
+    "hs-compare.json": 1
    }
   },
   {
