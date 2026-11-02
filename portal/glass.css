@@ -426,3 +426,5 @@ button.term{text-decoration:none!important;background-image:repeating-linear-gra
 .rows.lk .row h3 a{display:inline-flex;align-items:center;min-height:44px}
 /* 고정 머리글 높이(--hh): 머리글 밑에 붙는 요소(학교 칩 줄·목차·표 머리)가 머리글 아래에서 시작하도록 실제 높이에 맞춘다 */
 :root{--hh:56px}@media (min-width:900px){:root{--hh:72px}}
+/* 모바일에서는 학교 칩 줄을 따라다니게 두지 않는다(로고 줄이 화면의 17%를 계속 차지하던 것) */
+@media (max-width:760px){.chipbar{position:static}}
