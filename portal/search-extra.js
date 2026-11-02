@@ -7,7 +7,7 @@ const J = (a) => a.filter(Boolean).join(" ");
 const ok = (p) => p.catch(() => null);
 
 export async function loadSearchExtra(load) {
-  const [guide, tl, ht, gl, hc, bf, mc, el, ex, rl] = await Promise.all([ok(load("middle-guide")), ok(load("timeline")), ok(load("hs-types")), ok(load("glossary")), ok(load("hs-compare")), ok(load("briefings")), ok(load("middle-compare")), ok(load("electives")), ok(load("exam-trends")), ok(load("rules"))]);
+  const [guide, tl, ht, gl, hc, bf, mc, el, ex, rl, pol] = await Promise.all([ok(load("middle-guide")), ok(load("timeline")), ok(load("hs-types")), ok(load("glossary")), ok(load("hs-compare")), ok(load("briefings")), ok(load("middle-compare")), ok(load("electives")), ok(load("exam-trends")), ok(load("rules")), ok(load("policy"))]);
   const out = [];
   for (const s of guide?.sections || []) for (const it of s.items) out.push({ href: "#select/curriculum?v=middle", t: s.title, s: it.text.slice(0, 80), text: J([s.title, it.text]) });
   for (const e of tl?.events || []) out.push({ href: "#select/curriculum?v=middle", t: `${e.stage} · 큰 그림 연표`, s: e.what.slice(0, 80), text: J([e.stage, e.what, e.note]) });
@@ -34,5 +34,10 @@ export async function loadSearchExtra(load) {
   out.push({ href: "#life/credit", t: "한국사 · 필수 과목", s: "한국사는 공통과목으로 필수예요(졸업 필수 학점 중 6학점)", text: "한국사 필수 필수 과목 한국사 6학점 졸업 필수 학점 공통과목" });
   out.push({ href: "#select/curriculum?v=univ", t: "대학별 과목 요건(서울대 수학 등)", s: "대학·전형별 필수·권장 과목은 대학 요건 화면에서 학교별 편제표와 맞춰 볼 수 있어요", text: "서울대 수학 권장과목 필수과목 대학 요건 과목 선택 모집단위 미적분 기하 확률과 통계" });
   out.push({ href: "#select/curriculum?v=middle", t: "자유학기(시험 없는 학기)", s: "자유학기·자유학년 시행 학기의 성적은 고입 내신에 반영하지 않아요(경기도교육청 2027학년도 고입 내신성적 반영지침 기준). 시행 방식은 학교 안내에서 확인해요", text: "자유학기 자유학년 시험 없는 학기 중1 고입 내신 반영 안 함" });
+  // 경기 후기 평준화 일반고 배정 발표(정책 행 gg-04에서 날짜를 읽는다)
+  const gg04 = (pol || []).find((r) => r.id === "gg-04"), m04 = gg04 && String(gg04.body).match(/배정 대상자 발표[^,]*,\s*배정 학교 발표[^,]*/);
+  if (m04) out.push({ href: "#schedule?t=hs", t: "경기 후기 배정 학교 발표 · 합격자 발표", s: m04[0].slice(0, 80), text: J(["후기 합격자 발표 후기 배정 발표 배정 학교 발표 배정 대상자 발표 경기 후기 평준화 일반고 합격 발표", m04[0]]) });
+  out.push({ href: "#library/links", t: "전학 · 이사 배정(전입 배정)", s: "전학·이사 때의 배정 안내는 이 포털에 아직 없어요 → 이사 갈 지역 교육지원청에 문의하고 경기도 고입·전학 포털에서 확인해요", text: "전학 이사 배정 전입 배정 전입 이사 가는 지역 교육지원청 문의 고입 전학 포털" });
+  out.push({ href: "#select/curriculum?v=middle", t: "중학교 입학 서류 · 준비물", s: "예비소집·준비물·방과후학교 신청은 배정 학교가 정해진 뒤(2027.1월) 각 중학교가 공지해요 → 배정 학교 홈페이지 공지에서 확인", text: "중학교 입학 서류 입학 서류 제출 서류 준비물 예비소집 방과후 신입생 등록 배정 학교 공지" });
   return out;
 }
