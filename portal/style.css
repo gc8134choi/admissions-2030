@@ -74,7 +74,7 @@ button#reset{padding:5px 12px;border:1px solid var(--line);border-radius:6px;bac
 details{margin:6px 0;font-size:13px}summary{cursor:pointer;color:var(--muted)}
 .foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap}
 .filters .frow{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;padding:4px 0}
-td.req{color:var(--req)}td.ele{color:var(--ele)}.tm{white-space:nowrap}
+td.req{color:var(--req)}td.ele{color:var(--ele)}.tm{white-space:nowrap;font-size:15px}
 td.req .tm,td.req .cr{font-weight:700}td.ele .tm,td.ele .cr{font-weight:400}
 td.req .muted,td.ele .muted{color:var(--muted)}
 tfoot th{background:var(--soft)}

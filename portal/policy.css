@@ -252,3 +252,5 @@ table.policy tr.past td,table.policy tr.past b,table.policy tr.past .stg,table.p
 .ed .ed-ol li,.dp .ed-ol li{font-size:15px;line-height:1.7;border:0;padding:0 0 6px 2px}
 /* 일정 표 본문급(제목 칸·긴 설명)은 15px(보조 출처 줄 .srcw는 13px 유지) */
 table.policy td.l,table.policy td.l b,table.policy td .muted.small,#tl table.policy td,#tl table.policy td .muted.small{font-size:15px}
+/* 본문급 14~14.99px 정리(표 칸 값·게이지 라벨·구역 기준 안내·중학교 안내 글). 라벨·출처·상태는 13px 유지 */
+.ed-gauge .l,.ed p.ed-src,.mid-un,.w-aside p.muted.small,td.muted.small,.cmp-v.muted.small{font-size:15px!important}
