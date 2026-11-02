@@ -35,14 +35,22 @@ function update(wrap) {
   const show = wr.width > 0 && wr.top < off - 1 && wr.bottom > off + H + 8 && hr.top < off - 1;
   if (!show) { box.hidden = true; return; }
   if (!box.firstChild || box.dataset.sig !== String(table.rows.length) + ":" + head.innerText.length) {
-    const clone = table.cloneNode(false); clone.removeAttribute("id"); clone.style.margin = "0"; clone.style.width = table.getBoundingClientRect().width + "px";
+    const clone = table.cloneNode(false); clone.removeAttribute("id"); clone.style.margin = "0"; clone.style.maxWidth = "none";
     const th = head.cloneNode(true); th.querySelectorAll("[id]").forEach((n) => n.removeAttribute("id")); th.querySelectorAll("button").forEach((b) => (b.hidden = true));
-    clone.appendChild(th); box.replaceChildren(clone); box.dataset.sig = String(table.rows.length) + ":" + head.innerText.length;
+    clone.appendChild(th); const inner = document.createElement("div"); inner.appendChild(clone); box.replaceChildren(inner); box.dataset.sig = String(table.rows.length) + ":" + head.innerText.length;
   }
-  // 열 너비를 원본과 같게
+  // 표 폭과 열 너비를 원본과 똑같이(표가 래퍼보다 좁아도 늘어나지 않게)
+  const inner = box.firstChild, clone = inner.firstChild, tw = table.getBoundingClientRect().width, cs = getComputedStyle(wrap);
+  // 래퍼의 안쪽 여백(padding)까지 같게: 사본 줄 안에 같은 여백을 둔다
+  inner.style.cssText = `box-sizing:content-box;width:${tw}px`; box.style.paddingLeft = cs.paddingLeft; box.style.paddingRight = cs.paddingRight; box.style.boxSizing = "border-box"; // 고정 열(sticky)의 기준선이 내용 영역이라 래퍼와 같은 여백을 줄 자체에 둔다
+  clone.style.width = clone.style.minWidth = clone.style.maxWidth = tw + "px";
   const o = head.querySelectorAll("th"), c = box.querySelectorAll("th");
-  o.forEach((n, i) => { if (c[i]) { const w = n.getBoundingClientRect().width; c[i].style.width = c[i].style.minWidth = c[i].style.maxWidth = w + "px"; c[i].style.boxSizing = "border-box"; } });
-  box.style.top = off + "px"; box.style.left = wr.left + "px"; box.style.width = wr.width + "px";
+  o.forEach((n, i) => { if (c[i]) { const w = n.getBoundingClientRect().width; c[i].style.width = c[i].style.minWidth = c[i].style.maxWidth = w + "px"; c[i].style.boxSizing = "border-box";
+    const s = getComputedStyle(n); // 가로로 고정되는 열(sticky left)은 선택자가 원본 id에 걸려 있어도 사본에서 같게 고정
+    if (s.position === "sticky" && s.left !== "auto") { c[i].style.position = "sticky"; c[i].style.left = s.left; c[i].style.zIndex = "4"; if (/rgba?\(/.test(s.backgroundColor) && s.backgroundColor !== "rgba(0, 0, 0, 0)") c[i].style.backgroundColor = s.backgroundColor; }
+  } });
+  // 래퍼의 안쪽 영역(테두리·스크롤바 제외)과 같은 위치·폭
+  box.style.top = off + "px"; box.style.left = (wr.left + wrap.clientLeft) + "px"; box.style.width = wrap.clientWidth + "px";
   box.hidden = false; box.scrollLeft = wrap.scrollLeft;
 }
 
