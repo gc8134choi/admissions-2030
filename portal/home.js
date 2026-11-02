@@ -129,7 +129,11 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     if (focus.length === STAGES.length) focus = [];
     let fpicking = HOME_PICK; // 처음 방문도 한 줄("전체 · 고르기")로 시작해 홈을 짧게 둔다
     const inF = (g) => !focus.length || !g || focus.includes(g);
-    const feedF = () => { const f = feed(), m = f.filter((it) => inF(stageOf(it.row))); return m.length ? m : f; };
+    // 고른 단계의 일정이 90일 안에 없으면(예: 대입만 고름) 다른 단계 일정을 보여 주지 않고, 그 단계의 다가올 일정(기간 제한 없이 가까운 3개)을 먼저 보여 준다
+    const farFeed = () => policy.filter((r) => r.topic === "exam-schedule" || r.topic === "hs-schedule" || r.topic === "gg-hs-entry").flatMap((r) => eventsOf(r).map((e) => ({ r, e, sp: span(e.start, e.end) })))
+      .filter((x) => x.sp.end >= t && related(x.r) && !isG3(x.r, x.e) && x.r.region !== "seoul" && inF(stageOf(x.r)) && (x.r.topic === "exam-schedule" || focus.includes("고입"))).sort((a, b) => a.sp.start - b.sp.start || a.sp.end - b.sp.end).slice(0, 3)
+      .map((x) => ({ kind: "ev", row: x.r, seoul: false, sp: x.sp, title: x.r.title + (x.e.label ? ` · ${x.e.label}` : ""), date: fmtRange(x.sp, t, x.e), line: oneLine(x.r.body), meta: `${badges(x.r)} ${link(x.r)}` }));
+    const feedF = () => { const f = feed(), m = f.filter((it) => inF(stageOf(it.row))); if (m.length) return m; const far = focus.length ? farFeed() : []; return far.length ? far : f; };
     const rest = () => { const f = feedF().slice(0, 3);
       if (!f.length) return `<li class="lg"><div class="empty"><p>아직 모인 일정이 없어요.</p><small>${isB ? "학교를 고르면 그 학교 일정이 여기에 모입니다." : "앞으로 90일 안에 해당하는 일정이 없어요."}</small></div></li>`;
       return f.map((it, i) => { const live = it.sp.start <= t, left = Math.round((it.sp.end - t) / DAY), g = stageOf(it.row);
