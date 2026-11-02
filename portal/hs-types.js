@@ -29,7 +29,7 @@ export async function hsTypesBody(el, { load, esc }) {
   el.innerHTML = `<div class="ed hst-wrap">
     ${sec("일반고 vs 특목·자사고 비교", `${d.types.length}종`, typesBox, true)}
     ${sec("경기 고입 달력", `${d.calendar.length}건`, `<ul class="hst-cal">${cal}</ul><p class="muted small">날짜는 공식 공고 기준이에요. 학교·교육청 공지로 다시 확인해 주세요.</p>`)}
-    ${sec("원서 절차", `${d.procedure.length}단계`, `<ol class="hst-proc">${proc}</ol>${emptyLine(esc, { why: "우리 집 주소로 배정 구역을 바로 알려 주는 기능은 아직 없어요.", next: WHERE.goePortal })}`)}
+    ${sec("원서 절차", `${d.procedure.length}단계`, `<ol class="hst-proc">${proc}</ol>${emptyLine(esc, { why: "우리 집 주소로 배정 구역을 바로 알려 주는 기능은 아직 없어요. 중학교 졸업예정자의 구역은 주소가 아니라 출신 중학교가 있는 구역 기준이에요(수지구 중학교는 2구역).", next: WHERE.goePortal })}`)}
     ${sec("준비 서류", `${d.documents.length}개`, `<ul class="hst-doc">${docs}</ul>`)}</div>`;
   const host = el.querySelector("#hst-cmp");
   if (host) cmpTable(host, { esc, title: "고교 유형 비교", summary: "유형을 가로로 놓고 선발·비용·교육과정을 견줘요",

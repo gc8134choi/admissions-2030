@@ -31,7 +31,7 @@ const INCLUDE_GRADE3 = process.env.INCLUDE_GRADE3 === "1";
 const draft = JSON.parse(readFileSync("research/data/policy-draft.json", "utf8")).items.filter((d) => INCLUDE_GRADE3 || !(d.audience || []).includes("grade3"));
 { const seen = new Set(); for (const d of draft) { if (seen.has(d.id)) { console.error(`정책 행 id 중복: ${d.id}`); process.exit(1); } seen.add(d.id); } }
 // 화면에 나가는 문구에서 내부 사정(점검 방식, 내부 행 번호)을 사용자 말로 바꾼다. 규칙은 portal/plain.js 한 곳(research 초안은 그대로 둔다).
-const { plainRow } = await import("../portal/plain.js");
+const { plainRow, plain } = await import("../portal/plain.js");
 const out = draft.map((d) => {
   const sources = [d.sourceName && { name: d.sourceName, url: d.sourceUrl }, ...(d.extraSources || [])].filter(Boolean);
   const row = { id: d.id, topic: d.topic };
@@ -53,7 +53,10 @@ const out = draft.map((d) => {
   if (d.stage) row.stage = d.stage;
   rawDate.set(row.id, d.date);
   row.checkedAt = d.checkedAt;
-  return plainRow(row);
+  const pr = plainRow(row);
+  if (pr.sourceName) pr.sourceName = plain(pr.sourceName); // 출처 이름의 인용 쪽수 정정도 같은 규칙으로
+  if (Array.isArray(pr.sources)) pr.sources = pr.sources.map((s) => (s && s.name ? { ...s, name: plain(s.name) } : s));
+  return pr;
 });
 // 일정은 events.json이 정본이고, policy 행에는 하위 호환용 events[]와 eventIds를 함께 둔다(한 릴리스 동안).
 const manual = loadManual();
