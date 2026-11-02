@@ -23,6 +23,30 @@ for(const r of rows.length?sel:[]){const title=r.title;await p.fill('.srch input
  if(found)ok++;else bad.push(r.id+' '+title.slice(0,24)+' → '+hit.href);await page.close()}
 console.log(JSON.stringify({ok,bad,skipped:skipped.length,sk:skipped}));await b.close()})();
 """
+# --hl: 검색 결과의 ?hl= 이동 주소 전수 도착 검사(행이 보이고 머리에 안 가리며, 3초 뒤 더 밀리지 않는지) — 모바일 390px
+if "--hl" in sys.argv:
+    ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    items = json.loads(subprocess.run(["node", os.path.join(ROOT, "tools/pm/searchhl.mjs")], capture_output=True, text=True, cwd=ROOT).stdout.strip().splitlines()[-1])
+    HJS = r"""
+const {chromium}=require('playwright');
+(async()=>{const base=process.argv[2];const items=JSON.parse(process.argv[3]);const b=await chromium.launch();const p=await (await b.newContext({viewport:{width:390,height:844},hasTouch:true})).newPage();const bad=[];let ok=0;
+for(const it of items){try{await p.goto(base);await p.waitForTimeout(250);await p.evaluate(h=>{location.hash=h.replace(/^#/,'')},it.href);await p.waitForTimeout(2600);
+ const a=await p.evaluate(()=>{const r=document.querySelector('.hl-row');if(!r)return {miss:1};const q=r.getBoundingClientRect();const hd=[...document.querySelectorAll('header, #chipbar')].filter(e=>{const c=getComputedStyle(e);return (c.position==='sticky'||c.position==='fixed')&&e.getBoundingClientRect().top<=1}).reduce((m,e)=>Math.max(m,e.getBoundingClientRect().bottom),0);return {top:Math.round(q.top),bottom:Math.round(q.bottom),hd:Math.round(hd),y:Math.round(scrollY),vis:r.checkVisibility()}});
+ await p.waitForTimeout(1500);const y2=await p.evaluate(()=>Math.round(scrollY));
+ if(a.miss)bad.push(it.href+' 행 못 찾음');else if(!a.vis)bad.push(it.href+' 안 보임');else if(a.top<a.hd-2)bad.push(it.href+' 머리에 가림 top='+a.top+' hd='+a.hd);else if(Math.abs(y2-a.y)>8)bad.push(it.href+' 도착 뒤 추가 스크롤 '+(y2-a.y));else ok++}catch(e){bad.push(it.href+' 오류')}}
+console.log(JSON.stringify({ok,bad}));await b.close()})();
+"""
+    with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as f:
+        f.write(HJS); hp = f.name
+    env = dict(os.environ)
+    try: env["NODE_PATH"] = subprocess.run(["npm", "root", "-g"], capture_output=True, text=True).stdout.strip()
+    except Exception: pass
+    r = subprocess.run(["node", hp, BASE, json.dumps(items)], capture_output=True, text=True, env=env); os.unlink(hp)
+    out = json.loads(r.stdout.strip().splitlines()[-1]) if r.stdout.strip() else {"ok": 0, "bad": ["실행 실패 " + r.stderr[-200:]]}
+    print(f"?hl= 도착 {out['ok']}/{len(items)}건 통과, 실패 {len(out['bad'])}건")
+    for b in out["bad"]: print(" ✗", b)
+    sys.exit(1 if out["bad"] else 0)
+
 env = dict(os.environ)
 try: env["NODE_PATH"] = subprocess.run(["npm", "root", "-g"], capture_output=True, text=True).stdout.strip()
 except Exception: pass
@@ -34,3 +58,4 @@ print(f"링크 확인 {out['ok']}건 통과, 잘못된 링크 {len(out['bad'])}�
 for b in out["bad"]: print(" ✗", b)
 for b in out.get("sk", []): print(" ·", b)
 sys.exit(1 if out["bad"] else 0)
+
