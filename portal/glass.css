@@ -451,3 +451,4 @@ button.term{display:inline!important} /* 인라인 용어 버튼의 박스가 �
 #main p.muted,#main p.muted.small,#main div.muted,#main span.muted,#main li .muted,#main .hs-quick,#main .hs-quick a,#main .gap-next,#main .mid-btn,#main p.fresh,#main .pl-row b,#main .pl-row .muted,#main .pn-um li,#main .pn-um li span,#main .pn-bar b,#main .pn-bar small,#main td.num .cmp-v,#main .ed-ym,#main .ed-g .n,#main .nm span,#main p.muted a{font-size:15px!important}
 #main table:not(#tbl) td:not(.srcw){font-size:15px}
 #main li>b,#main .ed-ym,#main .ed-ln b,#main .ed-g .k,#main .ed-g .n,#main .panel b,#main .cmp-cap,#main .cmp-cap .muted,#main .cmp-v.num{font-size:15px}
+#main .ed-ym h3{font-size:15px!important}
