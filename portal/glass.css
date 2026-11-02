@@ -445,3 +445,5 @@ button.term{text-decoration:underline dotted!important;text-decoration-thickness
 #main table:not([class]) td{font-size:15px}
 .unv-i{width:24px;height:24px;margin:-5px 1px;font-size:12px;box-sizing:border-box} /* 터치 대상 24×24px(WCAG 2.5.8), 줄 간격은 음수 여백으로 유지 */
 #view:empty ~ .pgfoot{visibility:hidden} /* 화면 본문이 들어오기 전에 푸터가 화면 아래에 보였다가 밀려나는 레이아웃 이동(CLS)을 막는다 */
+button.term{display:inline!important} /* 인라인 용어 버튼의 박스가 줄 높이만큼 커져 이웃 줄의 ⓘ와 겹치지 않게(글자 높이만) */
+.cmp-v{line-height:1.55} /* 표 칸 안 용어 버튼·ⓘ가 줄 사이에서 겹치지 않게 */
