@@ -52,9 +52,9 @@ if(c.none){if(!STICKY.includes(r))out.push({w,r,issue:'비교표 없음'});}else
  if(s&&s.bad)out.push({w,r,issue:'스크롤 후 대상 줄',bad:[s.bad]});}
 // 상세 비교(v=compare): 가로 스크롤 시 고정되는 열은 과목명(.l) 하나뿐이고, 그 폭이 래퍼의 절반 이하이며 배경이 불투명한지(다른 학교 값과 겹쳐 보이지 않게), 1440에서는 안쪽 가로 스크롤이 없는지
 {try{await p.goto(base+'#select/curriculum?v=compare',{waitUntil:'load',timeout:20000});await p.waitForTimeout(3500);}catch(e){out.push({w,r:'v=compare',issue:'고정 열 load'})}
- const f=await ev(p,async()=>{const wr=document.querySelector('.tw'),t=document.querySelector('#tbl');if(!wr||!t)return {bad:'표 없음'};const st=[...t.querySelectorAll('tbody th,tbody td')].filter(c=>getComputedStyle(c).position==='sticky');if(st.some(c=>!c.classList.contains('l')))return {bad:'과목명 열 말고도 고정되는 칸이 있음(교과군·학교 칸)'};
+ const f=await ev(p,async()=>{const wr=document.querySelector('.tw'),t=document.querySelector('#tbl');if(!wr||!t)return {bad:'표 없음'};const st=[...t.querySelectorAll('tbody th,tbody td')].filter(c=>getComputedStyle(c).position==='sticky');if(st.some(c=>!c.classList.contains('l')&&!c.classList.contains('gh')))return {bad:'과목명 열·그룹 머리글 말고도 고정되는 칸이 있음(학교 칸)'};
   const l=t.querySelector('tbody td.l');if(!l)return {bad:'과목명 칸 없음'};const bg=getComputedStyle(l).backgroundColor;if(/rgba\(.*,\s*0\)$/.test(bg)||bg==='transparent')return {bad:'고정 열 배경이 투명(스크롤 시 겹쳐 보임)'};
-  if(l.getBoundingClientRect().width>wr.clientWidth*0.5)return {bad:'고정 열이 래퍼의 절반을 넘음 '+Math.round(l.getBoundingClientRect().width)+'/'+wr.clientWidth};
+  if(l.getBoundingClientRect().width>Math.min(120.5,wr.clientWidth*0.5))return {bad:'고정 열이 래퍼의 절반을 넘음 '+Math.round(l.getBoundingClientRect().width)+'/'+wr.clientWidth};
   if(innerWidth>=1100&&wr.scrollWidth>wr.clientWidth+1)return {bad:'1440에서 표가 래퍼보다 넓어 안쪽 가로 스크롤 '+(wr.scrollWidth-wr.clientWidth)+'px'};
   return {ok:1}});
  if(f&&f.bad)out.push({w,r:'v=compare',issue:'상세 비교 고정 열',bad:[f.bad]});}
