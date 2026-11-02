@@ -1,0 +1,248 @@
+{
+ "_meta": {
+  "note": "현 고2(2025학년도 입학, 2028학년도 대입) 선택과목 수강 인원 초안. 인원은 학교가 공개한 값만 쓰고 추정하지 않는다. 비중 지표는 '선택 과목 수 비중'이지 학생 수가 아니다. 학교별 유불리는 이 표만으로 판단하기 어려운 추정 영역이다.",
+  "checkedAt": "2026-11-02",
+  "shape": "schools[{placeId,schoolId,name,cohort,enrolled,terms[{term,pick,enrolled,rows[{area,subject,count}],indicators,source,status,checkedAt,nullReason}],nullReason,nextAction}], readingAids",
+  "proposed": "주변 고교 4곳 제안: 풍덕고·성복고·수지고(홍천고와 같은 용인 2구역 일반고, 편제표 4교로 포털에 이미 있음), 신봉고(홍천고와 같은 신봉동 인접). 공개 수강 인원은 현재 없어 null+사유"
+ },
+ "schools": [
+  {
+   "placeId": "pl-014",
+   "schoolId": "school-yonginheungcheon",
+   "name": "홍천고등학교",
+   "cohort": {
+    "currentGrade": 2,
+    "entryYear": 2025,
+    "examYear": 2028
+   },
+   "enrolled": 388,
+   "terms": [
+    {
+     "term": "2026학년도 2학년 1학기",
+     "pick": "탐구 택3",
+     "enrolled": 388,
+     "rows": [
+      {
+       "area": "탐구-사회",
+       "subject": "세계시민과지리",
+       "count": 59
+      },
+      {
+       "area": "탐구-사회",
+       "subject": "윤리와사상",
+       "count": 124
+      },
+      {
+       "area": "탐구-사회",
+       "subject": "사회와문화",
+       "count": 153
+      },
+      {
+       "area": "탐구-사회",
+       "subject": "세계사",
+       "count": 44
+      },
+      {
+       "area": "탐구-과학",
+       "subject": "물리학",
+       "count": 212
+      },
+      {
+       "area": "탐구-과학",
+       "subject": "화학",
+       "count": 237
+      },
+      {
+       "area": "탐구-과학",
+       "subject": "생명과학",
+       "count": 243
+      },
+      {
+       "area": "탐구-과학",
+       "subject": "지구과학",
+       "count": 92
+      }
+     ],
+     "indicators": {
+      "selectionTotal": 1164,
+      "social": 380,
+      "science": 784,
+      "socialPct": 32.6,
+      "sciencePct": 67.4,
+      "note": "학생 1명이 3과목을 고르므로 '문과·이과 학생 수'가 아니라 '선택 과목 수 비중'"
+     },
+     "source": {
+      "type": "사용자 촬영 설명회 슬라이드",
+      "name": "용인홍천고등학교 2026 진로진학 아카데미 시즌4(2026.10.29 설명회) 슬라이드 p.53·54 촬영 사진",
+      "files": [
+       "portal/files/hongcheon-electives-2026-g2s1.jpg"
+      ],
+      "url": null,
+      "asOf": "2026-10-29"
+     },
+     "status": "reported",
+     "checkedAt": "2026-11-02",
+     "nullReason": null
+    },
+    {
+     "term": "2026학년도 2학년 2학기",
+     "pick": "탐구 택3",
+     "enrolled": 388,
+     "rows": [
+      {
+       "area": "탐구-사회",
+       "subject": "한국지리탐구",
+       "count": 68
+      },
+      {
+       "area": "탐구-사회",
+       "subject": "인문학과윤리",
+       "count": 134
+      },
+      {
+       "area": "탐구-사회",
+       "subject": "정치",
+       "count": 93
+      },
+      {
+       "area": "탐구-사회",
+       "subject": "경제",
+       "count": 69
+      },
+      {
+       "area": "탐구-사회",
+       "subject": "동아시아역사기행",
+       "count": 44
+      },
+      {
+       "area": "탐구-과학",
+       "subject": "역학과에너지",
+       "count": 207
+      },
+      {
+       "area": "탐구-과학",
+       "subject": "물질과에너지",
+       "count": 233
+      },
+      {
+       "area": "탐구-과학",
+       "subject": "세포와물질대사",
+       "count": 233
+      },
+      {
+       "area": "탐구-과학",
+       "subject": "지구시스템과학",
+       "count": 83
+      }
+     ],
+     "indicators": {
+      "selectionTotal": 1164,
+      "social": 408,
+      "science": 756,
+      "socialPct": 35.1,
+      "sciencePct": 64.9,
+      "note": "학생 1명이 3과목을 고르므로 '문과·이과 학생 수'가 아니라 '선택 과목 수 비중'"
+     },
+     "source": {
+      "type": "사용자 촬영 설명회 슬라이드",
+      "name": "용인홍천고등학교 2026 진로진학 아카데미 시즌4(2026.10.29 설명회) 슬라이드 p.53·54 촬영 사진",
+      "files": [
+       "portal/files/hongcheon-electives-2026-g2s2.jpg"
+      ],
+      "url": null,
+      "asOf": "2026-10-29"
+     },
+     "status": "reported",
+     "checkedAt": "2026-11-02",
+     "nullReason": null
+    }
+   ],
+   "nullReason": null,
+   "nextAction": null
+  },
+  {
+   "placeId": "pl-011",
+   "schoolId": "school-pungdeok",
+   "name": "풍덕고등학교",
+   "cohort": {
+    "currentGrade": 2,
+    "entryYear": 2025,
+    "examYear": 2028
+   },
+   "enrolled": null,
+   "terms": [],
+   "nullReason": "학교 홈페이지(교육과정 게시판)와 학교알리미에서 현 2학년 선택과목별 수강 인원을 공개한 자료를 찾지 못했어요(홈페이지에는 편제표·선택과목 안내서·설명회 영상만 있음, 학교알리미 학교 코드 조회 경로는 막혀 있음).",
+   "nextAction": "학교 진로진학 설명회·교육과정 설명회에서 '현 2학년 탐구 선택 인원 분포'를 질문하거나 학교에 문의"
+  },
+  {
+   "placeId": "pl-012",
+   "schoolId": "school-seongbok",
+   "name": "성복고등학교",
+   "cohort": {
+    "currentGrade": 2,
+    "entryYear": 2025,
+    "examYear": 2028
+   },
+   "enrolled": null,
+   "terms": [],
+   "nullReason": "학교 홈페이지(교육과정 게시판)와 학교알리미에서 현 2학년 선택과목별 수강 인원을 공개한 자료를 찾지 못했어요(홈페이지에는 편제표·선택과목 안내서·설명회 영상만 있음, 학교알리미 학교 코드 조회 경로는 막혀 있음).",
+   "nextAction": "학교 진로진학 설명회·교육과정 설명회에서 '현 2학년 탐구 선택 인원 분포'를 질문하거나 학교에 문의"
+  },
+  {
+   "placeId": "pl-013",
+   "schoolId": "school-suji",
+   "name": "수지고등학교",
+   "cohort": {
+    "currentGrade": 2,
+    "entryYear": 2025,
+    "examYear": 2028
+   },
+   "enrolled": null,
+   "terms": [],
+   "nullReason": "학교 홈페이지(교육과정 게시판)와 학교알리미에서 현 2학년 선택과목별 수강 인원을 공개한 자료를 찾지 못했어요(홈페이지에는 편제표·선택과목 안내서·설명회 영상만 있음, 학교알리미 학교 코드 조회 경로는 막혀 있음).",
+   "nextAction": "학교 진로진학 설명회·교육과정 설명회에서 '현 2학년 탐구 선택 인원 분포'를 질문하거나 학교에 문의"
+  },
+  {
+   "placeId": "pl-022",
+   "schoolId": null,
+   "name": "신봉고등학교",
+   "cohort": {
+    "currentGrade": 2,
+    "entryYear": 2025,
+    "examYear": 2028
+   },
+   "enrolled": null,
+   "terms": [],
+   "nullReason": "학교 홈페이지(교육과정 게시판)와 학교알리미에서 현 2학년 선택과목별 수강 인원을 공개한 자료를 찾지 못했어요(홈페이지에는 편제표·선택과목 안내서·설명회 영상만 있음, 학교알리미 학교 코드 조회 경로는 막혀 있음).",
+   "nextAction": "학교 진로진학 설명회·교육과정 설명회에서 '현 2학년 탐구 선택 인원 분포'를 질문하거나 학교에 문의"
+  }
+ ],
+ "readingAids": {
+  "official": [
+   {
+    "id": "adm-02",
+    "text": "2028학년도 수능부터 국어·수학·사회·과학탐구 영역에서 선택과목 없이 동일한 내용·기준으로 평가하고, 사회·과학탐구는 통합사회·통합과학에서 출제됨(현 고2부터 적용). 따라서 탐구 과목 선택이 수능 응시 과목을 정하지는 않음",
+    "source": {
+     "name": "교육부 브리핑(2023.12.27)",
+     "url": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888"
+    }
+   },
+   {
+    "id": "adm-04",
+    "text": "내신은 5등급 상대평가이며 사회·과학 융합선택 과목은 석차등급 없이 절대평가만 실시",
+    "source": {
+     "name": "교육부 브리핑(2023.12.27)",
+     "url": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888"
+    }
+   }
+  ],
+  "verdict": "이 표만으로 어느 쪽이 유리한지 판단하기 어려워요. 선택 인원은 학교 안의 분포일 뿐이고, 대학·모집단위별 권장과목과 5등급 상대평가에서 같은 과목을 고른 학생 수가 등급 경쟁에 영향을 줄 수 있으나 학교별 유불리는 추정이에요.",
+  "questions": [
+   "우리 학교 2학년 탐구 선택에서 사회·과학 비율과 과목별 인원은 어떻게 되나요?",
+   "희망 대학·모집단위의 권장과목을 모두 들으려면 어떤 조합이 가능한가요(개설 학급 수·시간표 충돌 포함)?",
+   "선택 인원이 적은 과목은 폐강되나요, 공동교육과정·온라인학교로 이수할 수 있나요?",
+   "같은 과목을 고른 학생 수가 적거나 많을 때 5등급 상대평가 산출은 어떻게 되고 학교는 어떤 점을 안내하나요?",
+   "3학년 선택과목은 어떻게 신청·배정하고, 희망이 몰릴 때 기준은 무엇인가요?"
+  ]
+ }
+}
