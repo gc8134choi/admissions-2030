@@ -8,6 +8,7 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 
 const argv = process.argv.slice(2);
 const SRC = argv.includes("--src") ? argv[argv.indexOf("--src") + 1] : "research/data/electives-draft.json";
+const MAN = JSON.parse(readFileSync("tools/electives-manual.json", "utf8"));
 const raw = existsSync(SRC) ? JSON.parse(readFileSync(SRC, "utf8")) : { _meta: {}, items: [] };
 const FILES = existsSync("portal/data/files.json") ? JSON.parse(readFileSync("portal/data/files.json", "utf8")) : [];
 const fileIdOf = (p) => FILES.find((f) => f.file === String(p).replace(/^portal\//, ""))?.id ?? null; // "portal/files/x.jpg" → files.json id
@@ -47,6 +48,7 @@ const tendency = (sci) => (sci >= 60 ? "과학 중심" : sci <= 40 ? "사회 중
 function proxyOf(it, w, out) {
   const p = it.proxy;
   if (!p) return null;
+  if (MAN.holdProxy.includes(it.placeId)) return { rows: [], held: true, nullReason: plain(MAN.holdReason), nextAction: "학교 설명회에서 탐구 선택 인원을 질문하세요" }; // 정정 대기: 값은 감춘다
   if (!(p.rows ?? []).length) return { nullReason: p.nullReason ? plain(p.nullReason) : null, nextAction: p.nextAction ? plain(p.nextAction) : null, rows: [] };
   const rows = p.rows.map((x) => {
     const area = String(x.area).replace(/^.*-/, "");
