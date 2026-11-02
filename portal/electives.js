@@ -14,7 +14,7 @@ export function electiveRows(data, esc) {
   const m = by(data);
   const g = (t) => m.get(t.id);
   const none = { empty: true, why: NO_DATA };
-  const whyOf = (e) => [e.nullReason || NO_DATA, e.classProxy?.nextAction || e.nextAction].filter(Boolean).join(" → ");
+  const whyOf = (e) => [e.classProxy?.held ? e.classProxy.nullReason : e.nullReason || NO_DATA, e.classProxy?.nextAction || e.nextAction].filter(Boolean).join(" → ");
   const px = (e) => (e?.classProxy?.rows?.length ? e.classProxy : null);
   const share = (area) => (t) => {
     const e = g(t), k = area === "사회" ? "socialShare" : "scienceShare";
@@ -62,7 +62,7 @@ export function electivesPanel(data, esc, files = new Map()) {
     ${(g.basis || []).length ? `<h4 class="el-h">공식 근거</h4><ul>${g.basis.map((b) => `<li>${esc(b.text)}${b.source ? srcWrap(b.source.url ? `<a href="${esc(b.source.url)}" target="_blank" rel="noopener">${esc(b.source.name)} ↗</a>` : esc(b.source.name)) : ""}</li>`).join("")}</ul>` : ""}
     ${(g.questions || []).length ? `<h4 class="el-h">설명회에서 물어볼 질문</h4><ul>${g.questions.map((q) => `<li>${esc(q)}</li>`).join("")}</ul>` : ""}</details>` : "";
   const none = (data?.items ?? []).filter((i) => !i.terms.length && !i.classProxy?.rows?.length);
-  const noneHtml = none.length ? `<details class="dn el-none"><summary>자료 없는 학교 ${none.length}곳</summary><ul>${none.map((e) => emptyLine(esc, { why: `${e.name}: ${e.nullReason || NO_DATA}` }).replace(/^<p class="muted gap">/, '<li class="muted gap">').replace(/<\/p>$/, e.nextAction ? ` <b>다음</b> ${esc(e.nextAction)}</li>` : "</li>")).join("")}</ul></details>` : "";
+  const noneHtml = none.length ? `<details class="dn el-none"><summary>자료 없는 학교 ${none.length}곳</summary><ul>${none.map((e) => emptyLine(esc, { why: `${e.name}: ${e.classProxy?.held ? e.classProxy.nullReason : e.nullReason || NO_DATA}` }).replace(/^<p class="muted gap">/, '<li class="muted gap">').replace(/<\/p>$/, e.nextAction ? ` <b>다음</b> ${esc(e.nextAction)}</li>` : "</li>")).join("")}</ul></details>` : "";
   if (!have.length) return `<section class="el-sec">${emptyLine(esc, { why: "학교별 선택과목 현황은 설명회·학교 안내 자료를 정리하는 대로 채워요", next: { label: "학교 상세에서 설명회 노트 보기", url: "#select/curriculum?v=hs" } })}${guide}</section>`;
   return `<section class="el-sec"><details class="dn el-d" id="el-detail"><summary>선택과목 현황 (현 2학년)</summary>
     ${have.length > 1 ? `<label class="el-pick">학교 <select data-el-pick aria-label="학교 고르기">${have.map((e) => `<option value="${esc(e.placeId)}">${esc(e.name)}${e.terms.length ? "" : " (학급 수 기준)"}</option>`).join("")}</select></label>` : ""}
