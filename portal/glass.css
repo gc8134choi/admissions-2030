@@ -28,7 +28,7 @@
 /* ---- 배경: 보케 한 겹(고정) ---- */
 body{background:var(--paper);background-image:none}
 body::before{content:"";position:fixed;inset:0;z-index:-1;background:var(--bokeh);pointer-events:none}
-.hdr{background:transparent;border-bottom:1px solid var(--line);-webkit-backdrop-filter:none;backdrop-filter:none}
+.hdr{background:var(--paper);border-bottom:1px solid var(--line);-webkit-backdrop-filter:none;backdrop-filter:none}
 .wm,.hdr a,.hdr button{color:var(--ink)}.wm i{color:var(--accent)}
 .hdr,.hdr *{font-family:var(--font)}
 
@@ -243,7 +243,7 @@ table.policy td{font-size:14px;line-height:1.5}
 .legend{margin:0 auto;padding-top:var(--sp-1);padding-bottom:0;font-size:var(--fs-sub);color:var(--pencil);display:flex;flex-wrap:wrap;gap:2px 10px;align-items:center;line-height:1.5}
 .legend .pst{margin:0 -4px 0 0}
 @media (min-width:1100px){.legend{padding-left:calc(var(--pad) + 0px)}}
-@media (max-width:899px){.legend{font-size:12.5px;padding-top:6px;margin-bottom:-6px}}
+@media (max-width:899px){.legend{font-size:13px;padding-top:6px;margin-bottom:-6px}}
 
 /* 검색 오버레이: 크게 열리고 바로 입력 */
 .srch{background:color-mix(in srgb,var(--paper) 88%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
@@ -293,13 +293,13 @@ details.pn-t[open]{padding-bottom:var(--sp-3)}
 
 /* 출처: 기본은 숨기고 "출처" 버튼으로 펼친다 */
 .srcw{display:inline}
-.srcb{display:inline-flex;align-items:center;min-height:var(--touch);min-width:44px;justify-content:center;padding:0 6px;border:0;background:none;color:var(--pencil);font:500 12.5px var(--font);text-decoration:underline dotted;text-underline-offset:3px;cursor:pointer}
+.srcb{display:inline-flex;align-items:center;min-height:var(--touch);min-width:44px;justify-content:center;padding:0 6px;border:0;background:none;color:var(--pencil);font:500 13px var(--font);text-decoration:underline dotted;text-underline-offset:3px;cursor:pointer}
 .srcb:hover,.srcb[aria-expanded=true]{color:var(--ink)}
 .srcb:focus-visible{outline:2px solid var(--accent);outline-offset:1px;border-radius:6px}
 .srcp{display:block;margin:2px 0 6px;padding:6px 10px;border:1px solid var(--glass-line);border-radius:10px;background:var(--glass-in);font-size:var(--fs-sub);line-height:1.5;color:var(--ink)}
 .srcp[hidden]{display:none}
 .srcp a{color:var(--ink)}
-.srcd{color:var(--pencil);font-size:12.5px;margin-left:6px}
+.srcd{color:var(--pencil);font-size:13px;margin-left:6px}
 .ed-s-fold{margin:0;line-height:1}
 .srcf{margin:var(--sp-3) 0 0;font-size:var(--fs-sub);color:var(--pencil)}
 .srcf>summary{cursor:pointer;min-height:var(--touch);display:flex;align-items:center}
@@ -424,3 +424,5 @@ button.term{text-decoration:none!important;background-image:repeating-linear-gra
 .panel li{margin:0}
 .panel li>a{display:flex;align-items:center;min-height:44px}
 .rows.lk .row h3 a{display:inline-flex;align-items:center;min-height:44px}
+/* 고정 머리글 높이(--hh): 머리글 밑에 붙는 요소(학교 칩 줄·목차·표 머리)가 머리글 아래에서 시작하도록 실제 높이에 맞춘다 */
+:root{--hh:56px}@media (min-width:900px){:root{--hh:72px}}
