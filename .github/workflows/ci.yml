@@ -89,6 +89,7 @@ jobs:
           node tools/build-glossary.mjs --check
           node tools/build-data-dictionary.mjs --check
           node tools/build-school-codes.mjs --check
+          node tools/build-electives.mjs --check
           node tools/build-sources.mjs --check
           node tools/build-changes.mjs --check
           node tools/build-hs-types.mjs --check
