@@ -198,12 +198,15 @@ async function curriculumView(el, query, node) {
       tyd.addEventListener("toggle", () => { if (tyd.open) fillTy(); });
       if (query.get("ty") === "1") { tyd.open = true; fillTy(); }
       const fillWide = await hsHubBody(body.querySelector("#hsmain"), { load, esc, lazy: true });
-      await summaryBody(body.querySelector("#sumhost"), sel);
       // 밀도: 학교 요약 카드는 번호·막대만 보이게 접고(자세히로 펼침), 31교 기본 정보 표는 접이식, 요약 카드는 한눈에 패널 바로 아래로
       const hub = body.querySelector("#hsmain .hub-hs"), wide = body.querySelector("#hs-wide"), sec = body.querySelector("#sumsec");
       if (hub && wide) {
         const dt = document.createElement("details"); dt.className = "dp wide-fold"; dt.innerHTML = "<summary>학교 31곳 기본 정보 표 (규모·입학·교육과정·진학)</summary>"; wide.before(dt); dt.appendChild(wide); let wd = false; dt.addEventListener("toggle", () => { if (dt.open && !wd) { wd = true; fillWide(); } }); dt.insertAdjacentHTML("beforebegin", `<p class="hs-quick muted small">바로 보기 <a href="#select/curriculum?v=hs&g=${encodeURIComponent("선택과목 현황")}">선택과목 현황</a> · <a href="#select/curriculum?v=hs&g=${encodeURIComponent("내신 출제")}">내신 출제·평가 경향</a></p>`); if (query.get("g")) dt.open = true; // g가 있으면(검색·바로 보기) 31교 표를 펼쳐 그 그룹으로 간다
         hub.insertBefore(sec, dt);
+      }
+      { // 요약 구역은 자리를 먼저 잡고(높이 예약) 채운다: 채워지면서 아래 내용이 밀리는 레이아웃 이동(CLS)을 막는다
+        const host = body.querySelector("#sumhost"), per = innerWidth < 900 ? 240 : 149; host.style.minHeight = Math.max(1, sel.length) * per + "px";
+        await summaryBody(host, sel); host.style.minHeight = "";
       }
       body.querySelectorAll(".school").forEach((c) => { c.classList.add("cp"); const f = c.querySelector(".foot"); if (f) f.insertAdjacentHTML("afterbegin", '<button type="button" class="btn sc-more" aria-expanded="false">자세히</button>'); });
       const bf = query.get("bf"); if (bf) { const t = (bf === "1" ? body.querySelector(".bf-area") : body.querySelector(`#bf-${CSS.escape(bf)}`)); if (t) { t.scrollIntoView({ block: "start" }); t.querySelector("details")?.setAttribute("open", ""); } }

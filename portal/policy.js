@@ -50,8 +50,22 @@ export function register(views, { $, esc, load, store }) {
   const table = (rows, cols, cls = () => "") => `<div class="tw"><table class="policy"><thead><tr>${cols.map((c) => `<th class="l">${c[0]}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => `<tr class="${cls(r)}">${cols.map((c) => `<td class="l">${c[1](r)}</td>`).join("")}</tr>`).join("") || `<tr><td colspan="${cols.length}">해당 항목이 없어요.</td></tr>`}</tbody></table></div>`;
   const basic = [["항목", (r) => `<b>${esc(r.title)}</b>`], ["내용", (r) => esc(r.body)], ["상태", badgeMain], ["구분·출처", (r) => srcWrap(src(r) + badgeNote(r), { checked: r.checkedAt })]];
   // 행 리스트(표 대체, A안): 왼쪽 상태 점, 오른쪽 제목·내용·출처. 구분은 헤어라인만. 옵션: meta(r)=제목 위 작은 글씨, cls(r)=추가 클래스, title(r)=제목.
+// 긴 본문(번호 ①~⑥이 이어지거나 220자 넘는 문장 3개 이상)은 번호 목록으로 나눠 한 문단 벽이 되지 않게 한다
+const bodyHtml = (t, esc2 = esc) => {
+  t = String(t || "");
+  const circ = t.split(/(?=[①②③④⑤⑥⑦⑧⑨])/);
+  if (circ.length > 2) {
+    const first = /^[①-⑨]/.test(circ[0]), intro = first ? "" : circ[0].trim(), items = (first ? circ : circ.slice(1)).map((x) => x.replace(/^[①-⑨]\s*/, "").trim());
+    const last = items[items.length - 1], m = last.match(/^(.*?[다요음함])\.\s+(\S.*)$/s); // 마지막 항목 뒤에 붙은 덧붙임 문장은 따로 뺀다
+    if (m) { items[items.length - 1] = m[1] + "."; var tail = m[2]; }
+    return `${intro ? `<p class="ed-b">${esc2(intro)}</p>` : ""}<ol class="ed-ol">${items.map((x) => `<li>${esc2(x)}</li>`).join("")}</ol>${tail ? `<p class="ed-b">${esc2(tail)}</p>` : ""}`;
+  }
+  const sents = t.split(/(?<=[가-힣0-9])\.\s+(?=[가-힣])/).map((x) => x.trim()).filter(Boolean);
+  if (t.length > 220 && sents.length >= 3) return `<ol class="ed-ol">${sents.map((x) => `<li>${esc2(/[.음함다요]$/.test(x) ? x : x)}</li>`).join("")}</ol>`;
+  return `<p class="ed-b">${esc2(t)}</p>`;
+};
   const cards = (rows, { meta, cls = () => "", title = (r) => r.title } = {}) => rows.length
-    ? `<div class="ed-rows">${rows.map((r) => `<article class="ed-row ${cls(r)}">${meta && meta(r) ? `<div class="ed-meta">${esc(meta(r))}</div>` : ""}<div class="ed-st">${stageTag(stageOf(r), esc)}${badgeMain(r)}</div><h3>${esc(title(r))}</h3><p class="ed-b">${esc(r.body)}</p><p class="ed-s">출처 ${src(r)}${badgeNote(r)}</p></article>`).join("")}</div>`
+    ? `<div class="ed-rows">${rows.map((r) => `<article class="ed-row ${cls(r)}">${meta && meta(r) ? `<div class="ed-meta">${esc(meta(r))}</div>` : ""}<div class="ed-st">${stageTag(stageOf(r), esc)}${badgeMain(r)}</div><h3>${esc(title(r))}</h3>${bodyHtml(r.body)}<p class="ed-s">출처 ${src(r)}${badgeNote(r)}</p></article>`).join("")}</div>`
     : '<p class="muted">해당 항목이 없어요.</p>';
   const cnt = (n) => `<span class="cnt">${n}</span>`;
   const tabs = (items, on) => `<div class="ed-tabs">${items.map(([k, h, t]) => `<a href="${h}" class="${k === on ? "on" : ""}">${t}</a>`).join("")}</div>`;

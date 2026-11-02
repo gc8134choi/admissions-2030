@@ -390,7 +390,7 @@ button.term{padding:14px 11px;margin:-14px -11px}
 .skin-opts .chip span{font-size:var(--fs-sub);font-weight:400;opacity:.85}
 .muted,.muted.small{color:var(--pencil)!important}
 /* 용어 버튼: 눌림 영역(패딩)과 점선 밑줄을 분리 */
-button.term{text-decoration:none!important;background-image:repeating-linear-gradient(90deg,var(--pencil) 0 2px,transparent 2px 4px);background-repeat:no-repeat;background-position:11px calc(100% - 15px);background-size:calc(100% - 22px) 1px}
+button.term{text-decoration:none!important;background-image:repeating-linear-gradient(90deg,var(--pencil) 0 2px,transparent 2px 4px);background-repeat:no-repeat;background-position:11px calc(100% - 19px);background-size:calc(100% - 22px) 1px}
 .chip.on .muted,.fchip.on .muted,.btn.primary .muted,.tsw button[aria-pressed=true] .muted{color:inherit!important}
 .cmp-gb{background:var(--glass-in);color:var(--ink)}
 
@@ -427,3 +427,7 @@ button.term{text-decoration:none!important;background-image:repeating-linear-gra
 :root{--hh:56px}@media (min-width:900px){:root{--hh:72px}}
 /* 모바일에서는 학교 칩 줄을 따라다니게 두지 않는다(로고 줄이 화면의 17%를 계속 차지하던 것) */
 @media (max-width:760px){.chipbar{position:static}}
+
+/* 고교 한눈에 상단 패널은 늦게 채워지므로 자리를 미리 잡아 아래 내용이 밀리지 않게 한다(CLS) */
+#hs-top{min-height:1000px}@media (min-width:900px){#hs-top{min-height:665px}}
+#chipbar:not([hidden]){min-height:88px}@media (min-width:900px){#chipbar:not([hidden]){min-height:40px}} /* 학교 칩이 채워질 때 아래가 밀리지 않게 */

@@ -11,7 +11,7 @@ ROUTES = ["", "#schedule", "#schedule?t=life", "#schedule?t=road", "#select/type
           "#select/curriculum?v=map", "#select/curriculum?v=middle", "#planner/plan", "#life/credit", "#admission/system",
           "#changelog", "#library/links", "#library/sources", "#library/status", "#library/files", "#select/curriculum?v=univ", "#select/curriculum?v=map&lv=middle", "#mid/life"]
 CMP = ["#select/curriculum?v=hs", "#select/curriculum?v=univ", "#admission/system?t=types", "#select/curriculum?v=middle"]
-STICKY = ["#select/curriculum?v=compare"]  # 표 구조가 다른 상세 비교(.tw): 스크롤 후 대상 줄 고정만 점검
+STICKY = ["#select/curriculum?v=compare", "#schedule", "#schedule?t=hs"]  # 표 구조가 다른 상세 비교(.tw): 스크롤 후 대상 줄 고정만 점검
 JS = r"""
 const {chromium}=require('playwright');
 async function ev(p,f){for(let i=0;i<4;i++){try{return await p.evaluate(f)}catch(e){await p.waitForTimeout(900)}}return await p.evaluate(f)}
@@ -39,9 +39,16 @@ const c=await ev(p,()=>{const t=document.querySelector('.cmp-tbl');if(!t)return 
  return {bad}});
 if(c.none){if(!STICKY.includes(r))out.push({w,r,issue:'비교표 없음'});}else if(c.bad.length)out.push({w,r,issue:'비교표',bad:c.bad});}
  // 스크롤 후 대상 줄이 머리글 바로 아래에 고정되는지(sticky-head.js 사본)
- {const s=await ev(p,async()=>{const wr=document.querySelector('.w-table,.tw');if(!wr||wr.getBoundingClientRect().height<300)return {skip:1};const y=window.scrollY+wr.getBoundingClientRect().top;window.scrollTo(0,y+160);await new Promise(r=>setTimeout(r,700));const hh=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--hh'))||0;const bx=document.querySelector('.sh-fixed:not([hidden])');if(!bx)return {bad:'스크롤 후 대상 줄이 사라짐'};const top=bx.getBoundingClientRect().top;if(top<hh-2||top>hh+60)return {bad:'대상 줄 위치 '+Math.round(top)+' (머리글 '+hh+')'};
-  const diffAt=async(end)=>{wr.scrollLeft=end?99999:0;await new Promise(r=>setTimeout(r,500));const O=[...wr.querySelectorAll('thead th')].map(x=>x.getBoundingClientRect()),C=[...bx.querySelectorAll('th')].map(x=>x.getBoundingClientRect());let m=O.length===C.length?0:999;O.forEach((o,i)=>{if(C[i])m=Math.max(m,Math.abs(o.left-C[i].left),Math.abs(o.width-C[i].width))});return m};
-  const d0=await diffAt(false),d1=await diffAt(true);if(Math.max(d0,d1)>1.5)return {bad:'사본 열이 원본과 어긋남 '+Math.round(Math.max(d0,d1)*10)/10+'px'};return {ok:1}});
+ {const s=await ev(p,async()=>{const wrs=[...document.querySelectorAll('.w-table,.tw')];const hh=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--hh'))||0;let tested=0;
+  for(const wr of wrs){const th0=wr.querySelector('thead th');const shown=th0&&th0.getBoundingClientRect().width>1;const hgt=wr.getBoundingClientRect().height;
+   const y=window.scrollY+wr.getBoundingClientRect().top;window.scrollTo(0,y+(hgt>300?160:Math.max(10,hgt/2-40)));await new Promise(r=>setTimeout(r,600));
+   const bxs=[...document.querySelectorAll('.sh-fixed:not([hidden])')];
+   if(!shown){if(bxs.length)return {bad:'원본 머리줄이 안 보이는데(카드형) 사본이 떠 있음'};continue}
+   if(hgt<120||wr.getBoundingClientRect().top>hh)continue; // 화면 아래 한계로 못 올라오는 짧은 표는 건너뜀
+   const bx=bxs[0];if(!bx)return {bad:'스크롤 후 대상 줄이 사라짐'};const top=bx.getBoundingClientRect().top;if(top<hh-2||top>hh+60)return {bad:'대상 줄 위치 '+Math.round(top)+' (머리글 '+hh+')'};
+   const diffAt=async(end)=>{wr.scrollLeft=end?99999:0;await new Promise(r=>setTimeout(r,500));const O=[...wr.querySelectorAll('thead th')].map(x=>x.getBoundingClientRect()),C=[...bx.querySelectorAll('th')].map(x=>x.getBoundingClientRect());let m=O.length===C.length?0:999;O.forEach((o,i)=>{if(C[i])m=Math.max(m,Math.abs(o.left-C[i].left),Math.abs(o.width-C[i].width))});return m};
+   const d0=await diffAt(false),d1=await diffAt(true);wr.scrollLeft=0;tested++;if(Math.max(d0,d1)>1.5)return {bad:'사본 열이 원본과 어긋남 '+Math.round(Math.max(d0,d1)*10)/10+'px'}}
+  return {ok:1,tested}});
  if(s&&s.bad)out.push({w,r,issue:'스크롤 후 대상 줄',bad:[s.bad]});}
 await p.close()}
 await b.close();console.log(JSON.stringify(out));})();
