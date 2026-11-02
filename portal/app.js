@@ -1,3 +1,4 @@
+import "./sticky-head.js";
 import { decorateTerms, initTerms, setTerms } from "./terms.js";
 import { foldSources, initSrcRef } from "./src-ref.js";
 import { emptyLine, WHERE } from "./empty.js";

@@ -10,11 +10,12 @@ BASE = (sys.argv[1] if len(sys.argv) > 1 else "https://gc8134choi.github.io/admi
 ROUTES = ["", "#schedule", "#schedule?t=life", "#schedule?t=road", "#select/types", "#select/curriculum", "#select/curriculum?v=compare",
           "#select/curriculum?v=map", "#select/curriculum?v=middle", "#planner/plan", "#life/credit", "#admission/system",
           "#changelog", "#library/links", "#library/sources", "#library/status", "#library/files", "#select/curriculum?v=univ", "#select/curriculum?v=map&lv=middle", "#mid/life"]
-CMP = ["#select/curriculum?v=hs", "#select/curriculum?v=univ", "#admission/system?t=types"]
+CMP = ["#select/curriculum?v=hs", "#select/curriculum?v=univ", "#admission/system?t=types", "#select/curriculum?v=middle"]
+STICKY = ["#select/curriculum?v=compare"]  # 표 구조가 다른 상세 비교(.tw): 스크롤 후 대상 줄 고정만 점검
 JS = r"""
 const {chromium}=require('playwright');
 async function ev(p,f){for(let i=0;i<4;i++){try{return await p.evaluate(f)}catch(e){await p.waitForTimeout(900)}}return await p.evaluate(f)}
-(async()=>{const base=process.argv[2];const routes=JSON.parse(process.argv[3]);const CMP=JSON.parse(process.argv[4]);const out=[];const b=await chromium.launch();
+(async()=>{const base=process.argv[2];const routes=JSON.parse(process.argv[3]);const CMP=JSON.parse(process.argv[4]);const STICKY=JSON.parse(process.argv[5]||'[]');const out=[];const b=await chromium.launch();
 for(const w of [390,1280,1440,1920]){const p=await b.newPage({viewport:{width:w,height:900}});
 for(const r of routes){try{await p.goto(base+r,{waitUntil:'load',timeout:20000});await p.waitForTimeout(900);}catch(e){out.push({w,r,issue:'load'});continue;}
 const bad=await ev(p,()=>[...document.querySelectorAll('li.row, .row')].filter(li=>li.offsetWidth>0).flatMap(li=>{
@@ -26,7 +27,7 @@ if(ov.sx)out.push({w,r,issue:'가로 스크롤',el:ov.el});}
 await p.close()}
 // 비교 표 점검(COMPARE-TABLE.md): 대상=열(thead th.cmp-s 2개 이상), 항목 열·대상 줄 sticky, 모든 th에 scope, 캡션, 페이지 가로 스크롤 0
 for(const w of [390,1440]){const p=await b.newPage({viewport:{width:w,height:900}});
-for(const r of CMP){try{await p.goto(base+r,{waitUntil:'load',timeout:20000});await p.waitForTimeout(1200);}catch(e){out.push({w,r,issue:'비교표 load'});continue;}
+for(const r of CMP.concat(STICKY)){try{await p.goto(base+r,{waitUntil:'load',timeout:20000});await p.waitForTimeout(1200);}catch(e){out.push({w,r,issue:'비교표 load'});continue;}
 await ev(p,()=>document.querySelectorAll('details').forEach(d=>{d.open=true;d.dispatchEvent(new Event('toggle'))}));await p.waitForTimeout(900);
 const c=await ev(p,()=>{const t=document.querySelector('.cmp-tbl');if(!t)return {none:1};const cs=(e,k)=>getComputedStyle(e)[k];const bad=[];
  if(t.querySelectorAll('thead th.cmp-s').length<2)bad.push('대상 열 2개 미만');
@@ -36,7 +37,10 @@ const c=await ev(p,()=>{const t=document.querySelector('.cmp-tbl');if(!t)return 
  if(!t.querySelector('caption'))bad.push('캡션 없음');
  if(document.documentElement.scrollWidth>document.documentElement.clientWidth+2)bad.push('페이지 가로 스크롤');
  return {bad}});
-if(c.none)out.push({w,r,issue:'비교표 없음'});else if(c.bad.length)out.push({w,r,issue:'비교표',bad:c.bad});}
+if(c.none){if(!STICKY.includes(r))out.push({w,r,issue:'비교표 없음'});}else if(c.bad.length)out.push({w,r,issue:'비교표',bad:c.bad});}
+ // 스크롤 후 대상 줄이 머리글 바로 아래에 고정되는지(sticky-head.js 사본)
+ {const s=await ev(p,async()=>{const wr=document.querySelector('.w-table,.tw');if(!wr||wr.getBoundingClientRect().height<300)return {skip:1};const y=window.scrollY+wr.getBoundingClientRect().top;window.scrollTo(0,y+160);await new Promise(r=>setTimeout(r,700));const hh=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--hh'))||0;const bx=document.querySelector('.sh-fixed:not([hidden])');if(!bx)return {bad:'스크롤 후 대상 줄이 사라짐'};const top=bx.getBoundingClientRect().top;return top<hh-2||top>hh+60?{bad:'대상 줄 위치 '+Math.round(top)+' (머리글 '+hh+')'}:{ok:1}});
+ if(s&&s.bad)out.push({w,r,issue:'스크롤 후 대상 줄',bad:[s.bad]});}
 await p.close()}
 await b.close();console.log(JSON.stringify(out));})();
 """
@@ -50,7 +54,7 @@ def main():
         env["NODE_PATH"] = subprocess.run(["npm", "root", "-g"], capture_output=True, text=True).stdout.strip()
     except Exception:
         pass
-    r = subprocess.run(["node", path, BASE, json.dumps(ROUTES), json.dumps(CMP)], capture_output=True, text=True, env=env)
+    r = subprocess.run(["node", path, BASE, json.dumps(ROUTES), json.dumps(CMP), json.dumps(STICKY)], capture_output=True, text=True, env=env)
     os.unlink(path)
     if r.returncode != 0:
         print("점검 실행 실패:", (r.stderr or r.stdout)[-300:])
