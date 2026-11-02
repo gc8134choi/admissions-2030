@@ -748,7 +748,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ev-gg-12-1@admissions-2030
-DTSTAMP:20261025T000000Z
+DTSTAMP:20261102T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261211
 SUMMARY:용인 배정 비율·원서 접수 방식
@@ -757,10 +757,51 @@ DESCRIPTION:학군내배정 정원은 고교별 모집정원의 50%(서천
  지원율 − 학군내 배정 인원. 경기도 내 중학교 졸업예
  정자는 재학 중학교에서 고교입학시스템으로 원서 작성
  ·전송 후 용인교육지원청에 종이원서 제출\, 원서접수 
- 마감 2026.12.10(목) 17:00\n출처: 경기도교육청 고입·전학 
- 포털 자료실: 2027학년도 경기도 고교 평준화학군 리플렛
- (9개 학군) 중 용인학군(2026.9.18 게시\, 공식) https://satp.goe
- .go.kr/main.do\n확인일 2026-10-25
+ 마감일 2026.12.10(목). 마감 시각은 공식 문서에서 확인하
+ 지 못함(경기 고입 안내)\n출처: 경기도교육청 고입·전
+ 학 포털 자료실: 2027학년도 경기도 고교 평준화학군 리
+ 플렛(9개 학군) 중 용인학군(2026.9.18 게시\, 공식) https://sa
+ tp.goe.go.kr/main.do\n확인일 2026-11-02
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:ev-gg-15-1@admissions-2030
+DTSTAMP:20261102T000000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20270206
+SUMMARY:경기 후기 고교 원서 접수처·마감 시각(평준화)
+DESCRIPTION:접수처: 응시원서에 학군내·구역내 지망 순위
+ 를 적어 해당 지역 교육지원청에 접수(경기도교육청 학
+ 생 배정 방안 58쪽). 접수 기간은 2026.12.4~12.10. 접수 마감 
+ 시각은 기본계획·학생 배정 방안·온라인 설명회 공지 
+ 어디에도 적혀 있지 않아 확인하지 못함 → 다음 행동: 1
+ 2월 초 용인교육지원청·재학 중학교 안내문에서 마감 
+ 시각 확인\n출처: 경기도교육청 2027학년도 경기도 고교 
+ 평준화 학군 학생 배정 방안(2026.8) 58쪽 https://www.goe.go.kr/
+ resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf 
+ / 경기도교육청 2027학년도 경기도 고등학교 입학전형 기
+ 본계획(2026.3) 3쪽 일정 https://www.goe.go.kr/resource/goe/na/bbs_24
+ 30/2026/03/e88abfe2-8daa-494e-9cb8-a2d030225b45.pdf\n확인일 2026-11-02
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:ev-gg-16-1@admissions-2030
+DTSTAMP:20261102T000000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20270206
+SUMMARY:경기 평준화 일반고 추가배정 대상·방식
+DESCRIPTION:대상: 학군별 기존 원서접수자 중 배정대상자로
+  선발되지 못한 사람(경기도교육청 학생 배정 방안 4쪽).
+  일정: 추가 배정·발표 2027.2.4\, 추가 배정학교 등록 2.4~2
+ .5(기본계획 3쪽). 추가배정의 추첨·성적순 등 세부 방식
+ 과 접수 방법은 공개 문서에서 확인하지 못함 → 다음 
+ 행동: 2027.1월 배정 대상자 발표 때 교육지원청 안내 확
+ 인\n출처: 경기도교육청 2027학년도 경기도 고교 평준화 
+ 학군 학생 배정 방안(2026.8) 4쪽 https://www.goe.go.kr/resource/go
+ e/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf / 경기도
+ 교육청 2027학년도 경기도 고등학교 입학전형 기본계획(2
+ 026.3) 3쪽 일정 https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/
+ e88abfe2-8daa-494e-9cb8-a2d030225b45.pdf\n확인일 2026-11-02
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR
