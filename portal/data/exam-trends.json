@@ -54,19 +54,9 @@
     {
      "name": "용인홍천고 2026학년도 2학기 1학년 전과목 교수학습 및 평가운영 계획.hwp",
      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
-    },
-    {
-     "name": "용인홍천고 2026학년도 2학기 2학년 전과목 교수학습 및 평가운영 계획.hwp",
-     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
-    },
-    {
-     "name": "용인홍천고 2026학년도 2학기 3학년 전과목 교수학습 및 평가운영 계획.hwp",
-     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
     }
    ],
    "sourceIds": [
-    "src-23491a33",
-    "src-23491a33",
     "src-23491a33"
    ],
    "fileIds": [],
@@ -118,7 +108,7 @@
        "area": "사회"
       }
      ],
-     "partial": null
+     "partial": "일부 과목이 빠졌을 수 있어요"
     },
     {
      "term": "2026학년도 2학기",
@@ -129,6 +119,20 @@
        "area": "국어",
        "paperPct": 60,
        "performancePct": 40,
+       "essayPct": null
+      },
+      {
+       "subject": "인문학과 윤리",
+       "area": "사회",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      },
+      {
+       "subject": "중국어 회화",
+       "area": "제2외국어",
+       "paperPct": 50,
+       "performancePct": 50,
        "essayPct": null
       },
       {
@@ -153,17 +157,17 @@
        "essayPct": null
       },
       {
+       "subject": "경제",
+       "area": "사회",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      },
+      {
        "subject": "동아시아 역사 기행",
        "area": "사회",
        "paperPct": 35,
        "performancePct": 65,
-       "essayPct": null
-      },
-      {
-       "subject": "인문학과 윤리",
-       "area": "사회",
-       "paperPct": 60,
-       "performancePct": 40,
        "essayPct": null
       },
       {
@@ -174,22 +178,8 @@
        "essayPct": null
       },
       {
-       "subject": "경제",
-       "area": "사회",
-       "paperPct": 60,
-       "performancePct": 40,
-       "essayPct": null
-      },
-      {
        "subject": "한국지리 탐구",
        "area": "사회",
-       "paperPct": 60,
-       "performancePct": 40,
-       "essayPct": null
-      },
-      {
-       "subject": "역학과 에너지",
-       "area": "과학",
        "paperPct": 60,
        "performancePct": 40,
        "essayPct": null
@@ -209,22 +199,22 @@
        "essayPct": null
       },
       {
-       "subject": "지구시스템과학",
+       "subject": "역학과 에너지",
        "area": "과학",
        "paperPct": 60,
        "performancePct": 40,
        "essayPct": null
       },
       {
-       "subject": "중국어 회화",
-       "area": "제2외국어",
-       "paperPct": 50,
-       "performancePct": 50,
+       "subject": "지구시스템과학",
+       "area": "과학",
+       "paperPct": 60,
+       "performancePct": 40,
        "essayPct": null
       }
      ],
      "gaps": [],
-     "partial": null
+     "partial": "일부 과목이 빠졌을 수 있어요"
     },
     {
      "term": "2026학년도 2학기",
@@ -259,13 +249,6 @@
        "essayPct": null
       },
       {
-       "subject": "진로 영어",
-       "area": "영어",
-       "paperPct": 40,
-       "performancePct": 60,
-       "essayPct": null
-      },
-      {
        "subject": "영어권 문화",
        "area": "영어",
        "paperPct": 40,
@@ -273,17 +256,10 @@
        "essayPct": null
       },
       {
-       "subject": "동아시아사",
-       "area": "사회",
-       "paperPct": 50,
-       "performancePct": 50,
-       "essayPct": null
-      },
-      {
-       "subject": "생활과 윤리",
-       "area": "사회",
-       "paperPct": 50,
-       "performancePct": 50,
+       "subject": "진로 영어",
+       "area": "영어",
+       "paperPct": 40,
+       "performancePct": 60,
        "essayPct": null
       },
       {
@@ -294,7 +270,21 @@
        "essayPct": null
       },
       {
-       "subject": "사회문화",
+       "subject": "동아시아사",
+       "area": "사회",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "사회‧문화",
+       "area": "사회",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "생활과 윤리",
        "area": "사회",
        "paperPct": 50,
        "performancePct": 50,
@@ -309,7 +299,7 @@
       }
      ],
      "gaps": [],
-     "partial": null
+     "partial": "일부 과목이 빠졌을 수 있어요"
     }
    ],
    "qualitative": [
@@ -451,13 +441,6 @@
        "essayPct": null
       },
       {
-       "subject": "국제법국제 사회의 법적 분석",
-       "area": "사회",
-       "paperPct": 50,
-       "performancePct": 50,
-       "essayPct": null
-      },
-      {
        "subject": "법과 사회",
        "area": "사회",
        "paperPct": 66,
@@ -529,13 +512,6 @@
        "essayPct": null
       },
       {
-       "subject": "영미문학 읽기",
-       "area": "영어",
-       "paperPct": 50,
-       "performancePct": 50,
-       "essayPct": null
-      },
-      {
        "subject": "화법과 작문",
        "area": "국어",
        "paperPct": 50,
@@ -564,14 +540,14 @@
        "essayPct": null
       },
       {
-       "subject": "수학적 사고와",
-       "area": "수학",
+       "subject": "심화영어Ⅰ",
+       "area": "영어",
        "paperPct": 50,
        "performancePct": 50,
        "essayPct": null
       },
       {
-       "subject": "심화영어Ⅰ",
+       "subject": "영미문학 읽기",
        "area": "영어",
        "paperPct": 50,
        "performancePct": 50,
@@ -680,7 +656,7 @@
        "area": "수학",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 36
+       "essayPct": null
       },
       {
        "subject": "통합사회",
@@ -694,14 +670,14 @@
        "area": "사회",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 40
+       "essayPct": null
       },
       {
        "subject": "통합과학",
        "area": "과학",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 40
+       "essayPct": null
       }
      ],
      "gaps": [
@@ -721,7 +697,7 @@
        "area": "국어",
        "paperPct": 64,
        "performancePct": 36,
-       "essayPct": 36
+       "essayPct": null
       },
       {
        "subject": "미적분Ⅰ",
@@ -763,7 +739,7 @@
        "area": "과학",
        "paperPct": 30,
        "performancePct": 70,
-       "essayPct": 70
+       "essayPct": null
       },
       {
        "subject": "물질과 에너지",
@@ -777,7 +753,7 @@
        "area": "과학",
        "paperPct": 70,
        "performancePct": 30,
-       "essayPct": 30
+       "essayPct": null
       },
       {
        "subject": "역학과 에너지",
@@ -791,7 +767,7 @@
        "area": "과학",
        "paperPct": 70,
        "performancePct": 30,
-       "essayPct": 30
+       "essayPct": null
       }
      ],
      "gaps": [],
@@ -811,13 +787,6 @@
       {
        "subject": "언어와매체",
        "area": "국어",
-       "paperPct": 50,
-       "performancePct": 50,
-       "essayPct": 35
-      },
-      {
-       "subject": "영어독해와 작문",
-       "area": "영어",
        "paperPct": 50,
        "performancePct": 50,
        "essayPct": null
@@ -848,14 +817,21 @@
        "area": "수학",
        "paperPct": 40,
        "performancePct": 60,
-       "essayPct": 60
+       "essayPct": null
       },
       {
        "subject": "영어권문화",
        "area": "영어",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 30
+       "essayPct": null
+      },
+      {
+       "subject": "영어독해와 작문",
+       "area": "영어",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
       },
       {
        "subject": "사회·문화",
@@ -869,7 +845,7 @@
        "area": "사회",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 40
+       "essayPct": null
       },
       {
        "subject": "세계문제와 미래사회",
@@ -897,7 +873,7 @@
        "area": "과학",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 15
+       "essayPct": null
       },
       {
        "subject": "생명과학Ⅱ",
@@ -911,7 +887,7 @@
        "area": "과학",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 30
+       "essayPct": null
       },
       {
        "subject": "화학Ⅱ",
@@ -963,6 +939,13 @@
        "essayPct": null
       },
       {
+       "subject": "공통수학",
+       "area": "수학",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      },
+      {
        "subject": "공통영어",
        "area": "영어",
        "paperPct": 70,
@@ -970,7 +953,7 @@
        "essayPct": null
       },
       {
-       "subject": "[통합사회2]",
+       "subject": "통합사회",
        "area": "사회",
        "paperPct": 60,
        "performancePct": 40,
@@ -984,6 +967,13 @@
        "essayPct": null
       },
       {
+       "subject": "생활과 과학",
+       "area": "과학",
+       "paperPct": 30,
+       "performancePct": 70,
+       "essayPct": null
+      },
+      {
        "subject": "통합과학",
        "area": "과학",
        "paperPct": 50,
@@ -991,12 +981,7 @@
        "essayPct": null
       }
      ],
-     "gaps": [
-      {
-       "subject": "공통수학",
-       "area": "수학"
-      }
-     ],
+     "gaps": [],
      "partial": "일부 과목이 빠졌을 수 있어요"
     },
     {
@@ -1008,6 +993,13 @@
        "area": "국어",
        "paperPct": 70,
        "performancePct": 30,
+       "essayPct": null
+      },
+      {
+       "subject": "기하",
+       "area": "수학",
+       "paperPct": 60,
+       "performancePct": 40,
        "essayPct": null
       },
       {
@@ -1081,6 +1073,13 @@
        "essayPct": null
       },
       {
+       "subject": "역학과 에너지",
+       "area": "과학",
+       "paperPct": 70,
+       "performancePct": 30,
+       "essayPct": null
+      },
+      {
        "subject": "지구시스템과학",
        "area": "과학",
        "paperPct": 70,
@@ -1112,8 +1111,8 @@
       {
        "subject": "화법과 작문",
        "area": "국어",
-       "paperPct": 30,
-       "performancePct": 70,
+       "paperPct": 50,
+       "performancePct": 50,
        "essayPct": null
       },
       {
@@ -1132,6 +1131,13 @@
       },
       {
        "subject": "심화 영어Ⅰ",
+       "area": "영어",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "영어권 문화",
        "area": "영어",
        "paperPct": 50,
        "performancePct": 50,
@@ -1173,7 +1179,7 @@
        "essayPct": null
       },
       {
-       "subject": "생활과 과학",
+       "subject": "생명과학Ⅱ",
        "area": "과학",
        "paperPct": 30,
        "performancePct": 70,
@@ -1233,7 +1239,7 @@
        "area": "국어",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 20
+       "essayPct": null
       },
       {
        "subject": "공통수학",
@@ -1247,7 +1253,7 @@
        "area": "영어",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 30
+       "essayPct": null
       },
       {
        "subject": "통합사회",
@@ -1261,14 +1267,14 @@
        "area": "사회",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 32
+       "essayPct": null
       },
       {
        "subject": "통합과학",
        "area": "과학",
        "paperPct": 55,
        "performancePct": 45,
-       "essayPct": 30
+       "essayPct": null
       }
      ],
      "gaps": [],
@@ -1283,7 +1289,7 @@
        "area": "국어",
        "paperPct": 70,
        "performancePct": 30,
-       "essayPct": 30
+       "essayPct": null
       },
       {
        "subject": "미적분Ⅰ",
@@ -1311,10 +1317,10 @@
        "area": "사회",
        "paperPct": 40,
        "performancePct": 60,
-       "essayPct": 38
+       "essayPct": null
       },
       {
-       "subject": "법과 사회",
+       "subject": "법과사회",
        "area": "사회",
        "paperPct": 70,
        "performancePct": 30,
@@ -1332,42 +1338,35 @@
        "area": "사회",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 40
+       "essayPct": null
       },
       {
        "subject": "데이터 과학",
        "area": "과학",
        "paperPct": 40,
        "performancePct": 60,
-       "essayPct": 40
+       "essayPct": null
       },
       {
        "subject": "물질과 에너지",
        "area": "과학",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 40
-      },
-      {
-       "subject": "세포와 물질대사",
-       "area": "과학",
-       "paperPct": 50,
-       "performancePct": 50,
-       "essayPct": 49
+       "essayPct": null
       },
       {
        "subject": "역학과 에너지",
        "area": "과학",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 32
+       "essayPct": null
       },
       {
        "subject": "지구시스템과학",
        "area": "과학",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 30
+       "essayPct": null
       }
      ],
      "gaps": [],
@@ -1382,18 +1381,11 @@
        "area": "국어",
        "paperPct": 40,
        "performancePct": 60,
-       "essayPct": 20
+       "essayPct": null
       },
       {
        "subject": "언어와 매체",
        "area": "국어",
-       "paperPct": 50,
-       "performancePct": 50,
-       "essayPct": 25
-      },
-      {
-       "subject": "영어 독해와 작문",
-       "area": "영어",
        "paperPct": 50,
        "performancePct": 50,
        "essayPct": null
@@ -1403,21 +1395,21 @@
        "area": "국어",
        "paperPct": 40,
        "performancePct": 60,
-       "essayPct": 20
+       "essayPct": null
       },
       {
        "subject": "화법과 작문",
        "area": "국어",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 50
+       "essayPct": null
       },
       {
        "subject": "기하",
        "area": "수학",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 35
+       "essayPct": null
       },
       {
        "subject": "미적분",
@@ -1431,35 +1423,42 @@
        "area": "영어",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 15
+       "essayPct": null
+      },
+      {
+       "subject": "영어 독해와 작문",
+       "area": "영어",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
       },
       {
        "subject": "영어권문화",
        "area": "영어",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 20
+       "essayPct": null
       },
       {
        "subject": "동아시아사",
        "area": "사회",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 45
+       "essayPct": null
       },
       {
        "subject": "사회·문화",
        "area": "사회",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 35
+       "essayPct": null
       },
       {
        "subject": "생활과윤리",
        "area": "사회",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 30
+       "essayPct": null
       },
       {
        "subject": "한국지리",
@@ -1473,28 +1472,43 @@
        "area": "과학",
        "paperPct": 25,
        "performancePct": 75,
-       "essayPct": 75
+       "essayPct": null
       },
       {
        "subject": "생명과학Ⅱ",
        "area": "과학",
        "paperPct": 25,
        "performancePct": 75,
-       "essayPct": 50
+       "essayPct": null
       },
       {
        "subject": "지구과학Ⅱ",
        "area": "과학",
        "paperPct": 30,
        "performancePct": 70,
-       "essayPct": 45
+       "essayPct": null
       },
       {
        "subject": "화학Ⅱ",
        "area": "과학",
        "paperPct": 30,
        "performancePct": 70,
-       "essayPct": 45
+       "essayPct": null
+      }
+     ],
+     "gaps": [],
+     "partial": "일부 과목이 빠졌을 수 있어요"
+    },
+    {
+     "term": "2026학년도 2학기",
+     "grade": null,
+     "rows": [
+      {
+       "subject": "세포와 물질대사",
+       "area": "과학",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
       }
      ],
      "gaps": [],
@@ -1529,35 +1543,14 @@
    "plans": [
     {
      "term": "2026학년도 2학기",
-     "grade": null,
+     "grade": 1,
      "rows": [
       {
        "subject": "공통국어",
        "area": "국어",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 40
-      },
-      {
-       "subject": "독서",
-       "area": "국어",
-       "paperPct": 50,
-       "performancePct": 50,
-       "essayPct": 40
-      },
-      {
-       "subject": "영어 독해와 작문",
-       "area": "영어",
-       "paperPct": 50,
-       "performancePct": 50,
-       "essayPct": 30
-      },
-      {
-       "subject": "화법과언어",
-       "area": "국어",
-       "paperPct": 50,
-       "performancePct": 50,
-       "essayPct": 50
+       "essayPct": null
       },
       {
        "subject": "공통수학",
@@ -1567,18 +1560,54 @@
        "essayPct": null
       },
       {
+       "subject": "공통영어",
+       "area": "영어",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      },
+      {
+       "subject": "통합사회",
+       "area": "사회",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      },
+      {
+       "subject": "한국사",
+       "area": "사회",
+       "paperPct": 65,
+       "performancePct": 35,
+       "essayPct": null
+      },
+      {
+       "subject": "통합과학",
+       "area": "과학",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
+      }
+     ],
+     "gaps": [],
+     "partial": "일부 과목이 빠졌을 수 있어요"
+    },
+    {
+     "term": "2026학년도 2학기",
+     "grade": 2,
+     "rows": [
+      {
+       "subject": "화법과언어",
+       "area": "국어",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
        "subject": "기하",
        "area": "수학",
        "paperPct": 70,
        "performancePct": 30,
-       "essayPct": 37
-      },
-      {
-       "subject": "미적분",
-       "area": "수학",
-       "paperPct": 50,
-       "performancePct": 50,
-       "essayPct": 50
+       "essayPct": null
       },
       {
        "subject": "미적분Ⅰ",
@@ -1588,130 +1617,131 @@
        "essayPct": null
       },
       {
-       "subject": "확률과 통계",
-       "area": "수학",
-       "paperPct": 50,
-       "performancePct": 50,
-       "essayPct": 50
-      },
-      {
-       "subject": "공통영어",
-       "area": "영어",
-       "paperPct": 60,
-       "performancePct": 40,
-       "essayPct": 39
-      },
-      {
        "subject": "영어Ⅰ",
        "area": "영어",
        "paperPct": 70,
        "performancePct": 30,
-       "essayPct": 30
+       "essayPct": null
       },
       {
        "subject": "경제",
        "area": "사회",
        "paperPct": 40,
        "performancePct": 60,
-       "essayPct": 35
-      },
-      {
-       "subject": "사회·문화",
-       "area": "사회",
-       "paperPct": 50,
-       "performancePct": 50,
-       "essayPct": 35
-      },
-      {
-       "subject": "생활과 윤리",
-       "area": "사회",
-       "paperPct": 50,
-       "performancePct": 50,
-       "essayPct": 50
-      },
-      {
-       "subject": "세계사",
-       "area": "사회",
-       "paperPct": 50,
-       "performancePct": 50,
-       "essayPct": 40
-      },
-      {
-       "subject": "세계지리",
-       "area": "사회",
-       "paperPct": 40,
-       "performancePct": 60,
-       "essayPct": 40
+       "essayPct": null
       },
       {
        "subject": "정치",
        "area": "사회",
        "paperPct": 40,
        "performancePct": 60,
-       "essayPct": 60
-      },
-      {
-       "subject": "통합사회",
-       "area": "사회",
-       "paperPct": 60,
-       "performancePct": 40,
-       "essayPct": 30
-      },
-      {
-       "subject": "한국사",
-       "area": "사회",
-       "paperPct": 65,
-       "performancePct": 35,
-       "essayPct": 35
+       "essayPct": null
       },
       {
        "subject": "한국지리 탐구",
        "area": "사회",
        "paperPct": 40,
        "performancePct": 60,
-       "essayPct": 40
+       "essayPct": null
       },
       {
        "subject": "현대사회와 윤리",
        "area": "사회",
        "paperPct": 70,
        "performancePct": 30,
-       "essayPct": 30
+       "essayPct": null
       },
       {
        "subject": "세포와물질대사",
        "area": "과학",
        "paperPct": 40,
        "performancePct": 60,
-       "essayPct": 30
+       "essayPct": null
       },
       {
        "subject": "역학과 에너지",
        "area": "과학",
        "paperPct": 40,
        "performancePct": 60,
-       "essayPct": 60
+       "essayPct": null
       },
       {
        "subject": "지구시스템과학",
        "area": "과학",
        "paperPct": 40,
        "performancePct": 60,
-       "essayPct": 40
-      },
-      {
-       "subject": "통합과학",
-       "area": "과학",
-       "paperPct": 60,
-       "performancePct": 40,
-       "essayPct": 35
+       "essayPct": null
       },
       {
        "subject": "화학 반응의 세계",
        "area": "과학",
        "paperPct": 40,
        "performancePct": 60,
-       "essayPct": 44
+       "essayPct": null
+      }
+     ],
+     "gaps": [],
+     "partial": "일부 과목이 빠졌을 수 있어요"
+    },
+    {
+     "term": "2026학년도 2학기",
+     "grade": 3,
+     "rows": [
+      {
+       "subject": "독서",
+       "area": "국어",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "미적분",
+       "area": "수학",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "확률과 통계",
+       "area": "수학",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "영어 독해와 작문",
+       "area": "영어",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "사회·문화",
+       "area": "사회",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "생활과 윤리",
+       "area": "사회",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "세계사",
+       "area": "사회",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "세계지리",
+       "area": "사회",
+       "paperPct": 40,
+       "performancePct": 60,
+       "essayPct": null
       }
      ],
      "gaps": [],
@@ -1753,35 +1783,35 @@
        "area": "국어",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 35
+       "essayPct": null
       },
       {
        "subject": "공통수학",
        "area": "수학",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 36
+       "essayPct": null
       },
       {
        "subject": "공통영어",
        "area": "영어",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 49
+       "essayPct": null
       },
       {
        "subject": "통합사회",
        "area": "사회",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 40
+       "essayPct": null
       },
       {
        "subject": "한국사",
        "area": "사회",
        "paperPct": 40,
        "performancePct": 60,
-       "essayPct": 30
+       "essayPct": null
       },
       {
        "subject": "통합과학",
@@ -1803,21 +1833,21 @@
        "area": "국어",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 40
+       "essayPct": null
       },
       {
        "subject": "기하",
        "area": "수학",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 40
+       "essayPct": null
       },
       {
        "subject": "미적분Ⅰ",
        "area": "수학",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 31
+       "essayPct": null
       },
       {
        "subject": "영어Ⅱ",
@@ -1831,56 +1861,56 @@
        "area": "사회",
        "paperPct": 40,
        "performancePct": 60,
-       "essayPct": 34
+       "essayPct": null
       },
       {
        "subject": "법과 사회",
        "area": "사회",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 35
+       "essayPct": null
       },
       {
        "subject": "세계시민과 지리",
        "area": "사회",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 30
+       "essayPct": null
       },
       {
        "subject": "현대사회와 윤리",
        "area": "사회",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 35
+       "essayPct": null
       },
       {
        "subject": "물질과 에너지",
        "area": "과학",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 36
+       "essayPct": null
       },
       {
        "subject": "세포와 물질대사",
        "area": "과학",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 30
+       "essayPct": null
       },
       {
        "subject": "역학과 에너지",
        "area": "과학",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 30
+       "essayPct": null
       },
       {
        "subject": "지구시스템과학",
        "area": "과학",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 32
+       "essayPct": null
       }
      ],
      "gaps": [],
@@ -1891,88 +1921,88 @@
      "grade": 3,
      "rows": [
       {
-       "subject": "언어와 매체",
+       "subject": "언어와매체",
        "area": "국어",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 50
-      },
-      {
-       "subject": "영어 독해와 작문",
-       "area": "영어",
-       "paperPct": 50,
-       "performancePct": 50,
-       "essayPct": 40
+       "essayPct": null
       },
       {
        "subject": "화법과 작문",
        "area": "국어",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 50
+       "essayPct": null
       },
       {
        "subject": "기하",
        "area": "수학",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 35
+       "essayPct": null
       },
       {
        "subject": "미적분",
        "area": "수학",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 35
+       "essayPct": null
       },
       {
        "subject": "심화 영어Ⅰ",
        "area": "영어",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 50
+       "essayPct": null
+      },
+      {
+       "subject": "영어 독해와 작문",
+       "area": "영어",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
       },
       {
        "subject": "사회·문화",
        "area": "사회",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 35
+       "essayPct": null
       },
       {
        "subject": "생활과 윤리",
        "area": "사회",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 40
+       "essayPct": null
       },
       {
        "subject": "세계지리",
        "area": "사회",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 40
+       "essayPct": null
       },
       {
        "subject": "물리학Ⅱ",
        "area": "과학",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 40
+       "essayPct": null
       },
       {
        "subject": "생명과학Ⅱ",
        "area": "과학",
        "paperPct": 40,
        "performancePct": 60,
-       "essayPct": 30
+       "essayPct": null
       },
       {
        "subject": "화학Ⅱ",
        "area": "과학",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 40
+       "essayPct": null
       }
      ],
      "gaps": [],
@@ -2071,7 +2101,7 @@
        "area": "국어",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 20
+       "essayPct": null
       },
       {
        "subject": "미적분Ⅰ",
@@ -2145,13 +2175,6 @@
      "grade": 3,
      "rows": [
       {
-       "subject": "영어독해와작문",
-       "area": "영어",
-       "paperPct": 50,
-       "performancePct": 50,
-       "essayPct": null
-      },
-      {
        "subject": "화법과 작문",
        "area": "국어",
        "paperPct": 50,
@@ -2187,7 +2210,14 @@
        "essayPct": null
       },
       {
-       "subject": "(사회·문화) 3학년",
+       "subject": "영어독해와작문",
+       "area": "영어",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
+      },
+      {
+       "subject": "사회·문화",
        "area": "사회",
        "paperPct": 40,
        "performancePct": 60,
@@ -2212,7 +2242,7 @@
        "area": "과학",
        "paperPct": 40,
        "performancePct": 60,
-       "essayPct": 30
+       "essayPct": null
       }
      ],
      "gaps": [],
@@ -2254,7 +2284,7 @@
        "area": "국어",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 35
+       "essayPct": null
       },
       {
        "subject": "공통수학",
@@ -2282,14 +2312,14 @@
        "area": "사회",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 40
+       "essayPct": null
       },
       {
        "subject": "통합과학",
        "area": "과학",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 20
+       "essayPct": null
       }
      ],
      "gaps": [],
@@ -2304,14 +2334,14 @@
        "area": "제2외국어",
        "paperPct": 30,
        "performancePct": 70,
-       "essayPct": 40
+       "essayPct": null
       },
       {
        "subject": "화법과 언어",
        "area": "국어",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 20
+       "essayPct": null
       },
       {
        "subject": "미적분Ⅰ",
@@ -2332,49 +2362,49 @@
        "area": "사회",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 25
+       "essayPct": null
       },
       {
        "subject": "사회와 문화",
        "area": "사회",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 50
+       "essayPct": null
       },
       {
        "subject": "윤리와 사상",
        "area": "사회",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 33
+       "essayPct": null
       },
       {
        "subject": "한국지리탐구",
        "area": "사회",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 50
+       "essayPct": null
       },
       {
        "subject": "데이터과학",
        "area": "과학",
        "paperPct": 40,
        "performancePct": 60,
-       "essayPct": 40
+       "essayPct": null
       },
       {
        "subject": "물질과 에너지",
        "area": "과학",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 20
+       "essayPct": null
       },
       {
        "subject": "세포와 물질대사",
        "area": "과학",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 20
+       "essayPct": null
       },
       {
        "subject": "역학과 에너지",
@@ -2388,7 +2418,7 @@
        "area": "과학",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 20
+       "essayPct": null
       }
      ],
      "gaps": [],
@@ -2404,24 +2434,10 @@
        "paperPct": 40,
        "performancePct": 60,
        "essayPct": null
-      },
-      {
-       "subject": "여행지리",
-       "area": "사회",
-       "paperPct": 50,
-       "performancePct": 50,
-       "essayPct": 40
-      },
-      {
-       "subject": "한국지리",
-       "area": "사회",
-       "paperPct": 50,
-       "performancePct": 50,
-       "essayPct": 35
       }
      ],
      "gaps": [],
-     "partial": "많은 과목이 빠졌어요. 학교알리미 파일에서 직접 확인해 주세요"
+     "partial": "일부 과목이 빠졌을 수 있어요"
     }
    ],
    "qualitative": [],
@@ -2459,42 +2475,42 @@
        "area": "국어",
        "paperPct": 70,
        "performancePct": 30,
-       "essayPct": 30
+       "essayPct": null
       },
       {
        "subject": "공통수학",
        "area": "수학",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 33
+       "essayPct": null
       },
       {
        "subject": "공통영어",
        "area": "영어",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 39
+       "essayPct": null
       },
       {
        "subject": "통합사회",
        "area": "사회",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 40
+       "essayPct": null
       },
       {
        "subject": "한국사",
        "area": "사회",
        "paperPct": 70,
        "performancePct": 30,
-       "essayPct": 30
+       "essayPct": null
       },
       {
        "subject": "통합과학",
        "area": "과학",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 35
+       "essayPct": null
       }
      ],
      "gaps": [],
@@ -2509,63 +2525,70 @@
        "area": "국어",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 30
+       "essayPct": null
       },
       {
        "subject": "화법과 언어",
        "area": "국어",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 33
+       "essayPct": null
       },
       {
        "subject": "미적분Ⅰ",
        "area": "수학",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 43
+       "essayPct": null
+      },
+      {
+       "subject": "영어Ⅱ",
+       "area": "영어",
+       "paperPct": 60,
+       "performancePct": 40,
+       "essayPct": null
       },
       {
        "subject": "경제",
        "area": "사회",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 38
+       "essayPct": null
       },
       {
        "subject": "사회와 문화",
        "area": "사회",
        "paperPct": 70,
        "performancePct": 30,
-       "essayPct": 35
+       "essayPct": null
       },
       {
        "subject": "세계사",
        "area": "사회",
        "paperPct": 70,
        "performancePct": 30,
-       "essayPct": 30
+       "essayPct": null
       },
       {
        "subject": "현대사회와 윤리",
        "area": "사회",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 40
+       "essayPct": null
       },
       {
        "subject": "물질과 에너지",
        "area": "과학",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 46
+       "essayPct": null
       },
       {
        "subject": "세포와 물질대사",
        "area": "과학",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 31
+       "essayPct": null
       },
       {
        "subject": "역학과 에너지",
@@ -2579,7 +2602,7 @@
        "area": "과학",
        "paperPct": 60,
        "performancePct": 40,
-       "essayPct": 40
+       "essayPct": null
       }
      ],
      "gaps": [],
@@ -2594,28 +2617,21 @@
        "area": "국어",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 50
-      },
-      {
-       "subject": "영어독해와작문",
-       "area": "영어",
-       "paperPct": 50,
-       "performancePct": 50,
-       "essayPct": 35
+       "essayPct": null
       },
       {
        "subject": "현대문학감상",
        "area": "국어",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 35
+       "essayPct": null
       },
       {
        "subject": "화법과 작문",
        "area": "국어",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 30
+       "essayPct": null
       },
       {
        "subject": "미적분",
@@ -2629,35 +2645,49 @@
        "area": "수학",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 30
+       "essayPct": null
+      },
+      {
+       "subject": "영어독해와작문",
+       "area": "영어",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
       },
       {
        "subject": "사회문화",
        "area": "사회",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 40
+       "essayPct": null
       },
       {
        "subject": "생활과 윤리",
        "area": "사회",
        "paperPct": 50,
        "performancePct": 50,
-       "essayPct": 35
+       "essayPct": null
       },
       {
        "subject": "한국지리",
        "area": "사회",
        "paperPct": 40,
        "performancePct": 60,
-       "essayPct": 40
+       "essayPct": null
+      },
+      {
+       "subject": "물리학Ⅱ",
+       "area": "과학",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
       },
       {
        "subject": "생명과학Ⅱ",
        "area": "과학",
        "paperPct": 40,
        "performancePct": 60,
-       "essayPct": 40
+       "essayPct": null
       }
      ],
      "gaps": [],
