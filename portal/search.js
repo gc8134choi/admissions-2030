@@ -109,11 +109,17 @@ export function mountSearch(btn, { load, store, esc }) {
     } else {
       // 이 포털에 없는 학교(예: 죽전중·풍덕중): 학교 이름 모양의 낱말이 어떤 학교 이름과도 안 맞으면 알려 준다
       const LV = { 중: ["middle", "중학교"], 고: ["high", "고등학교"], 초: ["elementary", "초등학교"] };
-      for (const t of words) { const m = /^([가-힣]{2,5})(중학교|고등학교|초등학교|중|고|초)$/.exec(t); if (!m) continue; const lv = LV[m[2][0]]; if (!lv || data.places.some((x) => x.level === lv[0] && (norm(x.name).startsWith(t) || norm(x.name).startsWith(m[1])))) continue;
+      for (const t of words) { const m = /^([가-힣]{2,5})(중학교|고등학교|초등학교|중|고|초)$/.exec(t); if (!m || /^(일반|특성화|마이스터|자사|외|국제|과학|영재|예술|체육|특목|자율|공립|사립|전기|후기|평준화|외국어|명문|상위|진학|입시|특수|대안|각종|모든|우리|근처|인근|다른)$/.test(m[1])) continue; const lv = LV[m[2][0]]; if (!lv || data.places.some((x) => x.level === lv[0] && (norm(x.name).startsWith(t) || norm(x.name).startsWith(m[1])))) continue;
         const names = data.places.filter((x) => x.level === lv[0]).map((x) => x.name.replace(/(중학교|고등학교|초등학교)$/, m[2][0])).slice(0, 8);
         notes.push({ href: `#select/curriculum?v=map`, t: `${t}${(t.charCodeAt(t.length - 1) - 0xac00) % 28 ? "은" : "는"} 이 포털에 없는 학교예요`, s: `있는 ${lv[1]}: ${names.join("·")} … → 학교 지도에서 확인하거나 학교알리미에서 찾아요` }); weak = true; break; }
     }
     if (/지도/.test(String(q))) { const i = r.findIndex(([h]) => h === "화면"); if (i > 0) r.unshift(...r.splice(i, 1)); } // 화면 이름을 찾는 말이면 화면을 먼저
+    if (weak && !notes.length) { // 낱말 대부분이 한 행에 맞았으면(예: 4개 중 3개) 느슨한 매치가 아니다: 안내 없이 위쪽 몇 행만
+      const core = String(q).split(/\s+/).map(norm).filter((w) => w && !STOP.has(w) && !STOP2.has(w));
+      const cover = (x) => core.filter((w) => expand(w).some((v) => norm(x.t + " " + x.s).includes(v))).length;
+      const best = Math.max(0, ...r.filter(([h]) => h === "일정·제도" || h === "가이드·용어").flatMap(([, l]) => l.slice(0, 8)).map(cover));
+      if (core.length >= 3 && best >= Math.ceil(core.length * 0.7)) { weak = false; r = r.map(([h, l]) => [h, l.slice(0, 5)]); }
+    }
     if (weak) { // 신뢰도 낮음: 안내를 먼저 내고 느슨한 결과는 최대 3행
       const flat = r.filter(([h]) => h !== "과목").flatMap(([h, l]) => l.map((x) => ({ ...x, _g: h }))).slice(0, 3);
       r = [["안내", [{ href: "#library/links", t: "이 포털에 정확히 맞는 내용이 없을 수 있어요", s: "아래는 낱말 일부만 맞는 비슷한 화면이에요 → 정확한 내용은 공식 안내(교육청·학교알리미·대입정보포털)에서 확인해요" }, ...notes]], ...(flat.length ? [["비슷한 화면", flat]] : []), ["공식 확인처", HELP.slice(0, 3).map(([n, u, d]) => ({ href: u, ext: true, t: n, s: d }))]];

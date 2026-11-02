@@ -46,7 +46,9 @@ if (errs.length) { console.error(errs.join("\n")); process.exit(1); }
 const { plain } = await import("../portal/plain.js"); // 출처명 안의 내부 행 번호(policy gg-10 등)를 사람이 읽는 말로
 const cleanSrc = (v) => (v ? { ...v, ...(v.source?.name ? { source: { ...v.source, name: plain(v.source.name) } } : {}), ...(v.nullReason ? { nullReason: plain(v.nullReason) } : {}) } : v);
 for (const s of draft.schools) for (const k of Object.keys(s.values || {})) s.values[k] = cleanSrc(s.values[k]);
-const fields = [...draft.fields].sort((a, b) => a.order - b.order);
+// 학생수는 학교알리미 3-가-3 기준으로 특수·순회학급을 포함한다(조사 #414, 예: 풍덕 1,234+10=1,244). 중학교 비교는 '(특수학급 제외)' 기준이라 라벨로 구분한다.
+const LABEL = { students: "학생수(특수·순회학급 포함)", studentsDetail: "남·여 학생수(특수·순회학급 포함)" };
+const fields = draft.fields.map((f) => (LABEL[f.id] ? { ...f, label: LABEL[f.id] } : f)).sort((a, b) => a.order - b.order);
 // 확인하지 못한 표기는 화면에서 뺀다: 용인홍천고의 '단설'(단독 설립) 구분은 확인 전이라 설립(공립)과 설립일만 보인다
 for (const s of draft.schools) if (s.placeId === "pl-014" && typeof s.values?.founding?.value === "string") s.values.founding.value = s.values.founding.value.replace("·단설", "");
 // 사유 없이 '공식 문서로 확인 중'만 있는 칸은 항목별 사유+다음 행동으로
