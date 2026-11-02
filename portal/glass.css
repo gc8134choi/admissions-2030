@@ -456,3 +456,11 @@ button.term{display:inline!important} /* 인라인 용어 버튼의 박스가 �
 @media (min-width:900px){#main .g .v,#main .plan-n .big,#main .mid-s b,#main .mid-s small{font-size:15px!important}} /* 데스크톱 홈의 14px대 값 글자(모바일 홈 높이는 그대로) */
 .srch [data-x]{min-width:44px;min-height:44px} /* 검색 닫기 버튼 터치 크기 */
 .srch li a{text-decoration:none} .srch li a b{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px} /* 검색 결과: 제목만 밑줄, 요약 문장은 밑줄 없음 */
+
+/* 문장 안 용어 버튼(점선 밑줄 낱말)의 누르는 영역 세로 24px 이상: 글줄 높이는 그대로 두고 인라인 패딩으로만 늘린다 */
+button.term{padding-block:max(0px,calc((24px - 1.1em) / 2))}
+
+/* 도장(.ed-g): 단위(회·%) 첨자가 값 크기로 커져 라벨을 덮던 것을 바로잡는다(위 sup 최소 13px 규칙은 그대로 두되 값 안에서는 값의 40%) */
+.ed-g .v sup{font-size:max(13px,.4em)!important;vertical-align:baseline;top:0;margin-left:2px}
+.ed .ed-g:not(.main) .v{line-height:1.1}
+.ed .ed-g:not(.main) .k{margin-top:4px}

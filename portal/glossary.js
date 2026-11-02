@@ -58,7 +58,7 @@ export function decorateGlossary(root, { skip = "a,button,script,style,textarea,
     seen.add(hit.t.id); ensureCss();
     const end = hit.i + hit.w.length;
     const frag = document.createDocumentFragment();
-    frag.append(text.slice(0, end));
+    frag.append(text.slice(0, end) + (node.parentElement?.closest(".ed-g") ? "\u2060" : "")); // 도장(.ed-g) 안에서는 ⓘ가 줄 맨 앞에 혼자 남지 않게 낱말과 붙인다(WORD JOINER)
     const holder = document.createElement("span"); holder.innerHTML = btn(hit.t, hit.w); frag.append(holder.firstChild);
     const tail = document.createTextNode(text.slice(end)); frag.append(tail); // 같은 글 조각에 다른 용어가 더 있으면 이어서 찾는다(예: 과학고·마이스터고·특성화고)
     node.replaceWith(frag);

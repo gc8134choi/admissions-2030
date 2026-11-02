@@ -74,6 +74,13 @@ for(const r of ['#select/curriculum?v=hs&bf=1','#select/curriculum?v=hs&bf=schoo
  const bfv=r.split('bf=')[1];const a=await p.evaluate((bf)=>{const t=bf==='1'?document.querySelector('[id^="bf-"]'):document.querySelector('#bf-'+CSS.escape(bf));if(!t)return {bad:'대상 구역이 없음'};const top=t.getBoundingClientRect().top;if(top<0||top>innerHeight-100)return {bad:'대상이 화면 밖(top '+Math.round(top)+', scrollY '+Math.round(scrollY)+')'};return {ok:1}},bfv);
  if(a&&a.bad)out.push({w,r,issue:'앵커 도달',bad:[a.bad]});}
 await p.close()}
+// 인쇄 반복: 인쇄(미디어 print)를 3번 켰다 꺼도 접이식 수·푸터 '출처 N건'·푸터 개수가 그대로여야 한다(<p> 안 <details>를 innerHTML로 되돌려 푸터가 늘던 회귀)
+{const p=await b.newPage({viewport:{width:390,height:900}});
+for(const r of ['#select/types','#select/curriculum?v=middle','#select/curriculum?v=hs','#life/credit','#planner/plan','#schedule']){try{await p.goto(base+r,{waitUntil:'load',timeout:20000});await p.waitForTimeout(3000);}catch(e){out.push({r,issue:'인쇄 load'});continue;}
+ const snap=()=>ev(p,()=>({foot:document.querySelectorAll('.pgfoot').length,srcf:document.querySelectorAll('.srcf').length,det:document.querySelectorAll('details').length,open:document.querySelectorAll('details[open]').length,sum:document.querySelector('.pgfoot summary')?.textContent||''}));
+ const a=await snap();let bad=null;for(let i=0;i<3;i++){await p.emulateMedia({media:'print'});await p.waitForTimeout(2500);await p.emulateMedia({media:'screen'});await p.waitForTimeout(2200);const c=await snap();if(JSON.stringify(c)!==JSON.stringify(a)){bad={i:i+1,a,c};break}}
+ if(bad)out.push({r,issue:'인쇄 반복 복원',bad:[JSON.stringify(bad)]});}
+await p.close()}
 await b.close();console.log(JSON.stringify(out));})();
 """
 

@@ -134,7 +134,9 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
       .filter((x) => x.sp.end >= t && related(x.r) && !isG3(x.r, x.e) && x.r.region !== "seoul" && inF(stageOf(x.r)) && (x.r.topic === "exam-schedule" || focus.includes("고입"))).sort((a, b) => a.sp.start - b.sp.start || a.sp.end - b.sp.end).slice(0, 3)
       .map((x) => ({ kind: "ev", row: x.r, seoul: false, sp: x.sp, title: x.r.title + (x.e.label ? ` · ${x.e.label}` : ""), date: fmtRange(x.sp, t, x.e), line: oneLine(x.r.body), meta: `${badges(x.r)} ${link(x.r)}` }));
     const feedF = () => { const f = feed(), m = f.filter((it) => inF(stageOf(it.row))); if (m.length) return m; const far = focus.length ? farFeed() : []; return far.length ? far : f; };
-    const rest = () => { const f = feedF().slice(0, 3);
+    // 규칙: 단계를 고르면 그 단계에서 가까운 순 3건. 안 고르면(전체) 중입·고입·대입 단계마다 가장 가까운 일 1건씩(모자라면 가까운 순으로 채움)이라 한 단계가 목록을 채우지 않는다.
+    const perStage = (f) => { const seen = new Set(), out = []; for (const it of f) { const g = stageOf(it.row) || "기타"; if (seen.has(g)) continue; seen.add(g); out.push(it); if (out.length === 3) break; } for (const it of f) { if (out.length >= 3) break; if (!out.includes(it)) out.push(it); } return out.sort((a, b) => !!a.seoul - !!b.seoul || a.sp.start - b.sp.start || a.sp.end - b.sp.end); };
+    const rest = () => { const f = focus.length ? feedF().slice(0, 3) : perStage(feedF());
       if (!f.length) return `<li class="lg"><div class="empty"><p>아직 모인 일정이 없어요.</p><small>${isB ? "학교를 고르면 그 학교 일정이 여기에 모입니다." : "앞으로 90일 안에 해당하는 일정이 없어요."}</small></div></li>`;
       return f.map((it, i) => { const live = it.sp.start <= t, left = Math.round((it.sp.end - t) / DAY), g = stageOf(it.row);
         const dl = live ? (left > 0 ? `진행 중 · ${left}일 남음` : "진행 중") : dLabel(it.sp, t);
@@ -142,7 +144,7 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
         return `<li class="lg${i === 0 ? " first" : ""}"><span class="lg-s">${g ? esc(g) : ""}</span><span class="d${live ? " live" : " num"}">${dl}</span><b class="lg-t">${esc(it.title)}</b><span class="lg-d num">${it.date}</span><span class="lg-m">${meta}</span></li>`; }).join(""); };
     const focusBar = () => fpicking
       ? `<div class="fpick" role="group" aria-label="주로 보는 단계"><p class="fpick-q">보고 싶은 단계를 눌러 켜세요. 여러 개 켤 수 있고, 안 고르면 전체예요. 언제든 바꿀 수 있어요.</p><div class="chips"><button type="button" class="fchip${!focus.length ? " on" : ""}" data-f="" aria-pressed="${!focus.length}">전체</button>${FOPT.map(([k, t]) => `<button type="button" class="fchip${focus.includes(k) ? " on" : ""}" data-f="${k}" aria-pressed="${focus.includes(k)}">${t}</button>`).join("")}</div><button type="button" class="btn primary" data-fsave>이대로 보기</button></div>`
-      : `<p class="fbar muted">보는 단계 <b>${focus.length ? FOPT.filter(([k]) => focus.includes(k)).map(([, t]) => esc(t)).join(" · ") : "전체"}</b> <button type="button" class="lnk" data-fedit>${Array.isArray(fsaved) ? "바꾸기" : "단계 고르기"}</button></p>`;
+      : `<p class="fbar muted">보는 단계 <b>${focus.length ? FOPT.filter(([k]) => focus.includes(k)).map(([, t]) => esc(t)).join(" · ") : "전체·단계별 1건씩"}</b> <button type="button" class="lnk" data-fedit>${Array.isArray(fsaved) ? "바꾸기" : "단계 고르기"}</button></p>`;
 
     // 4) 바뀐 소식 1줄
     const log0 = policy.filter((r) => r.topic === "change-log").map((r) => ({ r, d: dateOf(r.title) })).filter((x) => x.d && span(x.d).start <= t);
@@ -266,6 +268,11 @@ export function registerHome(views, { esc, load, store, nm, stars, toggleStar, n
     const foldPanels = (root) => root.querySelectorAll(".road,.gl,.adm,.hscmp,.plan,.mid,.soonp,.todop").forEach((pn) => { if (pn.querySelector(".m-tg")) return; pn.classList.add("m-fold"); const h = pn.querySelector(".sec-h,h2"); if (h) h.insertAdjacentHTML("beforeend", '<button type="button" class="m-tg" aria-expanded="false">펼치기</button>'); });
     foldPanels(el);
 
+    { // 검색 결과 등에서 "#home?open=soonp"(곧 있을 일)로 오면 접힌 패널을 열고 그 자리로 간다
+      const want = new URLSearchParams(location.hash.split("?")[1] || "").get("open");
+      const pn = want && /^[a-z]+$/.test(want) ? el.querySelector(`.m-fold.${want}`) : null;
+      if (pn) { pn.classList.add("m-open"); const tg = pn.querySelector(".m-tg"); if (tg) { tg.setAttribute("aria-expanded", "true"); tg.textContent = "접기"; } setTimeout(() => pn.scrollIntoView({ block: "start" }), 60); }
+    }
     // 허브: 고정(자주 보는 단계, 최대 2개) / 모바일 접기·펼치기 / 읽음 표시
     el.addEventListener("click", (e) => {
       const pin = e.target.closest("[data-pin]");
