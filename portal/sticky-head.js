@@ -2,6 +2,8 @@
 // 페이지를 내리면 머리 행이 사라진다. 그래서 머리 행이 화면 위로 지나가면 같은 모양의 사본을 머리글 바로 아래에 고정해 보여 준다.
 // 가로 스크롤과 첫 열 고정은 원본과 같이 움직인다. import만 하면 .w-table·.tw 표에 자동으로 적용된다(COMPARE-TABLE.md §2).
 const WRAP = ".w-table, .tw";
+// 머리줄 사본의 스타일은 이 파일이 직접 넣는다(policy.css가 안 불러온 화면에서도 hidden 사본이 비치지 않게)
+if (typeof document !== "undefined" && !document.getElementById("sticky-head-css")) { const st = document.createElement("style"); st.id = "sticky-head-css"; st.textContent = ".sh-fixed{position:fixed;z-index:20;overflow:hidden;background:var(--paper2,var(--paper,#fff));border-bottom:2px solid var(--ink,#333);pointer-events:auto}.sh-fixed table{table-layout:fixed}.sh-fixed[hidden]{display:none!important}"; document.head.appendChild(st); }
 const active = new Map(); // 래퍼 → { box, table }
 let queued = false;
 

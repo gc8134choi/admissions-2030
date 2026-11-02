@@ -297,7 +297,7 @@ table.policy tr.past{opacity:.55}
 .dp h2{margin:0 0 8px;font:700 19px/1.3 var(--serif);display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
 .dp h2 em{font:700 18px var(--hand);color:var(--accent);font-style:normal}
 .dp h2>a:last-child:not(:first-child){margin-left:auto;font:700 16px var(--hand);color:var(--pencil);text-decoration:none}
-.dp ul{list-style:none;margin:0;padding:0}.dp li{padding:5px 0;border-top:1px solid var(--line);font-size:14.5px}.dp li:first-child{border-top:0}
+.dp ul{list-style:none;margin:0;padding:0}.dp li{padding:5px 0;border-top:1px solid var(--line);font-size:15px}.dp li:first-child{border-top:0}
 .dp li small{display:block;color:var(--pencil);font-size:13px}.dp li .warn{color:var(--accent);font-weight:600}
 .dp .done{color:var(--ele);font-weight:700}
 .dtop{display:grid;gap:16px;margin:14px 0 22px}
