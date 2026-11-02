@@ -27,3 +27,6 @@
 
 ## feedback.md 기록 형식
 `날짜 | 화면 | 반응(좋음/보통/별로) | 한마디 | 분류(자율/확인) | 담당 | 처리 링크`
+
+## changes.json 충돌 규칙 (2026-11-02)
+`portal/data/changes.json`과 `tools/state/changes-state.json`은 생성물이라 세션마다 기록하면 병합 때 충돌한다. 충돌이 나면 `origin/main`의 두 파일을 그대로 받고 `node tools/build-changes.mjs`(또는 해당 생성기)로 다시 생성한다. 손으로 합치지 않는다. 같은 PR에서 데이터를 바꾼 세션만 변경 기록을 남기고, 단순 문구·스타일 PR은 기록하지 않는다.
