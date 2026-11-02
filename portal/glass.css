@@ -448,6 +448,6 @@ button.term{text-decoration:underline dotted!important;text-decoration-thickness
 button.term{display:inline!important} /* 인라인 용어 버튼의 박스가 줄 높이만큼 커져 이웃 줄의 ⓘ와 겹치지 않게(글자 높이만) */
 .cmp-v{line-height:1.55} /* 표 칸 안 용어 버튼·ⓘ가 줄 사이에서 겹치지 않게 */
 /* 본문 글자 15px 규칙(16차): 문장형·값 글자는 15px, 13px는 라벨·출처·상태 클래스(.srcw·.pst·.es·.ed-unv 등)만. 비교 표(#tbl)는 칸 값 규칙이 따로 있다 */
-#main p.muted,#main p.muted.small,#main div.muted,#main span.muted,#main li .muted,#main .hs-quick,#main .hs-quick a,#main .gap-next,#main .mid-btn,#main p.fresh{font-size:15px}
+#main p.muted,#main p.muted.small,#main div.muted,#main span.muted,#main li .muted,#main .hs-quick,#main .hs-quick a,#main .gap-next,#main .mid-btn,#main p.fresh,#main .pl-row b,#main .pl-row .muted,#main .pn-um li,#main .pn-um li span,#main .pn-bar b,#main .pn-bar small,#main td.num .cmp-v,#main .ed-ym,#main .ed-g .n,#main .nm span,#main p.muted a{font-size:15px!important}
 #main table:not(#tbl) td:not(.srcw){font-size:15px}
 #main li>b,#main .ed-ym,#main .ed-ln b,#main .ed-g .k,#main .ed-g .n,#main .panel b,#main .cmp-cap,#main .cmp-cap .muted,#main .cmp-v.num{font-size:15px}
