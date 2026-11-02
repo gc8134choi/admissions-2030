@@ -257,6 +257,6 @@ const bodyHtml = (t, esc2 = esc) => {
   for (const name of ["system", "schedule", "types", "credit", "changelog"]) {
     const orig = views[name];
     if (typeof orig !== "function") continue;
-    views[name] = async (el, ...a) => { const r = await orig(el, ...a); if (name === "system" || name === "credit") densify(el, { open: [0], keep: 5 }); await preloadGlossary(load); decorateGlossary(el); return r; };
+    views[name] = async (el, ...a) => { el.style.visibility = "hidden"; /* 용어 ⓘ를 붙이기 전에 보이면 글이 밀려(CLS) 다 붙인 뒤에 보여 준다 */ try { const r = await orig(el, ...a); if (name === "system" || name === "credit") densify(el, { open: [0], keep: 5 }); await preloadGlossary(load); decorateGlossary(el); return r; } finally { el.style.visibility = ""; } };
   }
 }

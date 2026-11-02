@@ -174,6 +174,7 @@ export function mountSearch(btn, { load, store, esc }) {
     box.innerHTML = `<div class="sr-in"><div class="sr-bar"><input type="search" placeholder="예: 교복, 원서, 상현중, 평준화" aria-label="검색어" autocomplete="off"><button type="button" class="lnk" data-x>닫기</button></div><div class="sr-out" aria-live="polite"><p class="muted">불러오는 중…</p></div></div>`;
     document.body.appendChild(box); document.addEventListener("keydown", onKey);
     const inp = box.querySelector("input"); inp.focus();
+    if (!data) box.querySelector(".sr-out").innerHTML = '<p class="muted" role="status">검색을 준비하고 있어요…</p>'; // 아직 불러오는 중이면 알린다
     await prep().catch(() => { box.querySelector(".sr-out").innerHTML = '<p class="note">정보를 못 가져왔어요. 잠시 뒤 다시 열어 주세요.</p>'; });
     if (!data) return;
     paint();
@@ -186,4 +187,5 @@ export function mountSearch(btn, { load, store, esc }) {
   };
   btn.addEventListener("click", open);
   document.addEventListener("keydown", (e) => { if (e.key === "/" && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName) && !box) { e.preventDefault(); open(); } });
+  return { warm: () => prep().catch(() => {}) }; // 한가할 때 데이터를 미리 불러 첫 검색을 빠르게
 }
