@@ -111,7 +111,7 @@ if __name__ == '__main__':
     have = {(s['placeId'], pl['grade'], N(r['subject'])) for s in D['schools'] for pl in s['assessmentPlan'] for r in pl['rows']}
     miss = sorted((k for k, v in ind.items() if k not in have and v != {(None, None)} and k[1]), key=str)
     print(f'원문에서 읽혔으나 초안에 없는 (학교, 학년, 과목) {len(miss)}건(누락 후보, 참고용):')
-    for k in (miss if os.environ.get('LIST_MISSING') else []): print('   missing', *k, sorted(ind[k]))
+    for k in (miss if os.environ.get('LIST_MISSING') else []): print('   missing', *k, sorted(ind[k], key=str))
     n = sum(len(pl['rows']) for s in D['schools'] for pl in s['assessmentPlan'])
     print(f'초안 행 {n}건: 독립 일치 {ok}, 불일치 {len(bad)}, 독립 읽기 못함 {len(unread)}')
     for b in bad: print(' - 불일치', *b)
