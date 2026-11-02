@@ -349,7 +349,7 @@ async function compareShell(el, onReset, getAreas) {
   el.addEventListener("click", (e) => { const b = e.target.closest(".more-g"); if (!b) return; const g = b.closest(".fgroup"), on = !g.classList.contains("open"); g.classList.toggle("open", on); b.setAttribute("aria-expanded", on); b.textContent = on ? "접기" : "더 보기"; });
   const root = el.firstElementChild;
   let ids = [], need = 0;
-  const AW = 72, LW = 140, CW = 180; // 교과군 열·과목 열·학교 열 폭
+  const AW = 0, LW = 120, CW = innerWidth < 600 ? 150 : 170; // 교과군 열(없앰: 그룹 머리글 행)·과목 열·학교 열 폭
   const fitMode = () => $(".tw")?.classList.toggle("fit", $(".cmpmain").clientWidth >= need);
   window.addEventListener("resize", fitMode);
   const draw = (next) => {
@@ -399,14 +399,14 @@ async function compareShell(el, onReset, getAreas) {
       const first = r.area !== area;
       if (first) { area = r.area; ai++; }
       const cls = `ra${ai % 2}${first ? " af" : ""}`; // 이어 붙일 때 값이 바뀌지 않게 지금 정해 둔다
-      const arCell = first ? `<td class="ar" rowspan="${spans.get(r.area)}" title="${esc(r.area)}">${esc(r.area)}</td>` : "";
-      trs.push(() => `<tr class="${cls}">${arCell}<td class="l">${subjectName(r.name)}</td>${ids.map((id) => cell(r.cells[id])).join("")}</tr>`);
+      if (first) trs.push(() => `<tr class="${cls} grp"><th class="gh" scope="rowgroup" colspan="${ids.length + 1}">${esc(r.area)}</th></tr>`); // 교과군은 열이 아니라 그룹 머리글 행
+      trs.push(() => `<tr class="${cls}"><td class="l">${subjectName(r.name)}</td>${ids.map((id) => cell(r.cells[id])).join("")}</tr>`);
     }
     need = AW + LW + CW * ids.length;
     $("#tbl").style.minWidth = `${need}px`;
     const CH = 30, token = (drawToken = Symbol());
-    const head = `<caption class="sr-only">학교별 개설 과목 비교(열=학교, 행=과목)</caption><thead><tr><th class="ar" scope="col">교과군</th><th class="l" scope="col">과목</th>${ids.map((id, i) => `<th scope="col">${nm(id, names[i], 30)}</th>`).join("")}</tr></thead>`;
-    const foot = `<tfoot><tr><th class="lf" colspan="2">해당 과목 수</th>${ids.map((id) => `<th>${rows.filter((r) => r.cells[id]).length}</th>`).join("")}</tr></tfoot>`;
+    const head = `<caption class="sr-only">학교별 개설 과목 비교(열=학교, 행=과목)</caption><thead><tr><th class="l" scope="col">과목</th>${ids.map((id, i) => `<th scope="col">${nm(id, names[i], 30)}</th>`).join("")}</tr></thead>`;
+    const foot = `<tfoot><tr><th class="lf">해당 과목 수</th>${ids.map((id) => `<th>${rows.filter((r) => r.cells[id]).length}</th>`).join("")}</tr></tfoot>`;
     const chunk = (i) => trs.slice(i, i + CH).map((f) => f()).join("");
     $("#tbl").innerHTML = `${head}<tbody>${trs.length ? chunk(0) : `<tr><td colspan="${ids.length + 2}">조건에 맞는 과목이 없어요.</td></tr>`}</tbody>${foot}`;
     // 밀도: 처음 한 덩어리만 보이고 나머지는 "과목 더 보기"로 이어 붙인다(136행을 한 번에 그리지 않는다).

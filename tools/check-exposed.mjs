@@ -1,11 +1,11 @@
 // 화면에 나가는 data/*.json 문자열에 내부 식별자·파일명이 섞이지 않았는지 검사한다(C2 공백의 투명성: 내부 코드 노출 0건).
-//   검출: GS_CD, *-draft.json, portal/data 경로, 조사 행 번호(sb-/log-/gg-/gl-/hc-/hd-/ht-/mg-/tl-NNN), 단독 "policy".
+//   검출: 내부 경로(research/·portal/·tools/ … 와 .md·.json·.mjs·.py 파일명), GS_CD, *-draft.json, portal/data 경로, 조사 행 번호(sb-/log-/gg-/gl-/hc-/hd-/ht-/mg-/tl-NNN), 단독 "policy".
 //   제외: _meta(화면에 안 나감), id·url·file·*Id(s)·refs·policyRows 등 식별자·주소 칸.
 // 사용: node tools/check-exposed.mjs
 import { readFileSync, readdirSync } from "node:fs";
 
 const SKIP = /^(_meta|id|url|file|thumb|refs|events|eventIds|policyRows|related|briefing|subjectKey|legacyKey|legacyKeys|from|ruleId|checkedAt)$|Id$|Ids$|Key$/;
-const PAT = /GS_CD|[\w-]+-draft\.json|portal\/data|\b(?:sb|log|gg|gl|hc|hd|ht|mg|tl|str|adm|cur|hs|acd|opn|asg|b33|sch|life)-\d+\b|\bpolicy\b/;
+const PAT = /GS_CD|[\w-]+-draft\.json|portal\/data|\b(?:research|portal|tools|schema|evaluation|content|data-src)\/[\w.\/-]+|[\w-]+\.(?:md|json|mjs|py)\b|\b(?:sb|log|gg|gl|hc|hd|ht|mg|tl|str|adm|cur|hs|acd|opn|asg|b33|sch|life)-\d+\b|\bpolicy\b/;
 // 학교알리미 고교 코드처럼 주소 안에 들어가는 값은 url 칸이라 제외된다. 값이 http 주소인 문자열도 제외.
 const hits = [];
 const walk = (v, f, path) => {

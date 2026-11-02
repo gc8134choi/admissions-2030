@@ -185,7 +185,7 @@ select,input[type=search]{font-size:13px;padding:5px 8px}
 #tbl thead th.ar,#tbl thead th.l{z-index:5}
 #tbl th.ar,#tbl td.ar{position:static;width:72px;min-width:72px;max-width:72px;box-sizing:border-box}
 #tbl td.ar{z-index:2;text-align:left;vertical-align:top;font-size:12px;font-weight:600;line-height:1.3;padding:5px 6px;word-break:keep-all;overflow-wrap:anywhere;color:var(--accent)}
-#tbl th.l,#tbl td.l{left:0;width:140px;min-width:140px;max-width:140px;box-sizing:border-box;white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
+#tbl th.l,#tbl td.l{left:0;width:120px;min-width:120px;max-width:120px;box-sizing:border-box;white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
 #tbl tfoot th.lf{position:sticky;left:0;text-align:left;background:var(--soft)}
 #tbl tbody tr.ra0>td{background:var(--panel)}
 #tbl tbody tr.ra1>td{background:color-mix(in srgb,var(--soft) 55%,var(--panel))}
@@ -676,3 +676,6 @@ body[data-profile=b]{--accent:var(--accent-b);--soft:var(--soft-b);--hero1:#4B2A
 .hm-dd2 .me b{color:var(--accent)}
 .hm-dd2 .dd-s{font-size:13px;color:var(--muted)}
 @media (max-width:760px){.hm-dd2 b{font-size:28px}.hm-dd2>div+div{padding-left:14px}}
+#tbl tr.grp>th.gh{position:sticky;left:0;text-align:left;background:var(--soft);font-size:13px;font-weight:700;color:var(--accent);padding:4px 8px;border-bottom:1px solid var(--line)} /* 교과군 그룹 머리글 행 */
+#tbl{table-layout:fixed;width:100%} /* 고정 레이아웃: 과목명 열은 th.l의 폭(120px)을 그대로 쓴다 */
+@media (max-width:599px){#tbl th:not(.l),#tbl td:not(.l){min-width:150px}}
