@@ -29,7 +29,7 @@ if "--hl" in sys.argv:
     items = json.loads(subprocess.run(["node", os.path.join(ROOT, "tools/pm/searchhl.mjs")], capture_output=True, text=True, cwd=ROOT).stdout.strip().splitlines()[-1])
     HJS = r"""
 const {chromium}=require('playwright');
-(async()=>{const base=process.argv[2];const items=JSON.parse(process.argv[3]);const b=await chromium.launch();const bad=[];let ok=0;const W=6;
+(async()=>{const base=process.argv[2];const items=JSON.parse(process.argv[3]);const b=await chromium.launch();const bad=[];let ok=0;const W=3;
 await Promise.all(Array.from({length:W},async(_,wi)=>{const p=await (await b.newContext({viewport:{width:390,height:844},hasTouch:true})).newPage();
 for(const it of items.filter((_,i)=>i%W===wi)){try{await p.goto(base);await p.waitForTimeout(250);await p.evaluate(h=>{location.hash=h.replace(/^#/,'')},it.href);await p.waitForTimeout(2600);
  let y0=-1,st=0;for(let i=0;i<30&&st<5;i++){const y=await p.evaluate(()=>Math.round(scrollY));if(Math.abs(y-y0)<=1)st++;else{st=0;y0=y}await p.waitForTimeout(300)}
