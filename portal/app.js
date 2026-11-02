@@ -26,12 +26,12 @@ import { preloadSubjectInfo, subjectName, decorateSubjectLists } from "./subject
 const $ = (s) => document.querySelector(s);
 // 인쇄: 늦게 그리는 구역을 바로 그리고 접힌 구역(details)을 모두 펼친다. 끝나면 원래대로(print 미디어 에뮬레이션도 같이 처리)
 { const fns = [], opened = new Set(); let printing = false, timers = [];
-  window.__onPrint = (fn) => fns.push(fn);
+  window.__onPrint = (fn) => fns.push(fn); window.__printing = false; window.__printUndo = []; // 인쇄 때문에 새로 그린 구역은 끝나면 원래(안 그린) 상태로 되돌린다
   const openAll = () => { if (!printing) return; document.querySelectorAll("details:not([open])").forEach((d) => { opened.add(d); d.open = true; }); }; // 인쇄 중에 새로 생긴 접이식도 기록해 두었다가 되돌린다
   let mo = null;
-  const start = () => { if (printing) return; printing = true; fns.forEach((f) => { try { f(); } catch {} }); openAll(); const main = document.querySelector("#main"); if (main) { mo = new MutationObserver(openAll); mo.observe(main, { childList: true, subtree: true }); } // 인쇄 중에 새로 그려지는 접이식도 바로 펼치고 기록한다
+  const start = () => { if (printing) return; printing = true; window.__printing = true; fns.forEach((f) => { try { f(); } catch {} }); openAll(); const main = document.querySelector("#main"); if (main) { mo = new MutationObserver(openAll); mo.observe(main, { childList: true, subtree: true }); } // 인쇄 중에 새로 그려지는 접이식도 바로 펼치고 기록한다
     timers = [setTimeout(openAll, 600), setTimeout(openAll, 1600)]; }; // 열면서 새로 그려진 접이식도 다시 펼친다
-  const end = () => { printing = false; mo?.disconnect(); mo = null; timers.forEach(clearTimeout); timers = []; opened.forEach((d) => { d.open = false; }); opened.clear(); };
+  const end = () => { printing = false; window.__printing = false; mo?.disconnect(); mo = null; timers.forEach(clearTimeout); timers = []; opened.forEach((d) => { d.open = false; }); opened.clear(); const undo = window.__printUndo.splice(0); undo.forEach((f) => { try { f(); } catch {} }); };
   const mq = matchMedia("print"); mq.addEventListener?.("change", (e) => (e.matches ? start() : end()));
   addEventListener("beforeprint", start); addEventListener("afterprint", end); }
 const esc = (s = "") => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -211,7 +211,7 @@ async function curriculumView(el, query, node) {
       // 밀도: 학교 요약 카드는 번호·막대만 보이게 접고(자세히로 펼침), 31교 기본 정보 표는 접이식, 요약 카드는 한눈에 패널 바로 아래로
       const hub = body.querySelector("#hsmain .hub-hs"), wide = body.querySelector("#hs-wide"), sec = body.querySelector("#sumsec");
       if (hub && wide) {
-        const dt = document.createElement("details"); dt.className = "dp wide-fold"; dt.innerHTML = "<summary>학교 31곳 기본 정보 표 (규모·입학·교육과정·진학)</summary>"; wide.before(dt); dt.appendChild(wide); let wd = false; dt.addEventListener("toggle", () => { if (dt.open && !wd) { wd = true; fillWide(); } }); dt.insertAdjacentHTML("beforebegin", `<p class="hs-quick muted small">바로 보기 <a href="#select/curriculum?v=hs&g=${encodeURIComponent("선택과목 현황")}">선택과목 현황</a> · <a href="#select/curriculum?v=hs&g=${encodeURIComponent("내신 출제")}">내신 출제·평가 경향</a></p>`); if (query.get("g")) dt.open = true; // g가 있으면(검색·바로 보기) 31교 표를 펼쳐 그 그룹으로 간다
+        const dt = document.createElement("details"); dt.className = "dp wide-fold"; dt.innerHTML = "<summary>학교 31곳 기본 정보 표 (규모·입학·교육과정·진학)</summary>"; wide.before(dt); dt.appendChild(wide); let wd = false; dt.addEventListener("toggle", () => { if (dt.open && !wd) { wd = true; if (window.__printing) window.__printUndo.push(() => { wide.innerHTML = ""; wd = false; }); fillWide(); } }); dt.insertAdjacentHTML("beforebegin", `<p class="hs-quick muted small">바로 보기 <a href="#select/curriculum?v=hs&g=${encodeURIComponent("선택과목 현황")}">선택과목 현황</a> · <a href="#select/curriculum?v=hs&g=${encodeURIComponent("내신 출제")}">내신 출제·평가 경향</a></p>`); if (query.get("g")) dt.open = true; // g가 있으면(검색·바로 보기) 31교 표를 펼쳐 그 그룹으로 간다
         hub.insertBefore(sec, dt);
       }
       { // 요약 구역은 자리를 먼저 잡고(높이 예약) 채운다: 채워지면서 아래 내용이 밀리는 레이아웃 이동(CLS)을 막는다
@@ -219,9 +219,11 @@ async function curriculumView(el, query, node) {
         const fillSum = async () => { await summaryBody(host, sel); host.style.minHeight = "";
   body.querySelectorAll(".school").forEach((c) => { c.classList.add("cp"); const f = c.querySelector(".foot"); if (f) f.insertAdjacentHTML("afterbegin", '<button type="button" class="btn sc-more" aria-expanded="false">자세히</button>'); });
           try { (await import("./glossary.js")).decorateGlossary(host); } catch {} };
-        let filled = false; const goSum = () => { if (!filled) { filled = true; return fillSum(); } };
+        let filled = false;
+        const arm = () => { if ("IntersectionObserver" in window && !query.get("bf")) { const io = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { io.disconnect(); goSum(); } }, { rootMargin: "900px 0px" }); io.observe(host); return true; } return false; };
+        const goSum = () => { if (filled) return; filled = true; if (window.__printing) window.__printUndo.push(() => { host.innerHTML = ""; host.style.minHeight = Math.max(1, sel.length) * per + "px"; filled = false; arm(); }); return fillSum(); };
         window.__onPrint?.(goSum); // 인쇄할 때는 멀리 있어도 바로 그린다
-        if ("IntersectionObserver" in window && !query.get("bf")) { const io = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { io.disconnect(); goSum(); } }, { rootMargin: "900px 0px" }); io.observe(host); } else await goSum(); // ?bf= 주소는 설명회 노트가 요약 안에 있어 바로 그린 뒤 그 자리로 간다
+        if (!arm()) await goSum(); // ?bf= 주소는 설명회 노트가 요약 안에 있어 바로 그린 뒤 그 자리로 간다
       }
       const bf = query.get("bf"); if (bf) { const t = (bf === "1" ? body.querySelector("[id^=\"bf-\"]") : body.querySelector(`#bf-${CSS.escape(bf)}`)); if (t) { t.scrollIntoView({ block: "start" }); t.querySelector("details")?.setAttribute("open", ""); } }
     }
@@ -349,7 +351,7 @@ async function compareShell(el, onReset, getAreas) {
   el.addEventListener("click", (e) => { const b = e.target.closest(".more-g"); if (!b) return; const g = b.closest(".fgroup"), on = !g.classList.contains("open"); g.classList.toggle("open", on); b.setAttribute("aria-expanded", on); b.textContent = on ? "접기" : "더 보기"; });
   const root = el.firstElementChild;
   let ids = [], need = 0;
-  const AW = 0, LW = 120, CW = innerWidth < 600 ? 150 : 170; // 교과군 열(없앰: 그룹 머리글 행)·과목 열·학교 열 폭
+  const AW = 0, LW = innerWidth < 600 ? 100 : 120, CW = innerWidth < 600 ? 116 : 170; // 교과군 열(없앰: 그룹 머리글 행)·과목 열·학교 열 폭
   const fitMode = () => $(".tw")?.classList.toggle("fit", $(".cmpmain").clientWidth >= need);
   window.addEventListener("resize", fitMode);
   const draw = (next) => {
