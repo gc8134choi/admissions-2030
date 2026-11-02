@@ -25,11 +25,11 @@ import { preloadSubjectInfo, subjectName, decorateSubjectLists } from "./subject
 
 const $ = (s) => document.querySelector(s);
 // 인쇄: 늦게 그리는 구역을 바로 그리고 접힌 구역(details)을 모두 펼친다. 끝나면 원래대로(print 미디어 에뮬레이션도 같이 처리)
-{ const fns = [], opened = new Set();
+{ const fns = [], opened = new Set(); let printing = false, timers = [];
   window.__onPrint = (fn) => fns.push(fn);
-  const openAll = () => document.querySelectorAll("details:not([open])").forEach((d) => { opened.add(d); d.open = true; });
-  const start = () => { fns.forEach((f) => { try { f(); } catch {} }); openAll(); setTimeout(openAll, 600); setTimeout(openAll, 1600); }; // 열면서 새로 그려진 접이식도 다시 펼친다
-  const end = () => { opened.forEach((d) => { d.open = false; }); opened.clear(); };
+  const openAll = () => { if (!printing) return; document.querySelectorAll("details:not([open])").forEach((d) => { opened.add(d); d.open = true; }); }; // 인쇄 중에 새로 생긴 접이식도 기록해 두었다가 되돌린다
+  const start = () => { if (printing) return; printing = true; fns.forEach((f) => { try { f(); } catch {} }); openAll(); timers = [setTimeout(openAll, 600), setTimeout(openAll, 1600)]; }; // 열면서 새로 그려진 접이식도 다시 펼친다
+  const end = () => { printing = false; timers.forEach(clearTimeout); timers = []; opened.forEach((d) => { d.open = false; }); opened.clear(); };
   const mq = matchMedia("print"); mq.addEventListener?.("change", (e) => (e.matches ? start() : end()));
   addEventListener("beforeprint", start); addEventListener("afterprint", end); }
 const esc = (s = "") => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));

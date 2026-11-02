@@ -28,7 +28,7 @@ await p.close()}
 // 비교 표 점검(COMPARE-TABLE.md): 대상=열(thead th.cmp-s 2개 이상), 항목 열·대상 줄 sticky, 모든 th에 scope, 캡션, 페이지 가로 스크롤 0
 for(const w of [390,1440]){const p=await b.newPage({viewport:{width:w,height:900}});
 for(const r of CMP.concat(STICKY)){try{await p.goto(base+r,{waitUntil:'load',timeout:20000});await p.waitForTimeout(1200);}catch(e){out.push({w,r,issue:'비교표 load'});continue;}
-await ev(p,()=>document.querySelectorAll('details').forEach(d=>{d.open=true;d.dispatchEvent(new Event('toggle'))}));await p.waitForTimeout(900);
+await ev(p,()=>document.querySelectorAll('details').forEach(d=>{d.open=true;d.dispatchEvent(new Event('toggle'))}));await p.waitForTimeout(900);if(r.includes('v=hs')){await ev(p,()=>{const f=document.querySelector('.wide-fold');if(f){f.open=true;f.dispatchEvent(new Event('toggle'))}});await p.waitForSelector('.cmp-tbl',{timeout:5000}).catch(()=>{});await p.waitForTimeout(600);} // 31교 표는 기본 접힘이라 열고 불러올 때까지 기다린다
 const c=await ev(p,()=>{const t=document.querySelector('.cmp-tbl');if(!t)return {none:1};const cs=(e,k)=>getComputedStyle(e)[k];const bad=[];
  if(t.querySelectorAll('thead th.cmp-s').length<2)bad.push('대상 열 2개 미만');
  if(cs(t.querySelector('tbody .cmp-f')||t.querySelector('.cmp-f'),'position')!=='sticky')bad.push('항목 열 sticky 아님');
