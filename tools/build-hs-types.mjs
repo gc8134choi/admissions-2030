@@ -30,6 +30,8 @@ if (errs.length) { console.error(errs.join("\n")); process.exit(1); }
 
 const clean = (v) => (typeof v === "string" ? plain(v) : Array.isArray(v) ? v.map(clean) : v && typeof v === "object" ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, k === "url" ? x : clean(x)])) : v);
 const body = clean(Object.fromEntries(Object.entries(draft).filter(([k]) => k !== "_meta")));
+// 과학고·영재학교 칸: 학비 지원 설명은 공립 과학고 기준이라 영재학교는 따로 안내한다(영재학교는 별도 법령 적용)
+for (const ty of body.types ?? []) if (/과학고/.test(ty.name) && ty.cost?.value && !/영재학교는/.test(ty.cost.value)) ty.cost.value += ". 영재학교는 별도 법령이 적용돼 학비가 달라서 확인 중이에요(학교별 입학전형 공고에서 확인)";
 // 외국어고·국제고: 교육과정·면접·내신 배점은 학교별 모집요강에만 있다
 for (const ty of body.types ?? []) if (/외국어고/.test(ty.name) && ty.curriculum?.value == null) ty.curriculum.nullReason = "교육과정·면접·내신 배점은 학교별 모집요강(입학전형 시행계획)에만 있고 학교알리미 공시 목록에 없어요 → 학교 입학처 요강 공고(보통 6~7월)에서 확인";
 const out = { _meta: { note: "고교 유형 비교·경기 고입 달력·원서 절차·서류(생성물, 손으로 고치지 않는다). research/data/hs-types-draft.json에서 tools/build-hs-types.mjs가 만든다.", checkedAt: draft._meta?.checkedAt ?? null }, ...body };
