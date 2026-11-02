@@ -31,7 +31,7 @@ const $ = (s) => document.querySelector(s);
   // 접이식을 열기 직전의 안쪽 모습(열면서 늦게 채워지는 내용이 인쇄 뒤에 남지 않게)
   const openAll = () => { if (!printing) return; document.querySelectorAll("details:not([open])").forEach((d) => { if (!opened.has(d)) { opened.add(d); snaps.set(d, d.cloneNode(true)); } d.open = true; }); }; // 인쇄 중에 새로 생긴 접이식도 기록해 두었다가 되돌린다
   let mo = null;
-  const start = () => { if (printing) return; printing = true; window.__printing = true; footSnap = document.querySelector(".pgfoot")?.cloneNode(true) ?? null; fns.forEach((f) => { try { f(); } catch {} }); openAll(); const main = document.querySelector("#main"); if (main) { mo = new MutationObserver(openAll); mo.observe(main, { childList: true, subtree: true }); } // 인쇄 중에 새로 그려지는 접이식도 바로 펼치고 기록한다
+  const start = () => { if (printing) return; printing = true; window.__printing = true; try { window.__flushDecor?.(); } catch {} footSnap = document.querySelector(".pgfoot")?.cloneNode(true) ?? null; fns.forEach((f) => { try { f(); } catch {} }); openAll(); const main = document.querySelector("#main"); if (main) { mo = new MutationObserver(openAll); mo.observe(main, { childList: true, subtree: true }); } // 인쇄 중에 새로 그려지는 접이식도 바로 펼치고 기록한다
     timers = [setTimeout(openAll, 600), setTimeout(openAll, 1600)]; }; // 열면서 새로 그려진 접이식도 다시 펼친다
   const end = () => { printing = false; window.__printing = false; mo?.disconnect(); mo = null; timers.forEach(clearTimeout); timers = []; opened.forEach((d) => { d.open = false; if (d.isConnected && snaps.has(d)) { const c = snaps.get(d), cur = d.cloneNode(true); cur.open = c.open; if (!cur.isEqualNode(c)) d.replaceChildren(...[...c.childNodes].map((n) => n.cloneNode(true))); } }); opened.clear(); snaps.clear(); { const f = document.querySelector(".pgfoot"); if (f && footSnap) { if (!f.isEqualNode(footSnap)) f.replaceChildren(...[...footSnap.childNodes].map((n) => n.cloneNode(true))); } footSnap = null; } const undo = window.__printUndo.splice(0); undo.forEach((f) => { try { f(); } catch {} }); };
   const mq = matchMedia("print"); mq.addEventListener?.("change", (e) => (e.matches ? start() : end()));
@@ -410,7 +410,7 @@ async function compareShell(el, onReset, getAreas) {
     $("#tbl").style.minWidth = `${need}px`;
     const CH = 30, token = (drawToken = Symbol());
     const head = `<caption class="sr-only">학교별 개설 과목 비교(열=학교, 행=과목)</caption><thead><tr><th class="l" scope="col">과목</th>${ids.map((id, i) => `<th scope="col">${nm(id, names[i], 30)}</th>`).join("")}</tr></thead>`;
-    const foot = `<tfoot><tr><th class="lf">해당 과목 수</th>${ids.map((id) => `<th>${rows.filter((r) => r.cells[id]).length}</th>`).join("")}</tr></tfoot>`;
+    const foot = `<tfoot><tr><th class="lf" scope="row">해당 과목 수</th>${ids.map((id) => `<th scope="col">${rows.filter((r) => r.cells[id]).length}</th>`).join("")}</tr></tfoot>`;
     const chunk = (i) => trs.slice(i, i + CH).map((f) => f()).join("");
     $("#tbl").innerHTML = `${head}<tbody>${trs.length ? chunk(0) : `<tr><td colspan="${ids.length + 2}">조건에 맞는 과목이 없어요.</td></tr>`}</tbody>${foot}`;
     // 밀도: 처음 한 덩어리만 보이고 나머지는 "과목 더 보기"로 이어 붙인다(136행을 한 번에 그리지 않는다).
@@ -577,7 +577,8 @@ load("glossary").then((g) => {
   const main = $("#main"); let tm = null;
   // 화면마다 용어당 처음 한 번만(홈은 패널마다 따로 붙인다)
   const run = () => { mo.disconnect(); if (location.hash.replace(/^#/, "").split("?")[0] !== "" && location.hash !== "#home") { try { decorateTerms(main, "section,.ed-row,.dp,.piece,details,.school,.note,.tw"); } catch {} } try { decorateGlossary(main); } catch {} /* 용어 풀이(ⓘ)는 홈을 포함한 모든 화면에 */ mo.observe(main, { childList: true, subtree: true }); };
-  const mo = new MutationObserver(() => { clearTimeout(tm); tm = setTimeout(run, 250); });
+  const mo = new MutationObserver(() => { if (window.__printing) return; clearTimeout(tm); tm = setTimeout(run, 250); }); // 인쇄 중에는 용어 장식을 새로 붙이지 않는다(높이 변동 방지)
+  window.__flushDecor = () => { clearTimeout(tm); run(); }; // 인쇄 시작 때 지금까지 그려진 부분의 장식을 먼저 끝낸다
   mo.observe(main, { childList: true, subtree: true });
 }).catch(() => {});
 render(); applyHl();
