@@ -347,10 +347,10 @@ END:VEVENT
 BEGIN:VEVENT
 UID:ev-sch-13-1@admissions-2030
 DTSTAMP:20261102T000000Z
-DTSTART;VALUE=DATE:20291201
+DTSTART;VALUE=DATE:20300101
 DTEND;VALUE=DATE:20300301
-SUMMARY:2030학년도 정시 · 원서접수·전형(추정) (추정) (월 
- 단위)
+SUMMARY:2030학년도 정시 · 원서접수·전형(추정\, 1월 초 접
+ 수) (추정) (월 단위)
 DESCRIPTION:원서접수 2030.1 초 전후\, 전형 2030.1~2월로 추정(2
  027~2029학년도분 정시 접수가 모두 1월 초). 12월 접수 근
  거는 없음\n출처: 대교협 대학입학전형기본사항(정시 관
@@ -432,10 +432,11 @@ DESCRIPTION:원서접수 2026.12.4~12.10(해당 지역 교육지원청)\,
  학교 발표 1.22\, 등록 1.25~27\, 추가 배정·발표 2.4\, 추가 
  배정학교 등록 2.4~5\n출처: 경기도교육청 2027학년도 경기
  도 고등학교 신입생 전형요강(고입 포털 공지 2026.8.19) PD
- F 10쪽 평준화 지역 정시모집 일정 https://satp.goe.go.kr/main.d
- o / 경기도교육청 2027학년도 경기도 고등학교 입학전형 
- 기본계획(2026.3) PDF 5쪽 https://www.goe.go.kr/resource/goe/na/bbs_24
- 30/2026/03/e88abfe2-8daa-494e-9cb8-a2d030225b45.pdf\n확인일 2026-11-02
+ F 10쪽 평준화 지역 정시모집 일정 https://satp.goe.go.kr/pt/ar/
+ ggpt_d01_s1.do?sn=304 / 경기도교육청 2027학년도 경기도 고등
+ 학교 입학전형 기본계획(2026.3) PDF 5쪽 https://www.goe.go.kr/re
+ source/goe/na/bbs_2430/2026/03/e88abfe2-8daa-494e-9cb8-a2d030225b45.pdf\n
+ 확인일 2026-11-02
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
