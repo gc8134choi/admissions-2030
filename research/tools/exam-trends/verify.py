@@ -13,6 +13,8 @@ ap = argparse.ArgumentParser(); ap.add_argument('--cache', required=True); ap.ad
 a = ap.parse_args()
 D = json.load(open(a.draft, encoding='utf-8'))
 calc = compute(a.cache)
+# 파서가 틀려 사람이 원문으로 바로잡은 행(verify2.py 독립 읽기로 확인). 이 행만 재계산 불일치를 허용한다.
+FIX = {(c['placeId'], c['grade'], norm(c['subject'])) for c in json.load(open('tools/exam-trends-manual.json', encoding='utf-8')).get('parserCorrections', [])}
 bad = []; n = 0
 for s in D['schools']:
     pid = s['placeId']
@@ -25,7 +27,7 @@ for s in D['schools']:
             if r['writtenPct'] + r['performancePct'] != 100: bad.append((s['name'], k, '합이 100이 아님'))
             if k in seen: bad.append((s['name'], k, '중복'))
             seen.add(k)
-            if ref.get(k) != (r['writtenPct'], r['performancePct']): bad.append((s['name'], k, f"원문 재계산 {ref.get(k)} ≠ 초안 {(r['writtenPct'], r['performancePct'])}"))
+            if ref.get(k) != (r['writtenPct'], r['performancePct']) and (pid, *k) not in FIX: bad.append((s['name'], k, f"원문 재계산 {ref.get(k)} ≠ 초안 {(r['writtenPct'], r['performancePct'])}"))
             if re.search(r'영어|영미', r['subject']) and r['area'] != '영어': bad.append((s['name'], k, '영어 영역이어야 함'))
             if area_of2(r['subject']) != r['area'] and not (r['subject'] in ('인문학과 윤리',) ): bad.append((s['name'], k, f"영역 불일치 {area_of2(r['subject'])} vs {r['area']}"))
 print(f'대조 행 {n}건, 불일치 {len(bad)}건')

@@ -594,7 +594,7 @@
        "essayPct": null
       },
       {
-       "subject": "생명과학 II",
+       "subject": "생명과학 Ⅱ",
        "area": "과학",
        "paperPct": 40,
        "performancePct": 60,
@@ -714,7 +714,7 @@
        "essayPct": null
       },
       {
-       "subject": "영어II",
+       "subject": "영어Ⅱ",
        "area": "영어",
        "paperPct": 60,
        "performancePct": 40,
@@ -891,7 +891,7 @@
        "essayPct": null
       },
       {
-       "subject": "지구과학",
+       "subject": "지구과학Ⅱ",
        "area": "과학",
        "paperPct": 50,
        "performancePct": 50,
@@ -976,13 +976,6 @@
        "essayPct": null
       },
       {
-       "subject": "생활과 과학",
-       "area": "과학",
-       "paperPct": 30,
-       "performancePct": 70,
-       "essayPct": null
-      },
-      {
        "subject": "통합과학",
        "area": "과학",
        "paperPct": 50,
@@ -1013,7 +1006,7 @@
        "essayPct": null
       },
       {
-       "subject": "미적분I",
+       "subject": "미적분Ⅰ",
        "area": "수학",
        "paperPct": 60,
        "performancePct": 40,
@@ -1062,13 +1055,6 @@
        "essayPct": null
       },
       {
-       "subject": "고급생명과학",
-       "area": "과학",
-       "paperPct": 0,
-       "performancePct": 100,
-       "essayPct": null
-      },
-      {
        "subject": "물질과 에너지",
        "area": "과학",
        "paperPct": 50,
@@ -1099,7 +1085,12 @@
      ],
      "gaps": [],
      "partial": "일부 과목이 빠졌을 수 있어요",
-     "excluded": []
+     "excluded": [
+      {
+       "subject": "고급생명과학",
+       "reason": "원문 평가 계획 표의 정기시험·수행평가 비율 칸이 '(-)'로 적혀 비율을 읽을 수 없고 과목명 대응도 불명확해 제외(2026-11-02 정정)"
+      }
+     ]
     },
     {
      "term": "2026학년도 2학기",
@@ -1197,7 +1188,7 @@
        "essayPct": null
       },
       {
-       "subject": "지구과학II",
+       "subject": "지구과학Ⅱ",
        "area": "과학",
        "paperPct": 40,
        "performancePct": 60,
@@ -1205,6 +1196,13 @@
       },
       {
        "subject": "화학Ⅱ",
+       "area": "과학",
+       "paperPct": 30,
+       "performancePct": 70,
+       "essayPct": null
+      },
+      {
+       "subject": "생활과 과학",
        "area": "과학",
        "paperPct": 30,
        "performancePct": 70,
@@ -1380,6 +1378,13 @@
        "paperPct": 60,
        "performancePct": 40,
        "essayPct": null
+      },
+      {
+       "subject": "세포와 물질대사",
+       "area": "과학",
+       "paperPct": 50,
+       "performancePct": 50,
+       "essayPct": null
       }
      ],
      "gaps": [],
@@ -1507,22 +1512,6 @@
        "area": "과학",
        "paperPct": 30,
        "performancePct": 70,
-       "essayPct": null
-      }
-     ],
-     "gaps": [],
-     "partial": "일부 과목이 빠졌을 수 있어요",
-     "excluded": []
-    },
-    {
-     "term": "2026학년도 2학기",
-     "grade": null,
-     "rows": [
-      {
-       "subject": "세포와 물질대사",
-       "area": "과학",
-       "paperPct": 50,
-       "performancePct": 50,
        "essayPct": null
       }
      ],
@@ -2213,7 +2202,7 @@
        "essayPct": null
       },
       {
-       "subject": "심화수학I",
+       "subject": "심화수학Ⅰ",
        "area": "수학",
        "paperPct": 50,
        "performancePct": 50,
@@ -2227,7 +2216,7 @@
        "essayPct": null
       },
       {
-       "subject": "심화영어I",
+       "subject": "심화영어Ⅰ",
        "area": "영어",
        "paperPct": 50,
        "performancePct": 50,
@@ -2458,8 +2447,8 @@
       {
        "subject": "중국어Ⅱ",
        "area": "국어",
-       "paperPct": 40,
-       "performancePct": 60,
+       "paperPct": 0,
+       "performancePct": 100,
        "essayPct": null
       }
      ],

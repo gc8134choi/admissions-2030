@@ -12,3 +12,8 @@
 pip install olefile pymupdf
 python3 research/tools/exam-trends/verify.py --cache <캐시 폴더>
 ```
+
+## 독립 검증 (verify2.py, 2026-11-02 추가)
+`verify.py`는 초안을 만든 파서와 같은 코드로 다시 계산하므로 파서의 오류(학년·과목명·비율 오독)를 잡지 못한다.
+`verify2.py`는 파서를 쓰지 않고 원문을 다시 읽는다: 학년은 파일(첨부 순서·파일명·표지 표)로만 정하고, 과목은 '평가 세부 계획' 제목 또는 총괄표 교과 칸, 비율은 표의 열 이름을 먼저 읽어 그 열 수만큼 뒤따르는 %를 대응시킨다.
+`python3 research/tools/exam-trends/verify2.py --cache <폴더>` — 불일치가 있으면 종료 코드 1. 독립 읽기가 못 읽은 행은 통과가 아니므로 `LIST_UNREAD=1`로 목록을 보고 원문과 직접 대조한다. 사람이 원문으로 바로잡은 행은 `tools/exam-trends-manual.json`의 `parserCorrections`에 이유와 함께 적는다(verify.py가 이 행만 불일치를 허용).
