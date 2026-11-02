@@ -214,7 +214,7 @@ select,input[type=search]{font-size:13px;padding:5px 8px}
 #fchips{display:flex;flex-wrap:wrap;gap:4px 2px}
 #fchips .schip{flex:1 1 44px;min-width:44px;padding:4px 0}
 #fchips .schip .logo{width:34px;height:34px}
-#fchips .schip .nm span:last-child{font-size:11px}
+#fchips .schip .nm span:last-child{font-size:13px}
 
 /* 홈 */
 .hm{display:flex;flex-direction:column;gap:10px}
