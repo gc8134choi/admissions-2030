@@ -786,7 +786,7 @@
    "data": "portal/data/exam-trends.json",
    "title": "exam-trends (내신 출제·평가 경향) — portal/data/exam-trends.json (입력: research/data/exam-trends-draft.json을 tools/build-exam-trends.mjs가 이 모양으로 바꾼다)",
    "description": "학교별·교과별(국어·영어·수학·과학·사회) 내신 평균·표준편차·성취도 분포·수강자 수·지필/수행 비율·서술형 비율. 학교는 places의 placeId로 연결한다. 값의 범위와 합계(성취도 분포 합 100%, 지필+수행 100%)는 생성기가 검사한다. '경향 한 줄'(변별 강함/보통/무난)은 평균·표준편차 기준의 추정이며 학교가 어렵다는 단정이 아니다. 사람 이름은 쓰지 않는다.",
-   "fieldCount": 59,
+   "fieldCount": 63,
    "fields": [
     {
      "path": "guide",
@@ -1011,6 +1011,27 @@
      "required": true
     },
     {
+     "path": "items[].plans[].gaps",
+     "type": "array",
+     "required": false,
+     "description": "공시 평가계획에 있으나 값을 아직 못 옮긴 과목(화면: 평가계획 정리 중)"
+    },
+    {
+     "path": "items[].plans[].gaps[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "items[].plans[].gaps[].subject",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "items[].plans[].gaps[].area",
+     "type": "string",
+     "required": true
+    },
+    {
      "path": "items[].plans[].rows",
      "type": "array",
      "required": true
@@ -1029,7 +1050,7 @@
      "path": "items[].plans[].rows[].area",
      "type": "string",
      "required": true,
-     "description": "교과(국어·영어·수학·과학·사회)"
+     "description": "교과(국어·영어·수학·과학·사회·제2외국어). 선택과목 현황의 분류와 일치해야 한다"
     },
     {
      "path": "items[].plans[].rows[].paperPct",

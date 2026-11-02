@@ -27,7 +27,7 @@ const places = draft.items.map((it) => {
   if (it.homepage && !/^https?:\/\//.test(it.homepage)) errs.push(`${it.placeId}: homepage는 http(s) 주소`);
   const externalIds = externalIdsFor(it.placeId);
   return {
-    id: it.placeId, schoolId: it.schoolId ?? null, name: it.name, level: it.level, kind: it.kind ?? null, address: it.address,
+    id: it.placeId, schoolId: it.schoolId ?? null, name: it.name, level: it.level, kind: it.placeId === "pl-014" ? (String(it.kind ?? "").replace("(단설)", "") || null) : it.kind ?? null, address: it.address,
     lat, lng, coordSource: it.coordSource ?? null, coordApprox: lat != null && /근사/.test(it.coordSource?.name || ""), homepage: it.homepage ?? null, phone: it.phone ?? null, ...(externalIds ? { externalIds } : {}),
     status: it.status, sources: it.sources, checkedAt: it.checkedAt ?? draft._meta?.checkedAt ?? null,
     searchQuery: `${it.name} ${it.address}`.trim(),

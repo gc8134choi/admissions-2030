@@ -53,21 +53,21 @@
    "sources": [
     {
      "name": "용인홍천고 2026학년도 2학기 1학년 전과목 교수학습 및 평가운영 계획.hwp",
-     "url": "https://www.schoolinfo.go.kr/"
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
     },
     {
      "name": "용인홍천고 2026학년도 2학기 2학년 전과목 교수학습 및 평가운영 계획.hwp",
-     "url": "https://www.schoolinfo.go.kr/"
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
     },
     {
      "name": "용인홍천고 2026학년도 2학기 3학년 전과목 교수학습 및 평가운영 계획.hwp",
-     "url": "https://www.schoolinfo.go.kr/"
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
     }
    ],
    "sourceIds": [
-    "src-1a58a138",
-    "src-1a58a138",
-    "src-1a58a138"
+    "src-23491a33",
+    "src-23491a33",
+    "src-23491a33"
    ],
    "fileIds": [],
    "briefingNote": null,
@@ -110,6 +110,12 @@
        "paperPct": 50,
        "performancePct": 50,
        "essayPct": null
+      }
+     ],
+     "gaps": [
+      {
+       "subject": "한국사",
+       "area": "사회"
       }
      ]
     },
@@ -154,7 +160,7 @@
       },
       {
        "subject": "인문학과 윤리",
-       "area": "국어",
+       "area": "사회",
        "paperPct": 60,
        "performancePct": 40,
        "essayPct": null
@@ -210,12 +216,13 @@
       },
       {
        "subject": "중국어 회화",
-       "area": "국어",
+       "area": "제2외국어",
        "paperPct": 50,
        "performancePct": 50,
        "essayPct": null
       }
-     ]
+     ],
+     "gaps": []
     },
     {
      "term": "2026학년도 2학기",
@@ -298,7 +305,8 @@
        "performancePct": 60,
        "essayPct": null
       }
-     ]
+     ],
+     "gaps": []
     }
    ],
    "qualitative": [
@@ -392,6 +400,12 @@
        "performancePct": 40,
        "essayPct": null
       }
+     ],
+     "gaps": [
+      {
+       "subject": "공통수학",
+       "area": "수학"
+      }
      ]
     },
     {
@@ -435,7 +449,7 @@
       },
       {
        "subject": "인문학과 윤리",
-       "area": "국어",
+       "area": "사회",
        "paperPct": 70,
        "performancePct": 30,
        "essayPct": null
@@ -470,12 +484,13 @@
       },
       {
        "subject": "중국어 회화",
-       "area": "국어",
+       "area": "제2외국어",
        "paperPct": 50,
        "performancePct": 50,
        "essayPct": null
       }
-     ]
+     ],
+     "gaps": []
     },
     {
      "term": "2026학년도 2학기",
@@ -511,7 +526,7 @@
       },
       {
        "subject": "영미문학 읽기",
-       "area": "국어",
+       "area": "영어",
        "paperPct": 50,
        "performancePct": 50,
        "essayPct": null
@@ -522,6 +537,12 @@
        "paperPct": 50,
        "performancePct": 50,
        "essayPct": null
+      }
+     ],
+     "gaps": [
+      {
+       "subject": "생활과 윤리",
+       "area": "사회"
       }
      ]
     }

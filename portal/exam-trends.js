@@ -22,7 +22,7 @@ export function examRows(data, esc) {
   const rows = [];
   if (hasAch) rows.push(row("ex-tend", "경향 한 줄", "", "text", (e) => e.summary && { text: e.summary.tendency, html: `${esc(e.summary.tendency)}<span class="muted sma el-est"> ${esc(e.summary.basis)}</span>` }));
   // 평가계획(공개값): 1학년 공통과목의 교과별 지필 반영 비율(수행은 100에서 뺀 값)
-  for (const s of SUBJ) rows.push(row(`ex-${s}-pl`, `${s} 지필 반영`, "%", "number", (e) => { const p = grade1(e); const r = (p?.rows || []).filter((x) => x.area === s); if (!r.length) return null; const paper = Math.round(r.reduce((a, x) => a + x.paperPct, 0) / r.length); return { text: String(paper), num: paper, html: `${paper}<span class="muted sma el-est"> 수행 ${100 - paper}</span>` }; }, { max: 100 }));
+  for (const s of SUBJ) rows.push(row(`ex-${s}-pl`, `${s} 지필 반영`, "%", "number", (e) => { const p = grade1(e); const r = (p?.rows || []).filter((x) => x.area === s); if (!r.length) { const g = (p?.gaps || []).filter((x) => x.area === s); return g.length ? { empty: true, why: `${g.map((x) => x.subject).join("·")} 평가계획을 정리 중이에요` } : null; } const paper = Math.round(r.reduce((a, x) => a + x.paperPct, 0) / r.length); return { text: String(paper), num: paper, html: `${paper}<span class="muted sma el-est"> 수행 ${100 - paper}</span>` }; }, { max: 100 }));
   if (hasAch) for (const s of SUBJ) {
     const g = (fn) => (e) => { const x = sub(e, s); return x ? fn(x, e) : null; };
     rows.push(
@@ -37,11 +37,11 @@ export function examRows(data, esc) {
   return rows;
 }
 
-const planList = (rows, esc) => `<ul class="el-list">${rows.map((x) => `<li class="el-r"><span class="el-n">${esc(x.subject)}<span class="muted sma"> ${esc(x.area)}</span></span><span class="el-b" aria-hidden="true"><i class="sci" style="width:${x.paperPct}%"></i></span><span class="el-v">지필 ${f1(x.paperPct)} · 수행 ${f1(x.performancePct)}</span></li>`).join("")}</ul>`;
+const planList = (rows, esc, gaps = []) => `<ul class="el-list">${gaps.map((x) => `<li class="el-r muted"><span class="el-n">${esc(x.subject)}<span class="muted sma"> ${esc(x.area)}</span></span><span></span><span class="el-v">평가계획 정리 중</span></li>`).join("")}${rows.map((x) => `<li class="el-r"><span class="el-n">${esc(x.subject)}<span class="muted sma"> ${esc(x.area)}</span></span><span class="el-b" aria-hidden="true"><i class="sci" style="width:${x.paperPct}%"></i></span><span class="el-v">지필 ${f1(x.paperPct)} · 수행 ${f1(x.performancePct)}</span></li>`).join("")}</ul>`;
 function detail(e, esc, { hrefOf } = {}) {
   const src = (e.sources || []).map((s) => (s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)} ↗</a>` : esc(s.name))).join(" · ");
   const link = hrefOf && (e.qualitative || []).length ? hrefOf(e) : null;
-  const plans = (e.plans || []).map((p) => `<details class="dn"${p.grade === 1 ? " open" : ""}><summary>${p.grade}학년 평가계획 <span class="muted sma">${esc(p.term)} · ${p.rows.length}과목</span></summary><p class="muted sma">막대는 지필 반영 비율이에요(나머지는 수행평가).</p>${planList(p.rows, esc)}</details>`).join("");
+  const plans = (e.plans || []).map((p) => `<details class="dn"${p.grade === 1 ? " open" : ""}><summary>${p.grade}학년 평가계획 <span class="muted sma">${esc(p.term)} · ${p.rows.length}과목${(p.gaps || []).length ? ` + 정리 중 ${p.gaps.length}` : ""}</span></summary><p class="muted sma">막대는 지필 반영 비율이에요(나머지는 수행평가).</p>${planList(p.rows, esc, p.gaps || [])}</details>`).join("");
   const ach = e.subjects.length ? e.subjects.map((s) => `<h4 class="el-h">${esc(s.subject)} <span class="muted sma">${[s.mean != null ? `평균 ${f1(s.mean)}점` : "", s.sd != null ? `표준편차 ${f1(s.sd)}` : "", s.takers ? `${s.takers.toLocaleString("ko-KR")}명` : ""].filter(Boolean).join(" · ")}</span></h4>
       ${s.dist ? `<div class="ex-dist" role="img" aria-label="성취도 분포 ${esc(Object.entries(s.dist).map(([k, v]) => `${k} ${f1(v)}%`).join(", "))}">${Object.entries(s.dist).map(([k, v]) => `<i style="flex:${v}" title="${esc(k)} ${f1(v)}%"><b>${esc(k)}</b> ${f1(v)}%</i>`).join("")}</div>` : ""}
       ${s.plan ? `<p class="ex-plan">${esc(s.plan)}</p>` : ""}`).join("") : emptyLine(esc, { why: `과목별 평균·표준편차·성취도 분포는 아직 없어요${e.achievementNull ? ` — ${e.achievementNull}` : ""}`, next: WHERE.schoolinfo });
