@@ -73,8 +73,8 @@ export async function planPanel({ load, esc, store }) {
 
 // 고교 한눈에: 학교별 핵심 지표 한 줄씩 + 지도·설명회 노트 바로가기
 export async function comparePanel({ load, esc }) {
-  const [summary, places, briefings, hs] = await Promise.all([load("summary"), load("places"), load("briefings").catch(() => null), load("hs-compare").catch(() => null)]);
-  const lines = new Map(hsCompareSummary(hs, { max: 5 }).filter((x) => x.schoolId).map((x) => [x.schoolId, x.line]));
+  const [summary, places, briefings, hs, electives] = await Promise.all([load("summary"), load("places"), load("briefings").catch(() => null), load("hs-compare").catch(() => null), load("electives").catch(() => null)]);
+  const lines = new Map(hsCompareSummary(hs, { max: 5, electives }).filter((x) => x.schoolId).map((x) => [x.schoolId, x.line]));
   const pl = (sid) => places.places.find((p) => p.schoolId === sid)?.id;
   const bf = (sid) => ((briefings && briefings.briefings) || []).some((b) => b.schoolId === sid);
   const M = [["creditsRequired", "필수 학점", "r"], ["creditsElective", "내가 고르는 학점", "e"], ["candidateSubjects", "후보 과목", ""], ["breadth", "선택 폭", ""]];
