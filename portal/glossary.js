@@ -1,4 +1,5 @@
-import "./policy-css.js";
+// ⓘ 스타일(policy.css)은 풀이를 실제로 붙일 때 불러온다(홈 첫 화면에서는 받지 않음)
+const ensureCss = () => { if (typeof document !== "undefined" && !document.getElementById("policy-css")) { const l = document.createElement("link"); l.id = "policy-css"; l.rel = "stylesheet"; l.href = "policy.css"; document.head.appendChild(l); } };
 // 용어사전 ⓘ 팝오버 공용 모듈. 데이터: glossary.json(tools/build-glossary.mjs).
 // 사용법(다른 화면/세션):
 //   import { preloadGlossary, termHtml, decorateGlossary } from "./glossary.js";
@@ -25,6 +26,7 @@ export function preloadGlossary(load) {
 export const hasTerm = (name) => BY_KEY.has(keyOf(name));
 const btn = (t, label) => `<button type="button" class="gl-i" data-gl="${esc(t.id)}" aria-label="${esc(label)} 뜻" aria-haspopup="dialog" aria-expanded="false">ⓘ</button>`;
 export function termHtml(name, escFn = esc) {
+  ensureCss();
   const t = BY_KEY.get(keyOf(name));
   return t ? `${escFn(name)}${btn(t, name)}` : escFn(name);
 }
@@ -49,7 +51,7 @@ export function decorateGlossary(root, { skip = "a,button,script,style,textarea,
       if (i >= 0 && (!hit || i < hit.i || (i === hit.i && w.length > hit.w.length))) hit = { i, w, t };
     }
     if (!hit) continue;
-    seen.add(hit.t.id);
+    seen.add(hit.t.id); ensureCss();
     const end = hit.i + hit.w.length;
     const frag = document.createDocumentFragment();
     frag.append(text.slice(0, end));
