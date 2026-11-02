@@ -1,4 +1,4 @@
 /* 용어사전 ⓘ (glossary.js): 과목 설명 ⓘ(.si)와 같은 모양, 터치 영역은 넉넉히 */
-.gl-i{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;width:24px;height:24px;min-width:24px;min-height:24px;margin:-6px 0;padding:0;border:0;background:none;color:inherit;cursor:pointer;font:inherit;font-size:14px;line-height:1;border-radius:50%;vertical-align:middle;position:relative;top:-1px;z-index:2} /* 실제 요소를 24×24px(WCAG 2.5.8)로 하고, 위아래 음수 여백으로 줄 간격은 벌리지 않는다 */
+.gl-i{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;width:24px;height:24px;min-width:24px;min-height:24px;margin:-6px -4px;padding:0;border:0;background:none;color:inherit;cursor:pointer;font:inherit;font-size:14px;line-height:1;border-radius:50%;vertical-align:middle;position:relative;top:-1px;z-index:2} /* 실제 요소를 24×24px(WCAG 2.5.8)로 하고, 위아래 음수 여백으로 줄 간격은 벌리지 않는다 */
 .gl-rel{border:0;background:none;color:var(--accent);cursor:pointer;font:inherit;padding:2px 0;text-decoration:underline}
 .gl-i:hover,.gl-i[aria-expanded="true"]{background:var(--soft,rgba(0,0,0,.06))}.gl-i:focus-visible{outline:2px solid var(--accent);outline-offset:1px}

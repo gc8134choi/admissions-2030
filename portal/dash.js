@@ -115,9 +115,15 @@ export async function hsHubBody(el, { load, esc, lazy = false }) {
   // 틀을 먼저 그리고(첫 화면을 데이터 5개를 기다리지 않고 보여 줌), 고교 한눈에는 읽히는 대로 채운다
   el.innerHTML = `<div class="ed hub-hs"><div id="hs-top"></div><div id="hs-wide"></div><p class="muted small">필수·내가 고르는 학점과 후보 과목 수는 학교 배부 편제표 기준이에요. 학교를 누르면 과목표로 갑니다.</p></div>`;
   const topEl = el.querySelector("#hs-top"), host = el.querySelector("#hs-wide");
-  const topP = comparePanel({ load, esc }).catch(() => "").then((h) => { if (topEl.isConnected) topEl.outerHTML = h; });
+  const topP = comparePanel({ load, esc }).catch(() => "").then(async (h) => { if (!topEl.isConnected) return;
+    try { const g = await import("./glossary.js"); await g.preloadGlossary(load); const t = document.createElement("div"); t.innerHTML = h; g.decorateGlossary(t); topEl.replaceWith(...t.childNodes); } catch { topEl.outerHTML = h; } }); // 용어 ⓘ를 붙인 뒤에 넣어서 나중에 글이 밀리지 않게
   const fillWide = async () => { try { await (await hsc()).hsCompareBody(host, { load, esc }); } catch { host.innerHTML = ""; } };
-  if (lazy) { const h = document.createElement("div"); host.after(h); import("./hs-types.js").then((m) => m.hsTypesBody(h, { load, esc })).catch(() => {}); return fillWide; } // 31교 표는 접이식을 열 때 그린다(DOM 절약)
+  if (lazy) { // 고교 유형 본문(화면 맨 아래)은 가까이 오면 그린다: 첫 화면의 DOM·계산량을 줄인다
+    const h = document.createElement("div"); h.style.minHeight = "1100px"; host.after(h);
+    const draw = () => import("./hs-types.js").then((m) => m.hsTypesBody(h, { load, esc })).then(() => { h.style.minHeight = ""; try { import("./glossary.js").then((g) => g.decorateGlossary(h)); } catch {} }).catch(() => { h.style.minHeight = ""; });
+    if ("IntersectionObserver" in window) { const io = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { io.disconnect(); draw(); } }, { rootMargin: "900px 0px" }); io.observe(h); } else draw();
+    return fillWide;
+  } // 31교 표는 접이식을 열 때 그린다(DOM 절약)
   await Promise.all([topP, fillWide()]);
   try { const h = document.createElement("div"); host.after(h); await (await import("./hs-types.js")).hsTypesBody(h, { load, esc }); } catch {}
 }

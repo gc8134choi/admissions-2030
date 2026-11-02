@@ -431,3 +431,9 @@ button.term{text-decoration:underline dotted!important;text-decoration-thickness
 /* 고교 한눈에 상단 패널은 늦게 채워지므로 자리를 미리 잡아 아래 내용이 밀리지 않게 한다(CLS) */
 #hs-top{min-height:1000px}@media (min-width:900px){#hs-top{min-height:665px}}
 #chipbar:not([hidden]){min-height:88px;max-height:88px;overflow:hidden}@media (min-width:900px){#chipbar:not([hidden]){min-height:40px;max-height:40px}} /* 학교 칩이 채워질 때 아래가 밀리지 않게 */
+
+/* 용어 ⓘ(glossary.css와 같은 내용): 늦게 불러오면 ⓘ가 붙을 때 글이 밀려서 항상 불러오는 이 파일에도 둔다 */
+/* 용어사전 ⓘ (glossary.js): 과목 설명 ⓘ(.si)와 같은 모양, 터치 영역은 넉넉히 */
+.gl-i{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;width:24px;height:24px;min-width:24px;min-height:24px;margin:-6px -4px;padding:0;border:0;background:none;color:inherit;cursor:pointer;font:inherit;font-size:14px;line-height:1;border-radius:50%;vertical-align:middle;position:relative;top:-1px;z-index:2} /* 실제 요소를 24×24px(WCAG 2.5.8)로 하고, 위아래 음수 여백으로 줄 간격은 벌리지 않는다 */
+.gl-rel{border:0;background:none;color:var(--accent);cursor:pointer;font:inherit;padding:2px 0;text-decoration:underline}
+.gl-i:hover,.gl-i[aria-expanded="true"]{background:var(--soft,rgba(0,0,0,.06))}.gl-i:focus-visible{outline:2px solid var(--accent);outline-offset:1px}

@@ -206,9 +206,11 @@ async function curriculumView(el, query, node) {
       }
       { // 요약 구역은 자리를 먼저 잡고(높이 예약) 채운다: 채워지면서 아래 내용이 밀리는 레이아웃 이동(CLS)을 막는다
         const host = body.querySelector("#sumhost"), per = innerWidth < 900 ? 240 : 149; host.style.minHeight = Math.max(1, sel.length) * per + "px";
-        await summaryBody(host, sel); host.style.minHeight = "";
+        const fillSum = async () => { await summaryBody(host, sel); host.style.minHeight = "";
+  body.querySelectorAll(".school").forEach((c) => { c.classList.add("cp"); const f = c.querySelector(".foot"); if (f) f.insertAdjacentHTML("afterbegin", '<button type="button" class="btn sc-more" aria-expanded="false">자세히</button>'); });
+          try { (await import("./glossary.js")).decorateGlossary(host); } catch {} };
+        if ("IntersectionObserver" in window) { const io = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { io.disconnect(); fillSum(); } }, { rootMargin: "900px 0px" }); io.observe(host); } else await fillSum();
       }
-      body.querySelectorAll(".school").forEach((c) => { c.classList.add("cp"); const f = c.querySelector(".foot"); if (f) f.insertAdjacentHTML("afterbegin", '<button type="button" class="btn sc-more" aria-expanded="false">자세히</button>'); });
       const bf = query.get("bf"); if (bf) { const t = (bf === "1" ? body.querySelector(".bf-area") : body.querySelector(`#bf-${CSS.escape(bf)}`)); if (t) { t.scrollIntoView({ block: "start" }); t.querySelector("details")?.setAttribute("open", ""); } }
     }
     else if (tab === "map") { compare = null; await (await import("./map.js")).mapBody(body, { load, esc, focus: focusP, level: lv === "middle" ? "middle" : "high" }); }
