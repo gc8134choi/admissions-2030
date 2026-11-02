@@ -1,7 +1,7 @@
 {
  "_meta": {
   "note": "데이터 사전(생성물, 손으로 고치지 않는다). schema/*.schema.json에서 tools/build-data-dictionary.mjs가 만든다.",
-  "count": 19
+  "count": 20
  },
  "rules": [
   {
@@ -777,6 +777,221 @@
      "path": "unverified",
      "type": "boolean",
      "required": false
+    }
+   ]
+  },
+  {
+   "id": "exam-trends",
+   "schema": "schema/exam-trends.schema.json",
+   "data": "portal/data/exam-trends.json",
+   "title": "exam-trends (내신 출제·평가 경향) — portal/data/exam-trends.json (입력: research/data/exam-trends-draft.json을 tools/build-exam-trends.mjs가 이 모양으로 바꾼다)",
+   "description": "학교별·교과별(국어·영어·수학·과학·사회) 내신 평균·표준편차·성취도 분포·수강자 수·지필/수행 비율·서술형 비율. 학교는 places의 placeId로 연결한다. 값의 범위와 합계(성취도 분포 합 100%, 지필+수행 100%)는 생성기가 검사한다. '경향 한 줄'(변별 강함/보통/무난)은 평균·표준편차 기준의 추정이며 학교가 어렵다는 단정이 아니다. 사람 이름은 쓰지 않는다.",
+   "fieldCount": 33,
+   "fields": [
+    {
+     "path": "guide",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "guide.intro",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "guide.questions",
+     "type": "array",
+     "required": false
+    },
+    {
+     "path": "guide.questions[]",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "items",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "items[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "items[].placeId",
+     "type": "string",
+     "required": true,
+     "pattern": "^pl-\\d{3,}$"
+    },
+    {
+     "path": "items[].name",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "items[].term",
+     "type": "string|null",
+     "required": false,
+     "description": "기준 학기(예: 2026학년도 2학년 1학기)"
+    },
+    {
+     "path": "items[].asOf",
+     "type": "string|null",
+     "required": false,
+     "format": "date",
+     "description": "자료 기준일"
+    },
+    {
+     "path": "items[].sourceKind",
+     "type": "string|null",
+     "required": false,
+     "description": "학교알리미 공시 / 학교 평가계획 / 설명회 슬라이드 등"
+    },
+    {
+     "path": "items[].status",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "confirmed",
+      "reported",
+      "estimated"
+     ]
+    },
+    {
+     "path": "items[].sources",
+     "type": "array",
+     "required": false
+    },
+    {
+     "path": "items[].sources[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "items[].sources[].name",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "items[].sources[].url",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "items[].fileIds",
+     "type": "array",
+     "required": false
+    },
+    {
+     "path": "items[].fileIds[]",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "items[].briefingNote",
+     "type": "string|null",
+     "required": false,
+     "description": "설명회에서 나온 발언 요약(있으면)"
+    },
+    {
+     "path": "items[].nullReason",
+     "type": "string|null",
+     "required": false,
+     "description": "자료가 없을 때 사유(subjects가 비어 있으면 필수)"
+    },
+    {
+     "path": "items[].nextAction",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "items[].subjects",
+     "type": "array",
+     "required": false
+    },
+    {
+     "path": "items[].subjects[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "items[].subjects[].subject",
+     "type": "enum",
+     "required": true,
+     "enum": [
+      "국어",
+      "영어",
+      "수학",
+      "과학",
+      "사회"
+     ]
+    },
+    {
+     "path": "items[].subjects[].mean",
+     "type": "number|null",
+     "required": false,
+     "minimum": 0,
+     "maximum": 100,
+     "description": "원점수 평균"
+    },
+    {
+     "path": "items[].subjects[].sd",
+     "type": "number|null",
+     "required": false,
+     "minimum": 0,
+     "maximum": 50,
+     "description": "표준편차"
+    },
+    {
+     "path": "items[].subjects[].takers",
+     "type": "integer|null",
+     "required": false,
+     "minimum": 1,
+     "description": "수강자 수(명)"
+    },
+    {
+     "path": "items[].subjects[].dist",
+     "type": "object|null",
+     "required": false,
+     "description": "성취도 분포(%): A·B·C·D·E(·I) 합 100"
+    },
+    {
+     "path": "items[].subjects[].dist.*",
+     "type": "number",
+     "required": false,
+     "minimum": 0,
+     "maximum": 100
+    },
+    {
+     "path": "items[].subjects[].paperPct",
+     "type": "number|null",
+     "required": false,
+     "minimum": 0,
+     "maximum": 100,
+     "description": "지필평가 반영 비율(%)"
+    },
+    {
+     "path": "items[].subjects[].performancePct",
+     "type": "number|null",
+     "required": false,
+     "minimum": 0,
+     "maximum": 100,
+     "description": "수행평가 반영 비율(%)"
+    },
+    {
+     "path": "items[].subjects[].essayPct",
+     "type": "number|null",
+     "required": false,
+     "minimum": 0,
+     "maximum": 100,
+     "description": "지필 중 서술형 비율(%)"
+    },
+    {
+     "path": "items[].subjects[].plan",
+     "type": "string|null",
+     "required": false,
+     "description": "평가계획 요약"
     }
    ]
   },
