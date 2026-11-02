@@ -228,3 +228,23 @@ table.policy tr.past td,table.policy tr.past b,table.policy tr.past .stg,table.p
 .cmp-x{min-width:44px;min-height:44px}.cmp-s a,.cmp-tbl td a,.gap-next,.cmp-v a{display:inline-flex;align-items:center;min-height:44px}
 .cmp-diff input,.hsc-diff input{width:44px;height:44px;margin:0}.cmp-f2 input,.mid-q{min-height:44px}
 .ed p a,.ed li a,.ed dd a,.ed .ed-s a,.ed h3 a,.ed .ed-src a,.ed figcaption a{padding-block:15px}.srcf li a,.srcp a{display:inline-flex;align-items:center;min-height:44px;padding-block:0}
+
+/* 선택과목 현황(학교 비교) */
+.el-sec{margin:18px 0 0}.el-sec .dn{display:block;width:100%}
+.el-pick{display:flex;gap:8px;align-items:center;margin:8px 0;font-size:14px}.el-pick select{min-height:44px;font:inherit;max-width:100%}
+.el-h{font-size:15px;margin:14px 0 6px}.el-h .sma{font-weight:400}
+.el-list{list-style:none;margin:0;padding:0}
+.el-r{display:grid;grid-template-columns:minmax(96px,150px) 1fr auto;gap:8px;align-items:center;padding:4px 0;font-size:14px}
+.el-b{display:block;height:10px;background:var(--line,#ddd);position:relative;min-width:40px}
+.el-b i{position:absolute;left:0;top:0;bottom:0;display:block}.el-b i.sci{background:var(--ink,#333)}.el-b i.soc{background:var(--muted,#8a8176)}
+.el-v{font-variant-numeric:tabular-nums;white-space:nowrap;font-size:13px}
+.el-note{margin:12px 0 6px;font-size:14px}.el-links{margin:6px 0;font-size:14px}.el-links a{display:inline-block;min-height:44px;line-height:44px}
+.el-est{white-space:normal}
+@media (max-width:480px){.el-r{grid-template-columns:1fr auto}.el-b{grid-column:1/-1;order:3}}
+.el-sec .el-h,.el-sec .el-r span,.el-sec .el-note,.el-sec .el-links,.el-sec .el-body>p{color:var(--ink,#2b2620)}.el-sec .el-h .muted,.el-sec .muted{color:var(--muted,#6a6157)}
+.el-sec .el-r .el-n{font-weight:600}.el-sec .el-links a{color:var(--accent,#B02A0A)}
+.ex-dist{display:flex;gap:2px;margin:4px 0 6px;font-size:12px;min-height:24px}.ex-dist i{font-style:normal;background:var(--line,#ddd);color:var(--ink,#2b2620);padding:2px 4px;overflow:hidden;white-space:nowrap;min-width:0}.ex-dist i b{font-weight:700}
+.ex-plan{margin:2px 0 8px;font-size:14px;color:var(--ink,#2b2620)}
+.el-sec li,.el-sec li b{color:var(--ink,#2b2620)}
+.el-rules{margin:8px 0;font-size:14px;color:var(--ink,#2b2620)}.el-rules b{display:block}
+.el-pick{color:var(--ink,#2b2620)}

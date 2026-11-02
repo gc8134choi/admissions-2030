@@ -5,6 +5,9 @@
 import { stageTag } from "./stage.js";
 import { WHERE } from "./empty.js";
 import { cmpTable } from "./compare-table.js";
+import { emptyLine } from "./empty.js";
+import { electiveRows, electivesPanel, bindElectives } from "./electives.js";
+import { examRows, examPanel, bindExam } from "./exam-trends.js";
 const ES = { reported: ["rep", "보도"], estimated: ["est", "추정"] };
 const SUMMARY_FIELDS = ["type", "founding", "coed", "students", "classes"];
 
@@ -17,12 +20,14 @@ export function formatValue(f, v) {
 }
 
 // 홈 요약용: [{ placeId, schoolId, name, line, parts:[{id,label,text}] }]. 값이 있는 핵심 지표만 이어 붙인다(최대 opts.max개).
-export function hsCompareSummary(data, { fields = SUMMARY_FIELDS, max = 4 } = {}) {
+export function hsCompareSummary(data, { fields = SUMMARY_FIELDS, max = 4, electives = null } = {}) {
+  const tend = new Map((electives?.items ?? []).filter((e) => e.summary).map((e) => [e.placeId, `선택과목 ${e.summary.tendency}`])); // 성향 한 줄(선택 비중 기준 추정)
   if (!data || !data.schools || !data.schools.length) return [];
   const byId = new Map(data.fields.map((f) => [f.id, f]));
   // 요약 한 줄에서는 문자열 값의 괄호 설명(설립일 등)을 뺀다
   return data.schools.map((s) => {
     const parts = fields.map((id) => { const f = byId.get(id), raw = f && formatValue(f, s.values[id]), text = f && raw && f.type !== "number" ? raw.replace(/\s*\([^)]*\)/g, "").trim() : raw; return text ? { id, label: f.label, text: f.type === "number" ? `${f.label} ${text}` : text } : null; }).filter(Boolean).slice(0, max);
+    if (tend.has(s.placeId)) parts.push({ id: "electives", label: "성향", text: tend.get(s.placeId) });
     return { placeId: s.placeId, schoolId: s.schoolId || null, name: s.name, line: parts.map((p) => p.text).join(" · "), parts };
   });
 }
@@ -38,7 +43,8 @@ export function compareRows(d, esc, hrefOf = () => "#select/curriculum?v=hs") {
 }
 
 export async function hsCompareBody(el, { load, esc, schoolHref = (s) => (s.schoolId ? `#select/curriculum?s=${encodeURIComponent(s.schoolId)}` : `#select/curriculum?v=map&p=${encodeURIComponent(s.placeId)}`) }) {
-  const [d, pl] = await Promise.all([load("hs-compare"), load("places").catch(() => ({ places: [] }))]);
+  const [d, pl, elec, fl, exam] = await Promise.all([load("hs-compare"), load("places").catch(() => ({ places: [] })), load("electives").catch(() => ({ items: [] })), load("files").catch(() => []), load("exam-trends").catch(() => ({ items: [] }))]);
+  const files = new Map((Array.isArray(fl) ? fl : fl.files || []).map((f) => [f.id, f]));
   if (!d.schools.length) { el.innerHTML = `<div class="ed"><h2>${stageTag("고입", esc)}학교 비교</h2><p class="muted">아직 정리 중이에요.</p></div>`; return; }
   const place = new Map(pl.places.map((p) => [p.id, p]));
   const origin = pl.places.find((p) => p.level === "elementary" && p.lat != null);
@@ -46,10 +52,15 @@ export async function hsCompareBody(el, { load, esc, schoolHref = (s) => (s.scho
   const F = new Map(d.fields.map((f) => [f.id, f]));
   const typeOf = (s) => short(formatValue(F.get("type") || {}, s.values.type));
   const types = [...new Set(d.schools.map(typeOf).filter(Boolean))];
-  cmpTable(el, {
+  if (!el.querySelector("[data-hsc-t]")) el.innerHTML = `<div data-hsc-t></div><div data-hsc-e></div>`; // 표는 다시 그려져도 아래 상세가 지워지지 않게 따로 둔다
+  const host = el.querySelector("[data-hsc-t]"), extra = el.querySelector("[data-hsc-e]");
+  extra.innerHTML = electivesPanel(elec, esc, files); bindElectives(extra, elec, esc, files);
+  const exOpts = { hrefOf: (e) => { const s = d.schools.find((x) => x.placeId === e.placeId); return s ? schoolHref(s) : null; } };
+  extra.insertAdjacentHTML("beforeend", examPanel(exam, esc, exOpts)); bindExam(extra, exam, esc, exOpts); // 선택과목 현황 바로 아래, 같은 화면
+  cmpTable(host, {
     esc, stage: "고입", title: "학교 비교", summary: "학교를 가로로 놓고 항목을 견줘요",
     targets: d.schools.map((s) => ({ id: s.placeId, name: s.name.replace(/^용인/, ""), sub: typeOf(s), href: schoolHref(s), search: `${s.name} ${s.values.address?.value || ""}`, filterVal: { type: typeOf(s) } })),
-    rows: compareRows(d, esc, (v, t) => t.href),
+    rows: [...compareRows(d, esc, (v, t) => t.href), ...electiveRows(elec, esc), ...examRows(exam, esc)],
     select: { key: "portal.hs.compare", param: "c", def: nearest.slice(0, 4), max: 8, min: 2, always: true, addLabel: "학교 추가·빼기", filters: [{ id: "type", label: "유형", options: types }] },
     emptyNext: WHERE.schoolinfo,
     sources: d.schools.flatMap((sc) => Object.values(sc.values).map((v) => v?.source).filter(Boolean)),
