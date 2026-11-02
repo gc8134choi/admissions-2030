@@ -555,8 +555,8 @@
   "id": "ev-sch-13-1",
   "policyId": "sch-13",
   "title": "2030학년도 정시",
-  "label": "원서접수·전형(추정)",
-  "start": "2029-12",
+  "label": "원서접수·전형(추정, 1월 초 접수)",
+  "start": "2030-01",
   "end": "2030-02",
   "status": "estimated",
   "unverified": false,
@@ -689,11 +689,11 @@
   "note": "확정(전형요강 PDF 10쪽 일정표 확인 2026-11-02; 기본계획 PDF 5쪽 표에는 전형기간 행이 없음)",
   "sourceKind": "official",
   "sourceName": "경기도교육청 2027학년도 경기도 고등학교 신입생 전형요강(고입 포털 공지 2026.8.19) PDF 10쪽 평준화 지역 정시모집 일정",
-  "sourceUrl": "https://satp.goe.go.kr/main.do",
+  "sourceUrl": "https://satp.goe.go.kr/pt/ar/ggpt_d01_s1.do?sn=304",
   "sources": [
    {
     "name": "경기도교육청 2027학년도 경기도 고등학교 신입생 전형요강(고입 포털 공지 2026.8.19) PDF 10쪽 평준화 지역 정시모집 일정",
-    "url": "https://satp.goe.go.kr/main.do"
+    "url": "https://satp.goe.go.kr/pt/ar/ggpt_d01_s1.do?sn=304"
    },
    {
     "name": "경기도교육청 2027학년도 경기도 고등학교 입학전형 기본계획(2026.3) PDF 5쪽",
@@ -701,7 +701,7 @@
    }
   ],
   "sourceIds": [
-   "src-184eecc3",
+   "src-f095ceb1",
    "src-f11446ea"
   ],
   "region": "gyeonggi",
