@@ -51,7 +51,7 @@
   },
   {
    "id": "students",
-   "label": "학생수",
+   "label": "학생수(특수·순회학급 포함)",
    "group": "규모",
    "unit": "명",
    "order": 7,
@@ -60,7 +60,7 @@
   },
   {
    "id": "studentsDetail",
-   "label": "남·여 학생수",
+   "label": "남·여 학생수(특수·순회학급 포함)",
    "group": "규모",
    "order": 8,
    "type": "string"

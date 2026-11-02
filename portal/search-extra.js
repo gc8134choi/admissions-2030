@@ -59,6 +59,8 @@ export const GAPS = [
   { id: "sa-dates", q: "(자사고|외고|국제고|외국어고).*(시기|언제|일정|접수일|지원일)", words: "자사고 지원 시기 외고 지원 시기 국제고 접수 시기 자사고 일정 외고 일정 자사고 언제", found: (D) => row(D, "gg-03") && { href: "#schedule?t=hs", t: "경기 외고·국제고·자사고 전형 일정", s: firstSent(row(D, "gg-03").body, 110) } },
   { id: "special-quota", q: "특성화고.*정원 ?외|정원 ?외.*특성화", words: "특성화고 정원외 정원 외 전형 특성화고 졸업자 특별전형", found: () => false, none: { href: "#schedule?t=hs", t: "특성화고 정원 외 전형", s: "이 포털에 아직 없어요(2028학년도 대입 정원 외 인원 총계만 있어요) → 경기도교육청 고입 기본계획과 각 대학 모집요강에서 확인해요" } },
   { id: "entrance-day", q: "입학식", words: "입학식 날짜 입학식 언제 중학교 입학식 고교 입학식 입학 날짜", found: (D) => (D.tl || []).find((e) => /중학교 입학\(/.test(e.what)) && { href: "#select/curriculum?v=middle", t: "중학교 입학(입학식) 시기", s: firstSent((D.tl || []).find((e) => /중학교 입학\(/.test(e.what)).what, 60) + " · 입학식 날짜는 배정 학교 공지에서 확인해요" } },
+  { id: "theme", q: "화면 ?모드|다크|야간|어두운|밝은 ?화면|스킨|테마", words: "다크모드 다크 모드 화면 모드 어두운 화면 야간 모드 스킨 테마 밝게 어둡게", found: () => ({ href: "#home", t: "화면 모드·스킨 바꾸기", s: "화면 위쪽 오른쪽의 '화면 모드' 스위치에서 밝게·어둡게·자동을 고르고, 보관함 맨 위 '스킨 고르기'에서 모양을 바꿔요" }) },
+  { id: "grad-day", q: "졸업식|졸업 ?날짜|졸업일", words: "졸업식 날짜 졸업식 언제 졸업일 중학교 졸업식 초등학교 졸업식 졸업 날짜", found: (D) => row(D, "life-01") && { href: "#schedule?t=life", t: "졸업 일정", s: [row(D, "life-01"), row(D, "life-02")].filter(Boolean).map((r) => `${r.title} ${firstSent(r.body, 20)}`).join(" · ") + " · 졸업식 시각은 각 학교 공지에서 확인해요" } },
 ];
 export function gapDocs(D) {
   return GAPS.map((g) => { const f = g.found(D); const d = f || g.none; return d ? { gap: g.id, found: !!f, href: d.href, t: d.t, s: d.s, q: g.q, only: !!g.only, text: J([g.words, d.t, d.s]) } : null; }).filter(Boolean);
