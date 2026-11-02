@@ -11,7 +11,7 @@ const ES = { reported: "보도", estimated: "추정" };
 const esc = (s = "") => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const keyOf = (n) => String(n ?? "").normalize("NFC").replace(/\s+/g, "");
 
-let BY_KEY = new Map(), BY_ID = new Map(), WORDS = [], loading = null;
+let BY_KEY = new Map(), BY_ID = new Map(), WORDS = [], ORIG = [], loading = null;
 
 export function preloadGlossary(load) {
   loading ??= load("glossary").then((d) => {
@@ -19,6 +19,7 @@ export function preloadGlossary(load) {
     BY_ID = new Map(terms.map((t) => [t.id, t]));
     BY_KEY = new Map();
     for (const t of terms) for (const w of [t.term, ...(t.aliases || [])]) BY_KEY.set(keyOf(w), t);
+    ORIG = [...new Set(terms.flatMap((x) => [x.term, ...(x.aliases || [])]))].filter(Boolean).sort((a, b) => b.length - a.length);
     WORDS = [...BY_KEY.keys()].sort((a, b) => b.length - a.length); // 긴 표기 먼저(예: "학교군"보다 "수지1중학군")
   }).catch(() => {});
   return loading;
@@ -32,24 +33,27 @@ export function termHtml(name, escFn = esc) {
 }
 
 // 이미 그려진 DOM 안의 글자에서 용어를 찾아 첫 등장 뒤에 ⓘ를 붙인다(링크·버튼·제목 안은 건너뜀). 같은 요소를 두 번 불러도 중복되지 않는다.
+// 이미 훑은 글자 조각은 다시 보지 않는다(화면이 조금씩 채워질 때마다 전체를 다시 훑으면 느려진다). 표기는 한 번에 찾는 정규식 하나로 본다.
+const SCANNED = new WeakSet();
+let RE = null, RE_N = -1;
+const reOf = () => { if (RE_N !== ORIG.length) { RE_N = ORIG.length; RE = ORIG.length ? new RegExp(ORIG.map((w) => w.trim().replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/\s+/g, "\\s*")).join("|"), "g") : null; } return RE; }; // 띄어쓰기가 있는 용어(수능 최저·창의적 체험활동)도 본문에서 찾는다
 export function decorateGlossary(root, { skip = "a,button,script,style,textarea,input,select,.gl-i,.gl-rel,.si,.term,h1,.srcp,.srcb" } = {}) {
-  if (!root || !WORDS.length) return;
+  const re = reOf();
+  if (!root || !re) return;
   // 용어마다 "구역"(접이식·섹션·카드·표) 안에서 첫 등장에 ⓘ를 붙인다. 화면 전체에서 한 번만이 아니라 구역마다 한 번이라 긴 화면에서도 풀이가 가까이 있다.
   const scopeOf = (n) => n.parentElement.closest("details, section, article, .ed-row, table, .w-aside, .w-body") || root;
   const done = new Map(); // scope → Set(termId)
   const has = (sc) => done.get(sc) || done.set(sc, new Set()).get(sc);
   root.querySelectorAll(".gl-i").forEach((b) => has(scopeOf(b)).add(b.dataset.gl)); // 이미 붙은 ⓘ는 다시 붙이지 않는다
-  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: (n) => (!n.nodeValue.trim() || n.parentElement.closest(skip) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT) });
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: (n) => (SCANNED.has(n) || !n.nodeValue.trim() || n.parentElement.closest(skip) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT) });
   const nodes = []; for (let n = walker.nextNode(); n; n = walker.nextNode()) nodes.push(n);
   for (const node of nodes) {
-    const sc = scopeOf(node), seen = has(sc);
+    SCANNED.add(node);
     const text = node.nodeValue;
+    re.lastIndex = 0;
+    const sc = scopeOf(node), seen = has(sc);
     let hit = null;
-    for (const w of WORDS) {
-      const t = BY_KEY.get(w); if (seen.has(t.id)) continue;
-      const i = text.indexOf(w);
-      if (i >= 0 && (!hit || i < hit.i || (i === hit.i && w.length > hit.w.length))) hit = { i, w, t };
-    }
+    for (let m = re.exec(text); m; m = re.exec(text)) { const tm = BY_KEY.get(keyOf(m[0])); if (tm && !seen.has(tm.id)) { hit = { i: m.index, w: m[0], t: tm }; break; } }
     if (!hit) continue;
     seen.add(hit.t.id); ensureCss();
     const end = hit.i + hit.w.length;
