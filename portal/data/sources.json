@@ -184,8 +184,9 @@
    "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415",
    "kind": "official",
    "org": "학교알리미(교육부·한국교육개발원)",
-   "checked": "2026-11-01",
+   "checked": "2026-11-02",
    "names": [
+    "1학년.zip / 2학년.zip / 3학년.zip",
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
     "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
@@ -196,6 +197,7 @@
     "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)"
    ],
    "usedIn": {
+    "exam-trends.json": 1,
     "hs-compare.json": 16,
     "places.json": 1,
     "school-codes.json": 1
@@ -291,8 +293,9 @@
    "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525",
    "kind": "official",
    "org": "학교알리미(교육부·한국교육개발원)",
-   "checked": "2026-11-01",
+   "checked": "2026-11-02",
    "names": [
+    "2026학년도 2학기 1학년 교수·학습 및 평가 운영 계획.pdf / 2026학년도 2학기 2학년 교수·학습 및 평가 운영 계획.pdf / 2026학년도 2학기 3학년 교수·학습 및 평가 운영 계획.pdf",
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
     "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
@@ -303,6 +306,7 @@
     "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)"
    ],
    "usedIn": {
+    "exam-trends.json": 1,
     "hs-compare.json": 16,
     "places.json": 1,
     "school-codes.json": 1
@@ -313,8 +317,9 @@
    "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893",
    "kind": "official",
    "org": "학교알리미(교육부·한국교육개발원)",
-   "checked": "2026-11-01",
+   "checked": "2026-11-02",
    "names": [
+    "2026학년도 서원고등학교 2학기 교수학습 및 평가 운영계획.zip",
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
     "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
@@ -325,6 +330,7 @@
     "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)"
    ],
    "usedIn": {
+    "exam-trends.json": 1,
     "hs-compare.json": 16,
     "places.json": 1,
     "school-codes.json": 1
@@ -747,8 +753,9 @@
    "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904",
    "kind": "official",
    "org": "학교알리미(교육부·한국교육개발원)",
-   "checked": "2026-11-01",
+   "checked": "2026-11-02",
    "names": [
+    "2026학년도 성복고 2학기 1학년 전과목 교수·학습 및 평가계획.zip / 2026학년도 성복고 2학기 2학년 전과목 교수·학습 및 평가계획.zip / 2026학년도 성복고 2학기 3학년 전과목 교수·학습 및 평가계획.zip",
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) 및 편제표 요약",
     "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
@@ -759,6 +766,7 @@
     "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)"
    ],
    "usedIn": {
+    "exam-trends.json": 1,
     "hs-compare.json": 15,
     "places.json": 1,
     "school-codes.json": 1
@@ -769,8 +777,9 @@
    "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655",
    "kind": "official",
    "org": "학교알리미(교육부·한국교육개발원)",
-   "checked": "2026-11-01",
+   "checked": "2026-11-02",
    "names": [
+    "2026학년도 수지고 1학년 2학기 교수학습 및 평가 운영계획 통합본.hwpx / 2026학년도 수지고 2학년 2학기 교수학습 및 평가 운영계획 통합본.hwpx / 2026학년도 수지고 3학년 2학기 교수학습 및 평가 운영계획 통합본.hwpx",
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) 및 편제표 요약",
     "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
@@ -781,6 +790,7 @@
     "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)"
    ],
    "usedIn": {
+    "exam-trends.json": 1,
     "hs-compare.json": 15,
     "places.json": 1,
     "school-codes.json": 1
@@ -844,8 +854,9 @@
    "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458",
    "kind": "official",
    "org": "학교알리미(교육부·한국교육개발원)",
-   "checked": "2026-11-01",
+   "checked": "2026-11-02",
    "names": [
+    "2026학년도 2학기 교수학습 및 평가운영 계획(1학년)-정보공시.hwp / 2026학년도 2학기 교수학습 및 평가운영 계획(2학년)-정보공시.hwp / 2026학년도 2학기 교수학습 및 평가운영 계획(3학년)-정보공시.hwp",
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
     "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
@@ -856,6 +867,7 @@
     "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)"
    ],
    "usedIn": {
+    "exam-trends.json": 1,
     "hs-compare.json": 16,
     "places.json": 1,
     "school-codes.json": 1
@@ -1132,9 +1144,7 @@
    "checked": "2026-11-02",
    "names": [
     "풍덕고 2026학년도 2학기 2학년 교수학습 평가운영계획(안).pdf",
-    "1. 풍덕고_2026학년도 2학기 1학년 풍덕고등학교 교수학습 평가운영계획(안).pdf",
-    "2. 풍덕고_2026학년도 2학기 2학년 풍덕고등학교 교수학습 평가운영계획(안).pdf",
-    "3. 풍덕고_2026학년도 2학기 3학년 풍덕고등학교 교수학습 평가운영계획(안).pdf",
+    "1. 풍덕고_2026학년도 2학기 1학년 풍덕고등학교 교수학습 평가운영계획(안).pdf / 2. 풍덕고_2026학년도 2학기 2학년 풍덕고등학교 교수학습 평가운영계획(안).pdf / 3. 풍덕고_2026학년도 2학기 3학년 풍덕고등학교 교수학습 평가운영계획(안).pdf",
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) 및 편제표 요약",
     "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
@@ -1145,7 +1155,7 @@
     "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)"
    ],
    "usedIn": {
-    "exam-trends.json": 4,
+    "exam-trends.json": 2,
     "hs-compare.json": 15,
     "places.json": 1,
     "school-codes.json": 1
@@ -1463,8 +1473,9 @@
    "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801",
    "kind": "official",
    "org": "학교알리미(교육부·한국교육개발원)",
-   "checked": "2026-11-01",
+   "checked": "2026-11-02",
    "names": [
+    "2026학년도 죽전고등학교 2학기 교수학습 및 평가 운영계획(1학년)-정보공시용.hwp / 2026학년도 죽전고등학교 2학기 교수학습 및 평가 운영계획(2학년)-정보공시용.hwp / 2026학년도 죽전고등학교 2학기 교수학습 및 평가 운영계획(3학년)-정보공시용.hwpx",
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
     "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
@@ -1475,6 +1486,7 @@
     "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)"
    ],
    "usedIn": {
+    "exam-trends.json": 1,
     "hs-compare.json": 16,
     "places.json": 1,
     "school-codes.json": 1
@@ -1619,8 +1631,9 @@
    "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522",
    "kind": "official",
    "org": "학교알리미(교육부·한국교육개발원)",
-   "checked": "2026-11-01",
+   "checked": "2026-11-02",
    "names": [
+    "2026학년도 2학기 교수학습 및 평가 운영 계획(환경과) 1부..hwp / 2026학년도 2학기 교수학습 및 평가계획(심리학과) 1부..hwp / 2026학년도 2학기 교수학습 및 평가 운영 계획(영어과) 1부..hwp / 2026학년도 2학기 교수학습 및 평가 운영 계획(수학과) 1부..hwp / 2026학년도 2학기 교수학습 및 평가 운영 계획(국어과) 1부..hwp / 2026학년도 2학기 교수학습 및 평가계획(제2외국어과) 1부..hwp / 2026학년도 2학기 교수학습 및 평가 운영 계획(정보과) 1부..hwpx / 20",
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
     "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
@@ -1631,6 +1644,7 @@
     "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)"
    ],
    "usedIn": {
+    "exam-trends.json": 1,
     "hs-compare.json": 16,
     "places.json": 1,
     "school-codes.json": 1
