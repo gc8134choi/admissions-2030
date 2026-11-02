@@ -27,11 +27,12 @@ const ROUTE = {
   "curriculum-guide": "#life/credit", "hs-credit-system": "#life/credit",
 };
 // 날짜가 없는 경기 고입 행은 일정 화면에 없고 고교 유형 화면(접이식 안)에 있다
+const NO_HL = new Set(["hs-11", "sch-04", "log-13", "b33-06"]); // 기본 화면에 행이 표시되지 않는 행(2033 대입 전망·학년 필터 등): 강조 없이 화면으로만 간다
 const withHl = (href, t) => (!t || !/^#/.test(href) || /[?&]hl=/.test(href) ? href : href + (href.includes("?") ? "&" : "?") + "hl=" + encodeURIComponent(String(t).replace(/ⓘ/g, "").slice(0, 24))); // 검색에서 가면 그 행을 펴서 강조(hl.js)
 const routeOf = (r) => (r.topic === "gg-hs-entry" && !(r.events && r.events.length) ? "#select/curriculum?v=hs&ty=1"
   : r.topic === "hs-schedule" && r.region === "seoul" ? "#schedule?t=hs&seoul=1" // 서울 행은 일정 화면에서 '서울 보기'를 켜야 보인다
-  : ["cur-08", "cur-29", "cur-30"].includes(r.id) ? "#admission/system" // 수능·전형 구조 참고 행은 대입 제도 화면에 있다
-  : r.id === "acd-04" ? "#select/types" // 진학 비율은 고교 유형의 학원 의견 구역에 있다
+  : ["cur-08", "cur-29", "cur-30", "sch-03"].includes(r.id) ? "#admission/system" // 수능·전형 구조 참고 행은 대입 제도 화면에 있다
+  : /^(opn-0[124]|asg-07)$/.test(r.id) ? "#select/types" : r.id === "acd-04" ? "#select/types" // 진학 비율은 고교 유형의 학원 의견 구역에 있다
   : r.topic === "exam-schedule" && r.examYear && r.examYear !== 2030 ? "#admission/system" // 다른 학년도 참고 행은 대입 제도 화면에 있다
   : ROUTE[r.topic] || (r.topic.startsWith("admission") ? "#admission/system" : "#home"));
 
@@ -72,7 +73,7 @@ export function makeSearcher(store) {
     const dfOf = (tk) => data.policy.filter((r) => norm(r.title + " " + r.body).includes(tk)).length, rare = toks.length > 1 ? toks.filter((tk) => dfOf(tk) > 0 && dfOf(tk) <= 20) : [];
     const rareHit = (r) => (rare.some((tk) => norm(r.title).includes(tk)) ? 4 : 0); // 드문 낱말(국제고·과학고 등)이 제목에 있는 행을 먼저
     const tokHit = (r) => (toks.length > 1 ? toks.filter((tk) => expand(tk).some((w) => norm(r.title + " " + r.body).includes(w))).length * 1.5 : 0), hsQ = HS_Q.test(norm(q0)) && !MID_Q.test(norm(q0)), hsRow = (r) => /^(hs-|gg-|high-school)/.test(r.topic);
-    const rows = data.policy.filter((r) => has(r.title, r.body)).map((r) => ({ href: withHl(routeOf(r), r.title), t: r.title, s: (r.body || "").slice(0, 90), sc: rank(r.title, r.body, r) + tokHit(r) + rareHit(r) + (hsQ && hsRow(r) ? 2 : 0) })).sort((a, b) => b.sc - a.sc).slice(0, 12);
+    const rows = data.policy.filter((r) => has(r.title, r.body)).map((r) => ({ href: withHl(routeOf(r), NO_HL.has(r.id) || r.topic === "profile-2033" ? null : r.title), t: r.title, s: (r.body || "").slice(0, 90), sc: rank(r.title, r.body, r) + tokHit(r) + rareHit(r) + (hsQ && hsRow(r) ? 2 : 0) })).sort((a, b) => b.sc - a.sc).slice(0, 12);
     const gd = data.guide.filter((g) => has(g.t, g.text)).map((g) => ({ href: withHl(g.href, g.hl), t: g.t, s: (g.s || (g.text.split(/(?<=[.。다요])\s/).find((x) => ks.some((w) => norm(x).includes(w))) || g.text)).slice(0, 80), sc: rank(g.t, g.text) })).sort((a, b) => b.sc - a.sc).slice(0, 8);
     const sch = data.summary.filter((m) => has(m.schoolName, m.region)).map((m) => ({ href: `#select/curriculum?v=summary&s=${m.schoolId}`, t: m.schoolName, s: `${m.creditsRequired}+${m.creditsElective}학점 · ${m.region}` }));
     const sub = data.subjects.filter((x) => has(x.name, x.summary)).slice(0, 10).map((x) => ({ href: `#select/curriculum?v=compare`, t: x.name, s: `${x.area || ""} · ${(x.summary || "").slice(0, 70)}` }));
