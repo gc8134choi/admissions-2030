@@ -1,9 +1,57 @@
 {
  "_meta": {
   "note": "데이터 변경 이력(생성물). tools/build-changes.mjs가 직전 기록과 비교해 만든다. 최신이 맨 앞.",
-  "count": 2712
+  "count": 2716
  },
  "changes": [
+  {
+   "id": "chg-20261102-2713",
+   "at": "2026-11-02T22:38:07+09:00",
+   "file": "places",
+   "target": "places[pl-011]",
+   "label": "풍덕고등학교",
+   "field": "sources[1].name",
+   "kind": "changed",
+   "old": "저장소 자료 학교 주소(편제표 4개교)",
+   "new": "학교 주소(편제표 4개교)",
+   "reason": "데이터 갱신"
+  },
+  {
+   "id": "chg-20261102-2714",
+   "at": "2026-11-02T22:38:07+09:00",
+   "file": "places",
+   "target": "places[pl-012]",
+   "label": "성복고등학교",
+   "field": "sources[1].name",
+   "kind": "changed",
+   "old": "저장소 자료 학교 주소(편제표 4개교)",
+   "new": "학교 주소(편제표 4개교)",
+   "reason": "데이터 갱신"
+  },
+  {
+   "id": "chg-20261102-2715",
+   "at": "2026-11-02T22:38:07+09:00",
+   "file": "places",
+   "target": "places[pl-013]",
+   "label": "수지고등학교",
+   "field": "sources[1].name",
+   "kind": "changed",
+   "old": "저장소 자료 학교 주소(편제표 4개교)",
+   "new": "학교 주소(편제표 4개교)",
+   "reason": "데이터 갱신"
+  },
+  {
+   "id": "chg-20261102-2716",
+   "at": "2026-11-02T22:38:07+09:00",
+   "file": "places",
+   "target": "places[pl-014]",
+   "label": "홍천고등학교",
+   "field": "sources[1].name",
+   "kind": "changed",
+   "old": "저장소 자료 학교 주소(편제표 4개교)",
+   "new": "학교 주소(편제표 4개교)",
+   "reason": "데이터 갱신"
+  },
   {
    "id": "chg-20261102-2696",
    "at": "2026-11-02T21:47:04+09:00",

@@ -2054,14 +2054,14 @@
           "nullReason": null
         },
         "curriculum": {
-          "value": null,
-          "asOf": null,
-          "status": null,
+          "value": "2027학년도 교육과정 편제표: 창의적 체험활동 18학점(3년 288시간), 2학년은 교과(군) 간 선택 택3 두 묶음, 3학년은 택4 두 묶음·택3 두 묶음 등 학생 선택 중심. 소인수 선택과목(디자인 일반)·공동교육과정, 교육과정 박람회 운영",
+          "asOf": "2027학년도 신입생 홍보자료(2026.11.1 게시)",
+          "status": "confirmed",
           "source": {
-            "name": "학교알리미",
-            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
+            "name": "대지고 홍보자료 PDF 1~2쪽(용인교육지원청 게시판)",
+            "url": "https://www.goeyi.kr/goeyi/na/ntt/selectNttInfo.do?mi=25305&bbsId=15728&nttSn=1581300"
           },
-          "nullReason": "공식 문서로 확인 중이에요"
+          "nullReason": null
         },
         "subjectCount": {
           "value": null,
@@ -5035,11 +5035,14 @@
           "nullReason": null
         },
         "curriculum": {
-          "value": null,
-          "asOf": null,
-          "status": null,
-          "source": null,
-          "nullReason": "공식 문서로 확인 중이에요"
+          "value": "2027학년도 자율형 공립고 2.0 신입생 편제표: 교과 174학점(학교 지정 96 + 학생 선택 78) 편성, 1학년은 공통과목 중심(29학점/학기), 선택은 2학년 1학기부터(택4 등). 평준화 추첨 배정이며 전용 통학버스 운영",
+          "asOf": "2027학년도 신입생 홍보자료(2026.11.2 게시)",
+          "status": "confirmed",
+          "source": {
+            "name": "용인삼계고 홍보자료 PDF 1~2쪽(용인교육지원청 게시판)",
+            "url": "https://www.goeyi.kr/goeyi/na/ntt/selectNttInfo.do?mi=25305&bbsId=15728&nttSn=1581356"
+          },
+          "nullReason": null
         },
         "subjectCount": {
           "value": null,
@@ -5399,11 +5402,14 @@
           "nullReason": null
         },
         "curriculum": {
-          "value": null,
-          "asOf": null,
-          "status": null,
-          "source": null,
-          "nullReason": "공식 문서로 확인 중이에요"
+          "value": "경기도 지정 과학중점학교(2026.3~2031.2, 5년): 수학·과학·정보 이수 비율 45% 이상(79학점 이상), 물리학·화학·생명과학·지구과학 4과목 필수 이수, 과제연구(R&E)와 연구 발표 필수 운영",
+          "asOf": "2027학년도 신입생 홍보 리플렛(2026.11.2 게시)",
+          "status": "reported",
+          "source": {
+            "name": "포곡고 홍보 리플렛 PDF 3쪽(용인교육지원청 게시판, 학교 자체 작성)",
+            "url": "https://www.goeyi.kr/goeyi/na/ntt/selectNttInfo.do?mi=25305&bbsId=15728&nttSn=1581350"
+          },
+          "nullReason": null
         },
         "subjectCount": {
           "value": null,
@@ -5413,11 +5419,15 @@
           "nullReason": "공식 문서로 확인 중이에요"
         },
         "univStats": {
-          "value": null,
-          "asOf": null,
-          "status": null,
-          "source": null,
-          "nullReason": "학교알리미 2026 공시 항목에 졸업생 진학 현황 항목이 없음"
+          "value": "2026학년도 대입: 3학년 졸업생 273명 중 4년제 221명 합격(81.0%), 서울·경기 소재 4년제 합격 254건, 서·연·고·서·성·한·과기원·의약학 계열 15건, 농어촌특별전형 합격 90건(32학급)",
+          "asOf": "2026학년도 대입(홍보 리플렛 표기 2026.2 졸업생 기준)",
+          "status": "reported",
+          "source": {
+            "name": "포곡고 홍보 리플렛 PDF 4쪽(학교 자체 집계, 용인교육지원청 게시판)",
+            "url": "https://www.goeyi.kr/goeyi/na/ntt/selectNttInfo.do?mi=25305&bbsId=15728&nttSn=1581350"
+          },
+          "nullReason": null,
+          "note": "학교가 홍보용으로 집계한 수치로 공식 공시와 다를 수 있음"
         },
         "meal": {
           "value": null,

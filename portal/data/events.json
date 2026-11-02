@@ -1193,7 +1193,7 @@
   "end": "2026-11-13",
   "status": "confirmed",
   "unverified": false,
-  "note": "공식 원문 확인, 2026-11-01",
+  "note": "공식 원문 확인, 2026-11-02 접수처 정정",
   "sourceKind": "official",
   "sourceName": "경기도용인교육지원청 중학교 신입생 배정 안내(2027학년도 시행계획 일정)",
   "sourceUrl": "https://www.goeyi.kr/goeyi/cm/cntnts/cntntsView.do?mi=20137&cntntsId=3318",
@@ -1207,8 +1207,8 @@
   "stage": "중입",
   "entryYear": 2030,
   "examYear": 2033,
-  "body": "2026.11.9(월)~11.13(금), 출신 초등학교에서 접수",
-  "checkedAt": "2026-11-01"
+  "body": "2026.11.9(월)~11.13(금), 용인교육지원청에 접수(검정고시 합격자 포함). 원서 작성은 출신 초등학교(life-03)",
+  "checkedAt": "2026-11-02"
  },
  {
   "id": "ev-life-05-1",

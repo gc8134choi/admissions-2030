@@ -310,6 +310,19 @@
       "httpStatus": 200,
       "refresh": "주1회(11~1월)",
       "note": "용인교육지원청 주소는 goeyi.kr"
+    },
+    {
+      "id": "lnk-24",
+      "category": "학교 정보",
+      "org": "경기도용인교육지원청",
+      "name": "용인 고등학교 학교별 교육과정 게시판",
+      "url": "https://www.goeyi.kr/goeyi/na/ntt/selectNttList.do?mi=25305&bbsId=15728",
+      "purpose": "용인 고교의 2027학년도 신입생·학부모 대상 교육과정 홍보자료(편제표·모집 안내)를 학교별로 모아 둔 게시판",
+      "kind": "공식",
+      "checkedAt": "2026-11-02",
+      "httpStatus": 200,
+      "refresh": "주1회(11~12월 주2회)",
+      "note": "2026.11.2 기준 8개교 게시(서원·덕영·수지·신갈·용인바이오·용인삼계·포곡·대지)"
     }
   ],
   "excluded": [
