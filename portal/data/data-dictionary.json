@@ -786,7 +786,7 @@
    "data": "portal/data/exam-trends.json",
    "title": "exam-trends (내신 출제·평가 경향) — portal/data/exam-trends.json (입력: research/data/exam-trends-draft.json을 tools/build-exam-trends.mjs가 이 모양으로 바꾼다)",
    "description": "학교별·교과별(국어·영어·수학·과학·사회) 내신 평균·표준편차·성취도 분포·수강자 수·지필/수행 비율·서술형 비율. 학교는 places의 placeId로 연결한다. 값의 범위와 합계(성취도 분포 합 100%, 지필+수행 100%)는 생성기가 검사한다. '경향 한 줄'(변별 강함/보통/무난)은 평균·표준편차 기준의 추정이며 학교가 어렵다는 단정이 아니다. 사람 이름은 쓰지 않는다.",
-   "fieldCount": 33,
+   "fieldCount": 59,
    "fields": [
     {
      "path": "guide",
@@ -806,6 +806,53 @@
     {
      "path": "guide.questions[]",
      "type": "string",
+     "required": false
+    },
+    {
+     "path": "guide.basis",
+     "type": "array",
+     "required": false,
+     "description": "공식 근거 문장"
+    },
+    {
+     "path": "guide.basis[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "guide.basis[].text",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "guide.basis[].source",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "guide.basis[].source.name",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "guide.basis[].source.url",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "guide.commonRules",
+     "type": "object|null",
+     "required": false,
+     "description": "학교 평가운영계획에 공통으로 적힌 규칙(정기시험 횟수·수행 비율 등)"
+    },
+    {
+     "path": "guide.commonRules.text",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "guide.commonRules.source",
+     "type": "object|null",
      "required": false
     },
     {
@@ -903,6 +950,104 @@
     {
      "path": "items[].nextAction",
      "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "items[].achievementNull",
+     "type": "string|null",
+     "required": false,
+     "description": "성취도(평균·표준편차·분포) 자료가 없는 사유"
+    },
+    {
+     "path": "items[].qualitative",
+     "type": "array",
+     "required": false,
+     "description": "설명회 발언 등 정성 근거"
+    },
+    {
+     "path": "items[].qualitative[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "items[].qualitative[].text",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "items[].qualitative[].source",
+     "type": "string|null",
+     "required": false
+    },
+    {
+     "path": "items[].qualitative[].status",
+     "type": "enum",
+     "required": false,
+     "enum": [
+      "confirmed",
+      "reported",
+      "estimated"
+     ]
+    },
+    {
+     "path": "items[].plans",
+     "type": "array",
+     "required": false,
+     "description": "학년별 평가계획(과목별 지필·수행 반영 비율)"
+    },
+    {
+     "path": "items[].plans[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "items[].plans[].term",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "items[].plans[].grade",
+     "type": "integer",
+     "required": true
+    },
+    {
+     "path": "items[].plans[].rows",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "items[].plans[].rows[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "items[].plans[].rows[].subject",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "items[].plans[].rows[].area",
+     "type": "string",
+     "required": true,
+     "description": "교과(국어·영어·수학·과학·사회)"
+    },
+    {
+     "path": "items[].plans[].rows[].paperPct",
+     "type": "number",
+     "required": true,
+     "minimum": 0,
+     "maximum": 100
+    },
+    {
+     "path": "items[].plans[].rows[].performancePct",
+     "type": "number",
+     "required": true,
+     "minimum": 0,
+     "maximum": 100
+    },
+    {
+     "path": "items[].plans[].rows[].essayPct",
+     "type": "number|null",
      "required": false
     },
     {

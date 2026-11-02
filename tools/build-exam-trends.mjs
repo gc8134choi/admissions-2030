@@ -8,7 +8,26 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 
 const argv = process.argv.slice(2);
 const SRC = argv.includes("--src") ? argv[argv.indexOf("--src") + 1] : "research/data/exam-trends-draft.json";
-const draft = existsSync(SRC) ? JSON.parse(readFileSync(SRC, "utf8")) : { _meta: {}, items: [] };
+const raw = existsSync(SRC) ? JSON.parse(readFileSync(SRC, "utf8")) : { _meta: {}, items: [] };
+const noUrl = (s) => (s == null ? s : String(s).replace(/\s*\(https?:\/\/[^)]*\)/g, "")); // 문장 속 주소 괄호는 뺀다(링크는 화면이 따로 붙인다)
+const cleanUrl = (u) => (!u || /GS_CD=None/.test(u) ? (u ? "https://www.schoolinfo.go.kr/" : null) : u); // 학교 코드가 없는 공시 주소는 학교알리미 첫 화면으로
+// 조사 초안(schools[{assessmentPlan[{term,grade,rows[{subject,area,writtenPct,performancePct}]}],achievement{rows},qualitative[]}], official, commonRules, readingAids) → 이 파일의 입력 모양(items·guide)으로 바꾼다
+function convert(r) {
+  if (!r.schools) return r;
+  const items = r.schools.map((s) => {
+    const ap = s.assessmentPlan ?? [], rows = s.achievement?.rows ?? [];
+    const srcs = []; for (const a of ap) { const x = a.source; if (x?.name && !srcs.some((y) => y.name === x.name)) srcs.push({ name: x.name, url: cleanUrl(x.url) }); }
+    const first = ap.find((a) => a.grade === 1) ?? ap[0];
+    const q = (s.qualitative ?? []).map((x) => ({ text: x.text, source: x.source?.name ?? null, status: x.status ?? "reported" }));
+    const hasData = ap.length || rows.length;
+    return { placeId: s.placeId, name: s.name, term: first?.term ?? null, asOf: first?.checkedAt ?? null, sourceKind: first ? "학교알리미 공시 평가계획" : null, status: first?.status === "confirmed" ? "reported" : first?.status ?? "reported",
+      sources: srcs, plans: ap.map((a) => ({ term: a.term, grade: a.grade, rows: a.rows.map((x) => ({ subject: x.subject, area: x.area, paperPct: x.writtenPct, performancePct: x.performancePct, essayPct: x.essayPct ?? null })) })),
+      subjects: rows, qualitative: q, nullReason: hasData ? null : noUrl(s.assessmentPlanNullReason ?? s.achievement?.nullReason ?? null), nextAction: hasData ? null : noUrl(s.assessmentPlanNextAction ?? s.achievement?.nextAction ?? null), achievementNull: rows.length ? null : noUrl(s.achievement?.nullReason ?? null) };
+  });
+  const a = r.readingAids ?? {};
+  return { _meta: r._meta, items, guide: { intro: a.verdict ?? null, questions: a.questions ?? [], basis: (r.official ?? []).map((o) => ({ text: o.text, source: o.source ? { name: o.source.name, url: o.source.url ?? null } : undefined })), commonRules: r.commonRules ? { text: r.commonRules.text, source: r.commonRules.source ? { name: r.commonRules.source.name, url: cleanUrl(r.commonRules.source.url) } : null } : null } };
+}
+const draft = convert(raw);
 const schema = JSON.parse(readFileSync("schema/exam-trends.schema.json", "utf8"));
 const I = schema.properties.items.items, SUBJ = I.properties.subjects.items.properties.subject.enum;
 const { plain } = await import("../portal/plain.js");
@@ -30,9 +49,21 @@ const items = draft.items.map((it) => {
   if (it.asOf && !/^\d{4}-\d{2}-\d{2}$/.test(it.asOf)) errs.push(`${w}: asOf 형식`);
   for (const f of it.fileIds ?? []) if (!fileIds.has(f)) errs.push(`${w}: fileIds "${f}"가 files.json에 없음`);
   const base = { placeId: it.placeId, name: it.name, term: it.term ?? null, asOf: it.asOf ?? null, sourceKind: it.sourceKind ?? null, status: it.status, sources: (it.sources ?? []).map((s) => ({ ...s, name: plain(s.name) })), fileIds: it.fileIds ?? [], briefingNote: it.briefingNote ? plain(it.briefingNote) : null };
-  if (!(it.subjects ?? []).length) {
+  const plans = (it.plans ?? []).map((pl) => {
+    const rows = pl.rows.map((x) => {
+      const y = `${w} ${pl.grade}학년 ${x.subject}`;
+      if (!SUBJ.includes(x.area) && !x.area) errs.push(`${y}: area 없음`);
+      for (const k of ["paperPct", "performancePct", "essayPct"]) if (x[k] != null && !(num(x[k]) && x[k] >= 0 && x[k] <= 100)) errs.push(`${y}: ${k} ${x[k]} 범위`);
+      if (x.paperPct == null || x.performancePct == null) errs.push(`${y}: 지필·수행 비율 필요`); else if (Math.abs(x.paperPct + x.performancePct - 100) > 0.6) errs.push(`${y}: 지필 ${x.paperPct} + 수행 ${x.performancePct} ≠ 100`);
+      return { subject: plain(x.subject), area: x.area, paperPct: x.paperPct, performancePct: x.performancePct, essayPct: x.essayPct ?? null };
+    });
+    const subs = new Set(); for (const x of rows) { if (subs.has(x.subject)) errs.push(`${w} ${pl.grade}학년: 과목 "${x.subject}" 중복`); subs.add(x.subject); }
+    return { term: pl.term, grade: pl.grade, rows };
+  });
+  base.plans = plans; base.qualitative = (it.qualitative ?? []).map((x) => ({ text: plain(x.text), source: x.source ? plain(x.source) : null, status: x.status ?? "reported" }));
+  if (!(it.subjects ?? []).length && !plans.length) {
     if (!it.nullReason) errs.push(`${w}: subjects가 없으면 nullReason 필수`);
-    return { ...base, nullReason: it.nullReason ? plain(it.nullReason) : null, nextAction: it.nextAction ? plain(it.nextAction) : null, subjects: [], summary: null };
+    return { ...base, nullReason: it.nullReason ? plain(it.nullReason) : null, nextAction: it.nextAction ? plain(it.nextAction) : null, achievementNull: null, subjects: [], summary: null };
   }
   if (!(it.sources ?? []).length) errs.push(`${w}: sources 비어 있음`);
   const names = new Set();
@@ -52,13 +83,13 @@ const items = draft.items.map((it) => {
   }).sort((a, b) => SUBJ.indexOf(a.subject) - SUBJ.indexOf(b.subject));
   const m = subjects.filter((s) => s.mean != null);
   const summary = m.length ? { meanAvg: round1(avg(m.map((s) => s.mean))), sdAvg: round1(avg(m.map((s) => s.sd))), tendency: tendency(avg(m.map((s) => s.mean)), avg(m.map((s) => s.sd))), basis: "평균·표준편차 기준 추정", subjectCount: m.length } : null;
-  return { ...base, nullReason: null, nextAction: null, subjects, summary };
+  return { ...base, nullReason: null, nextAction: null, achievementNull: subjects.length ? null : it.achievementNull ? plain(it.achievementNull) : null, subjects, summary };
 });
 if (errs.length) { console.error(errs.slice(0, 30).join("\n")); process.exit(1); }
 
 const g = draft.guide;
-const guide = { intro: g?.intro ? plain(g.intro) : null, questions: (g?.questions ?? []).map((q) => plain(q)) };
-const out = { _meta: { note: "내신 출제·평가 경향(생성물, 손으로 고치지 않는다). research/data/exam-trends-draft.json에서 tools/build-exam-trends.mjs가 만든다. 경향 한 줄은 평균·표준편차 기준 추정이다.", rule: "평균 70 미만 또는 표준편차 17 이상 = 변별 강함, 평균 80 이상이고 표준편차 12 미만 = 무난, 그 밖 = 보통", checkedAt: draft._meta?.checkedAt ?? null, count: items.length, withData: items.filter((i) => i.subjects.length).length }, guide, items };
+const guide = { intro: g?.intro ? plain(g.intro) : null, questions: (g?.questions ?? []).map((q) => plain(q)), basis: (g?.basis ?? []).map((b) => ({ ...b, text: plain(b.text) })), commonRules: g?.commonRules ? { ...g.commonRules, text: plain(g.commonRules.text) } : null };
+const out = { _meta: { note: "내신 출제·평가 경향(생성물, 손으로 고치지 않는다). research/data/exam-trends-draft.json에서 tools/build-exam-trends.mjs가 만든다. 경향 한 줄은 평균·표준편차 기준 추정이다.", rule: "평균 70 미만 또는 표준편차 17 이상 = 변별 강함, 평균 80 이상이고 표준편차 12 미만 = 무난, 그 밖 = 보통", checkedAt: draft._meta?.checkedAt ?? null, count: items.length, withData: items.filter((i) => i.subjects.length || i.plans.length).length }, guide, items };
 const json = JSON.stringify(withSourceIds(out), null, 1) + "\n";
 const target = "portal/data/exam-trends.json";
 if (argv.includes("--check")) {

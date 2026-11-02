@@ -246,3 +246,5 @@ table.policy tr.past td,table.policy tr.past b,table.policy tr.past .stg,table.p
 .ex-dist{display:flex;gap:2px;margin:4px 0 6px;font-size:12px;min-height:24px}.ex-dist i{font-style:normal;background:var(--line,#ddd);color:var(--ink,#2b2620);padding:2px 4px;overflow:hidden;white-space:nowrap;min-width:0}.ex-dist i b{font-weight:700}
 .ex-plan{margin:2px 0 8px;font-size:14px;color:var(--ink,#2b2620)}
 .el-sec li,.el-sec li b{color:var(--ink,#2b2620)}
+.el-rules{margin:8px 0;font-size:14px;color:var(--ink,#2b2620)}.el-rules b{display:block}
+.el-pick{color:var(--ink,#2b2620)}

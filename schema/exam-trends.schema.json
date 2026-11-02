@@ -6,7 +6,7 @@
  "type": "object",
  "required": ["items"],
  "properties": {
-  "guide": { "type": "object", "properties": { "intro": { "type": ["string", "null"] }, "questions": { "type": "array", "items": { "type": "string" } } } },
+  "guide": { "type": "object", "properties": { "intro": { "type": ["string", "null"] }, "questions": { "type": "array", "items": { "type": "string" } }, "basis": { "type": "array", "description": "공식 근거 문장", "items": { "type": "object", "required": ["text"], "properties": { "text": { "type": "string" }, "source": { "type": "object", "properties": { "name": { "type": "string" }, "url": { "type": ["string", "null"] } } } } } }, "commonRules": { "type": ["object", "null"], "description": "학교 평가운영계획에 공통으로 적힌 규칙(정기시험 횟수·수행 비율 등)", "properties": { "text": { "type": "string" }, "source": { "type": ["object", "null"] } } } } },
   "items": { "type": "array", "items": { "type": "object", "required": ["placeId", "name", "status"], "properties": {
    "placeId": { "type": "string", "pattern": "^pl-\\d{3,}$" },
    "name": { "type": "string" },
@@ -19,6 +19,9 @@
    "briefingNote": { "type": ["string", "null"], "description": "설명회에서 나온 발언 요약(있으면)" },
    "nullReason": { "type": ["string", "null"], "description": "자료가 없을 때 사유(subjects가 비어 있으면 필수)" },
    "nextAction": { "type": ["string", "null"] },
+   "achievementNull": { "type": ["string", "null"], "description": "성취도(평균·표준편차·분포) 자료가 없는 사유" },
+   "qualitative": { "type": "array", "description": "설명회 발언 등 정성 근거", "items": { "type": "object", "required": ["text"], "properties": { "text": { "type": "string" }, "source": { "type": ["string", "null"] }, "status": { "enum": ["confirmed", "reported", "estimated"] } } } },
+   "plans": { "type": "array", "description": "학년별 평가계획(과목별 지필·수행 반영 비율)", "items": { "type": "object", "required": ["term", "grade", "rows"], "properties": { "term": { "type": "string" }, "grade": { "type": "integer" }, "rows": { "type": "array", "items": { "type": "object", "required": ["subject", "area", "paperPct", "performancePct"], "properties": { "subject": { "type": "string" }, "area": { "type": "string", "description": "교과(국어·영어·수학·과학·사회)" }, "paperPct": { "type": "number", "minimum": 0, "maximum": 100 }, "performancePct": { "type": "number", "minimum": 0, "maximum": 100 }, "essayPct": { "type": ["number", "null"] } } } } } } },
    "subjects": { "type": "array", "items": { "type": "object", "required": ["subject"], "properties": {
     "subject": { "enum": ["국어", "영어", "수학", "과학", "사회"] },
     "mean": { "type": ["number", "null"], "minimum": 0, "maximum": 100, "description": "원점수 평균" },
