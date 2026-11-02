@@ -13,8 +13,8 @@ const cnt = (d, k) => (d?.schools || []).filter((s) => s.values?.[k] && s.values
 const row = (D, id) => (D.pol || []).find((r) => r.id === id);
 const firstSent = (s, n = 80) => String(s || "").replace(/\s+/g, " ").slice(0, n);
 export const GAPS = [
-  { id: "transfer", words: "전학 이사 배정 전입 배정 전입 이사 가는 지역 교육지원청 문의 고입 전학 포털", found: (D) => row(D, "gg-18") && { href: "#schedule?t=hs", t: "전학 · 이사(전입) 배정 · 경기 평준화 고교", s: firstSent(row(D, "gg-18").body) }, none: { href: "#library/links", t: "전학 · 이사 배정(전입 배정)", s: "전학·이사 때의 배정 안내는 이 포털에 아직 없어요 → 이사 갈 지역 교육지원청에 문의하고 경기도 고입·전학 포털에서 확인해요" } },
-  { id: "failover", words: "외고 불합격 국제고 자사고 불합격 일반고 배정 절차 동시 지원 후기", found: (D) => row(D, "gg-17") && { href: "#schedule?t=hs", t: "외·국·자 불합격 시 일반고 배정 절차", s: firstSent(row(D, "gg-17").body) } },
+  { id: "transfer", words: "전학 이사 배정 전입 배정 전입 이사 가는 지역 교육지원청 문의 고입 전학 포털", found: (D) => row(D, "gg-18") && { href: "#select/curriculum?v=hs&ty=1", t: "전학 · 이사(전입) 배정 · 경기 평준화 고교", s: firstSent(row(D, "gg-18").body) }, none: { href: "#library/links", t: "전학 · 이사 배정(전입 배정)", s: "전학·이사 때의 배정 안내는 이 포털에 아직 없어요 → 이사 갈 지역 교육지원청에 문의하고 경기도 고입·전학 포털에서 확인해요" } },
+  { id: "failover", words: "외고 불합격 국제고 자사고 불합격 일반고 배정 절차 동시 지원 후기", found: (D) => row(D, "gg-17") && { href: "#select/curriculum?v=hs&ty=1", t: "외·국·자 불합격 시 일반고 배정 절차", s: firstSent(row(D, "gg-17").body) } },
   { id: "uniform", words: "교복 체육복 하복 동복 구입 가격 낙찰가 학교주관구매", found: (D) => cnt(D.mc, "uniform") > 0 && { href: "#select/curriculum?v=middle&g=%EC%83%9D%ED%99%9C", t: "교복 낙찰가 · 중학교 비교", s: `중학교 ${cnt(D.mc, "uniform")}곳의 교복 유형·구입 지원금·낙찰가를 비교해요. 체육복·최종 안내는 배정 뒤 학교 공지에서 확인해요` }, none: { href: "#select/curriculum?v=middle", t: "교복 · 체육복", s: "학교별 값은 배정 뒤 학교 공지에서만 확인돼요 → 학교 홈페이지 공지·입학 안내" } },
   { id: "meal-mid", words: "급식 중학교 급식 급식 방식 급식 현황", found: (D) => cnt(D.mc, "meal") > 0 && { href: "#select/curriculum?v=middle&g=%EC%83%9D%ED%99%9C", t: "중학교 급식 · 비교", s: `중학교 ${cnt(D.mc, "meal")}곳의 급식 방식을 비교해요` }, none: { href: "#select/curriculum?v=middle", t: "중학교 급식 안내", s: "학교별 공시·게시 자료라 학교알리미 급식 현황이나 학교 홈페이지 급식 게시판에서 확인해요" } },
   { id: "commute", words: "통학 통학 거리 통학 시간 등교 집에서 학교까지", found: (D) => cnt(D.mc, "commute") > 0 && { href: "#select/curriculum?v=middle&g=%EC%83%9D%ED%99%9C", t: "통학 · 중학교 비교", s: `중학교 ${cnt(D.mc, "commute")}곳의 통학 정보를 비교해요` }, none: { href: "#select/curriculum?v=middle", t: "통학(거리·시간)", s: "집 주소에 따라 달라서 학교별 값은 없어요 → 학교 지도에서 위치를 보고 지도 앱으로 확인" } },
@@ -22,13 +22,15 @@ export const GAPS = [
   { id: "univ-result", words: "대학 진학 대학 진학 현황 진학 실적 합격 실적 졸업생 진학", found: (D) => cnt(D.hc, "univStats") > 0 && { href: "#select/curriculum?v=hs&g=%EC%A7%84%ED%95%99", t: "대학 진학 현황 · 학교 비교", s: `고교 ${cnt(D.hc, "univStats")}곳의 진학 현황을 비교해요` }, none: { href: "#select/curriculum?v=hs&g=%EC%A7%84%ED%95%99", t: "대학 진학 현황 · 학교 비교", s: "학교알리미 공시 목록에 없어요 → 학교 설명회·학교 홈페이지 자료에서 확인" } },
   { id: "vacation", words: "방학 일정 겨울방학 여름방학 학사일정 개학 종업식", found: (D) => (D.pol || []).find((r) => /방학/.test(r.title + (r.body || ""))) && { href: "#schedule?t=life", t: "방학 · 학사 일정", s: firstSent((D.pol || []).find((r) => /방학/.test(r.title + (r.body || ""))).title) }, none: { href: "#schedule?t=life", t: "방학 · 학사 일정", s: "학교별 방학 날짜는 아직 없어요 → 학교 홈페이지 학사일정·가정통신문에서 확인" } },
   { id: "briefing-sched", words: "설명회 일정 입학설명회 학교 설명회 배정 설명회 신입생 설명회 예비소집 날짜 공고", found: (D) => row(D, "gg-08") && { href: "#schedule?t=hs", t: "고교 평준화 배정 설명회 일정", s: firstSent(row(D, "gg-08").body) + " · 학교별 설명회는 각 학교 홈페이지 공고에서 확인해요" }, none: { href: "#schedule?t=life", t: "학교 설명회 일정", s: "학교별 설명회 날짜는 공고가 나오면 일정에 올라와요 → 배정 학교 홈페이지 공지에서 확인" } },
+  { id: "early-grad", words: "조기졸업 조기 졸업 학점 초과 이수 졸업 앞당기기", found: (D) => (D.pol || []).find((r) => /조기 ?졸업/.test(r.title + (r.body || ""))) && { href: "#life/credit", t: "조기졸업", s: firstSent((D.pol || []).find((r) => /조기 ?졸업/.test(r.title + (r.body || ""))).title) }, none: { href: "#life/credit", t: "조기졸업", s: "조기졸업 안내는 이 포털에 아직 없어요 → 학교 교육과정 안내와 경기도교육청 공지에서 확인해요" } },
+  { id: "parent-consult", words: "학부모 상담 상담 주간 학부모 면담 담임 상담 학부모 총회", found: (D) => (D.pol || []).find((r) => /학부모 (상담|총회)|상담 주간/.test(r.title + (r.body || ""))) && { href: "#schedule?t=life", t: "학부모 상담", s: firstSent((D.pol || []).find((r) => /학부모 (상담|총회)|상담 주간/.test(r.title + (r.body || ""))).title) }, none: { href: "#schedule?t=life", t: "학부모 상담 · 총회", s: "학교별 상담 주간·총회 날짜는 아직 없어요 → 학교 홈페이지 공지·가정통신문에서 확인해요" } },
 ];
 export function gapDocs(D) {
   return GAPS.map((g) => { const f = g.found(D); const d = f || g.none; return d ? { gap: g.id, found: !!f, href: d.href, t: d.t, s: d.s, text: J([g.words, d.t, d.s]) } : null; }).filter(Boolean);
 }
 
 export async function loadSearchExtra(load) {
-  const [guide, tl, ht, gl, hc, bf, mc, el, ex, rl, pol, evs] = await Promise.all([ok(load("middle-guide")), ok(load("timeline")), ok(load("hs-types")), ok(load("glossary")), ok(load("hs-compare")), ok(load("briefings")), ok(load("middle-compare")), ok(load("electives")), ok(load("exam-trends")), ok(load("rules")), ok(load("policy")), ok(load("events"))]);
+  const [guide, tl, ht, gl, hc, bf, mc, el, ex, rl, pol, evs, un, ar] = await Promise.all([ok(load("middle-guide")), ok(load("timeline")), ok(load("hs-types")), ok(load("glossary")), ok(load("hs-compare")), ok(load("briefings")), ok(load("middle-compare")), ok(load("electives")), ok(load("exam-trends")), ok(load("rules")), ok(load("policy")), ok(load("events")), ok(load("universities")), ok(load("admission-rules"))]);
   const out = [];
   for (const s of guide?.sections || []) for (const it of s.items) out.push({ href: "#select/curriculum?v=middle", t: s.title, s: it.text.slice(0, 80), text: J([s.title, it.text]) });
   for (const e of tl?.events || []) out.push({ href: "#select/curriculum?v=middle", t: `${e.stage} · 큰 그림 연표`, s: e.what.slice(0, 80), text: J([e.stage, e.what, e.note]) });
@@ -51,6 +53,7 @@ export async function loadSearchExtra(load) {
   const gg04 = (pol || []).find((r) => r.id === "gg-04"), m04 = gg04 && String(gg04.body).match(/배정 대상자 발표[^,]*,\s*배정 학교 발표[^,]*/);
   if (m04) out.push({ href: "#schedule?t=hs", t: "경기 후기 배정 학교 발표 · 합격자 발표", s: m04[0].slice(0, 80), text: J(["후기 합격자 발표 후기 배정 발표 배정 학교 발표 배정 대상자 발표 경기 후기 평준화 일반고 합격 발표", m04[0]]) });
   out.push({ href: "#select/curriculum?v=middle", t: "중학교 입학 서류 · 준비물", s: "예비소집·준비물·방과후학교 신청은 배정 학교가 정해진 뒤(2027.1월) 각 중학교가 공지해요 → 배정 학교 홈페이지 공지에서 확인", text: "중학교 입학 서류 입학 서류 제출 서류 준비물 예비소집 방과후 신입생 등록 배정 학교 공지" });
+  for (const u of un?.universities || []) { const n = (ar?.rules || []).filter((r) => r.universityId === u.id).length; if (n) out.push({ href: "#select/curriculum?v=univ", t: `${u.name} · 과목 요건(대학 요건)`, s: `${n}개 전형·모집단위의 필수·권장 과목을 우리 학교 편제표와 맞춰 볼 수 있어요`, text: J([u.name, "과목 요건 필수 권장 과목 모집단위 전형 대학 요건", ...(u.aliases || [])]) }); }
   out.push(...gapDocs({ pol, mc, hc, ev: evs }));
   return out;
 }

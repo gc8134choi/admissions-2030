@@ -3,6 +3,7 @@
 import { stageTag } from "./stage.js";
 import { emptyLine } from "./empty.js";
 import { srcWrap } from "./src-ref.js";
+const NOREQ = "이 학교의 편제표와 맞춰 볼 대학 요건이 아직 없어요 → 대학 입학처의 모집요강 공고(보통 6~7월)에서 확인해요";
 import { cmpTable } from "./compare-table.js";
 const ES = { reported: ["rep", "보도"], estimated: ["est", "추정"] };
 const STATE = { guaranteed: "학교 지정", reachable: "고를 수 있음", blocked: "택n 묶음 충돌", absent: "편제표에 없음" };
@@ -46,12 +47,12 @@ export async function univBody(el, { load, esc, profile, schools, sel, pick }) {
       esc, stage: "대입", title: `${rule.universityName} ${rule.unitName}`, summary: "우리 학교 4곳의 편제표(개설 후보)로 권장 과목을 얼마나 고를 수 있는지 견줘요",
       targets: mine.map((x) => ({ id: x.id, name: x.name, sub: "", href: `#select/curriculum?s=${encodeURIComponent(x.id)}`, search: x.name })),
       rows: [
-        { id: "reach", label: "고를 수 있는 과목", group: "한눈에", kind: "number", get: (t) => { const sm = mOf(t.id)?.summary; return sm ? { text: `${sm.reachable}/${sm.need}`, num: sm.reachable, html: `<b>${sm.reachable}</b> / ${sm.need}과목` } : { empty: true }; } },
-        { id: "guar", label: "학교 지정", group: "한눈에", kind: "number", get: (t) => { const sm = mOf(t.id)?.summary; return sm ? { text: String(sm.guaranteed), num: sm.guaranteed } : { empty: true }; } },
-        { id: "blk", label: "택n 묶음 충돌", group: "한눈에", kind: "number", get: (t) => { const sm = mOf(t.id)?.summary; return sm ? { text: String(sm.blocked), num: sm.blocked } : { empty: true }; } },
-        { id: "abs", label: "편제표에 없음", group: "한눈에", kind: "number", get: (t) => { const sm = mOf(t.id)?.summary; return sm ? { text: String(sm.absent), num: sm.absent } : { empty: true }; } },
+        { id: "reach", label: "고를 수 있는 과목", group: "한눈에", kind: "number", get: (t) => { const sm = mOf(t.id)?.summary; return sm ? { text: `${sm.reachable}/${sm.need}`, num: sm.reachable, html: `<b>${sm.reachable}</b> / ${sm.need}과목` } : { empty: true, why: NOREQ }; } },
+        { id: "guar", label: "학교 지정", group: "한눈에", kind: "number", get: (t) => { const sm = mOf(t.id)?.summary; return sm ? { text: String(sm.guaranteed), num: sm.guaranteed } : { empty: true, why: NOREQ }; } },
+        { id: "blk", label: "택n 묶음 충돌", group: "한눈에", kind: "number", get: (t) => { const sm = mOf(t.id)?.summary; return sm ? { text: String(sm.blocked), num: sm.blocked } : { empty: true, why: NOREQ }; } },
+        { id: "abs", label: "편제표에 없음", group: "한눈에", kind: "number", get: (t) => { const sm = mOf(t.id)?.summary; return sm ? { text: String(sm.absent), num: sm.absent } : { empty: true, why: NOREQ }; } },
         ...Array.from({ length: reqCount }, (_, i) => { const r0 = mOf(mine[0].id).requirements[i]; return { id: `req${i}`, label: `${r0.label} (${r0.strength === "required" ? "필수" : r0.strength === "advised" ? "참고" : "권장"} ${r0.minCount}과목)`, group: "요건별 과목", kind: "text", get: (t) => {
-          const r = mOf(t.id)?.requirements?.[i]; if (!r) return { empty: true };
+          const r = mOf(t.id)?.requirements?.[i]; if (!r) return { empty: true, why: NOREQ };
           const list = [...r.guaranteed.map((g) => `${nm(g.subjectId)} <span class="muted small">${g.terms.join("·")} 지정</span>`), ...r.selectable.map((g) => `${nm(g.subjectId)} <span class="muted small">${g.terms.join("·")}${g.pick ? ` · 택${g.pick}` : ""}</span>`)];
           const shown = list.length > 6 ? `${list.slice(0, 6).join("<br>")}<br><span class="muted small">외 ${list.length - 6}과목</span>` : list.join("<br>");
           return { text: `${STATE[r.state]}|${[...r.guaranteed, ...r.selectable].map((g) => g.subjectId).join(",")}`, html: `<b>${STATE[r.state]}</b>${shown ? `<div>${shown}</div>` : ""}${r.blockedBy.length ? `<div class="muted small">${r.blockedBy.map((b) => `${b.term} 택${b.pick}(${b.size}과목 중): ${b.wanted.map(nm).join(", ")}`).join(" / ")}</div>` : ""}` };

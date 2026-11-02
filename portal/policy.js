@@ -231,7 +231,7 @@ export function register(views, { $, esc, load, store }) {
       ${gg.length ? `<h2>경기 고입 안내 <small>2027학년도</small> ${cnt(gg.length)}</h2>${cards(gg)}` : ""}
       ${asg.length ? `<h2>추첨으로 배정되는 지역의 고교 배정(용인 평준화 배정) <small>2026학년도 기준 참고</small> ${cnt(asg.length)}</h2>
       <p class="ed-big">우리 4개교(풍덕·성복·수지·홍천)는 모두 <em>2구역</em></p>
-      <p class="ed-src">공식 문서로 확인 중이에요. 2027 규칙은 한 번 더 확인해요.</p>
+      <p class="ed-src">이 구역 구성은 2026학년도 기준이에요. 2027학년도 규칙은 ${(() => { const s = rows.find((r) => r.id === "gg-17")?.sources?.[0]; return s?.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">경기도교육청 평준화 학군 학생 배정 방안 ↗</a>` : "경기도교육청 평준화 학군 학생 배정 방안"; })()}과 <a href="#schedule?t=hs">경기 후기 일정</a>에서 확인해요.</p>
       ${cards(asg, { cls: (r) => (r.id === "asg-02" ? "hl" : "") })}` : ""}
       ${credit ? `<h2>고교학점제 <small>입학 후 제도</small></h2>
       <p class="ed-b">${esc(credit.body)}</p><p class="ed-s">${badgeMain(credit)} · <a href="#life/credit">고교학점제 이해에서 자세히 봐요</a></p>` : ""}
