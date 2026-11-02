@@ -295,7 +295,6 @@
    "org": "학교알리미(교육부·한국교육개발원)",
    "checked": "2026-11-02",
    "names": [
-    "2026학년도 2학기 2학년 교수·학습 및 평가 운영 계획.pdf",
     "2026학년도 2학기 1학년 교수·학습 및 평가 운영 계획.pdf / 2026학년도 2학기 2학년 교수·학습 및 평가 운영 계획.pdf / 2026학년도 2학기 3학년 교수·학습 및 평가 운영 계획.pdf",
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
@@ -307,7 +306,6 @@
     "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)"
    ],
    "usedIn": {
-    "electives.json": 1,
     "exam-trends.json": 1,
     "hs-compare.json": 16,
     "places.json": 1,
@@ -364,8 +362,6 @@
    "checked": "2026-11-02",
    "names": [
     "용인홍천고 2026학년도 2학기 1학년 전과목 교수학습 및 평가운영 계획.hwp",
-    "용인홍천고 2026학년도 2학기 2학년 전과목 교수학습 및 평가운영 계획.hwp",
-    "용인홍천고 2026학년도 2학기 3학년 전과목 교수학습 및 평가운영 계획.hwp",
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) 및 편제표 요약",
     "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
@@ -376,7 +372,7 @@
     "학교알리미 학교정보(고교 비교표의 학교알리미 주소)"
    ],
    "usedIn": {
-    "exam-trends.json": 3,
+    "exam-trends.json": 1,
     "hs-compare.json": 15,
     "places.json": 1,
     "school-codes.json": 1
@@ -781,7 +777,6 @@
    "org": "학교알리미(교육부·한국교육개발원)",
    "checked": "2026-11-02",
    "names": [
-    "2026학년도 수지고 2학년 2학기 교수학습 및 평가 운영계획 통합본.hwpx",
     "2026학년도 수지고 1학년 2학기 교수학습 및 평가 운영계획 통합본.hwpx / 2026학년도 수지고 2학년 2학기 교수학습 및 평가 운영계획 통합본.hwpx / 2026학년도 수지고 3학년 2학기 교수학습 및 평가 운영계획 통합본.hwpx",
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) 및 편제표 요약",
@@ -793,7 +788,6 @@
     "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)"
    ],
    "usedIn": {
-    "electives.json": 1,
     "exam-trends.json": 1,
     "hs-compare.json": 15,
     "places.json": 1,
@@ -1159,7 +1153,6 @@
     "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)"
    ],
    "usedIn": {
-    "electives.json": 1,
     "exam-trends.json": 2,
     "hs-compare.json": 15,
     "places.json": 1,

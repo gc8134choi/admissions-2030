@@ -3,7 +3,12 @@
   "note": "학교별 국영수과사 내신 평가 경향 초안. 학교는 출제 문항을 공개하지 않으므로 공개 근거의 대리 지표만 쓴다: (1) 학교알리미 공시 4-가 교과별 평가계획 파일의 정기시험·수행평가 반영 비율, (2) 학교알리미 4-나 학업성취 사항(평균·표준편차·성취도 분포·수강자 수), (3) 설명회 발언. 학교별 유불리는 단정하지 않는다.",
   "checkedAt": "2026-11-02",
   "shape": "schools[{placeId,name,assessmentPlan[{term,grade,rows[{subject,area,writtenPct,performancePct,essayPct?}],source,status,checkedAt,note?}],assessmentPlanNullReason,assessmentPlanNextAction,achievement{rows[],nullReason,nextAction},qualitative[{text,source,status}]}], official, commonRules, readingAids",
-  "coverage": "평가 비율은 2026학년도 2학기 계획 기준(학교알리미 4-가 공시 파일). 수지구 고교 10곳 모두 국영수과사 지필·수행 비율을 표에서 읽어 수록했으며, 표 형식 때문에 일부 과목이 빠졌을 수 있다(essayPct는 논술형 평가 총 반영비율을 읽은 경우만)."
+  "coverage": "평가 비율은 2026학년도 2학기 계획 기준(학교알리미 4-가 공시 파일). 수지구 고교 10곳의 국영수과사 지필·수행 비율을 표에서 읽어 수록했고, 과목명과 비율이 원문에서 두 방식으로 일치한 것만 넣었다. 확인 못 한 과목은 assessmentPlanExcluded에 사유와 함께 기록했다.",
+  "verification": {
+   "script": "research/tools/exam-trends/verify.py",
+   "checkedAt": "2026-11-02",
+   "method": "원문 재계산과 초안의 과목명·학년·지필·수행을 전수 대조, 합 100·중복·영어 영역 확인"
+  }
  },
  "official": [
   {
@@ -89,7 +94,8 @@
       "asOf": "2026학년도 2학기(2026.9 공시)"
      },
      "status": "confirmed",
-     "checkedAt": "2026-11-02"
+     "checkedAt": "2026-11-02",
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     },
     {
      "term": "2026학년도 2학기",
@@ -100,6 +106,18 @@
        "area": "국어",
        "writtenPct": 60,
        "performancePct": 40
+      },
+      {
+       "subject": "인문학과 윤리",
+       "area": "국어",
+       "writtenPct": 60,
+       "performancePct": 40
+      },
+      {
+       "subject": "중국어 회화",
+       "area": "국어",
+       "writtenPct": 50,
+       "performancePct": 50
       },
       {
        "subject": "미적분Ⅰ",
@@ -120,16 +138,16 @@
        "performancePct": 40
       },
       {
+       "subject": "경제",
+       "area": "사회",
+       "writtenPct": 60,
+       "performancePct": 40
+      },
+      {
        "subject": "동아시아 역사 기행",
        "area": "사회",
        "writtenPct": 35,
        "performancePct": 65
-      },
-      {
-       "subject": "인문학과 윤리",
-       "area": "국어",
-       "writtenPct": 60,
-       "performancePct": 40
       },
       {
        "subject": "정치",
@@ -138,20 +156,8 @@
        "performancePct": 30
       },
       {
-       "subject": "경제",
-       "area": "사회",
-       "writtenPct": 60,
-       "performancePct": 40
-      },
-      {
        "subject": "한국지리 탐구",
        "area": "사회",
-       "writtenPct": 60,
-       "performancePct": 40
-      },
-      {
-       "subject": "역학과 에너지",
-       "area": "과학",
        "writtenPct": 60,
        "performancePct": 40
       },
@@ -168,26 +174,27 @@
        "performancePct": 50
       },
       {
-       "subject": "지구시스템과학",
+       "subject": "역학과 에너지",
        "area": "과학",
        "writtenPct": 60,
        "performancePct": 40
       },
       {
-       "subject": "중국어 회화",
-       "area": "국어",
-       "writtenPct": 50,
-       "performancePct": 50
+       "subject": "지구시스템과학",
+       "area": "과학",
+       "writtenPct": 60,
+       "performancePct": 40
       }
      ],
      "source": {
       "type": "학교알리미 공시 4-가(교과별 교수·학습 및 평가계획) 첨부 파일",
-      "name": "용인홍천고 2026학년도 2학기 2학년 전과목 교수학습 및 평가운영 계획.hwp",
+      "name": "용인홍천고 2026학년도 2학기 1학년 전과목 교수학습 및 평가운영 계획.hwp",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=None",
       "asOf": "2026학년도 2학기(2026.9 공시)"
      },
      "status": "confirmed",
-     "checkedAt": "2026-11-02"
+     "checkedAt": "2026-11-02",
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     },
     {
      "term": "2026학년도 2학기",
@@ -218,28 +225,16 @@
        "performancePct": 60
       },
       {
-       "subject": "진로 영어",
-       "area": "영어",
-       "writtenPct": 40,
-       "performancePct": 60
-      },
-      {
        "subject": "영어권 문화",
        "area": "영어",
        "writtenPct": 40,
        "performancePct": 60
       },
       {
-       "subject": "동아시아사",
-       "area": "사회",
-       "writtenPct": 50,
-       "performancePct": 50
-      },
-      {
-       "subject": "생활과 윤리",
-       "area": "사회",
-       "writtenPct": 50,
-       "performancePct": 50
+       "subject": "진로 영어",
+       "area": "영어",
+       "writtenPct": 40,
+       "performancePct": 60
       },
       {
        "subject": "경제",
@@ -248,7 +243,19 @@
        "performancePct": 50
       },
       {
-       "subject": "사회문화",
+       "subject": "동아시아사",
+       "area": "사회",
+       "writtenPct": 50,
+       "performancePct": 50
+      },
+      {
+       "subject": "사회‧문화",
+       "area": "사회",
+       "writtenPct": 50,
+       "performancePct": 50
+      },
+      {
+       "subject": "생활과 윤리",
        "area": "사회",
        "writtenPct": 50,
        "performancePct": 50
@@ -262,12 +269,13 @@
      ],
      "source": {
       "type": "학교알리미 공시 4-가(교과별 교수·학습 및 평가계획) 첨부 파일",
-      "name": "용인홍천고 2026학년도 2학기 3학년 전과목 교수학습 및 평가운영 계획.hwp",
+      "name": "용인홍천고 2026학년도 2학기 1학년 전과목 교수학습 및 평가운영 계획.hwp",
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=None",
       "asOf": "2026학년도 2학기(2026.9 공시)"
      },
      "status": "confirmed",
-     "checkedAt": "2026-11-02"
+     "checkedAt": "2026-11-02",
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     }
    ],
    "assessmentPlanNullReason": null,
@@ -367,7 +375,7 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "표를 자동으로 읽은 값이라 일부 과목이 빠졌을 수 있음"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     },
     {
      "term": "2026학년도 2학기",
@@ -408,12 +416,6 @@
        "area": "영어",
        "writtenPct": 70,
        "performancePct": 30
-      },
-      {
-       "subject": "국제법국제 사회의 법적 분석",
-       "area": "사회",
-       "writtenPct": 50,
-       "performancePct": 50
       },
       {
        "subject": "법과 사회",
@@ -460,7 +462,7 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "표를 자동으로 읽은 값이라 일부 과목이 빠졌을 수 있음"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     },
     {
      "term": "2026학년도 2학기",
@@ -480,12 +482,6 @@
       },
       {
        "subject": "언어와 매체",
-       "area": "국어",
-       "writtenPct": 50,
-       "performancePct": 50
-      },
-      {
-       "subject": "영미문학 읽기",
        "area": "국어",
        "writtenPct": 50,
        "performancePct": 50
@@ -515,13 +511,13 @@
        "performancePct": 50
       },
       {
-       "subject": "수학적 사고와",
-       "area": "수학",
+       "subject": "심화영어Ⅰ",
+       "area": "영어",
        "writtenPct": 50,
        "performancePct": 50
       },
       {
-       "subject": "심화영어Ⅰ",
+       "subject": "영미문학 읽기",
        "area": "영어",
        "writtenPct": 50,
        "performancePct": 50
@@ -583,7 +579,7 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "표를 자동으로 읽은 값이라 일부 과목이 빠졌을 수 있음"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     }
    ],
    "assessmentPlanNullReason": null,
@@ -613,8 +609,7 @@
        "subject": "공통수학",
        "area": "수학",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 36
+       "performancePct": 40
       },
       {
        "subject": "통합사회",
@@ -626,15 +621,13 @@
        "subject": "한국사",
        "area": "사회",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 40
+       "performancePct": 50
       },
       {
        "subject": "통합과학",
        "area": "과학",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 40
+       "performancePct": 50
       }
      ],
      "source": {
@@ -645,7 +638,7 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "표를 자동으로 읽은 값이라 일부 과목이 빠졌을 수 있음"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     },
     {
      "term": "2026학년도 2학기",
@@ -655,8 +648,7 @@
        "subject": "독서와 작문",
        "area": "국어",
        "writtenPct": 64,
-       "performancePct": 36,
-       "essayPct": 36
+       "performancePct": 36
       },
       {
        "subject": "미적분Ⅰ",
@@ -692,8 +684,7 @@
        "subject": "데이터 과학",
        "area": "과학",
        "writtenPct": 30,
-       "performancePct": 70,
-       "essayPct": 70
+       "performancePct": 70
       },
       {
        "subject": "물질과 에너지",
@@ -705,8 +696,7 @@
        "subject": "세포와 물질대사",
        "area": "과학",
        "writtenPct": 70,
-       "performancePct": 30,
-       "essayPct": 30
+       "performancePct": 30
       },
       {
        "subject": "역학과 에너지",
@@ -718,8 +708,7 @@
        "subject": "지구시스템과학",
        "area": "과학",
        "writtenPct": 70,
-       "performancePct": 30,
-       "essayPct": 30
+       "performancePct": 30
       }
      ],
      "source": {
@@ -730,7 +719,7 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "표를 자동으로 읽은 값이라 일부 과목이 빠졌을 수 있음"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     },
     {
      "term": "2026학년도 2학기",
@@ -744,13 +733,6 @@
       },
       {
        "subject": "언어와매체",
-       "area": "국어",
-       "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 35
-      },
-      {
-       "subject": "영어독해와 작문",
        "area": "국어",
        "writtenPct": 50,
        "performancePct": 50
@@ -777,15 +759,19 @@
        "subject": "수학과제탐구",
        "area": "수학",
        "writtenPct": 40,
-       "performancePct": 60,
-       "essayPct": 60
+       "performancePct": 60
       },
       {
        "subject": "영어권문화",
        "area": "영어",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 30
+       "performancePct": 50
+      },
+      {
+       "subject": "영어독해와 작문",
+       "area": "영어",
+       "writtenPct": 50,
+       "performancePct": 50
       },
       {
        "subject": "사회·문화",
@@ -797,8 +783,7 @@
        "subject": "생활과 윤리",
        "area": "사회",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 40
+       "performancePct": 50
       },
       {
        "subject": "세계문제와 미래사회",
@@ -822,8 +807,7 @@
        "subject": "물리학Ⅱ",
        "area": "과학",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 15
+       "performancePct": 50
       },
       {
        "subject": "생명과학Ⅱ",
@@ -835,8 +819,7 @@
        "subject": "지구과학",
        "area": "과학",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 30
+       "performancePct": 50
       },
       {
        "subject": "화학Ⅱ",
@@ -853,7 +836,7 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "표를 자동으로 읽은 값이라 일부 과목이 빠졌을 수 있음"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     }
    ],
    "assessmentPlanNullReason": null,
@@ -880,13 +863,19 @@
        "performancePct": 50
       },
       {
+       "subject": "공통수학",
+       "area": "수학",
+       "writtenPct": 60,
+       "performancePct": 40
+      },
+      {
        "subject": "공통영어",
        "area": "영어",
        "writtenPct": 70,
        "performancePct": 30
       },
       {
-       "subject": "[통합사회2]",
+       "subject": "통합사회",
        "area": "사회",
        "writtenPct": 60,
        "performancePct": 40
@@ -896,6 +885,12 @@
        "area": "사회",
        "writtenPct": 60,
        "performancePct": 40
+      },
+      {
+       "subject": "생활과 과학",
+       "area": "과학",
+       "writtenPct": 30,
+       "performancePct": 70
       },
       {
        "subject": "통합과학",
@@ -912,7 +907,7 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "표를 자동으로 읽은 값이라 일부 과목이 빠졌을 수 있음"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     },
     {
      "term": "2026학년도 2학기",
@@ -923,6 +918,12 @@
        "area": "국어",
        "writtenPct": 70,
        "performancePct": 30
+      },
+      {
+       "subject": "기하",
+       "area": "수학",
+       "writtenPct": 60,
+       "performancePct": 40
       },
       {
        "subject": "미적분I",
@@ -985,6 +986,12 @@
        "performancePct": 30
       },
       {
+       "subject": "역학과 에너지",
+       "area": "과학",
+       "writtenPct": 70,
+       "performancePct": 30
+      },
+      {
        "subject": "지구시스템과학",
        "area": "과학",
        "writtenPct": 70,
@@ -999,7 +1006,7 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "표를 자동으로 읽은 값이라 일부 과목이 빠졌을 수 있음"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     },
     {
      "term": "2026학년도 2학기",
@@ -1020,8 +1027,8 @@
       {
        "subject": "화법과 작문",
        "area": "국어",
-       "writtenPct": 30,
-       "performancePct": 70
+       "writtenPct": 50,
+       "performancePct": 50
       },
       {
        "subject": "기하",
@@ -1037,6 +1044,12 @@
       },
       {
        "subject": "심화 영어Ⅰ",
+       "area": "영어",
+       "writtenPct": 50,
+       "performancePct": 50
+      },
+      {
+       "subject": "영어권 문화",
        "area": "영어",
        "writtenPct": 50,
        "performancePct": 50
@@ -1072,7 +1085,7 @@
        "performancePct": 70
       },
       {
-       "subject": "생활과 과학",
+       "subject": "생명과학Ⅱ",
        "area": "과학",
        "writtenPct": 30,
        "performancePct": 70
@@ -1098,7 +1111,7 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "표를 자동으로 읽은 값이라 일부 과목이 빠졌을 수 있음"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     }
    ],
    "assessmentPlanNullReason": null,
@@ -1122,8 +1135,7 @@
        "subject": "공통국어",
        "area": "국어",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 20
+       "performancePct": 40
       },
       {
        "subject": "공통수학",
@@ -1135,8 +1147,7 @@
        "subject": "공통영어",
        "area": "영어",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 30
+       "performancePct": 40
       },
       {
        "subject": "통합사회",
@@ -1148,15 +1159,13 @@
        "subject": "한국사",
        "area": "사회",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 32
+       "performancePct": 40
       },
       {
        "subject": "통합과학",
        "area": "과학",
        "writtenPct": 55,
-       "performancePct": 45,
-       "essayPct": 30
+       "performancePct": 45
       }
      ],
      "source": {
@@ -1167,7 +1176,7 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "표를 자동으로 읽은 값이라 일부 과목이 빠졌을 수 있음"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     },
     {
      "term": "2026학년도 2학기",
@@ -1177,8 +1186,7 @@
        "subject": "화법과 언어",
        "area": "국어",
        "writtenPct": 70,
-       "performancePct": 30,
-       "essayPct": 30
+       "performancePct": 30
       },
       {
        "subject": "미적분Ⅰ",
@@ -1202,11 +1210,10 @@
        "subject": "동아시아 역사 기행",
        "area": "사회",
        "writtenPct": 40,
-       "performancePct": 60,
-       "essayPct": 38
+       "performancePct": 60
       },
       {
-       "subject": "법과 사회",
+       "subject": "법과사회",
        "area": "사회",
        "writtenPct": 70,
        "performancePct": 30
@@ -1221,43 +1228,31 @@
        "subject": "현대사회와 윤리",
        "area": "사회",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 40
+       "performancePct": 40
       },
       {
        "subject": "데이터 과학",
        "area": "과학",
        "writtenPct": 40,
-       "performancePct": 60,
-       "essayPct": 40
+       "performancePct": 60
       },
       {
        "subject": "물질과 에너지",
        "area": "과학",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 40
-      },
-      {
-       "subject": "세포와 물질대사",
-       "area": "과학",
-       "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 49
+       "performancePct": 50
       },
       {
        "subject": "역학과 에너지",
        "area": "과학",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 32
+       "performancePct": 40
       },
       {
        "subject": "지구시스템과학",
        "area": "과학",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 30
+       "performancePct": 40
       }
      ],
      "source": {
@@ -1268,7 +1263,7 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "표를 자동으로 읽은 값이라 일부 과목이 빠졌을 수 있음"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     },
     {
      "term": "2026학년도 2학기",
@@ -1278,18 +1273,10 @@
        "subject": "심화국어",
        "area": "국어",
        "writtenPct": 40,
-       "performancePct": 60,
-       "essayPct": 20
+       "performancePct": 60
       },
       {
        "subject": "언어와 매체",
-       "area": "국어",
-       "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 25
-      },
-      {
-       "subject": "영어 독해와 작문",
        "area": "국어",
        "writtenPct": 50,
        "performancePct": 50
@@ -1298,22 +1285,19 @@
        "subject": "중국어Ⅱ",
        "area": "국어",
        "writtenPct": 40,
-       "performancePct": 60,
-       "essayPct": 20
+       "performancePct": 60
       },
       {
        "subject": "화법과 작문",
        "area": "국어",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 50
+       "performancePct": 50
       },
       {
        "subject": "기하",
        "area": "수학",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 35
+       "performancePct": 50
       },
       {
        "subject": "미적분",
@@ -1325,36 +1309,37 @@
        "subject": "실용영어",
        "area": "영어",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 15
+       "performancePct": 50
+      },
+      {
+       "subject": "영어 독해와 작문",
+       "area": "영어",
+       "writtenPct": 50,
+       "performancePct": 50
       },
       {
        "subject": "영어권문화",
        "area": "영어",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 20
+       "performancePct": 50
       },
       {
        "subject": "동아시아사",
        "area": "사회",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 45
+       "performancePct": 50
       },
       {
        "subject": "사회·문화",
        "area": "사회",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 35
+       "performancePct": 50
       },
       {
        "subject": "생활과윤리",
        "area": "사회",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 30
+       "performancePct": 50
       },
       {
        "subject": "한국지리",
@@ -1366,29 +1351,25 @@
        "subject": "물리학Ⅱ",
        "area": "과학",
        "writtenPct": 25,
-       "performancePct": 75,
-       "essayPct": 75
+       "performancePct": 75
       },
       {
        "subject": "생명과학Ⅱ",
        "area": "과학",
        "writtenPct": 25,
-       "performancePct": 75,
-       "essayPct": 50
+       "performancePct": 75
       },
       {
        "subject": "지구과학Ⅱ",
        "area": "과학",
        "writtenPct": 30,
-       "performancePct": 70,
-       "essayPct": 45
+       "performancePct": 70
       },
       {
        "subject": "화학Ⅱ",
        "area": "과학",
        "writtenPct": 30,
-       "performancePct": 70,
-       "essayPct": 45
+       "performancePct": 70
       }
      ],
      "source": {
@@ -1399,7 +1380,28 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "표를 자동으로 읽은 값이라 일부 과목이 빠졌을 수 있음"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
+    },
+    {
+     "term": "2026학년도 2학기",
+     "grade": null,
+     "rows": [
+      {
+       "subject": "세포와 물질대사",
+       "area": "과학",
+       "writtenPct": 50,
+       "performancePct": 50
+      }
+     ],
+     "source": {
+      "type": "학교알리미 공시 4-가(교과별 교수·학습 및 평가계획) 첨부 파일",
+      "name": "2026학년도 2학기 교수학습 및 평가 운영 계획(환경과) 1부..hwp / 2026학년도 2학기 교수학습 및 평가계획(심리학과) 1부..hwp / 2026학년도 2학기 교수학습 및 평가 운영 계획(영어과) 1부..hwp / 2026학년도 2학기 교수학습 및 평가 운영 계획(수학과) 1부..hwp / 2026학년도 2학기 교수학습 및 평가 운영 계획(국어과) 1부..hwp / 2026학년도 2학기 교수학습 및 평가계획(제2외국어과) 1부..hwp / 2026학년도 2학기 교수학습 및 평가 운영 계획(정보과) 1부..hwpx / 20",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522",
+      "asOf": "2026학년도 2학기(2026.9 공시)"
+     },
+     "status": "confirmed",
+     "checkedAt": "2026-11-02",
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     }
    ],
    "assessmentPlanNullReason": null,
@@ -1417,35 +1419,13 @@
    "assessmentPlan": [
     {
      "term": "2026학년도 2학기",
-     "grade": null,
+     "grade": 1,
      "rows": [
       {
        "subject": "공통국어",
        "area": "국어",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 40
-      },
-      {
-       "subject": "독서",
-       "area": "국어",
-       "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 40
-      },
-      {
-       "subject": "영어 독해와 작문",
-       "area": "국어",
-       "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 30
-      },
-      {
-       "subject": "화법과언어",
-       "area": "국어",
-       "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 50
+       "performancePct": 40
       },
       {
        "subject": "공통수학",
@@ -1454,150 +1434,28 @@
        "performancePct": 40
       },
       {
-       "subject": "기하",
-       "area": "수학",
-       "writtenPct": 70,
-       "performancePct": 30,
-       "essayPct": 37
-      },
-      {
-       "subject": "미적분",
-       "area": "수학",
-       "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 50
-      },
-      {
-       "subject": "미적분Ⅰ",
-       "area": "수학",
-       "writtenPct": 70,
-       "performancePct": 30
-      },
-      {
-       "subject": "확률과 통계",
-       "area": "수학",
-       "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 50
-      },
-      {
        "subject": "공통영어",
        "area": "영어",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 39
-      },
-      {
-       "subject": "영어Ⅰ",
-       "area": "영어",
-       "writtenPct": 70,
-       "performancePct": 30,
-       "essayPct": 30
-      },
-      {
-       "subject": "경제",
-       "area": "사회",
-       "writtenPct": 40,
-       "performancePct": 60,
-       "essayPct": 35
-      },
-      {
-       "subject": "사회·문화",
-       "area": "사회",
-       "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 35
-      },
-      {
-       "subject": "생활과 윤리",
-       "area": "사회",
-       "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 50
-      },
-      {
-       "subject": "세계사",
-       "area": "사회",
-       "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 40
-      },
-      {
-       "subject": "세계지리",
-       "area": "사회",
-       "writtenPct": 40,
-       "performancePct": 60,
-       "essayPct": 40
-      },
-      {
-       "subject": "정치",
-       "area": "사회",
-       "writtenPct": 40,
-       "performancePct": 60,
-       "essayPct": 60
+       "performancePct": 40
       },
       {
        "subject": "통합사회",
        "area": "사회",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 30
+       "performancePct": 40
       },
       {
        "subject": "한국사",
        "area": "사회",
        "writtenPct": 65,
-       "performancePct": 35,
-       "essayPct": 35
-      },
-      {
-       "subject": "한국지리 탐구",
-       "area": "사회",
-       "writtenPct": 40,
-       "performancePct": 60,
-       "essayPct": 40
-      },
-      {
-       "subject": "현대사회와 윤리",
-       "area": "사회",
-       "writtenPct": 70,
-       "performancePct": 30,
-       "essayPct": 30
-      },
-      {
-       "subject": "세포와물질대사",
-       "area": "과학",
-       "writtenPct": 40,
-       "performancePct": 60,
-       "essayPct": 30
-      },
-      {
-       "subject": "역학과 에너지",
-       "area": "과학",
-       "writtenPct": 40,
-       "performancePct": 60,
-       "essayPct": 60
-      },
-      {
-       "subject": "지구시스템과학",
-       "area": "과학",
-       "writtenPct": 40,
-       "performancePct": 60,
-       "essayPct": 40
+       "performancePct": 35
       },
       {
        "subject": "통합과학",
        "area": "과학",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 35
-      },
-      {
-       "subject": "화학 반응의 세계",
-       "area": "과학",
-       "writtenPct": 40,
-       "performancePct": 60,
-       "essayPct": 44
+       "performancePct": 40
       }
      ],
      "source": {
@@ -1608,7 +1466,157 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "학년 구분이 파일에 없거나 읽지 못함(교과별 파일). 일부 과목이 빠졌을 수 있음"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
+    },
+    {
+     "term": "2026학년도 2학기",
+     "grade": 2,
+     "rows": [
+      {
+       "subject": "화법과언어",
+       "area": "국어",
+       "writtenPct": 50,
+       "performancePct": 50
+      },
+      {
+       "subject": "기하",
+       "area": "수학",
+       "writtenPct": 70,
+       "performancePct": 30
+      },
+      {
+       "subject": "미적분Ⅰ",
+       "area": "수학",
+       "writtenPct": 70,
+       "performancePct": 30
+      },
+      {
+       "subject": "영어Ⅰ",
+       "area": "영어",
+       "writtenPct": 70,
+       "performancePct": 30
+      },
+      {
+       "subject": "경제",
+       "area": "사회",
+       "writtenPct": 40,
+       "performancePct": 60
+      },
+      {
+       "subject": "정치",
+       "area": "사회",
+       "writtenPct": 40,
+       "performancePct": 60
+      },
+      {
+       "subject": "한국지리 탐구",
+       "area": "사회",
+       "writtenPct": 40,
+       "performancePct": 60
+      },
+      {
+       "subject": "현대사회와 윤리",
+       "area": "사회",
+       "writtenPct": 70,
+       "performancePct": 30
+      },
+      {
+       "subject": "세포와물질대사",
+       "area": "과학",
+       "writtenPct": 40,
+       "performancePct": 60
+      },
+      {
+       "subject": "역학과 에너지",
+       "area": "과학",
+       "writtenPct": 40,
+       "performancePct": 60
+      },
+      {
+       "subject": "지구시스템과학",
+       "area": "과학",
+       "writtenPct": 40,
+       "performancePct": 60
+      },
+      {
+       "subject": "화학 반응의 세계",
+       "area": "과학",
+       "writtenPct": 40,
+       "performancePct": 60
+      }
+     ],
+     "source": {
+      "type": "학교알리미 공시 4-가(교과별 교수·학습 및 평가계획) 첨부 파일",
+      "name": "2026학년도 서원고등학교 2학기 교수학습 및 평가 운영계획.zip",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893",
+      "asOf": "2026학년도 2학기(2026.9 공시)"
+     },
+     "status": "confirmed",
+     "checkedAt": "2026-11-02",
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
+    },
+    {
+     "term": "2026학년도 2학기",
+     "grade": 3,
+     "rows": [
+      {
+       "subject": "독서",
+       "area": "국어",
+       "writtenPct": 50,
+       "performancePct": 50
+      },
+      {
+       "subject": "미적분",
+       "area": "수학",
+       "writtenPct": 50,
+       "performancePct": 50
+      },
+      {
+       "subject": "확률과 통계",
+       "area": "수학",
+       "writtenPct": 50,
+       "performancePct": 50
+      },
+      {
+       "subject": "영어 독해와 작문",
+       "area": "영어",
+       "writtenPct": 50,
+       "performancePct": 50
+      },
+      {
+       "subject": "사회·문화",
+       "area": "사회",
+       "writtenPct": 50,
+       "performancePct": 50
+      },
+      {
+       "subject": "생활과 윤리",
+       "area": "사회",
+       "writtenPct": 50,
+       "performancePct": 50
+      },
+      {
+       "subject": "세계사",
+       "area": "사회",
+       "writtenPct": 50,
+       "performancePct": 50
+      },
+      {
+       "subject": "세계지리",
+       "area": "사회",
+       "writtenPct": 40,
+       "performancePct": 60
+      }
+     ],
+     "source": {
+      "type": "학교알리미 공시 4-가(교과별 교수·학습 및 평가계획) 첨부 파일",
+      "name": "2026학년도 서원고등학교 2학기 교수학습 및 평가 운영계획.zip",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893",
+      "asOf": "2026학년도 2학기(2026.9 공시)"
+     },
+     "status": "confirmed",
+     "checkedAt": "2026-11-02",
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     }
    ],
    "assessmentPlanNullReason": null,
@@ -1632,36 +1640,31 @@
        "subject": "공통국어",
        "area": "국어",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 35
+       "performancePct": 40
       },
       {
        "subject": "공통수학",
        "area": "수학",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 36
+       "performancePct": 40
       },
       {
        "subject": "공통영어",
        "area": "영어",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 49
+       "performancePct": 40
       },
       {
        "subject": "통합사회",
        "area": "사회",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 40
+       "performancePct": 40
       },
       {
        "subject": "한국사",
        "area": "사회",
        "writtenPct": 40,
-       "performancePct": 60,
-       "essayPct": 30
+       "performancePct": 60
       },
       {
        "subject": "통합과학",
@@ -1678,7 +1681,7 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "표를 자동으로 읽은 값이라 일부 과목이 빠졌을 수 있음"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     },
     {
      "term": "2026학년도 2학기",
@@ -1688,22 +1691,19 @@
        "subject": "화법과 언어",
        "area": "국어",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 40
+       "performancePct": 40
       },
       {
        "subject": "기하",
        "area": "수학",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 40
+       "performancePct": 40
       },
       {
        "subject": "미적분Ⅰ",
        "area": "수학",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 31
+       "performancePct": 40
       },
       {
        "subject": "영어Ⅱ",
@@ -1715,57 +1715,49 @@
        "subject": "동아시아 역사기행",
        "area": "사회",
        "writtenPct": 40,
-       "performancePct": 60,
-       "essayPct": 34
+       "performancePct": 60
       },
       {
        "subject": "법과 사회",
        "area": "사회",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 35
+       "performancePct": 40
       },
       {
        "subject": "세계시민과 지리",
        "area": "사회",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 30
+       "performancePct": 40
       },
       {
        "subject": "현대사회와 윤리",
        "area": "사회",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 35
+       "performancePct": 50
       },
       {
        "subject": "물질과 에너지",
        "area": "과학",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 36
+       "performancePct": 40
       },
       {
        "subject": "세포와 물질대사",
        "area": "과학",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 30
+       "performancePct": 50
       },
       {
        "subject": "역학과 에너지",
        "area": "과학",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 30
+       "performancePct": 40
       },
       {
        "subject": "지구시스템과학",
        "area": "과학",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 32
+       "performancePct": 40
       }
      ],
      "source": {
@@ -1776,95 +1768,83 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "표를 자동으로 읽은 값이라 일부 과목이 빠졌을 수 있음"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     },
     {
      "term": "2026학년도 2학기",
      "grade": 3,
      "rows": [
       {
-       "subject": "언어와 매체",
+       "subject": "언어와매체",
        "area": "국어",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 50
-      },
-      {
-       "subject": "영어 독해와 작문",
-       "area": "국어",
-       "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 40
+       "performancePct": 50
       },
       {
        "subject": "화법과 작문",
        "area": "국어",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 50
+       "performancePct": 50
       },
       {
        "subject": "기하",
        "area": "수학",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 35
+       "performancePct": 50
       },
       {
        "subject": "미적분",
        "area": "수학",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 35
+       "performancePct": 50
       },
       {
        "subject": "심화 영어Ⅰ",
        "area": "영어",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 50
+       "performancePct": 50
+      },
+      {
+       "subject": "영어 독해와 작문",
+       "area": "영어",
+       "writtenPct": 50,
+       "performancePct": 50
       },
       {
        "subject": "사회·문화",
        "area": "사회",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 35
+       "performancePct": 50
       },
       {
        "subject": "생활과 윤리",
        "area": "사회",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 40
+       "performancePct": 50
       },
       {
        "subject": "세계지리",
        "area": "사회",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 40
+       "performancePct": 50
       },
       {
        "subject": "물리학Ⅱ",
        "area": "과학",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 40
+       "performancePct": 50
       },
       {
        "subject": "생명과학Ⅱ",
        "area": "과학",
        "writtenPct": 40,
-       "performancePct": 60,
-       "essayPct": 30
+       "performancePct": 60
       },
       {
        "subject": "화학Ⅱ",
        "area": "과학",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 40
+       "performancePct": 50
       }
      ],
      "source": {
@@ -1875,7 +1855,7 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "표를 자동으로 읽은 값이라 일부 과목이 빠졌을 수 있음"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     }
    ],
    "assessmentPlanNullReason": null,
@@ -1940,7 +1920,7 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "표를 자동으로 읽은 값이라 일부 과목이 빠졌을 수 있음"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     },
     {
      "term": "2026학년도 2학기",
@@ -1956,8 +1936,7 @@
        "subject": "화법과 언어",
        "area": "국어",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 20
+       "performancePct": 50
       },
       {
        "subject": "미적분Ⅰ",
@@ -2022,18 +2001,12 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "표를 자동으로 읽은 값이라 일부 과목이 빠졌을 수 있음"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     },
     {
      "term": "2026학년도 2학기",
      "grade": 3,
      "rows": [
-      {
-       "subject": "영어독해와작문",
-       "area": "국어",
-       "writtenPct": 50,
-       "performancePct": 50
-      },
       {
        "subject": "화법과 작문",
        "area": "국어",
@@ -2065,7 +2038,13 @@
        "performancePct": 50
       },
       {
-       "subject": "(사회·문화) 3학년",
+       "subject": "영어독해와작문",
+       "area": "영어",
+       "writtenPct": 50,
+       "performancePct": 50
+      },
+      {
+       "subject": "사회·문화",
        "area": "사회",
        "writtenPct": 40,
        "performancePct": 60
@@ -2086,8 +2065,7 @@
        "subject": "생활과 과학",
        "area": "과학",
        "writtenPct": 40,
-       "performancePct": 60,
-       "essayPct": 30
+       "performancePct": 60
       }
      ],
      "source": {
@@ -2098,7 +2076,7 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "표를 자동으로 읽은 값이라 일부 과목이 빠졌을 수 있음"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     }
    ],
    "assessmentPlanNullReason": null,
@@ -2122,8 +2100,7 @@
        "subject": "공통국어",
        "area": "국어",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 35
+       "performancePct": 40
       },
       {
        "subject": "공통수학",
@@ -2147,15 +2124,13 @@
        "subject": "한국사",
        "area": "사회",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 40
+       "performancePct": 50
       },
       {
        "subject": "통합과학",
        "area": "과학",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 20
+       "performancePct": 50
       }
      ],
      "source": {
@@ -2166,7 +2141,7 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "표를 자동으로 읽은 값이라 일부 과목이 빠졌을 수 있음"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     },
     {
      "term": "2026학년도 2학기",
@@ -2176,15 +2151,13 @@
        "subject": "중국어 회화",
        "area": "국어",
        "writtenPct": 30,
-       "performancePct": 70,
-       "essayPct": 40
+       "performancePct": 70
       },
       {
        "subject": "화법과 언어",
        "area": "국어",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 20
+       "performancePct": 40
       },
       {
        "subject": "미적분Ⅰ",
@@ -2202,50 +2175,43 @@
        "subject": "동아시아 역사 기행",
        "area": "사회",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 25
+       "performancePct": 50
       },
       {
        "subject": "사회와 문화",
        "area": "사회",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 50
+       "performancePct": 50
       },
       {
        "subject": "윤리와 사상",
        "area": "사회",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 33
+       "performancePct": 40
       },
       {
        "subject": "한국지리탐구",
        "area": "사회",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 50
+       "performancePct": 50
       },
       {
        "subject": "데이터과학",
        "area": "과학",
        "writtenPct": 40,
-       "performancePct": 60,
-       "essayPct": 40
+       "performancePct": 60
       },
       {
        "subject": "물질과 에너지",
        "area": "과학",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 20
+       "performancePct": 40
       },
       {
        "subject": "세포와 물질대사",
        "area": "과학",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 20
+       "performancePct": 40
       },
       {
        "subject": "역학과 에너지",
@@ -2257,8 +2223,7 @@
        "subject": "지구시스템과학",
        "area": "과학",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 20
+       "performancePct": 40
       }
      ],
      "source": {
@@ -2269,7 +2234,7 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "표를 자동으로 읽은 값이라 일부 과목이 빠졌을 수 있음"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     },
     {
      "term": "2026학년도 2학기",
@@ -2280,20 +2245,6 @@
        "area": "국어",
        "writtenPct": 40,
        "performancePct": 60
-      },
-      {
-       "subject": "여행지리",
-       "area": "사회",
-       "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 40
-      },
-      {
-       "subject": "한국지리",
-       "area": "사회",
-       "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 35
       }
      ],
      "source": {
@@ -2304,7 +2255,7 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "3학년 파일은 과목명을 일부만 읽어 많은 과목이 빠졌음. 학교알리미 파일 직접 확인 필요"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     }
    ],
    "assessmentPlanNullReason": null,
@@ -2314,7 +2265,24 @@
     "nullReason": "학교알리미 '교과별 학업성취 사항'(4-나)은 화면에서 자동입력 방지 숫자 입력을 요구해 우회하지 않았고, 공개 다운로드 파일 경로도 찾지 못했어요. 과목별 평균·표준편차·성취도 분포·수강자 수는 학교알리미에서 직접 확인하거나 학교 설명회에서 질문하세요.",
     "nextAction": "학교알리미 4-나 직접 확인 또는 학교 설명회에서 '과목별 평균·표준편차' 질문"
    },
-   "qualitative": []
+   "qualitative": [],
+   "assessmentPlanExcluded": [
+    {
+     "grade": 3,
+     "subject": "여행지리",
+     "reason": "과목명을 원문의 머리표·표 제목에서 확인하지 못해 제외"
+    },
+    {
+     "grade": 3,
+     "subject": "한국지리",
+     "reason": "과목명을 원문의 머리표·표 제목에서 확인하지 못해 제외"
+    },
+    {
+     "grade": 3,
+     "subject": "화학Ⅱ",
+     "reason": "같은 과목에 서로 다른 비율이 있어 제외"
+    }
+   ]
   },
   {
    "placeId": "pl-025",
@@ -2328,43 +2296,37 @@
        "subject": "공통국어",
        "area": "국어",
        "writtenPct": 70,
-       "performancePct": 30,
-       "essayPct": 30
+       "performancePct": 30
       },
       {
        "subject": "공통수학",
        "area": "수학",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 33
+       "performancePct": 40
       },
       {
        "subject": "공통영어",
        "area": "영어",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 39
+       "performancePct": 40
       },
       {
        "subject": "통합사회",
        "area": "사회",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 40
+       "performancePct": 40
       },
       {
        "subject": "한국사",
        "area": "사회",
        "writtenPct": 70,
-       "performancePct": 30,
-       "essayPct": 30
+       "performancePct": 30
       },
       {
        "subject": "통합과학",
        "area": "과학",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 35
+       "performancePct": 40
       }
      ],
      "source": {
@@ -2375,7 +2337,7 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "표를 자동으로 읽은 값이라 일부 과목이 빠졌을 수 있음"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     },
     {
      "term": "2026학년도 2학기",
@@ -2385,64 +2347,61 @@
        "subject": "문학과 영상",
        "area": "국어",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 30
+       "performancePct": 50
       },
       {
        "subject": "화법과 언어",
        "area": "국어",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 33
+       "performancePct": 40
       },
       {
        "subject": "미적분Ⅰ",
        "area": "수학",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 43
+       "performancePct": 40
+      },
+      {
+       "subject": "영어Ⅱ",
+       "area": "영어",
+       "writtenPct": 60,
+       "performancePct": 40
       },
       {
        "subject": "경제",
        "area": "사회",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 38
+       "performancePct": 40
       },
       {
        "subject": "사회와 문화",
        "area": "사회",
        "writtenPct": 70,
-       "performancePct": 30,
-       "essayPct": 35
+       "performancePct": 30
       },
       {
        "subject": "세계사",
        "area": "사회",
        "writtenPct": 70,
-       "performancePct": 30,
-       "essayPct": 30
+       "performancePct": 30
       },
       {
        "subject": "현대사회와 윤리",
        "area": "사회",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 40
+       "performancePct": 50
       },
       {
        "subject": "물질과 에너지",
        "area": "과학",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 46
+       "performancePct": 40
       },
       {
        "subject": "세포와 물질대사",
        "area": "과학",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 31
+       "performancePct": 40
       },
       {
        "subject": "역학과 에너지",
@@ -2454,8 +2413,7 @@
        "subject": "지구시스템과학",
        "area": "과학",
        "writtenPct": 60,
-       "performancePct": 40,
-       "essayPct": 40
+       "performancePct": 40
       }
      ],
      "source": {
@@ -2466,7 +2424,7 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "표를 자동으로 읽은 값이라 일부 과목이 빠졌을 수 있음"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     },
     {
      "term": "2026학년도 2학기",
@@ -2476,29 +2434,19 @@
        "subject": "언어와 매체",
        "area": "국어",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 50
-      },
-      {
-       "subject": "영어독해와작문",
-       "area": "국어",
-       "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 35
+       "performancePct": 50
       },
       {
        "subject": "현대문학감상",
        "area": "국어",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 35
+       "performancePct": 50
       },
       {
        "subject": "화법과 작문",
        "area": "국어",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 30
+       "performancePct": 50
       },
       {
        "subject": "미적분",
@@ -2510,36 +2458,43 @@
        "subject": "확률과 통계",
        "area": "수학",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 30
+       "performancePct": 50
+      },
+      {
+       "subject": "영어독해와작문",
+       "area": "영어",
+       "writtenPct": 50,
+       "performancePct": 50
       },
       {
        "subject": "사회문화",
        "area": "사회",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 40
+       "performancePct": 50
       },
       {
        "subject": "생활과 윤리",
        "area": "사회",
        "writtenPct": 50,
-       "performancePct": 50,
-       "essayPct": 35
+       "performancePct": 50
       },
       {
        "subject": "한국지리",
        "area": "사회",
        "writtenPct": 40,
-       "performancePct": 60,
-       "essayPct": 40
+       "performancePct": 60
+      },
+      {
+       "subject": "물리학Ⅱ",
+       "area": "과학",
+       "writtenPct": 50,
+       "performancePct": 50
       },
       {
        "subject": "생명과학Ⅱ",
        "area": "과학",
        "writtenPct": 40,
-       "performancePct": 60,
-       "essayPct": 40
+       "performancePct": 60
       }
      ],
      "source": {
@@ -2550,7 +2505,7 @@
      },
      "status": "confirmed",
      "checkedAt": "2026-11-02",
-     "note": "표를 자동으로 읽은 값이라 일부 과목이 빠졌을 수 있음"
+     "note": "학교알리미 공시 파일의 표에서 읽은 값(과목명·비율을 두 방식으로 대조해 일치한 것만 수록)"
     }
    ],
    "assessmentPlanNullReason": null,
