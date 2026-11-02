@@ -56,7 +56,7 @@
   },
   {
    "id": "students",
-   "label": "학생수",
+   "label": "학생수(특수학급 제외)",
    "group": "규모",
    "order": 7,
    "type": "number",
