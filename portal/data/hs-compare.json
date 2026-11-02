@@ -243,7 +243,8 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
      },
      "sourceId": "src-23491a33",
-     "nullReason": null
+     "nullReason": null,
+     "note": "일반 1~3학년 1149명 + 특수학급 16명 포함한 전체 학생수(학교알리미 3-가-3, 2026.5 2차 공시). 특수학급이 없는 학교는 0명"
     },
     "teachers": {
      "value": 88,
@@ -415,7 +416,8 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
      },
      "sourceId": "src-23491a33",
-     "nullReason": null
+     "nullReason": null,
+     "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
     }
    },
    "externalIds": [
@@ -502,7 +504,8 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
      },
      "sourceId": "src-5b6184f8",
-     "nullReason": null
+     "nullReason": null,
+     "note": "일반 1~3학년 1053명 + 특수학급 8명 + 순회학급 1명 포함한 전체 학생수(학교알리미 3-가-3, 2026.5 2차 공시). 특수학급이 없는 학교는 0명"
     },
     "teachers": {
      "value": 78,
@@ -666,7 +669,8 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005904"
      },
      "sourceId": "src-5b6184f8",
-     "nullReason": null
+     "nullReason": null,
+     "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
     }
    },
    "externalIds": [
@@ -753,7 +757,8 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
      },
      "sourceId": "src-9db376ea",
-     "nullReason": null
+     "nullReason": null,
+     "note": "일반 1~3학년 1234명 + 특수학급 10명 포함한 전체 학생수(학교알리미 3-가-3, 2026.5 2차 공시). 특수학급이 없는 학교는 0명"
     },
     "teachers": {
      "value": 84,
@@ -917,7 +922,8 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
      },
      "sourceId": "src-9db376ea",
-     "nullReason": null
+     "nullReason": null,
+     "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
     }
    },
    "externalIds": [
@@ -1004,7 +1010,8 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
      },
      "sourceId": "src-5b647dcd",
-     "nullReason": null
+     "nullReason": null,
+     "note": "일반 1~3학년 1307명 + 특수학급 6명 포함한 전체 학생수(학교알리미 3-가-3, 2026.5 2차 공시). 특수학급이 없는 학교는 0명"
     },
     "teachers": {
      "value": 97,
@@ -1168,7 +1175,8 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
      },
      "sourceId": "src-5b647dcd",
-     "nullReason": null
+     "nullReason": null,
+     "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
     }
    },
    "externalIds": [
@@ -1255,7 +1263,8 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
      },
      "sourceId": "src-e0d3a017",
-     "nullReason": null
+     "nullReason": null,
+     "note": "일반 1~3학년 951명 + 특수학급 9명 포함한 전체 학생수(학교알리미 3-가-3, 2026.5 2차 공시). 특수학급이 없는 학교는 0명"
     },
     "teachers": {
      "value": 71,
@@ -1415,7 +1424,8 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
      },
      "sourceId": "src-e0d3a017",
-     "nullReason": null
+     "nullReason": null,
+     "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
     }
    },
    "externalIds": [
@@ -1502,7 +1512,8 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
      },
      "sourceId": "src-1d8d9c24",
-     "nullReason": null
+     "nullReason": null,
+     "note": "일반 1~3학년 1119명 + 특수학급 9명 포함한 전체 학생수(학교알리미 3-가-3, 2026.5 2차 공시). 특수학급이 없는 학교는 0명"
     },
     "teachers": {
      "value": 85,
@@ -1662,7 +1673,8 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090004893"
      },
      "sourceId": "src-1d8d9c24",
-     "nullReason": null
+     "nullReason": null,
+     "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
     }
    },
    "externalIds": [
@@ -1749,7 +1761,8 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
      },
      "sourceId": "src-1be5261a",
-     "nullReason": null
+     "nullReason": null,
+     "note": "일반 1~3학년 1113명 + 특수학급 9명 포함한 전체 학생수(학교알리미 3-가-3, 2026.5 2차 공시). 특수학급이 없는 학교는 0명"
     },
     "teachers": {
      "value": 84,
@@ -1909,7 +1922,8 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
      },
      "sourceId": "src-1be5261a",
-     "nullReason": null
+     "nullReason": null,
+     "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
     }
    },
    "externalIds": [
@@ -1996,7 +2010,8 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
      },
      "sourceId": "src-d05050e2",
-     "nullReason": null
+     "nullReason": null,
+     "note": "일반 1~3학년 1123명 + 특수학급 0명 포함한 전체 학생수(학교알리미 3-가-3, 2026.5 2차 공시). 특수학급이 없는 학교는 0명"
     },
     "teachers": {
      "value": 80,
@@ -2156,7 +2171,8 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
      },
      "sourceId": "src-d05050e2",
-     "nullReason": null
+     "nullReason": null,
+     "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
     }
    },
    "externalIds": [
@@ -2243,7 +2259,8 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
      },
      "sourceId": "src-61d0636c",
-     "nullReason": null
+     "nullReason": null,
+     "note": "일반 1~3학년 916명 + 특수학급 8명 포함한 전체 학생수(학교알리미 3-가-3, 2026.5 2차 공시). 특수학급이 없는 학교는 0명"
     },
     "teachers": {
      "value": 72,
@@ -2403,7 +2420,8 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005458"
      },
      "sourceId": "src-61d0636c",
-     "nullReason": null
+     "nullReason": null,
+     "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
     }
    },
    "externalIds": [
@@ -2490,7 +2508,8 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
      },
      "sourceId": "src-11e53ef6",
-     "nullReason": null
+     "nullReason": null,
+     "note": "일반 1~3학년 604명 + 특수학급 0명 포함한 전체 학생수(학교알리미 3-가-3, 2026.5 2차 공시). 특수학급이 없는 학교는 0명"
     },
     "teachers": {
      "value": 55,
@@ -2650,7 +2669,8 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
      },
      "sourceId": "src-11e53ef6",
-     "nullReason": null
+     "nullReason": null,
+     "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
     }
    },
    "externalIds": [
