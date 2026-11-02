@@ -734,8 +734,8 @@
       "status": "reported",
       "sources": [
         {
-          "name": "학교알리미 공시 4-가(교과별 교수·학습 및 평가계획)",
-          "url": "https://www.schoolinfo.go.kr/"
+          "name": "학교알리미 공시 4-가(교과별 교수·학습 및 평가계획) 예: 용인홍천고등학교 학교 페이지의 평가계획 첨부 파일",
+          "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
         }
       ]
     },
