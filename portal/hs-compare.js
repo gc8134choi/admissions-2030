@@ -21,7 +21,7 @@ export function formatValue(f, v) {
 
 // 홈 요약용: [{ placeId, schoolId, name, line, parts:[{id,label,text}] }]. 값이 있는 핵심 지표만 이어 붙인다(최대 opts.max개).
 export function hsCompareSummary(data, { fields = SUMMARY_FIELDS, max = 4, electives = null } = {}) {
-  const tend = new Map((electives?.items ?? []).filter((e) => e.summary).map((e) => [e.placeId, `선택과목 ${e.summary.tendency}(추정)`])); // 성향 한 줄(선택 비중 기준 추정)
+  const tend = new Map((electives?.items ?? []).map((e) => e.summary ? [e.placeId, `선택과목 ${e.summary.tendency}(인원 기준)`] : e.classProxy?.rows?.length ? [e.placeId, `선택과목 ${e.classProxy.tendency}(학급 수 기준 추정)`] : null).filter(Boolean)); // 성향 한 줄(선택 비중 기준 추정)
   if (!data || !data.schools || !data.schools.length) return [];
   const byId = new Map(data.fields.map((f) => [f.id, f]));
   // 요약 한 줄에서는 문자열 값의 괄호 설명(설립일 등)을 뺀다

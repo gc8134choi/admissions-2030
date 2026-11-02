@@ -3,7 +3,8 @@
   "note": "선택과목 현황(생성물, 손으로 고치지 않는다). research/data/electives-draft.json에서 tools/build-electives.mjs가 만든다. 성향은 선택 비중 기준 추정이다.",
   "checkedAt": "2026-11-02",
   "count": 5,
-  "withData": 1
+  "withData": 1,
+  "withProxy": 3
  },
  "guide": {
   "intro": "이 표만으로 어느 쪽이 유리한지 판단하기 어려워요. 선택 인원은 학교 안의 분포일 뿐이고, 대학·모집단위별 권장과목과 5등급 상대평가에서 같은 과목을 고른 학생 수가 등급 경쟁에 영향을 줄 수 있으나 학교별 유불리는 추정이에요.",
@@ -211,13 +212,70 @@
    "asOf": null,
    "sourceKind": null,
    "status": "reported",
-   "sources": [],
+   "sources": [
+    {
+     "name": "풍덕고 2026학년도 2학기 2학년 교수학습 평가운영계획(안).pdf",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
+    }
+   ],
+   "sourceIds": [
+    "src-9db376ea"
+   ],
    "fileIds": [],
    "note": null,
    "nullReason": "학교 홈페이지(교육과정 게시판)와 학교알리미에서 현 2학년 선택과목별 수강 인원을 공개한 자료를 찾지 못했어요(홈페이지에는 편제표·선택과목 안내서·설명회 영상만 있음, 학교알리미 학교 코드 조회 경로는 막혀 있음). 대신 평가계획 파일의 과목별 개설 학급 수(대리 지표)를 classProxy에 수록.",
    "nextAction": "학교 진로진학 설명회·교육과정 설명회에서 '현 2학년 탐구 선택 인원 분포'를 질문하거나 학교에 문의",
    "terms": [],
-   "summary": null
+   "summary": null,
+   "classProxy": {
+    "term": "2026학년도 2학기 2학년",
+    "unit": "개설 학급 수(학생 수가 아님)",
+    "rows": [
+     {
+      "name": "물질과 에너지",
+      "area": "과학",
+      "classes": 5
+     },
+     {
+      "name": "법과 사회",
+      "area": "사회",
+      "classes": 5
+     },
+     {
+      "name": "세포와 물질대사",
+      "area": "과학",
+      "classes": 4
+     },
+     {
+      "name": "역학과 에너지",
+      "area": "과학",
+      "classes": 4
+     },
+     {
+      "name": "세계사",
+      "area": "사회",
+      "classes": 3
+     },
+     {
+      "name": "지구시스템과학",
+      "area": "과학",
+      "classes": 2
+     }
+    ],
+    "totals": {
+     "사회": 8,
+     "과학": 15
+    },
+    "shares": {
+     "사회": 34.8,
+     "과학": 65.2
+    },
+    "tendency": "과학 중심",
+    "basis": "학급 수 기준 추정",
+    "note": "과목 머리표의 '학급'(과목을 듣는 반 번호) 수를 합한 대리 지표. 학급당 인원·분반 방식이 달라 실제 선택 인원 비율과 다를 수 있음",
+    "status": "reported",
+    "asOf": "2026-11-02"
+   }
   },
   {
    "placeId": "pl-012",
@@ -235,7 +293,12 @@
    "nullReason": "학교 홈페이지(교육과정 게시판)와 학교알리미에서 현 2학년 선택과목별 수강 인원을 공개한 자료를 찾지 못했어요(홈페이지에는 편제표·선택과목 안내서·설명회 영상만 있음, 학교알리미 학교 코드 조회 경로는 막혀 있음).",
    "nextAction": "학교 진로진학 설명회·교육과정 설명회에서 '현 2학년 탐구 선택 인원 분포'를 질문하거나 학교에 문의",
    "terms": [],
-   "summary": null
+   "summary": null,
+   "classProxy": {
+    "nullReason": "공시 평가계획 파일의 과목 머리표에서 탐구 과목별 개설 학급 수를 읽지 못했어요.",
+    "nextAction": "학교 설명회에서 질문",
+    "rows": []
+   }
   },
   {
    "placeId": "pl-013",
@@ -247,13 +310,80 @@
    "asOf": null,
    "sourceKind": null,
    "status": "reported",
-   "sources": [],
+   "sources": [
+    {
+     "name": "2026학년도 수지고 2학년 2학기 교수학습 및 평가 운영계획 통합본.hwpx",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000655"
+    }
+   ],
+   "sourceIds": [
+    "src-5b647dcd"
+   ],
    "fileIds": [],
    "note": null,
    "nullReason": "학교 홈페이지(교육과정 게시판)와 학교알리미에서 현 2학년 선택과목별 수강 인원을 공개한 자료를 찾지 못했어요(홈페이지에는 편제표·선택과목 안내서·설명회 영상만 있음, 학교알리미 학교 코드 조회 경로는 막혀 있음). 대신 평가계획 파일의 과목별 개설 학급 수(대리 지표)를 classProxy에 수록.",
    "nextAction": "학교 진로진학 설명회·교육과정 설명회에서 '현 2학년 탐구 선택 인원 분포'를 질문하거나 학교에 문의",
    "terms": [],
-   "summary": null
+   "summary": null,
+   "classProxy": {
+    "term": "2026학년도 2학기 2학년",
+    "unit": "개설 학급 수(학생 수가 아님)",
+    "rows": [
+     {
+      "name": "윤리와 사상",
+      "area": "사회",
+      "classes": 14
+     },
+     {
+      "name": "세포와 물질대사",
+      "area": "과학",
+      "classes": 12
+     },
+     {
+      "name": "물질과 에너지",
+      "area": "과학",
+      "classes": 8
+     },
+     {
+      "name": "역학과 에너지",
+      "area": "과학",
+      "classes": 7
+     },
+     {
+      "name": "세계시민과 지리",
+      "area": "사회",
+      "classes": 5
+     },
+     {
+      "name": "경제",
+      "area": "사회",
+      "classes": 4
+     },
+     {
+      "name": "정치",
+      "area": "사회",
+      "classes": 3
+     },
+     {
+      "name": "지구시스템과학",
+      "area": "과학",
+      "classes": 3
+     }
+    ],
+    "totals": {
+     "사회": 26,
+     "과학": 30
+    },
+    "shares": {
+     "사회": 46.4,
+     "과학": 53.6
+    },
+    "tendency": "균형",
+    "basis": "학급 수 기준 추정",
+    "note": "과목 머리표의 '학급'(과목을 듣는 반 번호) 수를 합한 대리 지표. 학급당 인원·분반 방식이 달라 실제 선택 인원 비율과 다를 수 있음",
+    "status": "reported",
+    "asOf": "2026-11-02"
+   }
   },
   {
    "placeId": "pl-022",
@@ -265,13 +395,80 @@
    "asOf": null,
    "sourceKind": null,
    "status": "reported",
-   "sources": [],
+   "sources": [
+    {
+     "name": "2026학년도 2학기 2학년 교수·학습 및 평가 운영 계획.pdf",
+     "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
+    }
+   ],
+   "sourceIds": [
+    "src-1be5261a"
+   ],
    "fileIds": [],
    "note": null,
    "nullReason": "학교 홈페이지(교육과정 게시판)와 학교알리미에서 현 2학년 선택과목별 수강 인원을 공개한 자료를 찾지 못했어요(홈페이지에는 편제표·선택과목 안내서·설명회 영상만 있음, 학교알리미 학교 코드 조회 경로는 막혀 있음). 대신 평가계획 파일의 과목별 개설 학급 수(대리 지표)를 classProxy에 수록.",
    "nextAction": "학교 진로진학 설명회·교육과정 설명회에서 '현 2학년 탐구 선택 인원 분포'를 질문하거나 학교에 문의",
    "terms": [],
-   "summary": null
+   "summary": null,
+   "classProxy": {
+    "term": "2026학년도 2학기 2학년",
+    "unit": "개설 학급 수(학생 수가 아님)",
+    "rows": [
+     {
+      "name": "세계시민과 지리",
+      "area": "사회",
+      "classes": 12
+     },
+     {
+      "name": "세포와 물질대사",
+      "area": "과학",
+      "classes": 12
+     },
+     {
+      "name": "역학과 에너지",
+      "area": "과학",
+      "classes": 12
+     },
+     {
+      "name": "현대사회와 윤리",
+      "area": "사회",
+      "classes": 7
+     },
+     {
+      "name": "물질과 에너지",
+      "area": "과학",
+      "classes": 5
+     },
+     {
+      "name": "법과 사회",
+      "area": "사회",
+      "classes": 4
+     },
+     {
+      "name": "지구시스템과학",
+      "area": "과학",
+      "classes": 4
+     },
+     {
+      "name": "동아시아 역사기행",
+      "area": "사회",
+      "classes": 1
+     }
+    ],
+    "totals": {
+     "사회": 24,
+     "과학": 33
+    },
+    "shares": {
+     "사회": 42.1,
+     "과학": 57.9
+    },
+    "tendency": "균형",
+    "basis": "학급 수 기준 추정",
+    "note": "과목 머리표의 '학급'(과목을 듣는 반 번호) 수를 합한 대리 지표. 학급당 인원·분반 방식이 달라 실제 선택 인원 비율과 다를 수 있음",
+    "status": "reported",
+    "asOf": "2026-11-02"
+   }
   }
  ]
 }
