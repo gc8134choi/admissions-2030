@@ -28,7 +28,7 @@ export async function middleBody(el, { load, esc, mapHref = (id) => `#select/cur
   const st = (el.__mid ||= { from: areas.some((a) => a.from.placeId === lsFrom()) ? lsFrom() : areas[0].from.placeId, q: "" });
   if (!areas.some((a) => a.from.placeId === st.from)) st.from = areas[0].from.placeId;
 
-  const zoneNotice = policy.find((r) => /중학구/.test(r.title + r.body) && /의견 ?수렴/.test(r.title + r.body));
+  const zoneNotice = policy.find((r) => /중학구/.test(r.title + r.body) && /의견 ?수렴/.test(r.title + r.body) && r.status !== "confirmed" && !/고시 확정/.test(r.title)); // 이미 고시가 확정된 행(의견 수렴은 지난 과정)은 '미정'으로 보이지 않게
   const flow = policy.filter((r) => r.topic === "life-schedule" && r.stage === "중입");
   const near = mid.principles.find((p) => /근거리/.test(p.title));
   const nearUrl = (near?.sources || []).find((x) => x.url)?.url || (mid.principles.flatMap((p) => p.sources || []).find((x) => x.url) || {}).url;

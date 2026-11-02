@@ -173,7 +173,7 @@ async function curriculumView(el, query, node) {
     if (areasSel.length) q.set("a", areasSel.join(","));
     if (tab === "compare" && fsParam()) q.set("f", fsParam());
     const cur = new URLSearchParams((location.hash.split("?")[1] || "")); // 학교 비교 표(c)·유형(t)·전형(ty)·대학 요건(us)의 선택은 지우지 않는다
-    for (const k of ["c", "t", "ty", "us"]) if (cur.has(k) && !q.has(k)) q.set(k, cur.get(k));
+    for (const k of ["c", "t", "ty", "us", "g"]) if (cur.has(k) && !q.has(k)) q.set(k, cur.get(k));
     history.replaceState(null, "", `#select/curriculum?${q.toString().replace(/%2C/g, ",")}`);
   };
   const chipHtml = () => schools.map((x) => `<button type="button" class="chip schip ${sel.includes(x.id) ? "on" : ""}" data-id="${esc(x.id)}" aria-pressed="${sel.includes(x.id)}" title="${esc(x.name)}">${nm(x.id, x.name, 36)}</button>`).join("");
@@ -201,7 +201,7 @@ async function curriculumView(el, query, node) {
       // 밀도: 학교 요약 카드는 번호·막대만 보이게 접고(자세히로 펼침), 31교 기본 정보 표는 접이식, 요약 카드는 한눈에 패널 바로 아래로
       const hub = body.querySelector("#hsmain .hub-hs"), wide = body.querySelector("#hs-wide"), sec = body.querySelector("#sumsec");
       if (hub && wide) {
-        const dt = document.createElement("details"); dt.className = "dp wide-fold"; dt.innerHTML = "<summary>학교 31곳 기본 정보 표 (규모·입학·교육과정·진학)</summary>"; wide.before(dt); dt.appendChild(wide); let wd = false; dt.addEventListener("toggle", () => { if (dt.open && !wd) { wd = true; fillWide(); } });
+        const dt = document.createElement("details"); dt.className = "dp wide-fold"; dt.innerHTML = "<summary>학교 31곳 기본 정보 표 (규모·입학·교육과정·진학)</summary>"; wide.before(dt); dt.appendChild(wide); let wd = false; dt.addEventListener("toggle", () => { if (dt.open && !wd) { wd = true; fillWide(); } }); dt.insertAdjacentHTML("beforebegin", `<p class="hs-quick muted small">바로 보기 <a href="#select/curriculum?v=hs&g=${encodeURIComponent("선택과목 현황")}">선택과목 현황</a> · <a href="#select/curriculum?v=hs&g=${encodeURIComponent("내신 출제")}">내신 출제·평가 경향</a></p>`); if (query.get("g")) dt.open = true; // g가 있으면(검색·바로 보기) 31교 표를 펼쳐 그 그룹으로 간다
         hub.insertBefore(sec, dt);
       }
       body.querySelectorAll(".school").forEach((c) => { c.classList.add("cp"); const f = c.querySelector(".foot"); if (f) f.insertAdjacentHTML("afterbegin", '<button type="button" class="btn sc-more" aria-expanded="false">자세히</button>'); });

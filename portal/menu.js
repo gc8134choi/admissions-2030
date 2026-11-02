@@ -75,7 +75,7 @@ export const TABS = [
     { id: "admission/system", title: "수능·내신 규칙", m: at("admission/system") },
     { id: "select/curriculum?v=univ", title: "대학 요건", m: cur((v) => v === "univ") },
     { id: "schedule?t=univ", title: "입시 일정", m: () => false }], soon: ["대학·학과 찾기", "학교별 시뮬레이션", "목표 학과 체크"] }] },
-  { id: "schedule", title: "일정", groups: [{ key: "", title: "", items: [{ id: "schedule", title: "일정", m: at("schedule") }] }], soon: ["학년별 할 일"] },
+  { id: "schedule", title: "일정", groups: [{ key: "", title: "", items: [{ id: "schedule", title: "일정", m: at("schedule") }] }] },
 ];
 export const VAULT = { id: "vault", title: "보관함", groups: [{ key: "", title: "", items: [
   { id: "changelog", title: "바뀐 소식", m: at("changelog") }, { id: "library", title: "바로가기", m: at("library") }, { id: "library/sources", title: "출처 목록", m: at("library/sources") },
