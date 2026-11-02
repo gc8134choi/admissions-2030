@@ -1,9 +1,9 @@
 {
  "_meta": {
   "note": "출처 등록부(생성물, 손으로 고치지 않는다). tools/build-sources.mjs가 portal/data의 출처 항목에서 만든다. 데이터 행의 sourceIds가 이 id를 가리킨다.",
-  "count": 139,
+  "count": 142,
   "kinds": {
-   "official": 95,
+   "official": 98,
    "media": 25,
    "user": 16,
    "self": 0,
@@ -712,6 +712,19 @@
    }
   },
   {
+   "id": "src-4f4484c8",
+   "url": "https://www.goeyi.kr/goeyi/na/ntt/selectNttInfo.do?mi=25305&bbsId=15728&nttSn=1581356",
+   "kind": "official",
+   "org": "경기도용인교육지원청",
+   "checked": "2026-10-29",
+   "names": [
+    "용인삼계고 홍보자료 PDF 1~2쪽(용인교육지원청 게시판)"
+   ],
+   "usedIn": {
+    "hs-compare.json": 1
+   }
+  },
+  {
    "id": "src-511386d3",
    "url": null,
    "kind": "user",
@@ -917,15 +930,15 @@
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) — 학생수에 남·여가 모두 있어 남녀공학으로 판단",
     "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
-    "학교알리미",
     "학교알리미 공시항목 목록",
     "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
+    "학교알리미",
     "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
     "학교알리미 학교 페이지(GS_CD 링크 https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=코드)"
    ],
    "usedIn": {
     "exam-trends.json": 1,
-    "hs-compare.json": 16,
+    "hs-compare.json": 15,
     "places.json": 1,
     "school-codes.json": 1
    }
@@ -2065,6 +2078,20 @@
    }
   },
   {
+   "id": "src-f7c5e58d",
+   "url": "https://www.goeyi.kr/goeyi/na/ntt/selectNttInfo.do?mi=25305&bbsId=15728&nttSn=1581350",
+   "kind": "official",
+   "org": "경기도용인교육지원청",
+   "checked": "2026-10-29",
+   "names": [
+    "포곡고 홍보 리플렛 PDF 3쪽(용인교육지원청 게시판, 학교 자체 작성)",
+    "포곡고 홍보 리플렛 PDF 4쪽(학교 자체 집계, 용인교육지원청 게시판)"
+   ],
+   "usedIn": {
+    "hs-compare.json": 2
+   }
+  },
+  {
    "id": "src-fb80c866",
    "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003494",
    "kind": "official",
@@ -2106,6 +2133,19 @@
    ],
    "usedIn": {
     "policy.json": 1
+   }
+  },
+  {
+   "id": "src-fdc77fdc",
+   "url": "https://www.goeyi.kr/goeyi/na/ntt/selectNttInfo.do?mi=25305&bbsId=15728&nttSn=1581300",
+   "kind": "official",
+   "org": "경기도용인교육지원청",
+   "checked": "2026-10-29",
+   "names": [
+    "대지고 홍보자료 PDF 1~2쪽(용인교육지원청 게시판)"
+   ],
+   "usedIn": {
+    "hs-compare.json": 1
    }
   }
  ]
