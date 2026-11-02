@@ -155,6 +155,11 @@
      "atptCode": "J10",
      "code": "7751303",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090005868",
+     "asOf": "2026-11-02"
     }
    ],
    "status": "reported",
@@ -318,6 +323,11 @@
      "atptCode": "J10",
      "code": "7751297",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090005749",
+     "asOf": "2026-11-02"
     }
    ],
    "status": "reported",
