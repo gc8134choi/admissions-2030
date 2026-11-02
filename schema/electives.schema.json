@@ -25,6 +25,7 @@
    "note": { "type": ["string", "null"] },
    "nullReason": { "type": ["string", "null"], "description": "자료가 없을 때 사유(terms가 비어 있으면 필수)" },
    "nextAction": { "type": ["string", "null"], "description": "자료가 없을 때 다음 행동(어디서 어떻게 확인하는지)" },
+   "classProxy": { "type": ["object", "null"], "description": "인원 자료가 없는 학교의 대리 지표: 평가계획의 탐구 과목별 개설 학급 수(학생 수가 아님). 성향은 '학급 수 기준 추정'", "properties": { "term": { "type": ["string", "null"] }, "unit": { "type": "string" }, "rows": { "type": "array", "items": { "type": "object", "required": ["name", "area", "classes"], "properties": { "name": { "type": "string" }, "area": { "enum": ["사회", "과학"] }, "classes": { "type": "integer", "minimum": 1 } } } }, "totals": { "type": "object" }, "shares": { "type": "object" }, "tendency": { "type": "string" }, "basis": { "type": "string" }, "note": { "type": ["string", "null"] }, "nullReason": { "type": ["string", "null"] }, "nextAction": { "type": ["string", "null"] } } },
    "terms": { "type": "array", "items": { "type": "object", "required": ["label", "subjects"], "properties": {
     "label": { "type": "string", "description": "예: 2학년 1학기" },
     "subjects": { "type": "array", "minItems": 1, "items": { "type": "object", "required": ["name", "area", "count"], "properties": { "name": { "type": "string" }, "area": { "enum": ["사회", "과학"] }, "count": { "type": "integer", "minimum": 0 } } } } } } } } } }
