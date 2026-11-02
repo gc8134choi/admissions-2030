@@ -533,14 +533,14 @@
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교별 공시값이라 학교알리미 학교 페이지의 학생 현황에서 확인해요"
+     "nullReason": "학교알리미 학교 코드를 아직 확보하지 못해 값이 없어요 → 학교알리미 학교 페이지의 학생 현황에서 확인해요"
     },
     "meal": {
      "value": null,
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교별 공시·게시 자료라 학교알리미 급식 현황이나 학교 홈페이지 급식 게시판에서 확인해요"
+     "nullReason": "학교알리미 학교 코드를 아직 확보하지 못해 값이 없어요 → 학교알리미 급식 현황이나 학교 홈페이지 급식 게시판에서 확인해요"
     },
     "uniform": {
      "value": null,
@@ -1184,14 +1184,14 @@
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교별 공시값이라 학교알리미 학교 페이지의 학생 현황에서 확인해요"
+     "nullReason": "학교알리미 학교 코드를 아직 확보하지 못해 값이 없어요 → 학교알리미 학교 페이지의 학생 현황에서 확인해요"
     },
     "meal": {
      "value": null,
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "학교별 공시·게시 자료라 학교알리미 급식 현황이나 학교 홈페이지 급식 게시판에서 확인해요"
+     "nullReason": "학교알리미 학교 코드를 아직 확보하지 못해 값이 없어요 → 학교알리미 급식 현황이나 학교 홈페이지 급식 게시판에서 확인해요"
     },
     "uniform": {
      "value": null,

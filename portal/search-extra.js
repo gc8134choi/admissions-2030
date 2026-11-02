@@ -30,5 +30,9 @@ export async function loadSearchExtra(load) {
   out.push({ href: "#schedule?t=life", t: "학교 설명회 일정", s: "학교별 설명회 날짜는 공고가 나오면 일정에 올라와요 → 배정 학교 홈페이지 공지에서 확인", text: "설명회 일정 입학설명회 학교 설명회 신입생 설명회 예비소집 날짜 공고" });
   out.push({ href: "#select/curriculum?v=middle", t: "중학교 급식 안내", s: "학교별 공시·게시 자료라 학교알리미 급식 현황이나 학교 홈페이지 급식 게시판에서 확인해요", text: "급식 중학교 급식 급식 방식 급식 현황 학교 홈페이지 급식 게시판 학교알리미" });
   for (const r of rl?.csatRegimes || []) if ((r.areas || []).some((a) => a.minutes)) out.push({ href: "#admission/system", t: `${r.label} · 영역별 시험 시간·문항 수`, s: r.areas.filter((a) => a.minutes).map((a) => `${a.area} ${a.minutes}분`).join(" · "), text: J(["수능 시간 시험시간 시험 시간 영역별 문항 수", r.label, ...r.areas.map((a) => `${a.area} ${a.items ?? ""}문항 ${a.minutes ?? ""}분`)]) });
+  for (const ty of ht?.types || []) if (ty.cost?.value) out.push({ href: "#select/curriculum?v=hs", t: `${ty.name} · 학비·비용`, s: String(ty.cost.value).slice(0, 80), text: J(["학비 등록금 수업료 비용 무상교육 급식비 기숙사비", ty.name, ty.cost.value]) });
+  out.push({ href: "#life/credit", t: "한국사 · 필수 과목", s: "한국사는 공통과목으로 필수예요(졸업 필수 학점 중 6학점)", text: "한국사 필수 필수 과목 한국사 6학점 졸업 필수 학점 공통과목" });
+  out.push({ href: "#select/curriculum?v=univ", t: "대학별 과목 요건(서울대 수학 등)", s: "대학·전형별 필수·권장 과목은 대학 요건 화면에서 학교별 편제표와 맞춰 볼 수 있어요", text: "서울대 수학 권장과목 필수과목 대학 요건 과목 선택 모집단위 미적분 기하 확률과 통계" });
+  out.push({ href: "#select/curriculum?v=middle", t: "자유학기(시험 없는 학기)", s: "자유학기·자유학년 시행 학기의 성적은 고입 내신에 반영하지 않아요. 시행 방식은 학교 안내에서 확인해요", text: "자유학기 자유학년 시험 없는 학기 중1 고입 내신 반영 안 함" });
   return out;
 }

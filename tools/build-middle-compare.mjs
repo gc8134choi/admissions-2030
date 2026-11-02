@@ -48,8 +48,8 @@ const cleanSrc = (v) => (v ? { ...v, ...(v.source?.name ? { source: { ...v.sourc
 for (const s of draft.schools) for (const k of Object.keys(s.values || {})) s.values[k] = cleanSrc(s.values[k]);
 // 값이 비는 이유와 다음 행동을 분명히 적는다(수집 미완료로 읽히지 않게): 학교알리미는 학교 코드가 있어야 가져올 수 있다
 const REASON = {
-  students: "학교별 공시값이라 학교알리미 학교 페이지의 학생 현황에서 확인해요",
-  meal: "학교별 공시·게시 자료라 학교알리미 급식 현황이나 학교 홈페이지 급식 게시판에서 확인해요",
+  students: "학교알리미 학교 코드를 아직 확보하지 못해 값이 없어요 → 학교알리미 학교 페이지의 학생 현황에서 확인해요",
+  meal: "학교알리미 학교 코드를 아직 확보하지 못해 값이 없어요 → 학교알리미 급식 현황이나 학교 홈페이지 급식 게시판에서 확인해요",
 };
 for (const s of draft.schools) for (const [k, r] of Object.entries(REASON)) if (s.values?.[k] && s.values[k].value == null) s.values[k].nullReason = r;
 // 학교알리미 학생수는 특수학급을 뺀 수라 다른 자료(급식 전체 인원 등)와 달라 보일 수 있다: 항목 이름에 밝힌다
