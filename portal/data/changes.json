@@ -1,9 +1,177 @@
 {
  "_meta": {
   "note": "데이터 변경 이력(생성물). tools/build-changes.mjs가 직전 기록과 비교해 만든다. 최신이 맨 앞.",
-  "count": 196
+  "count": 210
  },
  "changes": [
+  {
+   "id": "chg-20261102-197",
+   "at": "2026-11-02T10:20:43+09:00",
+   "file": "glossary",
+   "target": "terms[gl-027]",
+   "label": "절대평가",
+   "field": null,
+   "kind": "added",
+   "old": null,
+   "new": null,
+   "reason": "용어 14개 추가"
+  },
+  {
+   "id": "chg-20261102-198",
+   "at": "2026-11-02T10:20:43+09:00",
+   "file": "glossary",
+   "target": "terms[gl-028]",
+   "label": "상대평가",
+   "field": null,
+   "kind": "added",
+   "old": null,
+   "new": null,
+   "reason": "용어 14개 추가"
+  },
+  {
+   "id": "chg-20261102-199",
+   "at": "2026-11-02T10:20:43+09:00",
+   "file": "glossary",
+   "target": "terms[gl-029]",
+   "label": "석차등급",
+   "field": null,
+   "kind": "added",
+   "old": null,
+   "new": null,
+   "reason": "용어 14개 추가"
+  },
+  {
+   "id": "chg-20261102-200",
+   "at": "2026-11-02T10:20:43+09:00",
+   "file": "glossary",
+   "target": "terms[gl-030]",
+   "label": "성취도",
+   "field": null,
+   "kind": "added",
+   "old": null,
+   "new": null,
+   "reason": "용어 14개 추가"
+  },
+  {
+   "id": "chg-20261102-201",
+   "at": "2026-11-02T10:20:43+09:00",
+   "file": "glossary",
+   "target": "terms[gl-031]",
+   "label": "공통과목",
+   "field": null,
+   "kind": "added",
+   "old": null,
+   "new": null,
+   "reason": "용어 14개 추가"
+  },
+  {
+   "id": "chg-20261102-202",
+   "at": "2026-11-02T10:20:43+09:00",
+   "file": "glossary",
+   "target": "terms[gl-032]",
+   "label": "선택과목",
+   "field": null,
+   "kind": "added",
+   "old": null,
+   "new": null,
+   "reason": "용어 14개 추가"
+  },
+  {
+   "id": "chg-20261102-203",
+   "at": "2026-11-02T10:20:43+09:00",
+   "file": "glossary",
+   "target": "terms[gl-033]",
+   "label": "지필평가",
+   "field": null,
+   "kind": "added",
+   "old": null,
+   "new": null,
+   "reason": "용어 14개 추가"
+  },
+  {
+   "id": "chg-20261102-204",
+   "at": "2026-11-02T10:20:43+09:00",
+   "file": "glossary",
+   "target": "terms[gl-034]",
+   "label": "수행평가",
+   "field": null,
+   "kind": "added",
+   "old": null,
+   "new": null,
+   "reason": "용어 14개 추가"
+  },
+  {
+   "id": "chg-20261102-205",
+   "at": "2026-11-02T10:20:43+09:00",
+   "file": "glossary",
+   "target": "terms[gl-035]",
+   "label": "생활기록부",
+   "field": null,
+   "kind": "added",
+   "old": null,
+   "new": null,
+   "reason": "용어 14개 추가"
+  },
+  {
+   "id": "chg-20261102-206",
+   "at": "2026-11-02T10:20:43+09:00",
+   "file": "glossary",
+   "target": "terms[gl-036]",
+   "label": "세특",
+   "field": null,
+   "kind": "added",
+   "old": null,
+   "new": null,
+   "reason": "용어 14개 추가"
+  },
+  {
+   "id": "chg-20261102-207",
+   "at": "2026-11-02T10:20:43+09:00",
+   "file": "glossary",
+   "target": "terms[gl-037]",
+   "label": "수능",
+   "field": null,
+   "kind": "added",
+   "old": null,
+   "new": null,
+   "reason": "용어 14개 추가"
+  },
+  {
+   "id": "chg-20261102-208",
+   "at": "2026-11-02T10:20:43+09:00",
+   "file": "glossary",
+   "target": "terms[gl-038]",
+   "label": "내신",
+   "field": null,
+   "kind": "added",
+   "old": null,
+   "new": null,
+   "reason": "용어 14개 추가"
+  },
+  {
+   "id": "chg-20261102-209",
+   "at": "2026-11-02T10:20:43+09:00",
+   "file": "glossary",
+   "target": "terms[gl-039]",
+   "label": "전기고·후기고",
+   "field": null,
+   "kind": "added",
+   "old": null,
+   "new": null,
+   "reason": "용어 14개 추가"
+  },
+  {
+   "id": "chg-20261102-210",
+   "at": "2026-11-02T10:20:43+09:00",
+   "file": "glossary",
+   "target": "terms[gl-040]",
+   "label": "편제표",
+   "field": null,
+   "kind": "added",
+   "old": null,
+   "new": null,
+   "reason": "용어 14개 추가"
+  },
   {
    "id": "chg-20261102-083",
    "at": "2026-11-02T09:41:42+09:00",
