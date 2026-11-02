@@ -188,7 +188,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ev-sch-09-1@admissions-2030
-DTSTAMP:20261025T000000Z
+DTSTAMP:20261102T000000Z
 DTSTART;VALUE=DATE:20270301
 DTEND;VALUE=DATE:20270401
 SUMMARY:2027학년도 고교 입학(개학) · 입학·개학(추정) (추
@@ -196,7 +196,10 @@ SUMMARY:2027학년도 고교 입학(개학) · 입학·개학(추정) (추
 DESCRIPTION:2027.3 초(서울/경기). 학년도는 3월 1일 시작이 관
  행이고 2027.3.1이 월요일 삼일절이라 입학식·개학은 3.2(
  화) 전후로 추정. 서울·경기 교육청의 2027학년도 학사일
- 정 근거는 공식 문서로 확인 중이에요\n확인일 2026-10-25
+ 정 근거는 공식 문서로 확인 중이에요\n출처: 초·중등교
+ 육법 시행령(학년도는 3월 1일부터 다음 해 2월 말일까지
+ \, 국가법령정보센터) https://www.law.go.kr/법령/초ㆍ중등교
+ 육법시행령\n확인일 2026-11-02
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -725,50 +728,36 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ev-life-09-1@admissions-2030
-DTSTAMP:20261025T000000Z
+DTSTAMP:20261102T000000Z
 DTSTART;VALUE=DATE:20270301
 DTEND;VALUE=DATE:20270401
 SUMMARY:중학교 입학식·개학 (추정) (월 단위)
 DESCRIPTION:2027.3 초 입학식·개학. 학년도 3월 1일 시작\, 3.1(
  월)이 삼일절이라 3.2~3.3 전후로 추정(2026학년도 경기 학
- 교 사례는 3.3). 신입생 예비소집은 학교별 공지\n확인일 
- 2026-10-25
+ 교 사례는 3.3). 신입생 예비소집은 학교별 공지\n출처: 
+ 초·중등교육법 시행령(학년도는 3월 1일부터 다음 해 2
+ 월 말일까지\, 국가법령정보센터) https://www.law.go.kr/법령/
+ 초ㆍ중등교육법시행령\n확인일 2026-11-02
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ev-life-10-1@admissions-2030
-DTSTAMP:20261025T000000Z
+DTSTAMP:20261102T000000Z
 DTSTART;VALUE=DATE:20270301
 DTEND;VALUE=DATE:20270401
 SUMMARY:고교 입학식·개학 (추정) (월 단위)
 DESCRIPTION:2027.3 초 입학식·개학 3.2~3.3 전후로 추정. 경기 
- 학사일정 공식 근거는 공식 문서로 확인 중이에요\n확인
- 일 2026-10-25
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:ev-gg-12-1@admissions-2030
-DTSTAMP:20261102T000000Z
-DTSTART;VALUE=DATE:20261204
-DTEND;VALUE=DATE:20261211
-SUMMARY:용인 배정 비율·원서 접수 방식
-DESCRIPTION:학군내배정 정원은 고교별 모집정원의 50%(서천
- 고 80%\, 처인고 100%)\, 구역내배정은 모집정원 × 구역별 
- 지원율 − 학군내 배정 인원. 경기도 내 중학교 졸업예
- 정자는 재학 중학교에서 고교입학시스템으로 원서 작성
- ·전송 후 용인교육지원청에 종이원서 제출\, 원서접수 
- 마감일 2026.12.10(목). 마감 시각은 공식 문서에서 확인하
- 지 못함(경기 고입 안내)\n출처: 경기도교육청 고입·전
- 학 포털 자료실: 2027학년도 경기도 고교 평준화학군 리
- 플렛(9개 학군) 중 용인학군(2026.9.18 게시\, 공식) https://sa
- tp.goe.go.kr/main.do\n확인일 2026-11-02
+ 학사일정 공식 근거는 공식 문서로 확인 중이에요\n출처
+ : 초·중등교육법 시행령(학년도는 3월 1일부터 다음 해 2
+ 월 말일까지\, 국가법령정보센터) https://www.law.go.kr/법령/
+ 초ㆍ중등교육법시행령\n확인일 2026-11-02
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ev-gg-15-1@admissions-2030
 DTSTAMP:20261102T000000Z
 DTSTART;VALUE=DATE:20261204
-DTEND;VALUE=DATE:20270206
+DTEND;VALUE=DATE:20261211
 SUMMARY:경기 후기 고교 원서 접수처·마감 시각(평준화)
 DESCRIPTION:접수처: 응시원서에 학군내·구역내 지망 순위
  를 적어 해당 지역 교육지원청에 접수(경기도교육청 학
@@ -787,7 +776,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:ev-gg-16-1@admissions-2030
 DTSTAMP:20261102T000000Z
-DTSTART;VALUE=DATE:20261204
+DTSTART;VALUE=DATE:20270204
 DTEND;VALUE=DATE:20270206
 SUMMARY:경기 평준화 일반고 추가배정 대상·방식
 DESCRIPTION:대상: 학군별 기존 원서접수자 중 배정대상자로
