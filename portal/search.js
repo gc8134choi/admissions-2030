@@ -58,7 +58,8 @@ export function mountSearch(btn, { load, store, esc }) {
     const has = (...xs) => { const n = xs.map(norm).join(" "); if (toks.length < 2) return ks.some((w) => n.includes(w)); const hit = toks.map((tk) => expand(tk).some((w) => n.includes(w))); return any ? hit.some(Boolean) : hit.every(Boolean); };
     const fo = store.get("portal.focus", []), foc = Array.isArray(fo) ? fo : [];
     const rank = (title, body, row) => (norm(title).includes(k) ? 6 : ks.some((w) => norm(title).includes(w)) ? 4 : 1) - (row && (row.region === "seoul" || /^서울/.test(title || "")) ? 3 : 0) + (row && foc.includes(stageOf(row)) ? 1 : 0) + (norm(body || "").includes(k) ? 0.5 : 0);
-    const rows = data.policy.filter((r) => has(r.title, r.body)).map((r) => ({ href: routeOf(r), t: r.title, s: (r.body || "").slice(0, 90), sc: rank(r.title, r.body, r) })).sort((a, b) => b.sc - a.sc).slice(0, 12);
+    const tokHit = (r) => (toks.length > 1 ? toks.filter((tk) => expand(tk).some((w) => norm(r.title + " " + r.body).includes(w))).length * 1.5 : 0), hsQ = HS_Q.test(norm(q0)) && !MID_Q.test(norm(q0)), hsRow = (r) => /^(hs-|gg-|high-school)/.test(r.topic);
+    const rows = data.policy.filter((r) => has(r.title, r.body)).map((r) => ({ href: routeOf(r), t: r.title, s: (r.body || "").slice(0, 90), sc: rank(r.title, r.body, r) + tokHit(r) + (hsQ && hsRow(r) ? 2 : 0) })).sort((a, b) => b.sc - a.sc).slice(0, 12);
     const gd = data.guide.filter((g) => has(g.t, g.text)).map((g) => ({ href: g.href, t: g.t, s: (g.s || (g.text.split(/(?<=[.。다요])\s/).find((x) => ks.some((w) => norm(x).includes(w))) || g.text)).slice(0, 80), sc: rank(g.t, g.text) })).sort((a, b) => b.sc - a.sc).slice(0, 8);
     const sch = data.summary.filter((m) => has(m.schoolName, m.region)).map((m) => ({ href: `#select/curriculum?v=summary&s=${m.schoolId}`, t: m.schoolName, s: `${m.creditsRequired}+${m.creditsElective}학점 · ${m.region}` }));
     const sub = data.subjects.filter((x) => has(x.name, x.summary)).slice(0, 10).map((x) => ({ href: `#select/curriculum?v=compare`, t: x.name, s: `${x.area || ""} · ${(x.summary || "").slice(0, 70)}` }));
@@ -70,7 +71,17 @@ export function mountSearch(btn, { load, store, esc }) {
   };
   // 안내가 정해진 주제(이사·배정 서류·자사고 배점·재수 …)는 느슨하게 맞는 다른 행보다 먼저 보여 준다. 없는 주제는 엉뚱한 행 대신 안내만 보인다.
   const priority = (q) => { const nq = norm(q); const hit = data.guide.filter((g) => g.q && new RegExp(g.q).test(nq)); return hit.length ? { list: hit.map((g) => ({ href: g.href, t: g.t, s: g.s })), only: hit.some((g) => g.only) } : null; };
-  const search = (q) => { const p = priority(q); if (p && p.only) return [["바로 안내", p.list]]; let r = searchOnce(q, false); if (!r.length && String(q).trim().includes(" ")) r = searchOnce(q, true); if (p) r = [["바로 안내", p.list], ...r.map(([h, l]) => [h, l.filter((x) => !p.list.some((y) => y.t === x.t))]).filter(([, l]) => l.length)]; return r; };
+  // 학교급 가중: 고교 말(고교·후기·일반고·외고 …)이 있으면 고교 정책 행을 중학교 배정 안내보다 먼저, 중학교·초등 말이면 반대로
+  const HS_Q = /고교|고등|일반고|후기|외고|국제고|자사고|특성화|마이스터|평준화|고입|전기고|과학고/, MID_Q = /중학교|중입|초등|초6|중학군|근거리|중1/;
+  const isMid = (x) => /v=middle/.test(x.href) || /^(초[56]|중[123]) · |배정부터 등록까지|^중학교 /.test(x.t);
+  const reweight = (r, q) => {
+    const nq = norm(q), hs = HS_Q.test(nq), mid = MID_Q.test(nq); if (hs === mid) return r;
+    const part = (l) => [...l.filter((x) => isMid(x) === mid), ...l.filter((x) => isMid(x) !== mid)];
+    r = r.map(([h, l]) => (h.startsWith("가이드") ? [h, part(l)] : [h, l]));
+    if (hs) { const i = r.findIndex(([h]) => h.startsWith("일정")), j = r.findIndex(([h]) => h.startsWith("가이드")); if (i > j && j >= 0) { const [g] = r.splice(i, 1); r.splice(j, 0, g); } }
+    return r;
+  };
+  const search = (q) => { const p = priority(q); if (p && p.only) return [["바로 안내", p.list]]; let r = searchOnce(q, false); if (!r.length && String(q).trim().includes(" ")) r = searchOnce(q, true); r = reweight(r, q); if (p) r = [["바로 안내", p.list], ...r.map(([h, l]) => [h, l.filter((x) => !p.list.some((y) => y.t === x.t))]).filter(([, l]) => l.length)]; return r; };
   const item = (x) => `<li><a href="${esc(x.href)}"${x.ext ? ' target="_blank" rel="noopener"' : ""} data-go><b>${esc(x.t)}${x.ext ? " ↗" : ""}</b><span>${esc(x.s)}</span></a></li>`;
   const paint = () => {
     const q = box.querySelector("input").value, out = box.querySelector(".sr-out");

@@ -6,7 +6,7 @@
 import { readFileSync, existsSync } from "node:fs";
 const { GAPS, gapDocs } = await import("../portal/search-extra.js");
 const rd = (n) => (existsSync(`portal/data/${n}.json`) ? JSON.parse(readFileSync(`portal/data/${n}.json`, "utf8")) : null);
-const D = { pol: rd("policy"), hc: rd("hs-compare"), mc: rd("middle-compare"), ev: rd("events"), mid: rd("middle")?.principles };
+const D = { pol: rd("policy"), hc: rd("hs-compare"), mc: rd("middle-compare"), ev: rd("events"), mid: rd("middle")?.principles, el: rd("electives")?.items };
 const errs = [], NONE = /아직 없어요|이 포털에 없|아직 모으지|값은 없어요|없어요 →/;
 const docs = gapDocs(D), by = new Map(docs.map((d) => [d.gap, d]));
 for (const g of GAPS) {
