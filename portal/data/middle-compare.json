@@ -1,7 +1,7 @@
 {
  "_meta": {
   "note": "중학교 비교표(생성물, 손으로 고치지 않는다). research/data/middle-compare-draft.json에서 tools/build-middle-compare.mjs가 만든다. 값마다 기준연도·상태·출처가 붙는다.",
-  "checkedAt": "2026-11-01",
+  "checkedAt": "2026-11-02",
   "schoolCount": 13
  },
  "fields": [
@@ -64,10 +64,18 @@
    "needsAsOf": true
   },
   {
+   "id": "studentsDetail",
+   "label": "학년별 학생수",
+   "group": "규모",
+   "order": 8,
+   "type": "string",
+   "needsAsOf": true
+  },
+  {
    "id": "meal",
    "label": "급식 방식",
    "group": "생활",
-   "order": 8,
+   "order": 9,
    "type": "string",
    "needsAsOf": true
   },
@@ -75,7 +83,7 @@
    "id": "uniform",
    "label": "교복(구입 방식·가격)",
    "group": "생활",
-   "order": 9,
+   "order": 10,
    "type": "string",
    "needsAsOf": true
   },
@@ -83,7 +91,7 @@
    "id": "commute",
    "label": "통학(거리·시간)",
    "group": "생활",
-   "order": 10,
+   "order": 11,
    "type": "string",
    "needsAsOf": true
   },
@@ -91,7 +99,7 @@
    "id": "homepage",
    "label": "학교 홈페이지",
    "group": "링크",
-   "order": 11,
+   "order": 12,
    "type": "link",
    "needsAsOf": true
   },
@@ -99,7 +107,7 @@
    "id": "phone",
    "label": "대표 전화",
    "group": "링크",
-   "order": 12,
+   "order": 13,
    "type": "string",
    "needsAsOf": true
   },
@@ -107,7 +115,7 @@
    "id": "feature",
    "label": "교육 특색·노력중점(학교 홈페이지)",
    "group": "교육",
-   "order": 13,
+   "order": 14,
    "type": "text",
    "needsAsOf": true
   }
@@ -185,25 +193,37 @@
      "nullReason": null
     },
     "students": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교별 공시값이라 학교알리미 학교 페이지의 학생 현황에서 확인해요"
+     "value": 543,
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(문정중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003474"
+     },
+     "sourceId": "src-733218f6",
+     "nullReason": null
     },
     "meal": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교별 공시·게시 자료라 학교알리미 급식 현황이나 학교 홈페이지 급식 게시판에서 확인해요"
+     "value": "직영 급식(중식), 급식 학생 541명 / 전체 543명",
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 9-가-1 급식 실시 현황(문정중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003474"
+     },
+     "sourceId": "src-733218f6",
+     "nullReason": null
     },
     "uniform": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+     "value": "교복 유형 정장형+생활형, 학생 1인당 구입 지원금 400,000원. 구매방식·낙찰가(공시 표의 정장형·생활형·체육복 칸 순서 그대로): 학교주관구매 230,000원 / 학교주관구매 100,000원 / 학교주관구매 65,000원",
+     "asOf": "2026.9(3차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(문정중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003474"
+     },
+     "sourceId": "src-733218f6",
+     "nullReason": null
     },
     "commute": {
      "value": null,
@@ -244,6 +264,17 @@
      },
      "sourceId": "src-841a2f14",
      "nullReason": null
+    },
+    "studentsDetail": {
+     "value": "1학년 228명 · 2학년 157명 · 3학년 158명(특수·순회학급 제외 합계)",
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(문정중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003474"
+     },
+     "sourceId": "src-733218f6",
+     "nullReason": null
     }
    },
    "externalIds": [
@@ -252,6 +283,11 @@
      "atptCode": "J10",
      "code": "7751025",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090003474",
+     "asOf": "2026-11-02"
     }
    ]
   },
@@ -327,25 +363,37 @@
      "nullReason": null
     },
     "students": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교별 공시값이라 학교알리미 학교 페이지의 학생 현황에서 확인해요"
+     "value": 946,
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(성복중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003479"
+     },
+     "sourceId": "src-77c35205",
+     "nullReason": null
     },
     "meal": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교별 공시·게시 자료라 학교알리미 급식 현황이나 학교 홈페이지 급식 게시판에서 확인해요"
+     "value": "직영 급식(중식), 급식 학생 950명 / 전체 950명",
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 9-가-1 급식 실시 현황(성복중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003479"
+     },
+     "sourceId": "src-77c35205",
+     "nullReason": null
     },
     "uniform": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+     "value": "교복 유형 정장형+생활형, 학생 1인당 구입 지원금 400,000원. 구매방식·낙찰가(공시 표의 정장형·생활형·체육복 칸 순서 그대로): 학교주관구매 66,000원 / 학교주관구매 265,000원 / 학교주관구매 112,000원",
+     "asOf": "2026.9(3차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(성복중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003479"
+     },
+     "sourceId": "src-77c35205",
+     "nullReason": null
     },
     "commute": {
      "value": null,
@@ -382,6 +430,17 @@
      "status": "estimated",
      "source": null,
      "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
+    },
+    "studentsDetail": {
+     "value": "1학년 318명 · 2학년 345명 · 3학년 283명(특수·순회학급 제외 합계)",
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(성복중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003479"
+     },
+     "sourceId": "src-77c35205",
+     "nullReason": null
     }
    },
    "externalIds": [
@@ -390,6 +449,11 @@
      "atptCode": "J10",
      "code": "7751031",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090003479",
+     "asOf": "2026-11-02"
     }
    ]
   },
@@ -483,7 +547,7 @@
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+     "nullReason": "학교알리미 학교 코드를 찾지 못해 공시 값을 읽지 못했어요(학교 홈페이지에 코드 링크가 없고 코드 목록에도 없음). 학교알리미 학교 페이지에서 직접 확인하세요."
     },
     "commute": {
      "value": null,
@@ -520,6 +584,13 @@
      "status": "estimated",
      "source": null,
      "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
+    },
+    "studentsDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 학교 코드를 찾지 못해 공시 값을 읽지 못했어요(학교 홈페이지에 코드 링크가 없고 코드 목록에도 없음). 학교알리미 학교 페이지에서 직접 확인하세요."
     }
    },
    "externalIds": [
@@ -603,25 +674,37 @@
      "nullReason": null
     },
     "students": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교별 공시값이라 학교알리미 학교 페이지의 학생 현황에서 확인해요"
+     "value": 633,
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(손곡중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100004974"
+     },
+     "sourceId": "src-d413c2e9",
+     "nullReason": null
     },
     "meal": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교별 공시·게시 자료라 학교알리미 급식 현황이나 학교 홈페이지 급식 게시판에서 확인해요"
+     "value": "직영 급식(중식), 급식 학생 643명 / 전체 643명",
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 9-가-1 급식 실시 현황(손곡중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100004974"
+     },
+     "sourceId": "src-d413c2e9",
+     "nullReason": null
     },
     "uniform": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+     "value": "교복 유형 정장형+생활형, 학생 1인당 구입 지원금 400,000원. 구매방식·낙찰가(공시 표의 정장형·생활형·체육복 칸 순서 그대로): 학교주관구매 172,000원 / 학교주관구매 228,000원 / 해당없음",
+     "asOf": "2026.9(3차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(손곡중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100004974"
+     },
+     "sourceId": "src-d413c2e9",
+     "nullReason": null
     },
     "commute": {
      "value": null,
@@ -662,6 +745,17 @@
      },
      "sourceId": "src-82c123ee",
      "nullReason": null
+    },
+    "studentsDetail": {
+     "value": "1학년 216명 · 2학년 214명 · 3학년 203명(특수·순회학급 제외 합계)",
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(손곡중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100004974"
+     },
+     "sourceId": "src-d413c2e9",
+     "nullReason": null
     }
    },
    "externalIds": [
@@ -670,6 +764,11 @@
      "atptCode": "J10",
      "code": "7751017",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "J100004974",
+     "asOf": "2026-11-02"
     }
    ]
   },
@@ -745,25 +844,37 @@
      "nullReason": null
     },
     "students": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교별 공시값이라 학교알리미 학교 페이지의 학생 현황에서 확인해요"
+     "value": 1022,
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(수지중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003482"
+     },
+     "sourceId": "src-bc7ba8c4",
+     "nullReason": null
     },
     "meal": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교별 공시·게시 자료라 학교알리미 급식 현황이나 학교 홈페이지 급식 게시판에서 확인해요"
+     "value": "직영 급식(중식), 급식 학생 1,020명 / 전체 1,022명",
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 9-가-1 급식 실시 현황(수지중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003482"
+     },
+     "sourceId": "src-bc7ba8c4",
+     "nullReason": null
     },
     "uniform": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+     "value": "교복 유형 정장형+생활형, 학생 1인당 구입 지원금 400,000원. 구매방식·낙찰가(공시 표의 정장형·생활형·체육복 칸 순서 그대로): 학교주관구매 222,000원 / 학교주관구매 188,000원 / 해당없음",
+     "asOf": "2026.9(3차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(수지중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003482"
+     },
+     "sourceId": "src-bc7ba8c4",
+     "nullReason": null
     },
     "commute": {
      "value": null,
@@ -804,6 +915,17 @@
      },
      "sourceId": "src-8729a9a3",
      "nullReason": null
+    },
+    "studentsDetail": {
+     "value": "1학년 322명 · 2학년 318명 · 3학년 382명(특수·순회학급 제외 합계)",
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(수지중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003482"
+     },
+     "sourceId": "src-bc7ba8c4",
+     "nullReason": null
     }
    },
    "externalIds": [
@@ -812,6 +934,11 @@
      "atptCode": "J10",
      "code": "7751032",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090003482",
+     "asOf": "2026-11-02"
     }
    ]
   },
@@ -887,25 +1014,37 @@
      "nullReason": null
     },
     "students": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교별 공시값이라 학교알리미 학교 페이지의 학생 현황에서 확인해요"
+     "value": 663,
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(신봉중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100006035"
+     },
+     "sourceId": "src-3fcfdcec",
+     "nullReason": null
     },
     "meal": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교별 공시·게시 자료라 학교알리미 급식 현황이나 학교 홈페이지 급식 게시판에서 확인해요"
+     "value": "직영 급식(중식), 급식 학생 668명 / 전체 668명",
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 9-가-1 급식 실시 현황(신봉중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100006035"
+     },
+     "sourceId": "src-3fcfdcec",
+     "nullReason": null
     },
     "uniform": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+     "value": "교복 유형 정장형+생활형, 학생 1인당 구입 지원금 400,000원. 구매방식·낙찰가(공시 표의 정장형·생활형·체육복 칸 순서 그대로): 학교주관구매 128,000원 / 학교주관구매 66,000원 / 학교주관구매 113,000원",
+     "asOf": "2026.9(3차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(신봉중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100006035"
+     },
+     "sourceId": "src-3fcfdcec",
+     "nullReason": null
     },
     "commute": {
      "value": null,
@@ -942,6 +1081,17 @@
      "status": "estimated",
      "source": null,
      "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
+    },
+    "studentsDetail": {
+     "value": "1학년 225명 · 2학년 214명 · 3학년 224명(특수·순회학급 제외 합계)",
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(신봉중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100006035"
+     },
+     "sourceId": "src-3fcfdcec",
+     "nullReason": null
     }
    },
    "externalIds": [
@@ -950,6 +1100,11 @@
      "atptCode": "J10",
      "code": "7751314",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "J100006035",
+     "asOf": "2026-11-02"
     }
    ]
   },
@@ -1043,7 +1198,7 @@
      "asOf": null,
      "status": "estimated",
      "source": null,
-     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+     "nullReason": "학교알리미 학교 코드를 찾지 못해 공시 값을 읽지 못했어요(학교 홈페이지에 코드 링크가 없고 코드 목록에도 없음). 학교알리미 학교 페이지에서 직접 확인하세요."
     },
     "commute": {
      "value": null,
@@ -1084,6 +1239,13 @@
      },
      "sourceId": "src-a5bdbdfc",
      "nullReason": null
+    },
+    "studentsDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "estimated",
+     "source": null,
+     "nullReason": "학교알리미 학교 코드를 찾지 못해 공시 값을 읽지 못했어요(학교 홈페이지에 코드 링크가 없고 코드 목록에도 없음). 학교알리미 학교 페이지에서 직접 확인하세요."
     }
    },
    "externalIds": [
@@ -1167,25 +1329,37 @@
      "nullReason": null
     },
     "students": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교별 공시값이라 학교알리미 학교 페이지의 학생 현황에서 확인해요"
+     "value": 1074,
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(정평중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003490"
+     },
+     "sourceId": "src-8ce0d599",
+     "nullReason": null
     },
     "meal": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교별 공시·게시 자료라 학교알리미 급식 현황이나 학교 홈페이지 급식 게시판에서 확인해요"
+     "value": "직영 급식(중식), 급식 학생 1,080명 / 전체 1,080명",
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 9-가-1 급식 실시 현황(정평중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003490"
+     },
+     "sourceId": "src-8ce0d599",
+     "nullReason": null
     },
     "uniform": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+     "value": "교복 유형 정장형+생활형, 학생 1인당 구입 지원금 400,000원. 구매방식·낙찰가(공시 표의 정장형·생활형·체육복 칸 순서 그대로): 학교주관구매 165,000원 / 학교주관구매 262,000원 / 해당없음",
+     "asOf": "2026.9(3차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(정평중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003490"
+     },
+     "sourceId": "src-8ce0d599",
+     "nullReason": null
     },
     "commute": {
      "value": null,
@@ -1222,6 +1396,17 @@
      "status": "estimated",
      "source": null,
      "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
+    },
+    "studentsDetail": {
+     "value": "1학년 349명 · 2학년 381명 · 3학년 344명(특수·순회학급 제외 합계)",
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(정평중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003490"
+     },
+     "sourceId": "src-8ce0d599",
+     "nullReason": null
     }
    },
    "externalIds": [
@@ -1230,6 +1415,11 @@
      "atptCode": "J10",
      "code": "7751039",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090003490",
+     "asOf": "2026-11-02"
     }
    ]
   },
@@ -1305,25 +1495,37 @@
      "nullReason": null
     },
     "students": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교별 공시값이라 학교알리미 학교 페이지의 학생 현황에서 확인해요"
+     "value": 880,
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(홍천중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003494"
+     },
+     "sourceId": "src-fb80c866",
+     "nullReason": null
     },
     "meal": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교별 공시·게시 자료라 학교알리미 급식 현황이나 학교 홈페이지 급식 게시판에서 확인해요"
+     "value": "직영 급식(중식), 급식 학생 886명 / 전체 886명",
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 9-가-1 급식 실시 현황(홍천중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003494"
+     },
+     "sourceId": "src-fb80c866",
+     "nullReason": null
     },
     "uniform": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+     "value": "교복 유형 정장형+생활형, 학생 1인당 구입 지원금 400,000원. 구매방식·낙찰가(공시 표의 정장형·생활형·체육복 칸 순서 그대로): 학교주관구매 326,000원 / 학교주관구매 105,000원 / 해당없음",
+     "asOf": "2026.9(3차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(홍천중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003494"
+     },
+     "sourceId": "src-fb80c866",
+     "nullReason": null
     },
     "commute": {
      "value": null,
@@ -1360,6 +1562,17 @@
      "status": "estimated",
      "source": null,
      "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
+    },
+    "studentsDetail": {
+     "value": "1학년 287명 · 2학년 283명 · 3학년 310명(특수·순회학급 제외 합계)",
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(홍천중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003494"
+     },
+     "sourceId": "src-fb80c866",
+     "nullReason": null
     }
    },
    "externalIds": [
@@ -1368,6 +1581,11 @@
      "atptCode": "J10",
      "code": "7751044",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090003494",
+     "asOf": "2026-11-02"
     }
    ]
   },
@@ -1443,25 +1661,37 @@
      "nullReason": null
     },
     "students": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교별 공시값이라 학교알리미 학교 페이지의 학생 현황에서 확인해요"
+     "value": 773,
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(상현중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003477"
+     },
+     "sourceId": "src-9c193299",
+     "nullReason": null
     },
     "meal": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교별 공시·게시 자료라 학교알리미 급식 현황이나 학교 홈페이지 급식 게시판에서 확인해요"
+     "value": "직영 급식(중식), 급식 학생 781명 / 전체 781명",
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 9-가-1 급식 실시 현황(상현중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003477"
+     },
+     "sourceId": "src-9c193299",
+     "nullReason": null
     },
     "uniform": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+     "value": "교복 유형 정장형+생활형, 학생 1인당 구입 지원금 400,000원. 구매방식·낙찰가(공시 표의 정장형·생활형·체육복 칸 순서 그대로): 학교주관구매 286,000원 / 학교주관구매 110,000원 / 해당없음",
+     "asOf": "2026.9(3차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(상현중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003477"
+     },
+     "sourceId": "src-9c193299",
+     "nullReason": null
     },
     "commute": {
      "value": null,
@@ -1498,6 +1728,17 @@
      "status": "estimated",
      "source": null,
      "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
+    },
+    "studentsDetail": {
+     "value": "1학년 233명 · 2학년 264명 · 3학년 276명(특수·순회학급 제외 합계)",
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(상현중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003477"
+     },
+     "sourceId": "src-9c193299",
+     "nullReason": null
     }
    },
    "externalIds": [
@@ -1506,6 +1747,11 @@
      "atptCode": "J10",
      "code": "7751029",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090003477",
+     "asOf": "2026-11-02"
     }
    ]
   },
@@ -1581,25 +1827,37 @@
      "nullReason": null
     },
     "students": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교별 공시값이라 학교알리미 학교 페이지의 학생 현황에서 확인해요"
+     "value": 948,
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(서원중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003478"
+     },
+     "sourceId": "src-89ecfff8",
+     "nullReason": null
     },
     "meal": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교별 공시·게시 자료라 학교알리미 급식 현황이나 학교 홈페이지 급식 게시판에서 확인해요"
+     "value": "직영 급식(중식), 급식 학생 953명 / 전체 953명",
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 9-가-1 급식 실시 현황(서원중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003478"
+     },
+     "sourceId": "src-89ecfff8",
+     "nullReason": null
     },
     "uniform": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+     "value": "교복 유형 정장형+생활형, 학생 1인당 구입 지원금 400,000원. 구매방식·낙찰가(공시 표의 정장형·생활형·체육복 칸 순서 그대로): 학교주관구매 291,000원 / 학교주관구매 109,000원 / 해당없음",
+     "asOf": "2026.9(3차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(서원중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003478"
+     },
+     "sourceId": "src-89ecfff8",
+     "nullReason": null
     },
     "commute": {
      "value": null,
@@ -1636,6 +1894,17 @@
      "status": "estimated",
      "source": null,
      "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
+    },
+    "studentsDetail": {
+     "value": "1학년 323명 · 2학년 315명 · 3학년 310명(특수·순회학급 제외 합계)",
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(서원중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003478"
+     },
+     "sourceId": "src-89ecfff8",
+     "nullReason": null
     }
    },
    "externalIds": [
@@ -1644,6 +1913,11 @@
      "atptCode": "J10",
      "code": "7751030",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090003478",
+     "asOf": "2026-11-02"
     }
    ]
   },
@@ -1719,25 +1993,37 @@
      "nullReason": null
     },
     "students": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교별 공시값이라 학교알리미 학교 페이지의 학생 현황에서 확인해요"
+     "value": 657,
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(소현중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003480"
+     },
+     "sourceId": "src-d3f1294f",
+     "nullReason": null
     },
     "meal": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교별 공시·게시 자료라 학교알리미 급식 현황이나 학교 홈페이지 급식 게시판에서 확인해요"
+     "value": "직영 급식(중식), 급식 학생 663명 / 전체 663명",
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 9-가-1 급식 실시 현황(소현중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003480"
+     },
+     "sourceId": "src-d3f1294f",
+     "nullReason": null
     },
     "uniform": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+     "value": "교복 유형 정장형+생활형, 학생 1인당 구입 지원금 400,000원. 구매방식·낙찰가(공시 표의 정장형·생활형·체육복 칸 순서 그대로): 학교주관구매 176,000원 / 학교주관구매 210,000원 / 해당없음",
+     "asOf": "2026.9(3차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(소현중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003480"
+     },
+     "sourceId": "src-d3f1294f",
+     "nullReason": null
     },
     "commute": {
      "value": null,
@@ -1778,6 +2064,17 @@
      },
      "sourceId": "src-4a334623",
      "nullReason": null
+    },
+    "studentsDetail": {
+     "value": "1학년 179명 · 2학년 237명 · 3학년 241명(특수·순회학급 제외 합계)",
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(소현중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003480"
+     },
+     "sourceId": "src-d3f1294f",
+     "nullReason": null
     }
    },
    "externalIds": [
@@ -1786,6 +2083,11 @@
      "atptCode": "J10",
      "code": "7751034",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090003480",
+     "asOf": "2026-11-02"
     }
    ]
   },
@@ -1861,25 +2163,37 @@
      "nullReason": null
     },
     "students": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교별 공시값이라 학교알리미 학교 페이지의 학생 현황에서 확인해요"
+     "value": 984,
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(이현중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003489"
+     },
+     "sourceId": "src-85969105",
+     "nullReason": null
     },
     "meal": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교별 공시·게시 자료라 학교알리미 급식 현황이나 학교 홈페이지 급식 게시판에서 확인해요"
+     "value": "직영 급식(중식), 급식 학생 990명 / 전체 990명",
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 9-가-1 급식 실시 현황(이현중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003489"
+     },
+     "sourceId": "src-85969105",
+     "nullReason": null
     },
     "uniform": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "교복 구입 방식·가격은 학교 공지(입학 전 안내)에만 있어요. 배정 뒤 학교 홈페이지 공지를 확인하세요."
+     "value": "교복 유형 정장형+생활형, 학생 1인당 구입 지원금 400,000원. 구매방식·낙찰가(공시 표의 정장형·생활형·체육복 칸 순서 그대로): 학교주관구매 200,000원 / 학교주관구매 200,000원 / 해당없음",
+     "asOf": "2026.9(3차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(이현중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003489"
+     },
+     "sourceId": "src-85969105",
+     "nullReason": null
     },
     "commute": {
      "value": null,
@@ -1916,6 +2230,17 @@
      "status": "estimated",
      "source": null,
      "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
+    },
+    "studentsDetail": {
+     "value": "1학년 321명 · 2학년 323명 · 3학년 340명(특수·순회학급 제외 합계)",
+     "asOf": "2026.5(2차 공시)",
+     "status": "confirmed",
+     "source": {
+      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(이현중학교)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003489"
+     },
+     "sourceId": "src-85969105",
+     "nullReason": null
     }
    },
    "externalIds": [
@@ -1924,6 +2249,11 @@
      "atptCode": "J10",
      "code": "7751035",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090003489",
+     "asOf": "2026-11-02"
     }
    ]
   }

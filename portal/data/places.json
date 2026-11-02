@@ -66,6 +66,11 @@
      "atptCode": "J10",
      "code": "7751025",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090003474",
+     "asOf": "2026-11-02"
     }
    ],
    "status": "reported",
@@ -103,6 +108,11 @@
      "atptCode": "J10",
      "code": "7751031",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090003479",
+     "asOf": "2026-11-02"
     }
    ],
    "status": "reported",
@@ -182,6 +192,11 @@
      "atptCode": "J10",
      "code": "7751017",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "J100004974",
+     "asOf": "2026-11-02"
     }
    ],
    "status": "reported",
@@ -219,6 +234,11 @@
      "atptCode": "J10",
      "code": "7751032",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090003482",
+     "asOf": "2026-11-02"
     }
    ],
    "status": "reported",
@@ -256,6 +276,11 @@
      "atptCode": "J10",
      "code": "7751314",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "J100006035",
+     "asOf": "2026-11-02"
     }
    ],
    "status": "reported",
@@ -330,6 +355,11 @@
      "atptCode": "J10",
      "code": "7751039",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090003490",
+     "asOf": "2026-11-02"
     }
    ],
    "status": "reported",
@@ -367,6 +397,11 @@
      "atptCode": "J10",
      "code": "7751044",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090003494",
+     "asOf": "2026-11-02"
     }
    ],
    "status": "reported",
@@ -634,6 +669,11 @@
      "atptCode": "J10",
      "code": "7751029",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090003477",
+     "asOf": "2026-11-02"
     }
    ],
    "status": "reported",
@@ -676,6 +716,11 @@
      "atptCode": "J10",
      "code": "7751030",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090003478",
+     "asOf": "2026-11-02"
     }
    ],
    "status": "reported",
@@ -718,6 +763,11 @@
      "atptCode": "J10",
      "code": "7751034",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090003480",
+     "asOf": "2026-11-02"
     }
    ],
    "status": "reported",
@@ -757,6 +807,11 @@
      "atptCode": "J10",
      "code": "7751035",
      "asOf": "2026-11-01"
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090003489",
+     "asOf": "2026-11-02"
     }
    ],
    "status": "reported",
