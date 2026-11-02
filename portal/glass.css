@@ -464,3 +464,8 @@ button.term{padding-block:max(0px,calc((24px - 1.1em) / 2))}
 .ed-g .v sup{font-size:max(13px,.4em)!important;vertical-align:baseline;top:0;margin-left:2px}
 .ed .ed-g:not(.main) .v{line-height:1.1}
 .ed .ed-g:not(.main) .k{margin-top:4px}
+
+/* 검색에서 찾아온 행 강조(?hl=) */
+.hl-row{outline:2px solid #C4310D;outline-offset:3px;border-radius:2px;animation:hlfade 7s ease-out forwards}
+@keyframes hlfade{0%,70%{outline-color:#C4310D}100%{outline-color:transparent}}
+@media (prefers-reduced-motion:reduce){.hl-row{animation:none}}
