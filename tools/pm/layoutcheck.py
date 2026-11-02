@@ -56,6 +56,7 @@ if(c.none){if(!STICKY.includes(r))out.push({w,r,issue:'비교표 없음'});}else
   const l=t.querySelector('tbody td.l');if(!l)return {bad:'과목명 칸 없음'};const bg=getComputedStyle(l).backgroundColor;if(/rgba\(.*,\s*0\)$/.test(bg)||bg==='transparent')return {bad:'고정 열 배경이 투명(스크롤 시 겹쳐 보임)'};
   if(l.getBoundingClientRect().width>Math.min(120.5,wr.clientWidth*0.5))return {bad:'고정 열이 래퍼의 절반을 넘음 '+Math.round(l.getBoundingClientRect().width)+'/'+wr.clientWidth};
   if(innerWidth>=1100&&wr.scrollWidth>wr.clientWidth+1)return {bad:'1440에서 표가 래퍼보다 넓어 안쪽 가로 스크롤 '+(wr.scrollWidth-wr.clientWidth)+'px'};
+  const sc=t.querySelector('thead th:not(.l)');if(innerWidth<600&&sc&&(wr.clientWidth-l.getBoundingClientRect().width)/sc.getBoundingClientRect().width<2)return {bad:'390에서 학교 열이 2개 미만으로 보임('+((wr.clientWidth-l.getBoundingClientRect().width)/sc.getBoundingClientRect().width).toFixed(2)+')'};
   return {ok:1}});
  if(f&&f.bad)out.push({w,r:'v=compare',issue:'상세 비교 고정 열',bad:[f.bad]});}
 // ⓘ 겹침(기준 확정): 24px 터치 상자는 이웃과 겹쳐도 되지만, ⓘ 글자 중앙 14px가 이웃 링크·버튼·접이식 제목의 '보이는 글자 영역'과 겹치면 안 된다(화면 맨 위에 보이는 경우만 셈, 열어 둔 학교 추가 목록은 제외)
