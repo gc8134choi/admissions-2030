@@ -46,5 +46,18 @@
     "topic": "school-electives",
     "source": "용인홍천고등학교 2026 진로진학 아카데미 시즌4(2026.10.29 설명회, 사용자 제공 촬영 사진)",
     "date": "2026"
+  },
+  {
+    "id": "pungdeok-admission-result-2026",
+    "title": "용인풍덕고 2026학년도 대입 결과(졸업생 미포함)",
+    "description": "학교 설명회 슬라이드를 촬영한 사진: 대학별 합격자수·수시·정시",
+    "file": "files/pungdeok-admission-result-2026.jpg",
+    "thumb": "",
+    "schoolIds": [
+      "school-pungdeok"
+    ],
+    "topic": "school-admission-results",
+    "source": "용인풍덕고등학교 설명회 슬라이드(사용자 제공 촬영 사진, 제공일 2026-11-02)",
+    "date": "2026"
   }
 ]
