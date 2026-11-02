@@ -2098,7 +2098,7 @@
   "note": "2028학년도 기준",
   "unverified": false,
   "sourceKind": "academy",
-  "sourceName": "설연고 설명회 자료(사용자 제공 원본)",
+  "sourceName": "자료 유형: 학원 설명회 자료(사용자 제공 원본) · 자료명: 설연고 설명회 자료(원 출처 미표기) · 제공일: 정확한 제공일 기록 없음(저장소 반영일 2026-10-25)",
   "sourceUrl": null,
   "region": "national",
   "checkedAt": "2026-10-25"
@@ -2112,7 +2112,7 @@
   "note": "2030학년도 확정 아님",
   "unverified": false,
   "sourceKind": "academy",
-  "sourceName": "설연고 설명회 자료(사용자 제공 원본)",
+  "sourceName": "자료 유형: 학원 설명회 자료(사용자 제공 원본) · 자료명: 설연고 설명회 자료(원 출처 미표기) · 제공일: 정확한 제공일 기록 없음(저장소 반영일 2026-10-25)",
   "sourceUrl": null,
   "region": "national",
   "checkedAt": "2026-10-25"
@@ -2126,7 +2126,7 @@
   "note": "2028학년도 기준",
   "unverified": false,
   "sourceKind": "academy",
-  "sourceName": "설연고 설명회 자료(사용자 제공 원본)",
+  "sourceName": "자료 유형: 학원 설명회 자료(사용자 제공 원본) · 자료명: 설연고 설명회 자료(원 출처 미표기) · 제공일: 정확한 제공일 기록 없음(저장소 반영일 2026-10-25)",
   "sourceUrl": null,
   "region": "national",
   "checkedAt": "2026-10-25"
@@ -2140,7 +2140,7 @@
   "note": "2028학년도 기준",
   "unverified": false,
   "sourceKind": "academy",
-  "sourceName": "설연고 설명회 자료(사용자 제공 원본)",
+  "sourceName": "자료 유형: 학원 설명회 자료(사용자 제공 원본) · 자료명: 설연고 설명회 자료(원 출처 미표기) · 제공일: 정확한 제공일 기록 없음(저장소 반영일 2026-10-25)",
   "sourceUrl": null,
   "region": "national",
   "checkedAt": "2026-10-25"
@@ -2275,13 +2275,27 @@
   "entryYear": 2027,
   "examYear": 2030,
   "title": "경기 후기 평준화 일반고 일정",
-  "body": "원서접수 2026.12.4~12.10(해당 지역 교육지원청), 전형기간 12.11~2027.1.5, 배정 대상자 발표 1.6, 배정 학교 발표 1.22, 등록 1.25~27, 추가 배정·발표 2.4, 추가 배정학교 등록 2.4~5",
+  "body": "원서접수 2026.12.4~12.10(해당 지역 교육지원청), 배정 대상자 발표 2027.1.6, 배정 학교 발표 1.22, 등록 1.25~27, 추가 배정·발표 2.4, 추가 배정학교 등록 2.4~5",
   "status": "confirmed",
-  "note": "공식 원문 확인, 2026-10-25",
+  "note": "기본계획 PDF 5쪽 표 확인 2026-11-02, 평준화 일반고 전형기간은 표에 없어 뺌",
   "unverified": false,
   "sourceKind": "official",
-  "sourceName": "경기도교육청 고등학교 입학전학 포털 공지: 2027학년도 경기도 고등학교 신입생 전형요강(2026.8.19, 첨부 PDF)",
-  "sourceUrl": "https://satp.goe.go.kr/main.do",
+  "sourceName": "경기도교육청 2027학년도 경기도 고등학교 입학전형 기본계획(2026.3) PDF 5쪽 후기 평준화지역 정시모집 일정",
+  "sourceUrl": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/e88abfe2-8daa-494e-9cb8-a2d030225b45.pdf",
+  "sources": [
+   {
+    "name": "경기도교육청 2027학년도 경기도 고등학교 입학전형 기본계획(2026.3) PDF 5쪽 후기 평준화지역 정시모집 일정",
+    "url": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/e88abfe2-8daa-494e-9cb8-a2d030225b45.pdf"
+   },
+   {
+    "name": "경기도교육청 고입 포털 공지(2026.8.19)",
+    "url": "https://satp.goe.go.kr/main.do"
+   }
+  ],
+  "sourceIds": [
+   "src-f11446ea",
+   "src-184eecc3"
+  ],
   "region": "gyeonggi",
   "audience": [
    "general"
@@ -2289,7 +2303,7 @@
   "learners": [
    "A"
   ],
-  "checkedAt": "2026-10-25",
+  "checkedAt": "2026-11-02",
   "events": [
    {
     "label": "경기 평준화 일반고 원서접수~추가배정",
@@ -3494,13 +3508,27 @@
   "entryYear": 2027,
   "examYear": 2030,
   "title": "출신구역 조정·변경 대상(용인)",
-  "body": "출신구역 조정 대상 중학교: 소현중·용인신촌중(1구역→2구역), 모현중·도현중(3구역→1·2구역). 출신구역 변경은 1구역 출신자가 2구역으로 변경 희망 시 신청, 수용구역 인가 정원 내에서 추첨",
+  "body": "출신구역 조정 대상 중학교와 조정 구역(배정 방안 PDF 53쪽 표): 소현중·용인신촌중은 1구역 출신→2구역, 모현중·도현중은 3구역 출신→1구역 또는 2구역(모현중은 학생 배치 여건이 개선될 때까지 허용). 출신구역 변경은 1구역 출신자가 2구역으로 변경 희망 시 신청, 수용구역 인가 정원 내에서 추첨",
   "status": "confirmed",
   "note": "공식 원문 확인, 2026-10-25",
   "unverified": false,
   "sourceKind": "official",
   "sourceName": "경기도교육청 고입·전학 포털 자료실: 2027학년도 경기도 고교 평준화학군 리플렛(9개 학군) 중 용인학군(2026.9.18 게시, 공식)",
   "sourceUrl": "https://satp.goe.go.kr/main.do",
+  "sources": [
+   {
+    "name": "경기도교육청 고입·전학 포털 자료실: 2027학년도 경기도 고교 평준화학군 리플렛(9개 학군) 중 용인학군(2026.9.18 게시, 공식)",
+    "url": "https://satp.goe.go.kr/main.do"
+   },
+   {
+    "name": "경기도교육청 2027학년도 경기도 고교 평준화 학군 학생 배정 방안(2026.8) PDF 53쪽 출신구역 조정 신청 대상교",
+    "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
+   }
+  ],
+  "sourceIds": [
+   "src-184eecc3",
+   "src-e1e929fa"
+  ],
   "region": "gyeonggi",
   "audience": [
    "general",

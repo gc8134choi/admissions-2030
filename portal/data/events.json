@@ -672,10 +672,24 @@
   "end": "2027-02-05",
   "status": "confirmed",
   "unverified": false,
-  "note": "공식 원문 확인, 2026-10-25",
+  "note": "기본계획 PDF 5쪽 표 확인 2026-11-02, 평준화 일반고 전형기간은 표에 없어 뺌",
   "sourceKind": "official",
-  "sourceName": "경기도교육청 고등학교 입학전학 포털 공지: 2027학년도 경기도 고등학교 신입생 전형요강(2026.8.19, 첨부 PDF)",
-  "sourceUrl": "https://satp.goe.go.kr/main.do",
+  "sourceName": "경기도교육청 2027학년도 경기도 고등학교 입학전형 기본계획(2026.3) PDF 5쪽 후기 평준화지역 정시모집 일정",
+  "sourceUrl": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/e88abfe2-8daa-494e-9cb8-a2d030225b45.pdf",
+  "sources": [
+   {
+    "name": "경기도교육청 2027학년도 경기도 고등학교 입학전형 기본계획(2026.3) PDF 5쪽 후기 평준화지역 정시모집 일정",
+    "url": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/e88abfe2-8daa-494e-9cb8-a2d030225b45.pdf"
+   },
+   {
+    "name": "경기도교육청 고입 포털 공지(2026.8.19)",
+    "url": "https://satp.goe.go.kr/main.do"
+   }
+  ],
+  "sourceIds": [
+   "src-f11446ea",
+   "src-184eecc3"
+  ],
   "region": "gyeonggi",
   "audience": [
    "general"
@@ -685,8 +699,8 @@
   ],
   "entryYear": 2027,
   "examYear": 2030,
-  "body": "원서접수 2026.12.4~12.10(해당 지역 교육지원청), 전형기간 12.11~2027.1.5, 배정 대상자 발표 1.6, 배정 학교 발표 1.22, 등록 1.25~27, 추가 배정·발표 2.4, 추가 배정학교 등록 2.4~5",
-  "checkedAt": "2026-10-25"
+  "body": "원서접수 2026.12.4~12.10(해당 지역 교육지원청), 배정 대상자 발표 2027.1.6, 배정 학교 발표 1.22, 등록 1.25~27, 추가 배정·발표 2.4, 추가 배정학교 등록 2.4~5",
+  "checkedAt": "2026-11-02"
  },
  {
   "id": "ev-gg-14-1",
