@@ -4,7 +4,7 @@
   "checkedAt": "2026-11-01",
   "count": 69,
   "withNeis": 69,
-  "withSchoolinfo": 9
+  "withSchoolinfo": 10
  },
  "items": [
   {
@@ -328,6 +328,15 @@
      "source": {
       "name": "NEIS 교육정보 개방포털 학교기본정보(정식 이름 용인홍천고등학교)",
       "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+     }
+    },
+    {
+     "system": "schoolinfo",
+     "code": "S090005416",
+     "asOf": "2026-11-02",
+     "source": {
+      "name": "학교알리미 학교정보(고교 비교표의 학교알리미 주소)",
+      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
      }
     }
    ]

@@ -8,20 +8,27 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 
 const argv = process.argv.slice(2);
 const SRC = argv.includes("--src") ? argv[argv.indexOf("--src") + 1] : "research/data/exam-trends-draft.json";
+const MAN = JSON.parse(readFileSync("tools/exam-trends-manual.json", "utf8"));
+const CODES = existsSync("portal/data/school-codes.json") ? JSON.parse(readFileSync("portal/data/school-codes.json", "utf8")).items : [];
+const schoolCode = (pid) => CODES.find((c) => c.placeId === pid)?.ids?.find((x) => x.system === "schoolinfo")?.code ?? null;
+const ns = (s) => String(s).replace(/\s+/g, "");
+// 선택과목 현황(electives.json)의 과목 → 영역(사회·과학). 평가계획의 교과 표기가 이와 어긋나면 오류
+const elArea = new Map();
+if (existsSync("portal/data/electives.json")) for (const it of JSON.parse(readFileSync("portal/data/electives.json", "utf8")).items ?? []) for (const tm of it.terms ?? []) for (const s of tm.subjects) elArea.set(ns(s.name), s.area);
 const raw = existsSync(SRC) ? JSON.parse(readFileSync(SRC, "utf8")) : { _meta: {}, items: [] };
 const noUrl = (s) => (s == null ? s : String(s).replace(/\s*\(https?:\/\/[^)]*\)/g, "")); // 문장 속 주소 괄호는 뺀다(링크는 화면이 따로 붙인다)
-const cleanUrl = (u) => (!u || /GS_CD=None/.test(u) ? (u ? "https://www.schoolinfo.go.kr/" : null) : u); // 학교 코드가 없는 공시 주소는 학교알리미 첫 화면으로
+const cleanUrl = (u, pid) => (!u ? null : /GS_CD=None/.test(u) ? (schoolCode(pid) ? u.replace("GS_CD=None", `GS_CD=${schoolCode(pid)}`) : "https://www.schoolinfo.go.kr/") : u); // 학교 코드가 빠진 공시 주소는 학교 단위 주소로(코드는 school-codes) // 학교 코드가 없는 공시 주소는 학교알리미 첫 화면으로
 // 조사 초안(schools[{assessmentPlan[{term,grade,rows[{subject,area,writtenPct,performancePct}]}],achievement{rows},qualitative[]}], official, commonRules, readingAids) → 이 파일의 입력 모양(items·guide)으로 바꾼다
 function convert(r) {
   if (!r.schools) return r;
   const items = r.schools.map((s) => {
     const ap = s.assessmentPlan ?? [], rows = s.achievement?.rows ?? [];
-    const srcs = []; for (const a of ap) { const x = a.source; if (x?.name && !srcs.some((y) => y.name === x.name)) srcs.push({ name: x.name, url: cleanUrl(x.url) }); }
+    const srcs = []; for (const a of ap) { const x = a.source; if (x?.name && !srcs.some((y) => y.name === x.name)) srcs.push({ name: x.name, url: cleanUrl(x.url, s.placeId) }); }
     const first = ap.find((a) => a.grade === 1) ?? ap[0];
     const q = (s.qualitative ?? []).map((x) => ({ text: x.text, source: x.source?.name ?? null, status: x.status ?? "reported" }));
     const hasData = ap.length || rows.length;
     return { placeId: s.placeId, name: s.name, term: first?.term ?? null, asOf: first?.checkedAt ?? null, sourceKind: first ? "학교알리미 공시 평가계획" : null, status: first?.status === "confirmed" ? "reported" : first?.status ?? "reported",
-      sources: srcs, plans: ap.map((a) => ({ term: a.term, grade: a.grade, rows: a.rows.map((x) => ({ subject: x.subject, area: x.area, paperPct: x.writtenPct, performancePct: x.performancePct, essayPct: x.essayPct ?? null })) })),
+      sources: srcs, plans: ap.map((a) => ({ term: a.term, grade: a.grade, gaps: MAN.gaps.filter((g) => g.placeId === s.placeId && g.grade === a.grade).map((g) => ({ subject: g.subject, area: g.area })), rows: a.rows.map((x) => ({ subject: x.subject, area: MAN.areaOverrides[ns(x.subject)] ?? x.area, paperPct: x.writtenPct, performancePct: x.performancePct, essayPct: x.essayPct ?? null })) })),
       subjects: rows, qualitative: q, nullReason: hasData ? null : noUrl(s.assessmentPlanNullReason ?? s.achievement?.nullReason ?? null), nextAction: hasData ? null : noUrl(s.assessmentPlanNextAction ?? s.achievement?.nextAction ?? null), achievementNull: rows.length ? null : noUrl(s.achievement?.nullReason ?? null) };
   });
   const a = r.readingAids ?? {};
@@ -52,13 +59,16 @@ const items = draft.items.map((it) => {
   const plans = (it.plans ?? []).map((pl) => {
     const rows = pl.rows.map((x) => {
       const y = `${w} ${pl.grade}학년 ${x.subject}`;
-      if (!SUBJ.includes(x.area) && !x.area) errs.push(`${y}: area 없음`);
+      if (![...SUBJ, "제2외국어"].includes(x.area)) errs.push(`${y}: 교과 "${x.area}"`);
+      if (elArea.has(ns(x.subject)) && elArea.get(ns(x.subject)) !== x.area) errs.push(`${y}: 교과 ${x.area} ≠ 선택과목 현황의 분류 ${elArea.get(ns(x.subject))}`);
+      if (MAN.areaOverrides[ns(x.subject)] == null && ["인문학과윤리", "중국어회화"].includes(ns(x.subject))) errs.push(`${y}: 교과 보정 표 필요`);
       for (const k of ["paperPct", "performancePct", "essayPct"]) if (x[k] != null && !(num(x[k]) && x[k] >= 0 && x[k] <= 100)) errs.push(`${y}: ${k} ${x[k]} 범위`);
       if (x.paperPct == null || x.performancePct == null) errs.push(`${y}: 지필·수행 비율 필요`); else if (Math.abs(x.paperPct + x.performancePct - 100) > 0.6) errs.push(`${y}: 지필 ${x.paperPct} + 수행 ${x.performancePct} ≠ 100`);
       return { subject: plain(x.subject), area: x.area, paperPct: x.paperPct, performancePct: x.performancePct, essayPct: x.essayPct ?? null };
     });
     const subs = new Set(); for (const x of rows) { if (subs.has(x.subject)) errs.push(`${w} ${pl.grade}학년: 과목 "${x.subject}" 중복`); subs.add(x.subject); }
-    return { term: pl.term, grade: pl.grade, rows };
+    const gaps = (pl.gaps ?? []).filter((g) => { if (rows.some((x) => ns(x.subject) === ns(g.subject))) { errs.push(`${w} ${pl.grade}학년 ${g.subject}: 값이 생겼으니 tools/exam-trends-manual.json gaps에서 지우세요`); return false; } return true; });
+    return { term: pl.term, grade: pl.grade, rows, gaps };
   });
   base.plans = plans; base.qualitative = (it.qualitative ?? []).map((x) => ({ text: plain(x.text), source: x.source ? plain(x.source) : null, status: x.status ?? "reported" }));
   if (!(it.subjects ?? []).length && !plans.length) {

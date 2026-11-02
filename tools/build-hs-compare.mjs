@@ -47,6 +47,8 @@ const { plain } = await import("../portal/plain.js"); // 출처명 안의 내부
 const cleanSrc = (v) => (v ? { ...v, ...(v.source?.name ? { source: { ...v.source, name: plain(v.source.name) } } : {}), ...(v.nullReason ? { nullReason: plain(v.nullReason) } : {}) } : v);
 for (const s of draft.schools) for (const k of Object.keys(s.values || {})) s.values[k] = cleanSrc(s.values[k]);
 const fields = [...draft.fields].sort((a, b) => a.order - b.order);
+// 확인하지 못한 표기는 화면에서 뺀다: 용인홍천고의 '단설'(단독 설립) 구분은 확인 전이라 설립(공립)과 설립일만 보인다
+for (const s of draft.schools) if (s.placeId === "pl-014" && typeof s.values?.founding?.value === "string") s.values.founding.value = s.values.founding.value.replace("·단설", "");
 for (const s of draft.schools) { const x = externalIdsFor(s.placeId); if (x) s.externalIds = x; } // 외부 코드(NEIS·학교알리미)
 const out = { _meta: { note: "고교 비교표(생성물, 손으로 고치지 않는다). research/data/hs-compare-draft.json에서 tools/build-hs-compare.mjs가 만든다. 값마다 기준연도·상태·출처가 붙는다.", checkedAt: draft._meta?.checkedAt ?? null, schoolCount: draft.schools.length }, fields, schools: draft.schools };
 const json = JSON.stringify(withSourceIds(out), null, 1) + "\n";
