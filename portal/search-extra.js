@@ -7,7 +7,7 @@ const J = (a) => a.filter(Boolean).join(" ");
 const ok = (p) => p.catch(() => null);
 
 export async function loadSearchExtra(load) {
-  const [guide, tl, ht, gl, hc, bf, mc, el, ex] = await Promise.all([ok(load("middle-guide")), ok(load("timeline")), ok(load("hs-types")), ok(load("glossary")), ok(load("hs-compare")), ok(load("briefings")), ok(load("middle-compare")), ok(load("electives")), ok(load("exam-trends"))]);
+  const [guide, tl, ht, gl, hc, bf, mc, el, ex, rl] = await Promise.all([ok(load("middle-guide")), ok(load("timeline")), ok(load("hs-types")), ok(load("glossary")), ok(load("hs-compare")), ok(load("briefings")), ok(load("middle-compare")), ok(load("electives")), ok(load("exam-trends")), ok(load("rules"))]);
   const out = [];
   for (const s of guide?.sections || []) for (const it of s.items) out.push({ href: "#select/curriculum?v=middle", t: s.title, s: it.text.slice(0, 80), text: J([s.title, it.text]) });
   for (const e of tl?.events || []) out.push({ href: "#select/curriculum?v=middle", t: `${e.stage} · 큰 그림 연표`, s: e.what.slice(0, 80), text: J([e.stage, e.what, e.note]) });
@@ -28,5 +28,7 @@ export async function loadSearchExtra(load) {
   out.push({ href: "#select/curriculum?v=middle", t: "통학(거리·시간)", s: "집 주소에 따라 달라서 학교별 값은 없어요 → 학교 지도에서 위치를 보고 지도 앱으로 확인", text: "통학 통학 거리 통학 시간 등교 학교 지도 집에서 학교까지" });
   out.push({ href: "#select/curriculum?v=hs&g=%EC%A7%84%ED%95%99", t: "대학 진학 현황 · 학교 비교", s: "학교알리미 공시 목록에 없어요 → 학교 설명회·학교 홈페이지 자료에서 확인", text: "대학 진학 대학 진학 현황 진학 실적 합격 실적 졸업생 진학 서울대 학교 설명회" });
   out.push({ href: "#schedule?t=life", t: "학교 설명회 일정", s: "학교별 설명회 날짜는 공고가 나오면 일정에 올라와요 → 배정 학교 홈페이지 공지에서 확인", text: "설명회 일정 입학설명회 학교 설명회 신입생 설명회 예비소집 날짜 공고" });
+  out.push({ href: "#select/curriculum?v=middle", t: "중학교 급식 안내", s: "학교별 공시·게시 자료라 학교알리미 급식 현황이나 학교 홈페이지 급식 게시판에서 확인해요", text: "급식 중학교 급식 급식 방식 급식 현황 학교 홈페이지 급식 게시판 학교알리미" });
+  for (const r of rl?.csatRegimes || []) if ((r.areas || []).some((a) => a.minutes)) out.push({ href: "#admission/system", t: `${r.label} · 영역별 시험 시간·문항 수`, s: r.areas.filter((a) => a.minutes).map((a) => `${a.area} ${a.minutes}분`).join(" · "), text: J(["수능 시간 시험시간 시험 시간 영역별 문항 수", r.label, ...r.areas.map((a) => `${a.area} ${a.items ?? ""}문항 ${a.minutes ?? ""}분`)]) });
   return out;
 }

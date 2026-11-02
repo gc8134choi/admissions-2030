@@ -48,8 +48,8 @@ const cleanSrc = (v) => (v ? { ...v, ...(v.source?.name ? { source: { ...v.sourc
 for (const s of draft.schools) for (const k of Object.keys(s.values || {})) s.values[k] = cleanSrc(s.values[k]);
 // 값이 비는 이유와 다음 행동을 분명히 적는다(수집 미완료로 읽히지 않게): 학교알리미는 학교 코드가 있어야 가져올 수 있다
 const REASON = {
-  students: "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교알리미 학생 현황에서 확인",
-  meal: "학교알리미 학교 코드가 있어야 가져올 수 있어요(이름 검색은 자동화할 수 없어요) → 학교 페이지 주소를 알려 주시면 채워요 / 학교 홈페이지 급식 게시판에서 확인",
+  students: "학교별 공시값이라 학교알리미 학교 페이지의 학생 현황에서 확인해요",
+  meal: "학교별 공시·게시 자료라 학교알리미 급식 현황이나 학교 홈페이지 급식 게시판에서 확인해요",
 };
 for (const s of draft.schools) for (const [k, r] of Object.entries(REASON)) if (s.values?.[k] && s.values[k].value == null) s.values[k].nullReason = r;
 const fields = [...draft.fields].sort((a, b) => a.order - b.order);
