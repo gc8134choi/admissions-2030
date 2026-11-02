@@ -70,6 +70,8 @@ const items = draft.items.map((it) => {
     const gaps = (pl.gaps ?? []).filter((g) => { if (rows.some((x) => ns(x.subject) === ns(g.subject))) { errs.push(`${w} ${pl.grade}학년 ${g.subject}: 값이 생겼으니 tools/exam-trends-manual.json gaps에서 지우세요`); return false; } return true; });
     // 표를 자동으로 읽어 옮긴 값은 과목이 빠졌을 수 있다: 화면에는 '일부 과목만' 한 줄(많이 빠진 경우는 그렇게)
     const partial = pl.note ? (/많은 과목이 빠/.test(pl.note) ? "많은 과목이 빠졌어요. 학교알리미 파일에서 직접 확인해 주세요" : "일부 과목이 빠졌을 수 있어요") : null;
+    // 1학년 공통과목(국어·수학·영어·통합사회·통합과학)이 빠졌으면 '평가계획 정리 중'으로 알린다
+    if (pl.grade === 1) for (const [key, area] of [["공통국어", "국어"], ["공통수학", "수학"], ["공통영어", "영어"], ["통합사회", "사회"], ["통합과학", "과학"]]) if (!rows.some((x) => ns(x.subject).includes(key)) && !gaps.some((g) => ns(g.subject).includes(key))) gaps.push({ subject: key, area });
     return { term: pl.term, grade: pl.grade ?? null, rows, gaps, partial };
   });
   base.plans = plans; base.qualitative = (it.qualitative ?? []).map((x) => ({ text: plain(x.text), source: x.source ? plain(x.source) : null, status: x.status ?? "reported" }));

@@ -704,7 +704,12 @@
        "essayPct": 40
       }
      ],
-     "gaps": [],
+     "gaps": [
+      {
+       "subject": "공통영어",
+       "area": "영어"
+      }
+     ],
      "partial": "일부 과목이 빠졌을 수 있어요"
     },
     {
@@ -986,7 +991,12 @@
        "essayPct": null
       }
      ],
-     "gaps": [],
+     "gaps": [
+      {
+       "subject": "공통수학",
+       "area": "수학"
+      }
+     ],
      "partial": "일부 과목이 빠졌을 수 있어요"
     },
     {

@@ -4,6 +4,7 @@
 import { emptyLine } from "./empty.js";
 import { srcWrap } from "./src-ref.js";
 import "./policy-css.js";
+import { decorateGlossary } from "./glossary.js";
 
 export const EL_GROUP = "선택과목 현황(현 2학년)";
 const NO_DATA = "이 학교의 선택과목 인원 자료를 아직 정리하지 못했어요";
@@ -73,5 +74,5 @@ export function bindElectives(root, data, esc, files = new Map()) {
   const sel = root.querySelector("[data-el-pick]");
   if (!sel) return;
   const m = by(data);
-  sel.addEventListener("change", () => { const e = m.get(sel.value); const b = root.querySelector("[data-el-body]"); if (e && b) b.innerHTML = body(e, esc, files); });
+  sel.addEventListener("change", () => { const e = m.get(sel.value); const b = root.querySelector("[data-el-body]"); if (e && b) { b.innerHTML = body(e, esc, files); try { decorateGlossary(b); } catch {} } });
 }

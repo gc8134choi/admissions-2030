@@ -4,6 +4,7 @@
 import { emptyLine, WHERE } from "./empty.js";
 import { srcWrap } from "./src-ref.js";
 import "./policy-css.js";
+import { decorateGlossary } from "./glossary.js";
 
 export const EX_GROUP = "내신 출제·평가 경향(국영수과사)";
 const SUBJ = ["국어", "영어", "수학", "과학", "사회"];
@@ -67,5 +68,5 @@ export function bindExam(root, data, esc, opts = {}) {
   const sel = root.querySelector("[data-ex-pick]");
   if (!sel) return;
   const m = by(data);
-  sel.addEventListener("change", () => { const e = m.get(sel.value); const b = root.querySelector("[data-ex-body]"); if (e && b) b.innerHTML = detail(e, esc, opts); });
+  sel.addEventListener("change", () => { const e = m.get(sel.value); const b = root.querySelector("[data-ex-body]"); if (e && b) { b.innerHTML = detail(e, esc, opts); try { decorateGlossary(b); } catch {} } });
 }
