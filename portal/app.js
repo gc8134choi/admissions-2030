@@ -28,8 +28,10 @@ const $ = (s) => document.querySelector(s);
 { const fns = [], opened = new Set(); let printing = false, timers = [];
   window.__onPrint = (fn) => fns.push(fn);
   const openAll = () => { if (!printing) return; document.querySelectorAll("details:not([open])").forEach((d) => { opened.add(d); d.open = true; }); }; // 인쇄 중에 새로 생긴 접이식도 기록해 두었다가 되돌린다
-  const start = () => { if (printing) return; printing = true; fns.forEach((f) => { try { f(); } catch {} }); openAll(); timers = [setTimeout(openAll, 600), setTimeout(openAll, 1600)]; }; // 열면서 새로 그려진 접이식도 다시 펼친다
-  const end = () => { printing = false; timers.forEach(clearTimeout); timers = []; opened.forEach((d) => { d.open = false; }); opened.clear(); };
+  let mo = null;
+  const start = () => { if (printing) return; printing = true; fns.forEach((f) => { try { f(); } catch {} }); openAll(); const main = document.querySelector("#main"); if (main) { mo = new MutationObserver(openAll); mo.observe(main, { childList: true, subtree: true }); } // 인쇄 중에 새로 그려지는 접이식도 바로 펼치고 기록한다
+    timers = [setTimeout(openAll, 600), setTimeout(openAll, 1600)]; }; // 열면서 새로 그려진 접이식도 다시 펼친다
+  const end = () => { printing = false; mo?.disconnect(); mo = null; timers.forEach(clearTimeout); timers = []; opened.forEach((d) => { d.open = false; }); opened.clear(); };
   const mq = matchMedia("print"); mq.addEventListener?.("change", (e) => (e.matches ? start() : end()));
   addEventListener("beforeprint", start); addEventListener("afterprint", end); }
 const esc = (s = "") => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -347,7 +349,7 @@ async function compareShell(el, onReset, getAreas) {
   el.addEventListener("click", (e) => { const b = e.target.closest(".more-g"); if (!b) return; const g = b.closest(".fgroup"), on = !g.classList.contains("open"); g.classList.toggle("open", on); b.setAttribute("aria-expanded", on); b.textContent = on ? "접기" : "더 보기"; });
   const root = el.firstElementChild;
   let ids = [], need = 0;
-  const AW = 72, LW = 150, CW = 190; // 교과군 열·과목 열·학교 열 폭
+  const AW = 72, LW = 140, CW = 180; // 교과군 열·과목 열·학교 열 폭
   const fitMode = () => $(".tw")?.classList.toggle("fit", $(".cmpmain").clientWidth >= need);
   window.addEventListener("resize", fitMode);
   const draw = (next) => {

@@ -437,3 +437,11 @@ button.term{text-decoration:underline dotted!important;text-decoration-thickness
 .gl-i{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;width:24px;height:24px;min-width:24px;min-height:24px;margin:-6px -4px -6px 0;padding:0;border:0;background:none;color:inherit;cursor:pointer;font:inherit;font-size:14px;line-height:1;border-radius:50%;vertical-align:middle;position:relative;top:-1px;z-index:2} /* 실제 요소를 24×24px(WCAG 2.5.8)로 하고, 위아래 음수 여백으로 줄 간격은 벌리지 않는다 */
 .gl-rel{border:0;background:none;color:var(--accent);cursor:pointer;font:inherit;padding:2px 0;text-decoration:underline}
 .gl-i:hover,.gl-i[aria-expanded="true"]{background:var(--soft,rgba(0,0,0,.06))}.gl-i:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+/* 본문급 14px대 정리(15차): 바로가기 설명 글·출처 목록·상태 표 칸·과목 나열·중학교 비교 표 칸은 15px. 라벨·출처·상태 칩은 그대로 */
+#main li.row p{font-size:15px}
+#main .panel ul li,#main .panel ul li .muted{font-size:15px}
+#main .ed-lines .ed-ln span,#main .ed-mx{font-size:15px}
+#main tr.cmp-r td,#main td.mid-lk{font-size:15px}
+#main table:not([class]) td{font-size:15px}
+.unv-i{width:24px;height:24px;margin:-5px 1px;font-size:12px;box-sizing:border-box} /* 터치 대상 24×24px(WCAG 2.5.8), 줄 간격은 음수 여백으로 유지 */
+#view:empty ~ .pgfoot{visibility:hidden} /* 화면 본문이 들어오기 전에 푸터가 화면 아래에 보였다가 밀려나는 레이아웃 이동(CLS)을 막는다 */

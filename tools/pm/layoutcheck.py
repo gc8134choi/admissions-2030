@@ -50,6 +50,14 @@ if(c.none){if(!STICKY.includes(r))out.push({w,r,issue:'비교표 없음'});}else
    const d0=await diffAt(false),d1=await diffAt(true);wr.scrollLeft=0;tested++;if(Math.max(d0,d1)>1.5)return {bad:'사본 열이 원본과 어긋남 '+Math.round(Math.max(d0,d1)*10)/10+'px'}}
   return {ok:1,tested}});
  if(s&&s.bad)out.push({w,r,issue:'스크롤 후 대상 줄',bad:[s.bad]});}
+// 상세 비교(v=compare): 가로 스크롤 시 고정되는 열은 과목명(.l) 하나뿐이고, 그 폭이 래퍼의 절반 이하이며 배경이 불투명한지(다른 학교 값과 겹쳐 보이지 않게), 1440에서는 안쪽 가로 스크롤이 없는지
+{try{await p.goto(base+'#select/curriculum?v=compare',{waitUntil:'load',timeout:20000});await p.waitForTimeout(3500);}catch(e){out.push({w,r:'v=compare',issue:'고정 열 load'})}
+ const f=await ev(p,async()=>{const wr=document.querySelector('.tw'),t=document.querySelector('#tbl');if(!wr||!t)return {bad:'표 없음'};const st=[...t.querySelectorAll('tbody th,tbody td')].filter(c=>getComputedStyle(c).position==='sticky');if(st.some(c=>!c.classList.contains('l')))return {bad:'과목명 열 말고도 고정되는 칸이 있음(교과군·학교 칸)'};
+  const l=t.querySelector('tbody td.l');if(!l)return {bad:'과목명 칸 없음'};const bg=getComputedStyle(l).backgroundColor;if(/rgba\(.*,\s*0\)$/.test(bg)||bg==='transparent')return {bad:'고정 열 배경이 투명(스크롤 시 겹쳐 보임)'};
+  if(l.getBoundingClientRect().width>wr.clientWidth*0.5)return {bad:'고정 열이 래퍼의 절반을 넘음 '+Math.round(l.getBoundingClientRect().width)+'/'+wr.clientWidth};
+  if(innerWidth>=1100&&wr.scrollWidth>wr.clientWidth+1)return {bad:'1440에서 표가 래퍼보다 넓어 안쪽 가로 스크롤 '+(wr.scrollWidth-wr.clientWidth)+'px'};
+  return {ok:1}});
+ if(f&&f.bad)out.push({w,r:'v=compare',issue:'상세 비교 고정 열',bad:[f.bad]});}
 // 주소로 늦게 그려지는 구역을 찾아가는 경우(?bf= 설명회 노트): 화면 안에 도달해 열렸는지
 for(const r of ['#select/curriculum?v=hs&bf=1','#select/curriculum?v=hs&bf=school-yonginheungcheon']){try{await p.goto(base,{waitUntil:'load',timeout:20000});await p.waitForTimeout(1500);await p.evaluate((h)=>{location.hash=h},r);await p.waitForTimeout(3500);}catch(e){out.push({w,r,issue:'앵커 load'});continue} // 앱 안에서 링크를 눌러 들어오는 경우(앱이 주소를 다시 쓰므로 새로 고침은 쓰지 않는다)
  const bfv=r.split('bf=')[1];const a=await p.evaluate((bf)=>{const t=bf==='1'?document.querySelector('[id^="bf-"]'):document.querySelector('#bf-'+CSS.escape(bf));if(!t)return {bad:'대상 구역이 없음'};const top=t.getBoundingClientRect().top;if(top<0||top>innerHeight-100)return {bad:'대상이 화면 밖(top '+Math.round(top)+', scrollY '+Math.round(scrollY)+')'};return {ok:1}},bfv);
