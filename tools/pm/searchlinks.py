@@ -13,7 +13,7 @@ const only=process.argv[4];const sel=only?rows.filter(r=>r.id.startsWith(only)):
 await p.goto(base);await p.waitForTimeout(1500);await p.keyboard.press('/');await p.waitForSelector('.srch input');await p.waitForTimeout(1800);
 const norm=s=>String(s||'').replace(/[^0-9A-Za-z가-힣]/g,'');const bad=[],skipped=[];let ok=0;
 for(const r of rows.length?sel:[]){const title=r.title;await p.fill('.srch input',title.replace(/^\d{4}-\d{2}(-\d{2})?\s*/,''));await p.waitForTimeout(250);
- const hit=await p.evaluate((t)=>{const k=t.replace(/\s+/g,'').slice(0,10);let grp='';for(const el of document.querySelectorAll('.sr-out .sr-h, .sr-out li')){if(el.classList.contains('sr-h')){grp=el.textContent;continue}if(!grp.startsWith('일정·제도'))continue;const a=el.querySelector('a'),b=a&&a.querySelector('b');if(b&&b.textContent.replace(/\s+/g,'').includes(k))return {href:a.getAttribute('href'),ext:a.target==='_blank'}}return null},title.replace(/^\d{4}-\d{2}(-\d{2})?\s*/,''));
+ const hit=await p.evaluate((t)=>{const k=t.replace(/\s+/g,'').slice(0,10);let grp='';for(const el of document.querySelectorAll('.sr-out .sr-h, .sr-out li')){if(el.classList.contains('sr-h')){grp=el.textContent;continue}if(!(grp.startsWith('일정·제도')||grp.startsWith('바로 안내')))continue;const a=el.querySelector('a'),b=a&&a.querySelector('b');if(b&&b.textContent.replace(/\s+/g,'').includes(k))return {href:a.getAttribute('href'),ext:a.target==='_blank'}}return null},title.replace(/^\d{4}-\d{2}(-\d{2})?\s*/,''));
  if(!hit){skipped.push(r.id+' 검색 결과에 제목 없음');continue}
  if(hit.ext)continue;
  const page=await p.context().newPage();await page.goto(base+hit.href);await page.waitForTimeout(1200);
