@@ -1,11 +1,11 @@
 {
  "_meta": {
   "note": "출처 등록부(생성물, 손으로 고치지 않는다). tools/build-sources.mjs가 portal/data의 출처 항목에서 만든다. 데이터 행의 sourceIds가 이 id를 가리킨다.",
-  "count": 142,
+  "count": 143,
   "kinds": {
    "official": 98,
    "media": 25,
-   "user": 16,
+   "user": 17,
    "self": 0,
    "other": 3
   }
@@ -94,6 +94,19 @@
    ],
    "usedIn": {
     "admission-rules.json": 1
+   }
+  },
+  {
+   "id": "src-0c8b8edf",
+   "url": null,
+   "kind": "user",
+   "org": null,
+   "checked": "2026-10-29",
+   "names": [
+    "학교 설명회 슬라이드를 사용자가 촬영해 제공한 사진(제공일 2026-11-02, 슬라이드 날짜·행사명은 사진에 없음)"
+   ],
+   "usedIn": {
+    "hs-compare.json": 1
    }
   },
   {
@@ -1323,7 +1336,6 @@
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) 및 편제표 요약",
     "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
-    "학교알리미 공시항목 목록",
     "학교알리미 급식 실시 현황(2026년 5월 2차 공시)",
     "학교알리미",
     "학교알리미 학교정보(2026 공시, 주소·설립구분·홈페이지)",
@@ -1331,7 +1343,7 @@
    ],
    "usedIn": {
     "exam-trends.json": 2,
-    "hs-compare.json": 15,
+    "hs-compare.json": 14,
     "places.json": 1,
     "school-codes.json": 1
    }
