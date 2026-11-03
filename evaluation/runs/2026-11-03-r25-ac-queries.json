@@ -1,0 +1,2926 @@
+{
+ "meta": {
+  "round": "r25-ac",
+  "base": "bf9ec68",
+  "note": "검색 질의 204개(새 190 + 재질의 14). 판정 1/0.5/0; 검색은 portal/search.js makeSearcher 직접 호출. 자동 판정 후 미스·약한 적중은 수동 재판정. 과업·링크 도착은 Playwright 390px(아래 tasks/links 키)."
+ },
+ "queries": [
+  {
+   "q": "중학교 배정 결과 발표일 12월",
+   "set": "숫자·날짜",
+   "subset": "has",
+   "verdict": 0.5,
+   "requery": false,
+   "banner_first": true,
+   "top3": [
+    "이 포털에 정확히 맞는 내용이 없을 수 있어요",
+    "배정부터 등록까지(2027학년도 용인)",
+    "배정부터 등록까지(2027학년도 용인)"
+   ]
+  },
+  {
+   "q": "재배정 접수 1월 11일부터",
+   "set": "숫자·날짜",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "중학교 재배정",
+    "재배정 (용어)",
+    "배정부터 등록까지(2027학년도 용인)"
+   ]
+  },
+  {
+   "q": "특성화고 전기 모집 11월 3일",
+   "set": "숫자·날짜",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "경기 전기 학교별 전형 일정(과학고·마이스터고·예술고·체육고·특성화고)",
+    "용인바이오고 2027학년도 전기 모집·원서 접수(특성화고, 학교 홍보자료)",
+    "특성화고·마이스터고 (고교 유형)"
+   ]
+  },
+  {
+   "q": "후기 일반고 원서 12월 접수 기간",
+   "set": "숫자·날짜",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "경기 후기 전형 원서접수",
+    "경기 후기 고교 원서 접수처·마감 시각(평준화)",
+    "경기 후기 평준화 일반고 일정"
+   ]
+  },
+  {
+   "q": "2029년 11월 15일 수능",
+   "set": "숫자·날짜",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "2030학년도 수능 시행일",
+    "2030학년도 수능"
+   ]
+  },
+  {
+   "q": "수시 원서 접수 9월 며칠",
+   "set": "숫자·날짜",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "수시 (용어)",
+    "2028학년도 수시 원서접수",
+    "고3 · 큰 그림 연표"
+   ]
+  },
+  {
+   "q": "정시 합격자 발표 2월",
+   "set": "숫자·날짜",
+   "subset": "has",
+   "verdict": 0.5,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "정시 (용어)",
+    "배정부터 등록까지(2027학년도 용인)",
+    "배정부터 등록까지(2027학년도 용인)"
+   ]
+  },
+  {
+   "q": "고교 내신 5등급 비율 10퍼센트",
+   "set": "숫자·날짜",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "내신 5등급 상대평가",
+    "성적 표기",
+    "성적 표기 세부"
+   ]
+  },
+  {
+   "q": "수능 영어 90점 이상 1등급",
+   "set": "숫자·날짜",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "수능 영어 절대평가 등급 구간(2027학년도 기준)",
+    "수능 최저 (용어)",
+    "수능 (용어)"
+   ]
+  },
+  {
+   "q": "졸업 학점 192",
+   "set": "숫자·날짜",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "고교 졸업 요건(192학점)",
+    "이수·학점제 (용어)",
+    "설명회 노트 · 고교학점제"
+   ]
+  },
+  {
+   "q": "1학기 기말 7월 시험",
+   "set": "숫자·날짜",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 찾기 어려운 내용이에요",
+    "학교알리미",
+    "학교 지도(학교 홈페이지·전화)"
+   ]
+  },
+  {
+   "q": "2027 3월 개학 입학식",
+   "set": "숫자·날짜",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "중학교 입학(입학식) 시기",
+    "2027학년도 고교 입학(개학)",
+    "중학교 입학식·개학"
+   ]
+  },
+  {
+   "q": "2031학년도 수능",
+   "set": "숫자·날짜",
+   "subset": "none",
+   "verdict": 0.5,
+   "requery": false,
+   "banner_first": true,
+   "top3": [
+    "이 포털에 정확히 맞는 내용이 없을 수 있어요",
+    "수능 최저 (용어)",
+    "수능 (용어)"
+   ]
+  },
+  {
+   "q": "2032학년도 대입 달라지는 점",
+   "set": "숫자·날짜",
+   "subset": "has",
+   "verdict": 0.5,
+   "requery": false,
+   "banner_first": true,
+   "top3": [
+    "이 포털에 정확히 맞는 내용이 없을 수 있어요",
+    "대입 · 큰 그림 연표",
+    "대입정보포털 어디가(외부 링크)"
+   ]
+  },
+  {
+   "q": "D-day 수능까지 며칠",
+   "set": "숫자·날짜",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "수능 D-day(홈)",
+    "수능 D-day(홈)"
+   ]
+  },
+  {
+   "q": "정원 외 지원 가능 시기",
+   "set": "숫자·날짜",
+   "subset": "none",
+   "verdict": 0,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "외국어고·국제고 (고교 유형)"
+   ]
+  },
+  {
+   "q": "추가배정 2월",
+   "set": "숫자·날짜",
+   "subset": "has",
+   "verdict": 0,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "경기 평준화 고교 배정 중 이사·전입(용인 수지구 기준)"
+   ]
+  },
+  {
+   "q": "예비소집일 2월",
+   "set": "숫자·날짜",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "예비소집·준비물·방과후",
+    "중학교 입학 서류 · 준비물",
+    "고교 평준화 배정 설명회 일정"
+   ]
+  },
+  {
+   "q": "등록기간 1월 초",
+   "set": "숫자·날짜",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "경기 후기 평준화 일반고 등록 기간",
+    "예비소집·준비물·방과후",
+    "고3 · 큰 그림 연표"
+   ]
+  },
+  {
+   "q": "대입 기본사항 2027년 8월",
+   "set": "숫자·날짜",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "2029학년도 대학입학전형기본사항 발표(대교협)"
+   ]
+  },
+  {
+   "q": "서강대 수학 몇 과목",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "서강대학교 · 과목 요건(대학 요건)",
+    "과목 이수 기준 (용어)",
+    "과목 이수 요건(미이수 기준)"
+   ]
+  },
+  {
+   "q": "성균관 요건",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "성균관대학교 · 과목 요건(대학 요건)"
+   ]
+  },
+  {
+   "q": "한국과학기술원 지원 자격",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 0.5,
+   "requery": false,
+   "banner_first": true,
+   "top3": [
+    "이 포털에 정확히 맞는 내용이 없을 수 있어요",
+    "한국과학기술원 · 과목 요건(대학 요건)",
+    "배정부터 등록까지(2027학년도 용인)"
+   ]
+  },
+  {
+   "q": "KAIST 과목",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "한국과학기술원 · 과목 요건(대학 요건)"
+   ]
+  },
+  {
+   "q": "포항공대 필수과목",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "포항공과대학교 · 과목 요건(대학 요건)",
+    "한국사 · 필수 과목",
+    "대학별 과목 요건(서울대 수학 등)"
+   ]
+  },
+  {
+   "q": "포스텍 이수 과목",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "포항공과대학교 · 과목 요건(대학 요건)",
+    "이수·학점제 (용어)",
+    "과목 이수 기준 (용어)"
+   ]
+  },
+  {
+   "q": "서울시립대 과목 요건",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "서울시립대학교 · 과목 요건(대학 요건)"
+   ]
+  },
+  {
+   "q": "시립대 선택과목",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "서울시립대학교 · 과목 요건(대학 요건)",
+    "선택과목 (용어)",
+    "선택과목 현황 · 학교 비교"
+   ]
+  },
+  {
+   "q": "경희 요건",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "경희대학교 · 과목 요건(대학 요건)"
+   ]
+  },
+  {
+   "q": "한국외대 전형 과목",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "한국외국어대학교 · 과목 요건(대학 요건)"
+   ]
+  },
+  {
+   "q": "서연고 필수 과목",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "서울대학교 · 과목 요건(대학 요건)",
+    "연세대학교 · 과목 요건(대학 요건)",
+    "고려대학교 · 과목 요건(대학 요건)"
+   ]
+  },
+  {
+   "q": "SKY 과목 비교",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 0,
+   "requery": false,
+   "banner_first": true,
+   "top3": [
+    "이 포털에 정확히 맞는 내용이 없을 수 있어요",
+    "과목 이수 기준 (용어)",
+    "과목 이수 요건(미이수 기준)"
+   ]
+  },
+  {
+   "q": "고대 요건",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "고려대학교 · 과목 요건(대학 요건)"
+   ]
+  },
+  {
+   "q": "연세 과목 필수",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "연세대학교 · 과목 요건(대학 요건)"
+   ]
+  },
+  {
+   "q": "서울대 지균 요건",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "서울대학교 · 과목 요건(대학 요건)",
+    "대학별 과목 요건(서울대 수학 등)",
+    "대학별 과목 요건(서울대 수학 등)"
+   ]
+  },
+  {
+   "q": "중앙대 과목",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "중앙대학교 · 과목 요건(대학 요건)"
+   ]
+  },
+  {
+   "q": "이공계 카이스트 포스텍",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 0.5,
+   "requery": false,
+   "banner_first": true,
+   "top3": [
+    "이 포털에 정확히 맞는 내용이 없을 수 있어요",
+    "포항공과대학교 · 과목 요건(대학 요건)",
+    "한국과학기술원 · 과목 요건(대학 요건)"
+   ]
+  },
+  {
+   "q": "특목고가 뭐예요",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "외국어고·국제고 (고교 유형)",
+    "과학고·영재학교 (고교 유형)",
+    "과학고·영재학교 (용어)"
+   ]
+  },
+  {
+   "q": "자사고란",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "자사고·외고·국제고 일반고 전환",
+    "외고·국제고·자사고 지원자",
+    "경기 외고·국제고·자사고 불합격 시 일반고 배정 절차"
+   ]
+  },
+  {
+   "q": "마이스터고 뜻",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "고교 유형 비교(특성화고·마이스터고·과학고·영재학교)",
+    "경기 전기 학교별 전형 일정(과학고·마이스터고·예술고·체육고·특성화고)",
+    "경기 2027학년도 고입 기본계획 발표"
+   ]
+  },
+  {
+   "q": "영재학교 지원",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "과학고·영재학교 (고교 유형)",
+    "과학고·영재학교 · 학비·비용",
+    "경기 전기 학교별 전형 일정(과학고·마이스터고·예술고·체육고·특성화고)"
+   ]
+  },
+  {
+   "q": "외고 입시",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 0,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 찾기 어려운 내용이에요",
+    "학교알리미",
+    "학교 지도(학교 홈페이지·전화)"
+   ]
+  },
+  {
+   "q": "일반고 장점",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 0.5,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "설명회 노트 · 졸업생 후기"
+   ]
+  },
+  {
+   "q": "학종이란",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "학종 (용어)",
+    "학종 (용어)",
+    "수시 내 전형 구성(학생부교과·종합·논술)"
+   ]
+  },
+  {
+   "q": "학종은 뭘 보고 뽑나",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "학생부종합전형 핵심 평가요소(예시)",
+    "학종 (용어)",
+    "중1 · 큰 그림 연표"
+   ]
+  },
+  {
+   "q": "교과전형 내신",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "교과전형 (용어)"
+   ]
+  },
+  {
+   "q": "생기부 항목",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "준비 서류 · 외·국·자 2단계 서류(자기소개서·학교생활기록부 등)",
+    "수시 (용어)",
+    "교과전형 (용어)"
+   ]
+  },
+  {
+   "q": "세부능력 특기사항",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "생활기록부 (용어)",
+    "세특 (용어)"
+   ]
+  },
+  {
+   "q": "창의적체험활동 기록",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "생활기록부 (용어)"
+   ]
+  },
+  {
+   "q": "수능최저학력기준",
+   "set": "약칭·별칭",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "수시 수능최저(2028학년도 서·연·고 변경, 성균관대 2027 요강)",
+    "대입 전형 구분"
+   ]
+  },
+  {
+   "q": "성취평가제는 뭔가요",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "성취평가제와 5등급 (용어)"
+   ]
+  },
+  {
+   "q": "선지원후추첨 방식",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "선지원 후추첨 (용어)",
+    "평준화 일반고 배정 방식"
+   ]
+  },
+  {
+   "q": "평준화 지역이 뭐예요",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "경기 후기 평준화 일반고 일정",
+    "경기 후기 고교 원서 접수처·마감 시각(평준화)",
+    "경기 외·국·자 전형 배점·중1 2학기 반영 근거(요강 확인)"
+   ]
+  },
+  {
+   "q": "학교군 정해지는 기준",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "학교군 (용어)",
+    "문정중학교 · 학교군",
+    "성복중학교 · 학교군"
+   ]
+  },
+  {
+   "q": "중학구는 어떻게 정하나요",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "2027학년도 학교군·중학구 고시(수지1중학군 변동 없음)",
+    "중학구 (용어)",
+    "중학교 배정 · 배정 방법과 순서"
+   ]
+  },
+  {
+   "q": "근거리 지망은 뭐예요",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "근거리 지망 (용어)",
+    "근거리 중학교 5개교 명단",
+    "중학교 배정 · 지원 방식: 희망 순 지망"
+   ]
+  },
+  {
+   "q": "택n 모르겠어요",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 0,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 찾기 어려운 내용이에요",
+    "학교알리미",
+    "학교 지도(학교 홈페이지·전화)"
+   ]
+  },
+  {
+   "q": "석차등급이란",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "석차등급 (용어)",
+    "석차등급 (용어)",
+    "석차등급 미산출 경우"
+   ]
+  },
+  {
+   "q": "절대평가로 바뀌는 과목",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "절대평가 (용어)",
+    "내신 5등급 상대평가",
+    "국교위 의견 의결(2028 대입제도 개편)"
+   ]
+  },
+  {
+   "q": "상대평가는 어떤 과목",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "상대평가 (용어)",
+    "성취평가제와 5등급 (용어)",
+    "내신 5등급 상대평가"
+   ]
+  },
+  {
+   "q": "공동교육과정 신청",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "공동교육과정 (용어)",
+    "대지고등학교 · 교육과정 특징(편제표 요약)",
+    "석차등급 미산출 경우"
+   ]
+  },
+  {
+   "q": "학점제 이수 기준",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이수·학점제 (용어)",
+    "학점 (용어)",
+    "설명회 노트 · 고교학점제"
+   ]
+  },
+  {
+   "q": "교육지원청이 어디",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "교육지원청 (용어)",
+    "중학교 배정원서 접수(용인교육지원청)",
+    "배정부터 등록까지(2027학년도 용인)"
+   ]
+  },
+  {
+   "q": "학교알리미에서 뭘 보나",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "학교알리미",
+    "학교알리미 (용어)",
+    "평가계획 (용어)"
+   ]
+  },
+  {
+   "q": "표준편차 해석",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 0,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 찾기 어려운 내용이에요",
+    "학교알리미",
+    "학교 지도(학교 홈페이지·전화)"
+   ]
+  },
+  {
+   "q": "서술형 논술형 평가 비중",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "수시 내 전형 구성(학생부교과·종합·논술)",
+    "서술형·논술형 평가 (용어)",
+    "평가계획 (용어)"
+   ]
+  },
+  {
+   "q": "수행평가 비율",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "홍천고등학교 · 내신 평가계획",
+    "풍덕고등학교 · 내신 평가계획",
+    "성복고등학교 · 내신 평가계획"
+   ]
+  },
+  {
+   "q": "지필평가 횟수",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "지필평가 (용어)",
+    "수시 (용어)",
+    "정시 (용어)"
+   ]
+  },
+  {
+   "q": "평가계획서 어디서 보나",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 0.5,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "편제표(학교별 과목표) 보는 곳"
+   ]
+  },
+  {
+   "q": "자기주도학습전형 폐지",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "자기주도학습전형 (용어)",
+    "외국어고·국제고 (고교 유형)",
+    "자율형 사립고(경기: 용인한국외국어대부설고 등) (고교 유형)"
+   ]
+  },
+  {
+   "q": "모집단위 선택",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 0.5,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "대학별 과목 요건(서울대 수학 등)"
+   ]
+  },
+  {
+   "q": "대교협은 무슨 기관",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 0,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "서울 주요 15개 대학 2027학년도 전형별 모집인원"
+   ]
+  },
+  {
+   "q": "평가원이 뭐하는 곳",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 0,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 찾기 어려운 내용이에요",
+    "학교알리미",
+    "학교 지도(학교 홈페이지·전화)"
+   ]
+  },
+  {
+   "q": "전형유형 종류",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 0,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 찾기 어려운 내용이에요",
+    "학교알리미",
+    "학교 지도(학교 홈페이지·전화)"
+   ]
+  },
+  {
+   "q": "시행계획이란",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "시행계획 (용어)",
+    "시행계획 (용어)",
+    "고2 · 큰 그림 연표"
+   ]
+  },
+  {
+   "q": "통합형 수능이란",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "통합형 수능 (용어)",
+    "통합형 수능 (용어)",
+    "통합형 수능(2028학년도~) · 영역별 시험 시간·문항 수"
+   ]
+  },
+  {
+   "q": "외·국·자",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "경기 외고·국제고·자사고 전형 일정",
+    "외·국·자 (용어)",
+    "외·국·자 불합격 시 일반고 배정 절차"
+   ]
+  },
+  {
+   "q": "영재학교와 과학고의 다른 점",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "경기 전기 학교별 전형 일정(과학고·마이스터고·예술고·체육고·특성화고)",
+    "서울 영재학교",
+    "진로별 유형"
+   ]
+  },
+  {
+   "q": "전기 모집 후기 모집 구분",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "경기 전기 학교별 전형 일정(과학고·마이스터고·예술고·체육고·특성화고)",
+    "용인바이오고 2027학년도 전기 모집·원서 접수(특성화고, 학교 홍보자료)",
+    "전형 유형 구분"
+   ]
+  },
+  {
+   "q": "학군내배정 구역내배정",
+   "set": "용어",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "학군내배정·구역내배정 (용어)",
+    "배정부터 등록까지(2027학년도 용인)",
+    "배정부터 등록까지(2027학년도 용인)"
+   ]
+  },
+  {
+   "q": "우리 아이가 갈 수 있는 중학교는 어디인가요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "중학교 입학 서류 · 준비물",
+    "중학교 배정 · 성복초는 수지1중학군",
+    "중학교 배정 · 지원 방식: 희망 순 지망"
+   ]
+  },
+  {
+   "q": "배정원서는 언제까지 내야 하나요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "배정원서 (용어)",
+    "중학교 배정원서 제출 서류",
+    "중학교 배정원서 접수(용인교육지원청)"
+   ]
+  },
+  {
+   "q": "이사하면 배정이 바뀌나요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "중학교 이사·전입과 배정 후 변경",
+    "경기 평준화 고교 배정 중 이사·전입(용인 수지구 기준)"
+   ]
+  },
+  {
+   "q": "1지망이 떨어지면 어떻게 되나요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "외국어고·국제고 (고교 유형)",
+    "중학구 (용어)",
+    "지망 (용어)"
+   ]
+  },
+  {
+   "q": "재배정은 어떤 경우에 받을 수 있나요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 0,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "추가배정 (용어)",
+    "중학교 배정 · 지원 방식: 희망 순 지망",
+    "중학교 배정 · 이사·전입과 배정 후 변경"
+   ]
+  },
+  {
+   "q": "일반고 지원할 때 몇 개 학교를 쓸 수 있나요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "고입 지원 횟수·지망 수 (경기 후기)",
+    "용인 지망 순위 작성(2027학년도)",
+    "경기 후기 전형 원서접수"
+   ]
+  },
+  {
+   "q": "특목고에 떨어지면 일반고는 어떻게 가나요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "외·국·자 불합격 시 일반고 배정 절차",
+    "경기 외고·국제고·자사고 불합격 시 일반고 배정 절차"
+   ]
+  },
+  {
+   "q": "고등학교 설명회는 어디서 확인하나요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "고교 배정 설명회·학교별 입학설명회 일정(용인)"
+   ]
+  },
+  {
+   "q": "고교학점제에서 졸업하려면 몇 학점 필요한가요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "고교 졸업 요건(192학점)",
+    "고교 졸업 요건(192학점)",
+    "졸업 학점"
+   ]
+  },
+  {
+   "q": "수능에서 선택과목이 없어진다는데 사실인가요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "통합형 수능",
+    "선택과목 (용어)",
+    "선택과목 현황 · 학교 비교"
+   ]
+  },
+  {
+   "q": "2030학년도 대입은 지금과 뭐가 달라지나요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "2030학년도에 위 제도 적용",
+    "2030학년도 대입전형 기본사항 발표",
+    "2030학년도 수능 시행 기본계획 공고"
+   ]
+  },
+  {
+   "q": "내신이 5등급제로 바뀌면 불리한가요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "내신 5등급 상대평가",
+    "성취평가제와 5등급 (용어)",
+    "설명회 노트 · 학부모 당부"
+   ]
+  },
+  {
+   "q": "학교 비교는 어디서 하나요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 0,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "학교군 (용어)",
+    "학교알리미 (용어)",
+    "학교 교육과정 확인·미개설 과목"
+   ]
+  },
+  {
+   "q": "성복중에서 수지고 가려면 몇 지망까지 쓰나요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 0,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "성복중학교 · 입학·전형",
+    "성복중학교",
+    "수지고등학교"
+   ]
+  },
+  {
+   "q": "우리 학교에 없는 과목은 어떻게 듣나요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "학교 교육과정 확인·미개설 과목",
+    "서울대학교 · 과목 요건(대학 요건)",
+    "연세대학교 · 과목 요건(대학 요건)"
+   ]
+  },
+  {
+   "q": "편제표는 어디에서 볼 수 있나요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "편제표(학교별 과목표) 보는 곳",
+    "편제표 (용어)",
+    "용인홍천고등학교 · 교육과정 특징(편제표 요약)"
+   ]
+  },
+  {
+   "q": "대학에서 요구하는 과목을 우리 학교가 열어주나요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 0.5,
+   "requery": false,
+   "banner_first": true,
+   "top3": [
+    "이 포털에 정확히 맞는 내용이 없을 수 있어요",
+    "과목 이수 기준 (용어)",
+    "대학별 과목 요건(서울대 수학 등)"
+   ]
+  },
+  {
+   "q": "중1 성적도 고입에 들어가나요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "중1 · 큰 그림 연표",
+    "중1 · 큰 그림 연표",
+    "고입 내신(중학교) (용어)"
+   ]
+  },
+  {
+   "q": "초등학교 졸업식은 언제인가요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "졸업 일정",
+    "중학교 배정 · 배정 방법과 순서",
+    "중학교·초등학교 졸업 요건"
+   ]
+  },
+  {
+   "q": "지금 학년에 맞는 할 일만 보고 싶어요",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "곧 있을 일(홈)",
+    "배정부터 등록까지(2027학년도 용인)",
+    "배정부터 등록까지(2027학년도 용인)"
+   ]
+  },
+  {
+   "q": "다크 모드로 바꾸고 싶어요",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "화면 모드·스킨 바꾸기"
+   ]
+  },
+  {
+   "q": "달력에 일정을 구독할 수 있나요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "캘린더 구독 · .ics 내려받기",
+    "경기 고입 달력",
+    "경기 고입 달력"
+   ]
+  },
+  {
+   "q": "학교 위치를 지도로 볼 수 있나요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "학교 지도",
+    "학교 지도(주소·위치로 학교 찾기)",
+    "통학(거리·시간)"
+   ]
+  },
+  {
+   "q": "외부 링크 모음이 있나요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 0.5,
+   "requery": false,
+   "banner_first": true,
+   "top3": [
+    "이 포털에 정확히 맞는 내용이 없을 수 있어요",
+    "설명회 노트 · 졸업생 후기",
+    "설명회 노트 · 학교공동체"
+   ]
+  },
+  {
+   "q": "설명회에서 들은 내용 정리본이 있나요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 0.5,
+   "requery": false,
+   "banner_first": true,
+   "top3": [
+    "이 포털에 정확히 맞는 내용이 없을 수 있어요",
+    "설명회 노트 · 졸업생 후기",
+    "설명회 노트 · 졸업생 후기"
+   ]
+  },
+  {
+   "q": "2033학년도 입시는 어떻게 되나요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "고2 · 큰 그림 연표"
+   ]
+  },
+  {
+   "q": "중간고사 기간은 학교마다 다른가요?",
+   "set": "문장형",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 찾기 어려운 내용이에요",
+    "학교알리미",
+    "학교 지도(학교 홈페이지·전화)"
+   ]
+  },
+  {
+   "q": "고등학교 급식은 어떻게 하나요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "용인홍천고등학교 · 급식",
+    "성복고등학교 · 급식",
+    "풍덕고등학교 · 급식"
+   ]
+  },
+  {
+   "q": "교복 구입 방법이 궁금해요",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 0.5,
+   "requery": false,
+   "banner_first": true,
+   "top3": [
+    "이 포털에 정확히 맞는 내용이 없을 수 있어요",
+    "교복",
+    "교복 낙찰가 · 중학교 비교"
+   ]
+  },
+  {
+   "q": "자유학기제는 몇 학년에 하나요?",
+   "set": "문장형",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "자유학기(시험 없는 학기)",
+    "중1 · 큰 그림 연표",
+    "수지중학교 · 교육 특색·노력중점(학교 홈페이지)"
+   ]
+  },
+  {
+   "q": "풍덕고 학급수",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "풍덕고등학교",
+    "풍덕고등학교 · 학급수"
+   ]
+  },
+  {
+   "q": "성복고 편제표",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "성복고등학교 · 편제표(학교별 과목표)",
+    "성복고등학교",
+    "성복고등학교 · 교육과정 특징(편제표 요약)"
+   ]
+  },
+  {
+   "q": "홍천고 설명회 정리",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "홍천고등학교 · 설명회 노트",
+    "홍천고등학교",
+    "홍천고 설명회 노트"
+   ]
+  },
+  {
+   "q": "신봉고 교육과정",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "신봉고등학교",
+    "신봉고등학교 · 학교 유형",
+    "신봉고등학교 · 설립(공립/사립·단설)"
+   ]
+  },
+  {
+   "q": "서천고 정보",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "서천고등학교",
+    "서천고등학교 · 학교 유형",
+    "서천고등학교 · 설립(공립/사립·단설)"
+   ]
+  },
+  {
+   "q": "죽전고 특징",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "죽전고등학교",
+    "죽전고등학교 · 학교 유형",
+    "죽전고등학교 · 설립(공립/사립·단설)"
+   ]
+  },
+  {
+   "q": "흥덕고 비교",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "흥덕고등학교",
+    "흥덕고등학교 · 학교 유형",
+    "흥덕고등학교 · 설립(공립/사립·단설)"
+   ]
+  },
+  {
+   "q": "동백고 위치",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "동백고등학교",
+    "동백고등학교 · 학교 유형",
+    "동백고등학교 · 설립(공립/사립·단설)"
+   ]
+  },
+  {
+   "q": "문정중 정보",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "문정중학교",
+    "문정중학교 · 설립(공립/사립)",
+    "문정중학교 · 남녀공학"
+   ]
+  },
+  {
+   "q": "손곡중 교복",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "손곡중학교",
+    "손곡중학교 · 교복(구입 방식·가격)"
+   ]
+  },
+  {
+   "q": "이현중 급식",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이현중학교",
+    "이현중학교 · 급식 방식"
+   ]
+  },
+  {
+   "q": "정평중 학급수",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "정평중학교",
+    "정평중학교 · 학급수(2026학년도 전체)",
+    "정평중학교 · 학년별 학급수"
+   ]
+  },
+  {
+   "q": "소현중 학교군",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "소현중학교 · 학교군",
+    "소현중학교",
+    "소현중학교 · 학교군"
+   ]
+  },
+  {
+   "q": "성서중 배정",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "성서중학교",
+    "중학교 배정 · 성복초는 수지1중학군"
+   ]
+  },
+  {
+   "q": "용인한빛중",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "용인한빛중학교",
+    "용인한빛중학교 · 설립(공립/사립)",
+    "용인한빛중학교 · 남녀공학"
+   ]
+  },
+  {
+   "q": "한국외대부속고 전형",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "용인한국외국어대학교부설고등학교 · 입학·전형",
+    "용인외대부고(자율형 사립고)",
+    "용인한국외국어대학교부설고등학교"
+   ]
+  },
+  {
+   "q": "과학고 서울 경기",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "서울 영재학교",
+    "자사고·외고·국제고 일반고 전환",
+    "과학고·영재학교 (고교 유형)"
+   ]
+  },
+  {
+   "q": "국제고 목록",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "외고·국제고",
+    "자사고·외고·국제고 일반고 전환",
+    "외고·국제고·자사고 지원자"
+   ]
+  },
+  {
+   "q": "체육고 접수일",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "경기 전기 학교(과학고·마이스터고 등) 전형 일정"
+   ]
+  },
+  {
+   "q": "예술고 실기 일정",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "경기 전기 학교(과학고·마이스터고 등) 전형 일정",
+    "특성화고·마이스터고 (고교 유형)",
+    "경기 고입 달력"
+   ]
+  },
+  {
+   "q": "마이스터고 전기 일정",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "경기 전기 학교(과학고·마이스터고 등) 전형 일정",
+    "경기 전기 학교별 전형 일정(과학고·마이스터고·예술고·체육고·특성화고)",
+    "경기 2027학년도 고입 기본계획 발표"
+   ]
+  },
+  {
+   "q": "상현초 배정 중학교",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 0.5,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "상현초등학교"
+   ]
+  },
+  {
+   "q": "풍덕초 학교군",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "풍덕초등학교 · 학교군",
+    "풍덕초등학교"
+   ]
+  },
+  {
+   "q": "수지초 중학교",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 0.5,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "수지초등학교"
+   ]
+  },
+  {
+   "q": "성복초 졸업생 배정",
+   "set": "학교",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "성복초등학교",
+    "성복초 → 수지1중학군 중학교 배정 원칙(지망·추첨)"
+   ]
+  },
+  {
+   "q": "수능 과목 구성이 어떻게 되나요",
+   "set": "문장·수능",
+   "subset": "has",
+   "verdict": 0.5,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "수능 최저 (용어)",
+    "과목 이수 기준 (용어)",
+    "수능 (용어)"
+   ]
+  },
+  {
+   "q": "수능 시험 시간표",
+   "set": "문장·수능",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "2027학년도 수능 시간표(제2외국어·한문 포함)"
+   ]
+  },
+  {
+   "q": "한국사는 수능 필수인가요",
+   "set": "문장·수능",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "2028학년도 수능 체제·출제 범위(참고)"
+   ]
+  },
+  {
+   "q": "제2외국어 선택하면 불리한가요",
+   "set": "문장·수능",
+   "subset": "has",
+   "verdict": 0,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "선택과목 (용어)",
+    "선택과목 현황 · 학교 비교",
+    "선택과목: 수학"
+   ]
+  },
+  {
+   "q": "과탐 응시 비율 추세",
+   "set": "문장·수능",
+   "subset": "has",
+   "verdict": 0,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "원서 절차 · 원서 접수(12.4~12.10)",
+    "준비 서류 · 평준화지역 후기고 입학 응시원서",
+    "상대평가 (용어)"
+   ]
+  },
+  {
+   "q": "사탐 런 현상",
+   "set": "문장·수능",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 찾기 어려운 내용이에요",
+    "학교알리미",
+    "학교 지도(학교 홈페이지·전화)"
+   ]
+  },
+  {
+   "q": "미적분 확통 기하 선택",
+   "set": "문장·수능",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "선택과목 (용어)",
+    "선택과목 현황 · 학교 비교",
+    "선택과목: 수학"
+   ]
+  },
+  {
+   "q": "수능 영어 절대평가 등급 기준",
+   "set": "문장·수능",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "수능 영어 절대평가 등급 구간(2027학년도 기준)"
+   ]
+  },
+  {
+   "q": "2028 수능 개편 핵심",
+   "set": "문장·수능",
+   "subset": "has",
+   "verdict": 0.5,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "수능 최저 (용어)",
+    "수능 (용어)",
+    "수능 D-day(홈)"
+   ]
+  },
+  {
+   "q": "국어 화작 언매 선택",
+   "set": "문장·수능",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "국어 선택과목(이 포털은 2022 개정 기준)"
+   ]
+  },
+  {
+   "q": "학원비 얼마나 드나요",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 찾기 어려운 내용이에요",
+    "학교알리미"
+   ]
+  },
+  {
+   "q": "서울대 합격 커트라인",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 다루지 않는 내용이에요"
+   ]
+  },
+  {
+   "q": "중학교 학생회장 선거",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 찾기 어려운 내용이에요",
+    "학교알리미",
+    "학교 지도(학교 홈페이지·전화)"
+   ]
+  },
+  {
+   "q": "수지구 아파트 시세",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 찾기 어려운 내용이에요",
+    "학교알리미",
+    "학교 지도(학교 홈페이지·전화)"
+   ]
+  },
+  {
+   "q": "고등학교 야자 시간",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 찾기 어려운 내용이에요",
+    "학교알리미",
+    "학교 지도(학교 홈페이지·전화)"
+   ]
+  },
+  {
+   "q": "학교폭력 신고 방법",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 다루지 않는 내용이에요"
+   ]
+  },
+  {
+   "q": "입학사정관 이름",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 0,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "추가배정 (용어)",
+    "재배정 (용어)",
+    "설명회 노트 · 졸업생 후기"
+   ]
+  },
+  {
+   "q": "해외 대학 유학 준비",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 찾기 어려운 내용이에요",
+    "학교알리미",
+    "학교 지도(학교 홈페이지·전화)"
+   ]
+  },
+  {
+   "q": "온라인 강의 추천",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": true,
+   "top3": [
+    "이 포털에 정확히 맞는 내용이 없을 수 있어요",
+    "과학고·영재학교 (고교 유형)",
+    "공동교육과정 (용어)"
+   ]
+  },
+  {
+   "q": "독서실 가격",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 찾기 어려운 내용이에요",
+    "학교알리미",
+    "학교 지도(학교 홈페이지·전화)"
+   ]
+  },
+  {
+   "q": "인천 중학교 배정",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "다른 지역 학교"
+   ]
+  },
+  {
+   "q": "대구 고입 일정",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "다른 지역 학교"
+   ]
+  },
+  {
+   "q": "입시 컨설팅 비용",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 찾기 어려운 내용이에요",
+    "학교알리미",
+    "학교 지도(학교 홈페이지·전화)"
+   ]
+  },
+  {
+   "q": "가정교사 소개",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 찾기 어려운 내용이에요",
+    "학교알리미",
+    "학교 지도(학교 홈페이지·전화)"
+   ]
+  },
+  {
+   "q": "고3 담임 선생님 성향",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 찾기 어려운 내용이에요",
+    "학교알리미",
+    "학교 지도(학교 홈페이지·전화)"
+   ]
+  },
+  {
+   "q": "전학 절차 서울에서",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 0.5,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "전학 · 이사(전입) 배정 · 경기 평준화 고교",
+    "서울대학교 · 과목 요건(대학 요건)",
+    "서울시립대학교 · 과목 요건(대학 요건)"
+   ]
+  },
+  {
+   "q": "방과후 로봇 수업 신청",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": true,
+   "top3": [
+    "이 포털에 정확히 맞는 내용이 없을 수 있어요",
+    "예비소집·준비물·방과후",
+    "수행평가 (용어)"
+   ]
+  },
+  {
+   "q": "세종시 고교 추첨",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "다른 지역 학교"
+   ]
+  },
+  {
+   "q": "의대 정원 늘어나나",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "의대·약대 등 정원"
+   ]
+  },
+  {
+   "q": "로스쿨 입시",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 찾기 어려운 내용이에요",
+    "학교알리미",
+    "학교 지도(학교 홈페이지·전화)"
+   ]
+  },
+  {
+   "q": "통학버스 노선",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 찾기 어려운 내용이에요",
+    "학교알리미",
+    "학교 지도(학교 홈페이지·전화)"
+   ]
+  },
+  {
+   "q": "수지 학원가 위치",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 찾기 어려운 내용이에요",
+    "학교알리미",
+    "학교 지도(학교 홈페이지·전화)"
+   ]
+  },
+  {
+   "q": "수학 문제집 추천",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 찾기 어려운 내용이에요",
+    "학교알리미",
+    "학교 지도(학교 홈페이지·전화)"
+   ]
+  },
+  {
+   "q": "봉사활동 시간 인정 사이트",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 찾기 어려운 내용이에요",
+    "학교알리미",
+    "학교 지도(학교 홈페이지·전화)"
+   ]
+  },
+  {
+   "q": "학생증 분실 재발급",
+   "set": "자료 없음",
+   "subset": "none",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 찾기 어려운 내용이에요",
+    "학교알리미",
+    "학교 지도(학교 홈페이지·전화)"
+   ]
+  },
+  {
+   "q": "고입 내신 산출 방법",
+   "set": "기타",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "고등학교 입학·전학 포털",
+    "고입 내신 산출 시뮬레이션"
+   ]
+  },
+  {
+   "q": "중3 1학기 성적 반영 비율",
+   "set": "기타",
+   "subset": "has",
+   "verdict": 0.5,
+   "requery": false,
+   "banner_first": true,
+   "top3": [
+    "이 포털에 정확히 맞는 내용이 없을 수 있어요",
+    "중3 · 큰 그림 연표",
+    "중3 · 큰 그림 연표"
+   ]
+  },
+  {
+   "q": "자기소개서 폐지",
+   "set": "기타",
+   "subset": "has",
+   "verdict": 0,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "2030학년도 고교 내신 석차등급 폐지안(초안)",
+    "2030 입학생 내신(석차등급 폐지 초안)",
+    "통합형 수능"
+   ]
+  },
+  {
+   "q": "대학 입학 전형료",
+   "set": "기타",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "고입 전형료"
+   ]
+  },
+  {
+   "q": "학생부 기재 금지 항목",
+   "set": "기타",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "학생부종합전형 핵심 평가요소(예시)",
+    "준비 서류 · 외·국·자 2단계 서류(자기소개서·학교생활기록부 등)",
+    "수시 (용어)"
+   ]
+  },
+  {
+   "q": "일반고 추첨 방식",
+   "set": "기타",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "평준화 일반고 배정 방식",
+    "경기 평준화 일반고 추가배정 대상·방식",
+    "경기 외고·국제고·자사고 불합격 시 일반고 배정 절차"
+   ]
+  },
+  {
+   "q": "외고 면접 영어 비중",
+   "set": "기타",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "외고·국제고·자사고 전형 배점(용인외대부고 예시)",
+    "외고·국제고",
+    "자사고·외고·국제고 일반고 전환"
+   ]
+  },
+  {
+   "q": "자사고 폐지 논란",
+   "set": "기타",
+   "subset": "has",
+   "verdict": 0,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "이 포털에서 찾기 어려운 내용이에요",
+    "학교알리미",
+    "학교 지도(학교 홈페이지·전화)"
+   ]
+  },
+  {
+   "q": "고교 무상교육",
+   "set": "기타",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "일반고(평준화 지역) · 학비·비용",
+    "과학고·영재학교 · 학비·비용",
+    "특성화고·마이스터고 · 학비·비용"
+   ]
+  },
+  {
+   "q": "기숙사 있는 고등학교",
+   "set": "기타",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "기숙사 · 학교 비교(생활)"
+   ]
+  },
+  {
+   "q": "학교 간 거리 통학 시간",
+   "set": "기타",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "통학(거리·시간)"
+   ]
+  },
+  {
+   "q": "미개설 과목 어떻게",
+   "set": "기타",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "학교 교육과정 확인·미개설 과목"
+   ]
+  },
+  {
+   "q": "과목 선택 계획 세우기",
+   "set": "기타",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "내 계획표(과목 선택 계획)",
+    "과목 이수 기준 (용어)",
+    "선택과목 (용어)"
+   ]
+  },
+  {
+   "q": "내 계획표 저장",
+   "set": "기타",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "내 계획표(과목 선택 계획)",
+    "화면 인쇄",
+    "지역별 수시 비중"
+   ]
+  },
+  {
+   "q": "모의고사 일정 6월 9월",
+   "set": "기타",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "모의고사 성적표 보는 법"
+   ]
+  },
+  {
+   "q": "PSAT 형 수능",
+   "set": "기타",
+   "subset": "none",
+   "verdict": 0.5,
+   "requery": false,
+   "banner_first": true,
+   "top3": [
+    "이 포털에 정확히 맞는 내용이 없을 수 있어요",
+    "수능 최저 (용어)",
+    "수능 (용어)"
+   ]
+  },
+  {
+   "q": "조기졸업 요건",
+   "set": "기타",
+   "subset": "has",
+   "verdict": 1,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "고교 졸업 요건(192학점)",
+    "조기졸업",
+    "모집단위 (용어)"
+   ]
+  },
+  {
+   "q": "전과목 이수 학점 기준 미달",
+   "set": "기타",
+   "subset": "has",
+   "verdict": 0.5,
+   "requery": false,
+   "banner_first": true,
+   "top3": [
+    "이 포털에 정확히 맞는 내용이 없을 수 있어요",
+    "이수·학점제 (용어)",
+    "학점 (용어)"
+   ]
+  },
+  {
+   "q": "진로선택과목 성취도 A B C",
+   "set": "기타",
+   "subset": "has",
+   "verdict": 0,
+   "requery": false,
+   "banner_first": false,
+   "top3": [
+    "고1 · 큰 그림 연표",
+    "과목 이수 기준 (용어)",
+    "선택과목: 제2외국어·한문·교양"
+   ]
+  },
+  {
+   "q": "체육 예술 과목 성적 처리",
+   "set": "기타",
+   "subset": "has",
+   "verdict": 0,
+   "requery": false,
+   "banner_first": true,
+   "top3": [
+    "이 포털에 정확히 맞는 내용이 없을 수 있어요",
+    "과목 이수 기준 (용어)",
+    "과목 이수 요건(미이수 기준)"
+   ]
+  },
+  {
+   "q": "1월 22일 재배정 결과",
+   "set": "재질의",
+   "subset": "has",
+   "verdict": 0.5,
+   "requery": true,
+   "banner_first": true,
+   "top3": [
+    "이 포털에 정확히 맞는 내용이 없을 수 있어요",
+    "재배정 (용어)",
+    "배정부터 등록까지(2027학년도 용인)"
+   ]
+  },
+  {
+   "q": "출석률 3분의 2 미달",
+   "set": "재질의",
+   "subset": "has",
+   "verdict": 1,
+   "requery": true,
+   "banner_first": false,
+   "top3": [
+    "과목 이수 요건",
+    "배정부터 등록까지(2027학년도 용인)",
+    "배정부터 등록까지(2027학년도 용인)"
+   ]
+  },
+  {
+   "q": "수능 1교시 국어 시작 시각",
+   "set": "재질의",
+   "subset": "has",
+   "verdict": 0,
+   "requery": true,
+   "banner_first": false,
+   "top3": [
+    "수능 최저 (용어)",
+    "수능 (용어)",
+    "수능 D-day(홈)"
+   ]
+  },
+  {
+   "q": "서연고 과목 요건",
+   "set": "재질의",
+   "subset": "has",
+   "verdict": 1,
+   "requery": true,
+   "banner_first": false,
+   "top3": [
+    "서울대학교 · 과목 요건(대학 요건)",
+    "연세대학교 · 과목 요건(대학 요건)",
+    "고려대학교 · 과목 요건(대학 요건)"
+   ]
+  },
+  {
+   "q": "외대 이수 권장 과목",
+   "set": "재질의",
+   "subset": "has",
+   "verdict": 1,
+   "requery": true,
+   "banner_first": false,
+   "top3": [
+    "한국외국어대학교 · 과목 요건(대학 요건)",
+    "용인한국외국어대학교부설고등학교 · 학교 유형",
+    "용인한국외국어대학교부설고등학교 · 설립(공립/사립·단설)"
+   ]
+  },
+  {
+   "q": "포스텍 선택과목 요건",
+   "set": "재질의",
+   "subset": "has",
+   "verdict": 1,
+   "requery": true,
+   "banner_first": false,
+   "top3": [
+    "포항공과대학교 · 과목 요건(대학 요건)",
+    "선택과목 (용어)",
+    "선택과목 현황 · 학교 비교"
+   ]
+  },
+  {
+   "q": "성취평가제란",
+   "set": "재질의",
+   "subset": "has",
+   "verdict": 1,
+   "requery": true,
+   "banner_first": false,
+   "top3": [
+    "성취평가제와 5등급 (용어)"
+   ]
+  },
+  {
+   "q": "창체란",
+   "set": "재질의",
+   "subset": "has",
+   "verdict": 1,
+   "requery": true,
+   "banner_first": false,
+   "top3": [
+    "창의적 체험활동 (용어)",
+    "용인홍천고등학교 · 교육과정 특징(편제표 요약)",
+    "성복고등학교 · 교육과정 특징(편제표 요약)"
+   ]
+  },
+  {
+   "q": "평가원이 어딘가요",
+   "set": "재질의",
+   "subset": "has",
+   "verdict": 1,
+   "requery": true,
+   "banner_first": false,
+   "top3": [
+    "평가원 (용어)",
+    "고3 · 큰 그림 연표",
+    "고3 · 큰 그림 연표"
+   ]
+  },
+  {
+   "q": "화작 언매 선택",
+   "set": "재질의",
+   "subset": "has",
+   "verdict": 1,
+   "requery": true,
+   "banner_first": false,
+   "top3": [
+    "국어 선택과목(이 포털은 2022 개정 기준)"
+   ]
+  },
+  {
+   "q": "학교마다 개설하는 과목이 다르다는데 우리 학교 과목은 어디서 보나요",
+   "set": "재질의",
+   "subset": "has",
+   "verdict": 0,
+   "requery": true,
+   "banner_first": true,
+   "top3": [
+    "이 포털에 정확히 맞는 내용이 없을 수 있어요",
+    "과목 이수 기준 (용어)",
+    "과목 이수 요건(미이수 기준)"
+   ]
+  },
+  {
+   "q": "수능 과학탐구 응시자가 줄어드는 추세인가요",
+   "set": "재질의",
+   "subset": "has",
+   "verdict": 0.5,
+   "requery": true,
+   "banner_first": true,
+   "top3": [
+    "이 포털에 정확히 맞는 내용이 없을 수 있어요",
+    "수능 최저 (용어)",
+    "수능 (용어)"
+   ]
+  },
+  {
+   "q": "중장기 대입 개편안은 언제 발표되나요",
+   "set": "재질의",
+   "subset": "has",
+   "verdict": 1,
+   "requery": true,
+   "banner_first": false,
+   "top3": [
+    "중장기 대입 개편안"
+   ]
+  },
+  {
+   "q": "미적분은 어떤 유형의 과목인가요",
+   "set": "재질의",
+   "subset": "has",
+   "verdict": 1,
+   "requery": true,
+   "banner_first": false,
+   "top3": [
+    "선택과목: 수학"
+   ]
+  }
+ ],
+ "tasks": [
+  {
+   "task": "N01 추가배정 접수 기간",
+   "mode": "키워드",
+   "q": "추가배정 접수",
+   "verdict": 1,
+   "clicked_row_index": 0,
+   "href": "#schedule?t=life&hl=%EC%A4%91%ED%95%99%EA%B5%90%20%EC%B6%94%EA%B0%80%EB%B0%B0%EC%A0%95",
+   "hl_row": "고입2026.12.7(월)~12.16(수)중학교 추가배정ⓘ추가배정원서 작성 2026.12.7~12.11(출신 초등학교), 접수",
+   "hl_visible": true,
+   "scrollY": 849
+  },
+  {
+   "task": "N01 추가배정 접수 기간",
+   "mode": "문장",
+   "q": "추가배정 원서는 언제 내나요",
+   "verdict": 1,
+   "clicked_row_index": 0,
+   "href": "#schedule?t=life&hl=%EC%A4%91%ED%95%99%EA%B5%90%20%EC%B6%94%EA%B0%80%EB%B0%B0%EC%A0%95",
+   "hl_row": "고입2026.12.7(월)~12.16(수)중학교 추가배정ⓘ추가배정원서 작성 2026.12.7~12.11(출신 초등학교), 접수",
+   "hl_visible": true,
+   "scrollY": 849
+  },
+  {
+   "task": "N02 성복고 편제표",
+   "mode": "키워드",
+   "q": "성복고 편제표",
+   "verdict": 1,
+   "clicked_row_index": 0,
+   "href": "#select/curriculum?s=school-seongbok&hl=%ED%8E%B8%EC%A0%9C%ED%91%9C",
+   "hl_row": "편제표편제표ⓘ 학교 요약",
+   "hl_visible": true,
+   "scrollY": 1085
+  },
+  {
+   "task": "N02 성복고 편제표",
+   "mode": "문장",
+   "q": "성복고에서 개설하는 과목을 보고 싶어요",
+   "verdict": 0,
+   "clicked_row_index": -1,
+   "href": null,
+   "hl_row": null,
+   "hl_visible": null,
+   "scrollY": null
+  },
+  {
+   "task": "N03 연세대 과목 요건",
+   "mode": "키워드",
+   "q": "연세대 과목 요건",
+   "verdict": 1,
+   "clicked_row_index": 0,
+   "href": "#select/curriculum?v=univ&u=s-902",
+   "hl_row": null,
+   "hl_visible": null,
+   "scrollY": 0
+  },
+  {
+   "task": "N03 연세대 과목 요건",
+   "mode": "문장",
+   "q": "연세대에 가려면 어떤 과목을 들어야 하나요",
+   "verdict": 1,
+   "clicked_row_index": 0,
+   "href": "#select/curriculum?v=univ&u=s-902",
+   "hl_row": null,
+   "hl_visible": null,
+   "scrollY": 0
+  },
+  {
+   "task": "N04 홍천고 설명회 노트",
+   "mode": "키워드",
+   "q": "홍천고 설명회",
+   "verdict": 1,
+   "clicked_row_index": 0,
+   "href": "#select/curriculum?v=hs&bf=school-yonginheungcheon",
+   "hl_row": null,
+   "hl_visible": null,
+   "scrollY": 2391
+  },
+  {
+   "task": "N04 홍천고 설명회 노트",
+   "mode": "문장",
+   "q": "홍천고 설명회에서 뭐라고 했나요",
+   "verdict": 1,
+   "clicked_row_index": 0,
+   "href": "#select/curriculum?v=hs&bf=school-yonginheungcheon",
+   "hl_row": null,
+   "hl_visible": null,
+   "scrollY": 2391
+  },
+  {
+   "task": "N05 이현중 급식",
+   "mode": "키워드",
+   "q": "이현중 급식",
+   "verdict": 0.5,
+   "clicked_row_index": 1,
+   "href": "#select/curriculum?v=middle&g=%EC%83%9D%ED%99%9C&hl=%EA%B8%89%EC%8B%9D%20%EB%B0%A9%EC%8B%9D",
+   "hl_row": "급식 방식직영 급식(중식), 급식 학생 541명 / 전체 543명직영 급식(중식), 급식 학생 950명 / 전체 950명직영 ",
+   "hl_visible": true,
+   "scrollY": 1422
+  },
+  {
+   "task": "N05 이현중 급식",
+   "mode": "문장",
+   "q": "이현중 점심은 어떻게 나오나요",
+   "verdict": 0.5,
+   "clicked_row_index": 1,
+   "href": "#select/curriculum?v=middle&g=%EC%83%9D%ED%99%9C&hl=%EA%B8%89%EC%8B%9D%20%EB%B0%A9%EC%8B%9D",
+   "hl_row": "급식 방식직영 급식(중식), 급식 학생 541명 / 전체 543명직영 급식(중식), 급식 학생 950명 / 전체 950명직영 ",
+   "hl_visible": true,
+   "scrollY": 1422
+  },
+  {
+   "task": "N06 수능 영어 등급 구간",
+   "mode": "키워드",
+   "q": "수능 영어 등급 컷",
+   "verdict": 1,
+   "clicked_row_index": 0,
+   "href": "#admission/system?hl=%EC%88%98%EB%8A%A5%20%EC%98%81%EC%96%B4%20%EC%A0%88%EB%8C%80%ED%8F%89%EA%B0%80%20%EB%93%B1%EA%B8%89%20%EA%B5%AC%EA%B0%84(2027%ED%95%99%EB%85%84%EB%8F%84",
+   "hl_row": "대입ⓘ수능ⓘ 영어 절대평가 등급 구간(2027학년도 기준)영어 영역은 절대평가ⓘ로 등급만 제공(표준점수·백분위 없음). 등급 ",
+   "hl_visible": true,
+   "scrollY": 2391
+  },
+  {
+   "task": "N06 수능 영어 등급 구간",
+   "mode": "문장",
+   "q": "수능 영어에서 90점이면 몇 등급인가요",
+   "verdict": 1,
+   "clicked_row_index": 0,
+   "href": "#admission/system?hl=%EC%88%98%EB%8A%A5%20%EC%98%81%EC%96%B4%20%EC%A0%88%EB%8C%80%ED%8F%89%EA%B0%80%20%EB%93%B1%EA%B8%89%20%EA%B5%AC%EA%B0%84(2027%ED%95%99%EB%85%84%EB%8F%84",
+   "hl_row": "대입ⓘ수능ⓘ 영어 절대평가 등급 구간(2027학년도 기준)영어 영역은 절대평가ⓘ로 등급만 제공(표준점수·백분위 없음). 등급 ",
+   "hl_visible": true,
+   "scrollY": 2391
+  },
+  {
+   "task": "N07 2030 수능 시행일",
+   "mode": "키워드",
+   "q": "2030 수능 날짜",
+   "verdict": 0.5,
+   "clicked_row_index": 0,
+   "href": "#home?open=soonp",
+   "hl_row": null,
+   "hl_visible": null,
+   "scrollY": 902
+  },
+  {
+   "task": "N07 2030 수능 시행일",
+   "mode": "문장",
+   "q": "2030학년도 수능은 언제 보나요",
+   "verdict": 0.5,
+   "clicked_row_index": 0,
+   "href": "#home?open=soonp",
+   "hl_row": null,
+   "hl_visible": null,
+   "scrollY": 902
+  },
+  {
+   "task": "N08 통학 시간",
+   "mode": "키워드",
+   "q": "통학 시간",
+   "verdict": 1,
+   "clicked_row_index": 0,
+   "href": "#select/curriculum?v=middle",
+   "hl_row": null,
+   "hl_visible": null,
+   "scrollY": 0
+  },
+  {
+   "task": "N08 통학 시간",
+   "mode": "문장",
+   "q": "학교까지 통학 시간을 알고 싶어요",
+   "verdict": 1,
+   "clicked_row_index": 0,
+   "href": "#select/curriculum?v=middle",
+   "hl_row": null,
+   "hl_visible": null,
+   "scrollY": 0
+  },
+  {
+   "task": "N09 졸업 학점",
+   "mode": "키워드",
+   "q": "졸업 학점",
+   "verdict": 1,
+   "clicked_row_index": 0,
+   "href": "#life/credit?hl=%EC%A1%B8%EC%97%85%20%ED%95%99%EC%A0%90",
+   "hl_row": "졸업 학점 구성 4 졸업 학점",
+   "hl_visible": true,
+   "scrollY": 792
+  },
+  {
+   "task": "N09 졸업 학점",
+   "mode": "문장",
+   "q": "고등학교 졸업하려면 몇 학점인가요",
+   "verdict": 1,
+   "clicked_row_index": 0,
+   "href": "#life/credit?hl=%EC%A1%B8%EC%97%85%20%ED%95%99%EC%A0%90",
+   "hl_row": "졸업 학점 구성 4 졸업 학점",
+   "hl_visible": true,
+   "scrollY": 792
+  },
+  {
+   "task": "N10 후기 원서 마감 시각",
+   "mode": "키워드",
+   "q": "후기 원서 마감 시각",
+   "verdict": 1,
+   "clicked_row_index": 0,
+   "href": "#schedule?t=hs&hl=%EA%B2%BD%EA%B8%B0%20%ED%9B%84%EA%B8%B0%20%EA%B3%A0%EA%B5%90%20%EC%9B%90%EC%84%9C%20%EC%A0%91%EC%88%98%EC%B2%98%C2%B7%EB%A7%88%EA%B0%90%20%EC%8B%9C%EA%B0%81(%ED%8F%89%EC%A4%80",
+   "hl_row": "고입2026.12.4(금)~12.10(목)경기 후기 고교 원서 접수처·마감 시각(평준화) · 경기 후기 원서접수(접수처: 해당",
+   "hl_visible": true,
+   "scrollY": 3482
+  },
+  {
+   "task": "N10 후기 원서 마감 시각",
+   "mode": "문장",
+   "q": "후기 고교 원서는 몇 시까지 내나요",
+   "verdict": 1,
+   "clicked_row_index": 0,
+   "href": "#schedule?t=hs&hl=%EA%B2%BD%EA%B8%B0%20%ED%9B%84%EA%B8%B0%20%EA%B3%A0%EA%B5%90%20%EC%9B%90%EC%84%9C%20%EC%A0%91%EC%88%98%EC%B2%98%C2%B7%EB%A7%88%EA%B0%90%20%EC%8B%9C%EA%B0%81(%ED%8F%89%EC%A4%80",
+   "hl_row": "고입2026.12.4(금)~12.10(목)경기 후기 고교 원서 접수처·마감 시각(평준화) · 경기 후기 원서접수(접수처: 해당",
+   "hl_visible": true,
+   "scrollY": 3482
+  },
+  {
+   "task": "N11 외고 불합격 시 배정",
+   "mode": "키워드",
+   "q": "외고 떨어지면",
+   "verdict": 1,
+   "clicked_row_index": 0,
+   "href": "#select/curriculum?v=hs&ty=1&hl=%EA%B2%BD%EA%B8%B0%20%EC%99%B8%EA%B3%A0%C2%B7%EA%B5%AD%EC%A0%9C%EA%B3%A0%C2%B7%EC%9E%90%EC%82%AC%EA%B3%A0%20%EB%B6%88%ED%95%A9%EA%B2%A9%20%EC%8B%9C%20%EC%9D%BC%EB%B0%98%EA%B3%A0%20",
+   "hl_row": "고입ⓘ경기 외고ⓘ·국제고·자사고 불합격 시 일반고 배정 절차별도 신청이 아니라 후기 원서접수(2026.12.4~12.10) 때",
+   "hl_visible": true,
+   "scrollY": 5061
+  },
+  {
+   "task": "N11 외고 불합격 시 배정",
+   "mode": "문장",
+   "q": "외고에 떨어지면 일반고는 어떻게 되나요",
+   "verdict": 1,
+   "clicked_row_index": 0,
+   "href": "#select/curriculum?v=hs&ty=1&hl=%EA%B2%BD%EA%B8%B0%20%EC%99%B8%EA%B3%A0%C2%B7%EA%B5%AD%EC%A0%9C%EA%B3%A0%C2%B7%EC%9E%90%EC%82%AC%EA%B3%A0%20%EB%B6%88%ED%95%A9%EA%B2%A9%20%EC%8B%9C%20%EC%9D%BC%EB%B0%98%EA%B3%A0%20",
+   "hl_row": "고입ⓘ경기 외고ⓘ·국제고·자사고 불합격 시 일반고 배정 절차별도 신청이 아니라 후기 원서접수(2026.12.4~12.10) 때",
+   "hl_visible": true,
+   "scrollY": 5061
+  },
+  {
+   "task": "N12 신봉중 학급수",
+   "mode": "키워드",
+   "q": "신봉중 학급수",
+   "verdict": 0.5,
+   "clicked_row_index": 1,
+   "href": "#select/curriculum?v=middle&g=%EA%B7%9C%EB%AA%A8&hl=%ED%95%99%EA%B8%89%EC%88%98(2026%ED%95%99%EB%85%84%EB%8F%84%20%EC%A0%84%EC%B2%B4)",
+   "hl_row": "학급수(2026학년도 전체) (학급)17303021",
+   "hl_visible": true,
+   "scrollY": 1405
+  },
+  {
+   "task": "N12 신봉중 학급수",
+   "mode": "문장",
+   "q": "신봉중은 한 학년이 몇 반인가요",
+   "verdict": 0.5,
+   "clicked_row_index": 1,
+   "href": "#select/curriculum?v=middle&g=%EA%B7%9C%EB%AA%A8&hl=%ED%95%99%EA%B8%89%EC%88%98(2026%ED%95%99%EB%85%84%EB%8F%84%20%EC%A0%84%EC%B2%B4)",
+   "hl_row": "학급수(2026학년도 전체) (학급)17303021",
+   "hl_visible": true,
+   "scrollY": 1405
+  }
+ ],
+ "tasks_total": 20.0,
+ "links": [
+  {
+   "q": "한양대 과목 요건",
+   "verdict": 1
+  },
+  {
+   "q": "서원중 교복",
+   "verdict": 0.5
+  },
+  {
+   "q": "수지고 편제표",
+   "verdict": 1
+  },
+  {
+   "q": "상현고 학급당 학생수",
+   "verdict": 0.5
+  },
+  {
+   "q": "2033 수능 시행일",
+   "verdict": 0.5
+  },
+  {
+   "q": "외대부고 설명회 날짜",
+   "verdict": 1
+  },
+  {
+   "q": "중1 2학기 성적 반영",
+   "verdict": 0.5
+  },
+  {
+   "q": "초6 큰 그림 연표",
+   "verdict": 1
+  },
+  {
+   "q": "등록 포기",
+   "verdict": 0
+  },
+  {
+   "q": "학부모 상담 총회",
+   "verdict": 0.5
+  },
+  {
+   "q": "조기졸업",
+   "verdict": 0.5
+  },
+  {
+   "q": "모의고사 성적표 보는 법",
+   "verdict": 0.5
+  },
+  {
+   "q": "성균관대 과목 요건",
+   "verdict": 1
+  },
+  {
+   "q": "포스텍 요건",
+   "verdict": 1
+  },
+  {
+   "q": "풍덕고 학급수",
+   "verdict": 1
+  },
+  {
+   "q": "정평중 교복",
+   "verdict": 0.5
+  },
+  {
+   "q": "홍천고 급식",
+   "verdict": 1
+  },
+  {
+   "q": "성복고 편제표",
+   "verdict": 1
+  },
+  {
+   "q": "문정중 학급수",
+   "verdict": 1
+  },
+  {
+   "q": "서울시립대 과목 요건",
+   "verdict": 1
+  },
+  {
+   "q": "졸업 학점",
+   "verdict": 1
+  },
+  {
+   "q": "후기 원서 마감 시각",
+   "verdict": 1
+  },
+  {
+   "q": "외고 불합격 일반고 배정",
+   "verdict": 1
+  },
+  {
+   "q": "통학 시간",
+   "verdict": 1
+  }
+ ],
+ "links_total": 19.0
+}
