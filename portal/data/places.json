@@ -1,9 +1,9 @@
 {
  "_meta": {
   "note": "학교 위치(생성물, 손으로 고치지 않는다). research/data/places-draft.json에서 tools/build-places.mjs가 만든다.",
-  "checkedAt": "2026-10-29",
+  "checkedAt": "2026-11-03",
   "count": 69,
-  "withCoords": 66,
+  "withCoords": 67,
   "nearbyCount": 5
  },
  "places": [
@@ -31,17 +31,17 @@
      "asOf": "2026-11-01"
     }
    ],
-   "status": "reported",
+   "status": "confirmed",
    "sources": [
     {
-     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751092, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-03",
    "searchQuery": "성복초등학교 경기도 용인시 수지구 성복2로78번길 52"
   },
   {
@@ -73,17 +73,17 @@
      "asOf": "2026-11-02"
     }
    ],
-   "status": "reported",
+   "status": "confirmed",
    "sources": [
     {
-     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751025, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-03",
    "searchQuery": "문정중학교 경기도 용인시 수지구 포은대로 455"
   },
   {
@@ -115,22 +115,22 @@
      "asOf": "2026-11-02"
     }
    ],
-   "status": "reported",
+   "status": "confirmed",
    "sources": [
-    {
-     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-     "url": "https://www.openstreetmap.org/copyright"
-    },
     {
      "name": "주소 교차 확인: OSM 별도 노드(성복2로78번길 51)와 학교 정보 사이트 표기 일치",
      "url": null
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751031, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
-    "src-b5318a70",
-    "src-baa08ecc"
+    "src-baa08ecc",
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-03",
    "searchQuery": "성복중학교 경기도 용인시 수지구 성복2로78번길 51"
   },
   {
@@ -139,7 +139,7 @@
    "name": "성서중학교",
    "level": "middle",
    "kind": null,
-   "address": "경기도 용인시 수지구 성복1로 147",
+   "address": "경기도 용인시 수지구 성복1로 137",
    "lat": 37.315029,
    "lng": 127.064146,
    "coordSource": {
@@ -162,18 +162,18 @@
      "asOf": "2026-11-02"
     }
    ],
-   "status": "reported",
+   "status": "confirmed",
    "sources": [
     {
-     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751303, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-26",
-   "searchQuery": "성서중학교 경기도 용인시 수지구 성복1로 147"
+   "checkedAt": "2026-11-03",
+   "searchQuery": "성서중학교 경기도 용인시 수지구 성복1로 137"
   },
   {
    "id": "pl-005",
@@ -181,7 +181,7 @@
    "name": "손곡중학교",
    "level": "middle",
    "kind": null,
-   "address": "경기도 용인시 수지구 문인로70번길 5",
+   "address": "경기도 용인시 수지구 수풍로116번길 5",
    "lat": 37.334671,
    "lng": 127.094401,
    "coordSource": {
@@ -204,18 +204,18 @@
      "asOf": "2026-11-02"
     }
    ],
-   "status": "reported",
+   "status": "confirmed",
    "sources": [
     {
-     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751017, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-26",
-   "searchQuery": "손곡중학교 경기도 용인시 수지구 문인로70번길 5"
+   "checkedAt": "2026-11-03",
+   "searchQuery": "손곡중학교 경기도 용인시 수지구 수풍로116번길 5"
   },
   {
    "id": "pl-006",
@@ -246,17 +246,17 @@
      "asOf": "2026-11-02"
     }
    ],
-   "status": "reported",
+   "status": "confirmed",
    "sources": [
     {
-     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751032, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-03",
    "searchQuery": "수지중학교 경기도 용인시 수지구 수풍로 102"
   },
   {
@@ -288,17 +288,17 @@
      "asOf": "2026-11-02"
     }
    ],
-   "status": "reported",
+   "status": "confirmed",
    "sources": [
     {
-     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751314, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-03",
    "searchQuery": "신봉중학교 경기도 용인시 수지구 신봉3로 43"
   },
   {
@@ -330,17 +330,17 @@
      "asOf": "2026-11-02"
     }
    ],
-   "status": "reported",
+   "status": "confirmed",
    "sources": [
     {
-     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751297, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-03",
    "searchQuery": "용인한빛중학교 경기도 용인시 수지구 동천로 177"
   },
   {
@@ -349,7 +349,7 @@
    "name": "정평중학교",
    "level": "middle",
    "kind": null,
-   "address": "경기도 용인시 수지구 정평로13번길 21",
+   "address": "경기도 용인시 수지구 정평로 21",
    "lat": 37.317831,
    "lng": 127.088011,
    "coordSource": {
@@ -372,18 +372,18 @@
      "asOf": "2026-11-02"
     }
    ],
-   "status": "reported",
+   "status": "confirmed",
    "sources": [
     {
-     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751039, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-26",
-   "searchQuery": "정평중학교 경기도 용인시 수지구 정평로13번길 21"
+   "checkedAt": "2026-11-03",
+   "searchQuery": "정평중학교 경기도 용인시 수지구 정평로 21"
   },
   {
    "id": "pl-010",
@@ -414,17 +414,17 @@
      "asOf": "2026-11-02"
     }
    ],
-   "status": "reported",
+   "status": "confirmed",
    "sources": [
     {
-     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751044, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-03",
    "searchQuery": "홍천중학교 경기도 용인시 수지구 신봉1로71번길 36"
   },
   {
@@ -465,13 +465,18 @@
     {
      "name": "학교 주소(편제표 4개교)",
      "url": null
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7530482, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-9db376ea",
-    "src-0f7bc8cd"
+    "src-0f7bc8cd",
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-03",
    "searchQuery": "풍덕고등학교 경기도 용인시 수지구 정평로13번길 5"
   },
   {
@@ -512,13 +517,18 @@
     {
      "name": "학교 주소(편제표 4개교)",
      "url": null
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7530973, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-5b6184f8",
-    "src-0f7bc8cd"
+    "src-0f7bc8cd",
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-03",
    "searchQuery": "성복고등학교 경기도 용인시 수지구 도마치로 92"
   },
   {
@@ -559,13 +569,18 @@
     {
      "name": "학교 주소(편제표 4개교)",
      "url": null
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7530093, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-5b647dcd",
-    "src-0f7bc8cd"
+    "src-0f7bc8cd",
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-03",
    "searchQuery": "수지고등학교 경기도 용인시 수지구 수풍로 73"
   },
   {
@@ -606,13 +621,18 @@
     {
      "name": "학교 주소(편제표 4개교)",
      "url": null
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7531379, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-23491a33",
-    "src-0f7bc8cd"
+    "src-0f7bc8cd",
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-03",
    "searchQuery": "홍천고등학교 경기도 용인시 수지구 수지로227번길 22"
   },
   {
@@ -646,15 +666,15 @@
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
     },
     {
-     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7531146, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-d58e0251",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-03",
    "searchQuery": "용인한국외국어대학교부설고등학교 경기도 용인시 처인구 모현읍 외대로54번길 50"
   },
   {
@@ -686,22 +706,22 @@
      "asOf": "2026-11-02"
     }
    ],
-   "status": "reported",
+   "status": "confirmed",
    "sources": [
     {
      "name": "경기도교육청 고시 제2024-554호 2025학년도 경기도 중학교 학교군 및 중학구 고시(학교군 현황표)",
      "url": "https://www.goe.go.kr/resource/old/BBSMSTR_000000000111/BBS_202409250522349970.pdf"
     },
     {
-     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751029, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-c19fea53",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-29",
+   "checkedAt": "2026-11-03",
    "searchQuery": "상현중학교 경기도 용인시 수지구 광교마을로 61"
   },
   {
@@ -733,22 +753,22 @@
      "asOf": "2026-11-02"
     }
    ],
-   "status": "reported",
+   "status": "confirmed",
    "sources": [
     {
      "name": "경기도교육청 고시 제2024-554호 2025학년도 경기도 중학교 학교군 및 중학구 고시(학교군 현황표)",
      "url": "https://www.goe.go.kr/resource/old/BBSMSTR_000000000111/BBS_202409250522349970.pdf"
     },
     {
-     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751030, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-c19fea53",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-29",
+   "checkedAt": "2026-11-03",
    "searchQuery": "서원중학교 경기도 용인시 수지구 상현로42번길 26-8"
   },
   {
@@ -757,7 +777,7 @@
    "name": "소현중학교",
    "level": "middle",
    "kind": null,
-   "address": "경기도 용인시 만현로133번길 96(OSM은 기흥구로 표기, 행정구 확인 필요)",
+   "address": "경기도 용인시 기흥구 만현로133번길 96",
    "lat": 37.301403,
    "lng": 127.093735,
    "coordSource": {
@@ -780,23 +800,23 @@
      "asOf": "2026-11-02"
     }
    ],
-   "status": "reported",
+   "status": "confirmed",
    "sources": [
     {
      "name": "경기도교육청 고시 제2024-554호 2025학년도 경기도 중학교 학교군 및 중학구 고시(학교군 현황표)",
      "url": "https://www.goe.go.kr/resource/old/BBSMSTR_000000000111/BBS_202409250522349970.pdf"
     },
     {
-     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751034, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-c19fea53",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-29",
-   "searchQuery": "소현중학교 경기도 용인시 만현로133번길 96(OSM은 기흥구로 표기, 행정구 확인 필요)"
+   "checkedAt": "2026-11-03",
+   "searchQuery": "소현중학교 경기도 용인시 기흥구 만현로133번길 96"
   },
   {
    "id": "pl-019",
@@ -804,10 +824,13 @@
    "name": "이현중학교",
    "level": "middle",
    "kind": null,
-   "address": "주소 미확인(OSM에서 학교 건물 객체를 못 찾음)",
-   "lat": null,
-   "lng": null,
-   "coordSource": null,
+   "address": "경기도 용인시 수지구 진산로34번길 39",
+   "lat": 37.3148178,
+   "lng": 127.0968143,
+   "coordSource": {
+    "name": "OpenStreetMap Nominatim '이현중학교, 39, 진산로34번길' (node 4574680634, 이름·번지가 NEIS 주소와 같음), ODbL 1.0 ⓒ OpenStreetMap contributors",
+    "url": "https://www.openstreetmap.org/node/4574680634"
+   },
    "coordApprox": false,
    "homepage": null,
    "phone": null,
@@ -824,23 +847,23 @@
      "asOf": "2026-11-02"
     }
    ],
-   "status": "reported",
+   "status": "confirmed",
    "sources": [
     {
      "name": "경기도교육청 고시 제2024-554호 2025학년도 경기도 중학교 학교군 및 중학구 고시(학교군 현황표)",
      "url": "https://www.goe.go.kr/resource/old/BBSMSTR_000000000111/BBS_202409250522349970.pdf"
     },
     {
-     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751035, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-c19fea53",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-29",
-   "searchQuery": "이현중학교 주소 미확인(OSM에서 학교 건물 객체를 못 찾음)"
+   "checkedAt": "2026-11-03",
+   "searchQuery": "이현중학교 경기도 용인시 수지구 진산로34번길 39"
   },
   {
    "id": "pl-020",
@@ -882,16 +905,16 @@
      "url": "https://satp.goe.go.kr/main.do"
     },
     {
-     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7531014, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-e0d3a017",
     "src-184eecc3",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-29",
+   "checkedAt": "2026-11-03",
    "searchQuery": "상현고등학교 경기도 용인시 수지구 법조로 222"
   },
   {
@@ -934,16 +957,16 @@
      "url": "https://satp.goe.go.kr/main.do"
     },
     {
-     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7530574, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-1d8d9c24",
     "src-184eecc3",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-29",
+   "checkedAt": "2026-11-03",
    "searchQuery": "서원고등학교 경기도 용인시 수지구 상현로42번길 26-7"
   },
   {
@@ -986,16 +1009,16 @@
      "url": "https://satp.goe.go.kr/main.do"
     },
     {
-     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7531013, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-1be5261a",
     "src-184eecc3",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-29",
+   "checkedAt": "2026-11-03",
    "searchQuery": "신봉고등학교 경기도 용인시 수지구 신봉3로 45"
   },
   {
@@ -1038,16 +1061,16 @@
      "url": "https://satp.goe.go.kr/main.do"
     },
     {
-     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7530824, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-61d0636c",
     "src-184eecc3",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-29",
+   "checkedAt": "2026-11-03",
    "searchQuery": "대지고등학교 경기도 용인시 수지구 동백죽전대로 1066"
   },
   {
@@ -1090,16 +1113,16 @@
      "url": "https://satp.goe.go.kr/main.do"
     },
     {
-     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7530525, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-d05050e2",
     "src-184eecc3",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-29",
+   "checkedAt": "2026-11-03",
    "searchQuery": "죽전고등학교 경기도 용인시 수지구 용구대로2771번길 23"
   },
   {
@@ -1142,16 +1165,16 @@
      "url": "https://satp.goe.go.kr/main.do"
     },
     {
-     "name": "주소: OpenStreetMap 주소 정보(공식 확인 전)",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7530769, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-11e53ef6",
     "src-184eecc3",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-29",
+   "checkedAt": "2026-11-03",
    "searchQuery": "현암고등학교 경기도 용인시 수지구 디지털벨리로 17"
   },
   {
@@ -1185,15 +1208,15 @@
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
     },
     {
-     "name": "좌표: OpenStreetMap",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7530611, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-d58e0251",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-31",
+   "checkedAt": "2026-11-03",
    "searchQuery": "구성고등학교 경기도 용인시 기흥구 연원로42번길 47"
   },
   {
@@ -1227,15 +1250,15 @@
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
     },
     {
-     "name": "좌표: OpenStreetMap",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7530522, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-d58e0251",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-31",
+   "checkedAt": "2026-11-03",
    "searchQuery": "기흥고등학교 경기도 용인시 기흥구 관곡로 20"
   },
   {
@@ -1269,15 +1292,15 @@
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
     },
     {
-     "name": "좌표: OpenStreetMap",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7530823, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-d58e0251",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-31",
+   "checkedAt": "2026-11-03",
    "searchQuery": "동백고등학교 경기도 용인시 기흥구 동백7로 61"
   },
   {
@@ -1311,15 +1334,15 @@
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
     },
     {
-     "name": "좌표: OpenStreetMap",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7530882, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-d58e0251",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-31",
+   "checkedAt": "2026-11-03",
    "searchQuery": "보라고등학교 경기도 용인시 기흥구 한보라1로43번길 7"
   },
   {
@@ -1353,15 +1376,15 @@
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
     },
     {
-     "name": "좌표: OpenStreetMap",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7530658, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-d58e0251",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-31",
+   "checkedAt": "2026-11-03",
    "searchQuery": "보정고등학교 경기도 용인시 기흥구 보정로 22"
   },
   {
@@ -1395,15 +1418,15 @@
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
     },
     {
-     "name": "좌표: OpenStreetMap",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7531096, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-d58e0251",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-31",
+   "checkedAt": "2026-11-03",
    "searchQuery": "서천고등학교 경기도 용인시 기흥구 서천서로 126"
   },
   {
@@ -1437,15 +1460,15 @@
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
     },
     {
-     "name": "좌표: OpenStreetMap",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7530767, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-d58e0251",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-31",
+   "checkedAt": "2026-11-03",
    "searchQuery": "성지고등학교 경기도 용인시 기흥구 갈곡로12번길 13"
   },
   {
@@ -1479,15 +1502,15 @@
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
     },
     {
-     "name": "좌표: OpenStreetMap",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7530177, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-d58e0251",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-31",
+   "checkedAt": "2026-11-03",
    "searchQuery": "신갈고등학교 경기도 용인시 기흥구 백남준로 13"
   },
   {
@@ -1521,15 +1544,15 @@
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
     },
     {
-     "name": "좌표: OpenStreetMap",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7530778, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-d58e0251",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-31",
+   "checkedAt": "2026-11-03",
    "searchQuery": "용인백현고등학교 경기도 용인시 기흥구 동백7로 112"
   },
   {
@@ -1563,15 +1586,15 @@
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
     },
     {
-     "name": "좌표: OpenStreetMap",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7530884, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-d58e0251",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-31",
+   "checkedAt": "2026-11-03",
    "searchQuery": "청덕고등학교 경기도 용인시 기흥구 구성1로 21"
   },
   {
@@ -1605,15 +1628,15 @@
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
     },
     {
-     "name": "좌표: OpenStreetMap",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7530883, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-d58e0251",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-31",
+   "checkedAt": "2026-11-03",
    "searchQuery": "초당고등학교 경기도 용인시 기흥구 동백중앙로 21"
   },
   {
@@ -1647,15 +1670,15 @@
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
     },
     {
-     "name": "좌표: OpenStreetMap",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7530924, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-d58e0251",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-31",
+   "checkedAt": "2026-11-03",
    "searchQuery": "흥덕고등학교 경기도 용인시 기흥구 흥덕2로 36"
   },
   {
@@ -1689,15 +1712,15 @@
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
     },
     {
-     "name": "좌표: OpenStreetMap",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7531242, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-d58e0251",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-31",
+   "checkedAt": "2026-11-03",
    "searchQuery": "고림고등학교 경기도 용인시 처인구 고림로165"
   },
   {
@@ -1731,15 +1754,15 @@
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
     },
     {
-     "name": "좌표: OpenStreetMap",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7530102, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-d58e0251",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-31",
+   "checkedAt": "2026-11-03",
    "searchQuery": "용인고등학교 경기도 용인시 처인구 금학로253번길 20-21"
   },
   {
@@ -1773,15 +1796,15 @@
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
     },
     {
-     "name": "좌표: OpenStreetMap",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7531161, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-d58e0251",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-31",
+   "checkedAt": "2026-11-03",
    "searchQuery": "용인삼계고등학교 경기도 용인시 처인구 포곡읍 백옥대로1898번길 34-42"
   },
   {
@@ -1813,12 +1836,17 @@
     {
      "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7531606, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
-    "src-d58e0251"
+    "src-d58e0251",
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-31",
+   "checkedAt": "2026-11-03",
    "searchQuery": "진덕고등학교 경기도 용인시 처인구 고림로186번길 93"
   },
   {
@@ -1852,15 +1880,15 @@
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
     },
     {
-     "name": "좌표: OpenStreetMap",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7530881, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-d58e0251",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-31",
+   "checkedAt": "2026-11-03",
    "searchQuery": "포곡고등학교 경기도 용인시 처인구 포곡읍 포곡로210번길 26"
   },
   {
@@ -1894,15 +1922,15 @@
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
     },
     {
-     "name": "좌표: OpenStreetMap",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7530209, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-d58e0251",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-31",
+   "checkedAt": "2026-11-03",
    "searchQuery": "태성고등학교 경기도 용인시 처인구 백옥대로 1059-2"
   },
   {
@@ -1936,15 +1964,15 @@
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
     },
     {
-     "name": "좌표: OpenStreetMap",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7531389, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-d58e0251",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-31",
+   "checkedAt": "2026-11-03",
    "searchQuery": "처인고등학교 경기도 용인시 처인구 남사읍 한숲로 32"
   },
   {
@@ -1978,15 +2006,15 @@
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
     },
     {
-     "name": "좌표: OpenStreetMap",
-     "url": "https://www.openstreetmap.org/copyright"
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7530650, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
     "src-d58e0251",
-    "src-b5318a70"
+    "src-bec62516"
    ],
-   "checkedAt": "2026-10-31",
+   "checkedAt": "2026-11-03",
    "searchQuery": "백암고등학교 경기도 용인시 처인구 백암면 백원로 519-9"
   },
   {
@@ -2018,12 +2046,17 @@
     {
      "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751063, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
+    "src-bec62516",
     "src-bec62516"
    ],
-   "checkedAt": "2026-11-01",
+   "checkedAt": "2026-11-03",
    "searchQuery": "고기초등학교 경기도 용인시 수지구 고기로 385"
   },
   {
@@ -2055,12 +2088,17 @@
     {
      "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751075, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
+    "src-bec62516",
     "src-bec62516"
    ],
-   "checkedAt": "2026-11-01",
+   "checkedAt": "2026-11-03",
    "searchQuery": "동천초등학교 경기도 용인시 수지구 고기로 71"
   },
   {
@@ -2092,12 +2130,17 @@
     {
      "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751326, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
+    "src-bec62516",
     "src-bec62516"
    ],
-   "checkedAt": "2026-11-01",
+   "checkedAt": "2026-11-03",
    "searchQuery": "매봉초등학교 경기도 용인시 수지구 수지로 75-1"
   },
   {
@@ -2129,12 +2172,17 @@
     {
      "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751295, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
+    "src-bec62516",
     "src-bec62516"
    ],
-   "checkedAt": "2026-11-01",
+   "checkedAt": "2026-11-03",
    "searchQuery": "성서초등학교 경기도 용인시 수지구 성복2로 210"
   },
   {
@@ -2166,12 +2214,17 @@
     {
      "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751052, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
+    "src-bec62516",
     "src-bec62516"
    ],
-   "checkedAt": "2026-11-01",
+   "checkedAt": "2026-11-03",
    "searchQuery": "손곡초등학교 경기도 용인시 수지구 손곡로 68"
   },
   {
@@ -2203,12 +2256,17 @@
     {
      "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751096, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
+    "src-bec62516",
     "src-bec62516"
    ],
-   "checkedAt": "2026-11-01",
+   "checkedAt": "2026-11-03",
    "searchQuery": "수지초등학교 경기도 용인시 수지구 정평로13번길 30"
   },
   {
@@ -2240,12 +2298,17 @@
     {
      "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751053, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
+    "src-bec62516",
     "src-bec62516"
    ],
-   "checkedAt": "2026-11-01",
+   "checkedAt": "2026-11-03",
    "searchQuery": "신리초등학교 경기도 용인시 수지구 신봉1로48번길 6"
   },
   {
@@ -2277,12 +2340,17 @@
     {
      "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751098, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
+    "src-bec62516",
     "src-bec62516"
    ],
-   "checkedAt": "2026-11-01",
+   "checkedAt": "2026-11-03",
    "searchQuery": "신월초등학교 경기도 용인시 수지구 풍덕천로 86"
   },
   {
@@ -2314,12 +2382,17 @@
     {
      "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751045, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
+    "src-bec62516",
     "src-bec62516"
    ],
-   "checkedAt": "2026-11-01",
+   "checkedAt": "2026-11-03",
    "searchQuery": "신일초등학교 경기도 용인시 수지구 신봉2로48번길 28"
   },
   {
@@ -2351,12 +2424,17 @@
     {
      "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751296, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
+    "src-bec62516",
     "src-bec62516"
    ],
-   "checkedAt": "2026-11-01",
+   "checkedAt": "2026-11-03",
    "searchQuery": "용인신봉초등학교 경기도 용인시 수지구 신봉2로 115"
   },
   {
@@ -2385,12 +2463,17 @@
     {
      "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751193, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
+    "src-bec62516",
     "src-bec62516"
    ],
-   "checkedAt": "2026-11-01",
+   "checkedAt": "2026-11-03",
    "searchQuery": "용인심곡초등학교 경기도 용인시 수지구 심곡로 59"
   },
   {
@@ -2422,12 +2505,17 @@
     {
      "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751294, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
+    "src-bec62516",
     "src-bec62516"
    ],
-   "checkedAt": "2026-11-01",
+   "checkedAt": "2026-11-03",
    "searchQuery": "용인한빛초등학교 경기도 용인시 수지구 동천로 153번길 23"
   },
   {
@@ -2459,12 +2547,17 @@
     {
      "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751104, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
+    "src-bec62516",
     "src-bec62516"
    ],
-   "checkedAt": "2026-11-01",
+   "checkedAt": "2026-11-03",
    "searchQuery": "이현초등학교 경기도 용인시 기흥구 이현로 83"
   },
   {
@@ -2496,12 +2589,17 @@
     {
      "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751112, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
+    "src-bec62516",
     "src-bec62516"
    ],
-   "checkedAt": "2026-11-01",
+   "checkedAt": "2026-11-03",
    "searchQuery": "정평초등학교 경기도 용인시 수지구 정평로 64"
   },
   {
@@ -2533,12 +2631,17 @@
     {
      "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751118, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
+    "src-bec62516",
     "src-bec62516"
    ],
-   "checkedAt": "2026-11-01",
+   "checkedAt": "2026-11-03",
    "searchQuery": "토월초등학교 경기도 용인시 수지구 수지로296번길 3"
   },
   {
@@ -2570,12 +2673,17 @@
     {
      "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751120, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
+    "src-bec62516",
     "src-bec62516"
    ],
-   "checkedAt": "2026-11-01",
+   "checkedAt": "2026-11-03",
    "searchQuery": "풍덕초등학교 경기도 용인시 수지구 수지로 367"
   },
   {
@@ -2607,12 +2715,17 @@
     {
      "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751121, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
+    "src-bec62516",
     "src-bec62516"
    ],
-   "checkedAt": "2026-11-01",
+   "checkedAt": "2026-11-03",
    "searchQuery": "풍천초등학교 경기도 용인시 수지구 진산로66번길 20"
   },
   {
@@ -2644,12 +2757,17 @@
     {
      "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751123, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
+    "src-bec62516",
     "src-bec62516"
    ],
-   "checkedAt": "2026-11-01",
+   "checkedAt": "2026-11-03",
    "searchQuery": "홍천초등학교 경기도 용인시 수지구 신봉2로14번길 49"
   },
   {
@@ -2681,12 +2799,17 @@
     {
      "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751124, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
+    "src-bec62516",
     "src-bec62516"
    ],
-   "checkedAt": "2026-11-01",
+   "checkedAt": "2026-11-03",
    "searchQuery": "효자초등학교 경기도 용인시 수지구 성복1로 106-1"
   },
   {
@@ -2718,12 +2841,17 @@
     {
      "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751088, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
+    "src-bec62516",
     "src-bec62516"
    ],
-   "checkedAt": "2026-11-01",
+   "checkedAt": "2026-11-03",
    "searchQuery": "상현초등학교 경기도 용인시 수지구 만현로67번길 23"
   },
   {
@@ -2755,12 +2883,17 @@
     {
      "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751313, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
+    "src-bec62516",
     "src-bec62516"
    ],
-   "checkedAt": "2026-11-01",
+   "checkedAt": "2026-11-03",
    "searchQuery": "새빛초등학교 경기도 용인시 수지구 광교마을로 63"
   },
   {
@@ -2792,12 +2925,17 @@
     {
      "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751090, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
+    "src-bec62516",
     "src-bec62516"
    ],
-   "checkedAt": "2026-11-01",
+   "checkedAt": "2026-11-03",
    "searchQuery": "서원초등학교 경기 용인시 수지구 상현로 45"
   },
   {
@@ -2829,12 +2967,17 @@
     {
      "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751093, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
+    "src-bec62516",
     "src-bec62516"
    ],
-   "checkedAt": "2026-11-01",
+   "checkedAt": "2026-11-03",
    "searchQuery": "소현초등학교 경기도 용인시 수지구 만현로133번길 78"
   },
   {
@@ -2866,12 +3009,17 @@
     {
      "name": "NEIS 교육정보 개방포털 학교기본정보(주소·설립구분·홈페이지·전화)",
      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+    },
+    {
+     "name": "주소: NEIS 학교기본정보(경기 J10, 학교코드 7751094, 적재 2026-04-23, 2026-11-03 확인)",
+     "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
     }
    ],
    "sourceIds": [
+    "src-bec62516",
     "src-bec62516"
    ],
-   "checkedAt": "2026-11-01",
+   "checkedAt": "2026-11-03",
    "searchQuery": "솔개초등학교 경기도 용인시 수지구 상현로 79"
   }
  ],

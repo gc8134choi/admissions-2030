@@ -1,0 +1,424 @@
+{
+ "_meta": {
+  "note": "NEIS 학교기본정보(교육부) 도로명주소 스냅샷. places.json 주소 일치 검사(tools/check-places-addresses.mjs)의 기준. 갱신하려면 NEIS를 다시 조회해 교체한다.",
+  "source": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1",
+  "checkedAt": "2026-11-03",
+  "neisLoad": "2026-04-23"
+ },
+ "items": [
+  {
+   "placeId": "pl-001",
+   "name": "성복초등학교",
+   "neisCode": "7751092",
+   "address": "경기도 용인시 수지구 성복2로78번길 52"
+  },
+  {
+   "placeId": "pl-002",
+   "name": "문정중학교",
+   "neisCode": "7751025",
+   "address": "경기도 용인시 수지구 포은대로 455"
+  },
+  {
+   "placeId": "pl-003",
+   "name": "성복중학교",
+   "neisCode": "7751031",
+   "address": "경기도 용인시 수지구 성복2로78번길 51"
+  },
+  {
+   "placeId": "pl-004",
+   "name": "성서중학교",
+   "neisCode": "7751303",
+   "address": "경기도 용인시 수지구 성복1로 137"
+  },
+  {
+   "placeId": "pl-005",
+   "name": "손곡중학교",
+   "neisCode": "7751017",
+   "address": "경기도 용인시 수지구 수풍로116번길 5"
+  },
+  {
+   "placeId": "pl-006",
+   "name": "수지중학교",
+   "neisCode": "7751032",
+   "address": "경기도 용인시 수지구 수풍로 102"
+  },
+  {
+   "placeId": "pl-007",
+   "name": "신봉중학교",
+   "neisCode": "7751314",
+   "address": "경기도 용인시 수지구 신봉3로 43"
+  },
+  {
+   "placeId": "pl-008",
+   "name": "용인한빛중학교",
+   "neisCode": "7751297",
+   "address": "경기도 용인시 수지구 동천로 177"
+  },
+  {
+   "placeId": "pl-009",
+   "name": "정평중학교",
+   "neisCode": "7751039",
+   "address": "경기도 용인시 수지구 정평로 21"
+  },
+  {
+   "placeId": "pl-010",
+   "name": "홍천중학교",
+   "neisCode": "7751044",
+   "address": "경기도 용인시 수지구 신봉1로71번길 36"
+  },
+  {
+   "placeId": "pl-011",
+   "name": "풍덕고등학교",
+   "neisCode": "7530482",
+   "address": "경기도 용인시 수지구 정평로13번길 5"
+  },
+  {
+   "placeId": "pl-012",
+   "name": "성복고등학교",
+   "neisCode": "7530973",
+   "address": "경기도 용인시 수지구 도마치로 92"
+  },
+  {
+   "placeId": "pl-013",
+   "name": "수지고등학교",
+   "neisCode": "7530093",
+   "address": "경기도 용인시 수지구 수풍로 73"
+  },
+  {
+   "placeId": "pl-014",
+   "name": "용인홍천고등학교",
+   "neisCode": "7531379",
+   "address": "경기도 용인시 수지구 수지로227번길 22"
+  },
+  {
+   "placeId": "pl-015",
+   "name": "용인한국외국어대학교부설고등학교",
+   "neisCode": "7531146",
+   "address": "경기도 용인시 처인구 모현읍 외대로54번길 50"
+  },
+  {
+   "placeId": "pl-016",
+   "name": "상현중학교",
+   "neisCode": "7751029",
+   "address": "경기도 용인시 수지구 광교마을로 61"
+  },
+  {
+   "placeId": "pl-017",
+   "name": "서원중학교",
+   "neisCode": "7751030",
+   "address": "경기도 용인시 수지구 상현로42번길 26-8"
+  },
+  {
+   "placeId": "pl-018",
+   "name": "소현중학교",
+   "neisCode": "7751034",
+   "address": "경기도 용인시 기흥구 만현로133번길 96"
+  },
+  {
+   "placeId": "pl-019",
+   "name": "이현중학교",
+   "neisCode": "7751035",
+   "address": "경기도 용인시 수지구 진산로34번길 39"
+  },
+  {
+   "placeId": "pl-020",
+   "name": "상현고등학교",
+   "neisCode": "7531014",
+   "address": "경기도 용인시 수지구 법조로 222"
+  },
+  {
+   "placeId": "pl-021",
+   "name": "서원고등학교",
+   "neisCode": "7530574",
+   "address": "경기도 용인시 수지구 상현로42번길 26-7"
+  },
+  {
+   "placeId": "pl-022",
+   "name": "신봉고등학교",
+   "neisCode": "7531013",
+   "address": "경기도 용인시 수지구 신봉3로 45"
+  },
+  {
+   "placeId": "pl-023",
+   "name": "대지고등학교",
+   "neisCode": "7530824",
+   "address": "경기도 용인시 수지구 동백죽전대로 1066"
+  },
+  {
+   "placeId": "pl-024",
+   "name": "죽전고등학교",
+   "neisCode": "7530525",
+   "address": "경기도 용인시 수지구 용구대로2771번길 23"
+  },
+  {
+   "placeId": "pl-025",
+   "name": "현암고등학교",
+   "neisCode": "7530769",
+   "address": "경기도 용인시 수지구 디지털벨리로 17"
+  },
+  {
+   "placeId": "pl-026",
+   "name": "구성고등학교",
+   "neisCode": "7530611",
+   "address": "경기도 용인시 기흥구 연원로42번길 47"
+  },
+  {
+   "placeId": "pl-027",
+   "name": "기흥고등학교",
+   "neisCode": "7530522",
+   "address": "경기도 용인시 기흥구 관곡로 20"
+  },
+  {
+   "placeId": "pl-028",
+   "name": "동백고등학교",
+   "neisCode": "7530823",
+   "address": "경기도 용인시 기흥구 동백7로 61"
+  },
+  {
+   "placeId": "pl-029",
+   "name": "보라고등학교",
+   "neisCode": "7530882",
+   "address": "경기도 용인시 기흥구 한보라1로43번길 7"
+  },
+  {
+   "placeId": "pl-030",
+   "name": "보정고등학교",
+   "neisCode": "7530658",
+   "address": "경기도 용인시 기흥구 보정로 22"
+  },
+  {
+   "placeId": "pl-031",
+   "name": "서천고등학교",
+   "neisCode": "7531096",
+   "address": "경기도 용인시 기흥구 서천서로 126"
+  },
+  {
+   "placeId": "pl-032",
+   "name": "성지고등학교",
+   "neisCode": "7530767",
+   "address": "경기도 용인시 기흥구 갈곡로12번길 13"
+  },
+  {
+   "placeId": "pl-033",
+   "name": "신갈고등학교",
+   "neisCode": "7530177",
+   "address": "경기도 용인시 기흥구 백남준로 13"
+  },
+  {
+   "placeId": "pl-034",
+   "name": "용인백현고등학교",
+   "neisCode": "7530778",
+   "address": "경기도 용인시 기흥구 동백7로 112"
+  },
+  {
+   "placeId": "pl-035",
+   "name": "청덕고등학교",
+   "neisCode": "7530884",
+   "address": "경기도 용인시 기흥구 구성1로 21"
+  },
+  {
+   "placeId": "pl-036",
+   "name": "초당고등학교",
+   "neisCode": "7530883",
+   "address": "경기도 용인시 기흥구 동백중앙로 21"
+  },
+  {
+   "placeId": "pl-037",
+   "name": "흥덕고등학교",
+   "neisCode": "7530924",
+   "address": "경기도 용인시 기흥구 흥덕2로 36"
+  },
+  {
+   "placeId": "pl-038",
+   "name": "고림고등학교",
+   "neisCode": "7531242",
+   "address": "경기도 용인시 처인구 고림로165"
+  },
+  {
+   "placeId": "pl-039",
+   "name": "용인고등학교",
+   "neisCode": "7530102",
+   "address": "경기도 용인시 처인구 금학로253번길 20-21"
+  },
+  {
+   "placeId": "pl-040",
+   "name": "용인삼계고등학교",
+   "neisCode": "7531161",
+   "address": "경기도 용인시 처인구 포곡읍 백옥대로1898번길 34-42"
+  },
+  {
+   "placeId": "pl-041",
+   "name": "진덕고등학교",
+   "neisCode": "7531606",
+   "address": "경기도 용인시 처인구 고림로186번길 93"
+  },
+  {
+   "placeId": "pl-042",
+   "name": "포곡고등학교",
+   "neisCode": "7530881",
+   "address": "경기도 용인시 처인구 포곡읍 포곡로210번길 26"
+  },
+  {
+   "placeId": "pl-043",
+   "name": "태성고등학교",
+   "neisCode": "7530209",
+   "address": "경기도 용인시 처인구 백옥대로 1059-2"
+  },
+  {
+   "placeId": "pl-044",
+   "name": "처인고등학교",
+   "neisCode": "7531389",
+   "address": "경기도 용인시 처인구 남사읍 한숲로 32"
+  },
+  {
+   "placeId": "pl-045",
+   "name": "백암고등학교",
+   "neisCode": "7530650",
+   "address": "경기도 용인시 처인구 백암면 백원로 519-9"
+  },
+  {
+   "placeId": "pl-046",
+   "name": "고기초등학교",
+   "neisCode": "7751063",
+   "address": "경기도 용인시 수지구 고기로 385"
+  },
+  {
+   "placeId": "pl-047",
+   "name": "동천초등학교",
+   "neisCode": "7751075",
+   "address": "경기도 용인시 수지구 고기로 71"
+  },
+  {
+   "placeId": "pl-048",
+   "name": "매봉초등학교",
+   "neisCode": "7751326",
+   "address": "경기도 용인시 수지구 수지로 75-1"
+  },
+  {
+   "placeId": "pl-049",
+   "name": "성서초등학교",
+   "neisCode": "7751295",
+   "address": "경기도 용인시 수지구 성복2로 210"
+  },
+  {
+   "placeId": "pl-050",
+   "name": "손곡초등학교",
+   "neisCode": "7751052",
+   "address": "경기도 용인시 수지구 손곡로 68"
+  },
+  {
+   "placeId": "pl-051",
+   "name": "수지초등학교",
+   "neisCode": "7751096",
+   "address": "경기도 용인시 수지구 정평로13번길 30"
+  },
+  {
+   "placeId": "pl-052",
+   "name": "신리초등학교",
+   "neisCode": "7751053",
+   "address": "경기도 용인시 수지구 신봉1로48번길 6"
+  },
+  {
+   "placeId": "pl-053",
+   "name": "신월초등학교",
+   "neisCode": "7751098",
+   "address": "경기도 용인시 수지구 풍덕천로 86"
+  },
+  {
+   "placeId": "pl-054",
+   "name": "신일초등학교",
+   "neisCode": "7751045",
+   "address": "경기도 용인시 수지구 신봉2로48번길 28"
+  },
+  {
+   "placeId": "pl-055",
+   "name": "용인신봉초등학교",
+   "neisCode": "7751296",
+   "address": "경기도 용인시 수지구 신봉2로 115"
+  },
+  {
+   "placeId": "pl-056",
+   "name": "용인심곡초등학교",
+   "neisCode": "7751193",
+   "address": "경기도 용인시 수지구 심곡로 59"
+  },
+  {
+   "placeId": "pl-057",
+   "name": "용인한빛초등학교",
+   "neisCode": "7751294",
+   "address": "경기도 용인시 수지구 동천로 153번길 23"
+  },
+  {
+   "placeId": "pl-058",
+   "name": "이현초등학교",
+   "neisCode": "7751104",
+   "address": "경기도 용인시 기흥구 이현로 83"
+  },
+  {
+   "placeId": "pl-059",
+   "name": "정평초등학교",
+   "neisCode": "7751112",
+   "address": "경기도 용인시 수지구 정평로 64"
+  },
+  {
+   "placeId": "pl-060",
+   "name": "토월초등학교",
+   "neisCode": "7751118",
+   "address": "경기도 용인시 수지구 수지로296번길 3"
+  },
+  {
+   "placeId": "pl-061",
+   "name": "풍덕초등학교",
+   "neisCode": "7751120",
+   "address": "경기도 용인시 수지구 수지로 367"
+  },
+  {
+   "placeId": "pl-062",
+   "name": "풍천초등학교",
+   "neisCode": "7751121",
+   "address": "경기도 용인시 수지구 진산로66번길 20"
+  },
+  {
+   "placeId": "pl-063",
+   "name": "홍천초등학교",
+   "neisCode": "7751123",
+   "address": "경기도 용인시 수지구 신봉2로14번길 49"
+  },
+  {
+   "placeId": "pl-064",
+   "name": "효자초등학교",
+   "neisCode": "7751124",
+   "address": "경기도 용인시 수지구 성복1로 106-1"
+  },
+  {
+   "placeId": "pl-065",
+   "name": "상현초등학교",
+   "neisCode": "7751088",
+   "address": "경기도 용인시 수지구 만현로67번길 23"
+  },
+  {
+   "placeId": "pl-066",
+   "name": "새빛초등학교",
+   "neisCode": "7751313",
+   "address": "경기도 용인시 수지구 광교마을로 63"
+  },
+  {
+   "placeId": "pl-067",
+   "name": "서원초등학교",
+   "neisCode": "7751090",
+   "address": "경기 용인시 수지구 상현로 45"
+  },
+  {
+   "placeId": "pl-068",
+   "name": "소현초등학교",
+   "neisCode": "7751093",
+   "address": "경기도 용인시 수지구 만현로133번길 78"
+  },
+  {
+   "placeId": "pl-069",
+   "name": "솔개초등학교",
+   "neisCode": "7751094",
+   "address": "경기도 용인시 수지구 상현로 79"
+  }
+ ]
+}
