@@ -190,7 +190,7 @@
      "nullReason": null
     },
     "founding": {
-     "value": "공립(설립 2006년 03월 01일)",
+     "value": "공립·단설(설립 2006년 03월 01일)",
      "asOf": "2026",
      "status": "confirmed",
      "source": {
@@ -198,7 +198,8 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005416"
      },
      "sourceId": "src-23491a33",
-     "nullReason": null
+     "nullReason": null,
+     "note": "학교알리미 학교정보 설립구분 공립·설립유형 단설 직접 확인(2026-11-03)"
     },
     "coed": {
      "value": "남녀공학",
