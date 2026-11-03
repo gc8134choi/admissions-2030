@@ -98,7 +98,7 @@ export function makeSearcher(store) {
     return r;
   };
   // 낱말 일부만 맞은 느슨한 결과(OR)와 없는 학교, 학교+주제 질의를 구조적으로 처리한다
-  const TOPICS = [[/방과후/, "방과후학교", null], [/특색|교육 ?목표|교육 ?중점/, "교육 특색", (pl) => (pl.level === "middle" ? "#select/curriculum?v=middle&g=%EA%B5%90%EC%9C%A1" : "#select/curriculum?v=hs&g=%EA%B5%90%EC%9C%A1%EA%B3%BC%EC%A0%95")], [/편제표|개설 ?과목|과목표/, "편제표(학교별 과목표)", (pl) => (pl.schoolId ? `#select/curriculum?s=${encodeURIComponent(pl.schoolId)}&hl=${encodeURIComponent("편제표")}` : null)], [/학비|등록금|수업료/, "학비·비용", () => "#select/curriculum?v=hs&ty=1"], [/모집 ?인원|정원|몇 ?명/, "모집 인원", () => "#select/curriculum?v=hs&ty=1"], [/진학 ?실적|대입 ?결과|입시 ?결과|합격 ?실적|합격자|진학/, "대학 진학 현황", (pl) => (pl.level === "high" ? "#select/curriculum?v=hs&g=%EC%A7%84%ED%95%99" : null)], [/설명회/, "설명회 노트", (pl) => data.guide.find((g) => pl.schoolId && g.href.includes("bf=" + pl.schoolId))?.href || null], [/합격선|커트라인|입결/, "합격선", () => null], [/입학|전형|지원|가려면|가고 ?싶|들어가/, "입학·전형", () => "#schedule?t=hs"], [/학군|학교군|중학구/, "학교군", () => "#select/curriculum?v=middle"]];
+  const TOPICS = [[/방과후/, "방과후학교", null], [/특색|교육 ?목표|교육 ?중점/, "교육 특색", (pl) => (pl.level === "middle" ? "#select/curriculum?v=middle&g=%EA%B5%90%EC%9C%A1" : "#select/curriculum?v=hs&g=%EA%B5%90%EC%9C%A1%EA%B3%BC%EC%A0%95")], [/편제표|개설 ?과목|과목표|과목 ?구성/, "편제표(학교별 과목표)", (pl) => (pl.schoolId ? `#select/curriculum?s=${encodeURIComponent(pl.schoolId)}&hl=${encodeURIComponent("편제표")}` : null)], [/학비|등록금|수업료/, "학비·비용", () => "#select/curriculum?v=hs&ty=1"], [/모집 ?인원|정원|몇 ?명/, "모집 인원", () => "#select/curriculum?v=hs&ty=1"], [/진학 ?실적|대입 ?결과|입시 ?결과|합격 ?실적|합격자|진학/, "대학 진학 현황", (pl) => (pl.level === "high" ? "#select/curriculum?v=hs&g=%EC%A7%84%ED%95%99" : null)], [/설명회/, "설명회 노트", (pl) => data.guide.find((g) => pl.schoolId && g.href.includes("bf=" + pl.schoolId))?.href || null], [/합격선|커트라인|입결/, "합격선", () => null], [/입학|전형|지원|가려면|가고 ?싶|들어가/, "입학·전형", () => "#schedule?t=hs"], [/학군|학교군|중학구/, "학교군", () => "#select/curriculum?v=middle"]];
   // 과목 이름의 로마숫자(미적분Ⅱ·화학Ⅰ)를 질의의 아라비아 숫자(미적분2·화학 1)와 맞춘다
   const romanize = (str) => {
     if (!data.roman) { const bases = new Set(); for (const x of data.subjects || []) { const m = /^(.+?)\s*(Ⅰ|Ⅱ)$/.exec(x.name || ""); if (m) bases.add(m[1].trim()); } data.roman = [...bases].map((b) => [new RegExp(b.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\s*([12])(?![0-9가-힣])", "g"), b]); }
@@ -175,6 +175,11 @@ export function makeSearcher(store) {
       r = [["안내", [{ href: "#library/links", t: "이 포털에 정확히 맞는 내용이 없을 수 있어요", s: "아래는 낱말 일부만 맞는 비슷한 화면이에요 → 정확한 내용은 공식 안내(교육청·학교알리미·대입정보포털)에서 확인해요" }, ...notes]], ...(flat.length ? [["비슷한 화면", flat]] : []), ["공식 확인처", HELP.slice(0, 3).map(([n, u, d]) => ({ href: u, ext: true, t: n, s: d }))]];
     } else if (notes.length) r = [["안내", notes], ...r];
     if (p || any) r = r.map(([h, l]) => (["과목", "학교", "바로가기"].includes(h) ? [h, l.slice(0, 3)] : [h, l]));
+    if (!p && /(뜻|의미|란|이란|뭐예요|뭔가요|무엇|설명)/.test(q0)) { // 낱말 뜻을 묻는 말은 용어 풀이를 맨 위에
+      const need = norm(String(q).split(/\s+/).filter((w) => !/^(뜻|의미|란|이란|뭐|무엇|설명)$/.test(w)).join(""));
+      const tm = need.length >= 2 ? data.guide.filter((g) => g.term && norm(g.t.replace(/ \(용어\)$/, "")) === need).slice(0, 1) : [];
+      if (tm.length) { weak = false; r = [["바로 안내", tm.map((g) => ({ href: "#home", term: g.term, t: g.t, s: g.s || "" }))], ...r.filter(([h]) => h !== "바로 안내")]; }
+    }
     if (nameHits.length) { r = [["바로가기", nameHits.slice(0, 3).map((x) => ({ href: x.url, ext: true, t: x.name, s: `${x.org} · ${x.purpose}` }))], ...r.filter(([h]) => h !== "바로가기" && h !== "안내" && h !== "공식 확인처" && h !== "비슷한 화면")]; }
     if (!r.length && !p) r = [["안내", [{ href: "#library/links", t: "이 포털에서 찾기 어려운 내용이에요", s: "찾는 말에 맞는 자료가 없어요 → 학교알리미(학교별 공시)나 교육청·학교 누리집에서 확인해요" }]], ["공식 확인처", HELP.slice(1, 2).map(([n, u, d]) => ({ href: u, ext: true, t: n, s: d }))]];
     if (p) r = [["바로 안내", p.list], ...r.map(([h, l]) => [h, l.filter((x) => !p.list.some((y) => y.t === x.t))]).filter(([, l]) => l.length)];
