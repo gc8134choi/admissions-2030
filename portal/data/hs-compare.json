@@ -1332,7 +1332,7 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006522"
      },
      "sourceId": "src-e0d3a017",
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "subjectCount": {
      "value": null,
@@ -1830,7 +1830,7 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090006525"
      },
      "sourceId": "src-1be5261a",
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "subjectCount": {
      "value": null,
@@ -2079,7 +2079,7 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000801"
      },
      "sourceId": "src-d05050e2",
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "subjectCount": {
      "value": null,
@@ -2577,7 +2577,7 @@
       "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
      },
      "sourceId": "src-11e53ef6",
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "subjectCount": {
      "value": null,
@@ -2743,49 +2743,49 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "classesDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "students": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "studentsDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "teachers": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perClass": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perTeacher": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "admission": {
      "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -2814,14 +2814,14 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "subjectCount": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "univStats": {
      "value": null,
@@ -2835,7 +2835,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "canteen": {
      "value": null,
@@ -2863,7 +2863,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "homepage": {
      "value": "https://koosung-h.goeyi.kr/",
@@ -2940,49 +2940,49 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "classesDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "students": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "studentsDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "teachers": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perClass": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perTeacher": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "admission": {
      "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -3011,14 +3011,14 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "subjectCount": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "univStats": {
      "value": null,
@@ -3032,7 +3032,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "canteen": {
      "value": null,
@@ -3060,7 +3060,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "homepage": {
      "value": "https://giheung-h.goeyi.kr/",
@@ -3137,49 +3137,49 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "classesDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "students": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "studentsDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "teachers": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perClass": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perTeacher": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "admission": {
      "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -3208,14 +3208,14 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "subjectCount": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "univStats": {
      "value": null,
@@ -3229,7 +3229,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "canteen": {
      "value": null,
@@ -3257,7 +3257,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "homepage": {
      "value": "http://dongbaek-h.goeyi.kr/",
@@ -3334,49 +3334,49 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "classesDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "students": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "studentsDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "teachers": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perClass": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perTeacher": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "admission": {
      "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -3405,14 +3405,14 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "subjectCount": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "univStats": {
      "value": null,
@@ -3426,7 +3426,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "canteen": {
      "value": null,
@@ -3454,7 +3454,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "homepage": {
      "value": "http://bora-h.goeyi.kr/",
@@ -3531,49 +3531,49 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "classesDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "students": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "studentsDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "teachers": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perClass": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perTeacher": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "admission": {
      "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -3602,14 +3602,14 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "subjectCount": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "univStats": {
      "value": null,
@@ -3623,7 +3623,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "canteen": {
      "value": null,
@@ -3651,7 +3651,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "homepage": {
      "value": "http://bojeong-h.goeyi.kr",
@@ -3728,49 +3728,49 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "classesDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "students": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "studentsDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "teachers": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perClass": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perTeacher": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "admission": {
      "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -3799,14 +3799,14 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "subjectCount": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "univStats": {
      "value": null,
@@ -3820,7 +3820,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "canteen": {
      "value": null,
@@ -3848,7 +3848,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "homepage": {
      "value": "http://seocheon-h.goeyi.kr/",
@@ -3925,49 +3925,49 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "classesDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "students": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "studentsDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "teachers": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perClass": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perTeacher": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "admission": {
      "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -3996,14 +3996,14 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "subjectCount": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "univStats": {
      "value": null,
@@ -4017,7 +4017,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "canteen": {
      "value": null,
@@ -4045,7 +4045,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "homepage": {
      "value": "https://seongji-h.goeyi.kr",
@@ -4122,49 +4122,49 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "classesDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "students": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "studentsDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "teachers": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perClass": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perTeacher": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "admission": {
      "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -4204,7 +4204,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "univStats": {
      "value": null,
@@ -4218,7 +4218,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "canteen": {
      "value": null,
@@ -4246,7 +4246,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "homepage": {
      "value": "http://shingal-h.goeyi.kr",
@@ -4323,49 +4323,49 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "classesDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "students": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "studentsDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "teachers": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perClass": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perTeacher": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "admission": {
      "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -4394,14 +4394,14 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "subjectCount": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "univStats": {
      "value": null,
@@ -4415,7 +4415,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "canteen": {
      "value": null,
@@ -4443,7 +4443,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "homepage": {
      "value": "http://baekhyun-h.goeyi.kr",
@@ -4520,49 +4520,49 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "classesDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "students": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "studentsDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "teachers": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perClass": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perTeacher": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "admission": {
      "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -4591,14 +4591,14 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "subjectCount": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "univStats": {
      "value": null,
@@ -4612,7 +4612,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "canteen": {
      "value": null,
@@ -4640,7 +4640,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "homepage": {
      "value": "https://cheongdeok-h.goeyi.kr",
@@ -4717,49 +4717,49 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "classesDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "students": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "studentsDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "teachers": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perClass": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perTeacher": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "admission": {
      "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -4788,14 +4788,14 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "subjectCount": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "univStats": {
      "value": null,
@@ -4809,7 +4809,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "canteen": {
      "value": null,
@@ -4837,7 +4837,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "homepage": {
      "value": "http://chodang-h.goeyi.kr",
@@ -4914,49 +4914,49 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "classesDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "students": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "studentsDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "teachers": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perClass": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perTeacher": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "admission": {
      "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -4985,14 +4985,14 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "subjectCount": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "univStats": {
      "value": null,
@@ -5006,7 +5006,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "canteen": {
      "value": null,
@@ -5034,7 +5034,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "homepage": {
      "value": "http://hd-h.goeyi.kr",
@@ -5111,49 +5111,49 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "classesDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "students": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "studentsDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "teachers": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perClass": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perTeacher": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "admission": {
      "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -5182,14 +5182,14 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "subjectCount": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "univStats": {
      "value": null,
@@ -5203,7 +5203,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "canteen": {
      "value": null,
@@ -5231,7 +5231,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "homepage": {
      "value": "http://gorim-h.goeyi.kr",
@@ -5308,49 +5308,49 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "classesDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "students": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "studentsDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "teachers": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perClass": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perTeacher": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "admission": {
      "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -5379,14 +5379,14 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "subjectCount": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "univStats": {
      "value": null,
@@ -5400,7 +5400,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "canteen": {
      "value": null,
@@ -5428,7 +5428,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "homepage": {
      "value": "https://yongin-h.goeyi.kr/",
@@ -5505,49 +5505,49 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "classesDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "students": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "studentsDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "teachers": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perClass": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perTeacher": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "admission": {
      "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -5587,7 +5587,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "univStats": {
      "value": null,
@@ -5601,7 +5601,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "canteen": {
      "value": null,
@@ -5629,7 +5629,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "homepage": {
      "value": "http://yisamgye-h.goeyi.kr",
@@ -5706,49 +5706,49 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "classesDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "students": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "studentsDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "teachers": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perClass": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perTeacher": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "admission": {
      "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -5777,14 +5777,14 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "subjectCount": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "univStats": {
      "value": null,
@@ -5798,7 +5798,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "canteen": {
      "value": null,
@@ -5826,7 +5826,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "homepage": {
      "value": "http://www.goeyi.kr/jindeok-h/main.do",
@@ -5903,49 +5903,49 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "classesDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "students": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "studentsDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "teachers": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perClass": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perTeacher": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "admission": {
      "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -5985,7 +5985,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "univStats": {
      "value": "2026학년도 대입: 3학년 졸업생 중 4년제 273명 지원·221명 합격(81.0%), 서울·경기권 4년제 합격 254건, 서·연·고·서·성·한·과기원·의약학 계열 15건, 농어촌특별전형 합격 90건",
@@ -6004,7 +6004,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "canteen": {
      "value": null,
@@ -6032,7 +6032,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "homepage": {
      "value": "http://pogok-h.goeyi.kr",
@@ -6109,49 +6109,49 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "classesDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "students": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "studentsDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "teachers": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perClass": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perTeacher": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "admission": {
      "value": "용인학군 평준화 일반고(구역 내 배정)",
@@ -6180,14 +6180,14 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "subjectCount": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "univStats": {
      "value": null,
@@ -6201,7 +6201,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "canteen": {
      "value": null,
@@ -6229,7 +6229,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "homepage": {
      "value": "http://taesung-h.goeyi.kr",
@@ -6306,49 +6306,49 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "classesDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "students": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "studentsDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "teachers": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perClass": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perTeacher": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "admission": {
      "value": "용인학군 평준화 일반고(한시적으로 학군내 100% 배정, 구역내배정 없음)",
@@ -6377,14 +6377,14 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "subjectCount": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "univStats": {
      "value": null,
@@ -6398,7 +6398,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "canteen": {
      "value": null,
@@ -6426,7 +6426,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "homepage": {
      "value": "https://cheoin-h.goeyi.kr/",
@@ -6503,49 +6503,49 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "classesDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "students": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "studentsDetail": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "teachers": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perClass": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "perTeacher": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "admission": {
      "value": null,
@@ -6566,14 +6566,14 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "subjectCount": {
      "value": null,
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "편제표를 모은 4개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
+     "nullReason": "교육과정 정보를 모은 9개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요"
     },
     "univStats": {
      "value": null,
@@ -6587,7 +6587,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "canteen": {
      "value": null,
@@ -6615,7 +6615,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "homepage": {
      "value": "http://baegam-h.goeyi.kr",
@@ -6776,7 +6776,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "canteen": {
      "value": null,
@@ -6804,7 +6804,7 @@
      "asOf": null,
      "status": null,
      "source": null,
-     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 수지구 10개교 값만 모았어요)"
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     },
     "homepage": {
      "value": "http://www.hafs.hs.kr",
