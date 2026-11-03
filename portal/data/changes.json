@@ -1,9 +1,33 @@
 {
  "_meta": {
   "note": "데이터 변경 이력(생성물). tools/build-changes.mjs가 직전 기록과 비교해 만든다. 최신이 맨 앞.",
-  "count": 3667
+  "count": 3669
  },
  "changes": [
+  {
+   "id": "chg-20261103-894",
+   "at": "2026-11-03T22:26:00+09:00",
+   "file": "admission-rules",
+   "target": "rules[ar-2028-khu-susi-neo]",
+   "label": "학생부종합 네오르네상스전형(면접형·서류형 이원화)",
+   "field": "sourcePage",
+   "kind": "changed",
+   "old": "시행계획 PDF 변경사항(3쪽, 이미지 판독)",
+   "new": "시행계획 PDF 3쪽(인쇄 3쪽 변경사항), PDF 28쪽(인쇄 26쪽 서류형 수능최저 표), PDF 26쪽(인쇄 24쪽 면접형: 수능최저 없음)",
+   "reason": "데이터 갱신"
+  },
+  {
+   "id": "chg-20261103-895",
+   "at": "2026-11-03T22:26:00+09:00",
+   "file": "admission-rules",
+   "target": "rules[ar-2028-khu-susi-nonsul]",
+   "label": "논술우수자전형(사회계)",
+   "field": "sourcePage",
+   "kind": "changed",
+   "old": "시행계획 PDF 변경사항(3쪽, 이미지 판독)",
+   "new": "시행계획 PDF 3쪽(인쇄 3쪽 변경사항), PDF 36쪽(인쇄 34쪽 수능최저 표)",
+   "reason": "데이터 갱신"
+  },
   {
    "id": "chg-20261103-892",
    "at": "2026-11-03T21:39:21+09:00",
