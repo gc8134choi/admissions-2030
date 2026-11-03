@@ -93,6 +93,7 @@ jobs:
           node tools/build-electives.mjs --check
           node tools/build-exam-trends.mjs --check
           node tools/check-search-notices.mjs
+          node tools/check-glossary-dates.mjs
           node tools/build-sources.mjs --check
           node tools/build-changes.mjs --check
           node tools/build-hs-types.mjs --check
