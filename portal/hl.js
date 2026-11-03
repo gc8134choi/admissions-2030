@@ -3,11 +3,12 @@ const key = (s) => String(s || "").replace(/ⓘ/g, "").replace(/\s+/g, "").toLow
 export function applyHl() {
   const hl = new URLSearchParams(decodeURIComponent(location.hash.slice(1)).split("?")[1] || "").get("hl");
   if (!hl) return;
+  const inTr = new URLSearchParams(decodeURIComponent(location.hash.slice(1)).split("?")[1] || "").get("in") === "tr"; // in=tr: 표의 행만 찾는다(요약 카드가 아니라 비교 표의 학교 줄)
   const k = key(hl).slice(0, 16), k3 = key(hl).slice(0, 8), k2 = key(String(hl).replace(/^\s*\d{4}[-.]\d{1,2}(?:[-.]\d{1,2})?\s*/, "")).slice(0, 16); if (k.length < 2) return; // 변경 소식 제목은 앞의 날짜(2025-06)가 화면에서 따로 쓰여 있어 날짜를 뺀 제목으로도 찾는다
   let tries = 0; const at = location.hash.split("?")[0]; // 화면이 주소의 ?뒤를 다시 쓰므로(필터 동기화) 처음 읽은 값을 쓰고, 다른 화면으로 가면 멈춘다
   const t = setInterval(() => {
     if (++tries > 60 || location.hash.split("?")[0] !== at) return clearInterval(t);
-    const cand = [...document.querySelectorAll("#main .ed-row, #main tr, #main li, #main summary, #main dd, #main td, #main th, #main h3, #main h4, #main label, #main p, #main .aux")].filter((e) => { const t = key(e.textContent); return t.includes(k) || (k2.length >= 4 && t.includes(k2)); });
+    const cand = [...document.querySelectorAll(inTr ? "#main tbody tr" : "#main .ed-row, #main tr, #main li, #main summary, #main dd, #main td, #main th, #main h2, #main h3, #main h4, #main label, #main p, #main .aux")].filter((e) => { const t = key(e.textContent); return t.includes(k) || (k2.length >= 4 && t.includes(k2)); });
     if (!cand.length && tries > 12) cand.push(...[...document.querySelectorAll("#main .ed-row, #main tr, #main li, #main summary, #main dd, #main td, #main p")].filter((e) => k3.length >= 6 && key(e.textContent).includes(k3))); // 오래 못 찾으면 제목 앞 8자로 느슨하게
     const el = cand.find((c) => !cand.some((o) => o !== c && c.contains(o)));
     if (!el) return;

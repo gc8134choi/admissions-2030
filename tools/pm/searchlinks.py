@@ -29,13 +29,14 @@ if "--hl" in sys.argv:
     items = json.loads(subprocess.run(["node", os.path.join(ROOT, "tools/pm/searchhl.mjs")], capture_output=True, text=True, cwd=ROOT).stdout.strip().splitlines()[-1])
     HJS = r"""
 const {chromium}=require('playwright');
+const hlKey=(href,txt)=>{try{const v=decodeURIComponent(href.split(/[?&]hl=/)[1]||'').split('&')[0].replace(/ⓘ|\s+/g,'');const v2=v.replace(/^\d{4}[-.]\d{1,2}([-.]\d{1,2})?/,'');return !v||txt.includes(v.slice(0,6))||txt.includes(v2.slice(0,6))}catch(e){return true}};
 (async()=>{const base=process.argv[2];const items=JSON.parse(process.argv[3]);const b=await chromium.launch();const bad=[];let ok=0;const W=3;
 await Promise.all(Array.from({length:W},async(_,wi)=>{const p=await (await b.newContext({viewport:{width:390,height:844},hasTouch:true})).newPage();
 for(const it of items.filter((_,i)=>i%W===wi)){try{await p.goto(base);await p.waitForTimeout(250);await p.evaluate(h=>{location.hash=h.replace(/^#/,'')},it.href);await p.waitForTimeout(2600);
  let y0=-1,st=0;for(let i=0;i<30&&st<5;i++){const y=await p.evaluate(()=>Math.round(scrollY));if(Math.abs(y-y0)<=1)st++;else{st=0;y0=y}await p.waitForTimeout(300)}
- const a=await p.evaluate(()=>{const r=document.querySelector('.hl-row');if(!r)return {miss:1};const q=r.getBoundingClientRect();const hd=[...document.querySelectorAll('header, #chipbar')].filter(e=>{const c=getComputedStyle(e);return (c.position==='sticky'||c.position==='fixed')&&e.getBoundingClientRect().top<=1}).reduce((m,e)=>Math.max(m,e.getBoundingClientRect().bottom),0);return {top:Math.round(q.top),bottom:Math.round(q.bottom),hd:Math.round(hd),y:Math.round(scrollY),vis:r.checkVisibility()}});
+ const a=await p.evaluate((it)=>{if(/[?&]u=/.test(it.href)&&!/[?&]hl=/.test(it.href)){const nm=(it.t||'').split(' ·')[0];const on=[...document.querySelectorAll('.uv-chips [aria-pressed=true], .uv-chips .on, .uv-chips [aria-current]')].map(e=>e.textContent).join('|');return on.includes(nm)?{ok:1}:{wrongu:on}}const r=document.querySelector('.hl-row');if(!r)return {miss:1};const q=r.getBoundingClientRect();const hd=[...document.querySelectorAll('header, #chipbar')].filter(e=>{const c=getComputedStyle(e);return (c.position==='sticky'||c.position==='fixed')&&e.getBoundingClientRect().top<=1}).reduce((m,e)=>Math.max(m,e.getBoundingClientRect().bottom),0);return {top:Math.round(q.top),bottom:Math.round(q.bottom),hd:Math.round(hd),y:Math.round(scrollY),vis:r.checkVisibility(),txt:r.textContent.replace(/ⓘ|\s+/g,'')}},it);
  await p.waitForTimeout(1500);const y2=await p.evaluate(()=>Math.round(scrollY));
- if(a.miss)bad.push(it.href+' 행 못 찾음');else if(!a.vis)bad.push(it.href+' 안 보임');else if(a.top<a.hd-2)bad.push(it.href+' 머리에 가림 top='+a.top+' hd='+a.hd);else if(Math.abs(y2-a.y)>8)bad.push(it.href+' 도착 뒤 추가 스크롤 '+(y2-a.y));else ok++}catch(e){bad.push(it.href+' 오류')}}
+ if(a.ok){ok++;continue}if(a.wrongu!==undefined)bad.push(it.href+' 대학 칩이 다름('+a.wrongu+')');else if(a.miss)bad.push(it.href+' 행 못 찾음');else if(!hlKey(it.href,a.txt))bad.push(it.href+' 강조된 행이 대상과 다름: '+a.txt.slice(0,30));else if(!a.vis)bad.push(it.href+' 안 보임');else if(a.top<a.hd-2)bad.push(it.href+' 머리에 가림 top='+a.top+' hd='+a.hd);else if(Math.abs(y2-a.y)>8)bad.push(it.href+' 도착 뒤 추가 스크롤 '+(y2-a.y));else ok++}catch(e){bad.push(it.href+' 오류')}}
 }));
 console.log(JSON.stringify({ok,bad}));await b.close()})();
 """
