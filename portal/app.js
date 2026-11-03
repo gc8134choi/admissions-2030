@@ -217,12 +217,12 @@ async function curriculumView(el, query, node) {
         hub.insertBefore(sec, dt);
       }
       { // 요약 구역은 자리를 먼저 잡고(높이 예약) 채운다: 채워지면서 아래 내용이 밀리는 레이아웃 이동(CLS)을 막는다
-        const host = body.querySelector("#sumhost"), per = innerWidth < 900 ? 240 : 149; host.style.minHeight = Math.max(1, sel.length) * per + "px";
+        const host = body.querySelector("#sumhost"), per = innerWidth < 900 ? 256 : 164.5; host.style.minHeight = Math.max(1, sel.length) * per + "px";
         const fillSum = async () => { await summaryBody(host, sel); host.style.minHeight = "";
   body.querySelectorAll(".school").forEach((c) => { c.classList.add("cp"); const f = c.querySelector(".foot"); if (f) f.insertAdjacentHTML("afterbegin", '<button type="button" class="btn sc-more" aria-expanded="false">자세히</button>'); });
           try { (await import("./glossary.js")).decorateGlossary(host); } catch {} };
         let filled = false;
-        const arm = () => { if ("IntersectionObserver" in window && !query.get("bf")) { const io = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { io.disconnect(); goSum(); } }, { rootMargin: "900px 0px" }); io.observe(host); return true; } return false; };
+        const arm = () => { if ("IntersectionObserver" in window && !query.get("bf") && !query.get("hl")) { const io = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { io.disconnect(); goSum(); } }, { rootMargin: "900px 0px" }); io.observe(host); return true; } return false; };
         const goSum = () => { if (filled) return; filled = true; if (window.__printing) window.__printUndo.push(() => { host.innerHTML = ""; host.style.minHeight = Math.max(1, sel.length) * per + "px"; filled = false; arm(); }); return fillSum(); };
         window.__onPrint?.(goSum); // 인쇄할 때는 멀리 있어도 바로 그린다
         if (!arm()) await goSum(); // ?bf= 주소는 설명회 노트가 요약 안에 있어 바로 그린 뒤 그 자리로 간다
@@ -539,14 +539,17 @@ function render() {
   if (n.view === "curriculum" || n.view === "home") { // 위쪽 공간 절약: 제목 없이 화면이 바로 시작
     $("#main").innerHTML = `${sub}${crumbHtml(loc, hrefOf, tabHref)}<div id="view"></div>${soon}${footHtml(loc)}`;
     pageExtras(loc, query);
-    views[n.view]($("#view"), query, n).catch(() => ($("#view").innerHTML = GO_ERR));
+    const mainEl = $("#main"); mainEl.classList.add("view-loading"); const ready = () => requestAnimationFrame(() => mainEl.classList.remove("view-loading")); // 화면이 다 그려지기 전에는 아래 안내(푸터)를 숨겨 밀림(CLS)을 막는다
+    views[n.view]($("#view"), query, n).catch(() => ($("#view").innerHTML = GO_ERR)).finally(ready);
     return;
   }
   const title = loc.item.title || n.title;
   const lvTag = tab.id === "mid" || tab.id === "high" ? `<span class="lv-tag">${esc(tab.title)}${loc.group.title ? " " + esc(loc.group.title) : ""}</span>` : "";
   $("#main").innerHTML = `${sub}<h1 class="ph">${esc(title)}${lvTag}</h1>${crumbHtml(loc, hrefOf, tabHref)}<div id="view"></div>${soon}${footHtml(loc)}`;
   pageExtras(loc, query);
-  if (n.view) views[n.view]($("#view"), query).then(() => { filesApi.afterView(n.view, $("#view")); if (n.view === "credit") decorateSubjectLists($("#view"), load, "4."); if (n.id === "changelog") skinPanel($("#view")); if (n.view === "schedule") addCalendar($("#view")); }).catch(() => ($("#view").innerHTML = GO_ERR));
+  { const mainEl = $("#main"); mainEl.classList.add("view-loading"); setTimeout(() => mainEl.classList.remove("view-loading"), 4000); /* 안전장치 */ }
+  const doneLoad = () => requestAnimationFrame(() => $("#main").classList.remove("view-loading"));
+  if (n.view) views[n.view]($("#view"), query).finally(doneLoad).then(() => { filesApi.afterView(n.view, $("#view")); if (n.view === "credit") decorateSubjectLists($("#view"), load, "4."); if (n.id === "changelog") skinPanel($("#view")); if (n.view === "schedule") addCalendar($("#view")); }).catch(() => ($("#view").innerHTML = GO_ERR));
 }
 
 addEventListener("hashchange", () => { render(); applyHl(); });

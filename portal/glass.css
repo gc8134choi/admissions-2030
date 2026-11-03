@@ -481,3 +481,7 @@ button.term{padding-block:max(0px,calc((24px - 1.1em) / 2))}
 }
 
 .hl-cell{outline:2px solid #C4310D;outline-offset:-2px;background:rgba(196,49,13,.08)}
+
+/* 늦게 그려지는 큰 구역이 끝나기 전에는 화면 아래 안내(푸터)를 숨겨, 푸터가 밀리는 이동(CLS)을 없앤다 */
+body.lazy-pending .pgfoot{visibility:hidden}
+#main.view-loading .pgfoot{visibility:hidden}
