@@ -3,8 +3,17 @@
 사용: python3 tools/pm/searchlinks.py [기본주소=http://localhost:8000/portal/] [--limit N]
 (Playwright 필요. 서버를 먼저 띄운다: python3 -m http.server 8000)"""
 import json, os, subprocess, sys, tempfile
-args = [a for a in sys.argv[1:] if not a.startswith("--") and not (sys.argv[sys.argv.index(a) - 1] in ("--only", "--limit"))]
+args = [a for a in sys.argv[1:] if not a.startswith("--") and not (sys.argv[sys.argv.index(a) - 1] in ("--only", "--limit", "--hl-slice"))]
 BASE = (args[0] if args else "http://localhost:8000/portal/").rstrip("/") + "/"
+# 로컬 주소인데 서버가 꺼져 있으면 직접 띄운다(검사가 도중에 서버가 죽어 '오류'로 쏟아지지 않게)
+import atexit, time, urllib.request
+if BASE.startswith("http://localhost"):
+    try: urllib.request.urlopen(BASE, timeout=3)
+    except Exception:
+        _root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        _port = BASE.split(":")[2].split("/")[0]
+        _srv = subprocess.Popen([sys.executable, "-m", "http.server", _port], cwd=_root, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        atexit.register(_srv.terminate); time.sleep(1.5)
 LIMIT = int(sys.argv[sys.argv.index("--limit") + 1]) if "--limit" in sys.argv else 0
 JS = r"""
 const {chromium}=require('playwright');const fs=require('fs');
@@ -27,6 +36,8 @@ console.log(JSON.stringify({ok,bad,skipped:skipped.length,sk:skipped}));await b.
 if "--hl" in sys.argv:
     ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     items = json.loads(subprocess.run(["node", os.path.join(ROOT, "tools/pm/searchhl.mjs")], capture_output=True, text=True, cwd=ROOT).stdout.strip().splitlines()[-1])
+    if "--hl-slice" in sys.argv:  # --hl-slice k/n: 전체 항목을 n조각으로 나눠 k번째만(긴 검사를 나눠 돌릴 때)
+        k, n = map(int, sys.argv[sys.argv.index("--hl-slice") + 1].split("/")); items = items[k::n]
     HJS = r"""
 const {chromium}=require('playwright');
 const hlKey=(href,txt)=>{try{const v=decodeURIComponent(href.split(/[?&]hl=/)[1]||'').split('&')[0].replace(/ⓘ|\s+/g,'');const v2=v.replace(/^\d{4}[-.]\d{1,2}([-.]\d{1,2})?/,'');return !v||txt.includes(v.slice(0,6))||txt.includes(v2.slice(0,6))}catch(e){return true}};
@@ -36,7 +47,7 @@ for(const it of items.filter((_,i)=>i%W===wi)){try{await p.goto(base);await p.wa
  let y0=-1,st=0;for(let i=0;i<30&&st<5;i++){const y=await p.evaluate(()=>Math.round(scrollY));if(Math.abs(y-y0)<=1)st++;else{st=0;y0=y}await p.waitForTimeout(300)}
  const a=await p.evaluate((it)=>{if(/[?&]u=/.test(it.href)&&!/[?&]hl=/.test(it.href)){const nm=(it.t||'').split(' ·')[0];const on=[...document.querySelectorAll('.uv-chips [aria-pressed=true], .uv-chips .on, .uv-chips [aria-current]')].map(e=>e.textContent).join('|');return on.includes(nm)?{ok:1}:{wrongu:on}}const r=document.querySelector('.hl-row');if(!r)return {miss:1};const q=r.getBoundingClientRect();const hd=[...document.querySelectorAll('header, #chipbar')].filter(e=>{const c=getComputedStyle(e);return (c.position==='sticky'||c.position==='fixed')&&e.getBoundingClientRect().top<=1}).reduce((m,e)=>Math.max(m,e.getBoundingClientRect().bottom),0);return {top:Math.round(q.top),bottom:Math.round(q.bottom),hd:Math.round(hd),y:Math.round(scrollY),vis:r.checkVisibility(),txt:r.textContent.replace(/ⓘ|\s+/g,'')}},it);
  await p.waitForTimeout(1500);const y2=await p.evaluate(()=>Math.round(scrollY));
- if(a.ok){ok++;continue}if(a.wrongu!==undefined)bad.push(it.href+' 대학 칩이 다름('+a.wrongu+')');else if(a.miss)bad.push(it.href+' 행 못 찾음');else if(!hlKey(it.href,a.txt))bad.push(it.href+' 강조된 행이 대상과 다름: '+a.txt.slice(0,30));else if(!a.vis)bad.push(it.href+' 안 보임');else if(a.top<a.hd-2)bad.push(it.href+' 머리에 가림 top='+a.top+' hd='+a.hd);else if(Math.abs(y2-a.y)>8)bad.push(it.href+' 도착 뒤 추가 스크롤 '+(y2-a.y));else ok++}catch(e){bad.push(it.href+' 오류')}}
+ if(a.ok){ok++;continue}if(a.wrongu!==undefined)bad.push(it.href+' 대학 칩이 다름('+a.wrongu+')');else if(a.miss)bad.push(it.href+' 행 못 찾음');else if(!hlKey(it.href,a.txt))bad.push(it.href+' 강조된 행이 대상과 다름: '+a.txt.slice(0,30));else if(!a.vis)bad.push(it.href+' 안 보임');else if(a.top<a.hd-2)bad.push(it.href+' 머리에 가림 top='+a.top+' hd='+a.hd);else if(Math.abs(y2-a.y)>8)bad.push(it.href+' 도착 뒤 추가 스크롤 '+(y2-a.y));else ok++}catch(e){bad.push(it.href+' 오류 '+String(e).slice(0,80))}}
 }));
 console.log(JSON.stringify({ok,bad}));await b.close()})();
 """
