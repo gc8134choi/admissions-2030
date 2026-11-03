@@ -27,13 +27,13 @@ const $ = (s) => document.querySelector(s);
 // 인쇄: 늦게 그리는 구역을 바로 그리고 접힌 구역(details)을 모두 펼친다. 끝나면 원래대로(print 미디어 에뮬레이션도 같이 처리)
 { const fns = [], opened = new Set(); let printing = false, timers = [];
   window.__onPrint = (fn) => fns.push(fn); window.__printing = false; window.__printUndo = []; // 인쇄 때문에 새로 그린 구역은 끝나면 원래(안 그린) 상태로 되돌린다
-  const snaps = new Map(); let footSnap = null; // (DOM 복제로 저장: innerHTML을 되돌리면 <p> 안의 <details>가 파서에서 밖으로 튀어나와 푸터가 인쇄마다 늘었다)
+  const snaps = new Map(); let footSnap = null, decoAdded = []; // (DOM 복제로 저장: innerHTML을 되돌리면 <p> 안의 <details>가 파서에서 밖으로 튀어나와 푸터가 인쇄마다 늘었다)
   // 접이식을 열기 직전의 안쪽 모습(열면서 늦게 채워지는 내용이 인쇄 뒤에 남지 않게)
   const openAll = () => { if (!printing) return; document.querySelectorAll("details:not([open])").forEach((d) => { if (!opened.has(d)) { opened.add(d); snaps.set(d, d.cloneNode(true)); } d.open = true; }); }; // 인쇄 중에 새로 생긴 접이식도 기록해 두었다가 되돌린다
   let mo = null;
-  const start = () => { if (printing) return; printing = true; window.__printing = true; try { window.__flushDecor?.(); } catch {} footSnap = document.querySelector(".pgfoot")?.cloneNode(true) ?? null; fns.forEach((f) => { try { f(); } catch {} }); openAll(); const main = document.querySelector("#main"); if (main) { mo = new MutationObserver(openAll); mo.observe(main, { childList: true, subtree: true }); } // 인쇄 중에 새로 그려지는 접이식도 바로 펼치고 기록한다
+  const start = () => { if (printing) return; printing = true; window.__printing = true; { const before = new Set(document.querySelectorAll("#main .term, #main .gl-i")); try { window.__flushDecor?.(); } catch {} decoAdded = [...document.querySelectorAll("#main .term, #main .gl-i")].filter((e) => !before.has(e)); } footSnap = document.querySelector(".pgfoot")?.cloneNode(true) ?? null; fns.forEach((f) => { try { f(); } catch {} }); openAll(); const main = document.querySelector("#main"); if (main) { mo = new MutationObserver(openAll); mo.observe(main, { childList: true, subtree: true }); } // 인쇄 중에 새로 그려지는 접이식도 바로 펼치고 기록한다
     timers = [setTimeout(openAll, 600), setTimeout(openAll, 1600)]; }; // 열면서 새로 그려진 접이식도 다시 펼친다
-  const end = () => { printing = false; window.__printing = false; mo?.disconnect(); mo = null; timers.forEach(clearTimeout); timers = []; opened.forEach((d) => { d.open = false; if (d.isConnected && snaps.has(d)) { const c = snaps.get(d), cur = d.cloneNode(true); cur.open = c.open; if (!cur.isEqualNode(c)) d.replaceChildren(...[...c.childNodes].map((n) => n.cloneNode(true))); } }); opened.clear(); snaps.clear(); { const f = document.querySelector(".pgfoot"); if (f && footSnap) { if (!f.isEqualNode(footSnap)) f.replaceChildren(...[...footSnap.childNodes].map((n) => n.cloneNode(true))); } footSnap = null; } const undo = window.__printUndo.splice(0); undo.forEach((f) => { try { f(); } catch {} }); };
+  const end = () => { printing = false; window.__printing = false; mo?.disconnect(); mo = null; timers.forEach(clearTimeout); timers = []; opened.forEach((d) => { d.open = false; if (d.isConnected && snaps.has(d)) { const c = snaps.get(d), cur = d.cloneNode(true); cur.open = c.open; if (!cur.isEqualNode(c)) d.replaceChildren(...[...c.childNodes].map((n) => n.cloneNode(true))); } }); opened.clear(); snaps.clear(); { const f = document.querySelector(".pgfoot"); if (f && footSnap) { if (!f.isEqualNode(footSnap)) f.replaceChildren(...[...footSnap.childNodes].map((n) => n.cloneNode(true))); } footSnap = null; } decoAdded.forEach((e) => { if (!e.isConnected) return; if (e.classList.contains("gl-i")) e.remove(); else { const p = e.parentNode; e.replaceWith(document.createTextNode(e.textContent)); p?.normalize(); } }); decoAdded = []; window.__noDecorUntil = performance.now() + 900; /* 인쇄 때 먼저 붙인 용어 점선 밑줄·ⓘ는 인쇄가 끝나면 원래대로(화면의 장식 수가 인쇄마다 달라지지 않게) */ const undo = window.__printUndo.splice(0); undo.forEach((f) => { try { f(); } catch {} }); };
   const mq = matchMedia("print"); mq.addEventListener?.("change", (e) => (e.matches ? start() : end()));
   addEventListener("beforeprint", start); addEventListener("afterprint", end); }
 const esc = (s = "") => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -186,7 +186,7 @@ async function curriculumView(el, query, node) {
     if (areasSel.length) q.set("a", areasSel.join(","));
     if (tab === "compare" && fsParam()) q.set("f", fsParam());
     const cur = new URLSearchParams((location.hash.split("?")[1] || "")); // 학교 비교 표(c)·유형(t)·전형(ty)·대학 요건(us)의 선택은 지우지 않는다
-    for (const k of ["c", "t", "ty", "us", "g", "u"]) if (cur.has(k) && !q.has(k)) q.set(k, cur.get(k));
+    for (const k of ["c", "m", "t", "ty", "us", "g", "u"]) if (cur.has(k) && !q.has(k)) q.set(k, cur.get(k));
     history.replaceState(null, "", `#select/curriculum?${q.toString().replace(/%2C/g, ",")}`);
   };
   const chipHtml = () => schools.map((x) => `<button type="button" class="chip schip ${sel.includes(x.id) ? "on" : ""}" data-id="${esc(x.id)}" aria-pressed="${sel.includes(x.id)}" title="${esc(x.name)}">${nm(x.id, x.name, 36)}</button>`).join("");
@@ -577,7 +577,7 @@ load("glossary").then((g) => {
   const main = $("#main"); let tm = null;
   // 화면마다 용어당 처음 한 번만(홈은 패널마다 따로 붙인다)
   const run = () => { mo.disconnect(); if (location.hash.replace(/^#/, "").split("?")[0] !== "" && location.hash !== "#home") { try { decorateTerms(main, "section,.ed-row,.dp,.piece,details,.school,.note,.tw"); } catch {} } try { decorateGlossary(main); } catch {} /* 용어 풀이(ⓘ)는 홈을 포함한 모든 화면에 */ mo.observe(main, { childList: true, subtree: true }); };
-  const mo = new MutationObserver(() => { if (window.__printing) return; clearTimeout(tm); tm = setTimeout(run, 250); }); // 인쇄 중에는 용어 장식을 새로 붙이지 않는다(높이 변동 방지)
+  const mo = new MutationObserver(() => { if (window.__printing || performance.now() < (window.__noDecorUntil || 0)) return; clearTimeout(tm); tm = setTimeout(run, 250); }); // 인쇄 중에는 용어 장식을 새로 붙이지 않는다(높이 변동 방지)
   window.__flushDecor = () => { clearTimeout(tm); run(); }; // 인쇄 시작 때 지금까지 그려진 부분의 장식을 먼저 끝낸다
   mo.observe(main, { childList: true, subtree: true });
 }).catch(() => {});

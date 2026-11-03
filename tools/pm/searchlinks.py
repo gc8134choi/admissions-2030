@@ -30,7 +30,7 @@ if "--hl" in sys.argv:
     HJS = r"""
 const {chromium}=require('playwright');
 const hlKey=(href,txt)=>{try{const v=decodeURIComponent(href.split(/[?&]hl=/)[1]||'').split('&')[0].replace(/ⓘ|\s+/g,'');const v2=v.replace(/^\d{4}[-.]\d{1,2}([-.]\d{1,2})?/,'');return !v||txt.includes(v.slice(0,6))||txt.includes(v2.slice(0,6))}catch(e){return true}};
-(async()=>{const base=process.argv[2];const items=JSON.parse(process.argv[3]);const b=await chromium.launch();const bad=[];let ok=0;const W=3;
+(async()=>{const base=process.argv[2];const items=JSON.parse(require('fs').readFileSync(process.argv[3],'utf8'));const b=await chromium.launch();const bad=[];let ok=0;const W=3;
 await Promise.all(Array.from({length:W},async(_,wi)=>{const p=await (await b.newContext({viewport:{width:390,height:844},hasTouch:true})).newPage();
 for(const it of items.filter((_,i)=>i%W===wi)){try{await p.goto(base);await p.waitForTimeout(250);await p.evaluate(h=>{location.hash=h.replace(/^#/,'')},it.href);await p.waitForTimeout(2600);
  let y0=-1,st=0;for(let i=0;i<30&&st<5;i++){const y=await p.evaluate(()=>Math.round(scrollY));if(Math.abs(y-y0)<=1)st++;else{st=0;y0=y}await p.waitForTimeout(300)}
@@ -45,7 +45,8 @@ console.log(JSON.stringify({ok,bad}));await b.close()})();
     env = dict(os.environ)
     try: env["NODE_PATH"] = subprocess.run(["npm", "root", "-g"], capture_output=True, text=True).stdout.strip()
     except Exception: pass
-    r = subprocess.run(["node", hp, BASE, json.dumps(items)], capture_output=True, text=True, env=env); os.unlink(hp)
+    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as jf: json.dump(items, jf, ensure_ascii=False); jp = jf.name  # 항목이 많아 인자로 못 넘긴다
+    r = subprocess.run(["node", hp, BASE, jp], capture_output=True, text=True, env=env); os.unlink(hp); os.unlink(jp)
     out = json.loads(r.stdout.strip().splitlines()[-1]) if r.stdout.strip() else {"ok": 0, "bad": ["실행 실패 " + r.stderr[-200:]]}
     print(f"?hl= 도착 {out['ok']}/{len(items)}건 통과, 실패 {len(out['bad'])}건")
     for b in out["bad"]: print(" ✗", b)
