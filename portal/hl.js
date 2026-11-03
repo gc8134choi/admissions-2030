@@ -15,7 +15,7 @@ export function applyHl() {
     const el = cand.find((c) => !cand.some((o) => o !== c && c.contains(o)) && inTitle(c)) || cand.find((c) => inTitle(c)) || cand.find((c) => !cand.some((o) => o !== c && c.contains(o)));
     return el;
   };
-  let first = -1;
+  let first = -1, lastH = -1, stable = 0;
   const t = setInterval(() => {
     if (tries > 3 && tries % 3 === 0) document.querySelector("#rowsmore [data-all]")?.click(); // 비교 표의 "모두 보기"(과목을 나눠 그리는 표)
     if (tries === 7) document.querySelectorAll("#main details:not([open])").forEach((d) => { if (/비교/.test(d.querySelector(":scope > summary")?.textContent || "")) d.open = true; }); // 늦게 그려지는 비교 표 접이식을 먼저 편다
@@ -26,7 +26,7 @@ export function applyHl() {
     /* 같은 주소를 열 때마다 같은 줄이 되게: 처음 찾은 줄이 "글자가 딱 맞는 제목 줄"이 아니면 0.8초 더 기다려 늦게 그려지는 더 알맞은 줄이 있는지 본 뒤 정한다 */
     const exact = (e) => { const c = e.matches?.("tr") ? e.querySelector("th, td") : e.querySelector?.("b, strong, .lg-t, .ed-t, h2, h3, h4, summary") || e; return key(c.textContent) === k; };
     if (first < 0) first = tries;
-    if (!exact(el) && tries - first < 4) return;
+    { const h = document.documentElement.scrollHeight; if (h !== lastH) { lastH = h; stable = 0; } else stable++; if (!exact(el) && !(stable >= 1 && tries - first >= 1) && tries - first < 4) return; } /* 0.8초 고정 대기 대신 문서 높이가 한 틱(0.2초) 안 변하면 확정 */
     clearInterval(t);
     const tl = el.closest("#tl"); if (tl && !tl.classList.contains("all")) { tl.classList.add("all"); tl.querySelector(".more-rows")?.remove(); } // 일정 표의 "N건 더 보기"
     for (let a = el; a && a.id !== "main"; a = a.parentElement) { if (a.hidden) a.hidden = false; if (a.tagName === "DETAILS") a.open = true; if (a.classList?.contains("m-fold")) a.classList.add("m-open"); }
@@ -38,8 +38,8 @@ export function applyHl() {
     const want = () => { const r = row.getBoundingClientRect(), avail = innerHeight - head(); return scrollY + r.top - (r.height < avail * 0.8 ? head() + (avail - r.height) / 2 : head()); };
     let touched = false; const stop = () => { touched = true; };
     ["wheel", "touchstart", "keydown", "mousedown"].forEach((ev) => addEventListener(ev, stop, { once: true, passive: true }));
-    let hh = -1, hAt = performance.now(); const tS = performance.now(); // 문서 높이가 0.25초 동안 안 변할 때(최대 2.5초)까지 기다렸다가 한 번에 이동: 늦게 그려지는 구역 때문에 조금씩 밀려 가는 모습을 줄인다
-    const settled = () => { const n = performance.now(), h = document.documentElement.scrollHeight; if (h !== hh) { hh = h; hAt = n; } return n - hAt > 250 || n - tS > 2500; };
+    let hh = -1, hAt = performance.now(); const tS = performance.now(); // 문서 높이가 0.15초 동안 안 변할 때(최대 1.5초)까지 기다렸다가 한 번에 이동: 늦게 그려지는 구역 때문에 조금씩 밀려 가는 모습을 줄인다
+    const settled = () => { const n = performance.now(), h = document.documentElement.scrollHeight; if (h !== hh) { hh = h; hAt = n; } return n - hAt > 150 || n - tS > 1500; };
     const go = () => { if (!row.isConnected) { const ne = pick(); if (ne) { row = ne.closest(".ed-row, tr, li") || ne; row.classList.add("hl-row"); } } if (row.isConnected && !row.checkVisibility?.()) unfold(row); /* 접이식이 다시 접히거나 다시 그려지면 그 줄을 다시 펴고 찾는다 */ if (!settled()) return; if (!touched) { const y = Math.max(0, want()); if (Math.abs(y - scrollY) > 3) scrollTo(0, y); } };
     setTimeout(go, 80); const t0 = performance.now(); let still = performance.now(), lastY = -1; // 위치가 1.5초 동안 그대로면(레이아웃 안정) 멈춘다, 최대 9초
     const tick = () => { const now = performance.now(); if (touched || now - t0 > 5000) return; go(); if (Math.abs(scrollY - lastY) > 1) { lastY = scrollY; still = now; } if (now - still > 700 && now - t0 > 900 && settled()) return; requestAnimationFrame(tick); }; setTimeout(() => requestAnimationFrame(tick), 160);
