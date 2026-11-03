@@ -6,8 +6,8 @@ export function applyHl() {
   const k = key(hl).slice(0, 16), k3 = key(hl).slice(0, 8), k2 = key(String(hl).replace(/^\s*\d{4}[-.]\d{1,2}(?:[-.]\d{1,2})?\s*/, "")).slice(0, 16); if (k.length < 2) return; // 변경 소식 제목은 앞의 날짜(2025-06)가 화면에서 따로 쓰여 있어 날짜를 뺀 제목으로도 찾는다
   let tries = 0; const at = location.hash.split("?")[0]; // 화면이 주소의 ?뒤를 다시 쓰므로(필터 동기화) 처음 읽은 값을 쓰고, 다른 화면으로 가면 멈춘다
   const t = setInterval(() => {
-    if (++tries > 25 || location.hash.split("?")[0] !== at) return clearInterval(t);
-    const cand = [...document.querySelectorAll("#main .ed-row, #main tr, #main li, #main summary, #main dd, #main td, #main p, #main .aux")].filter((e) => { const t = key(e.textContent); return t.includes(k) || (k2.length >= 4 && t.includes(k2)); });
+    if (++tries > 60 || location.hash.split("?")[0] !== at) return clearInterval(t);
+    const cand = [...document.querySelectorAll("#main .ed-row, #main tr, #main li, #main summary, #main dd, #main td, #main th, #main h3, #main h4, #main label, #main p, #main .aux")].filter((e) => { const t = key(e.textContent); return t.includes(k) || (k2.length >= 4 && t.includes(k2)); });
     if (!cand.length && tries > 12) cand.push(...[...document.querySelectorAll("#main .ed-row, #main tr, #main li, #main summary, #main dd, #main td, #main p")].filter((e) => k3.length >= 6 && key(e.textContent).includes(k3))); // 오래 못 찾으면 제목 앞 8자로 느슨하게
     const el = cand.find((c) => !cand.some((o) => o !== c && c.contains(o)));
     if (!el) return;
@@ -23,6 +23,6 @@ export function applyHl() {
     const go = () => { if (!touched) { const y = Math.max(0, want()); if (Math.abs(y - scrollY) > 3) scrollTo(0, y); } };
     setTimeout(go, 80); const t0 = performance.now(); let still = performance.now(), lastY = -1; // 위치가 1.5초 동안 그대로면(레이아웃 안정) 멈춘다, 최대 9초
     const tick = () => { const now = performance.now(); if (touched || now - t0 > 9000) return; go(); if (Math.abs(scrollY - lastY) > 1) { lastY = scrollY; still = now; } if (now - still > 1500 && now - t0 > 1200) return; requestAnimationFrame(tick); }; setTimeout(() => requestAnimationFrame(tick), 160);
-    setTimeout(() => row.classList.remove("hl-row"), 7000);
+    setTimeout(() => row.classList.remove("hl-row"), 13000);
   }, 200);
 }

@@ -466,8 +466,8 @@ button.term{padding-block:max(0px,calc((24px - 1.1em) / 2))}
 .ed .ed-g:not(.main) .k{margin-top:4px}
 
 /* 검색에서 찾아온 행 강조(?hl=) */
-.hl-row{outline:2px solid #C4310D;outline-offset:3px;border-radius:2px;animation:hlfade 7s ease-out forwards}
-@keyframes hlfade{0%,70%{outline-color:#C4310D}100%{outline-color:transparent}}
+.hl-row{outline:2px solid #C4310D;outline-offset:3px;border-radius:2px;animation:hlfade 13s ease-out forwards}
+@keyframes hlfade{0%,80%{outline-color:#C4310D}100%{outline-color:transparent}}
 @media (prefers-reduced-motion:reduce){.hl-row{animation:none}}
 
 /* 모바일 '지금 할 일': 날짜와 상태·출처를 한 줄에(줄마다 약 23px 절약, 정보는 그대로) */

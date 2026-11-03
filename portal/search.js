@@ -27,11 +27,12 @@ const ROUTE = {
   "curriculum-guide": "#life/credit", "hs-credit-system": "#life/credit",
 };
 // 날짜가 없는 경기 고입 행은 일정 화면에 없고 고교 유형 화면(접이식 안)에 있다
+const NO_HL = new Set(["hs-11", "sch-04", "log-13", "b33-06"]); // 기본 화면에 행이 표시되지 않는 행(2033 대입 전망·학년 필터 등): 강조 없이 화면으로만 간다
 const withHl = (href, t) => (!t || !/^#/.test(href) || /[?&]hl=/.test(href) ? href : href + (href.includes("?") ? "&" : "?") + "hl=" + encodeURIComponent(String(t).replace(/ⓘ/g, "").slice(0, 24))); // 검색에서 가면 그 행을 펴서 강조(hl.js)
 const routeOf = (r) => (r.topic === "gg-hs-entry" && !(r.events && r.events.length) ? "#select/curriculum?v=hs&ty=1"
   : r.topic === "hs-schedule" && r.region === "seoul" ? "#schedule?t=hs&seoul=1" // 서울 행은 일정 화면에서 '서울 보기'를 켜야 보인다
-  : ["cur-08", "cur-29", "cur-30"].includes(r.id) ? "#admission/system" // 수능·전형 구조 참고 행은 대입 제도 화면에 있다
-  : r.id === "acd-04" ? "#select/types" // 진학 비율은 고교 유형의 학원 의견 구역에 있다
+  : ["cur-08", "cur-29", "cur-30", "sch-03"].includes(r.id) ? "#admission/system" // 수능·전형 구조 참고 행은 대입 제도 화면에 있다
+  : /^(opn-0[124]|asg-07)$/.test(r.id) ? "#select/types" : r.id === "acd-04" ? "#select/types" // 진학 비율은 고교 유형의 학원 의견 구역에 있다
   : r.topic === "exam-schedule" && r.examYear && r.examYear !== 2030 ? "#admission/system" // 다른 학년도 참고 행은 대입 제도 화면에 있다
   : ROUTE[r.topic] || (r.topic.startsWith("admission") ? "#admission/system" : "#home"));
 
@@ -72,7 +73,7 @@ export function makeSearcher(store) {
     const dfOf = (tk) => data.policy.filter((r) => norm(r.title + " " + r.body).includes(tk)).length, rare = toks.length > 1 ? toks.filter((tk) => dfOf(tk) > 0 && dfOf(tk) <= 20) : [];
     const rareHit = (r) => (rare.some((tk) => norm(r.title).includes(tk)) ? 4 : 0); // 드문 낱말(국제고·과학고 등)이 제목에 있는 행을 먼저
     const tokHit = (r) => (toks.length > 1 ? toks.filter((tk) => expand(tk).some((w) => norm(r.title + " " + r.body).includes(w))).length * 1.5 : 0), hsQ = HS_Q.test(norm(q0)) && !MID_Q.test(norm(q0)), hsRow = (r) => /^(hs-|gg-|high-school)/.test(r.topic);
-    const rows = data.policy.filter((r) => has(r.title, r.body)).map((r) => ({ href: withHl(routeOf(r), r.title), t: r.title, s: (r.body || "").slice(0, 90), sc: rank(r.title, r.body, r) + tokHit(r) + rareHit(r) + (hsQ && hsRow(r) ? 2 : 0) })).sort((a, b) => b.sc - a.sc).slice(0, 12);
+    const rows = data.policy.filter((r) => has(r.title, r.body)).map((r) => ({ href: withHl(routeOf(r), NO_HL.has(r.id) || r.topic === "profile-2033" ? null : r.title), t: r.title, s: (r.body || "").slice(0, 90), sc: rank(r.title, r.body, r) + tokHit(r) + rareHit(r) + (hsQ && hsRow(r) ? 2 : 0) })).sort((a, b) => b.sc - a.sc).slice(0, 12);
     const gd = data.guide.filter((g) => has(g.t, g.text)).map((g) => ({ href: withHl(g.href, g.hl), t: g.t, s: (g.s || (g.text.split(/(?<=[.。다요])\s/).find((x) => ks.some((w) => norm(x).includes(w))) || g.text)).slice(0, 80), sc: rank(g.t, g.text) })).sort((a, b) => b.sc - a.sc).slice(0, 8);
     const sch = data.summary.filter((m) => has(m.schoolName, m.region)).map((m) => ({ href: `#select/curriculum?v=summary&s=${m.schoolId}`, t: m.schoolName, s: `${m.creditsRequired}+${m.creditsElective}학점 · ${m.region}` }));
     const sub = data.subjects.filter((x) => has(x.name, x.summary)).slice(0, 10).map((x) => ({ href: `#select/curriculum?v=compare`, t: x.name, s: `${x.area || ""} · ${(x.summary || "").slice(0, 70)}` }));
@@ -97,8 +98,14 @@ export function makeSearcher(store) {
   };
   // 낱말 일부만 맞은 느슨한 결과(OR)와 없는 학교, 학교+주제 질의를 구조적으로 처리한다
   const TOPICS = [[/방과후/, "방과후학교", null], [/특색|교육 ?목표|교육 ?중점/, "교육 특색", (pl) => (pl.level === "middle" ? "#select/curriculum?v=middle&g=%EA%B5%90%EC%9C%A1" : "#select/curriculum?v=hs&g=%EA%B5%90%EC%9C%A1%EA%B3%BC%EC%A0%95")], [/편제표|개설 ?과목|과목표/, "편제표(학교별 과목표)", (pl) => (pl.schoolId ? `#select/curriculum?s=${encodeURIComponent(pl.schoolId)}` : null)], [/학비|등록금|수업료/, "학비·비용", () => "#select/curriculum?v=hs&ty=1"], [/모집 ?인원|정원|몇 ?명/, "모집 인원", () => "#select/curriculum?v=hs&ty=1"], [/진학 ?실적|대입 ?결과|입시 ?결과|합격 ?실적|합격자|진학/, "대학 진학 현황", (pl) => (pl.level === "high" ? "#select/curriculum?v=hs&g=%EC%A7%84%ED%95%99" : null)], [/설명회/, "설명회 노트", (pl) => data.guide.find((g) => pl.schoolId && g.href.includes("bf=" + pl.schoolId))?.href || null], [/합격선|커트라인|입결/, "합격선", () => null], [/입학|전형|지원|가려면|가고 ?싶|들어가/, "입학·전형", () => "#schedule?t=hs"], [/학군|학교군|중학구/, "학교군", () => "#select/curriculum?v=middle"]];
+  // 과목 이름의 로마숫자(미적분Ⅱ·화학Ⅰ)를 질의의 아라비아 숫자(미적분2·화학 1)와 맞춘다
+  const romanize = (str) => {
+    if (!data.roman) { const bases = new Set(); for (const x of data.subjects || []) { const m = /^(.+?)\s*(Ⅰ|Ⅱ)$/.exec(x.name || ""); if (m) bases.add(m[1].trim()); } data.roman = [...bases].map((b) => [new RegExp(b.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\s*([12])(?![0-9가-힣])", "g"), b]); }
+    if (!data.plainRoman) { const names = (data.subjects || []).map((x) => x.name || ""), withR = new Set(names.filter((n) => /(Ⅰ|Ⅱ)$/.test(n)).map((n) => n.replace(/\s*(Ⅰ|Ⅱ)$/, ""))); const m = new Map(); for (const n of names) if (n.length >= 2 && !/(Ⅰ|Ⅱ)$/.test(n) && !withR.has(n) && !/[ ·]/.test(n)) { m.set(n, n); if (n.length >= 3 && /학$/.test(n)) m.set(n.slice(0, -1), n); } data.plainRoman = [...m].map(([k, v]) => [new RegExp(k + "\\s*(?:[12]|Ⅰ|Ⅱ|I{1,2})(?![0-9가-힣A-Za-z])", "g"), v]); } // 화학1·화학Ⅰ·물리2 → 화학·물리학(로마숫자 없는 과목)
+    let t = String(str); for (const [re, b] of data.roman) t = t.replace(re, (_, n) => b + (n === "1" ? "Ⅰ" : "Ⅱ")); for (const [re, v] of data.plainRoman) t = t.replace(re, v); return t;
+  };
   const search = (q) => {
-    const q0 = String(q); // 원문(의도 낱말 확인용)
+    const q0 = romanize(String(q)); // 원문(의도 낱말 확인용)
     q = cleanQuery(q0).replace(/(?:용인)?(?:한국)?외(?:국어)?대(?:학교)?부(?:설|속)?(?:고등학교|고)?/g, "용인한국외국어대학교부설고등학교"); // 약칭 → 학교 이름
     const p = priority(q, q0); if (p && p.only) return [["바로 안내", p.list]];
     { // 문장 속 동사·어미(떨어지면·열어·같은…)는 찾는 내용어가 아니다: 색인에 한 번도 없는 낱말은 무시하고 남은 내용어로 찾는다(내용어 전부가 없을 때만 "없음"으로 간다)
