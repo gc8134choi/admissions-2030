@@ -30,7 +30,7 @@ if "--hl" in sys.argv:
     HJS = r"""
 const {chromium}=require('playwright');
 const hlKey=(href,txt)=>{try{const v=decodeURIComponent(href.split(/[?&]hl=/)[1]||'').split('&')[0].replace(/ⓘ|\s+/g,'');const v2=v.replace(/^\d{4}[-.]\d{1,2}([-.]\d{1,2})?/,'');return !v||txt.includes(v.slice(0,6))||txt.includes(v2.slice(0,6))}catch(e){return true}};
-(async()=>{const base=process.argv[2];const items=JSON.parse(require('fs').readFileSync(process.argv[3],'utf8'));const b=await chromium.launch();const bad=[];let ok=0;const W=3;
+(async()=>{const base=process.argv[2];const items=JSON.parse(require('fs').readFileSync(process.argv[3],'utf8'));const b=await chromium.launch();const bad=[];let ok=0;const W=4;
 await Promise.all(Array.from({length:W},async(_,wi)=>{const p=await (await b.newContext({viewport:{width:390,height:844},hasTouch:true})).newPage();
 for(const it of items.filter((_,i)=>i%W===wi)){try{await p.goto(base);await p.waitForTimeout(250);await p.evaluate(h=>{location.hash=h.replace(/^#/,'')},it.href);await p.waitForTimeout(2600);
  let y0=-1,st=0;for(let i=0;i<30&&st<5;i++){const y=await p.evaluate(()=>Math.round(scrollY));if(Math.abs(y-y0)<=1)st++;else{st=0;y0=y}await p.waitForTimeout(300)}
