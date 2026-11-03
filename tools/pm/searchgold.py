@@ -16,7 +16,7 @@ print(f"자료 있는 질의 {len(has)}: 3위 안 적중 {pct(has,'ok')}% · 엄
 print(f"자료 없는 질의 {len(none)}: 안내 1위 {pct(none,'ok')}%")
 print(f"합산(개발용 {len(dev)}): {pct(dev,'ok')}% · 엄격 {pct(dev,'strict')}%")
 if hold: print(f"홀드아웃 {len(hold)}(수정 때 맞춰 보지 않은 새 표현): {pct(hold,'ok')}% · 엄격 {pct(hold,'strict')}%")
-for tag, nm in (("dev", "r20 개발용"), ("hold", "r20 홀드아웃(고정·수정 때 보지 않음)"), ("dev21", "r21 개발용"), ("hold21", "r21 홀드아웃(고정·수정 때 보지 않음)"), ("dev22", "r22 개발용"), ("hold22", "r22 홀드아웃(고정·수정 때 보지 않음)"), ("dev23", "r23 개발용"), ("hold23", "r23 홀드아웃(고정·수정 때 보지 않음)"), ("dev24", "r24 개발용"), ("hold24", "r24 홀드아웃(고정·수정 때 보지 않음)"), ("dev25", "r25 개발용"), ("hold25", "r25 홀드아웃(고정·수정 때 보지 않음)"), ("dev26", "r26 개발용"), ("hold26", "r26 홀드아웃(고정·수정 때 보지 않음)")):
+for tag, nm in (("dev", "r20 개발용"), ("hold", "r20 홀드아웃(고정·수정 때 보지 않음)"), ("dev21", "r21 개발용"), ("hold21", "r21 홀드아웃(고정·수정 때 보지 않음)"), ("dev22", "r22 개발용"), ("hold22", "r22 홀드아웃(고정·수정 때 보지 않음)"), ("dev23", "r23 개발용"), ("hold23", "r23 홀드아웃(고정·수정 때 보지 않음)"), ("dev24", "r24 개발용"), ("hold24", "r24 홀드아웃(고정·수정 때 보지 않음)"), ("dev25", "r25 개발용"), ("hold25", "r25 홀드아웃(고정·수정 때 보지 않음)"), ("dev26", "r26 개발용"), ("hold26", "r26 홀드아웃(고정·수정 때 보지 않음)"), ("dev27", "r27 개발용"), ("hold27", "r27 홀드아웃(고정·수정 때 보지 않음)")):
     a = [x for x in res if x.get("r20") == tag]
     if a: print(f"{nm} {len(a)}: {pct(a,'ok')}% · 엄격 {pct(a,'strict')}%")
 base_path = os.path.join(ROOT, "tools/pm/searchgold.baseline.json")
