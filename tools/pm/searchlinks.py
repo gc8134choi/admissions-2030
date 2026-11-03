@@ -3,7 +3,7 @@
 사용: python3 tools/pm/searchlinks.py [기본주소=http://localhost:8000/portal/] [--limit N]
 (Playwright 필요. 서버를 먼저 띄운다: python3 -m http.server 8000)"""
 import json, os, subprocess, sys, tempfile
-args = [a for a in sys.argv[1:] if not a.startswith("--") and not (sys.argv[sys.argv.index(a) - 1] in ("--only", "--limit"))]
+args = [a for a in sys.argv[1:] if not a.startswith("--") and not (sys.argv[sys.argv.index(a) - 1] in ("--only", "--limit", "--hl-slice"))]
 BASE = (args[0] if args else "http://localhost:8000/portal/").rstrip("/") + "/"
 # 로컬 주소인데 서버가 꺼져 있으면 직접 띄운다(검사가 도중에 서버가 죽어 '오류'로 쏟아지지 않게)
 import atexit, time, urllib.request
