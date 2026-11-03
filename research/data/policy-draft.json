@@ -1714,20 +1714,24 @@
       "topic": "curriculum-guide",
       "entryYear": null,
       "title": "학점 환산",
-      "body": "1학점은 50분 수업 16회(2·3학년은 17회 중 1회 자율 운영 가능, 고교학점제 종합지원포털)",
+      "body": "1학점은 50분 수업 16회예요. 포털은 2·3학년은 17회 중 1회를 융합·진로연계 등으로 자율 운영한다고 안내하고, 경기도교육청 2026 학칙 예시는 3학년만 17회(그중 1회 자율)로 적어 학년 범위에 차이가 있어요(학교 학칙 확인)",
       "status": "확정",
       "sourceKind": "공식",
-      "sourceName": "고교학점제 종합지원포털(교육부) 졸업·이수 기준",
-      "sourceUrl": "https://www.hscredit.kr/about/graduation",
+      "sourceName": "고교학점제 종합지원포털(교육부) 교육과정 소개",
+      "sourceUrl": "https://www.hscredit.kr/curriculum/intro",
       "extraSources": [
         {
-          "name": "고교학점제 종합지원포털(교육부) 고교학점제란",
-          "url": "https://www.hscredit.kr/about/intro"
+          "name": "고교학점제 종합지원포털(교육부) 졸업·이수 기준(16회 기준)",
+          "url": "https://www.hscredit.kr/about/graduation"
+        },
+        {
+          "name": "경기도교육청 2026 고교학점제 및 학점 이수 인정 방안 PDF 27쪽(학칙 예시: 1·2학년 학기당 16회, 3학년 17회 중 1회 학교자율)",
+          "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/04/e2b13ae0-cb1b-49f0-a7d0-9d90c781c606.pdf"
         }
       ],
-      "checkedAt": "2026-10-25",
+      "checkedAt": "2026-11-03",
       "unverified": false,
-      "statusNote": "확정(공식 원문 확인, 2026-10-25)",
+      "statusNote": "확정(공식 원문 확인, 2026-11-03) · 2·3학년/3학년 자율 운영 범위는 출처마다 달라 학교 학칙 확인",
       "region": "national",
       "examYear": null
     },

@@ -892,19 +892,29 @@
    "id": "gl-045",
    "term": "학점",
    "aliases": [],
-   "short": "교과를 이수한 양을 세는 단위예요. 1학점은 50분 수업 16회가 기준이에요(2·3학년은 17회 중 1회 자율 운영 가능).",
+   "short": "교과를 이수한 양을 세는 단위예요. 1학점은 50분 수업 16회가 기준이에요(포털은 2·3학년의 17회 중 1회 자율 운영을 안내하고, 경기도교육청 학칙 예시는 3학년만 17회라서 학교 학칙을 확인하세요).",
    "detail": null,
    "official": null,
    "category": "학점제",
    "status": "reported",
    "sources": [
     {
+     "name": "고교학점제 종합지원포털(교육부) 교육과정 소개",
+     "url": "https://www.hscredit.kr/curriculum/intro"
+    },
+    {
      "name": "고교학점제 종합지원포털(교육부) 고교학점제 소개",
      "url": "https://www.hscredit.kr/about"
+    },
+    {
+     "name": "경기도교육청 2026 고교학점제 및 학점 이수 인정 방안 PDF 27쪽(학칙 예시: 1·2학년 학기당 16회, 3학년 17회 중 1회 학교자율)",
+     "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/04/e2b13ae0-cb1b-49f0-a7d0-9d90c781c606.pdf"
     }
    ],
    "sourceIds": [
-    "src-558b5d6d"
+    "src-b183d831",
+    "src-558b5d6d",
+    "src-5d9dd135"
    ]
   },
   {
