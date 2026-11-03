@@ -1,9 +1,153 @@
 {
  "_meta": {
   "note": "데이터 변경 이력(생성물). tools/build-changes.mjs가 직전 기록과 비교해 만든다. 최신이 맨 앞.",
-  "count": 3545
+  "count": 3557
  },
  "changes": [
+  {
+   "id": "chg-20261103-772",
+   "at": "2026-11-03T21:30:15+09:00",
+   "file": "admission-rules",
+   "target": "rules[ar-2028-ku-all-csat]",
+   "label": "정시 수능(일반전형)",
+   "field": "checkedAt",
+   "kind": "changed",
+   "old": "2026-10-26",
+   "new": "2026-11-03",
+   "reason": "데이터 갱신"
+  },
+  {
+   "id": "chg-20261103-773",
+   "at": "2026-11-03T21:30:15+09:00",
+   "file": "admission-rules",
+   "target": "rules[ar-2028-ku-all-csat]",
+   "label": "정시 수능(일반전형)",
+   "field": "sourcePage",
+   "kind": "changed",
+   "old": "시행계획 PDF 23~24쪽",
+   "new": "시행계획 PDF 24~25쪽(인쇄 23~24쪽)",
+   "reason": "데이터 갱신"
+  },
+  {
+   "id": "chg-20261103-774",
+   "at": "2026-11-03T21:30:15+09:00",
+   "file": "admission-rules",
+   "target": "rules[ar-2028-ku-hum-nat-gyogwa]",
+   "label": "인문·자연계열(의학과 제외) 학생부교과 학교추천전형",
+   "field": "checkedAt",
+   "kind": "changed",
+   "old": "2026-10-25",
+   "new": "2026-11-03",
+   "reason": "데이터 갱신"
+  },
+  {
+   "id": "chg-20261103-775",
+   "at": "2026-11-03T21:30:15+09:00",
+   "file": "admission-rules",
+   "target": "rules[ar-2028-ku-hum-nat-gyogwa]",
+   "label": "인문·자연계열(의학과 제외) 학생부교과 학교추천전형",
+   "field": "sourcePage",
+   "kind": "changed",
+   "old": "시행계획 PDF 10~11쪽",
+   "new": "시행계획 PDF 3·11~12쪽(인쇄 2·10~11쪽)",
+   "reason": "데이터 갱신"
+  },
+  {
+   "id": "chg-20261103-776",
+   "at": "2026-11-03T21:30:15+09:00",
+   "file": "admission-rules",
+   "target": "rules[ar-2028-ku-hum-nat-jonghap]",
+   "label": "인문·자연계열(의학과 제외) 학생부종합 학업우수전형",
+   "field": "checkedAt",
+   "kind": "changed",
+   "old": "2026-10-25",
+   "new": "2026-11-03",
+   "reason": "데이터 갱신"
+  },
+  {
+   "id": "chg-20261103-777",
+   "at": "2026-11-03T21:30:15+09:00",
+   "file": "admission-rules",
+   "target": "rules[ar-2028-ku-hum-nat-jonghap]",
+   "label": "인문·자연계열(의학과 제외) 학생부종합 학업우수전형",
+   "field": "gradeReflection.gradeMethod",
+   "kind": "changed",
+   "old": "서류 100% 일괄선발(2027학년도는 1단계 서류 100% 5배수, 2단계 1단계 80 + 면접 20)",
+   "new": "1단계 서류 100%(모집인원의 5배수 선발), 2단계 1단계 성적 80 + 면접 20(2027학년도는 서류 100% 일괄선발)",
+   "reason": "데이터 갱신"
+  },
+  {
+   "id": "chg-20261103-778",
+   "at": "2026-11-03T21:30:15+09:00",
+   "file": "admission-rules",
+   "target": "rules[ar-2028-ku-hum-nat-jonghap]",
+   "label": "인문·자연계열(의학과 제외) 학생부종합 학업우수전형",
+   "field": "sourcePage",
+   "kind": "changed",
+   "old": "시행계획 PDF 12쪽",
+   "new": "시행계획 PDF 3·13쪽(인쇄 2·12쪽)",
+   "reason": "데이터 갱신"
+  },
+  {
+   "id": "chg-20261103-779",
+   "at": "2026-11-03T21:30:15+09:00",
+   "file": "admission-rules",
+   "target": "rules[ar-2028-ku-med-gyogwa]",
+   "label": "의학과 학생부교과 학교추천전형",
+   "field": "checkedAt",
+   "kind": "changed",
+   "old": "2026-10-25",
+   "new": "2026-11-03",
+   "reason": "데이터 갱신"
+  },
+  {
+   "id": "chg-20261103-780",
+   "at": "2026-11-03T21:30:15+09:00",
+   "file": "admission-rules",
+   "target": "rules[ar-2028-ku-med-gyogwa]",
+   "label": "의학과 학생부교과 학교추천전형",
+   "field": "sourcePage",
+   "kind": "changed",
+   "old": "시행계획 PDF 11쪽",
+   "new": "시행계획 PDF 3·12쪽(인쇄 2·11쪽)",
+   "reason": "데이터 갱신"
+  },
+  {
+   "id": "chg-20261103-781",
+   "at": "2026-11-03T21:30:15+09:00",
+   "file": "admission-rules",
+   "target": "rules[ar-2028-ku-med-jonghap]",
+   "label": "의학과 학생부종합 학업우수전형",
+   "field": "checkedAt",
+   "kind": "changed",
+   "old": "2026-10-25",
+   "new": "2026-11-03",
+   "reason": "데이터 갱신"
+  },
+  {
+   "id": "chg-20261103-782",
+   "at": "2026-11-03T21:30:15+09:00",
+   "file": "admission-rules",
+   "target": "rules[ar-2028-ku-med-jonghap]",
+   "label": "의학과 학생부종합 학업우수전형",
+   "field": "gradeReflection.gradeMethod",
+   "kind": "changed",
+   "old": "서류 100% 일괄선발. 의학과는 적성·인성면접을 추가 시행",
+   "new": "1단계 서류 100%(모집인원의 5배수 선발), 2단계 1단계 성적 80 + 면접 20, 의학과는 적성·인성면접을 추가 시행(2027학년도는 서류 100% 일괄선발)",
+   "reason": "데이터 갱신"
+  },
+  {
+   "id": "chg-20261103-783",
+   "at": "2026-11-03T21:30:15+09:00",
+   "file": "admission-rules",
+   "target": "rules[ar-2028-ku-med-jonghap]",
+   "label": "의학과 학생부종합 학업우수전형",
+   "field": "sourcePage",
+   "kind": "changed",
+   "old": "시행계획 PDF 12쪽",
+   "new": "시행계획 PDF 3·13쪽(인쇄 2·12쪽)",
+   "reason": "데이터 갱신"
+  },
   {
    "id": "chg-20261103-532",
    "at": "2026-11-03T16:09:45+09:00",

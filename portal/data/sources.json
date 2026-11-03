@@ -1,10 +1,10 @@
 {
  "_meta": {
   "note": "출처 등록부(생성물, 손으로 고치지 않는다). tools/build-sources.mjs가 portal/data의 출처 항목에서 만든다. 데이터 행의 sourceIds가 이 id를 가리킨다.",
-  "count": 148,
+  "count": 147,
   "kinds": {
    "official": 102,
-   "media": 25,
+   "media": 24,
    "user": 17,
    "self": 0,
    "other": 4
@@ -593,19 +593,6 @@
    ],
    "usedIn": {
     "events.json": 1,
-    "policy.json": 1
-   }
-  },
-  {
-   "id": "src-38e60ada",
-   "url": "https://riroschool.kr/kceenews/detail/242",
-   "kind": "media",
-   "org": "riroschool.kr",
-   "checked": null,
-   "names": [
-    "리로스쿨"
-   ],
-   "usedIn": {
     "policy.json": 1
    }
   },

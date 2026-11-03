@@ -551,7 +551,7 @@
           "retrieved": "2026-10-25"
         }
       ],
-      "checkedAt": "2026-10-25",
+      "checkedAt": "2026-11-03",
       "requirementsNullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)",
       "gradeReflection": {
         "areas": [
@@ -566,7 +566,7 @@
         "requiredAreas": [],
         "designatedSubjectIds": []
       },
-      "sourcePage": "시행계획 PDF 10~11쪽"
+      "sourcePage": "시행계획 PDF 3·11~12쪽(인쇄 2·10~11쪽)"
     },
     {
       "ruleId": "ar-2028-ku-med-gyogwa",
@@ -588,7 +588,7 @@
           "retrieved": "2026-10-25"
         }
       ],
-      "checkedAt": "2026-10-25",
+      "checkedAt": "2026-11-03",
       "requirementsNullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)",
       "gradeReflection": {
         "areas": [
@@ -609,7 +609,7 @@
         ],
         "designatedSubjectIds": []
       },
-      "sourcePage": "시행계획 PDF 11쪽"
+      "sourcePage": "시행계획 PDF 3·12쪽(인쇄 2·11쪽)"
     },
     {
       "ruleId": "ar-2028-ku-hum-nat-jonghap",
@@ -631,10 +631,10 @@
           "retrieved": "2026-10-25"
         }
       ],
-      "checkedAt": "2026-10-25",
+      "checkedAt": "2026-11-03",
       "requirementsNullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)",
       "gradeReflection": {
-        "gradeMethod": "서류 100% 일괄선발(2027학년도는 1단계 서류 100% 5배수, 2단계 1단계 80 + 면접 20)",
+        "gradeMethod": "1단계 서류 100%(모집인원의 5배수 선발), 2단계 1단계 성적 80 + 면접 20(2027학년도는 서류 100% 일괄선발)",
         "careerSubjectsPolicy": null
       },
       "csatMinimum": {
@@ -648,7 +648,7 @@
         ],
         "designatedSubjectIds": []
       },
-      "sourcePage": "시행계획 PDF 12쪽"
+      "sourcePage": "시행계획 PDF 3·13쪽(인쇄 2·12쪽)"
     },
     {
       "ruleId": "ar-2028-ku-med-jonghap",
@@ -670,10 +670,10 @@
           "retrieved": "2026-10-25"
         }
       ],
-      "checkedAt": "2026-10-25",
+      "checkedAt": "2026-11-03",
       "requirementsNullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)",
       "gradeReflection": {
-        "gradeMethod": "서류 100% 일괄선발. 의학과는 적성·인성면접을 추가 시행",
+        "gradeMethod": "1단계 서류 100%(모집인원의 5배수 선발), 2단계 1단계 성적 80 + 면접 20, 의학과는 적성·인성면접을 추가 시행(2027학년도는 서류 100% 일괄선발)",
         "careerSubjectsPolicy": null
       },
       "csatMinimum": {
@@ -687,7 +687,7 @@
         ],
         "designatedSubjectIds": []
       },
-      "sourcePage": "시행계획 PDF 12쪽"
+      "sourcePage": "시행계획 PDF 3·13쪽(인쇄 2·12쪽)"
     },
     {
       "ruleId": "ar-2028-ku-all-csat",
@@ -709,14 +709,14 @@
           "retrieved": "2026-10-25"
         }
       ],
-      "checkedAt": "2026-10-26",
+      "checkedAt": "2026-11-03",
       "requirementsNullReason": "고려대 시행계획에 교과 이수 권장·필수 과목 제시 없음(별도 안내 존재 여부는 확인 못 함)",
       "gradeReflection": {
         "gradeMethod": "수능 지정 응시영역: 인문·자연·체능은 국어·수학·영어·사회/과학탐구·한국사 모두, 디자인조형학부는 수학 제외(탐구는 제2외국어/한문으로 대체 불가). 표준점수 반영 배점: 자연(가정교육과·간호학과 제외) 국어 200·수학 240·탐구 200, 가정교육과·간호학과 200·200·160, 인문 200·200·160, 체육교육과 200·200·160, 디자인조형학부 국어 200·탐구 160. 영어 등급별 감점 1~9등급 0·1·3·6·12·15·18·21·24, 한국사 감점 0·0·0·0·0.2·0.4·0.6·0.8·2.0(원문 표기 그대로). 인문·자연(의학과·사이버국방학과 제외)은 수능 100% 일괄합산, 의학과는 적성·인성 면접 별도 배점 없음, 사이버국방학과는 수능 80%+기타 20%, 체육교육과·디자인조형학부는 수능 70%+실기 30%",
         "careerSubjectsPolicy": null
       },
       "csatMinimumNullReason": "일반 정시에는 수능 최저학력기준 없음(지정 응시영역만 적용). 사이버국방학과는 수학 1등급 또는 과학탐구 1등급 또는 국·수·영·탐(상위 1과목) 등급 합 8 이내 중 하나 충족이 지원조건",
-      "sourcePage": "시행계획 PDF 23~24쪽"
+      "sourcePage": "시행계획 PDF 24~25쪽(인쇄 23~24쪽)"
     },
     {
       "universityId": "s-901",
