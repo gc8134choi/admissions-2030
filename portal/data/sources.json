@@ -1,9 +1,9 @@
 {
  "_meta": {
   "note": "출처 등록부(생성물, 손으로 고치지 않는다). tools/build-sources.mjs가 portal/data의 출처 항목에서 만든다. 데이터 행의 sourceIds가 이 id를 가리킨다.",
-  "count": 147,
+  "count": 148,
   "kinds": {
-   "official": 102,
+   "official": 103,
    "media": 24,
    "user": 17,
    "self": 0,
@@ -928,6 +928,20 @@
    }
   },
   {
+   "id": "src-5d9dd135",
+   "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/04/e2b13ae0-cb1b-49f0-a7d0-9d90c781c606.pdf",
+   "kind": "official",
+   "org": "경기도교육청",
+   "checked": "2026-10-31",
+   "names": [
+    "경기도교육청 2026 고교학점제 및 학점 이수 인정 방안 PDF 27쪽(학칙 예시: 1·2학년 학기당 16회, 3학년 17회 중 1회 학교자율)"
+   ],
+   "usedIn": {
+    "glossary.json": 1,
+    "policy.json": 1
+   }
+  },
+  {
    "id": "src-5fefc3ba",
    "url": "https://news.nate.com/view/20260806n01096?mid=n1101",
    "kind": "media",
@@ -1052,6 +1066,7 @@
    "names": [
     "고교학점제 종합지원포털(교육부)",
     "고교학점제 종합지원포털(교육부) 졸업·이수 기준",
+    "고교학점제 종합지원포털(교육부) 졸업·이수 기준(16회 기준)",
     "고교학점제 종합지원포털(교육부) 고교학점제 > 졸업 기준: 보충지도·대체이수 항목",
     "고교학점제 종합지원포털 졸업·이수 기준"
    ],
@@ -1305,19 +1320,6 @@
    }
   },
   {
-   "id": "src-942c8ec8",
-   "url": "https://www.hscredit.kr/about/intro",
-   "kind": "official",
-   "org": "교육부 고교학점제 종합지원포털",
-   "checked": null,
-   "names": [
-    "고교학점제 종합지원포털(교육부) 고교학점제란"
-   ],
-   "usedIn": {
-    "policy.json": 1
-   }
-  },
-  {
    "id": "src-97777716",
    "url": null,
    "kind": "user",
@@ -1466,6 +1468,20 @@
     "뉴스핌"
    ],
    "usedIn": {
+    "policy.json": 1
+   }
+  },
+  {
+   "id": "src-b183d831",
+   "url": "https://www.hscredit.kr/curriculum/intro",
+   "kind": "official",
+   "org": "교육부 고교학점제 종합지원포털",
+   "checked": "2026-10-31",
+   "names": [
+    "고교학점제 종합지원포털(교육부) 교육과정 소개"
+   ],
+   "usedIn": {
+    "glossary.json": 1,
     "policy.json": 1
    }
   },
