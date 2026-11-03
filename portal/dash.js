@@ -122,7 +122,7 @@ export async function hsHubBody(el, { load, esc, lazy = false }) {
     const h = document.createElement("div"); h.style.minHeight = "1100px"; host.after(h);
     const draw = () => { document.body.classList.add("lazy-pending"); return import("./hs-types.js").then((m) => m.hsTypesBody(h, { load, esc })).then(() => { document.body.classList.remove("lazy-pending"); h.style.minHeight = ""; try { import("./glossary.js").then((g) => g.decorateGlossary(h)); } catch {} }).catch(() => { document.body.classList.remove("lazy-pending"); h.style.minHeight = ""; }); };
     let drawn = false;
-    const arm = () => { if ("IntersectionObserver" in window && !/[?&]hl=/.test(location.hash)) { const io = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { io.disconnect(); go(); } }, { rootMargin: "600px 0px" }); io.observe(h); return true; } return false; };
+    const arm = () => { if ("IntersectionObserver" in window && !/[?&]hl=/.test(location.hash) && !(window.__hlWanted && Date.now() - window.__hlWanted < 20000)) { const io = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { io.disconnect(); go(); } }, { rootMargin: "600px 0px" }); io.observe(h); return true; } return false; };
     const go = () => { if (drawn) return; drawn = true; draw(); if (window.__printing) window.__printUndo?.push(() => { h.innerHTML = ""; h.style.minHeight = "1100px"; drawn = false; arm(); }); };
     window.__onPrint?.(go); // 인쇄할 때는 멀리 있어도 바로 그린다(끝나면 되돌림)
     if (!arm()) go();

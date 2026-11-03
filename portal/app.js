@@ -552,7 +552,7 @@ function render() {
   if (n.view) views[n.view]($("#view"), query).finally(doneLoad).then(() => { filesApi.afterView(n.view, $("#view")); if (n.view === "credit") decorateSubjectLists($("#view"), load, "4."); if (n.id === "changelog") skinPanel($("#view")); if (n.view === "schedule") addCalendar($("#view")); }).catch(() => ($("#view").innerHTML = GO_ERR));
 }
 
-addEventListener("hashchange", () => { render(); applyHl(); });
+addEventListener("hashchange", () => { window.__hlWanted = /[?&]hl=/.test(location.hash) ? Date.now() : 0; render(); applyHl(); });
 await initProfiles(load);
 {
   const d = new Date(), W = ["일", "월", "화", "수", "목", "금", "토"];
@@ -584,7 +584,7 @@ load("glossary").then((g) => {
   window.__flushDecor = () => { clearTimeout(tm); run(); }; // 인쇄 시작 때 지금까지 그려진 부분의 장식을 먼저 끝낸다
   mo.observe(main, { childList: true, subtree: true });
 }).catch(() => {});
-render(); applyHl();
+window.__hlWanted = /[?&]hl=/.test(location.hash) ? Date.now() : 0; render(); applyHl();
 
 // 서비스 워커: 한 번 열어 두면 오프라인에서도 홈이 열린다. 새 버전이 오면 한 줄로 알린다.
 if ("serviceWorker" in navigator && location.protocol.startsWith("http") && !/^(localhost|127\.)/.test(location.hostname) || new URLSearchParams(location.search).has("sw")) {
