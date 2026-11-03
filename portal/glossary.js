@@ -91,6 +91,12 @@ function open(b) {
   pop.style.top = `${top}px`;
   pop.focus({ preventScroll: true });
 }
+// 검색 결과에서 용어를 누르면 화면을 옮기지 않고 그 자리(화면 위쪽)에 풀이 창을 연다
+export function showTerm(id) {
+  if (!BY_ID.get(id)) return false;
+  open({ dataset: { gl: id }, setAttribute() {}, focus() {}, getBoundingClientRect: () => ({ left: Math.max(8, innerWidth / 2 - 170), top: 96, bottom: 96 }) });
+  return true;
+}
 if (typeof document !== "undefined" && !window.__glBound) {
   window.__glBound = true;
   document.addEventListener("click", (e) => {

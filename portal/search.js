@@ -51,7 +51,7 @@ const HELP = [["경기도교육청", "https://www.goe.go.kr", "도 단위 공지
 // 검색 데이터 구성(브라우저 밖에서도 같은 구조를 쓰도록 분리): [policy, summary, links, subject-info, places, extra] → data
 export function buildSearchData([policy0, summary, links, si, pl, extra], store) {
   const policy = filterByProfile(policy0, loadProfile(store), { grade3: true }); /* 화면이 보여 주는 행만 검색 결과로(화면에 없는 행으로 링크되지 않게) */
-  return { places: pl.places || [], guide: extra.map((d) => ({ t: d.t, text: d.text, href: d.href, from: "", s: d.s, q: d.q, only: d.only, gap: d.gap, hl: d.hl })), policy, summary, links: links.items || [], subjects: si.subjects || (Array.isArray(si) ? si : []) };
+  return { places: pl.places || [], guide: extra.map((d) => ({ t: d.t, text: d.text, href: d.href, from: "", s: d.s, q: d.q, only: d.only, gap: d.gap, hl: d.hl, term: d.term })), policy, summary, links: links.items || [], subjects: si.subjects || (Array.isArray(si) ? si : []) };
 }
 // 점수·순위 계산 전부. 브라우저(DOM) 없이 setData(data) 뒤 search(q)만 부르면 된다.
 export function makeSearcher(store) {
@@ -74,7 +74,7 @@ export function makeSearcher(store) {
     const rareHit = (r) => (rare.some((tk) => norm(r.title).includes(tk)) ? 4 : 0); // 드문 낱말(국제고·과학고 등)이 제목에 있는 행을 먼저
     const tokHit = (r) => (toks.length > 1 ? toks.filter((tk) => expand(tk).some((w) => norm(r.title + " " + r.body).includes(w))).length * 1.5 : 0), hsQ = HS_Q.test(norm(q0)) && !MID_Q.test(norm(q0)), hsRow = (r) => /^(hs-|gg-|high-school)/.test(r.topic);
     const rows = data.policy.filter((r) => has(r.title, r.body)).map((r) => ({ href: withHl(routeOf(r), NO_HL.has(r.id) || r.topic === "profile-2033" ? null : r.title), t: r.title, s: (r.body || "").slice(0, 90), sc: rank(r.title, r.body, r) + tokHit(r) + rareHit(r) + (hsQ && hsRow(r) ? 2 : 0) })).sort((a, b) => b.sc - a.sc).slice(0, 12);
-    const gd = data.guide.filter((g) => has(g.t, g.text)).map((g) => ({ href: withHl(g.href, g.hl), t: g.t, s: (g.s || (g.text.split(/(?<=[.。다요])\s/).find((x) => ks.some((w) => norm(x).includes(w))) || g.text)).slice(0, 80), sc: rank(g.t, g.text) })).sort((a, b) => b.sc - a.sc).slice(0, 8);
+    const gd = data.guide.filter((g) => has(g.t, g.text)).map((g) => ({ href: withHl(g.href, g.hl), term: g.term, t: g.t, s: (g.s || (g.text.split(/(?<=[.。다요])\s/).find((x) => ks.some((w) => norm(x).includes(w))) || g.text)).slice(0, 80), sc: rank(g.t, g.text) })).sort((a, b) => b.sc - a.sc).slice(0, 8);
     const sch = data.summary.filter((m) => has(m.schoolName, m.region)).map((m) => ({ href: `#select/curriculum?v=summary&s=${m.schoolId}`, t: m.schoolName, s: `${m.creditsRequired}+${m.creditsElective}학점 · ${m.region}` }));
     const sub = data.subjects.filter((x) => has(x.name, x.summary)).slice(0, 10).map((x) => ({ href: `#select/curriculum?v=compare`, t: x.name, s: `${x.area || ""} · ${(x.summary || "").slice(0, 70)}` }));
     const lk = data.links.filter((x) => has(x.name, x.purpose, x.org)).map((x) => ({ href: x.url, ext: true, t: x.name, s: `${x.org} · ${x.purpose}` }));
@@ -189,7 +189,7 @@ export function mountSearch(btn, { load, store, esc }) {
   const recent = () => store.get(RECENT_KEY, []);
   const remember = (q) => { if (q.trim().length < 2) return; store.set(RECENT_KEY, [q.trim(), ...recent().filter((x) => x !== q.trim())].slice(0, 6)); };
 
-  const item = (x) => `<li><a href="${esc(x.href)}"${x.ext ? ' target="_blank" rel="noopener"' : ""} data-go><b>${esc(x.t)}${x.ext ? " ↗" : ""}</b><span>${esc(x.s)}</span></a></li>`;
+  const item = (x) => x.term ? `<li><a href="#" data-term="${esc(x.term)}" data-go><b>${esc(x.t)}</b><span>${esc(x.s)}</span></a></li>` : `<li><a href="${esc(x.href)}"${x.ext ? ' target="_blank" rel="noopener"' : ""} data-go><b>${esc(x.t)}${x.ext ? " ↗" : ""}</b><span>${esc(x.s)}</span></a></li>`;
   const paint = () => {
     const q = box.querySelector("input").value, out = box.querySelector(".sr-out");
     if (!q.trim()) { const r = recent(); out.innerHTML = r.length ? `<p class="sr-h">최근 검색</p><p class="sr-rec">${r.map((x) => `<button type="button" class="lnk" data-q="${esc(x)}">${esc(x)}</button>`).join("")}</p>` : '<p class="muted">일정, 학교, 과목, 용어를 찾아 보세요.</p>'; return; }
@@ -212,6 +212,7 @@ export function mountSearch(btn, { load, store, esc }) {
     box.addEventListener("click", (e) => {
       if (e.target.closest("[data-x]") || e.target === box) return close();
       const r = e.target.closest("[data-q]"); if (r) { inp.value = r.dataset.q; paint(); inp.focus(); return; }
+      const tm = e.target.closest("[data-term]"); if (tm) { e.preventDefault(); remember(inp.value); const id = tm.dataset.term; close(); import("./glossary.js").then((m) => setTimeout(() => m.showTerm(id), 60)); return; }
       if (e.target.closest("[data-go]")) { remember(inp.value); setTimeout(close, 0); }
     });
   };
