@@ -33,9 +33,11 @@ export function applyHl() {
     const want = () => { const r = row.getBoundingClientRect(), avail = innerHeight - head(); return scrollY + r.top - (r.height < avail * 0.8 ? head() + (avail - r.height) / 2 : head()); };
     let touched = false; const stop = () => { touched = true; };
     ["wheel", "touchstart", "keydown", "mousedown"].forEach((ev) => addEventListener(ev, stop, { once: true, passive: true }));
-    const go = () => { if (!row.isConnected) { const ne = pick(); if (ne) { row = ne.closest(".ed-row, tr, li") || ne; row.classList.add("hl-row"); } } if (row.isConnected && !row.checkVisibility?.()) unfold(row); /* 접이식이 다시 접히거나 다시 그려지면 그 줄을 다시 펴고 찾는다 */ if (!touched) { const y = Math.max(0, want()); if (Math.abs(y - scrollY) > 3) scrollTo(0, y); } };
+    let hh = -1, hAt = performance.now(); const tS = performance.now(); // 문서 높이가 0.25초 동안 안 변할 때(최대 2.5초)까지 기다렸다가 한 번에 이동: 늦게 그려지는 구역 때문에 조금씩 밀려 가는 모습을 줄인다
+    const settled = () => { const n = performance.now(), h = document.documentElement.scrollHeight; if (h !== hh) { hh = h; hAt = n; } return n - hAt > 250 || n - tS > 2500; };
+    const go = () => { if (!row.isConnected) { const ne = pick(); if (ne) { row = ne.closest(".ed-row, tr, li") || ne; row.classList.add("hl-row"); } } if (row.isConnected && !row.checkVisibility?.()) unfold(row); /* 접이식이 다시 접히거나 다시 그려지면 그 줄을 다시 펴고 찾는다 */ if (!settled()) return; if (!touched) { const y = Math.max(0, want()); if (Math.abs(y - scrollY) > 3) scrollTo(0, y); } };
     setTimeout(go, 80); const t0 = performance.now(); let still = performance.now(), lastY = -1; // 위치가 1.5초 동안 그대로면(레이아웃 안정) 멈춘다, 최대 9초
-    const tick = () => { const now = performance.now(); if (touched || now - t0 > 5000) return; go(); if (Math.abs(scrollY - lastY) > 1) { lastY = scrollY; still = now; } if (now - still > 700 && now - t0 > 900) return; requestAnimationFrame(tick); }; setTimeout(() => requestAnimationFrame(tick), 160);
+    const tick = () => { const now = performance.now(); if (touched || now - t0 > 5000) return; go(); if (Math.abs(scrollY - lastY) > 1) { lastY = scrollY; still = now; } if (now - still > 700 && now - t0 > 900 && settled()) return; requestAnimationFrame(tick); }; setTimeout(() => requestAnimationFrame(tick), 160);
     setTimeout(() => row.classList.remove("hl-row"), 13000);
   }, 200);
 }
