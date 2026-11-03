@@ -5,6 +5,15 @@
 import json, os, subprocess, sys, tempfile
 args = [a for a in sys.argv[1:] if not a.startswith("--") and not (sys.argv[sys.argv.index(a) - 1] in ("--only", "--limit"))]
 BASE = (args[0] if args else "http://localhost:8000/portal/").rstrip("/") + "/"
+# 로컬 주소인데 서버가 꺼져 있으면 직접 띄운다(검사가 도중에 서버가 죽어 '오류'로 쏟아지지 않게)
+import atexit, time, urllib.request
+if BASE.startswith("http://localhost"):
+    try: urllib.request.urlopen(BASE, timeout=3)
+    except Exception:
+        _root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        _port = BASE.split(":")[2].split("/")[0]
+        _srv = subprocess.Popen([sys.executable, "-m", "http.server", _port], cwd=_root, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        atexit.register(_srv.terminate); time.sleep(1.5)
 LIMIT = int(sys.argv[sys.argv.index("--limit") + 1]) if "--limit" in sys.argv else 0
 JS = r"""
 const {chromium}=require('playwright');const fs=require('fs');
