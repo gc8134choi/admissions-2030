@@ -15,6 +15,7 @@ export function applyHl() {
     const el = cand.find((c) => !cand.some((o) => o !== c && c.contains(o)) && inTitle(c)) || cand.find((c) => inTitle(c)) || cand.find((c) => !cand.some((o) => o !== c && c.contains(o)));
     return el;
   };
+  let first = -1;
   const t = setInterval(() => {
     if (tries > 3 && tries % 3 === 0) document.querySelector("#rowsmore [data-all]")?.click(); // 비교 표의 "모두 보기"(과목을 나눠 그리는 표)
     if (tries === 7) document.querySelectorAll("#main details:not([open])").forEach((d) => { if (/비교/.test(d.querySelector(":scope > summary")?.textContent || "")) d.open = true; }); // 늦게 그려지는 비교 표 접이식을 먼저 편다
@@ -22,6 +23,10 @@ export function applyHl() {
     if (++tries > 60 || location.hash.split("?")[0] !== at) return clearInterval(t);
     const el = pick();
     if (!el) return;
+    /* 같은 주소를 열 때마다 같은 줄이 되게: 처음 찾은 줄이 "글자가 딱 맞는 제목 줄"이 아니면 0.8초 더 기다려 늦게 그려지는 더 알맞은 줄이 있는지 본 뒤 정한다 */
+    const exact = (e) => { const c = e.matches?.("tr") ? e.querySelector("th, td") : e.querySelector?.("b, strong, .lg-t, .ed-t, h2, h3, h4, summary") || e; return key(c.textContent) === k; };
+    if (first < 0) first = tries;
+    if (!exact(el) && tries - first < 4) return;
     clearInterval(t);
     const tl = el.closest("#tl"); if (tl && !tl.classList.contains("all")) { tl.classList.add("all"); tl.querySelector(".more-rows")?.remove(); } // 일정 표의 "N건 더 보기"
     for (let a = el; a && a.id !== "main"; a = a.parentElement) { if (a.hidden) a.hidden = false; if (a.tagName === "DETAILS") a.open = true; if (a.classList?.contains("m-fold")) a.classList.add("m-open"); }
