@@ -127,7 +127,8 @@ export function makeSearcher(store) {
     const notes = [];
     if (ex.length) {
       const keys = toks0.filter((t) => ex.some((x) => norm(x.name).startsWith(t)));
-      r = r.map(([h, l]) => [h, h === "학교" ? l : l.filter((x) => keys.some((k) => norm(x.t + " " + x.s + " " + (x.sch || "")).includes(k)))]).filter(([, l]) => l.length);
+      const otherToks = words.map(norm).filter((w) => w.length >= 2 && !keys.some((k) => k.includes(w) || w.includes(k))); // 학교 이름 말고 남은 낱말(매점·교복…)이 제목에 든 문서를 앞에
+      r = r.map(([h, l]) => [h, h === "학교" ? l : l.filter((x) => keys.some((k) => norm(x.t + " " + x.s + " " + (x.sch || "")).includes(k))).map((x, i) => ({ x, i, c: otherToks.filter((w) => norm(x.t).includes(w)).length })).sort((a, b) => b.c - a.c || a.i - b.i).map((o) => o.x)]).filter(([, l]) => l.length);
       r = [["학교", ex.map((x) => ({ href: `#select/curriculum?v=map&p=${encodeURIComponent(x.id)}`, t: x.name, s: `${x.level === "middle" ? "중학교" : x.level === "elementary" ? "초등학교" : "고등학교"} · ${x.address || ""}` }))], ...r.filter(([h]) => h !== "학교")];
       weak = false; // 학교 이름이 맞았으면 느슨한 매치가 아니다
       const rest = norm(q); // 학교 + 주제: 주제어에 맞는 화면을 같이 이어 준다
