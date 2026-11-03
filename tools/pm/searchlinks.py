@@ -27,6 +27,8 @@ console.log(JSON.stringify({ok,bad,skipped:skipped.length,sk:skipped}));await b.
 if "--hl" in sys.argv:
     ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     items = json.loads(subprocess.run(["node", os.path.join(ROOT, "tools/pm/searchhl.mjs")], capture_output=True, text=True, cwd=ROOT).stdout.strip().splitlines()[-1])
+    if "--hl-slice" in sys.argv:  # --hl-slice k/n: 전체 항목을 n조각으로 나눠 k번째만(긴 검사를 나눠 돌릴 때)
+        k, n = map(int, sys.argv[sys.argv.index("--hl-slice") + 1].split("/")); items = items[k::n]
     HJS = r"""
 const {chromium}=require('playwright');
 const hlKey=(href,txt)=>{try{const v=decodeURIComponent(href.split(/[?&]hl=/)[1]||'').split('&')[0].replace(/ⓘ|\s+/g,'');const v2=v.replace(/^\d{4}[-.]\d{1,2}([-.]\d{1,2})?/,'');return !v||txt.includes(v.slice(0,6))||txt.includes(v2.slice(0,6))}catch(e){return true}};
