@@ -459,6 +459,7 @@ button.term{display:inline!important} /* 인라인 용어 버튼의 박스가 �
 
 /* 문장 안 용어 버튼(점선 밑줄 낱말)의 누르는 영역 세로 24px 이상: 글줄 높이는 그대로 두고 인라인 패딩으로만 늘린다 */
 button.term{padding-block:max(0px,calc((24px - 1.1em) / 2))}
+button.term{padding-inline:3px;margin-inline:-3px} /* 짧은 용어(2~3자)도 눌림 폭 24px 이상: 안쪽 여백을 주고 바깥 여백을 빼 글 흐름은 그대로 */
 
 /* 도장(.ed-g): 단위(회·%) 첨자가 값 크기로 커져 라벨을 덮던 것을 바로잡는다(위 sup 최소 13px 규칙은 그대로 두되 값 안에서는 값의 40%) */
 .ed-g .v sup{font-size:max(13px,.4em)!important;vertical-align:baseline;top:0;margin-left:2px}
