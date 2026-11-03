@@ -50,6 +50,31 @@ console.log(JSON.stringify({ok,bad}));await b.close()})();
     for b in out["bad"]: print(" ✗", b)
     sys.exit(1 if out["bad"] else 0)
 
+# --terms: 용어 검색 결과(용어 54건)를 누르면 그 용어의 풀이 창이 열리는지(예전엔 전부 중학교 배정 화면으로 갔다)
+if "--terms" in sys.argv:
+    TJS = r"""
+const {chromium}=require('playwright');const fs=require('fs');
+(async()=>{const base=process.argv[2];const terms=JSON.parse(fs.readFileSync('portal/data/glossary.json','utf8')).terms;const b=await chromium.launch();const p=await (await b.newContext({viewport:{width:390,height:844},hasTouch:true})).newPage();const bad=[];let ok=0;
+await p.goto(base);await p.waitForTimeout(1500);
+for(const t of terms){try{await p.keyboard.press('Escape');
+ await p.keyboard.press('/');await p.waitForSelector('.srch input',{timeout:4000});await p.fill('.srch input',t.term);await p.waitForTimeout(350);
+ const a=await p.$(`.srch a[data-term="${t.id}"]`);if(!a){bad.push(t.term+' 결과에 용어 항목 없음');continue}
+ await a.click();await p.waitForTimeout(500);
+ const got=await p.evaluate(()=>{const s=document.querySelector('.sip');return s&&s.getBoundingClientRect().height>0?s.querySelector('b')?.textContent:null});
+ if(got===t.term)ok++;else bad.push(t.term+' 풀이 창 안 열림('+got+')');await p.keyboard.press('Escape')}catch(e){bad.push(t.term+' 오류')}}
+console.log(JSON.stringify({ok,bad,n:terms.length}));await b.close()})();
+"""
+    with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as f:
+        f.write(TJS); tp = f.name
+    env = dict(os.environ)
+    try: env["NODE_PATH"] = subprocess.run(["npm", "root", "-g"], capture_output=True, text=True).stdout.strip()
+    except Exception: pass
+    r = subprocess.run(["node", tp, BASE], capture_output=True, text=True, env=env, cwd=os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))); os.unlink(tp)
+    out = json.loads(r.stdout.strip().splitlines()[-1]) if r.stdout.strip() else {"ok": 0, "bad": ["실행 실패 " + r.stderr[-200:]], "n": 0}
+    print(f"용어 결과 {out['ok']}/{out['n']}건 풀이 창 열림, 실패 {len(out['bad'])}건")
+    for b in out["bad"]: print(" ✗", b)
+    sys.exit(1 if out["bad"] else 0)
+
 env = dict(os.environ)
 try: env["NODE_PATH"] = subprocess.run(["npm", "root", "-g"], capture_output=True, text=True).stdout.strip()
 except Exception: pass
