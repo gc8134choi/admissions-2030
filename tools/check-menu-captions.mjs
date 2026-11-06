@@ -3,6 +3,7 @@
 // 사용: python3 -m http.server 8000 (다른 창) → node tools/check-menu-captions.mjs [기본주소=http://localhost:8000/portal/]
 import { createRequire } from "node:module";
 import { spawn } from "node:child_process";
+import { readFileSync } from "node:fs";
 const require = createRequire(import.meta.url);
 const { chromium } = require("playwright");
 const root = new URL("..", import.meta.url).pathname;
@@ -17,6 +18,10 @@ for (const it of items) {
   if (!it.desc) continue;
   if (!it.keys || !it.keys.length) { bad.push(`${it.title}: keys(핵심어)가 없어요`); continue; }
   for (const k of it.keys) if (!it.desc.includes(k)) bad.push(`${it.title}: 핵심어 '${k}'가 설명 줄('${it.desc}')에 없어요`);
+  if (it.vals) { // 비교표 계열: 설명 줄에 적은 항목의 값이 학교 절반 이상에 있어야 한다(전부 null인 항목을 내세우지 않기 위해)
+    const d = JSON.parse(readFileSync(`${root}portal/data/${it.vals.data}.json`, "utf8"));
+    for (const f of it.vals.fields) { const n = d.schools.filter((s) => { const v = s.values?.[f]?.value; return v !== null && v !== undefined && v !== ""; }).length;
+      if (n * 2 < d.schools.length) bad.push(`${it.title}: 항목 '${f}'의 값이 ${n}/${d.schools.length}교뿐이라 설명 줄에 내세울 수 없어요`); } }
   await p.goto(base + "#" + it.id); await p.waitForTimeout(2500);
   await p.evaluate(() => document.querySelectorAll("#main details").forEach((d) => (d.open = true))); await p.waitForTimeout(600);
   let txt = await p.evaluate(() => document.getElementById("main").textContent.replace(/\s+/g, " "));
