@@ -19,7 +19,11 @@ for (const it of items) {
   for (const k of it.keys) if (!it.desc.includes(k)) bad.push(`${it.title}: 핵심어 '${k}'가 설명 줄('${it.desc}')에 없어요`);
   await p.goto(base + "#" + it.id); await p.waitForTimeout(2500);
   await p.evaluate(() => document.querySelectorAll("#main details").forEach((d) => (d.open = true))); await p.waitForTimeout(600);
-  const txt = await p.evaluate(() => document.getElementById("main").textContent.replace(/\s+/g, " "));
+  let txt = await p.evaluate(() => document.getElementById("main").textContent.replace(/\s+/g, " "));
+  for (const x of it.chk || []) { /* chk: 같은 항목의 다른 탭(주소)에만 있는 핵심어도 인정 */
+    await p.goto(base + "#" + x); await p.waitForTimeout(2500);
+    await p.evaluate(() => document.querySelectorAll("#main details").forEach((d) => (d.open = true))); await p.waitForTimeout(600);
+    txt += " " + (await p.evaluate(() => document.getElementById("main").textContent.replace(/\s+/g, " "))); }
   for (const k of it.keys) if (!txt.includes(k)) bad.push(`${it.title}: 설명 줄의 '${k}'가 화면(${it.id})에 없어요`);
 }
 await b.close(); srv?.kill();
