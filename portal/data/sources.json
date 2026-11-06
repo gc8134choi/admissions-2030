@@ -1,9 +1,9 @@
 {
  "_meta": {
   "note": "출처 등록부(생성물, 손으로 고치지 않는다). tools/build-sources.mjs가 portal/data의 출처 항목에서 만든다. 데이터 행의 sourceIds가 이 id를 가리킨다.",
-  "count": 150,
+  "count": 152,
   "kinds": {
-   "official": 105,
+   "official": 107,
    "media": 24,
    "user": 17,
    "self": 0,
@@ -807,13 +807,14 @@
    "checked": "2026-10-31",
    "names": [
     "서울특별시교육청 2027학년도 서울특별시 고등학교 입학전형 기본계획(공고용, 고입자료실 2026.3.31 게시, PDF 붙임-1 주요 일정) 및 2026.9.1 변경 공고",
+    "서울특별시교육청 2027학년도 서울특별시 고등학교 입학전형 기본계획(공고용, 고입자료실 2026.3.31 게시, PDF 붙임-1 주요 일정)",
     "서울특별시교육청 2027학년도 서울특별시 고등학교 입학전형 기본계획(공고용, 2026.3.31) — 서울 방식 참고",
     "서울특별시교육청 2027학년도 서울특별시 고등학교 입학전형 기본계획(공고용, 2026.3.31)"
    ],
    "usedIn": {
-    "events.json": 1,
+    "events.json": 2,
     "hs-types.json": 5,
-    "policy.json": 1
+    "policy.json": 2
    }
   },
   {
@@ -1119,6 +1120,19 @@
    "usedIn": {
     "events.json": 1,
     "policy.json": 2
+   }
+  },
+  {
+   "id": "src-71fa24fb",
+   "url": "https://www.sen.go.kr/user/bbs/BD_selectBbs.do?q_bbsSn=1068&q_bbsDocNo=20260902102919801",
+   "kind": "official",
+   "org": "서울특별시교육청",
+   "checked": null,
+   "names": [
+    "서울특별시교육청 2027학년도 중학교 및 교육감 선발 후기고 배정을 위한 근거리 통학 대상자 심사·지정 계획(고입자료실 2026.9.2 게시, 추진 일정)"
+   ],
+   "usedIn": {
+    "policy.json": 1
    }
   },
   {
@@ -1900,6 +1914,20 @@
    ],
    "usedIn": {
     "admission-rules.json": 3
+   }
+  },
+  {
+   "id": "src-d2e30e45",
+   "url": "https://www.sen.go.kr/user/bbs/BD_selectBbs.do?q_bbsSn=1068&q_bbsDocNo=20261029160216463",
+   "kind": "official",
+   "org": "서울특별시교육청",
+   "checked": null,
+   "names": [
+    "서울특별시교육청 2027학년도 교육감 선발 후기 일반고 진학안내(고입자료실 2026.10.29 게시, PDF 7·16쪽)"
+   ],
+   "usedIn": {
+    "events.json": 1,
+    "policy.json": 2
    }
   },
   {
