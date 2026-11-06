@@ -107,3 +107,5 @@ html[data-fs=large] .lg>:nth-child(n){margin:0}
 .tabs a[aria-current=page]{box-shadow:inset 0 -4px 0 var(--accent)}
 .wm{display:inline-flex;align-items:center;min-height:44px;min-width:44px}
 #main{scroll-margin-top:calc(var(--hh) + 12px)}
+
+#main.info.fw #view,#main.info.fw .toc-host{visibility:hidden}

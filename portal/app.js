@@ -558,6 +558,15 @@ function addToc() {
   host.insertAdjacentHTML("afterbegin", `<details class="toc-in"><summary>이 화면에서 ▾</summary><ol>${li}</ol></details>`);
   host.querySelector(".toc-in").addEventListener("click", (e) => { const a = e.target.closest("[data-toc]"); if (!a) return; e.preventDefault(); const t = document.getElementById(a.dataset.toc); for (let d = t; d && d.id !== "main"; d = d.parentElement) if (d.tagName === "DETAILS") d.open = true; /* 접힌 구역 안의 소제목이면 펴고 간다 */ t?.scrollIntoView({ behavior: "smooth", block: "start" }); });
 }
+// 정보 화면: 웹폰트(Pretendard)가 늦게 들어오며 17px 글이 다시 줄바꿈되는 것(CLS)을 막는다 — 글자 모양이 준비될 때까지(최대 0.9초) 본문을 보이지 않게 둔다
+function fontGate() {
+  const m = $("#main"); if (!m || !m.classList.contains("info") || !document.fonts?.load) return;
+  m.classList.add("fw"); let done = false;
+  const open = () => { if (done) return; done = true; m.classList.remove("fw"); };
+  setTimeout(open, 900);
+  const t = () => (m.textContent || "").replace(/\s+/g, " ").slice(0, 3000);
+  setTimeout(() => Promise.all([document.fonts.load('400 17px "Pretendard Variable"', t()), document.fonts.load('700 17px "Pretendard Variable"', t())]).then(open, open), 350); // 본문이 그려진 뒤 그 글자만 받는다
+}
 function render() {
   const [path, qs] = decodeURIComponent(location.hash.slice(1)).split("?");
   const query = new URLSearchParams(qs || "");
@@ -568,7 +577,7 @@ function render() {
   const loc = locate(n.id, query) || { tab: TABS[0], group: TABS[0].groups[0], item: TABS[0].groups[0].items[0] };
   const tab = loc.tab;
   document.body.dataset.profile = currentProfile(store).key;
-  $("#main").classList.toggle("info", isInfo(n, query));
+  $("#main").classList.toggle("info", isInfo(n, query)); $("#main").classList.remove("fw");
   drawTabs(loc);
   document.title = `${loc.item.id === "home" ? "" : (loc.item.page || loc.item.title) + " · "}스쿨 라이프`;
   scrollTo(0, 0);
@@ -583,7 +592,7 @@ function render() {
   }
   if (n.view === "curriculum" || n.view === "home") { // 위쪽 공간 절약: 제목 없이 화면이 바로 시작
     $("#main").innerHTML = `${sub}${isInfo(n, query) || query.get("v") === "map" ? `<h1 class="ph">${esc(loc.item.page || loc.item.title)}</h1>` : ""}${crumbHtml(loc, hrefOf, tabHref)}${wantsToc(n, query) ? '<div id="toc-host" class="toc-host"></div>' : ""}<div id="view"></div>${soon}${footHtml(loc)}`;
-    pageExtras(loc, query);
+    pageExtras(loc, query); fontGate();
     const mainEl = $("#main"); mainEl.classList.add("view-loading"); const ready = () => requestAnimationFrame(() => { mainEl.classList.remove("view-loading"); addToc(); }); // 화면이 다 그려지기 전에는 아래 안내(푸터)를 숨겨 밀림(CLS)을 막는다
     views[n.view]($("#view"), query, n).catch(() => ($("#view").innerHTML = GO_ERR)).finally(ready);
     return;
@@ -591,7 +600,7 @@ function render() {
   const title = loc.item.page || loc.item.title || n.title;
   const lvTag = "";
   $("#main").innerHTML = `${sub}<h1 class="ph">${esc(title)}${lvTag}</h1>${crumbHtml(loc, hrefOf, tabHref)}${wantsToc(n, query) ? '<div id="toc-host" class="toc-host"></div>' : ""}<div id="view"></div>${soon}${footHtml(loc)}`;
-  pageExtras(loc, query);
+  pageExtras(loc, query); fontGate();
   { const mainEl = $("#main"); mainEl.classList.add("view-loading"); setTimeout(() => mainEl.classList.remove("view-loading"), 4000); /* 안전장치 */ }
   const doneLoad = () => requestAnimationFrame(() => { $("#main").classList.remove("view-loading"); addToc(); });
   if (n.view) views[n.view]($("#view"), query).finally(doneLoad).then(() => { filesApi.afterView(n.view, $("#view")); if (n.view === "credit") decorateSubjectLists($("#view"), load, "4."); if (n.view === "schedule") addCalendar($("#view")); }).catch(() => ($("#view").innerHTML = GO_ERR));
