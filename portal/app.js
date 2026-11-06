@@ -543,11 +543,14 @@ const refreshPageSources = () => { const f = $(".pgfoot .pg-src"); if (f) f.inne
 
 // 정보성 화면(학점제·수능과 내신·중학교 배정·중학교 생활): 읽기 폭 70자 + 긴 화면 '이 화면에서' 목차(소제목 앵커)
 const INFO_VIEWS = new Set(["credit", "system", "midlife"]);
+const wantsToc = (n, query) => isInfo(n, query) || (n.view === "curriculum" && query.get("v") === "hs" && query.get("ty") === "1");
 const isInfo = (n, query) => INFO_VIEWS.has(n.view) || (n.view === "curriculum" && query.get("v") === "middle");
 function addToc() {
-  const v = $("#view"), host = $("#toc-host"); if (!v || !host || !$("#main").classList.contains("info") || host.querySelector(".toc-in")) return;
+  const v0 = $("#view"), host = $("#toc-host"); if (!v0 || !host || host.querySelector(".toc-in")) return;
+  const v = $("#tybody") && $("#tybody").children.length > 1 ? $("#tybody") : v0; /* 고교 종류 화면은 유형 패널 안의 소제목만 */
   let hs = [...v.querySelectorAll("h2")].filter((h) => h.textContent.trim().length > 1);
   if (hs.length < 3) hs = [...v.querySelectorAll("h2, h3")].filter((h) => h.textContent.trim().length > 1 && !h.closest(".toc-in"));
+  if (/[?&]ty=1/.test(location.hash)) hs = [...v.querySelectorAll("h2, h3")].filter((h) => h.tagName === "H2" || /성적 반영|배점|구역|지망|쌍둥이|서류/.test(h.textContent)); // 고교 종류: 큰 구역 + 자주 찾는 소구역
   if (hs.length < 3) hs = [...v.querySelectorAll("h2, h3, details.hst > summary")].filter((h) => h.textContent.trim().length > 1 && !h.closest(".toc-in"));
   if (hs.length < 3) { host.classList.add("empty"); return; }
   hs = hs.slice(0, 10); // 너무 길면 위쪽 10개만
@@ -579,7 +582,7 @@ function render() {
     return;
   }
   if (n.view === "curriculum" || n.view === "home") { // 위쪽 공간 절약: 제목 없이 화면이 바로 시작
-    $("#main").innerHTML = `${sub}${isInfo(n, query) || query.get("v") === "map" ? `<h1 class="ph">${esc(loc.item.page || loc.item.title)}</h1>` : ""}${crumbHtml(loc, hrefOf, tabHref)}${isInfo(n, query) ? '<div id="toc-host" class="toc-host"></div>' : ""}<div id="view"></div>${soon}${footHtml(loc)}`;
+    $("#main").innerHTML = `${sub}${isInfo(n, query) || query.get("v") === "map" ? `<h1 class="ph">${esc(loc.item.page || loc.item.title)}</h1>` : ""}${crumbHtml(loc, hrefOf, tabHref)}${wantsToc(n, query) ? '<div id="toc-host" class="toc-host"></div>' : ""}<div id="view"></div>${soon}${footHtml(loc)}`;
     pageExtras(loc, query);
     const mainEl = $("#main"); mainEl.classList.add("view-loading"); const ready = () => requestAnimationFrame(() => { mainEl.classList.remove("view-loading"); addToc(); }); // 화면이 다 그려지기 전에는 아래 안내(푸터)를 숨겨 밀림(CLS)을 막는다
     views[n.view]($("#view"), query, n).catch(() => ($("#view").innerHTML = GO_ERR)).finally(ready);
@@ -587,7 +590,7 @@ function render() {
   }
   const title = loc.item.page || loc.item.title || n.title;
   const lvTag = "";
-  $("#main").innerHTML = `${sub}<h1 class="ph">${esc(title)}${lvTag}</h1>${crumbHtml(loc, hrefOf, tabHref)}${isInfo(n, query) ? '<div id="toc-host" class="toc-host"></div>' : ""}<div id="view"></div>${soon}${footHtml(loc)}`;
+  $("#main").innerHTML = `${sub}<h1 class="ph">${esc(title)}${lvTag}</h1>${crumbHtml(loc, hrefOf, tabHref)}${wantsToc(n, query) ? '<div id="toc-host" class="toc-host"></div>' : ""}<div id="view"></div>${soon}${footHtml(loc)}`;
   pageExtras(loc, query);
   { const mainEl = $("#main"); mainEl.classList.add("view-loading"); setTimeout(() => mainEl.classList.remove("view-loading"), 4000); /* 안전장치 */ }
   const doneLoad = () => requestAnimationFrame(() => { $("#main").classList.remove("view-loading"); addToc(); });

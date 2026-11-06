@@ -18,12 +18,12 @@ export const GROUPS = [
     { id: "life/credit", title: "고교학점제", desc: "졸업 학점·과목 이수 기준", keys: ["졸업", "학점", "이수"], r: "life/credit" },
     { id: "planner/plan", title: "내 계획표", desc: "학기별 학점 계획", keys: ["학기", "학점", "계획"], r: "planner/plan" }] },
   { id: "admit", title: "대학 입시", items: [
-    { id: "admission/system", title: "수능과 내신", desc: "수능 체제·시간표, 내신 5등급 계산, 대입 개편", keys: ["수능", "시간", "내신", "5등급", "개편"], r: "admission/system", q: { t: null } },
+    { id: "admission/system", title: "수능과 내신", desc: "수능 체제·시간표, 내신 5등급 계산, 전형 구조(학생부교과·수능최저), 대입 개편", keys: ["수능", "시간", "내신", "5등급", "학생부교과", "수능최저", "개편"], r: "admission/system", q: { t: null } },
     { id: "admission/system?t=types", title: "수시·정시", desc: "전형 종류·원서 시기", keys: ["전형", "원서"], r: "admission/system", q: { t: "types" } },
     { id: "select/curriculum?v=univ", title: "대학별 과목", desc: "대학이 요구하는 과목·내 학교 과목과 맞춰 보기", keys: ["대학", "과목", "맞춰"], r: "select/curriculum", q: { v: "univ" } }],
     soon: ["대학·학과 찾기", "학교별 시뮬레이션", "목표 학과 체크"] },
   { id: "sched", title: "일정", leaf: true, items: [
-    { id: "schedule", title: "일정", desc: "고교 입학·대학 입시·졸업·입학·학년별 큰 그림(초6~대입)·캘린더 구독", keys: ["학년별 큰 그림", "캘린더", "구독", "졸업"], r: "schedule" }] },
+    { id: "schedule", title: "일정", desc: "고교 입학·대학 입시·졸업·입학(배정원서·입학식)·학년별 큰 그림(초6~대입)·캘린더 구독", keys: ["학년별 큰 그림", "캘린더", "구독", "졸업", "배정원서", "입학식"], chk: ["schedule?t=life"], r: "schedule" }] },
   { id: "lib", title: "자료·소식", items: [
     { id: "changelog", title: "바뀐 소식", desc: "제도가 바뀐 내용", keys: ["바뀐"], r: "changelog" },
     { id: "library", title: "관련 사이트", desc: "학교알리미·교육청 바로가기", keys: ["학교알리미", "교육청"], r: "library" },
