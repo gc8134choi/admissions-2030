@@ -1,20 +1,33 @@
 /* 좌측 트리 메뉴(A안, 사용자 결정 2026-11-06). 데스크톱(≥900px)은 왼쪽에 전체 트리 상시 펼침, 모바일은 상단 '메뉴' 큰 버튼 → 서랍.
    하단 탭·헤더 보관함·화면 안 글자 탭은 없앴다. 스크랩북 디자인·포인트색(--accent) 그대로, 글자 17px 이상·터치 48px 이상. */
-:root{--tab-h:0px;--nav-w:272px}
-.menubtn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 16px;border:2px solid var(--ink);background:var(--paper2);color:var(--ink);font:700 18px/1 var(--font);border-radius:4px;box-shadow:var(--sh);cursor:pointer}
-.menubtn:focus-visible,.nd-x:focus-visible,.nt a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+:root{--tab-h:56px;--nav-w:272px}
+@media (min-width:900px){:root{--tab-h:0px}}
+.nd-x:focus-visible,.nt a:focus-visible,.tabs button:focus-visible{outline:3px solid var(--ink);outline-offset:-4px}
+/* 하단 바(모바일): 메뉴 | 오늘 | 일정 | 검색 */
+.tabs{display:flex}
+.tabs a,.tabs button{flex:1;display:flex;align-items:center;justify-content:center;min-height:56px;background:none;border:0;color:var(--pencil);font:700 19px var(--hand);cursor:pointer;text-decoration:none}
+.tabs button#menubtn{color:var(--ink)}
+@media (min-width:900px){.tabs{display:none}.hdr .srbtn{display:inline-flex}}
+@media (max-width:899px){.hdr .srbtn{display:none}}
 .hdr .barin{gap:10px}
 .sidenav{display:none}
-.nt-h{margin:0;padding:18px 14px 6px;font:700 19px/1.3 var(--serif);color:var(--ink);letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
+.nt-h{margin:0;padding:16px 14px 4px;font:700 19px/1.3 var(--serif);color:var(--ink);letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
 .nt-n{font:700 22px var(--hand);color:var(--accent);width:22px;text-align:center}
 .nt ul{list-style:none;margin:0 0 4px 25px;padding:0;position:relative}
-.nt ul::before{content:"";position:absolute;left:0;top:4px;bottom:22px;border-left:2px solid var(--kraft)}
+.nt ul::before{content:"";position:absolute;left:0;top:4px;bottom:30px;border-left:2px solid var(--kraft)}
 .nt li{position:relative}
-.nt li::before{content:"";position:absolute;left:0;top:24px;width:14px;border-top:2px solid var(--kraft)}
-.nt li a{display:flex;align-items:center;min-height:48px;margin-left:18px;padding:0 12px;font:600 18px/1.3 var(--font);color:var(--ink);text-decoration:none;border-radius:4px}
-.nt li a:hover{background:var(--paper2)}
-.nt li a[aria-current=page]{background:var(--paper2);font-weight:700;box-shadow:inset 0 -3px 0 var(--accent),var(--sh)}
+.nt li::before{content:"";position:absolute;left:0;top:27px;width:14px;border-top:2px solid var(--kraft)}
+.nt a{display:flex;flex-direction:column;justify-content:center;min-height:52px;padding:6px 12px;color:var(--ink);text-decoration:none;border-radius:4px}
+.nt li a{margin-left:18px}
+.nt a b{font:700 18px/1.3 var(--font)}
+.nt a small{font:400 15px/1.35 var(--font);color:var(--pencil)}
+.nt a:hover{background:var(--paper2)}
+.nt a[aria-current=page]{background:var(--paper2);box-shadow:inset 0 -3px 0 var(--accent),var(--sh)}
 .nt .nt-g.on .nt-h{color:var(--accent)}
+.nt .nt-hl{margin:6px 0 0;padding:8px 14px}
+.nt .nt-hl b{font:700 21px/1.3 var(--serif);letter-spacing:-.03em}
+.nt .leaf .nt-hl b{font:700 19px/1.3 var(--serif)}
+.nt .leaf{margin-top:6px;border-top:2px dotted var(--line)}
 /* 서랍(모바일) */
 .navdrawer{position:fixed;inset:0;z-index:60;background:rgba(29,26,22,.5)}
 .navdrawer[hidden]{display:none}
@@ -22,9 +35,9 @@
 .nd-top{display:flex;justify-content:space-between;align-items:center;min-height:60px;position:sticky;top:0;background:var(--paper);z-index:1;padding:4px 0}
 .nd-x{min-height:48px;padding:0 18px;border:2px solid var(--ink);background:var(--paper2);color:var(--ink);font:700 18px/1 var(--font);border-radius:4px;cursor:pointer}
 body.nav-open{overflow:hidden}
-.navdrawer .nt li a{min-height:52px;font-size:19px}
+.navdrawer .nt li a{min-height:56px}
 @media (min-width:900px){
-  .menubtn,.navdrawer{display:none!important}
+  .navdrawer{display:none!important}
   .sidenav{display:block;position:fixed;left:0;top:var(--hh);bottom:0;width:var(--nav-w);overflow-y:auto;padding:6px 10px 40px 14px;border-right:2px dotted var(--line);background:var(--paper) var(--grain);z-index:25}
   #main,.legend{margin-left:var(--nav-w);margin-right:auto}
   .hdr .barin{max-width:none}
@@ -41,9 +54,9 @@ body.nav-open{overflow:hidden}
 .toc-in ol{list-style:none;margin:0;padding:4px 0 6px}
 .toc-in a{display:flex;align-items:center;min-height:44px;padding:0 14px;font-size:17px;text-decoration:none}
 .toc-in a:hover{background:var(--paper2)}
-@media print{.sidenav,.menubtn,.navdrawer{display:none!important}#main,.legend{margin-left:0}}
+@media print{.sidenav,.tabs,.navdrawer{display:none!important}#main,.legend{margin-left:0}}
 .nd-th{margin:22px 4px 6px;font:700 17px var(--font);color:var(--pencil)}
 #themesw2{display:flex;gap:8px;margin:0 4px}
 #themesw2 button{min-height:48px;padding:0 16px;font-size:17px}
-@media (max-width:899px){.hdr #themesw{display:none}.hdr .barin{flex-wrap:nowrap}.hdr .srbtn{margin-left:auto}}
+@media (max-width:899px){.hdr #themesw{display:none}.hdr .barin{flex-wrap:nowrap}}
 @media (min-width:900px){#themesw2{display:none}.nd-th{display:none}}

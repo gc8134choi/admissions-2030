@@ -89,7 +89,7 @@ export async function middleBody(el, { load, esc, mapHref = (id) => `#select/cur
     const flowRows = flow.map((r) => `<li>${stageTag(stageOf(r), esc)} <b>${esc(plain(r.title))}</b> <span class="muted">${esc(plain(r.body))}</span> ${tag(r.status, esc)}</li>`).join("");
     // 입학 준비 가이드(체크리스트)와 초6 기준 큰 그림 연표: 접이식 섹션
     const gsrc = (s) => (s && s.name ? ` ${srcWrap(s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)} ↗</a>` : esc(s.name))}` : "");
-    const guideHtml = (guide.sections || []).length ? `<details class="hst mid-sec"><summary>${stageTag("중입", esc)}입학 준비 가이드 <span class="muted small">${guide.sections.reduce((n, s) => n + s.items.length, 0)}개</span></summary>${guide.sections.map((s) => `<section class="mg-s"><h4>${esc(s.title)}</h4><ul class="mg-l">${s.items.map((it) => `<li>${it.when ? `<b class="hst-d">${esc(fmtWhen(it.when))}</b> ` : ""}${esc(it.text)} ${tag(it.status, esc)}${it.source ? gsrc(it.source) : it.nullReason ? ` <span class="muted small">${esc(it.nullReason)}</span>` : ""}</li>`).join("")}</ul></section>`).join("")}</details>` : "";
+    const guideHtml = (guide.sections || []).length ? `<details class="hst mid-sec" id="mid-guide"><summary>${stageTag("중입", esc)}입학 준비 가이드 <span class="muted small">${guide.sections.reduce((n, s) => n + s.items.length, 0)}개</span></summary>${guide.sections.map((s) => `<section class="mg-s"><h4>${esc(s.title)}</h4><ul class="mg-l">${s.items.map((it) => `<li>${it.when ? `<b class="hst-d">${esc(fmtWhen(it.when))}</b> ` : ""}${esc(it.text)} ${tag(it.status, esc)}${it.source ? gsrc(it.source) : it.nullReason ? ` <span class="muted small">${esc(it.nullReason)}</span>` : ""}</li>`).join("")}</ul></section>`).join("")}</details>` : "";
     const STG = ["초6", "중1", "중2", "중3", "고1", "고2", "고3", "대입"];
     const tlHtml = (tl.events || []).length ? `<details class="hst mid-sec"><summary>${stageTag("중입", esc)}큰 그림 연표 (초6 → 대입) <span class="muted small">${tl.events.length}건</span></summary>${STG.map((g) => { const es = tl.events.filter((e) => e.stage === g).sort((a, b) => a.when.localeCompare(b.when)); return es.length ? `<p class="tl-st">${g}</p><ul class="mg-l">${es.map((e) => `<li><b class="hst-d">${esc(fmtWhen(e.when))}</b> ${esc(e.what)} ${tag(e.status, esc)}${e.note ? `<div class="muted small">${esc(e.note)}</div>` : ""}${e.source ? gsrc(e.source) : ""}</li>`).join("")}</ul>` : ""; }).join("")}<p class="muted small">2030학년도 이후 세부는 그해 고시·시행계획에서 정해져요.</p></details>` : "";
     // 중학교 비교: 공용 비교 표(대상=중학교 열). 접이식을 처음 열 때 그린다.
@@ -121,7 +121,10 @@ export async function middleBody(el, { load, esc, mapHref = (id) => `#select/cur
       targets: mc.schools.map((s) => ({ id: s.placeId, name: s.name.replace(/중학교$/, "중"), sub: [s.values.founding?.value, s.values.coed?.value].filter(Boolean).join("·"), href: `${mapHref(s.placeId)}&lv=middle`, search: `${s.name} ${s.values.address?.value || ""}` })),
       rows: compareRows(mc, esc), select: { key: "portal.mid.compare", param: "m", def: zs.map(({ p }) => p.id).filter((id) => mc.schools.some((s) => s.placeId === id)), defN: 4, max: 8, min: 2, always: true, addLabel: "중학교 추가·빼기" },
       emptyNext: WHERE.schoolinfo, sources: mc.schools.flatMap((sc) => Object.values(sc.values).map((v) => v?.source).filter(Boolean)) }); }; cd.addEventListener("toggle", fill); fill(); }
-    densify(el, { open: [0], keep: 5, chars: 100, groups: false }); // 첫 섹션(배정 원칙)만 펼치고 나머지는 한 줄 요약
+    densify(el, { open: [0], keep: 5, chars: 100, groups: false });
+    { /* 메뉴 항목 '중학교 비교'·'입학 준비'는 같은 화면의 접이식을 열어 그 자리로 간다(open=cmp|guide) */
+      const op = new URLSearchParams((decodeURIComponent(location.hash.slice(1)).split("?")[1]) || "").get("open"), tg = op === "cmp" ? el.querySelector("#mid-cmpd") : op === "guide" ? el.querySelector("#mid-guide") : null;
+      if (tg) { const go = () => { if (!tg.isConnected) return; tg.open = true; tg.scrollIntoView({ block: "start" }); }; go(); setTimeout(go, 350); setTimeout(go, 1200); } } // 첫 섹션(배정 원칙)만 펼치고 나머지는 한 줄 요약
     decorateGlossary(el); // 학교군·지망·재배정 등 용어 ⓘ
   };
   await preloadGlossary(load);

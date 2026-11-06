@@ -135,7 +135,7 @@ const bodyHtml = (t, esc2 = esc) => {
     return regs.length + gr.length ? `<h2>수능·내신 규칙</h2><div class="ed-rows">${regs.join("")}${gr.join("")}</div>` : "";
   };
 
-  const SYS_TABS = [["sys", "#admission/system", "제도"], ["types", "#admission/system?t=types", "전형 한눈에"], ["log", "#admission/system?t=log", "바뀐 소식"]];
+  const SYS_TABS = [["sys", "#admission/system", "제도"], ["types", "#admission/system?t=types", "전형 한눈에"]];
   views.system = async (el, query) => {
     if (query.get("t") === "types") {
       el.innerHTML = `<div class="ed">${tabs(SYS_TABS, "types")}</div><div id="tybody"></div>`;
@@ -192,7 +192,7 @@ const bodyHtml = (t, esc2 = esc) => {
     const fo0 = store.get("portal.focus", null), foc0 = Array.isArray(fo0) && fo0.length === 1 ? fo0[0] : "";
     const tab = ["hs", "univ", "life", "road"].includes(query.get("t")) ? query.get("t") : ({ 중입: "life", 대입: "univ" }[foc0] || "hs");
     if (tab === "road") {
-      const tb = `<div class="ed">${tabs([["hs", "#schedule?t=hs", "고입"], ["univ", "#schedule?t=univ", "대입"], ["life", "#schedule?t=life", "졸업·입학"], ["road", "#schedule?t=road", "학년별"]], "road")}</div>`;
+      const tb = `<div class="ed">${tabs([["hs", "#schedule?t=hs", "고교 입학"], ["univ", "#schedule?t=univ", "대학 입시"], ["life", "#schedule?t=life", "졸업·입학"], ["road", "#schedule?t=road", "학년별"]], "road")}</div>`;
       el.innerHTML = tb + '<div id="rdhost"></div>';
       await roadmapView(el.querySelector("#rdhost"), { load, esc, learner: curProfile(), fmt, badgeMain, notice, store });
       return;
@@ -200,7 +200,7 @@ const bodyHtml = (t, esc2 = esc) => {
     const all = filterByProfile(await load("policy"), curProfile().id, { grade3: true }).map(plainRow); // 현고3 행은 아래 칩(audience)이 걸러 준다
     const rows = all.filter((r) => r.topic === ({ univ: "exam-schedule", life: "life-schedule" }[tab] || "hs-schedule") || (tab === "hs" && r.topic === "gg-hs-entry" && r.events) || (r.topic === "profile-2033" && (tab === "hs" ? /고입/.test(r.title) : tab === "univ" && r.events)));
     const chips = '<div id="aud"></div>'; // 칩 UI·저장(portal.audience)은 home.js와 공유
-    el.innerHTML = `${tabs([["hs", "#schedule?t=hs", "고입"], ["univ", "#schedule?t=univ", "대입"], ["life", "#schedule?t=life", "졸업·입학"], ["road", "#schedule?t=road", "학년별"]], tab)}${notice()}
+    el.innerHTML = `${tabs([["hs", "#schedule?t=hs", "고교 입학"], ["univ", "#schedule?t=univ", "대학 입시"], ["life", "#schedule?t=life", "졸업·입학"], ["road", "#schedule?t=road", "학년별"]], tab)}${notice()}
       <p class="muted">${{ univ: "수능·대교협 일정이에요. 2030학년도분은 대부분 추정이에요.", life: "졸업·배정·입학 일정이에요. 추정은 (추정)으로 표시해요. 겨울방학·졸업식·신입생 예비소집 날짜는 학교마다 달라서 학교 공지로 확인해 주세요." }[tab] || "2027학년도 경기·용인 고입 기준이에요. 연도는 2027학년도 고입이 2026년 하반기에 진행되는 것을 기준으로 붙였어요."}</p>${tab === "hs" ? emptyLine(esc, { why: "학교별 입학설명회 일정은 학교마다 달라 아직 모으지 못했어요.", next: { label: "학교 홈페이지 공지에서 확인(학교 비교)", url: "#select/curriculum?v=hs" } }) : ""}${chips}<div id="tl"></div>`;
     let sel = loadAudience(store);
     const SK = "portal.schedule.stage"; // 단계 필터(브라우저에만 저장, 바로가기와 같은 규칙: portal.<화면>.stage)

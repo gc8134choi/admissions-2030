@@ -23,7 +23,7 @@
 portal/index.html, app.js, menu.js, style.css   화면 (프레임워크 없음, 빌드 없음)
 portal/data/*.json                              편제표 DB (build-db.mjs 산출물 복사본)
 ```
-- 메뉴(좌측 트리 A안, 사용자 결정 2026-11-06)는 `portal/nav-tree.js`+`nav-tree.css`(데스크톱 사이드바·모바일 서랍, 메뉴 고르는 곳은 이 한 군데). `menu.js`는 화면 정의(MENU)·REDIRECT용으로 남고, 되돌리려면 app.js·search.js의 import를 `./menu.js`로 되돌린다. 화면은 `portal/app.js`의 `views`에 있다.
+- 메뉴(좌측 트리 A안, 사용자 결정 2026-11-06; IA 검수 `evaluation/ia-review.md`): 항목 구성·이름·설명 줄은 `portal/menu-tree.js` 한 파일, 화면에 쓰는 모양·찾기·그리기는 `portal/nav-tree.js`+`nav-tree.css`(데스크톱 사이드바·모바일 서랍·하단 바 메뉴|오늘|일정|검색). 메뉴 고르는 곳은 이 한 군데다. `menu.js`는 화면 정의(MENU)·REDIRECT용이고, 되돌리려면 app.js·search.js의 import를 `./menu.js`로 되돌린다. 화면은 `portal/app.js`의 `views`에 있다.
 - 학교별 편제표: 첫 화면은 학교별 요약, `?v=compare`는 필터 비교(필터 | 내용 2단 + 사이드 메뉴).
 - 데이터 원본·생성기·스키마 문서는 브랜치 `add-curriculum-data`의 `data-src/curriculum-analysis/`(README, HOW-TO-USE, `docs/db-schema.md`)에 있다. 스키마 주 버전은 `2`.
 

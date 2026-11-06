@@ -1,46 +1,34 @@
-// 좌측 트리 메뉴(사용자 결정 2026-11-06, A안). 메뉴를 고르는 곳은 이 트리 하나다(하단 탭·헤더 보관함·화면 안 글자 탭을 대신한다).
-// 모양은 menu.js의 TABS와 같다(탭 = 1단계 그룹 1개, 그 안의 items = 2단계). 되돌리려면 app.js·search.js의 import를 "./menu.js"로 되돌리고 이 파일·nav-tree.css 링크를 지운다.
-// 항목 id는 이동 주소(해시)이고 m(id, query)은 지금 화면이 그 항목인지 알려 준다. 해시 주소·REDIRECT는 그대로다(menu.js의 REDIRECT).
+// 좌측 트리 메뉴(사용자 결정 2026-11-06, A안). 메뉴를 고르는 곳은 이 트리 하나다. 항목 구성·이름·설명은 menu-tree.js 한 파일이고, 이 파일은 그것을 화면에서 쓰는 모양(TABS)·찾기(locate)·그리기(treeHtml)로 바꾼다.
+// TABS는 menu.js의 옛 TABS와 같은 모양이라 app.js·search.js·pagefoot.js가 그대로 쓴다. 되돌리려면 그 import를 "./menu.js"로 되돌린다. 해시 주소·REDIRECT는 그대로다.
+import { HOME, GROUPS, BOTTOM } from "./menu-tree.js";
 export { REDIRECT } from "./menu.js";
-const cur = (f) => (id, q) => id === "select/curriculum" && f(q.get("v") || "summary", q.get("lv"), q);
-const at = (rid) => (id) => id === rid;
-const sch = (t) => (id, q) => id === "schedule" && q.get("t") === t;
+export { BOTTOM };
+// q 조건 하나가 맞는지: 값/값 배열/null(없어야 함)/"!값"/"*"(아무 값이나 있어야 함)
+const ok = (cond, got) => (cond === null ? !got : cond === "*" ? !!got : Array.isArray(cond) ? cond.includes(got) : typeof cond === "string" && cond[0] === "!" ? got !== cond.slice(1) : got === cond);
+const mk = (it) => (id, q) => (id === it.r || (it.also || []).includes(id)) && Object.entries(it.q || {}).every(([k, c]) => ok(c, k === "v" ? (q.get("v") || "summary") : q.get(k)));
+const wrap = (it) => ({ id: it.id, title: it.title, desc: it.desc, m: mk(it) });
 export const TABS = [
-  { id: "now", title: "지금 할 일", groups: [{ key: "", title: "", items: [
-    { id: "home", title: "오늘 할 일", m: at("home") },
-    { id: "schedule", title: "전체 일정", m: (id, q) => id === "schedule" && !["life", "road", "univ", "hs"].includes(q.get("t")) },
-    { id: "changelog", title: "바뀐 소식", m: at("changelog") }] }] },
-  { id: "mid", title: "중학교", groups: [{ key: "", title: "", items: [
-    { id: "select/curriculum?v=middle", title: "중학교 배정", m: cur((v) => v === "middle") },
-    { id: "select/curriculum?v=map&lv=middle", title: "중학교 지도", m: cur((v, lv) => v === "map" && lv === "middle") },
-    { id: "mid/life", title: "중학교 생활", m: at("mid/life") },
-    { id: "schedule?t=life", title: "중입 일정", m: sch("life") }] }] },
-  { id: "high", title: "고등학교", groups: [{ key: "", title: "", items: [
-    { id: "select/curriculum?v=hs&ty=1", title: "고교 종류", m: cur((v, lv, q) => v === "hs" && q.get("ty") === "1") },
-    { id: "schedule?t=hs", title: "고입 일정", m: sch("hs") },
-    { id: "select/curriculum?v=hs", title: "학교 비교", m: cur((v, lv, q) => (v === "hs" && q.get("ty") !== "1") || v === "summary" || v === "compare") },
-    { id: "select/curriculum?v=map", title: "고교 지도", m: cur((v, lv) => v === "map" && lv !== "middle") },
-    { id: "life/credit", title: "학점제 쉬운 설명", m: at("life/credit") },
-    { id: "planner/plan", title: "내 과목 계획", m: at("planner/plan") },
-    { id: "schedule?t=road", title: "학년별 할 일", m: sch("road") }] }] },
-  { id: "admit", title: "대학 입시", groups: [{ key: "", title: "", items: [
-    { id: "admission/system", title: "수능과 내신", m: at("admission/system") },
-    { id: "select/curriculum?v=univ", title: "대학별 조건", m: cur((v) => v === "univ") },
-    { id: "schedule?t=univ", title: "입시 일정", m: sch("univ") }], soon: ["대학·학과 찾기", "학교별 시뮬레이션", "목표 학과 체크"] }] },
-  { id: "lib", title: "자료", groups: [{ key: "", title: "", items: [
-    { id: "library", title: "바로가기 모음", m: at("library") },
-    { id: "library/sources", title: "출처 목록", m: at("library/sources") },
-    { id: "library/status", title: "갱신 기록", m: at("library/status") },
-    { id: "library/files", title: "원본 사진", m: at("library/files") }] }] },
+  { id: "home", title: HOME.title, groups: [{ key: "", title: "", items: [wrap(HOME)] }] },
+  ...GROUPS.map((g) => ({ id: g.id, title: g.title, leaf: !!g.leaf, soon: g.soon, groups: [{ key: "", title: "", items: g.items.map(wrap), soon: g.soon }] })),
 ];
 export const hrefOf = (it) => "#" + it.id;
 export const tabHref = (t) => hrefOf(t.groups[0].items[0]);
 export const allItems = () => TABS.flatMap((t) => t.groups.flatMap((g) => g.items.map((it) => ({ ...it, tab: t.title, group: g.title }))));
 export function locate(id, query) {
   for (const t of TABS) for (const g of t.groups) for (const it of g.items) if (it.m(id, query)) return { tab: t, group: g, item: it };
-  if (id === "select/curriculum") return { tab: TABS[2], group: TABS[2].groups[0], item: TABS[2].groups[0].items[2] };
+  if (id === "select/curriculum") { const t = TABS.find((x) => x.id === "hs"); return { tab: t, group: t.groups[0], item: t.groups[0].items[1] }; }
   return null;
 }
-// 트리 HTML: 데스크톱 사이드바와 모바일 서랍이 같은 것을 쓴다. 마인드맵처럼 1단계 줄기에 2단계 가지가 선으로 이어진다.
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-export const treeHtml = (loc) => TABS.map((t, i) => `<section class="nt-g${loc && loc.tab === t ? " on" : ""}"><h2 class="nt-h"><span class="nt-n" aria-hidden="true">${i + 1}</span>${esc(t.title)}</h2><ul>${t.groups.flatMap((g) => g.items).map((it) => `<li><a href="${esc(hrefOf(it))}"${loc && loc.item === it ? ' aria-current="page"' : ""}>${esc(it.title)}</a></li>`).join("")}</ul></section>`).join("");
+const link = (it, loc, cls = "") => `<a href="${esc(hrefOf(it))}"${cls ? ` class="${cls}"` : ""}${loc && loc.item === it ? ' aria-current="page"' : ""}><b>${esc(it.title)}</b>${it.desc ? `<small>${esc(it.desc)}</small>` : ""}</a>`;
+// 트리 HTML: 데스크톱 사이드바와 모바일 서랍이 같은 것을 쓴다. 1단계 줄기에 2단계 가지가 선으로 이어진다.
+export const treeHtml = (loc) => {
+  let n = 0;
+  return TABS.map((t) => {
+    const items = t.groups.flatMap((g) => g.items), on = loc && loc.tab === t;
+    if (t.id === "home") return `<section class="nt-g nt-home${on ? " on" : ""}">${link(items[0], loc, "nt-hl")}</section>`;
+    n++;
+    if (t.leaf) return `<section class="nt-g leaf${on ? " on" : ""}">${link(items[0], loc, "nt-hl")}</section>`;
+    return `<section class="nt-g${on ? " on" : ""}"><h2 class="nt-h"><span class="nt-n" aria-hidden="true">${n}</span>${esc(t.title)}</h2><ul>${items.map((it) => `<li>${link(it, loc)}</li>`).join("")}</ul></section>`;
+  }).join("");
+};
