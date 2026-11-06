@@ -26,6 +26,25 @@
       "enabled": true
     },
     {
+      "id": "w-sen-hs",
+      "name": "서울시교육청 고입자료실",
+      "url": "https://www.sen.go.kr/user/bbs/BD_selectBbsList.do?q_bbsSn=1068",
+      "watch": "서울 고입 기본계획·변경 공고·전형요강·근거리 통학·업무편람 공지 제목(2026-09-01 변경 공고를 놓친 뒤 추가)",
+      "method": "list-titles",
+      "startMarker": "작성일\n조회수",
+      "endMarker": "현재 페이지",
+      "interval": "일",
+      "affects": [
+        "hs-01",
+        "hs-02",
+        "hs-05",
+        "hs-06",
+        "hs-08"
+      ],
+      "importance": "높음",
+      "enabled": true
+    },
+    {
       "id": "w-hsc-notice",
       "name": "고교학점제 종합지원포털 공지사항",
       "url": "https://www.hscredit.kr/notice",
