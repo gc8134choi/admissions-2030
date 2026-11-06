@@ -42,7 +42,7 @@ export const MENU = [
   { id: "mid/life", title: "중학교 생활", icon: "book", status: "v1", view: "midlife", desc: "중학교 교육과정·교과서·시기 일정." },
 
   { id: "changelog", title: "바뀐 소식", icon: "log", status: "v1", view: "changelog",
-    desc: "날짜·항목·영향 범위. 편제표·요건 갱신도 자동 기록.", parts: ["날짜 / 항목 / 영향 범위"] },
+    desc: "날짜·항목·영향 범위. 과목표·요건 갱신도 자동 기록.", parts: ["날짜 / 항목 / 영향 범위"] },
 
   { id: "library", title: "자료실", icon: "folder", status: "v1", view: "links", children: [
     { id: "library/sources", title: "출처 목록", status: "v1", view: "sources", desc: "학교 정보 출처 링크." },

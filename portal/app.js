@@ -140,13 +140,13 @@ const views = {
   async status(el) {
     const [schools, summary, curricula] = await Promise.all([load("schools"), load("summary"), load("curricula")]);
     const cdate = (curricula.map((c) => /\d{4}-\d{2}-\d{2}/.exec(c._meta?.source?.[0]?.note || "")?.[0]).filter(Boolean).sort().pop() || "");
-    el.innerHTML = `<div class="tw"><table><thead><tr><th class="l">학교</th><th>입학학년도</th><th>정보 수집일</th><th>편제표 신뢰도</th><th>확인할 항목</th><th>구분이 빠진 과목</th><th>직접 확인해 볼 항목</th></tr></thead><tbody>${summary.map((m) => { const sc = schools.find((s) => s.id === m.schoolId); return `<tr><td class="l">${esc(m.schoolName)}</td><td>${m.entryYear}</td><td>${esc(sc?._meta?.updated || "-")}</td><td>${esc(m.confidence)}</td><td>${m.flagsOpen}</td><td>${m.kindMissingRows}</td><td>${m.reviewCount}</td></tr>`; }).join("")}</tbody></table></div>
+    el.innerHTML = `<div class="tw"><table><thead><tr><th class="l">학교</th><th>입학학년도</th><th>정보 수집일</th><th>과목표 신뢰도</th><th>확인할 항목</th><th>구분이 빠진 과목</th><th>직접 확인해 볼 항목</th></tr></thead><tbody>${summary.map((m) => { const sc = schools.find((s) => s.id === m.schoolId); return `<tr><td class="l">${esc(m.schoolName)}</td><td>${m.entryYear}</td><td>${esc(sc?._meta?.updated || "-")}</td><td>${esc(m.confidence)}</td><td>${m.flagsOpen}</td><td>${m.kindMissingRows}</td><td>${m.reviewCount}</td></tr>`; }).join("")}</tbody></table></div>
       <p class="muted">unverified = 사진 대조 전 / reported = 보도·사용자 확인 / verified = 대조 완료</p>
-      <p class="note">편제표 값은 AI가 학교 배부 사진에서 옮긴 뒤 <b>사용자 사진 대조 완료${cdate ? `, ${esc(cdate)}` : ""}</b>입니다. 수능 범위는 2028 통합형 수능 기준 <b>추정</b>이며, 편제표는 개설 가능 <b>후보</b>입니다.</p>`;
+      <p class="note">과목표 값은 AI가 학교 배부 사진에서 옮긴 뒤 <b>사용자 사진 대조 완료${cdate ? `, ${esc(cdate)}` : ""}</b>입니다. 수능 범위는 2028 통합형 수능 기준 <b>추정</b>이며, 과목표는 개설 가능 <b>후보</b>입니다.</p>`;
   },
 };
 
-// ---- 학교별 편제표: 학교 칩(on/off, 최대 4개교) + 탭(요약 / 상세 비교) ----
+// ---- 학교별 과목표: 학교 칩(on/off, 최대 4개교) + 탭(요약 / 상세 비교) ----
 const ICON = {
   filter: '<svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path d="M2 3h12L9.5 8.5V13l-3-1.5V8.5z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>',
   search: '<svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>',
@@ -216,7 +216,7 @@ async function curriculumView(el, query, node) {
     const body = $("#cview");
     if (tab === "hs") {
       compare = null;
-      body.innerHTML = `<details class="dp ty-top" id="tyd"><summary>고교 유형·전형 한눈에</summary><div id="tybody"></div></details><div id="hsmain"></div><section class="dp sum-sec" id="sumsec"><div class="sec-h"><h2><em>편제표</em>편제표 학교 요약</h2></div><div id="sumhost"></div></section>`;
+      body.innerHTML = `<details class="dp ty-top" id="tyd"><summary>고교 유형·전형 한눈에</summary><div id="tybody"></div></details><div id="hsmain"></div><section class="dp sum-sec" id="sumsec"><div class="sec-h"><h2><em>과목표</em>과목표 학교 요약</h2></div><div id="sumhost"></div></section>`;
       const tyd = body.querySelector("#tyd"); let tyDone = false;
       const fillTy = async () => { if (tyDone) return; tyDone = true; try { await views.types(body.querySelector("#tybody"), query); } catch { body.querySelector("#tybody").innerHTML = '<p class="muted">불러오지 못했어요.</p>'; } };
       tyd.addEventListener("toggle", () => { if (tyd.open) fillTy(); });

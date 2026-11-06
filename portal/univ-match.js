@@ -1,12 +1,12 @@
-// 학교별 과목표 > "대학 요건 맞춰보기" 탭: 학교 × 대학·모집단위를 고르면 권장 과목을 이 학교 편제표(개설 후보)에서 몇 과목 고를 수 있는지 보여 준다.
+// 학교별 과목표 > "대학 요건 맞춰보기" 탭: 학교 × 대학·모집단위를 고르면 권장 과목을 이 학교 과목표(개설 후보)에서 몇 과목 고를 수 있는지 보여 준다.
 // 데이터: matches.json(tools/build-matches.mjs), admission-rules.json, subject-master.json. 확정은 표시하지 않고 보도·추정만 조용히 표시한다.
 import { stageTag } from "./stage.js";
 import { emptyLine } from "./empty.js";
 import { srcWrap } from "./src-ref.js";
-const NOREQ = "이 학교의 편제표와 맞춰 볼 대학 요건이 아직 없어요 → 대학 입학처의 모집요강 공고(보통 6~7월)에서 확인해요";
+const NOREQ = "이 학교의 과목표와 맞춰 볼 대학 요건이 아직 없어요 → 대학 입학처의 모집요강 공고(보통 6~7월)에서 확인해요";
 import { cmpTable } from "./compare-table.js";
 const ES = { reported: ["rep", "보도"], estimated: ["est", "추정"] };
-const STATE = { guaranteed: "학교 지정", reachable: "고를 수 있음", blocked: "택n 묶음 충돌", absent: "편제표에 없음" };
+const STATE = { guaranteed: "학교 지정", reachable: "고를 수 있음", blocked: "택n 묶음 충돌", absent: "과목표에 없음" };
 const TRACK = { "susi-gyogwa": "학생부교과", "susi-jonghap": "학생부종합", "susi-nonsul": "논술", "jeongsi-csat": "정시 수능", special: "특별전형" };
 
 export async function univBody(el, { load, esc, profile, schools, sel, pick }) {
@@ -15,14 +15,14 @@ export async function univBody(el, { load, esc, profile, schools, sel, pick }) {
   const name = new Map(master.subjects.map((m) => [m.subjectId, m.name]));
   const picked = (profile.schoolIds || []).length ? schools.filter((s) => profile.schoolIds.includes(s.id)) : [];
   const mine = picked.length ? picked : schools;
-  if (!mine.length) { el.innerHTML = `<div class="ed"><p class="muted">아직 맞춰볼 편제표가 없어요.</p></div>`; return; }
+  if (!mine.length) { el.innerHTML = `<div class="ed"><p class="muted">아직 맞춰볼 과목표가 없어요.</p></div>`; return; }
   const st = (el.__univ ||= { school: (sel.find((id) => mine.some((s) => s.id === id)) || mine[0].id), univ: (univs.find((u) => rules.rules.some((r) => r.universityId === u.id)) || univs[0]).id, rule: null });
   if (!mine.some((s) => s.id === st.school)) st.school = mine[0].id;
   { const uq = new URLSearchParams((location.hash.split("?")[1] || "")).get("u"); if (uq && el.__uq !== uq && univs.some((x) => x.id === uq)) { el.__uq = uq; st.univ = uq; st.rule = null; } } // 검색 결과 등에서 ?u=<대학id>로 오면 그 대학을 고른다
   const units = () => rules.rules.filter((r) => r.universityId === st.univ);
 
   const chips = (items, key, cur, cls = "") => items.map(([v, t]) => `<button type="button" class="chip ${v === cur ? "on" : ""}" data-k="${key}" data-v="${esc(v)}" aria-pressed="${v === cur}">${esc(t)}</button>`).join("");
-  const top = () => `<div class="ed-top"><b>${esc(rules._meta.referenceNote)}</b><details><summary>자세히</summary><p>편제표는 개설 후보예요. 학교가 매년 확정하는 개설 과목과 다를 수 있어요. 교과군 요건은 교과군 안의 과목으로 계산했어요.</p></details></div>
+  const top = () => `<div class="ed-top"><b>${esc(rules._meta.referenceNote)}</b><details><summary>자세히</summary><p>과목표는 개설 후보예요. 학교가 매년 확정하는 개설 과목과 다를 수 있어요. 교과군 요건은 교과군 안의 과목으로 계산했어요.</p></details></div>
       <div class="chipbar uv-bar"><span class="flabel">대학</span><div class="chips uv-chips">${chips(univs.map((u) => [u.id, u.name]), "univ", st.univ)}</div></div>`;
   const draw = () => {
     if (!units().some((r) => r.ruleId === st.rule)) st.rule = (units().find((r) => r.requirements.length) || units()[0])?.ruleId ?? null;
@@ -45,13 +45,13 @@ export async function univBody(el, { load, esc, profile, schools, sel, pick }) {
     else body = `<div id="um-cmp"></div>`;
     const reqCount = (mOf(mine[0].id)?.requirements || []).length;
     st.cfg = anyM ? () => ({
-      esc, stage: "대입", title: `${rule.universityName} ${rule.unitName}`, summary: "우리 학교 4곳의 편제표(개설 후보)로 권장 과목을 얼마나 고를 수 있는지 견줘요",
+      esc, stage: "대입", title: `${rule.universityName} ${rule.unitName}`, summary: "우리 학교 4곳의 과목표(개설 후보)로 권장 과목을 얼마나 고를 수 있는지 견줘요",
       targets: mine.map((x) => ({ id: x.id, name: x.name, sub: "", href: `#select/curriculum?s=${encodeURIComponent(x.id)}`, search: x.name })),
       rows: [
         { id: "reach", label: "고를 수 있는 과목", group: "한눈에", kind: "number", get: (t) => { const sm = mOf(t.id)?.summary; return sm ? { text: `${sm.reachable}/${sm.need}`, num: sm.reachable, html: `<b>${sm.reachable}</b> / ${sm.need}과목` } : { empty: true, why: NOREQ }; } },
         { id: "guar", label: "학교 지정", group: "한눈에", kind: "number", get: (t) => { const sm = mOf(t.id)?.summary; return sm ? { text: String(sm.guaranteed), num: sm.guaranteed } : { empty: true, why: NOREQ }; } },
         { id: "blk", label: "택n 묶음 충돌", group: "한눈에", kind: "number", get: (t) => { const sm = mOf(t.id)?.summary; return sm ? { text: String(sm.blocked), num: sm.blocked } : { empty: true, why: NOREQ }; } },
-        { id: "abs", label: "편제표에 없음", group: "한눈에", kind: "number", get: (t) => { const sm = mOf(t.id)?.summary; return sm ? { text: String(sm.absent), num: sm.absent } : { empty: true, why: NOREQ }; } },
+        { id: "abs", label: "과목표에 없음", group: "한눈에", kind: "number", get: (t) => { const sm = mOf(t.id)?.summary; return sm ? { text: String(sm.absent), num: sm.absent } : { empty: true, why: NOREQ }; } },
         ...Array.from({ length: reqCount }, (_, i) => { const r0 = mOf(mine[0].id).requirements[i]; return { id: `req${i}`, label: `${r0.label} (${r0.strength === "required" ? "필수" : r0.strength === "advised" ? "참고" : "권장"} ${r0.minCount}과목)`, group: "요건별 과목", kind: "text", get: (t) => {
           const r = mOf(t.id)?.requirements?.[i]; if (!r) return { empty: true, why: NOREQ };
           const list = [...r.guaranteed.map((g) => `${nm(g.subjectId)} <span class="muted small">${g.terms.join("·")} 지정</span>`), ...r.selectable.map((g) => `${nm(g.subjectId)} <span class="muted small">${g.terms.join("·")}${g.pick ? ` · 택${g.pick}` : ""}</span>`)];
