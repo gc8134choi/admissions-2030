@@ -13,7 +13,8 @@ const SOON_WHY = {
   "목표 학과 체크": { why: "희망 학과 요건과 내 계획을 견주는 기능이에요. 대학 요건 자료를 모으는 중이에요.", next: { label: "대학 요건 보기", url: "#select/curriculum?v=univ" } },
   "중학교 교육과정": { why: "중학교별 교육과정은 학교 공지를 모으는 중이에요. 11월 안에 중학교 비교에 먼저 담을게요.", next: { label: "중학교 배정에서 학교 찾기", url: "#select/curriculum?v=middle" } },
 };
-import { MENU, STATUS, TABS, REDIRECT, hrefOf, tabHref, locate } from "./menu.js";
+import { MENU, STATUS } from "./menu.js";
+import { TABS, REDIRECT, hrefOf, tabHref, locate, treeHtml } from "./nav-tree.js";
 import { registerHome } from "./home.js";
 import { registerFiles } from "./files.js";
 import { currentProfile, allProfiles, initProfiles, mountProfileSwitch, nameSettings, bindNameSettings, showProfiles } from "./profile-ui.js";
@@ -61,19 +62,25 @@ const MENU_ICON = {
 };
 
 // 상단 메뉴(데스크톱)·하단 탭(모바일): 5개 탭, 글자만. 켜진 탭은 위쪽 선.
-function drawTabs(tab) {
-  const html = TABS.map((t) => `<a href="${tabHref(t)}"${t.id === tab.id ? ' aria-current="page"' : ""}>${esc(t.title)}</a>`).join("");
-  const vl = $("#vaultlink"); if (vl) tab.id === "vault" ? vl.setAttribute("aria-current", "page") : vl.removeAttribute("aria-current");
-  $("#topnav").innerHTML = html;
-  $("#btabs").innerHTML = html;
+function drawTabs(loc) {
+  const html = treeHtml(loc);
+  const side = $("#sidenav"), dr = $("#navtree"); if (side) side.innerHTML = `<nav class="nt" aria-label="전체 메뉴">${html}</nav>`; if (dr) dr.innerHTML = `<nav class="nt" aria-label="전체 메뉴">${html}</nav>`;
+  closeDrawer();
 }
+// 모바일 메뉴 서랍(같은 트리). 열면 본문 스크롤을 잠그고, 닫기·바깥 누름·Esc·항목 선택으로 닫는다.
+function closeDrawer() { const d = $("#navdrawer"); if (d && !d.hidden) { d.hidden = true; document.body.classList.remove("nav-open"); $("#menubtn")?.setAttribute("aria-expanded", "false"); $("#menubtn")?.focus?.({ preventScroll: true }); } }
+function openDrawer() { const d = $("#navdrawer"); if (!d) return; d.hidden = false; document.body.classList.add("nav-open"); $("#menubtn")?.setAttribute("aria-expanded", "true"); d.querySelector("[aria-current=page], a")?.scrollIntoView({ block: "center" }); d.querySelector(".nd-x")?.focus(); }
+$("#menubtn")?.addEventListener("click", openDrawer);
+$("#navdrawer")?.addEventListener("click", (e) => { if (e.target.closest(".nd-x") || e.target.id === "navdrawer" || e.target.closest("a")) closeDrawer(); });
+addEventListener("keydown", (e) => { if (e.key === "Escape") closeDrawer(); });
 
 // 화면 모드 전환(자동·라이트·다크). 선택은 이 브라우저에만 저장한다.
 function drawTheme() {
-  const box = $("#themesw"); if (!box || !window.__theme) return;
+  if (!window.__theme) return;
   const cur = window.__theme.get();
-  box.innerHTML = [["auto", "자동"], ["light", "밝게"], ["dark", "어둡게"]].map(([k, t]) => `<button type="button" data-th="${k}" aria-pressed="${k === cur}">${t}</button>`).join("");
-  box.onclick = (e) => { const b = e.target.closest("[data-th]"); if (!b) return; window.__theme.set(b.dataset.th); drawTheme(); };
+  for (const box of [$("#themesw"), $("#themesw2")]) { if (!box) continue; // 모바일에서는 서랍 안에 둔다(머리줄이 좁다)
+    box.innerHTML = [["auto", "자동"], ["light", "밝게"], ["dark", "어둡게"]].map(([k, t]) => `<button type="button" data-th="${k}" aria-pressed="${k === cur}">${t}</button>`).join("");
+    box.onclick = (e) => { const b = e.target.closest("[data-th]"); if (!b) return; window.__theme.set(b.dataset.th); drawTheme(); }; }
 }
 drawTheme();
 // 스킨(보이는 모습만 바꾸는 선택): 보관함 맨 위에서 고른다. 구조·정보는 그대로다.
@@ -507,13 +514,23 @@ function addCalendar(el) {
 const GO_ERR = '<p class="note">정보를 못 가져왔어요. 잠시 뒤 다시 열어 주세요.</p>';
 // 빵부스러기 끝의 학교 이름, 자료 확인일, 출처 모음을 채운다(출처 버튼이 늦게 생겨도 따라간다)
 function pageExtras(loc, query) {
-  if (!loc || loc.tab.id === "home") return;
+  if (!loc || loc.item.id === "home") return;
   const sid = (query.get("s") || "").split(",").filter(Boolean);
   if (sid.length === 1) load("schools").then((ss) => { const x = ss.find((y) => y.id === sid[0]); const el = $("#crumb .crumb-s"); if (x && el) el.innerHTML = `<span aria-hidden="true"> › </span>${esc(x.name)}`; }).catch(() => {});
   load("policy").then((rows) => { const d = rows.map((r) => r.checkedAt).filter(Boolean).sort().pop(); const el = $(".pgfoot .pg-date"); if (d && el) el.textContent = `자료 확인 ${d.replace(/-/g, ".")} · `; }).catch(() => {});
 }
 const refreshPageSources = () => { const f = $(".pgfoot .pg-src"); if (f) f.innerHTML = sourcesHtml($("#main")) + " · "; };
 
+// 정보성 화면(학점제·수능과 내신·중학교 배정·중학교 생활): 읽기 폭 70자 + 긴 화면 '이 화면에서' 목차(소제목 앵커)
+const INFO_VIEWS = new Set(["credit", "system", "midlife"]);
+const isInfo = (n, query) => INFO_VIEWS.has(n.view) || (n.view === "curriculum" && query.get("v") === "middle");
+function addToc() {
+  const v = $("#view"); if (!v || !$("#main").classList.contains("info") || v.querySelector(".toc-in")) return;
+  const hs = [...v.querySelectorAll("h2")].filter((h) => h.textContent.trim().length > 1 && h.checkVisibility?.() !== false); if (hs.length < 3) return;
+  const li = hs.map((h, i) => { h.id ||= "sec-" + (i + 1); h.style.scrollMarginTop = "84px"; const t = (h.querySelector("em")?.nextSibling?.textContent || h.textContent).trim().replace(/\s*ⓘ\s*/g, " "); return `<li><a href="#${h.id}" data-toc="${h.id}">${esc(t)}</a></li>`; }).join("");
+  v.insertAdjacentHTML("afterbegin", `<details class="toc-in"><summary>이 화면에서 ▾</summary><ol>${li}</ol></details>`);
+  v.querySelector(".toc-in").addEventListener("click", (e) => { const a = e.target.closest("[data-toc]"); if (!a) return; e.preventDefault(); document.getElementById(a.dataset.toc)?.scrollIntoView({ behavior: "smooth", block: "start" }); });
+}
 function render() {
   const [path, qs] = decodeURIComponent(location.hash.slice(1)).split("?");
   const query = new URLSearchParams(qs || "");
@@ -523,13 +540,13 @@ function render() {
   const loc = locate(n.id, query) || { tab: TABS[0], group: TABS[0].groups[0], item: TABS[0].groups[0].items[0] };
   const tab = loc.tab;
   document.body.dataset.profile = currentProfile(store).key;
-  drawTabs(tab);
-  document.title = `${tab.id === "home" ? "" : tab.title + " · "}스쿨 라이프`;
+  $("#main").classList.toggle("info", isInfo(n, query));
+  drawTabs(loc);
+  document.title = `${loc.item.id === "home" ? "" : loc.item.title + " · "}스쿨 라이프`;
   scrollTo(0, 0);
   const navA = (href, title, on) => `<a href="${href}"${on ? ' aria-current="page"' : ""}>${esc(title)}</a>`;
   const row = (cls, label, links) => `<nav class="subnav${cls}" aria-label="${esc(label)}">${links}</nav>`;
-  const sub = (tab.groups.length > 1 ? row(" lvl", `${tab.title} 안의 구분`, tab.groups.map((g) => navA(hrefOf(g.items[0]), g.title, g === loc.group)).join("")) : "")
-    + (loc.group.items.length > 1 ? row("", `${tab.title} 안의 화면`, loc.group.items.map((x) => navA(hrefOf(x), x.title, x === loc.item)).join("")) : "");
+  const sub = ""; // 메뉴 고르기는 좌측 트리 한 곳(화면 안 글자 탭 제거)
   const soonL = [...(loc.group.soon || []), ...(tab.soon || [])];
   const soon = soonL.length ? `<div class="soon"><b>곧 열려요</b>${soonL.map((n) => `<div class="soon-i"><span>${esc(n)}</span>${emptyLine(esc, SOON_WHY[n] || { why: "준비 중이에요. 자료를 모으는 대로 열어요." })}</div>`).join("")}</div>` : "";
   if (n.view === "curriculum" && currentProfile(store).key === "b") { // 프로필 B는 아직 학교가 없다
@@ -539,16 +556,16 @@ function render() {
   if (n.view === "curriculum" || n.view === "home") { // 위쪽 공간 절약: 제목 없이 화면이 바로 시작
     $("#main").innerHTML = `${sub}${crumbHtml(loc, hrefOf, tabHref)}<div id="view"></div>${soon}${footHtml(loc)}`;
     pageExtras(loc, query);
-    const mainEl = $("#main"); mainEl.classList.add("view-loading"); const ready = () => requestAnimationFrame(() => mainEl.classList.remove("view-loading")); // 화면이 다 그려지기 전에는 아래 안내(푸터)를 숨겨 밀림(CLS)을 막는다
+    const mainEl = $("#main"); mainEl.classList.add("view-loading"); const ready = () => requestAnimationFrame(() => { mainEl.classList.remove("view-loading"); addToc(); }); // 화면이 다 그려지기 전에는 아래 안내(푸터)를 숨겨 밀림(CLS)을 막는다
     views[n.view]($("#view"), query, n).catch(() => ($("#view").innerHTML = GO_ERR)).finally(ready);
     return;
   }
   const title = loc.item.title || n.title;
-  const lvTag = tab.id === "mid" || tab.id === "high" ? `<span class="lv-tag">${esc(tab.title)}${loc.group.title ? " " + esc(loc.group.title) : ""}</span>` : "";
+  const lvTag = "";
   $("#main").innerHTML = `${sub}<h1 class="ph">${esc(title)}${lvTag}</h1>${crumbHtml(loc, hrefOf, tabHref)}<div id="view"></div>${soon}${footHtml(loc)}`;
   pageExtras(loc, query);
   { const mainEl = $("#main"); mainEl.classList.add("view-loading"); setTimeout(() => mainEl.classList.remove("view-loading"), 4000); /* 안전장치 */ }
-  const doneLoad = () => requestAnimationFrame(() => $("#main").classList.remove("view-loading"));
+  const doneLoad = () => requestAnimationFrame(() => { $("#main").classList.remove("view-loading"); addToc(); });
   if (n.view) views[n.view]($("#view"), query).finally(doneLoad).then(() => { filesApi.afterView(n.view, $("#view")); if (n.view === "credit") decorateSubjectLists($("#view"), load, "4."); if (n.id === "changelog") skinPanel($("#view")); if (n.view === "schedule") addCalendar($("#view")); }).catch(() => ($("#view").innerHTML = GO_ERR));
 }
 

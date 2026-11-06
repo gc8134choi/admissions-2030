@@ -1,6 +1,6 @@
 // 전체 검색: 헤더 돋보기 → 일정·제도, 학교, 과목, 바로가기, 화면을 한 번에 찾는다. 한글 부분 일치.
 // 데이터는 처음 열 때 한 번에 병렬로 읽는다. 최근 검색은 이 브라우저(localStorage)에만 저장한다.
-import { allItems } from "./menu.js";
+import { allItems } from "./nav-tree.js";
 import { stageOf } from "./stage.js";
 import { loadSearchExtra } from "./search-extra.js";
 import { loadProfile, filterByProfile } from "./profile.js";
