@@ -1,5 +1,5 @@
 // 고교학점제 이해 화면(A안 에디토리얼): 한 문장 + 큰 숫자 + 헤어라인 격자, 얇은 선 그래프. 스타일은 policy.css(.ed-*).
-// 숫자는 policy.json 행의 본문에서 코드로 읽고(못 읽으면 그 그림은 뺀다), 학년별·학교별 학점은 편제표 DB(summary.json)에서 읽는다.
+// 숫자는 policy.json 행의 본문에서 코드로 읽고(못 읽으면 그 그림은 뺀다), 학년별·학교별 학점은 과목표 DB(summary.json)에서 읽는다.
 // 각 섹션 끝에 "근거·상태" 행(상태·출처 포함)을 접어 둔다. 공식 이미지 슬롯: portal/img/credit/manifest.json (README.md 참고).
 import { preloadSubjectInfo, subjectName, hasSubjectInfo } from "./subject-info.js";
 import { srcWrap } from "./src-ref.js";
@@ -91,13 +91,13 @@ export async function creditView(el, { load, profile, esc, badge, badgeMain, src
       `<div class="ed-seg" role="img" aria-label="교과 ${grad[1]}, 창의적 체험활동 ${grad[2]}"><i style="width:${pct(grad[1], grad[0])}%;background:var(--e-ink)"></i><i style="width:${pct(grad[2], grad[0])}%;background:var(--e-accent)"></i></div><p class="ed-key"><span><i class="ed-dot" style="background:var(--e-ink)"></i>교과 <b>${grad[1]}</b> (${pct(grad[1], grad[0])}%)</span><span><i class="ed-dot" style="background:var(--e-accent)"></i>창의적 체험활동 <b>${grad[2]}</b> (${pct(grad[2], grad[0])}%)</span></p>${seg2}`, ["cur-01", "cur-14", "cur-09", "hs-14"], "credit-02-structure"));
   }
 
-  // ---- 학년별 여정: 편제표 기준 지정→선택 ----
+  // ---- 학년별 여정: 과목표 기준 지정→선택 ----
   const years = [["1학년", ["1-1", "1-2"]], ["2학년", ["2-1", "2-2"]], ["3학년", ["3-1", "3-2"]]];
   const yearSum = (m, ts, k) => ts.reduce((n, t) => n + (m.byTerm?.[t]?.[k] || 0), 0);
   const ymax = Math.max(...summary.flatMap((m) => years.map(([, ts]) => yearSum(m, ts, "required") + yearSum(m, ts, "elective"))), 1);
   if (summary.length && ymax > 1) {
     const mini = (m) => `<div class="ed-ym"><h3>${esc(m.schoolName)}</h3><div class="ed-yc">${years.map(([lab, ts]) => { const r = yearSum(m, ts, "required"), e = yearSum(m, ts, "elective"); return `<div><div class="ed-yb" style="height:${pct(r + e, ymax) * 0.9}px"><span class="ele" style="flex:${e || 0.0001}">${e || ""}</span><span class="req" style="flex:${r || 0.0001}">${r || ""}</span></div><em>${lab}</em></div>`; }).join("")}</div></div>`;
-    out.push(sec(3, "학년별 여정", "1학년은 학교가 정한 필수 과목이 중심이고, 학년이 올라갈수록 내가 고르는 과목이 늘어요(학교 과목 시간표, 편제표 기준).",
+    out.push(sec(3, "학년별 여정", "1학년은 학교가 정한 필수 과목이 중심이고, 학년이 올라갈수록 내가 고르는 과목이 늘어요(학교 과목 시간표, 과목표 기준).",
       `<p class="ed-ylegend"><span><i style="background:var(--e-req)"></i>필수(학교가 정함)</span><span><i style="background:var(--e-ele)"></i>내가 고르는</span></p><div class="ed-years">${summary.map(mini).join("")}</div><p class="ed-src">학교별 학년 교과 학점이에요. 창의적 체험활동은 빼요. <a href="#select/curriculum">학교별 과목표 보기</a></p>`, [], "credit-03-journey"));
   }
 
@@ -162,7 +162,7 @@ export async function creditView(el, { load, profile, esc, badge, badgeMain, src
   // ---- 우리 4개교 ----
   if (summary.length) {
     const mx = Math.max(...summary.map((m) => m.creditsSubject), 1);
-    out.push(sec(10, "우리 4개교", "학교 과목 시간표(편제표) 기준 교과 학점이에요(서울교육청 기준 필수·자율 분류와는 달라요).",
+    out.push(sec(10, "우리 4개교", "학교 과목 시간표(과목표) 기준 교과 학점이에요(서울교육청 기준 필수·자율 분류와는 달라요).",
       `<div>${summary.map((m) => `<div class="ed-sch"><span class="nm">${esc(m.schoolName)}</span><div><div class="ed-bar2" style="width:${pct(m.creditsSubject, mx)}%" role="img" aria-label="${esc(m.schoolName)} 필수 ${m.creditsRequired}, 내가 고르는 ${m.creditsElective}"><span class="r" style="width:${pct(m.creditsRequired, m.creditsSubject)}%"></span><span class="e" style="width:${pct(m.creditsElective, m.creditsSubject)}%"></span></div></div><span class="f">필수 ${m.creditsRequired} · 고르는 ${m.creditsElective}</span></div>`).join("")}</div><p class="ed-src"><a href="#select/curriculum">학교별 과목표 보기</a></p>`, [], "credit-10-schools"));
   }
 
