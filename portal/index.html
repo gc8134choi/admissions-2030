@@ -78,7 +78,6 @@
 <body>
   <header class="hdr" aria-label="포털 상단">
     <div class="wrap barin">
-      <button type="button" id="menubtn" class="menubtn" aria-label="메뉴 열기" aria-expanded="false" aria-controls="navdrawer"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>메뉴</button>
       <a class="wm" href="#home" aria-label="스쿨 라이프 홈">스쿨 <i>라이프</i></a>
       <div id="themesw" class="tsw" role="group" aria-label="화면 모드"></div>
       <button type="button" id="srbtn" class="srbtn" aria-label="검색" title="검색 (/)"><svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
@@ -87,6 +86,7 @@
     </div>
   </header>
   <p class="legend wrap" id="legend" aria-label="표시 안내"><span class="pst reported">보도</span> 언론 보도 <span class="pst estimated">추정</span> 예상·가정 <span class="pst unknown">미정</span> 발표 전 · 표시 없음은 공식 확인</p>
+  <nav class="tabs" id="btabs" aria-label="하단 메뉴"></nav>
   <aside id="sidenav" class="sidenav" aria-label="메뉴"></aside>
   <main id="main" class="wrap"></main>
   <div id="navdrawer" class="navdrawer" hidden><div class="nd-sheet" role="dialog" aria-modal="true" aria-label="메뉴"><div class="nd-top"><b class="wm">스쿨 <i>라이프</i></b><button type="button" class="nd-x">닫기 ✕</button></div><div id="navtree"></div><p class="nd-th"><span>화면 모드</span></p><div id="themesw2" class="tsw" role="group" aria-label="화면 모드"></div></div></div>

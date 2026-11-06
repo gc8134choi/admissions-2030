@@ -14,7 +14,7 @@ const SOON_WHY = {
   "중학교 교육과정": { why: "중학교별 교육과정은 학교 공지를 모으는 중이에요. 11월 안에 중학교 비교에 먼저 담을게요.", next: { label: "중학교 배정에서 학교 찾기", url: "#select/curriculum?v=middle" } },
 };
 import { MENU, STATUS } from "./menu.js";
-import { TABS, REDIRECT, hrefOf, tabHref, locate, treeHtml } from "./nav-tree.js";
+import { TABS, REDIRECT, hrefOf, tabHref, locate, treeHtml, BOTTOM } from "./nav-tree.js";
 import { registerHome } from "./home.js";
 import { registerFiles } from "./files.js";
 import { currentProfile, allProfiles, initProfiles, mountProfileSwitch, nameSettings, bindNameSettings, showProfiles } from "./profile-ui.js";
@@ -65,12 +65,13 @@ const MENU_ICON = {
 function drawTabs(loc) {
   const html = treeHtml(loc);
   const side = $("#sidenav"), dr = $("#navtree"); if (side) side.innerHTML = `<nav class="nt" aria-label="전체 메뉴">${html}</nav>`; if (dr) dr.innerHTML = `<nav class="nt" aria-label="전체 메뉴">${html}</nav>`;
+  const bt = $("#btabs"); if (bt) bt.innerHTML = BOTTOM.map((b) => b.href ? `<a href="${b.href}"${loc && (loc.item.id === b.r || (b.r === "schedule" && loc.item.id === "schedule")) ? ' aria-current="page"' : ""}>${esc(b.label)}</a>` : `<button type="button" data-b="${b.key}"${b.key === "menu" ? ' id="menubtn" aria-expanded="false" aria-controls="navdrawer"' : ""}>${esc(b.label)}</button>`).join("");
   closeDrawer();
 }
 // 모바일 메뉴 서랍(같은 트리). 열면 본문 스크롤을 잠그고, 닫기·바깥 누름·Esc·항목 선택으로 닫는다.
 function closeDrawer() { const d = $("#navdrawer"); if (d && !d.hidden) { d.hidden = true; document.body.classList.remove("nav-open"); $("#menubtn")?.setAttribute("aria-expanded", "false"); $("#menubtn")?.focus?.({ preventScroll: true }); } }
 function openDrawer() { const d = $("#navdrawer"); if (!d) return; d.hidden = false; document.body.classList.add("nav-open"); $("#menubtn")?.setAttribute("aria-expanded", "true"); d.querySelector("[aria-current=page], a")?.scrollIntoView({ block: "center" }); d.querySelector(".nd-x")?.focus(); }
-$("#menubtn")?.addEventListener("click", openDrawer);
+$("#btabs")?.addEventListener("click", (e) => { const b = e.target.closest("[data-b]"); if (!b) return; if (b.dataset.b === "menu") openDrawer(); else if (b.dataset.b === "search") $("#srbtn")?.click(); });
 $("#navdrawer")?.addEventListener("click", (e) => { if (e.target.closest(".nd-x") || e.target.id === "navdrawer" || e.target.closest("a")) closeDrawer(); });
 addEventListener("keydown", (e) => { if (e.key === "Escape") closeDrawer(); });
 
@@ -78,7 +79,7 @@ addEventListener("keydown", (e) => { if (e.key === "Escape") closeDrawer(); });
 function drawTheme() {
   if (!window.__theme) return;
   const cur = window.__theme.get();
-  for (const box of [$("#themesw"), $("#themesw2")]) { if (!box) continue; // 모바일에서는 서랍 안에 둔다(머리줄이 좁다)
+  for (const box of [$("#themesw"), $("#themesw2"), $("#themesw3")]) { if (!box) continue; // 모바일에서는 서랍 안에 둔다(머리줄이 좁다)
     box.innerHTML = [["auto", "자동"], ["light", "밝게"], ["dark", "어둡게"]].map(([k, t]) => `<button type="button" data-th="${k}" aria-pressed="${k === cur}">${t}</button>`).join("");
     box.onclick = (e) => { const b = e.target.closest("[data-th]"); if (!b) return; window.__theme.set(b.dataset.th); drawTheme(); }; }
 }
@@ -123,6 +124,10 @@ const kindOf = (o) => (o.primaryKind ? o.primaryKind + (o.kindStatus === "inferr
 
 // ---- 뷰 ----
 const views = {
+  async settings(el) { // 화면 설정(어둡게·스킨): 예전에는 바뀐 소식 화면 위에 숨어 있었다
+    el.innerHTML = `<section class="dp"><div class="sec-h"><h2><em>모드</em>화면 모드</h2></div><p class="muted small">자동은 휴대폰·컴퓨터의 설정을 따라가요. 이 브라우저에만 저장돼요.</p><div id="themesw3" class="tsw" role="group" aria-label="화면 모드"></div></section><div id="skinhost"></div>`;
+    drawTheme(); skinPanel(el.querySelector("#skinhost"));
+  },
   async curriculum(el, query, node) {
     await curriculumView(el, query, node);
   },
@@ -193,7 +198,7 @@ async function curriculumView(el, query, node) {
     if (areasSel.length) q.set("a", areasSel.join(","));
     if (tab === "compare" && fsParam()) q.set("f", fsParam());
     const cur = new URLSearchParams((location.hash.split("?")[1] || "")); // 학교 비교 표(c)·유형(t)·전형(ty)·대학 요건(us)의 선택은 지우지 않는다
-    for (const k of ["c", "m", "t", "ty", "us", "g", "u"]) if (cur.has(k) && !q.has(k)) q.set(k, cur.get(k));
+    for (const k of ["c", "m", "t", "ty", "us", "g", "u", "open"]) if (cur.has(k) && !q.has(k)) q.set(k, cur.get(k));
     history.replaceState(null, "", `#select/curriculum?${q.toString().replace(/%2C/g, ",")}`);
   };
   const chipHtml = () => schools.map((x) => `<button type="button" class="chip schip ${sel.includes(x.id) ? "on" : ""}" data-id="${esc(x.id)}" aria-pressed="${sel.includes(x.id)}" title="${esc(x.name)}">${nm(x.id, x.name, 36)}</button>`).join("");
@@ -536,6 +541,7 @@ function render() {
   const query = new URLSearchParams(qs || "");
   let id = path || "home";
   if (REDIRECT[id]) { location.replace("#" + REDIRECT[id] + (qs ? (REDIRECT[id].includes("?") ? "&" : "?") + qs : "")); return; } // 옛 주소 → 가까운 화면
+  if (id === "admission/system" && query.get("t") === "log") { location.replace("#changelog"); return; } // 옛 주소: 바뀐 소식은 자료·소식 한 곳
   const n = byId.get(id) || byId.get("home");
   const loc = locate(n.id, query) || { tab: TABS[0], group: TABS[0].groups[0], item: TABS[0].groups[0].items[0] };
   const tab = loc.tab;
@@ -566,7 +572,7 @@ function render() {
   pageExtras(loc, query);
   { const mainEl = $("#main"); mainEl.classList.add("view-loading"); setTimeout(() => mainEl.classList.remove("view-loading"), 4000); /* 안전장치 */ }
   const doneLoad = () => requestAnimationFrame(() => { $("#main").classList.remove("view-loading"); addToc(); });
-  if (n.view) views[n.view]($("#view"), query).finally(doneLoad).then(() => { filesApi.afterView(n.view, $("#view")); if (n.view === "credit") decorateSubjectLists($("#view"), load, "4."); if (n.id === "changelog") skinPanel($("#view")); if (n.view === "schedule") addCalendar($("#view")); }).catch(() => ($("#view").innerHTML = GO_ERR));
+  if (n.view) views[n.view]($("#view"), query).finally(doneLoad).then(() => { filesApi.afterView(n.view, $("#view")); if (n.view === "credit") decorateSubjectLists($("#view"), load, "4."); if (n.view === "schedule") addCalendar($("#view")); }).catch(() => ($("#view").innerHTML = GO_ERR));
 }
 
 addEventListener("hashchange", () => { window.__hlWanted = /[?&]hl=/.test(location.hash) ? Date.now() : 0; render(); applyHl(); });
