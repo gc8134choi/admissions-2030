@@ -63,16 +63,23 @@ const MENU_ICON = {
 
 // 상단 메뉴(데스크톱)·하단 탭(모바일): 5개 탭, 글자만. 켜진 탭은 위쪽 선.
 function drawTabs(loc) {
-  const html = treeHtml(loc);
+  const html = treeHtml(loc), hadFocus = !!document.activeElement?.closest?.("#sidenav");
   const side = $("#sidenav"), dr = $("#navtree"); if (side) side.innerHTML = `<nav class="nt" aria-label="전체 메뉴">${html}</nav>`; if (dr) dr.innerHTML = `<nav class="nt" aria-label="전체 메뉴">${html}</nav>`;
   const bt = $("#btabs"); if (bt) bt.innerHTML = BOTTOM.map((b) => b.href ? `<a href="${b.href}"${loc && (loc.item.id === b.r || (b.r === "schedule" && loc.item.id === "schedule")) ? ' aria-current="page"' : ""}>${esc(b.label)}</a>` : `<button type="button" data-b="${b.key}"${b.key === "menu" ? ' id="menubtn" aria-expanded="false" aria-controls="navdrawer"' : ""}>${esc(b.label)}</button>`).join("");
   closeDrawer();
+  if (side) { const c = side.querySelector("[aria-current=page]"); if (c) { // 현재 항목이 사이드바 안에서 보이게(바깥 화면은 움직이지 않는다)
+      const sr = side.getBoundingClientRect(), cr = c.getBoundingClientRect(); if (cr.top < sr.top + 8) side.scrollTop -= sr.top + 8 - cr.top; else if (cr.bottom > sr.bottom - 8) side.scrollTop += cr.bottom - sr.bottom + 8; if (hadFocus) c.focus({ preventScroll: true }); } }
 }
 // 모바일 메뉴 서랍(같은 트리). 열면 본문 스크롤을 잠그고, 닫기·바깥 누름·Esc·항목 선택으로 닫는다.
-function closeDrawer() { const d = $("#navdrawer"); if (d && !d.hidden) { d.hidden = true; document.body.classList.remove("nav-open"); $("#menubtn")?.setAttribute("aria-expanded", "false"); $("#menubtn")?.focus?.({ preventScroll: true }); } }
-function openDrawer() { const d = $("#navdrawer"); if (!d) return; d.hidden = false; document.body.classList.add("nav-open"); $("#menubtn")?.setAttribute("aria-expanded", "true"); d.querySelector("[aria-current=page], a")?.scrollIntoView({ block: "center" }); d.querySelector(".nd-x")?.focus(); }
+const OUTSIDE = () => [...document.body.children].filter((e) => e.id !== "navdrawer" && !/^(SCRIPT|STYLE|LINK)$/.test(e.tagName));
+function closeDrawer() { const d = $("#navdrawer"); if (d && !d.hidden) { d.hidden = true; document.body.classList.remove("nav-open"); OUTSIDE().forEach((e) => e.removeAttribute("inert")); $("#menubtn")?.setAttribute("aria-expanded", "false"); $("#menubtn")?.focus?.({ preventScroll: true }); } }
+function openDrawer() { const d = $("#navdrawer"); if (!d) return; d.hidden = false; document.body.classList.add("nav-open"); OUTSIDE().forEach((e) => e.setAttribute("inert", "")); $("#menubtn")?.setAttribute("aria-expanded", "true");
+  const cur = d.querySelector("#navtree [aria-current=page]"); if (cur) cur.scrollIntoView({ block: "center" }); d.querySelector(".nd-x")?.focus(); } // 현재 항목으로 스크롤(홈 링크가 아니라)
 $("#btabs")?.addEventListener("click", (e) => { const b = e.target.closest("[data-b]"); if (!b) return; if (b.dataset.b === "menu") openDrawer(); else if (b.dataset.b === "search") $("#srbtn")?.click(); });
 $("#navdrawer")?.addEventListener("click", (e) => { if (e.target.closest(".nd-x") || e.target.id === "navdrawer" || e.target.closest("a")) closeDrawer(); });
+// 포커스 가두기(서랍이 열려 있는 동안 Tab은 서랍 안에서만 돈다)
+$("#navdrawer")?.addEventListener("keydown", (e) => { if (e.key !== "Tab") return; const f = [...$("#navdrawer").querySelectorAll("a[href], button:not([disabled])")].filter((x) => x.checkVisibility?.() !== false); if (!f.length) return; const first = f[0], last = f[f.length - 1]; if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); } else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); } });
+matchMedia("(min-width:900px)").addEventListener?.("change", (m) => { if (m.matches) { const d = $("#navdrawer"); if (d && !d.hidden) { d.hidden = true; document.body.classList.remove("nav-open"); OUTSIDE().forEach((e) => e.removeAttribute("inert")); } } }); // 서랍을 연 채 넓히면 잠금 해제
 addEventListener("keydown", (e) => { if (e.key === "Escape") closeDrawer(); });
 
 // 화면 모드 전환(자동·라이트·다크). 선택은 이 브라우저에만 저장한다.
@@ -560,7 +567,7 @@ function render() {
   document.body.dataset.profile = currentProfile(store).key;
   $("#main").classList.toggle("info", isInfo(n, query));
   drawTabs(loc);
-  document.title = `${loc.item.id === "home" ? "" : loc.item.title + " · "}스쿨 라이프`;
+  document.title = `${loc.item.id === "home" ? "" : (loc.item.page || loc.item.title) + " · "}스쿨 라이프`;
   scrollTo(0, 0);
   const navA = (href, title, on) => `<a href="${href}"${on ? ' aria-current="page"' : ""}>${esc(title)}</a>`;
   const row = (cls, label, links) => `<nav class="subnav${cls}" aria-label="${esc(label)}">${links}</nav>`;
@@ -572,13 +579,13 @@ function render() {
     return;
   }
   if (n.view === "curriculum" || n.view === "home") { // 위쪽 공간 절약: 제목 없이 화면이 바로 시작
-    $("#main").innerHTML = `${sub}${isInfo(n, query) ? `<h1 class="ph">${esc(loc.item.title)}</h1>` : ""}${crumbHtml(loc, hrefOf, tabHref)}<div id="view"></div>${soon}${footHtml(loc)}`;
+    $("#main").innerHTML = `${sub}${isInfo(n, query) ? `<h1 class="ph">${esc(loc.item.page || loc.item.title)}</h1>` : ""}${crumbHtml(loc, hrefOf, tabHref)}<div id="view"></div>${soon}${footHtml(loc)}`;
     pageExtras(loc, query);
     const mainEl = $("#main"); mainEl.classList.add("view-loading"); const ready = () => requestAnimationFrame(() => { mainEl.classList.remove("view-loading"); addToc(); }); // 화면이 다 그려지기 전에는 아래 안내(푸터)를 숨겨 밀림(CLS)을 막는다
     views[n.view]($("#view"), query, n).catch(() => ($("#view").innerHTML = GO_ERR)).finally(ready);
     return;
   }
-  const title = loc.item.title || n.title;
+  const title = loc.item.page || loc.item.title || n.title;
   const lvTag = "";
   $("#main").innerHTML = `${sub}<h1 class="ph">${esc(title)}${lvTag}</h1>${crumbHtml(loc, hrefOf, tabHref)}<div id="view"></div>${soon}${footHtml(loc)}`;
   pageExtras(loc, query);
@@ -631,3 +638,5 @@ if ("serviceWorker" in navigator && location.protocol.startsWith("http") && !/^(
   let reloaded = false;
   navigator.serviceWorker.addEventListener("controllerchange", () => { if (!reloaded) { reloaded = true; location.reload(); } });
 }
+
+$("#skip")?.addEventListener("click", (e) => { e.preventDefault(); const m = $("#main"); m.setAttribute("tabindex", "-1"); m.focus(); m.scrollIntoView({ block: "start" }); });
