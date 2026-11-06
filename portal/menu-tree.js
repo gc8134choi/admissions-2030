@@ -4,12 +4,12 @@
 export const HOME = { id: "home", title: "스쿨 라이프", desc: "오늘 할 일 · 수능 D-day", keys: ["오늘", "D-", "수능"], r: "home" };
 export const GROUPS = [
   { id: "mid", title: "중학교 입학", items: [
-    { id: "select/curriculum?v=middle", title: "배정 안내", desc: "발표·추가배정·등록·배정 후 변경·근거리 중학교", keys: ["발표", "추가배정", "등록", "배정 후", "근거리"], r: "select/curriculum", q: { v: "middle", open: null } },
+    { id: "select/curriculum?v=middle", title: "배정 안내", desc: "발표·추가배정·등록·배정 후 변경(이사·전입)·근거리 중학교", keys: ["발표", "추가배정", "등록", "배정 후", "이사", "근거리"], r: "select/curriculum", q: { v: "middle", open: null } },
     { id: "select/curriculum?v=middle&open=cmp", title: "중학교 비교", desc: "학생 수·급식·통학 나란히", keys: ["학생", "급식", "통학"], r: "select/curriculum", q: { v: "middle", open: "cmp" } },
     { id: "select/curriculum?v=map&lv=middle", title: "학교 지도", page: "중학교 지도", desc: "중학교 위치", keys: ["중학교"], r: "select/curriculum", q: { v: "map", lv: "middle" } },
-    { id: "select/curriculum?v=middle&open=guide", title: "입학 준비", desc: "예비소집·교복·준비물·자유학기제·교과서·큰 그림 연표", keys: ["예비소집", "교복", "준비물", "자유학기", "교과서", "큰 그림"], r: "select/curriculum", q: { v: "middle", open: "guide" } }] },
+    { id: "select/curriculum?v=middle&open=guide", title: "입학 준비", desc: "배정부터 등록까지·예비소집·교복·준비물·자유학기제·교과서", keys: ["배정부터 등록까지", "예비소집", "교복", "준비물", "자유학기", "교과서"], r: "select/curriculum", q: { v: "middle", open: "guide" } }] },
   { id: "hs", title: "고등학교 입학", items: [
-    { id: "select/curriculum?v=hs&ty=1", title: "고교 종류", desc: "일반·특목·자사고 종류와 지원 방법, 구역·고입 내신", keys: ["일반", "자사고", "지원", "구역", "내신"], r: "select/curriculum", q: { v: "hs", ty: "1" } },
+    { id: "select/curriculum?v=hs&ty=1", title: "고교 종류", desc: "일반·특목·자사고 종류와 지원 방법", keys: ["일반", "자사고", "지원"], r: "select/curriculum", q: { v: "hs", ty: "1" } },
     { id: "select/curriculum?v=hs", title: "학교 비교", desc: "학교별 기본 정보·급식·기숙사·대학 진학 현황", keys: ["급식", "기숙사", "진학"], r: "select/curriculum", q: { v: ["hs", "summary"], ty: "!1", bf: null } },
     { id: "select/curriculum?v=compare", title: "과목 비교", desc: "학교별 과목 목록 나란히", keys: ["과목", "학교별"], r: "select/curriculum", q: { v: "compare" } },
     { id: "select/curriculum?v=map", title: "학교 지도", page: "고교 지도", desc: "고등학교 위치", keys: ["고등학교"], r: "select/curriculum", q: { v: "map", lv: "!middle" } },
@@ -23,7 +23,7 @@ export const GROUPS = [
     { id: "select/curriculum?v=univ", title: "대학별 과목", desc: "대학이 요구하는 과목·내 학교 과목과 맞춰 보기", keys: ["대학", "과목", "맞춰"], r: "select/curriculum", q: { v: "univ" } }],
     soon: ["대학·학과 찾기", "학교별 시뮬레이션", "목표 학과 체크"] },
   { id: "sched", title: "일정", leaf: true, items: [
-    { id: "schedule", title: "일정", desc: "고교 입학·대학 입시·졸업·입학·학년별, 캘린더 구독", keys: ["학년별", "캘린더", "구독", "졸업"], r: "schedule" }] },
+    { id: "schedule", title: "일정", desc: "고교 입학·대학 입시·졸업·입학·학년별 큰 그림(초6~대입)·캘린더 구독", keys: ["학년별 큰 그림", "캘린더", "구독", "졸업"], r: "schedule" }] },
   { id: "lib", title: "자료·소식", items: [
     { id: "changelog", title: "바뀐 소식", desc: "제도가 바뀐 내용", keys: ["바뀐"], r: "changelog" },
     { id: "library", title: "관련 사이트", desc: "학교알리미·교육청 바로가기", keys: ["학교알리미", "교육청"], r: "library" },
