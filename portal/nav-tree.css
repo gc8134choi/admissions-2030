@@ -80,3 +80,11 @@ html[data-fs=large] body{zoom:1.15}
 @media (max-width:899px){.hdr .fsw{display:none}}
 @media (min-width:900px){#fsw2{display:none}}
 #fsw2,#fsw3{margin:0 4px}
+
+/* 건너뛰기 링크: Tab 첫 번째 */
+.skip{position:fixed;left:8px;top:-80px;z-index:100;min-height:48px;display:flex;align-items:center;padding:0 18px;background:var(--paper2);color:var(--ink);border:2px solid var(--ink);font:700 17px var(--font);text-decoration:none;border-radius:4px}
+.skip:focus{top:8px}
+/* 작은 단추의 눌림 영역을 44px로 넓힌다(보이는 크기는 그대로) */
+.gl-i{position:relative}
+.gl-i::after{content:"";position:absolute;left:50%;top:50%;width:44px;height:44px;transform:translate(-50%,-50%)}
+.pin{min-width:44px}
