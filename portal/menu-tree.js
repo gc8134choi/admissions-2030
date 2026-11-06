@@ -6,13 +6,13 @@ export const GROUPS = [
   { id: "mid", title: "중학교 입학", items: [
     { id: "select/curriculum?v=middle", title: "배정 안내", desc: "발표·추가배정·등록·배정 후 변경(이사·전입)·근거리 중학교", keys: ["발표", "추가배정", "등록", "배정 후", "이사", "근거리"], r: "select/curriculum", q: { v: "middle", open: null } },
     { id: "select/curriculum?v=middle&open=cmp", title: "중학교 비교", desc: "학생 수·급식·통학 나란히", keys: ["학생", "급식", "통학"], r: "select/curriculum", q: { v: "middle", open: "cmp" } },
-    { id: "select/curriculum?v=map&lv=middle", title: "학교 지도", page: "중학교 지도", desc: "중학교 위치", keys: ["중학교"], r: "select/curriculum", q: { v: "map", lv: "middle" } },
+    { id: "select/curriculum?v=map&lv=middle", title: "중학교 지도", page: "중학교 지도", desc: "중학교 위치", keys: ["중학교"], r: "select/curriculum", q: { v: "map", lv: "middle" } },
     { id: "select/curriculum?v=middle&open=guide", title: "입학 준비", desc: "배정부터 등록까지·예비소집·교복·준비물·자유학기제·교과서", keys: ["배정부터 등록까지", "예비소집", "교복", "준비물", "자유학기", "교과서"], r: "select/curriculum", q: { v: "middle", open: "guide" } }] },
   { id: "hs", title: "고등학교 입학", items: [
     { id: "select/curriculum?v=hs&ty=1", title: "고교 종류", desc: "일반·특목·자사고 종류와 지원 방법", keys: ["일반", "자사고", "지원"], r: "select/curriculum", q: { v: "hs", ty: "1" } },
     { id: "select/curriculum?v=hs", title: "학교 비교", desc: "학교별 기본 정보·급식·기숙사·대학 진학 현황", keys: ["급식", "기숙사", "진학"], r: "select/curriculum", q: { v: ["hs", "summary"], ty: "!1", bf: null } },
     { id: "select/curriculum?v=compare", title: "과목 비교", desc: "학교별 과목 목록 나란히", keys: ["과목", "학교별"], r: "select/curriculum", q: { v: "compare" } },
-    { id: "select/curriculum?v=map", title: "학교 지도", page: "고교 지도", desc: "고등학교 위치", keys: ["고등학교"], r: "select/curriculum", q: { v: "map", lv: "!middle" } },
+    { id: "select/curriculum?v=map", title: "고교 지도", page: "고교 지도", desc: "고등학교 위치", keys: ["고등학교"], r: "select/curriculum", q: { v: "map", lv: "!middle" } },
     { id: "select/curriculum?v=hs&bf=1", title: "설명회 노트", desc: "학교 설명회 내용 요약(일정은 일정 화면)", keys: ["설명회"], r: "select/curriculum", q: { v: ["hs", "summary"], bf: "*" } }] },
   { id: "life", title: "고교 생활", items: [
     { id: "life/credit", title: "고교학점제", desc: "졸업 학점·과목 이수 기준", keys: ["졸업", "학점", "이수"], r: "life/credit" },

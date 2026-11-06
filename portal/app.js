@@ -68,7 +68,7 @@ function drawTabs(loc) {
   const bt = $("#btabs"); if (bt) bt.innerHTML = BOTTOM.map((b) => b.href ? `<a href="${b.href}"${loc && (loc.item.id === b.r || (b.r === "schedule" && loc.item.id === "schedule")) ? ' aria-current="page"' : ""}>${esc(b.label)}</a>` : `<button type="button" data-b="${b.key}"${b.key === "menu" ? ' id="menubtn" aria-expanded="false" aria-controls="navdrawer"' : ""}>${esc(b.label)}</button>`).join("");
   closeDrawer();
   if (side) { const c = side.querySelector("[aria-current=page]"); if (c) { // 현재 항목이 사이드바 안에서 보이게(바깥 화면은 움직이지 않는다)
-      const sr = side.getBoundingClientRect(), cr = c.getBoundingClientRect(); if (cr.top < sr.top + 8) side.scrollTop -= sr.top + 8 - cr.top; else if (cr.bottom > sr.bottom - 8) side.scrollTop += cr.bottom - sr.bottom + 8; if (hadFocus) c.focus({ preventScroll: true }); } }
+      const sr = side.getBoundingClientRect(), cr = c.getBoundingClientRect(); if (cr.top < sr.top + sr.height * 0.2 || cr.bottom > sr.bottom - sr.height * 0.2) side.scrollTop += (cr.top + cr.height / 2) - (sr.top + sr.height / 2); /* 가장자리면 가운데로 */ if (hadFocus) c.focus({ preventScroll: true }); } }
 }
 // 모바일 메뉴 서랍(같은 트리). 열면 본문 스크롤을 잠그고, 닫기·바깥 누름·Esc·항목 선택으로 닫는다.
 const OUTSIDE = () => [...document.body.children].filter((e) => e.id !== "navdrawer" && !/^(SCRIPT|STYLE|LINK)$/.test(e.tagName));
@@ -545,15 +545,15 @@ const refreshPageSources = () => { const f = $(".pgfoot .pg-src"); if (f) f.inne
 const INFO_VIEWS = new Set(["credit", "system", "midlife"]);
 const isInfo = (n, query) => INFO_VIEWS.has(n.view) || (n.view === "curriculum" && query.get("v") === "middle");
 function addToc() {
-  const v = $("#view"); if (!v || !$("#main").classList.contains("info") || v.querySelector(".toc-in")) return;
+  const v = $("#view"), host = $("#toc-host"); if (!v || !host || !$("#main").classList.contains("info") || host.querySelector(".toc-in")) return;
   let hs = [...v.querySelectorAll("h2")].filter((h) => h.textContent.trim().length > 1);
   if (hs.length < 3) hs = [...v.querySelectorAll("h2, h3")].filter((h) => h.textContent.trim().length > 1 && !h.closest(".toc-in"));
   if (hs.length < 3) hs = [...v.querySelectorAll("h2, h3, details.hst > summary")].filter((h) => h.textContent.trim().length > 1 && !h.closest(".toc-in"));
-  if (hs.length < 3) return;
+  if (hs.length < 3) { host.classList.add("empty"); return; }
   hs = hs.slice(0, 10); // 너무 길면 위쪽 10개만
   const li = hs.map((h, i) => { h.id ||= "sec-" + (i + 1); h.style.scrollMarginTop = "84px"; const t = (h.querySelector("em")?.nextSibling?.textContent || h.textContent).trim().replace(/^(중입|고입|대입)\s*/, "").replace(/\s*ⓘ\s*/g, " "); return `<li><a href="#${h.id}" data-toc="${h.id}">${esc(t)}</a></li>`; }).join("");
-  v.insertAdjacentHTML("afterbegin", `<details class="toc-in"><summary>이 화면에서 ▾</summary><ol>${li}</ol></details>`);
-  v.querySelector(".toc-in").addEventListener("click", (e) => { const a = e.target.closest("[data-toc]"); if (!a) return; e.preventDefault(); const t = document.getElementById(a.dataset.toc); for (let d = t; d && d.id !== "main"; d = d.parentElement) if (d.tagName === "DETAILS") d.open = true; /* 접힌 구역 안의 소제목이면 펴고 간다 */ t?.scrollIntoView({ behavior: "smooth", block: "start" }); });
+  host.insertAdjacentHTML("afterbegin", `<details class="toc-in"><summary>이 화면에서 ▾</summary><ol>${li}</ol></details>`);
+  host.querySelector(".toc-in").addEventListener("click", (e) => { const a = e.target.closest("[data-toc]"); if (!a) return; e.preventDefault(); const t = document.getElementById(a.dataset.toc); for (let d = t; d && d.id !== "main"; d = d.parentElement) if (d.tagName === "DETAILS") d.open = true; /* 접힌 구역 안의 소제목이면 펴고 간다 */ t?.scrollIntoView({ behavior: "smooth", block: "start" }); });
 }
 function render() {
   const [path, qs] = decodeURIComponent(location.hash.slice(1)).split("?");
@@ -579,7 +579,7 @@ function render() {
     return;
   }
   if (n.view === "curriculum" || n.view === "home") { // 위쪽 공간 절약: 제목 없이 화면이 바로 시작
-    $("#main").innerHTML = `${sub}${isInfo(n, query) ? `<h1 class="ph">${esc(loc.item.page || loc.item.title)}</h1>` : ""}${crumbHtml(loc, hrefOf, tabHref)}<div id="view"></div>${soon}${footHtml(loc)}`;
+    $("#main").innerHTML = `${sub}${isInfo(n, query) || query.get("v") === "map" ? `<h1 class="ph">${esc(loc.item.page || loc.item.title)}</h1>` : ""}${crumbHtml(loc, hrefOf, tabHref)}${isInfo(n, query) ? '<div id="toc-host" class="toc-host"></div>' : ""}<div id="view"></div>${soon}${footHtml(loc)}`;
     pageExtras(loc, query);
     const mainEl = $("#main"); mainEl.classList.add("view-loading"); const ready = () => requestAnimationFrame(() => { mainEl.classList.remove("view-loading"); addToc(); }); // 화면이 다 그려지기 전에는 아래 안내(푸터)를 숨겨 밀림(CLS)을 막는다
     views[n.view]($("#view"), query, n).catch(() => ($("#view").innerHTML = GO_ERR)).finally(ready);
@@ -587,7 +587,7 @@ function render() {
   }
   const title = loc.item.page || loc.item.title || n.title;
   const lvTag = "";
-  $("#main").innerHTML = `${sub}<h1 class="ph">${esc(title)}${lvTag}</h1>${crumbHtml(loc, hrefOf, tabHref)}<div id="view"></div>${soon}${footHtml(loc)}`;
+  $("#main").innerHTML = `${sub}<h1 class="ph">${esc(title)}${lvTag}</h1>${crumbHtml(loc, hrefOf, tabHref)}${isInfo(n, query) ? '<div id="toc-host" class="toc-host"></div>' : ""}<div id="view"></div>${soon}${footHtml(loc)}`;
   pageExtras(loc, query);
   { const mainEl = $("#main"); mainEl.classList.add("view-loading"); setTimeout(() => mainEl.classList.remove("view-loading"), 4000); /* 안전장치 */ }
   const doneLoad = () => requestAnimationFrame(() => { $("#main").classList.remove("view-loading"); addToc(); });
