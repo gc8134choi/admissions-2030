@@ -3,8 +3,8 @@
 import { stageTag } from "./stage.js";
 import { emptyLine } from "./empty.js";
 import { srcWrap } from "./src-ref.js";
-// 머리글의 기준 학년도는 규칙 행의 실제 학년도에서 만든다(2027·2028 행이 섞여 있는데 한 해로 쓰지 않게)
-export const refNote = (rules) => { const ys = [...new Set((rules.rules || []).map((r) => r.admissionYear).filter(Boolean))].sort(); return ys.length ? `${ys.join("·")}학년도 기준 참고 구조이며 2030학년도에는 달라질 수 있어요` : (rules._meta?.referenceNote || "요강은 참고 구조예요. 2030학년도에는 달라질 수 있어요."); };
+// 머리글의 기준 학년도는 (선택한 대학의) 규칙 행의 실제 학년도에서 만든다(2027·2028 행이 섞여 있는데 한 해로 쓰지 않게)
+export const refNote = (rules) => { const ys = [...new Set((rules.rules || []).map((r) => r.admissionYear).filter(Boolean))].sort(); return ys.length ? `${ys.join("·")}학년도 기준 참고 구조이며 2030학년도에는 달라질 수 있어요` : "요강은 참고 구조예요. 2030학년도에는 달라질 수 있어요."; };
 const NOREQ = "이 학교의 과목표와 맞춰 볼 대학 요건이 아직 없어요 → 대학 입학처의 모집요강 공고(보통 6~7월)에서 확인해요";
 import { cmpTable } from "./compare-table.js";
 const ES = { reported: ["rep", "보도"], estimated: ["est", "추정"] };
@@ -24,7 +24,7 @@ export async function univBody(el, { load, esc, profile, schools, sel, pick }) {
   const units = () => rules.rules.filter((r) => r.universityId === st.univ);
 
   const chips = (items, key, cur, cls = "") => items.map(([v, t]) => `<button type="button" class="chip ${v === cur ? "on" : ""}" data-k="${key}" data-v="${esc(v)}" aria-pressed="${v === cur}">${esc(t)}</button>`).join("");
-  const top = () => `<div class="ed-top"><b>${esc(refNote(rules))}</b><details><summary>자세히</summary><p>과목표는 개설 후보예요. 학교가 매년 확정하는 개설 과목과 다를 수 있어요. 교과군 요건은 교과군 안의 과목으로 계산했어요.</p></details></div>
+  const top = () => `<div class="ed-top"><b>${esc(refNote({ rules: rules.rules.filter((r) => r.universityId === st.univ) }))}</b><details><summary>자세히</summary><p>과목표는 개설 후보예요. 학교가 매년 확정하는 개설 과목과 다를 수 있어요. 교과군 요건은 교과군 안의 과목으로 계산했어요.</p></details></div>
       <div class="chipbar uv-bar"><span class="flabel">대학</span><div class="chips uv-chips">${chips(univs.map((u) => [u.id, u.name]), "univ", st.univ)}</div></div>`;
   const draw = () => {
     if (!units().some((r) => r.ruleId === st.rule)) st.rule = (units().find((r) => r.requirements.length) || units()[0])?.ruleId ?? null;
