@@ -9,7 +9,7 @@ export const GROUPS = [
     { id: "select/curriculum?v=map&lv=middle", title: "중학교 지도", page: "중학교 지도", desc: "중학교 위치", keys: ["중학교"], r: "select/curriculum", q: { v: "map", lv: "middle" } },
     { id: "select/curriculum?v=middle&open=guide", title: "입학 준비", desc: "배정부터 등록까지·예비소집·교복·준비물·자유학기제·교과서", keys: ["배정부터 등록까지", "예비소집", "교복", "준비물", "자유학기", "교과서"], r: "select/curriculum", q: { v: "middle", open: "guide" } }] },
   { id: "hs", title: "고등학교 입학", items: [
-    { id: "select/curriculum?v=hs&ty=1", title: "고교 종류", desc: "일반·특목·자사고 종류와 지원 방법", keys: ["일반", "자사고", "지원"], r: "select/curriculum", q: { v: "hs", ty: "1" } },
+    { id: "select/curriculum?v=hs&ty=1", title: "고교 종류", desc: "일반·특목·자사고 종류와 지원 방법·지망", keys: ["일반", "자사고", "지원", "지망"], r: "select/curriculum", q: { v: "hs", ty: "1" } },
     { id: "select/curriculum?v=hs", title: "학교 비교", desc: "학교별 기본 정보·입학 방식·구역", keys: ["입학 방식", "구역"], vals: { data: "hs-compare", fields: ["type", "admission", "zone"] }, r: "select/curriculum", q: { v: ["hs", "summary"], ty: "!1", bf: null } },
     { id: "select/curriculum?v=compare", title: "과목 비교", desc: "학교별 과목 목록 나란히", keys: ["과목", "학교별"], r: "select/curriculum", q: { v: "compare" } },
     { id: "select/curriculum?v=map", title: "고교 지도", page: "고교 지도", desc: "고등학교 위치", keys: ["고등학교"], r: "select/curriculum", q: { v: "map", lv: "!middle" } },
@@ -18,7 +18,7 @@ export const GROUPS = [
     { id: "life/credit", title: "고교학점제", desc: "졸업 학점·과목 이수 기준", keys: ["졸업", "학점", "이수"], r: "life/credit" },
     { id: "planner/plan", title: "내 계획표", desc: "학기별 학점 계획", keys: ["학기", "학점", "계획"], r: "planner/plan" }] },
   { id: "admit", title: "대학 입시", items: [
-    { id: "admission/system", title: "수능과 내신", desc: "수능 체제·시간표, 내신 5등급 계산, 전형 구조(학생부교과·수능최저), 대입 개편", keys: ["수능", "시간", "내신", "5등급", "학생부교과", "수능최저", "개편"], r: "admission/system", q: { t: null } },
+    { id: "admission/system", title: "수능과 내신", desc: "수능 체제·시간표, 내신 5등급 계산, 전형 구조(학생부교과·수능최저), 대교협 기본사항, 대입 개편", keys: ["수능", "시간", "내신", "5등급", "학생부교과", "수능최저", "대교협", "기본사항", "개편"], r: "admission/system", q: { t: null } },
     { id: "admission/system?t=types", title: "수시·정시", desc: "전형 종류·원서 시기", keys: ["전형", "원서"], r: "admission/system", q: { t: "types" } },
     { id: "select/curriculum?v=univ", title: "대학별 과목", desc: "대학이 요구하는 과목·내 학교 과목과 맞춰 보기", keys: ["대학", "과목", "맞춰"], r: "select/curriculum", q: { v: "univ" } }],
     soon: ["대학·학과 찾기", "학교별 시뮬레이션", "목표 학과 체크"] },
