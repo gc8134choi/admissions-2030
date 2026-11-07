@@ -239,7 +239,10 @@ const bodyHtml = (t, esc2 = esc) => {
     const credit = rows.find((r) => r.id === "cur-01");
     const opn = rows.filter((r) => r.topic === "hs-choice-opinion" || r.id === "acd-04");
     const gg = rows.filter((r) => r.topic === "gg-hs-entry" && !r.events);
-    const asg = rows.filter((r) => r.topic === "high-school-assignment");
+    const asgAll = rows.filter((r) => r.topic === "high-school-assignment");
+    const asg = asgAll.filter((r) => r.region !== "seoul" && !r.entryYear); // 용인 평준화 구역 구성(2026학년도 기준)
+    const asgNew = asgAll.filter((r) => r.region !== "seoul" && r.entryYear === 2027); // 경기 2027학년도 변경 사항
+    const asgSeoul = asgAll.filter((r) => r.region === "seoul"); // 서울 참고
     el.innerHTML = `<div class="ed"><div class="ed-top"><b>고교 유형과 전형이에요.</b><details><summary>자세히</summary>${notice()}</details></div>
       <h2>고교 유형 ${cnt(rows.filter((r) => r.topic === "hs-types").length)}</h2>${cards(rows.filter((r) => r.topic === "hs-types"))}
       ${gg.length ? `<h2>경기 고입 안내 <small>2027학년도</small> ${cnt(gg.length)}</h2>${cards(gg)}` : ""}
@@ -247,6 +250,8 @@ const bodyHtml = (t, esc2 = esc) => {
       <p class="ed-big">우리 4개교(풍덕·성복·수지·홍천)는 모두 <em>2구역</em></p>
       <p class="ed-src">이 구역 구성은 2026학년도 기준이에요. 2027학년도 규칙은 ${(() => { const s = rows.find((r) => r.id === "gg-17")?.sources?.[0]; return s?.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">경기도교육청 평준화 학군 학생 배정 방안 ↗</a>` : "경기도교육청 평준화 학군 학생 배정 방안"; })()}과 <a href="#schedule?t=hs">경기 후기 일정</a>에서 확인해요.</p>
       ${cards(asg, { cls: (r) => (r.id === "asg-02" ? "hl" : "") })}` : ""}
+      ${asgNew.length ? `<h2>경기 배정 변경 <small>2027학년도</small> ${cnt(asgNew.length)}</h2>${cards(asgNew)}` : ""}
+      ${asgSeoul.length ? `<h2>서울 참고 <small>2027학년도 · 다른 지역</small> ${cnt(asgSeoul.length)}</h2><p class="ed-src">우리 집(경기 용인)이 아닌 서울 기준 내용이에요. 참고로만 봐요.</p>${cards(asgSeoul)}` : ""}
       ${credit ? `<h2>고교학점제 <small>입학 후 제도</small></h2>
       <p class="ed-b">${esc(credit.body)}</p><p class="ed-s">${badgeMain(credit)} · <a href="#life/credit">고교학점제 이해에서 자세히 봐요</a></p>` : ""}
       ${opn.length ? `<h2>선택 기준<span class="ed-tag">학원 의견</span> ${cnt(opn.length)}</h2>
