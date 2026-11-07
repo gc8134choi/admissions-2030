@@ -36,8 +36,15 @@ const km = (a, b) => { const R = 6371, r = Math.PI / 180, dLat = (b.lat - a.lat)
 const short = (t) => String(t || "").replace(/\s*\([^)]*\)/g, "").replace(/고등학교$/, "고");
 
 // 비교 데이터(fields + schools[].values)를 공용 비교 표의 행으로. 고교·중학교 비교가 같이 쓴다.
+// 항목 이름 옆에 값의 기준 시점을 밝힌다(칸마다 쓰지 않고 항목 머리에 한 번): 학교알리미 공시 시점·학년도가 모든 학교에서 같을 때만
+const basisOf = (d, f) => {
+  const set = new Set(d.schools.map((s) => s.values?.[f.id]).filter((v) => v && v.value != null).map((v) => String(v.asOf || "").replace(/^(\d{4}학년도).*$/, "$1")));
+  if (set.size !== 1) return ""; const a = [...set][0], m = a.match(/^(\d{4}\.\d{1,2})\(\d차 공시/);
+  const t = m ? `${m[1]} 공시` : /^\d{4}학년도$/.test(a) ? `${a} 기준` : "";
+  return t && !f.label.includes(t.slice(0, 4)) ? t : "";
+};
 export function compareRows(d, esc, hrefOf = () => "#select/curriculum?v=hs") {
-  return d.fields.map((f) => ({ id: f.id, label: f.label, unit: f.type === "number" ? f.unit : "", group: f.group, kind: f.type === "number" ? "number" : f.type === "boolean" ? "bool" : "text",
+  return d.fields.map((f) => ({ id: f.id, label: f.label + (basisOf(d, f) ? ` · ${basisOf(d, f)}` : ""), unit: f.type === "number" ? f.unit : "", group: f.group, kind: f.type === "number" ? "number" : f.type === "boolean" ? "bool" : "text",
     get: (t) => { const v = d.schools.find((s) => s.placeId === t.id)?.values[f.id]; if (!v || v.value == null) return { empty: true, why: v?.nullReason }; if (f.id === "briefing") return { text: "설명회 노트", html: `<a href="${esc(hrefOf(v, t))}">설명회 노트 보기</a>`, status: v.status };
     const text = f.type === "boolean" ? (v.value ? "있음" : "없음") : f.type === "number" ? String(v.value) : formatValue(f, v); return { text: f.type === "number" ? Number(v.value).toLocaleString("ko-KR") : text, num: f.type === "number" ? Number(v.value) : undefined, status: v.status, html: f.type === "link" ? `<a href="${esc(v.value)}" target="_blank" rel="noopener">열기</a>` : undefined }; } }));
 }
