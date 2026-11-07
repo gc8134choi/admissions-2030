@@ -64,7 +64,7 @@ const MENU_ICON = {
 // 상단 메뉴(데스크톱)·하단 탭(모바일): 5개 탭, 글자만. 켜진 탭은 위쪽 선.
 function drawTabs(loc) {
   const html = treeHtml(loc), hadFocus = !!document.activeElement?.closest?.("#sidenav");
-  const side = $("#sidenav"), dr = $("#navtree"); if (side) side.innerHTML = `<nav class="nt" aria-label="전체 메뉴">${html}</nav>`; if (dr) dr.innerHTML = `<nav class="nt" aria-label="전체 메뉴">${html}</nav>`;
+  const side = $("#sidenav"), dr = $("#navtree"); if (side) { side.innerHTML = `<button type="button" class="nt-tg" aria-pressed="false"></button><nav class="nt" aria-label="전체 메뉴">${html}</nav>`; let cp = false; try { cp = localStorage.getItem("portal.navcompact") === "1"; } catch {} side.classList.toggle("nt-compact", cp); const tg = side.querySelector(".nt-tg"); tg.textContent = cp ? "설명 줄 펴기" : "설명 줄 접기"; tg.setAttribute("aria-pressed", String(cp)); tg.onclick = () => { const v = !side.classList.contains("nt-compact"); side.classList.toggle("nt-compact", v); try { localStorage.setItem("portal.navcompact", v ? "1" : "0"); } catch {} tg.textContent = v ? "설명 줄 펴기" : "설명 줄 접기"; tg.setAttribute("aria-pressed", String(v)); }; } if (dr) dr.innerHTML = `<nav class="nt" aria-label="전체 메뉴">${html}</nav>`;
   const bt = $("#btabs"); if (bt) bt.innerHTML = BOTTOM.map((b) => b.href ? `<a href="${b.href}"${loc && (loc.item.id === b.r || (b.r === "schedule" && loc.item.id === "schedule")) ? ' aria-current="page"' : ""}>${esc(b.label)}</a>` : `<button type="button" data-b="${b.key}"${b.key === "menu" ? ' id="menubtn" aria-expanded="false" aria-controls="navdrawer"' : ""}>${esc(b.label)}</button>`).join("");
   closeDrawer();
   if (side) { const c = side.querySelector("[aria-current=page]"); if (c) { // 현재 항목이 사이드바 안에서 보이게(바깥 화면은 움직이지 않는다)
@@ -543,8 +543,8 @@ const refreshPageSources = () => { const f = $(".pgfoot .pg-src"); if (f) f.inne
 
 // 정보성 화면(학점제·수능과 내신·중학교 배정·중학교 생활): 읽기 폭 70자 + 긴 화면 '이 화면에서' 목차(소제목 앵커)
 const INFO_VIEWS = new Set(["credit", "system", "midlife", "links", "sources", "status", "changelog"]);
-const wantsToc = (n, query) => isInfo(n, query) || n.view === "schedule" || (n.view === "curriculum" && ["hs", "summary", "compare"].includes(query.get("v") || "summary")) || (n.view === "curriculum" && query.get("v") === "hs" && query.get("ty") === "1");
-const isInfo = (n, query) => INFO_VIEWS.has(n.view) || (n.view === "curriculum" && ["middle", "univ"].includes(query.get("v")));
+const wantsToc = (n, query) => ["credit", "system"].includes(n.view) || (n.view === "curriculum" && query.get("v") === "middle") || /* 목차가 실제로 생기는 화면만 자리를 잡는다(없는 화면에서 접히며 본문이 밀리지 않게) */ (n.view === "curriculum" && query.get("v") === "hs" && query.get("ty") === "1");
+const isInfo = (n, query) => INFO_VIEWS.has(n.view) || (n.view === "curriculum" && (["middle", "univ"].includes(query.get("v")) || (query.get("v") === "hs" && query.get("ty") === "1")));
 function addToc() {
   const v0 = $("#view"), host = $("#toc-host"); if (!v0 || !host || host.querySelector(".toc-in")) return;
   const v = $("#tybody") && $("#tybody").children.length > 1 ? $("#tybody") : v0; /* 고교 종류 화면은 유형 패널 안의 소제목만 */
@@ -598,7 +598,7 @@ function render() {
     return;
   }
   if (n.view === "curriculum" || n.view === "home") { // 위쪽 공간 절약: 제목 없이 화면이 바로 시작
-    $("#main").innerHTML = `${sub}${isInfo(n, query) || ["map", "hs", "summary", "compare"].includes(query.get("v")) || (query.get("v") === "hs" && query.get("ty") === "1") ? `<h1 class="ph">${esc(loc.item.page || loc.item.title)}</h1>` : ""}${crumbHtml(loc, hrefOf, tabHref)}${wantsToc(n, query) ? '<div id="toc-host" class="toc-host"></div>' : ""}<div id="view"></div>${soon}${footHtml(loc)}`;
+    $("#main").innerHTML = `${sub}${isInfo(n, query) || ["map", "hs", "summary", "compare"].includes(query.get("v") || "summary") || (query.get("v") === "hs" && query.get("ty") === "1") ? `<h1 class="ph">${esc(loc.item.page || loc.item.title)}</h1>` : ""}${crumbHtml(loc, hrefOf, tabHref)}${wantsToc(n, query) ? '<div id="toc-host" class="toc-host"></div>' : ""}<div id="view"></div>${soon}${footHtml(loc)}`;
     pageExtras(loc, query); fontGate();
     const mainEl = $("#main"); mainEl.classList.add("view-loading"); const ready = () => requestAnimationFrame(() => { mainEl.classList.remove("view-loading"); addToc(); }); // 화면이 다 그려지기 전에는 아래 안내(푸터)를 숨겨 밀림(CLS)을 막는다
     views[n.view]($("#view"), query, n).catch(() => ($("#view").innerHTML = GO_ERR)).finally(ready);
