@@ -13,6 +13,8 @@ export function applyHl() {
     // 제목 칸(b·strong·제목 요소)에 찾는 말이 든 줄을 먼저(본문에만 그 말이 나오는 다른 줄이 강조되지 않게), 없으면 가장 안쪽 일치
     const inTitle = (c) => [...c.querySelectorAll("b, strong, h2, h3, h4, .lg-t, .ed-t")].some((x) => { const t = key(x.textContent); return t.includes(k) || (k2.length >= 4 && t.includes(k2)); });
     const el = cand.find((c) => !cand.some((o) => o !== c && c.contains(o)) && inTitle(c)) || cand.find((c) => inTitle(c)) || cand.find((c) => !cand.some((o) => o !== c && c.contains(o)));
+    // 같은 제목의 일정 줄이 여럿(행사별)이면 설명(본문)이 붙은 첫 줄로: 검색 결과가 보여 준 내용이 그 줄이다(접힌 '지난 일정' 안이어도 펴서 간다)
+    const tr0 = el?.closest?.("tr"); if (tr0 && !tr0.querySelector(".muted.small")) { const f = [...document.querySelectorAll("#main tr")].find((c) => c.querySelector(".muted.small") && key(c.querySelector("b:not(.dn)")?.textContent) === key(tr0.querySelector("b:not(.dn)")?.textContent) && cand.some((o) => c.contains(o))); if (f) return f; }
     return el;
   };
   let first = -1, lastH = -1, stable = 0;
