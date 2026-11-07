@@ -86,7 +86,7 @@ export function registerPlanner(views, { esc, load, store }) {
           const okN = rs.filter((x) => x.ok).length;
           return `<li><b>${esc(rule?.unitName || m.ruleId)}</b> <span class="num ${okN === rs.length ? "done" : ""}">${okN}/${rs.length} 충족</span>
             <small>${rs.map((x) => `${x.ok ? "✓" : "·"} ${esc(x.q.label)} (${x.have}/${x.q.minCount})`).join(" / ")}</small></li>`;
-        }).join("")}</ul><p class="pn-ref">${esc(refNote(rules))}</p>`;
+        }).join("")}</ul><p class="pn-ref">${esc(refNote({ rules: rules.rules.filter((r) => uMatches.some((m) => m.ruleId === r.ruleId)) }))}</p>`;
       };
 
       el.innerHTML = `<div class="ed pn">
