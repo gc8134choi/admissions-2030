@@ -1,9 +1,9 @@
 {
  "_meta": {
   "note": "출처 등록부(생성물, 손으로 고치지 않는다). tools/build-sources.mjs가 portal/data의 출처 항목에서 만든다. 데이터 행의 sourceIds가 이 id를 가리킨다.",
-  "count": 152,
+  "count": 153,
   "kinds": {
-   "official": 107,
+   "official": 108,
    "media": 24,
    "user": 17,
    "self": 0,
@@ -89,7 +89,7 @@
    "url": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_cad46b04f4b3e5fef44b540969308744.pdf",
    "kind": "official",
    "org": "한국대학교육협의회",
-   "checked": "2026-11-02",
+   "checked": "2026-11-07",
    "names": [
     "대교협 2029학년도 대학입학전형기본사항 전문(2026.8, 보도자료 붙임 PDF)",
     "대교협 2029학년도 대학입학전형기본사항 전문(정시 원서접수 2029.1.2~5)"
@@ -1350,6 +1350,20 @@
    }
   },
   {
+   "id": "src-9260171c",
+   "url": "https://www.kcue.or.kr/_upload/news/2026/08/27/application_b0177fd24ea317b35af75da11011b9cf.pdf",
+   "kind": "official",
+   "org": "한국대학교육협의회",
+   "checked": "2026-11-07",
+   "names": [
+    "대교협 보도자료 「2029학년도 대학입학전형기본사항 발표」 PDF(2026.8.27, 7쪽) 1~2쪽 주요 변경 4건·6~7쪽 일정"
+   ],
+   "usedIn": {
+    "events.json": 1,
+    "policy.json": 1
+   }
+  },
+  {
    "id": "src-93632b86",
    "url": "https://www.specialtimes.co.kr/news/articleView.html?idxno=476928",
    "kind": "other",
@@ -1628,7 +1642,7 @@
    "url": "https://www.kcue.or.kr/news/sub02/sub01.php?pagenumber=1&at=view&idx=2765226",
    "kind": "official",
    "org": "한국대학교육협의회",
-   "checked": "2026-11-01",
+   "checked": "2026-11-07",
    "names": [
     "한국대학교육협의회 보도자료 「2029학년도 대학입학전형기본사항 발표」(2026.8.27)"
    ],
