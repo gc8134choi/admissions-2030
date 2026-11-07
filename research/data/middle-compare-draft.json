@@ -1,1974 +1,1974 @@
 {
- "_meta": {
-  "note": "중학교 비교표 초안(용인 수지구 중학교 13곳). 설립·주소·학급수는 NEIS, 학생수·급식·교복은 학교알리미 공시(일반 다운로드 가능한 항목)에서 읽음. 교복 낙찰가는 공시 표의 정장형·생활형·체육복 열 머리글 아래 값이며 해당 유형 품목 단가 합과 대부분 일치함. 통학 칸은 집 주소에 따라 달라 학교 단위로 정할 수 없음.",
-  "checkedAt": "2026-11-02",
-  "status": "reported",
-  "shape": "hs-compare와 같은 형식"
- },
- "fields": [
-  {
-   "id": "founding",
-   "label": "설립(공립/사립)",
-   "group": "기본",
-   "order": 1,
-   "type": "string",
-   "needsAsOf": true
+  "_meta": {
+    "note": "중학교 비교표 초안(용인 수지구 중학교 13곳). 설립·주소·학급수는 NEIS, 학생수·급식·교복은 학교알리미 공시(일반 다운로드 가능한 항목)에서 읽음. 교복 낙찰가는 공시 표의 정장형·생활형·체육복 열 머리글 아래 값이며 해당 유형 품목 단가 합과 대부분 일치함. 통학 칸은 집 주소에 따라 달라 학교 단위로 정할 수 없음.",
+    "checkedAt": "2026-11-02",
+    "status": "reported",
+    "shape": "hs-compare와 같은 형식"
   },
-  {
-   "id": "coed",
-   "label": "남녀공학",
-   "group": "기본",
-   "order": 2,
-   "type": "string",
-   "needsAsOf": true
-  },
-  {
-   "id": "address",
-   "label": "주소",
-   "group": "기본",
-   "order": 3,
-   "type": "string",
-   "needsAsOf": true
-  },
-  {
-   "id": "zone",
-   "label": "학교군",
-   "group": "배정",
-   "order": 4,
-   "type": "string",
-   "needsAsOf": true
-  },
-  {
-   "id": "classes",
-   "label": "학급수(2026학년도 전체)",
-   "group": "규모",
-   "order": 5,
-   "type": "number",
-   "unit": "학급",
-   "needsAsOf": true
-  },
-  {
-   "id": "classesDetail",
-   "label": "학년별 학급수",
-   "group": "규모",
-   "order": 6,
-   "type": "string",
-   "needsAsOf": true
-  },
-  {
-   "id": "students",
-   "label": "학생수",
-   "group": "규모",
-   "order": 7,
-   "type": "number",
-   "unit": "명",
-   "needsAsOf": true
-  },
-  {
-   "id": "studentsDetail",
-   "label": "학년별 학생수",
-   "group": "규모",
-   "order": 8,
-   "type": "string",
-   "needsAsOf": true
-  },
-  {
-   "id": "meal",
-   "label": "급식 방식",
-   "group": "생활",
-   "order": 9,
-   "type": "string",
-   "needsAsOf": true
-  },
-  {
-   "id": "uniform",
-   "label": "교복(구입 방식·가격)",
-   "group": "생활",
-   "order": 10,
-   "type": "string",
-   "needsAsOf": true
-  },
-  {
-   "id": "commute",
-   "label": "통학(거리·시간)",
-   "group": "생활",
-   "order": 11,
-   "type": "string",
-   "needsAsOf": true
-  },
-  {
-   "id": "homepage",
-   "label": "학교 홈페이지",
-   "group": "링크",
-   "order": 12,
-   "type": "link",
-   "needsAsOf": true
-  },
-  {
-   "id": "phone",
-   "label": "대표 전화",
-   "group": "링크",
-   "order": 13,
-   "type": "string",
-   "needsAsOf": true
-  },
-  {
-   "id": "feature",
-   "label": "교육 특색·노력중점(학교 홈페이지)",
-   "group": "교육",
-   "order": 14,
-   "type": "text",
-   "needsAsOf": true
-  }
- ],
- "schools": [
-  {
-   "placeId": "pl-002",
-   "schoolId": null,
-   "name": "문정중학교",
-   "values": {
-    "founding": {
-     "value": "사립",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
+  "fields": [
+    {
+      "id": "founding",
+      "label": "설립(공립/사립)",
+      "group": "기본",
+      "order": 1,
+      "type": "string",
+      "needsAsOf": true
     },
-    "coed": {
-     "value": "남녀공학",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
+    {
+      "id": "coed",
+      "label": "남녀공학",
+      "group": "기본",
+      "order": 2,
+      "type": "string",
+      "needsAsOf": true
     },
-    "address": {
-     "value": "경기도 용인시 수지구 포은대로 455",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
+    {
+      "id": "address",
+      "label": "주소",
+      "group": "기본",
+      "order": 3,
+      "type": "string",
+      "needsAsOf": true
     },
-    "zone": {
-     "value": "수지1중학군",
-     "asOf": "2027학년도",
-     "status": "confirmed",
-     "source": {
-      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
-      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
-     },
-     "nullReason": null
+    {
+      "id": "zone",
+      "label": "학교군",
+      "group": "배정",
+      "order": 4,
+      "type": "string",
+      "needsAsOf": true
     },
-    "classes": {
-     "value": 17,
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
+    {
+      "id": "classes",
+      "label": "학급수(2026학년도 전체)",
+      "group": "규모",
+      "order": 5,
+      "type": "number",
+      "unit": "학급",
+      "needsAsOf": true
     },
-    "classesDetail": {
-     "value": "1학년 7학급 · 2학년 5학급 · 3학년 5학급",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
+    {
+      "id": "classesDetail",
+      "label": "학년별 학급수",
+      "group": "규모",
+      "order": 6,
+      "type": "string",
+      "needsAsOf": true
     },
-    "students": {
-     "value": 543,
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(문정중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003474"
-     },
-     "nullReason": null
+    {
+      "id": "students",
+      "label": "학생수",
+      "group": "규모",
+      "order": 7,
+      "type": "number",
+      "unit": "명",
+      "needsAsOf": true
     },
-    "meal": {
-     "value": "직영 급식(중식), 급식 학생 541명 / 전체 543명",
-     "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 9-가-1 급식 실시 현황(문정중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003474"
-     },
-     "nullReason": null
+    {
+      "id": "studentsDetail",
+      "label": "학년별 학생수",
+      "group": "규모",
+      "order": 8,
+      "type": "string",
+      "needsAsOf": true
     },
-    "uniform": {
-     "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 230,000원 · 생활형 100,000원 · 체육복 65,000원",
-     "asOf": "2026.9(3차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(문정중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003474"
-     },
-     "nullReason": null
+    {
+      "id": "meal",
+      "label": "급식 방식",
+      "group": "생활",
+      "order": 9,
+      "type": "string",
+      "needsAsOf": true
     },
-    "commute": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+    {
+      "id": "uniform",
+      "label": "교복(구입 방식·가격)",
+      "group": "생활",
+      "order": 10,
+      "type": "string",
+      "needsAsOf": true
     },
-    "homepage": {
-     "value": "https://munjung-m.goeyi.kr",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
+    {
+      "id": "commute",
+      "label": "통학(거리·시간)",
+      "group": "생활",
+      "order": 11,
+      "type": "string",
+      "needsAsOf": true
     },
-    "phone": {
-     "value": "031-899-1300",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
+    {
+      "id": "homepage",
+      "label": "학교 홈페이지",
+      "group": "링크",
+      "order": 12,
+      "type": "link",
+      "needsAsOf": true
     },
-    "feature": {
-     "value": "노력중점: 학생자치·학부모회 활성화, 인권 친화적 학교문화, 독서·논술·토론 교육, 교과별 책임지도로 학력 향상. 교육 기본방향: 단정한 용의·수업 준비·배려.",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "문정중학교 홈페이지 '노력중점 및 특색사업'(2026-11-01 확인, 요약은 조사 세션)",
-      "url": "https://munjung-m.goeyi.kr/munjung-m/cm/cntnts/cntntsView.do?mi=19113&cntntsId=3069"
-     },
-     "nullReason": null
+    {
+      "id": "phone",
+      "label": "대표 전화",
+      "group": "링크",
+      "order": 13,
+      "type": "string",
+      "needsAsOf": true
     },
-    "studentsDetail": {
-     "value": "1학년 228명 · 2학년 157명 · 3학년 158명(특수·순회학급 제외 합계)",
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(문정중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003474"
-     },
-     "nullReason": null
+    {
+      "id": "feature",
+      "label": "교육 특색·노력중점(학교 홈페이지)",
+      "group": "교육",
+      "order": 14,
+      "type": "text",
+      "needsAsOf": true
     }
-   }
-  },
-  {
-   "placeId": "pl-003",
-   "schoolId": null,
-   "name": "성복중학교",
-   "values": {
-    "founding": {
-     "value": "공립",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
+  ],
+  "schools": [
+    {
+      "placeId": "pl-002",
+      "schoolId": null,
+      "name": "문정중학교",
+      "values": {
+        "founding": {
+          "value": "사립",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "coed": {
+          "value": "남녀공학",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "address": {
+          "value": "경기도 용인시 수지구 포은대로 455",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "zone": {
+          "value": "수지1중학군",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+            "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+          },
+          "nullReason": null
+        },
+        "classes": {
+          "value": 17,
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "classesDetail": {
+          "value": "1학년 7학급 · 2학년 5학급 · 3학년 5학급",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "students": {
+          "value": 543,
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(문정중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003474"
+          },
+          "nullReason": null
+        },
+        "meal": {
+          "value": "직영 급식(중식), 급식 학생 541명 / 전체 543명",
+          "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 9-가-1 급식 실시 현황(문정중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003474"
+          },
+          "nullReason": null
+        },
+        "uniform": {
+          "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 230,000원 · 생활형 100,000원 · 체육복 65,000원",
+          "asOf": "2026학년도 기준(학교알리미 3차 공시 2026.9)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(문정중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003474"
+          },
+          "nullReason": null
+        },
+        "commute": {
+          "value": null,
+          "asOf": null,
+          "status": "estimated",
+          "source": null,
+          "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+        },
+        "homepage": {
+          "value": "https://munjung-m.goeyi.kr",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "phone": {
+          "value": "031-899-1300",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "feature": {
+          "value": "노력중점: 학생자치·학부모회 활성화, 인권 친화적 학교문화, 독서·논술·토론 교육, 교과별 책임지도로 학력 향상. 교육 기본방향: 단정한 용의·수업 준비·배려.",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "문정중학교 홈페이지 '노력중점 및 특색사업'(2026-11-01 확인, 요약은 조사 세션)",
+            "url": "https://munjung-m.goeyi.kr/munjung-m/cm/cntnts/cntntsView.do?mi=19113&cntntsId=3069"
+          },
+          "nullReason": null
+        },
+        "studentsDetail": {
+          "value": "1학년 228명 · 2학년 157명 · 3학년 158명(특수·순회학급 제외 합계)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(문정중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003474"
+          },
+          "nullReason": null
+        }
+      }
     },
-    "coed": {
-     "value": "남녀공학",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
+    {
+      "placeId": "pl-003",
+      "schoolId": null,
+      "name": "성복중학교",
+      "values": {
+        "founding": {
+          "value": "공립",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "coed": {
+          "value": "남녀공학",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "address": {
+          "value": "경기도 용인시 수지구 성복2로78번길 51",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "zone": {
+          "value": "수지1중학군",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+            "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+          },
+          "nullReason": null
+        },
+        "classes": {
+          "value": 30,
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "classesDetail": {
+          "value": "1학년 10학급 · 2학년 11학급 · 3학년 9학급",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "students": {
+          "value": 946,
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(성복중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003479"
+          },
+          "nullReason": null
+        },
+        "meal": {
+          "value": "직영 급식(중식), 급식 학생 950명 / 전체 950명",
+          "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 9-가-1 급식 실시 현황(성복중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003479"
+          },
+          "nullReason": null
+        },
+        "uniform": {
+          "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 66,000원 · 생활형 265,000원 · 체육복 112,000원",
+          "asOf": "2026학년도 기준(학교알리미 3차 공시 2026.9)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(성복중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003479"
+          },
+          "nullReason": null
+        },
+        "commute": {
+          "value": null,
+          "asOf": null,
+          "status": "estimated",
+          "source": null,
+          "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+        },
+        "homepage": {
+          "value": "https://sungbok-m.goeyi.kr",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "phone": {
+          "value": "031-272-6255",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "feature": {
+          "value": null,
+          "asOf": null,
+          "status": "estimated",
+          "source": null,
+          "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
+        },
+        "studentsDetail": {
+          "value": "1학년 318명 · 2학년 345명 · 3학년 283명(특수·순회학급 제외 합계)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(성복중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003479"
+          },
+          "nullReason": null
+        }
+      }
     },
-    "address": {
-     "value": "경기도 용인시 수지구 성복2로78번길 51",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
+    {
+      "placeId": "pl-004",
+      "schoolId": null,
+      "name": "성서중학교",
+      "values": {
+        "founding": {
+          "value": "공립",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "coed": {
+          "value": "남녀공학",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "address": {
+          "value": "경기도 용인시 수지구 성복1로 137",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "zone": {
+          "value": "수지1중학군",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+            "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+          },
+          "nullReason": null
+        },
+        "classes": {
+          "value": 30,
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "classesDetail": {
+          "value": "1학년 10학급 · 2학년 10학급 · 3학년 10학급",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "students": {
+          "value": 950,
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(성서중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005868"
+          },
+          "nullReason": null
+        },
+        "meal": {
+          "value": "직영 급식(중식), 급식 학생 958명 / 전체 958명",
+          "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 9-가-1 급식 실시 현황(성서중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005868"
+          },
+          "nullReason": null
+        },
+        "uniform": {
+          "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 239,000원 · 생활형 96,000원 · 체육복 63,000원",
+          "asOf": "2026학년도 기준(학교알리미 3차 공시 2026.9)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(성서중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005868"
+          },
+          "nullReason": null
+        },
+        "commute": {
+          "value": null,
+          "asOf": null,
+          "status": "estimated",
+          "source": null,
+          "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+        },
+        "homepage": {
+          "value": "https://seongseo-m.goeyi.kr",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "phone": {
+          "value": "031-8008-1500",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "feature": {
+          "value": null,
+          "asOf": null,
+          "status": "estimated",
+          "source": null,
+          "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
+        },
+        "studentsDetail": {
+          "value": "1학년 318명 · 2학년 317명 · 3학년 315명(특수·순회학급 제외 합계)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(성서중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005868"
+          },
+          "nullReason": null
+        }
+      }
     },
-    "zone": {
-     "value": "수지1중학군",
-     "asOf": "2027학년도",
-     "status": "confirmed",
-     "source": {
-      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
-      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
-     },
-     "nullReason": null
+    {
+      "placeId": "pl-005",
+      "schoolId": null,
+      "name": "손곡중학교",
+      "values": {
+        "founding": {
+          "value": "공립",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "coed": {
+          "value": "남녀공학",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "address": {
+          "value": "경기도 용인시 수지구 수풍로116번길 5",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "zone": {
+          "value": "수지1중학군",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+            "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+          },
+          "nullReason": null
+        },
+        "classes": {
+          "value": 21,
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "classesDetail": {
+          "value": "1학년 7학급 · 2학년 7학급 · 3학년 7학급",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "students": {
+          "value": 633,
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(손곡중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100004974"
+          },
+          "nullReason": null
+        },
+        "meal": {
+          "value": "직영 급식(중식), 급식 학생 643명 / 전체 643명",
+          "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 9-가-1 급식 실시 현황(손곡중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100004974"
+          },
+          "nullReason": null
+        },
+        "uniform": {
+          "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 172,000원 · 생활형 228,000원 · 체육복 해당없음",
+          "asOf": "2026학년도 기준(학교알리미 3차 공시 2026.9)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(손곡중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100004974"
+          },
+          "nullReason": null
+        },
+        "commute": {
+          "value": null,
+          "asOf": null,
+          "status": "estimated",
+          "source": null,
+          "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+        },
+        "homepage": {
+          "value": "https://songok-m.goeyi.kr/",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "phone": {
+          "value": "031-264-9834",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "feature": {
+          "value": "노력중점: 학년별 교과 융합 프로그램·학년별 축제, 진로체험 교육, 독서골든벨·1인 1책 읽기, 토론·발표·프로젝트 수업.",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "손곡중학교 홈페이지 '역점 및 특색교육활동'(2026-11-01 확인, 요약은 조사 세션)",
+            "url": "https://songok-m.goeyi.kr/songok-m/cm/cntnts/cntntsView.do?mi=13296&cntntsId=2187"
+          },
+          "nullReason": null
+        },
+        "studentsDetail": {
+          "value": "1학년 216명 · 2학년 214명 · 3학년 203명(특수·순회학급 제외 합계)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(손곡중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100004974"
+          },
+          "nullReason": null
+        }
+      }
     },
-    "classes": {
-     "value": 30,
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
+    {
+      "placeId": "pl-006",
+      "schoolId": null,
+      "name": "수지중학교",
+      "values": {
+        "founding": {
+          "value": "공립",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "coed": {
+          "value": "남녀공학",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "address": {
+          "value": "경기도 용인시 수지구 수풍로 102",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "zone": {
+          "value": "수지1중학군",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+            "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+          },
+          "nullReason": null
+        },
+        "classes": {
+          "value": 32,
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "classesDetail": {
+          "value": "1학년 10학급 · 2학년 10학급 · 3학년 12학급",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "students": {
+          "value": 1022,
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(수지중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003482"
+          },
+          "nullReason": null
+        },
+        "meal": {
+          "value": "직영 급식(중식), 급식 학생 1,020명 / 전체 1,022명",
+          "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 9-가-1 급식 실시 현황(수지중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003482"
+          },
+          "nullReason": null
+        },
+        "uniform": {
+          "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 222,000원 · 생활형 188,000원 · 체육복 해당없음",
+          "asOf": "2026학년도 기준(학교알리미 3차 공시 2026.9)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(수지중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003482"
+          },
+          "nullReason": null
+        },
+        "commute": {
+          "value": null,
+          "asOf": null,
+          "status": "estimated",
+          "source": null,
+          "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+        },
+        "homepage": {
+          "value": "https://suji-m.goeyi.kr",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "phone": {
+          "value": "031-261-0236",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "feature": {
+          "value": "노력중점: 책 읽는 배움 공동체와 학생 자치, 인성·기본생활 교육. 특색: 체육·문화예술 활동, 진로교육과 자유학년제 운영.",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "수지중학교 홈페이지 '노력중점 및 특색사업'(2026-11-01 확인, 요약은 조사 세션)",
+            "url": "https://suji-m.goeyi.kr/suji-m/cm/cntnts/cntntsView.do?mi=14150&cntntsId=2287"
+          },
+          "nullReason": null
+        },
+        "studentsDetail": {
+          "value": "1학년 322명 · 2학년 318명 · 3학년 382명(특수·순회학급 제외 합계)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(수지중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003482"
+          },
+          "nullReason": null
+        }
+      }
     },
-    "classesDetail": {
-     "value": "1학년 10학급 · 2학년 11학급 · 3학년 9학급",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
+    {
+      "placeId": "pl-007",
+      "schoolId": null,
+      "name": "신봉중학교",
+      "values": {
+        "founding": {
+          "value": "공립",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "coed": {
+          "value": "남녀공학",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "address": {
+          "value": "경기도 용인시 수지구 신봉3로 43",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "zone": {
+          "value": "수지1중학군",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+            "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+          },
+          "nullReason": null
+        },
+        "classes": {
+          "value": 21,
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "classesDetail": {
+          "value": "1학년 7학급 · 2학년 7학급 · 3학년 7학급",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "students": {
+          "value": 663,
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(신봉중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100006035"
+          },
+          "nullReason": null
+        },
+        "meal": {
+          "value": "직영 급식(중식), 급식 학생 668명 / 전체 668명",
+          "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 9-가-1 급식 실시 현황(신봉중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100006035"
+          },
+          "nullReason": null
+        },
+        "uniform": {
+          "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 128,000원 · 생활형 66,000원 · 체육복 113,000원",
+          "asOf": "2026학년도 기준(학교알리미 3차 공시 2026.9)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(신봉중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100006035"
+          },
+          "nullReason": null
+        },
+        "commute": {
+          "value": null,
+          "asOf": null,
+          "status": "estimated",
+          "source": null,
+          "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+        },
+        "homepage": {
+          "value": "https://shinbong-m.goeyi.kr",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "phone": {
+          "value": "031-8019-0100",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "feature": {
+          "value": null,
+          "asOf": null,
+          "status": "estimated",
+          "source": null,
+          "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
+        },
+        "studentsDetail": {
+          "value": "1학년 225명 · 2학년 214명 · 3학년 224명(특수·순회학급 제외 합계)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(신봉중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100006035"
+          },
+          "nullReason": null
+        }
+      }
     },
-    "students": {
-     "value": 946,
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(성복중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003479"
-     },
-     "nullReason": null
+    {
+      "placeId": "pl-008",
+      "schoolId": null,
+      "name": "용인한빛중학교",
+      "values": {
+        "founding": {
+          "value": "공립",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "coed": {
+          "value": "남녀공학",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "address": {
+          "value": "경기도 용인시 수지구 동천로 177",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "zone": {
+          "value": "수지1중학군",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+            "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+          },
+          "nullReason": null
+        },
+        "classes": {
+          "value": 17,
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "classesDetail": {
+          "value": "1학년 6학급 · 2학년 6학급 · 3학년 5학급",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "students": {
+          "value": 520,
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(용인한빛중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005749"
+          },
+          "nullReason": null
+        },
+        "meal": {
+          "value": "직영 급식(중식), 급식 학생 531명 / 전체 531명",
+          "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 9-가-1 급식 실시 현황(용인한빛중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005749"
+          },
+          "nullReason": null
+        },
+        "uniform": {
+          "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 240,000원 · 생활형 92,000원 · 체육복 68,000원",
+          "asOf": "2026학년도 기준(학교알리미 3차 공시 2026.9)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(용인한빛중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005749"
+          },
+          "nullReason": null
+        },
+        "commute": {
+          "value": null,
+          "asOf": null,
+          "status": "estimated",
+          "source": null,
+          "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+        },
+        "homepage": {
+          "value": "https://yhanbit-m.goeyi.kr",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "phone": {
+          "value": "031-896-7250",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "feature": {
+          "value": "노력중점: 민주적 학교문화·학생자치, 다문화 이해와 회복적 생활교육. 특색: 교과 연계 독서교육(한빛 꿈나루 등).",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "용인한빛중학교 홈페이지 '노력중점 및 특색사업'(2026-11-01 확인, 요약은 조사 세션)",
+            "url": "https://yhanbit-m.goeyi.kr/yhanbit-m/cm/cntnts/cntntsView.do?mi=10467&cntntsId=1782"
+          },
+          "nullReason": null
+        },
+        "studentsDetail": {
+          "value": "1학년 189명 · 2학년 187명 · 3학년 144명(특수·순회학급 제외 합계)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(용인한빛중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005749"
+          },
+          "nullReason": null
+        }
+      }
     },
-    "meal": {
-     "value": "직영 급식(중식), 급식 학생 950명 / 전체 950명",
-     "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 9-가-1 급식 실시 현황(성복중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003479"
-     },
-     "nullReason": null
+    {
+      "placeId": "pl-009",
+      "schoolId": null,
+      "name": "정평중학교",
+      "values": {
+        "founding": {
+          "value": "공립",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "coed": {
+          "value": "남녀공학",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "address": {
+          "value": "경기도 용인시 수지구 정평로 21",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "zone": {
+          "value": "수지1중학군",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+            "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+          },
+          "nullReason": null
+        },
+        "classes": {
+          "value": 34,
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "classesDetail": {
+          "value": "1학년 11학급 · 2학년 12학급 · 3학년 11학급",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "students": {
+          "value": 1074,
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(정평중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003490"
+          },
+          "nullReason": null
+        },
+        "meal": {
+          "value": "직영 급식(중식), 급식 학생 1,080명 / 전체 1,080명",
+          "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 9-가-1 급식 실시 현황(정평중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003490"
+          },
+          "nullReason": null
+        },
+        "uniform": {
+          "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 165,000원 · 생활형 262,000원 · 체육복 해당없음",
+          "asOf": "2026학년도 기준(학교알리미 3차 공시 2026.9)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(정평중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003490"
+          },
+          "nullReason": null
+        },
+        "commute": {
+          "value": null,
+          "asOf": null,
+          "status": "estimated",
+          "source": null,
+          "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+        },
+        "homepage": {
+          "value": "https://jp-m.goeyi.kr",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "phone": {
+          "value": "031-265-9812",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "feature": {
+          "value": null,
+          "asOf": null,
+          "status": "estimated",
+          "source": null,
+          "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
+        },
+        "studentsDetail": {
+          "value": "1학년 349명 · 2학년 381명 · 3학년 344명(특수·순회학급 제외 합계)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(정평중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003490"
+          },
+          "nullReason": null
+        }
+      }
     },
-    "uniform": {
-     "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 66,000원 · 생활형 265,000원 · 체육복 112,000원",
-     "asOf": "2026.9(3차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(성복중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003479"
-     },
-     "nullReason": null
+    {
+      "placeId": "pl-010",
+      "schoolId": null,
+      "name": "홍천중학교",
+      "values": {
+        "founding": {
+          "value": "공립",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "coed": {
+          "value": "남녀공학",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "address": {
+          "value": "경기도 용인시 수지구 신봉1로71번길 36",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "zone": {
+          "value": "수지1중학군",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+            "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+          },
+          "nullReason": null
+        },
+        "classes": {
+          "value": 28,
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "classesDetail": {
+          "value": "1학년 9학급 · 2학년 9학급 · 3학년 10학급",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "students": {
+          "value": 880,
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(홍천중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003494"
+          },
+          "nullReason": null
+        },
+        "meal": {
+          "value": "직영 급식(중식), 급식 학생 886명 / 전체 886명",
+          "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 9-가-1 급식 실시 현황(홍천중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003494"
+          },
+          "nullReason": null
+        },
+        "uniform": {
+          "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 326,000원 · 생활형 105,000원 · 체육복 해당없음",
+          "asOf": "2026학년도 기준(학교알리미 3차 공시 2026.9)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(홍천중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003494"
+          },
+          "nullReason": null
+        },
+        "commute": {
+          "value": null,
+          "asOf": null,
+          "status": "estimated",
+          "source": null,
+          "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+        },
+        "homepage": {
+          "value": "https://hongcheon-m.goeyi.kr",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "phone": {
+          "value": "031-260-8888",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "feature": {
+          "value": null,
+          "asOf": null,
+          "status": "estimated",
+          "source": null,
+          "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
+        },
+        "studentsDetail": {
+          "value": "1학년 287명 · 2학년 283명 · 3학년 310명(특수·순회학급 제외 합계)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(홍천중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003494"
+          },
+          "nullReason": null
+        }
+      }
     },
-    "commute": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+    {
+      "placeId": "pl-016",
+      "schoolId": null,
+      "name": "상현중학교",
+      "values": {
+        "founding": {
+          "value": "공립",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "coed": {
+          "value": "남녀공학",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "address": {
+          "value": "경기도 용인시 수지구 광교마을로 61",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "zone": {
+          "value": "수지2중학군",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+            "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+          },
+          "nullReason": null
+        },
+        "classes": {
+          "value": 27,
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "classesDetail": {
+          "value": "1학년 8학급 · 2학년 9학급 · 3학년 10학급",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "students": {
+          "value": 773,
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(상현중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003477"
+          },
+          "nullReason": null
+        },
+        "meal": {
+          "value": "직영 급식(중식), 급식 학생 781명 / 전체 781명",
+          "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 9-가-1 급식 실시 현황(상현중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003477"
+          },
+          "nullReason": null
+        },
+        "uniform": {
+          "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 286,000원 · 생활형 110,000원 · 체육복 해당없음",
+          "asOf": "2026학년도 기준(학교알리미 3차 공시 2026.9)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(상현중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003477"
+          },
+          "nullReason": null
+        },
+        "commute": {
+          "value": null,
+          "asOf": null,
+          "status": "estimated",
+          "source": null,
+          "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+        },
+        "homepage": {
+          "value": "https://sanghyeon-m.goeyi.kr",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "phone": {
+          "value": "031-266-7948",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "feature": {
+          "value": null,
+          "asOf": null,
+          "status": "estimated",
+          "source": null,
+          "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
+        },
+        "studentsDetail": {
+          "value": "1학년 233명 · 2학년 264명 · 3학년 276명(특수·순회학급 제외 합계)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(상현중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003477"
+          },
+          "nullReason": null
+        }
+      }
     },
-    "homepage": {
-     "value": "https://sungbok-m.goeyi.kr",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
+    {
+      "placeId": "pl-017",
+      "schoolId": null,
+      "name": "서원중학교",
+      "values": {
+        "founding": {
+          "value": "공립",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "coed": {
+          "value": "남녀공학",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "address": {
+          "value": "경기도 용인시 수지구 상현로42번길 26-8",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "zone": {
+          "value": "수지2중학군",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+            "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+          },
+          "nullReason": null
+        },
+        "classes": {
+          "value": 33,
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "classesDetail": {
+          "value": "1학년 11학급 · 2학년 11학급 · 3학년 11학급",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "students": {
+          "value": 948,
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(서원중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003478"
+          },
+          "nullReason": null
+        },
+        "meal": {
+          "value": "직영 급식(중식), 급식 학생 953명 / 전체 953명",
+          "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 9-가-1 급식 실시 현황(서원중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003478"
+          },
+          "nullReason": null
+        },
+        "uniform": {
+          "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 291,000원 · 생활형 109,000원 · 체육복 해당없음",
+          "asOf": "2026학년도 기준(학교알리미 3차 공시 2026.9)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(서원중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003478"
+          },
+          "nullReason": null
+        },
+        "commute": {
+          "value": null,
+          "asOf": null,
+          "status": "estimated",
+          "source": null,
+          "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+        },
+        "homepage": {
+          "value": "https://seowon-m.goeyi.kr",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "phone": {
+          "value": "031-8031-1400",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "feature": {
+          "value": null,
+          "asOf": null,
+          "status": "estimated",
+          "source": null,
+          "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
+        },
+        "studentsDetail": {
+          "value": "1학년 323명 · 2학년 315명 · 3학년 310명(특수·순회학급 제외 합계)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(서원중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003478"
+          },
+          "nullReason": null
+        }
+      }
     },
-    "phone": {
-     "value": "031-272-6255",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
+    {
+      "placeId": "pl-018",
+      "schoolId": null,
+      "name": "소현중학교",
+      "values": {
+        "founding": {
+          "value": "공립",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "coed": {
+          "value": "남녀공학",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "address": {
+          "value": "경기도 용인시 기흥구 만현로133번길 96",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "zone": {
+          "value": "수지2중학군",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+            "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+          },
+          "nullReason": null
+        },
+        "classes": {
+          "value": 23,
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "classesDetail": {
+          "value": "1학년 6학급 · 2학년 8학급 · 3학년 9학급",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "students": {
+          "value": 657,
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(소현중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003480"
+          },
+          "nullReason": null
+        },
+        "meal": {
+          "value": "직영 급식(중식), 급식 학생 663명 / 전체 663명",
+          "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 9-가-1 급식 실시 현황(소현중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003480"
+          },
+          "nullReason": null
+        },
+        "uniform": {
+          "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 176,000원 · 생활형 210,000원 · 체육복 해당없음",
+          "asOf": "2026학년도 기준(학교알리미 3차 공시 2026.9)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(소현중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003480"
+          },
+          "nullReason": null
+        },
+        "commute": {
+          "value": null,
+          "asOf": null,
+          "status": "estimated",
+          "source": null,
+          "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+        },
+        "homepage": {
+          "value": "https://sohyeon-m.goeyi.kr",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "phone": {
+          "value": "031-270-6420",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "feature": {
+          "value": "특색: 몸·마음 건강, 바른 인성, 창의 미래 3영역(학생 주도 공연·전시, 탐구 동아리). 역점: 학년별 진로·인성 교육(1학년 자유학년제와 창의진로교육).",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "소현중학교 홈페이지 '특색 및 역점사업'(2026-11-01 확인, 요약은 조사 세션)",
+            "url": "https://sohyeon-m.goeyi.kr/sohyeon-m/cm/cntnts/cntntsView.do?mi=12766&cntntsId=2084"
+          },
+          "nullReason": null
+        },
+        "studentsDetail": {
+          "value": "1학년 179명 · 2학년 237명 · 3학년 241명(특수·순회학급 제외 합계)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(소현중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003480"
+          },
+          "nullReason": null
+        }
+      }
     },
-    "feature": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
-    },
-    "studentsDetail": {
-     "value": "1학년 318명 · 2학년 345명 · 3학년 283명(특수·순회학급 제외 합계)",
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(성복중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003479"
-     },
-     "nullReason": null
+    {
+      "placeId": "pl-019",
+      "schoolId": null,
+      "name": "이현중학교",
+      "values": {
+        "founding": {
+          "value": "공립",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "coed": {
+          "value": "남녀공학",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "address": {
+          "value": "경기도 용인시 수지구 진산로34번길 39",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "zone": {
+          "value": "수지2중학군",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
+            "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
+          },
+          "nullReason": null
+        },
+        "classes": {
+          "value": 34,
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "classesDetail": {
+          "value": "1학년 11학급 · 2학년 11학급 · 3학년 12학급",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "students": {
+          "value": 984,
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(이현중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003489"
+          },
+          "nullReason": null
+        },
+        "meal": {
+          "value": "직영 급식(중식), 급식 학생 990명 / 전체 990명",
+          "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 9-가-1 급식 실시 현황(이현중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003489"
+          },
+          "nullReason": null
+        },
+        "uniform": {
+          "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 200,000원 · 생활형 200,000원 · 체육복 해당없음",
+          "asOf": "2026학년도 기준(학교알리미 3차 공시 2026.9)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(이현중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003489"
+          },
+          "nullReason": null
+        },
+        "commute": {
+          "value": null,
+          "asOf": null,
+          "status": "estimated",
+          "source": null,
+          "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
+        },
+        "homepage": {
+          "value": "https://www.goeyi.kr/e-hyun-m/main.do",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "phone": {
+          "value": "031-266-8032",
+          "asOf": "2026",
+          "status": "confirmed",
+          "source": {
+            "name": "NEIS 학교기본정보(2026-11-01 조회)",
+            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
+          },
+          "nullReason": null
+        },
+        "feature": {
+          "value": null,
+          "asOf": null,
+          "status": "estimated",
+          "source": null,
+          "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
+        },
+        "studentsDetail": {
+          "value": "1학년 321명 · 2학년 323명 · 3학년 340명(특수·순회학급 제외 합계)",
+          "asOf": "2026.5(2차 공시)",
+          "status": "confirmed",
+          "source": {
+            "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(이현중학교)",
+            "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003489"
+          },
+          "nullReason": null
+        }
+      }
     }
-   }
-  },
-  {
-   "placeId": "pl-004",
-   "schoolId": null,
-   "name": "성서중학교",
-   "values": {
-    "founding": {
-     "value": "공립",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "coed": {
-     "value": "남녀공학",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "address": {
-     "value": "경기도 용인시 수지구 성복1로 137",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "zone": {
-     "value": "수지1중학군",
-     "asOf": "2027학년도",
-     "status": "confirmed",
-     "source": {
-      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
-      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
-     },
-     "nullReason": null
-    },
-    "classes": {
-     "value": 30,
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "classesDetail": {
-     "value": "1학년 10학급 · 2학년 10학급 · 3학년 10학급",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "students": {
-     "value": 950,
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(성서중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005868"
-     },
-     "nullReason": null
-    },
-    "meal": {
-     "value": "직영 급식(중식), 급식 학생 958명 / 전체 958명",
-     "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 9-가-1 급식 실시 현황(성서중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005868"
-     },
-     "nullReason": null
-    },
-    "uniform": {
-     "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 239,000원 · 생활형 96,000원 · 체육복 63,000원",
-     "asOf": "2026.9(3차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(성서중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005868"
-     },
-     "nullReason": null
-    },
-    "commute": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
-    },
-    "homepage": {
-     "value": "https://seongseo-m.goeyi.kr",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "phone": {
-     "value": "031-8008-1500",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "feature": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
-    },
-    "studentsDetail": {
-     "value": "1학년 318명 · 2학년 317명 · 3학년 315명(특수·순회학급 제외 합계)",
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(성서중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005868"
-     },
-     "nullReason": null
-    }
-   }
-  },
-  {
-   "placeId": "pl-005",
-   "schoolId": null,
-   "name": "손곡중학교",
-   "values": {
-    "founding": {
-     "value": "공립",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "coed": {
-     "value": "남녀공학",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "address": {
-     "value": "경기도 용인시 수지구 수풍로116번길 5",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "zone": {
-     "value": "수지1중학군",
-     "asOf": "2027학년도",
-     "status": "confirmed",
-     "source": {
-      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
-      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
-     },
-     "nullReason": null
-    },
-    "classes": {
-     "value": 21,
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "classesDetail": {
-     "value": "1학년 7학급 · 2학년 7학급 · 3학년 7학급",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "students": {
-     "value": 633,
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(손곡중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100004974"
-     },
-     "nullReason": null
-    },
-    "meal": {
-     "value": "직영 급식(중식), 급식 학생 643명 / 전체 643명",
-     "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 9-가-1 급식 실시 현황(손곡중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100004974"
-     },
-     "nullReason": null
-    },
-    "uniform": {
-     "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 172,000원 · 생활형 228,000원 · 체육복 해당없음",
-     "asOf": "2026.9(3차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(손곡중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100004974"
-     },
-     "nullReason": null
-    },
-    "commute": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
-    },
-    "homepage": {
-     "value": "https://songok-m.goeyi.kr/",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "phone": {
-     "value": "031-264-9834",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "feature": {
-     "value": "노력중점: 학년별 교과 융합 프로그램·학년별 축제, 진로체험 교육, 독서골든벨·1인 1책 읽기, 토론·발표·프로젝트 수업.",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "손곡중학교 홈페이지 '역점 및 특색교육활동'(2026-11-01 확인, 요약은 조사 세션)",
-      "url": "https://songok-m.goeyi.kr/songok-m/cm/cntnts/cntntsView.do?mi=13296&cntntsId=2187"
-     },
-     "nullReason": null
-    },
-    "studentsDetail": {
-     "value": "1학년 216명 · 2학년 214명 · 3학년 203명(특수·순회학급 제외 합계)",
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(손곡중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100004974"
-     },
-     "nullReason": null
-    }
-   }
-  },
-  {
-   "placeId": "pl-006",
-   "schoolId": null,
-   "name": "수지중학교",
-   "values": {
-    "founding": {
-     "value": "공립",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "coed": {
-     "value": "남녀공학",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "address": {
-     "value": "경기도 용인시 수지구 수풍로 102",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "zone": {
-     "value": "수지1중학군",
-     "asOf": "2027학년도",
-     "status": "confirmed",
-     "source": {
-      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
-      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
-     },
-     "nullReason": null
-    },
-    "classes": {
-     "value": 32,
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "classesDetail": {
-     "value": "1학년 10학급 · 2학년 10학급 · 3학년 12학급",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "students": {
-     "value": 1022,
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(수지중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003482"
-     },
-     "nullReason": null
-    },
-    "meal": {
-     "value": "직영 급식(중식), 급식 학생 1,020명 / 전체 1,022명",
-     "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 9-가-1 급식 실시 현황(수지중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003482"
-     },
-     "nullReason": null
-    },
-    "uniform": {
-     "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 222,000원 · 생활형 188,000원 · 체육복 해당없음",
-     "asOf": "2026.9(3차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(수지중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003482"
-     },
-     "nullReason": null
-    },
-    "commute": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
-    },
-    "homepage": {
-     "value": "https://suji-m.goeyi.kr",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "phone": {
-     "value": "031-261-0236",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "feature": {
-     "value": "노력중점: 책 읽는 배움 공동체와 학생 자치, 인성·기본생활 교육. 특색: 체육·문화예술 활동, 진로교육과 자유학년제 운영.",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "수지중학교 홈페이지 '노력중점 및 특색사업'(2026-11-01 확인, 요약은 조사 세션)",
-      "url": "https://suji-m.goeyi.kr/suji-m/cm/cntnts/cntntsView.do?mi=14150&cntntsId=2287"
-     },
-     "nullReason": null
-    },
-    "studentsDetail": {
-     "value": "1학년 322명 · 2학년 318명 · 3학년 382명(특수·순회학급 제외 합계)",
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(수지중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003482"
-     },
-     "nullReason": null
-    }
-   }
-  },
-  {
-   "placeId": "pl-007",
-   "schoolId": null,
-   "name": "신봉중학교",
-   "values": {
-    "founding": {
-     "value": "공립",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "coed": {
-     "value": "남녀공학",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "address": {
-     "value": "경기도 용인시 수지구 신봉3로 43",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "zone": {
-     "value": "수지1중학군",
-     "asOf": "2027학년도",
-     "status": "confirmed",
-     "source": {
-      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
-      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
-     },
-     "nullReason": null
-    },
-    "classes": {
-     "value": 21,
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "classesDetail": {
-     "value": "1학년 7학급 · 2학년 7학급 · 3학년 7학급",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "students": {
-     "value": 663,
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(신봉중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100006035"
-     },
-     "nullReason": null
-    },
-    "meal": {
-     "value": "직영 급식(중식), 급식 학생 668명 / 전체 668명",
-     "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 9-가-1 급식 실시 현황(신봉중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100006035"
-     },
-     "nullReason": null
-    },
-    "uniform": {
-     "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 128,000원 · 생활형 66,000원 · 체육복 113,000원",
-     "asOf": "2026.9(3차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(신봉중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100006035"
-     },
-     "nullReason": null
-    },
-    "commute": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
-    },
-    "homepage": {
-     "value": "https://shinbong-m.goeyi.kr",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "phone": {
-     "value": "031-8019-0100",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "feature": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
-    },
-    "studentsDetail": {
-     "value": "1학년 225명 · 2학년 214명 · 3학년 224명(특수·순회학급 제외 합계)",
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(신봉중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?HG_CD=J100006035"
-     },
-     "nullReason": null
-    }
-   }
-  },
-  {
-   "placeId": "pl-008",
-   "schoolId": null,
-   "name": "용인한빛중학교",
-   "values": {
-    "founding": {
-     "value": "공립",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "coed": {
-     "value": "남녀공학",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "address": {
-     "value": "경기도 용인시 수지구 동천로 177",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "zone": {
-     "value": "수지1중학군",
-     "asOf": "2027학년도",
-     "status": "confirmed",
-     "source": {
-      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
-      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
-     },
-     "nullReason": null
-    },
-    "classes": {
-     "value": 17,
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "classesDetail": {
-     "value": "1학년 6학급 · 2학년 6학급 · 3학년 5학급",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "students": {
-     "value": 520,
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(용인한빛중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005749"
-     },
-     "nullReason": null
-    },
-    "meal": {
-     "value": "직영 급식(중식), 급식 학생 531명 / 전체 531명",
-     "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 9-가-1 급식 실시 현황(용인한빛중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005749"
-     },
-     "nullReason": null
-    },
-    "uniform": {
-     "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 240,000원 · 생활형 92,000원 · 체육복 68,000원",
-     "asOf": "2026.9(3차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(용인한빛중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005749"
-     },
-     "nullReason": null
-    },
-    "commute": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
-    },
-    "homepage": {
-     "value": "https://yhanbit-m.goeyi.kr",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "phone": {
-     "value": "031-896-7250",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "feature": {
-     "value": "노력중점: 민주적 학교문화·학생자치, 다문화 이해와 회복적 생활교육. 특색: 교과 연계 독서교육(한빛 꿈나루 등).",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "용인한빛중학교 홈페이지 '노력중점 및 특색사업'(2026-11-01 확인, 요약은 조사 세션)",
-      "url": "https://yhanbit-m.goeyi.kr/yhanbit-m/cm/cntnts/cntntsView.do?mi=10467&cntntsId=1782"
-     },
-     "nullReason": null
-    },
-    "studentsDetail": {
-     "value": "1학년 189명 · 2학년 187명 · 3학년 144명(특수·순회학급 제외 합계)",
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(용인한빛중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005749"
-     },
-     "nullReason": null
-    }
-   }
-  },
-  {
-   "placeId": "pl-009",
-   "schoolId": null,
-   "name": "정평중학교",
-   "values": {
-    "founding": {
-     "value": "공립",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "coed": {
-     "value": "남녀공학",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "address": {
-     "value": "경기도 용인시 수지구 정평로 21",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "zone": {
-     "value": "수지1중학군",
-     "asOf": "2027학년도",
-     "status": "confirmed",
-     "source": {
-      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
-      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
-     },
-     "nullReason": null
-    },
-    "classes": {
-     "value": 34,
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "classesDetail": {
-     "value": "1학년 11학급 · 2학년 12학급 · 3학년 11학급",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "students": {
-     "value": 1074,
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(정평중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003490"
-     },
-     "nullReason": null
-    },
-    "meal": {
-     "value": "직영 급식(중식), 급식 학생 1,080명 / 전체 1,080명",
-     "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 9-가-1 급식 실시 현황(정평중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003490"
-     },
-     "nullReason": null
-    },
-    "uniform": {
-     "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 165,000원 · 생활형 262,000원 · 체육복 해당없음",
-     "asOf": "2026.9(3차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(정평중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003490"
-     },
-     "nullReason": null
-    },
-    "commute": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
-    },
-    "homepage": {
-     "value": "https://jp-m.goeyi.kr",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "phone": {
-     "value": "031-265-9812",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "feature": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
-    },
-    "studentsDetail": {
-     "value": "1학년 349명 · 2학년 381명 · 3학년 344명(특수·순회학급 제외 합계)",
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(정평중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003490"
-     },
-     "nullReason": null
-    }
-   }
-  },
-  {
-   "placeId": "pl-010",
-   "schoolId": null,
-   "name": "홍천중학교",
-   "values": {
-    "founding": {
-     "value": "공립",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "coed": {
-     "value": "남녀공학",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "address": {
-     "value": "경기도 용인시 수지구 신봉1로71번길 36",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "zone": {
-     "value": "수지1중학군",
-     "asOf": "2027학년도",
-     "status": "confirmed",
-     "source": {
-      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
-      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
-     },
-     "nullReason": null
-    },
-    "classes": {
-     "value": 28,
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "classesDetail": {
-     "value": "1학년 9학급 · 2학년 9학급 · 3학년 10학급",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "students": {
-     "value": 880,
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(홍천중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003494"
-     },
-     "nullReason": null
-    },
-    "meal": {
-     "value": "직영 급식(중식), 급식 학생 886명 / 전체 886명",
-     "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 9-가-1 급식 실시 현황(홍천중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003494"
-     },
-     "nullReason": null
-    },
-    "uniform": {
-     "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 326,000원 · 생활형 105,000원 · 체육복 해당없음",
-     "asOf": "2026.9(3차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(홍천중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003494"
-     },
-     "nullReason": null
-    },
-    "commute": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
-    },
-    "homepage": {
-     "value": "https://hongcheon-m.goeyi.kr",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "phone": {
-     "value": "031-260-8888",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "feature": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
-    },
-    "studentsDetail": {
-     "value": "1학년 287명 · 2학년 283명 · 3학년 310명(특수·순회학급 제외 합계)",
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(홍천중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003494"
-     },
-     "nullReason": null
-    }
-   }
-  },
-  {
-   "placeId": "pl-016",
-   "schoolId": null,
-   "name": "상현중학교",
-   "values": {
-    "founding": {
-     "value": "공립",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "coed": {
-     "value": "남녀공학",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "address": {
-     "value": "경기도 용인시 수지구 광교마을로 61",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "zone": {
-     "value": "수지2중학군",
-     "asOf": "2027학년도",
-     "status": "confirmed",
-     "source": {
-      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
-      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
-     },
-     "nullReason": null
-    },
-    "classes": {
-     "value": 27,
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "classesDetail": {
-     "value": "1학년 8학급 · 2학년 9학급 · 3학년 10학급",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "students": {
-     "value": 773,
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(상현중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003477"
-     },
-     "nullReason": null
-    },
-    "meal": {
-     "value": "직영 급식(중식), 급식 학생 781명 / 전체 781명",
-     "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 9-가-1 급식 실시 현황(상현중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003477"
-     },
-     "nullReason": null
-    },
-    "uniform": {
-     "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 286,000원 · 생활형 110,000원 · 체육복 해당없음",
-     "asOf": "2026.9(3차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(상현중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003477"
-     },
-     "nullReason": null
-    },
-    "commute": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
-    },
-    "homepage": {
-     "value": "https://sanghyeon-m.goeyi.kr",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "phone": {
-     "value": "031-266-7948",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "feature": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
-    },
-    "studentsDetail": {
-     "value": "1학년 233명 · 2학년 264명 · 3학년 276명(특수·순회학급 제외 합계)",
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(상현중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003477"
-     },
-     "nullReason": null
-    }
-   }
-  },
-  {
-   "placeId": "pl-017",
-   "schoolId": null,
-   "name": "서원중학교",
-   "values": {
-    "founding": {
-     "value": "공립",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "coed": {
-     "value": "남녀공학",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "address": {
-     "value": "경기도 용인시 수지구 상현로42번길 26-8",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "zone": {
-     "value": "수지2중학군",
-     "asOf": "2027학년도",
-     "status": "confirmed",
-     "source": {
-      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
-      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
-     },
-     "nullReason": null
-    },
-    "classes": {
-     "value": 33,
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "classesDetail": {
-     "value": "1학년 11학급 · 2학년 11학급 · 3학년 11학급",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "students": {
-     "value": 948,
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(서원중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003478"
-     },
-     "nullReason": null
-    },
-    "meal": {
-     "value": "직영 급식(중식), 급식 학생 953명 / 전체 953명",
-     "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 9-가-1 급식 실시 현황(서원중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003478"
-     },
-     "nullReason": null
-    },
-    "uniform": {
-     "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 291,000원 · 생활형 109,000원 · 체육복 해당없음",
-     "asOf": "2026.9(3차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(서원중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003478"
-     },
-     "nullReason": null
-    },
-    "commute": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
-    },
-    "homepage": {
-     "value": "https://seowon-m.goeyi.kr",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "phone": {
-     "value": "031-8031-1400",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "feature": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
-    },
-    "studentsDetail": {
-     "value": "1학년 323명 · 2학년 315명 · 3학년 310명(특수·순회학급 제외 합계)",
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(서원중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003478"
-     },
-     "nullReason": null
-    }
-   }
-  },
-  {
-   "placeId": "pl-018",
-   "schoolId": null,
-   "name": "소현중학교",
-   "values": {
-    "founding": {
-     "value": "공립",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "coed": {
-     "value": "남녀공학",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "address": {
-     "value": "경기도 용인시 기흥구 만현로133번길 96",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "zone": {
-     "value": "수지2중학군",
-     "asOf": "2027학년도",
-     "status": "confirmed",
-     "source": {
-      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
-      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
-     },
-     "nullReason": null
-    },
-    "classes": {
-     "value": 23,
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "classesDetail": {
-     "value": "1학년 6학급 · 2학년 8학급 · 3학년 9학급",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "students": {
-     "value": 657,
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(소현중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003480"
-     },
-     "nullReason": null
-    },
-    "meal": {
-     "value": "직영 급식(중식), 급식 학생 663명 / 전체 663명",
-     "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 9-가-1 급식 실시 현황(소현중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003480"
-     },
-     "nullReason": null
-    },
-    "uniform": {
-     "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 176,000원 · 생활형 210,000원 · 체육복 해당없음",
-     "asOf": "2026.9(3차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(소현중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003480"
-     },
-     "nullReason": null
-    },
-    "commute": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
-    },
-    "homepage": {
-     "value": "https://sohyeon-m.goeyi.kr",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "phone": {
-     "value": "031-270-6420",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "feature": {
-     "value": "특색: 몸·마음 건강, 바른 인성, 창의 미래 3영역(학생 주도 공연·전시, 탐구 동아리). 역점: 학년별 진로·인성 교육(1학년 자유학년제와 창의진로교육).",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "소현중학교 홈페이지 '특색 및 역점사업'(2026-11-01 확인, 요약은 조사 세션)",
-      "url": "https://sohyeon-m.goeyi.kr/sohyeon-m/cm/cntnts/cntntsView.do?mi=12766&cntntsId=2084"
-     },
-     "nullReason": null
-    },
-    "studentsDetail": {
-     "value": "1학년 179명 · 2학년 237명 · 3학년 241명(특수·순회학급 제외 합계)",
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(소현중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003480"
-     },
-     "nullReason": null
-    }
-   }
-  },
-  {
-   "placeId": "pl-019",
-   "schoolId": null,
-   "name": "이현중학교",
-   "values": {
-    "founding": {
-     "value": "공립",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "coed": {
-     "value": "남녀공학",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "address": {
-     "value": "경기도 용인시 수지구 진산로34번길 39",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "zone": {
-     "value": "수지2중학군",
-     "asOf": "2027학년도",
-     "status": "confirmed",
-     "source": {
-      "name": "경기도교육청 고시 제2026-24호(2027학년도 학교군 현황표)",
-      "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375151&mi=10962"
-     },
-     "nullReason": null
-    },
-    "classes": {
-     "value": 34,
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "classesDetail": {
-     "value": "1학년 11학급 · 2학년 11학급 · 3학년 12학급",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학급정보(2026학년도, 2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17120190531110010104913&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "students": {
-     "value": 984,
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(이현중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003489"
-     },
-     "nullReason": null
-    },
-    "meal": {
-     "value": "직영 급식(중식), 급식 학생 990명 / 전체 990명",
-     "asOf": "2026.5(2차 공시, 급식 학생수는 4.1 기준)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 9-가-1 급식 실시 현황(이현중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003489"
-     },
-     "nullReason": null
-    },
-    "uniform": {
-     "value": "교복 유형 정장형+생활형 · 학생 1인당 구입 지원금 400,000원 · 낙찰가(구매방식 모두 학교주관구매): 정장형 200,000원 · 생활형 200,000원 · 체육복 해당없음",
-     "asOf": "2026.9(3차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 15-카 교복 구매 유형 및 단가(이현중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003489"
-     },
-     "nullReason": null
-    },
-    "commute": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "통학 거리·시간은 집 주소에 따라 달라 학교 단위로 정해 둘 수 없어요. 포털 학교 지도에서 위치를 보고 지도 앱으로 확인하세요."
-    },
-    "homepage": {
-     "value": "https://www.goeyi.kr/e-hyun-m/main.do",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "phone": {
-     "value": "031-266-8032",
-     "asOf": "2026",
-     "status": "confirmed",
-     "source": {
-      "name": "NEIS 학교기본정보(2026-11-01 조회)",
-      "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104586&infSeq=1"
-     },
-     "nullReason": null
-    },
-    "feature": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
-    },
-    "studentsDetail": {
-     "value": "1학년 321명 · 2학년 323명 · 3학년 340명(특수·순회학급 제외 합계)",
-     "asOf": "2026.5(2차 공시)",
-     "status": "confirmed",
-     "source": {
-      "name": "학교알리미 공시 3-가-3 학년별·학급별 학생수(이현중학교)",
-      "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090003489"
-     },
-     "nullReason": null
-    }
-   }
-  }
- ]
+  ]
 }

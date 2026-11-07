@@ -1,9 +1,9 @@
 {
  "_meta": {
   "note": "출처 등록부(생성물, 손으로 고치지 않는다). tools/build-sources.mjs가 portal/data의 출처 항목에서 만든다. 데이터 행의 sourceIds가 이 id를 가리킨다.",
-  "count": 153,
+  "count": 154,
   "kinds": {
-   "official": 108,
+   "official": 109,
    "media": 24,
    "user": 17,
    "self": 0,
@@ -1101,7 +1101,7 @@
    "org": "경기도용인교육지원청",
    "checked": "2026-10-31",
    "names": [
-    "수지중학교·손곡중학교 학교 공지(2026.9)"
+    "수지중학교 학교 공지(2026.9.9, 2027학년도 신입생 동·하복 학교주관구매 낙찰 결과)"
    ],
    "usedIn": {
     "middle-guide.json": 1
@@ -1387,6 +1387,19 @@
    ],
    "usedIn": {
     "middle-curriculum.json": 1
+   }
+  },
+  {
+   "id": "src-9a5c653c",
+   "url": "https://songok-m.goeyi.kr/songok-m/na/ntt/selectNttInfo.do?mi=13778&bbsId=7873&nttSn=1568292",
+   "kind": "official",
+   "org": "경기도용인교육지원청",
+   "checked": "2026-10-31",
+   "names": [
+    "손곡중학교 입찰결과 게시판 「2027학년도 신입생 교복 및 생활복 학교주관구매 입찰 낙찰자 결정 및 공개」(2026.9.16) 첨부 xlsx"
+   ],
+   "usedIn": {
+    "middle-guide.json": 1
    }
   },
   {
