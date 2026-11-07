@@ -1,3 +1,4 @@
+import { refNote } from "./univ-match.js";
 // 과목 선택 플래너 > 내 계획표: 학교를 고르고 학기별(1-1~3-2) 택n 묶음에서 과목을 골라 학점 합계와 대학 권장과목 충족을 본다.
 // 데이터: offerings(개설 후보)·groups·offerings-index·subject-master·summary·matches·admission-rules·universities. 계획은 이 브라우저(localStorage)에만 저장한다.
 const TERMS = ["1-1", "1-2", "2-1", "2-2", "3-1", "3-2"];
@@ -85,7 +86,7 @@ export function registerPlanner(views, { esc, load, store }) {
           const okN = rs.filter((x) => x.ok).length;
           return `<li><b>${esc(rule?.unitName || m.ruleId)}</b> <span class="num ${okN === rs.length ? "done" : ""}">${okN}/${rs.length} 충족</span>
             <small>${rs.map((x) => `${x.ok ? "✓" : "·"} ${esc(x.q.label)} (${x.have}/${x.q.minCount})`).join(" / ")}</small></li>`;
-        }).join("")}</ul><p class="pn-ref">${esc(rules._meta?.referenceNote || "요강은 참고 구조예요. 2030학년도에는 달라질 수 있어요.")}</p>`;
+        }).join("")}</ul><p class="pn-ref">${esc(refNote(rules))}</p>`;
       };
 
       el.innerHTML = `<div class="ed pn">
