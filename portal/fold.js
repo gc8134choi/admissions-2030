@@ -14,8 +14,8 @@ function mkDetails(head, nodes, isOpen) {
   const title = head.textContent.replace(/\s+/g, " ").trim();
   const first = nodes.map((n) => n.querySelector?.(".ed-row h3, tbody tr td, h3, p")).find(Boolean);
   const count = nodes.reduce((n, x) => n + (x.querySelectorAll?.(".ed-row, tbody tr").length || 0), 0);
-  s.innerHTML = `<b></b>${count > 1 ? ` <span class="muted small dn-n">${count}</span>` : ""}${first ? ` <span class="muted small dn-h"></span>` : ""}`;
-  s.querySelector("b").textContent = title.replace(/\s*\d+$/, "");
+  s.innerHTML = `<h2 class="dn-t"></h2>${count > 1 ? ` <span class="muted small dn-n">${count}</span>` : ""}${first ? ` <span class="muted small dn-h"></span>` : ""}`;
+  s.querySelector(".dn-t").textContent = title.replace(/\s*\d+$/, "");
   if (first) s.querySelector(".dn-h").textContent = one(first.textContent);
   d.append(s, ...nodes);
   return d;

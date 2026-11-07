@@ -52,7 +52,7 @@ body.nav-open{overflow:hidden}
 #main.info.info.info.info :is(.term,button.term,sup,sup *,.pst,.es,.tag,kbd){font-size:inherit!important}
 #main.info.info.info.info :is(h1,.ph){font-size:32px!important;line-height:1.3}
 #main.info.info.info.info :is(h2,.sec-h h2){font-size:25px!important;line-height:1.35}
-#main.info.info.info.info h3{font-size:20px!important;line-height:1.4;margin-top:22px}
+#main.info.info.info.info h3{font-size:19px!important;line-height:1.4;margin-top:22px}
 #main.info.info.info.info h4{font-size:18px!important;font-weight:700}
 #main.info #view :is(p,ul,ol,dl,h3,h4,.lead){max-width:70ch}
 #main.info #view h2{font-family:var(--serif);letter-spacing:-.03em}
@@ -123,3 +123,12 @@ html[data-fs=large] .lg>:nth-child(n){margin:0}
 .ty-fold>summary h2{margin:0;flex:1}
 .ty-fold>summary::after{content:"＋";font-size:1.6rem;color:var(--pencil);padding:0 8px}
 .ty-fold[open]>summary::after{content:"－"}
+
+/* 접이식 구역 제목은 이제 진짜 h2다(소제목 위계·목차용). 모양은 예전 굵은 글씨 그대로 */
+.dn>summary h2.dn-t{display:inline;margin:0;padding:0;border:0;font:inherit;font-size:16px;font-weight:700;letter-spacing:inherit;line-height:inherit;color:inherit}
+#main.info.info.info.info .dn>summary h2.dn-t{font-size:22px!important}
+
+/* 용어 ⓘ·인라인 용어 버튼: 보이는 크기도 32px 이상(눌림 영역 44px는 그대로) */
+.gl-i,button.gl-i{width:32px!important;height:32px!important;min-width:32px!important;min-height:32px!important;margin:-8px 2px -8px 0!important}
+button.term{padding-block:max(0px,calc((32px - 1.1em) / 2))}
+button.term{padding-inline:5px!important;margin-inline:-5px!important}

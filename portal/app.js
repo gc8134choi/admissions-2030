@@ -542,9 +542,9 @@ function pageExtras(loc, query) {
 const refreshPageSources = () => { const f = $(".pgfoot .pg-src"); if (f) f.innerHTML = sourcesHtml($("#main")) + " · "; };
 
 // 정보성 화면(학점제·수능과 내신·중학교 배정·중학교 생활): 읽기 폭 70자 + 긴 화면 '이 화면에서' 목차(소제목 앵커)
-const INFO_VIEWS = new Set(["credit", "system", "midlife"]);
-const wantsToc = (n, query) => isInfo(n, query) || (n.view === "curriculum" && query.get("v") === "hs" && query.get("ty") === "1");
-const isInfo = (n, query) => INFO_VIEWS.has(n.view) || (n.view === "curriculum" && query.get("v") === "middle");
+const INFO_VIEWS = new Set(["credit", "system", "midlife", "links", "sources", "status", "changelog"]);
+const wantsToc = (n, query) => isInfo(n, query) || n.view === "schedule" || (n.view === "curriculum" && ["hs", "summary", "compare"].includes(query.get("v") || "summary")) || (n.view === "curriculum" && query.get("v") === "hs" && query.get("ty") === "1");
+const isInfo = (n, query) => INFO_VIEWS.has(n.view) || (n.view === "curriculum" && ["middle", "univ"].includes(query.get("v")));
 function addToc() {
   const v0 = $("#view"), host = $("#toc-host"); if (!v0 || !host || host.querySelector(".toc-in")) return;
   const v = $("#tybody") && $("#tybody").children.length > 1 ? $("#tybody") : v0; /* 고교 종류 화면은 유형 패널 안의 소제목만 */
@@ -598,7 +598,7 @@ function render() {
     return;
   }
   if (n.view === "curriculum" || n.view === "home") { // 위쪽 공간 절약: 제목 없이 화면이 바로 시작
-    $("#main").innerHTML = `${sub}${isInfo(n, query) || query.get("v") === "map" || (query.get("v") === "hs" && query.get("ty") === "1") ? `<h1 class="ph">${esc(loc.item.page || loc.item.title)}</h1>` : ""}${crumbHtml(loc, hrefOf, tabHref)}${wantsToc(n, query) ? '<div id="toc-host" class="toc-host"></div>' : ""}<div id="view"></div>${soon}${footHtml(loc)}`;
+    $("#main").innerHTML = `${sub}${isInfo(n, query) || ["map", "hs", "summary", "compare"].includes(query.get("v")) || (query.get("v") === "hs" && query.get("ty") === "1") ? `<h1 class="ph">${esc(loc.item.page || loc.item.title)}</h1>` : ""}${crumbHtml(loc, hrefOf, tabHref)}${wantsToc(n, query) ? '<div id="toc-host" class="toc-host"></div>' : ""}<div id="view"></div>${soon}${footHtml(loc)}`;
     pageExtras(loc, query); fontGate();
     const mainEl = $("#main"); mainEl.classList.add("view-loading"); const ready = () => requestAnimationFrame(() => { mainEl.classList.remove("view-loading"); addToc(); }); // 화면이 다 그려지기 전에는 아래 안내(푸터)를 숨겨 밀림(CLS)을 막는다
     views[n.view]($("#view"), query, n).catch(() => ($("#view").innerHTML = GO_ERR)).finally(ready);
