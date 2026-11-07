@@ -57,7 +57,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ev-hs-02-1@admissions-2030
-DTSTAMP:20261102T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20260824
 DTEND;VALUE=DATE:20260827
 SUMMARY:서울 과학고(세종·한성) 전기 일정 · 서울 과학고(
@@ -69,12 +69,12 @@ DESCRIPTION:서울 과학계열 특목고(세종과학고·한성과학고)
  년도 서울특별시 고등학교 입학전형 기본계획(공고용\, 
  고입자료실 2026.3.31 게시\, PDF 붙임-1 주요 일정) https://www
  .sen.go.kr/user/bbs/BD_selectBbs.do?q_bbsSn=1068&q_bbsDocNo=20260331091528
- 935\n확인일 2026-11-02
+ 935\n확인일 2026-11-06
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ev-hs-02-2@admissions-2030
-DTSTAMP:20261102T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261202
 DTEND;VALUE=DATE:20261203
 SUMMARY:서울 과학고(세종·한성) 전기 일정 · 서울 과학고 
@@ -86,7 +86,7 @@ DESCRIPTION:서울 과학계열 특목고(세종과학고·한성과학고)
  년도 서울특별시 고등학교 입학전형 기본계획(공고용\, 
  고입자료실 2026.3.31 게시\, PDF 붙임-1 주요 일정) https://www
  .sen.go.kr/user/bbs/BD_selectBbs.do?q_bbsSn=1068&q_bbsDocNo=20260331091528
- 935\n확인일 2026-11-02
+ 935\n확인일 2026-11-06
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT

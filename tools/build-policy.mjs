@@ -46,7 +46,8 @@ const out = draft.map((d) => {
   row.sourceKind = KIND[d.sourceKind] ?? null;
   row.sourceName = d.sourceName ?? null;
   row.sourceUrl = d.sourceUrl ?? null;
-  if (sources.length > 1) row.sources = sources;
+  // 출처별 확인일: 출처에 따로 없으면 행의 확인일(그 행을 검증하며 출처를 연 날)을 쓴다. 출처 등록부(sources.json)의 checked가 여기서 채워진다.
+  if (sources.length > 1) row.sources = sources.map((x) => (x.retrieved || !d.checkedAt ? x : { ...x, retrieved: d.checkedAt }));
   if (d.region) row.region = d.region; // seoul | gyeonggi | national (정의: draft 상단 fields.region)
   if (Array.isArray(d.audience)) row.audience = d.audience; // 일정 대상별 필터용(없으면 공통 취급)
   if (Array.isArray(d.learners)) row.learners = d.learners; // 학습자 관련성(A/B). 없으면 연도 규칙(portal/profile.js)

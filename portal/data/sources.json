@@ -46,7 +46,7 @@
    "url": "https://www.joongangenews.com/news/articleView.html?idxno=537981",
    "kind": "media",
    "org": "www.joongangenews.com",
-   "checked": null,
+   "checked": "2026-11-02",
    "names": [
     "중앙이코노미뉴스 국교위 국가교육발전계획 보도(2026.8.5)",
     "중앙이코노미뉴스(joongangenews) 국교위 국가교육발전계획 보도(2026.8.5)",
@@ -89,7 +89,7 @@
    "url": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_cad46b04f4b3e5fef44b540969308744.pdf",
    "kind": "official",
    "org": "한국대학교육협의회",
-   "checked": null,
+   "checked": "2026-11-02",
    "names": [
     "대교협 2029학년도 대학입학전형기본사항 전문(2026.8, 보도자료 붙임 PDF)",
     "대교협 2029학년도 대학입학전형기본사항 전문(정시 원서접수 2029.1.2~5)"
@@ -130,7 +130,7 @@
    "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/중앙대학교/중앙대학교_2028학년도_대학입학전형계획.pdf",
    "kind": "official",
    "org": "cdn013.negagea.net",
-   "checked": "2026-10-26",
+   "checked": "2026-11-01",
    "names": [
     "2028학년도 중앙대학교 입학전형 계획(입학처 2026.4.30 공표본, 서울시교육청 대입정보 게시본 PDF)",
     "중앙대학교 2028학년도 입학전형 계획: 정시 수능일반을 수능89(수능 89+출결 11)와 수능67(수능 67+서류 33)로 분리(입학처 2026.4.30 공표본)"
@@ -145,7 +145,7 @@
    "url": "https://www.kyobit.com/news/articleView.html?idxno=5130",
    "kind": "media",
    "org": "www.kyobit.com",
-   "checked": null,
+   "checked": "2026-11-01",
    "names": [
     "교육을 비추다"
    ],
@@ -184,7 +184,7 @@
    "url": "https://www.kcue.or.kr/_upload/news/2026/10/20/application_ab1942705812e69b5fd5bd8277987ab3.pdf",
    "kind": "official",
    "org": "한국대학교육협의회",
-   "checked": "2026-10-31",
+   "checked": "2026-11-02",
    "names": [
     "대교협 2028학년도 대학입학전형기본사항(개정 2026.7.31)",
     "대교협 2028학년도 대학입학전형기본사항(개정 2026.7.31, 정시 원서접수 2028.1.3~6) 외 2027·2029학년도 자료",
@@ -202,7 +202,7 @@
    "url": "https://www.kyobit.com/news/articleView.html?idxno=5440",
    "kind": "media",
    "org": "www.kyobit.com",
-   "checked": null,
+   "checked": "2026-11-03",
    "names": [
     "교육을 비추다 「2028 서·연·고 수시, '수능최저 폐지' 이면... 입시 난이도는 오히려 상승 우려」(2026.5.21)"
    ],
@@ -319,11 +319,10 @@
    "org": "학교알리미(교육부·한국교육개발원)",
    "checked": "2026-10-31",
    "names": [
-    "풍덕고 2026학년도 2학기 평가운영계획(학교알리미 공시)",
     "학교알리미"
    ],
    "usedIn": {
-    "glossary.json": 4
+    "glossary.json": 1
    }
   },
   {
@@ -436,7 +435,7 @@
    "url": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/133745f2-115e-4a50-b297-e7f2cd7de910.pdf",
    "kind": "official",
    "org": "경기도교육청",
-   "checked": "2026-10-31",
+   "checked": "2026-11-03",
    "names": [
     "경기도교육청 2027학년도 고등학교 입학 내신성적 반영지침 주요 변경사항(2027~2029학년도) PDF 2쪽: 영역별 반영비율·점수(일반교과 1학년 12점·2학년 48점·3학년 60점, 체육·예술 30점, 출결 20점, 봉사 20점, 학교활동 10점, 총 200점)와 동점자 사정 '1학년 2학기 일반교과 성적(12점 만점)'",
     "경기도교육청 2027학년도 고등학교 입학 내신성적 반영지침 주요 변경사항",
@@ -455,7 +454,7 @@
    "url": "https://www.veritas-a.com/news/articleView.html?idxno=626898",
    "kind": "media",
    "org": "www.veritas-a.com",
-   "checked": null,
+   "checked": "2026-11-01",
    "names": [
     "베리타스알파 「2027 국제고 모집, 8개교 1,172명 동일」(2026.9.9)"
    ],
@@ -494,7 +493,7 @@
    "url": "https://www.megastudy.net/Entinfo/ipsi_News/news_view_ax.asp?idx=7506",
    "kind": "media",
    "org": "www.megastudy.net",
-   "checked": null,
+   "checked": "2026-11-01",
    "names": [
     "메가스터디"
    ],
@@ -507,7 +506,7 @@
    "url": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/성균관대학교/성균관대학교_2027학년도_수시모집요강.pdf",
    "kind": "official",
    "org": "cdn013.negagea.net",
-   "checked": "2026-10-26",
+   "checked": "2026-11-03",
    "names": [
     "2027학년도 성균관대학교 수시모집요강(입학처, 서울시교육청 대입정보 게시본 PDF)",
     "성균관대학교 2027학년도 수시모집요강: 학생부종합(융합인재) 수능최저 적용(국·수·영·탐 중 3개 등급합 6), 입학처 2026.5 발행"
@@ -587,7 +586,7 @@
    "url": "https://eiec.kdi.re.kr/policy/materialView.do?num=267335&pg=&pp=&topic=L",
    "kind": "official",
    "org": "eiec.kdi.re.kr",
-   "checked": null,
+   "checked": "2026-11-02",
    "names": [
     "KDI EIEC"
    ],
@@ -614,7 +613,7 @@
    "url": "https://e-book.sen.go.kr/Viewer/BXV19NU2F3W6",
    "kind": "official",
    "org": "서울특별시교육청",
-   "checked": "2026-11-02",
+   "checked": "2026-11-03",
    "names": [
     "서울특별시교육청 선택 과목 안내서(서교연 2026-13)",
     "2026학년도 입학생을 위한 2022 개정 교육과정 선택 과목 안내서(서울특별시교육청교육연구정보원, 2026.4, 서교연 2026-13)",
@@ -632,7 +631,7 @@
    "url": "https://www.kcue.or.kr/_upload/news/2025/08/28/application_b244345d6cc72f7e172df15e831c276e.pdf",
    "kind": "official",
    "org": "한국대학교육협의회",
-   "checked": null,
+   "checked": "2026-11-02",
    "names": [
     "대교협 2028학년도 대학입학전형기본사항 보도자료 PDF 4쪽(수능성적통지일 2027.12.10 예정, 2025.8.28)",
     "대교협 보도자료: 2028학년도 대학입학전형기본사항 발표(2025.8.28)"
@@ -677,7 +676,7 @@
    "url": "https://www.ice.go.kr/upload/ice/na/bbs_1482/2026/04/a9620d369e3d03ffaa7e1e2b0a069a0f.pdf",
    "kind": "official",
    "org": "www.ice.go.kr",
-   "checked": "2026-10-31",
+   "checked": "2026-11-02",
    "names": [
     "한국교육과정평가원 '2027학년도 대학수학능력시험 이렇게 준비하세요' PDF 9쪽: 표준점수 평균 100·표준편차 20 등 표준편차 표기(정의 예시). 학교 내신의 과목별 평균·표준편차는 학교알리미 공시 4-나 '교과별 학업성취 사항'에서 공시",
     "한국교육과정평가원 '2027학년도 대학수학능력시험 이렇게 준비하세요' PDF 9쪽(영어·한국사·제2외국어/한문 영역 등급 분할 원점수, 인천시교육청 게시본)"
@@ -736,7 +735,7 @@
    "url": "https://www.kcue.or.kr/_upload/news/2025/04/30/application_25d9ccd90388d6ba316a2c7d398ff944.pdf",
    "kind": "official",
    "org": "한국대학교육협의회",
-   "checked": null,
+   "checked": "2026-11-02",
    "names": [
     "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30, 정시 원서접수 2027.1.4~7)",
     "대교협 2027학년도 대학입학전형시행계획 주요사항(2025.4.30)"
@@ -804,7 +803,7 @@
    "url": "https://www.sen.go.kr/user/bbs/BD_selectBbs.do?q_bbsSn=1068&q_bbsDocNo=20260331091528935",
    "kind": "official",
    "org": "서울특별시교육청",
-   "checked": "2026-10-31",
+   "checked": "2026-11-06",
    "names": [
     "서울특별시교육청 2027학년도 서울특별시 고등학교 입학전형 기본계획(공고용, 고입자료실 2026.3.31 게시, PDF 붙임-1 주요 일정) 및 2026.9.1 변경 공고",
     "서울특별시교육청 2027학년도 서울특별시 고등학교 입학전형 기본계획(공고용, 고입자료실 2026.3.31 게시, PDF 붙임-1 주요 일정)",
@@ -835,7 +834,7 @@
    "url": "https://www.bundangnews.co.kr/58587",
    "kind": "media",
    "org": "www.bundangnews.co.kr",
-   "checked": null,
+   "checked": "2026-11-02",
    "names": [
     "분당신문"
    ],
@@ -936,7 +935,7 @@
    "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/04/e2b13ae0-cb1b-49f0-a7d0-9d90c781c606.pdf",
    "kind": "official",
    "org": "경기도교육청",
-   "checked": "2026-10-31",
+   "checked": "2026-11-03",
    "names": [
     "경기도교육청 2026 고교학점제 및 학점 이수 인정 방안 PDF 27쪽(학칙 예시: 1·2학년 학기당 16회, 3학년 17회 중 1회 학교자율)"
    ],
@@ -950,7 +949,7 @@
    "url": "https://www.sen.go.kr/user/bbs/BD_selectBbs.do?q_bbsSn=1068&q_bbsDocNo=20260901155540500",
    "kind": "official",
    "org": "서울특별시교육청",
-   "checked": null,
+   "checked": "2026-11-06",
    "names": [
     "서울특별시교육청 2027학년도 서울특별시교육감 선발 후기고등학교 신입생 입학전형 요강(공고) 및 변경 사항 비교표(고입자료실 2026.9.1 게시, 비교표 쪽 2~3·10)"
    ],
@@ -963,7 +962,7 @@
    "url": "https://news.nate.com/view/20260806n01096?mid=n1101",
    "kind": "media",
    "org": "news.nate.com",
-   "checked": null,
+   "checked": "2026-11-02",
    "names": [
     "네이트"
    ],
@@ -1027,7 +1026,7 @@
    "url": "https://www.m-economynews.com/news/article.html?no=69490",
    "kind": "media",
    "org": "www.m-economynews.com",
-   "checked": "2026-10-31",
+   "checked": "2026-11-02",
    "names": [
     "M이코노미뉴스",
     "M이코노미뉴스: 국가교육위원회, 대입제도 전면 개편 공론화 2027년 3월 확정",
@@ -1065,7 +1064,7 @@
    "url": "https://www.dailian.co.kr/news/view/1627070/%EA%B2%BD%EA%B8%B0%EB%8F%84%EA%B5%90%EC%9C%A1%EC%B2%AD-2027%ED%95%99%EB%85%84%EB%8F%84-%EA%B2%BD%EA%B8%B0%EB%8F%84-%EA%B3%A0-2026",
    "kind": "media",
    "org": "www.dailian.co.kr",
-   "checked": null,
+   "checked": "2026-10-26",
    "names": [
     "데일리안"
    ],
@@ -1079,7 +1078,7 @@
    "url": "https://www.hscredit.kr/about/graduation",
    "kind": "official",
    "org": "교육부 고교학점제 종합지원포털",
-   "checked": "2026-10-31",
+   "checked": "2026-11-03",
    "names": [
     "고교학점제 종합지원포털(교육부)",
     "고교학점제 종합지원포털(교육부) 졸업·이수 기준",
@@ -1113,7 +1112,7 @@
    "url": "https://www.sen.go.kr/user/bbs/BD_selectBbs.do?q_bbsSn=1068&q_bbsDocNo=20260901155446256",
    "kind": "official",
    "org": "서울특별시교육청",
-   "checked": null,
+   "checked": "2026-11-06",
    "names": [
     "서울특별시교육청 2027학년도 서울특별시 고등학교 입학전형 기본계획 변경 공고(고입자료실 2026.9.1 게시, 변경 사항 비교표 쪽 3·5)"
    ],
@@ -1127,7 +1126,7 @@
    "url": "https://www.sen.go.kr/user/bbs/BD_selectBbs.do?q_bbsSn=1068&q_bbsDocNo=20260902102919801",
    "kind": "official",
    "org": "서울특별시교육청",
-   "checked": null,
+   "checked": "2026-11-06",
    "names": [
     "서울특별시교육청 2027학년도 중학교 및 교육감 선발 후기고 배정을 위한 근거리 통학 대상자 심사·지정 계획(고입자료실 2026.9.2 게시, 추진 일정)"
    ],
@@ -1355,7 +1354,7 @@
    "url": "https://www.specialtimes.co.kr/news/articleView.html?idxno=476928",
    "kind": "other",
    "org": "www.specialtimes.co.kr",
-   "checked": null,
+   "checked": "2026-11-02",
    "names": [
     "스페셜타임스 국교위 보도"
    ],
@@ -1398,7 +1397,7 @@
    "url": "https://m.news.nate.com/view/20260803n19506",
    "kind": "media",
    "org": "m.news.nate.com",
-   "checked": null,
+   "checked": "2026-11-01",
    "names": [
     "네이트"
    ],
@@ -1415,6 +1414,9 @@
    "names": [
     "풍덕고 2026학년도 2학기 2학년 교수학습 평가운영계획(안).pdf",
     "1. 풍덕고_2026학년도 2학기 1학년 풍덕고등학교 교수학습 평가운영계획(안).pdf / 2. 풍덕고_2026학년도 2학기 2학년 풍덕고등학교 교수학습 평가운영계획(안).pdf / 3. 풍덕고_2026학년도 2학기 3학년 풍덕고등학교 교수학습 평가운영계획(안).pdf",
+    "풍덕고등학교 2026학년도 2학기 1학년 평가 계획(학교알리미 공시 4-가 첨부 PDF) 8쪽 '2 평가의 기본방향과 방침' 가. 기본방향 (2): 정기시험 학기당 2회 이내, 1회 실시 시 학기 성적의 50% 이하 (같은 규정이 27쪽에도 반복). 첨부 파일은 학교알리미 풍덕고 화면의 공시 첨부에서 내려받음",
+    "풍덕고등학교 2026학년도 2학기 1학년 평가 계획(학교알리미 공시 4-가 첨부 PDF) 8쪽 '2 평가의 기본방향과 방침' 가. 기본방향 (3): 수행평가 반영 비율 학기 성적의 30% 이상 (같은 규정이 27쪽에도 반복). 첨부 파일은 학교알리미 풍덕고 화면의 공시 첨부에서 내려받음",
+    "풍덕고등학교 2026학년도 2학기 1학년 평가 계획(학교알리미 공시 4-가 첨부 PDF) 8쪽 '2 평가의 기본방향과 방침' 가. 기본방향 (5): 논술평가 포함 비율 학기 성적의 30% 이상, 체육·예술 20% 이상 가능 (같은 규정이 27쪽에도 반복). 첨부 파일은 학교알리미 풍덕고 화면의 공시 첨부에서 내려받음",
     "학교알리미 학교정보(2026 공시)",
     "학교알리미 학교정보(2026 공시) 및 편제표 요약",
     "학교알리미 학년별·학급별 학생수(2026년 5월 2차 공시)",
@@ -1425,6 +1427,7 @@
    ],
    "usedIn": {
     "exam-trends.json": 2,
+    "glossary.json": 3,
     "hs-compare.json": 14,
     "places.json": 1,
     "school-codes.json": 1
@@ -1448,7 +1451,7 @@
    "url": "https://v.daum.net/v/20260803100648087",
    "kind": "media",
    "org": "v.daum.net",
-   "checked": "2026-10-25",
+   "checked": "2026-11-02",
    "names": [
     "다음뉴스",
     "다음뉴스: 초6 대입 확 바뀌나…수능 절대평가 전환하고 서논술형 도입 검토"
@@ -1464,7 +1467,7 @@
    "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512",
    "kind": "official",
    "org": "교육부",
-   "checked": "2026-10-25",
+   "checked": "2026-11-02",
    "names": [
     "교육부 보도자료 「2028학년도 대학수학능력시험은 2027년 11월 18일(목)에 시행됩니다」(2025.6.1)",
     "교육부 보도자료",
@@ -1507,7 +1510,7 @@
    "url": "https://www.newspim.com/news/view/20260828000191",
    "kind": "media",
    "org": "www.newspim.com",
-   "checked": null,
+   "checked": "2026-11-02",
    "names": [
     "뉴스핌"
    ],
@@ -1520,7 +1523,7 @@
    "url": "https://www.hscredit.kr/curriculum/intro",
    "kind": "official",
    "org": "교육부 고교학점제 종합지원포털",
-   "checked": "2026-10-31",
+   "checked": "2026-11-03",
    "names": [
     "고교학점제 종합지원포털(교육부) 교육과정 소개"
    ],
@@ -1625,7 +1628,7 @@
    "url": "https://www.kcue.or.kr/news/sub02/sub01.php?pagenumber=1&at=view&idx=2765226",
    "kind": "official",
    "org": "한국대학교육협의회",
-   "checked": null,
+   "checked": "2026-11-01",
    "names": [
     "한국대학교육협의회 보도자료 「2029학년도 대학입학전형기본사항 발표」(2026.8.27)"
    ],
@@ -1656,7 +1659,7 @@
    "url": "https://www.newspim.com/news/view/20260805000395",
    "kind": "media",
    "org": "www.newspim.com",
-   "checked": null,
+   "checked": "2026-11-02",
    "names": [
     "뉴스핌(업무보고)"
    ],
@@ -1786,7 +1789,7 @@
    "url": "https://www.veritas-a.com/news/articleView.html?idxno=600481",
    "kind": "media",
    "org": "www.veritas-a.com",
-   "checked": null,
+   "checked": "2026-11-01",
    "names": [
     "베리타스알파"
    ],
@@ -1829,7 +1832,7 @@
    "url": "https://www.edpl.co.kr/news/articleView.html?idxno=21218",
    "kind": "media",
    "org": "www.edpl.co.kr",
-   "checked": "2026-10-25",
+   "checked": "2026-11-02",
    "names": [
     "교육플러스",
     "교육플러스: 국교위 수능 절대평가·서논술형 보도에 교육계 촉각 \"확정안 아냐\""
@@ -1845,7 +1848,7 @@
    "url": "https://www.veritas-a.com/news/articleView.html?idxno=627933",
    "kind": "media",
    "org": "www.veritas-a.com",
-   "checked": null,
+   "checked": "2026-11-01",
    "names": [
     "베리타스알파 「2027 외고 모집, 28개교 5,518명」(2026.9.15)"
    ],
@@ -1921,7 +1924,7 @@
    "url": "https://www.sen.go.kr/user/bbs/BD_selectBbs.do?q_bbsSn=1068&q_bbsDocNo=20261029160216463",
    "kind": "official",
    "org": "서울특별시교육청",
-   "checked": null,
+   "checked": "2026-11-06",
    "names": [
     "서울특별시교육청 2027학년도 교육감 선발 후기 일반고 진학안내(고입자료실 2026.10.29 게시, PDF 7·16쪽)"
    ],
@@ -2101,7 +2104,7 @@
    "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf",
    "kind": "official",
    "org": "경기도교육청",
-   "checked": "2026-10-29",
+   "checked": "2026-11-02",
    "names": [
     "경기도교육청 2027학년도 경기도 고교 평준화 학군 학생 배정 방안(2026.8) PDF 58쪽",
     "경기도교육청 2027학년도 경기도 고교 평준화 학군 학생 배정 방안(2026.8) PDF 4쪽",
@@ -2225,7 +2228,7 @@
    "url": "https://view.asiae.co.kr/article/2026092812475292099",
    "kind": "media",
    "org": "view.asiae.co.kr",
-   "checked": null,
+   "checked": "2026-11-02",
    "names": [
     "아시아경제"
    ],
@@ -2239,7 +2242,7 @@
    "url": "https://satp.goe.go.kr/pt/ar/ggpt_d01_s1.do?sn=304",
    "kind": "official",
    "org": "경기도교육청",
-   "checked": null,
+   "checked": "2026-11-03",
    "names": [
     "경기도교육청 2027학년도 경기도 고등학교 신입생 전형요강(고입 포털 공지 2026.8.19) PDF 10쪽 평준화 지역 정시모집 일정",
     "경기도교육청 2027학년도 경기도 고등학교 신입생 전형요강(고입 포털 공지 글번호 304, 2026.8.19) PDF 10·23·34·58·59·81쪽, 내신성적 반영지침 PDF 2·4쪽"
@@ -2254,7 +2257,7 @@
    "url": "https://www.goe.go.kr/resource/goe/na/bbs_2430/2026/03/e88abfe2-8daa-494e-9cb8-a2d030225b45.pdf",
    "kind": "official",
    "org": "경기도교육청",
-   "checked": "2026-10-31",
+   "checked": "2026-11-03",
    "names": [
     "경기도교육청 2027학년도 경기도 고등학교 입학전형 기본계획(2026.3) PDF 5쪽 일정·PDF 12쪽 외국어고·국제고 전형 관리, 고입 포털 공지(2026.8.19)",
     "경기도교육청 2027학년도 경기도 고등학교 입학전형 기본계획(2026.3) PDF 5쪽",
@@ -2331,7 +2334,7 @@
    "url": "https://imnews.imbc.com/news/2026/society/article/6842663_36918.html",
    "kind": "media",
    "org": "imnews.imbc.com",
-   "checked": null,
+   "checked": "2026-11-01",
    "names": [
     "MBC 뉴스 국교위 대입 개편 공론화 보도(2026.8.5)",
     "MBC"
@@ -2345,7 +2348,7 @@
    "url": "https://www.giheunggu.go.kr/_lmth/03_board/board_0701.asp?mode=view&board_idx=MTE2MDAy&page=1",
    "kind": "official",
    "org": "용인시 기흥구",
-   "checked": null,
+   "checked": "2026-10-31",
    "names": [
     "용인시 기흥구청 게시 공고: 2027학년도 용인시 중학교 학교군 및 중학교 설정을 위한 의견수렴(2026.2.19)"
    ],
