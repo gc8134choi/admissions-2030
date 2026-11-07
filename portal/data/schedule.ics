@@ -91,7 +91,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ev-hs-05-1@admissions-2030
-DTSTAMP:20261026T000000Z
+DTSTAMP:20261106T000000Z
 DTSTART;VALUE=DATE:20261203
 DTEND;VALUE=DATE:20261208
 SUMMARY:서울 후기 일반고·자사고·외고·국제고 일정 · 서
@@ -107,7 +107,10 @@ DESCRIPTION:외국어고·국제고: 원서 접수 2026.12.3~12.7\, 합격
  별시교육청 2027학년도 서울특별시 고등학교 입학전형 
  기본계획(공고용\, 고입자료실 2026.3.31 게시\, PDF 붙임-1 
  주요 일정) https://www.sen.go.kr/user/bbs/BD_selectBbs.do?q_bbsSn=1068
- &q_bbsDocNo=20260331091528935\n확인일 2026-10-26
+ &q_bbsDocNo=20260331091528935 / 서울특별시교육청 2027학년도 교
+ 육감 선발 후기 일반고 진학안내(고입자료실 2026.10.29 게
+ 시\, PDF 7·16쪽) https://www.sen.go.kr/user/bbs/BD_selectBbs.do?q_bbsSn
+ =1068&q_bbsDocNo=20261029160216463\n확인일 2026-11-06
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
