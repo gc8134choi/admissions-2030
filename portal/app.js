@@ -235,7 +235,7 @@ async function curriculumView(el, query, node) {
       const tyd = body.querySelector("#tyd"); let tyDone = false;
       const fillTy = async () => { if (tyDone) return; tyDone = true; try { await views.types(body.querySelector("#tybody"), query); } catch { body.querySelector("#tybody").innerHTML = '<p class="muted">불러오지 못했어요.</p>'; } };
       tyd.addEventListener("toggle", () => { if (tyd.open) fillTy(); });
-      if (query.get("ty") === "1") { tyd.open = true; await fillTy(); } // 유형 패널을 먼저 채운 뒤 아래 구역을 그려서 늦게 들어온 본문이 아래를 밀지 않게
+      if (query.get("ty") === "1") { tyd.open = true; await fillTy(); foldTypeSections(body.querySelector("#tybody")); } // 유형 패널을 먼저 채운 뒤 아래 구역을 그려서 늦게 들어온 본문이 아래를 밀지 않게
       const fillWide = await hsHubBody(body.querySelector("#hsmain"), { load, esc, lazy: true });
       // 밀도: 학교 요약 카드는 번호·막대만 보이게 접고(자세히로 펼침), 31교 기본 정보 표는 접이식, 요약 카드는 한눈에 패널 바로 아래로
       const hub = body.querySelector("#hsmain .hub-hs"), wide = body.querySelector("#hs-wide"), sec = body.querySelector("#sumsec");
@@ -567,6 +567,13 @@ function fontGate() {
   const t = () => (m.textContent || "").replace(/\s+/g, " ").slice(0, 3000);
   setTimeout(() => Promise.all([document.fonts.load('400 17px "Pretendard Variable"', t()), document.fonts.load('700 17px "Pretendard Variable"', t())]).then(open, open), 350); // 본문이 그려진 뒤 그 글자만 받는다
 }
+// 고교 종류 화면(길이 18,000px↑): 구역별(H2) 접이식 — 첫 구역만 펴고 나머지는 제목 한 줄. 목차·?hl= 이동은 접힌 구역을 알아서 펴고 간다.
+function foldTypeSections(host) {
+  const ed = host && host.querySelector(".ed"); if (!ed || ed.dataset.folded) return; ed.dataset.folded = "1";
+  const hs = [...ed.children].filter((c) => c.tagName === "H2"); if (hs.length < 3) return;
+  hs.forEach((h, i) => { const d = document.createElement("details"); d.className = "ty-fold"; if (i === 0) d.open = true; const sm = document.createElement("summary"); ed.insertBefore(d, h); sm.appendChild(h); d.appendChild(sm);
+    while (d.nextSibling && d.nextSibling.tagName !== "H2" && !(d.nextSibling.tagName === "DETAILS" && d.nextSibling.classList.contains("ty-fold"))) d.appendChild(d.nextSibling); });
+}
 function render() {
   const [path, qs] = decodeURIComponent(location.hash.slice(1)).split("?");
   const query = new URLSearchParams(qs || "");
@@ -591,7 +598,7 @@ function render() {
     return;
   }
   if (n.view === "curriculum" || n.view === "home") { // 위쪽 공간 절약: 제목 없이 화면이 바로 시작
-    $("#main").innerHTML = `${sub}${isInfo(n, query) || query.get("v") === "map" ? `<h1 class="ph">${esc(loc.item.page || loc.item.title)}</h1>` : ""}${crumbHtml(loc, hrefOf, tabHref)}${wantsToc(n, query) ? '<div id="toc-host" class="toc-host"></div>' : ""}<div id="view"></div>${soon}${footHtml(loc)}`;
+    $("#main").innerHTML = `${sub}${isInfo(n, query) || query.get("v") === "map" || (query.get("v") === "hs" && query.get("ty") === "1") ? `<h1 class="ph">${esc(loc.item.page || loc.item.title)}</h1>` : ""}${crumbHtml(loc, hrefOf, tabHref)}${wantsToc(n, query) ? '<div id="toc-host" class="toc-host"></div>' : ""}<div id="view"></div>${soon}${footHtml(loc)}`;
     pageExtras(loc, query); fontGate();
     const mainEl = $("#main"); mainEl.classList.add("view-loading"); const ready = () => requestAnimationFrame(() => { mainEl.classList.remove("view-loading"); addToc(); }); // 화면이 다 그려지기 전에는 아래 안내(푸터)를 숨겨 밀림(CLS)을 막는다
     views[n.view]($("#view"), query, n).catch(() => ($("#view").innerHTML = GO_ERR)).finally(ready);

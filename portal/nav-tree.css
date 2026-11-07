@@ -116,3 +116,10 @@ html[data-fs=large] .lg>:nth-child(n){margin:0}
 #main[data-r=home]#main :is(p,li,span,a,b,strong,em,div,td,th,small,summary,label,i,dd,dt,.muted,.small,button:not(.term):not(.gl-i),h2,h3),
 #main[data-r=schedule]#main :is(p,li,span,a,b,strong,em,div,td,th,small,summary,label,i,dd,dt,.muted,.small,button:not(.term):not(.gl-i),h2,h3){font-size:max(16px,1em)!important}
 #main[data-r=home] :is(.term,button.term,sup,.pst,.es,kbd),#main[data-r=schedule] :is(.term,button.term,sup,.pst,.es,kbd){font-size:inherit!important}
+
+.ty-fold{margin:6px 0;border-top:2px solid var(--line)}
+.ty-fold>summary{list-style:none;cursor:pointer;display:flex;align-items:center;min-height:56px}
+.ty-fold>summary::-webkit-details-marker{display:none}
+.ty-fold>summary h2{margin:0;flex:1}
+.ty-fold>summary::after{content:"＋";font-size:1.6rem;color:var(--pencil);padding:0 8px}
+.ty-fold[open]>summary::after{content:"－"}
