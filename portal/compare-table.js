@@ -83,5 +83,5 @@ export function cmpTable(el, cfg) {
   draw();
   // 주소의 g(그룹 이름 일부)가 있으면 그 그룹을 펼치고 그 자리로 간다(검색·바로가기 링크용)
   const gq = (urlGet("g") || [])[0], gm = gq && groups.find((x) => x && x.includes(gq));
-  if (gm && !st.__g) { st.__g = 1; st.open.add(gm); draw(); setTimeout(() => jump(gm), 60); }
+  if (gm && !st.__g) { st.__g = 1; st.open.add(gm); draw(); if (!/[?&]hl=/.test(location.hash) && !(window.__hlWanted && Date.now() - window.__hlWanted < 20000)) setTimeout(() => jump(gm), 60); /* ?hl= 도착이면 이동은 hl.js가 한 번만 한다(두 번 튀지 않게) */ }
 }
