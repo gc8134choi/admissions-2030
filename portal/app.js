@@ -577,7 +577,7 @@ function render() {
   const loc = locate(n.id, query) || { tab: TABS[0], group: TABS[0].groups[0], item: TABS[0].groups[0].items[0] };
   const tab = loc.tab;
   document.body.dataset.profile = currentProfile(store).key;
-  $("#main").classList.toggle("info", isInfo(n, query)); $("#main").classList.remove("fw");
+  $("#main").classList.toggle("info", isInfo(n, query)); $("#main").dataset.r = n.id; $("#main").classList.remove("fw");
   drawTabs(loc);
   document.title = `${loc.item.id === "home" ? "" : (loc.item.page || loc.item.title) + " · "}스쿨 라이프`;
   scrollTo(0, 0);

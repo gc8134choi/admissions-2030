@@ -109,3 +109,10 @@ html[data-fs=large] .lg>:nth-child(n){margin:0}
 #main{scroll-margin-top:calc(var(--hh) + 12px)}
 
 #main.info.fw #view,#main.info.fw .toc-host{visibility:hidden}
+
+/* 사이드바: 설명 줄은 지금 있는 그룹(.on)만 펴 보이고 나머지는 이름만(높이 절약). 모바일 서랍은 전부 보인다 */
+@media (min-width:900px){#sidenav .nt-g:not(.on) a small{display:none}#sidenav .nt-g:not(.on) li a{min-height:44px}}
+/* 홈·일정: 보통 글자도 16px 이상(13~15px 글자 바닥값) */
+#main[data-r=home]#main :is(p,li,span,a,b,strong,em,div,td,th,small,summary,label,i,dd,dt,.muted,.small,button:not(.term):not(.gl-i),h2,h3),
+#main[data-r=schedule]#main :is(p,li,span,a,b,strong,em,div,td,th,small,summary,label,i,dd,dt,.muted,.small,button:not(.term):not(.gl-i),h2,h3){font-size:max(16px,1em)!important}
+#main[data-r=home] :is(.term,button.term,sup,.pst,.es,kbd),#main[data-r=schedule] :is(.term,button.term,sup,.pst,.es,kbd){font-size:inherit!important}
