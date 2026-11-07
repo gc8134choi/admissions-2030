@@ -108,7 +108,8 @@ html[data-fs=large] .lg>:nth-child(n){margin:0}
 .wm{display:inline-flex;align-items:center;min-height:44px;min-width:44px}
 #main{scroll-margin-top:calc(var(--hh) + 12px)}
 
-#main.info.fw #view,#main.info.fw .toc-host{visibility:hidden}
+
+#main.fw #view{visibility:hidden}
 
 /* 사이드바: 설명 줄은 지금 있는 그룹(.on)만 펴 보이고 나머지는 이름만(높이 절약). 모바일 서랍은 전부 보인다 */
 @media (min-width:900px){#sidenav.nt-compact .nt-g:not(.on) a small{display:none}#sidenav.nt-compact .nt-g:not(.on) li a{min-height:44px}}
@@ -140,3 +141,9 @@ button.term{padding-inline:5px!important;margin-inline:-5px!important}
 /* 사이드바 '설명 줄 접기/펴기'(기본: 펴짐=마인드맵 취지). 접으면 현재 그룹만 설명 줄이 보인다 */
 .nt-tg{display:none}
 @media (min-width:900px){.nt-tg{display:inline-flex;align-items:center;min-height:44px;margin:6px 14px 0;padding:0 14px;border:2px solid var(--line);background:var(--paper2);color:var(--ink);font:700 15px var(--font);border-radius:4px;cursor:pointer}}
+
+/* 인쇄: 비교 표가 종이(좁은 폭)를 넘지 않게 — 화면용 최소 너비를 풀고 글자를 줄여 한 쪽 폭에 맞춘다 */
+@media print{html body table.cmp-tbl.cmp-tbl{min-width:0!important;width:100%!important;font-size:11px}html body table.cmp-tbl.cmp-tbl col{width:auto!important}table.cmp-tbl th,table.cmp-tbl td{padding:3px 4px;word-break:break-word;overflow-wrap:anywhere}.tw,.cmp{overflow:visible!important;max-width:100%}}
+
+/* 홈(모바일): 접힌 구역은 제목 한 줄이라 위아래 여백을 줄여 홈 전체 길이에 여유를 둔다 */
+@media (max-width:600px){#main .hm .dp.m-fold:not(.m-open){padding-top:8px;padding-bottom:8px}}

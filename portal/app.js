@@ -64,7 +64,7 @@ const MENU_ICON = {
 // 상단 메뉴(데스크톱)·하단 탭(모바일): 5개 탭, 글자만. 켜진 탭은 위쪽 선.
 function drawTabs(loc) {
   const html = treeHtml(loc), hadFocus = !!document.activeElement?.closest?.("#sidenav");
-  const side = $("#sidenav"), dr = $("#navtree"); if (side) { side.innerHTML = `<button type="button" class="nt-tg" aria-pressed="false"></button><nav class="nt" aria-label="전체 메뉴">${html}</nav>`; let cp = false; try { cp = localStorage.getItem("portal.navcompact") === "1"; } catch {} side.classList.toggle("nt-compact", cp); const tg = side.querySelector(".nt-tg"); tg.textContent = cp ? "설명 줄 펴기" : "설명 줄 접기"; tg.setAttribute("aria-pressed", String(cp)); tg.onclick = () => { const v = !side.classList.contains("nt-compact"); side.classList.toggle("nt-compact", v); try { localStorage.setItem("portal.navcompact", v ? "1" : "0"); } catch {} tg.textContent = v ? "설명 줄 펴기" : "설명 줄 접기"; tg.setAttribute("aria-pressed", String(v)); }; } if (dr) dr.innerHTML = `<nav class="nt" aria-label="전체 메뉴">${html}</nav>`;
+  const side = $("#sidenav"), dr = $("#navtree"); if (side) { side.innerHTML = `<button type="button" class="nt-tg" aria-pressed="false"></button><nav class="nt" aria-label="전체 메뉴">${html}</nav>`; let cp = true; try { cp = localStorage.getItem("portal.navcompact") !== "0"; } catch {} side.classList.toggle("nt-compact", cp); const tg = side.querySelector(".nt-tg"); tg.textContent = "설명 줄 모두 보기"; tg.setAttribute("aria-pressed", String(!cp)); tg.onclick = () => { const v = !side.classList.contains("nt-compact"); side.classList.toggle("nt-compact", v); try { localStorage.setItem("portal.navcompact", v ? "1" : "0"); } catch {} tg.setAttribute("aria-pressed", String(!v)); }; } if (dr) dr.innerHTML = `<nav class="nt" aria-label="전체 메뉴">${html}</nav>`;
   const bt = $("#btabs"); if (bt) bt.innerHTML = BOTTOM.map((b) => b.href ? `<a href="${b.href}"${loc && (loc.item.id === b.r || (b.r === "schedule" && loc.item.id === "schedule")) ? ' aria-current="page"' : ""}>${esc(b.label)}</a>` : `<button type="button" data-b="${b.key}"${b.key === "menu" ? ' id="menubtn" aria-expanded="false" aria-controls="navdrawer"' : ""}>${esc(b.label)}</button>`).join("");
   closeDrawer();
   if (side) { const c = side.querySelector("[aria-current=page]"); if (c) { // 현재 항목이 사이드바 안에서 보이게(바깥 화면은 움직이지 않는다)
@@ -558,13 +558,18 @@ function addToc() {
   host.insertAdjacentHTML("afterbegin", `<details class="toc-in"><summary>이 화면에서 ▾</summary><ol>${li}</ol></details>`);
   host.querySelector(".toc-in").addEventListener("click", (e) => { const a = e.target.closest("[data-toc]"); if (!a) return; e.preventDefault(); const t = document.getElementById(a.dataset.toc); for (let d = t; d && d.id !== "main"; d = d.parentElement) if (d.tagName === "DETAILS") d.open = true; /* 접힌 구역 안의 소제목이면 펴고 간다 */ t?.scrollIntoView({ behavior: "smooth", block: "start" }); });
 }
+// 접이식(details)의 펼침 상태를 낭독기에 분명히: 요약(summary)에 aria-expanded를 맞춰 둔다(열고 닫을 때마다·새로 그려질 때마다)
+{ const sync = (d) => { const sm = d.querySelector(":scope > summary"); if (sm) sm.setAttribute("aria-expanded", String(d.open)); };
+  document.addEventListener("toggle", (e) => { if (e.target.tagName === "DETAILS") sync(e.target); }, true);
+  let q = 0; const all = () => { q = 0; document.querySelectorAll("#main details").forEach(sync); };
+  const mo = new MutationObserver(() => { if (!q) q = requestAnimationFrame(all); }); const m0 = document.getElementById("main"); if (m0) mo.observe(m0, { childList: true, subtree: true }); }
 // 정보 화면: 웹폰트(Pretendard)가 늦게 들어오며 17px 글이 다시 줄바꿈되는 것(CLS)을 막는다 — 글자 모양이 준비될 때까지(최대 0.9초) 본문을 보이지 않게 둔다
 function fontGate() {
-  const m = $("#main"); if (!m || !m.classList.contains("info") || !document.fonts?.load) return;
+  const m = $("#main"); if (!m || !(m.classList.contains("info") || m.dataset.r === "schedule") || !document.fonts?.load) return; // 일정 화면도: 칩·안내 줄이 글꼴 교체로 다시 줄바꿈되며 밀리는 것(CLS)
   m.classList.add("fw"); let done = false;
   const open = () => { if (done) return; done = true; m.classList.remove("fw"); };
   setTimeout(open, 900);
-  const t = () => (m.textContent || "").replace(/\s+/g, " ").slice(0, 3000);
+  const t = () => (m.textContent || "").replace(/\s+/g, " ").slice(0, 20000);
   setTimeout(() => Promise.all([document.fonts.load('400 17px "Pretendard Variable"', t()), document.fonts.load('700 17px "Pretendard Variable"', t())]).then(open, open), 350); // 본문이 그려진 뒤 그 글자만 받는다
 }
 // 고교 종류 화면(길이 18,000px↑): 구역별(H2) 접이식 — 첫 구역만 펴고 나머지는 제목 한 줄. 목차·?hl= 이동은 접힌 구역을 알아서 펴고 간다.
