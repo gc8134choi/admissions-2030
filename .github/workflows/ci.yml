@@ -70,6 +70,7 @@ jobs:
           if [ -f research/data/policy-draft.json ]; then
             node tools/build-policy.mjs --check
             node tools/check-event-dates.mjs
+            node tools/check-topic-claims.mjs
             node tools/check-places-addresses.mjs
             node tools/build-ics.mjs --check
             node tools/build-roadmap.mjs --check
