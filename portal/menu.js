@@ -91,4 +91,4 @@ export function locate(id, query) {
   return null;
 }
 // 메뉴에서 빠진 옛 주소는 가장 가까운 화면으로 보낸다.
-export const REDIRECT = { "mid/life": "select/curriculum?v=middle&open=guide", "library/links": "library", "select/types": "select/curriculum?v=hs&ty=1", planner: "planner/plan", select: "select/curriculum", life: "life/credit", "life/checklist": "life/credit", admission: "admission/system", "admission/univ": "select/curriculum?v=univ", "planner/sim": "planner/plan", "planner/report": "planner/plan" };
+export const REDIRECT = { "mid/life": "select/curriculum?v=middle&open=guide", "library/links": "library", "select/types": "select/curriculum?v=types", planner: "planner/plan", select: "select/curriculum", life: "life/credit", "life/checklist": "life/credit", admission: "admission/system", "admission/univ": "select/curriculum?v=univ", "planner/sim": "planner/plan", "planner/report": "planner/plan" };
