@@ -92,7 +92,8 @@ export function registerHome(views, { esc, load, store, profiles }) {
     const related = (r, L) => r.entryYear === L.entryYear || r.examYear === L.examYear || (r.entryYear == null && r.examYear == null);
 
     let lastSub = ""; const subOnce = (x) => { const show = x.label && x.r.title !== lastSub; lastSub = x.label ? x.r.title : ""; return show; };
-    const evRow = (x, big) => `<li class="h2-ev${big ? " first" : ""}"><span class="h2-d num${x.sp.start <= t ? " live" : ""}">${dLabel(x.sp, t)}</span><div class="h2-b"><b>${esc(x.label || x.r.title)}</b>${subOnce(x) ? `<small>${esc(x.r.title)}</small>` : ""}<span class="num">${esc(x.date)}${x.tent && x.sp.start > t ? " 예정" : ""} ${srcOf(x.r)}</span></div></li>`;
+    const splitTitle = (t) => { const m = /^(.*?)\s*[(（]([^()（）]*)[)）]\s*(.*)$/.exec(t); return m && m[1] ? { main: (m[1] + " " + m[3]).trim(), paren: m[2] } : { main: t, paren: "" }; }; // 제목 속 괄호는 보조 줄로 내린다
+    const evRow = (x, big) => { const sp = splitTitle(x.label || x.r.title), sub = sp.paren || (subOnce(x) ? x.r.title : ""); return `<li class="h2-ev${big ? " first" : ""}"><span class="h2-d num${x.sp.start <= t ? " live" : ""}">${dLabel(x.sp, t)}</span><div class="h2-b no-term"><b>${esc(sp.main)}</b>${sub ? `<small title="${esc(sub)}">${esc(sub)}</small>` : ""}<span class="num">${esc(x.date)}${x.tent && x.sp.start > t ? " 예정" : ""}</span></div></li>`; };
     const stoneCard = (m) => { const n = dayN(m.date, t); return `<li class="ms h2-ms" data-ms="${esc("life:" + m.id)}" data-kind="${m.kind}"><div class="ms-t"><span class="ms-k">${esc(m.label)}</span>
         <b class="ms-n num">${n === 0 ? "오늘" : `D-${n.toLocaleString()}`}</b>
         <span class="ms-s num">${esc(m.dateText)}${m.tent && n > 0 ? " 예정" : ""} ${srcOf(m.r)}</span>
@@ -116,12 +117,12 @@ export function registerHome(views, { esc, load, store, profiles }) {
       if (C.id === "A" && L.csat?.date && DRE.test(L.csat.date)) {
         const row = P.get(L.csat.policyRowId || "sch-12") || P.get("sch-07"), n = dayN(L.csat.date.length === 10 ? L.csat.date : L.csat.date + "-15", t), sp0 = span(L.csat.date);
         const tent = L.csat.status !== "confirmed";
-        dd = `<p class="h2-dd"><span>${L.examYear}학년도 수능</span> <b class="num">D-${n.toLocaleString()}</b> <span class="num">${esc(fmtDate(sp0, t))}${tent ? " 예정" : ""}</span> ${srcOf(row)}</p>`;
+        dd = `<p class="h2-dd no-term"><span>${L.examYear}학년도 수능</span> <b class="num">D-${n.toLocaleString()}</b> <span class="num">${esc(fmtDate(sp0, t))}${tent ? " 예정" : ""}</span> ${srcOf(row)}</p>`;
       }
       const intro = C.intro.map((id) => MENU.get(id)).filter(Boolean).map((it) => `<li><a href="#${esc(it.id)}"><b>${esc(it.title)}</b><span>${esc(it.desc || "")}</span></a></li>`).join("");
       const nm = esc(C.side); // 열 머리글은 학교급(사람 이름은 화면에 쓰지 않는다, 사용자 결정 2026-11-08)
       return `<div class="hm2-col" data-col="${C.id}">
-        <header class="hm2-h"><h2 class="hm2-name">${nm}</h2><p class="hm2-sub">${L.examYear ? `${L.examYear}학년도 대입` : ""}</p></header>
+        <header class="hm2-h"><h2 class="hm2-name">${nm}</h2><p class="hm2-sub no-term">${L.examYear ? `${L.examYear}학년도 대입` : ""}</p></header>
         <section class="dp hm2-b soonp" aria-label="${nm} 곧 있을 일"><div class="sec-h"><h3>곧 있을 일</h3></div>
           ${stone ? `<ul class="mss">${stoneCard(stone)}</ul>` : ""}
           ${soon.length ? `<ul class="h2-evs">${(lastSub = "", soon.map((x, i) => evRow(x, !stone && i === 0)).join(""))}</ul>` : stone ? "" : `<p class="muted">곧 있을 일정이 아직 없어요.</p>`}
@@ -132,7 +133,7 @@ export function registerHome(views, { esc, load, store, profiles }) {
       </div>`;
     };
     el.innerHTML = `<div class="hm hm2">${COLS.map(colHtml).join("")}</div>`;
-    decorateTerms(el, ".dp"); initTerms();
+    decorateTerms(el, ".h2-go"); initTerms(); // 용어 ⓘ는 소개 블록에만(일정 제목 줄이 깨지지 않게)
     if (matchMedia("(max-width:899px)").matches) el.querySelectorAll(".hm2-intro").forEach((d) => d.removeAttribute("open")); // 모바일 홈 높이: 소개는 눌러서 연다
     { // 검색 결과 등에서 "#home?open=soonp"(곧 있을 일)로 오면 그 자리로 간다
       const want = new URLSearchParams(location.hash.split("?")[1] || "").get("open");
