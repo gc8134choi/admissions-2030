@@ -115,3 +115,14 @@ body:has(#main[data-r=home]) .legend{display:none}
 #main .hm2 .h2-d,#main .hm2 .h2-dates .h2-d{white-space:normal;overflow-wrap:normal;word-break:keep-all}
 /* 졸업·입학 조각은 목록과 같은 폭(모바일 가로 스크롤 78% 조각 해제) */
 @media (max-width:899px){.hm2 .soonp .mss{display:block;overflow:visible}.hm2 .soonp .ms{flex:none;width:auto}}
+
+/* 좁은 폭(<1100px) 홈: '고등학교 | 중학교' 탭 두 개, 한 번에 한 열. 넓은 폭은 2열 그대로 */
+.hm2-tabs{display:none}
+@media (max-width:1099px){
+  .hm2-tabs{display:flex;gap:0;margin:4px 0 6px;border-bottom:2px solid var(--line)}
+  .hm2-tabs button{flex:1 1 0;min-height:48px;padding:0 12px;border:1px solid var(--line);border-bottom:0;border-radius:8px 8px 0 0;background:var(--paper);color:var(--ink);font:700 19px var(--hand);cursor:pointer}
+  .hm2-tabs button[aria-selected=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent,#fff)}
+  .hm2[data-show=A] .hm2-col[data-col=B],.hm2[data-show=B] .hm2-col[data-col=A]{display:none}
+  #main .hm2 .hm2-name{display:none}
+  .hm2-h{margin-top:4px}
+}

@@ -113,8 +113,11 @@ export function registerHome(views, { esc, load, store, profiles }) {
         .map((x) => ({ r: x.r, sp: x.sp, label: x.e.label || "", title: x.r.title + (x.e.label ? ` · ${x.e.label}` : ""), date: fmtRange(x.sp, t, x.e), tent: tentative(x.r), isStone: x.r.topic === "life-schedule" && C.stones.test(x.r.title) && DRE.test(x.e.start) && x.e.start.length === 10 ? x : null, start: x.e.start }));
       // 가장 가까운 졸업·입학 한 건은 D-day 카드(사진 넣기)로
       const sc = evs.find((x) => x.isStone), stone = sc ? { id: sc.r.id, label: sc.r.title, date: sc.start, dateText: fmtRange(sc.sp, t, null), tent: sc.tent, r: sc.r, kind: /졸업/.test(sc.r.title) ? "graduation" : "entrance" } : null;
-      const perRow = new Map(), seenDate = new Set(); // 한 일정 묶음(전기 학교별 일정 등)이 목록을 다 차지하지 않게 묶음당 3건까지, 같은 날짜 줄은 한 번만
-      let rest = evs.filter((x) => x !== sc).filter((x) => { const n = perRow.get(x.r.id) || 0, k = x.date; if (n >= 3 || (seenDate.has(k) && n > 0) || seenDate.has(k)) return false; perRow.set(x.r.id, n + 1); seenDate.add(k); return true; }).slice(0, 6);
+      const seenDate = new Set(), perRow = new Map(), horizon = t.getTime() + 14 * DAY; // 시작·마감이 14일 이내인 일정은 모두, 먼 일정은 묶음(같은 정책 행)당 2건까지·총 7줄까지(수능 줄 별도, 사용자 결정 2026-11-08)
+      const uniq = evs.filter((x) => x !== sc).filter((x) => { if (seenDate.has(x.date)) return false; seenDate.add(x.date); return true; });
+      const isNear = (x) => x.sp.start.getTime() <= horizon && !x.sp.month;
+      const near = uniq.filter(isNear), far = uniq.filter((x) => !isNear(x)).filter((x) => { const n = perRow.get(x.r.id) || 0; if (n >= 2) return false; perRow.set(x.r.id, n + 1); return true; }).slice(0, Math.max(0, Math.max(near.length, 7) - near.length));
+      let rest = [...near, ...far].sort((a, b) => a.sp.start - b.sp.start || a.sp.end - b.sp.end);
       // 수능 날짜는 고교(왼쪽) 열 목록에 날짜 줄로 넣는다
       if (C.id === "A" && L.csat?.date && DRE.test(L.csat.date)) {
         const row = P.get(L.csat.policyRowId || "sch-12") || P.get("sch-07"), sp0 = span(L.csat.date);
@@ -131,7 +134,9 @@ export function registerHome(views, { esc, load, store, profiles }) {
         <details class="dp hm2-b hm2-intro" open><summary><h3>${C.side} 소개</h3></summary><ul class="h2-go">${intro}</ul></details>
       </div>`;
     };
-    el.innerHTML = `<div class="hm hm2">${COLS.map(colHtml).join("")}</div>`;
+    let showCol = "A"; try { showCol = localStorage.getItem("portal.homecol") === "B" ? "B" : "A"; } catch {} // 좁은 폭(<1100): 고등학교 | 중학교 탭, 한 번에 한 열(마지막에 고른 쪽 기억)
+    el.innerHTML = `<div class="hm hm2" data-show="${showCol}"><div class="hm2-tabs" role="tablist" aria-label="고등학교 · 중학교">${COLS.map((C) => `<button type="button" role="tab" data-tab="${C.id}" aria-selected="${C.id === showCol}">${esc(C.side)}</button>`).join("")}</div>${COLS.map(colHtml).join("")}</div>`;
+    el.querySelector(".hm2-tabs").addEventListener("click", (e) => { const b = e.target.closest("[data-tab]"); if (!b) return; const hm = el.querySelector(".hm2"); hm.dataset.show = b.dataset.tab; hm.querySelectorAll("[data-tab]").forEach((x) => x.setAttribute("aria-selected", String(x === b))); try { localStorage.setItem("portal.homecol", b.dataset.tab); } catch {} });
     decorateTerms(el, ".h2-go"); initTerms(); // 용어 ⓘ는 소개 블록에만(일정 제목 줄이 깨지지 않게)
     if (matchMedia("(max-width:899px)").matches) el.querySelectorAll(".hm2-intro").forEach((d) => d.removeAttribute("open")); // 모바일 홈 높이: 소개는 눌러서 연다
     { // 검색 결과 등에서 "#home?open=soonp"(곧 있을 일)로 오면 그 자리로 간다
