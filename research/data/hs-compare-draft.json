@@ -3,7 +3,8 @@
     "note": "고교 비교표 초안(용인학군 2구역 고교 10곳, 학교알리미 2026 공시·편제표 요약). 확인 못 한 칸은 value null + nullReason. 광고성·비공식 평가는 넣지 않음. 학교알리미 수치는 5월 2차 공시 기준이며 연 1회 갱신된다.",
     "checkedAt": "2026-10-29",
     "status": "reported",
-    "shape": "fields[{id,label,group,order,type,unit,needsAsOf}], schools[].values[fieldId]={value,asOf,status,source,nullReason,note}"
+    "shape": "fields[{id,label,group,order,type,unit,needsAsOf}], schools[].values[fieldId]={value,asOf,status,source,nullReason,note}",
+    "normalizedAt": "2026-11-08"
   },
   "fields": [
     {
@@ -180,7 +181,7 @@
       "name": "용인홍천고등학교",
       "values": {
         "type": {
-          "value": "일반고등학교",
+          "value": "일반고",
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -273,12 +274,12 @@
           "nullReason": null
         },
         "admission": {
-          "value": "평준화 추첨(구역설정학군, 선복수지원-후추첨)",
-          "asOf": "2027학년도 입학",
-          "status": "reported",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
+          "asOf": "2027학년도",
+          "status": "confirmed",
           "source": {
-            "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조)",
-            "url": null
+            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+            "url": "https://satp.goe.go.kr/main.do"
           },
           "nullReason": null
         },
@@ -408,7 +409,7 @@
       "name": "성복고등학교",
       "values": {
         "type": {
-          "value": "일반고등학교",
+          "value": "일반고",
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -500,12 +501,12 @@
           "nullReason": null
         },
         "admission": {
-          "value": "평준화 추첨(구역설정학군, 선복수지원-후추첨)",
-          "asOf": "2027학년도 입학",
-          "status": "reported",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
+          "asOf": "2027학년도",
+          "status": "confirmed",
           "source": {
-            "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조)",
-            "url": null
+            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+            "url": "https://satp.goe.go.kr/main.do"
           },
           "nullReason": null
         },
@@ -629,7 +630,7 @@
       "name": "풍덕고등학교",
       "values": {
         "type": {
-          "value": "일반고등학교",
+          "value": "일반고",
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -721,12 +722,12 @@
           "nullReason": null
         },
         "admission": {
-          "value": "평준화 추첨(구역설정학군, 선복수지원-후추첨)",
-          "asOf": "2027학년도 입학",
-          "status": "reported",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
+          "asOf": "2027학년도",
+          "status": "confirmed",
           "source": {
-            "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조)",
-            "url": null
+            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+            "url": "https://satp.goe.go.kr/main.do"
           },
           "nullReason": null
         },
@@ -851,7 +852,7 @@
       "name": "수지고등학교",
       "values": {
         "type": {
-          "value": "일반고등학교",
+          "value": "일반고",
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -943,12 +944,12 @@
           "nullReason": null
         },
         "admission": {
-          "value": "평준화 추첨(구역설정학군, 선복수지원-후추첨)",
-          "asOf": "2027학년도 입학",
-          "status": "reported",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
+          "asOf": "2027학년도",
+          "status": "confirmed",
           "source": {
-            "name": "편제표 요약(학교 배부 자료 AI 전사, 사용자 대조)",
-            "url": null
+            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+            "url": "https://satp.goe.go.kr/main.do"
           },
           "nullReason": null
         },
@@ -1073,7 +1074,7 @@
       "name": "상현고등학교",
       "values": {
         "type": {
-          "value": "일반고등학교",
+          "value": "일반고",
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -1165,7 +1166,7 @@
           "nullReason": null
         },
         "admission": {
-          "value": "용인학군 평준화(일반고, 구역 내 배정)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -1291,7 +1292,7 @@
       "name": "서원고등학교",
       "values": {
         "type": {
-          "value": "일반고등학교",
+          "value": "일반고",
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -1383,7 +1384,7 @@
           "nullReason": null
         },
         "admission": {
-          "value": "용인학군 평준화(일반고, 구역 내 배정)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -1509,7 +1510,7 @@
       "name": "신봉고등학교",
       "values": {
         "type": {
-          "value": "일반고등학교",
+          "value": "일반고",
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -1601,7 +1602,7 @@
           "nullReason": null
         },
         "admission": {
-          "value": "용인학군 평준화(일반고, 구역 내 배정)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -1727,7 +1728,7 @@
       "name": "죽전고등학교",
       "values": {
         "type": {
-          "value": "일반고등학교",
+          "value": "일반고",
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -1819,7 +1820,7 @@
           "nullReason": null
         },
         "admission": {
-          "value": "용인학군 평준화(일반고, 구역 내 배정)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -1945,7 +1946,7 @@
       "name": "대지고등학교",
       "values": {
         "type": {
-          "value": "일반고등학교",
+          "value": "일반고",
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -2037,7 +2038,7 @@
           "nullReason": null
         },
         "admission": {
-          "value": "용인학군 평준화(일반고, 구역 내 배정)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -2163,7 +2164,7 @@
       "name": "현암고등학교",
       "values": {
         "type": {
-          "value": "일반고등학교",
+          "value": "일반고",
           "asOf": "2026",
           "status": "confirmed",
           "source": {
@@ -2255,7 +2256,7 @@
           "nullReason": null
         },
         "admission": {
-          "value": "용인학군 평준화(일반고, 구역 내 배정)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -2470,7 +2471,7 @@
           "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
-          "value": "용인학군 평준화 일반고(구역 내 배정)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -2652,7 +2653,7 @@
           "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
-          "value": "용인학군 평준화 일반고(구역 내 배정)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -2834,7 +2835,7 @@
           "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
-          "value": "용인학군 평준화 일반고(구역 내 배정)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -3016,7 +3017,7 @@
           "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
-          "value": "용인학군 평준화 일반고(구역 내 배정)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -3198,7 +3199,7 @@
           "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
-          "value": "용인학군 평준화 일반고(구역 내 배정)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -3380,7 +3381,7 @@
           "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
-          "value": "용인학군 평준화 일반고(구역 내 배정)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -3562,7 +3563,7 @@
           "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
-          "value": "용인학군 평준화 일반고(구역 내 배정)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -3744,7 +3745,7 @@
           "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
-          "value": "용인학군 평준화 일반고(구역 내 배정)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -3929,7 +3930,7 @@
           "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
-          "value": "용인학군 평준화 일반고(구역 내 배정)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -4111,7 +4112,7 @@
           "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
-          "value": "용인학군 평준화 일반고(구역 내 배정)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -4293,7 +4294,7 @@
           "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
-          "value": "용인학군 평준화 일반고(구역 내 배정)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -4475,7 +4476,7 @@
           "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
-          "value": "용인학군 평준화 일반고(구역 내 배정)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -4657,7 +4658,7 @@
           "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
-          "value": "용인학군 평준화 일반고(구역 내 배정)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -4839,7 +4840,7 @@
           "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
-          "value": "용인학군 평준화 일반고(구역 내 배정)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -5021,7 +5022,7 @@
           "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
-          "value": "용인학군 평준화 일반고(구역 내 배정)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -5206,7 +5207,7 @@
           "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
-          "value": "용인학군 평준화 일반고(구역 내 배정)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -5388,7 +5389,7 @@
           "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
-          "value": "용인학군 평준화 일반고(구역 내 배정)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -5577,7 +5578,7 @@
           "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
-          "value": "용인학군 평준화 일반고(구역 내 배정)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 구역 내 배정)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -5759,12 +5760,12 @@
           "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
-          "value": "용인학군 평준화 일반고(한시적으로 학군내 100% 배정, 구역내배정 없음)",
+          "value": "용인학군 평준화 일반고(선복수지원 후추첨, 학군내 100% 배정·구역내배정 없음, 한시적)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 2027학년도 경기도 고교 평준화 학군 학생 배정 방안(2026.8) PDF 13·52쪽",
-            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
+            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
+            "url": "https://satp.goe.go.kr/main.do"
           },
           "nullReason": null
         },
@@ -5941,18 +5942,24 @@
           "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
-          "value": null,
-          "asOf": null,
-          "status": null,
-          "source": null,
-          "nullReason": "평준화 비적용 학교(자율형 공립·사립)라 배정 방식이 달라 학교별 전형요강 확인 필요"
+          "value": "평준화 비적용 자율형 공립고(특수지): 용인학군 평준화 배정이 아니라 학교별 입학전형(비평준화 일반고와 같은 방식)",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 10쪽·52쪽·78쪽 주('백암고: 평준화 비적용 자율형 공립고(특수지)'), 신입생 전형요강(공지 2026.8.19) PDF 24쪽('용인지역의 비적용 학교(백암고등학교)는 … 학교별로 입학전형을 실시')",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
+          },
+          "nullReason": null
         },
         "zone": {
-          "value": null,
-          "asOf": null,
-          "status": null,
-          "source": null,
-          "nullReason": "평준화 구역 밖 학교"
+          "value": "평준화 구역 밖(용인학군 평준화 비적용 학교)",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 10쪽·52쪽·78쪽 주('백암고: 평준화 비적용 자율형 공립고(특수지)'), 신입생 전형요강(공지 2026.8.19) PDF 24쪽('용인지역의 비적용 학교(백암고등학교)는 … 학교별로 입학전형을 실시')",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
+          },
+          "nullReason": null
         },
         "curriculum": {
           "value": null,
@@ -6028,12 +6035,12 @@
       "name": "용인한국외국어대학교부설고등학교",
       "values": {
         "type": {
-          "value": "자율고",
+          "value": "자율형 사립고",
           "asOf": "2026-04",
           "status": "confirmed",
           "source": {
-            "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
-            "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
+            "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청, 고등학교구분 자율고) 및 경기도교육청 학생 배정 방안(2026.8) PDF 52쪽 주 '용인한국외국어대부설고: 자율형 사립고'",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
           "nullReason": null
         },
@@ -6117,18 +6124,24 @@
           "nullReason": "학교알리미 수치는 수지구 10개교만 수집"
         },
         "admission": {
-          "value": null,
-          "asOf": null,
-          "status": null,
-          "source": null,
-          "nullReason": "자율형 사립고 후기 전형(자기주도학습전형)이며 학교별 전형요강 확인 필요"
+          "value": "자율형 사립고: 평준화 배정이 아니라 후기 자기주도학습전형(외고·국제고·자사고 전형)으로 학교별 선발",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽 주('용인한국외국어대부설고: 자율형 사립고') 및 같은 문서 PDF 4쪽(외고·국제고·자사고 지원자는 1지망을 해당 학교로 하여 평준화 일반고에 동시 지원)",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
+          },
+          "nullReason": null
         },
         "zone": {
-          "value": null,
-          "asOf": null,
-          "status": null,
-          "source": null,
-          "nullReason": "평준화 구역 밖 학교"
+          "value": "평준화 구역 밖(용인학군 소재 자율형 사립고)",
+          "asOf": "2027학년도",
+          "status": "confirmed",
+          "source": {
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽 주('용인한국외국어대부설고: 자율형 사립고') 및 같은 문서 PDF 4쪽(외고·국제고·자사고 지원자는 1지망을 해당 학교로 하여 평준화 일반고에 동시 지원)",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
+          },
+          "nullReason": null
         },
         "curriculum": {
           "value": null,
