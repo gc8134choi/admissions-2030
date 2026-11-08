@@ -200,6 +200,7 @@ const area7 = (a) => (AREA7.includes(a) && a !== "기타" ? a : "기타");
 const TERMS = ["1-1", "1-2", "2-1", "2-2", "3-1", "3-2"];
 
 async function curriculumView(el, query, node) {
+  const navSeq = window.__navSeq; // 늦은 주소 이동(routeByHl) 뒤에 옛 화면이 주소를 되돌려 쓰지 않게(함수 맨 앞에서 잡는다)
   const [schools, summary, facets] = await Promise.all([load("schools"), load("summary"), load("facets")]);
   const known = (id) => schools.some((x) => x.id === id);
   let sel = query.has("s") ? query.get("s").split(",").filter(known) : schools.map((x) => x.id);
@@ -226,6 +227,7 @@ async function curriculumView(el, query, node) {
   if (query.get("f")) for (const part of query.get("f").split(";")) { const [k, v] = part.split(":"); if (FS[k] && v) FS[k] = v.split("|").filter(Boolean); }
   const fsParam = () => Object.entries(FS).filter(([, v]) => v.length).map(([k, v]) => `${k}:${v.join("|")}`).join(";");
   const syncUrl = () => {
+    if (navSeq !== window.__navSeq) return;
     const q = new URLSearchParams();
     if (lv === "high" && ["hs", "compare", "map"].includes(tab)) { q.set("v", "schools"); q.set("lv", "high"); if (tab === "compare") q.set("show", "subj"); else if (tab === "map") q.set("show", "map"); } // 고교 학교 보기 한 화면(비교표|과목|지도)
     else q.set("v", tab);
@@ -622,8 +624,8 @@ async function routeByHl(id, query) {
     if (id === "select/curriculum" && query.get("v") === "schools" && query.get("lv") === "high" && !query.get("show") && !query.get("in") && !query.get("col")) { // 비교 표의 학교 줄(in=tr·col)을 가리키는 주소는 그대로 둔다
       const [pol, ht] = await Promise.all([load("policy"), load("hs-types")]);
       const TY = new Set(["hs-types", "high-school-assignment", "hs-choice-opinion", "gg-hs-entry"]);
-      const titles = [...pol.filter((r) => TY.has(r.topic)).map((r) => r.title), ...ht.types.flatMap((t) => [t.name, `${t.name} (고교 유형)`]), ...(ht.calendar || []).map((c) => c.what), "선발 방식", "좋은 점", "살펴볼 점", "전형 시기", "입학 전형"];
-      if (hit(titles)) { const n = new URLSearchParams(query); n.set("v", "types"); n.delete("lv"); return toHash(id, n); }
+      const titles = [...pol.filter((r) => TY.has(r.topic)).map((r) => r.title), ...ht.types.flatMap((t) => [t.name, `${t.name} (고교 유형)`]), ...(ht.calendar || []).map((c) => c.what), ...(ht.procedure || []).flatMap((x) => [x.title, `원서 절차 · ${x.title}`]), ...(ht.documents || []).flatMap((x) => [x.item, `준비 서류 · ${x.item}`]), ...ht.types.map((t) => `${t.name} · 학비·비용`), "경기 고입 달력", "선발 방식", "좋은 점", "살펴볼 점", "전형 시기", "입학 전형"];
+      if (hit(titles) || ["비용", "시기", "교육과정", "입시 특징"].some((w) => k(w) === kh)) { const n = new URLSearchParams(query); n.set("v", "types"); n.delete("lv"); return toHash(id, n); }
       if (hit(pol.filter((r) => r.topic === "admission-structure" || ["cur-29", "cur-30"].includes(r.id)).map((r) => r.title))) { const n = new URLSearchParams({ t: "types", hl }); return toHash("admission/system", n); }
     }
     if (id === "admission/system" && query.get("t") !== "types") {
@@ -635,11 +637,12 @@ async function routeByHl(id, query) {
 }
 let renderSeq = 0;
 function render() {
+  window.__navSeq = (window.__navSeq || 0) + 1;
   const [path, qs] = decodeURIComponent(location.hash.slice(1)).split("?");
   const query = new URLSearchParams(qs || "");
   let id = path || "home";
   if (REDIRECT[id]) { location.replace("#" + REDIRECT[id] + (qs ? (REDIRECT[id].includes("?") ? "&" : "?") + qs : "")); return; } // 옛 주소 → 가까운 화면
-  if (query.get("hl") && (id === "select/curriculum" || id === "admission/system")) { const rw0 = id === "select/curriculum" ? rewriteHash(id, query) : null, q1 = rw0 ? new URLSearchParams(rw0.split("?")[1]) : query, id1 = rw0 ? rw0.split("?")[0] : id; routeByHl(id1, q1).then((h) => { if (h && location.hash.slice(1, 40).startsWith(id.slice(0, 10))) location.replace("#" + h); }); }
+  if (query.get("hl") && (id === "select/curriculum" || id === "admission/system")) { const rw0 = id === "select/curriculum" ? rewriteHash(id, query) : null, q1 = rw0 ? new URLSearchParams(rw0.split("?")[1]) : query, id1 = rw0 ? rw0.split("?")[0] : id; routeByHl(id1, q1).then((h) => { if (h && location.hash.slice(1, 40).startsWith(id.slice(0, 10))) { window.__navSeq++; /* hashchange가 오기 전에 옛 화면이 주소를 되돌려 쓰지 못하게 */ location.replace("#" + h); } }); }
   { const rw = rewriteHash(id, query); if (rw) { location.replace("#" + rw); return; } } // 옛 주소의 쿼리 바꾸기(화면을 합치거나 나눈 뒤에도 옛 링크가 살아 있게)
   if (id === "admission/system" && query.get("t") === "log") { location.replace("#changelog"); return; } // 옛 주소: 바뀐 소식은 자료·소식 한 곳
   const n = byId.get(id) || byId.get("home");

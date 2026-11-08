@@ -95,7 +95,7 @@ export function registerHome(views, { esc, load, store, profiles }) {
     const splitTitle = (t) => { const m = /^(.*?)\s*[(（]([^()（）]*)[)）]\s*(.*)$/.exec(t); return m && m[1] ? { main: (m[1] + " " + m[3]).trim(), paren: m[2] } : { main: t, paren: "" }; }; // 제목 속 괄호는 보조 줄로 내린다
     const md = (d) => `${two(d.getMonth() + 1)}.${two(d.getDate())}(${WD[d.getDay()]})`;
     const fmtShort = (sp, t) => (sp.month ? `${sp.start.getFullYear()}.${two(sp.start.getMonth() + 1)}` : sp.end > sp.start ? `${dayText(sp.start, t, false)}~${sp.end.getFullYear() !== sp.start.getFullYear() ? dayText(sp.end, t, true) : md(sp.end)}` : dayText(sp.start, t, false)); // 올해 날짜는 연도 없이(11.12(목)~11.13(금)), 같은 해 끝 날짜는 연도를 한 번만
-    const dateRow = (x) => { const sp = splitTitle(x.label || x.r.title), sub = (/^(추정|보도|미정|확정|잠정)$/.test(sp.paren || "") ? "" : sp.paren) || (subOnce(x) ? x.r.title : ""), live = x.sp.start <= t; return `<li class="h2-ev"><span class="h2-d num">${esc(fmtShort(x.sp, t)).replace(/~/g, "~<wbr>")}${x.tent && x.sp.start > t ? " 예정" : ""}${live ? '<small class="live">진행 중</small>' : ""}</span><div class="h2-b no-term"><b>${esc(sp.main)}</b>${sub ? `<small title="${esc(sub)}">${esc(sub)}</small>` : ""}</div></li>`; };
+    const dateRow = (x) => { const sp = splitTitle(x.label || x.r.title), sub = (/^(추정|보도|미정|확정|잠정)$/.test(sp.paren || "") ? "" : sp.paren) || (subOnce(x) ? x.r.title : ""), live = x.sp.start <= t; return `<li class="h2-ev"><span class="h2-d num">${esc(fmtShort(x.sp, t)).replace(/~/g, "~<wbr>")}${x.tent && x.sp.start > t ? " 예정" : ""}${live ? '<small class="live">진행 중</small>' : x.dd ? `<small class="live">${esc(x.dd)}</small>` : ""}</span><div class="h2-b no-term"><b>${esc(sp.main)}</b>${sub ? `<small title="${esc(sub)}">${esc(sub)}</small>` : ""}</div></li>`; };
     const evRow = (x, big) => { const sp = splitTitle(x.label || x.r.title), sub = (/^(추정|보도|미정|확정|잠정)$/.test(sp.paren || "") ? "" : sp.paren) || (subOnce(x) ? x.r.title : ""); return `<li class="h2-ev${big ? " first" : ""}"><span class="h2-d num${x.sp.start <= t ? " live" : ""}">${dLabel(x.sp, t)}</span><div class="h2-b no-term"><b>${esc(sp.main)}</b>${sub ? `<small title="${esc(sub)}">${esc(sub)}</small>` : ""}<span class="num">${esc(x.date)}${x.tent && x.sp.start > t ? " 예정" : ""}</span></div></li>`; };
     const stoneCard = (m) => { const n = dayN(m.date, t); return `<li class="ms h2-ms" data-ms="${esc("life:" + m.id)}" data-kind="${m.kind}"><div class="ms-t"><span class="ms-k">${esc(m.label)}</span>
         <b class="ms-n num">${n === 0 ? "오늘" : `D-${n.toLocaleString()}`}</b>
@@ -121,7 +121,7 @@ export function registerHome(views, { esc, load, store, profiles }) {
       // 수능 날짜는 고교(왼쪽) 열 목록에 날짜 줄로 넣는다
       if (C.id === "A" && L.csat?.date && DRE.test(L.csat.date)) {
         const row = P.get(L.csat.policyRowId || "sch-12") || P.get("sch-07"), sp0 = span(L.csat.date);
-        if (row && sp0.end >= t && !rest.some((x) => x.r.id === row.id)) rest = [...rest, { r: row, sp: sp0, label: "", title: `${L.examYear}학년도 수능`, date: fmtShort(sp0, t), tent: L.csat.status !== "confirmed", start: L.csat.date }];
+        if (row && sp0.end >= t && !rest.some((x) => x.r.id === row.id)) rest = [...rest, { r: row, sp: sp0, label: "", title: `${L.examYear}학년도 수능`, date: fmtShort(sp0, t), tent: L.csat.status !== "confirmed", start: L.csat.date, dd: `D-${dayN(L.csat.date, t).toLocaleString()}` }];
       }
       const intro = C.intro.map((id) => MENU.get(id)).filter(Boolean).map((it) => `<li><a href="#${esc(it.id)}"><b>${esc(it.title)}</b><span>${esc(it.desc || "")}</span></a></li>`).join("");
       const nm = esc(C.side); // 열 머리글은 학교급(사람 이름은 화면에 쓰지 않는다, 사용자 결정 2026-11-08)
@@ -141,7 +141,14 @@ export function registerHome(views, { esc, load, store, profiles }) {
     if (matchMedia("(max-width:899px)").matches) el.querySelectorAll(".hm2-intro").forEach((d) => d.removeAttribute("open")); // 모바일 홈 높이: 소개는 눌러서 연다
     { // 검색 결과 등에서 "#home?open=soonp"(곧 있을 일)로 오면 그 자리로 간다
       const want = new URLSearchParams(location.hash.split("?")[1] || "").get("open");
-      const pn = want && /^[a-z]+$/.test(want) ? el.querySelector(`.${want}`) : null;
+      const hq = new URLSearchParams(decodeURIComponent(location.hash.slice(1)).split("?")[1] || ""), hmEl = el.querySelector(".hm2"), nk = (x) => String(x || "").replace(/ⓘ|·/g, "").replace(/\s+/g, "").toLowerCase();
+      { // 좁은 폭에서는 한 열만 보인다: ?tab=A|B 로 열을 고르고, ?hl= 글이 다른 열에 있으면 그 열 탭으로 바꾼 뒤 강조한다(숨은 열의 줄은 강조가 안 보인다)
+        const setTab = (c) => { hmEl.dataset.show = c; hmEl.querySelectorAll("[data-tab]").forEach((x) => x.setAttribute("aria-selected", String(x.dataset.tab === c))); };
+        const tb = hq.get("tab"), hl = hq.get("hl");
+        if (tb === "A" || tb === "B") setTab(tb);
+        else if (hl && nk(hl).length >= 2) { const k = nk(hl).slice(0, 16), has = (c) => [...el.querySelectorAll(`.hm2-col[data-col=${c}] li, .hm2-col[data-col=${c}] summary, .hm2-col[data-col=${c}] b`)].some((n) => nk(n.textContent).includes(k)); if (!has(hmEl.dataset.show)) for (const c of ["A", "B"]) if (c !== hmEl.dataset.show && has(c)) { setTab(c); break; } }
+      }
+      const pn = want && /^[a-z]+$/.test(want) ? [...el.querySelectorAll(`.${want}`)].find((n) => n.offsetParent !== null) || el.querySelector(`.${want}`) : null;
       if (pn) setTimeout(() => pn.scrollIntoView({ block: "start" }), 60);
     }
     // 졸업·입학 사진: 이 기기에만 저장
