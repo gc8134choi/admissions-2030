@@ -32,7 +32,7 @@ export function register(views, { $, esc, load, store }) {
   const curProfile = () => profileOf(loadProfile(store));
   const loadPolicy = async () => filterByProfile(await load("policy"), curProfile().id).map(plainRow); // 내부 사정 문구는 사용자 말로(plain.js)
   const notice = () => noticeFor(curProfile());
-  const tent = (r) => ["reported", "estimated", "unknown"].includes(r?.status); // 확정이 아닌 날짜는 칩 대신 "예정"이라는 일반 낱말로만(2026-11-08 출처·상태 표시 삭제 결정)
+  const tent = (r) => ["reported", "estimated", "unknown", "material"].includes(r?.status); // 확정이 아닌 날짜는 칩 대신 "예정"이라는 일반 낱말로만(2026-11-08 출처·상태 표시 삭제 결정)
   const badgeMain = () => ""; // 상태 칩(보도·추정·미정·확인 중)은 화면에 내지 않는다. 데이터의 status·출처는 그대로 둔다.
   const badgeNote = () => ""; // 근거·메모 버튼도 내지 않는다
   const badge = (r) => badgeMain(r) + badgeNote(r);
@@ -200,7 +200,7 @@ const bodyHtml = (t, esc2 = esc) => {
     const rows = all.filter((r) => r.topic === ({ univ: "exam-schedule", life: "life-schedule" }[tab] || "hs-schedule") || (tab === "hs" && r.topic === "gg-hs-entry" && r.events) || (r.topic === "profile-2033" && (tab === "hs" ? /고입/.test(r.title) : tab === "univ" && r.events)));
     const chips = '<div id="aud"></div>'; // 칩 UI·저장(portal.audience)은 home.js와 공유
     el.innerHTML = `${tabs([["hs", "#schedule?t=hs", "고교 입학"], ["univ", "#schedule?t=univ", "대학 입시"], ["life", "#schedule?t=life", "졸업·입학"], ["road", "#schedule?t=road", "학년별 큰 그림"]], tab)}${notice()}
-      <p class="muted">${{ univ: "수능·대교협 일정이에요. 2030학년도분은 대부분 추정이에요.", life: "졸업·배정·입학 일정이에요. 추정은 (추정)으로 표시해요. 겨울방학·졸업식·신입생 예비소집 날짜는 학교마다 달라서 학교 공지로 확인해 주세요." }[tab] || "2027학년도 경기·용인 고입 기준이에요. 연도는 2027학년도 고입이 2026년 하반기에 진행되는 것을 기준으로 붙였어요."}</p>${tab === "hs" ? emptyLine(esc, { why: "학교별 입학설명회 일정은 학교마다 달라 아직 모으지 못했어요.", next: { label: "학교 홈페이지 공지에서 확인(학교 비교)", url: "#select/curriculum?v=hs" } }) : ""}${chips}<div id="tl"></div>`;
+      <p class="muted">${{ univ: "수능·대교협 일정이에요. 2030학년도분은 대부분 예정 날짜예요.", life: "졸업·배정·입학 일정이에요. 아직 확정 전인 날짜는 날짜 뒤에 예정이라고 붙여요. 겨울방학·졸업식·신입생 예비소집 날짜는 학교마다 달라서 학교 공지로 확인해 주세요." }[tab] || "2027학년도 경기·용인 고입 기준이에요. 연도는 2027학년도 고입이 2026년 하반기에 진행되는 것을 기준으로 붙였어요."}</p>${tab === "hs" ? emptyLine(esc, { why: "학교별 입학설명회 일정은 학교마다 달라 아직 모으지 못했어요.", next: { label: "학교 홈페이지 공지에서 확인(학교 비교)", url: "#select/curriculum?v=hs" } }) : ""}${chips}<div id="tl"></div>`;
     let sel = loadAudience(store);
     const SK = "portal.schedule.stage"; // 단계 필터(브라우저에만 저장, 바로가기와 같은 규칙: portal.<화면>.stage)
     const fsv = store.get(SK, null); let fs = STAGES.includes(fsv) ? fsv : "";

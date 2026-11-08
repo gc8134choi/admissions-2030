@@ -46,7 +46,7 @@ const COLS = [
   { id: "B", side: "중학교", stage: "중입", stones: /졸업|입학식/, intro: ["select/curriculum?v=middle", "select/curriculum?v=middle&open=cmp", "select/curriculum?v=middle&open=guide", "select/curriculum?v=map&lv=middle"], all: "#schedule?t=life" },
 ];
 const MENU = new Map(GROUPS.flatMap((g) => g.items.map((it) => [it.id, it])));
-const PSTX = { reported: "보도", estimated: "추정", unknown: "미정" };
+const PSTX = { reported: "보도", estimated: "추정", unknown: "미정", material: "사용자 제공" };
 
 export function registerHome(views, { esc, load, store, profiles }) {
   const today = () => { const d = new Date(); return new Date(d.getFullYear(), d.getMonth(), d.getDate()); };
