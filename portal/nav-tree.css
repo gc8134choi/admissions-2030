@@ -230,3 +230,13 @@ button.term{padding-inline:5px!important;margin-inline:-5px!important}
 /* 고교 종류: 접이식 제목 줄이 길어도 가로로 넘치지 않게(글·ⓘ·작은 설명·개수를 한 줄 흐름으로) */
 .ty-fold>summary h2{display:block;min-width:0;overflow-wrap:anywhere}
 .ty-fold>summary h2 .cnt{margin-left:8px}
+/* 메뉴가 화면 높이보다 길면 위 칸(검색)만 붙여 두고 나머지는 한 덩어리로 스크롤한다(아래 칸이 자리를 차지해 소제목 아래 항목이 잘려 보이던 문제) */
+@media (min-width:900px){
+  .sidenav{overflow-y:auto;overflow-x:hidden;scrollbar-width:thin}
+  .sidenav .sd-top{position:sticky;top:0;z-index:3}
+  .sidenav .sd-tree{flex:none;overflow:visible}
+}
+
+
+/* 본문이 비어 있을 때 main의 위 여백이 body 밖으로 합쳐졌다가 내용이 생기면 28px 밀리던 문제(CLS) */
+body{display:flow-root}

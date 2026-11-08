@@ -54,7 +54,7 @@ export async function mapBody(el, { load, esc, focus = null, level = null }) {
   const shown = () => [...places.filter((p) => st.level === "all" || p.level === st.level), ...(st.near ? nearby : [])];
   const chip = (k, v, t, cur) => `<button type="button" class="chip ${v === cur ? "on" : ""}" data-k="${k}" data-v="${v}" aria-pressed="${v === cur}">${t}</button>`;
 
-  el.innerHTML = `<div class="ed pl-wrap"><div class="chipbar"><span class="flabel">보기</span><div class="chips" id="pl-view"></div></div>
+  el.innerHTML = `<div class="ed pl-wrap"><div class="chipbar"><span class="flabel">표시</span><div class="chips" id="pl-view"></div></div>
     <div class="chipbar"><span class="flabel">학교급</span><div class="chips" id="pl-level"></div></div>
     <div class="chipbar"><span class="flabel">주변</span><div class="chips" id="pl-near"></div></div>
     <div id="pl-map" class="pl-map" hidden></div><p id="pl-fail" class="muted small" hidden>지도를 불러오지 못했어요. 목록과 링크로 확인해 주세요.</p>
