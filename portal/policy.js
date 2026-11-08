@@ -68,6 +68,8 @@ const bodyHtml = (t, esc2 = esc) => {
     : '<p class="muted">항목이 없어요.</p>';
   const cnt = (n) => `<span class="cnt">${n}</span>`;
   const tabs = (items, on) => `<div class="ed-tabs">${items.map(([k, h, t]) => `<a href="${h}" class="${k === on ? "on" : ""}">${t}</a>`).join("")}</div>`;
+  // 일정 화면: 위에 학교급 토글(중학교 | 고등학교), 고등학교일 때만 탭 3개(고교 입학·대학 입시·학년별 큰 그림). 중학교 일정은 탭 없이 한 화면.
+  const schTabs = (on) => `<div class="ed-tabs sch-lv" role="group" aria-label="학교급"><a href="#schedule?t=life" class="${on === "life" ? "on" : ""}"${on === "life" ? ' aria-current="page"' : ""}>중학교</a><a href="#schedule?t=hs" class="${on !== "life" ? "on" : ""}"${on !== "life" ? ' aria-current="page"' : ""}>고등학교</a></div>${on === "life" ? "" : tabs([["hs", "#schedule?t=hs", "고교 입학"], ["univ", "#schedule?t=univ", "대학 입시"], ["road", "#schedule?t=road", "학년별 큰 그림"]], on)}`;
   const today = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
   // 날짜 표시: 일 단위 값에는 요일을 코드로 계산해 붙이고, 월 단위 값은 그대로 둔다.
   const DOW = "일월화수목금토";
@@ -137,8 +139,13 @@ const bodyHtml = (t, esc2 = esc) => {
   const SYS_TABS = [["sys", "#admission/system", "제도"], ["types", "#admission/system?t=types", "전형"]];
   views.system = async (el, query) => {
     if (query.get("t") === "types") {
-      el.innerHTML = `<div class="ed">${tabs(SYS_TABS, "types")}</div><div id="tybody"></div>`;
+      el.innerHTML = `<div class="ed">${tabs(SYS_TABS, "types")}</div><div id="tybody"></div><div id="strbody"></div>`;
       await typesBody(el.querySelector("#tybody"), { load, esc });
+      { // 대입 전형 구조(전형 유형·시행계획·지원 횟수·모집 규모·수능최저 …)는 전형 화면에 둔다(수능과 내신에서 옮김)
+        const strRows = (await loadPolicy()).filter((r) => r.topic === "admission-structure" || CUR_GROUP[r.id] === "admission-structure");
+        const host = el.querySelector("#strbody");
+        if (strRows.length) { host.innerHTML = `<div class="ed"><h2>대입 전형 구조 ${cnt(strRows.length)}</h2>${cards(strRows, { meta: (r) => [r.examYear && `대입 ${r.examYear}학년도`, r.entryYear && `입학 ${r.entryYear}`].filter(Boolean).join(" · ") })}</div>`; densify(host, { open: [], keep: 5 }); }
+      }
       return;
     }
     const rows = (await loadPolicy()).filter((r) => r.topic.startsWith("admission") || r.topic === "change-log" || CUR_SYS.has(r.id) || ACD_SYS.has(r.id) || r.topic === "profile-2033");
@@ -147,7 +154,7 @@ const bodyHtml = (t, esc2 = esc) => {
     // 한 줄 안내(헤어라인 위아래). 나머지 안내는 접어 둔다.
     el.innerHTML = `<div class="ed"><div class="ed-top"><b>2027.3 공표 전까지는 확정이 아니에요.</b><details><summary>자세히</summary>${banner(rows)}${notice()}${log || curProfile().id !== "A" ? "" : `<p>${curProfile().entryYear}학년도 입학생은 2028 개편안의 직접 대상(2025 입학생)이 아니에요. 2030학년도 제도는 2027.3 공표 내용에 따라 바뀔 수 있어요.</p>`}</details></div>${tabs(SYS_TABS, log ? "log" : "sys")}
       ${log ? "" : await rulesSection()}${statusSelect(body)}<div id="ptbl"></div></div>`;
-    const TOPIC = { "admission-system": "2028학년도 개편안과 2030학년도 적용", "admission-outlook": "2030학년도 대상 추가 동향", "admission-structure": "대입 전형 구조", "cur-select": "수능 출제범위(참고)", academy: "학원 설명 자료", "profile-2033": "2033학년도 대입 전망(추정)" };
+    const TOPIC = { "admission-system": "2028학년도 개편안과 2030학년도 적용", "admission-outlook": "2030학년도 대상 추가 동향", "cur-select": "수능 출제범위(참고)", academy: "학원 설명 자료", "profile-2033": "2033학년도 대입 전망(추정)" };
     const NOTE = { "cur-select": '<p class="ed-src">서울교육청 자료라서 경기 적용은 확인이 필요해요. 수능 출제범위는 추정이고, 2030학년도 확정이 아니에요.</p>' };
     const key = (r) => (ACD_SYS.has(r.id) ? "academy" : CUR_SYS.has(r.id) ? CUR_GROUP[r.id] || "cur-select" : r.topic);
     // 선택과목 조사·대학 권장이수과목은 고교학점제 이해에서 자세히 보고, 여기는 한 줄 요약만 둔다.
@@ -191,7 +198,7 @@ const bodyHtml = (t, esc2 = esc) => {
     const fo0 = store.get("portal.focus", null), foc0 = Array.isArray(fo0) && fo0.length === 1 ? fo0[0] : "";
     const tab = ["hs", "univ", "life", "road"].includes(query.get("t")) ? query.get("t") : ({ 중입: "life", 대입: "univ" }[foc0] || "hs");
     if (tab === "road") {
-      const tb = `<div class="ed">${tabs([["hs", "#schedule?t=hs", "고교 입학"], ["univ", "#schedule?t=univ", "대학 입시"], ["life", "#schedule?t=life", "졸업·입학"], ["road", "#schedule?t=road", "학년별 큰 그림"]], "road")}</div>`;
+      const tb = `<div class="ed">${schTabs("road")}</div>`;
       el.innerHTML = tb + '<div id="rdhost"></div>';
       await roadmapView(el.querySelector("#rdhost"), { load, esc, learner: curProfile(), fmt, badgeMain, notice, store });
       return;
@@ -199,7 +206,7 @@ const bodyHtml = (t, esc2 = esc) => {
     const all = filterByProfile(await load("policy"), curProfile().id, { grade3: true }).map(plainRow); // 현고3 행은 아래 칩(audience)이 걸러 준다
     const rows = all.filter((r) => r.topic === ({ univ: "exam-schedule", life: "life-schedule" }[tab] || "hs-schedule") || (tab === "hs" && r.topic === "gg-hs-entry" && r.events) || (r.topic === "profile-2033" && (tab === "hs" ? /고입/.test(r.title) : tab === "univ" && r.events)));
     const chips = '<div id="aud"></div>'; // 칩 UI·저장(portal.audience)은 home.js와 공유
-    el.innerHTML = `${tabs([["hs", "#schedule?t=hs", "고교 입학"], ["univ", "#schedule?t=univ", "대학 입시"], ["life", "#schedule?t=life", "졸업·입학"], ["road", "#schedule?t=road", "학년별 큰 그림"]], tab)}${notice()}
+    el.innerHTML = `${schTabs(tab)}${notice()}
       <p class="muted">${{ univ: "수능·대교협 일정이에요. 2030학년도분은 대부분 예정 날짜예요.", life: "졸업·배정·입학 일정이에요. 아직 확정 전인 날짜는 날짜 뒤에 예정이라고 붙여요. 겨울방학·졸업식·신입생 예비소집 날짜는 학교마다 달라서 학교 공지로 확인해 주세요." }[tab] || "2027학년도 경기·용인 고입 기준이에요. 2027학년도 고입이 2026년 하반기에 진행돼서 그 해로 연도를 붙였어요."}</p>${tab === "hs" ? emptyLine(esc, { why: "학교별 입학설명회 일정은 학교마다 달라 아직 모으지 못했어요.", next: { label: "학교 홈페이지 공지에서 확인(학교 비교)", url: "#select/curriculum?v=hs" } }) : ""}${chips}<div id="tl"></div>`;
     let sel = loadAudience(store);
     const SK = "portal.schedule.stage"; // 단계 필터(브라우저에만 저장, 바로가기와 같은 규칙: portal.<화면>.stage)
@@ -214,6 +221,7 @@ const bodyHtml = (t, esc2 = esc) => {
     const sync = () => { try { history.replaceState(null, "", `#schedule?t=${tab}${fs ? "&st=" + encodeURIComponent(fs) : ""}${wk ? "&wk=1" : ""}${seoul ? "&seoul=1" : ""}`); } catch {} };
     const draw = () => {
       sync();
+      if (tab === "life") { $("#aud").innerHTML = ""; $("#aud").hidden = true; } else
       $("#aud").innerHTML = audienceChips(sel, esc) + '<span class="muted small"> 선택 없음 = 전체</span>' + stageChips(fs, wk) + (nSeoul ? `<div class="chipbar"><span class="flabel">지역</span><div class="chips"><button type="button" class="chip${seoul ? " on" : ""}" data-seoul aria-pressed="${seoul}">서울 일정도 보기 (${nSeoul})</button></div></div>` : "");
       $("#tl").innerHTML = timeline(rows.filter((r) => (seoul || r.region !== "seoul") && audienceMatch(r.audience, sel) && (!fs || !stageOf(r) || stageOf(r) === fs)), { week: wk });
     };

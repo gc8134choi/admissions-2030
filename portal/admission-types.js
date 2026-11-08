@@ -23,7 +23,8 @@ export async function typesBody(el, { load, esc }) {
   const src = (r) => { const list = r.sources || (r.sourceName ? [{ name: r.sourceName, url: r.sourceUrl }] : []); return `${KIND[r.sourceKind] ? `<span>${KIND[r.sourceKind]}</span> · ` : ""}${list.map((x) => (x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>` : esc(x.name))).join(" · ")}`; };
   const shares = rows.length ? `<h3>전형별 비중</h3><div class="ed-rows">${rows.map((r) => `<article class="ed-row"><div class="ed-st">${tag(r.status)}</div><h3>${esc(r.title)}</h3><p class="ed-b">${esc(r.body)}</p><p class="ed-s">출처 ${src(r)}</p></article>`).join("")}</div>${d.related.note ? `<p class="muted small">${esc(d.related.note)}</p>` : ""}` : "";
   // 와이드: 본문(전형 설명) + 오른쪽 보조(한눈에 표·비중). 좁은 화면에서는 1단으로 쌓인다.
-  el.innerHTML = `<div class="ed"><div class="w-page w-2r"><div class="w-body">${ov}</div><aside class="w-aside"><div class="piece r3">${shares}</div></aside></div></div>`;
+  // 전형별 비중 3행은 같은 화면 아래 "대입 전형 구조"에 모두 있어 여기서는 따로 되풀이하지 않는다
+  el.innerHTML = `<div class="ed">${ov}${d.related.note ? `<p class="muted small">${esc(d.related.note)}</p>` : ""}</div>`;
   const host = el.querySelector("#adt-cmp");
   if (host) cmpTable(host, { esc, title: "전형 한눈에", summary: "전형을 가로로 놓고 견줘요",
     targets: d.terms.map((t) => ({ id: t.id, name: t.name.replace(/\(.*\)/, ""), sub: d.seasons.find((x) => x.id === t.season)?.name || "", href: "#admission/system?t=types", search: t.name })),
