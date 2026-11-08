@@ -6,7 +6,7 @@ export { BOTTOM };
 // q 조건 하나가 맞는지: 값/값 배열/null(없어야 함)/"!값"/"*"(아무 값이나 있어야 함)
 const ok = (cond, got) => (cond === null ? !got : cond === "*" ? !!got : Array.isArray(cond) ? cond.includes(got) : typeof cond === "string" && cond[0] === "!" ? got !== cond.slice(1) : got === cond);
 const mk = (it) => (id, q) => (id === it.r || (it.also || []).includes(id)) && Object.entries(it.q || {}).every(([k, c]) => ok(c, k === "v" ? (q.get("v") || "summary") : q.get(k)));
-const wrap = (it) => ({ id: it.id, title: it.title, sub: it.sub, page: it.page, desc: it.desc, keys: it.keys, vals: it.vals, m: mk(it) });
+const wrap = (it) => ({ id: it.id, title: it.title, sub: it.sub, soon: it.soon, page: it.page, desc: it.desc, keys: it.keys, vals: it.vals, m: mk(it) });
 export const TABS = [
   { id: "home", title: HOME.title, groups: [{ key: "", title: "", items: [wrap(HOME)] }] },
   ...GROUPS.map((g) => ({ id: g.id, title: g.title, leaf: !!g.leaf, foot: !!g.foot, groups: [{ key: "", title: "", items: g.items.map(wrap), soon: g.soon }] })),

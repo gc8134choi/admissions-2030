@@ -624,7 +624,7 @@ function render() {
   const navA = (href, title, on) => `<a href="${href}"${on ? ' aria-current="page"' : ""}>${esc(title)}</a>`;
   const row = (cls, label, links) => `<nav class="subnav${cls}" aria-label="${esc(label)}">${links}</nav>`;
   const sub = ""; // 메뉴 고르기는 좌측 트리 한 곳(화면 안 글자 탭 제거)
-  const soonL = [...(loc.group.soon || []), ...(tab.soon || [])];
+  const soonL = loc.item.soon || []; // "곧 열려요"는 고교 일정 한 곳에만
   const soon = soonL.length ? `<div class="soon"><b>곧 열려요</b>${soonL.map((n) => `<div class="soon-i"><span>${esc(n)}</span>${emptyLine(esc, SOON_WHY[n] || { why: "준비 중이에요. 자료를 모으는 대로 열어요." })}</div>`).join("")}</div>` : "";
   if (n.view === "curriculum" && currentProfile(store).key === "b") { // 프로필 B는 아직 학교가 없다
     $("#main").innerHTML = `${sub}<div id="view"><section class="sec"><div class="empty"><span class="z" aria-hidden="true">0</span><p>${esc(currentProfile(store).name)}의 학교는 아직 없어요.</p><small>고입 이후 학교가 정해지면 과목표가 여기에 들어옵니다.</small><a href="#home">오늘 화면으로 →</a></div></section></div>${soon}`;

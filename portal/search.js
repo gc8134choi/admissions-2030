@@ -36,7 +36,8 @@ export const clip = (t, n) => { t = String(t || ""); if (t.length <= n) return t
 const withHl = (href, t) => (!t || !/^#/.test(href) || /[?&]hl=/.test(href) ? href : href + (href.includes("?") ? "&" : "?") + "hl=" + encodeURIComponent(String(t).replace(/ⓘ/g, "").slice(0, 24))); // 검색에서 가면 그 행을 펴서 강조(hl.js)
 const routeOf = (r) => (r.topic === "gg-hs-entry" && !(r.events && r.events.length) ? "#select/curriculum?v=types"
   : r.topic === "hs-schedule" && r.region === "seoul" ? "#schedule?t=hs&seoul=1" // 서울 행은 일정 화면에서 '서울 보기'를 켜야 보인다
-  : ["cur-08", "cur-29", "cur-30", "sch-03"].includes(r.id) ? "#admission/system" // 수능·전형 구조 참고 행은 대입 제도 화면에 있다
+  : r.topic === "admission-structure" || ["cur-29", "cur-30"].includes(r.id) ? "#admission/system?t=types" // 대입 전형 구조 행은 수시·정시(전형) 화면에 있다
+  : ["cur-08", "sch-03"].includes(r.id) ? "#admission/system" // 수능 참고 행은 대입 제도 화면에 있다
   : /^(opn-0[124]|asg-07)$/.test(r.id) ? "#select/types" : r.id === "acd-04" ? "#select/types" // 진학 비율은 고교 유형의 학원 의견 구역에 있다
   : r.topic === "exam-schedule" && r.examYear && r.examYear !== 2030 ? "#admission/system" // 다른 학년도 참고 행은 대입 제도 화면에 있다
   : ROUTE[r.topic] || (r.topic.startsWith("admission") ? "#admission/system" : "#home"));
