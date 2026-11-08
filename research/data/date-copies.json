@@ -1,0 +1,193 @@
+{
+  "note": "같은 날짜가 여러 데이터에 손 사본으로 있는 항목을 정본(정책 행 본문·events)과 연결한다. tools/lib/date-copies.mjs 가 사본 글의 날짜(월.일)와 when(YYYY-MM-DD)이 연결된 정본에 있는지 검사한다(읽기 전용, tools/check-event-dates.mjs에서 실행). map의 policy는 정본 행 id, allow는 정본에는 없지만 사본에 일부러 적은 날짜(예: 지난 해 사례 인용). skip은 정본이 필요 없는 항목.",
+  "sources": [
+    {
+      "file": "research/data/hs-types-draft.json",
+      "kind": "hs-calendar",
+      "map": {
+        "hc-01": {
+          "policy": [
+            "gg-14"
+          ]
+        },
+        "hc-02": {
+          "policy": [
+            "gg-02",
+            "gg-03",
+            "gg-04"
+          ]
+        },
+        "hc-03": {
+          "policy": [
+            "gg-02",
+            "gg-03",
+            "gg-04"
+          ]
+        },
+        "hc-04": {
+          "policy": [
+            "gg-02",
+            "gg-03",
+            "gg-04"
+          ]
+        },
+        "hc-05": {
+          "policy": [
+            "gg-02",
+            "gg-03",
+            "gg-04"
+          ]
+        },
+        "hc-06": {
+          "policy": [
+            "gg-02",
+            "gg-03",
+            "gg-04"
+          ]
+        },
+        "hc-07": {
+          "policy": [
+            "gg-02",
+            "gg-03",
+            "gg-04"
+          ]
+        },
+        "hc-08": {
+          "policy": [
+            "gg-02",
+            "gg-03",
+            "gg-04"
+          ]
+        },
+        "hc-09": {
+          "policy": [
+            "gg-14"
+          ]
+        },
+        "hc-10": {
+          "policy": [
+            "gg-14"
+          ]
+        },
+        "hc-11": {
+          "policy": [
+            "gg-14"
+          ]
+        },
+        "hc-12": {
+          "policy": [
+            "gg-14"
+          ]
+        }
+      }
+    },
+    {
+      "file": "research/data/timeline-draft.json",
+      "kind": "timeline",
+      "map": {
+        "tl-01": {
+          "policy": [
+            "life-03",
+            "life-04",
+            "life-05",
+            "life-06"
+          ]
+        },
+        "tl-02": {
+          "policy": [
+            "life-07",
+            "life-08"
+          ]
+        },
+        "tl-08": {
+          "policy": [
+            "gg-02",
+            "b33-04"
+          ]
+        },
+        "tl-10": {
+          "policy": [
+            "b33-03",
+            "sch-05"
+          ]
+        },
+        "tl-11": {
+          "policy": [
+            "str-02"
+          ]
+        },
+        "tl-14": {
+          "policy": [
+            "b33-01"
+          ]
+        }
+      }
+    },
+    {
+      "file": "research/data/roadmap-draft.json",
+      "kind": "roadmap",
+      "map": {
+        "rm-a-12": {
+          "policy": [
+            "sch-11",
+            "sch-04"
+          ]
+        },
+        "rm-a-14": {
+          "policy": [
+            "sch-13",
+            "sch-10"
+          ]
+        }
+      }
+    },
+    {
+      "file": "research/data/middle-guide-draft.json",
+      "kind": "middle-guide",
+      "map": {
+        "mg-1#0": {
+          "policy": [
+            "life-03"
+          ]
+        },
+        "mg-1#1": {
+          "policy": [
+            "life-04"
+          ]
+        },
+        "mg-1#2": {
+          "policy": [
+            "life-05"
+          ]
+        },
+        "mg-1#3": {
+          "policy": [
+            "life-06"
+          ]
+        },
+        "mg-1#4": {
+          "policy": [
+            "life-07"
+          ]
+        },
+        "mg-1#5": {
+          "policy": [
+            "life-08"
+          ]
+        },
+        "mg-2#0": {
+          "skip": true,
+          "reason": "학교 공지 게시일(공지 원문이 근거), 정책 행 정본 없음"
+        },
+        "mg-2#1": {
+          "skip": true,
+          "reason": "학교 공지 게시일(공지 원문이 근거), 정책 행 정본 없음"
+        },
+        "mg-3#0": {
+          "skip": true,
+          "reason": "학교 공지 게시일(공지 원문이 근거), 정책 행 정본 없음"
+        }
+      }
+    }
+  ]
+}

@@ -8,3 +8,6 @@
 
 ## 문구-데이터 개수 점검
 화면 문구에 박힌 개수('학교 31곳', '편제표를 모은 N개교', '8개교 게시(명단)' 등)가 데이터와 어긋나지 않는지 `python3 research/tools/check-counts/check_counts.py`로 점검한다(`--selftest`로 규칙이 틀린 문구를 잡는지 확인). 새 데이터를 넣은 뒤와 PR 전에 돌리고, 개수가 데이터에서 오는 문구는 빌더가 세어서 만든다(예: tools/build-hs-compare.mjs의 nullReason). 2026-11-03 기준 238건 점검, 위반 0건.
+
+## 날짜 사본 일관성 검사 (2026-11-08)
+같은 날짜가 hs-types 달력·timeline·roadmap·middle-guide에 손 사본으로 있다. 정본은 정책 행 본문·events이고, `research/data/date-copies.json`이 사본 항목마다 정본 행 id를 연결한다. `node tools/check-event-dates.mjs`(CI 포함)가 ① 사본 글의 날짜(월.일)와 `when`(YYYY-MM-DD)이 연결된 정본에 있는지 ② 날짜가 든 사본 항목이 연결표에 빠지지 않았는지를 본다(읽기 전용). 새 사본 항목을 만들면 date-copies.json에 정본 행 id(또는 skip과 이유)를 함께 적는다. 지난 해 사례처럼 정본에 없는 날짜를 일부러 인용하면 `allow`에 적는다.
