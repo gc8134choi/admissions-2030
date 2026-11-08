@@ -149,3 +149,58 @@ button.term{padding-inline:5px!important;margin-inline:-5px!important}
 
 /* 출처 버튼·상태 칩·확인일 삭제(2026-11-08 사용자 결정): 자료실의 출처·확인일/업데이트 기록/원본 파일 화면만 남긴다. 데이터(source·status·checkedAt)는 그대로. */
 #main:not([data-r="library/sources"]):not([data-r="library/status"]):not([data-r="library/files"]) :is(.pst,.es,.ed-unv,.unv-i,.srcw,.srcf,.srcd,.ed-s0,.ed-note,.pg-srcf,.bf-c){display:none!important}
+
+/* ===== 메뉴 시각 정리(2026-11-08): 같은 항목·구조·이름, 모양만. 종이 바탕(질감 없음)·한 줄 항목·그룹 머리글은 손글씨 한 줄+포인트색 밑줄 ===== */
+.sidenav,.nd-sheet{background:var(--paper)!important;scrollbar-width:thin}
+.sidenav{padding:0 0 0 16px}
+.sd-top .wm{display:inline-flex;gap:.25em;font-size:26px}
+.sd-top{padding:14px 12px 12px 0;gap:10px}
+.sd-tree{padding:4px 12px 12px 0}
+.sd-bot{display:flex;flex-direction:column;gap:4px;padding:8px 12px 12px 0}
+.nt-tg{display:inline-flex;align-items:center;align-self:flex-start;min-height:44px;margin:0;padding:0;border:0;background:none;color:var(--ink);font:600 16px var(--font);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.nt-tg[aria-pressed=true]{color:var(--accent);font-weight:700}
+.nd-th2{margin:0;font:700 16px var(--font);color:var(--ink);opacity:.8}
+.nt ul{margin:0 0 6px;padding:0}
+.nt ul::before,.nt li::before{display:none}
+.nt li a,.nt a{margin-left:0}
+.nt-h{margin:0;padding:16px 4px 6px;font:700 22px/1.2 var(--hand);color:var(--ink);letter-spacing:0;display:block;position:relative}
+.nt-h::after{content:"";display:block;width:34px;margin-top:4px;border-bottom:3px solid var(--accent);border-radius:2px}
+.nt-g.on>.nt-h{color:var(--ink)}
+.nt a{min-height:44px;padding:6px 8px;border-radius:2px;justify-content:center}
+.nt a b{font:700 17px/1.35 var(--font)}
+.nt a small{font:400 16px/1.35 var(--font);color:var(--ink);opacity:.78;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.nt a:hover{background:var(--paper2)}
+.nt a[aria-current=page]{background:none;box-shadow:none}
+.nt a[aria-current=page] b{text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:3px;text-underline-offset:6px}
+.nt .nt-home{margin:0}
+.nt .nt-hl{margin:0;padding:6px 8px;min-height:48px}
+.nt .nt-hl b,.nt .leaf .nt-hl b{font:700 22px/1.2 var(--hand);letter-spacing:0}
+.nt .leaf{margin-top:8px;border-top:0}
+.nt .leaf .nt-hl small{display:none}
+/* 설명 줄: 기본은 현재 그룹만(토글로 전체), 항상 한 줄·말줄임 */
+.sidenav.nt-compact .nt-g:not(.on) a small{display:none}
+.sidenav.nt-compact .nt-g:not(.on) li a{min-height:44px}
+@media (min-width:900px){.sidenav.nt-compact .nt-g:not(.on) a small{display:none}}
+/* 서랍(모바일): 현재 그룹만 펴고 나머지는 머리글 한 줄 */
+.nd-sheet{padding:8px 16px calc(24px + env(safe-area-inset-bottom))}
+.nd-top .wm{display:inline-flex;gap:.25em;font-size:24px}
+.nd-search{margin:4px 0 6px}
+.navdrawer .nt a{min-height:48px}
+.navdrawer .nt a small{display:none}
+.navdrawer .nt .nt-g.open a small{display:block}
+.navdrawer .nt-h{padding:0}
+.navdrawer .nt-gt{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:52px;padding:8px 4px;border:0;background:none;color:var(--ink);font:700 22px/1.2 var(--hand);text-align:left;cursor:pointer}
+.navdrawer .nt-gt::after{content:"▸";font:16px var(--font);color:var(--accent);transition:transform .15s}
+.navdrawer .nt-gt[aria-expanded=true]::after{transform:rotate(90deg)}
+.navdrawer .nt-h::after{display:none}
+.navdrawer .nt-g:not(.open) ul{display:none}
+.navdrawer .nt-g{border-top:1px solid var(--line)}
+.navdrawer .nt-home,.navdrawer .nt-g.leaf{border-top:1px solid var(--line)}
+.navdrawer .nt-gt:focus-visible{outline:3px solid var(--ink);outline-offset:-3px}
+.nd-th{margin:14px 4px 6px;font:700 16px var(--font);color:var(--ink);opacity:.8}
+#themesw2{margin:0 4px 8px}
+.navdrawer .nt a{min-height:44px;padding:4px 8px}
+.navdrawer .nt-gt{min-height:48px;padding:6px 4px}
+.nd-top{min-height:52px}
+.nd-th{margin:8px 4px 4px}
+#themesw2{margin:0 4px 4px}
