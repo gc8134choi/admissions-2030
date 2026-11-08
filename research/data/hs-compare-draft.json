@@ -671,7 +671,8 @@
             "name": "학교알리미 학교정보(2026 공시, GS_CD S090000844)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090000844"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "화면 표기는 교육행정정보시스템(NEIS) 학교기본정보 기준 도로명. 경기도교육청 학생 배정 방안(2026.8) PDF 78쪽(인쇄 79쪽) 소재지 표에는 '용인시 수지구 정평로131번길 5'로 적혀 있어 표기가 다름(같은 학교, 표기 기준 차이)"
         },
         "classes": {
           "value": 38,
@@ -2219,7 +2220,8 @@
             "name": "학교알리미 학교정보(2026 공시, GS_CD S090005415)",
             "url": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?GS_CD=S090005415"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "화면 표기는 교육행정정보시스템(NEIS) 학교기본정보 기준 도로명. 경기도교육청 학생 배정 방안(2026.8) PDF 78쪽(인쇄 79쪽) 소재지 표에는 '용인시 수지구 디지털밸리로 17'로 적혀 있어 표기가 다름(같은 학교, 표기 기준 차이)"
         },
         "classes": {
           "value": 24,
@@ -3359,7 +3361,8 @@
             "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
             "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "화면 표기는 교육행정정보시스템(NEIS) 학교기본정보 기준 도로명. 경기도교육청 학생 배정 방안(2026.8) PDF 78쪽(인쇄 79쪽) 소재지 표에는 '용인시 기흥구 서천대로 125'로 적혀 있어 표기가 다름(같은 학교, 표기 기준 차이)"
         },
         "classes": {
           "value": null,
@@ -4650,7 +4653,8 @@
             "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
             "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "화면 표기는 교육행정정보시스템(NEIS) 학교기본정보 기준 도로명. 경기도교육청 학생 배정 방안(2026.8) PDF 78쪽(인쇄 79쪽) 소재지 표에는 '용인시 처인구 고림로 165'로 적혀 있어 표기가 다름(같은 학교, 표기 기준 차이)"
         },
         "classes": {
           "value": null,
@@ -5205,7 +5209,8 @@
             "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
             "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "화면 표기는 교육행정정보시스템(NEIS) 학교기본정보 기준 도로명. 경기도교육청 학생 배정 방안(2026.8) PDF 78쪽(인쇄 79쪽) 소재지 표에는 '용인시 처인구 고림동 산91-3'로 적혀 있어 표기가 다름(같은 학교, 표기 기준 차이)"
         },
         "classes": {
           "value": null,
@@ -5389,7 +5394,8 @@
             "name": "NEIS 교육정보 개방 포털 학교기본정보 API(교육부·시도교육청)",
             "url": "https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17020190531110010104913&infSeq=2"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "화면 표기는 교육행정정보시스템(NEIS) 학교기본정보 기준 도로명. 경기도교육청 학생 배정 방안(2026.8) PDF 78쪽(인쇄 79쪽) 소재지 표에는 '용인시 처인구 포곡로210번길 26'로 적혀 있어 표기가 다름(같은 학교, 표기 기준 차이)"
         },
         "classes": {
           "value": null,
