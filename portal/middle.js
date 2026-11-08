@@ -129,6 +129,7 @@ export async function middleSchoolsBody(el, { load, esc, show = "table", focus =
   await preloadGlossary(load);
   const place = new Map(pl.places.map((p) => [p.id, p])), curBy = new Map(cur.schools.map((c) => [c.placeId, c]));
   const fileId = (f) => (Array.isArray(files) ? files : files.files || []).find((x) => x.file === f)?.id;
+  const haveVal = new Set(mc.fields.filter((f) => mc.schools.some((x) => x.values?.[f.id]?.value != null)).map((f) => f.id)); // 값이 하나도 없는 줄(통학 등)은 표에서 뺀다
   const st = (el.__ms ||= { show: show === "map" ? "map" : "table", focus });
   el.innerHTML = `<div class="ed ms-wrap"><div class="vtog" id="ms-tog" role="group" aria-label="보기"><span>보기</span><button type="button" data-show="table">비교표</button><button type="button" data-show="map">지도</button></div><div id="ms-body"></div></div>`;
   const body = el.querySelector("#ms-body"), tog = el.querySelector("#ms-tog");
@@ -137,10 +138,10 @@ export async function middleSchoolsBody(el, { load, esc, show = "table", focus =
     tog.querySelectorAll("[data-show]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.show === st.show)));
     sync();
     if (st.show === "map") { body.innerHTML = ""; await (await import("./map.js")).mapBody(body, { load, esc, focus: st.focus, level: "middle" }); return; }
-    body.innerHTML = `<div id="ms-cmp"></div><section class="ms-tb"><h2>학교별 교과서</h2><p class="muted small">학교 공지를 옮겨 적은 표예요. 학교를 눌러 열어 보세요.</p><div id="ms-tbs"></div></section><p class="muted small ms-uni">교복 가격은 2026.9 학교알리미 공시 기준이에요. 2027학년도 신입생 낙찰금액은 <a href="#select/curriculum?v=middle&open=guide">배정·입학 준비</a>에서 볼 수 있어요.</p>`;
+    body.innerHTML = `<div id="ms-cmp"></div><section class="ms-tb"><h2>학교별 교과서</h2><p class="muted small">학교 공지를 옮겨 적은 표예요. 학교를 눌러 열어 보세요.</p><div id="ms-tbs"></div></section><p class="muted small ms-uni">통학 거리·시간은 집 주소에 따라 달라 학교별 값을 두지 않아요(지도에서 확인해 주세요). 교복 가격은 2026.9 학교알리미 공시 기준이에요. 2027학년도 신입생 낙찰금액은 <a href="#select/curriculum?v=middle&open=guide">배정·입학 준비</a>에서 볼 수 있어요.</p>`;
     cmpTable(body.querySelector("#ms-cmp"), { esc, title: "중학교 비교", summary: "중학교를 가로로 놓고 견줘요", stage: "중입",
       targets: mc.schools.map((s) => ({ id: s.placeId, name: s.name.replace(/중학교$/, "중"), sub: [s.values.founding?.value, s.values.coed?.value].filter(Boolean).join("·"), href: `#select/curriculum?v=schools&lv=middle&show=map&p=${encodeURIComponent(s.placeId)}`, search: `${s.name} ${s.values.address?.value || ""}` })),
-      rows: compareRows(mc, esc), select: { key: "portal.mid.compare", param: "m", def: mc.schools.map((s) => s.placeId), defN: mc.schools.length, max: mc.schools.length, min: 2, always: true, addLabel: "중학교 추가·빼기" },
+      rows: compareRows(mc, esc).filter((r) => haveVal.has(r.id)), select: { key: "portal.mid.compare", param: "m", def: mc.schools.map((s) => s.placeId), defN: mc.schools.length, max: mc.schools.length, min: 2, always: true, addLabel: "중학교 추가·빼기" },
       emptyNext: WHERE.schoolinfo, sources: mc.schools.flatMap((sc) => Object.values(sc.values).map((v) => v?.source).filter(Boolean)) });
     const tbs = mc.schools.map((s) => place.get(s.placeId)).filter(Boolean).map((p) => textbookHtml(p, curBy, fileId, esc)).filter(Boolean).join("");
     const noTb = mc.schools.filter((s) => !curBy.has(s.placeId)).length;

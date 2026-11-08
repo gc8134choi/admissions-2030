@@ -93,6 +93,9 @@ export function registerHome(views, { esc, load, store, profiles }) {
 
     let lastSub = ""; const subOnce = (x) => { const show = x.label && x.r.title !== lastSub; lastSub = x.label ? x.r.title : ""; return show; };
     const splitTitle = (t) => { const m = /^(.*?)\s*[(（]([^()（）]*)[)）]\s*(.*)$/.exec(t); return m && m[1] ? { main: (m[1] + " " + m[3]).trim(), paren: m[2] } : { main: t, paren: "" }; }; // 제목 속 괄호는 보조 줄로 내린다
+    const md = (d) => `${two(d.getMonth() + 1)}.${two(d.getDate())}(${WD[d.getDay()]})`;
+    const fmtShort = (sp, t) => (sp.month ? `${sp.start.getFullYear()}.${two(sp.start.getMonth() + 1)}` : sp.end > sp.start ? `${dayText(sp.start, t, false)}~${sp.end.getFullYear() !== sp.start.getFullYear() ? dayText(sp.end, t, true) : md(sp.end)}` : dayText(sp.start, t, false)); // 올해 날짜는 연도 없이(11.12(목)~11.13(금)), 같은 해 끝 날짜는 연도를 한 번만
+    const dateRow = (x) => { const sp = splitTitle(x.label || x.r.title), sub = sp.paren || (subOnce(x) ? x.r.title : ""), live = x.sp.start <= t; return `<li class="h2-ev"><span class="h2-d num">${esc(fmtShort(x.sp, t))}${x.tent && x.sp.start > t ? " 예정" : ""}${live ? '<small class="live">진행 중</small>' : ""}</span><div class="h2-b no-term"><b>${esc(sp.main)}</b>${sub ? `<small title="${esc(sub)}">${esc(sub)}</small>` : ""}</div></li>`; };
     const evRow = (x, big) => { const sp = splitTitle(x.label || x.r.title), sub = sp.paren || (subOnce(x) ? x.r.title : ""); return `<li class="h2-ev${big ? " first" : ""}"><span class="h2-d num${x.sp.start <= t ? " live" : ""}">${dLabel(x.sp, t)}</span><div class="h2-b no-term"><b>${esc(sp.main)}</b>${sub ? `<small title="${esc(sub)}">${esc(sub)}</small>` : ""}<span class="num">${esc(x.date)}${x.tent && x.sp.start > t ? " 예정" : ""}</span></div></li>`; };
     const stoneCard = (m) => { const n = dayN(m.date, t); return `<li class="ms h2-ms" data-ms="${esc("life:" + m.id)}" data-kind="${m.kind}"><div class="ms-t"><span class="ms-k">${esc(m.label)}</span>
         <b class="ms-n num">${n === 0 ? "오늘" : `D-${n.toLocaleString()}`}</b>
@@ -110,25 +113,20 @@ export function registerHome(views, { esc, load, store, profiles }) {
         .map((x) => ({ r: x.r, sp: x.sp, label: x.e.label || "", title: x.r.title + (x.e.label ? ` · ${x.e.label}` : ""), date: fmtRange(x.sp, t, x.e), tent: tentative(x.r), isStone: x.r.topic === "life-schedule" && C.stones.test(x.r.title) && DRE.test(x.e.start) && x.e.start.length === 10 ? x : null, start: x.e.start }));
       // 가장 가까운 졸업·입학 한 건은 D-day 카드(사진 넣기)로
       const sc = evs.find((x) => x.isStone), stone = sc ? { id: sc.r.id, label: sc.r.title, date: sc.start, dateText: fmtRange(sc.sp, t, null), tent: sc.tent, r: sc.r, kind: /졸업/.test(sc.r.title) ? "graduation" : "entrance" } : null;
-      const rest = evs.filter((x) => x !== sc);
-      const soon = rest.slice(0, 2), later = rest.slice(2, 8);
-      // 수능 D-day는 왼쪽 열 '곧 있을 일' 안에 한 줄로
-      let dd = "";
+      let rest = evs.filter((x) => x !== sc).slice(0, 7);
+      // 수능 날짜는 고교(왼쪽) 열 목록에 날짜 줄로 넣는다
       if (C.id === "A" && L.csat?.date && DRE.test(L.csat.date)) {
-        const row = P.get(L.csat.policyRowId || "sch-12") || P.get("sch-07"), n = dayN(L.csat.date.length === 10 ? L.csat.date : L.csat.date + "-15", t), sp0 = span(L.csat.date);
-        const tent = L.csat.status !== "confirmed";
-        dd = `<p class="h2-dd no-term"><span>${L.examYear}학년도 수능</span> <b class="num">D-${n.toLocaleString()}</b> <span class="num">${esc(fmtDate(sp0, t))}${tent ? " 예정" : ""}</span> ${srcOf(row)}</p>`;
+        const row = P.get(L.csat.policyRowId || "sch-12") || P.get("sch-07"), sp0 = span(L.csat.date);
+        if (row && sp0.end >= t && !rest.some((x) => x.r.id === row.id)) rest = [...rest, { r: row, sp: sp0, label: "", title: `${L.examYear}학년도 수능`, date: fmtShort(sp0, t), tent: L.csat.status !== "confirmed", start: L.csat.date }];
       }
       const intro = C.intro.map((id) => MENU.get(id)).filter(Boolean).map((it) => `<li><a href="#${esc(it.id)}"><b>${esc(it.title)}</b><span>${esc(it.desc || "")}</span></a></li>`).join("");
       const nm = esc(C.side); // 열 머리글은 학교급(사람 이름은 화면에 쓰지 않는다, 사용자 결정 2026-11-08)
       return `<div class="hm2-col" data-col="${C.id}">
         <header class="hm2-h"><h2 class="hm2-name">${nm}</h2><p class="hm2-sub no-term">${L.examYear ? `${L.examYear}학년도 대입` : ""}</p></header>
-        <section class="dp hm2-b soonp" aria-label="${nm} 곧 있을 일"><div class="sec-h"><h3>곧 있을 일</h3></div>
+        <section class="dp hm2-b soonp" aria-label="${nm} 다가올 일과 일정"><div class="sec-h"><h3>${C.side} 일정</h3></div>
           ${stone ? `<ul class="mss">${stoneCard(stone)}</ul>` : ""}
-          ${soon.length ? `<ul class="h2-evs">${(lastSub = "", soon.map((x, i) => evRow(x, !stone && i === 0)).join(""))}</ul>` : stone ? "" : `<p class="muted">곧 있을 일정이 아직 없어요.</p>`}
-          ${dd}${stone ? '<p class="hint">사진은 이 기기에만 저장돼요.</p>' : ""}</section>
-        <details class="dp hm2-b hm2-sch" open><summary><h3>${C.side} 일정</h3><a class="h2-all" href="${C.all}">전체 일정 ›</a></summary>
-          ${later.length ? `<ul class="h2-evs">${(lastSub = "", later.map((x) => evRow(x)).join(""))}</ul>` : '<p class="muted">예정된 일정이 아직 없어요.</p>'}</details>
+          ${rest.length ? `<ul class="h2-evs h2-dates">${(lastSub = "", rest.map((x) => dateRow(x)).join(""))}</ul>` : '<p class="muted">예정된 일정이 아직 없어요.</p>'}
+          ${stone ? '<p class="hint">사진은 이 기기에만 저장돼요.</p>' : ""}<p class="h2-more"><a class="lnk" href="${C.all}">전체 일정 ›</a></p></section>
         <details class="dp hm2-b hm2-intro" open><summary><h3>${C.side} 소개</h3></summary><ul class="h2-go">${intro}</ul></details>
       </div>`;
     };

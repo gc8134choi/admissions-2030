@@ -1,7 +1,7 @@
 // 좌측 트리·모바일 서랍·하단 바의 항목 구성과 이름·설명 줄은 이 파일 하나다(IA 검수 evaluation/ia-review.md, 사용자 확정 2026-11-06). 이름·설명만 바꿔도 메뉴가 바뀐다.
 // 항목: id = 이동 주소(해시, 기존 이름 그대로), title = 쉬운 말 이름, desc = 이름 아래 작은 회색 한 줄(어떤 내용이 있는지),
 //       vals = 비교표 계열 항목이 설명 줄에 적은 항목의 값이 학교 절반 이상에 실제로 있어야 함({data, fields}), keys = 설명 줄의 핵심어(설명 줄 안에 있고 화면에도 실제로 있어야 함: tools/check-menu-captions.mjs), r = 화면 경로 id, q = 이 항목으로 볼 조건(값, 값 배열, null=없어야 함, "!값"=그 값이 아니어야 함; v는 비면 summary), also = 같은 항목으로 켜지는 다른 경로.
-export const HOME = { id: "home", title: "스쿨 라이프", desc: "곧 있을 일 · 일정 · 수능 D-day", keys: ["곧 있을","일정","D-","수능"], r: "home"};
+export const HOME = { id: "home", title: "스쿨 라이프", desc: "다가올 졸업과 날짜순 일정", keys: ["졸업","일정"], r: "home"};
 // 최상위는 중학교·고등학교 두 그룹(사용자 결정 2026-11-08). sub = 그 항목부터 시작하는 의미 단위 소제목(시각 구분만, 메뉴 단계는 2단계). foot = 메뉴 맨 아래 작은 글자 링크 묶음(화면 모드 위).
 export const GROUPS = [
   { id: "mid", title: "중학교", items: [
