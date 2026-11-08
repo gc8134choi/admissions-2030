@@ -31,7 +31,7 @@ export async function roadmapView(el, { load, esc, learner, fmt, badgeMain, noti
     const lbl = fmt({ start: x.start, ...(x.end ? { end: x.end } : {}) });
     const tags = x.who.map((t) => `<b class="rd-who${t === "학부모" ? " p" : ""}">${esc(t)}</b>`).join(" · ");
     const src = x.sourceName ? `<p class="ed-s">출처 ${x.sourceUrl ? `<a href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">${esc(x.sourceName)}</a>` : esc(x.sourceName)}</p>` : "";
-    return `<article class="rd-row${past ? " past" : ""}" data-who="${esc(x.who.join(","))}"><div class="rd-d">${lbl.split("~").map((t, i) => `<span>${i ? "~" : ""}${esc(t)}</span>`).join("")}</div><div><p class="rd-w">${stageTag(rdStage(x), esc)}${tags}</p><p class="ed-b">${esc(x.what)}</p><div class="ed-st">${badgeMain(x)}</div>${x.note ? `<div class="ed-note">${esc(x.note)}</div>` : ""}${src}</div></article>`;
+    return `<article class="rd-row${past ? " past" : ""}" data-who="${esc(x.who.join(","))}"><div class="rd-d">${lbl.split("~").map((t, i, arr) => `<span>${i ? "~" : ""}${esc(t)}${i === arr.length - 1 && ["reported", "estimated", "unknown", "material"].includes(x.status) ? " 예정" : ""}</span>`).join("")}</div><div><p class="rd-w">${stageTag(rdStage(x), esc)}${tags}</p><p class="ed-b">${esc(x.what)}</p><div class="ed-st">${badgeMain(x)}</div>${x.note ? `<div class="ed-note">${esc(x.note)}</div>` : ""}${src}</div></article>`;
   };
   const opened = new Set(); // 눌러서 펼친 시기(필터를 바꿔도 유지)
   const draw = () => {

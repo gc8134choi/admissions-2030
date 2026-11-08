@@ -14,7 +14,8 @@ const cnt = (d, k) => (d?.schools || []).filter((s) => s.values?.[k] && s.values
 const elCountText = (el) => { const by = new Map(); for (const x of el || []) by.set(x.placeId, (by.get(x.placeId) || false) || !x.nullReason); const n = [...by.values()].filter(Boolean).length, m = by.size - n; return `탐구 과목 선택 비중을 학교별로 비교해요(값이 있는 학교 ${n}곳${m ? `, 나머지 ${m}곳은 인원 미공개` : ""})`; };
 const row = (D, id) => (D.pol || []).find((r) => r.id === id);
 const snip = (b, re, n = 100) => { const t = String(b || "").replace(/\s+/g, " "), m = re.exec(t); return m ? t.slice(Math.max(0, m.index - 20), Math.max(0, m.index - 20) + n) : t.slice(0, n); };
-const firstSent = (s, n = 80) => String(s || "").replace(/\s+/g, " ").slice(0, n);
+import { clip } from "./search.js";
+const firstSent = (s, n = 80) => clip(String(s || "").replace(/\s+/g, " "), n);
 export const GAPS = [
   { id: "transfer", q: "^(?!.*중학교).*전학", words: "전학 이사 배정 전입 배정 전입 이사 가는 지역 교육지원청 문의 고입 전학 포털", found: (D) => row(D, "gg-18") && { href: "#select/curriculum?v=hs&ty=1", hl: row(D, "gg-18").title, t: "전학 · 이사(전입) 배정 · 경기 평준화 고교", s: firstSent(row(D, "gg-18").body) }, none: { href: "#library/links", t: "전학 · 이사 배정(전입 배정)", s: "전학·이사 때의 배정 안내는 이 포털에 아직 없어요 → 이사 갈 지역 교육지원청에 문의하고 경기도 고입·전학 포털에서 확인해요" } },
   { id: "failover", only: true, q: "(자사고|외고|국제고|외국어고).*(탈락|불합격|떨어)|(탈락|불합격|떨어).*일반고", words: "외고 불합격 국제고 자사고 불합격 일반고 배정 절차 동시 지원 후기", found: (D) => row(D, "gg-17") && { href: "#select/curriculum?v=hs&ty=1", hl: row(D, "gg-17").title, t: "외·국·자 불합격 시 일반고 배정 절차", s: firstSent(row(D, "gg-17").body) } },

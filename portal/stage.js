@@ -9,11 +9,12 @@ const TOPIC = {
 const FIELD = { 초졸: "중입", 중입: "중입", 중졸: "고입", 고입: "고입", 고교: "고입", 대입: "대입" }; // 초등 졸업은 중입 준비, 중학교 졸업은 고입 쪽
 export function stageOf(row) {
   if (!row || row.topic === "change-log") return null;
+  if (FIELD[row.stage]) return FIELD[row.stage]; // 행에 단계가 적혀 있으면 그것이 먼저(제목 정규식은 단계가 없는 행의 폴백)
   if (row.topic === "life-schedule") {
-    if (/중학교 배정|신입생|재배정|초등학교 졸업|중학교 입학/.test(row.title || "")) return "중입";
+    if (/중학교 배정|추가배정|신입생|재배정|초등학교 졸업|중학교 입학/.test(row.title || "")) return "중입";
     return "고입"; // 중학교 졸업, 고교 입학식
   }
-  return FIELD[row.stage] || TOPIC[row.topic] || null; // 행에 단계가 적혀 있으면 그 단계가 우선(예: 고교 입학(개학)은 대입 일정 토픽이지만 고입 단계)
+  return TOPIC[row.topic] || null; // (예: 고교 입학(개학)은 대입 일정 토픽이지만 행 stage가 고입이면 위에서 먼저 정해진다)
 }
 const LINK = { 고입: "고입", "학교 정보": "고입", 고교학점제: "고입", "대입 전형": "대입", 수능: "대입" };
 export const linkStage = (item) => LINK[item?.category] || null; // 일정·성적/내신·학습/상담은 단계 공통
