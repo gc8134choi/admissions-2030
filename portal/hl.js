@@ -9,6 +9,7 @@ export function applyHl() {
   let tries = 0; const at = location.hash.split("?")[0]; // 화면이 주소의 ?뒤를 다시 쓰므로(필터 동기화) 처음 읽은 값을 쓰고, 다른 화면으로 가면 멈춘다
   const pick = () => {
     const cand = [...document.querySelectorAll(inTr ? "#main tbody tr" : "#main .ed-row, #main tr, #main li, #main summary, #main dd, #main td, #main th, #main h2, #main h3, #main h4, #main label, #main p, #main .aux")].filter((e) => { const t = key(e.textContent); return t.includes(k) || (k2.length >= 4 && t.includes(k2)) || (tries > 14 && k4.length >= 2 && k4 !== k && t.includes(k4)); });
+    { const nh = cand.filter((c) => !c.closest(".cmp-gh")); if (nh.length && nh.length < cand.length) cand.splice(0, cand.length, ...nh); } // 접힌 묶음 머리글(비용·교육과정 2)이 아니라 그 안의 값 줄을 강조
     if (!cand.length && tries > 12) cand.push(...[...document.querySelectorAll("#main .ed-row, #main tr, #main li, #main summary, #main dd, #main td, #main p")].filter((e) => k3.length >= 6 && key(e.textContent).includes(k3))); // 오래 못 찾으면 제목 앞 8자로 느슨하게
     // 제목 칸(b·strong·제목 요소)에 찾는 말이 든 줄을 먼저(본문에만 그 말이 나오는 다른 줄이 강조되지 않게), 없으면 가장 안쪽 일치
     const inTitle = (c) => [...c.querySelectorAll("b, strong, h2, h3, h4, .lg-t, .ed-t")].some((x) => { const t = key(x.textContent); return t.includes(k) || (k2.length >= 4 && t.includes(k2)); });
