@@ -214,3 +214,15 @@ button.term{padding-inline:5px!important;margin-inline:-5px!important}
 .nt-foot a[aria-current=page]{border-bottom-color:var(--accent);font-weight:700}
 .navdrawer .nt-foot{margin:8px 4px 0;padding-top:8px;border-top:1px solid var(--line)}
 .sd-top .wm,.nd-top .wm{text-decoration:none;color:var(--ink)}
+
+/* 낮은 화면(≤800px)에서도 트리가 충분히 보이게: 맨 아래 묶음을 줄인다. 서랍은 현재 그룹만 설명 줄을 보인다 */
+.sd-bot .nt-tg{min-height:44px;margin-left:0}
+@media (max-height:800px){
+  .sd-top{padding:8px 12px 8px 0;gap:6px}.sd-top .wm{font-size:22px;min-height:36px}.srbtn{min-height:44px}
+  .nd-th2{display:none}.sd-bot{padding:4px 12px 8px 0;gap:0}
+}
+.navdrawer .nt .nt-g.open a small{display:none}
+.navdrawer .nt .nt-g.on a small{display:block}
+/* 인쇄: 과목 비교 표도 종이 폭에 맞춘다 */
+@media print{html body table#tbl{min-width:0!important;width:100%!important;font-size:11px}html body table#tbl th,html body table#tbl td{min-width:0!important;width:auto!important;padding:3px 4px;word-break:break-word;overflow-wrap:anywhere}}
+
