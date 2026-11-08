@@ -278,20 +278,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 2구역(수지구 고교 10개교)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(2구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "2구역 고등학교 칸에 '용인홍천고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": "총 192학점(교과 174+창체 18), 필수 32과목, 선택 묶음 9개, 첫 선택과목 학기 2-1",
@@ -505,20 +507,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 2구역(수지구 고교 10개교)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(2구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "2구역 고등학교 칸에 '성복고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": "총 192학점(교과 174+창체 18), 필수 37과목, 선택 묶음 12개, 첫 선택과목 학기 2-1",
@@ -726,20 +730,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 2구역(수지구 고교 10개교)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(2구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "2구역 고등학교 칸에 '풍덕고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": "총 192학점(교과 174+창체 18), 필수 38과목, 선택 묶음 8개, 첫 선택과목 학기 2-1",
@@ -948,20 +954,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 2구역(수지구 고교 10개교)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(2구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "2구역 고등학교 칸에 '수지고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": "총 192학점(교과 174+창체 18), 필수 33과목, 선택 묶음 12개, 첫 선택과목 학기 2-1",
@@ -1170,20 +1178,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 2구역(수지구 고교 10개교)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(2구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "2구역 고등학교 칸에 '상현고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": null,
@@ -1388,20 +1398,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 2구역(수지구 고교 10개교)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(2구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "2구역 고등학교 칸에 '서원고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": "2027학년도 입학생 편제표: 총 192학점(교과 174+창체 18), 학생 선택 69학점, 첫 선택과목 학기 2-1, 학기별 교과+창체 33·33·32·32·32·30학점(학기별 차등 학점)",
@@ -1606,20 +1618,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 2구역(수지구 고교 10개교)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(2구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "2구역 고등학교 칸에 '신봉고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": null,
@@ -1824,20 +1838,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 2구역(수지구 고교 10개교)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(2구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "2구역 고등학교 칸에 '죽전고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": null,
@@ -2042,20 +2058,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 2구역(수지구 고교 10개교)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(2구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "2구역 고등학교 칸에 '대지고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": "2027학년도 교육과정 편제표: 창의적 체험활동 18학점(3년 288시간), 2학년은 교과(군) 간 선택 택3 두 묶음, 3학년은 택4 두 묶음·택3 두 묶음 등 학생 선택 중심. 소인수 선택과목(디자인 일반)·공동교육과정, 교육과정 박람회 운영",
@@ -2260,20 +2278,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 2구역(수지구 고교 10개교)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(2구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "2구역 고등학교 칸에 '현암고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": null,
@@ -2475,20 +2495,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 1구역(기흥구)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(1구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "1구역 고등학교 칸에 '구성고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": null,
@@ -2657,20 +2679,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 1구역(기흥구)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(1구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "1구역 고등학교 칸에 '기흥고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": null,
@@ -2839,20 +2863,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 1구역(기흥구)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(1구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "1구역 고등학교 칸에 '동백고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": null,
@@ -3021,20 +3047,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 1구역(기흥구)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(1구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "1구역 고등학교 칸에 '보라고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": null,
@@ -3203,20 +3231,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 1구역(기흥구)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(1구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "1구역 고등학교 칸에 '보정고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": null,
@@ -3385,20 +3415,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 1구역(기흥구)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(1구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "1구역 고등학교 칸에 '서천고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": null,
@@ -3567,20 +3599,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 1구역(기흥구)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(1구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "1구역 고등학교 칸에 '성지고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": null,
@@ -3749,20 +3783,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 1구역(기흥구)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(1구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "1구역 고등학교 칸에 '신갈고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": "2027학년도 입학생 편제표: 총 192학점(교과 174+창체 18), 학생 선택 66학점, 첫 선택과목 학기 2-1, 학기별 교과+창체 32학점",
@@ -3934,20 +3970,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 1구역(기흥구)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(1구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "1구역 고등학교 칸에 '용인백현고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": null,
@@ -4116,20 +4154,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 1구역(기흥구)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(1구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "1구역 고등학교 칸에 '청덕고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": null,
@@ -4298,20 +4338,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 1구역(기흥구)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(1구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "1구역 고등학교 칸에 '초당고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": null,
@@ -4480,20 +4522,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 1구역(기흥구)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(1구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "1구역 고등학교 칸에 '흥덕고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": null,
@@ -4662,20 +4706,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 3구역(처인구)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(3구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "3구역 고등학교 칸에 '고림고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": null,
@@ -4844,20 +4890,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 3구역(처인구)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(3구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "3구역 고등학교 칸에 '용인고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": null,
@@ -5026,20 +5074,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 3구역(처인구)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(3구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "3구역 고등학교 칸에 '용인삼계고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": "2027학년도 자율형 공립고 2.0 신입생 편제표: 교과 174학점(학교 지정 96 + 학생 선택 78) 편성, 1학년은 공통과목 중심(29학점/학기), 선택은 2학년 1학기부터(택4 등). 평준화 추첨 배정이며 전용 통학버스 운영",
@@ -5211,20 +5261,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 3구역(처인구)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(3구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "3구역 고등학교 칸에 '진덕고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": null,
@@ -5393,20 +5445,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 3구역(처인구)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(3구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "3구역 고등학교 칸에 '포곡고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": "경기도 지정 과학중점학교(2026.3~2031.2, 5년): 수학·과학·정보 이수 비율 45% 이상(79학점 이상), 물리학·화학·생명과학·지구과학 4과목 필수 이수, 과제연구(R&E)와 연구 발표 필수 운영",
@@ -5582,20 +5636,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망)"
         },
         "zone": {
           "value": "용인학군 3구역(처인구)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(3구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "3구역 고등학교 칸에 '태성고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": null,
@@ -5764,20 +5820,22 @@
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 53~54쪽(인쇄 54~55쪽) 용인학군 배정 방안: 학군내배정 정원 50%·구역내배정(2단계) 지망 순위 작성, 4쪽 외·국·자 동시 지원자 규칙",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "평준화 배정 방식(선복수지원 후추첨, 1단계 학군내배정 5지망·2단계 구역내배정)은 배정 방안 54쪽, 구역별 지망 칸 수는 53쪽(2구역 10지망); 처인고는 52쪽 주 '한시적으로 학군내 100% 배정(구역내배정 없음)'"
         },
         "zone": {
           "value": "용인학군 3구역(처인구)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
-            "name": "경기도교육청 고입·전학 포털: 2027학년도 용인학군 평준화 리플렛(policy gg-10)",
-            "url": "https://satp.goe.go.kr/main.do"
+            "name": "경기도교육청 2027학년도 학생 배정 방안(2026.8) PDF 52쪽(인쇄 53쪽) 용인학군 구역별 중·고등학교 현황 표(3구역 고등학교명 칸)와 78쪽(인쇄 79쪽) 소재지 현황",
+            "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/08/ccd2bf92-e155-4310-8849-1c988eadf4a3.pdf"
           },
-          "nullReason": null
+          "nullReason": null,
+          "note": "3구역 고등학교 칸에 '처인고'가 있음(52쪽 표), 소재지·성별·설립은 78쪽 표"
         },
         "curriculum": {
           "value": null,
@@ -5942,7 +6000,7 @@
           "nullReason": "공식 문서로 확인 중이에요"
         },
         "admission": {
-          "value": "평준화 비적용 자율형 공립고(특수지): 용인학군 평준화 배정이 아니라 학교별 입학전형(비평준화 일반고와 같은 방식)",
+          "value": "평준화 비적용 자율형 공립고(특수지): 용인학군 평준화 배정이 아니라 학교별 입학전형(비평준화 일반고와 같은 방식). 원문 표기가 쪽마다 달라 배정 방안 10쪽은 '평준화 비적용 일반고등학교', 52·78쪽은 '평준화 비적용 자율형 공립고(특수지)'로 적음",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
@@ -5952,7 +6010,7 @@
           "nullReason": null
         },
         "zone": {
-          "value": "평준화 구역 밖(용인학군 평준화 비적용 학교)",
+          "value": "평준화 구역 밖(용인학군 평준화 비적용 학교, 원문 표기 차이는 입학 방식 칸 참고)",
           "asOf": "2027학년도",
           "status": "confirmed",
           "source": {
