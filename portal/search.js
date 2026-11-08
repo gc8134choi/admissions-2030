@@ -2,7 +2,7 @@
 // 데이터는 처음 열 때 한 번에 병렬로 읽는다. 최근 검색은 이 브라우저(localStorage)에만 저장한다.
 import { allItems } from "./nav-tree.js";
 import { stageOf } from "./stage.js";
-import { loadSearchExtra } from "./search-extra.js";
+import { loadSearchExtra, univInfo } from "./search-extra.js";
 import { loadProfile, filterByProfile } from "./profile.js";
 const RECENT_KEY = "portal.search.recent";
 // 안내 데이터(중학교 배정 가이드·고교 유형·전형)를 제목+본문 단위로 펼쳐 색인한다. 출처·주소·코드 필드는 뺀다.
@@ -148,6 +148,8 @@ export function makeSearcher(store) {
       const first = ex[0];
       for (const [re, label, fn] of TOPICS) if (re.test(q0) && !(p && /설명회/.test(label))) {
         const href = fn ? fn(first) : null;
+        const ui = label === "대학 진학 현황" ? univInfo.get(first.id) : null; // 값이 없는 학교는 화면의 빈 칸 사유 그대로
+        if (ui && !ui.has) { notes.push({ href, t: `${first.name} · ${label}`, s: `${ui.why || "비교 화면의 이 칸은 비어 있어요"} (학교별 비교 화면의 빈 칸 사유)` }); continue; }
         notes.push(href ? { href, t: `${first.name} · ${label}`, s: `${label}${(label.charCodeAt(label.length - 1) - 0xac00) % 28 ? "은" : "는"} 학교별 비교 화면에서 볼 수 있어요` } : { href: "#library/links", t: `${first.name} · ${label}`, s: `${label}${(label.charCodeAt(label.length - 1) - 0xac00) % 28 ? "은" : "는"} 이 포털에 아직 없어요 → 학교 홈페이지·학교알리미 공시에서 확인해요` });
       }
       if (/용인한국외국어/.test(rest)) notes.push({ href: "#select/curriculum?v=types", t: "용인외대부고(자율형 사립고)", s: "외·국·자 전형 일정과 유형 설명은 고교 유형 화면에 있어요" });

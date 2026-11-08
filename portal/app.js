@@ -614,7 +614,7 @@ async function routeByHl(id, query) {
   const hit = (arr) => arr.some((t) => { const x = k(t); return x && (x.includes(kh) || kh.includes(x)); });
   const toHash = (path, n) => `${path}?${n}`.replace(/%2C/g, ",").replace(/\+/g, "%20");
   try {
-    if (id === "select/curriculum" && query.get("v") === "schools" && query.get("lv") === "high" && !query.get("show")) {
+    if (id === "select/curriculum" && query.get("v") === "schools" && query.get("lv") === "high" && !query.get("show") && !query.get("in") && !query.get("col")) { // 비교 표의 학교 줄(in=tr·col)을 가리키는 주소는 그대로 둔다
       const [pol, ht] = await Promise.all([load("policy"), load("hs-types")]);
       const TY = new Set(["hs-types", "high-school-assignment", "hs-choice-opinion", "gg-hs-entry"]);
       const titles = [...pol.filter((r) => TY.has(r.topic)).map((r) => r.title), ...ht.types.flatMap((t) => [t.name, `${t.name} (고교 유형)`]), ...(ht.calendar || []).map((c) => c.what), "선발 방식", "좋은 점", "살펴볼 점", "전형 시기", "입학 전형"];
