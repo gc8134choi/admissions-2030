@@ -125,7 +125,7 @@ export function registerHome(views, { esc, load, store, profiles }) {
       }
       const intro = C.intro.map((id) => MENU.get(id)).filter(Boolean).map((it) => `<li><a href="#${esc(it.id)}"><b>${esc(it.title)}</b><span>${esc(it.desc || "")}</span></a></li>`).join("");
       const nm = esc(C.side); // 열 머리글은 학교급(사람 이름은 화면에 쓰지 않는다, 사용자 결정 2026-11-08)
-      return `<div class="hm2-col" data-col="${C.id}">
+      return `<div class="hm2-col" data-col="${C.id}" id="hmcol-${C.id}" role="tabpanel" aria-labelledby="hmtab-${C.id}">
         <header class="hm2-h"><h2 class="hm2-name">${nm}</h2><p class="hm2-sub no-term">${L.examYear ? `${L.examYear}학년도 대입` : ""}</p></header>
         <section class="dp hm2-b soonp" aria-label="${nm} 다가올 일과 일정"><div class="sec-h"><h3>${C.side} 일정</h3></div>
           ${stone ? `<ul class="mss">${stoneCard(stone)}</ul>` : ""}
@@ -135,15 +135,19 @@ export function registerHome(views, { esc, load, store, profiles }) {
       </div>`;
     };
     let showCol = "A"; try { showCol = localStorage.getItem("portal.homecol") === "B" ? "B" : "A"; } catch {} // 좁은 폭(<1100): 고등학교 | 중학교 탭, 한 번에 한 열(마지막에 고른 쪽 기억)
-    el.innerHTML = `<div class="hm hm2" data-show="${showCol}"><div class="hm2-tabs" role="tablist" aria-label="고등학교 · 중학교">${COLS.map((C) => `<button type="button" role="tab" data-tab="${C.id}" aria-selected="${C.id === showCol}">${esc(C.side)}</button>`).join("")}</div>${COLS.map(colHtml).join("")}</div>`;
-    el.querySelector(".hm2-tabs").addEventListener("click", (e) => { const b = e.target.closest("[data-tab]"); if (!b) return; const hm = el.querySelector(".hm2"); hm.dataset.show = b.dataset.tab; hm.querySelectorAll("[data-tab]").forEach((x) => x.setAttribute("aria-selected", String(x === b))); try { localStorage.setItem("portal.homecol", b.dataset.tab); } catch {} });
+    el.innerHTML = `<div class="hm hm2" data-show="${showCol}"><div class="hm2-tabs" role="tablist" aria-label="고등학교 · 중학교">${COLS.map((C) => `<button type="button" role="tab" id="hmtab-${C.id}" aria-controls="hmcol-${C.id}" data-tab="${C.id}" aria-selected="${C.id === showCol}" tabindex="${C.id === showCol ? 0 : -1}">${esc(C.side)}</button>`).join("")}</div>${COLS.map(colHtml).join("")}</div>`;
+    { const mq = matchMedia("(min-width:1100px)"), roles = () => el.querySelectorAll(".hm2-col").forEach((c) => { if (mq.matches) { c.setAttribute("role", "region"); c.removeAttribute("aria-labelledby"); c.setAttribute("aria-label", c.dataset.col === "A" ? "고등학교" : "중학교"); } else { c.setAttribute("role", "tabpanel"); c.removeAttribute("aria-label"); c.setAttribute("aria-labelledby", "hmtab-" + c.dataset.col); } }); roles(); mq.addEventListener?.("change", roles); } // 넓은 폭은 탭이 없으니 열은 구역(region), 좁은 폭은 탭 패널
+    { const eq = () => { const us = [...el.querySelectorAll(".hm2-intro .h2-go")]; us.forEach((u) => { u.style.minHeight = ""; }); if (matchMedia("(min-width:1100px)").matches) { const h = Math.max(...us.map((u) => u.offsetHeight)); us.forEach((u) => { u.style.minHeight = h + "px"; }); } }; requestAnimationFrame(eq); addEventListener("resize", eq); } // 두 소개 목록 높이를 같게(남는 칸은 항목 사이 간격으로)
+    const tabsEl = el.querySelector(".hm2-tabs"), pickTab = (c, focus) => { const hm = el.querySelector(".hm2"); hm.dataset.show = c; hm.querySelectorAll("[data-tab]").forEach((x) => { const on = x.dataset.tab === c; x.setAttribute("aria-selected", String(on)); x.tabIndex = on ? 0 : -1; if (on && focus) x.focus(); }); try { localStorage.setItem("portal.homecol", c); } catch {} };
+    tabsEl.addEventListener("click", (e) => { const b = e.target.closest("[data-tab]"); if (b) pickTab(b.dataset.tab); });
+    tabsEl.addEventListener("keydown", (e) => { const ids = COLS.map((C) => C.id), cur = ids.indexOf(el.querySelector(".hm2").dataset.show); let n = -1; if (e.key === "ArrowRight" || e.key === "ArrowDown") n = (cur + 1) % ids.length; else if (e.key === "ArrowLeft" || e.key === "ArrowUp") n = (cur - 1 + ids.length) % ids.length; else if (e.key === "Home") n = 0; else if (e.key === "End") n = ids.length - 1; if (n < 0) return; e.preventDefault(); pickTab(ids[n], true); });
     decorateTerms(el, ".h2-go"); initTerms(); // 용어 ⓘ는 소개 블록에만(일정 제목 줄이 깨지지 않게)
     if (matchMedia("(max-width:899px)").matches) el.querySelectorAll(".hm2-intro").forEach((d) => d.removeAttribute("open")); // 모바일 홈 높이: 소개는 눌러서 연다
     { // 검색 결과 등에서 "#home?open=soonp"(곧 있을 일)로 오면 그 자리로 간다
       const want = new URLSearchParams(location.hash.split("?")[1] || "").get("open");
       const hq = new URLSearchParams(decodeURIComponent(location.hash.slice(1)).split("?")[1] || ""), hmEl = el.querySelector(".hm2"), nk = (x) => String(x || "").replace(/ⓘ|·/g, "").replace(/\s+/g, "").toLowerCase();
       { // 좁은 폭에서는 한 열만 보인다: ?tab=A|B 로 열을 고르고, ?hl= 글이 다른 열에 있으면 그 열 탭으로 바꾼 뒤 강조한다(숨은 열의 줄은 강조가 안 보인다)
-        const setTab = (c) => { hmEl.dataset.show = c; hmEl.querySelectorAll("[data-tab]").forEach((x) => x.setAttribute("aria-selected", String(x.dataset.tab === c))); };
+        const setTab = (c) => { hmEl.dataset.show = c; hmEl.querySelectorAll("[data-tab]").forEach((x) => { x.setAttribute("aria-selected", String(x.dataset.tab === c)); x.tabIndex = x.dataset.tab === c ? 0 : -1; }); };
         const tb = hq.get("tab"), hl = hq.get("hl");
         if (tb === "A" || tb === "B") setTab(tb);
         else if (hl && nk(hl).length >= 2) { const k = nk(hl).slice(0, 16), has = (c) => [...el.querySelectorAll(`.hm2-col[data-col=${c}] li, .hm2-col[data-col=${c}] summary, .hm2-col[data-col=${c}] b`)].some((n) => nk(n.textContent).includes(k)); if (!has(hmEl.dataset.show)) for (const c of ["A", "B"]) if (c !== hmEl.dataset.show && has(c)) { setTab(c); break; } }

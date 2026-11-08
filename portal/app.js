@@ -72,7 +72,7 @@ function drawTabs(loc) {
   if (side) { const c = side.querySelector("[aria-current=page]"); if (c) { // 현재 항목이 사이드바 안에서 보이게(바깥 화면은 움직이지 않는다)
       const sr = side.getBoundingClientRect(), cr = c.getBoundingClientRect(); if (cr.top < sr.top + sr.height * 0.2 || cr.bottom > sr.bottom - sr.height * 0.2) side.scrollTop += (cr.top + cr.height / 2) - (sr.top + sr.height / 2); /* 가장자리면 가운데로 */ if (hadFocus) c.focus({ preventScroll: true }); } }
   requestAnimationFrame(() => { // 메뉴가 한 덩어리로 스크롤되므로 현재 항목이 보이는 자리에 오게 한다(검색 칸 밑·화면 안)
-    const box = $("#sidenav"), a = box?.querySelector('[aria-current="page"]'); if (!box || !a || box.clientHeight === 0 || innerWidth < 900) return;
+    const box = $("#sidenav"), a = box?.querySelector('[aria-current="page"]'); if (!box || box.clientHeight === 0 || innerWidth < 900) return; if (!a) { box.scrollTop = 0; return; } // 현재 항목이 없는 화면(홈 등)은 맨 위부터
     const top = box.querySelector(".sd-top")?.offsetHeight || 0, br = box.getBoundingClientRect(), ar = a.getBoundingClientRect();
     if (ar.top < br.top + top + 8) box.scrollTop -= br.top + top + 8 - ar.top; else if (ar.bottom > br.bottom - 8) box.scrollTop += ar.bottom - br.bottom + 8;
   });

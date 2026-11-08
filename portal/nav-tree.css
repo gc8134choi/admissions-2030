@@ -240,3 +240,6 @@ button.term{padding-inline:5px!important;margin-inline:-5px!important}
 
 /* 본문이 비어 있을 때 main의 위 여백이 body 밖으로 합쳐졌다가 내용이 생기면 28px 밀리던 문제(CLS) */
 body{display:flow-root}
+
+.sidenav .sd-top{z-index:5;box-shadow:0 3px 0 0 var(--paper)} /* 고정 검색 칸 아래 구분선에 위쪽 항목 글자가 비치지 않게 */
+.sidenav .sd-tree{position:relative;z-index:1}
