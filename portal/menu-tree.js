@@ -9,9 +9,9 @@ export const GROUPS = [
     { id: "select/curriculum?v=middle&open=cmp", title: "중학교 비교", desc: "학생 수·급식 나란히", keys: ["학생","급식"], vals: { data: "middle-compare", fields: ["students","meal"]}, r: "select/curriculum", q: { v: "middle", open: "cmp"}},
     { id: "select/curriculum?v=map&lv=middle", title: "중학교 지도", page: "중학교 지도", desc: "중학교 위치", keys: ["중학교"], r: "select/curriculum", q: { v: "map", lv: "middle"}},
     { id: "select/curriculum?v=middle&open=guide", title: "입학 준비", desc: "배정부터 등록까지·예비소집·교복 학교주관구매 안내·준비물·자유학기제·교과서", keys: ["배정부터 등록까지","예비소집","교복","준비물","자유학기","교과서"], r: "select/curriculum", q: { v: "middle", open: "guide"}},
-    { id: "schedule?t=life", title: "일정", page: "중학교 일정", desc: "졸업·입학(배정원서·입학식)", keys: ["졸업","배정원서","입학"], r: "schedule", q: { t: "life"}, sub: "일정"}] },
+    { id: "schedule?t=life", title: "중학교 일정", page: "중학교 일정", desc: "졸업·입학(배정원서·입학식)", keys: ["졸업","배정원서","입학"], r: "schedule", q: { t: "life"}, sub: "일정"}] },
   { id: "hs", title: "고등학교", items: [
-    { id: "select/curriculum?v=hs&ty=1", title: "고교 종류", desc: "일반·특목·자사고 종류와 지원 방법·지망", keys: ["일반","자사고","지원","지망"], r: "select/curriculum", q: { v: "hs", ty: "1"}, sub: "학교 알아보기"},
+    { id: "select/curriculum?v=hs&ty=1", title: "고교 종류", desc: "일반·특목·자사고 종류와 지원 방법·지망·구역·고입 내신 반영·선지원 추첨", keys: ["일반","자사고","지원","지망","구역","고입 내신","선지원","추첨"], r: "select/curriculum", q: { v: "hs", ty: "1"}, sub: "학교 알아보기"},
     { id: "select/curriculum?v=hs", title: "학교 비교", desc: "학교별 기본 정보·입학 방식·구역", keys: ["입학 방식","구역"], vals: { data: "hs-compare", fields: ["type","admission","zone"]}, r: "select/curriculum", q: { v: ["hs","summary"], ty: "!1", bf: null}},
     { id: "select/curriculum?v=compare", title: "과목 비교", desc: "학교별 과목 목록 나란히", keys: ["과목","학교별"], r: "select/curriculum", q: { v: "compare"}},
     { id: "select/curriculum?v=map", title: "고교 지도", page: "고교 지도", desc: "고등학교 위치", keys: ["고등학교"], r: "select/curriculum", q: { v: "map", lv: "!middle"}},
@@ -21,7 +21,7 @@ export const GROUPS = [
     { id: "admission/system", title: "수능과 내신", desc: "수능 체제·시간표, 내신 5등급 계산, 전형 구조(학생부교과·수능최저), 대교협 기본사항, 대입 개편", keys: ["수능","시간","내신","5등급","학생부교과","수능최저","대교협","기본사항","개편"], r: "admission/system", q: { t: null}, sub: "대입"},
     { id: "admission/system?t=types", title: "수시·정시", desc: "전형 종류·원서 시기·전형유형별 모집 비율(대교협)", keys: ["전형","원서","비율","모집"], r: "admission/system", q: { t: "types"}},
     { id: "select/curriculum?v=univ", title: "대학별 과목", desc: "대학이 요구하는 과목·내 학교 과목과 맞춰 보기", keys: ["대학","과목","맞춰"], r: "select/curriculum", q: { v: "univ"}},
-    { id: "schedule?t=hs", title: "일정", page: "고교 일정", desc: "고교 입학·대학 입시·학년별 큰 그림(초6~대입)·캘린더 구독", keys: ["학년별 큰 그림","캘린더","구독"], r: "schedule", q: { t: ["hs","univ","road",null]}, sub: "일정"}],
+    { id: "schedule?t=hs", title: "고교 일정", page: "고교 일정", desc: "고교 입학·대학 입시·학년별 큰 그림(초6~대입)·캘린더 구독", keys: ["학년별 큰 그림","캘린더","구독"], r: "schedule", q: { t: ["hs","univ","road",null]}, sub: "일정"}],
     soon: ["대학·학과 찾기", "학교별 시뮬레이션", "목표 학과 체크"] },
   { id: "lib", title: "자료·소식", foot: true, items: [
     { id: "changelog", title: "바뀐 소식", desc: "제도가 바뀐 내용", keys: ["바뀐"], r: "changelog"},
