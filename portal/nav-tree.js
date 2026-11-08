@@ -22,13 +22,14 @@ export function locate(id, query) {
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const link = (it, loc, cls = "") => `<a href="${esc(hrefOf(it))}"${cls ? ` class="${cls}"` : ""}${loc && loc.item === it ? ' aria-current="page"' : ""}><b>${esc(it.title)}</b>${it.desc ? `<small>${esc(it.desc)}</small>` : ""}</a>`;
 // 트리 HTML: 데스크톱 사이드바와 모바일 서랍이 같은 것을 쓴다. 1단계 줄기에 2단계 가지가 선으로 이어진다.
-export const treeHtml = (loc) => {
-  let n = 0;
-  return TABS.map((t) => {
+export const treeHtml = (loc, fold = false) => {
+  // fold=true(모바일 서랍): 현재 그룹만 펴고 나머지는 머리글 한 줄(눌러서 연다)
+  return TABS.map((t, gi) => {
     const items = t.groups.flatMap((g) => g.items), on = loc && loc.tab === t;
-    if (t.id === "home") return `<section class="nt-g nt-home${on ? " on" : ""}">${link(items[0], loc, "nt-hl")}</section>`;
-    n++;
+    if (t.id === "home") return `<section class="nt-g nt-home${on ? " on" : ""}">${link({ ...items[0], desc: "", title: "홈" }, loc, "nt-hl")}</section>`;
     if (t.leaf) return `<section class="nt-g leaf${on ? " on" : ""}">${link(items[0], loc, "nt-hl")}</section>`;
-    return `<section class="nt-g${on ? " on" : ""}"><h2 class="nt-h"><span class="nt-n" aria-hidden="true">${n}</span>${esc(t.title)}</h2><ul>${items.map((it) => `<li>${link(it, loc)}</li>`).join("")}</ul></section>`;
+    const list = `<ul id="ntg-${gi}">${items.map((it) => `<li>${link(it, loc)}</li>`).join("")}</ul>`;
+    if (fold) return `<section class="nt-g${on ? " on open" : ""}"><h2 class="nt-h"><button type="button" class="nt-gt" aria-expanded="${on ? "true" : "false"}" aria-controls="ntg-${gi}">${esc(t.title)}</button></h2>${list}</section>`;
+    return `<section class="nt-g${on ? " on" : ""}"><h2 class="nt-h">${esc(t.title)}</h2>${list}</section>`;
   }).join("");
 };
