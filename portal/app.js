@@ -202,9 +202,10 @@ async function curriculumView(el, query, node) {
   const areaIn = (query.get("a") || "").split(",").map((a) => (AREA7.includes(a) ? a : a ? "기타" : "")); // 옛 링크의 체육·예술·기술가정·제2외국어는 기타로
   let areasSel = AREA7.filter((a) => areaIn.includes(a)); // 비어 있으면 전체
   let focusP = query.get("p"); // 지도 탭에서 강조할 학교
-  let tab = ["compare", "univ", "map", "middle", "hs"].includes(query.get("v")) ? query.get("v") : "hs"; // 학교별 요약(summary)은 학교 비교(hs)에 합쳤다
+  let tab = ["compare", "univ", "map", "middle", "hs", "types"].includes(query.get("v")) ? query.get("v") : "hs"; // 학교별 요약(summary)은 학교 비교(hs)에 합쳤다
   const lv = tab === "middle" || query.get("lv") === "middle" ? "middle" : "high"; // 학교 탭의 "중학교 | 고등학교"
   if (lv === "middle" && !["map", "middle"].includes(tab)) tab = "middle";
+  if (tab === "types") { /* 고교 종류 전용 화면 */ }
   if (lv === "high" && tab === "middle") tab = "hs";
   const TABSET = []; // 탭 3겹 → 2겹: 학교별 요약·상세 비교는 위쪽 메뉴 항목으로 올렸다(주소는 그대로) // 학교 지도·중학교 배정·대학 요건은 메뉴(학교 탭 안)에서 연다
   let compare = null; // 상세 비교 화면(필터 포함)은 한 번만 만들고 탭 전환 때 재사용한다
@@ -223,7 +224,7 @@ async function curriculumView(el, query, node) {
     q.set("v", tab);
     if (lv === "middle" && tab === "map") q.set("lv", "middle");
     if (tab === "map" || tab === "middle") { if (tab === "map" && focusP) q.set("p", focusP); }
-    else q.set("s", sel.join(","));
+    else if (tab !== "types") q.set("s", sel.join(","));
     if (areasSel.length) q.set("a", areasSel.join(","));
     if (tab === "compare" && fsParam()) q.set("f", fsParam());
     const cur = new URLSearchParams((location.hash.split("?")[1] || "")); // 학교 비교 표(c)·유형(t)·전형(ty)·대학 요건(us)의 선택은 지우지 않는다
@@ -245,12 +246,8 @@ async function curriculumView(el, query, node) {
     const body = $("#cview");
     if (tab === "hs") {
       compare = null;
-      body.innerHTML = `<details class="dp ty-top" id="tyd"><summary>고교 유형·전형</summary><div id="tybody"></div></details><div id="hsmain"></div><section class="dp sum-sec" id="sumsec"><div class="sec-h"><h2><em>과목표</em>과목표 학교 요약</h2></div><div id="sumhost"></div></section>`;
-      const tyd = body.querySelector("#tyd"); let tyDone = false;
-      const fillTy = async () => { if (tyDone) return; tyDone = true; try { await views.types(body.querySelector("#tybody"), query); } catch { body.querySelector("#tybody").innerHTML = '<p class="muted">불러오지 못했어요.</p>'; } };
-      tyd.addEventListener("toggle", () => { if (tyd.open) fillTy(); });
-      if (query.get("ty") === "1") { tyd.open = true; await fillTy(); foldTypeSections(body.querySelector("#tybody")); } // 유형 패널을 먼저 채운 뒤 아래 구역을 그려서 늦게 들어온 본문이 아래를 밀지 않게
-      const fillWide = await hsHubBody(body.querySelector("#hsmain"), { load, esc, lazy: true });
+      body.innerHTML = `<div id="hsmain"></div><section class="dp sum-sec" id="sumsec"><div class="sec-h"><h2><em>과목표</em>과목표 학교 요약</h2></div><div id="sumhost"></div></section>`;
+      const fillWide = await hsHubBody(body.querySelector("#hsmain"), { load, esc, lazy: true, types: false });
       // 밀도: 학교 요약 카드는 번호·막대만 보이게 접고(자세히로 펼침), 31교 기본 정보 표는 접이식, 요약 카드는 한눈에 패널 바로 아래로
       const hub = body.querySelector("#hsmain .hub-hs"), wide = body.querySelector("#hs-wide"), sec = body.querySelector("#sumsec");
       if (hub && wide) {
@@ -270,6 +267,7 @@ async function curriculumView(el, query, node) {
       }
       const bf = query.get("bf"); if (bf) { const t = (bf === "1" ? body.querySelector("[id^=\"bf-\"]") : body.querySelector(`#bf-${CSS.escape(bf)}`)); if (t) { t.scrollIntoView({ block: "start" }); t.querySelector("details")?.setAttribute("open", ""); } }
     }
+    else if (tab === "types") { compare = null; body.innerHTML = '<div id="tybody"></div><div id="tycmp"></div>'; const tb = body.querySelector("#tybody"); try { await views.types(tb, query); foldTypeSections(tb); } catch { tb.innerHTML = '<p class="muted">불러오지 못했어요.</p>'; } try { await (await import("./hs-types.js")).hsTypesBody(body.querySelector("#tycmp"), { load, esc }); } catch {} }
     else if (tab === "map") { compare = null; await (await import("./map.js")).mapBody(body, { load, esc, focus: focusP, level: lv === "middle" ? "middle" : "high" }); }
     else if (tab === "middle") { compare = null; await (await import("./middle.js")).middleBody(body, { load, esc }); }
     else if (tab === "univ") { compare = null; await (await import("./univ-match.js")).univBody(body, { load, esc, profile: currentProfile(store), schools, sel }); }
@@ -557,14 +555,14 @@ const refreshPageSources = () => {};
 
 // 정보성 화면(학점제·수능과 내신·중학교 배정·중학교 생활): 읽기 폭 70자 + 긴 화면 '이 화면에서' 목차(소제목 앵커)
 const INFO_VIEWS = new Set(["credit", "system", "midlife", "links", "sources", "status", "changelog"]);
-const wantsToc = (n, query) => ["credit", "system"].includes(n.view) || (n.view === "curriculum" && query.get("v") === "middle") || /* 목차가 실제로 생기는 화면만 자리를 잡는다(없는 화면에서 접히며 본문이 밀리지 않게) */ (n.view === "curriculum" && query.get("v") === "hs" && query.get("ty") === "1");
-const isInfo = (n, query) => INFO_VIEWS.has(n.view) || (n.view === "curriculum" && (["middle", "univ"].includes(query.get("v")) || (query.get("v") === "hs" && query.get("ty") === "1")));
+const wantsToc = (n, query) => ["credit", "system"].includes(n.view) || (n.view === "curriculum" && query.get("v") === "middle") || /* 목차가 실제로 생기는 화면만 자리를 잡는다(없는 화면에서 접히며 본문이 밀리지 않게) */ (n.view === "curriculum" && query.get("v") === "types");
+const isInfo = (n, query) => INFO_VIEWS.has(n.view) || (n.view === "curriculum" && (["middle", "univ"].includes(query.get("v")) || query.get("v") === "types"));
 function addToc() {
   const v0 = $("#view"), host = $("#toc-host"); if (!v0 || !host || host.querySelector(".toc-in")) return;
   const v = $("#tybody") && $("#tybody").children.length > 1 ? $("#tybody") : v0; /* 고교 종류 화면은 유형 패널 안의 소제목만 */
   let hs = [...v.querySelectorAll("h2")].filter((h) => h.textContent.trim().length > 1);
   if (hs.length < 3) hs = [...v.querySelectorAll("h2, h3")].filter((h) => h.textContent.trim().length > 1 && !h.closest(".toc-in"));
-  if (/[?&]ty=1/.test(location.hash)) hs = [...v.querySelectorAll("h2, h3")].filter((h) => h.tagName === "H2" || /성적 반영|배점|구역|지망|쌍둥이|서류/.test(h.textContent)); // 고교 종류: 큰 구역 + 자주 찾는 소구역
+  if (/[?&]v=types/.test(location.hash)) hs = [...v.querySelectorAll("h2, h3")].filter((h) => h.tagName === "H2" || /성적 반영|배점|구역|지망|쌍둥이|서류/.test(h.textContent)); // 고교 종류: 큰 구역 + 자주 찾는 소구역
   if (hs.length < 3) hs = [...v.querySelectorAll("h2, h3, details.hst > summary")].filter((h) => h.textContent.trim().length > 1 && !h.closest(".toc-in"));
   if (hs.length < 3) { host.classList.add("empty"); return; }
   hs = hs.slice(0, 10); // 너무 길면 위쪽 10개만
@@ -593,11 +591,19 @@ function foldTypeSections(host) {
   hs.forEach((h, i) => { const d = document.createElement("details"); d.className = "ty-fold"; if (i === 0) d.open = true; const sm = document.createElement("summary"); ed.insertBefore(d, h); sm.appendChild(h); d.appendChild(sm);
     while (d.nextSibling && d.nextSibling.tagName !== "H2" && !(d.nextSibling.tagName === "DETAILS" && d.nextSibling.classList.contains("ty-fold"))) d.appendChild(d.nextSibling); });
 }
+// 옛 주소 → 새 주소 쿼리 재작성(경로는 그대로 두고 v·lv·show 같은 값만 바꾼다). 나머지 쿼리(hl·col·g·in·s·a·f …)는 그대로 넘긴다.
+function rewriteHash(id, q) {
+  if (id !== "select/curriculum") return null;
+  const v = q.get("v"), n = new URLSearchParams(q);
+  if (v === "hs" && q.get("ty") === "1") { n.set("v", "types"); n.delete("ty"); return `${id}?${n}`.replace(/%2C/g, ","); } // 고교 종류는 전용 화면
+  return null;
+}
 function render() {
   const [path, qs] = decodeURIComponent(location.hash.slice(1)).split("?");
   const query = new URLSearchParams(qs || "");
   let id = path || "home";
   if (REDIRECT[id]) { location.replace("#" + REDIRECT[id] + (qs ? (REDIRECT[id].includes("?") ? "&" : "?") + qs : "")); return; } // 옛 주소 → 가까운 화면
+  { const rw = rewriteHash(id, query); if (rw) { location.replace("#" + rw); return; } } // 옛 주소의 쿼리 바꾸기(화면을 합치거나 나눈 뒤에도 옛 링크가 살아 있게)
   if (id === "admission/system" && query.get("t") === "log") { location.replace("#changelog"); return; } // 옛 주소: 바뀐 소식은 자료·소식 한 곳
   const n = byId.get(id) || byId.get("home");
   const loc = locate(n.id, query) || { tab: TABS[0], group: TABS[0].groups[0], item: TABS[0].groups[0].items[0] };
@@ -617,7 +623,7 @@ function render() {
     return;
   }
   if (n.view === "curriculum" || n.view === "home") { // 위쪽 공간 절약: 제목 없이 화면이 바로 시작
-    $("#main").innerHTML = `${sub}${isInfo(n, query) || ["map", "hs", "summary", "compare"].includes(query.get("v") || "summary") || (query.get("v") === "hs" && query.get("ty") === "1") ? `<h1 class="ph">${esc(loc.item.page || loc.item.title)}</h1>` : ""}${crumbHtml(loc, hrefOf, tabHref)}${wantsToc(n, query) ? '<div id="toc-host" class="toc-host"></div>' : ""}<div id="view"></div>${soon}${footHtml(loc)}`;
+    $("#main").innerHTML = `${sub}${isInfo(n, query) || ["map", "hs", "summary", "compare", "types"].includes(query.get("v") || "summary") ? `<h1 class="ph">${esc(loc.item.page || loc.item.title)}</h1>` : ""}${crumbHtml(loc, hrefOf, tabHref)}${wantsToc(n, query) ? '<div id="toc-host" class="toc-host"></div>' : ""}<div id="view"></div>${soon}${footHtml(loc)}`;
     pageExtras(loc, query); fontGate();
     const mainEl = $("#main"); mainEl.classList.add("view-loading"); const ready = () => requestAnimationFrame(() => { mainEl.classList.remove("view-loading"); addToc(); }); // 화면이 다 그려지기 전에는 아래 안내(푸터)를 숨겨 밀림(CLS)을 막는다
     views[n.view]($("#view"), query, n).catch(() => ($("#view").innerHTML = GO_ERR)).finally(ready);

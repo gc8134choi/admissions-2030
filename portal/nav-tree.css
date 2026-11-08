@@ -226,3 +226,7 @@ button.term{padding-inline:5px!important;margin-inline:-5px!important}
 /* 인쇄: 과목 비교 표도 종이 폭에 맞춘다 */
 @media print{html body table#tbl{min-width:0!important;width:100%!important;font-size:11px}html body table#tbl th,html body table#tbl td{min-width:0!important;width:auto!important;padding:3px 4px;word-break:break-word;overflow-wrap:anywhere}}
 
+
+/* 고교 종류: 접이식 제목 줄이 길어도 가로로 넘치지 않게(글·ⓘ·작은 설명·개수를 한 줄 흐름으로) */
+.ty-fold>summary h2{display:block;min-width:0;overflow-wrap:anywhere}
+.ty-fold>summary h2 .cnt{margin-left:8px}

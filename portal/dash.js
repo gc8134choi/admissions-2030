@@ -8,7 +8,7 @@ const hsc = () => import("./hs-compare.js");
 export const HUBS = [
   { id: "mid-enter", stage: "중입", t: "중학교 배정 준비", sub: "중학교 입학", links: [["배정 안내", "#select/curriculum?v=middle"], ["학교 지도", "#select/curriculum?v=map&lv=middle"], ["일정", "#schedule?t=life"], ["입학 준비", "#select/curriculum?v=middle&open=guide"]] },
   { id: "mid-life", stage: "중입", t: "중학교 생활", sub: "중학교 생활", links: [["일정", "#schedule?t=life"], ["입학 준비", "#select/curriculum?v=middle&open=guide"]] },
-  { id: "hs-enter", stage: "고입", t: "고교 고르기", sub: "고등학교 입학", links: [["학교 비교", "#select/curriculum?v=hs"], ["과목 비교", "#select/curriculum?v=compare"], ["고교 종류", "#select/curriculum?v=hs&ty=1"], ["설명회 노트", "#select/curriculum?v=hs&bf=1"]] },
+  { id: "hs-enter", stage: "고입", t: "고교 고르기", sub: "고등학교 입학", links: [["학교 비교", "#select/curriculum?v=hs"], ["과목 비교", "#select/curriculum?v=compare"], ["고교 종류", "#select/curriculum?v=types"], ["설명회 노트", "#select/curriculum?v=hs&bf=1"]] },
   { id: "hs-life", stage: "고입", t: "고교 생활·과목 선택", sub: "고등학교 생활", links: [["내 계획표", "#planner/plan"], ["고교학점제", "#life/credit"], ["일정", "#schedule?t=road"]] },
   { id: "admit", stage: "대입", t: "대입 준비", sub: "대입", links: [["수능과 내신", "#admission/system"], ["대학별 과목", "#select/curriculum?v=univ"], ["수시·정시", "#admission/system?t=types"], ["일정", "#schedule?t=univ"]] },
 ];
@@ -111,13 +111,14 @@ export async function midPanel({ load, esc, policy }) {
 }
 
 // 고등학교 > 입학 > 학교 비교(고교 선택 정보 허브): 지금 있는 지표 표 + 데이터가 모이면 와이드 비교표
-export async function hsHubBody(el, { load, esc, lazy = false }) {
+export async function hsHubBody(el, { load, esc, lazy = false, types = true }) {
   // 틀을 먼저 그리고(첫 화면을 데이터 5개를 기다리지 않고 보여 줌), 고교 한눈에는 읽히는 대로 채운다
   el.innerHTML = `<div class="ed hub-hs"><div id="hs-top"></div><div id="hs-wide"></div><p class="muted small">필수·내가 고르는 학점과 후보 과목 수는 학교 배부 과목표 기준이에요. 학교를 누르면 과목표로 갑니다.</p></div>`;
   const topEl = el.querySelector("#hs-top"), host = el.querySelector("#hs-wide");
   const topP = comparePanel({ load, esc }).catch(() => "").then(async (h) => { if (!topEl.isConnected) return;
     try { const g = await import("./glossary.js"); await g.preloadGlossary(load); const t = document.createElement("div"); t.innerHTML = h; g.decorateGlossary(t); topEl.replaceWith(...t.childNodes); } catch { topEl.outerHTML = h; } }); // 용어 ⓘ를 붙인 뒤에 넣어서 나중에 글이 밀리지 않게
   const fillWide = async () => { try { await (await hsc()).hsCompareBody(host, { load, esc }); } catch { host.innerHTML = ""; } };
+  if (lazy && !types) return fillWide;
   if (lazy) { // 고교 유형 본문(화면 맨 아래)은 가까이 오면 그린다: 첫 화면의 DOM·계산량을 줄인다
     const h = document.createElement("div"); h.style.minHeight = "1100px"; host.after(h);
     const draw = () => { document.body.classList.add("lazy-pending"); return import("./hs-types.js").then((m) => m.hsTypesBody(h, { load, esc })).then(() => { document.body.classList.remove("lazy-pending"); h.style.minHeight = ""; try { import("./glossary.js").then((g) => g.decorateGlossary(h)); } catch {} }).catch(() => { document.body.classList.remove("lazy-pending"); h.style.minHeight = ""; }); };
@@ -129,5 +130,5 @@ export async function hsHubBody(el, { load, esc, lazy = false }) {
     return fillWide;
   } // 31교 표는 접이식을 열 때 그린다(DOM 절약)
   await Promise.all([topP, fillWide()]);
-  try { const h = document.createElement("div"); host.after(h); await (await import("./hs-types.js")).hsTypesBody(h, { load, esc }); } catch {}
+  if (types) try { const h = document.createElement("div"); host.after(h); await (await import("./hs-types.js")).hsTypesBody(h, { load, esc }); } catch {}
 }

@@ -5,7 +5,7 @@ import os, subprocess, sys, tempfile
 BASE = (sys.argv[1] if len(sys.argv) > 1 else "http://localhost:8000/portal/").rstrip("/") + "/"
 JS = r"""
 const {chromium}=require('playwright');
-(async()=>{const routes=["","#schedule","#schedule?t=univ","#schedule?t=life","#schedule?t=road","#select/curriculum?v=hs&ty=1","#select/curriculum?v=compare","#select/curriculum?v=middle","#select/curriculum?v=map","#select/curriculum?v=univ","#admission/system","#life/credit","#planner/plan","#mid/life","#changelog","#library","#library/sources","#library/status","#library/files"];
+(async()=>{const routes=["","#schedule","#schedule?t=univ","#schedule?t=life","#schedule?t=road","#select/curriculum?v=types","#select/curriculum?v=compare","#select/curriculum?v=middle","#select/curriculum?v=map","#select/curriculum?v=univ","#admission/system","#life/credit","#planner/plan","#mid/life","#changelog","#library","#library/sources","#library/status","#library/files"];
 const re=/(GS_CD|\bsb-\d+|\blog-\d+|\bgg-\d+|\bsch-\d+|\badm-\d+|\bcur-\d+|\bmg-\d+|\bht-[a-z]+|\bhc-\d+|\bhd-\d+|\brm-[a-z]-\d+|\bgl-\d+|\bpolicy\b|draft\.json|\.json\b|research\/|\bundefined\b|\bnull\b|\[object|NaN)/g;
 const b=await chromium.launch();const p=await b.newPage({viewport:{width:1280,height:900}});const found={};
 for(const r of routes){await p.goto(process.argv[2]+r);await p.waitForTimeout(1800);
