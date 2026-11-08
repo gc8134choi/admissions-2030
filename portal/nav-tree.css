@@ -146,3 +146,6 @@ button.term{padding-inline:5px!important;margin-inline:-5px!important}
 .nd-search{width:100%;margin:6px 0 8px}
 @media (min-width:900px){.nd-search{display:none}}
 @media (max-width:899px){.sd-top,.sd-bot{display:none}.sidenav{display:none}}
+
+/* 출처 버튼·상태 칩·확인일 삭제(2026-11-08 사용자 결정): 자료실의 출처·확인일/업데이트 기록/원본 파일 화면만 남긴다. 데이터(source·status·checkedAt)는 그대로. */
+#main:not([data-r="library/sources"]):not([data-r="library/status"]):not([data-r="library/files"]) :is(.pst,.es,.ed-unv,.unv-i,.srcw,.srcf,.srcd,.ed-s0,.ed-note,.pg-srcf,.bf-c){display:none!important}

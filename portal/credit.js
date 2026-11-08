@@ -32,7 +32,7 @@ export async function creditView(el, { load, profile, esc, badge, badgeMain, src
     if (!m || typeof m.file !== "string" || !/^[\w.-]+$/.test(m.file)) return "";
     return `<figure class="ed-fig"><img src="img/credit/${esc(m.file)}" alt="${esc(m.caption || "")}" loading="lazy"><figcaption>${esc(m.caption || "")}${m.source ? ` · 출처 ${esc(m.source)}` : ""}</figcaption></figure>`;
   };
-  const basis = (ids) => { const rs = by(...ids); return rs.length ? `<details class="ed-basis"><summary>근거와 출처 ${rs.length}건</summary>${table(rs)}</details>` : ""; };
+  const basis = (ids) => { const rs = by(...ids); return rs.length ? `<details class="ed-basis"><summary>근거 ${rs.length}건</summary>${table(rs)}</details>` : ""; };
   const toc = [];
   // 섹션: 번호는 CSS 카운터(01, 02…). lead는 한 문장, body는 그림, ids는 근거 행.
   const sec = (n, title, lead, body, ids, slot) => (toc.push([n, title]), `<section id="cv-sec-${n}"><h2>${title}</h2>${spot(n)}${lead ? `<p class="ed-b">${lead}</p>` : ""}${body}${fig(slot)}${basis(ids)}</section>`);
@@ -171,7 +171,7 @@ export async function creditView(el, { load, profile, esc, badge, badgeMain, src
   const tail = subj.length ? `<details class="ed-basis cv-big"><summary>과목표(교과군별) 전체 보기</summary>${table(subj)}</details>` : "";
 
   const nav = `<nav class="ed-toc" aria-label="섹션 목차">${toc.map(([n, t], i) => `<button type="button" data-go="cv-sec-${n}"><b>${String(i + 1).padStart(2, "0")}</b>${esc(t)}</button>`).join("")}</nav>`;
-  el.innerHTML = `<div class="ed">${lead}${glance}${profNote}<p class="ed-src">서울교육청 자료는 경기 적용 확인이 필요해요. 경기도교육청 행은 요약본이라 출처가 다를 수 있어요. 항목별 상태와 출처는 각 섹션의 "근거와 출처"에서 볼 수 있어요.</p>${nav}${out.join("")}${tail}<p class="ed-src" style="margin-top:36px">수능 출제범위는 <a href="#admission/system">대입 제도</a>에서 봐요.</p></div>`;
+  el.innerHTML = `<div class="ed">${lead}${glance}${profNote}<p class="ed-src">서울교육청 자료는 경기 적용 확인이 필요해요. </p>${nav}${out.join("")}${tail}<p class="ed-src" style="margin-top:36px">수능 출제범위는 <a href="#admission/system">대입 제도</a>에서 봐요.</p></div>`;
   el.querySelector(".ed-toc")?.addEventListener("click", (e) => { const b = e.target.closest("[data-go]"); if (b) document.getElementById(b.dataset.go)?.scrollIntoView({ behavior: "smooth", block: "start" }); });
   // 과목표(교과군별) 행 본문의 과목명에 ⓘ(subject-info.js)를 붙인다. 설명이 있는 과목만 붙는다.
   await preloadSubjectInfo(load);
