@@ -1,9 +1,9 @@
 {
  "_meta": {
   "note": "출처 등록부(생성물, 손으로 고치지 않는다). tools/build-sources.mjs가 portal/data의 출처 항목에서 만든다. 데이터 행의 sourceIds가 이 id를 가리킨다.",
-  "count": 154,
+  "count": 155,
   "kinds": {
-   "official": 109,
+   "official": 110,
    "media": 24,
    "user": 17,
    "self": 0,
@@ -834,7 +834,7 @@
    "url": "https://www.bundangnews.co.kr/58587",
    "kind": "media",
    "org": "www.bundangnews.co.kr",
-   "checked": "2026-11-02",
+   "checked": "2026-11-08",
    "names": [
     "분당신문"
    ],
@@ -1192,6 +1192,20 @@
    ],
    "usedIn": {
     "glossary.json": 2
+   }
+  },
+  {
+   "id": "src-7ca19322",
+   "url": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375482",
+   "kind": "official",
+   "org": "경기도교육청",
+   "checked": "2026-11-08",
+   "names": [
+    "경기도교육청 공지(보도자료) 「2027학년도 고교 평준화 지역 학생 배정 방안 온라인 설명회 실시」(2026.9.28)"
+   ],
+   "usedIn": {
+    "events.json": 1,
+    "policy.json": 1
    }
   },
   {
@@ -2255,7 +2269,7 @@
    "url": "https://view.asiae.co.kr/article/2026092812475292099",
    "kind": "media",
    "org": "view.asiae.co.kr",
-   "checked": "2026-11-02",
+   "checked": "2026-11-08",
    "names": [
     "아시아경제"
    ],

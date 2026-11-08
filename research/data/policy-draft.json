@@ -2546,19 +2546,23 @@
       "entryYear": 2027,
       "title": "평준화 배정 설명회",
       "body": "경기도교육청 2027학년도 고교 평준화 배정 설명회 2026.10.19~11.27(학생·학부모 대상 구간), 유튜브 경기고입TV 비대면. 세부 자료는 고입·전학 포털(satp.goe.go.kr) 경기도교육청 포털 자료실에 학군별 학생배정방안 온라인 설명회 자료가 2026.9.18 게시됨(공식)",
-      "status": "보도",
-      "sourceKind": "매체",
-      "sourceName": "아시아경제",
-      "sourceUrl": "https://view.asiae.co.kr/article/2026092812475292099",
+      "status": "확정",
+      "sourceKind": "공식",
+      "sourceName": "경기도교육청 공지(보도자료) 「2027학년도 고교 평준화 지역 학생 배정 방안 온라인 설명회 실시」(2026.9.28)",
+      "sourceUrl": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?nttSn=2375482",
       "extraSources": [
+        {
+          "name": "아시아경제",
+          "url": "https://view.asiae.co.kr/article/2026092812475292099"
+        },
         {
           "name": "분당신문",
           "url": "https://www.bundangnews.co.kr/58587"
         }
       ],
-      "checkedAt": "2026-11-02",
+      "checkedAt": "2026-11-08",
       "unverified": true,
-      "statusNote": "보도(경기도교육청 설명회는 유튜브 경기고입TV 비대면, 기사 본문 대조 2026-11-01)",
+      "statusNote": "확정(경기도교육청 공지 원문 확인 2026-11-08, 중학교 교원·교육지원청 담당자 9.30~10.16, 학생·학부모 10.19~11.27, 유튜브 경기고입TV 비대면)",
       "audience": [
         "general"
       ],
@@ -2979,7 +2983,7 @@
       "extraSources": [],
       "checkedAt": "2026-10-25",
       "unverified": false,
-      "statusNote": "학교 배부 자료(사용자 제공); 졸업식 공지 원문이 보관돼 있지 않아 확인하지 못했어요 → 학교 공지로 확인",
+      "statusNote": "학교 배부 자료(사용자 제공); 졸업식 공지 원문이 보관돼 있지 않아 확인하지 못했어요 → 학교 공지로 확인. 같은 지역 손곡중의 2026학년도 학사일정표(학교 공지 2026.3.6)에는 졸업식이 12월 마지막 주 칸(12.28~1.1)에 있어 학교마다 날짜가 달라요",
       "audience": [
         "common"
       ],
