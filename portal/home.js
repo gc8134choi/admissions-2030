@@ -45,7 +45,7 @@ const ART = {
 const HIDE_ON_HOME = new Set(["gg-08", "gg-20"]);
 const COLS = [
   { id: "A", side: "고등학교", stage: "고입", stones: /졸업|입학식/, intro: ["select/curriculum?v=types", "select/curriculum?v=hs", "select/curriculum?v=compare", "life/credit"], all: "#schedule?t=hs" },
-  { id: "B", side: "중학교", stage: "중입", stones: /졸업|입학식/, intro: ["select/curriculum?v=middle", "select/curriculum?v=middle&open=cmp", "select/curriculum?v=middle&open=guide", "select/curriculum?v=map&lv=middle"], all: "#schedule?t=life" },
+  { id: "B", side: "중학교", stage: "중입", stones: /졸업|입학식/, intro: ["select/curriculum?v=middle", "select/curriculum?v=schools&lv=middle", "schedule?t=life"], all: "#schedule?t=life" },
 ];
 const MENU = new Map(GROUPS.flatMap((g) => g.items.map((it) => [it.id, it])));
 const PSTX = { reported: "보도", estimated: "추정", unknown: "미정", material: "사용자 제공" };
