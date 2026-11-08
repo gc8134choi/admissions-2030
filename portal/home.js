@@ -40,7 +40,7 @@ const ART = {
 };
 
 
-// ---- 홈(2026-11-08 개편): 왼쪽 예나(고등학교로 가는 쪽) · 오른쪽 예은(중학교로 가는 쪽) 2분할 ----
+// ---- 홈(2026-11-08 개편): 왼쪽 열(고등학교로 가는 쪽) · 오른쪽 열(중학교로 가는 쪽) 2분할 ----
 // 행: [이름] [곧 있을 일] [고등학교|중학교 일정] [고등학교|중학교 소개]. 홈에서는 보도·추정·미정 칩을 내지 않는다(출처 팝오버 안에서만 상태를 보인다).
 const COLS = [
   { id: "A", side: "고등학교", stage: "고입", stones: /졸업|입학식/, intro: ["select/curriculum?v=hs&ty=1", "select/curriculum?v=hs", "select/curriculum?v=compare", "life/credit"], all: "#schedule?t=hs" },
@@ -116,7 +116,7 @@ export function registerHome(views, { esc, load, store, profiles }) {
       const sc = evs.find((x) => x.isStone), stone = sc ? { id: sc.r.id, label: sc.r.title, date: sc.start, dateText: fmtRange(sc.sp, t, null), tent: sc.tent, r: sc.r, kind: /졸업/.test(sc.r.title) ? "graduation" : "entrance" } : null;
       const rest = evs.filter((x) => x !== sc);
       const soon = rest.slice(0, 2), later = rest.slice(2, 8);
-      // 수능 D-day는 예나 열 '곧 있을 일' 안에 한 줄로
+      // 수능 D-day는 왼쪽 열 '곧 있을 일' 안에 한 줄로
       let dd = "";
       if (C.id === "A" && L.csat?.date && DRE.test(L.csat.date)) {
         const row = P.get(L.csat.policyRowId || "sch-12") || P.get("sch-07"), n = dayN(L.csat.date.length === 10 ? L.csat.date : L.csat.date + "-15", t), sp0 = span(L.csat.date);

@@ -1,4 +1,4 @@
-/* 홈 2분할(2026-11-08): 왼쪽 예나(고등학교로 가는 쪽) · 오른쪽 예은(중학교로 가는 쪽). 데스크톱 ≥900px은 2열(행이 맞춰짐), 모바일은 예나 → 예은 순으로 쌓는다. */
+/* 홈 2분할(2026-11-08): 왼쪽 열(고등학교로 가는 쪽) · 오른쪽 열(중학교로 가는 쪽). 데스크톱 ≥900px은 2열(행이 맞춰짐), 모바일은 왼쪽 열 → 오른쪽 열 순으로 쌓는다. */
 body:has(#main[data-r=home]) .legend{display:none}
 .hm2{display:grid;grid-template-columns:minmax(0,1fr);gap:0 28px;margin-top:8px}
 .hm2-col{display:block;margin-bottom:22px}
