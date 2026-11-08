@@ -44,7 +44,7 @@ const ART = {
 // 홈에 내지 않는 항목(데이터·일정 화면의 행은 그대로): 행 id 목록 또는 행의 hideOnHome 필드
 const HIDE_ON_HOME = new Set(["gg-08", "gg-20"]);
 const COLS = [
-  { id: "A", side: "고등학교", stage: "고입", stones: /졸업|입학식/, intro: ["select/curriculum?v=types", "select/curriculum?v=hs", "select/curriculum?v=compare", "life/credit"], all: "#schedule?t=hs" },
+  { id: "A", side: "고등학교", stage: "고입", stones: /졸업|입학식/, intro: ["select/curriculum?v=types", "select/curriculum?v=schools&lv=high", "life/credit", "schedule?t=hs"], all: "#schedule?t=hs" },
   { id: "B", side: "중학교", stage: "중입", stones: /졸업|입학식/, intro: ["select/curriculum?v=middle", "select/curriculum?v=schools&lv=middle", "schedule?t=life"], all: "#schedule?t=life" },
 ];
 const MENU = new Map(GROUPS.flatMap((g) => g.items.map((it) => [it.id, it])));
