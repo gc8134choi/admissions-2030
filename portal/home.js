@@ -89,7 +89,8 @@ export function registerHome(views, { esc, load, store, profiles }) {
     const isG3 = (r, e) => (e?.audience || r.audience || []).includes("grade3");
     const related = (r, L) => r.entryYear === L.entryYear || r.examYear === L.examYear || (r.entryYear == null && r.examYear == null);
 
-    const evRow = (x, big) => `<li class="h2-ev${big ? " first" : ""}"><span class="h2-d num${x.sp.start <= t ? " live" : ""}">${dLabel(x.sp, t)}</span><div class="h2-b"><b>${esc(x.label || x.r.title)}</b>${x.label ? `<small>${esc(x.r.title)}</small>` : ""}<span class="num">${esc(x.date)}${x.tent ? " 예정" : ""} ${srcOf(x.r)}</span></div></li>`;
+    let lastSub = ""; const subOnce = (x) => { const show = x.label && x.r.title !== lastSub; lastSub = x.label ? x.r.title : ""; return show; };
+    const evRow = (x, big) => `<li class="h2-ev${big ? " first" : ""}"><span class="h2-d num${x.sp.start <= t ? " live" : ""}">${dLabel(x.sp, t)}</span><div class="h2-b"><b>${esc(x.label || x.r.title)}</b>${subOnce(x) ? `<small>${esc(x.r.title)}</small>` : ""}<span class="num">${esc(x.date)}${x.tent ? " 예정" : ""} ${srcOf(x.r)}</span></div></li>`;
     const stoneCard = (m) => { const n = dayN(m.date, t); return `<li class="ms h2-ms" data-ms="${esc("life:" + m.id)}" data-kind="${m.kind}"><div class="ms-t"><span class="ms-k">${esc(m.label)}</span>
         <b class="ms-n num">${n === 0 ? "오늘" : `D-${n.toLocaleString()}`}</b>
         <span class="ms-s num">${esc(m.dateText)}${m.tent ? " 예정" : ""} ${srcOf(m.r)}</span>
@@ -121,10 +122,10 @@ export function registerHome(views, { esc, load, store, profiles }) {
         <header class="hm2-h"><h2 class="hm2-name">${nm}</h2><p class="hm2-sub">${L.examYear ? `${L.examYear}학년도 대입` : ""}</p></header>
         <section class="dp hm2-b soonp" aria-label="${nm} 곧 있을 일"><div class="sec-h"><h3>곧 있을 일</h3></div>
           ${stone ? `<ul class="mss">${stoneCard(stone)}</ul>` : ""}
-          ${soon.length ? `<ul class="h2-evs">${soon.map((x, i) => evRow(x, !stone && i === 0)).join("")}</ul>` : stone ? "" : `<p class="muted">곧 있을 일정이 아직 없어요.</p>`}
+          ${soon.length ? `<ul class="h2-evs">${(lastSub = "", soon.map((x, i) => evRow(x, !stone && i === 0)).join(""))}</ul>` : stone ? "" : `<p class="muted">곧 있을 일정이 아직 없어요.</p>`}
           ${dd}${stone ? '<p class="hint">사진은 이 기기에만 저장돼요.</p>' : ""}</section>
         <details class="dp hm2-b hm2-sch" open><summary><h3>${C.side} 일정</h3><a class="h2-all" href="${C.all}">전체 일정 ›</a></summary>
-          ${later.length ? `<ul class="h2-evs">${later.map((x) => evRow(x)).join("")}</ul>` : '<p class="muted">앞으로 예정된 일정이 아직 없어요.</p>'}</details>
+          ${later.length ? `<ul class="h2-evs">${(lastSub = "", later.map((x) => evRow(x)).join(""))}</ul>` : '<p class="muted">앞으로 예정된 일정이 아직 없어요.</p>'}</details>
         <details class="dp hm2-b hm2-intro" open><summary><h3>${C.side} 소개</h3></summary><ul class="h2-go">${intro}</ul></details>
       </div>`;
     };

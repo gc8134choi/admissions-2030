@@ -64,7 +64,7 @@ const MENU_ICON = {
 // 상단 메뉴(데스크톱)·하단 탭(모바일): 5개 탭, 글자만. 켜진 탭은 위쪽 선.
 function drawTabs(loc) {
   const html = treeHtml(loc), hadFocus = !!document.activeElement?.closest?.("#sidenav");
-  for (const f of [$("#ntfoot"), $("#ntfoot2")]) if (f) f.innerHTML = footLinks(loc);
+  if ($("#ntfoot")) $("#ntfoot").innerHTML = footLinks(loc) + '<button type="button" id="nttg" class="nt-tg" aria-pressed="false">설명 줄 모두 보기</button>'; if ($("#ntfoot2")) $("#ntfoot2").innerHTML = footLinks(loc);
   const side = $("#sdtree"), dr = $("#navtree"), sideBox = $("#sidenav"); if (side) { side.innerHTML = `<nav class="nt" aria-label="전체 메뉴">${html}</nav>`; let cp = true; try { cp = localStorage.getItem("portal.navcompact") !== "0"; } catch {} sideBox.classList.toggle("nt-compact", cp); const tg = $("#nttg"); if (tg) { tg.setAttribute("aria-pressed", String(!cp)); tg.onclick = () => { const v = !sideBox.classList.contains("nt-compact"); sideBox.classList.toggle("nt-compact", v); try { localStorage.setItem("portal.navcompact", v ? "1" : "0"); } catch {} tg.setAttribute("aria-pressed", String(!v)); }; } }
   if (dr) { dr.innerHTML = `<nav class="nt" aria-label="전체 메뉴">${treeHtml(loc, true)}</nav>`; dr.onclick = (e) => { const g = e.target.closest(".nt-gt"); if (!g) return; const on = g.getAttribute("aria-expanded") !== "true"; g.setAttribute("aria-expanded", String(on)); g.closest(".nt-g").classList.toggle("open", on); }; }
   const bt = $("#btabs"); if (bt) bt.innerHTML = BOTTOM.map((b) => b.href ? `<a href="${b.href}"${loc && (loc.item.id === b.r || loc.item.id.split("?")[0] === b.r) ? ' aria-current="page"' : ""}>${esc(b.label)}</a>` : `<button type="button" data-b="${b.key}"${b.key === "menu" ? ' id="menubtn" aria-expanded="false" aria-controls="navdrawer"' : ""}>${esc(b.label)}</button>`).join("");
@@ -579,7 +579,7 @@ function addToc() {
   const mo = new MutationObserver(() => { if (!q) q = requestAnimationFrame(all); }); const m0 = document.getElementById("main"); if (m0) mo.observe(m0, { childList: true, subtree: true }); }
 // 정보 화면: 웹폰트(Pretendard)가 늦게 들어오며 17px 글이 다시 줄바꿈되는 것(CLS)을 막는다 — 글자 모양이 준비될 때까지(최대 0.9초) 본문을 보이지 않게 둔다
 function fontGate() {
-  const m = $("#main"); if (!m || !(m.classList.contains("info") || m.dataset.r === "schedule") || !document.fonts?.load) return; // 일정 화면도: 칩·안내 줄이 글꼴 교체로 다시 줄바꿈되며 밀리는 것(CLS)
+  const m = $("#main"); if (!m || !(m.classList.contains("info") || m.dataset.r === "schedule" || m.dataset.r === "home") || !document.fonts?.load) return; // 일정 화면도: 칩·안내 줄이 글꼴 교체로 다시 줄바꿈되며 밀리는 것(CLS)
   m.classList.add("fw"); let done = false;
   const open = () => { if (done) return; done = true; m.classList.remove("fw"); };
   setTimeout(open, 900);
