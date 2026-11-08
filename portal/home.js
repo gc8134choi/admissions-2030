@@ -114,7 +114,7 @@ export function registerHome(views, { esc, load, store, profiles }) {
       // 가장 가까운 졸업·입학 한 건은 D-day 카드(사진 넣기)로
       const sc = evs.find((x) => x.isStone), stone = sc ? { id: sc.r.id, label: sc.r.title, date: sc.start, dateText: fmtRange(sc.sp, t, null), tent: sc.tent, r: sc.r, kind: /졸업/.test(sc.r.title) ? "graduation" : "entrance" } : null;
       const perRow = new Map(), seenDate = new Set(); // 한 일정 묶음(전기 학교별 일정 등)이 목록을 다 차지하지 않게 묶음당 3건까지, 같은 날짜 줄은 한 번만
-      let rest = evs.filter((x) => x !== sc).filter((x) => { const n = perRow.get(x.r.id) || 0, k = x.date; if (n >= 3 || (seenDate.has(k) && n > 0) || seenDate.has(k)) return false; perRow.set(x.r.id, n + 1); seenDate.add(k); return true; }).slice(0, 8);
+      let rest = evs.filter((x) => x !== sc).filter((x) => { const n = perRow.get(x.r.id) || 0, k = x.date; if (n >= 3 || (seenDate.has(k) && n > 0) || seenDate.has(k)) return false; perRow.set(x.r.id, n + 1); seenDate.add(k); return true; }).slice(0, 6);
       // 수능 날짜는 고교(왼쪽) 열 목록에 날짜 줄로 넣는다
       if (C.id === "A" && L.csat?.date && DRE.test(L.csat.date)) {
         const row = P.get(L.csat.policyRowId || "sch-12") || P.get("sch-07"), sp0 = span(L.csat.date);
