@@ -90,7 +90,7 @@ export function registerHome(views, { esc, load, store, profiles }) {
   const dayN = (s, t) => { const [y, m, d] = s.split("-").map(Number); return Math.round((new Date(y, m - 1, d) - t) / DAY); };
 
   views.home = async (el) => {
-    const [policy, lj] = await Promise.all([load("policy"), load("learners").catch(() => ({ learners: [] }))]);
+    const [policy] = await Promise.all([load("policy")]);
     const t = today(), P = new Map(policy.map((r) => [r.id, r]));
     const learners = profiles();
     const SCHED = new Set(["hs-schedule", "gg-hs-entry", "exam-schedule", "life-schedule"]);
@@ -124,9 +124,9 @@ export function registerHome(views, { esc, load, store, profiles }) {
         dd = `<p class="h2-dd"><span>${L.examYear}학년도 수능</span> <b class="num">D-${n.toLocaleString()}</b> <span class="num">${esc(fmtDate(sp0, t))}${tent ? " 예정" : ""}</span> ${srcOf(row)}</p>`;
       }
       const intro = C.intro.map((id) => MENU.get(id)).filter(Boolean).map((it) => `<li><a href="#${esc(it.id)}"><b>${esc(it.title)}</b><span>${esc(it.desc || "")}</span></a></li>`).join("");
-      const nm = esc((lj.learners || []).find((x) => x.id === C.id)?.name || L.label || C.side); // 이름은 data/learners.json의 name(홈에서만 보임), 비어 있으면 학년 라벨
+      const nm = esc(C.side); // 열 머리글은 학교급(사람 이름은 화면에 쓰지 않는다, 사용자 결정 2026-11-08)
       return `<div class="hm2-col" data-col="${C.id}">
-        <header class="hm2-h"><h2 class="hm2-name">${nm}</h2><p class="hm2-sub">${esc(L.label || "")}${L.examYear ? ` · ${L.examYear}학년도 대입` : ""}</p></header>
+        <header class="hm2-h"><h2 class="hm2-name">${nm}</h2><p class="hm2-sub">${L.examYear ? `${L.examYear}학년도 대입` : ""}</p></header>
         <section class="dp hm2-b soonp" aria-label="${nm} 곧 있을 일"><div class="sec-h"><h3>곧 있을 일</h3></div>
           ${stone ? `<ul class="mss">${stoneCard(stone)}</ul>` : ""}
           ${soon.length ? `<ul class="h2-evs">${soon.map((x, i) => evRow(x, !stone && i === 0)).join("")}</ul>` : stone ? "" : `<p class="muted">곧 있을 일정이 아직 없어요.</p>`}
