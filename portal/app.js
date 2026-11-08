@@ -206,13 +206,14 @@ async function curriculumView(el, query, node) {
   const lv = tab === "middle" || query.get("lv") === "middle" ? "middle" : "high"; // 학교 탭의 "중학교 | 고등학교"
   if (lv === "middle" && !["map", "middle", "schools"].includes(tab)) tab = "middle";
   if (tab === "types") { /* 고교 종류 전용 화면 */ }
-  if (lv === "high" && (tab === "middle" || tab === "schools")) tab = "hs"; // (고교 학교 보기는 다음 단계)
+  if (lv === "high" && tab === "middle") tab = "hs";
+  if (lv === "high" && tab === "schools") tab = { subj: "compare", map: "map" }[query.get("show")] || "hs"; // 고교 학교 보기: show=table|subj|map
   const TABSET = []; // 탭 3겹 → 2겹: 학교별 요약·상세 비교는 위쪽 메뉴 항목으로 올렸다(주소는 그대로) // 학교 지도·중학교 배정·대학 요건은 메뉴(학교 탭 안)에서 연다
   let compare = null; // 상세 비교 화면(필터 포함)은 한 번만 만들고 탭 전환 때 재사용한다
 
   el.innerHTML = `<div class="phead">
       <div class="subtabs" id="tabs"${TABSET.some(([k]) => k === tab) ? "" : " hidden"}>${TABSET.map(([k, t]) => `<a href="#" data-tab="${k}">${t}</a>`).join("")}</div></div>
-    <div class="vtog" id="vtoggle" role="group" aria-label="보기" hidden><span>보기</span><button type="button" data-vt="hs">요약</button><button type="button" data-vt="compare">상세</button></div>
+    <div class="vtog" id="vtoggle" role="group" aria-label="보기" hidden><span>보기</span><button type="button" data-vt="hs">비교표</button><button type="button" data-vt="compare">과목</button><button type="button" data-vt="map">지도</button></div>
         <div class="chipbar" id="chipbar"><span class="flabel">학교</span><div class="chips" id="chips"></div></div>
     <div id="cview"></div>`;
 
@@ -221,7 +222,8 @@ async function curriculumView(el, query, node) {
   const fsParam = () => Object.entries(FS).filter(([, v]) => v.length).map(([k, v]) => `${k}:${v.join("|")}`).join(";");
   const syncUrl = () => {
     const q = new URLSearchParams();
-    q.set("v", tab);
+    if (lv === "high" && ["hs", "compare", "map"].includes(tab)) { q.set("v", "schools"); q.set("lv", "high"); if (tab === "compare") q.set("show", "subj"); else if (tab === "map") q.set("show", "map"); } // 고교 학교 보기 한 화면(비교표|과목|지도)
+    else q.set("v", tab);
     if ((lv === "middle" && tab === "map") || tab === "schools") q.set("lv", "middle");
     if (tab === "map" || tab === "middle") { if (tab === "map" && focusP) q.set("p", focusP); }
     else if (tab !== "types" && tab !== "schools") q.set("s", sel.join(","));
@@ -235,7 +237,7 @@ async function curriculumView(el, query, node) {
   const drawChips = () => {
     // 요약 탭: 본문 위 칩 줄 / 상세 비교 탭: 필터 패널 안의 "학교" 항목
     $("#chipbar").hidden = tab !== "hs";
-    const vt = $("#vtoggle"); vt.hidden = !(tab === "hs" || tab === "compare"); vt.querySelectorAll("[data-vt]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.vt === tab));
+    const vt = $("#vtoggle"); vt.hidden = !(tab === "hs" || tab === "compare" || (tab === "map" && lv !== "middle")); vt.querySelectorAll("[data-vt]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.vt === tab));
     $("#chips").innerHTML = chipHtml();
     const fc = $("#fchips"); if (fc) fc.innerHTML = chipHtml();
     // 표시 순서: 국어·영어·수학 / 한국사·사회·과학(한 줄 3개), 나머지는 한 줄 4개. 표의 교과군 정렬은 그대로.
@@ -598,6 +600,9 @@ function rewriteHash(id, q) {
   const v = q.get("v"), n = new URLSearchParams(q);
   if (v === "middle" && (q.get("open") === "cmp" || q.has("g"))) { n.set("v", "schools"); n.set("lv", "middle"); n.delete("open"); return `${id}?${n}`.replace(/%2C/g, ","); } // 중학교 비교·학교별 항목 → 중학교 학교 보기
   if (v === "map" && q.get("lv") === "middle") { n.set("v", "schools"); n.set("show", "map"); return `${id}?${n}`.replace(/%2C/g, ","); } // 중학교 지도 → 학교 보기의 지도
+  if (!v || v === "hs" || v === "summary") { n.set("v", "schools"); n.set("lv", "high"); if (v === "hs" && q.get("ty") === "1") { n.set("v", "types"); n.delete("lv"); n.delete("ty"); } return `${id}?${n}`.replace(/%2C/g, ","); } // 학교 비교(옛 주소) → 고교 학교 보기, 고교 종류(ty=1)는 전용 화면
+  if (v === "compare") { n.set("v", "schools"); n.set("lv", "high"); n.set("show", "subj"); return `${id}?${n}`.replace(/%2C/g, ","); } // 과목 비교 → 학교 보기의 과목
+  if (v === "map") { n.set("v", "schools"); n.set("lv", "high"); n.set("show", "map"); return `${id}?${n}`.replace(/%2C/g, ","); } // 고교 지도 → 학교 보기의 지도
   if (v === "hs" && q.get("ty") === "1") { n.set("v", "types"); n.delete("ty"); return `${id}?${n}`.replace(/%2C/g, ","); } // 고교 종류는 전용 화면
   return null;
 }

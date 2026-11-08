@@ -10,10 +10,7 @@ export const GROUPS = [
     { id: "schedule?t=life", title: "중학교 일정", page: "중학교 일정", desc: "졸업·입학(배정원서·입학식)", keys: ["졸업", "배정원서", "입학"], r: "schedule", q: { t: "life" } }] },
   { id: "hs", title: "고등학교", items: [
     { id: "select/curriculum?v=types", title: "고교 종류", desc: "일반·특목·자사고 종류와 지원 방법·지망·구역·고입 내신 반영·선지원 추첨", keys: ["일반","자사고","지원","지망","구역","고입 내신","선지원","추첨"], r: "select/curriculum", q: { v: "types"}, sub: "학교 알아보기"},
-    { id: "select/curriculum?v=hs", title: "학교 비교", desc: "학교별 기본 정보·입학 방식·구역", keys: ["입학 방식","구역"], vals: { data: "hs-compare", fields: ["type","admission","zone"]}, r: "select/curriculum", q: { v: ["hs","summary"], ty: "!1", bf: null}},
-    { id: "select/curriculum?v=compare", title: "과목 비교", desc: "학교별 과목 목록 나란히", keys: ["과목","학교별"], r: "select/curriculum", q: { v: "compare"}},
-    { id: "select/curriculum?v=map", title: "고교 지도", page: "고교 지도", desc: "고등학교 위치", keys: ["고등학교"], r: "select/curriculum", q: { v: "map", lv: "!middle"}},
-    { id: "select/curriculum?v=hs&bf=1", title: "설명회 노트", desc: "학교 설명회 내용 요약(일정은 일정 화면)", keys: ["설명회"], r: "select/curriculum", q: { v: ["hs","summary"], bf: "*"}},
+    { id: "select/curriculum?v=schools&lv=high", title: "학교 보기", page: "고교 보기", desc: "학교별 기본 정보·입학 방식·구역·과목·지도·설명회 노트", keys: ["입학 방식", "구역", "과목", "지도", "설명회"], vals: { data: "hs-compare", fields: ["type", "admission", "zone"] }, r: "select/curriculum", q: { v: "schools", lv: "high" } },
     { id: "life/credit", title: "고교학점제", desc: "졸업 학점·과목 이수 기준", keys: ["졸업","학점","이수"], r: "life/credit", sub: "고교 생활"},
     { id: "planner/plan", title: "내 계획표", desc: "학기별 학점 계획", keys: ["학기","학점","계획"], r: "planner/plan"},
     { id: "admission/system", title: "수능과 내신", desc: "수능 체제·시간표, 내신 5등급 계산, 전형 구조(학생부교과·수능최저), 대교협 기본사항, 대입 개편", keys: ["수능","시간","내신","5등급","학생부교과","수능최저","대교협","기본사항","개편"], r: "admission/system", q: { t: null}, sub: "대입"},
