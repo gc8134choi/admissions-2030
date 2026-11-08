@@ -13,6 +13,8 @@ export const RELATED = {
   "schedule?t=road": [["일정", "#schedule?t=hs"], ["수능과 내신", "#admission/system"], ["내 과목 계획", "#planner/plan"]],
   "admission/system": [["대학별 조건", "#select/curriculum?v=univ"], ["일정", "#schedule?t=univ"], ["학점제 쉬운 설명", "#life/credit"]],
   "select/curriculum?v=univ": [["수능과 내신", "#admission/system"], ["일정", "#schedule?t=univ"], ["내 과목 계획", "#planner/plan"]],
+  "schedule?t=hs": [["학교 비교", "#select/curriculum?v=hs"], ["수능과 내신", "#admission/system"], ["학년별 할 일", "#schedule?t=road"]],
+  "schedule?t=life": [["중학교 배정", "#select/curriculum?v=middle"], ["입학 준비", "#select/curriculum?v=middle&open=guide"]],
   "schedule": [["학교 비교", "#select/curriculum?v=hs"], ["수능과 내신", "#admission/system"], ["학년별 할 일", "#schedule?t=road"]],
   "changelog": [["출처 목록", "#library/sources"], ["갱신 기록", "#library/status"]],
 };

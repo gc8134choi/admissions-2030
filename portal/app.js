@@ -14,7 +14,7 @@ const SOON_WHY = {
   "중학교 교육과정": { why: "중학교별 교육과정은 학교 공지를 모으는 중이에요. 11월 안에 중학교 비교에 먼저 담을게요.", next: { label: "중학교 배정에서 학교 찾기", url: "#select/curriculum?v=middle" } },
 };
 import { MENU, STATUS } from "./menu.js";
-import { TABS, REDIRECT, hrefOf, tabHref, locate, treeHtml, BOTTOM } from "./nav-tree.js";
+import { TABS, REDIRECT, hrefOf, tabHref, locate, treeHtml, footLinks, BOTTOM } from "./nav-tree.js";
 import { registerHome } from "./home.js";
 import { registerFiles } from "./files.js";
 import { currentProfile, allProfiles, initProfiles, mountProfileSwitch, nameSettings, bindNameSettings, showProfiles } from "./profile-ui.js";
@@ -64,9 +64,10 @@ const MENU_ICON = {
 // 상단 메뉴(데스크톱)·하단 탭(모바일): 5개 탭, 글자만. 켜진 탭은 위쪽 선.
 function drawTabs(loc) {
   const html = treeHtml(loc), hadFocus = !!document.activeElement?.closest?.("#sidenav");
+  for (const f of [$("#ntfoot"), $("#ntfoot2")]) if (f) f.innerHTML = footLinks(loc);
   const side = $("#sdtree"), dr = $("#navtree"), sideBox = $("#sidenav"); if (side) { side.innerHTML = `<nav class="nt" aria-label="전체 메뉴">${html}</nav>`; let cp = true; try { cp = localStorage.getItem("portal.navcompact") !== "0"; } catch {} sideBox.classList.toggle("nt-compact", cp); const tg = $("#nttg"); if (tg) { tg.setAttribute("aria-pressed", String(!cp)); tg.onclick = () => { const v = !sideBox.classList.contains("nt-compact"); sideBox.classList.toggle("nt-compact", v); try { localStorage.setItem("portal.navcompact", v ? "1" : "0"); } catch {} tg.setAttribute("aria-pressed", String(!v)); }; } }
   if (dr) { dr.innerHTML = `<nav class="nt" aria-label="전체 메뉴">${treeHtml(loc, true)}</nav>`; dr.onclick = (e) => { const g = e.target.closest(".nt-gt"); if (!g) return; const on = g.getAttribute("aria-expanded") !== "true"; g.setAttribute("aria-expanded", String(on)); g.closest(".nt-g").classList.toggle("open", on); }; }
-  const bt = $("#btabs"); if (bt) bt.innerHTML = BOTTOM.map((b) => b.href ? `<a href="${b.href}"${loc && (loc.item.id === b.r || (b.r === "schedule" && loc.item.id === "schedule")) ? ' aria-current="page"' : ""}>${esc(b.label)}</a>` : `<button type="button" data-b="${b.key}"${b.key === "menu" ? ' id="menubtn" aria-expanded="false" aria-controls="navdrawer"' : ""}>${esc(b.label)}</button>`).join("");
+  const bt = $("#btabs"); if (bt) bt.innerHTML = BOTTOM.map((b) => b.href ? `<a href="${b.href}"${loc && (loc.item.id === b.r || loc.item.id.split("?")[0] === b.r) ? ' aria-current="page"' : ""}>${esc(b.label)}</a>` : `<button type="button" data-b="${b.key}"${b.key === "menu" ? ' id="menubtn" aria-expanded="false" aria-controls="navdrawer"' : ""}>${esc(b.label)}</button>`).join("");
   closeDrawer();
   if (side) { const c = side.querySelector("[aria-current=page]"); if (c) { // 현재 항목이 사이드바 안에서 보이게(바깥 화면은 움직이지 않는다)
       const sr = side.getBoundingClientRect(), cr = c.getBoundingClientRect(); if (cr.top < sr.top + sr.height * 0.2 || cr.bottom > sr.bottom - sr.height * 0.2) side.scrollTop += (cr.top + cr.height / 2) - (sr.top + sr.height / 2); /* 가장자리면 가운데로 */ if (hadFocus) c.focus({ preventScroll: true }); } }

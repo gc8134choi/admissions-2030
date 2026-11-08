@@ -6,10 +6,10 @@ export { BOTTOM };
 // q 조건 하나가 맞는지: 값/값 배열/null(없어야 함)/"!값"/"*"(아무 값이나 있어야 함)
 const ok = (cond, got) => (cond === null ? !got : cond === "*" ? !!got : Array.isArray(cond) ? cond.includes(got) : typeof cond === "string" && cond[0] === "!" ? got !== cond.slice(1) : got === cond);
 const mk = (it) => (id, q) => (id === it.r || (it.also || []).includes(id)) && Object.entries(it.q || {}).every(([k, c]) => ok(c, k === "v" ? (q.get("v") || "summary") : q.get(k)));
-const wrap = (it) => ({ id: it.id, title: it.title, page: it.page, desc: it.desc, keys: it.keys, vals: it.vals, m: mk(it) });
+const wrap = (it) => ({ id: it.id, title: it.title, sub: it.sub, page: it.page, desc: it.desc, keys: it.keys, vals: it.vals, m: mk(it) });
 export const TABS = [
   { id: "home", title: HOME.title, groups: [{ key: "", title: "", items: [wrap(HOME)] }] },
-  ...GROUPS.map((g) => ({ id: g.id, title: g.title, leaf: !!g.leaf, groups: [{ key: "", title: "", items: g.items.map(wrap), soon: g.soon }] })),
+  ...GROUPS.map((g) => ({ id: g.id, title: g.title, leaf: !!g.leaf, foot: !!g.foot, groups: [{ key: "", title: "", items: g.items.map(wrap), soon: g.soon }] })),
 ];
 export const hrefOf = (it) => "#" + it.id;
 export const tabHref = (t) => hrefOf(t.groups[0].items[0]);
@@ -23,13 +23,13 @@ const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<
 const link = (it, loc, cls = "") => `<a href="${esc(hrefOf(it))}"${cls ? ` class="${cls}"` : ""}${loc && loc.item === it ? ' aria-current="page"' : ""}><b>${esc(it.title)}</b>${it.desc ? `<small>${esc(it.desc)}</small>` : ""}</a>`;
 // 트리 HTML: 데스크톱 사이드바와 모바일 서랍이 같은 것을 쓴다. 1단계 줄기에 2단계 가지가 선으로 이어진다.
 export const treeHtml = (loc, fold = false) => {
-  // fold=true(모바일 서랍): 현재 그룹만 펴고 나머지는 머리글 한 줄(눌러서 연다)
-  return TABS.map((t, gi) => {
+  // fold=true(모바일 서랍): 현재 그룹만 펴고 나머지는 머리글 한 줄(눌러서 연다). 홈은 로고·하단 바 '오늘'로, 자료·소식은 맨 아래 작은 링크로 가므로 여기엔 없다.
+  return TABS.filter((t) => t.id !== "home" && !t.foot).map((t, gi) => {
     const items = t.groups.flatMap((g) => g.items), on = loc && loc.tab === t;
-    if (t.id === "home") return `<section class="nt-g nt-home${on ? " on" : ""}">${link({ ...items[0], desc: "", title: "홈" }, loc, "nt-hl")}</section>`;
-    if (t.leaf) return `<section class="nt-g leaf${on ? " on" : ""}">${link(items[0], loc, "nt-hl")}</section>`;
-    const list = `<ul id="ntg-${gi}">${items.map((it) => `<li>${link(it, loc)}</li>`).join("")}</ul>`;
+    const list = `<ul id="ntg-${gi}">${items.map((it) => `${it.sub ? `<li class="nt-sub" aria-hidden="true">${esc(it.sub)}</li>` : ""}<li>${link(it, loc)}</li>`).join("")}</ul>`;
     if (fold) return `<section class="nt-g${on ? " on open" : ""}"><h2 class="nt-h"><button type="button" class="nt-gt" aria-expanded="${on ? "true" : "false"}" aria-controls="ntg-${gi}">${esc(t.title)}</button></h2>${list}</section>`;
     return `<section class="nt-g${on ? " on" : ""}"><h2 class="nt-h">${esc(t.title)}</h2>${list}</section>`;
   }).join("");
 };
+// 메뉴 맨 아래 작은 글자 링크(바뀐 소식·관련 사이트·출처·확인일·원본 파일·화면 설정)
+export const footLinks = (loc) => TABS.filter((t) => t.foot).flatMap((t) => t.groups.flatMap((g) => g.items)).map((it) => `<a href="${esc(hrefOf(it))}"${loc && loc.item === it ? ' aria-current="page"' : ""}>${esc(it.title)}</a>`).join("");
