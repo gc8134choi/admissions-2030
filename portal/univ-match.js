@@ -50,10 +50,10 @@ export async function univBody(el, { load, esc, profile, schools, sel, pick }) {
       esc, stage: "대입", title: `${rule.universityName} ${rule.unitName}`, summary: "우리 학교 4곳의 과목표(개설 후보)로 권장 과목을 얼마나 고를 수 있는지 견줘요",
       targets: mine.map((x) => ({ id: x.id, name: x.name, sub: "", href: `#select/curriculum?s=${encodeURIComponent(x.id)}`, search: x.name })),
       rows: [
-        { id: "reach", label: "고를 수 있는 과목", group: "한눈에", kind: "number", get: (t) => { const sm = mOf(t.id)?.summary; return sm ? { text: `${sm.reachable}/${sm.need}`, num: sm.reachable, html: `<b>${sm.reachable}</b> / ${sm.need}과목` } : { empty: true, why: NOREQ }; } },
-        { id: "guar", label: "학교 지정", group: "한눈에", kind: "number", get: (t) => { const sm = mOf(t.id)?.summary; return sm ? { text: String(sm.guaranteed), num: sm.guaranteed } : { empty: true, why: NOREQ }; } },
-        { id: "blk", label: "택n 묶음 충돌", group: "한눈에", kind: "number", get: (t) => { const sm = mOf(t.id)?.summary; return sm ? { text: String(sm.blocked), num: sm.blocked } : { empty: true, why: NOREQ }; } },
-        { id: "abs", label: "과목표에 없음", group: "한눈에", kind: "number", get: (t) => { const sm = mOf(t.id)?.summary; return sm ? { text: String(sm.absent), num: sm.absent } : { empty: true, why: NOREQ }; } },
+        { id: "reach", label: "고를 수 있는 과목", group: "요약", kind: "number", get: (t) => { const sm = mOf(t.id)?.summary; return sm ? { text: `${sm.reachable}/${sm.need}`, num: sm.reachable, html: `<b>${sm.reachable}</b> / ${sm.need}과목` } : { empty: true, why: NOREQ }; } },
+        { id: "guar", label: "학교 지정", group: "요약", kind: "number", get: (t) => { const sm = mOf(t.id)?.summary; return sm ? { text: String(sm.guaranteed), num: sm.guaranteed } : { empty: true, why: NOREQ }; } },
+        { id: "blk", label: "택n 묶음 충돌", group: "요약", kind: "number", get: (t) => { const sm = mOf(t.id)?.summary; return sm ? { text: String(sm.blocked), num: sm.blocked } : { empty: true, why: NOREQ }; } },
+        { id: "abs", label: "과목표에 없음", group: "요약", kind: "number", get: (t) => { const sm = mOf(t.id)?.summary; return sm ? { text: String(sm.absent), num: sm.absent } : { empty: true, why: NOREQ }; } },
         ...Array.from({ length: reqCount }, (_, i) => { const r0 = mOf(mine[0].id).requirements[i]; return { id: `req${i}`, label: `${r0.label} (${r0.strength === "required" ? "필수" : r0.strength === "advised" ? "참고" : "권장"} ${r0.minCount}과목)`, group: "요건별 과목", kind: "text", get: (t) => {
           const r = mOf(t.id)?.requirements?.[i]; if (!r) return { empty: true, why: NOREQ };
           const list = [...r.guaranteed.map((g) => `${nm(g.subjectId)} <span class="muted small">${g.terms.join("·")} 지정</span>`), ...r.selectable.map((g) => `${nm(g.subjectId)} <span class="muted small">${g.terms.join("·")}${g.pick ? ` · 택${g.pick}` : ""}</span>`)];

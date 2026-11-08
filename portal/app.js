@@ -154,7 +154,7 @@ const views = {
     const row = (x) => { const rows = byUrl.get(x.url) || [], files = Object.entries(x.usedIn || {}).map(([f, n]) => `${esc(FILE[f] || f.replace(/\.json$/, ""))} ${n}건`).join(" · ");
       return `<tr><td class="l"><b>${esc(x.names?.[0] || x.url || "")}</b>${(x.names || []).length > 1 ? `<div class="muted small">같은 출처의 다른 표기 ${x.names.length - 1}건</div>` : ""}${rows.length ? `<details class="srcrows"><summary>이 출처를 쓰는 제도·일정 ${rows.length}건</summary><ul>${rows.map((r) => `<li>${esc(r.title)} <span class="muted small">확인 ${esc(r.checkedAt || "-")}</span></li>`).join("")}</ul></details>` : ""}</td><td class="l">${esc(KIND[x.kind] || x.kind || "")}${x.org ? `<div class="muted small">${esc(x.org)}</div>` : ""}</td><td class="l num">${esc(x.checked || "-")}</td><td class="l">${x.url && /^https?:\/\//.test(x.url) ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">열기 ↗</a>` : "-"}</td><td class="l muted small">${files}</td></tr>`; };
     const match = (x) => (!kd || x.kind === kd) && (!q || [...(x.names || []), x.org, x.url, ...(byUrl.get(x.url) || []).map((r) => r.title)].join(" ").toLowerCase().includes(q));
-    el.innerHTML = `<div class="ed"><div class="ed-top"><b>출처·확인일</b> 화면에는 출처를 따로 보이지 않아요. 자료를 어디서 가져왔는지와 확인한 날은 여기에서 모아 봐요. (출처 ${list.length}건, 등록부 기준)</div>
+    el.innerHTML = `<div class="ed"><div class="ed-top"><b>출처·확인일</b> 화면마다 출처를 따로 보이지 않아요. 자료를 어디서 가져왔는지와 확인한 날은 여기에 모아 두었어요. (출처 ${list.length}건)</div>
       <div class="chipbar"><span class="flabel">찾기</span><input type="search" id="srq" placeholder="출처 이름·기관·제도 이름" aria-label="출처 찾기" style="min-height:44px;min-width:min(100%,260px);font-size:16px;padding:0 10px"><div class="chips" id="srk"><button type="button" class="chip on" data-k="" aria-pressed="true">전체</button>${kinds.map((k) => `<button type="button" class="chip" data-k="${k}" aria-pressed="false">${KIND[k]} ${list.filter((x) => x.kind === k).length}</button>`).join("")}</div></div>
       <p class="muted"><span id="srn"></span> · 정렬 <select id="srs" aria-label="정렬" style="min-height:44px;font-size:16px"><option value="date">확인일 최신순</option><option value="name">출처 이름순</option><option value="kind">종류순</option></select></p><div class="tw"><table class="policy"><thead><tr><th class="l">출처</th><th class="l">종류</th><th class="l">확인일</th><th class="l">원문</th><th class="l">쓰이는 화면</th></tr></thead><tbody id="srb"></tbody></table></div>
       <details class="srcrows"><summary>편제표 4개교 출처</summary>${schools.map((s) => `<div class="panel"><b>${esc(s.name)}</b><ul>${(s._meta?.source || []).map((x) => `<li>${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>` : esc(x.name)} <span class="muted">${esc(KIND[x.kind] || x.kind || "")} · ${esc(x.retrieved || "")}</span></li>`).join("")}</ul></div>`).join("")}</details></div>`;
@@ -245,7 +245,7 @@ async function curriculumView(el, query, node) {
     const body = $("#cview");
     if (tab === "hs") {
       compare = null;
-      body.innerHTML = `<details class="dp ty-top" id="tyd"><summary>고교 유형·전형 한눈에</summary><div id="tybody"></div></details><div id="hsmain"></div><section class="dp sum-sec" id="sumsec"><div class="sec-h"><h2><em>과목표</em>과목표 학교 요약</h2></div><div id="sumhost"></div></section>`;
+      body.innerHTML = `<details class="dp ty-top" id="tyd"><summary>고교 유형·전형</summary><div id="tybody"></div></details><div id="hsmain"></div><section class="dp sum-sec" id="sumsec"><div class="sec-h"><h2><em>과목표</em>과목표 학교 요약</h2></div><div id="sumhost"></div></section>`;
       const tyd = body.querySelector("#tyd"); let tyDone = false;
       const fillTy = async () => { if (tyDone) return; tyDone = true; try { await views.types(body.querySelector("#tybody"), query); } catch { body.querySelector("#tybody").innerHTML = '<p class="muted">불러오지 못했어요.</p>'; } };
       tyd.addEventListener("toggle", () => { if (tyd.open) fillTy(); });
@@ -513,7 +513,7 @@ const filesApi = registerFiles(views, { esc, load, nm });
 views.midlife = async (el) => {
   el.innerHTML = `<div class="ed"><ul class="rows lk">
     <li class="row"><div><h3><a href="#select/curriculum?v=middle">교과서·교과 구성</a></h3><p>중학교 배정 화면에서 학교를 열면 나와요.</p></div></li>
-    <li class="row"><div><h3><a href="#schedule?t=life" data-stage="중입">중학교 시기 일정</a></h3><p>중학교 배정·입학 일정을 일정 화면에서 모아 봐요.</p></div></li></ul>
+    <li class="row"><div><h3><a href="#schedule?t=life" data-stage="중입">중학교 시기 일정</a></h3><p>중학교 배정·입학 일정을 일정 화면에 모여 있어요.</p></div></li></ul>
     ${emptyLine(esc, SOON_WHY["중학교 교육과정"])}</div>`;
   el.onclick = (e) => { if (e.target.closest("[data-stage]")) store.set("portal.schedule.stage", "중입"); };
 };

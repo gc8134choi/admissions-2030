@@ -46,7 +46,7 @@ export function register(views, { $, esc, load, store }) {
     if (!list.length) return "<span>출처 확인 중이에요 · 학교·교육청 공지에서 확인해요</span>";
     return `${r.sourceKind ? `<span>${SKIND[r.sourceKind]}</span> · ` : ""}${list.map((x) => (x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>${noticeHint(x.url)}` : esc(x.name))).join(" · ")}`;
   };
-  const table = (rows, cols, cls = () => "") => `<div class="tw"><table class="policy"><thead><tr>${cols.map((c) => `<th class="l">${c[0]}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => `<tr class="${cls(r)}">${cols.map((c) => `<td class="l">${c[1](r)}</td>`).join("")}</tr>`).join("") || `<tr><td colspan="${cols.length}">해당 항목이 없어요.</td></tr>`}</tbody></table></div>`;
+  const table = (rows, cols, cls = () => "") => `<div class="tw"><table class="policy"><thead><tr>${cols.map((c) => `<th class="l">${c[0]}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => `<tr class="${cls(r)}">${cols.map((c) => `<td class="l">${c[1](r)}</td>`).join("")}</tr>`).join("") || `<tr><td colspan="${cols.length}">항목이 없어요.</td></tr>`}</tbody></table></div>`;
   const basic = [["항목", (r) => `<b>${esc(r.title)}</b>`], ["내용", (r) => esc(r.body)]]; // 상태·구분·출처 열은 내지 않는다
   // 행 리스트(표 대체, A안): 왼쪽 상태 점, 오른쪽 제목·내용·출처. 구분은 헤어라인만. 옵션: meta(r)=제목 위 작은 글씨, cls(r)=추가 클래스, title(r)=제목.
 // 긴 본문(번호 ①~⑥이 이어지거나 220자 넘는 문장 3개 이상)은 번호 목록으로 나눠 한 문단 벽이 되지 않게 한다
@@ -65,7 +65,7 @@ const bodyHtml = (t, esc2 = esc) => {
 };
   const cards = (rows, { meta, cls = () => "", title = (r) => r.title } = {}) => rows.length
     ? `<div class="ed-rows">${rows.map((r) => `<article class="ed-row ${cls(r)}">${meta && meta(r) ? `<div class="ed-meta">${esc(meta(r))}</div>` : ""}<div class="ed-st">${stageTag(stageOf(r), esc)}${badgeMain(r)}</div><h3>${esc(title(r))}</h3>${bodyHtml(r.body)}<p class="ed-s">출처 ${src(r)}${badgeNote(r)}</p></article>`).join("")}</div>`
-    : '<p class="muted">해당 항목이 없어요.</p>';
+    : '<p class="muted">항목이 없어요.</p>';
   const cnt = (n) => `<span class="cnt">${n}</span>`;
   const tabs = (items, on) => `<div class="ed-tabs">${items.map(([k, h, t]) => `<a href="${h}" class="${k === on ? "on" : ""}">${t}</a>`).join("")}</div>`;
   const today = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
@@ -134,7 +134,7 @@ const bodyHtml = (t, esc2 = esc) => {
     return regs.length + gr.length ? `<h2>수능·내신 규칙</h2><div class="ed-rows">${regs.join("")}${gr.join("")}</div>` : "";
   };
 
-  const SYS_TABS = [["sys", "#admission/system", "제도"], ["types", "#admission/system?t=types", "전형 한눈에"]];
+  const SYS_TABS = [["sys", "#admission/system", "제도"], ["types", "#admission/system?t=types", "전형"]];
   views.system = async (el, query) => {
     if (query.get("t") === "types") {
       el.innerHTML = `<div class="ed">${tabs(SYS_TABS, "types")}</div><div id="tybody"></div>`;
@@ -200,7 +200,7 @@ const bodyHtml = (t, esc2 = esc) => {
     const rows = all.filter((r) => r.topic === ({ univ: "exam-schedule", life: "life-schedule" }[tab] || "hs-schedule") || (tab === "hs" && r.topic === "gg-hs-entry" && r.events) || (r.topic === "profile-2033" && (tab === "hs" ? /고입/.test(r.title) : tab === "univ" && r.events)));
     const chips = '<div id="aud"></div>'; // 칩 UI·저장(portal.audience)은 home.js와 공유
     el.innerHTML = `${tabs([["hs", "#schedule?t=hs", "고교 입학"], ["univ", "#schedule?t=univ", "대학 입시"], ["life", "#schedule?t=life", "졸업·입학"], ["road", "#schedule?t=road", "학년별 큰 그림"]], tab)}${notice()}
-      <p class="muted">${{ univ: "수능·대교협 일정이에요. 2030학년도분은 대부분 예정 날짜예요.", life: "졸업·배정·입학 일정이에요. 아직 확정 전인 날짜는 날짜 뒤에 예정이라고 붙여요. 겨울방학·졸업식·신입생 예비소집 날짜는 학교마다 달라서 학교 공지로 확인해 주세요." }[tab] || "2027학년도 경기·용인 고입 기준이에요. 연도는 2027학년도 고입이 2026년 하반기에 진행되는 것을 기준으로 붙였어요."}</p>${tab === "hs" ? emptyLine(esc, { why: "학교별 입학설명회 일정은 학교마다 달라 아직 모으지 못했어요.", next: { label: "학교 홈페이지 공지에서 확인(학교 비교)", url: "#select/curriculum?v=hs" } }) : ""}${chips}<div id="tl"></div>`;
+      <p class="muted">${{ univ: "수능·대교협 일정이에요. 2030학년도분은 대부분 예정 날짜예요.", life: "졸업·배정·입학 일정이에요. 아직 확정 전인 날짜는 날짜 뒤에 예정이라고 붙여요. 겨울방학·졸업식·신입생 예비소집 날짜는 학교마다 달라서 학교 공지로 확인해 주세요." }[tab] || "2027학년도 경기·용인 고입 기준이에요. 2027학년도 고입이 2026년 하반기에 진행돼서 그 해로 연도를 붙였어요."}</p>${tab === "hs" ? emptyLine(esc, { why: "학교별 입학설명회 일정은 학교마다 달라 아직 모으지 못했어요.", next: { label: "학교 홈페이지 공지에서 확인(학교 비교)", url: "#select/curriculum?v=hs" } }) : ""}${chips}<div id="tl"></div>`;
     let sel = loadAudience(store);
     const SK = "portal.schedule.stage"; // 단계 필터(브라우저에만 저장, 바로가기와 같은 규칙: portal.<화면>.stage)
     const fsv = store.get(SK, null); let fs = STAGES.includes(fsv) ? fsv : "";
