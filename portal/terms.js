@@ -29,7 +29,7 @@ export function decorateTerms(root, scope = ".dp") {
   const scopes = scope ? [...root.querySelectorAll(scope)] : [root];
   for (const sc of scopes) {
     const done = new Set();
-    const walker = document.createTreeWalker(sc, NodeFilter.SHOW_TEXT, { acceptNode: (n) => (n.parentElement.closest("a,button,summary,script,style,.term,.tip,textarea,input") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT) });
+    const walker = document.createTreeWalker(sc, NodeFilter.SHOW_TEXT, { acceptNode: (n) => (n.parentElement.closest("a,button,summary,script,style,.term,.tip,.no-term,textarea,input") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT) });
     const nodes = []; while (walker.nextNode()) nodes.push(walker.currentNode);
     for (const n of nodes) {
       for (const [t, d] of TERMS) {
