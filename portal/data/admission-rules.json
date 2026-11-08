@@ -3114,8 +3114,8 @@
    "sourceIds": [
     "src-da21bff9"
    ],
-   "checkedAt": "2026-11-03",
-   "sourcePage": "시행계획 2~4쪽(반영 교과·지원자격·수시 탐구 변경), 20~21쪽(지역균형전형), PDF는 인쇄 쪽+2",
+   "checkedAt": "2026-11-09",
+   "sourcePage": "시행계획 인쇄 2~4쪽(PDF 4~6쪽, 반영 교과·지원자격·수시 탐구 변경), 인쇄 20~21쪽(PDF 22~23쪽, 지역균형전형)",
    "requirements": [],
    "requirementsNullReason": "교과 이수 권장·필수 과목은 시행계획에서 확인 못 함",
    "gradeReflection": {
@@ -3157,8 +3157,8 @@
    "sourceIds": [
     "src-da21bff9"
    ],
-   "checkedAt": "2026-11-03",
-   "sourcePage": "시행계획 PDF 3쪽(인쇄 3쪽 변경사항), PDF 28쪽(인쇄 26쪽 서류형 수능최저 표), PDF 26쪽(인쇄 24쪽 면접형: 수능최저 없음)",
+   "checkedAt": "2026-11-09",
+   "sourcePage": "시행계획 PDF 5쪽(인쇄 3쪽 변경사항), PDF 28쪽(인쇄 26쪽 서류형 수능최저 표), PDF 26쪽(인쇄 24쪽 면접형: 수능최저 없음)",
    "requirements": [],
    "requirementsNullReason": "교과 이수 권장·필수 과목은 시행계획에서 확인 못 함",
    "gradeReflection": {
@@ -3200,8 +3200,8 @@
    "sourceIds": [
     "src-da21bff9"
    ],
-   "checkedAt": "2026-11-03",
-   "sourcePage": "시행계획 PDF 3쪽(인쇄 3쪽 변경사항), PDF 36쪽(인쇄 34쪽 수능최저 표)",
+   "checkedAt": "2026-11-09",
+   "sourcePage": "시행계획 PDF 5쪽(인쇄 3쪽 변경사항), PDF 36쪽(인쇄 34쪽 수능최저 표)",
    "requirements": [],
    "requirementsNullReason": "교과 이수 권장·필수 과목은 시행계획에서 확인 못 함",
    "gradeReflection": {
@@ -3243,8 +3243,8 @@
    "sourceIds": [
     "src-da21bff9"
    ],
-   "checkedAt": "2026-11-03",
-   "sourcePage": "시행계획 2~6쪽(2~5쪽 변경사항, 6쪽 일정(안)), 이미지 판독",
+   "checkedAt": "2026-11-09",
+   "sourcePage": "시행계획 인쇄 2~6쪽(PDF 4~8쪽, 2~5쪽 변경사항·6쪽 일정(안)), 이미지 판독",
    "requirements": [],
    "requirementsNullReason": "정시는 교과 이수 권장·필수 과목 해당 없음",
    "gradeReflection": {
