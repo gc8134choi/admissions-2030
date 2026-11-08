@@ -119,7 +119,7 @@ export async function middleBody(el, { load, esc, mapHref = (id) => `#select/cur
     const cd = el.querySelector("#mid-cmpd");
     if (cd) { let done = false; const fill = () => { if (done || !cd.open) return; done = true; cmpTable(el.querySelector("#mid-cmp"), { esc, title: "중학교 비교", summary: "중학교를 가로로 놓고 견줘요", stage: "중입",
       targets: mc.schools.map((s) => ({ id: s.placeId, name: s.name.replace(/중학교$/, "중"), sub: [s.values.founding?.value, s.values.coed?.value].filter(Boolean).join("·"), href: `${mapHref(s.placeId)}&lv=middle`, search: `${s.name} ${s.values.address?.value || ""}` })),
-      rows: compareRows(mc, esc), select: { key: "portal.mid.compare", param: "m", def: zs.map(({ p }) => p.id).filter((id) => mc.schools.some((s) => s.placeId === id)), defN: 4, max: 8, min: 2, always: true, addLabel: "중학교 추가·빼기" },
+      rows: compareRows(mc, esc), select: { key: "portal.mid.compare", param: "m", def: [...new Set([...zs.map(({ p }) => p.id), ...mc.schools.map((s) => s.placeId)])].filter((id) => mc.schools.some((s) => s.placeId === id)), defN: mc.schools.length, max: mc.schools.length, min: 2, always: true, addLabel: "중학교 추가·빼기" },
       emptyNext: WHERE.schoolinfo, sources: mc.schools.flatMap((sc) => Object.values(sc.values).map((v) => v?.source).filter(Boolean)) }); }; cd.addEventListener("toggle", fill); fill(); }
     densify(el, { open: [0], keep: 5, chars: 100, groups: false });
     { /* 메뉴 항목 '중학교 비교'·'입학 준비'는 같은 화면의 접이식을 열어 그 자리로 간다(open=cmp|guide) */

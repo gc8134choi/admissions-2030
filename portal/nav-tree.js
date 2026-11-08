@@ -24,10 +24,11 @@ const link = (it, loc, cls = "") => `<a href="${esc(hrefOf(it))}"${cls ? ` class
 // 트리 HTML: 데스크톱 사이드바와 모바일 서랍이 같은 것을 쓴다. 1단계 줄기에 2단계 가지가 선으로 이어진다.
 export const treeHtml = (loc, fold = false) => {
   // fold=true(모바일 서랍): 현재 그룹만 펴고 나머지는 머리글 한 줄(눌러서 연다). 홈은 로고·하단 바 '오늘'로, 자료·소식은 맨 아래 작은 링크로 가므로 여기엔 없다.
-  return TABS.filter((t) => t.id !== "home" && !t.foot).map((t, gi) => {
-    const items = t.groups.flatMap((g) => g.items), on = loc && loc.tab === t;
+  const shown = TABS.filter((t) => t.id !== "home" && !t.foot), anyOn = shown.some((t) => loc && loc.tab === t); // 현재 그룹이 없으면(홈·자료실) 두 그룹을 모두 펴서 연다
+  return shown.map((t, gi) => {
+    const items = t.groups.flatMap((g) => g.items), on = loc && loc.tab === t, open = on || !anyOn;
     const list = `<ul id="ntg-${gi}">${items.map((it) => `${it.sub ? `<li class="nt-sub" aria-hidden="true">${esc(it.sub)}</li>` : ""}<li>${link(it, loc)}</li>`).join("")}</ul>`;
-    if (fold) return `<section class="nt-g${on ? " on open" : ""}"><h2 class="nt-h"><button type="button" class="nt-gt" aria-expanded="${on ? "true" : "false"}" aria-controls="ntg-${gi}">${esc(t.title)}</button></h2>${list}</section>`;
+    if (fold) return `<section class="nt-g${on ? " on" : ""}${open ? " open" : ""}"><h2 class="nt-h"><button type="button" class="nt-gt" aria-expanded="${open ? "true" : "false"}" aria-controls="ntg-${gi}">${esc(t.title)}</button></h2>${list}</section>`;
     return `<section class="nt-g${on ? " on" : ""}"><h2 class="nt-h">${esc(t.title)}</h2>${list}</section>`;
   }).join("");
 };
