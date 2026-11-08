@@ -41,6 +41,8 @@ const ART = {
 
 // ---- 홈(2026-11-08 개편): 왼쪽 열(고등학교로 가는 쪽) · 오른쪽 열(중학교로 가는 쪽) 2분할 ----
 // 행: [이름] [곧 있을 일] [고등학교|중학교 일정] [고등학교|중학교 소개]. 홈에서는 보도·추정·미정 칩을 내지 않는다(출처 팝오버 안에서만 상태를 보인다).
+// 홈에 내지 않는 항목(데이터·일정 화면의 행은 그대로): 행 id 목록 또는 행의 hideOnHome 필드
+const HIDE_ON_HOME = new Set(["gg-08", "gg-20"]);
 const COLS = [
   { id: "A", side: "고등학교", stage: "고입", stones: /졸업|입학식/, intro: ["select/curriculum?v=hs&ty=1", "select/curriculum?v=hs", "select/curriculum?v=compare", "life/credit"], all: "#schedule?t=hs" },
   { id: "B", side: "중학교", stage: "중입", stones: /졸업|입학식/, intro: ["select/curriculum?v=middle", "select/curriculum?v=middle&open=cmp", "select/curriculum?v=middle&open=guide", "select/curriculum?v=map&lv=middle"], all: "#schedule?t=life" },
@@ -90,10 +92,10 @@ export function registerHome(views, { esc, load, store, profiles }) {
     const related = (r, L) => r.entryYear === L.entryYear || r.examYear === L.examYear || (r.entryYear == null && r.examYear == null);
 
     let lastSub = ""; const subOnce = (x) => { const show = x.label && x.r.title !== lastSub; lastSub = x.label ? x.r.title : ""; return show; };
-    const evRow = (x, big) => `<li class="h2-ev${big ? " first" : ""}"><span class="h2-d num${x.sp.start <= t ? " live" : ""}">${dLabel(x.sp, t)}</span><div class="h2-b"><b>${esc(x.label || x.r.title)}</b>${subOnce(x) ? `<small>${esc(x.r.title)}</small>` : ""}<span class="num">${esc(x.date)}${x.tent ? " 예정" : ""} ${srcOf(x.r)}</span></div></li>`;
+    const evRow = (x, big) => `<li class="h2-ev${big ? " first" : ""}"><span class="h2-d num${x.sp.start <= t ? " live" : ""}">${dLabel(x.sp, t)}</span><div class="h2-b"><b>${esc(x.label || x.r.title)}</b>${subOnce(x) ? `<small>${esc(x.r.title)}</small>` : ""}<span class="num">${esc(x.date)}${x.tent && x.sp.start > t ? " 예정" : ""} ${srcOf(x.r)}</span></div></li>`;
     const stoneCard = (m) => { const n = dayN(m.date, t); return `<li class="ms h2-ms" data-ms="${esc("life:" + m.id)}" data-kind="${m.kind}"><div class="ms-t"><span class="ms-k">${esc(m.label)}</span>
         <b class="ms-n num">${n === 0 ? "오늘" : `D-${n.toLocaleString()}`}</b>
-        <span class="ms-s num">${esc(m.dateText)}${m.tent ? " 예정" : ""} ${srcOf(m.r)}</span>
+        <span class="ms-s num">${esc(m.dateText)}${m.tent && n > 0 ? " 예정" : ""} ${srcOf(m.r)}</span>
         <span class="ms-a"><button type="button" class="lnk" data-add>사진 넣기</button><button type="button" class="lnk" data-del hidden>삭제</button><input type="file" accept="image/*" hidden></span></div>
         <div class="ms-p" aria-hidden="true">${ART[m.kind] || ART.graduation}</div></li>`; };
 
@@ -102,7 +104,7 @@ export function registerHome(views, { esc, load, store, profiles }) {
       let aud; try { aud = loadAudience(store); } catch { aud = AUDIENCE_DEFAULT; }
       const evs = policy.filter((r) => SCHED.has(r.topic) && related(r, L) && stageOf(r) === C.stage && r.region !== "seoul")
         .flatMap((r) => eventsOf(r).map((e) => ({ r, e, sp: span(e.start, e.end) })))
-        .filter((x) => x.sp.end >= t && !isG3(x.r, x.e) && audienceMatch(x.e.audience || x.r.audience, aud))
+        .filter((x) => x.sp.end >= t && !HIDE_ON_HOME.has(x.r.id) && !x.r.hideOnHome && !isG3(x.r, x.e) && audienceMatch(x.e.audience || x.r.audience, aud))
         .sort((a, b) => a.sp.start - b.sp.start || a.sp.end - b.sp.end)
         .map((x) => ({ r: x.r, sp: x.sp, label: x.e.label || "", title: x.r.title + (x.e.label ? ` · ${x.e.label}` : ""), date: fmtRange(x.sp, t, x.e), tent: tentative(x.r), isStone: x.r.topic === "life-schedule" && C.stones.test(x.r.title) && DRE.test(x.e.start) && x.e.start.length === 10 ? x : null, start: x.e.start }));
       // 가장 가까운 졸업·입학 한 건은 D-day 카드(사진 넣기)로
