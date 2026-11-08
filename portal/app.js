@@ -606,11 +606,34 @@ function rewriteHash(id, q) {
   if (v === "hs" && q.get("ty") === "1") { n.set("v", "types"); n.delete("ty"); return `${id}?${n}`.replace(/%2C/g, ","); } // 고교 종류는 전용 화면
   return null;
 }
+// hl이 가리키는 글이 어느 화면에 있는지 데이터로 확인해, 옛 주소(고교 종류 행을 학교 보기로, 전형 구조 행을 수능과 내신으로 가리키던 것)를 맞는 화면으로 보낸다
+async function routeByHl(id, query) {
+  const hl = query.get("hl"); if (!hl) return null;
+  const k = (x) => String(x || "").replace(/ⓘ|·/g, "").replace(/\s+/g, "").toLowerCase().slice(0, 16), kh = k(hl);
+  if (kh.length < 2) return null;
+  const hit = (arr) => arr.some((t) => { const x = k(t); return x && (x.includes(kh) || kh.includes(x)); });
+  const toHash = (path, n) => `${path}?${n}`.replace(/%2C/g, ",").replace(/\+/g, "%20");
+  try {
+    if (id === "select/curriculum" && query.get("v") === "schools" && query.get("lv") === "high" && !query.get("show")) {
+      const [pol, ht] = await Promise.all([load("policy"), load("hs-types")]);
+      const TY = new Set(["hs-types", "high-school-assignment", "hs-choice-opinion", "gg-hs-entry"]);
+      const titles = [...pol.filter((r) => TY.has(r.topic)).map((r) => r.title), ...ht.types.flatMap((t) => [t.name, `${t.name} (고교 유형)`]), ...(ht.calendar || []).map((c) => c.what), "선발 방식", "좋은 점", "살펴볼 점", "전형 시기", "입학 전형"];
+      if (hit(titles)) { const n = new URLSearchParams(query); n.set("v", "types"); n.delete("lv"); return toHash(id, n); }
+    }
+    if (id === "admission/system" && query.get("t") !== "types") {
+      const pol = await load("policy");
+      if (hit(pol.filter((r) => r.topic === "admission-structure" || ["cur-29", "cur-30"].includes(r.id)).map((r) => r.title))) { const n = new URLSearchParams({ t: "types" }); query.forEach((v, k) => { if (k !== "t") n.append(k, v); }); return toHash(id, n); }
+    }
+  } catch {}
+  return null;
+}
+let renderSeq = 0;
 function render() {
   const [path, qs] = decodeURIComponent(location.hash.slice(1)).split("?");
   const query = new URLSearchParams(qs || "");
   let id = path || "home";
   if (REDIRECT[id]) { location.replace("#" + REDIRECT[id] + (qs ? (REDIRECT[id].includes("?") ? "&" : "?") + qs : "")); return; } // 옛 주소 → 가까운 화면
+  if (query.get("hl") && (id === "select/curriculum" || id === "admission/system")) { const rw0 = id === "select/curriculum" ? rewriteHash(id, query) : null, q1 = rw0 ? new URLSearchParams(rw0.split("?")[1]) : query, id1 = rw0 ? rw0.split("?")[0] : id; routeByHl(id1, q1).then((h) => { if (h && location.hash.slice(1, 40).startsWith(id.slice(0, 10))) location.replace("#" + h); }); }
   { const rw = rewriteHash(id, query); if (rw) { location.replace("#" + rw); return; } } // 옛 주소의 쿼리 바꾸기(화면을 합치거나 나눈 뒤에도 옛 링크가 살아 있게)
   if (id === "admission/system" && query.get("t") === "log") { location.replace("#changelog"); return; } // 옛 주소: 바뀐 소식은 자료·소식 한 곳
   const n = byId.get(id) || byId.get("home");
@@ -634,7 +657,7 @@ function render() {
     $("#main").innerHTML = `${sub}${isInfo(n, query) || ["map", "hs", "summary", "compare", "types", "schools"].includes(query.get("v") || "summary") ? `<h1 class="ph">${esc(loc.item.page || loc.item.title)}</h1>` : ""}${crumbHtml(loc, hrefOf, tabHref)}${wantsToc(n, query) ? '<div id="toc-host" class="toc-host"></div>' : ""}<div id="view"></div>${soon}${footHtml(loc)}`;
     pageExtras(loc, query); fontGate();
     const mainEl = $("#main"); mainEl.classList.add("view-loading"); const ready = () => requestAnimationFrame(() => { mainEl.classList.remove("view-loading"); addToc(); }); // 화면이 다 그려지기 전에는 아래 안내(푸터)를 숨겨 밀림(CLS)을 막는다
-    views[n.view]($("#view"), query, n).catch(() => ($("#view").innerHTML = GO_ERR)).finally(ready);
+    const mine = ++renderSeq; views[n.view]($("#view"), query, n).catch(() => { if (mine === renderSeq) $("#view").innerHTML = GO_ERR; /* 그 사이 다른 화면으로 바뀌었으면(늦은 주소 이동) 옛 화면의 오류는 버린다 */ }).finally(ready);
     return;
   }
   const title = loc.item.page || loc.item.title || n.title;
@@ -643,7 +666,8 @@ function render() {
   pageExtras(loc, query); fontGate();
   { const mainEl = $("#main"); mainEl.classList.add("view-loading"); setTimeout(() => mainEl.classList.remove("view-loading"), 4000); /* 안전장치 */ }
   const doneLoad = () => requestAnimationFrame(() => { $("#main").classList.remove("view-loading"); addToc(); });
-  if (n.view) views[n.view]($("#view"), query).finally(doneLoad).then(() => { filesApi.afterView(n.view, $("#view")); if (n.view === "credit") decorateSubjectLists($("#view"), load, "4."); if (n.view === "schedule") addCalendar($("#view")); }).catch(() => ($("#view").innerHTML = GO_ERR));
+  const mine2 = ++renderSeq;
+  if (n.view) views[n.view]($("#view"), query).finally(doneLoad).then(() => { filesApi.afterView(n.view, $("#view")); if (n.view === "credit") decorateSubjectLists($("#view"), load, "4."); if (n.view === "schedule") addCalendar($("#view")); }).catch(() => { if (mine2 === renderSeq) $("#view").innerHTML = GO_ERR; });
 }
 
 addEventListener("hashchange", () => { window.__hlWanted = /[?&]hl=/.test(location.hash) ? Date.now() : 0; render(); applyHl(); });
