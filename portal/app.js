@@ -619,6 +619,7 @@ async function routeByHl(id, query) {
       const TY = new Set(["hs-types", "high-school-assignment", "hs-choice-opinion", "gg-hs-entry"]);
       const titles = [...pol.filter((r) => TY.has(r.topic)).map((r) => r.title), ...ht.types.flatMap((t) => [t.name, `${t.name} (고교 유형)`]), ...(ht.calendar || []).map((c) => c.what), "선발 방식", "좋은 점", "살펴볼 점", "전형 시기", "입학 전형"];
       if (hit(titles)) { const n = new URLSearchParams(query); n.set("v", "types"); n.delete("lv"); return toHash(id, n); }
+      if (hit(pol.filter((r) => r.topic === "admission-structure" || ["cur-29", "cur-30"].includes(r.id)).map((r) => r.title))) { const n = new URLSearchParams({ t: "types", hl }); return toHash("admission/system", n); }
     }
     if (id === "admission/system" && query.get("t") !== "types") {
       const pol = await load("policy");
