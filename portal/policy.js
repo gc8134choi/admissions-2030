@@ -98,8 +98,8 @@ const bodyHtml = (t, esc2 = esc) => {
     const dn = (d) => Math.round((new Date(d.length === 7 ? d + "-15" : d.slice(0, 10)) - new Date(t)) / 864e5); // 오늘까지 남은 날(월만 있으면 15일로 어림)
     const inWeek = (e) => { const s0 = e.start.length === 10 ? dn(e.start) : 99, e0 = (e.end || e.start).length === 10 ? dn(e.end || e.start) : 99; return s0 <= 7 && e0 >= 0; };
     // 같은 일정이 두 번 나오지 않게 (행 id·라벨·날짜)로 걸러 낸다(데이터에 id 중복이 생겨도 화면은 한 번만 보여 준다).
-    const seenEv = new Set();
-    let evs = rows.flatMap((r) => (r.events || []).map((e, i) => ({ ...e, r, first: i === 0 }))).filter((x) => { const k = `${x.r.id}|${x.label || ""}|${x.start}|${x.end || ""}`; if (seenEv.has(k)) return false; seenEv.add(k); return true; }).sort((a, b) => a.start.localeCompare(b.start));
+    const seenEv = new Set(); // 같은 날짜·같은 이름의 행(예: 2030학년도 수능 시행일/2030학년도 수능)은 한 줄만
+    let evs = rows.flatMap((r) => (r.events || []).map((e, i) => ({ ...e, r, first: i === 0 }))).filter((x) => { const k = `${x.r.title.replace(/ ?시행일$/, "")}|${x.label || ""}|${x.start}|${x.end || ""}|${x.r.topic}`; if (seenEv.has(k)) return false; seenEv.add(k); return true; }).sort((a, b) => a.start.localeCompare(b.start));
     if (week) evs = evs.filter(inWeek);
     const tr = (e) => { const d0 = e.start.length === 10 ? dn(e.start) : null, soon = d0 != null && d0 >= 0 && d0 <= 7, live = e.start.length === 10 && d0 < 0 && (e.end || e.start) >= t; return `<tr class="${(e.end || e.start) < t ? "past" : soon ? "due" : live ? "now" : ""}"><td class="l">${stageTag(stageOf(e.r), esc)}${soon ? `<b class="dn num">D-${d0}</b> ` : live ? '<b class="dn">진행 중</b> ' : ""}${esc(fmt(e))}${tent(e.r) && e.start > t ? " 예정" : ""}</td><td class="l"><b>${esc(e.r.title)}</b>${e.label ? ` · ${esc(e.label)}` : ""}${e.first ? `<div class="muted small">${esc(e.r.body)}</div>` : ""}</td></tr>`; };
     const none = rows.filter((r) => !r.events);

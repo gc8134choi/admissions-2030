@@ -84,7 +84,7 @@ export async function comparePanel({ load, esc }) {
   // 차이 먼저: 학교 사이에 가장 크게 다른 두 항목을 맨 위에 적는다
   const diffs = M.map(([k, l], i) => ({ l, lo: stat[i].min, hi: stat[i].max, d: stat[i].max ? (stat[i].max - stat[i].min) / stat[i].max : 0 })).sort((a, b) => b.d - a.d).slice(0, 2);
   const cell = (m, i) => { const [k, l, c] = M[i], v = +m[k], st = stat[i]; return `<span class="cm ${c}${v === st.max && st.max !== st.min ? " hi" : ""}" title="${esc(l)}"><b class="num">${v}</b><span class="cm-b"><i style="width:${st.max ? (v / st.max) * 100 : 0}%"></i></span></span>`; };
-  return `<section class="dp hscmp t2 glass"><h2><em>비교</em>고교 한눈에<a href="#select/curriculum?v=hs">자세히 ›</a></h2>
+  return `<section class="dp hscmp t2 glass"><h2><em>비교</em>고교 한눈에</h2>
     <p class="cmx-d"><b>가장 다른 점</b> ${diffs.map((d) => `${esc(d.l)} <span class="num">${d.lo}~${d.hi}</span>`).join(" · ")}</p>
     <ul class="cmx"><li class="cmx-h" aria-hidden="true"><span>학교</span>${M.map(([, l]) => `<span>${esc(l)}</span>`).join("")}</li>${summary.map((m) => `<li><div class="cmx-n"><a href="#select/curriculum?s=${esc(m.schoolId)}"><b>${esc(m.schoolName)}</b></a><small title="${esc(lines.get(m.schoolId) || "")}">${esc(m.schoolType)}·${esc(m.founding)}${lines.get(m.schoolId) ? ` · ${esc(lines.get(m.schoolId))}` : ""}</small>
       <span class="cmx-g"><a href="#select/curriculum?v=map${pl(m.schoolId) ? "&p=" + esc(pl(m.schoolId)) : ""}">지도</a>${bf(m.schoolId) ? ` · <a href="#select/curriculum?v=summary&bf=${esc(m.schoolId)}">설명회 노트</a>` : ""}</span></div>${M.map((_, i) => cell(m, i)).join("")}</li>`).join("")}</ul></section>`;

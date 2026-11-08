@@ -9,6 +9,9 @@ import { withSourceIds } from "./lib/source-ids.mjs";
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 
 const SRC = "research/data/places-draft.json";
+// 중학교 홈페이지는 중학교 비교표(middle-compare.json)와 같은 값을 쓴다(지도·비교·배정 표가 서로 다르게 보이지 않게)
+const MC = existsSync("portal/data/middle-compare.json") ? JSON.parse(readFileSync("portal/data/middle-compare.json", "utf8")) : { schools: [] };
+const mcHome = (id) => MC.schools.find((x) => x.placeId === id)?.values?.homepage?.value ?? null;
 const draft = existsSync(SRC) ? JSON.parse(readFileSync(SRC, "utf8")) : { _meta: {}, items: [] };
 const schema = JSON.parse(readFileSync("schema/places.schema.json", "utf8"));
 const errs = [];
@@ -28,7 +31,7 @@ const places = draft.items.map((it) => {
   const externalIds = externalIdsFor(it.placeId);
   return {
     id: it.placeId, schoolId: it.schoolId ?? null, name: it.name, level: it.level, kind: it.placeId === "pl-014" ? (String(it.kind ?? "").replace("(단설)", "") || null) : it.kind ?? null, address: it.address,
-    lat, lng, coordSource: it.coordSource ?? null, coordApprox: lat != null && /근사/.test(it.coordSource?.name || ""), homepage: it.homepage ?? null, phone: it.phone ?? null, ...(externalIds ? { externalIds } : {}),
+    lat, lng, coordSource: it.coordSource ?? null, coordApprox: lat != null && /근사/.test(it.coordSource?.name || ""), homepage: it.homepage ?? (it.level === "middle" ? mcHome(it.placeId) : null), phone: it.phone ?? null, ...(externalIds ? { externalIds } : {}),
     status: it.status, sources: it.sources, checkedAt: it.checkedAt ?? draft._meta?.checkedAt ?? null,
     searchQuery: `${it.name} ${it.address}`.trim(),
   };
