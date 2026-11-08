@@ -204,3 +204,13 @@ button.term{padding-inline:5px!important;margin-inline:-5px!important}
 .nd-top{min-height:52px}
 .nd-th{margin:8px 4px 4px}
 #themesw2{margin:0 4px 4px}
+
+/* 메뉴 구조(2026-11-08): 최상위 중학교·고등학교 두 그룹, 의미 단위 소제목은 작은 간격+글자로만 구분, 자료·소식·화면 설정은 맨 아래 작은 링크 */
+.nt-sub{list-style:none;margin:10px 0 0;padding:6px 8px 0;border-top:1px solid var(--line);font:700 15px/1.2 var(--font);color:var(--ink);opacity:.7}
+.nt li:first-child.nt-sub{margin-top:0;border-top:0}
+.nt-foot{display:flex;flex-wrap:wrap;gap:0 14px;margin:0 0 4px}
+.nt-foot a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink);font:600 16px var(--font);text-decoration:none;border-bottom:2px solid transparent}
+.nt-foot a:hover{text-decoration:underline;text-underline-offset:4px}
+.nt-foot a[aria-current=page]{border-bottom-color:var(--accent);font-weight:700}
+.navdrawer .nt-foot{margin:8px 4px 0;padding-top:8px;border-top:1px solid var(--line)}
+.sd-top .wm,.nd-top .wm{text-decoration:none;color:var(--ink)}
