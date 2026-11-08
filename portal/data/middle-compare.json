@@ -425,11 +425,15 @@
      "nullReason": null
     },
     "feature": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
+     "value": "역점 교육: 행복하고 건강한 학교생활을 위한 학생활동 활성화(문화예술 중심 방과후 프로그램, 학급 단위 스포츠클럽·리그전, 학생 자치 활성화), 배려와 존중이 넘치는 안전한 학교(생활지도·상담 강화, 인성교육프로젝트). 특색 교육: 행복을 가꾸는 성복 미래교육(학교 자율 역량 강화, 미래형 교육과정 운영), 다양성을 가꾸는 세계 시민 교육·인성교육(실용영어·실용외국어, 다문화 교육).",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "성복중학교 홈페이지 '역점교육·특색교육 활동'(안내 이미지 판독, 2026-11-08 확인, 요약은 조사 세션)",
+      "url": "https://sungbok-m.goeyi.kr/sungbok-m/cm/cntnts/cntntsView.do?mi=12175&cntntsId=2006"
+     },
+     "sourceId": "src-3d0ebf71",
+     "nullReason": null
     },
     "studentsDetail": {
      "value": "1학년 318명 · 2학년 345명 · 3학년 283명(특수·순회학급 제외 합계)",
@@ -591,11 +595,15 @@
      "nullReason": null
     },
     "feature": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
+     "value": "교육목표(학교 홈페이지에 특색 사업 글은 없음): 정직하고 남을 배려하는 도덕인, 건강한 신체와 여유로운 마음의 건강인, 스스로 목표를 세우고 노력하는 실력인, 탐구·개척정신의 창의인, 세계인으로 인정받는 마인드의 세계인. 비전 '더불어 함께 성장하는 행복한 학교', 교훈 '바른 품성 높은 실력 큰 인재'.",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "성서중학교 홈페이지 '교육목표'(안내 이미지 판독, 2026-11-08 확인, 요약은 조사 세션)",
+      "url": "https://seongseo-m.goeyi.kr/seongseo-m/cm/cntnts/cntntsView.do?mi=2184&cntntsId=561"
+     },
+     "sourceId": "src-720d26e3",
+     "nullReason": null
     },
     "studentsDetail": {
      "value": "1학년 318명 · 2학년 317명 · 3학년 315명(특수·순회학급 제외 합계)",
@@ -1097,11 +1105,15 @@
      "nullReason": null
     },
     "feature": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
+     "value": "교육목표(학교 홈페이지에 특색 사업 글은 없음): 민주시민의 자질을 갖춘 창의융합형 인재 육성. 교육 비전 '존중과 배려의 마음으로 소통하는 행복한 배움 공동체', 미래 핵심 역량 9가지(의사소통·민주시민의식·협력적 문제해결·공동체·창의적 사고력·문화적 소양·자기관리·자기조절·지식정보처리).",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "신봉중학교 홈페이지 '교육목표 및 자율과제'(안내 이미지 판독, 2026-11-08 확인, 요약은 조사 세션)",
+      "url": "https://shinbong-m.goeyi.kr/shinbong-m/cm/cntnts/cntntsView.do?mi=13372&cntntsId=2204"
+     },
+     "sourceId": "src-bd4e28e1",
+     "nullReason": null
     },
     "studentsDetail": {
      "value": "1학년 225명 · 2학년 214명 · 3학년 224명(특수·순회학급 제외 합계)",
@@ -1433,11 +1445,15 @@
      "nullReason": null
     },
     "feature": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
+     "value": "특색 교육: 지구살리기 에코 프로젝트, 학생 건강 증진을 위한 스포츠 활동, 학생 주도 자치 활성화. 중점 교육: 독서논술 활성화, 디지털 역량 강화, 존중과 배려를 위한 인성교육 확대.",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "정평중학교 홈페이지 '노력중점 및 경영방침'(2026-11-08 확인, 요약은 조사 세션)",
+      "url": "https://jp-m.goeyi.kr/jp-m/cm/cntnts/cntntsView.do?mi=3517&cntntsId=754"
+     },
+     "sourceId": "src-2e14bb4b",
+     "nullReason": null
     },
     "studentsDetail": {
      "value": "1학년 349명 · 2학년 381명 · 3학년 344명(특수·순회학급 제외 합계)",
@@ -1599,11 +1615,15 @@
      "nullReason": null
     },
     "feature": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
+     "value": "교육목표(학교 홈페이지에 특색 사업 글은 없음): '참되고 바르고 슬기로운 글로벌 홍천인 육성' — 참된 생각(홍천 자아 형성), 바른 행동(민주시민의 자질 함양), 슬기로운 생활(글로벌 경쟁력). 비전 '존중 UP, 예의 UP 함께 성장하는 행복한 배움 공동체'.",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "홍천중학교 홈페이지 '교육목표'(안내 이미지 판독, 2026-11-08 확인, 요약은 조사 세션)",
+      "url": "https://hongcheon-m.goeyi.kr/hongcheon-m/cm/cntnts/cntntsView.do?mi=14868&cntntsId=2380"
+     },
+     "sourceId": "src-feede2fa",
+     "nullReason": null
     },
     "studentsDetail": {
      "value": "1학년 287명 · 2학년 283명 · 3학년 310명(특수·순회학급 제외 합계)",
@@ -1765,11 +1785,15 @@
      "nullReason": null
     },
     "feature": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
+     "value": "교육목표(학교 홈페이지에 특색 사업 글은 없음): 올바르게 행동하고 더불어 행복하게 사는 사람, 소질과 재능을 갈고닦아 창의성을 발현하는 사람, 주체의식을 갖고 자율과 책임으로 글로벌시대를 선도하는 사람, 심신을 건강하게 가꾸고 문화예술을 발전시키는 정서적인 사람.",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "상현중학교 홈페이지 '교육목표'(안내 이미지 판독, 2026-11-08 확인, 요약은 조사 세션)",
+      "url": "https://sanghyeon-m.goeyi.kr/sanghyeon-m/cm/cntnts/cntntsView.do?mi=20055&cntntsId=3205"
+     },
+     "sourceId": "src-81e578b0",
+     "nullReason": null
     },
     "studentsDetail": {
      "value": "1학년 233명 · 2학년 264명 · 3학년 276명(특수·순회학급 제외 합계)",
@@ -1931,11 +1955,15 @@
      "nullReason": null
     },
     "feature": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
+     "value": "교육방향(학교 홈페이지에 특색 사업 글은 없음): 비전 '즐거운 배움, 건강한 성장, 행복한 우리학교', 교육 지표 '큰 꿈, 참된 지성, 따뜻한 품성을 지닌 행복한 서원인', 브랜드 혁신지수·창의성지수·행복지수·높이는 학교.",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "서원중학교 홈페이지 '교육방향'(안내 이미지 판독, 2026-11-08 확인, 요약은 조사 세션)",
+      "url": "https://seowon-m.goeyi.kr/seowon-m/cm/cntnts/cntntsView.do?mi=10309&cntntsId=1769"
+     },
+     "sourceId": "src-1048f581",
+     "nullReason": null
     },
     "studentsDetail": {
      "value": "1학년 323명 · 2학년 315명 · 3학년 310명(특수·순회학급 제외 합계)",
@@ -2267,11 +2295,15 @@
      "nullReason": null
     },
     "feature": {
-     "value": null,
-     "asOf": null,
-     "status": "estimated",
-     "source": null,
-     "nullReason": "학교 홈페이지에 교육 특색을 글로 게시하지 않았거나 이미지로만 올려 요약하지 못했어요. 학교 홈페이지 > 학교소개 > 교육목표·특색에서 확인하세요."
+     "value": "교육목표(학교 홈페이지에 특색 사업 글은 없음): 도덕인·자주인·건강인·창조인을 기른다. 경영방침 중 창의력 교육의 산실로 생각하고 실천하는 교육프로그램 운영, 글로벌 인재 육성을 위한 외국어 동아리 활동·외국 심층 탐구 및 체험교육 운영. 교훈 '성실', 비전 '존중과 배려 속에 좋은 습관을 형성하는 이현인'.",
+     "asOf": "2026",
+     "status": "confirmed",
+     "source": {
+      "name": "이현중학교 홈페이지 '교육목표'(안내 이미지 판독, 2026-11-08 확인, 요약은 조사 세션)",
+      "url": "https://www.goeyi.kr/e-hyun-m/cm/cntnts/cntntsView.do?mi=2779&cntntsId=638"
+     },
+     "sourceId": "src-87f73372",
+     "nullReason": null
     },
     "studentsDetail": {
      "value": "1학년 321명 · 2학년 323명 · 3학년 340명(특수·순회학급 제외 합계)",
