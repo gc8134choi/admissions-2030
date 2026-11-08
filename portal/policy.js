@@ -31,7 +31,7 @@ export function register(views, { $, esc, load, store }) {
   // 선택된 프로필(portal.profile)의 행 + 연도 없는 공통 행만 쓴다. 프로필을 바꾸면 셸이 화면을 다시 그린다.
   const curProfile = () => profileOf(loadProfile(store));
   const loadPolicy = async () => filterByProfile(await load("policy"), curProfile().id).map(plainRow); // 내부 사정 문구는 사용자 말로(plain.js)
-  const notice = () => noticeFor(curProfile());
+  const notice = () => ""; // 조사일·재확인 안내 상자는 내지 않는다(2026-11-08 확인일 표시 삭제 결정; 자료실 > 출처·확인일에서만)
   const tent = (r) => ["reported", "estimated", "unknown", "material"].includes(r?.status); // 확정이 아닌 날짜는 칩 대신 "예정"이라는 일반 낱말로만(2026-11-08 출처·상태 표시 삭제 결정)
   const badgeMain = () => ""; // 상태 칩(보도·추정·미정·확인 중)은 화면에 내지 않는다. 데이터의 status·출처는 그대로 둔다.
   const badgeNote = () => ""; // 근거·메모 버튼도 내지 않는다
@@ -182,7 +182,7 @@ const bodyHtml = (t, esc2 = esc) => {
 
   views.changelog = async (el) => {
     const rows = [...(await watchRows()), ...(await loadPolicy()).filter((r) => r.topic === "change-log")];
-    el.innerHTML = `<div class="ed"><div class="ed-top"><b>바뀐 소식</b><details><summary>자세히</summary>${notice()}</details></div>${statusSelect(rows)}<div id="ptbl"></div></div>`;
+    el.innerHTML = `<div class="ed"><div class="ed-top"><b>바뀐 소식</b></div>${statusSelect(rows)}<div id="ptbl"></div></div>`;
     filtered(el, rows, (f) => { $("#ptbl").innerHTML = logTable(rows.filter((r) => stMatch(r, f))); });
   };
 
@@ -242,7 +242,7 @@ const bodyHtml = (t, esc2 = esc) => {
     const asg = asgAll.filter((r) => r.region !== "seoul" && !r.entryYear); // 용인 평준화 구역 구성(2026학년도 기준)
     const asgNew = asgAll.filter((r) => r.region !== "seoul" && r.entryYear === 2027); // 경기 2027학년도 변경 사항
     const asgSeoul = asgAll.filter((r) => r.region === "seoul"); // 서울 참고
-    el.innerHTML = `<div class="ed"><div class="ed-top"><b>고교 유형과 전형이에요.</b><details><summary>자세히</summary>${notice()}</details></div>
+    el.innerHTML = `<div class="ed"><div class="ed-top"><b>고교 유형과 전형이에요.</b></div>
       <h2>고교 유형 ${cnt(rows.filter((r) => r.topic === "hs-types").length)}</h2>${cards(rows.filter((r) => r.topic === "hs-types"))}
       ${gg.length ? `<h2>경기 고입 안내 <small>2027학년도</small> ${cnt(gg.length)}</h2>${cards(gg)}` : ""}
       ${asg.length ? `<h2>추첨으로 배정되는 지역의 고교 배정(용인 평준화 배정) <small>2026학년도 기준 참고</small> ${cnt(asg.length)}</h2>

@@ -144,21 +144,23 @@ const views = {
 
   async sources(el) { // 자료실 > 출처·확인일: 화면에서는 출처를 지웠으므로 확인할 곳은 여기 하나(출처 등록부 + 제도·일정 행의 확인일)
     const [reg, policy, schools] = await Promise.all([load("sources"), load("policy"), load("schools")]);
-    const KIND = { official: "공식", media: "매체", user: "사용자 제공", self: "자체 산출", other: "기타" };
+    const KIND = { official: "공식", media: "언론", user: "사용자 제공", self: "자체 정리", other: "기타", photo: "학교 배부 자료", school: "학교 자료" };
     const FILE = { "policy.json": "제도·일정", "events.json": "일정", "timeline.json": "큰 그림 연표", "hs-compare.json": "고교 비교", "middle-compare.json": "중학교 비교", "hs-types.json": "고교 종류", "glossary.json": "용어 설명", "places.json": "학교 지도", "exam-trends.json": "시험 현황", "rules.json": "수능·내신 규칙", "admission-rules.json": "대학 요강", "school-codes.json": "학교 코드", "middle-guide.json": "입학 준비", "middle-curriculum.json": "중학교 교과", "middle.json": "중학교 배정", "planner-rules.json": "내 계획표", "electives.json": "선택과목 현황", "subject-info.json": "과목 설명", "admission-types.json": "전형 종류", "briefings.json": "설명회 노트", "facets.json": "필터" };
     const byUrl = new Map();
     for (const r of policy) for (const u of new Set([r.sourceUrl, ...(r.sources || []).map((x) => x.url)].filter(Boolean))) { if (!byUrl.has(u)) byUrl.set(u, []); byUrl.get(u).push(r); }
     const list = [...reg.sources].sort((a, b) => String(b.checked || "").localeCompare(String(a.checked || "")) || String(a.names?.[0]).localeCompare(String(b.names?.[0]), "ko"));
     const kinds = ["official", "media", "user", "other"].filter((k) => list.some((x) => x.kind === k));
-    let q = "", kd = "";
+    let q = "", kd = "", sk = "date";
     const row = (x) => { const rows = byUrl.get(x.url) || [], files = Object.entries(x.usedIn || {}).map(([f, n]) => `${esc(FILE[f] || f.replace(/\.json$/, ""))} ${n}건`).join(" · ");
       return `<tr><td class="l"><b>${esc(x.names?.[0] || x.url || "")}</b>${(x.names || []).length > 1 ? `<div class="muted small">같은 출처의 다른 표기 ${x.names.length - 1}건</div>` : ""}${rows.length ? `<details class="srcrows"><summary>이 출처를 쓰는 제도·일정 ${rows.length}건</summary><ul>${rows.map((r) => `<li>${esc(r.title)} <span class="muted small">확인 ${esc(r.checkedAt || "-")}</span></li>`).join("")}</ul></details>` : ""}</td><td class="l">${esc(KIND[x.kind] || x.kind || "")}${x.org ? `<div class="muted small">${esc(x.org)}</div>` : ""}</td><td class="l num">${esc(x.checked || "-")}</td><td class="l">${x.url && /^https?:\/\//.test(x.url) ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">열기 ↗</a>` : "-"}</td><td class="l muted small">${files}</td></tr>`; };
     const match = (x) => (!kd || x.kind === kd) && (!q || [...(x.names || []), x.org, x.url, ...(byUrl.get(x.url) || []).map((r) => r.title)].join(" ").toLowerCase().includes(q));
     el.innerHTML = `<div class="ed"><div class="ed-top"><b>출처·확인일</b> 화면에는 출처를 따로 보이지 않아요. 자료를 어디서 가져왔는지와 확인한 날은 여기에서 모아 봐요. (출처 ${list.length}건, 등록부 기준)</div>
       <div class="chipbar"><span class="flabel">찾기</span><input type="search" id="srq" placeholder="출처 이름·기관·제도 이름" aria-label="출처 찾기" style="min-height:44px;min-width:min(100%,260px);font-size:16px;padding:0 10px"><div class="chips" id="srk"><button type="button" class="chip on" data-k="" aria-pressed="true">전체</button>${kinds.map((k) => `<button type="button" class="chip" data-k="${k}" aria-pressed="false">${KIND[k]} ${list.filter((x) => x.kind === k).length}</button>`).join("")}</div></div>
-      <p class="muted" id="srn"></p><div class="tw"><table class="policy"><thead><tr><th class="l">출처</th><th class="l">종류</th><th class="l">확인일</th><th class="l">원문</th><th class="l">쓰이는 화면</th></tr></thead><tbody id="srb"></tbody></table></div>
-      <details class="srcrows"><summary>편제표 4개교 출처</summary>${schools.map((s) => `<div class="panel"><b>${esc(s.name)}</b><ul>${(s._meta?.source || []).map((x) => `<li>${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>` : esc(x.name)} <span class="muted">${esc(x.kind)} · ${esc(x.retrieved || "")}</span></li>`).join("")}</ul></div>`).join("")}</details></div>`;
-    const draw = () => { const m = list.filter(match); el.querySelector("#srb").innerHTML = m.map(row).join("") || '<tr><td class="l" colspan="5">맞는 출처가 없어요.</td></tr>'; el.querySelector("#srn").textContent = `${m.length}건`; };
+      <p class="muted"><span id="srn"></span> · 정렬 <select id="srs" aria-label="정렬" style="min-height:44px;font-size:16px"><option value="date">확인일 최신순</option><option value="name">출처 이름순</option><option value="kind">종류순</option></select></p><div class="tw"><table class="policy"><thead><tr><th class="l">출처</th><th class="l">종류</th><th class="l">확인일</th><th class="l">원문</th><th class="l">쓰이는 화면</th></tr></thead><tbody id="srb"></tbody></table></div>
+      <details class="srcrows"><summary>편제표 4개교 출처</summary>${schools.map((s) => `<div class="panel"><b>${esc(s.name)}</b><ul>${(s._meta?.source || []).map((x) => `<li>${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>` : esc(x.name)} <span class="muted">${esc(KIND[x.kind] || x.kind || "")} · ${esc(x.retrieved || "")}</span></li>`).join("")}</ul></div>`).join("")}</details></div>`;
+    const ord = { official: 0, media: 1, user: 2, self: 3, other: 4 }; const sorted = () => [...list].sort(sk === "name" ? (a, b) => String(a.names?.[0]).localeCompare(String(b.names?.[0]), "ko") : sk === "kind" ? (a, b) => (ord[a.kind] ?? 9) - (ord[b.kind] ?? 9) || String(b.checked || "").localeCompare(String(a.checked || "")) : (a, b) => String(b.checked || "").localeCompare(String(a.checked || "")));
+    const draw = () => { const m = sorted().filter(match); el.querySelector("#srb").innerHTML = m.map(row).join("") || '<tr><td class="l" colspan="5">맞는 출처가 없어요.</td></tr>'; el.querySelector("#srn").textContent = `${m.length}건`; };
+    el.querySelector("#srs").addEventListener("change", (e) => { sk = e.target.value; draw(); });
     el.querySelector("#srq").addEventListener("input", (e) => { q = e.target.value.trim().toLowerCase(); draw(); });
     el.querySelector("#srk").addEventListener("click", (e) => { const b = e.target.closest("[data-k]"); if (!b) return; kd = b.dataset.k; el.querySelectorAll("#srk .chip").forEach((c) => { const on = c === b; c.classList.toggle("on", on); c.setAttribute("aria-pressed", String(on)); }); draw(); });
     draw();
@@ -538,7 +540,7 @@ function addCalendar(el) {
   const s = document.createElement("section");
   s.className = "sec cal";
   s.innerHTML = `<div class="sec-h"><h2><em>캘린더</em>내 캘린더에 담기</h2></div>
-    <p class="muted small">구독하면 일정이 바뀔 때 캘린더 앱이 알아서 따라가요. 아직 확정 전인 일정은 캘린더 제목에 (추정)·(보도)가 붙어 있어요.</p>
+    <p class="muted small">구독하면 일정이 바뀔 때 캘린더 앱이 알아서 따라가요. 확정 전인 일정은 날짜가 바뀔 수 있어요.</p>
     <p class="cal-a"><a class="lnk" href="webcal://${ICS_URL}">내 캘린더에 구독</a><a class="lnk" href="data/schedule.ics" download="schedule.ics">.ics 내려받기</a></p>`;
   el.appendChild(s);
 }
