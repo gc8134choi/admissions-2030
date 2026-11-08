@@ -1,7 +1,7 @@
 // 좌측 트리·모바일 서랍·하단 바의 항목 구성과 이름·설명 줄은 이 파일 하나다(IA 검수 evaluation/ia-review.md, 사용자 확정 2026-11-06). 이름·설명만 바꿔도 메뉴가 바뀐다.
 // 항목: id = 이동 주소(해시, 기존 이름 그대로), title = 쉬운 말 이름, desc = 이름 아래 작은 회색 한 줄(어떤 내용이 있는지),
 //       vals = 비교표 계열 항목이 설명 줄에 적은 항목의 값이 학교 절반 이상에 실제로 있어야 함({data, fields}), keys = 설명 줄의 핵심어(설명 줄 안에 있고 화면에도 실제로 있어야 함: tools/check-menu-captions.mjs), r = 화면 경로 id, q = 이 항목으로 볼 조건(값, 값 배열, null=없어야 함, "!값"=그 값이 아니어야 함; v는 비면 summary), also = 같은 항목으로 켜지는 다른 경로.
-export const HOME = { id: "home", title: "스쿨 라이프", desc: "오늘 할 일 · 수능 D-day", keys: ["오늘", "D-", "수능"], r: "home" };
+export const HOME = { id: "home", title: "스쿨 라이프", desc: "곧 있을 일 · 일정 · 수능 D-day", keys: ["곧 있을", "일정", "D-", "수능"], r: "home" };
 export const GROUPS = [
   { id: "mid", title: "중학교 입학", items: [
     { id: "select/curriculum?v=middle", title: "배정 안내", desc: "발표·추가배정·등록·배정 후 변경(이사·전입)·근거리 중학교", keys: ["발표", "추가배정", "등록", "배정 후", "이사", "근거리"], r: "select/curriculum", q: { v: "middle", open: null } },
@@ -29,7 +29,7 @@ export const GROUPS = [
     { id: "library", title: "관련 사이트", desc: "학교알리미·교육청 바로가기", keys: ["학교알리미", "교육청"], r: "library" },
     { id: "library/sources", title: "출처·확인일", desc: "자료 출처와 확인한 날", keys: ["출처", "확인"], r: "library/sources", also: ["library/status"] },
     { id: "library/files", title: "원본 파일", desc: "학교에서 받은 사진·양식", keys: ["사진", "양식"], r: "library/files" },
-    { id: "library/settings", title: "화면 설정", desc: "어둡게·스킨·글자 크기", keys: ["어둡", "스킨", "글자"], r: "library/settings" }] },
+    { id: "library/settings", title: "화면 설정", desc: "어둡게·스킨", keys: ["어둡", "스킨"], r: "library/settings" }] },
 ];
 // 하단 바(모바일, 900px 미만): 메뉴 | 오늘 | 일정 | 검색
 export const BOTTOM = [{ key: "menu", label: "메뉴" }, { key: "home", label: "오늘", href: "#home", r: "home" }, { key: "sched", label: "일정", href: "#schedule", r: "schedule" }, { key: "search", label: "검색" }];

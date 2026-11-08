@@ -64,7 +64,7 @@ const MENU_ICON = {
 // 상단 메뉴(데스크톱)·하단 탭(모바일): 5개 탭, 글자만. 켜진 탭은 위쪽 선.
 function drawTabs(loc) {
   const html = treeHtml(loc), hadFocus = !!document.activeElement?.closest?.("#sidenav");
-  const side = $("#sidenav"), dr = $("#navtree"); if (side) { side.innerHTML = `<button type="button" class="nt-tg" aria-pressed="false"></button><nav class="nt" aria-label="전체 메뉴">${html}</nav>`; let cp = true; try { cp = localStorage.getItem("portal.navcompact") !== "0"; } catch {} side.classList.toggle("nt-compact", cp); const tg = side.querySelector(".nt-tg"); tg.textContent = "설명 줄 모두 보기"; tg.setAttribute("aria-pressed", String(!cp)); tg.onclick = () => { const v = !side.classList.contains("nt-compact"); side.classList.toggle("nt-compact", v); try { localStorage.setItem("portal.navcompact", v ? "1" : "0"); } catch {} tg.setAttribute("aria-pressed", String(!v)); }; } if (dr) dr.innerHTML = `<nav class="nt" aria-label="전체 메뉴">${html}</nav>`;
+  const side = $("#sdtree"), dr = $("#navtree"), sideBox = $("#sidenav"); if (side) { side.innerHTML = `<button type="button" class="nt-tg" aria-pressed="false"></button><nav class="nt" aria-label="전체 메뉴">${html}</nav>`; let cp = true; try { cp = localStorage.getItem("portal.navcompact") !== "0"; } catch {} sideBox.classList.toggle("nt-compact", cp); const tg = side.querySelector(".nt-tg"); tg.textContent = "설명 줄 모두 보기"; tg.setAttribute("aria-pressed", String(!cp)); tg.onclick = () => { const v = !sideBox.classList.contains("nt-compact"); sideBox.classList.toggle("nt-compact", v); try { localStorage.setItem("portal.navcompact", v ? "1" : "0"); } catch {} tg.setAttribute("aria-pressed", String(!v)); }; } if (dr) dr.innerHTML = `<nav class="nt" aria-label="전체 메뉴">${html}</nav>`;
   const bt = $("#btabs"); if (bt) bt.innerHTML = BOTTOM.map((b) => b.href ? `<a href="${b.href}"${loc && (loc.item.id === b.r || (b.r === "schedule" && loc.item.id === "schedule")) ? ' aria-current="page"' : ""}>${esc(b.label)}</a>` : `<button type="button" data-b="${b.key}"${b.key === "menu" ? ' id="menubtn" aria-expanded="false" aria-controls="navdrawer"' : ""}>${esc(b.label)}</button>`).join("");
   closeDrawer();
   if (side) { const c = side.querySelector("[aria-current=page]"); if (c) { // 현재 항목이 사이드바 안에서 보이게(바깥 화면은 움직이지 않는다)
@@ -76,6 +76,7 @@ function closeDrawer() { const d = $("#navdrawer"); if (d && !d.hidden) { d.hidd
 function openDrawer() { const d = $("#navdrawer"); if (!d) return; d.hidden = false; document.body.classList.add("nav-open"); OUTSIDE().forEach((e) => e.setAttribute("inert", "")); $("#menubtn")?.setAttribute("aria-expanded", "true");
   const cur = d.querySelector("#navtree [aria-current=page]"); if (cur) cur.scrollIntoView({ block: "center" }); d.querySelector(".nd-x")?.focus(); } // 현재 항목으로 스크롤(홈 링크가 아니라)
 $("#btabs")?.addEventListener("click", (e) => { const b = e.target.closest("[data-b]"); if (!b) return; if (b.dataset.b === "menu") openDrawer(); else if (b.dataset.b === "search") $("#srbtn")?.click(); });
+$("#ndsearch")?.addEventListener("click", () => { closeDrawer(); setTimeout(() => $("#srbtn")?.click(), 0); });
 $("#navdrawer")?.addEventListener("click", (e) => { if (e.target.closest(".nd-x") || e.target.id === "navdrawer" || e.target.closest("a")) closeDrawer(); });
 // 포커스 가두기(서랍이 열려 있는 동안 Tab은 서랍 안에서만 돈다)
 $("#navdrawer")?.addEventListener("keydown", (e) => { if (e.key !== "Tab") return; const f = [...$("#navdrawer").querySelectorAll("a[href], button:not([disabled])")].filter((x) => x.checkVisibility?.() !== false); if (!f.length) return; const first = f[0], last = f[f.length - 1]; if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); } else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); } });
@@ -90,14 +91,6 @@ function drawTheme() {
     box.innerHTML = [["auto", "자동"], ["light", "밝게"], ["dark", "어둡게"]].map(([k, t]) => `<button type="button" data-th="${k}" aria-pressed="${k === cur}">${t}</button>`).join("");
     box.onclick = (e) => { const b = e.target.closest("[data-th]"); if (!b) return; window.__theme.set(b.dataset.th); drawTheme(); }; }
 }
-// 글자 크기(보통/크게): 이 브라우저에만 저장
-function drawFs() {
-  const cur = document.documentElement.getAttribute("data-fs") === "large" ? "large" : "normal";
-  for (const box of [$("#fsw"), $("#fsw2"), $("#fsw3")]) { if (!box) continue;
-    box.innerHTML = [["normal", "보통"], ["large", "크게"]].map(([k, t]) => `<button type="button" data-fs="${k}" aria-pressed="${k === cur}">글자 ${t}</button>`).join("");
-    box.onclick = (e) => { const b = e.target.closest("[data-fs]"); if (!b) return; if (b.dataset.fs === "large") document.documentElement.setAttribute("data-fs", "large"); else document.documentElement.removeAttribute("data-fs"); try { localStorage.setItem("portal.fs", b.dataset.fs); } catch {} drawFs(); }; }
-}
-drawFs();
 drawTheme();
 // 스킨(보이는 모습만 바꾸는 선택): 보관함 맨 위에서 고른다. 구조·정보는 그대로다.
 const SKIN_OPT = [["", "기본", "스크랩북 글래스(지금 모습)"], ["paper", "가정통신문", "신문처럼: 세리프 제목, 괘선, 카드 없음"], ["tool", "조용한 도구", "무채색과 포인트 한 색, 큰 숫자"]];
@@ -140,8 +133,8 @@ const kindOf = (o) => (o.primaryKind ? o.primaryKind + (o.kindStatus === "inferr
 // ---- 뷰 ----
 const views = {
   async settings(el) { // 화면 설정(어둡게·스킨): 예전에는 바뀐 소식 화면 위에 숨어 있었다
-    el.innerHTML = `<section class="dp"><div class="sec-h"><h2><em>모드</em>화면 모드</h2></div><p class="muted small">자동은 휴대폰·컴퓨터의 설정을 따라가요. 이 브라우저에만 저장돼요.</p><div id="themesw3" class="tsw" role="group" aria-label="화면 모드"></div></section><section class="dp"><div class="sec-h"><h2><em>글자</em>글자 크기</h2></div><p class="muted small">크게를 고르면 모든 화면의 글자가 커져요. 이 브라우저에만 저장돼요.</p><div id="fsw3" class="fsw" role="group" aria-label="글자 크기"></div></section><div id="skinhost"></div>`;
-    drawTheme(); drawFs(); skinPanel(el.querySelector("#skinhost"));
+    el.innerHTML = `<section class="dp"><div class="sec-h"><h2><em>모드</em>화면 모드</h2></div><p class="muted small">자동은 휴대폰·컴퓨터의 설정을 따라가요. 이 브라우저에만 저장돼요.</p><div id="themesw3" class="tsw" role="group" aria-label="화면 모드"></div></section><div id="skinhost"></div>`;
+    drawTheme(); skinPanel(el.querySelector("#skinhost"));
   },
   async curriculum(el, query, node) {
     await curriculumView(el, query, node);
@@ -620,11 +613,6 @@ function render() {
 
 addEventListener("hashchange", () => { window.__hlWanted = /[?&]hl=/.test(location.hash) ? Date.now() : 0; render(); applyHl(); });
 await initProfiles(load);
-{
-  const d = new Date(), W = ["일", "월", "화", "수", "목", "금", "토"];
-  $("#today").textContent = `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}(${W[d.getDay()]})`;
-}
-mountProfileSwitch([$("#pf")], store, render);
 // 검색(약 64KB)은 처음 열 때(또는 한가할 때) 불러온다: 홈 첫 화면의 스크립트를 줄인다
 { const btn = $("#srbtn"); let mounted = false, mod = null, handle = null;
   const loadMod = () => (mod ||= import("./search.js"));

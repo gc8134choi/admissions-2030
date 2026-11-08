@@ -1,8 +1,7 @@
-import { showProfiles } from "./profile-ui.js";
-import { STAGES, stageOf, stageTag } from "./stage.js";
-import { hubsHtml, planPanel, comparePanel, admPanel, midPanel, STAGE_HUB, PIN_KEY } from "./dash.js";
+import { stageOf } from "./stage.js";
 import { decorateTerms, initTerms } from "./terms.js";
-import { srcRef } from "./src-ref.js";
+import { srcWrap, noticeHint } from "./src-ref.js";
+import { GROUPS } from "./menu-tree.js";
 // 홈 화면(A안 에디토리얼). 데이터: policy.json(일정·변경 로그·학점제 규칙·마일스톤), summary/curricula/schools(관심 학교).
 // policy.json·policy.js는 읽기만 한다(서브 세션 담당).
 const PST = { confirmed: "확정", reported: "보도", estimated: "추정", unknown: "미정" };
@@ -40,309 +39,121 @@ const ART = {
   entrance: '<svg viewBox="0 0 96 72" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"><path d="M10 66V24M86 66V24M10 24h76M4 24h88"/><path d="M10 66h76"/><path d="M26 66V34h44v32M48 34v32" /><path d="M36 20 48 8l12 12" stroke="var(--accent)"/></svg>',
 };
 
-export function registerHome(views, { esc, load, store, nm, stars, toggleStar, nameOf, TERMS, hasLogo, profile, profiles }) {
+
+// ---- 홈(2026-11-08 개편): 왼쪽 예나(고등학교로 가는 쪽) · 오른쪽 예은(중학교로 가는 쪽) 2분할 ----
+// 행: [이름] [곧 있을 일] [고등학교|중학교 일정] [고등학교|중학교 소개]. 홈에서는 보도·추정·미정 칩을 내지 않는다(출처 팝오버 안에서만 상태를 보인다).
+const COLS = [
+  { id: "A", side: "고등학교", stage: "고입", stones: /졸업|입학식/, intro: ["select/curriculum?v=hs&ty=1", "select/curriculum?v=hs", "select/curriculum?v=compare", "life/credit"], all: "#schedule?t=hs" },
+  { id: "B", side: "중학교", stage: "중입", stones: /졸업|입학식/, intro: ["select/curriculum?v=middle", "select/curriculum?v=middle&open=cmp", "select/curriculum?v=middle&open=guide", "select/curriculum?v=map&lv=middle"], all: "#schedule?t=life" },
+];
+const MENU = new Map(GROUPS.flatMap((g) => g.items.map((it) => [it.id, it])));
+const PSTX = { reported: "보도", estimated: "추정", unknown: "미정" };
+
+export function registerHome(views, { esc, load, store, profiles }) {
   const today = () => { const d = new Date(); return new Date(d.getFullYear(), d.getMonth(), d.getDate()); };
+  const two = (n) => String(n).padStart(2, "0");
+  const WD = ["일", "월", "화", "수", "목", "금", "토"];
   const span = (s, e) => {
     const p = (t) => { const [y, m, d] = t.split("-").map(Number); return d ? { a: new Date(y, m - 1, d), b: new Date(y, m - 1, d), month: false } : { a: new Date(y, m - 1, 1), b: new Date(y, m, 0), month: true }; };
     const a = p(s), b = e ? p(e) : a;
     return { start: a.a, end: b.b, month: a.month };
   };
-  const two = (n) => String(n).padStart(2, "0");
-  const WD = ["일", "월", "화", "수", "목", "금", "토"];
   const dayText = (d, t, withYear) => `${withYear || d.getFullYear() !== t.getFullYear() ? d.getFullYear() + "." : ""}${two(d.getMonth() + 1)}.${two(d.getDate())}(${WD[d.getDay()]})`;
-  const ymdText = (s) => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || ""); return m ? dayText(new Date(+m[1], +m[2] - 1, +m[3]), new Date(0), true) : (s || "-").replace(/-/g, "."); };
-  const fmtDate = (sp, t) => (sp.month ? `${sp.start.getFullYear()}.${two(sp.start.getMonth() + 1)}` : dayText(sp.start, t));
+  const fmtDate = (sp, t) => (sp.month ? `${sp.start.getFullYear()}.${two(sp.start.getMonth() + 1)}` : dayText(sp.start, t, true));
   const fmtRange = (sp, t, e) => {
     if (sp.month) return e && e.end && e.end !== e.start ? `${fmtDate(sp, t)}~${e.end.slice(0, 4)}.${e.end.slice(5, 7)}` : fmtDate(sp, t);
-    if (sp.end > sp.start) return `${dayText(sp.start, t)}~${dayText(sp.end, t, sp.end.getFullYear() !== sp.start.getFullYear())}`;
+    if (sp.end > sp.start) return `${dayText(sp.start, t, true)}~${dayText(sp.end, t, sp.end.getFullYear() !== sp.start.getFullYear())}`;
     return fmtDate(sp, t);
   };
-  // D-day 글자: 진행 중이면 "진행 중", 아니면 D-n
   const dLabel = (sp, t) => {
     if (sp.start <= t && t <= sp.end) return sp.month ? "이번 달" : "진행 중";
     const n = Math.round((sp.start - t) / DAY);
     return n === 0 ? "오늘" : `D-${n.toLocaleString()}`;
   };
-  const link = (r) => srcRef(r); // 출처는 "출처" 버튼 뒤로(눌러서 확인)
-  // 상태 표시: 확정은 표시하지 않는다(확인된 것은 조용히). 보도·추정·원문 미확인만 점+글자로.
-  const badges = (r) => `${stageTag(stageOf(r), esc)}${r.status && r.status !== "confirmed" ? `<span class="pst ${r.status}">${PST[r.status] || r.status}</span>` : ""}${r.unverified ? ` <span class="unv-i" tabindex="0" role="img" aria-label="공식 문서로 확인 중이에요" title="공식 문서로 확인 중이에요">ⓘ</span>` : ""}`;
   const DRE = /^\d{4}-\d{2}(-\d{2})?$/;
   const eventsOf = (r) => {
     if (r.events) return r.events;
     const [a, b] = String(r.date || "").split("~").map((x) => x.trim());
     return DRE.test(a) ? [{ label: "", start: a, ...(b && DRE.test(b) ? { end: b } : {}) }] : [];
   };
-  const dateOf = (t) => (t.match(/^\d{4}(-\d{2}){0,2}/) || [""])[0];
-  const canStore = () => { try { localStorage.setItem("__t", "1"); localStorage.removeItem("__t"); return true; } catch { return false; } };
+  // 확정이 아닌 날짜는 칩 대신 "예정"이라는 일반 낱말로만 밝힌다
+  const tentative = (r) => !!(r && PSTX[r.status]);
+  // 출처 팝오버: 출처·확인일에 더해 상태(보도/추정/미정)와 확인 중 안내를 여기서만 보인다
+  const srcOf = (r) => {
+    if (!r) return "";
+    const list = r.sources || (r.sourceName ? [{ name: r.sourceName, url: r.sourceUrl }] : []);
+    const links = list.map((x) => (x.url && /^https?:\/\//.test(x.url) ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)} ↗</a>${noticeHint(x.url)}` : esc(x.name))).join(" · ");
+    const st = tentative(r) ? ` <span class="srcd">상태 ${PSTX[r.status]}</span>` : "";
+    const un = r.unverified ? ` <span class="srcd">공식 문서로 확인 중이에요</span>` : "";
+    return srcWrap(links + st + un, { checked: r.checkedAt || "" });
+  };
   const dayN = (s, t) => { const [y, m, d] = s.split("-").map(Number); return Math.round((new Date(y, m - 1, d) - t) / DAY); };
 
   views.home = async (el) => {
-    const [schools, summary, curricula, policy] = await Promise.all([load("schools"), load("summary"), load("curricula"), load("policy")]);
-    const t = today();
-    const P = new Map(policy.map((r) => [r.id, r]));
-    const pf = profile(), SHOW = showProfiles(), isB = SHOW && pf.key === "b";
-    const entryYear = pf.entryYear, examYear = pf.examYear;
-    const ev0 = (id) => P.get(id)?.events?.[0];
-    
+    const [policy, lj] = await Promise.all([load("policy"), load("learners").catch(() => ({ learners: [] }))]);
+    const t = today(), P = new Map(policy.map((r) => [r.id, r]));
+    const learners = profiles();
+    const SCHED = new Set(["hs-schedule", "gg-hs-entry", "exam-schedule", "life-schedule"]);
+    const isG3 = (r, e) => (e?.audience || r.audience || []).includes("grade3");
+    const related = (r, L) => r.entryYear === L.entryYear || r.examYear === L.examYear || (r.entryYear == null && r.examYear == null);
 
-    // 2) 다음 일정: 관련 있는 행만(연도 비어 있으면 공통). 현 고3 일정은 화면에 내지 않는다.
-    const limit = new Date(t.getTime() + 90 * DAY);
-    let aud = isB ? [] : loadAudience(store);
-    const related = (r) => r.topic === "life-schedule" || (r.examYear == null && r.entryYear == null) || r.examYear === examYear || r.entryYear === entryYear; // 졸업·입학은 항상, 대입 일정은 2030학년도 대입 기준만
-    const isG3 = (r, e) => (e?.audience || r.audience || []).includes("grade3"); // 데이터에 남아 있어도 화면에는 내지 않는다
-    const upcoming = policy.filter((r) => r.topic === "hs-schedule" || r.topic === "gg-hs-entry" || r.topic === "exam-schedule" || r.topic === "life-schedule")
-      .flatMap((r) => eventsOf(r).map((e) => ({ r, e, sp: span(e.start, e.end) })))
-      .filter((x) => x.sp.end >= t && x.sp.start <= limit)
-      .sort((a, b) => (a.r.region === "seoul") - (b.r.region === "seoul") || a.sp.start - b.sp.start || a.sp.end - b.sp.end);
-    const upRows = () => upcoming.filter((x) => !isG3(x.r, x.e) && x.r.region !== "seoul" && related(x.r) && audienceMatch(x.e.audience || x.r.audience, aud));
-    const row = (x) => `<li class="row"><span class="d${x.sp.start <= t ? " live" : " num"}">${dLabel(x.sp, t)}</span>
-      <div><h3>${esc(x.r.title)}${x.e.label ? ` · ${esc(x.e.label)}` : ""}</h3><p class="num">${fmtRange(x.sp, t, x.e)}</p><div class="meta">${badges(x.r)} ${link(x.r)}</div></div></li>`;
-    const upList = () => { const rs = upRows().slice(0, 4); return rs.length ? rs.map(row).join("") : `<li class="row"><div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p><small>${isB ? "학교를 고르면 그 학교 일정이 여기에 모입니다." : "앞으로 90일 안에 해당하는 일정이 없어요."}</small></div></li>`; };
-
-    // 3) 곧 있을 일(졸업·입학 D-day + 사진)
-    const lifeRows = policy.filter((r) => r.topic === "life-schedule" && /졸업|입학/.test(r.title) && r.events?.[0]?.start);
-    const stones = lifeRows.map((r) => ({ id: r.id, label: r.title, date: r.events[0].start, kind: /졸업/.test(r.title) ? "graduation" : "entrance", row: r })).filter((m) => /^\d{4}-\d{2}-\d{2}$/.test(m.date)).sort((a, b) => a.date.localeCompare(b.date));
-    const stoneHtml = (m) => {
-      const n = dayN(m.date, t), past = n < 0;
-      return `<li class="ms${past ? " past" : ""}" data-ms="${esc("life:" + m.id)}"><div class="ms-t"><span class="ms-k">${esc(m.label)}</span>
-        <b class="ms-n num">${past ? "지났어요" : n === 0 ? "오늘" : `D-${n.toLocaleString()}`}</b>
-        <span class="ms-s num">${esc(ymdText(m.date))} ${link(m.row)}</span>
+    const evRow = (x, big) => `<li class="h2-ev${big ? " first" : ""}"><span class="h2-d num${x.sp.start <= t ? " live" : ""}">${dLabel(x.sp, t)}</span><div class="h2-b"><b>${esc(x.label || x.r.title)}</b>${x.label ? `<small>${esc(x.r.title)}</small>` : ""}<span class="num">${esc(x.date)}${x.tent ? " 예정" : ""} ${srcOf(x.r)}</span></div></li>`;
+    const stoneCard = (m) => { const n = dayN(m.date, t); return `<li class="ms h2-ms" data-ms="${esc("life:" + m.id)}" data-kind="${m.kind}"><div class="ms-t"><span class="ms-k">${esc(m.label)}</span>
+        <b class="ms-n num">${n === 0 ? "오늘" : `D-${n.toLocaleString()}`}</b>
+        <span class="ms-s num">${esc(m.dateText)}${m.tent ? " 예정" : ""} ${srcOf(m.r)}</span>
         <span class="ms-a"><button type="button" class="lnk" data-add>사진 넣기</button><button type="button" class="lnk" data-del hidden>삭제</button><input type="file" accept="image/*" hidden></span></div>
-        <div class="ms-p" aria-hidden="true">${ART[m.kind] || ART.graduation}</div></li>`;
+        <div class="ms-p" aria-hidden="true">${ART[m.kind] || ART.graduation}</div></li>`; };
+
+    const colHtml = (C) => {
+      const L = learners.find((x) => x.id === C.id) || { id: C.id, entryYear: 0, examYear: 0, name: C.side, label: "" };
+      let aud; try { aud = loadAudience(store); } catch { aud = AUDIENCE_DEFAULT; }
+      const evs = policy.filter((r) => SCHED.has(r.topic) && related(r, L) && stageOf(r) === C.stage && r.region !== "seoul")
+        .flatMap((r) => eventsOf(r).map((e) => ({ r, e, sp: span(e.start, e.end) })))
+        .filter((x) => x.sp.end >= t && !isG3(x.r, x.e) && audienceMatch(x.e.audience || x.r.audience, aud))
+        .sort((a, b) => a.sp.start - b.sp.start || a.sp.end - b.sp.end)
+        .map((x) => ({ r: x.r, sp: x.sp, label: x.e.label || "", title: x.r.title + (x.e.label ? ` · ${x.e.label}` : ""), date: fmtRange(x.sp, t, x.e), tent: tentative(x.r), isStone: x.r.topic === "life-schedule" && C.stones.test(x.r.title) && DRE.test(x.e.start) && x.e.start.length === 10 ? x : null, start: x.e.start }));
+      // 가장 가까운 졸업·입학 한 건은 D-day 카드(사진 넣기)로
+      const sc = evs.find((x) => x.isStone), stone = sc ? { id: sc.r.id, label: sc.r.title, date: sc.start, dateText: fmtRange(sc.sp, t, null), tent: sc.tent, r: sc.r, kind: /졸업/.test(sc.r.title) ? "graduation" : "entrance" } : null;
+      const rest = evs.filter((x) => x !== sc);
+      const soon = rest.slice(0, 2), later = rest.slice(2, 8);
+      // 수능 D-day는 예나 열 '곧 있을 일' 안에 한 줄로
+      let dd = "";
+      if (C.id === "A" && L.csat?.date && DRE.test(L.csat.date)) {
+        const row = P.get(L.csat.policyRowId || "sch-12") || P.get("sch-07"), n = dayN(L.csat.date.length === 10 ? L.csat.date : L.csat.date + "-15", t), sp0 = span(L.csat.date);
+        const tent = L.csat.status !== "confirmed";
+        dd = `<p class="h2-dd"><span>${L.examYear}학년도 수능</span> <b class="num">D-${n.toLocaleString()}</b> <span class="num">${esc(fmtDate(sp0, t))}${tent ? " 예정" : ""}</span> ${srcOf(row)}</p>`;
+      }
+      const intro = C.intro.map((id) => MENU.get(id)).filter(Boolean).map((it) => `<li><a href="#${esc(it.id)}"><b>${esc(it.title)}</b><span>${esc(it.desc || "")}</span></a></li>`).join("");
+      const nm = esc((lj.learners || []).find((x) => x.id === C.id)?.name || L.label || C.side); // 이름은 data/learners.json의 name(홈에서만 보임), 비어 있으면 학년 라벨
+      return `<div class="hm2-col" data-col="${C.id}">
+        <header class="hm2-h"><h2 class="hm2-name">${nm}</h2><p class="hm2-sub">${esc(L.label || "")}${L.examYear ? ` · ${L.examYear}학년도 대입` : ""}</p></header>
+        <section class="dp hm2-b soonp" aria-label="${nm} 곧 있을 일"><div class="sec-h"><h3>곧 있을 일</h3></div>
+          ${stone ? `<ul class="mss">${stoneCard(stone)}</ul>` : ""}
+          ${soon.length ? `<ul class="h2-evs">${soon.map((x, i) => evRow(x, !stone && i === 0)).join("")}</ul>` : stone ? "" : `<p class="muted">곧 있을 일정이 아직 없어요.</p>`}
+          ${dd}${stone ? '<p class="hint">사진은 이 기기에만 저장돼요.</p>' : ""}</section>
+        <details class="dp hm2-b hm2-sch" open><summary><h3>${C.side} 일정</h3><a class="h2-all" href="${C.all}">전체 일정 ›</a></summary>
+          ${later.length ? `<ul class="h2-evs">${later.map((x) => evRow(x)).join("")}</ul>` : '<p class="muted">앞으로 예정된 일정이 아직 없어요.</p>'}</details>
+        <details class="dp hm2-b hm2-intro" open><summary><h3>${C.side} 소개</h3></summary><ul class="h2-go">${intro}</ul></details>
+      </div>`;
     };
-
-    // 히어로 = 가장 가까운 한 가지 일(일정 또는 졸업·입학). 그다음 몇 개는 헤어라인 목록.
-    const oneLine = (b) => { const t1 = String(b || "").split(/(?<=[.。다요])\s/)[0] || ""; return t1.length > 80 ? t1.slice(0, 78) + "…" : t1; };
-    const feed = () => {
-      const stoneIds = new Set(stones.map((m) => m.id));
-      const evs = upRows().filter((x) => !stoneIds.has(x.r.id)).map((x) => ({ kind: "ev", row: x.r, seoul: x.r.region === "seoul", sp: x.sp, title: x.r.title + (x.e.label ? ` · ${x.e.label}` : ""), date: fmtRange(x.sp, t, x.e), line: oneLine(x.r.body), meta: `${badges(x.r)} ${link(x.r)}` }));
-      const sts = stones.filter((m) => dayN(m.date, t) >= 0).map((m) => ({ kind: "stone", row: m.row, m, sp: span(m.date), title: m.label, date: ymdText(m.date), line: "", meta: `${badges(m.row)} ${link(m.row)}` }));
-      return [...evs, ...sts].sort((a, b) => !!a.seoul - !!b.seoul || a.sp.start - b.sp.start || a.sp.end - b.sp.end); // 서울 행은 경기·전국 행 다음
-    };
-    // 가까운 일정 장부: 히어로 없이 한 줄씩(D-day · 제목 · 기간 · 단계/상태·출처). 가장 가까운 일은 같은 줄에서 굵기·색으로만 강조.
-    // 주로 보는 단계(이름·프로필 아님, 이 브라우저에만 저장). 처음 한 번 고르고 언제든 바꾼다. 고른 단계는 "자주 보는 단계"(허브 고정)와 합쳐진다.
-    const MUST = [["중입", "입학 준비", "배정부터 등록까지 순서, 지망·추첨 방식, 준비물", "#select/curriculum?v=middle"], ["고입", "고교 종류", "일반고와 특목·자사고 비교, 경기 고입 달력·원서 절차·서류", "#select/curriculum?v=hs&ty=1"], ["대입", "수능과 내신", "통합형 수능과 내신 5등급 (추정, 2027.3 공표 전)", "#admission/system"]];
-    const FK = "portal.focus", FOPT = [["중입", "중학교 입학 준비"], ["고입", "고교 고르기·고교 생활"], ["대입", "대입 준비"]];
-    const fsaved = store.get(FK, null);
-    // "켜는 방식": 아무것도 안 고르면 전체, 단계를 누르면 그 단계만 켜진다(여러 개 가능).
-    let focus = Array.isArray(fsaved) ? fsaved.filter((x) => STAGES.includes(x)) : [];
-    if (focus.length === STAGES.length) focus = [];
-    let fpicking = HOME_PICK; // 처음 방문도 한 줄("전체 · 고르기")로 시작해 홈을 짧게 둔다
-    const inF = (g) => !focus.length || !g || focus.includes(g);
-    // 고른 단계의 일정이 90일 안에 없으면(예: 대입만 고름) 다른 단계 일정을 보여 주지 않고, 그 단계의 다가올 일정(기간 제한 없이 가까운 3개)을 먼저 보여 준다
-    const farFeed = () => policy.filter((r) => r.topic === "exam-schedule" || r.topic === "hs-schedule" || r.topic === "gg-hs-entry").flatMap((r) => eventsOf(r).map((e) => ({ r, e, sp: span(e.start, e.end) })))
-      .filter((x) => x.sp.end >= t && related(x.r) && !isG3(x.r, x.e) && x.r.region !== "seoul" && inF(stageOf(x.r)) && (x.r.topic === "exam-schedule" || focus.includes("고입"))).sort((a, b) => a.sp.start - b.sp.start || a.sp.end - b.sp.end).slice(0, 3)
-      .map((x) => ({ kind: "ev", row: x.r, seoul: false, sp: x.sp, title: x.r.title + (x.e.label ? ` · ${x.e.label}` : ""), date: fmtRange(x.sp, t, x.e), line: oneLine(x.r.body), meta: `${badges(x.r)} ${link(x.r)}` }));
-    const feedF = () => { const f = feed(), m = f.filter((it) => inF(stageOf(it.row))); if (m.length) return m; const far = focus.length ? farFeed() : []; return far.length ? far : f; };
-    // 규칙: 단계를 고르면 그 단계에서 가까운 순 3건. 안 고르면(전체) 중입·고입·대입 단계마다 가장 가까운 일 1건씩(모자라면 가까운 순으로 채움)이라 한 단계가 목록을 채우지 않는다.
-    const farOne = (g) => policy.flatMap((r) => (stageOf(r) === g ? eventsOf(r).map((e) => ({ r, e, sp: span(e.start, e.end) })) : [])).filter((x) => x.sp.end >= t && related(x.r) && !isG3(x.r, x.e) && x.r.region !== "seoul").sort((a, b) => a.sp.start - b.sp.start || a.sp.end - b.sp.end).slice(0, 1)
-      .map((x) => ({ kind: "ev", row: x.r, seoul: false, sp: x.sp, title: x.r.title + (x.e.label ? ` · ${x.e.label}` : ""), date: fmtRange(x.sp, t, x.e), line: oneLine(x.r.body), meta: `${badges(x.r)} ${link(x.r)}` }))[0]; // 90일 안에 없는 단계는 가장 가까운 일정 1건
-    const perStage = (f) => { const have = new Set(f.map((it) => stageOf(it.row))); const fill = STAGES.filter((g) => !have.has(g)).map(farOne).filter(Boolean); f = [...f, ...fill]; const seen = new Set(), out = []; for (const it of f) { const g = stageOf(it.row) || "기타"; if (seen.has(g)) continue; seen.add(g); out.push(it); if (out.length === 3) break; } for (const it of f) { if (out.length >= 3) break; if (!out.includes(it)) out.push(it); } return out.sort((a, b) => !!a.seoul - !!b.seoul || a.sp.start - b.sp.start || a.sp.end - b.sp.end); };
-    const rest = () => { const f = focus.length ? feedF().slice(0, 3) : perStage(feedF());
-      if (!f.length) return `<li class="lg"><div class="empty"><p>아직 모인 일정이 없어요.</p><small>${isB ? "학교를 고르면 그 학교 일정이 여기에 모입니다." : "앞으로 90일 안에 해당하는 일정이 없어요."}</small></div></li>`;
-      return f.map((it, i) => { const live = it.sp.start <= t, left = Math.round((it.sp.end - t) / DAY), g = stageOf(it.row);
-        const dl = live ? (left > 0 ? `진행 중 · ${left}일 남음` : "진행 중") : dLabel(it.sp, t);
-        const meta = String(it.meta).replace(/<span class="stg">.*?<\/span>/, "").trim();
-        return `<li class="lg${i === 0 ? " first" : ""}"><span class="lg-s">${g ? esc(g) : ""}</span><span class="d${live ? " live" : " num"}">${dl}</span><b class="lg-t">${esc(it.title)}</b><span class="lg-d num">${it.date}</span><span class="lg-m">${meta}</span></li>`; }).join(""); };
-    const focusBar = () => fpicking
-      ? `<div class="fpick" role="group" aria-label="주로 보는 단계"><p class="fpick-q">보고 싶은 단계를 눌러 켜세요. 여러 개 켤 수 있고, 안 고르면 전체예요. 언제든 바꿀 수 있어요.</p><div class="chips"><button type="button" class="fchip${!focus.length ? " on" : ""}" data-f="" aria-pressed="${!focus.length}">전체</button>${FOPT.map(([k, t]) => `<button type="button" class="fchip${focus.includes(k) ? " on" : ""}" data-f="${k}" aria-pressed="${focus.includes(k)}">${t}</button>`).join("")}</div><button type="button" class="btn primary" data-fsave>이대로 보기</button></div>`
-      : `<p class="fbar muted">보는 단계 <b>${focus.length ? FOPT.filter(([k]) => focus.includes(k)).map(([, t]) => esc(t)).join(" · ") : "전체·단계별 1건씩"}</b> <button type="button" class="lnk" data-fedit>${Array.isArray(fsaved) ? "바꾸기" : "단계 고르기"}</button></p>`;
-
-    // 4) 바뀐 소식 1줄
-    const log0 = policy.filter((r) => r.topic === "change-log").map((r) => ({ r, d: dateOf(r.title) })).filter((x) => x.d && span(x.d).start <= t);
-    // 감시 봇이 최근 30일 안에 "바뀌었다"고 기록한 페이지도 같은 목록에 넣는다(내용은 아직 확인 전, 추정 표시). 읽지 못하면 조용히 건너뛴다.
-    // 이 목록은 첫 화면을 막지 않는다: 먼저 그리고, 읽히면 소식 칸만 다시 채운다(데이터 100KB를 기다리지 않음)
-    const watchP = (async () => {
-      try {
-        const [st, wl] = await Promise.all([fetch("../research/data/watch-state.json").then((r) => (r.ok ? r.json() : {})), fetch("../research/data/watchlist.json").then((r) => (r.ok ? r.json() : { items: [] }))]);
-        return Object.entries(st).filter(([, v]) => v.changedAt && t - new Date(v.changedAt) < 30 * DAY).map(([id, v]) => {
-          const it = (wl.items || []).find((x) => x.id === id); if (!it) return null;
-          const c = new Date(v.changedAt), d = `${c.getFullYear()}-${two(c.getMonth() + 1)}-${two(c.getDate())}`;
-          return { d, r: { title: `${d} ${it.name} 페이지가 바뀌었어요`, status: "estimated", unverified: true, reason: "감시 봇이 감지했고 내용은 아직 확인 전", sources: [{ name: "원문 열기", url: it.url }] } };
-        }).filter(Boolean);
-      } catch { return []; }
-    })();
-    const watchLog = [];
-    const log = [...log0, ...watchLog].sort((a, b) => span(b.d).start - span(a.d).start);
-    // 마지막 확인 일시(데이터 checkedAt 최신값)와 새 소식(지난 방문 이후, 이 브라우저에만 저장)
-    const checked = policy.map((r) => r.checkedAt).filter(Boolean).sort().pop() || "";
-    const VK = "portal.visit"; const iso = `${t.getFullYear()}-${two(t.getMonth() + 1)}-${two(t.getDate())}`;
-    const vis = store.get(VK, null) || { last: null, prev: null };
-    if (vis.last !== iso) { vis.prev = vis.last; vis.last = iso; store.set(VK, vis); }
-    // 읽음 표시: 지난 방문 이후 올라온 소식 중 눌러 보지 않은 것에 "새". 눌러 본 것은 이 브라우저에만 기억한다.
-    const RK = "portal.read", readSet = new Set(store.get(RK, []));
-    const keyOf = (x) => x.r.id || x.r.title;
-    const isNew = (x) => !!vis.prev && span(x.d).start > new Date(vis.prev + "T00:00:00") && !readSet.has(keyOf(x));
-    const fresh = log.filter(isNew).length;
-    const logRow = (x) => `<li class="row nw${isNew(x) ? " is-new" : ""}" data-rk="${esc(keyOf(x))}"><div><h3>${isNew(x) ? '<b class="new">새</b> ' : ""}${esc(x.r.title.slice(x.d.length).trim() || x.r.title)}</h3><p class="num">${esc(ymdText(x.d))}</p><div class="meta">${badges(x.r)} ${link(x.r)}</div></div></li>`;
-
-    // 5) 학교 · 학점제 숫자
-    const mine = summary.filter((m) => pf.schoolIds.includes(m.schoolId));
-    const m0 = summary[0];
-    const sch = (m) => { const tot = m.creditsTotal || 1; return `<li><a class="sr" href="#select/curriculum?v=compare&s=${esc(m.schoolId)}">${hasLogo(m.schoolId) ? `<img src="img/schools/256/${esc(m.schoolId)}.png" alt="" width="28" height="28">` : "<span></span>"}<span class="nm">${esc(m.schoolName)}<span class="sub">필수 ${m.requiredCount}과목 · 선택 후보 ${m.candidateSubjects}개</span></span><span class="fig"><b class="num">${m.creditsRequired}+${m.creditsElective}</b>필수 + 내가 고르는</span><span class="seg" style="grid-column:2 / 4" aria-hidden="true"><i class="r" style="width:${(m.creditsRequired / tot) * 100}%"></i><i class="e" style="width:${(m.creditsElective / tot) * 100}%"></i><i class="o"></i></span></a></li>`; };
-
-    // 6) 앞으로 3년(큰 흐름). 모든 마일스톤을 policy.json 행에서 읽는다.
-    const rng = (e) => fmtRange(span(e.start, e.end), t, e);
-    const mk = (id, label, suffix = "") => { const r = P.get(id), e = ev0(id); return { label, row: r, key: e?.start, date: e ? rng(e) + suffix : "" }; };
-    const subs = ["sch-11", "sch-12", "sch-13"].map((id) => ({ r: P.get(id), e: ev0(id) })).filter((x) => x.r && x.e);
-    const ms = [
-      mk("gg-02", "고입 후기 전형"),
-      { label: "중장기 대입 개편안 공표", row: P.get("log-10"), key: dateOf(P.get("log-10")?.title || ""), date: dateOf(P.get("log-10")?.title || "").replace("-", ".") },
-      mk("sch-09", "입학"),
-      mk("sch-08", "수능 시행 기본계획 공고", " 전후"),
-      { label: `${examYear}학년도 대입`, row: null, key: subs.map((x) => x.e.start).sort()[0], date: "", subs },
-    ];
-    const tl = ms.map((m) => { const past = m.key && span(m.key).end < t; return `<li class="${past ? "past" : ""}"><span class="tl-d num">${esc(m.date || "")}</span><div><b>${esc(m.label)}</b> ${m.row ? badges(m.row) : ""} ${m.row ? link(m.row) : ""}${m.subs ? `<div class="tl-sub">${m.subs.map((x) => `<span class="num">${rng(x.e)}</span> ${esc(x.r.title.replace(`${examYear}학년도 `, ""))} ${badges(x.r)}`).join("<br>")}</div>` : ""}</div></li>`; }).join("");
-
-    const ok = canStore();
-    const todosKey = isB ? "todos:b" : "todos";
-    const region = (summary[0]?.region || "").split(/\s+/).slice(0, 2).map((x) => x.replace(/시$/, "")).join("·");
-    const myChips = () => { const l = isB ? "일반고" : AUDIENCES.filter(([k]) => aud.includes(k)).map(([, v]) => v).join("·"); return `<span>${esc(pf.label)}</span>${l ? `<span>${esc(l)}</span>` : ""}${region ? `<span>${esc(region)}</span>` : ""}`; };
-
-    // 수능 D-day는 작은 한 줄로(추정 표기 유지)
-    const cs = ev0("sch-12") || ev0("sch-07"), csRow = P.get("sch-12") || P.get("sch-07");
-    const csDays = cs && !cs.start.endsWith("-") ? (() => { const sp0 = span(cs.start, cs.end); return Math.round(((sp0.month ? new Date(sp0.start.getFullYear(), sp0.start.getMonth(), 15) : sp0.start) - t) / DAY); })() : null;
-    const ddline = csDays != null ? `<span class="aux me"><span class="aux-d num">${examYear}학년도 수능 <b>${csDays.toLocaleString()}일</b></span> ${badges(csRow)}</span>` : "";
-
-    // 알림 후보: 7일 안에 시작하거나 진행 중인 일정과 지난 방문 이후 새 소식을 한 줄로(없으면 숨김). 브라우저 알림은 쓰지 않는다.
-    const pingLine = () => {
-      const wk = upRows().filter((x) => x.sp.start <= new Date(t.getTime() + 7 * DAY) && inF(stageOf(x.r)));
-      if (!wk.length && !fresh) return "";
-      const first = wk[0], head = first ? `${esc(first.r.title)}${wk.length > 1 ? ` 외 ${wk.length - 1}건` : ""}` : "";
-      return `<p class="hm-ping" role="status">${wk.length ? `<a href="#schedule"><b>이번 주</b> ${head}</a>` : ""}${wk.length && fresh ? '<span class="stg-sep" aria-hidden="true">·</span>' : ""}${fresh ? `<a href="#changelog"><b>새 소식</b> ${fresh}건</a>` : ""}</p>`;
-    };
-
-    // 단계 줄: 지금 가장 가까운 일이 속한 단계를 강조하고, 누르면 그 단계 일정으로 간다(앞으로 90일 안 일정 수 함께).
-    const STG_HREF = { 중입: "#select/curriculum?v=middle", 고입: "#select/curriculum", 대입: "#admission/system" }; // 단계별 첫 화면(중학교 배정 / 학교별 과목표 / 수능·내신 규칙)
-    const stageLine = () => {
-      const cnt = Object.fromEntries(STAGES.map((g) => [g, 0]));
-      upRows().forEach((x) => { const g = stageOf(x.r); if (g) cnt[g]++; });
-      const first = feed()[0], cur = first ? (first.kind === "stone" ? stageOf(first.m.row) : stageOf(upcoming.find((x) => x.r.title + (x.e.label ? ` · ${x.e.label}` : "") === first.title)?.r)) : null;
-      return STAGES.map((g) => `<a href="${STG_HREF[g]}"${g === cur ? ' class="on" aria-current="true"' : ""}><b>${g}</b><small class="num">${cnt[g] ? `곧 ${cnt[g]}건` : "—"}</small></a>`).join('<span class="stg-sep" aria-hidden="true">—</span>');
-    };
-
-    // 대시보드 패널(읽지 못한 패널은 조용히 빼고 나머지는 그대로 보여 준다)
-    const ctx = { load, esc, store, policy };
-    const safe = (f) => f(ctx).catch(() => "");
-    // 계획·학교 비교·전형·중학교 패널은 첫 화면 뒤에 채운다(데이터 11개를 기다리지 않고 먼저 그린다)
-    const later = (f) => new Promise((res) => { const go = () => f().then(res, res); (window.requestIdleCallback || ((c) => setTimeout(c, 300)))(go, { timeout: 2500 }); }); // 아래쪽 패널 데이터는 첫 화면을 그린 뒤 한가할 때 받는다
-    const panelsP = isB ? Promise.resolve(["", "", "", ""]) : later(() => Promise.all([safe(planPanel), safe(comparePanel), safe(admPanel), safe(midPanel)]));
-    const hubCounts = {}; STAGES.forEach((g) => { hubCounts[g] = upRows().filter((x) => stageOf(x.r) === g).length; });
-
-    const pins = (store.get(PIN_KEY, []) || []).filter((x) => typeof x === "string").slice(0, 2);
-    const autoHub = STAGE_HUB[stageOf(feedF()[0]?.row)] || null;
-    el.innerHTML = `<div class="hm">
-      ${ddline ? `<div class="auxbar" aria-label="수능 D-day">${ddline}</div>` : ""}
-      ${pingLine()}
-      <div class="h-row2">
-        <div class="h-main">
-          <section class="dp ledger" aria-labelledby="lgh"><div class="sec-h"><h2 id="lgh"><em>지금</em>지금 할 일 3가지</h2><a href="#schedule">전체 일정 ›</a></div>
-            <div id="hm-focus">${focusBar()}</div><ul class="lgs" id="hm-up">${rest()}</ul></section>
-          <section class="dp must" aria-label="먼저 읽어 둘 안내"><div class="sec-h"><h2><em>안내</em>먼저 읽어 둘 안내</h2></div><ul class="must-l">${MUST.filter(([g]) => inF(g)).map(([, t, d, h]) => `<li><div><b>${esc(t)}</b><span>${esc(d)}</span></div><a class="btn" href="${h}">보기</a></li>`).join("")}</ul></section>
-        <section class="dp soonp t2"><div class="sec-h"><h2><em>곧</em>곧 있을 일</h2></div>
-          ${stones.filter((m) => inF(stageOf(m.row)) && dayN(m.date, t) >= 0).length ? `<ul class="mss">${stones.filter((m) => inF(stageOf(m.row)) && dayN(m.date, t) >= 0).map(stoneHtml).join("")}</ul><p class="hint">사진은 이 기기에만 저장돼요.</p>` : '<div class="empty"><span class="z" aria-hidden="true">0</span><p>아직 모인 일정이 없어요.</p></div>'}</section>
-        </div>
-        <div class="h-side">
-        <section class="dp news t0"><div class="sec-h"><h2><em>소식</em>바뀐 소식</h2><a href="#changelog">전체 ›</a></div>
-          <p class="fresh num">${checked ? `마지막 확인 ${esc(ymdText(checked))}` : ""}${fresh ? ` · <b>새 소식 ${fresh}건</b>` : ""}</p>
-          ${log.length ? `<ul class="rows">${log.slice(0, 2).map(logRow).join("")}</ul>` : '<div class="empty"><p>아직 바뀐 소식이 없어요.</p></div>'}</section>
-        <section class="dp todop t1"><div class="sec-h"><h2><em>할 일</em>이번 주 할 일</h2><span class="muted small" id="tdc"></span></div>
-          ${ok ? `<ul class="todo" id="todos"></ul><form class="hm-todoform"><input type="text" id="todoin" placeholder="할 일 추가" maxlength="120" autocomplete="off" aria-label="할 일 추가"><button class="btn" type="submit">추가</button></form>` : '<p class="muted">이 브라우저에서는 저장 공간을 쓸 수 없어 메모를 사용할 수 없어요.</p>'}</section>
-        </div>
-      </div>
-      <div id="hm-hubs">${hubsHtml(esc, hubCounts, { pins, auto: autoHub, only: focus.length ? new Set(focus) : null })}</div>
-      <div class="h-row4" id="hm-r4"></div>
-      <div class="h-row5">
-        <div class="h-col" id="hm-col"></div>
-        ${isB ? "" : `<section class="dp road t0"><div class="sec-h"><h2><em>3년</em>앞으로 3년</h2><a href="#schedule?t=road" id="rm-link">학년별 로드맵</a></div><ol class="tl">${tl}</ol></section>`}
-      </div>
-      <div class="h-rest">
-        <section class="dp gl t1"><div class="sec-h"><h2><em>학점</em>학점제 한눈에</h2><a href="#life/credit">자세히</a></div>
-        <p class="glance-lead">3년 동안 <mark>${m0.creditsTotal}학점</mark>을 스스로 채웁니다.</p>
-        <div class="glance"><div class="g"><span class="v num">${m0.creditsSubject}</span><span class="k">교과 학점</span><span class="n">공통·선택 과목으로 채웁니다</span></div><div class="g"><span class="v num">${m0.creditsCreative}</span><span class="k">창의적 체험활동</span><span class="n">동아리·봉사·진로</span></div></div>
-        ${isB ? `<p class="src-line"><span class="pst estimated">추정</span> ${esc(pf.name)}이 입학하는 ${entryYear}학년도에도 같을지는 아직 확인되지 않았어요. 지금 학년도 기준 숫자입니다.</p>` : ""}</section>
-      </div>
-    </div>`;
-    decorateTerms(el, ".dp");
-    initTerms();
-    if (matchMedia("(max-width:899px)").matches) el.querySelectorAll(".hub.open").forEach((h) => { h.classList.remove("open"); h.querySelector(".hub-t")?.setAttribute("aria-expanded", "false"); }); // 모바일 홈 높이: 열린 허브는 눌러서 연다
-    // 모바일에서는 덜 급한 패널(3년·학점제·전형)을 접어 두고 제목 줄의 버튼으로 편다(홈 높이를 줄인다)
-    const foldPanels = (root) => root.querySelectorAll(".road,.gl,.adm,.hscmp,.plan,.mid,.soonp,.todop").forEach((pn) => { if (pn.querySelector(".m-tg")) return; pn.classList.add("m-fold"); const h = pn.querySelector(".sec-h,h2"); if (h) h.insertAdjacentHTML("beforeend", '<button type="button" class="m-tg" aria-expanded="false">펼치기</button>'); });
-    foldPanels(el);
-
-    { // 검색 결과 등에서 "#home?open=soonp"(곧 있을 일)로 오면 접힌 패널을 열고 그 자리로 간다
+    el.innerHTML = `<div class="hm hm2">${COLS.map(colHtml).join("")}</div>`;
+    decorateTerms(el, ".dp"); initTerms();
+    if (matchMedia("(max-width:899px)").matches) el.querySelectorAll(".hm2-intro").forEach((d) => d.removeAttribute("open")); // 모바일 홈 높이: 소개는 눌러서 연다
+    { // 검색 결과 등에서 "#home?open=soonp"(곧 있을 일)로 오면 그 자리로 간다
       const want = new URLSearchParams(location.hash.split("?")[1] || "").get("open");
-      const pn = want && /^[a-z]+$/.test(want) ? el.querySelector(`.m-fold.${want}`) : null;
-      if (pn) { pn.classList.add("m-open"); const tg = pn.querySelector(".m-tg"); if (tg) { tg.setAttribute("aria-expanded", "true"); tg.textContent = "접기"; } setTimeout(() => pn.scrollIntoView({ block: "start" }), 60); }
+      const pn = want && /^[a-z]+$/.test(want) ? el.querySelector(`.${want}`) : null;
+      if (pn) setTimeout(() => pn.scrollIntoView({ block: "start" }), 60);
     }
-    // 허브: 고정(자주 보는 단계, 최대 2개) / 모바일 접기·펼치기 / 읽음 표시
-    el.addEventListener("click", (e) => {
-      const pin = e.target.closest("[data-pin]");
-      if (pin) { let ps = store.get(PIN_KEY, []) || []; const id = pin.dataset.pin; ps = ps.includes(id) ? ps.filter((x) => x !== id) : [...ps, id].slice(-2); store.set(PIN_KEY, ps);
-        el.querySelector("#hm-hubs").innerHTML = hubsHtml(esc, hubCounts, { pins: ps, auto: autoHub, only: focus.length ? new Set(focus) : null }); decorateTerms(el.querySelector("#hm-hubs"), ".dp"); return; }
-      const mt = e.target.closest(".m-tg");
-      if (mt) { const pn = mt.closest(".m-fold"), on = !pn.classList.contains("m-open"); pn.classList.toggle("m-open", on); mt.setAttribute("aria-expanded", on); mt.textContent = on ? "접기" : "펼치기"; return; }
-      const tg = e.target.closest(".hub-t");
-      if (tg) { const h = tg.closest(".hub"); const on = !h.classList.contains("open"); h.classList.toggle("open", on); tg.setAttribute("aria-expanded", on); return; }
-      const rk = e.target.closest(".nw a");
-      if (rk) { const k = rk.closest(".nw").dataset.rk; const cur = new Set(store.get(RK, [])); cur.add(k); store.set(RK, [...cur].slice(-200)); rk.closest(".nw").classList.remove("is-new"); rk.closest(".nw").querySelector(".new")?.remove(); }
-    });
-
-    // 주로 보는 단계 선택·변경: 저장하면 허브 고정(자주 보는 단계)도 같이 맞춘다
-    // 주로 보는 단계: 누르면 바로 저장하고 홈을 다시 그린다(패널·핑·허브가 모두 선택 단계로 바뀐다)
-    const reHome = () => dispatchEvent(new Event("hashchange"));
-    el.querySelector("#hm-focus").addEventListener("click", (e) => {
-      const ch = e.target.closest("[data-f]");
-      if (ch) { const k = ch.dataset.f; focus = !k ? [] : focus.includes(k) ? focus.filter((x) => x !== k) : [...focus, k]; store.set(FK, focus); HOME_PICK = true;
-        store.set(PIN_KEY, STAGES.filter((g) => focus.includes(g)).map((g) => STAGE_HUB[g]).slice(0, 2)); reHome(); return; }
-      if (e.target.closest("[data-fsave]")) { HOME_PICK = false; store.set(FK, focus); reHome(); return; }
-      if (e.target.closest("[data-fedit]")) { HOME_PICK = true; reHome(); }
-    });
-    // 중학교 입학 준비만 고르면 수능 D-day·학점제·3년 로드맵은 아래로 접는다
-    if (focus.length && focus.every((g) => g === "중입")) {
-      const rest2 = [el.querySelector(".auxbar"), el.querySelector(".gl"), el.querySelector(".road")].filter(Boolean);
-      if (rest2.length) { const d = document.createElement("details"); d.className = "dp more-panels"; d.innerHTML = "<summary>다른 단계 정보 보기 (수능 D-day · 학점제 · 3년 로드맵)</summary>"; rest2.forEach((n) => { n.classList.remove("m-fold"); d.appendChild(n); }); el.querySelector(".hm").appendChild(d); }
-    }
-
-    // 보조 D-day 줄: 그 사람 화면으로 전환
-    el.querySelector(".auxbar")?.addEventListener("click", (e) => { const b = e.target.closest("[data-pf]"); if (b) document.querySelector(`#pf [data-pf="${b.dataset.pf}"]`)?.click(); });
-
     // 졸업·입학 사진: 이 기기에만 저장
-    function bindPhotos(scope) { (scope || el).querySelectorAll("[data-ms]").forEach(async (li) => {
-      const key = li.dataset.ms, art = li.querySelector(".ms-p"), add = li.querySelector("[data-add]"), del = li.querySelector("[data-del]"), inp = li.querySelector("input[type=file]");
+    el.querySelectorAll("[data-ms]").forEach(async (li) => {
+      const key = li.dataset.ms, art = li.querySelector(".ms-p"), add = li.querySelector("[data-add]"), del = li.querySelector("[data-del]"), inp = li.querySelector("input[type=file]"), kind = li.dataset.kind;
       let url = null;
-      const show = (blob) => { if (url) URL.revokeObjectURL(url); url = blob ? URL.createObjectURL(blob) : null; art.classList.toggle("photo", !!blob); if (blob) art.innerHTML = `<img src="${url}" alt="">`; else art.innerHTML = ART[(pf.milestones || []).find((m) => pf.id + ":" + m.id === key)?.kind] || ART.graduation; add.textContent = blob ? "사진 바꾸기" : "사진 넣기"; del.hidden = !blob; };
+      const show = (blob) => { if (url) URL.revokeObjectURL(url); url = blob ? URL.createObjectURL(blob) : null; art.classList.toggle("photo", !!blob); if (blob) art.innerHTML = `<img src="${url}" alt="">`; else art.innerHTML = ART[kind] || ART.graduation; add.hidden = !!blob; del.hidden = !blob; };
       if (typeof indexedDB === "undefined") { add.hidden = true; return; }
       show(await photoGet(key));
       add.addEventListener("click", () => inp.click());
       inp.addEventListener("change", async () => { const f = inp.files[0]; if (!f) return; try { const b = await resizePhoto(f); await photoPut(key, b); show(b); } catch { add.textContent = "사진을 못 읽었어요"; } inp.value = ""; });
       del.addEventListener("click", async () => { await photoDel(key).catch(() => {}); show(null); });
-    }); }
-    bindPhotos(el.querySelector(".mss"));
-
-    // 이번 주 할 일(체크리스트, 이 브라우저에만 저장)
-    if (ok) {
-      const list = () => store.get(todosKey, []);
-      const draw = () => {
-        const items = list();
-        el.querySelector("#todos").innerHTML = items.length ? items.map((it, i) => `<li><label><input type="checkbox" data-i="${i}" ${it.done ? "checked" : ""}><span><b>${esc(it.text)}</b></span></label><button type="button" class="hm-del" data-i="${i}" aria-label="삭제">×</button></li>`).join("") : '<li class="empty-li"><div class="empty"><p>오늘은 챙길 게 없어요.</p><small>아래에 적어 두면 여기에 떠요.</small></div></li>';
-        el.querySelector("#tdc").textContent = items.length ? `${items.filter((x) => x.done).length}/${items.length}` : "";
-      };
-      el.querySelector(".hm-todoform").addEventListener("submit", (e) => { e.preventDefault(); const v = el.querySelector("#todoin").value.trim(); if (!v) return; store.set(todosKey, [...list(), { text: v, done: false }]); el.querySelector("#todoin").value = ""; draw(); });
-      el.querySelector("#todos").addEventListener("click", (e) => {
-        const i = e.target.dataset.i; if (i === undefined) return;
-        const items = list();
-        if (e.target.classList.contains("hm-del")) items.splice(+i, 1); else if (items[+i]) items[+i].done = e.target.checked;
-        store.set(todosKey, items); draw();
-      });
-      draw();
-    }
-    watchP.then((w) => { // 감시 봇 소식이 있으면 소식 칸(목록·새 소식 수)만 갱신
-      const sec = el.querySelector(".news"); if (!w.length || !sec || !el.isConnected) return;
-      const lg = [...log0, ...w].sort((a, b) => span(b.d).start - span(a.d).start), fr = lg.filter(isNew).length;
-      const fe = sec.querySelector(".fresh"); if (fe) fe.innerHTML = `${checked ? `마지막 확인 ${esc(ymdText(checked))}` : ""}${fr ? ` · <b>새 소식 ${fr}건</b>` : ""}`;
-      const box = sec.querySelector("ul.rows") || sec.querySelector(".empty"); if (box) box.outerHTML = `<ul class="rows">${lg.slice(0, 2).map(logRow).join("")}</ul>`;
     });
-    panelsP.then(([a, b, c, d]) => { const r4 = el.querySelector("#hm-r4"), cl = el.querySelector("#hm-col"); if (!r4 || !cl) return; r4.innerHTML = a + b; cl.innerHTML = c + d; foldPanels(el); decorateTerms(r4, ".dp"); decorateTerms(cl, ".dp"); });
   };
 }
