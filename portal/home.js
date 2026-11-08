@@ -125,7 +125,7 @@ export function registerHome(views, { esc, load, store, profiles }) {
           ${soon.length ? `<ul class="h2-evs">${(lastSub = "", soon.map((x, i) => evRow(x, !stone && i === 0)).join(""))}</ul>` : stone ? "" : `<p class="muted">곧 있을 일정이 아직 없어요.</p>`}
           ${dd}${stone ? '<p class="hint">사진은 이 기기에만 저장돼요.</p>' : ""}</section>
         <details class="dp hm2-b hm2-sch" open><summary><h3>${C.side} 일정</h3><a class="h2-all" href="${C.all}">전체 일정 ›</a></summary>
-          ${later.length ? `<ul class="h2-evs">${(lastSub = "", later.map((x) => evRow(x)).join(""))}</ul>` : '<p class="muted">앞으로 예정된 일정이 아직 없어요.</p>'}</details>
+          ${later.length ? `<ul class="h2-evs">${(lastSub = "", later.map((x) => evRow(x)).join(""))}</ul>` : '<p class="muted">예정된 일정이 아직 없어요.</p>'}</details>
         <details class="dp hm2-b hm2-intro" open><summary><h3>${C.side} 소개</h3></summary><ul class="h2-go">${intro}</ul></details>
       </div>`;
     };
