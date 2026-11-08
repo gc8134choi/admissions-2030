@@ -1,6 +1,5 @@
 import { stageOf } from "./stage.js";
 import { decorateTerms, initTerms } from "./terms.js";
-import { srcWrap, noticeHint } from "./src-ref.js";
 import { GROUPS } from "./menu-tree.js";
 // 홈 화면(A안 에디토리얼). 데이터: policy.json(일정·변경 로그·학점제 규칙·마일스톤), summary/curricula/schools(관심 학교).
 // policy.json·policy.js는 읽기만 한다(서브 세션 담당).
@@ -79,14 +78,7 @@ export function registerHome(views, { esc, load, store, profiles }) {
   // 확정이 아닌 날짜는 칩 대신 "예정"이라는 일반 낱말로만 밝힌다
   const tentative = (r) => !!(r && PSTX[r.status]);
   // 출처 팝오버: 출처·확인일에 더해 상태(보도/추정/미정)와 확인 중 안내를 여기서만 보인다
-  const srcOf = (r) => {
-    if (!r) return "";
-    const list = r.sources || (r.sourceName ? [{ name: r.sourceName, url: r.sourceUrl }] : []);
-    const links = list.map((x) => (x.url && /^https?:\/\//.test(x.url) ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)} ↗</a>${noticeHint(x.url)}` : esc(x.name))).join(" · ");
-    const st = tentative(r) ? ` <span class="srcd">상태 ${PSTX[r.status]}</span>` : "";
-    const un = r.unverified ? ` <span class="srcd">공식 문서로 확인 중이에요</span>` : "";
-    return srcWrap(links + st + un, { checked: r.checkedAt || "" });
-  };
+  const srcOf = () => ""; // 출처 버튼은 화면에 내지 않는다(2026-11-08)
   const dayN = (s, t) => { const [y, m, d] = s.split("-").map(Number); return Math.round((new Date(y, m - 1, d) - t) / DAY); };
 
   views.home = async (el) => {

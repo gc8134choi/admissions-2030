@@ -32,10 +32,9 @@ export function register(views, { $, esc, load, store }) {
   const curProfile = () => profileOf(loadProfile(store));
   const loadPolicy = async () => filterByProfile(await load("policy"), curProfile().id).map(plainRow); // 내부 사정 문구는 사용자 말로(plain.js)
   const notice = () => noticeFor(curProfile());
-  const badgeMain = (r) => { const [c, t] = ES[r.status] || ["", r.status]; return `${c === "ok" ? "" : `<span class="es ${c}">${esc(t)}</span>`}${r.unverified ? `<span class="ed-unv" title="${esc(r.reason || "공식 문서로 확인 중이에요")}">확인 중</span>` : ""}`; };
-  // 확인된 항목(확정·원문 확인)은 메모를 "확인 필요/별도 확인"이 있을 때만 보여 준다.
-  const badgeNote = (r) => { const ok = (ES[r.status] || [])[0] === "ok"; // 근거·메모 문장은 기본 숨김: 항목 끝 작은 "근거" 버튼 뒤로 접는다(출처 정리 지시).
-    const parts = [r.unverified && r.reason ? esc(r.reason) : "", r.note && (!ok || /확인 필요|별도 확인/.test(r.note)) ? esc(r.note) : ""].filter(Boolean); return parts.length ? `<div class="ed-note">${srcWrap(parts.join("<br>"), { label: "근거" })}</div>` : ""; };
+  const tent = (r) => ["reported", "estimated", "unknown"].includes(r?.status); // 확정이 아닌 날짜는 칩 대신 "예정"이라는 일반 낱말로만(2026-11-08 출처·상태 표시 삭제 결정)
+  const badgeMain = () => ""; // 상태 칩(보도·추정·미정·확인 중)은 화면에 내지 않는다. 데이터의 status·출처는 그대로 둔다.
+  const badgeNote = () => ""; // 근거·메모 버튼도 내지 않는다
   const badge = (r) => badgeMain(r) + badgeNote(r);
   // 출처: 문장 끝 밑줄 링크. 링크 없는 배부·교육청 자료는 짧은 라벨(전체 설명은 툴팁).
   const src = (r) => {
@@ -48,7 +47,7 @@ export function register(views, { $, esc, load, store }) {
     return `${r.sourceKind ? `<span>${SKIND[r.sourceKind]}</span> · ` : ""}${list.map((x) => (x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>${noticeHint(x.url)}` : esc(x.name))).join(" · ")}`;
   };
   const table = (rows, cols, cls = () => "") => `<div class="tw"><table class="policy"><thead><tr>${cols.map((c) => `<th class="l">${c[0]}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => `<tr class="${cls(r)}">${cols.map((c) => `<td class="l">${c[1](r)}</td>`).join("")}</tr>`).join("") || `<tr><td colspan="${cols.length}">해당 항목이 없어요.</td></tr>`}</tbody></table></div>`;
-  const basic = [["항목", (r) => `<b>${esc(r.title)}</b>`], ["내용", (r) => esc(r.body)], ["상태", badgeMain], ["구분·출처", (r) => srcWrap(src(r) + badgeNote(r), { checked: r.checkedAt })]];
+  const basic = [["항목", (r) => `<b>${esc(r.title)}</b>`], ["내용", (r) => esc(r.body)]]; // 상태·구분·출처 열은 내지 않는다
   // 행 리스트(표 대체, A안): 왼쪽 상태 점, 오른쪽 제목·내용·출처. 구분은 헤어라인만. 옵션: meta(r)=제목 위 작은 글씨, cls(r)=추가 클래스, title(r)=제목.
 // 긴 본문(번호 ①~⑥이 이어지거나 220자 넘는 문장 3개 이상)은 번호 목록으로 나눠 한 문단 벽이 되지 않게 한다
 const bodyHtml = (t, esc2 = esc) => {
@@ -86,7 +85,7 @@ const bodyHtml = (t, esc2 = esc) => {
   const SLABEL = { ok: "확인됨", rep: "보도", est: "추정", unk: "미정" };
   const stKey = (r) => (ES[r.status] || ["unk"])[0] || "unk";
   const stMatch = (r, f) => !f || stKey(r) === f;
-  const statusSelect = (rows) => { const keys = [...new Set(rows.map(stKey))].sort((a, b) => (a === "ok" ? -1 : b === "ok" ? 1 : 0)); return `<div class="ed-filter" id="pstw" role="group" aria-label="상태 필터"><span>상태</span><button type="button" class="on" data-st="">전체 ${rows.length}</button>${keys.map((k) => `<button type="button" data-st="${k}">${SLABEL[k] || k} ${rows.filter((r) => stKey(r) === k).length}</button>`).join("")}</div>`; };
+  const statusSelect = () => '<div id="pstw" hidden></div>'; // 상태 필터(보도·추정·미정)도 화면에 내지 않는다(2026-11-08)
   const dateOf = (t) => (t.match(/^\d{4}-\d{2}(-\d{2})?/) || [""])[0];
 
   // 상단 안내문은 수능 세부 범위 행(adm-07)의 body를 읽어, 문구를 policy.json 한 곳에서 관리한다.
@@ -102,11 +101,11 @@ const bodyHtml = (t, esc2 = esc) => {
     const seenEv = new Set();
     let evs = rows.flatMap((r) => (r.events || []).map((e, i) => ({ ...e, r, first: i === 0 }))).filter((x) => { const k = `${x.r.id}|${x.label || ""}|${x.start}|${x.end || ""}`; if (seenEv.has(k)) return false; seenEv.add(k); return true; }).sort((a, b) => a.start.localeCompare(b.start));
     if (week) evs = evs.filter(inWeek);
-    const tr = (e) => { const d0 = e.start.length === 10 ? dn(e.start) : null, soon = d0 != null && d0 >= 0 && d0 <= 7, live = e.start.length === 10 && d0 < 0 && (e.end || e.start) >= t; return `<tr class="${(e.end || e.start) < t ? "past" : soon ? "due" : live ? "now" : ""}"><td class="l">${stageTag(stageOf(e.r), esc)}${soon ? `<b class="dn num">D-${d0}</b> ` : live ? '<b class="dn">진행 중</b> ' : ""}${esc(fmt(e))}</td><td class="l"><b>${esc(e.r.title)}</b>${e.label ? ` · ${esc(e.label)}` : ""}${e.first ? `<div class="muted small">${esc(e.r.body)}</div>` : ""}</td><td class="l">${badgeMain(e.r)}</td><td class="l">${srcWrap(src(e.r) + badgeNote(e.r), { checked: e.r.checkedAt })}</td></tr>`; };
+    const tr = (e) => { const d0 = e.start.length === 10 ? dn(e.start) : null, soon = d0 != null && d0 >= 0 && d0 <= 7, live = e.start.length === 10 && d0 < 0 && (e.end || e.start) >= t; return `<tr class="${(e.end || e.start) < t ? "past" : soon ? "due" : live ? "now" : ""}"><td class="l">${stageTag(stageOf(e.r), esc)}${soon ? `<b class="dn num">D-${d0}</b> ` : live ? '<b class="dn">진행 중</b> ' : ""}${esc(fmt(e))}${tent(e.r) ? " 예정" : ""}</td><td class="l"><b>${esc(e.r.title)}</b>${e.label ? ` · ${esc(e.label)}` : ""}${e.first ? `<div class="muted small">${esc(e.r.body)}</div>` : ""}</td></tr>`; };
     const none = rows.filter((r) => !r.events);
     if (!evs.length && !none.length) return '<p class="note">아직 모인 일정이 없어요. 일정이 생기면 이 자리에 떠요.</p>';
     return `${(() => { const isPast = (e) => (e.end || e.start) < t, up = evs.filter((e) => !isPast(e)), pa = evs.filter(isPast).reverse();
-      const tbl = (l, lim = 0) => `<div class="tw"><table class="policy"><thead><tr><th class="l">날짜</th><th class="l">항목</th><th class="l">상태</th><th class="l">구분·출처</th></tr></thead><tbody>${l.map((e, i) => (lim && i >= lim ? tr(e).replace('<tr class="', '<tr class="more-r ') : tr(e))).join("")}</tbody></table></div>${lim && l.length > lim ? `<p class="more-rows"><button type="button" class="btn" data-allrows>다음 일정 ${l.length - lim}건 더 보기</button></p>` : ""}`;
+      const tbl = (l, lim = 0) => `<div class="tw"><table class="policy"><thead><tr><th class="l">날짜</th><th class="l">항목</th></tr></thead><tbody>${l.map((e, i) => (lim && i >= lim ? tr(e).replace('<tr class="', '<tr class="more-r ') : tr(e))).join("")}</tbody></table></div>${lim && l.length > lim ? `<p class="more-rows"><button type="button" class="btn" data-allrows>다음 일정 ${l.length - lim}건 더 보기</button></p>` : ""}`;
       return (up.length ? tbl(up, 10) : '<p class="note">앞으로 예정된 일정이 없어요.</p>') + (pa.length ? `<details class="dp past-fold"><summary>지난 일정 ${pa.length}건 (가까운 순)</summary>${tbl(pa)}</details>` : ""); })()}${none.length ? `<h2>일정 미확인</h2>${table(none, basic)}` : ""}`;
   };
 

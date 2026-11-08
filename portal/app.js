@@ -530,9 +530,9 @@ function pageExtras(loc, query) {
   if (!loc || loc.item.id === "home") return;
   const sid = (query.get("s") || "").split(",").filter(Boolean);
   if (sid.length === 1) load("schools").then((ss) => { const x = ss.find((y) => y.id === sid[0]); const el = $("#crumb .crumb-s"); if (x && el) el.innerHTML = `<span aria-hidden="true"> › </span>${esc(x.name)}`; }).catch(() => {});
-  load("policy").then((rows) => { const d = rows.map((r) => r.checkedAt).filter(Boolean).sort().pop(); const el = $(".pgfoot .pg-date"); if (d && el) el.textContent = `자료 확인 ${d.replace(/-/g, ".")} · `; }).catch(() => {});
+  // 화면 아래 "자료 확인 날짜"는 내지 않는다(2026-11-08 출처·확인일 삭제 결정; 자료실 > 출처·확인일에서만)
 }
-const refreshPageSources = () => { const f = $(".pgfoot .pg-src"); if (f) f.innerHTML = sourcesHtml($("#main")) + " · "; };
+const refreshPageSources = () => {};
 
 // 정보성 화면(학점제·수능과 내신·중학교 배정·중학교 생활): 읽기 폭 70자 + 긴 화면 '이 화면에서' 목차(소제목 앵커)
 const INFO_VIEWS = new Set(["credit", "system", "midlife", "links", "sources", "status", "changelog"]);

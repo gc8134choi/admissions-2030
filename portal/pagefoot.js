@@ -29,7 +29,7 @@ export const footHtml = (loc) => {
   const rel = (RELATED[loc.item.id] || []).slice(0, 3);
   const issue = `${REPO}/issues/new?title=${encodeURIComponent("[오류 제보] " + loc.item.title)}&body=${encodeURIComponent("화면: " + loc.item.title + "\n주소: " + location.href + "\n\n어디가 어떻게 달라야 하나요?\n")}`;
   return `<aside class="pgfoot" aria-label="이 화면 안내">${rel.length ? `<p class="pg-rel"><b>같이 볼 것</b>${rel.map(([t, u]) => `<a href="${esc(u)}">${esc(t)}</a>`).join("")}</p>` : ""}
-    <p class="pg-meta"><span class="pg-date"></span><span class="pg-src"></span><a class="pg-issue" href="${esc(issue)}" target="_blank" rel="noopener">오류 알리기 ↗</a></p></aside>`;
+    <p class="pg-meta"><a class="pg-issue" href="${esc(issue)}" target="_blank" rel="noopener">오류 알리기 ↗</a></p></aside>`;
 };
 
 // 이 화면에서 출처 버튼 뒤에 있는 링크를 모아 한 줄 접이식으로

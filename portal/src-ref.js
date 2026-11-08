@@ -4,6 +4,7 @@ const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<
 
 // 이미 만든 출처 HTML(링크 등)을 "출처" 버튼 뒤로 접는다. checked는 확인일(있으면 같이 보임).
 export function srcWrap(inner, { checked = "", label = "출처" } = {}) {
+  return ""; // 2026-11-08 사용자 결정: 화면에서 출처 버튼·상태·확인일을 내지 않는다(데이터는 그대로, 자료실 > 출처·확인일에서만 본다)
   if (!inner || !String(inner).trim()) return "";
   return `<span class="srcw"><button type="button" class="srcb" aria-expanded="false" aria-label="${esc(label)} 보기">${esc(label)}</button><span class="srcp" hidden>${inner}${checked ? ` <span class="srcd">확인 ${esc(checked)}</span>` : ""}</span></span>`;
 }
@@ -20,6 +21,7 @@ export function srcRef(r) {
 
 // 섹션·화면 맨 아래: 같은 출처는 한 번만 모아 접이식 한 줄로. items: [{name,url,asOf?}]
 export function srcFooter(items, title = "이 화면의 출처") {
+  return ""; // 화면 아래 출처 모음도 내지 않는다(2026-11-08)
   const seen = new Map();
   for (const x of items || []) { if (x?.name && !seen.has(x.name + "|" + (x.url || ""))) seen.set(x.name + "|" + (x.url || ""), x); }
   const l = [...seen.values()];
@@ -30,16 +32,9 @@ export function srcFooter(items, title = "이 화면의 출처") {
 // 이미 그려진 "출처 …" 줄(.ed-s)을 버튼으로 바꾼다. 화면마다 자기 방식으로 쓴 출처 줄을 한 곳에서 정리한다.
 export function foldSources(root) {
   if (!root) return;
-  root.querySelectorAll(".ed-s, .src-line").forEach((p) => {
-    if (p.dataset.folded || p.closest(".srcp, .srcf")) return;
-    const t = (p.textContent || "").trim();
-    if (!/^출처/.test(t)) return;
-    p.dataset.folded = "1";
-    const inner = p.innerHTML.replace(/^\s*출처[:\s]*/, "").trim();
-    if (!inner) return;
-    p.innerHTML = srcWrap(inner);
-    p.classList.add("ed-s-fold");
-  });
+  // 화면마다 자기 방식으로 쓴 "출처 …" 줄은 지운다(자료실 > 출처·확인일 화면만 예외)
+  if (/^library\/(sources|status|files)$/.test(root.dataset?.r || "")) return;
+  root.querySelectorAll(".ed-s, .src-line").forEach((p) => { if (p.closest(".srcp, .srcf") || !/^출처/.test((p.textContent || "").trim())) return; p.remove(); });
 }
 
 // 문서 어디서나 한 번만: 출처 버튼을 누르면 그 자리에서 펼치고 접힌다. Esc는 열린 것을 모두 닫는다.
