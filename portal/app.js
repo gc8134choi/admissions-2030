@@ -11,7 +11,7 @@ const SOON_WHY = {
   "대학·학과 찾기": { why: "대학 모집요강을 정리하는 중이에요. 2030학년도 요강은 2028년에 공개되고, 지금은 2027학년도 기준 참고예요.", next: { label: "대학 요건 보기", url: "#select/curriculum?v=univ" } },
   "학교별 시뮬레이션": { why: "내 계획표를 후보 학교에 맞춰 보는 기능이에요. 학교별 개설 과목 자료를 더 모아야 해요.", next: { label: "내 계획표로 먼저 확인", url: "#planner/plan" } },
   "목표 학과 체크": { why: "희망 학과 요건과 내 계획을 견주는 기능이에요. 대학 요건 자료를 모으는 중이에요.", next: { label: "대학 요건 보기", url: "#select/curriculum?v=univ" } },
-  "중학교 교육과정": { why: "중학교별 교육과정은 학교 공지를 모으는 중이에요. 11월 안에 중학교 비교에 먼저 담을게요.", next: { label: "중학교 배정에서 학교 찾기", url: "#select/curriculum?v=middle" } },
+  "중학교 교육과정": { why: "중학교별 교육과정은 학교 공지를 모으는 중이에요. 11월 안에 중학교 학교 보기에 먼저 담을게요.", next: { label: "중학교 배정에서 학교 찾기", url: "#select/curriculum?v=middle" } },
 };
 import { MENU, STATUS } from "./menu.js";
 import { TABS, REDIRECT, hrefOf, tabHref, locate, treeHtml, footLinks, BOTTOM } from "./nav-tree.js";
@@ -202,11 +202,11 @@ async function curriculumView(el, query, node) {
   const areaIn = (query.get("a") || "").split(",").map((a) => (AREA7.includes(a) ? a : a ? "기타" : "")); // 옛 링크의 체육·예술·기술가정·제2외국어는 기타로
   let areasSel = AREA7.filter((a) => areaIn.includes(a)); // 비어 있으면 전체
   let focusP = query.get("p"); // 지도 탭에서 강조할 학교
-  let tab = ["compare", "univ", "map", "middle", "hs", "types"].includes(query.get("v")) ? query.get("v") : "hs"; // 학교별 요약(summary)은 학교 비교(hs)에 합쳤다
+  let tab = ["compare", "univ", "map", "middle", "hs", "types", "schools"].includes(query.get("v")) ? query.get("v") : "hs"; // 학교별 요약(summary)은 학교 비교(hs)에 합쳤다
   const lv = tab === "middle" || query.get("lv") === "middle" ? "middle" : "high"; // 학교 탭의 "중학교 | 고등학교"
-  if (lv === "middle" && !["map", "middle"].includes(tab)) tab = "middle";
+  if (lv === "middle" && !["map", "middle", "schools"].includes(tab)) tab = "middle";
   if (tab === "types") { /* 고교 종류 전용 화면 */ }
-  if (lv === "high" && tab === "middle") tab = "hs";
+  if (lv === "high" && (tab === "middle" || tab === "schools")) tab = "hs"; // (고교 학교 보기는 다음 단계)
   const TABSET = []; // 탭 3겹 → 2겹: 학교별 요약·상세 비교는 위쪽 메뉴 항목으로 올렸다(주소는 그대로) // 학교 지도·중학교 배정·대학 요건은 메뉴(학교 탭 안)에서 연다
   let compare = null; // 상세 비교 화면(필터 포함)은 한 번만 만들고 탭 전환 때 재사용한다
 
@@ -222,13 +222,13 @@ async function curriculumView(el, query, node) {
   const syncUrl = () => {
     const q = new URLSearchParams();
     q.set("v", tab);
-    if (lv === "middle" && tab === "map") q.set("lv", "middle");
+    if ((lv === "middle" && tab === "map") || tab === "schools") q.set("lv", "middle");
     if (tab === "map" || tab === "middle") { if (tab === "map" && focusP) q.set("p", focusP); }
-    else if (tab !== "types") q.set("s", sel.join(","));
+    else if (tab !== "types" && tab !== "schools") q.set("s", sel.join(","));
     if (areasSel.length) q.set("a", areasSel.join(","));
     if (tab === "compare" && fsParam()) q.set("f", fsParam());
     const cur = new URLSearchParams((location.hash.split("?")[1] || "")); // 학교 비교 표(c)·유형(t)·전형(ty)·대학 요건(us)의 선택은 지우지 않는다
-    for (const k of ["c", "m", "t", "ty", "us", "g", "u", "open"]) if (cur.has(k) && !q.has(k)) q.set(k, cur.get(k));
+    for (const k of ["c", "m", "t", "ty", "us", "g", "u", "open", "show", "p"]) if (cur.has(k) && !q.has(k)) q.set(k, cur.get(k));
     history.replaceState(null, "", `#select/curriculum?${q.toString().replace(/%2C/g, ",")}`);
   };
   const chipHtml = () => schools.map((x) => `<button type="button" class="chip schip ${sel.includes(x.id) ? "on" : ""}" data-id="${esc(x.id)}" aria-pressed="${sel.includes(x.id)}" title="${esc(x.name)}">${nm(x.id, x.name, 36)}</button>`).join("");
@@ -268,6 +268,7 @@ async function curriculumView(el, query, node) {
       const bf = query.get("bf"); if (bf) { const t = (bf === "1" ? body.querySelector("[id^=\"bf-\"]") : body.querySelector(`#bf-${CSS.escape(bf)}`)); if (t) { t.scrollIntoView({ block: "start" }); t.querySelector("details")?.setAttribute("open", ""); } }
     }
     else if (tab === "types") { compare = null; body.innerHTML = '<div id="tybody"></div><div id="tycmp"></div>'; const tb = body.querySelector("#tybody"); try { await views.types(tb, query); foldTypeSections(tb); } catch { tb.innerHTML = '<p class="muted">불러오지 못했어요.</p>'; } try { await (await import("./hs-types.js")).hsTypesBody(body.querySelector("#tycmp"), { load, esc }); } catch {} }
+    else if (tab === "schools") { compare = null; await (await import("./middle.js")).middleSchoolsBody(body, { load, esc, show: query.get("show"), focus: focusP }); }
     else if (tab === "map") { compare = null; await (await import("./map.js")).mapBody(body, { load, esc, focus: focusP, level: lv === "middle" ? "middle" : "high" }); }
     else if (tab === "middle") { compare = null; await (await import("./middle.js")).middleBody(body, { load, esc }); }
     else if (tab === "univ") { compare = null; await (await import("./univ-match.js")).univBody(body, { load, esc, profile: currentProfile(store), schools, sel }); }
@@ -595,6 +596,8 @@ function foldTypeSections(host) {
 function rewriteHash(id, q) {
   if (id !== "select/curriculum") return null;
   const v = q.get("v"), n = new URLSearchParams(q);
+  if (v === "middle" && (q.get("open") === "cmp" || q.has("g"))) { n.set("v", "schools"); n.set("lv", "middle"); n.delete("open"); return `${id}?${n}`.replace(/%2C/g, ","); } // 중학교 비교·학교별 항목 → 중학교 학교 보기
+  if (v === "map" && q.get("lv") === "middle") { n.set("v", "schools"); n.set("show", "map"); return `${id}?${n}`.replace(/%2C/g, ","); } // 중학교 지도 → 학교 보기의 지도
   if (v === "hs" && q.get("ty") === "1") { n.set("v", "types"); n.delete("ty"); return `${id}?${n}`.replace(/%2C/g, ","); } // 고교 종류는 전용 화면
   return null;
 }
@@ -623,7 +626,7 @@ function render() {
     return;
   }
   if (n.view === "curriculum" || n.view === "home") { // 위쪽 공간 절약: 제목 없이 화면이 바로 시작
-    $("#main").innerHTML = `${sub}${isInfo(n, query) || ["map", "hs", "summary", "compare", "types"].includes(query.get("v") || "summary") ? `<h1 class="ph">${esc(loc.item.page || loc.item.title)}</h1>` : ""}${crumbHtml(loc, hrefOf, tabHref)}${wantsToc(n, query) ? '<div id="toc-host" class="toc-host"></div>' : ""}<div id="view"></div>${soon}${footHtml(loc)}`;
+    $("#main").innerHTML = `${sub}${isInfo(n, query) || ["map", "hs", "summary", "compare", "types", "schools"].includes(query.get("v") || "summary") ? `<h1 class="ph">${esc(loc.item.page || loc.item.title)}</h1>` : ""}${crumbHtml(loc, hrefOf, tabHref)}${wantsToc(n, query) ? '<div id="toc-host" class="toc-host"></div>' : ""}<div id="view"></div>${soon}${footHtml(loc)}`;
     pageExtras(loc, query); fontGate();
     const mainEl = $("#main"); mainEl.classList.add("view-loading"); const ready = () => requestAnimationFrame(() => { mainEl.classList.remove("view-loading"); addToc(); }); // 화면이 다 그려지기 전에는 아래 안내(푸터)를 숨겨 밀림(CLS)을 막는다
     views[n.view]($("#view"), query, n).catch(() => ($("#view").innerHTML = GO_ERR)).finally(ready);

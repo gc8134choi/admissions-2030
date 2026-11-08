@@ -8,9 +8,9 @@ import json, os, subprocess, sys, tempfile
 
 BASE = (sys.argv[1] if len(sys.argv) > 1 else "https://gc8134choi.github.io/admissions-2030/portal/").rstrip("/") + "/"
 ROUTES = ["", "#schedule", "#schedule?t=life", "#schedule?t=road", "#select/types", "#select/curriculum", "#select/curriculum?v=compare",
-          "#select/curriculum?v=map", "#select/curriculum?v=middle", "#planner/plan", "#life/credit", "#admission/system",
+          "#select/curriculum?v=map", "#select/curriculum?v=middle", "#select/curriculum?v=schools&lv=middle", "#planner/plan", "#life/credit", "#admission/system",
           "#changelog", "#library/links", "#library/sources", "#library/status", "#library/files", "#select/curriculum?v=univ", "#select/curriculum?v=map&lv=middle", "#mid/life"]
-CMP = ["#select/curriculum?v=hs", "#select/curriculum?v=univ", "#admission/system?t=types", "#select/curriculum?v=middle"]
+CMP = ["#select/curriculum?v=hs", "#select/curriculum?v=univ", "#admission/system?t=types", "#select/curriculum?v=schools&lv=middle"]
 STICKY = ["#select/curriculum?v=compare", "#schedule", "#schedule?t=hs"]  # 표 구조가 다른 상세 비교(.tw): 스크롤 후 대상 줄 고정만 점검
 JS = r"""
 const {chromium}=require('playwright');

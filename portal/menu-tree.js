@@ -5,11 +5,9 @@ export const HOME = { id: "home", title: "스쿨 라이프", desc: "곧 있을 �
 // 최상위는 중학교·고등학교 두 그룹(사용자 결정 2026-11-08). sub = 그 항목부터 시작하는 의미 단위 소제목(시각 구분만, 메뉴 단계는 2단계). foot = 메뉴 맨 아래 작은 글자 링크 묶음(화면 모드 위).
 export const GROUPS = [
   { id: "mid", title: "중학교", items: [
-    { id: "select/curriculum?v=middle", title: "배정 안내", desc: "발표·추가배정·등록·배정 후 변경(이사·전입)·근거리 중학교", keys: ["발표","추가배정","등록","배정 후","이사","근거리"], r: "select/curriculum", q: { v: "middle", open: null}},
-    { id: "select/curriculum?v=middle&open=cmp", title: "중학교 비교", desc: "학생 수·급식 나란히", keys: ["학생","급식"], vals: { data: "middle-compare", fields: ["students","meal"]}, r: "select/curriculum", q: { v: "middle", open: "cmp"}},
-    { id: "select/curriculum?v=map&lv=middle", title: "중학교 지도", page: "중학교 지도", desc: "중학교 위치", keys: ["중학교"], r: "select/curriculum", q: { v: "map", lv: "middle"}},
-    { id: "select/curriculum?v=middle&open=guide", title: "입학 준비", desc: "배정부터 등록까지·예비소집·교복 학교주관구매 안내·준비물·자유학기제·교과서", keys: ["배정부터 등록까지","예비소집","교복","준비물","자유학기","교과서"], r: "select/curriculum", q: { v: "middle", open: "guide"}},
-    { id: "schedule?t=life", title: "중학교 일정", page: "중학교 일정", desc: "졸업·입학(배정원서·입학식)", keys: ["졸업","배정원서","입학"], r: "schedule", q: { t: "life"}, sub: "일정"}] },
+    { id: "select/curriculum?v=middle", title: "배정·입학 준비", desc: "발표·추가배정·등록·재배정·근거리 중학교·예비소집·교복·준비물", keys: ["발표", "추가배정", "등록", "재배정", "근거리", "예비소집", "교복", "준비물"], r: "select/curriculum", q: { v: "middle" } },
+    { id: "select/curriculum?v=schools&lv=middle", title: "학교 보기", page: "중학교 보기", desc: "중학교 13곳 학생 수·급식·교복 표로 견주기·지도·교과서", keys: ["학생", "급식", "교복", "지도", "교과서"], vals: { data: "middle-compare", fields: ["students", "meal", "uniform"] }, r: "select/curriculum", q: { v: "schools", lv: "middle" } },
+    { id: "schedule?t=life", title: "중학교 일정", page: "중학교 일정", desc: "졸업·입학(배정원서·입학식)", keys: ["졸업", "배정원서", "입학"], r: "schedule", q: { t: "life" } }] },
   { id: "hs", title: "고등학교", items: [
     { id: "select/curriculum?v=types", title: "고교 종류", desc: "일반·특목·자사고 종류와 지원 방법·지망·구역·고입 내신 반영·선지원 추첨", keys: ["일반","자사고","지원","지망","구역","고입 내신","선지원","추첨"], r: "select/curriculum", q: { v: "types"}, sub: "학교 알아보기"},
     { id: "select/curriculum?v=hs", title: "학교 비교", desc: "학교별 기본 정보·입학 방식·구역", keys: ["입학 방식","구역"], vals: { data: "hs-compare", fields: ["type","admission","zone"]}, r: "select/curriculum", q: { v: ["hs","summary"], ty: "!1", bf: null}},
