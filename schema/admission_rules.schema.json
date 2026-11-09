@@ -339,6 +339,47 @@
     "requirementsScopeNote": {
       "type": "string",
       "description": "requirements를 채운 규칙에서 원문의 어느 범위를 옮기지 않았는지(예: 모집단위별 권장과목 표) 또는 재대조 못 한 사유"
+    },
+    "csatAreaRules": {
+      "type": "array",
+      "description": "수능 응시영역기준(최저학력기준과 다름): 유형별로 지원자가 모두 응시해야 하는 영역·선택 규칙. 모집단위 목록은 원문 표기 그대로.",
+      "items": {
+        "type": "object",
+        "required": [
+          "typeLabel",
+          "units",
+          "requiredAreas"
+        ],
+        "properties": {
+          "typeLabel": {
+            "type": "string"
+          },
+          "units": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requiredAreas": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mathChoice": {
+            "type": "string"
+          },
+          "inquiryChoice": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
     }
   },
   "examples": [
