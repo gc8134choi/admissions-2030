@@ -48,6 +48,13 @@ for (const a of mid.areas || []) {
   for (const nm of names) if (!note.s.includes(nm)) bad.push(`${sc.name} 학교군: '${nm}'이 안내에 없어요 → ${note.s.slice(0, 80)}`);
   if (joint !== /공동학군/.test(note.s)) bad.push(`${sc.name} 학교군: 공동학군 표시가 데이터(${joint ? "공동" : "단일"})와 달라요 → ${note.s.slice(0, 80)}`);
 }
+// 학교급 한 글자 띄어쓰기(서원 중·홍천 고)·'고교/중교' 변형: 같은 이름의 다른 학교급 값을 1위로 내면 안 된다. 학교급 없는 모호한 이름(서원·홍천)은 후보 안내
+const SHORT = { 초등학교: ["초", "초교"], 중학교: ["중", "중교"], 고등학교: ["고", "고교"] }; let nv = 0;
+for (const p of places) { const m = SUF.exec(p.name); if (!m) continue; const core = p.name.replace(SUF, "").replace(/^용인/, ""); if (core.length < 2 || core.length > 6) continue;
+  for (const f of [`${core} ${SHORT[m[0]][0]}`, `${core}${SHORT[m[0]][1]}`, `${core} ${m[0]}`]) { const q = `${f} 학급수`, flat = S.search(q).flatMap(([, l]) => l); nv++; const top = flat.find((x) => places.some((pp) => (x.t || "").startsWith(pp.name))); /* 학교 이름으로 시작하는 첫 행 */ if (!top || !(top.t || "").startsWith(p.name)) bad.push(`'${q}' → 1위가 ${p.name}이(가) 아니에요: ${(top?.t || "-").slice(0, 30)}`); } }
+const byCore = new Map(); for (const p of places) { const m = SUF.exec(p.name); if (!m) continue; const c = p.name.replace(SUF, "").replace(/^용인/, ""); if (c.length >= 2) (byCore.get(c) || byCore.set(c, []).get(c)).push(p.name); }
+let namb = 0; for (const [c, names] of byCore) if (names.length >= 2) { namb++; const flat = S.search(`${c} 학급수`).flatMap(([, l]) => l), note = flat.find((x) => (x.t || "") === `${c} 후보`); if (!note) bad.push(`'${c} 학급수': 같은 이름 학교가 ${names.length}곳인데 후보 안내가 없어요`); else for (const nm of names) if (!note.s.includes(nm)) bad.push(`'${c}' 후보에 ${nm}이(가) 빠졌어요`); }
+console.log(`  · 학교급 변형 ${nv}질의, 모호한 이름 ${namb}개 후보 안내`);
 console.log(`  · 띄어 쓴 학교급 ${nsp}질의, 초등 학교군 문구 ${nz}곳 데이터 대조`);
 if (bad.length) { for (const b of bad.slice(0, 40)) console.log("  ✗", b); console.log(`실패 ${bad.length}건 / ${n}질의`); process.exit(1); }
 console.log(`OK: 학교 ${places.length}곳 × 이름 형태·주제 ${n}질의에서 '없는 학교' 오선언 없음`);

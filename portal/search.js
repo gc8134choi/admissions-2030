@@ -134,7 +134,10 @@ export function makeSearcher(store) {
     let t = String(str).replace(/(미적분|영어|수학|확률과 ?통계|화학|물리학?|생명과학|지구과학)\s*(투|이)(?![가-힣])/g, (_, b, n) => b + (n === "투" ? "2" : "2")).replace(/(미적분|영어|수학|화학|물리학?|생명과학|지구과학)\s*원(?![가-힣])/g, "$11"); for (const [re, b] of data.roman) t = t.replace(re, (_, n) => b + (n === "1" ? "Ⅰ" : "Ⅱ")); for (const [re, v] of data.plainRoman) t = t.replace(re, v); return t;
   };
   const search = (q) => {
-    const joinSp = (t) => t.replace(/([가-힣]{2,6}) +(초등학교|중학교|고등학교)/g, (m, a2, b2) => { if (/^(용인|경기|서울|우리|일반|공립|사립|전국|특성화|자율)$/.test(a2)) return m; const j = norm(a2 + b2); return data.places.some((x) => schoolAliases(x.name).some((al) => al === j || al.startsWith(j))) ? a2 + b2 : m; }); // 학교급을 띄어 쓴 이름(성복 고등학교·수지 초등학교)은 실제 학교 이름일 때만 붙인다
+    const SKIP_GEN = /^(용인|경기|서울|우리|일반|공립|사립|전국|특성화|자율)$/, hasSch = (j) => data.places.some((x) => schoolAliases(x.name).some((al) => al === j || al.startsWith(j)));
+    const joinSp = (t) => t
+      .replace(/([가-힣]{2,6}) *(초등학교|중학교|고등학교|초|중|고)(?![가-힣])/g, (m, a2, b2) => (/ /.test(m) && !SKIP_GEN.test(a2) && hasSch(norm(a2 + b2)) ? a2 + b2 : m)) // 학교급을 띄어 쓴 이름(성복 고등학교·서원 중)은 실제 학교 이름일 때만 붙인다
+      .replace(/([가-힣]{2,5})(고교|중교|초교)(?![가-힣])/g, (m, a2, b2) => (hasSch(norm(a2 + b2[0])) ? a2 + b2[0] : m)); // 풍덕고교·수지중교 같은 변형
     q = joinSp(String(q));
     const q0 = romanize(String(q)).replace(/시험을? ?(안|못) ?(보는|치는)( ?학기)?/g, "자유학기"); // 원문(의도 낱말 확인용)
     q = cleanQuery(q0).replace(/(?:용인)?(?:한국)?외(?:국어)?대(?:학교)?부(?:설|속)?(?:고등학교|고)?/g, "용인한국외국어대학교부설고등학교"); // 약칭 → 학교 이름
@@ -163,6 +166,10 @@ export function makeSearcher(store) {
       const stoks = words.filter((t) => /고$/.test(t) && t.length >= 3 && !t.startsWith("서울")), body = (x) => norm(`${x.t} ${x.s} ${x.x || ""}`);
       const cands = stoks.length ? r.flatMap(([, l]) => l).filter((x) => /서울/.test(body(x)) && stoks.some((t) => body(x).includes(t))).slice(0, 3) : [];
       if (cands.length) { weak = false; r = [["서울 고입", cands], ...r.map(([h, l]) => [h, l.filter((x) => !cands.includes(x))]).filter(([, l]) => l.length)]; }
+    }
+    if (!ex.length && /학생수|학급수|학급|교원|급식|매점|주소|전화|홈페이지|교복|편제표|방과후|특색|학비|진학|설명회|모집/.test(String(q0)) && !String(q0).split(/\s+/).some((w) => /([초중고]|학교|초등|중학|고등|고교)$/.test(w))) { // 학교급 없이 이름만(서원·홍천): 같은 이름 학교가 둘 이상이면 한 학교로 단정하지 않고 후보를 보여 준다
+      const coreOf = (x) => norm(x.name).replace(/(초등학교|중학교|고등학교)$/, "").replace(/^용인/, "");
+      for (const t of words) { if (t.length < 2 || SKIP_GEN.test(t)) continue; const same = data.places.filter((x) => coreOf(x) === t); if (same.length >= 2) notes.push({ href: "#select/curriculum?v=map", t: `${t} 후보`, s: `'${t}'은(는) 학교가 여러 곳이에요: ${same.map((x) => x.name).join(" / ")} → 학교급을 붙여 다시 물어 주세요(예: ${t}${same[0].level === "middle" ? "중" : same[0].level === "high" ? "고" : "초"})` }); }
     }
     if (ex.length) {
       const keys = toks0.filter((t) => ex.some((x) => norm(x.name).startsWith(t)));
