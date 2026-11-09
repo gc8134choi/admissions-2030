@@ -13,6 +13,7 @@ const STATE = { guaranteed: "학교 지정", reachable: "고를 수 있음", blo
 const TRACK = { "susi-gyogwa": "학생부교과", "susi-jonghap": "학생부종합", "susi-nonsul": "논술", "jeongsi-csat": "정시 수능", special: "특별전형" };
 
 // 문장 경계에서 자른다(말줄임 없이 중간에서 끊기지 않게). 한도 안이면 그대로
+const strLab = (q) => (q.strength === "required" ? "필수" : /권장/.test(q.orGroupLabel || q.label || "") ? "권장" : q.strength === "advised" ? "참고" : "권장"); // 요강 문구에 '권장'이 있으면 '참고'로 바꿔 쓰지 않는다
 const cutSentence = (t, n) => { t = String(t || ""); if (t.length <= n) return t; const head = t.slice(0, n), k = Math.max(head.lastIndexOf("。"), head.lastIndexOf(". "), head.lastIndexOf("다 "), head.lastIndexOf("요 ")); return k > n * 0.4 ? head.slice(0, k + 1).trim() : t; /* 경계가 없으면 전체 */ };
 
 export async function univBody(el, { load, esc, profile, schools, sel, pick }) {
@@ -47,7 +48,7 @@ export async function univBody(el, { load, esc, profile, schools, sel, pick }) {
     // 대학 요건 맞춰보기: 공용 비교 표(대상=학교 열, 항목=요건 행). 학교 4곳이 같은 모집단위 요건을 얼마나 채우는지 견준다.
     const mOf = (schoolId) => matches.matches.find((x) => x.schoolId === schoolId && x.ruleId === st.rule);
     const anyM = mine.some((x) => mOf(x.id)?.summary);
-    const reqTxt = (rule.requirements || []).length ? `<ul class="um-req">${rule.requirements.map((q) => `<li><b>${q.strength === "required" ? "필수" : q.strength === "advised" ? "참고" : "권장"}</b> · ${esc(q.orGroupLabel || "")}</li>`).join("")}</ul><p class="muted small">요건 문구는 요강 그대로예요${src ? ` — ${src}` : ""}. 우리 학교 과목표와 맞춰 보는 것은 이 모집단위는 아직 안 돼요(과목 묶음을 만들지 못했어요).</p>` : "";
+    const reqTxt = (rule.requirements || []).length ? `<ul class="um-req">${rule.requirements.map((q) => `<li><b>${strLab(q)}</b> · ${esc(q.orGroupLabel || "")}</li>`).join("")}</ul><p class="muted small">요건 문구는 요강 그대로예요${src ? ` — ${src}` : ""}. 우리 학교 과목표와 맞춰 보는 것은 이 모집단위는 아직 안 돼요(과목 묶음을 만들지 못했어요).</p>` : "";
     if (!anyM && reqTxt) body = `<h3 class="um-h">과목 요건(요강 문구)</h3>${reqTxt}`;
     else if (!anyM) { const u = univs.find((x) => x.id === st.univ); body = emptyLine(esc, { why: `${kindText(rule)}${rule.requirementsNullReason ? ` — ${cutSentence(plainReason(rule.requirementsNullReason), 200)}` : ""}`, next: u?.admissionsUrl ? { label: "입학처에서 먼저 확인", url: u.admissionsUrl } : { label: "대학 이름으로 검색", url: `https://search.naver.com/search.naver?query=${encodeURIComponent((u?.name || "") + " 입학처 모집요강")}` } }); }
     else body = `<div id="um-cmp"></div>`;
@@ -60,7 +61,7 @@ export async function univBody(el, { load, esc, profile, schools, sel, pick }) {
         { id: "guar", label: "학교 지정", group: "요약", kind: "number", get: (t) => { const sm = mOf(t.id)?.summary; return sm ? { text: String(sm.guaranteed), num: sm.guaranteed } : { empty: true, why: NOREQ }; } },
         { id: "blk", label: "택n 묶음 충돌", group: "요약", kind: "number", get: (t) => { const sm = mOf(t.id)?.summary; return sm ? { text: String(sm.blocked), num: sm.blocked } : { empty: true, why: NOREQ }; } },
         { id: "abs", label: "과목표에 없음", group: "요약", kind: "number", get: (t) => { const sm = mOf(t.id)?.summary; return sm ? { text: String(sm.absent), num: sm.absent } : { empty: true, why: NOREQ }; } },
-        ...Array.from({ length: reqCount }, (_, i) => { const r0 = mOf(mine[0].id).requirements[i]; return { id: `req${i}`, label: `${r0.label} (${r0.strength === "required" ? "필수" : r0.strength === "advised" ? "참고" : "권장"})`, group: "요건별 과목", kind: "text", get: (t) => {
+        ...Array.from({ length: reqCount }, (_, i) => { const r0 = mOf(mine[0].id).requirements[i]; return { id: `req${i}`, label: `${r0.label}${(() => { const rq = rule?.requirements || []; return rq.filter((x) => x.orGroupLabel === r0.label).length > 1 && rq[i]?.legacyKeys?.length ? ` · ${rq[i].legacyKeys.join("·")}` : ""; })()} (${strLab(r0)})`, group: "요건별 과목", kind: "text", get: (t) => {
           const r = mOf(t.id)?.requirements?.[i]; if (!r) return { empty: true, why: NOREQ };
           const list = [...r.guaranteed.map((g) => `${nm(g.subjectId)} <span class="muted small">${g.terms.join("·")} 지정</span>`), ...r.selectable.map((g) => `${nm(g.subjectId)} <span class="muted small">${g.terms.join("·")}${g.pick ? ` · 택${g.pick}` : ""}</span>`)];
           const shown = list.length > 6 ? `${list.slice(0, 6).join("<br>")}<br><span class="muted small">외 ${list.length - 6}과목</span>` : list.join("<br>");
