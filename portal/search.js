@@ -3,7 +3,7 @@
 import { allItems } from "./nav-tree.js";
 import { stageOf } from "./stage.js";
 import { loadSearchExtra, univInfo, elemZone } from "./search-extra.js";
-import { sayOf, noneText, REGION_WORDS, GG_WORDS, regionKnown } from "./search-claims.js";
+import { sayOf, noneText, REGION_WORDS, GG_WORDS, regionKnown, gyeonggiNote } from "./search-claims.js";
 import { loadProfile, filterByProfile } from "./profile.js";
 const RECENT_KEY = "portal.search.recent";
 // 안내 데이터(중학교 배정 가이드·고교 유형·전형)를 제목+본문 단위로 펼쳐 색인한다. 출처·주소·코드 필드는 뺀다.
@@ -110,7 +110,7 @@ export function makeSearcher(store) {
   const priority = (q, q0 = "") => { const nq = norm(q), nr = norm(String(q0).replace(/[?？!！.,~]/g, " ")); const rawQ = String(q0 || q).toLowerCase(); const hit = data.guide.filter((g) => g.q && (g.raw ? new RegExp(g.q).test(rawQ) : (new RegExp(g.q).test(nq) || new RegExp(g.q).test(nr)))).filter((g) => !(g.gap === "none-topics" && /수능|가채점/.test(nr) && /날짜|며칠|언제|시행|몇월|몇일|일정/.test(nr))); /* 질의에 날짜 낱말이 있는 수능 질의는 약한 안내로 막지 않는다(정리된 질의에서 날짜 낱말이 빠져 선언이 걸리던 오류) */ if (hit.some((g) => g.gap === "none-topics")) { const o = hit.filter((g) => g.gap === "none-topics"); return { list: o.map((g) => ({ href: g.href, t: g.t, s: g.s })), only: true }; } // 정확한 자료가 없을 수 있는 주제는 약한 안내만(링크·소음 행이 앞서지 않게)
     if (hit.some((g) => g.gap === "other-region")) { // 질의의 지역 낱말이 포털 데이터(정책·안내)에 있으면 지역 안내를 내지 않는다(서울·수원외고 등) — 데이터에 없는 지역만 약한 안내
       const w = REGION_WORDS.find((x) => new RegExp("(?<![가-힣(])" + x + "(?![·,)]|과학|한성|영재)").test(String(q0).toLowerCase().replace(/\s+/g, " "))); regionHay ||= JSON.stringify([data.policy, data.guide.map((g) => [g.t, g.s, g.text])]);
-      if (w && GG_WORDS.includes(w) && !regionKnown(w, regionHay, nr)) { const rest = hit.filter((g) => g.gap !== "other-region"); return { list: [{ href: "#schedule?t=hs", t: "경기 고입 일정", s: `${w}도 경기도라 경기 고입 전기·후기 전형 일정(후기 원서접수 12.4~12.10, 해당 지역 교육지원청)은 같이 적용돼요. 평준화 배정 일정(배정 대상자 발표 2027.1.6 등)은 평준화지역에만 해당해요 — ${w}이 평준화지역인지·일반고 전형 방식, 학교 목록·학교별 모집 안내는 정확히 맞는 내용이 없을 수 있어요(${w} 지역 교육지원청·학교 누리집에서 확인)` }, ...rest.map((g) => ({ href: withHl(g.href, g.hl), t: g.t, s: g.s }))], only: false }; } // 경기 지역 낱말(수원·성남 등)은 '없는 지역'이 아니라 경기 전체 일정 안내로
+      if (w && GG_WORDS.includes(w) && !regionKnown(w, regionHay, nr)) { const rest = hit.filter((g) => g.gap !== "other-region"); return { list: [{ href: "#schedule?t=hs", t: "경기 고입 일정", s: gyeonggiNote(w, data.policy) }, ...rest.map((g) => ({ href: withHl(g.href, g.hl), t: g.t, s: g.s }))], only: false }; } // 경기 지역 낱말(수원·성남 등)은 '없는 지역'이 아니라 경기 전체 일정 안내로
       if (w && regionKnown(w, regionHay, nr)) { const rest = hit.filter((g) => g.gap !== "other-region"); return rest.length ? { list: rest.map((g) => ({ href: withHl(g.href, g.hl), t: g.t, s: g.s })), only: rest.some((g) => g.only) } : null; }
     }
     if (hit.some((g) => g.gap === "other-region")) { const o = hit.filter((g) => g.gap === "other-region"); return { list: o.map((g) => ({ href: withHl(g.href, g.hl), t: g.t, s: g.s })), only: false }; } // 지역 안내와 함께 있는 데이터 행도 보여 준다(정답 행을 가리지 않는다) // 다른 지역 질의는 지역 경고만 먼저(이어서 우리 지역 결과로 오해하지 않게)
