@@ -11,7 +11,7 @@
 
 .ed{color:var(--e-ink);counter-reset:edsec;letter-spacing:-.01em;word-break:keep-all}
 .ed a{color:inherit;text-underline-offset:3px}
-.ed h2{margin:40px 0 18px;padding-top:22px;border-top:1px solid var(--e-rule);font-size:13px;font-weight:700;letter-spacing:.06em;display:flex;align-items:baseline;gap:10px;counter-increment:edsec}
+.ed h2{margin:40px 0 18px;padding-top:22px;border-top:1px solid var(--e-rule);font-size:13px;font-weight:700;letter-spacing:.06em;display:flex;flex-wrap:wrap;align-items:baseline;gap:0 10px;min-width:0;overflow-wrap:anywhere;counter-increment:edsec}
 .ed h2::before{content:counter(edsec,decimal-leading-zero);color:var(--e-accent)}
 .ed h2 .cnt{margin-left:auto;font-size:13px;font-weight:400;color:var(--e-mute);background:none;padding:0;min-width:0}
 .ed h2 .muted,.ed h2 small{font-weight:400;letter-spacing:0;color:var(--e-mute)}
