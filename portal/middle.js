@@ -38,6 +38,7 @@ export async function middleBody(el, { load, esc, mapHref = (id) => `#select/cur
   const LSK = "portal.mid.from"; // 마지막으로 고른 초등학교(이 브라우저에만 저장, 기본은 첫 구역=성복초)
   const lsFrom = () => { try { return localStorage.getItem(LSK); } catch { return null; } };
   const st = (el.__mid ||= { from: areas.some((a) => a.from.placeId === lsFrom()) ? lsFrom() : areas[0].from.placeId, q: "" });
+  { const hf = new URLSearchParams((location.hash.split("?")[1]) || "").get("from"); if (hf && areas.some((a) => a.from.placeId === hf)) { st.from = hf; try { localStorage.setItem(LSK, hf); } catch {} } } // 검색 등에서 ?from=<초등학교 id>로 오면 그 초등학교를 고른 채로
   if (!areas.some((a) => a.from.placeId === st.from)) st.from = areas[0].from.placeId;
 
   const zoneNotice = policy.find((r) => /중학구/.test(r.title + r.body) && /의견 ?수렴/.test(r.title + r.body) && r.status !== "confirmed" && !/고시 확정/.test(r.title)); // 이미 고시가 확정된 행(의견 수렴은 지난 과정)은 '미정'으로 보이지 않게

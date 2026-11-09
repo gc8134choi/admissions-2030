@@ -23,7 +23,14 @@ const units = (o, href, from, out = []) => {
 const NORM_CACHE = new Map(); // 같은 문자열을 질의마다 되풀이해 정규화하지 않는다(검색이 150ms→수 ms)
 const DOCN = new WeakMap(), nr = (r) => { let v = DOCN.get(r); if (v === undefined) { v = String(r.title ?? "").normalize("NFC").toLowerCase().replace(/\s+/g, "") + String(" ").trim() + String(r.body ?? "").normalize("NFC").toLowerCase().replace(/\s+/g, ""); DOCN.set(r, v); } return v; }, ng = (g) => { let v = DOCN.get(g); if (v === undefined) { v = String(g.t ?? "").normalize("NFC").toLowerCase().replace(/\s+/g, "") + String(g.text ?? "").normalize("NFC").toLowerCase().replace(/\s+/g, ""); DOCN.set(g, v); } return v; };
 const norm = (s) => { const k = String(s ?? ""); let v = NORM_CACHE.get(k); if (v === undefined) { v = k.normalize("NFC").toLowerCase().replace(/\s+/g, ""); if (NORM_CACHE.size > 20000) NORM_CACHE.clear(); NORM_CACHE.set(k, v); } return v; };
-const ROUTE = {
+
+// 학교 이름 약칭: 포털 표시 이름·'용인' 접두어를 뗀 이름·학교급 접미를 초/중/고로 줄인 이름(용인신봉초등학교 → 신봉초)을 모두 학교 이름 판정에 쓴다
+export const schoolAliases = (name) => {
+  const n = norm(name), m = /^(.*?)(초등학교|중학교|고등학교)$/.exec(n); if (!m) return [n];
+  const core = m[1], sh = m[2][0], out = new Set([n, core + sh]);
+  if (core.startsWith("용인") && core.length >= 4) { out.add(n.slice(2)); out.add(core.slice(2) + sh); }
+  return [...out];
+};const ROUTE = {
   "exam-schedule": "#schedule?t=univ", "hs-schedule": "#schedule?t=hs", "gg-hs-entry": "#schedule?t=hs", "life-schedule": "#schedule?t=life",
   "change-log": "#changelog", "hs-types": "#select/types", "hs-choice-opinion": "#select/types", "high-school-assignment": "#select/types", "academy-material": "#admission/system",
   "curriculum-guide": "#life/credit", "hs-credit-system": "#life/credit",
@@ -137,7 +144,7 @@ export function makeSearcher(store) {
     // 학교 이름과 앞부분이 맞는 말이 있으면(예: 상현중) 그 학교를 맨 위에 두고, 이름이 다른 학교(상현고 등) 행은 걷어 낸다
     const words = String(q).split(/\s+/).map(norm).filter((t) => t.length >= 2 && !STOP.has(t));
     const toks0 = words.filter((t) => t.length >= 3);
-    const ex = data.places.filter((x) => toks0.some((t) => norm(x.name).startsWith(t)));
+    const ex = data.places.filter((x) => toks0.some((t) => schoolAliases(x.name).some((a) => a.startsWith(t))));
     const notes = [];
     if (ex.length) {
       const keys = toks0.filter((t) => ex.some((x) => norm(x.name).startsWith(t)));
@@ -159,7 +166,7 @@ export function makeSearcher(store) {
     } else {
       // 이 포털에 없는 학교(예: 죽전중·풍덕중): 학교 이름 모양의 낱말이 어떤 학교 이름과도 안 맞으면 알려 준다
       const LV = { 중: ["middle", "중학교"], 고: ["high", "고등학교"], 초: ["elementary", "초등학교"] };
-      for (const t of words) { const m = /^([가-힣]{2,5})(중학교|고등학교|초등학교|중|고|초)$/.exec(t); if (!m || /(신고|공고|광고|보고|통고|예고|사고|경고|출고|원고|항고|상고|신초|최초|개중|도중|기중|동중|전입신고)$/.test(t) || /^(언제|어디|어느|무엇|뭐|누구|얼마|어떻|어떤|이러|그러|저러|이래|그래|저래|아니|또는|그리|하지|되지|있지|없지|이고|그리고)$/.test(m[1]) || /(하|되|싶|있|없|보|알|해|서|가|오|나|내|주|받|쓰|열|떨|들|살|찾|맞|넣|놓|같|끝|돌|걸|골|르|리|아|어|지|자|다|라|네|죠|누|뀌|꾸|추|우|치|키|끄|뜨|크|트|프|요|면|며|니|까|게|듯|던|든|는|은|을|를)$/.test(m[1]) || /^(자공|자율|자사|일반|특성화|마이스터|자사|외|국제|과학|영재|예술|체육|특목|자율|자율형|자율형공립|자율형사립|공립|사립|전기|후기|평준화|비평준화|외국어|명문|상위|진학|입시|특수|대안|각종|모든|우리|근처|인근|다른|광역|지역|학군|중학|고등|초등|특성화|연합|통합)$/.test(m[1])) continue; const lv = LV[m[2][0]]; if (!lv || SYN.some((g) => g.includes(t)) || data.guide.some((g) => !g.q && ng(g).includes(norm(t))) || data.policy.some((r) => nr(r).includes(norm(t))) || data.places.some((x) => x.level === lv[0] && (norm(x.name).startsWith(t) || norm(x.name).startsWith(m[1])))) continue;
+      for (const t of words) { const m = /^([가-힣]{2,5})(중학교|고등학교|초등학교|중|고|초)$/.exec(t); if (!m || /(신고|공고|광고|보고|통고|예고|사고|경고|출고|원고|항고|상고|신초|최초|개중|도중|기중|동중|전입신고)$/.test(t) || /^(언제|어디|어느|무엇|뭐|누구|얼마|어떻|어떤|이러|그러|저러|이래|그래|저래|아니|또는|그리|하지|되지|있지|없지|이고|그리고)$/.test(m[1]) || /(하|되|싶|있|없|보|알|해|서|가|오|나|내|주|받|쓰|열|떨|들|살|찾|맞|넣|놓|같|끝|돌|걸|골|르|리|아|어|지|자|다|라|네|죠|누|뀌|꾸|추|우|치|키|끄|뜨|크|트|프|요|면|며|니|까|게|듯|던|든|는|은|을|를)$/.test(m[1]) || /^(자공|자율|자사|일반|특성화|마이스터|자사|외|국제|과학|영재|예술|체육|특목|자율|자율형|자율형공립|자율형사립|공립|사립|전기|후기|평준화|비평준화|외국어|명문|상위|진학|입시|특수|대안|각종|모든|우리|근처|인근|다른|광역|지역|학군|중학|고등|초등|특성화|연합|통합)$/.test(m[1])) continue; const lv = LV[m[2][0]]; if (!lv || SYN.some((g) => g.includes(t)) || data.guide.some((g) => !g.q && ng(g).includes(norm(t))) || data.policy.some((r) => nr(r).includes(norm(t))) || data.places.some((x) => x.level === lv[0] && schoolAliases(x.name).some((a) => a.startsWith(t) || a.startsWith(m[1])))) continue;
         const all = data.places.filter((x) => x.level === lv[0]).map((x) => x.name.replace(/(중학교|고등학교|초등학교)$/, m[2][0])), names = all.slice(0, 40); // 31교 전체를 보여 준다
         notes.push({ href: `#select/curriculum?v=map`, t: `${t}${(t.charCodeAt(t.length - 1) - 0xac00) % 28 ? "은" : "는"} 이 포털에 없는 학교예요`, s: `있는 ${lv[1]} ${all.length}곳: ${names.join("·")} → 없는 학교는 학교 지도나 학교알리미에서 찾아요` }); weak = true; break; }
     }
