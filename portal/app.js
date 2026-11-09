@@ -264,10 +264,10 @@ async function curriculumView(el, query, node) {
         hub.insertBefore(sec, dt);
       }
       { // 요약 구역은 자리를 먼저 잡고(높이 예약) 채운다: 채워지면서 아래 내용이 밀리는 레이아웃 이동(CLS)을 막는다
-        const host = body.querySelector("#sumhost"), per = innerWidth < 900 ? 256 : 164.5; host.style.minHeight = Math.max(1, sel.length) * per + "px";
-        const fillSum = async () => { await summaryBody(host, sel); host.style.minHeight = "";
+        const host = body.querySelector("#sumhost"), per = innerWidth < 900 ? (innerWidth < 360 ? 286 : 264) : 176.5; /* 카드 한 장의 실제 최종 높이(390: 264, 1440: 176.5 — 요약 자세히 버튼·용어 장식까지 끝난 뒤 값) */ host.style.minHeight = Math.max(1, sel.length) * per + "px";
+        const fillSum = async () => { await summaryBody(host, sel);
   body.querySelectorAll(".school").forEach((c) => { c.classList.add("cp"); const f = c.querySelector(".foot"); if (f) f.insertAdjacentHTML("afterbegin", '<button type="button" class="btn sc-more" aria-expanded="false">자세히</button>'); });
-          try { (await import("./glossary.js")).decorateGlossary(host); } catch {} };
+          try { (await import("./glossary.js")).decorateGlossary(host); } catch {} /* 자리 예약(min-height)은 풀지 않는다: 카드가 채워진 뒤 자세히 버튼·용어 장식이 붙으며 높이가 다시 바뀌므로, 예약값이 최종 높이와 같으면 어느 시점에도 아래 내용이 밀리지 않는다 */ };
         let filled = false;
         const arm = () => { if ("IntersectionObserver" in window && !query.get("bf") && !query.get("hl")) { const io = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { io.disconnect(); goSum(); } }, { rootMargin: "900px 0px" }); io.observe(host); return true; } return false; };
         const goSum = () => { if (filled) return; filled = true; if (window.__printing) window.__printUndo.push(() => { host.innerHTML = ""; host.style.minHeight = Math.max(1, sel.length) * per + "px"; filled = false; arm(); }); return fillSum(); };
