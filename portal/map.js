@@ -74,13 +74,17 @@ export async function mapBody(el, { load, esc, focus = null, level = null }) {
     const p = all.find((x) => x.id === st.sel), d = $("#pl-detail");
     d.hidden = !p; d.innerHTML = p ? placeInfo(p, esc) : "";
   };
-  const icon = (L, p, on) => L.divIcon({ className: "", html: `<span class="pl-hit"><span class="pl-pin lv-${p.level} ${on ? "on" : ""}">${lvOf(p)[0]}</span></span>`, iconSize: [44, 44], iconAnchor: [22, 22] }); // 눌림 영역 44px, 보이는 핀은 26px
+  const icon = (L, p, on, z = 44) => L.divIcon({ className: "", html: `<span class="pl-hit" style="width:${z}px;height:${z}px"><span class="pl-pin lv-${p.level} ${on ? "on" : ""}">${lvOf(p)[0]}</span></span>`, iconSize: [z, z], iconAnchor: [z / 2, z / 2] }); // 눌림 영역 44px, 보이는 핀은 26px
   const drawMarkers = () => {
     if (!map) return;
     const L = window.L;
     layer.clearLayers(); markers = new Map();
-    for (const p of shown().filter((x) => x.lat != null)) {
-      const m = L.marker([p.lat, p.lng], { icon: icon(L, p, p.id === st.sel), title: p.name, keyboard: true }).addTo(layer);
+    const list = shown().filter((x) => x.lat != null), pts = list.map((p) => map.latLngToContainerPoint([p.lat, p.lng]));
+    for (const [i, p] of list.entries()) {
+      /* 눌림 상자는 44px이되, 가장 가까운 핀과 겹치지 않게 그 거리(최소 26px = 보이는 핀 크기)까지만 */
+      let dmin = 99; for (const [j, q] of pts.entries()) if (j !== i) dmin = Math.min(dmin, Math.hypot(q.x - pts[i].x, q.y - pts[i].y));
+      const z = Math.max(6, Math.min(44, Math.floor(dmin / 1.42)));
+      const m = L.marker([p.lat, p.lng], { icon: icon(L, p, p.id === st.sel, z), title: p.name, keyboard: true }).addTo(layer);
       m.on("click", () => select(p.id, false));
       markers.set(p.id, m);
     }
@@ -104,8 +108,9 @@ export async function mapBody(el, { load, esc, focus = null, level = null }) {
       const L = await loadLeaflet();
       if (!box.isConnected) return;
       if (!map) {
-        map = L.map(box, { zoomControl: true, attributionControl: true }).setView([37.31, 127.09], 12);
-        layer = L.layerGroup().addTo(map);
+        map = L.map(box, { zoomControl: true, attributionControl: false }).setView([37.31, 127.09], 12);
+        L.control.attribution({ prefix: false }).addTo(map); /* 글자만 있는 출처 표기(눌러야 하는 링크 없음) */
+        layer = L.layerGroup().addTo(map); map.on("zoomend moveend", () => { if (!map._plBusy) drawMarkers(); });
         let ok = 0, bad = 0;
         L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: "© OpenStreetMap contributors" })
           .on("tileload", () => { ok++; })

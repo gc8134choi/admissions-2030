@@ -636,13 +636,13 @@ async function routeByHl(id, query) {
   return null;
 }
 let renderSeq = 0;
-function render() {
+function render(routed) {
   window.__navSeq = (window.__navSeq || 0) + 1;
   const [path, qs] = decodeURIComponent(location.hash.slice(1)).split("?");
   const query = new URLSearchParams(qs || "");
   let id = path || "home";
   if (REDIRECT[id]) { location.replace("#" + REDIRECT[id] + (qs ? (REDIRECT[id].includes("?") ? "&" : "?") + qs : "")); return; } // 옛 주소 → 가까운 화면
-  if (query.get("hl") && (id === "select/curriculum" || id === "admission/system")) { const rw0 = id === "select/curriculum" ? rewriteHash(id, query) : null, q1 = rw0 ? new URLSearchParams(rw0.split("?")[1]) : query, id1 = rw0 ? rw0.split("?")[0] : id; routeByHl(id1, q1).then((h) => { if (h && location.hash.slice(1, 40).startsWith(id.slice(0, 10))) { window.__navSeq++; /* hashchange가 오기 전에 옛 화면이 주소를 되돌려 쓰지 못하게 */ location.replace("#" + h); } }); }
+  if (!routed && query.get("hl") && (id === "select/curriculum" || id === "admission/system")) { const hash0 = location.hash, rw0 = id === "select/curriculum" ? rewriteHash(id, query) : null, q1 = rw0 ? new URLSearchParams(rw0.split("?")[1]) : query, id1 = rw0 ? rw0.split("?")[0] : id; routeByHl(id1, q1).then((h) => { if (location.hash !== hash0) return; /* 그 사이 다른 주소로 갔으면 새 render가 맡는다 */ if (h) { window.__navSeq++; location.replace("#" + h); } else render(true); }); return; } // hl 주소는 갈 화면을 먼저 정한 뒤 한 번만 그린다(그리고 나서 옮기면 화면이 바뀌며 CLS·스크롤이 여러 번 생긴다)
   { const rw = rewriteHash(id, query); if (rw) { location.replace("#" + rw); return; } } // 옛 주소의 쿼리 바꾸기(화면을 합치거나 나눈 뒤에도 옛 링크가 살아 있게)
   if (id === "admission/system" && query.get("t") === "log") { location.replace("#changelog"); return; } // 옛 주소: 바뀐 소식은 자료·소식 한 곳
   const n = byId.get(id) || byId.get("home");

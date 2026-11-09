@@ -231,7 +231,7 @@ export function makeSearcher(store) {
       else if (core.length >= 2 && (missing.length || uncov.length) && best <= 1) { // 핵심어가 데이터에 없고 맞은 건 흔한 낱말뿐이면(동아리 활동·학교 평균 등급) 무관 행 대신 안내 한 줄
         const DOMAIN = /^(배정|전형|입학|지원|접수|원서|등록|고입|중입|대입|수능|내신|졸업|학점|과목|서류|준비물|설명회|교복|급식|학교군|지망|추첨|전학|이사|예비소집|교과서)$/;
         const hitDomain = core.some((w) => DOMAIN.test(w) && cands.some((x) => expand(w).some((v) => norm(x.t + " " + x.s).includes(v))));
-        if (!hitDomain && !cands.length) { /* 데이터 어디에도 없는 핵심어가 있고 맞은 건 흔한 낱말뿐이면 다른 주제 행을 정답처럼 내지 않는다 */ r = [["안내", [{ href: "#library/links", t: "정확히 맞는 내용이 없을 수 있어요", s: "찾는 말에 정확히 맞는 자료를 찾지 못했어요 → 학교알리미(학교별 공시)나 해당 학교 누리집에서 확인해요" }]], ["공식 확인처", HELP.slice(1, 2).map(([n, u, d]) => ({ href: u, ext: true, t: n, s: d })).concat([{ href: "#select/curriculum?v=map", t: "학교 지도(학교 홈페이지·전화)", s: "학교 카드에서 학교 누리집으로 이어져요" }])]]; return r; }
+        if (!hitDomain && !cands.length) { /* 데이터 어디에도 없는 핵심어가 있고 맞은 건 흔한 낱말뿐이면 다른 주제 행을 정답처럼 내지 않는다 */ r = [["안내", [{ href: "#library/links", t: "정확히 맞는 내용이 없을 수 있어요", s: "같은 낱말이 든 자료를 목록에서 찾지 못했어요 → 학교알리미(학교별 공시)나 해당 학교 누리집에서 확인해요" }]], ["공식 확인처", HELP.slice(1, 2).map(([n, u, d]) => ({ href: u, ext: true, t: n, s: d })).concat([{ href: "#select/curriculum?v=map", t: "학교 지도(학교 홈페이지·전화)", s: "학교 카드에서 학교 누리집으로 이어져요" }])]]; return r; }
       }
     }
     if (weak && r.some(([, l]) => l.some((x) => x.term && (() => { const raw = String(q0).split(/\s+/).map(norm).filter(Boolean), tn = norm(String(x.t).replace(/\s*\(용어\)\s*$/, "")); return raw.includes(tn) && tn.length >= 2 && raw.length <= 2 && raw.filter((w) => w !== tn).every((w) => r.some(([, l2]) => l2.some((y) => norm(`${y.t} ${y.s || ""}`).includes(w)))); })()))) weak = false; // 질의의 낱말 하나가 정확한 용어 행이면 "정확히 맞는 내용이 없을 수 있어요" 배너를 내지 않는다
@@ -252,7 +252,7 @@ export function makeSearcher(store) {
       const top = r.find(([h]) => h === "일정·제도" || h === "가이드·용어")?.[1]?.[0];
       if (top && ct.length >= 2 && !top.term) { const tx = norm(top.t + " " + top.s + " " + (top.x || "")); const nums = ct.filter((w) => /^\d{4}\.\d{1,2}\.\d{1,2}$|^\d{1,2}\.\d{1,2}$/.test(w)); if (nums.some((w) => !tokIn(w, tx)) || (ct.includes("대학") && ct.some((w) => /기숙사|급식|교복|체육복|통학|방과후/.test(w)) && /v=(hs|middle)|&g=/.test(top.href))) r = []; }
     }
-    if (!r.length && !p) r = [["안내", [{ href: "#library/links", t: "정확히 맞는 내용이 없을 수 있어요", s: "찾는 말에 정확히 맞는 자료를 찾지 못했어요 → 학교알리미(학교별 공시)나 교육청·학교 누리집에서 확인해요" }]], ["공식 확인처", HELP.slice(1, 2).map(([n, u, d]) => ({ href: u, ext: true, t: n, s: d }))]];
+    if (!r.length && !p) r = [["안내", [{ href: "#library/links", t: "정확히 맞는 내용이 없을 수 있어요", s: "같은 낱말이 든 자료를 목록에서 찾지 못했어요 → 학교알리미(학교별 공시)나 교육청·학교 누리집에서 확인해요" }]], ["공식 확인처", HELP.slice(1, 2).map(([n, u, d]) => ({ href: u, ext: true, t: n, s: d }))]];
     if (p) r = [["바로 안내", p.list], ...r.map(([h, l]) => [h, l.filter((x) => !p.list.some((y) => y.t === x.t))]).filter(([, l]) => l.length)];
     return r;
   };
