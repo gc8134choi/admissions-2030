@@ -183,7 +183,7 @@
    "data": null,
    "title": "admission_rules (대학 요강) + csat_regimes + grading_rules",
    "description": "구조화 필드 우선(A안), 조건식 DSL은 requirements[].expr 에 선택적으로. 판정은 tools/match-rules.mjs가 offerings와 결합해 계산(생성물 matches.json).",
-   "fieldCount": 30,
+   "fieldCount": 31,
    "fields": [
     {
      "path": "ruleId",
@@ -366,6 +366,12 @@
       "not-applicable"
      ],
      "description": "requirementsNullReason의 종류. not-found=원문을 확인했으나 과목 요건 항목 없음, unverified-blocked=원문에 접속하지 못해 미확인, unverified-pending=요강 공표 전이라 미확인, not-applicable=해당 전형에 과목 요건 개념 자체가 없음(원문 근거 있을 때만)"
+    },
+    {
+     "path": "requirementsScopeNote",
+     "type": "string",
+     "required": false,
+     "description": "requirements를 채운 규칙에서 원문의 어느 범위를 옮기지 않았는지(예: 모집단위별 권장과목 표) 또는 재대조 못 한 사유"
     }
    ]
   },
