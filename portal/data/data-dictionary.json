@@ -183,7 +183,7 @@
    "data": null,
    "title": "admission_rules (대학 요강) + csat_regimes + grading_rules",
    "description": "구조화 필드 우선(A안), 조건식 DSL은 requirements[].expr 에 선택적으로. 판정은 tools/match-rules.mjs가 offerings와 결합해 계산(생성물 matches.json).",
-   "fieldCount": 31,
+   "fieldCount": 42,
    "fields": [
     {
      "path": "ruleId",
@@ -372,6 +372,62 @@
      "type": "string",
      "required": false,
      "description": "requirements를 채운 규칙에서 원문의 어느 범위를 옮기지 않았는지(예: 모집단위별 권장과목 표) 또는 재대조 못 한 사유"
+    },
+    {
+     "path": "csatAreaRules",
+     "type": "array",
+     "required": false,
+     "description": "수능 응시영역기준(최저학력기준과 다름): 유형별로 지원자가 모두 응시해야 하는 영역·선택 규칙. 모집단위 목록은 원문 표기 그대로."
+    },
+    {
+     "path": "csatAreaRules[]",
+     "type": "object",
+     "required": false
+    },
+    {
+     "path": "csatAreaRules[].typeLabel",
+     "type": "string",
+     "required": true
+    },
+    {
+     "path": "csatAreaRules[].units",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "csatAreaRules[].units[]",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "csatAreaRules[].requiredAreas",
+     "type": "array",
+     "required": true
+    },
+    {
+     "path": "csatAreaRules[].requiredAreas[]",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "csatAreaRules[].mathChoice",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "csatAreaRules[].inquiryChoice",
+     "type": "string",
+     "required": false
+    },
+    {
+     "path": "csatAreaRules[].notes",
+     "type": "array",
+     "required": false
+    },
+    {
+     "path": "csatAreaRules[].notes[]",
+     "type": "string",
+     "required": false
     }
    ]
   },
