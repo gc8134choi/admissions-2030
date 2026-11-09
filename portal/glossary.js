@@ -58,8 +58,10 @@ export function decorateGlossary(root, { skip = "a,button,script,style,textarea,
     seen.add(hit.t.id); ensureCss();
     const end = hit.i + hit.w.length;
     const frag = document.createDocumentFragment();
-    frag.append(text.slice(0, end) + (node.parentElement?.closest(".ed-g") ? "\u2060" : "")); // 도장(.ed-g) 안에서는 ⓘ가 줄 맨 앞에 혼자 남지 않게 낱말과 붙인다(WORD JOINER)
-    const holder = document.createElement("span"); holder.innerHTML = btn(hit.t, hit.w); frag.append(holder.firstChild);
+    const holder = document.createElement("span"); holder.innerHTML = btn(hit.t, hit.w);
+    if (node.parentElement?.closest("h2, h3")) { /* 제목 안에서는 낱말과 ⓘ를 줄바꿈 없는 한 묶음으로(ⓘ가 줄 맨 앞에 혼자 남지 않게) */ frag.append(text.slice(0, hit.i)); const nb = document.createElement("data");  nb.className = "nb"; nb.style.cssText = "white-space:nowrap;font:inherit;letter-spacing:inherit"; nb.append(text.slice(hit.i, end), holder.firstChild); frag.append(nb); }
+    else { frag.append(text.slice(0, end) + (node.parentElement?.closest(".ed-g") ? "\u2060" : "")); // 도장(.ed-g) 안에서는 ⓘ가 줄 맨 앞에 혼자 남지 않게 낱말과 붙인다(WORD JOINER)
+      frag.append(holder.firstChild); }
     const tail = document.createTextNode(text.slice(end)); frag.append(tail); // 같은 글 조각에 다른 용어가 더 있으면 이어서 찾는다(예: 과학고·마이스터고·특성화고)
     node.replaceWith(frag);
     if (tail.nodeValue.trim()) nodes.push(tail);

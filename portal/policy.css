@@ -11,9 +11,9 @@
 
 .ed{color:var(--e-ink);counter-reset:edsec;letter-spacing:-.01em;word-break:keep-all}
 .ed a{color:inherit;text-underline-offset:3px}
-.ed h2{margin:40px 0 18px;padding-top:22px;border-top:1px solid var(--e-rule);font-size:13px;font-weight:700;letter-spacing:.06em;display:flex;flex-wrap:wrap;align-items:baseline;gap:0 10px;min-width:0;overflow-wrap:anywhere;counter-increment:edsec}
-.ed h2::before{content:counter(edsec,decimal-leading-zero);color:var(--e-accent)}
-.ed h2 .cnt{margin-left:auto;font-size:13px;font-weight:400;color:var(--e-mute);background:none;padding:0;min-width:0}
+.ed h2{margin:40px 0 18px;padding-top:22px;border-top:1px solid var(--e-rule);font-size:13px;font-weight:700;letter-spacing:.06em;display:block;min-width:0;overflow-wrap:break-word;counter-increment:edsec}
+.ed h2::before{content:counter(edsec,decimal-leading-zero);color:var(--e-accent);display:inline-block;margin-right:10px}
+.ed h2 .cnt{float:right;margin-left:10px;font-size:13px;font-weight:400;color:var(--e-mute);background:none;padding:0;min-width:0}
 .ed h2 .muted,.ed h2 small{font-weight:400;letter-spacing:0;color:var(--e-mute)}
 
 /* 상태: 알약 대신 점 + 글자 (확정=채운 점, 보도=반 채움, 추정=빈 점, 그 밖=빈 점) */
@@ -257,3 +257,4 @@ table.policy td.l,table.policy td.l b,table.policy td .muted.small,#tl table.pol
 .pl-pin.pl-cl{width:auto;min-width:30px;height:26px;padding:0 6px;border-radius:13px;background:#fff;color:#2b2b2b;border:2px solid #6b6b6b;font-size:13px;white-space:nowrap}
 .past-fold table.policy td{padding-top:6px;padding-bottom:6px}.past-fold table.policy td .muted.small{display:block}
 @media (max-width:899px){.past-fold table.policy td .muted.small{display:none}}
+h2 .nb,h3 .nb{white-space:nowrap;font:inherit!important;letter-spacing:inherit}
