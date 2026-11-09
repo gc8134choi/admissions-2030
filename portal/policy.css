@@ -254,3 +254,4 @@ table.policy tr.past td,table.policy tr.past b,table.policy tr.past .stg,table.p
 table.policy td.l,table.policy td.l b,table.policy td .muted.small,#tl table.policy td,#tl table.policy td .muted.small{font-size:16px}
 /* 본문급 14~14.99px 정리(표 칸 값·게이지 라벨·구역 기준 안내·중학교 안내 글). 라벨·출처·상태는 13px 유지 */
 .ed-gauge .l,.ed p.ed-src,.mid-un,.w-aside p.muted.small,td.muted.small,.cmp-v.muted.small{font-size:16px!important}
+.pl-pin.pl-cl{width:auto;min-width:30px;height:26px;padding:0 6px;border-radius:13px;background:#fff;color:#2b2b2b;border:2px solid #6b6b6b;font-size:13px;white-space:nowrap}

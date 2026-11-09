@@ -6,6 +6,6 @@ const root = resolve(new URL("..", import.meta.url).pathname);
 const FILES = ["search.js", "search-extra.js", "search-claims.js"];
 const BAN = ["이 포털에 없어요", "이 포털에 아직 없어요", "포털에 아직 없어요", "아직 없어요", "없는 학교예요", "다루지 않아요", "다루지 않는 내용", "그 밖의 지역은 아직 없어요", "그 밖의 지역은 없어요", "다른 지역 학교·규정은 없어요", "찾기 어려운 내용이에요", "찾는 정보가 없어요", "포털에 없", "포털에는 없", "다루지 않", "없는 학교"];
 const bad = [];
-for (const f of FILES) { const lines = readFileSync(`${root}/portal/${f}`, "utf8").split("\n"); lines.forEach((l, i) => { for (const b of BAN) if (l.includes(b)) bad.push(`${f}:${i + 1} '${b}'`); }); }
+for (const f of FILES) { const lines = readFileSync(`${root}/portal/${f}`, "utf8").split("\n"); lines.forEach((l, i) => { for (const b of BAN) if (l.includes(b)) bad.push(`${f}:${i + 1} '${b}'`); const m = /없을 수 있어요\([^)]*(에 있어요|에 실려|에 적혀|에 나와)/.exec(l); if (m) bad.push(`${f}:${i + 1} 앞뒤가 상충: '없을 수 있어요(…${m[1]})'`); }); }
 if (bad.length) { for (const b of bad.slice(0, 40)) console.log("  ✗", b); console.log(`단정 문구 ${bad.length}건`); process.exit(1); }
 console.log(`OK: 검색 안내 소스 ${FILES.length}개에 '없음 단정' 문구 0건(금지 ${BAN.length}종)`);
