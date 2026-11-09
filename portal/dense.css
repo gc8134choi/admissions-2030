@@ -1,9 +1,9 @@
 /* dense.css — 화면 개선 최종안(2026-10-29) 1단계: 간격·글자·반투명·터치·포커스 토큰과 밀도 규칙. scrap.css 위에 덮는 층이다.
    롤백: index.html의 dense.css 링크 한 줄을 지우고(이 파일을 못 쓰게 하면) 필요하면 --glass-blur:0 으로 둔다.
-   원칙: 간격은 4/8/12/16/24/40만, 본문 PC 15px/모바일 16px, 보조 글자 13px 이상, 터치 44px(모바일 48px), 반투명은 패널 바탕에만 .88 + 블러 8px(화면당 3개 이하). */
+   원칙: 간격은 4/8/12/16/24/40만, 본문 PC 16px/모바일 16px, 보조 글자 13px 이상, 터치 44px(모바일 48px), 반투명은 패널 바탕에만 .88 + 블러 8px(화면당 3개 이하). */
 :root{
   --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:24px;--sp-6:40px;
-  --fs-body:15px;--fs-sub:13px;--lh-body:1.55;
+  --fs-body:16px;--fs-sub:13px;--lh-body:1.55;
   --touch:44px;
   --glass-blur:8px;
   --glass:rgba(251,247,238,.88);--glass-line:rgba(29,26,22,.16);
@@ -99,9 +99,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .dhubs .hub{padding:var(--sp-3) var(--sp-4)}
 .dhubs .hub h2{display:flex;align-items:baseline;gap:var(--sp-2);margin:0 0 var(--sp-2)}
 .hub-t{background:none;border:0;padding:0;font:inherit;color:inherit;text-align:left;cursor:pointer;display:flex;align-items:baseline;gap:var(--sp-2);flex:1;min-height:var(--touch)}
-.hub-t em{font:700 15px var(--hand);color:var(--accent);font-style:normal}
-.hub-t small{margin-left:auto;font:700 15px var(--hand);color:var(--pencil)}
-.pin{background:none;border:0;font:700 15px var(--hand);color:var(--pencil);cursor:pointer;padding:0 var(--sp-1);min-height:var(--touch)}
+.hub-t em{font:700 16px var(--hand);color:var(--accent);font-style:normal}
+.hub-t small{margin-left:auto;font:700 16px var(--hand);color:var(--pencil)}
+.pin{background:none;border:0;font:700 16px var(--hand);color:var(--pencil);cursor:pointer;padding:0 var(--sp-1);min-height:var(--touch)}
 .pin[aria-pressed=true]{color:var(--accent)}
 .dhubs .hub ul{display:block}
 @media (max-width:899px){.dhubs .hub:not(.open) ul{display:none}.dhubs .hub .more{display:list-item}.hub-t::after{content:"▾";margin-left:var(--sp-2);color:var(--pencil)}.dhubs .hub.open .hub-t::after{content:"▴"}}
@@ -178,7 +178,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .hs-adm{margin:0;font-size:var(--fs-sub)}.hs-adm a{text-underline-offset:3px}
 /* 필터 묶음 6개 초과는 접기 */
 .fgroup.cap:not(.open) #achips .chip:nth-child(n+7),.fgroup.cap:not(.open) .ftg>*:nth-child(n+7){display:none}
-.more-g{background:none;border:0;color:var(--accent);font:700 15px var(--hand);cursor:pointer;min-height:var(--touch);padding:0}
+.more-g{background:none;border:0;color:var(--accent);font:700 16px var(--hand);cursor:pointer;min-height:var(--touch);padding:0}
 /* 상세 비교 표: 고정하는 열은 과목명(.l) 하나뿐이다(style.css). 교과군 칸·학교 칸은 고정하지 않는다 */
 
 /* ===== 4단계: 고교 생활(계획표 ↔ 대학 요건 좌우 2단) ===== */
@@ -193,7 +193,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 table.policy td{padding:var(--sp-2) var(--sp-3);vertical-align:top}
 table.policy tbody tr{min-height:var(--row-h)}
 table.policy tr.due td:first-child,table.policy tr.now td:first-child{color:var(--ink)}
-.dn{display:inline-block;font:700 15px var(--serif);color:var(--accent);margin-right:var(--sp-1)}
+.dn{display:inline-block;font:700 16px var(--serif);color:var(--accent);margin-right:var(--sp-1)}
 table.policy tr.due{background:rgba(196,49,13,.07)}
 table.policy tr.now .dn{font-family:var(--font);font-size:var(--fs-sub)}
 @media (max-width:899px){table.policy tbody tr{min-height:var(--row-h)}table.policy td{padding:var(--sp-2) var(--sp-2)}}
