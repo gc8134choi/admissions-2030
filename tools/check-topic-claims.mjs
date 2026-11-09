@@ -61,7 +61,7 @@ for (const [label, e] of Object.entries(SAY)) {
 ok.push(`대응표 ${Object.keys(SAY).length}항목 × 초·중·고 ${combos}조합의 문구·주소·확인처 대조`);
 // 다른 지역 '없어요' 선언(search-extra other-region): 질의 지역 낱말 목록이 코드와 같고, 데이터에 있는 지역은 선언하지 않으며(런타임 규칙), 선언하는 지역(데이터에 없는 것)은 실제로 어떤 데이터에도 없어야 한다
 {
-  const ex = readFileSync(`${root}/portal/search-extra.js`, "utf8"), line = ex.split("\n").find((l) => l.includes('id: "other-region"')) || "", alt = line.slice(line.indexOf("(?<![가-힣])(") + 11, line.indexOf(")(?!대)"));
+  const ex = readFileSync(`${root}/portal/search-extra.js`, "utf8"), line = ex.split("\n").find((l) => l.includes('id: "other-region"')) || "", alt = line.slice(line.indexOf("(?<![가-힣(])(") + 12, line.indexOf(")(?!대)")).replace("(?!과학|한성|영재|[·,)])", "");
   const inLine = alt.replace(/\(\?![^)]*\)/g, "").split("|"), miss = REGION_WORDS.filter((w) => !inLine.includes(w)), extra = inLine.filter((w) => w && !REGION_WORDS.includes(w));
   if (miss.length || extra.length) bad.push(`다른 지역 낱말 목록이 search-claims.js(REGION_WORDS)와 달라요: 빠짐 ${miss.join(",")} / 더 있음 ${extra.join(",")}`);
   const files = readdirSync(`${root}/portal/data`).filter((f) => f.endsWith(".json") && !["sources.json", "changes.json", "files.json", "school-codes.json"].includes(f));

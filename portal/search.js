@@ -109,11 +109,11 @@ export function makeSearcher(store) {
   let regionHay = null;
   const priority = (q, q0 = "") => { const nq = norm(q), nr = norm(String(q0).replace(/[?？!！.,~]/g, " ")); const rawQ = String(q0 || q).toLowerCase(); const hit = data.guide.filter((g) => g.q && (g.raw ? new RegExp(g.q).test(rawQ) : (new RegExp(g.q).test(nq) || new RegExp(g.q).test(nr)))).filter((g) => !(g.gap === "none-topics" && /수능|가채점/.test(nr) && /날짜|며칠|언제|시행|몇월|몇일|일정/.test(nr))); /* 질의에 날짜 낱말이 있는 수능 질의는 약한 안내로 막지 않는다(정리된 질의에서 날짜 낱말이 빠져 선언이 걸리던 오류) */ if (hit.some((g) => g.gap === "none-topics")) { const o = hit.filter((g) => g.gap === "none-topics"); return { list: o.map((g) => ({ href: g.href, t: g.t, s: g.s })), only: true }; } // 정확한 자료가 없을 수 있는 주제는 약한 안내만(링크·소음 행이 앞서지 않게)
     if (hit.some((g) => g.gap === "other-region")) { // 질의의 지역 낱말이 포털 데이터(정책·안내)에 있으면 지역 안내를 내지 않는다(서울·수원외고 등) — 데이터에 없는 지역만 약한 안내
-      const w = REGION_WORDS.find((x) => new RegExp("(?<![가-힣])" + x).test(nr)); regionHay ||= JSON.stringify([data.policy, data.guide.map((g) => [g.t, g.s, g.text])]);
-      if (w && GG_WORDS.includes(w) && !regionKnown(w, regionHay, nr)) { const rest = hit.filter((g) => g.gap !== "other-region"); return { list: [{ href: "#schedule?t=hs", t: "경기 고입 일정", s: `${w}도 경기도라 경기 고입 전기·후기 전형 일정은 같이 적용돼요. 학교 목록·학교별 모집 안내는 포털에서 찾지 못했어요(${w} 지역 교육지원청·학교 누리집에서 확인) — 용인·경기 일정은 일정 화면에 있어요` }, ...rest.map((g) => ({ href: withHl(g.href, g.hl), t: g.t, s: g.s }))], only: false }; } // 경기 지역 낱말(수원·성남 등)은 '없는 지역'이 아니라 경기 전체 일정 안내로
+      const w = REGION_WORDS.find((x) => new RegExp("(?<![가-힣(])" + x + "(?![·,)]|과학|한성|영재)").test(String(q0).toLowerCase().replace(/\s+/g, " "))); regionHay ||= JSON.stringify([data.policy, data.guide.map((g) => [g.t, g.s, g.text])]);
+      if (w && GG_WORDS.includes(w) && !regionKnown(w, regionHay, nr)) { const rest = hit.filter((g) => g.gap !== "other-region"); return { list: [{ href: "#schedule?t=hs", t: "경기 고입 일정", s: `${w}도 경기도라 경기 고입 전기·후기 전형 일정(후기 원서접수 12.4~12.10, 해당 지역 교육지원청)은 같이 적용돼요. 평준화 배정 일정(배정 대상자 발표 2027.1.6 등)은 평준화지역에만 해당해요 — ${w}이 평준화지역인지·일반고 전형 방식, 학교 목록·학교별 모집 안내는 정확히 맞는 내용이 없을 수 있어요(${w} 지역 교육지원청·학교 누리집에서 확인)` }, ...rest.map((g) => ({ href: withHl(g.href, g.hl), t: g.t, s: g.s }))], only: false }; } // 경기 지역 낱말(수원·성남 등)은 '없는 지역'이 아니라 경기 전체 일정 안내로
       if (w && regionKnown(w, regionHay, nr)) { const rest = hit.filter((g) => g.gap !== "other-region"); return rest.length ? { list: rest.map((g) => ({ href: withHl(g.href, g.hl), t: g.t, s: g.s })), only: rest.some((g) => g.only) } : null; }
     }
-    if (hit.some((g) => g.gap === "other-region")) { const o = hit.filter((g) => g.gap === "other-region"); return { list: o.map((g) => ({ href: withHl(g.href, g.hl), t: g.t, s: g.s })), only: true }; } // 다른 지역 질의는 지역 경고만 먼저(이어서 우리 지역 결과로 오해하지 않게)
+    if (hit.some((g) => g.gap === "other-region")) { const o = hit.filter((g) => g.gap === "other-region"); return { list: o.map((g) => ({ href: withHl(g.href, g.hl), t: g.t, s: g.s })), only: false }; } // 지역 안내와 함께 있는 데이터 행도 보여 준다(정답 행을 가리지 않는다) // 다른 지역 질의는 지역 경고만 먼저(이어서 우리 지역 결과로 오해하지 않게)
     return hit.length ? { list: hit.map((g) => ({ href: withHl(g.href, g.hl), t: g.t, s: g.s })), only: hit.some((g) => g.only) } : null; };
   // 학교급 가중: 고교 말(고교·후기·일반고·외고 …)이 있으면 고교 정책 행을 중학교 배정 안내보다 먼저, 중학교·초등 말이면 반대로
   const HS_Q = /고교|고등|일반고|후기|외고|국제고|자사고|특성화|마이스터|평준화|고입|전기고|과학고/, MID_Q = /중학교|중입|초등|초6|중학군|근거리|중1/;
@@ -138,7 +138,14 @@ export function makeSearcher(store) {
     const joinSp = (t) => t
       .replace(/([가-힣]{2,6}) *(초등학교|중학교|고등학교|초|중|고)(?![가-힣])/g, (m, a2, b2) => (/ /.test(m) && !SKIP_GEN.test(a2) && hasSch(norm(a2 + b2)) ? a2 + b2 : m)) // 학교급을 띄어 쓴 이름(성복 고등학교·서원 중)은 실제 학교 이름일 때만 붙인다
       .replace(/([가-힣]{2,5})(고교|중교|초교)(?![가-힣])/g, (m, a2, b2) => (hasSch(norm(a2 + b2[0])) ? a2 + b2[0] : m)); // 풍덕고교·수지중교 같은 변형
-    q = joinSp(String(q));
+    q = joinSp(String(q)); let qForce = q; const forceCands = [];
+    { // 붙여 쓴 낱말(고교무상교육)이 데이터에 그대로는 없고 두 부분이 각각 데이터에 있으면 띄워서 찾는다
+      const inData = (w) => (data.dn ||= data.policy.map((x) => nr(x)).concat(data.guide.map((g) => ng(g)))).some((d) => d.includes(norm(w)));
+      const splitTok = (tk, force) => { if (!/^[가-힣]{5,}$/.test(tk) || (!force && inData(tk))) return tk; for (let k = tk.length - 2; k >= 2; k--) { const l = tk.slice(0, k), r2 = tk.slice(k); if (r2.length >= 2 && inData(l) && inData(r2)) return `${l} ${r2}`; } return tk; };
+      const toks = String(q).split(/(\s+)/); // 데이터에 그 낱말이 어딘가 있어도 결과가 비면, 가능한 모든 띄우는 자리(고교|무상교육, 고교무상|교육)로 다시 찾는다
+      toks.forEach((tk, i) => { if (!/^[가-힣]{5,}$/.test(tk) || /(은|는|이|가|을|를|의|에|와|과|도|로|에서|인데|까지|부터|이나|요|다|까|지|네|서|고|면|며|해|한|된|할|는지|세요)$/.test(tk)) return; /* 조사·어미로 끝나는 말은 붙여 쓴 명사가 아니다 */ for (let k = tk.length - 2; k >= 2; k--) { const l = tk.slice(0, k), r2 = tk.slice(k); if (r2.length >= 2 && inData(l) && inData(r2)) forceCands.push(toks.map((x, j) => (j === i ? `${l} ${r2}` : x)).join("")); } });
+      qForce = forceCands[0] || q;
+    }
     const q0 = romanize(String(q)).replace(/시험을? ?(안|못) ?(보는|치는)( ?학기)?/g, "자유학기"); // 원문(의도 낱말 확인용)
     q = cleanQuery(q0).replace(/(?:용인)?(?:한국)?외(?:국어)?대(?:학교)?부(?:설|속)?(?:고등학교|고)?/g, "용인한국외국어대학교부설고등학교"); // 약칭 → 학교 이름
     const schoolSa = /용인한국외국어대학교부설고등학교/.test(q); /* 외대부고는 자사고: 학교 이름+전형·배점 같은 속성어도 자사고 안내 행을 찾게 */
@@ -150,8 +157,9 @@ export function makeSearcher(store) {
       if (ws.length >= 2) { const VL = /(면|니|죠|며|지|어|아|해|한|된|는|은|던|려|러|야|라|래|서|고|다|요|네|까|게|ㄴ|을|를|같|많|좋|없|있)$/; const keep = ws.filter((w) => SCH.test(w) || /\\d/.test(w) || !VL.test(w) || dfN(w) > 5); if (keep.length && keep.length < ws.length) q = keep.join(" "); }
     }
     let r = searchOnce(q, false), weak = false;
-    if (!r.length && /학비|등록금|수업료|입학금/.test(String(q))) { const q2 = String(q).split(/\s+/).filter((w) => !/^(고등학교|중학교|고교)$/.test(w)).join(" "); if (q2) r = searchOnce(q2, false); } /* 학교급 낱말 때문에 비는 학비 질문은 유형별 학비·비용으로 */
+    if (!r.length && /학비|등록금|수업료|입학금|무상교육/.test(String(q))) { const q2 = String(q).split(/\s+/).filter((w) => !/^(고등학교|중학교|고교)$/.test(w)).join(" "); if (q2) r = searchOnce(q2, false); } /* 학교급 낱말 때문에 비는 학비 질문은 유형별 학비·비용으로 */
     if (!r.length && String(q).trim().includes(" ")) { r = searchOnce(q, true); weak = r.length > 0; }
+    if (weak && forceCands.length) { const GEN = /^(고등학교|중학교|고교|학교|제도|관련|정보|내용)$/, alt = forceCands.flatMap((c0) => { const qf = cleanQuery(romanize(c0)); return [qf, qf.split(/\s+/).filter((w) => !GEN.test(w)).join(" ")]; }).map((x) => searchOnce(x, false)).find((x) => x.length); if (alt) { r = alt; weak = false; } } // 느슨한 결과뿐이면, 붙여 쓴 낱말을 띄운 질의가 정확히 맞는 행을 찾는지 본다
     r = reweight(r, q);
     // 학교 이름과 앞부분이 맞는 말이 있으면(예: 상현중) 그 학교를 맨 위에 두고, 이름이 다른 학교(상현고 등) 행은 걷어 낸다
     const words = String(q).split(/\s+/).map(norm).filter((t) => t.length >= 2 && !STOP.has(t));
@@ -217,7 +225,7 @@ export function makeSearcher(store) {
       const missing = core.filter((w) => dfc(w) === 0);
       const covers1 = (x, w) => expand(w).some((v) => norm(x.t + " " + x.s).includes(v));
       const uncov = core.filter((w) => { const d = dfc(w); return d > 0 && d <= 40 && !cands.some((x) => covers1(x, w)); }); // 드문(구체적인) 낱말인데 어떤 후보 행에도 없음
-      strongTop = core.length >= 3 && !missing.length && !uncov.length && best >= core.length - 1; /* 빠진 낱말 없이 1위 후보가 거의 다 맞으면 배너를 뒤로 */
+      strongTop = (core.length >= 3 && !missing.length && !uncov.length && best >= core.length - 1) || (core.length >= 2 && !missing.length && best >= core.length); /* 빠진 낱말 없이 1위 후보가 거의 다 맞으면(핵심어가 둘이면 모두 맞을 때) 배너를 정답 행 뒤로 */
       if (globalThis.__SDBG) console.log("DBG", { core, missing, uncov, best, cands: cands.length });
       if (core.length >= 2 && !missing.length && uncov.length <= (core.length >= 4 ? 1 : 0) && best >= Math.ceil(core.length * 0.5) || core.length === 1 && best >= 1) { weak = false; r = r.map(([h, l]) => [h, l.slice(0, 5)]); }
       else if (core.length >= 2 && (missing.length || uncov.length) && best <= 1) { // 핵심어가 데이터에 없고 맞은 건 흔한 낱말뿐이면(동아리 활동·학교 평균 등급) 무관 행 대신 안내 한 줄
