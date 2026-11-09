@@ -23,7 +23,7 @@ const LOC = [
   { phrase: "대학별 과목 화면에서 관심 대학의 권장·필수 과목을 볼 수 있어요", screen: "대학별 과목", route: "select/curriculum?v=univ", need: [/모집단위/, /대학/] },
   { phrase: "대학별 과목 화면에서 학교별 과목표와 맞춰 볼 수 있어요", screen: "대학별 과목", route: "select/curriculum?v=univ", need: [/과목표/, /모집단위/] },
   { phrase: "학교 보기 화면에서 설명회 노트", screen: "학교 보기", route: "select/curriculum?v=schools&lv=high", need: [/설명회 노트/] },
-  { phrase: "'수시·정시' 화면에서 2028학년도 대입전형 기본사항(대교협)", screen: "수시·정시", route: "admission/system?t=types", need: [/대교협/, /2028학년도/] },
+  { phrase: "고교 일정 화면의 '대학 입시' 탭에서 2030학년도 수시 원서접수 행을 볼 수 있어요", screen: "고교 일정", route: "schedule?t=univ", need: [/2030학년도 수시/, /2027\.9\.20/] },
   { phrase: "'고교 일정' 화면의 '학년별 큰 그림' 탭의 '현재 초6 기준'(2033학년도 수능 날짜)", screen: "고교 일정", route: "schedule?t=road&b=B", need: [/2032\.11\.18/, /수능/] },
   { phrase: "'고교 일정' 화면의 '대학 입시' 탭에서(수능 날짜)", screen: "고교 일정", route: "schedule?t=univ", need: [/2029\.11\.15/, /수능/] },
 ];
@@ -39,6 +39,7 @@ for (const l of LOC) {
   await p.goto(`${base}#${l.route}`); await p.waitForTimeout(2600);
   const t = await p.evaluate(() => { document.querySelectorAll("#main details").forEach((d) => (d.open = true)); return document.querySelector("#main").innerText; });
   if (l.screen && !t.split("\n").slice(0, 8).some((x) => x.trim() === l.screen)) bad.push(`위치 문장 '${l.phrase}' → ${l.route} 화면의 머리글에 이름 '${l.screen}'이(가) 없어요(머리글: ${t.split("\n").slice(0, 3).join(" / ").slice(0, 50)})`); /* route가 열리는 화면의 이름이 문구가 말하는 화면 이름과 같은지(다른 화면 글자로 통과하는 허점 방지) */
+  { const norm0 = (x) => String(x).replace(/\s+/g, ""), body0 = norm0(t), words = [...l.phrase.matchAll(/'([^']{2,20})'/g)].map((m) => m[1]).filter((w) => w !== l.screen && !/^일정 목록에 있어요$/.test(w)); for (const w of words) if (!body0.includes(norm0(w)) && !body0.includes(norm0(w.replace(/^현재 /, "")))) bad.push(`위치 문장 '${l.phrase}' → ${l.route} 화면 본문에 문구가 말하는 낱말 '${w}'이(가) 없어요`); } /* 문구 안의 괄호·따옴표 낱말(문서명·탭 이름 등)이 도착 화면 본문에 실제 있는지 */
   for (const re of l.need) if (!re.test(t)) bad.push(`위치 문장 '${l.phrase}' → ${l.route} 화면에 ${re} 이(가) 없어요`);
   ok.push(`위치 문장 '${l.phrase}' → ${l.route}: 값 ${l.need.length}개 확인`);
 }

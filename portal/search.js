@@ -2,7 +2,7 @@
 // 데이터는 처음 열 때 한 번에 병렬로 읽는다. 최근 검색은 이 브라우저(localStorage)에만 저장한다.
 import { allItems } from "./nav-tree.js";
 import { stageOf } from "./stage.js";
-import { loadSearchExtra, univInfo, elemZone } from "./search-extra.js";
+import { loadSearchExtra, univInfo, curInfo, elemZone } from "./search-extra.js";
 import { sayOf, noneText, REGION_WORDS, GG_WORDS, REGION_ALIAS, regionKnown, regionFindPattern, gyeonggiNote } from "./search-claims.js";
 import { loadProfile, filterByProfile } from "./profile.js";
 const RECENT_KEY = "portal.search.recent";
@@ -243,6 +243,8 @@ export function makeSearcher(store) {
         const say = sayOf(label, first), href = label === "설명회 노트" ? (fn ? fn(first) : null) : say?.href || null; // 문구는 search-claims.js의 대응표(도착 화면에 실제로 있는 값)
         if (/몇 ?명/.test(q0) && label === "모집 인원" && !/모집 ?인원|정원/.test(q0)) continue; // '서울대 몇 명'은 진학 현황 질의 — 모집 인원 안내가 가리지 않는다
         const ui = label === "대학 진학 현황" ? univInfo.get(first.id) : null; // 값이 비어 있는 학교는 화면의 빈 칸 사유 그대로
+        const ci = label === "교육 특색" && first.level !== "middle" ? curInfo.get(first.id) : null; /* 교육과정 특징 칸이 이 학교는 비어 있으면 화면의 빈 칸 사유 그대로 */
+        if (ci && !ci.has && href) { notes.push({ href, t: `${first.name} · ${label}`, s: `고교 보기 비교표의 '교육과정 특징(편제표 요약)' 칸이 이 학교는 비어 있어요 — ${ci.why || "편제표를 옮긴 학교만 값이 있어요"}` }); continue; }
         if (ui && !ui.has) { notes.push({ href, t: `${first.name} · ${label}`, s: `${ui.why || "비교 화면의 이 칸은 비어 있어요"} (고교 보기 비교표의 빈 칸 사유)` }); continue; }
         if (label === "설명회 노트") { notes.push(href ? { href, t: `${first.name} · ${label}`, s: "학교 보기 화면에서 설명회 노트를 볼 수 있어요" } : { href: "#library/links", t: `${first.name} · ${label}`, s: noneText(label, first.level) }); continue; }
         notes.push(href && say ? { href, t: `${first.name} · ${label}`, s: say.text + (label === "학교군" && first.level === "elementary" && elemZone.get(first.id) ? ` — ${first.name.replace(/등학교$/, "")}는 ${elemZone.get(first.id)}${/공동학군$/.test(elemZone.get(first.id)) ? "이에요" : "이에요"}` : "") } : { href: "#library/links", t: `${first.name} · ${label}`, s: say?.none || noneText(label, first.level) });
@@ -321,6 +323,7 @@ export function makeSearcher(store) {
     { /* 큰 수·퍼센트 질의: 값이 든 정책 행·안내 행을 숫자열 비교로 찾아, 이미 나온 결과에 없으면 맨 앞에 */
       const nt = numTokens(String(q));
       if (nt.length) { const shownN = new Set(data.policy.map((x) => x.id)), P = (data.policyAll || data.policy).filter((x) => nt.every((tk) => numHas(`${x.title} ${x.body || ""}`, tk))).slice(0, 3), G = data.guide.filter((g) => !g.quiet && !g.gap && nt.every((tk) => numHas(`${g.t} ${g.text || ""} ${g.s || ""}`, tk))).slice(0, 3);
+        if (P.length || G.length) { const pt = new Set([...P.map((x) => x.title), ...G.map((g) => g.t)]); r = r.map(([h, l]) => [h, [...l.filter((y) => pt.has(y.t)), ...l.filter((y) => !pt.has(y.t))]]).map((g, i) => [g, i]).sort((a, b) => (b[0][1].some((y) => pt.has(y.t)) ? 1 : 0) - (a[0][1].some((y) => pt.has(y.t)) ? 1 : 0) || a[1] - b[1]).map(([g]) => g); } /* 질의의 큰 수가 정확히 든 행은 이미 결과에 있어도 맨 앞으로 */
         const have = new Set(r.filter(([h]) => h !== "비슷한 화면" && h !== "안내").flatMap(([, l]) => l.slice(0, 3).map((y) => y.t))); /* 낱말 일부만 맞는 '비슷한 화면'에 있어도 숫자가 정확히 든 행은 위로 */ const miss = [...P.map((x) => x.title), ...G.map((g) => g.t)].filter((t0) => !have.has(t0));
         if ((P.length || G.length) && miss.length) { const gi = G.map((g) => (g.term ? { href: "#home", term: g.term, t: g.t, s: g.s || "" } : { href: g.hl === null ? g.href : withHl(g.href, g.hl || autoHl(g)), t: g.t, s: clip(g.s || g.text || "", 90) })), pi = P.map((x) => ({ href: withHl(routeOf(x), !shownN.has(x.id) || NO_HL.has(x.id) ? null : evHlFor(x, q)), t: x.title, x: x.body, s: clip(x.body || "", 90), inline: !shownN.has(x.id) || NO_HL.has(x.id) })), titles = new Set([...pi, ...gi].map((y) => y.t));
           r = [...(pi.length ? [["일정·제도", pi]] : []), ...(gi.length ? [["가이드·용어", gi]] : []), ...r.map(([h, l]) => [h, l.filter((y) => !titles.has(y.t))]).filter(([h, l]) => l.length && !(h === "안내" && l.some((y) => /목록에서 찾지 못했어요|정확히 맞는 내용이 없을 수 있어요/.test(`${y.t} ${y.s}`))) && h !== "비슷한 화면")]; } }
@@ -398,6 +401,9 @@ export function makeSearcher(store) {
       const LVS = ["초등학교", "중학교", "고등학교"], lq = LVS.filter((l) => String(q).includes(l));
       if (lq.length === 1) r = r.map(([h, l]) => [h, l.map((y) => { const m = /([?&]hl=)([^&]*)/.exec(y.href || ""); if (!m) return y; let hl; try { hl = decodeURIComponent(m[2]); } catch { return y; } const other = LVS.find((x) => x !== lq[0] && hl.startsWith(x)); return other && /졸업|입학|배정|등록/.test(hl) ? { ...y, href: y.href.replace(m[0], m[1] + encodeURIComponent(hl.replace(other, lq[0]))) } : y; })]);
     }
+    { /* 질의가 'N학년도'를 말했는데 제목이 다른 학년도인 행(2029학년도 질의의 2028학년도 행)은 그 학년도 행보다 뒤로 */
+      const my = /(20\d{2})\s*학년도/.exec(String(q)); if (my) { const bad = (y) => { const t = /^(20\d{2})학년도/.exec(y.t || ""); return t && t[1] !== my[1]; }, mis = (g) => g[1].length && g[1].every(bad) ? 1 : 0;
+        r = r.map(([h, l]) => [h, [...l.filter((y) => !bad(y)), ...l.filter(bad)]]).map((g, i) => [g, i]).sort((a, b) => mis(a[0]) - mis(b[0]) || a[1] - b[1]).map(([g]) => g); } }
     { /* 긴 본문 행(경기 전기 일정 등)의 요약이 앞부분에서 잘려 질의가 말한 값(예술고 접수·발표)이 안 보이면, 질의 낱말이 든 문장을 요약으로 보여 준다 */
       const body = new Map([...data.guide.filter((g) => g.text && !g.term).map((g) => [g.t, String(g.text)]), ...(data.policyAll || data.policy).map((x) => [x.title, String(x.body || "")]), ...(data.policyAll || data.policy).filter((x) => x.id === "gg-14").map((x) => ["경기 전기 학교(과학고·마이스터고 등) 전형 일정", String(x.body || "")])]), tk = String(q).split(/\s+/).map(norm).filter((w) => w.length >= 3 && !STOP.has(w) && !STOP2.has(w) && !/^[\d.~]+$/.test(w));
       if (tk.length) r = r.map(([h, l]) => [h, l.map((y) => { const b = body.get(y.t); if (!b || b.length < 120 || y.term || y.inline) return y; const nb = norm(b), w = tk.find((t) => nb.includes(t)); if (!w) return y; const segs = b.split(/(?<=[가-힣\d)])\.\s+(?=[가-힣])/), k = segs.findIndex((sg) => norm(sg).includes(w)); return k > 0 ? { ...y, s: clip(segs[k].trim(), 110) + ((/ · 서울은[^]*$/.exec(y.s || "") || [""])[0]) } : y; })]); }

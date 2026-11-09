@@ -10,6 +10,7 @@ const ok = (p) => p.catch(() => null);
 // "정확히 맞는 내용이 없을 수 있어요" 류 안내는 하드코딩하지 않는다: 해당 데이터가 있으면 그 데이터로 연결하고(found), 없을 때만 "없음 + 어디서 확인"(none)을 낸다.
 // tools/check-search-notices.mjs가 같은 규칙을 데이터로 점검한다(안내가 가리키는 주제의 데이터가 실제로 없는지).
 export const elemZone = new Map(); // 초등학교 placeId → 학교군 이름(middle.json 첫 중학교 항목의 '수지1중학군(…)' 앞부분)
+export const curInfo = new Map(); // placeId → {has, why}: 고교 비교의 '교육과정 특징' 칸에 값이 있는지와 빈 칸 사유
 export const univInfo = new Map(); // placeId → {has, why}: 학교별 비교의 '대학 진학 현황' 칸에 값이 있는지와 빈 칸 사유(화면과 같은 문구)
 const univResultText = (hc) => { /* 빈 칸 학교의 사유를 학교별 nullReason에서 센다(문구를 고정하지 않는다) */
   const sc = hc?.schools || [], vals = sc.map((x) => x.values?.univStats), has = vals.filter((v) => v && v.value != null && v.value !== "").length, empty = vals.filter((v) => !(v && v.value != null && v.value !== "")), open = empty.filter((v) => /열어 보지 못|직접 확인이 필요/.test(v?.nullReason || "")).length, other = empty.length - open;
@@ -114,7 +115,7 @@ export const GAPS = [
   { id: "att-rate", q: "출석률.*(퍼센트|%|이상|인정|기준|몇|3분의|미달)", words: "출석률 기준 출석률 몇 퍼센트 이수 인정 출석률 2/3", found: (D) => row(D, "cur-02") && { href: "#life/credit", hl: row(D, "cur-02").title, t: row(D, "cur-02").title, s: firstSent(row(D, "cur-02").body, 100) } },
   { id: "zone-ratio", q: "(학군내|구역내).*(정원|비율|퍼센트|%|몇)", words: "학군내배정 정원 구역내배정 정원 배정 비율 퍼센트", found: (D) => row(D, "gg-12") && { href: "#select/curriculum?v=types", hl: row(D, "gg-12").title, t: row(D, "gg-12").title, s: firstSent(row(D, "gg-12").body, 100) } },
   { id: "survey", q: "수요조사|선택과목.*(조사)", words: "선택과목 수요조사 5월 7월 10월 선택과목 조사 시기", found: (D) => row(D, "cur-06") && { href: "#life/credit", hl: row(D, "cur-06").title, t: row(D, "cur-06").title, s: firstSent(row(D, "cur-06").body, 100) } },
-  { id: "susi-month", q: "수시.*(원서|접수).*(몇 ?월|언제|\\d+\\.\\d+|9\\.)|2028.*수시.*원서", words: "수시 원서 몇 월 2028 수시 원서 접수 9월 수시 접수 시기", found: (D) => row(D, "sch-04") && { href: "#admission/system?t=types", hl: null, t: row(D, "sch-04").title, s: String(row(D, "sch-04").body).slice(0, 220) + " → 2028학년도 대입전형 기본사항(대교협)은 '수시·정시' 화면에서 볼 수 있어요(위 접수 날짜는 이 결과에만 있어요)" } },
+  { id: "susi-month", q: "수시.*(원서|접수).*(몇 ?월|언제|\\d+\\.\\d+|9\\.)|2028.*수시.*원서", words: "수시 원서 몇 월 2028 수시 원서 접수 9월 수시 접수 시기", found: (D) => row(D, "sch-04") && { href: "#schedule?t=univ", hl: null, t: row(D, "sch-04").title, s: String(row(D, "sch-04").body).slice(0, 220) + " → 위 2028학년도 접수 날짜는 이 결과에만 있어요. 고교 일정 화면의 '대학 입시' 탭에서 2030학년도 수시 원서접수 행을 볼 수 있어요" } },
   { id: "jeongsi-dates", q: "정시.*(일정|합격자|충원|미등록|등록|원서|접수|[가나다]군|언제)|(미등록|충원).*(통보|일정|언제)", words: "정시 일정 정시 합격자 발표 정시 접수 미등록 충원 통보 정시 등록 기간 정시 원서접수 언제", found: (D) => row(D, "sch-10") && { href: "#admission/system", hl: null, t: row(D, "sch-10").title, s: String(row(D, "sch-10").body).slice(0, 220) + " → 2028학년도 정시 날짜는 이 결과에만 있어요(수능과 내신 화면에는 없어요)" } },
   { id: "csat-plan", q: "(수능).*(시행).*(기본계획|공고)|기본계획.*공고", words: "수능 시행 기본계획 공고 시기 수능 기본계획 3월", found: (D) => row(D, "sch-08") && { href: "#schedule?t=univ", hl: row(D, "sch-08").title, t: row(D, "sch-08").title, s: firstSent(row(D, "sch-08").body, 100) } },
   { id: "csat-28", q: "2028.*(시행일|발표)|2028.*수능.*(\\d+\\.\\d+|날짜|언제|일정)|수능.*11\\.18|11\\.18.*수능|2027\\.\\d+\\.\\d+.*수능", words: "2028 수능 11월 18일 2028학년도 수능 날짜 수능 시행일", found: (D) => row(D, "sch-03") && { href: "#admission/system", hl: row(D, "sch-03").title, t: row(D, "sch-03").title, s: firstSent(row(D, "sch-03").body, 100) } },
@@ -214,6 +215,7 @@ export function gapDocs(D) {
 export async function loadSearchExtra(load) {
   const [guide, tl, ht, gl, hc, bf, mc, el, ex, rl, pol, evs, un, ar, mid] = await Promise.all([ok(load("middle-guide")), ok(load("timeline")), ok(load("hs-types")), ok(load("glossary")), ok(load("hs-compare")), ok(load("briefings")), ok(load("middle-compare")), ok(load("electives")), ok(load("exam-trends")), ok(load("rules")), ok(load("policy")), ok(load("events")), ok(load("universities")), ok(load("admission-rules")), ok(load("middle"))]);
     elemZone.clear(); try { const md = await load("middle"); for (const a of md?.areas || []) { const j = jointOf(a); if (!j.home && !j.groups.length) continue; elemZone.set(a.from.placeId, zoneText(j)); } } catch {} /* 공동학군 해석은 joint-zone.js 한 곳 */
+  curInfo.clear(); for (const sc of hc?.schools || []) { const v = sc.values?.curriculum; curInfo.set(sc.placeId, { has: !!(v && v.value != null && v.value !== ""), why: v?.nullReason || "" }); }
   univInfo.clear(); for (const sc of hc?.schools || []) { const v = sc.values?.univStats; univInfo.set(sc.placeId, { has: !!(v && v.value != null && v.value !== ""), why: v?.nullReason || "" }); }
   const out = [];
   try { MATCHED = new Set(((await ok(load("matches")))?.matches || []).filter((m) => m.summary).map((m) => m.ruleId)); } catch {}
