@@ -947,7 +947,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음(2027 정시요강 지원자격은 수능 응시영역 기준 중심, 인쇄 75~76쪽 확인)"
+   "nullReason": "교과군 요건을 과목 집합으로 풀지 못함: 교과이수기준Ⅰ(전 모집단위): 사회(역사/도덕 포함) 3과목+과학 3과목 또는 사회 2과목+과학 4과목 이수 권장(진로희망에 따라 과학Ⅱ 권장)"
   },
   {
    "schoolId": "school-pungdeok",
@@ -956,7 +956,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음(2027 정시요강 지원자격은 수능 응시영역 기준 중심, 인쇄 75~76쪽 확인)"
+   "nullReason": "교과군 요건을 과목 집합으로 풀지 못함: 교과이수기준Ⅰ(전 모집단위): 사회(역사/도덕 포함) 3과목+과학 3과목 또는 사회 2과목+과학 4과목 이수 권장(진로희망에 따라 과학Ⅱ 권장)"
   },
   {
    "schoolId": "school-pungdeok",
@@ -965,7 +965,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음(2027 정시요강 지원자격은 수능 응시영역 기준 중심, 인쇄 75~76쪽 확인)"
+   "nullReason": "교과군 요건을 과목 집합으로 풀지 못함: 교과이수기준Ⅰ(전 모집단위): 사회(역사/도덕 포함) 3과목+과학 3과목 또는 사회 2과목+과학 4과목 이수 권장(진로희망에 따라 과학Ⅱ 권장)"
   },
   {
    "schoolId": "school-pungdeok",
@@ -1046,7 +1046,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-pungdeok",
@@ -1082,7 +1082,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-pungdeok",
@@ -1127,7 +1127,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-pungdeok",
@@ -1172,7 +1172,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-pungdeok",
@@ -1208,7 +1208,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-pungdeok",
@@ -1244,7 +1244,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-pungdeok",
@@ -1280,7 +1280,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-pungdeok",
@@ -1334,7 +1334,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-pungdeok",
@@ -1379,7 +1379,7 @@
    "track": "susi-jonghap",
    "requirements": null,
    "summary": null,
-   "nullReason": "한국외대 2028학년도 시행계획 PDF 전체를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음. 모집요강 공표 전이라 요강 단계는 미확인(다음 행동: 2028 모집요강 공표 후 재확인)"
+   "nullReason": "한국외대 2028학년도 시행계획 PDF 전체를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음(서류평가 평가요소의 '교과 이수 현황'은 시행계획 PDF 8쪽, 지원 요건 아님). 모집요강 공표 전이라 요강 단계는 미확인(다음 행동: 2028 모집요강 공표 후 재확인)"
   },
   {
    "schoolId": "school-pungdeok",
@@ -1415,7 +1415,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-pungdeok",
@@ -1451,7 +1451,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-pungdeok",
@@ -1487,7 +1487,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-seongbok",
@@ -2431,7 +2431,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음(2027 정시요강 지원자격은 수능 응시영역 기준 중심, 인쇄 75~76쪽 확인)"
+   "nullReason": "교과군 요건을 과목 집합으로 풀지 못함: 교과이수기준Ⅰ(전 모집단위): 사회(역사/도덕 포함) 3과목+과학 3과목 또는 사회 2과목+과학 4과목 이수 권장(진로희망에 따라 과학Ⅱ 권장)"
   },
   {
    "schoolId": "school-seongbok",
@@ -2440,7 +2440,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음(2027 정시요강 지원자격은 수능 응시영역 기준 중심, 인쇄 75~76쪽 확인)"
+   "nullReason": "교과군 요건을 과목 집합으로 풀지 못함: 교과이수기준Ⅰ(전 모집단위): 사회(역사/도덕 포함) 3과목+과학 3과목 또는 사회 2과목+과학 4과목 이수 권장(진로희망에 따라 과학Ⅱ 권장)"
   },
   {
    "schoolId": "school-seongbok",
@@ -2449,7 +2449,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음(2027 정시요강 지원자격은 수능 응시영역 기준 중심, 인쇄 75~76쪽 확인)"
+   "nullReason": "교과군 요건을 과목 집합으로 풀지 못함: 교과이수기준Ⅰ(전 모집단위): 사회(역사/도덕 포함) 3과목+과학 3과목 또는 사회 2과목+과학 4과목 이수 권장(진로희망에 따라 과학Ⅱ 권장)"
   },
   {
    "schoolId": "school-seongbok",
@@ -2530,7 +2530,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-seongbok",
@@ -2566,7 +2566,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-seongbok",
@@ -2611,7 +2611,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-seongbok",
@@ -2656,7 +2656,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-seongbok",
@@ -2692,7 +2692,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-seongbok",
@@ -2728,7 +2728,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-seongbok",
@@ -2764,7 +2764,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-seongbok",
@@ -2818,7 +2818,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-seongbok",
@@ -2863,7 +2863,7 @@
    "track": "susi-jonghap",
    "requirements": null,
    "summary": null,
-   "nullReason": "한국외대 2028학년도 시행계획 PDF 전체를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음. 모집요강 공표 전이라 요강 단계는 미확인(다음 행동: 2028 모집요강 공표 후 재확인)"
+   "nullReason": "한국외대 2028학년도 시행계획 PDF 전체를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음(서류평가 평가요소의 '교과 이수 현황'은 시행계획 PDF 8쪽, 지원 요건 아님). 모집요강 공표 전이라 요강 단계는 미확인(다음 행동: 2028 모집요강 공표 후 재확인)"
   },
   {
    "schoolId": "school-seongbok",
@@ -2899,7 +2899,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-seongbok",
@@ -2935,7 +2935,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-seongbok",
@@ -2971,7 +2971,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-suji",
@@ -3972,7 +3972,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음(2027 정시요강 지원자격은 수능 응시영역 기준 중심, 인쇄 75~76쪽 확인)"
+   "nullReason": "교과군 요건을 과목 집합으로 풀지 못함: 교과이수기준Ⅰ(전 모집단위): 사회(역사/도덕 포함) 3과목+과학 3과목 또는 사회 2과목+과학 4과목 이수 권장(진로희망에 따라 과학Ⅱ 권장)"
   },
   {
    "schoolId": "school-suji",
@@ -3981,7 +3981,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음(2027 정시요강 지원자격은 수능 응시영역 기준 중심, 인쇄 75~76쪽 확인)"
+   "nullReason": "교과군 요건을 과목 집합으로 풀지 못함: 교과이수기준Ⅰ(전 모집단위): 사회(역사/도덕 포함) 3과목+과학 3과목 또는 사회 2과목+과학 4과목 이수 권장(진로희망에 따라 과학Ⅱ 권장)"
   },
   {
    "schoolId": "school-suji",
@@ -3990,7 +3990,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음(2027 정시요강 지원자격은 수능 응시영역 기준 중심, 인쇄 75~76쪽 확인)"
+   "nullReason": "교과군 요건을 과목 집합으로 풀지 못함: 교과이수기준Ⅰ(전 모집단위): 사회(역사/도덕 포함) 3과목+과학 3과목 또는 사회 2과목+과학 4과목 이수 권장(진로희망에 따라 과학Ⅱ 권장)"
   },
   {
    "schoolId": "school-suji",
@@ -4071,7 +4071,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-suji",
@@ -4107,7 +4107,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-suji",
@@ -4152,7 +4152,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-suji",
@@ -4197,7 +4197,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-suji",
@@ -4233,7 +4233,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-suji",
@@ -4269,7 +4269,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-suji",
@@ -4305,7 +4305,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-suji",
@@ -4359,7 +4359,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-suji",
@@ -4404,7 +4404,7 @@
    "track": "susi-jonghap",
    "requirements": null,
    "summary": null,
-   "nullReason": "한국외대 2028학년도 시행계획 PDF 전체를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음. 모집요강 공표 전이라 요강 단계는 미확인(다음 행동: 2028 모집요강 공표 후 재확인)"
+   "nullReason": "한국외대 2028학년도 시행계획 PDF 전체를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음(서류평가 평가요소의 '교과 이수 현황'은 시행계획 PDF 8쪽, 지원 요건 아님). 모집요강 공표 전이라 요강 단계는 미확인(다음 행동: 2028 모집요강 공표 후 재확인)"
   },
   {
    "schoolId": "school-suji",
@@ -4440,7 +4440,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-suji",
@@ -4476,7 +4476,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-suji",
@@ -4512,7 +4512,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-yonginheungcheon",
@@ -5399,7 +5399,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음(2027 정시요강 지원자격은 수능 응시영역 기준 중심, 인쇄 75~76쪽 확인)"
+   "nullReason": "교과군 요건을 과목 집합으로 풀지 못함: 교과이수기준Ⅰ(전 모집단위): 사회(역사/도덕 포함) 3과목+과학 3과목 또는 사회 2과목+과학 4과목 이수 권장(진로희망에 따라 과학Ⅱ 권장)"
   },
   {
    "schoolId": "school-yonginheungcheon",
@@ -5408,7 +5408,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음(2027 정시요강 지원자격은 수능 응시영역 기준 중심, 인쇄 75~76쪽 확인)"
+   "nullReason": "교과군 요건을 과목 집합으로 풀지 못함: 교과이수기준Ⅰ(전 모집단위): 사회(역사/도덕 포함) 3과목+과학 3과목 또는 사회 2과목+과학 4과목 이수 권장(진로희망에 따라 과학Ⅱ 권장)"
   },
   {
    "schoolId": "school-yonginheungcheon",
@@ -5417,7 +5417,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음(2027 정시요강 지원자격은 수능 응시영역 기준 중심, 인쇄 75~76쪽 확인)"
+   "nullReason": "교과군 요건을 과목 집합으로 풀지 못함: 교과이수기준Ⅰ(전 모집단위): 사회(역사/도덕 포함) 3과목+과학 3과목 또는 사회 2과목+과학 4과목 이수 권장(진로희망에 따라 과학Ⅱ 권장)"
   },
   {
    "schoolId": "school-yonginheungcheon",
@@ -5498,7 +5498,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-yonginheungcheon",
@@ -5534,7 +5534,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-yonginheungcheon",
@@ -5579,7 +5579,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-yonginheungcheon",
@@ -5624,7 +5624,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-yonginheungcheon",
@@ -5660,7 +5660,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-yonginheungcheon",
@@ -5696,7 +5696,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-yonginheungcheon",
@@ -5732,7 +5732,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-yonginheungcheon",
@@ -5786,7 +5786,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-yonginheungcheon",
@@ -5831,7 +5831,7 @@
    "track": "susi-jonghap",
    "requirements": null,
    "summary": null,
-   "nullReason": "한국외대 2028학년도 시행계획 PDF 전체를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음. 모집요강 공표 전이라 요강 단계는 미확인(다음 행동: 2028 모집요강 공표 후 재확인)"
+   "nullReason": "한국외대 2028학년도 시행계획 PDF 전체를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음(서류평가 평가요소의 '교과 이수 현황'은 시행계획 PDF 8쪽, 지원 요건 아님). 모집요강 공표 전이라 요강 단계는 미확인(다음 행동: 2028 모집요강 공표 후 재확인)"
   },
   {
    "schoolId": "school-yonginheungcheon",
@@ -5867,7 +5867,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-yonginheungcheon",
@@ -5903,7 +5903,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   },
   {
    "schoolId": "school-yonginheungcheon",
@@ -5939,7 +5939,7 @@
    "track": "jeongsi-csat",
    "requirements": null,
    "summary": null,
-   "nullReason": "정시는 교과 이수 권장·필수 과목 해당 없음"
+   "nullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)"
   }
  ]
 }
