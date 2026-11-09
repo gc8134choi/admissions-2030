@@ -6,8 +6,7 @@ export function applyHl() {
   const colName = new URLSearchParams(decodeURIComponent(location.hash.slice(1)).split("?")[1] || "").get("col"); // col=학교 이름: 비교 표에서 그 학교 칸도 강조하고 가로로 보이게
   const inTr = new URLSearchParams(decodeURIComponent(location.hash.slice(1)).split("?")[1] || "").get("in") === "tr"; // in=tr: 표의 행만 찾는다(요약 카드가 아니라 비교 표의 학교 줄)
   const k = key(hl).slice(0, 16), k3 = key(hl).slice(0, 8), k4 = key(String(hl).replace(/[(（].*$/, "")).slice(0, 16), k2 = key(String(hl).replace(/^\s*\d{4}[-.]\d{1,2}(?:[-.]\d{1,2})?\s*/, "")).slice(0, 16); if (k.length < 2) return; // 변경 소식 제목은 앞의 날짜(2025-06)가 화면에서 따로 쓰여 있어 날짜를 뺀 제목으로도 찾는다
-  const root = document.documentElement, unwait = () => root.classList.remove("hl-wait"); // 강조 줄로 가는 스크롤이 끝날 때까지(최대 1.8초) 본문을 잠깐 숨겨 줄이 한 번 튀는 모습을 감춘다
-  root.classList.add("hl-wait"); setTimeout(unwait, 1800);
+  const unwait = () => document.documentElement.classList.remove("hl-wait"); // 본문은 숨기지 않는다(빈 화면·스크린리더·포커스 문제). 위치는 아래 settled()로 안정된 뒤 한 번에 이동
   let tries = 0; const at = location.hash.split("?")[0]; // 화면이 주소의 ?뒤를 다시 쓰므로(필터 동기화) 처음 읽은 값을 쓰고, 다른 화면으로 가면 멈춘다
   const pick = () => {
     const cand = [...document.querySelectorAll(inTr ? "#main tbody tr" : "#main .ed-row, #main tr, #main li, #main summary, #main dd, #main td, #main th, #main h2, #main h3, #main h4, #main label, #main p, #main .aux")].filter((e) => { const t = key(e.textContent); return t.includes(k) || (k2.length >= 4 && t.includes(k2)) || (tries > 14 && k4.length >= 2 && k4 !== k && t.includes(k4)); });
