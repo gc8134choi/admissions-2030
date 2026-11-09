@@ -17,7 +17,7 @@
 html[data-profile=b]{--accent:var(--accent-b)}
 body[data-profile]{--accent:var(--accent-a);--soft:var(--band)}
 html[data-profile=b] body[data-profile]{--accent:var(--accent-b)}
-body{font:400 15px/1.65 var(--font);letter-spacing:-.01em;word-break:keep-all;background:var(--paper);color:var(--ink);padding-bottom:calc(var(--tab-h) + var(--dock-h) + env(safe-area-inset-bottom) + 24px)}
+body{font:400 16px/1.65 var(--font);letter-spacing:-.01em;word-break:keep-all;background:var(--paper);color:var(--ink);padding-bottom:calc(var(--tab-h) + var(--dock-h) + env(safe-area-inset-bottom) + 24px)}
 .num,.num *{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
 a{color:inherit}
@@ -129,7 +129,7 @@ body{padding-bottom:calc(var(--tab-h) + env(safe-area-inset-bottom) + 24px)}
 html[data-profile=b] .aux-n{color:var(--accent-a)}
 .aux-d{font-size:13px}.aux-d b{color:var(--ink);font-size:16px;letter-spacing:-.03em}
 .hero{padding:28px 0 8px}
-.hello{font-size:15px;color:var(--mute);margin:0 0 4px}
+.hello{font-size:16px;color:var(--mute);margin:0 0 4px}
 .kicker{font-size:13px;font-weight:600;margin:0}
 .dday{display:block;width:100%;text-align:left;background:none;border:0;padding:0;margin:2px 0 0;cursor:pointer;color:var(--accent);font:inherit;white-space:nowrap}
 .dday .big{display:inline-block;font-weight:800;font-size:clamp(96px,31vw,208px);line-height:.86;letter-spacing:-.06em}
@@ -245,7 +245,7 @@ html[data-profile=b] .aux-n{color:var(--accent-a)}
 .fold{border-top:1px solid var(--hair);padding-top:10px}
 .fold>summary{font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;min-height:32px}
 .school .st2{border:0;background:none;padding:0}
-.school .st-req,.school .st-ele{font-size:15px}
+.school .st-req,.school .st-ele{font-size:16px}
 .school .foot{border-top:1px solid var(--hair);padding-top:12px;margin-top:auto}
 .school .foot .btn{border:0;background:none;color:var(--ink);padding:0;font-weight:700;text-decoration:underline;text-underline-offset:4px}
 .sn{border:0;background:none;padding:0}
@@ -344,8 +344,8 @@ table.policy tr.past td,table.policy tr.past b{color:var(--mute)}
 .dday .unit{font-size:clamp(18px,5vw,32px);color:var(--ink)}
 .hh-left{display:block;font-size:14px;color:var(--mute);margin-top:6px}
 .hero-t{margin:22px 0 4px;font-size:clamp(24px,6.6vw,40px);font-weight:800;letter-spacing:-.045em;line-height:1.2}
-.hero-d{margin:0;font-size:15px;color:var(--mute)}
-.hero-s{margin:6px 0 0;font-size:15px;max-width:34em}
+.hero-d{margin:0;font-size:16px;color:var(--mute)}
+.hero-s{margin:6px 0 0;font-size:16px;max-width:34em}
 .hero-meta{margin:14px 0 0}
 .hero-ph{margin-top:18px;display:grid;grid-template-columns:96px 1fr;gap:6px 16px;align-items:center}
 .hero-ph .ms-p{width:96px;height:96px;grid-row:1 / 3}
@@ -384,11 +384,11 @@ table.policy tr.past td,table.policy tr.past b{color:var(--mute)}
 .stg{font-size:11px;font-weight:600;letter-spacing:.02em;color:var(--mute);margin-right:8px}
 .stgline{display:flex;align-items:baseline;gap:14px;padding:14px 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);margin:8px 0 0}
 .stgline a{display:flex;align-items:baseline;gap:8px;text-decoration:none;color:var(--mute);min-height:32px}
-.stgline a b{font-size:15px;font-weight:600}.stgline a small{font-size:12px}
+.stgline a b{font-size:16px;font-weight:600}.stgline a small{font-size:12px}
 .stgline a.on{color:var(--ink)}.stgline a.on b{font-weight:800}.stgline a.on b::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:7px;vertical-align:1px}
 .stg-sep{color:var(--hair)}
 /* 학교 탭의 "중학교 | 고등학교" 줄: 아래 화면 탭보다 한 단계 위라는 걸 크기로만 구분 */
-.subnav.lvl a{font-size:15px}.subnav.lvl+.subnav a{font-size:13px;font-weight:500}
+.subnav.lvl a{font-size:16px}.subnav.lvl+.subnav a{font-size:13px;font-weight:500}
 /* 헤더의 보관함 링크(바뀐 소식·바로가기·출처·업데이트 기록·원본 파일) */
 .vl{margin-left:auto;font-size:13px;color:var(--mute);text-decoration:none;padding:8px 6px;white-space:nowrap}.vl[aria-current=page]{color:var(--ink);font-weight:700}
 @media (min-width:900px){.vl{margin-left:16px}}

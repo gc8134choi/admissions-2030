@@ -65,7 +65,7 @@ input,select,textarea{background:var(--glass-in);color:var(--ink);border:1px sol
 .tabs a{font-family:var(--font);font-weight:600;font-size:14px;color:var(--pencil)}
 .tabs a[aria-current=page]{color:var(--ink)}
 .tabs a[aria-current=page]::before{background:var(--accent);height:3px;bottom:auto;top:0;left:20%;right:20%;border-radius:0 0 3px 3px}
-#topnav a{font-size:15px;font-weight:600;color:var(--pencil)}#topnav a[aria-current=page]{color:var(--ink)}#topnav a[aria-current=page]::after{background:var(--accent);height:3px;bottom:-6px;border-radius:3px}
+#topnav a{font-size:16px;font-weight:600;color:var(--pencil)}#topnav a[aria-current=page]{color:var(--ink)}#topnav a[aria-current=page]::after{background:var(--accent);height:3px;bottom:-6px;border-radius:3px}
 .subnav{border-bottom:1px solid var(--line)}
 .subnav a{font-size:14px;font-weight:600;color:var(--pencil)}.subnav a[aria-current=page]{color:var(--ink);text-decoration:none;box-shadow:inset 0 -3px 0 var(--accent)}
 .subnav.lvl a{background:var(--glass-in);border:1px solid var(--glass-line);border-bottom:0;border-radius:var(--r1) var(--r1) 0 0;box-shadow:none;transform:none;font-size:14px}
@@ -88,7 +88,7 @@ table.policy tr.due{background:rgba(255,127,50,.12)}
 .dday .big{font-size:clamp(56px,10vw,88px)}
 .hm .hero-t{font-size:clamp(20px,2.2vw,26px)}
 .plan-n .big{font-size:38px}
-.cmx-n b{font-size:15px}
+.cmx-n b{font-size:16px}
 .dp li{padding:2px 0}
 .dgrid,.h-row2,.h-row4,.h-row5,.h-rest,.dhubs{gap:var(--sp-3)}
 .dhubs .hub{padding:var(--sp-2) var(--sp-3)}
@@ -161,7 +161,7 @@ table.policy td{font-size:14px;line-height:1.5}
 @media (prefers-color-scheme:light){:root{--gl-sh:0 1px 0 rgba(255,255,255,.7) inset,0 10px 28px -16px rgba(90,50,20,.35)}}
 .dp,.ledger,.hub,.school,.ms,.tw,.note,.ed-top,.piece,.ed-row{border-radius:16px;border:1px solid var(--glass-line);box-shadow:var(--gl-sh)}
 .dp,.ledger{padding:16px 18px}
-.sec-h h2{font-size:15px;font-weight:650;letter-spacing:-.01em}
+.sec-h h2{font-size:16px;font-weight:650;letter-spacing:-.01em}
 .sec-h h2 em{display:block;font-style:normal;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--pencil);margin:0 0 2px}
 .sec-h a{font-size:13px;color:var(--pencil);text-decoration:none}.sec-h a:hover{color:var(--ink)}
 .dp li,.cmx li,.row{border-top:0}
@@ -221,7 +221,7 @@ table.policy td{font-size:14px;line-height:1.5}
   #tl table.policy tbody tr:hover{background:var(--glass)}
   #tl table.policy tr.due,#tl table.policy tr.now{border-color:var(--accent)}
   #tl table.policy td{padding:2px 0;border:0;font-size:14px}
-  #tl table.policy td:nth-child(1){font-weight:700;color:var(--ink);font-size:15px}
+  #tl table.policy td:nth-child(1){font-weight:700;color:var(--ink);font-size:16px}
   #tl table.policy td:nth-child(2){margin-top:2px}
   #tl table.policy td:nth-child(3),#tl table.policy td:nth-child(4){font-size:var(--fs-sub);color:var(--pencil)}
   #tl table.policy td:nth-child(3):empty{display:none}
@@ -427,22 +427,22 @@ button.term{text-decoration:underline dotted!important;text-decoration-thickness
 .gl-i{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;width:24px;height:24px;min-width:24px;min-height:24px;margin:-4px 1px -4px 0;padding:0;border:0;background:none;color:inherit;cursor:pointer;font:inherit;font-size:14px;line-height:1;border-radius:50%;vertical-align:middle;position:relative;top:-1px;z-index:2} /* 실제 요소를 24×24px(WCAG 2.5.8)로 하고, 위아래 음수 여백으로 줄 간격은 벌리지 않는다 */
 .gl-rel{border:0;background:none;color:var(--accent);cursor:pointer;font:inherit;padding:2px 0;text-decoration:underline}
 .gl-i:hover,.gl-i[aria-expanded="true"]{background:var(--soft,rgba(0,0,0,.06))}.gl-i:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
-/* 본문급 14px대 정리(15차): 바로가기 설명 글·출처 목록·상태 표 칸·과목 나열·중학교 비교 표 칸은 15px. 라벨·출처·상태 칩은 그대로 */
-#main li.row p{font-size:15px}
-#main .panel ul li,#main .panel ul li .muted{font-size:15px}
-#main .ed-lines .ed-ln span,#main .ed-mx{font-size:15px}
-#main tr.cmp-r td,#main td.mid-lk{font-size:15px}
-#main table:not([class]) td{font-size:15px}
+/* 본문급 14px대 정리(15차): 바로가기 설명 글·출처 목록·상태 표 칸·과목 나열·중학교 비교 표 칸은 16px. 라벨·출처·상태 칩은 그대로 */
+#main li.row p{font-size:16px}
+#main .panel ul li,#main .panel ul li .muted{font-size:16px}
+#main .ed-lines .ed-ln span,#main .ed-mx{font-size:16px}
+#main tr.cmp-r td,#main td.mid-lk{font-size:16px}
+#main table:not([class]) td{font-size:16px}
 .unv-i{width:24px;height:24px;margin:-5px 1px;font-size:12px;box-sizing:border-box} /* 터치 대상 24×24px(WCAG 2.5.8), 줄 간격은 음수 여백으로 유지 */
 #view:empty ~ .pgfoot{visibility:hidden} /* 화면 본문이 들어오기 전에 푸터가 화면 아래에 보였다가 밀려나는 레이아웃 이동(CLS)을 막는다 */
 button.term{display:inline!important} /* 인라인 용어 버튼의 박스가 줄 높이만큼 커져 이웃 줄의 ⓘ와 겹치지 않게(글자 높이만) */
 .cmp-v{line-height:1.55} /* 표 칸 안 용어 버튼·ⓘ가 줄 사이에서 겹치지 않게 */
-/* 본문 글자 15px 규칙(16차): 문장형·값 글자는 15px, 13px는 라벨·출처·상태 클래스(.srcw·.pst·.es·.ed-unv 등)만. 비교 표(#tbl)는 칸 값 규칙이 따로 있다 */
-#main p.muted,#main p.muted.small,#main div.muted,#main span.muted,#main li .muted,#main .hs-quick,#main .hs-quick a,#main .gap-next,#main .mid-btn,#main p.fresh,#main .pl-row b,#main .pl-row .muted,#main .pn-um li,#main .pn-um li span,#main .pn-bar b,#main .pn-bar small,#main td.num .cmp-v,#main .ed-ym,#main .ed-g .n,#main .nm span,#main p.muted a{font-size:15px!important}
-#main table:not(#tbl) td:not(.srcw){font-size:15px}
-#main li>b,#main .ed-ym,#main .ed-ln b,#main .ed-g .k,#main .ed-g .n,#main .panel b,#main .cmp-cap,#main .cmp-cap .muted,#main .cmp-v.num{font-size:15px}
-#main .ed-ym h3{font-size:15px!important}
-@media (min-width:900px){#main .g .v,#main .plan-n .big,#main .mid-s b,#main .mid-s small{font-size:15px!important}} /* 데스크톱 홈의 14px대 값 글자(모바일 홈 높이는 그대로) */
+/* 본문 글자 16px 규칙(16차): 문장형·값 글자는 16px, 13px는 라벨·출처·상태 클래스(.srcw·.pst·.es·.ed-unv 등)만. 비교 표(#tbl)는 칸 값 규칙이 따로 있다 */
+#main p.muted,#main p.muted.small,#main div.muted,#main span.muted,#main li .muted,#main .hs-quick,#main .hs-quick a,#main .gap-next,#main .mid-btn,#main p.fresh,#main .pl-row b,#main .pl-row .muted,#main .pn-um li,#main .pn-um li span,#main .pn-bar b,#main .pn-bar small,#main td.num .cmp-v,#main .ed-ym,#main .ed-g .n,#main .nm span,#main p.muted a{font-size:16px!important}
+#main table:not(#tbl) td:not(.srcw){font-size:16px}
+#main li>b,#main .ed-ym,#main .ed-ln b,#main .ed-g .k,#main .ed-g .n,#main .panel b,#main .cmp-cap,#main .cmp-cap .muted,#main .cmp-v.num{font-size:16px}
+#main .ed-ym h3{font-size:16px!important}
+@media (min-width:900px){#main .g .v,#main .plan-n .big,#main .mid-s b,#main .mid-s small{font-size:16px!important}} /* 데스크톱 홈의 14px대 값 글자(모바일 홈 높이는 그대로) */
 .srch [data-x]{min-width:44px;min-height:44px} /* 검색 닫기 버튼 터치 크기 */
 .srch li a{text-decoration:none} .srch li a b{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px} /* 검색 결과: 제목만 밑줄, 요약 문장은 밑줄 없음 */
 
