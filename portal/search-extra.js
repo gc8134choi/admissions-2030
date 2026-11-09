@@ -16,8 +16,9 @@ const univResultText = (hc) => { /* 빈 칸 학교의 사유를 학교별 nullRe
   const tail = !empty.length ? "" : open && other ? ` 빈 칸 ${empty.length}곳 중 ${other}곳은 학교알리미 공시 목록에 그 항목이 없고, ${open}곳은 아직 열어 보지 못해 직접 확인이 필요해요(화면의 '빈 칸의 사유')` : open ? ` 빈 칸 ${open}곳은 학교알리미를 아직 열어 보지 못해 직접 확인이 필요해요(화면의 '빈 칸의 사유')` : ` 빈 칸 ${other}곳은 학교알리미 공시 목록에 그 항목이 없다고 '빈 칸의 사유'에 적혀 있어요`;
   return `고교 ${sc.length}곳 중 ${has}곳만 값이 있어요.${tail}`;
 };
-const reqCount = (ar, uid) => (ar?.rules || []).filter((r) => r.universityId === uid && Array.isArray(r.requirements) && r.requirements.length > 0).length; /* 과목 요건이 실제로 있는 규칙만(빈 배열은 화면 모집단위 줄에 '요강에 미등록') */
-const univReqText = (n, verb) => (n ? `${n}개 전형·모집단위의 필수·권장 과목을 우리 학교 ${verb}` : "이 대학의 과목 요건은 요강에서 아직 찾지 못했어요 → 전형 일정·요건 정리는 대학 요건 화면에서 모집단위별로 볼 수 있어요");
+let MATCHED = new Set(); /* 화면이 계산할 수 있는 규칙(matches.json에 summary가 있는 규칙)의 ruleId */
+const reqCount = (ar, uid) => (ar?.rules || []).filter((r) => r.universityId === uid && MATCHED.has(r.ruleId)).length;
+const univReqText = (n, verb) => (n ? `${n}개 전형·모집단위의 필수·권장 과목을 우리 학교 ${verb}` : "이 대학의 모집단위 목록과 요건 유무는 대학 요건 화면에서 볼 수 있어요(과목 요건은 요강에서 아직 찾지 못했어요)");
 const cnt = (d, k) => (d?.schools || []).filter((s) => s.values?.[k] && s.values[k].value != null && s.values[k].value !== "").length;
 // 선택과목 현황: 학교(placeId)별로 값이 있는 곳과 인원 미공개인 곳을 데이터에서 센다
 const elCountText = (el) => { const by = new Map(); for (const x of el || []) by.set(x.placeId, (by.get(x.placeId) || false) || !x.nullReason); const n = [...by.values()].filter(Boolean).length, m = by.size - n; return `탐구 과목 선택 비중을 학교별로 비교해요(값이 있는 학교 ${n}곳${m ? `, 나머지 ${m}곳은 인원 미공개` : ""})`; };
@@ -84,7 +85,7 @@ export const GAPS = [
   { id: "adiga-link", q: "^(?!.*(맛|분식|먹|식당|카페|학원|가르)).*(어디가|adiga)", words: "어디가 링크 대입정보포털 어디가 adiga 대입 정보 포털", found: () => ({ href: "#library/links", hl: "어디가", t: "대입정보포털 어디가(외부 링크)", s: "대학별 모집요강·입시 결과를 모아 둔 공식 포털이에요. 외부 링크 모음에서 바로 열어요" }) },
   { id: "hsbf-event", q: "(외대부고|외국어대학교부설|용인외대).*(설명회|입학설명)", words: "외대부고 설명회 용인외대부고 입학설명회 외국어대학교부설 설명회 본교 설명회", found: (D) => row(D, "gg-22") && { href: "#select/curriculum?v=types", hl: row(D, "gg-22").title, t: row(D, "gg-22").title, s: firstSent(row(D, "gg-22").body, 100) } },
   { id: "hs-briefing-dates", q: "입학설명회.*(일정|언제|날짜|궁금)|(일정|언제).*입학설명회|설명회.*(일정|언제|날짜)", words: "입학설명회 일정 고교 입학설명회 설명회 날짜 설명회 언제 학교별 입학설명회", found: (D) => row(D, "gg-22") && { href: "#select/curriculum?v=types", hl: row(D, "gg-22").title, t: row(D, "gg-22").title, s: firstSent(row(D, "gg-22").body, 100) } },
-  { id: "csat-date", q: "^(?!.*(초6|초등|2033|2032|2027|2028|2029|2031|2034|성적)).*수능.*(날짜|언제|며칠|시행일|몇 ?월)", words: "수능 날짜 수능 언제 수능 시행일 수능 며칠 수능 일정", found: () => ({ href: "#home", hl: "학년도 수능", t: "수능 D-day(홈)", s: "홈의 '고등학교 일정' 맨 아래 수능 줄에 2030학년도 수능 날짜(2029.11.15 예정)와 남은 날(D-day)이 있어요. 다른 해는 '고교 일정' 화면의 '대학 입시' 탭에서 확인해요" }) },
+  { id: "csat-date", q: "^(?!.*(초6|초등|2033|2032|2027|2028|2029|2031|2034|성적)).*수능.*(날짜|언제|며칠|시행일|몇 ?월)", words: "수능 날짜 수능 언제 수능 시행일 수능 며칠 수능 일정", found: () => ({ href: "#home", hl: "학년도 수능", t: "수능 D-day(홈)", s: "홈의 '고등학교 일정' 맨 아래 수능 줄에 2030학년도 수능 날짜(2029.11.15 예정)와 남은 날(D-day)이 있어요. 2030학년도(2029.11.15)는 '고교 일정' 화면의 '대학 입시' 탭에서, 2033학년도(2032.11.18 잠정)는 '고교 일정' 화면의 '학년별 큰 그림' 탭의 '현재 초6 기준'에서 볼 수 있어요" }) },
   { id: "csat-eng", q: "수능.*영어.*(등급|몇\\s*점|컷|나뉘|구간|1등급)", words: "수능 영어 등급 수능 영어 1등급 수능 영어 절대평가 등급 구간 영어 몇 점부터 1등급", found: (D) => row(D, "adm-12") && { href: "#admission/system", hl: row(D, "adm-12").title, t: row(D, "adm-12").title, s: firstSent(row(D, "adm-12").body, 100) } },
   { id: "fail-hs", q: "(후기|외고|자사고|국제고|특목).*(떨어|불합격|탈락)", words: "후기고 떨어지면 외고 불합격 자사고 탈락 떨어지면 어디로", found: (D) => row(D, "gg-17") && { href: "#select/curriculum?v=types", hl: row(D, "gg-17").title, t: row(D, "gg-17").title, s: firstSent(row(D, "gg-17").body, 100) } },
   { id: "grade-abolish", q: "석차.?등급.*(폐지|초안|없어|사라)|(폐지).*석차", words: "내신 석차등급 폐지 초안 석차등급 폐지안 고교 내신 석차등급 폐지 초6 내신", found: (D) => row(D, "log-13") && { href: "#changelog", t: row(D, "log-13").title, s: String(row(D, "log-13").body).slice(0, 220) } },
@@ -206,6 +207,7 @@ export async function loadSearchExtra(load) {
     elemZone.clear(); try { const md = await load("middle"); for (const a of md?.areas || []) { const j = jointOf(a); if (!j.home && !j.groups.length) continue; elemZone.set(a.from.placeId, zoneText(j)); } } catch {} /* 공동학군 해석은 joint-zone.js 한 곳 */
   univInfo.clear(); for (const sc of hc?.schools || []) { const v = sc.values?.univStats; univInfo.set(sc.placeId, { has: !!(v && v.value != null && v.value !== ""), why: v?.nullReason || "" }); }
   const out = [];
+  try { MATCHED = new Set(((await ok(load("matches")))?.matches || []).filter((m) => m.summary).map((m) => m.ruleId)); } catch {}
   /* 공동학군 데이터 낱말(jointZone: 전체/일부·otherZones·rangeText)을 색인에: '공동학군'·'운중동'·'대장통 석운통'·'판교중학군' */
   try { const md = mid, pls = (await ok(load("places")))?.places || [], nameOf = (id) => pls.find((x) => x.id === id)?.name || id, js = (md?.areas || []).map((a) => ({ a, j: jointOf(a) })).filter((x) => x.j.type === "part" || x.j.type === "all");
     const parts = js.filter((x) => x.j.type === "part"), alls = js.filter((x) => x.j.type === "all");

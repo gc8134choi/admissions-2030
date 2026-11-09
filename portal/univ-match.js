@@ -43,7 +43,7 @@ export async function univBody(el, { load, esc, profile, schools, sel, pick }) {
     // 대학 요건 맞춰보기: 공용 비교 표(대상=학교 열, 항목=요건 행). 학교 4곳이 같은 모집단위 요건을 얼마나 채우는지 견준다.
     const mOf = (schoolId) => matches.matches.find((x) => x.schoolId === schoolId && x.ruleId === st.rule);
     const anyM = mine.some((x) => mOf(x.id)?.summary);
-    if (!anyM) { const u = univs.find((x) => x.id === st.univ); body = emptyLine(esc, { why: "이 모집단위는 과목 요건이 요강에 아직 없어요. 요강이 공개되면 채워요.", next: u?.admissionsUrl ? { label: "입학처에서 먼저 확인", url: u.admissionsUrl } : { label: "대학 이름으로 검색", url: `https://search.naver.com/search.naver?query=${encodeURIComponent((u?.name || "") + " 입학처 모집요강")}` } }); }
+    if (!anyM) { const u = univs.find((x) => x.id === st.univ); body = emptyLine(esc, { why: "이 모집단위는 과목 요건이 요강에 아직 없어요. 요강에서 과목 요건 항목을 아직 찾지 못했어요.", next: u?.admissionsUrl ? { label: "입학처에서 먼저 확인", url: u.admissionsUrl } : { label: "대학 이름으로 검색", url: `https://search.naver.com/search.naver?query=${encodeURIComponent((u?.name || "") + " 입학처 모집요강")}` } }); }
     else body = `<div id="um-cmp"></div>`;
     const reqCount = (mOf(mine[0].id)?.requirements || []).length;
     st.cfg = anyM ? () => ({
