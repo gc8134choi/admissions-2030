@@ -14,7 +14,7 @@ const bad = [], ok = [];
 const LOC = [
   { phrase: "(일정 목록에 있어요)", screen: "고교 일정", route: "schedule?t=hs", need: [/수원외고 설명회/, /안양외고[^\n]*설명회/, /동탄국제고 설명회/, /외대부고 본교 설명회/] },
   { phrase: "고교 종류 화면에 있어요", screen: "고교 종류", route: "select/curriculum?v=types", need: [/외·국·자|외고·국제고·자사고/] },
-  { phrase: "빈 칸의 사유", route: "select/curriculum?v=schools&lv=high&g=%EC%A7%84%ED%95%99", need: [/빈 칸 \d+곳의 사유/, /대학 진학 현황/] },
+  { phrase: "빈 칸의 사유", route: "select/curriculum?v=schools&lv=high&g=%EC%A7%84%ED%95%99", need: [/빈 칸 \d+곳(\(사유 \d+가지\))?의 사유/, /대학 진학 현황/] },
   { phrase: "고교 일정 화면에서 고입 전형 일정", screen: "고교 일정", route: "schedule?t=hs", need: [/전형/, /원서접수/] },
   { phrase: "중학교 일정 화면에서 배정·입학 일정", screen: "중학교 일정", route: "schedule?t=life", need: [/배정/, /입학/] },
   { phrase: "배정·입학 준비 화면에서 학교를 고르면 학교군", screen: "배정·입학 준비", route: "select/curriculum?v=middle", need: [/학교군/, /갈 수 있는 중학교/] },

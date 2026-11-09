@@ -50,7 +50,7 @@ export async function mapBody(el, { load, esc, focus = null, level = null }) {
   const lv0 = level || new URLSearchParams((location.hash.split("?")[1] || "")).get("lv");
   const st = (el.__map ||= { level: LEVEL[lv0] ? lv0 : "all", view: "map", sel: null, near: false });
   if (focus && all.some((p) => p.id === focus)) { st.sel = focus; st.view = "map"; const fp = all.find((p) => p.id === focus); if (st.level !== "all" && fp.level && fp.level !== st.level && LEVEL[fp.level]) st.level = fp.level; } // 주소의 학교급 필터가 그 학교를 가리면 학교의 학교급으로(마커가 보이게)
-  let map = null, layer = null, markers = new Map(), mapFailed = false;
+  let map = null, layer = null, markers = new Map(), mapFailed = false, focusReq = null; /* focusReq: 키보드로 연 뒤 포커스를 보낼 곳({at:[lat,lng]} 또는 {detail:true}) */
   const shown = () => [...places.filter((p) => st.level === "all" || p.level === st.level), ...(st.near ? nearby : [])];
   const chip = (k, v, t, cur) => `<button type="button" class="chip ${v === cur ? "on" : ""}" data-k="${k}" data-v="${v}" aria-pressed="${v === cur}">${t}</button>`;
 
@@ -83,21 +83,24 @@ export async function mapBody(el, { load, esc, focus = null, level = null }) {
     /* 마커를 키보드로: Tab으로 닿고 Enter·Space로 낱개는 학교 열기, 묶음은 확대. 읽어 주는 이름은 aria-label */
     const a11y = (m, label, act) => { const el = m.getElement?.(); if (!el) return; el.setAttribute("role", "button"); el.setAttribute("aria-label", label); el.removeAttribute("title"); el.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); act(); } }); };
     const lvLabel = ({ elementary: "초등학교", middle: "중학교", high: "고교" })[st.level] || "학교";
-    const D = 52, list = shown().filter((x) => x.lat != null).sort((a, b) => (b.id === st.sel) - (a.id === st.sel)), cl = [];
+    const D = 60, list = shown().filter((x) => x.lat != null).sort((a, b) => (b.id === st.sel) - (a.id === st.sel)), cl = [];
     for (const p of list) {
       const pt = map.latLngToContainerPoint([p.lat, p.lng]), c = p.id === st.sel ? null : cl.find((k) => !k.sel && Math.hypot(k.x - pt.x, k.y - pt.y) < D);
       if (c) { c.items.push(p); c.x = (c.x * (c.items.length - 1) + pt.x) / c.items.length; c.y = (c.y * (c.items.length - 1) + pt.y) / c.items.length; } else cl.push({ x: pt.x, y: pt.y, items: [p], sel: p.id === st.sel });
     }
+    cl.sort((a, b) => a.y - b.y || a.x - b.x); /* DOM(읽기·Tab) 순서를 북→남, 서→동으로 */
+    const els = [];
     for (const k of cl) {
       if (k.items.length === 1) {
-        const p = k.items[0], m = L.marker([p.lat, p.lng], { icon: icon(L, p, p.id === st.sel, 30), title: p.name, keyboard: true }).addTo(layer);
-        m.on("click", () => select(p.id, false)); markers.set(p.id, m); a11y(m, p.name, () => select(p.id, false));
+        const p = k.items[0], m = L.marker([p.lat, p.lng], { icon: icon(L, p, p.id === st.sel, 44), title: p.name, keyboard: true }).addTo(layer); els.push([m, p.lat, p.lng]);
+        m.on("click", () => select(p.id, false)); markers.set(p.id, m); a11y(m, p.name, () => { select(p.id, false); const d = $("#pl-detail"); if (d) { d.tabIndex = -1; const f = () => d.focus({ preventScroll: false }); f(); setTimeout(f, 120); } });
       } else {
         const lat = k.items.reduce((a, p) => a + p.lat, 0) / k.items.length, lng = k.items.reduce((a, p) => a + p.lng, 0) / k.items.length, names = k.items.map((p) => p.name).join(", ");
-        const m = L.marker([lat, lng], { icon: L.divIcon({ className: "", html: `<span class="pl-hit" style="width:34px;height:34px"><span class="pl-pin pl-cl">${k.items.length}곳</span></span>`, iconSize: [34, 34], iconAnchor: [17, 17] }), title: `${k.items.length}곳 묶음`, keyboard: true }).addTo(layer);
-        const zoomIn = () => map.fitBounds(k.items.map((p) => [p.lat, p.lng]), { padding: [40, 40], maxZoom: 18 }); m.on("click", zoomIn); a11y(m, `${lvLabel} ${k.items.length}곳 묶음, 확대`, zoomIn);
+        const m = L.marker([lat, lng], { icon: L.divIcon({ className: "", html: `<span class="pl-hit" style="width:44px;height:44px"><span class="pl-pin pl-cl">${k.items.length}곳</span></span>`, iconSize: [44, 44], iconAnchor: [22, 22] }), title: `${k.items.length}곳 묶음`, keyboard: true }).addTo(layer);
+        els.push([m, lat, lng]); const zoomIn = () => { focusReq = { at: [lat, lng], t: Date.now() }; map.fitBounds(k.items.map((p) => [p.lat, p.lng]), { padding: [40, 40], maxZoom: 18 }); }; m.on("click", zoomIn); a11y(m, `${lvLabel} ${k.items.length}곳 묶음, 확대`, zoomIn);
       }
     }
+    if (focusReq?.at && Date.now() - focusReq.t < 1500) { const near = els.map(([m, la, ln]) => [m, Math.hypot(la - focusReq.at[0], ln - focusReq.at[1])]).sort((a, b) => a[1] - b[1])[0]; near?.[0].getElement?.()?.focus({ preventScroll: true }); } /* 군집을 확대한 뒤에는 같은 자리의 새 마커로 포커스 */
   };
   const fit = () => {
     const pts = shown().filter((x) => x.lat != null).map((x) => [x.lat, x.lng]);
