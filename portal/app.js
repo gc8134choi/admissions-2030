@@ -587,7 +587,7 @@ function addToc() {
   const mo = new MutationObserver(() => { if (!q) q = requestAnimationFrame(all); }); const m0 = document.getElementById("main"); if (m0) mo.observe(m0, { childList: true, subtree: true }); }
 // 정보 화면: 웹폰트(Pretendard)가 늦게 들어오며 17px 글이 다시 줄바꿈되는 것(CLS)을 막는다 — 글자 모양이 준비될 때까지(최대 0.9초) 본문을 보이지 않게 둔다
 function fontGate() {
-  const m = $("#main"); if (!m || !(m.classList.contains("info") || m.dataset.r === "schedule" || m.dataset.r === "home") || !document.fonts?.load) return; // 일정 화면도: 칩·안내 줄이 글꼴 교체로 다시 줄바꿈되며 밀리는 것(CLS)
+  const m = $("#main"); if (!m || !(m.classList.contains("info") || m.dataset.r === "schedule" || m.dataset.r === "home" || m.dataset.r === "planner/plan") || !document.fonts?.load) return; // 일정 화면도: 칩·안내 줄이 글꼴 교체로 다시 줄바꿈되며 밀리는 것(CLS)
   m.classList.add("fw"); let done = false;
   const open = () => { if (done) return; done = true; m.classList.remove("fw"); };
   setTimeout(open, 900);
