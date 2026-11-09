@@ -20,6 +20,7 @@ const LOC = [
   { phrase: "배정·입학 준비 화면에서 학교를 고르면 학교군", screen: "배정·입학 준비", route: "select/curriculum?v=middle", need: [/학교군/, /갈 수 있는 중학교/] },
   { phrase: "대학 요건 화면에서 모집단위별", screen: "대학 요건", route: "select/curriculum?v=univ", need: [/모집단위/, /필수|권장/] },
   { phrase: "학교 보기 화면에서 설명회 노트", screen: "학교 보기", route: "select/curriculum?v=schools&lv=high", need: [/설명회 노트/] },
+  { phrase: "'수능과 내신' 화면에서 2028학년도 대입전형 기본사항(대교협)", screen: "수능과 내신", route: "admission/system?t=types", need: [/대교협/, /2028학년도/] },
   { phrase: "'고교 일정' 화면의 '학년별 큰 그림' 탭의 '현재 초6 기준'(2033학년도 수능 날짜)", screen: "고교 일정", route: "schedule?t=road&b=B", need: [/2032\.11\.18/, /수능/] },
   { phrase: "'고교 일정' 화면의 '대학 입시' 탭에서(수능 날짜)", screen: "고교 일정", route: "schedule?t=univ", need: [/2029\.11\.15/, /수능/] },
 ];
@@ -55,16 +56,22 @@ for (const l of LOC) {
   for (const u of uns) {
     const want = rules.filter((r) => r.universityId === u.id && matched.has(r.ruleId)).length, all = rules.filter((r) => r.universityId === u.id).length, ds = docs.filter((d) => d.t === `${u.name} · 과목 요건(대학 요건)`); if (!all) continue; nu++;
     if (!ds.length) { bad.push(`${u.name}: 대학 요건 검색 행이 없어요`); continue; }
-    for (const d of ds) { const m = /^(\d+)개 전형/.exec(d.s || ""); if (want && (!m || Number(m[1]) !== want)) bad.push(`${u.name}: 개수 문장이 '값이 있는 ${want}개'와 달라요 → ${(d.s || "").slice(0, 60)}`); if (!want && (m || /\d+개 전형/.test(d.s || ""))) bad.push(`${u.name}: 요건이 하나도 없는데 개수를 말해요 → ${(d.s || "").slice(0, 60)}`); }
+    const nW = rules.filter((r) => r.universityId === u.id && (r.requirements || []).length).length; for (const d of ds) { if (!want && nW && !new RegExp(`모집단위 ${nW}개`).test(d.s || "")) bad.push(`${u.name}: 요건 문구만 있는 규칙 ${nW}개를 말하지 않아요 → ${(d.s || "").slice(0, 60)}`); if (!nW && !/찾지 못했어요/.test(d.s || "")) bad.push(`${u.name}: 요건이 하나도 없는데 '찾지 못했어요'가 아니에요 → ${(d.s || "").slice(0, 60)}`); const m = /^(\d+)개 전형/.exec(d.s || ""); if (want && (!m || Number(m[1]) !== want)) bad.push(`${u.name}: 개수 문장이 '값이 있는 ${want}개'와 달라요 → ${(d.s || "").slice(0, 60)}`); if (!want && (m || /\d+개 전형/.test(d.s || ""))) bad.push(`${u.name}: 요건이 하나도 없는데 개수를 말해요 → ${(d.s || "").slice(0, 60)}`); }
   }
   ok.push(`대학 요건 개수 문장 ${nu}개 대학을 화면이 계산하는(matches summary) 규칙 수와 대조`);
-  // 그 문장이 가리키는 화면을 열어: 개수 0인 대학은 모집단위 목록과 '요강에 아직 없어요'가, 개수>0인 대학은 과목 요건 표가 실제로 있어야 한다
-  for (const u of uns) { const all = rules.filter((r) => r.universityId === u.id); if (!all.length) continue; const want = all.filter((r) => matched.has(r.ruleId)).length;
-    await p.goto(`${base}#select/curriculum?v=univ&u=${encodeURIComponent(u.id)}`); await p.waitForTimeout(1800);
-    const t = await p.evaluate(() => document.querySelector("#main").innerText);
-    if (want === 0 && !/요강에 아직 없어요|요강에서 과목 요건 항목을 아직 찾지 못했어요/.test(t)) bad.push(`${u.name}: 개수 0인데 화면에 '요강에 없음' 안내가 없어요`);
-    if (want === 0 && !all.some((r) => t.includes(r.unitName))) bad.push(`${u.name}: 화면에 모집단위 이름 목록이 없어요`);
-    if (want > 0 && /^\s*$/.test(t)) bad.push(`${u.name}: 화면이 비어 있어요`); }
+
+}
+// ②-e 대학 요건 화면 전수: 12개 대학 × 규칙 78개를 하나씩 눌러, 요건 있음(+매칭 표 또는 요강 문구)/요건 없음(요강에서 못 찾음) 3상태가 데이터와 같은지
+{
+  const rules = data("admission-rules").rules, uns = data("universities").universities, matched = new Set(data("matches").matches.filter((m) => m.summary).map((m) => m.ruleId)); let nr2 = 0;
+  for (const u of uns) { const rs = rules.filter((r) => r.universityId === u.id); if (!rs.length) continue;
+    await p.goto(`${base}#select/curriculum?v=univ&u=${encodeURIComponent(u.id)}`); await p.waitForTimeout(1600);
+    for (const r of rs) { nr2++; const chip = p.locator(`button.chip[data-k="rule"][data-v="${r.ruleId}"]`); if (!(await chip.count())) { bad.push(`${u.name} ${r.unitName}: 모집단위 칩이 없어요`); continue; } await chip.first().click(); await p.waitForTimeout(350);
+      const t = await p.evaluate(() => document.querySelector("#main").innerText), has = (r.requirements || []).length > 0, hasTable = await p.evaluate(() => !!document.querySelector("#um-cmp"));
+      if (has && matched.has(r.ruleId) && !hasTable) bad.push(`${u.name} ${r.unitName}: 매칭 표가 없어요`);
+      if (has && !matched.has(r.ruleId)) { const key = String(r.requirements[0].orGroupLabel || "").replace(/\s+/g, "").slice(0, 12); if (!t.replace(/\s+/g, "").includes(key)) bad.push(`${u.name} ${r.unitName}: 요건이 데이터에 있는데 화면에 요강 문구가 없어요('${key}')`); if (/요강에 아직 없어요/.test(t)) bad.push(`${u.name} ${r.unitName}: 요건이 있는데 '요강에 아직 없어요'를 말해요`); }
+      if (!has && !/요강에 아직 없어요/.test(t)) bad.push(`${u.name} ${r.unitName}: 요건이 없는데 '요강에 아직 없어요' 안내가 없어요`); } }
+  ok.push(`대학 요건 화면 ${nr2}개 규칙의 요건 있음/없음 3상태를 데이터와 대조`);
 }
 // ②-c 화면에 따로 그려지지 않는 행(NO_HL: sch-04·hs-11·log-13·b33-06)과 2028 참고 행: 도착 화면에 값이 없으면 검색 결과에서 본문이 바로 보여야 한다(결과 항목 inline + 본문 앞 260자에 핵심 값)
 {

@@ -84,10 +84,43 @@ console.log(`  · 띄어 쓴 학교급 ${nsp}질의, 초등 학교군 문구 ${n
     const pl = places.find((x) => x.id === sc.placeId); if (!pl) continue; const m = SUF.exec(pl.name); if (!m) continue; const core = pl.name.replace(SUF, "");
     const hasVal = (lbl) => Object.entries(sc.values || {}).some(([k, v]) => v && v.value != null);
     if (!hasVal()) continue;
-    for (const form of new Set(pl.name.startsWith("용인") ? [pl.name, sc.name] : [pl.name, sc.name, `용인${core}${SH[m[0]]}`, `${core}${SH[m[0]]}`, `용인${core}${m[0]}`])) for (const lbl of ["학생수", "학급수", "교원수"].filter((l) => (cmp.fields || []).some((fd) => fd.label.startsWith(l) && sc.values?.[fd.id]?.value != null))) {
+    for (const form of new Set(pl.name.startsWith("용인") ? [pl.name, sc.name, ...(core.replace(/^용인/, "").length >= 2 && places.filter((z) => { const mm = /^(?:용인)?(.{2,6})(초등학교|중학교|고등학교)$/.exec(z.name); return mm && mm[1] + mm[2][0] === core.replace(/^용인/, "") + SH[m[0]]; }).length === 1 ? [`${core.replace(/^용인/, "")}${SH[m[0]]}`] : [])] : [pl.name, sc.name, `용인${core}${SH[m[0]]}`, `${core}${SH[m[0]]}`, `용인${core}${m[0]}`])) for (const lbl of ["학생수", "학급수", "교원수"].filter((l) => (cmp.fields || []).some((fd) => fd.label.startsWith(l) && sc.values?.[fd.id]?.value != null))) {
       const flat = S.search(`${form} ${lbl}`).flatMap(([, l]) => l); nn++;
       if (!flat.some((x) => (x.t || "").startsWith(pl.name) && (x.t || "").includes(lbl))) bad.push(`'${form} ${lbl}' → ${pl.name} · ${lbl} 값 행이 안 나와요`); } }
   console.log(`  · 이름 형태 × 숫자 질의 ${nn}건`);
+}
+// 대학 별칭 × 전형 낱말: '○○대 수시/정시/논술/면접/서류/학종'은 그 대학 요건 행이 상위 3위 안에 있고 '맞는 내용이 없을 수 있어요' 배너가 1위가 아니다
+{
+  const { UNIV_ALIAS } = await import(`${root}/portal/search.js`); let nu2 = 0;
+  for (const [full, als] of UNIV_ALIAS) for (const al of als) for (const w of ["수시", "정시", "논술", "면접", "서류", "학종", "과목 요건"]) { const q = `${al} ${w}`, res = S.search(q), flat = res.flatMap(([, l]) => l).slice(0, 3); nu2++;
+    if (!flat.some((x) => (x.t || "") === `${full} · 과목 요건(대학 요건)`)) bad.push(`'${q}' → ${full} 요건 행이 상위 3위 안에 없어요`);
+    if (res[0]?.[0] === "안내" && /정확히 맞는 내용이 없을 수 있어요/.test(res[0][1][0]?.t || "")) bad.push(`'${q}' → 배너가 1위`); }
+  console.log(`  · 대학 별칭 × 전형 낱말 ${nu2}질의`);
+}
+// 숫자 값 전수: 정책 본문·학교 값 칸의 큰 수(콤마 유무 × '명' 유무)와 퍼센트 값(소수 포함)을 그대로 물으면 상위 3위 안에 그 값이 든 행이 나와야 한다(경계 유지: 12.44·2.1244 안에서는 맞지 않음)
+{
+  const strip = (t) => String(t).replace(/(\d),(?=\d{3}(?!\d))/g, "$1").replace(/(\d),(?=\d{3}(?!\d))/g, "$1");
+  const sources = [...parts[0].map((r) => ({ t: r.title, tx: `${r.title} ${r.body || ""}` })), ...parts[5].filter((d) => !d.gap && !/전화|팩스/.test(d.t || "")).map((d) => ({ t: d.t, tx: `${d.t} ${d.s || ""} ${d.text || ""}` }))];
+  const ints = new Map(), pcts = new Map();
+  for (const x of sources) { const t = strip(x.tx); for (const m of t.matchAll(/(?<![\d.,])(\d{4,7})(?![\d]|\.\d|%)(명|곳|개|학급)?/g)) { if (/^(19|20)\d{2}$/.test(m[1]) && !m[2]) continue; if (!ints.has(m[1])) ints.set(m[1], { ...x, sfx: m[2] || "" }); } for (const m of t.matchAll(/(?<![\d.])(\d{1,3}\.\d)\s*%/g)) if (!pcts.has(m[1])) pcts.set(m[1], x); }
+  const has = (res, key, pct) => res.flatMap(([, l]) => l).slice(0, 3).some((x) => { const tx = strip(`${x.t} ${x.s || ""} ${x.x || ""} ${(sources.find((z) => z.t === x.t) || {}).tx || ""}`); return pct ? new RegExp("(?<![\\d.])" + key.replace(".", "\\.") + "\\s*%").test(tx) : new RegExp("(?<![\\d.])" + key + "(?![\\d]|\\.\\d)").test(tx); });
+  const fails = new Map(); let nn2 = 0; const pick = (m, n) => [...m.entries()].filter((_, i) => i % Math.max(1, Math.floor(m.size / n)) === 0).slice(0, n);
+  for (const [v, info] of pick(ints, 300)) for (const [nm, q] of [["숫자열", v], ["콤마", Number(v).toLocaleString("en-US")], ...(info.sfx ? [["숫자열+단위", `${v}${info.sfx}`], ["콤마+단위", `${Number(v).toLocaleString("en-US")}${info.sfx}`]] : [])]) { nn2++; if (!has(S.search(q), v, false)) { fails.set(nm, (fails.get(nm) || 0) + 1); if (process.env.DBG) console.log('   미적중', q, '←', ints.get(v).t.slice(0, 30)); } }
+  for (const [v] of pick(pcts, 100)) for (const q of [`${v}%`, `${v}퍼센트`]) { nn2++; if (!has(S.search(q), v, true)) fails.set("퍼센트", (fails.get("퍼센트") || 0) + 1); }
+  for (const [nm, n] of fails) bad.push(`숫자 표기 '${nm}': ${n}건은 상위 3위 안에 그 값이 든 행이 없어요`);
+  console.log(`  · 숫자 값 ${nn2}질의(큰 수 ${ints.size}종·퍼센트 ${pcts.size}종 중 표본)`);
+}
+// 기간 속 날짜 전수: 2028학년도 정시(sch-10)·수시(sch-04) 일정의 모든 기간에서 시작·중간·끝 날짜를 8가지 표기로 물으면 그 행이 상위 5위 안에 나와야 한다(기간 안쪽 날짜는 본문에 그 날짜가 그대로 든 행 뒤; '1.18~25'처럼 끝날 축약, 가운데 날짜 포함)
+{
+  const WD = "일월화수목금토"; let nn3 = 0; const fails3 = new Map(), P2 = (n) => String(n).padStart(2, "0");
+  for (const id of ["sch-10", "sch-04"]) { const row = parts[0].find((r) => r.id === id); if (!row) continue; const body = String(row.body || "").replace(/\(\s*[월화수목금토일]\s*\)/g, ""), yr = +/(20\d{2})\./.exec(body)[1];
+    for (const m of body.matchAll(/(?:20\d{2}\.)?(\d{1,2})\.(\d{1,2})\s*~\s*(?:(\d{1,2})\.)?(\d{1,2})/g)) {
+      const m1 = +m[1], d1 = +m[2], m2 = m[3] ? +m[3] : m1, d2 = +m[4]; let y1 = yr; if (m1 < 6 && id === "sch-04") y1 = yr + 1; const start = new Date(Date.UTC(y1, m1 - 1, d1)), end = new Date(Date.UTC(y1 + (m2 < m1 ? 1 : 0), m2 - 1, d2)), span = Math.round((end - start) / 864e5), picks = [...new Set([0, Math.floor(span / 2), span])];
+      for (const off of picks) { const d = new Date(start.getTime() + off * 864e5), y = d.getUTCFullYear(), mo = d.getUTCMonth() + 1, dd = d.getUTCDate(), wd = WD[d.getUTCDay()];
+        const forms = { 점: `${mo}.${dd}`, 연점: `${y}.${mo}.${dd}`, 한글: `${mo}월 ${dd}일`, 슬래시: `${mo}/${dd}`, 하이픈: `${y}-${P2(mo)}-${P2(dd)}`, 요일: `${mo}월 ${dd}일 ${wd}요일`, 띄어쓴점: `${y}. ${mo}. ${dd}.`, 연한글: `${y}년 ${mo}월 ${dd}일` };
+        for (const [nm, q] of Object.entries(forms)) { nn3++; if (process.env.DBG && nm === '점' && !S.search(q).flatMap(([, l]) => l).slice(0, 5).some((x) => x.t === row.title)) console.log('   기간미적중', id, q, S.search(q).flatMap(([, l]) => l).slice(0, 5).map((x) => x.t.slice(0, 16)).join(' / ')); if (!S.search(q).flatMap(([, l]) => l).slice(0, 5).some((x) => x.t === row.title)) fails3.set(`${id} ${nm}`, (fails3.get(`${id} ${nm}`) || 0) + 1); } } } }
+  for (const [k, n] of fails3) bad.push(`기간 속 날짜 ${k}: ${n}건은 상위 3위 안에 그 행이 없어요`);
+  console.log(`  · 기간 속 날짜(시작·중간·끝) × 8표기 ${nn3}질의`);
 }
 // 배너 진실성: 용어 이름 + 풀이/뜻풀이/정의, 한글 날짜 표기, 공동학군 데이터 낱말 질의는 '찾지 못했어요'·'맞는 내용이 없을 수 있어요' 배너를 1위로 내지 않고 값이 있는 행을 낸다
 {
