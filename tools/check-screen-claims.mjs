@@ -27,10 +27,17 @@ const REVIEWED = [
   { re: /페이지 본문에 이사·전입 서류는 적혀 있지 않아 확인하지 못함/, why: "middle-guide 조사 진술(교육지원청 안내 본문 기준, 문의처를 함께 안내)" },
   { re: /우리 집 주소로 배정 구역을 바로 알려 주는 기능은 아직 없어요/, why: "기능 진술(주소 입력 기능 없음)" },
   { re: /일부 과목은 석차등급.{0,3}이 없어요/, why: "성취평가제 과목 설명" },
+  { re: /학교별 입학설명회는 외고.{0,3}·국제고·자사고 설명회 날짜와 용인외대부고 본교 설명회만 모았어요\(일정 목록에 있어요\)/, why: "events.json에 수원외고·안양외고·동탄국제고 설명회와 외대부고 본교 설명회가 있고 일정 화면에 그려짐(tools/check-location-claims.mjs가 화면을 열어 대조)", check: () => { const t = JSON.stringify(data("events")); return /수원외고 설명회/.test(t) && /안양외고/.test(t) && /동탄국제고 설명회/.test(t) && /외대부고 본교 설명회/.test(t); } },
+  { re: /근거리 중학교 5개교 명단은 미확인/, why: "middle-guide near5 진술(근거리표 공개 전 조사 시점 진술)" },
+  { re: /통학 거리·시간은 집 주소에 따라 달라 학교별 값을 두지 않아요/, why: "middle-compare commute 값이 전 학교 비어 있음", check: () => data("middle-compare").schools.every((x) => x.values?.commute?.value == null) },
+  { re: /교과서 출판사 표가 없는 학교\(\d+개교\)는 학교 공지에서 확인/, why: "middle-guide 교과서 표 학교 수 미만(동적 개수)" },
+  { re: /출처를 따로 보이지 않아요/, why: "화면 설계 결정(2026-11-08): 출처는 자료실에서만" },
+  { re: /\(지도 위치 없음\)/, why: "places.json 좌표 없는 학교 표기", check: () => data("places").places.some((x) => x.lat == null) },
+  { re: /학교알리미 수치는 수지구 10개교만 수집/, why: "hs-compare nullReason 데이터 문장", check: () => JSON.stringify(data("hs-compare")).includes("수지구 10개교만 수집") },
 ];
 
 const ROUTES = ["home", "schedule?t=hs", "schedule?t=univ", "schedule?t=road", "schedule?t=life", "select/curriculum?v=middle", "select/curriculum?v=schools&lv=middle", "select/curriculum?v=schools&lv=middle&show=map", "select/curriculum?v=schools&lv=high", "select/curriculum?v=schools&lv=high&show=subj", "select/curriculum?v=schools&lv=high&show=map", "select/curriculum?v=types", "select/curriculum?v=univ", "life/credit", "planner/plan", "admission/system", "admission/system?t=types", "changelog", "library", "library/sources", "library/files", "library/settings", "library/links"];
-const PAT = /없어요|아직|찾지 못|모으지 못|확인 못|확인하지 못|정리 중|준비 중|공개하지 않|비어 있/;
+const PAT = /없어요|아직|찾지 못|모으지 못|확인 못|확인하지 못|정리 중|준비 중|공개하지 않|비어 있|열어 보지 못|직접 확인이 필요|목록에 있어요|화면에 있어요|모았어요|값을 두지 않아요|미확인|따로 보이지/;
 const b = await chromium.launch(), c = await b.newContext({ serviceWorkers: "block", viewport: { width: 1440, height: 900 } }), p = await c.newPage();
 const found = new Map();
 for (const r of ROUTES) {
