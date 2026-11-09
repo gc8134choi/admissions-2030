@@ -31,12 +31,20 @@ const NAME = [[/고교 종류/, /v=types/], [/고교 보기/, /v=schools&lv=high
 const menu = readFileSync(`${root}/portal/menu-tree.js`, "utf8"), allData = readFileSync(`${root}/portal/data/policy.json`, "utf8") + ["hs-types", "middle-guide", "hs-compare", "middle-compare"].map((n) => readFileSync(`${root}/portal/data/${n}.json`, "utf8")).join("");
 const SCREEN = ["고교 종류", "고교 보기", "중학교 보기", "고교 일정", "중학교 일정", "배정·입학 준비"]; // 문구가 부르는 화면 이름이 메뉴에 실제로 있어야 한다
 for (const nm of SCREEN) if (!menu.includes(nm)) bad.push(`문구가 쓰는 화면 이름 '${nm}'이 메뉴(menu-tree.js)에 없어요`);
+import { readdirSync } from "node:fs";
+const elIds = load("places").places.filter((p) => p.level === "elementary").map((p) => p.id), ALLOW = new Set(["places.json", "middle.json", "school-codes.json", "changes.json", "index.json", "sources.json", "facets.json"]);
+const elDataOutside = readdirSync(`${root}/portal/data`).filter((f) => f.endsWith(".json") && !ALLOW.has(f)).filter((f) => { const t = readFileSync(`${root}/portal/data/${f}`, "utf8"); return elIds.some((id) => t.includes(`"${id}"`)); });
+{ const mid = load("middle"), have = new Set((mid.areas || []).map((a) => a.from.placeId)), miss = elIds.filter((id) => !have.has(id)); if (miss.length) bad.push(`학교군 안내(초등): middle.json areas에 없는 초등학교 ${miss.length}곳`); else ok.push(`초등학교 ${elIds.length}곳 모두 배정·입학 준비 화면(middle.json)에 학교군·갈 수 있는 중학교가 있음`); }
 let combos = 0;
 for (const [label, e] of Object.entries(SAY)) {
-  if (!["both", "high", "middle"].includes(e.level)) bad.push(`${label}: level(high/middle/both)이 없어요`);
+  if (!["both", "all", "high", "middle"].includes(e.level)) bad.push(`${label}: level(high/middle/both)이 없어요`);
   for (const lv of ["high", "middle", "elementary"]) {
     const pl = { level: lv, schoolId: lv === "high" ? "school-pungdeok" : undefined }, r = sayOf(label, pl); combos++;
-    if (lv === "elementary") { const shownE = noneText(label, "elementary"); if (r) bad.push(`${label}(초): 초등학교에 안내가 있어요(없는 값을 있다고 하면 안 돼요)`); if (!("elementary" in e)) bad.push(`${label}: elementary를 명시하지 않았어요`); if (/고입|고교|고등학교|배정|중학교 보기/.test(shownE.replace("중학교·고등학교만", ""))) bad.push(`${label}(초): 초등학교 문구에 다른 학교급 확인처가 있어요`); continue; }
+    if (lv === "elementary" && !("elementary" in e)) { bad.push(`${label}: elementary를 명시하지 않았어요`); continue; }
+    if (lv === "elementary" && !r) { // 없다는 안내: 초등학교 id가 든 데이터가 허용 목록 밖에 없어야 한다(있으면 연결해야 한다)
+      const sh = noneText(label, "elementary"); if (/고입|고교|고등학교|배정|중학교 보기/.test(sh)) bad.push(`${label}(초): 초등학교 없음 문구에 다른 학교급 확인처가 있어요`);
+      if (elDataOutside.length) bad.push(`${label}(초): 없다고 안내하는데 초등학교 값이 ${elDataOutside.join(", ")}에도 있어요`);
+      continue; }
     const shown = r?.href ? r.text : r?.none || noneText(label, lv), tag = `${label}(${lv === "high" ? "고" : "중"})`;
     if (e.level === "high" && lv === "middle" && r) bad.push(`${tag}: level=high인데 중학교에 안내가 있어요`);
     if (e.level === "middle" && lv === "high" && r) bad.push(`${tag}: level=middle인데 고교에 안내가 있어요`);
