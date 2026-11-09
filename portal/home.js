@@ -116,8 +116,8 @@ export function registerHome(views, { esc, load, store, profiles }) {
       const seenDate = new Set(), perRow = new Map(), horizon = t.getTime() + 14 * DAY; // 시작·마감이 14일 이내인 일정은 모두, 먼 일정은 묶음(같은 정책 행)당 2건까지·총 7줄까지이되 14일 밖 가장 가까운 2건은 항상 남긴다(수능 줄 별도, 사용자 결정 2026-11-08)
       const uniq = evs.filter((x) => x !== sc).filter((x) => { if (seenDate.has(x.date)) return false; seenDate.add(x.date); return true; });
       const isNear = (x) => x.sp.start.getTime() <= horizon && !x.sp.month;
-      const near = uniq.filter(isNear), farAll = uniq.filter((x) => !isNear(x)), quota = Math.max(2, Math.max(near.length, 7) - near.length);
-      const firstPer = [], seenRow = new Set(); for (const x of farAll) if (!seenRow.has(x.r.id)) { seenRow.add(x.r.id); firstPer.push(x); } // 먼 일정은 묶음마다 가장 가까운 1건씩 먼저(후기 원서 같은 다음 큰 일정이 같은 묶음에 밀려나지 않게), 남는 자리에 묶음당 둘째
+      const near = uniq.filter(isNear), farAll = uniq.filter((x) => !isNear(x)), quota = Math.max(1, Math.max(near.length, 6) - near.length);
+      const nearRows = new Set(near.map((x) => x.r.id)), firstPer = [], seenRow = new Set(nearRows); for (const x of farAll) if (!seenRow.has(x.r.id)) { seenRow.add(x.r.id); firstPer.push(x); } // 먼 일정은 묶음마다 가장 가까운 1건씩 먼저(후기 원서 같은 다음 큰 일정이 같은 묶음에 밀려나지 않게), 남는 자리에 묶음당 둘째
       const far = [...firstPer, ...farAll.filter((x) => !firstPer.includes(x)).filter((x) => { const n = perRow.get(x.r.id) || 0; if (n >= 1) return false; perRow.set(x.r.id, n + 1); return true; })].slice(0, quota);
       let rest = [...near, ...far].sort((a, b) => a.sp.start - b.sp.start || a.sp.end - b.sp.end);
       // 수능 날짜는 고교(왼쪽) 열 목록에 날짜 줄로 넣는다
@@ -150,8 +150,9 @@ export function registerHome(views, { esc, load, store, profiles }) {
       { // 좁은 폭에서는 한 열만 보인다: ?tab=A|B 로 열을 고르고, ?hl= 글이 다른 열에 있으면 그 열 탭으로 바꾼 뒤 강조한다(숨은 열의 줄은 강조가 안 보인다)
         const setTab = (c) => { hmEl.dataset.show = c; hmEl.querySelectorAll("[data-tab]").forEach((x) => { x.setAttribute("aria-selected", String(x.dataset.tab === c)); x.tabIndex = x.dataset.tab === c ? 0 : -1; }); };
         const tb = hq.get("tab"), hl = hq.get("hl");
-        if (tb === "A" || tb === "B") setTab(tb);
-        else if (hl && nk(hl).length >= 2) { const k = nk(hl).slice(0, 16), has = (c) => [...el.querySelectorAll(`.hm2-col[data-col=${c}] li, .hm2-col[data-col=${c}] summary, .hm2-col[data-col=${c}] b`)].some((n) => nk(n.textContent).includes(k)); if (!has(hmEl.dataset.show)) for (const c of ["A", "B"]) if (c !== hmEl.dataset.show && has(c)) { setTab(c); break; } }
+        const k = hl && nk(hl).length >= 2 ? nk(hl).slice(0, 16) : "", has = (c) => !!k && [...el.querySelectorAll(`.hm2-col[data-col=${c}] li, .hm2-col[data-col=${c}] summary, .hm2-col[data-col=${c}] b`)].some((n) => nk(n.textContent).includes(k));
+        const cur = tb === "A" || tb === "B" ? tb : hmEl.dataset.show, hit = has(cur) ? cur : ["A", "B"].find((c) => c !== cur && has(c)); // ?hl=이 가리키는 글이 든 열이 ?tab=보다 먼저(숨은 열의 강조 방지)
+        if (hit) setTab(hit); else if (tb === "A" || tb === "B") setTab(tb);
       }
       const pn = want && /^[a-z]+$/.test(want) ? [...el.querySelectorAll(`.${want}`)].find((n) => n.offsetParent !== null) || el.querySelector(`.${want}`) : null;
       if (pn) setTimeout(() => pn.scrollIntoView({ block: "start" }), 60);

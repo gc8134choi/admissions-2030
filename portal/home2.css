@@ -147,5 +147,12 @@ body:has(#main[data-r=home]) .legend{display:none}
 /* 터치 영역 44px: 독립 컨트롤(문장 안 용어 버튼은 예외) */
 #main .vtog button,#main .chip,#main .fchip,#main .more-g,#main .btn,#main a.btn{min-height:44px;min-width:44px}
 #main .cmx-n a,#main .cmx-g a,#main .cmp-s a,#main nav.crumb a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px}
-.gl-i,.si{min-width:44px;min-height:44px;margin-left:-6px;margin-right:-6px;margin-top:-6px;margin-bottom:-6px} /* 눌리는 영역만 44px로, 글 흐름 크기는 그대로 */
+.gl-i{min-width:44px;min-height:44px;margin:-6px} .si{min-width:44px;min-height:44px;margin:-10px;position:relative;z-index:0} /* 24px짜리 ⓘ는 음수 여백을 -10px로 두어 행 높이가 그대로 */ /* 눌리는 영역만 44px로, 글 흐름 크기는 그대로 */
 #main .fbody button,#main .fbody .lnk,#main .ed-more button{min-height:44px}
+/* 독립 컨트롤 44px(자료실 '열기', 탭 링크, 작은 링크 버튼, 선택 상자) */
+#main .ed-tabs a,#main .sch-lv a,#main td>a:only-child,#main button.lnk,#main a.lnk{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px}
+#main select{min-height:44px}
+#main label:has(>input[type=checkbox]){display:inline-flex;align-items:center;gap:8px;min-height:44px}
+/* 읽는 내용은 16px: 값 숫자·플래너 과목 정보·용어 풀이 창 본문(라벨·표 머리는 13~14px 유지) */
+#main .num,#main .pn-m,#main .pn-n,#main .pn-rl,.tip,.tip *{font-size:16px!important}
+#main .pg-rel a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px}
