@@ -263,7 +263,7 @@ const bodyHtml = (t, esc2 = esc) => {
       <p class="ed-b">${esc(credit.body)}</p><p class="ed-s">${badgeMain(credit)} · <a href="#life/credit">고교학점제 이해에서 자세히 봐요</a></p>` : ""}
       ${opn.length ? `<h2>선택 기준<span class="ed-tag">학원 의견</span> ${cnt(opn.length)}</h2>
       <div class="ed-op"><p>학원 설명회의 의견이에요. 확인된 사실이 아니라서 위 내용과 구분해서 봐요.</p>${cards(opn)}</div>` : ""}
-      <p class="ed-src">고입 전형 일정은 <a href="#schedule">일정</a>의 고입 탭에서 볼 수 있어요.</p></div>`;
+      <p class="ed-src">고입 전형 일정은 <a href="#schedule?t=hs">고교 일정</a> 화면의 '고교 입학' 탭에서 볼 수 있어요.</p></div>`;
   };
   // 용어사전: 본문에 나온 어려운 용어(학교군·지망·평준화 등)의 첫 등장에 ⓘ 풀이를 붙인다(glossary.js). 풀이가 없으면 아무것도 바꾸지 않는다.
   for (const name of ["system", "schedule", "types", "credit", "changelog"]) {

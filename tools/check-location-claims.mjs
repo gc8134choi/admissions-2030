@@ -14,7 +14,7 @@ const bad = [], ok = [];
 const LOC = [
   { phrase: "(일정 목록에 있어요)", screen: "고교 일정", route: "schedule?t=hs", need: [/수원외고 설명회/, /안양외고[^\n]*설명회/, /동탄국제고 설명회/, /외대부고 본교 설명회/] },
   { phrase: "고교 종류 화면에 있어요", screen: "고교 종류", route: "select/curriculum?v=types", need: [/외·국·자|외고·국제고·자사고/] },
-  { phrase: "빈 칸의 사유", route: "select/curriculum?v=schools&lv=high&g=%EC%A7%84%ED%95%99", need: [/빈 칸 \d+곳(\(사유 \d+가지\))?의 사유/, /대학 진학 현황/] },
+  { phrase: "빈 칸의 사유", route: "select/curriculum?v=schools&lv=high&g=%EC%A7%84%ED%95%99", need: [/빈 칸이 있는 항목 \d+개\(빈 칸 \d+곳(, 사유 \d+가지)?\)의 사유/, /대학 진학 현황/] },
   { phrase: "고교 일정 화면에서 고입 전형 일정", screen: "고교 일정", route: "schedule?t=hs", need: [/전형/, /원서접수/] },
   { phrase: "중학교 일정 화면에서 배정·입학 일정", screen: "중학교 일정", route: "schedule?t=life", need: [/배정/, /입학/] },
   { phrase: "배정·입학 준비 화면에서 학교를 고르면 학교군", screen: "배정·입학 준비", route: "select/curriculum?v=middle", need: [/학교군/, /갈 수 있는 중학교/] },
@@ -40,7 +40,7 @@ for (const l of LOC) {
 }
 // ② 검색 안내 univ-result
 {
-  const { gapDocs } = await import(`${root}/portal/search-extra.js`), hc = data("hs-compare"), d = gapDocs({ pol: [], hc, mc: data("middle-compare") }).find((g) => g.gap === "univ-result");
+  const { reqKind, KIND_LABEL } = await import(`${root}/portal/req-state.js`); const { gapDocs } = await import(`${root}/portal/search-extra.js`), hc = data("hs-compare"), d = gapDocs({ pol: [], hc, mc: data("middle-compare") }).find((g) => g.gap === "univ-result");
   const vals = hc.schools.map((s) => s.values.univStats), has = vals.filter((v) => v && v.value != null && v.value !== "").length, empty = vals.length - has, open = vals.filter((v) => !(v && v.value != null && v.value !== "") && /열어 보지 못|직접 확인이 필요/.test(v?.nullReason || "")).length;
   const s = d?.s || "";
   if (!s.includes(`고교 ${hc.schools.length}곳 중 ${has}곳만 값이 있어요`)) bad.push(`univ-result 숫자가 데이터와 달라요: ${s.slice(0, 80)}`);
@@ -51,27 +51,27 @@ for (const l of LOC) {
 }
 // ②-b 검색이 만드는 '값이 있는 개수' 문장: 대학별 '○개 전형·모집단위의 …' 개수는 규칙 전체가 아니라 requirements가 비어 있지 않은 규칙 수여야 하고, 0이면 개수 문장이 아니라 '아직 찾지 못했어요' 안내여야 한다
 {
-  const { loadSearchExtra } = await import(`${root}/portal/search-extra.js`), load = async (n) => data(n);
+  const { reqKind, KIND_LABEL } = await import(`${root}/portal/req-state.js`), { loadSearchExtra } = await import(`${root}/portal/search-extra.js`), load = async (n) => data(n);
   const matched = new Set(data("matches").matches.filter((m) => m.summary).map((m) => m.ruleId)), docs = await loadSearchExtra(load), rules = data("admission-rules").rules, uns = data("universities").universities; let nu = 0;
   for (const u of uns) {
     const want = rules.filter((r) => r.universityId === u.id && matched.has(r.ruleId)).length, all = rules.filter((r) => r.universityId === u.id).length, ds = docs.filter((d) => d.t === `${u.name} · 과목 요건(대학 요건)`); if (!all) continue; nu++;
     if (!ds.length) { bad.push(`${u.name}: 대학 요건 검색 행이 없어요`); continue; }
-    const nW = rules.filter((r) => r.universityId === u.id && (r.requirements || []).length).length; for (const d of ds) { if (!want && nW && !new RegExp(`모집단위 ${nW}개`).test(d.s || "")) bad.push(`${u.name}: 요건 문구만 있는 규칙 ${nW}개를 말하지 않아요 → ${(d.s || "").slice(0, 60)}`); if (!nW && !/찾지 못했어요/.test(d.s || "")) bad.push(`${u.name}: 요건이 하나도 없는데 '찾지 못했어요'가 아니에요 → ${(d.s || "").slice(0, 60)}`); const m = /^(\d+)개 전형/.exec(d.s || ""); if (want && (!m || Number(m[1]) !== want)) bad.push(`${u.name}: 개수 문장이 '값이 있는 ${want}개'와 달라요 → ${(d.s || "").slice(0, 60)}`); if (!want && (m || /\d+개 전형/.test(d.s || ""))) bad.push(`${u.name}: 요건이 하나도 없는데 개수를 말해요 → ${(d.s || "").slice(0, 60)}`); }
+    const nW = rules.filter((r) => r.universityId === u.id && (r.requirements || []).length).length; for (const d of ds) { if (!want && nW && !new RegExp(`모집단위 ${nW}개`).test(d.s || "")) bad.push(`${u.name}: 요건 문구만 있는 규칙 ${nW}개를 말하지 않아요 → ${(d.s || "").slice(0, 60)}`); const by = {}; for (const r of rules.filter((r) => r.universityId === u.id)) { const k = reqKind(r); if (k !== "has") by[k] = (by[k] || 0) + 1; } for (const [k, n] of Object.entries(by)) if (!(d.s || "").includes(`${KIND_LABEL[k]} ${n}개`)) bad.push(`${u.name}: 상태 '${k}' ${n}개를 문구가 말하지 않아요 → ${(d.s || "").slice(0, 90)}`); const m = /^(\d+)개 전형/.exec(d.s || ""); if (want && (!m || Number(m[1]) !== want)) bad.push(`${u.name}: 개수 문장이 '값이 있는 ${want}개'와 달라요 → ${(d.s || "").slice(0, 60)}`); if (!want && (m || /\d+개 전형/.test(d.s || ""))) bad.push(`${u.name}: 요건이 하나도 없는데 개수를 말해요 → ${(d.s || "").slice(0, 60)}`); }
   }
   ok.push(`대학 요건 개수 문장 ${nu}개 대학을 화면이 계산하는(matches summary) 규칙 수와 대조`);
 
 }
 // ②-e 대학 요건 화면 전수: 12개 대학 × 규칙 78개를 하나씩 눌러, 요건 있음(+매칭 표 또는 요강 문구)/요건 없음(요강에서 못 찾음) 3상태가 데이터와 같은지
 {
-  const rules = data("admission-rules").rules, uns = data("universities").universities, matched = new Set(data("matches").matches.filter((m) => m.summary).map((m) => m.ruleId)); let nr2 = 0;
+  const { reqKind, KIND_LABEL } = await import(`${root}/portal/req-state.js`), rules = data("admission-rules").rules, uns = data("universities").universities, matched = new Set(data("matches").matches.filter((m) => m.summary).map((m) => m.ruleId)); let nr2 = 0;
   for (const u of uns) { const rs = rules.filter((r) => r.universityId === u.id); if (!rs.length) continue;
     await p.goto(`${base}#select/curriculum?v=univ&u=${encodeURIComponent(u.id)}`); await p.waitForTimeout(1600);
     for (const r of rs) { nr2++; const chip = p.locator(`button.chip[data-k="rule"][data-v="${r.ruleId}"]`); if (!(await chip.count())) { bad.push(`${u.name} ${r.unitName}: 모집단위 칩이 없어요`); continue; } await chip.first().click(); await p.waitForTimeout(350);
       const t = await p.evaluate(() => document.querySelector("#main").innerText), has = (r.requirements || []).length > 0, hasTable = await p.evaluate(() => !!document.querySelector("#um-cmp"));
       if (has && matched.has(r.ruleId) && !hasTable) bad.push(`${u.name} ${r.unitName}: 매칭 표가 없어요`);
-      if (has && !matched.has(r.ruleId)) { const key = String(r.requirements[0].orGroupLabel || "").replace(/\s+/g, "").slice(0, 12); if (!t.replace(/\s+/g, "").includes(key)) bad.push(`${u.name} ${r.unitName}: 요건이 데이터에 있는데 화면에 요강 문구가 없어요('${key}')`); if (/요강에 아직 없어요/.test(t)) bad.push(`${u.name} ${r.unitName}: 요건이 있는데 '요강에 아직 없어요'를 말해요`); }
-      if (!has && !/요강에 아직 없어요/.test(t)) bad.push(`${u.name} ${r.unitName}: 요건이 없는데 '요강에 아직 없어요' 안내가 없어요`); } }
-  ok.push(`대학 요건 화면 ${nr2}개 규칙의 요건 있음/없음 3상태를 데이터와 대조`);
+      if (has && !matched.has(r.ruleId)) { const key = String(r.requirements[0].orGroupLabel || "").replace(/\s+/g, "").slice(0, 12); if (!t.replace(/\s+/g, "").includes(key)) bad.push(`${u.name} ${r.unitName}: 요건이 데이터에 있는데 화면에 요강 문구가 없어요('${key}')`); }
+      if (!has) { const lab = KIND_LABEL[reqKind(r)]; if (!t.replace(/\s+/g, "").includes(lab.replace(/\s+/g, ""))) bad.push(`${u.name} ${r.unitName}: 상태 ${reqKind(r)}인데 화면에 '${lab}' 문구가 없어요`); } } }
+  ok.push(`대학 요건 화면 ${nr2}개 규칙의 요건 있음·4가지 없음 사유를 데이터와 대조`);
 }
 // ②-c 화면에 따로 그려지지 않는 행(NO_HL: sch-04·hs-11·log-13·b33-06)과 2028 참고 행: 도착 화면에 값이 없으면 검색 결과에서 본문이 바로 보여야 한다(결과 항목 inline + 본문 앞 260자에 핵심 값)
 {
@@ -108,6 +108,7 @@ for (const l of LOC) {
     for (const n of add) { await pg.evaluate(() => { const d = document.querySelector("details.cmp-add"); if (d) d.open = true; }); const btn = pg.locator(`[data-add]`, { hasText: n }).first(); if (await btn.count()) { await btn.click(); await pg.waitForTimeout(400); } }
     const shown = await pg.evaluate(() => [...document.querySelectorAll("table.cmp-tbl thead th.cmp-s a")].map((a) => a.textContent.trim()));
     const gaps = await pg.evaluate(() => { document.querySelectorAll("details.cmp-gaps").forEach((d) => (d.open = true)); return document.querySelector(".cmp-gaps")?.innerText || ""; });
+    { const sm = await pg.evaluate(() => document.querySelector("details.cmp-gaps summary")?.innerText || ""), dashes = await pg.evaluate(() => [...document.querySelectorAll("table.cmp-tbl tbody td")].filter((td) => /^[–-]$/.test(td.innerText.trim())).length), mm = /빈 칸 (\d+)곳/.exec(sm); if (mm && Number(mm[1]) !== dashes) bad.push(`비교표 요약 '빈 칸 ${mm[1]}곳'이 실제 빈 칸(–) ${dashes}칸과 달라요`); }
     const row = (gaps.split("\n").find((l) => l.startsWith("대학 진학 현황")) || "").replace(/ⓘ/g, "");
     const want = [...new Set(shown.map((n) => reasonOf(n)).filter(Boolean))];
     for (const w of want) if (!row.includes(w.replace(/ⓘ/g, "").slice(0, 25))) bad.push(`비교표 [${shown.join("·")}] '대학 진학 현황' 사유에 학교 데이터 사유 '${w.slice(0, 30)}…'가 없어요 → ${row.slice(0, 90)}`);

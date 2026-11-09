@@ -1,6 +1,7 @@
 // 학교별 과목표 > "대학 요건 맞춰보기" 탭: 학교 × 대학·모집단위를 고르면 권장 과목을 이 학교 과목표(개설 후보)에서 몇 과목 고를 수 있는지 보여 준다.
 // 데이터: matches.json(tools/build-matches.mjs), admission-rules.json, subject-master.json. 확정은 표시하지 않고 보도·추정만 조용히 표시한다.
 import { stageTag } from "./stage.js";
+import { reqKind, kindText } from "./req-state.js";
 import { emptyLine } from "./empty.js";
 import { srcWrap } from "./src-ref.js";
 // 머리글의 기준 학년도는 (선택한 대학의) 규칙 행의 실제 학년도에서 만든다(2027·2028 행이 섞여 있는데 한 해로 쓰지 않게)
@@ -45,7 +46,7 @@ export async function univBody(el, { load, esc, profile, schools, sel, pick }) {
     const anyM = mine.some((x) => mOf(x.id)?.summary);
     const reqTxt = (rule.requirements || []).length ? `<ul class="um-req">${rule.requirements.map((q) => `<li><b>${q.strength === "required" ? "필수" : q.strength === "advised" ? "참고" : "권장"}</b> · ${esc(q.orGroupLabel || "")}${q.minCount ? ` <span class="muted small">(${q.minCount}과목 이상)</span>` : ""}</li>`).join("")}</ul><p class="muted small">요건 문구는 요강 그대로예요${src ? ` — ${src}` : ""}. 우리 학교 과목표와 맞춰 보는 것은 이 모집단위는 아직 안 돼요(과목 묶음을 만들지 못했어요).</p>` : "";
     if (!anyM && reqTxt) body = `<h3 class="um-h">과목 요건(요강 문구)</h3>${reqTxt}`;
-    else if (!anyM) { const u = univs.find((x) => x.id === st.univ); body = emptyLine(esc, { why: "이 모집단위는 과목 요건이 요강에 아직 없어요. 요강에서 과목 요건 항목을 아직 찾지 못했어요.", next: u?.admissionsUrl ? { label: "입학처에서 먼저 확인", url: u.admissionsUrl } : { label: "대학 이름으로 검색", url: `https://search.naver.com/search.naver?query=${encodeURIComponent((u?.name || "") + " 입학처 모집요강")}` } }); }
+    else if (!anyM) { const u = univs.find((x) => x.id === st.univ); body = emptyLine(esc, { why: `${kindText(rule)}${rule.requirementsNullReason ? ` — ${String(rule.requirementsNullReason).slice(0, 140)}` : ""}`, next: u?.admissionsUrl ? { label: "입학처에서 먼저 확인", url: u.admissionsUrl } : { label: "대학 이름으로 검색", url: `https://search.naver.com/search.naver?query=${encodeURIComponent((u?.name || "") + " 입학처 모집요강")}` } }); }
     else body = `<div id="um-cmp"></div>`;
     const reqCount = (mOf(mine[0].id)?.requirements || []).length;
     st.cfg = anyM ? () => ({
