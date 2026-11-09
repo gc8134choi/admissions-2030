@@ -298,6 +298,11 @@ export function makeSearcher(store) {
       if (all.length <= 3 && tight.size >= 1 && [...hitsP, ...hitsG].some((h) => h.k2 >= 2 && [...tight].some((t) => norm(h.x ? `${h.x.title} ${h.x.body || ""}` : `${h.g.t} ${h.g.text || ""}`).includes(t)))) { const has2 = (h) => h.k2 >= 2 && [...tight].some((t) => norm(h.x ? `${h.x.title} ${h.x.body || ""}` : `${h.g.t} ${h.g.text || ""}`).includes(t)), P = hitsP.filter(has2).slice(0, 3), G = hitsG.filter(has2).slice(0, 3);
         r = [...(P.length ? [["일정·제도", P.map(({ x }) => ({ href: withHl(routeOf(x), !shown2.has(x.id) || NO_HL.has(x.id) ? null : x.title), t: x.title, x: x.body, s: clip(x.body || "", 90), inline: !shown2.has(x.id) || NO_HL.has(x.id) }))]] : []), ...(G.length ? [["가이드·용어", G.map(({ g }) => (g.term ? { href: "#home", term: g.term, t: g.t, s: g.s || "" } : { href: g.hl === null ? g.href : withHl(g.href, g.hl || autoHl(g)), t: g.t, s: clip(g.s || g.text || "", 90) }))]] : []), ...r.filter(([h]) => h === "공식 확인처")]; }
     }
+    { /* 약한 배너('낱말 일부만 맞는 비슷한 화면') 바로 아래 행이 질의의 내용어를 모두 담고 있으면 그것은 일부 일치가 아니라 정답이다: 배너를 걷고 그 행을 앞세운다 */
+      const wk = r.findIndex(([h, l]) => h === "안내" && l.some((y) => /낱말 일부만 맞는 비슷한 화면/.test(y.s || ""))), sg = r.findIndex(([h]) => h === "비슷한 화면");
+      if (wk >= 0 && sg >= 0) { const toks = cleanQuery(String(q)).split(/\s+/).map((w) => norm(w).replace(/(인가요|인가|일까요|일까|이에요|예요|인지|인데)$/, "")).filter((w) => w.length >= 2 && !STOP.has(w) && !STOP2.has(w)); const full = toks.length >= 2 ? r[sg][1].find((y) => toks.every((w) => { const tx = norm(`${y.t} ${y.s || ""}`); return tx.includes(w) || (w.length >= 3 && tx.includes(w.slice(0, -1))); /* 어미가 붙은 꼴(필수인)은 앞 글자로 */ })) : null;
+        if (full) r = [["바로 안내", [full]], ...r.filter(([h, l], i) => i !== wk && h !== "비슷한 화면"), ["가이드·용어", r[sg][1].filter((y) => y !== full)]].filter(([, l]) => l.length); }
+    }
     { /* 용인 학교 표 안내('고교 31곳'·'중학교 13곳')에 용인 표기가 없으니, 질의에 다른 지역 낱말이 있으면 용인 기준 표임을 밝힌다 */
       const rw = REGION_WORDS.find((x) => new RegExp("(?<![가-힣(])" + regionFindPattern(x)).test(String(q).toLowerCase().replace(/\s+/g, " ")));
       if (rw) { const jo = (rw.charCodeAt(rw.length - 1) - 0xac00) % 28 ? "은" : "는"; r = r.map(([h, l]) => [h, l.map((x) => (/(고교|중학교|학교) ?\d+곳/.test(x.s || "") && !x.inline && !/용인 기준 표/.test(x.s) ? { ...x, s: `${x.s} — 용인 기준 표예요(${rw}${jo} 이 표에 없어요)` } : x))]); }

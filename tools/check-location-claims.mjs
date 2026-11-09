@@ -20,6 +20,7 @@ const LOC = [
   { phrase: "배정·입학 준비 화면에서 학교를 고르면 학교군", screen: "배정·입학 준비", route: "select/curriculum?v=middle", need: [/학교군/, /갈 수 있는 중학교/] },
   { phrase: "대학 요건 화면에서 모집단위별", screen: "대학 요건", route: "select/curriculum?v=univ", need: [/모집단위/, /필수|권장/] },
   { phrase: "학교 보기 화면에서 설명회 노트", screen: "학교 보기", route: "select/curriculum?v=schools&lv=high", need: [/설명회 노트/] },
+  { phrase: "'고교 일정' 화면의 '학년별 큰 그림' 탭의 '현재 초6 기준'(2033학년도 수능 날짜)", screen: "고교 일정", route: "schedule?t=road&b=B", need: [/2032\.11\.18/, /수능/] },
   { phrase: "'고교 일정' 화면의 '대학 입시' 탭에서(수능 날짜)", screen: "고교 일정", route: "schedule?t=univ", need: [/2029\.11\.15/, /수능/] },
 ];
 const files = readdirSync(`${root}/portal`).filter((f) => f.endsWith(".js"));
@@ -50,13 +51,20 @@ for (const l of LOC) {
 // ②-b 검색이 만드는 '값이 있는 개수' 문장: 대학별 '○개 전형·모집단위의 …' 개수는 규칙 전체가 아니라 requirements가 비어 있지 않은 규칙 수여야 하고, 0이면 개수 문장이 아니라 '아직 찾지 못했어요' 안내여야 한다
 {
   const { loadSearchExtra } = await import(`${root}/portal/search-extra.js`), load = async (n) => data(n);
-  const docs = await loadSearchExtra(load), rules = data("admission-rules").rules, uns = data("universities").universities; let nu = 0;
+  const matched = new Set(data("matches").matches.filter((m) => m.summary).map((m) => m.ruleId)), docs = await loadSearchExtra(load), rules = data("admission-rules").rules, uns = data("universities").universities; let nu = 0;
   for (const u of uns) {
-    const want = rules.filter((r) => r.universityId === u.id && Array.isArray(r.requirements) && r.requirements.length > 0).length, all = rules.filter((r) => r.universityId === u.id).length, ds = docs.filter((d) => d.t === `${u.name} · 과목 요건(대학 요건)`); if (!all) continue; nu++;
+    const want = rules.filter((r) => r.universityId === u.id && matched.has(r.ruleId)).length, all = rules.filter((r) => r.universityId === u.id).length, ds = docs.filter((d) => d.t === `${u.name} · 과목 요건(대학 요건)`); if (!all) continue; nu++;
     if (!ds.length) { bad.push(`${u.name}: 대학 요건 검색 행이 없어요`); continue; }
     for (const d of ds) { const m = /^(\d+)개 전형/.exec(d.s || ""); if (want && (!m || Number(m[1]) !== want)) bad.push(`${u.name}: 개수 문장이 '값이 있는 ${want}개'와 달라요 → ${(d.s || "").slice(0, 60)}`); if (!want && (m || /\d+개 전형/.test(d.s || ""))) bad.push(`${u.name}: 요건이 하나도 없는데 개수를 말해요 → ${(d.s || "").slice(0, 60)}`); }
   }
-  ok.push(`대학 요건 개수 문장 ${nu}개 대학을 requirements가 있는 규칙 수와 대조`);
+  ok.push(`대학 요건 개수 문장 ${nu}개 대학을 화면이 계산하는(matches summary) 규칙 수와 대조`);
+  // 그 문장이 가리키는 화면을 열어: 개수 0인 대학은 모집단위 목록과 '요강에 아직 없어요'가, 개수>0인 대학은 과목 요건 표가 실제로 있어야 한다
+  for (const u of uns) { const all = rules.filter((r) => r.universityId === u.id); if (!all.length) continue; const want = all.filter((r) => matched.has(r.ruleId)).length;
+    await p.goto(`${base}#select/curriculum?v=univ&u=${encodeURIComponent(u.id)}`); await p.waitForTimeout(1800);
+    const t = await p.evaluate(() => document.querySelector("#main").innerText);
+    if (want === 0 && !/요강에 아직 없어요|요강에서 과목 요건 항목을 아직 찾지 못했어요/.test(t)) bad.push(`${u.name}: 개수 0인데 화면에 '요강에 없음' 안내가 없어요`);
+    if (want === 0 && !all.some((r) => t.includes(r.unitName))) bad.push(`${u.name}: 화면에 모집단위 이름 목록이 없어요`);
+    if (want > 0 && /^\s*$/.test(t)) bad.push(`${u.name}: 화면이 비어 있어요`); }
 }
 // ②-c 화면에 따로 그려지지 않는 행(NO_HL: sch-04·hs-11·log-13·b33-06)과 2028 참고 행: 도착 화면에 값이 없으면 검색 결과에서 본문이 바로 보여야 한다(결과 항목 inline + 본문 앞 260자에 핵심 값)
 {
