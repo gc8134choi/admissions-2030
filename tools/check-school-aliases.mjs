@@ -60,16 +60,34 @@ const byCore = new Map(); for (const p of places) { const m = SUF.exec(p.name); 
 let namb = 0; for (const [c, names] of byCore) if (names.length >= 2) { namb++; const flat = S.search(`${c} 학급수`).flatMap(([, l]) => l), note = flat.find((x) => (x.t || "") === `${c} 후보`); if (!note) bad.push(`'${c} 학급수': 같은 이름 학교가 ${names.length}곳인데 후보 안내가 없어요`); else for (const nm of names) if (!note.s.includes(nm)) bad.push(`'${c}' 후보에 ${nm}이(가) 빠졌어요`); }
 console.log(`  · 학교급 변형 ${nv}질의, 모호한 이름 ${namb}개 후보 안내`);
 console.log(`  · 띄어 쓴 학교급 ${nsp}질의, 초등 학교군 문구 ${nz}곳 데이터 대조`);
-// 날짜·기간 질의: 정책 행 본문에 있는 날짜(2028.1.3)·기간(9.24~12.20)을 그대로 물으면 그 날짜가 든 행이 나와야 하고 '찾지 못했어요'를 내면 안 된다
+// 날짜 질의 45일 × 8형태: 정책 행 본문에 있는 날짜(연도 있는 것)를 점(1.31·2028.1.31)·한글(1월 31일)·슬래시(1/31)·하이픈(2028-01-31)·요일 포함(1월 31일 월요일)·띄어쓴 점(2026. 12. 4.)으로 물으면 상위 3위 안에 그 날짜가 든 행이 나와야 하고 '찾지 못했어요'를 내면 안 된다. 기간(9.24~12.20)은 별도로 본문 그대로 전수
 {
-  let nd = 0; const seen = new Set();
-  for (const r of parts[0]) for (const m of String(r.body || "").matchAll(/(?<![\d.])(\d{4}\.\d{1,2}\.\d{1,2}|\d{1,2}\.\d{1,2}~\d{1,2}\.\d{1,2})(?![\d.])/g)) {
-    const d = m[1]; if (seen.has(d)) continue; seen.add(d); nd++;
-    const flat = S.search(d).flatMap(([, l]) => l), has = flat.some((x) => { const row = parts[0].find((p) => p.title === x.t); return row && String(row.title + " " + row.body).includes(d); });
-    if (!has) bad.push(`날짜 질의 '${d}' → 그 날짜가 든 행이 안 나와요 (${r.id} 본문에 있음)`);
-    if (flat.some((x) => /목록에서 찾지 못했어요/.test(x.s || ""))) bad.push(`날짜 질의 '${d}' → 본문에 있는데 '찾지 못했어요'`);
-  }
-  console.log(`  · 날짜·기간 질의 ${nd}건`);
+  const WD = "일월화수목금토", seen = new Map();
+  for (const r of parts[0]) for (const m of String(r.body || "").matchAll(/(?<![\d.])(20\d{2})\.(\d{1,2})\.(\d{1,2})(?![\d.])/g)) { const k = `${m[1]}.${+m[2]}.${+m[3]}`; if (!seen.has(k)) seen.set(k, [+m[1], +m[2], +m[3]]); }
+  const days = [...seen.values()].slice(0, 45), P2 = (n) => String(n).padStart(2, "0"); let nd = 0; const fails = new Map();
+  for (const [y, mo, d] of days) {
+    const wd = WD[new Date(Date.UTC(y, mo - 1, d)).getUTCDay()], forms = { 점: `${mo}.${d}`, 연점: `${y}.${mo}.${d}`, 한글: `${mo}월 ${d}일`, 슬래시: `${mo}/${d}`, 하이픈: `${y}-${P2(mo)}-${P2(d)}`, 요일: `${mo}월 ${d}일 ${wd}요일`, 띄어쓴점: `${y}. ${mo}. ${d}.`, 연한글: `${y}년 ${mo}월 ${d}일` };
+    for (const [nm, q] of Object.entries(forms)) { nd++;
+      const res = S.search(q), flat = res.flatMap(([, l]) => l).slice(0, 3), has = flat.some((x) => { const row = parts[0].find((p) => p.title === x.t); return row && new RegExp(`(?<![\\d.])(?:${y}\\.0?)?0?${mo}\\.0?${d}(?![\\d])`).test(row.title + " " + row.body); });
+      if (!has) { fails.set(nm, (fails.get(nm) || 0) + 1); if (process.env.DBG) console.log('   미적중', q, flat.map((x) => x.t.slice(0, 20)).join(' / ')); }
+      if (res.flatMap(([, l]) => l).some((x) => /목록에서 찾지 못했어요/.test(x.s || ""))) bad.push(`날짜 질의 '${q}' → 본문에 있는데 '찾지 못했어요'`); } }
+  for (const [nm, n] of fails) bad.push(`날짜 표기 '${nm}': ${days.length}일 중 ${n}일은 상위 3위 안에 그 날짜가 든 행이 없어요`);
+  const seen2 = new Set(); let np = 0;
+  for (const r of parts[0]) for (const m of String(r.body || "").matchAll(/(?<![\d.])(\d{1,2}\.\d{1,2}~\d{1,2}\.\d{1,2})(?![\d.])/g)) { const d = m[1]; if (seen2.has(d)) continue; seen2.add(d); np++;
+    const flat = S.search(d).flatMap(([, l]) => l); if (!flat.some((x) => { const row = parts[0].find((p) => p.title === x.t); return row && String(row.title + " " + row.body).includes(d); })) bad.push(`기간 질의 '${d}' → 그 기간이 든 행이 안 나와요 (${r.id})`); }
+  console.log(`  · 날짜 ${days.length}일 × 8형태 ${nd}질의, 기간 ${np}건`);
+}
+// 숫자 질의 × 이름 형태: 학교 표시 이름(places)·공식 정식 이름·용인 접두어 유무·약칭 어느 쪽으로 불러도 같은 값 행(학생수·학급수·교원수)이 나와야 한다
+{
+  let nn = 0;
+  for (const f of ["hs-compare", "middle-compare"]) for (const cmp of [await load(f)]) for (const sc of cmp.schools || []) {
+    const pl = places.find((x) => x.id === sc.placeId); if (!pl) continue; const m = SUF.exec(pl.name); if (!m) continue; const core = pl.name.replace(SUF, "");
+    const hasVal = (lbl) => Object.entries(sc.values || {}).some(([k, v]) => v && v.value != null);
+    if (!hasVal()) continue;
+    for (const form of new Set(pl.name.startsWith("용인") ? [pl.name, sc.name] : [pl.name, sc.name, `용인${core}${SH[m[0]]}`, `${core}${SH[m[0]]}`, `용인${core}${m[0]}`])) for (const lbl of ["학생수", "학급수", "교원수"].filter((l) => (cmp.fields || []).some((fd) => fd.label.startsWith(l) && sc.values?.[fd.id]?.value != null))) {
+      const flat = S.search(`${form} ${lbl}`).flatMap(([, l]) => l); nn++;
+      if (!flat.some((x) => (x.t || "").startsWith(pl.name) && (x.t || "").includes(lbl))) bad.push(`'${form} ${lbl}' → ${pl.name} · ${lbl} 값 행이 안 나와요`); } }
+  console.log(`  · 이름 형태 × 숫자 질의 ${nn}건`);
 }
 // 배너 진실성: 용어 이름 + 풀이/뜻풀이/정의, 한글 날짜 표기, 공동학군 데이터 낱말 질의는 '찾지 못했어요'·'맞는 내용이 없을 수 있어요' 배너를 1위로 내지 않고 값이 있는 행을 낸다
 {

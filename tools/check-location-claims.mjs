@@ -77,6 +77,19 @@ for (const l of LOC) {
     if (!`${hit.inline ? hit.x || "" : ""} ${hit.s || ""}`.slice(0, 300).includes(key)) bad.push(`NO_HL ${id}(${row.title}): 결과에 본문이 바로 보이지 않아요(핵심 값 '${key}')`); }
   ok.push(`화면에 안 그려지는 행 ${nn}건: 검색 결과에서 본문(핵심 값)이 바로 보임`);
 }
+// ②-d 결과의 hl이 도착 화면에서 가리키는 카드가 그 행이 말하는 일정 값을 담고 있는지: 일정이 여러 건인 정책 행의 일정 라벨로 물어, 첫 일정 화면 결과를 열고 강조된 줄(.hl-row)에 그 일정 날짜가 있어야 한다
+{
+  const { makeSearcher, buildSearchData } = await import(`${root}/portal/search.js`), { loadSearchExtra } = await import(`${root}/portal/search-extra.js`), load = async (n) => data(n), store = { get: (k, d) => d, set() {} };
+  const parts = await Promise.all([load("policy"), load("summary"), load("links").catch(() => ({ items: [] })), load("subject-info").catch(() => ({ subjects: [] })), load("places"), loadSearchExtra(load)]), S = makeSearcher(store); S.setData(buildSearchData(parts, store));
+  const P2 = (n) => String(n).padStart(2, "0"); let nh = 0;
+  const cand = parts[0].filter((r) => (r.events || []).length >= 2).slice(0, 14);
+  for (const r of cand) for (const e of r.events.filter((x) => x.label && x.label.length >= 5 && parts[0].flatMap((z) => z.events || []).filter((z) => (z.label || "").includes(x.label.replace(/\(.*$/, "").trim())).length === 1 && /^\d{4}-\d{2}-\d{2}$/.test(x.start)).slice(0, 2)) { /* 다른 행과 라벨이 겹치는 일반 낱말(원서접수·성적통지)은 질의가 모호해 제외 */
+    const q = `${e.label.replace(/\(.*$/, "").trim()} 날짜`, link = S.search(q).flatMap(([, l]) => l).find((x) => /#schedule\?t=hs/.test(x.href || "") && /hl=/.test(x.href)); if (!link) continue; nh++;
+    await p.goto(`${base}${link.href}`); await p.waitForTimeout(2600);
+    const txt = await p.evaluate(() => [...document.querySelectorAll(".hl-row")].map((x) => x.innerText).join(" | ")), [y, mo, d] = e.start.split("-").map(Number);
+    if (!new RegExp(`(?<![\\d])(?:${y}\\.)?(?:${P2(mo)}|${mo})\\.(?:${P2(d)}|${d})(?![\\d])`).test(txt)) bad.push(`'${q}' → 강조된 카드에 ${e.start} 이(가) 안 보여요 (강조: ${txt.slice(0, 60)})`); }
+  ok.push(`결과 hl 도착 카드 ${nh}건의 일정 날짜 확인`);
+}
 // ③ 비교표 학교 조합별 빈 칸 사유
 {
   const hc = data("hs-compare"), reasonOf = (name) => hc.schools.find((s) => s.name === name)?.values?.univStats?.nullReason || "";
