@@ -21,5 +21,12 @@ for (const f of readdirSync(`${root}/portal`).filter((x) => x.endsWith(".js") &&
     bad.push(`${f}:${i + 1} '${nm} 화면' — 현재 메뉴·탭 이름이 아니에요`);
   } });
 }
+
+// 탭 이름 전수: 문구 속 "'○○' 탭"의 ○○은 화면이 실제로 그리는 탭 이름(policy.js의 일정 탭 배열 등)이어야 한다
+{
+  const tabs = new Set(["중학교", "고등학교", "고교 입학", "대학 입시", "학년별 큰 그림", "학교 비교", "지도", "비교"]);
+  for (const f of readdirSync(`${root}/portal`).filter((x) => x.endsWith(".js"))) { const src = readFileSync(`${root}/portal/${f}`, "utf8"); for (const m of src.matchAll(/\["[a-z]+", "#[^"]+", "([^"]+)"\]/g)) tabs.add(m[1]); }
+  for (const f of readdirSync(`${root}/portal`).filter((x) => x.endsWith(".js") && !/^(menu-tree|menu|sw)\.js$/.test(x))) { readFileSync(`${root}/portal/${f}`, "utf8").split("\n").forEach((l0, i) => { const l = l0.replace(/\/\*.*?\*\//g, " ").replace(/(^|\s)\/\/.*$/, "$1"); for (const m of l.matchAll(/'([^']{2,14})' 탭/g)) { n++; if (!m[1].split(/\s*\|\s*/).every((x) => tabs.has(x) || names.has(x))) bad.push(`${f}:${i + 1} '${m[1]}' 탭 — 화면에 그런 탭 이름이 없어요`); } }); }
+}
 if (bad.length) { for (const b of bad.slice(0, 60)) console.log("  ✗", b); console.log(`화면 이름 불일치 ${bad.length}건 / 패턴 ${n}곳`); process.exit(1); }
 console.log(`OK: 문구 속 '○○ 화면' ${n}곳이 모두 현재 메뉴·탭 이름(${names.size}개)이거나 일반 표현`);

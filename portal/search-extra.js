@@ -20,16 +20,19 @@ let MATCHED = new Set(); /* 화면이 계산할 수 있는 규칙(matches.json�
 const reqCount = (ar, uid) => (ar?.rules || []).filter((r) => r.universityId === uid && MATCHED.has(r.ruleId)).length;
 const shortReq = (q) => String(q?.orGroupLabel || "").replace(/\(.*$/, "").replace(/\s+/g, " ").trim().slice(0, 40);
 /* 3상태(전수 점검 tools/check-location-claims): ① 매칭 가능(summary 있음) ② 요건 문구만 있음(requirements 비어 있지 않음) ③ 요강에서 못 찾음 */
-const univReqText = (ar, uid, verb) => { const rs = (ar?.rules || []).filter((r) => r.universityId === uid), nM = rs.filter((r) => MATCHED.has(r.ruleId)).length, withReq = rs.filter((r) => (r.requirements || []).length); const nW = withReq.length;
-  if (nM) return `${nM}개 전형·모집단위의 필수·권장 과목을 우리 학교 ${verb}${nW > nM ? ` (요건 문구만 있는 모집단위 ${nW - nM}개 더)` : ""}`;
-  if (nW) { const q0 = withReq[0].requirements[0]; return `과목 요건이 있는 모집단위 ${nW}개: 요강 문구는 대학 요건 화면에서 볼 수 있어요(예: ${withReq[0].unitName} ${q0.strength === "required" ? "필수" : "권장"} · ${shortReq(q0)}). 우리 학교 과목표와 맞춰 보기는 아직 안 돼요`; }
-  return "이 대학의 모집단위 목록과 요건 유무는 대학 요건 화면에서 볼 수 있어요(과목 요건은 요강에서 아직 찾지 못했어요)"; };
+const univReqText = (ar, uid, verb) => { const rs = (ar?.rules || []).filter((r) => r.universityId === uid), nM = rs.filter((r) => MATCHED.has(r.ruleId)).length, withReq = rs.filter((r) => reqKind(r) === "has"), nW = withReq.length;
+  const by = {}; for (const r of rs) { const k = reqKind(r); if (k !== "has") by[k] = (by[k] || 0) + 1; }
+  const states = Object.entries(by).map(([k, n]) => `${KIND_LABEL[k]} ${n}개`).join(" · "), tail = states ? ` (${states})` : "";
+  if (nM) return `${nM}개 전형·모집단위의 필수·권장 과목을 우리 학교 ${verb}${nW > nM ? ` (요건 문구만 있는 모집단위 ${nW - nM}개 더)` : ""}${tail}`;
+  if (nW) { const q0 = withReq[0].requirements[0]; return `과목 요건이 있는 모집단위 ${nW}개: 요강 문구는 대학 요건 화면에서 볼 수 있어요(예: ${withReq[0].unitName} ${q0.strength === "required" ? "필수" : "권장"} · ${shortReq(q0)}). 우리 학교 과목표와 맞춰 보기는 아직 안 돼요${tail}`; }
+  return `이 대학의 모집단위별 요건 상태는 대학 요건 화면에서 볼 수 있어요${tail}`; };
 const cnt = (d, k) => (d?.schools || []).filter((s) => s.values?.[k] && s.values[k].value != null && s.values[k].value !== "").length;
 // 선택과목 현황: 학교(placeId)별로 값이 있는 곳과 인원 미공개인 곳을 데이터에서 센다
 const elCountText = (el) => { const by = new Map(); for (const x of el || []) by.set(x.placeId, (by.get(x.placeId) || false) || !x.nullReason); const n = [...by.values()].filter(Boolean).length, m = by.size - n; return `탐구 과목 선택 비중을 학교별로 비교해요(값이 있는 학교 ${n}곳${m ? `, 나머지 ${m}곳은 인원 미공개` : ""})`; };
 const row = (D, id) => (D.pol || []).find((r) => r.id === id);
 const snip = (b, re, n = 100) => { const t = String(b || "").replace(/\s+/g, " "), m = re.exec(t); return m ? t.slice(Math.max(0, m.index - 20), Math.max(0, m.index - 20) + n) : t.slice(0, n); };
 import { clip, schoolAliases } from "./search.js";
+import { reqKind, KIND_LABEL } from "./req-state.js";
 const REGION_Q = "(?<![가-힣(])(" + REGION_WORDS.map(regionPattern).join("|"); /* 지역 낱말 사전은 search-claims.js REGION_TABLE 한 곳 */
 const firstSent = (s, n = 80) => clip(String(s || "").replace(/\s+/g, " "), n);
 export const GAPS = [
