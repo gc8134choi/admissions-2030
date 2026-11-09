@@ -27,5 +27,5 @@ for (const id of ["sch-04", "sch-10"]) {
 // 서울 구 이름 25곳 × 고입 낱말: 데이터는 서울 전체 단위라, 구 이름 + 고입 낱말을 물으면 제목이 '서울'로 시작하는 서울 행이 맨 위 3건 안에 나와야 한다(경기 행이 먼저 나오지 않게)
 const GU = ["종로", "용산", "성동", "광진", "동대문", "중랑", "성북", "강북", "도봉", "노원", "은평", "서대문", "마포", "양천", "강서", "구로", "금천", "영등포", "동작", "관악", "서초", "강남", "송파", "강동"];
 for (const g of GU) for (const w of ["외고", "고입 일정", "일반고 배정", "자사고"]) for (const q of [`${g} ${w}`, `서울 ${g}구 ${w}`]) { n++; const r = S.search(q), top = r.filter(([h]) => h !== "안내" && h !== "공식 확인처").flatMap(([, l]) => l).slice(0, 3); if (!top.some((y) => /^서울|서울/.test(y.t))) bad.push(`'${q}' → 위 3건에 서울 행이 없어요(${top.map((y) => y.t).join(" / ").slice(0, 60)})`); }
-if (bad.length) { bad.slice(0, 25).forEach((x) => console.log("  ✗", x)); console.log(`실패 ${bad.length}/${n}건`); process.exit(1); }
+if (bad.length) { bad.slice(0, 80).forEach((x) => console.log("  ✗", x)); console.log(`실패 ${bad.length}/${n}건`); process.exit(1); }
 console.log(`OK: 2028 수시·정시 참고 일정 날짜×낱말×8표기 ${n}개 질의가 모두 맞게 나와요(수시·정시 참고 일정 행과 서울 구 이름 질의)`);
