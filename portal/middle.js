@@ -11,6 +11,7 @@ import { cmpTable } from "./compare-table.js";
 import { compareRows } from "./hs-compare.js";
 import { WHERE } from "./empty.js";
 import { preloadGlossary, decorateGlossary } from "./glossary.js";
+import { jointOf } from "./joint-zone.js";
 const ES = { reported: ["rep", "보도"], estimated: ["est", "추정"] };
 const tag = (s, esc) => (ES[s] ? `<span class="es ${ES[s][0]}">${ES[s][1]}</span>` : "");
 const srcs = (a, esc) => (a || []).map((x) => (x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)} ↗</a>` : esc(x.name))).join(" · ");
@@ -56,13 +57,13 @@ export async function middleBody(el, { load, esc, mapHref = (id) => `#select/cur
     const short = fromName.replace(/초등학교$/, "초");
     const text = `${area.from.note || ""} ${area.zoneSchools.map((z) => z.note || "").join(" ")}`;
     const groups = [...new Set(text.match(/수지\d중학군/g) || [])];
-    const joint = /공동학군/.test(text);
+    const jz = jointOf(area), joint = jz.type !== "none"; /* 전체 공동/학구 일부 공동/미분류를 구분(joint-zone.js) */
     const s1 = groups.includes("수지1중학군");
     const names = zs.map(({ p }) => p.name.replace(/중학교$/, "중"));
     const group = groups.length ? groups.join("·") : "정해진 학교군";
     return mid.principles.map((p) => {
       if (/수지1중학군/.test(p.title) || p.id === "mp-01") {
-        return { ...p, title: `${short}는 ${group}${joint ? "(공동학군)" : ""}`, body: `${fromName}는 ${group}에 속해요.${joint ? " 공동학군이라 두 학교군의 중학교를 함께 지원할 수 있어요." : ""} 갈 수 있는 중학교는 ${names.join("·")} ${names.length}교예요. 2027학년도 고시 기준이고, 2030학년도 입학 시점 구성은 그해 고시에서 정해져요.` };
+        return { ...p, title: `${short}는 ${jz.type === "part" ? jz.home : group}${jz.type === "all" ? "(공동학군)" : jz.type === "part" ? "(일부 학구만 공동학군)" : ""}`, body: `${fromName}는 ${jz.type === "part" ? jz.home : group}에 속해요.${jz.type === "all" ? " 공동학군이라 두 학교군의 중학교를 함께 지원할 수 있어요." : jz.type === "part" ? ` 일부 학구(${jz.scope})는 ${jz.other} 학교도 지원할 수 있어요.` : jz.type === "unknown" ? ` 공동학군 범위는 고시 비고에서 확인해요: ${jz.raw}` : ""} ${jz.type === "part" ? `${jz.home}의 중학교는 ${names.join("·")} ${names.length}교예요(${jz.other} 학교는 이 목록에 넣지 않았어요).` : `갈 수 있는 중학교는 ${names.join("·")} ${names.length}교예요.`} 2027학년도 고시 기준이고, 2030학년도 입학 시점 구성은 그해 고시에서 정해져요.` };
       }
       const fix = (t) => String(t).replaceAll("성복초등학교", fromName).replaceAll("성복초", short);
       if (s1) return { ...p, title: fix(p.title), body: fix(p.body) };

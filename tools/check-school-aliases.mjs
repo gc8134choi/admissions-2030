@@ -5,6 +5,7 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 const root = resolve(new URL("..", import.meta.url).pathname);
 const { makeSearcher, buildSearchData, schoolAliases } = await import(`${root}/portal/search.js`);
+const { jointOf } = await import(`${root}/portal/joint-zone.js`);
 const { loadSearchExtra } = await import(`${root}/portal/search-extra.js`);
 const load = async (n) => JSON.parse(readFileSync(`${root}/portal/data/${n}.json`, "utf8"));
 const store = { get: (k, d) => d, set() {} };
@@ -42,14 +43,14 @@ for (const p of places) { const m = SUF.exec(p.name); if (!m) continue; const co
 const mid = await load("middle"); let nz = 0;
 for (const a of mid.areas || []) {
   const sc = places.find((x) => x.id === a.from.placeId); if (!sc) continue;
-  const names = [...new Set((a.zoneSchools || []).map((z) => /^([^\s(（]+?학군)/.exec(z.note || "")?.[1]).filter(Boolean))], joint = names.length > 1 || /공동학군/.test(a.from.note || "");
+  const j = jointOf(a), names = j.type === "all" ? j.groups : [j.home].filter(Boolean);
   const flat = S.search(`${sc.name} 학교군`).flatMap(([, l]) => l), note = flat.find((x) => (x.t || "") === `${sc.name} · 학교군`); nz++;
   if (!note) { bad.push(`${sc.name} 학교군: 안내 행이 없어요`); continue; }
+  if (j.type === "unknown") bad.push(`${sc.name} 학교군: 공동학군 범위 미분류`);
   for (const nm of names) if (!note.s.includes(nm)) bad.push(`${sc.name} 학교군: '${nm}'이 안내에 없어요 → ${note.s.slice(0, 80)}`);
-  // 학구 일부만 공동학군이면(고기초: 운중동 일부·판교중학군) 그 범위와 상대 학군이 안내에 있어야 하고, 학교 전체가 공동이면 두 학군 이름과 '공동학군'
-  const part = /\((.+?)[은는] (\S+?학군)과 공동학군\)/.exec(a.from.note || "");
-  if (part) { const scope = part[1].replace(/^.+? 학구 중 /, ""); if (!note.s.includes("학구 일부") || !note.s.includes(scope) || !note.s.includes(part[2])) bad.push(`${sc.name} 학교군: 학구 일부 공동학군(범위 '${scope}'·상대 '${part[2]}')이 안내에 없어요 → ${note.s.slice(0, 120)}`); }
-  else if (joint !== /공동학군/.test(note.s)) bad.push(`${sc.name} 학교군: 공동학군 표시가 데이터(${joint ? "공동" : "단일"})와 달라요 → ${note.s.slice(0, 80)}`);
+  // 학구 일부만 공동(고기초)이면 범위·상대 학군이 안내에 있고 '두 학군 공동'으로 읽히면 안 되며, 학교 전체가 공동이면 두 학군 이름과 '공동학군'
+  if (j.type === "part") { if (!note.s.includes("학구 일부") || !note.s.includes(j.scope) || !note.s.includes(j.other) || /수지1중학군 공동학군|수지1중학군·판교중학군/.test(note.s)) bad.push(`${sc.name} 학교군: 학구 일부 공동학군(범위 '${j.scope}'·상대 '${j.other}')이 안내에 없거나 전체 공동으로 읽혀요 → ${note.s.slice(0, 160)}`); }
+  else if ((j.type === "all") !== /공동학군/.test(note.s.replace(/^[^—]*—/, ""))) bad.push(`${sc.name} 학교군: 공동학군 표시가 데이터(${j.type})와 달라요 → ${note.s.slice(0, 120)}`);
 }
 // 학교급 한 글자 띄어쓰기(서원 중·홍천 고)·'고교/중교' 변형: 같은 이름의 다른 학교급 값을 1위로 내면 안 된다. 학교급 없는 모호한 이름(서원·홍천)은 후보 안내
 const SHORT = { 초등학교: ["초", "초교"], 중학교: ["중", "중교"], 고등학교: ["고", "고교"] }; let nv = 0;
@@ -59,5 +60,16 @@ const byCore = new Map(); for (const p of places) { const m = SUF.exec(p.name); 
 let namb = 0; for (const [c, names] of byCore) if (names.length >= 2) { namb++; const flat = S.search(`${c} 학급수`).flatMap(([, l]) => l), note = flat.find((x) => (x.t || "") === `${c} 후보`); if (!note) bad.push(`'${c} 학급수': 같은 이름 학교가 ${names.length}곳인데 후보 안내가 없어요`); else for (const nm of names) if (!note.s.includes(nm)) bad.push(`'${c}' 후보에 ${nm}이(가) 빠졌어요`); }
 console.log(`  · 학교급 변형 ${nv}질의, 모호한 이름 ${namb}개 후보 안내`);
 console.log(`  · 띄어 쓴 학교급 ${nsp}질의, 초등 학교군 문구 ${nz}곳 데이터 대조`);
+// 날짜·기간 질의: 정책 행 본문에 있는 날짜(2028.1.3)·기간(9.24~12.20)을 그대로 물으면 그 날짜가 든 행이 나와야 하고 '찾지 못했어요'를 내면 안 된다
+{
+  let nd = 0; const seen = new Set();
+  for (const r of parts[0]) for (const m of String(r.body || "").matchAll(/(?<![\d.])(\d{4}\.\d{1,2}\.\d{1,2}|\d{1,2}\.\d{1,2}~\d{1,2}\.\d{1,2})(?![\d.])/g)) {
+    const d = m[1]; if (seen.has(d)) continue; seen.add(d); nd++;
+    const flat = S.search(d).flatMap(([, l]) => l), has = flat.some((x) => { const row = parts[0].find((p) => p.title === x.t); return row && String(row.title + " " + row.body).includes(d); });
+    if (!has) bad.push(`날짜 질의 '${d}' → 그 날짜가 든 행이 안 나와요 (${r.id} 본문에 있음)`);
+    if (flat.some((x) => /목록에서 찾지 못했어요/.test(x.s || ""))) bad.push(`날짜 질의 '${d}' → 본문에 있는데 '찾지 못했어요'`);
+  }
+  console.log(`  · 날짜·기간 질의 ${nd}건`);
+}
 if (bad.length) { for (const b of bad.slice(0, 40)) console.log("  ✗", b); console.log(`실패 ${bad.length}건 / ${n}질의`); process.exit(1); }
 console.log(`OK: 학교 ${places.length}곳 × 이름 형태·주제 ${n}질의에서 '찾지 못했어요' 오선언 없음`);
