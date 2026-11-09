@@ -3,7 +3,7 @@
 import { allItems } from "./nav-tree.js";
 import { stageOf } from "./stage.js";
 import { loadSearchExtra, univInfo } from "./search-extra.js";
-import { sayOf, noneText } from "./search-claims.js";
+import { sayOf, noneText, REGION_WORDS, regionKnown } from "./search-claims.js";
 import { loadProfile, filterByProfile } from "./profile.js";
 const RECENT_KEY = "portal.search.recent";
 // 안내 데이터(중학교 배정 가이드·고교 유형·전형)를 제목+본문 단위로 펼쳐 색인한다. 출처·주소·코드 필드는 뺀다.
@@ -29,7 +29,7 @@ export const schoolAliases = (name) => {
   const n = norm(name), m = /^(.*?)(초등학교|중학교|고등학교)$/.exec(n); if (!m) return [n];
   const core = m[1], sh = m[2][0], out = new Set([n, core + sh]);
   if (core.startsWith("용인") && core.length >= 4) { out.add(n.slice(2)); out.add(core.slice(2) + sh); }
-  else if (core.length >= 2) { out.add("용인" + n); out.add("용인" + core + sh); } // 공식 정식 이름(용인홍천고등학교)으로 불러도
+  else if (!core.startsWith("용인") && core.length >= 2) { out.add("용인" + n); out.add("용인" + core + sh); } // 공식 정식 이름(용인홍천고등학교)으로 불러도
   return [...out];
 };const ROUTE = {
   "exam-schedule": "#schedule?t=univ", "hs-schedule": "#schedule?t=hs", "gg-hs-entry": "#schedule?t=hs", "life-schedule": "#schedule?t=life",
@@ -106,7 +106,12 @@ export function makeSearcher(store) {
     return [["가이드·용어", gd], ["일정·제도", rows], ["학교", [...sch, ...plc]], ["과목", sub], ["바로가기", lk], ["화면", [...pages, ...maps]]].filter(([, l]) => l.length);
   };
   // 안내가 정해진 주제(이사·배정 서류·자사고 배점·재수 …)는 느슨하게 맞는 다른 행보다 먼저 보여 준다. 없는 주제는 엉뚱한 행 대신 안내만 보인다.
+  let regionHay = null;
   const priority = (q, q0 = "") => { const nq = norm(q), nr = norm(String(q0).replace(/[?？!！.,~]/g, " ")); const hit = data.guide.filter((g) => g.q && (new RegExp(g.q).test(nq) || new RegExp(g.q).test(nr))).filter((g) => !(g.gap === "none-topics" && /수능|가채점/.test(nr) && /날짜|며칠|언제|시행|몇월|몇일|일정/.test(nr))); /* 질의에 날짜 낱말이 있는 수능 질의는 "다루지 않는다"로 막지 않는다(정리된 질의에서 날짜 낱말이 빠져 선언이 걸리던 오류) */ if (hit.some((g) => g.gap === "none-topics")) { const o = hit.filter((g) => g.gap === "none-topics"); return { list: o.map((g) => ({ href: g.href, t: g.t, s: g.s })), only: true }; } // 이 포털이 다루지 않는 주제는 안내만(링크·소음 행이 앞서지 않게)
+    if (hit.some((g) => g.gap === "other-region")) { // 질의의 지역 낱말이 이 포털 데이터(정책·안내)에 있으면 '다른 지역은 없어요'라고 하지 않는다(서울·수원외고 등) — 데이터에 없는 지역만 선언
+      const w = REGION_WORDS.find((x) => new RegExp("(?<![가-힣])" + x).test(nr)); regionHay ||= JSON.stringify([data.policy, data.guide.map((g) => [g.t, g.s, g.text])]);
+      if (w && regionKnown(w, regionHay, nr)) { const rest = hit.filter((g) => g.gap !== "other-region"); return rest.length ? { list: rest.map((g) => ({ href: withHl(g.href, g.hl), t: g.t, s: g.s })), only: rest.some((g) => g.only) } : null; }
+    }
     if (hit.some((g) => g.gap === "other-region")) { const o = hit.filter((g) => g.gap === "other-region"); return { list: o.map((g) => ({ href: withHl(g.href, g.hl), t: g.t, s: g.s })), only: true }; } // 다른 지역 질의는 지역 경고만 먼저(이어서 우리 지역 결과로 오해하지 않게)
     return hit.length ? { list: hit.map((g) => ({ href: withHl(g.href, g.hl), t: g.t, s: g.s })), only: hit.some((g) => g.only) } : null; };
   // 학교급 가중: 고교 말(고교·후기·일반고·외고 …)이 있으면 고교 정책 행을 중학교 배정 안내보다 먼저, 중학교·초등 말이면 반대로
@@ -145,7 +150,11 @@ export function makeSearcher(store) {
     // 학교 이름과 앞부분이 맞는 말이 있으면(예: 상현중) 그 학교를 맨 위에 두고, 이름이 다른 학교(상현고 등) 행은 걷어 낸다
     const words = String(q).split(/\s+/).map(norm).filter((t) => t.length >= 2 && !STOP.has(t));
     const toks0 = words.filter((t) => t.length >= 3);
-    const ex = data.places.filter((x) => toks0.some((t) => schoolAliases(x.name).some((a) => a.startsWith(t))));
+    // 학교 이름 판정 우선순위: 정식 이름 정확 일치 > 별칭 정확 일치 > 접두 일치. 접두 일치가 둘 이상이면 어느 쪽도 확정하지 않고 후보로 보여 준다(용인고 ↔ 용인고림고 같은 충돌)
+    const tierOf = (x, t) => (norm(x.name) === t ? 1 : schoolAliases(x.name).includes(t) ? 2 : schoolAliases(x.name).some((a) => a.startsWith(t)) ? 3 : 9);
+    const exMap = new Map(), ambig = [];
+    for (const t of toks0) { const c = data.places.map((x) => [x, tierOf(x, t)]).filter(([, k]) => k < 9); if (!c.length) continue; const b = Math.min(...c.map(([, k]) => k)), hs = c.filter(([, k]) => k === b).map(([x]) => x); if (b === 3 && hs.length > 1) ambig.push([t, hs]); for (const x of hs) exMap.set(x.id, x); }
+    const ex = [...exMap.values()];
     const notes = [];
     if (ex.length) {
       const keys = toks0.filter((t) => ex.some((x) => norm(x.name).startsWith(t)));
@@ -155,7 +164,8 @@ export function makeSearcher(store) {
       weak = false; // 학교 이름이 맞았으면 느슨한 매치가 아니다
       const rest = norm(q); // 학교 + 주제: 주제어에 맞는 화면을 같이 이어 준다
       const first = ex[0];
-      for (const [re, label, fn] of TOPICS) if (re.test(q0) && !(p && /설명회/.test(label))) {
+      for (const [t, hs] of ambig) notes.push({ href: "#select/curriculum?v=map", t: `${t} 후보`, s: `'${t}'(으)로 시작하는 학교가 여러 곳이에요: ${hs.map((x) => x.name).join(" / ")} → 학교 이름을 정확히 입력해 주세요` });
+      for (const [re, label, fn] of ambig.length ? [] : TOPICS) if (re.test(q0) && !(p && /설명회/.test(label))) {
         const say = sayOf(label, first), href = label === "설명회 노트" ? (fn ? fn(first) : null) : say?.href || null; // 문구는 search-claims.js의 대응표(도착 화면에 실제로 있는 값)
         if (/몇 ?명/.test(q0) && label === "모집 인원" && !/모집 ?인원|정원/.test(q0)) continue; // '서울대 몇 명'은 진학 현황 질의 — 모집 인원 안내가 가리지 않는다
         const ui = label === "대학 진학 현황" ? univInfo.get(first.id) : null; // 값이 없는 학교는 화면의 빈 칸 사유 그대로
