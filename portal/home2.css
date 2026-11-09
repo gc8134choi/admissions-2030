@@ -142,3 +142,6 @@ body:has(#main[data-r=home]) .legend{display:none}
   .hm2 .h2-dates{display:flex;flex-direction:column}
   .hm2 .h2-dates>li{flex:1 1 auto}
 }
+
+/* 닫힌 소개 카드: 탭(머리글)만 차지하고 아래 빈 종이 띠를 두지 않는다 */
+.hm2-b:not([open]){min-height:8px;padding-top:0;padding-bottom:0}

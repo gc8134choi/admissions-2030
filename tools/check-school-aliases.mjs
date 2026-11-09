@@ -11,11 +11,12 @@ const store = { get: (k, d) => d, set() {} };
 const parts = await Promise.all([load("policy"), load("summary"), load("links").catch(() => ({ items: [] })), load("subject-info").catch(() => ({ subjects: [] })), load("places").catch(() => ({ places: [] })), loadSearchExtra(load).catch(() => [])]);
 const S = makeSearcher(store); S.setData(buildSearchData(parts, store));
 const places = parts[4].places || [], bad = [];
+const official = new Map(); for (const f of ["hs-compare", "middle-compare"]) for (const sc of (await load(f)).schools || []) { const m = /^(.*?)(초등학교|중학교|고등학교)$/.exec(sc.name || ""); if (m) official.set(sc.placeId, [sc.name, m[1] + m[2][0]]); }
 const SUF = /(초등학교|중학교|고등학교)$/, SH = { 초등학교: "초", 중학교: "중", 고등학교: "고" };
 let n = 0;
 for (const p of places) {
   const m = SUF.exec(p.name); if (!m) continue;
-  const core = p.name.replace(SUF, ""), forms = new Set([p.name, core + SH[m[0]], core.replace(/^용인/, "") + SH[m[0]]]);
+  const core = p.name.replace(SUF, ""), forms = new Set([p.name, core + SH[m[0]], core.replace(/^용인/, "") + SH[m[0]], ...(official.get(p.id) || [])]); // 공식 정식 이름(용인홍천고등학교)과 그 약칭(용인홍천고)도
   for (const f of [...forms].filter((x) => x.length >= 3)) for (const topic of ["학교군", "방과후학교", "모집 인원"]) {
     const q = `${f} ${topic}`, res = S.search(q), flat = res.flatMap(([, l]) => l); n++;
     if (flat.some((x) => /이 포털에 없는 학교예요/.test(x.t || ""))) bad.push(`'${q}' → '없는 학교' 선언 (${p.name}은 있음)`);
