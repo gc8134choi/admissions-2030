@@ -12,14 +12,21 @@ const data = (n) => JSON.parse(readFileSync(`${root}/portal/data/${n}.json`, "ut
 const bad = [], ok = [];
 // ① 위치 문장 등록부: 문장(앞 일부) → 가리키는 화면 주소와 그 화면에 있어야 하는 값
 const LOC = [
-  { phrase: "(일정 목록에 있어요)", route: "schedule?t=hs", need: [/수원외고 설명회/, /안양외고[^\n]*설명회/, /동탄국제고 설명회/, /외대부고 본교 설명회/] },
-  { phrase: "고교 유형 화면에 있어요", route: "select/curriculum?v=types", need: [/외·국·자|외고·국제고·자사고/, /자율형 사립고/] },
-  { phrase: "고교 종류 화면에 있어요", route: "select/curriculum?v=types", need: [/외·국·자|외고·국제고·자사고/] },
+  { phrase: "(일정 목록에 있어요)", screen: "고교 일정", route: "schedule?t=hs", need: [/수원외고 설명회/, /안양외고[^\n]*설명회/, /동탄국제고 설명회/, /외대부고 본교 설명회/] },
+  { phrase: "고교 종류 화면에 있어요", screen: "고교 종류", route: "select/curriculum?v=types", need: [/외·국·자|외고·국제고·자사고/] },
   { phrase: "빈 칸의 사유", route: "select/curriculum?v=schools&lv=high&g=%EC%A7%84%ED%95%99", need: [/빈 칸 \d+곳의 사유/, /대학 진학 현황/] },
+  { phrase: "고교 일정 화면에서 고입 전형 일정", screen: "고교 일정", route: "schedule?t=hs", need: [/전형/, /원서접수/] },
+  { phrase: "중학교 일정 화면에서 배정·입학 일정", screen: "중학교 일정", route: "schedule?t=life", need: [/배정/, /입학/] },
+  { phrase: "배정·입학 준비 화면에서 학교를 고르면 학교군", screen: "배정·입학 준비", route: "select/curriculum?v=middle", need: [/학교군/, /갈 수 있는 중학교/] },
+  { phrase: "대학 요건 화면에서 모집단위별", screen: "대학 요건", route: "select/curriculum?v=univ", need: [/모집단위/, /필수|권장/] },
+  { phrase: "학교 보기 화면에서 설명회 노트", screen: "학교 보기", route: "select/curriculum?v=schools&lv=high", need: [/설명회 노트/] },
+  { phrase: "'고교 일정' 화면의 '대학 입시' 탭에서(수능 날짜)", screen: "고교 일정", route: "schedule?t=univ", need: [/2029\.11\.15/, /수능/] },
 ];
 const files = readdirSync(`${root}/portal`).filter((f) => f.endsWith(".js"));
 const PHR = /[가-힣·\s]{0,12}(?:화면|목록)에 있어요/g, found = new Map();
 for (const f of files) { const src = readFileSync(`${root}/portal/${f}`, "utf8"); for (const m of src.matchAll(PHR)) found.set(m[0].trim(), f); }
+const CLAIM = /([가-힣·]+(?: [가-힣·]+)?) 화면(?:의 '([^']+)' 탭)?에서 ([^.'"`\n]{2,30}?) ?(볼 수 있어요|있어요|확인해요|확인할 수 있어요|나와요|알 수 있어요)/g, IGN = /^(일정은 일정|인쇄)$/;
+for (const f of files) { const src = readFileSync(`${root}/portal/${f}`, "utf8"); src.split("\n").forEach((l, i) => { for (const m of l.replace(/\/\*.*?\*\//g, " ").matchAll(CLAIM)) { const scr = m[2] ? "고교 일정" : m[1]; if (IGN.test(m[1])) continue; if (!LOC.some((x) => x.screen === scr)) bad.push(`등록 안 된 '○○ 화면에서 …' 문장: '${m[0].slice(0, 50)}' (${f}:${i + 1}) — LOC에 screen '${scr}'를 등록`); } }); }
 const KNOWN_OTHER = [/^(배정·입학 준비|학교 보기|고교 종류|일정|비교|학교 비교|고교 일정|중학교 일정) 화면에 있어요$/]; // 다른 점검(check-menu-captions·check-screen-claims)이 보는 일반 안내
 for (const [ph, f] of found) if (!LOC.some((l) => ph.includes(l.phrase.replace(/[()]/g, "")) || l.phrase.includes(ph)) && !KNOWN_OTHER.some((r) => r.test(ph))) bad.push(`등록 안 된 위치 문장: '${ph}' (${f}) — 가리키는 화면의 값을 확인하고 tools/check-location-claims.mjs LOC에 등록`);
 const b = await chromium.launch(), c = await b.newContext({ serviceWorkers: "block", viewport: { width: 1440, height: 900 } }), p = await c.newPage();
@@ -39,6 +46,17 @@ for (const l of LOC) {
   if (!open && /열어 보지 못/.test(s)) bad.push("univ-result가 데이터에 없는 '열어 보지 못함'을 말해요");
   if (empty - open > 0 && open && !s.includes(`${empty - open}곳은 학교알리미 공시 목록에 그 항목이 없고`)) bad.push(`univ-result가 '공시 목록에 없음' ${empty - open}곳을 말하지 않아요`);
   ok.push(`univ-result: 값 ${has}곳·빈 칸 ${empty}곳(열어 보지 못함 ${open})을 데이터와 대조`);
+}
+// ②-b 검색이 만드는 '값이 있는 개수' 문장: 대학별 '○개 전형·모집단위의 …' 개수는 규칙 전체가 아니라 requirements가 비어 있지 않은 규칙 수여야 하고, 0이면 개수 문장이 아니라 '아직 찾지 못했어요' 안내여야 한다
+{
+  const { loadSearchExtra } = await import(`${root}/portal/search-extra.js`), load = async (n) => data(n);
+  const docs = await loadSearchExtra(load), rules = data("admission-rules").rules, uns = data("universities").universities; let nu = 0;
+  for (const u of uns) {
+    const want = rules.filter((r) => r.universityId === u.id && Array.isArray(r.requirements) && r.requirements.length > 0).length, all = rules.filter((r) => r.universityId === u.id).length, ds = docs.filter((d) => d.t === `${u.name} · 과목 요건(대학 요건)`); if (!all) continue; nu++;
+    if (!ds.length) { bad.push(`${u.name}: 대학 요건 검색 행이 없어요`); continue; }
+    for (const d of ds) { const m = /^(\d+)개 전형/.exec(d.s || ""); if (want && (!m || Number(m[1]) !== want)) bad.push(`${u.name}: 개수 문장이 '값이 있는 ${want}개'와 달라요 → ${(d.s || "").slice(0, 60)}`); if (!want && (m || /\d+개 전형/.test(d.s || ""))) bad.push(`${u.name}: 요건이 하나도 없는데 개수를 말해요 → ${(d.s || "").slice(0, 60)}`); }
+  }
+  ok.push(`대학 요건 개수 문장 ${nu}개 대학을 requirements가 있는 규칙 수와 대조`);
 }
 // ③ 비교표 학교 조합별 빈 칸 사유
 {

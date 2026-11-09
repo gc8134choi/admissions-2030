@@ -520,7 +520,7 @@ const filesApi = registerFiles(views, { esc, load, nm });
 // 보관함 > 바로가기: 분류별 헤어라인 목록. 공식·공공은 구분해 적고, 확인일을 함께 보여 준다(data/links.json).
 views.midlife = async (el) => {
   el.innerHTML = `<div class="ed"><ul class="rows lk">
-    <li class="row"><div><h3><a href="#select/curriculum?v=middle">교과서·교과 구성</a></h3><p>중학교 배정 화면에서 학교를 열면 나와요.</p></div></li>
+    <li class="row"><div><h3><a href="#select/curriculum?v=middle">교과서·교과 구성</a></h3><p>배정·입학 준비 화면에서 학교를 열면 나와요.</p></div></li>
     <li class="row"><div><h3><a href="#schedule?t=life" data-stage="중입">중학교 시기 일정</a></h3><p>중학교 배정·입학 일정을 일정 화면에 모여 있어요.</p></div></li></ul>
     ${emptyLine(esc, SOON_WHY["중학교 교육과정"])}</div>`;
   el.onclick = (e) => { if (e.target.closest("[data-stage]")) store.set("portal.schedule.stage", "중입"); };
