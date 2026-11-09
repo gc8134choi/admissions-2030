@@ -92,7 +92,7 @@ export function makeSearcher(store) {
     const sub = (typeof UNIV_Q !== "undefined" && UNIV_Q.test(q0) ? [] : data.subjects).filter((x) => has(x.name, x.summary)).slice(0, 10).map((x) => ({ href: `#select/curriculum?v=compare`, t: x.name, s: `${x.area || ""} · ${(x.summary || "").slice(0, 70)}` }));
     const lk = data.links.filter((x) => has(x.name, x.purpose, x.org)).map((x) => ({ href: x.url, ext: true, t: x.name, s: `${x.org} · ${x.purpose}` }));
     const pages = allItems().filter((i) => has(i.title, i.tab, i.desc)).map((i) => ({ href: `#${i.id}`, t: i.title, s: i.tab }));
-    const plc = data.places.filter((x) => has(x.name, x.address)).slice(0, 10).map((x) => ({ href: `#select/curriculum?v=map&p=${encodeURIComponent(x.id)}`, t: x.name, s: `${x.level === "middle" ? "중학교" : x.level === "elementary" ? "초등학교" : "고등학교"} · ${x.address || ""}` }));
+    const plc = data.places.filter((x) => has(x.name, x.address)).slice(0, 10).map((x) => ({ href: `#select/curriculum?v=map&lv=${x.level === "middle" || x.level === "elementary" ? x.level : "high"}&p=${encodeURIComponent(x.id)}`, t: x.name, s: `${x.level === "middle" ? "중학교" : x.level === "elementary" ? "초등학교" : "고등학교"} · ${x.address || ""}` }));
     const maps = [["학교 지도", "#select/curriculum?v=map"], ["중학교 배정", "#select/curriculum?v=middle"]].filter(([n]) => has(n, "지도", "중학교", "배정")).map(([n, h]) => ({ href: h, t: n, s: "학교" }));
     if ((datoks.length && rows.some((r) => dateHit({ title: r.t, body: r.x })) && !gd.some((g) => dateHit({ title: g.t, body: g.x }))) || rows.some((r) => norm(r.t) === norm(q))) /* 제목이 질의와 똑같은 일정 행(초등학교 졸업)은 안내 글보다 먼저 */ return [["일정·제도", rows], ["가이드·용어", gd], ["학교", [...sch, ...plc]], ["과목", sub], ["바로가기", lk], ["화면", [...pages, ...maps]]].filter(([, l]) => l.length);
     return [["가이드·용어", gd], ["일정·제도", rows], ["학교", [...sch, ...plc]], ["과목", sub], ["바로가기", lk], ["화면", [...pages, ...maps]]].filter(([, l]) => l.length);
@@ -143,7 +143,7 @@ export function makeSearcher(store) {
       const keys = toks0.filter((t) => ex.some((x) => norm(x.name).startsWith(t)));
       const otherToks = words.map(norm).filter((w) => w.length >= 2 && !keys.some((k) => k.includes(w) || w.includes(k))); // 학교 이름 말고 남은 낱말(매점·교복…)이 제목에 든 문서를 앞에
       r = r.map(([h, l]) => [h, h === "학교" ? l : l.filter((x) => keys.some((k) => norm(x.t + " " + x.s + " " + (x.sch || "")).includes(k))).map((x, i) => ({ x, i, c: otherToks.filter((w) => norm(x.t).includes(w)).length })).sort((a, b) => b.c - a.c || a.i - b.i).map((o) => o.x)]).filter(([, l]) => l.length);
-      r = [["학교", ex.map((x) => ({ href: `#select/curriculum?v=map&p=${encodeURIComponent(x.id)}`, t: x.name, s: `${x.level === "middle" ? "중학교" : x.level === "elementary" ? "초등학교" : "고등학교"} · ${x.address || ""}` }))], ...r.filter(([h]) => h !== "학교")];
+      r = [["학교", ex.map((x) => ({ href: `#select/curriculum?v=map&lv=${x.level === "middle" || x.level === "elementary" ? x.level : "high"}&p=${encodeURIComponent(x.id)}`, t: x.name, s: `${x.level === "middle" ? "중학교" : x.level === "elementary" ? "초등학교" : "고등학교"} · ${x.address || ""}` }))], ...r.filter(([h]) => h !== "학교")];
       weak = false; // 학교 이름이 맞았으면 느슨한 매치가 아니다
       const rest = norm(q); // 학교 + 주제: 주제어에 맞는 화면을 같이 이어 준다
       const first = ex[0];
@@ -152,8 +152,8 @@ export function makeSearcher(store) {
         if (/몇 ?명/.test(q0) && label === "모집 인원" && !/모집 ?인원|정원/.test(q0)) continue; // '서울대 몇 명'은 진학 현황 질의 — 모집 인원 안내가 가리지 않는다
         const ui = label === "대학 진학 현황" ? univInfo.get(first.id) : null; // 값이 없는 학교는 화면의 빈 칸 사유 그대로
         if (ui && !ui.has) { notes.push({ href, t: `${first.name} · ${label}`, s: `${ui.why || "비교 화면의 이 칸은 비어 있어요"} (고교 보기 비교표의 빈 칸 사유)` }); continue; }
-        if (label === "설명회 노트") { notes.push(href ? { href, t: `${first.name} · ${label}`, s: "설명회 노트 화면에서 볼 수 있어요" } : { href: "#library/links", t: `${first.name} · ${label}`, s: noneText(label) }); continue; }
-        notes.push(href && say ? { href, t: `${first.name} · ${label}`, s: say.text } : { href: "#library/links", t: `${first.name} · ${label}`, s: say?.none || noneText(label) });
+        if (label === "설명회 노트") { notes.push(href ? { href, t: `${first.name} · ${label}`, s: "설명회 노트 화면에서 볼 수 있어요" } : { href: "#library/links", t: `${first.name} · ${label}`, s: noneText(label, first.level) }); continue; }
+        notes.push(href && say ? { href, t: `${first.name} · ${label}`, s: say.text } : { href: "#library/links", t: `${first.name} · ${label}`, s: say?.none || noneText(label, first.level) });
       }
       if (/용인한국외국어/.test(rest)) notes.push({ href: "#select/curriculum?v=types", t: "용인외대부고(자율형 사립고)", s: "외·국·자 전형 일정과 유형 설명은 고교 유형 화면에 있어요" });
     } else {

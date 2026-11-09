@@ -5,47 +5,47 @@ const josa = (w) => ((w.charCodeAt(w.length - 1) - 0xac00) % 28 ? "은" : "는")
 //  href가 없거나 항목이 null이면 이 포털에 없는 항목: noneText(또는 none)로 확인할 곳을 안내한다. 초등학교 등 다른 학교급은 항상 없음 안내.
 const HS = "#select/curriculum?v=schools&lv=high", MS = "#select/curriculum?v=schools&lv=middle";
 export const SAY = {
-  "교육 특색": { level: "both",
+  "교육 특색": { level: "both", elementary: null,
     high: () => ({ href: `${HS}&g=%EA%B5%90%EC%9C%A1%EA%B3%BC%EC%A0%95`, text: "고교 보기 비교표의 '교육과정 특징(편제표 요약)' 칸에서 볼 수 있어요(편제표를 옮긴 학교만 값이 있어요)" }),
     middle: () => ({ href: MS, text: "중학교 보기 비교표의 '교육 특색·노력중점' 칸에서 볼 수 있어요" }) },
-  "방과후학교": { level: "both",
+  "방과후학교": { level: "both", elementary: null,
     high: () => ({ href: null, none: "방과후학교 칸은 이 포털에 없어요(교육 특색에 방과후 프로그램을 적은 학교는 그 행에 있어요) → 학교 홈페이지·학교알리미 공시에서 확인해요" }),
     middle: () => ({ href: null, none: "방과후학교 칸은 이 포털에 없어요(교육 특색에 방과후 프로그램을 적은 학교는 그 행에 있어요) → 학교 홈페이지·학교알리미 공시에서 확인해요" }) },
-  "편제표(학교별 과목표)": { level: "high",
+  "편제표(학교별 과목표)": { level: "high", elementary: null,
     high: (pl) => ({ href: pl.schoolId ? `#select/curriculum?s=${encodeURIComponent(pl.schoolId)}&hl=${encodeURIComponent("과목표")}` : null, text: "학교 요약 화면의 과목표에서 볼 수 있어요" }), middle: null },
-  "학비·비용": { level: "high",
+  "학비·비용": { level: "high", elementary: null,
     high: () => ({ href: "#select/curriculum?v=types&hl=%EB%B9%84%EC%9A%A9", text: "고교 종류 화면의 '비용' 줄에서 유형별 학비를 볼 수 있어요(학교별 금액은 이 포털에 없어요 → 학교 누리집·학교알리미)" }), middle: null },
-  "모집 인원": { level: "both",
+  "모집 인원": { level: "both", elementary: null,
     high: () => ({ href: "#select/curriculum?v=types&hl=%EA%B0%9C%EB%B3%84%20%ED%95%99%EA%B5%90%20%EB%AA%A8%EC%A7%91%20%ED%98%84%ED%99%A9", text: "학교별 모집 인원은 이 포털에 없어요 → 각 학교 누리집의 입학전형요항 공고·경기도교육청 고입·전학 포털에서 확인해요" }),
     middle: () => ({ href: "#select/curriculum?v=middle&hl=%EB%B0%B0%EC%A0%95%EB%B6%80%ED%84%B0%20%EB%93%B1%EB%A1%9D%EA%B9%8C%EC%A7%80", text: "중학교는 입학 전형이 아니라 배정이에요. 배정·입학 준비 화면의 '배정부터 등록까지'에서 일정·절차를 볼 수 있어요(학교별 배정 인원은 이 포털에 없어요 → 용인교육지원청 배정 공지)" }) },
-  "대학 진학 현황": { level: "high", high: () => ({ href: `${HS}&g=%EC%A7%84%ED%95%99`, text: "고교 보기 비교표의 '대학 진학 현황' 칸에서 볼 수 있어요" }), middle: null },
-  "설명회 노트": { level: "high", high: () => ({ href: null, text: "" }), middle: null }, // 노트가 있는 학교는 search.js가 그 문서 주소로 보낸다
-  "입학·전형": { level: "both",
+  "대학 진학 현황": { level: "high", elementary: null, high: () => ({ href: `${HS}&g=%EC%A7%84%ED%95%99`, text: "고교 보기 비교표의 '대학 진학 현황' 칸에서 볼 수 있어요" }), middle: null },
+  "설명회 노트": { level: "high", elementary: null, high: () => ({ href: null, text: "" }), middle: null }, // 노트가 있는 학교는 search.js가 그 문서 주소로 보낸다
+  "입학·전형": { level: "both", elementary: null,
     high: () => ({ href: "#schedule?t=hs", text: "고교 일정 화면에서 고입 전형 일정을 볼 수 있어요(학교별 입학 방식은 고교 보기 비교표의 '입학 방식' 칸)" }),
     middle: () => ({ href: "#schedule?t=life", text: "중학교 일정 화면에서 배정·입학 일정을 볼 수 있어요" }) },
-  "학교군": { level: "both",
+  "학교군": { level: "both", elementary: null,
     high: () => ({ href: `${HS}&g=%EC%9E%85%ED%95%99`, text: "고교 보기 비교표의 '학군·구역' 칸에서 볼 수 있어요" }),
     middle: () => ({ href: MS, text: "중학교 보기 비교표의 '학교군' 칸에서 볼 수 있어요" }) },
 };
 // 호환용: 예전 이름(TOPIC_SAY)을 쓰던 도구를 위해 (label)->(place) 형태도 둔다
 export const TOPIC_SAY = Object.fromEntries(Object.entries(SAY).map(([k, e]) => [k, (pl) => { const f = e[pl.level === "middle" ? "middle" : pl.level === "high" ? "high" : null]; return f ? f(pl) : null; }]));
 export const sayOf = (label, pl) => { const f = TOPIC_SAY[label]; return f ? f(pl) : null; };
-export const noneText = (label) => { const w = label.replace(/\(.*\)$/, ""); return `${w}${josa(w)} 이 포털에 아직 없어요 → 학교 홈페이지·학교알리미 공시에서 확인해요`; };
+export const noneText = (label, level) => { const w = label.replace(/\(.*\)$/, ""); return level === "elementary" ? `초등학교의 ${w}${josa(w)} 이 포털에 없어요(이 포털의 비교·일정 화면은 중학교·고등학교만 다뤄요) → 학교 홈페이지·학교알리미 공시에서 확인해요` : `${w}${josa(w)} 이 포털에 아직 없어요 → 학교 홈페이지·학교알리미 공시에서 확인해요`; };
 
 // 점검표: 문구가 가리키는 값이 실제 데이터에 있는지(tools/check-topic-claims.mjs)
 //  kind "field": data 파일의 fields에 label이 든 항목이 있고 값이 있는 학교가 1곳 이상
 //  kind "types": hs-types.json types[]에 key 값이 있음 / "absent": 이 포털에 없다고 말하므로 compare 어디에도 그 이름의 항목이 없어야 함
 export const CLAIMS = [
-  { label: "교육 특색", level: "high", kind: "field", data: "hs-compare", field: "curriculum", fieldLabel: "교육과정 특징" },
-  { label: "교육 특색", level: "middle", kind: "field", data: "middle-compare", field: "feature", fieldLabel: "교육 특색" },
-  { label: "학교군", level: "middle", kind: "field", data: "middle-compare", field: "zone", fieldLabel: "학교군" },
-  { label: "학교군", level: "high", kind: "field", data: "hs-compare", field: "zone", fieldLabel: "학군·구역" },
-  { label: "대학 진학 현황", level: "high", kind: "field", data: "hs-compare", field: "univStats", fieldLabel: "대학 진학 현황" },
-  { label: "입학·전형", level: "high", kind: "field", data: "hs-compare", field: "admission", fieldLabel: "입학 방식" },
+  { label: "교육 특색", level: "high", elementary: null, kind: "field", data: "hs-compare", field: "curriculum", fieldLabel: "교육과정 특징" },
+  { label: "교육 특색", level: "middle", elementary: null, kind: "field", data: "middle-compare", field: "feature", fieldLabel: "교육 특색" },
+  { label: "학교군", level: "middle", elementary: null, kind: "field", data: "middle-compare", field: "zone", fieldLabel: "학교군" },
+  { label: "학교군", level: "high", elementary: null, kind: "field", data: "hs-compare", field: "zone", fieldLabel: "학군·구역" },
+  { label: "대학 진학 현황", level: "high", elementary: null, kind: "field", data: "hs-compare", field: "univStats", fieldLabel: "대학 진학 현황" },
+  { label: "입학·전형", level: "high", elementary: null, kind: "field", data: "hs-compare", field: "admission", fieldLabel: "입학 방식" },
   { label: "학비·비용", kind: "types", key: "cost", screenText: "비용" },
-  { label: "모집 인원", level: "high", kind: "absent", words: /모집|정원/, data: ["hs-compare"] },
-  { label: "모집 인원", level: "middle", kind: "absent", words: /모집|정원|배정 ?인원/, data: ["middle-compare"] },
-  { label: "모집 인원", level: "middle", kind: "section", data: "middle-guide", title: "배정부터 등록까지" },
-  { label: "학비·비용", level: "middle", kind: "absent", words: /학비|수업료|등록금|비용/, data: ["middle-compare"] },
-  { label: "방과후학교", level: "both", kind: "absent", words: /방과후/, data: ["hs-compare", "middle-compare"] },
+  { label: "모집 인원", level: "high", elementary: null, kind: "absent", words: /모집|정원/, data: ["hs-compare"] },
+  { label: "모집 인원", level: "middle", elementary: null, kind: "absent", words: /모집|정원|배정 ?인원/, data: ["middle-compare"] },
+  { label: "모집 인원", level: "middle", elementary: null, kind: "section", data: "middle-guide", title: "배정부터 등록까지" },
+  { label: "학비·비용", level: "middle", elementary: null, kind: "absent", words: /학비|수업료|등록금|비용/, data: ["middle-compare"] },
+  { label: "방과후학교", level: "both", elementary: null, kind: "absent", words: /방과후/, data: ["hs-compare", "middle-compare"] },
 ];
