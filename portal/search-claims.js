@@ -59,7 +59,7 @@ export const REGION_TABLE = [
   { kind: "서울", basis: "서울 기본계획 행", words: Object.fromEntries(["강남", "서초", "송파", "강동", "강서", "마포", "노원", "성북", "관악", "양천", "영등포", "동작", "서대문", "은평", "광진", "성동", "동대문", "중랑", "도봉", "금천", "구로", "종로", "용산", "강북"].map((w) => [w, "서울"])) },
   { kind: "타 지역", basis: "포털은 경기(용인)·서울 중심", words: Object.fromEntries(["인천", "대구", "부산", "대전", "울산", "세종", "제주", "충북", "충남", "전북", "전남", "경북", "경남", "강원", "청주", "천안", "전주", "창원", "춘천", "원주", "포항", "순천", "강릉", "아산", "구미", "김해", "목포", "충주"].map((w) => [w, w])) },
 ];
-const WORD_GUARD = { 중동: "(?!전쟁|정세|지역|국가|산)", 상동: "(?!일|의|함)", 세종: "(?!과학|한성|영재|[·,)])", 강서: "(?!구청)", 이천: "(?!년|명|원|만|개|\\d)", 종로: "(?!학원)" }; // 다른 뜻으로 쓰이는 낱말
+const WORD_GUARD = { 중동: "(?!전쟁|정세|지역|국가|산)", 상동: "(?!일|의|함)", 세종: "(?!과학|한성|영재|[·,)])", 강서: "(?!구청)", 이천: "(?!년|명|원|만|개|\\d)", 종로: "(?!학원)", 포항: "(?!공과|공대)" }; // 다른 뜻으로 쓰이는 낱말
 export const REGION_WORDS = REGION_TABLE.flatMap((t) => Object.keys(t.words));
 export const REGION_ALIAS = Object.fromEntries(REGION_TABLE.filter((t) => t.kind === "서울").flatMap((t) => Object.keys(t.words).map((w) => [w, "서울"]))); // 서울 구 이름은 서울 데이터로 확인한다
 export const CITY_OF = Object.fromEntries(REGION_TABLE.filter((t) => t.kind.startsWith("평준화") || t.kind.startsWith("경기")).flatMap((t) => Object.entries(t.words)));

@@ -74,10 +74,18 @@ export function buildSearchData([policy0, summary, links, si, pl, extra], store)
 }
 // 점수·순위 계산 전부. 브라우저(DOM) 없이 setData(data) 뒤 search(q)만 부르면 된다.
 // 한글 날짜·퍼센트 표기를 데이터 표기로: '2028년 1월 10일 17일' → '2028.1.10~17', '1월 31일 2월 7일' → '1.31~2.7', '10퍼' → '10%'
-export const normKoQuery = (q) => String(q)
-  .replace(/(?:(\d{4})\s*년\s*)?(\d{1,2})\s*월\s*(\d{1,2})\s*일\s*(?:~|부터|-)?\s*(?:(\d{1,2})\s*월\s*)?(\d{1,2})\s*일/g, (m, y, m1, d1, m2, d2) => `${y ? y + "." : ""}${m1}.${d1}~${m2 ? m2 + "." : ""}${d2}`)
-  .replace(/(\d{4})\s*년\s*(\d{1,2})\s*월\s*(\d{1,2})\s*일/g, (m, y, m1, d1) => `${y}.${m1}.${d1}`) /* 연도 없는 '3월 2일'은 기존 처리를 그대로 둔다 */
-  .replace(/(\d+)\s*(?:퍼센트|퍼)(?![가-힣])/g, "$1%");
+const slashDates = (q) => { const dateWords = /일정|날짜|언제|접수|발표|등록|원서|면접|수능|시험|기간|마감|개학|졸업|입학|요일/, noFrac = /출석|분의|비율|이상|이하|이수/; return noFrac.test(q) ? q : q.replace(/(?<![\d.\/])(\d{1,2})\s*\/\s*(\d{1,2})(?![\d\/])/g, (m, a, b) => ((+a >= 1 && +a <= 12 && +b >= 1 && +b <= 31 && (+b > 12 || dateWords.test(q) || /^\s*\d{1,2}\s*\/\s*\d{1,2}\s*$/.test(q))) ? `${+a}.${+b}` : m)); }; /* 1/31 → 1.31 (분수 2/3은 날짜 낱말이 있을 때만) */
+// 날짜 매칭용(본문 대조에만 쓰는) 더 넓은 정규화: 연도 없는 '1월 31일'·요일까지 같은 표현(월.일)으로. 검색어 자체에는 쓰지 않는다(기존 한글 날짜 처리 보존)
+export const normDates = (q0) => slashDates(normKoQuery(q0)).replace(/(?<![\d.])0?(\d{1,2})\s*월\s*0?(\d{1,2})\s*일/g, "$1.$2").replace(/(\d{1,2}\.\d{1,2})\s*[월화수목금토일]요일/g, "$1").replace(/(\d{1,2}\.\d{1,2})\s*\(\s*[월화수목금토일]\s*\)/g, "$1");
+export const normKoQuery = (q0) => {
+  let q = String(q0);
+  const dateWords = /일정|날짜|언제|접수|발표|등록|원서|면접|수능|시험|기간|마감|개학|졸업|입학|요일|[월화수목금토일]\)?\s*$/, noFrac = /출석|분의|비율|이상|이하|이수|\d\s*\/\s*\d\s*(이상|못|미만)/;
+  q = q.replace(/(\d{4})\s*\.\s*(\d{1,2})\s*\.\s*(\d{1,2})\s*\.?/g, "$1.$2.$3 ") /* '2026. 12. 4.' → 2026.12.4 */
+    .replace(/(\d{4})\s*[-/]\s*0?(\d{1,2})\s*[-/]\s*0?(\d{1,2})(?!\d)/g, "$1.$2.$3") /* 2028-01-31 · 2028/1/31 */
+    .replace(/(?:(\d{4})\s*년\s*)?(\d{1,2})\s*월\s*(\d{1,2})\s*일\s*(?:~|부터|-)?\s*(?:(\d{1,2})\s*월\s*)?(\d{1,2})\s*일/g, (m, y, m1, d1, m2, d2) => `${y ? y + "." : ""}${m1}.${d1}~${m2 ? m2 + "." : ""}${d2}`)
+    .replace(/(\d{4})\s*년\s*(\d{1,2})\s*월\s*(\d{1,2})\s*일/g, (m, y, m1, d1) => `${y}.${m1}.${d1}`); /* 연도 없는 '3월 2일'은 기존 처리를 그대로 둔다 */
+  return q.replace(/(\d{1,2}\.\d{1,2})\s*[월화수목금토일]요일/g, "$1").replace(/(\d{1,2}\.\d{1,2})\s*\(\s*[월화수목금토일]\s*\)/g, "$1").replace(/(\d+)\s*(?:퍼센트|퍼)(?![가-힣])/g, "$1%");
+};
 // 질의 속 날짜·기간 표기를 정책 행 본문에서 글자 그대로 찾는다(2028.1.3 ↔ 1.3, '1.10~17'은 그대로·시작·끝 모두). 날짜가 둘 이상이면 모두 든 행이 먼저, 하나뿐이면 다른 낱말도 하나 이상 겹쳐야 한다.
 const dateRows = (q0, policy) => {
   const raw = String(q0 || "").replace(/[～〜∼]/g, "~"), refs = [], DT = "\\d{4}\\.\\d{1,2}\\.\\d{1,2}|\\d{1,2}\\.\\d{1,2}";
@@ -92,11 +100,14 @@ const dateRows = (q0, policy) => {
   const words = raw.replace(new RegExp(DT, "g"), " ").split(/[\s~?？!,]+/).map((w) => norm(w.replace(/(은|는|이|가|을|를|에|에서|까지|부터)$/, ""))).filter((w) => w.length >= 2 && !/^(일정|언제|며칠|날짜|기간|알려줘|뭐예요|인가요|일까요|잠정|시험)$/.test(w));
   const out = [];
   for (const row of policy) {
-    const t = `${row.title} ${row.body || ""}`, k = refs.filter((r) => t.includes(r.lit) || r.alts.some((x) => t.includes(x)) || (r.parts.every((x) => has(t, x)) && (!r.year || t.includes(r.year)))).length; if (k < refs.length) continue;
-    const nt = norm(t); out.push({ row, ov: words.filter((w) => nt.includes(w)).length });
+    const t = `${row.title} ${row.body || ""}`, k = refs.filter((r) => has(t, r.lit) || r.alts.some((x) => has(t, x)) || (r.parts.every((x) => has(t, x)) && (!r.year || t.includes(r.year)))).length; if (k < refs.length) continue;
+    const nt = norm(t), ev = refs.some((r) => r.parts.length === 1 && (row.events || []).some((e) => [e.start, e.end].some((dd) => { const m = /^\d{4}-(\d{2})-(\d{2})/.exec(dd || ""), q2 = r.parts[0].split("."); return m && +m[1] === +q2[0] && +m[2] === +q2[1]; }))); /* 구조화된 일정(events) 날짜와 같으면 우선 */
+    const ob = words.filter((w) => nt.includes(w)).length; out.push({ row, ob, ov: ob + (ev ? 5 : 0) });
   }
-  return out.filter((x) => refs.length >= 2 || refs[0].parts.length >= 2 || x.ov >= 1 || !words.length).sort((a, b) => b.ov - a.ov).slice(0, 4);
+  const res = out.filter((x) => refs.length >= 2 || refs[0].parts.length >= 2 || x.ob >= 1 || !words.length).sort((a, b) => b.ov - a.ov).slice(0, 4); res.pure = !words.length; return res;
 };
+// 일정이 여러 건인 행은 도착 화면에서 질의와 맞는 일정 줄(라벨·날짜)을 강조한다: 행 제목 첫 줄이 아니라 질의가 말한 단계(과학고 소집면접 11.20 등)
+export const evHlFor = (r, q0) => { const evs = r.events || []; if (evs.length < 2) return r.title; const nq = norm(q0), toks = String(q0).split(/\s+/).map(norm).filter(Boolean), best = evs.map((e) => { const lb = norm(e.label || ""), md = /^\d{4}-(\d{2})-(\d{2})/.exec(e.start || ""), mdd = md ? `${+md[1]}.${+md[2]}` : ""; let sc = 0; for (const w of toks) { if (w.length >= 2 && lb.includes(w)) sc += 2; } if (mdd && nq.includes(mdd)) sc += 3; return { e, sc }; }).sort((a, b) => b.sc - a.sc)[0]; return best && best.sc >= 2 && best.e.label ? best.e.label : r.title; };
 export function makeSearcher(store) {
   let data = null;
   let any = false;
@@ -119,7 +130,8 @@ export function makeSearcher(store) {
     const rareHit = (r) => (rare.some((tk) => norm(r.title).includes(tk)) ? 4 : 0); // 드문 낱말(국제고·과학고 등)이 제목에 있는 행을 먼저
     const tokHit = (r) => (toks.length > 1 ? toks.filter((tk) => expand(tk).some((w) => nr(r).includes(w))).length * 1.5 : 0), hsQ = HS_Q.test(norm(q0)) && !MID_Q.test(norm(q0)), hsRow = (r) => /^(hs-|gg-|high-school)/.test(r.topic); const datoks = toks.filter((tk) => /^\d{4}\.\d{1,2}(\.\d{1,2})?$|^\d{1,2}\.\d{1,2}$/.test(tk)), yrtoks = toks.filter((tk) => /^20\d\d년$/.test(tk)), yearHit = (r) => yrtoks.filter((tk) => nr(r).includes(tk.slice(0, 4) + ".")).length * 3, dateHit = (r) => datoks.length && datoks.filter((tk) => expand(tk).some((w) => nr(r).includes(w))).length * 4; /* 날짜를 담은 질의는 그 날짜가 본문에 있는 행을 앞에 */ const OTHER_REG = /^(서울|인천|부산|대구|광주|대전|울산|세종|강원|충북|충남|전북|전남|경북|경남|제주)/, askReg = /용인|수지|성복|풍덕천|서울|인천|부산|대구|광주|대전|울산|세종|강원|충청|충북|충남|전라|전북|전남|경상|경북|경남|제주|타지역|다른 ?지역/.test(q0), regBoost = (r) => (askReg ? 0 : /^경기/.test(r.title) ? 1 : OTHER_REG.test(r.title) ? -1 : 0); /* 지역을 안 밝히면 우리 집 지역(경기) 행을 앞에 */
     const rowOk = (r) => hasN(nr(r)) || (datoks.length >= 1 && !any && datoks.every((tk) => tokIn(tk, nr(r)))); /* 날짜가 본문에 있는 행은 시험·접수 같은 흔한 낱말이 빠져도 맞는 것으로 */
-    const rows0 = data.policy.filter((r) => rowOk(r)), rowsStrict = rows0.filter((r) => hasN(nr(r))), rows = (rowsStrict.length ? rowsStrict : rows0).map((r) => ({ href: withHl(routeOf(r), NO_HL.has(r.id) || r.topic === "profile-2033" ? null : r.title), t: r.title, x: r.body, s: clip(r.body || "", 90), inline: NO_HL.has(r.id) || r.topic === "profile-2033", sc: rank(r.title, r.body, r) + tokHit(r) + rareHit(r) + (hsQ && hsRow(r) ? 2 : 0) + regBoost(r) + dateHit(r) + yearHit(r) + (hasN(nr(r)) ? 0 : -8) })).sort((a, b) => b.sc - a.sc).slice(0, 12);
+    const evHl = (r) => evHlFor(r, q0);
+    const rows0 = data.policy.filter((r) => rowOk(r)), rowsStrict = rows0.filter((r) => hasN(nr(r))), rows = (rowsStrict.length ? rowsStrict : rows0).map((r) => ({ href: withHl(routeOf(r), NO_HL.has(r.id) || r.topic === "profile-2033" ? null : evHl(r)), t: r.title, x: r.body, s: clip(r.body || "", 90), inline: NO_HL.has(r.id) || r.topic === "profile-2033", sc: rank(r.title, r.body, r) + tokHit(r) + rareHit(r) + (hsQ && hsRow(r) ? 2 : 0) + regBoost(r) + dateHit(r) + yearHit(r) + (hasN(nr(r)) ? 0 : -8) })).sort((a, b) => b.sc - a.sc).slice(0, 12);
     const gd = data.guide.filter((g) => !g.quiet && !(g.strict && !g.rawMatch) && hasN(ng(g))).map((g) => ({ sch: g.sch, href: g.hl === null ? g.href : withHl(g.href, g.hl || autoHl(g)), term: g.term, t: g.t, x: g.text, s: clip(g.s || (g.text.split(/(?<=[.。다요])\s/).find((x) => ks.some((w) => norm(x).includes(w))) || g.text), 80), sc: rank(g.t, g.text) })).sort((a, b) => b.sc - a.sc).slice(0, 8);
     const sch = data.summary.filter((m) => has(m.schoolName, m.region)).map((m) => ({ href: `#select/curriculum?v=summary&s=${m.schoolId}`, t: m.schoolName, s: `${m.creditsRequired}+${m.creditsElective}학점 · ${m.region}` }));
     const sub = (typeof UNIV_Q !== "undefined" && UNIV_Q.test(q0) ? [] : data.subjects).filter((x) => has(x.name, x.summary)).slice(0, 10).map((x) => ({ href: `#select/curriculum?v=compare`, t: x.name, s: `${x.area || ""} · ${(x.summary || "").slice(0, 70)}` }));
@@ -287,9 +299,23 @@ export function makeSearcher(store) {
     return r;
   };
   const search = (q) => { /* 날짜·기간 질의는 본문에 그 날짜가 든 정책 행을 위로(어느 경로로 결과가 만들어졌든) */
-    q = normKoQuery(q); let r = search0(q);
+    q = normKoQuery(q);
+    { /* 이름 형태 통일: 학교 표시 이름이 '홍천고등학교'인 학교를 '용인홍천고(등학교)'로 불러도 같은 이름으로 바꿔 같은 값 행이 나오게 */
+      if (!data.aliasMap) { const m = []; for (const pl of data.places) { if (pl.name.startsWith("용인")) continue; for (const a of schoolAliases(pl.name)) if (a.startsWith("용인") && a !== norm(pl.name) || a === "용인" + norm(pl.name)) m.push([a, pl.name]); } data.aliasMap = m.sort((x, y) => y[0].length - x[0].length); }
+      for (const [a, nm] of data.aliasMap) { const re = new RegExp(a.split("").join("\\s*"), "g"); if (re.test(q)) q = q.replace(re, nm); }
+    }
+    let r = search0(q);
     { /* 질의의 날짜·기간(2028.1.3~1.6, 9.24~12.20, 1.10~17)이 본문에 글자 그대로 든 정책 행은 순위와 상관없이 위로 올린다. '찾지 못했어요'는 그런 행이 정말 없을 때만 낸다 */
-      const shown = new Set(data.policy.map((x) => x.id)), dr = dateRows(q, data.policyAll || data.policy); /* 현재 학년 화면에 안 나오는 행(2028학년도 참고 등)도 본문 내용은 알려 주되 그 행으로는 연결하지 않는다 */  if (dr.length) { const banner = (h, l) => h === "안내" && l.some((x) => /정확히 맞는 내용이 없을 수 있어요/.test(x.t || "")); r = [["일정·제도", dr.map((x) => ({ href: withHl(routeOf(x.row), !shown.has(x.row.id) || NO_HL.has(x.row.id) || x.row.topic === "profile-2033" ? null : x.row.title), t: x.row.title, x: x.row.body, s: clip(x.row.body || "", 120), inline: !shown.has(x.row.id) || NO_HL.has(x.row.id) })).concat((r.find(([h]) => h === "일정·제도")?.[1] || []).filter((y) => !dr.some((x) => x.row.title === y.t)).slice(0, 4))], ...r.filter(([h, l]) => h !== "일정·제도" && h !== "비슷한 화면" && !banner(h, l))]; } }
+      const shown = new Set(data.policy.map((x) => x.id)), dr = dateRows(normDates(q), data.policyAll || data.policy); /* 현재 학년 화면에 안 나오는 행 */  /* 현재 학년 화면에 안 나오는 행(2028학년도 참고 등)도 본문 내용은 알려 주되 그 행으로는 연결하지 않는다 */  if (dr.length && dr.pure && r.some(([h]) => h !== "안내" && h !== "공식 확인처" && h !== "비슷한 화면") && !(r[0] && r[0][0] === "안내")) { /* 날짜만 묻는 말인데 이미 일반 결과가 있으면 날짜가 든 행을 그 일정·제도 묶음 맨 앞에 끼워 넣는다(기존 결과는 유지) */ const have = new Set(dr.slice(0, 3).map((x) => x.row.title)), add = dr.slice(0, 3).map((x) => ({ href: withHl(routeOf(x.row), !shown.has(x.row.id) || NO_HL.has(x.row.id) ? null : evHlFor(x.row, q)), t: x.row.title, x: x.row.body, s: clip(x.row.body || "", 90), inline: !shown.has(x.row.id) || NO_HL.has(x.row.id) })); const k = r.findIndex(([h]) => h === "일정·제도"); r = [["일정·제도", add], ...r.map(([h, l]) => [h, l.filter((y) => !have.has(y.t))]).filter(([, l]) => l.length)]; } else if (dr.length && !dr.pure && r.some(([h]) => h !== "안내" && h !== "공식 확인처" && h !== "비슷한 화면") && !(r[0] && r[0][0] === "안내")) { /* 날짜 말고 다른 낱말도 있고 이미 답이 나왔으면 날짜 행은 뒤에 덧붙이기만 */ const have = new Set(r.flatMap(([, l]) => l.map((y) => y.t))), add = dr.filter((x) => !have.has(x.row.title)).map((x) => ({ href: withHl(routeOf(x.row), !shown.has(x.row.id) || NO_HL.has(x.row.id) ? null : evHlFor(x.row, q)), t: x.row.title, x: x.row.body, s: clip(x.row.body || "", 90), inline: !shown.has(x.row.id) || NO_HL.has(x.row.id) })); if (add.length) { const k = r.findIndex(([h]) => h === "일정·제도"); if (k >= 0) r[k] = [r[k][0], [...r[k][1], ...add.slice(0, 2)]]; } } else if (dr.length) { const banner = (h, l) => h === "안내" && l.some((x) => /정확히 맞는 내용이 없을 수 있어요/.test(x.t || "")); r = [["일정·제도", dr.map((x) => ({ href: withHl(routeOf(x.row), !shown.has(x.row.id) || NO_HL.has(x.row.id) || x.row.topic === "profile-2033" ? null : x.row.title), t: x.row.title, x: x.row.body, s: clip(x.row.body || "", 120), inline: !shown.has(x.row.id) || NO_HL.has(x.row.id) })).concat((r.find(([h]) => h === "일정·제도")?.[1] || []).filter((y) => !dr.some((x) => x.row.title === y.t)).slice(0, 4))], ...r.filter(([h, l]) => h !== "일정·제도" && h !== "비슷한 화면" && !banner(h, l))]; } }
+    if (r.length && r.every(([h]) => h === "안내" || h === "공식 확인처" || h === "비슷한 화면") && r.some(([h, l]) => h === "안내" && l.some((y) => /목록에서 찾지 못했어요|정확히 맞는 내용이 없을 수 있어요/.test(`${y.t} ${y.s}`)))) { /* 질의의 내용어(안내어 제외)를 '모두' 담은 용어·정책 행이 있으면 그것이 정답이다: 배너를 걷고 그 행을 앞세운다(정식 명칭·역할·쉽게 설명·시청·총원·마감 시간 같은 말투 낱말은 내용어가 아니다) */
+      const FILL = /^(정식|명칭|이름|역할|뭐|무엇|뜻|풀이|설명|쉽게|시청|총원|전체|몇|몇시|시간|내는데|내는|어떻게|알려|해줘|해주세요|어디|언제|며칠|얼마|방법|하는|있나|인가|이에요|예요|해요|관련|대한|에서|으로|하면|되나|되는|건가|건지|뭔가)/;
+      const stems = [...new Set(cleanQuery(String(q)).split(/\s+/).map((w) => norm(w).replace(/(인가요|인가|일까요|일까|이에요|예요|인지|인데|은|는|이|가|을|를|의|에|도)$/, "")).filter((w) => w.length >= 2 && !FILL.test(w) && !STOP.has(w) && !STOP2.has(w)))];
+      if (stems.length >= 1 && stems.length <= 3 && stems.some((w) => w.length >= 4) && !stems.some((w) => /^[가-힣]{2,5}(초등학교|중학교|고등학교|초|중|고)$/.test(w)) && !/^[가-힣]{2,3}(구|동|시|군)$/.test(stems[0])) { /* 4자 이상 특이 낱말(대학수학능력시험·한국대학교육협의회·선복수지원)이 있을 때만 */
+        const has = (txt) => stems.every((w) => txt.includes(w) || (w.length >= 3 && txt.includes(w.slice(0, -1)))), shown3 = new Set(data.policy.map((x) => x.id));
+        const G2 = data.guide.filter((g) => !g.quiet && !g.gap && has(norm(`${g.t} ${g.text || ""}`))).slice(0, 3), P2 = (data.policyAll || data.policy).filter((x) => has(norm(`${x.title} ${x.body || ""}`))).slice(0, 3);
+        if (G2.length || P2.length) r = [...(G2.length ? [["가이드·용어", G2.map((g) => (g.term ? { href: "#home", term: g.term, t: g.t, s: g.s || "" } : { href: g.hl === null ? g.href : withHl(g.href, g.hl || autoHl(g)), t: g.t, s: clip(g.s || g.text || "", 90) }))]] : []), ...(P2.length ? [["일정·제도", P2.map((x) => ({ href: withHl(routeOf(x), !shown3.has(x.id) || NO_HL.has(x.id) ? null : evHlFor(x, q)), t: x.title, x: x.body, s: clip(x.body || "", 90), inline: !shown3.has(x.id) || NO_HL.has(x.id) }))]] : []), ...r.filter(([h]) => h === "공식 확인처")];
+      }
+    }
     if (r.length && r.every(([h]) => h === "안내" || h === "공식 확인처" || h === "비슷한 화면") && r.some(([h, l]) => h === "안내" && l.some((y) => /목록에서 찾지 못했어요|정확히 맞는 내용이 없을 수 있어요/.test(`${y.t} ${y.s}`)))) { /* 배너(맞는 내용이 없을 수 있어요)가 1위인데 질의의 특이한 낱말(자료 8곳 이하에만 나오는 3자 이상 낱말)이 정책 본문·안내 색인에 실제로 있으면 그 행을 먼저 보여 준다. '찾지 못했어요'는 그런 행이 정말 없을 때만 남는다 */
       const pol = (data.policyAll || data.policy).map((x) => ({ x, n: norm(`${x.title} ${x.body || ""}`) })), gd = data.guide.filter((g) => !g.quiet && !g.gap).map((g) => ({ g, n: norm(`${g.t} ${g.text || ""}`) }));
       const all = [...new Set(cleanQuery(String(q)).split(/\s+/).map(norm).filter((w) => w.length >= 3 && !STOP.has(w) && !STOP2.has(w) && !/^\d+$/.test(w)))], df = (t) => pol.filter((p2) => p2.n.includes(t)).length + gd.filter((g2) => g2.n.includes(t)).length, toks = all.filter((t) => { const d = df(t); return d >= 1 && d <= 8; }), tight = new Set(all.filter((t) => { const d = df(t); return d >= 1 && d <= 3; }));
@@ -302,6 +328,14 @@ export function makeSearcher(store) {
       const wk = r.findIndex(([h, l]) => h === "안내" && l.some((y) => /낱말 일부만 맞는 비슷한 화면/.test(y.s || ""))), sg = r.findIndex(([h]) => h === "비슷한 화면");
       if (wk >= 0 && sg >= 0) { const toks = cleanQuery(String(q)).split(/\s+/).map((w) => norm(w).replace(/(인가요|인가|일까요|일까|이에요|예요|인지|인데)$/, "")).filter((w) => w.length >= 2 && !STOP.has(w) && !STOP2.has(w)); const full = toks.length >= 2 ? r[sg][1].find((y) => toks.every((w) => { const tx = norm(`${y.t} ${y.s || ""}`); return tx.includes(w) || (w.length >= 3 && tx.includes(w.slice(0, -1))); /* 어미가 붙은 꼴(필수인)은 앞 글자로 */ })) : null;
         if (full) r = [["바로 안내", [full]], ...r.filter(([h, l], i) => i !== wk && h !== "비슷한 화면"), ["가이드·용어", r[sg][1].filter((y) => y !== full)]].filter(([, l]) => l.length); }
+    }
+    if (/서울/.test(String(q)) && !/서울대|서울시립|서울과학|서울예|서울여|서울교|서울시/.test(String(q)) && /고입|일반고|외고|국제고|자사고|후기|전기|합격|등록|추가모집|배정|원서/.test(String(q)) && !/대학|입시|수능|수시|정시|중학|초등/.test(String(q))) { /* 서울 낱말이 있는 고입 질의: 제목이 '서울'로 시작하는 서울 행을 경기 행보다 앞에 */
+      const sl = []; r = r.map(([h, l]) => [h, l.filter((y) => { if (/^서울/.test(y.t || "") && !y.term) { sl.push(y); return false; } return true; })]).filter(([, l]) => l.length);
+      if (sl.length) { const k = r.findIndex(([h]) => h !== "바로 안내" && h !== "안내"); const g = ["일정·제도", sl]; r = k < 0 ? [...r, g] : [...r.slice(0, k), g, ...r.slice(k)]; if (r[0][0] === "바로 안내" && /경기/.test(r[0][1][0]?.t || "")) { const first = r.shift(); r.splice(1, 0, first); } }
+    }
+    { /* 이미 만들어진 결과(안내 행 포함)의 hl이 일정 여러 건인 정책 행의 제목이면 질의에 맞는 일정 줄로 바꾼다 */
+      const byTitle = new Map(data.policy.filter((x) => (x.events || []).length >= 2).map((x) => [x.title, x]));
+      r = r.map(([h, l]) => [h, l.map((y) => { const m = /([?&])hl=([^&]*)$/.exec(y.href || ""); if (!m) return y; let t0; try { t0 = decodeURIComponent(m[2]); } catch { return y; } const row = byTitle.get(t0) || (t0.length >= 8 ? [...byTitle.values()].find((x) => x.title.startsWith(t0)) : null); if (!row) return y; t0 = row.title === t0 ? t0 : t0; const nh = evHlFor(row, q); return nh === row.title ? y : { ...y, href: y.href.replace(/([?&]hl=)[^&]*$/, "$1" + encodeURIComponent(nh)) }; })]);
     }
     { /* 용인 학교 표 안내('고교 31곳'·'중학교 13곳')에 용인 표기가 없으니, 질의에 다른 지역 낱말이 있으면 용인 기준 표임을 밝힌다 */
       const rw = REGION_WORDS.find((x) => new RegExp("(?<![가-힣(])" + regionFindPattern(x)).test(String(q).toLowerCase().replace(/\s+/g, " ")));
