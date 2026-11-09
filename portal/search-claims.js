@@ -1,25 +1,36 @@
 // '학교 이름 + 주제' 검색 안내 문구(search.js TOPICS)가 말하는 화면과 값의 대응표.
 // 문구는 도착 화면의 이름과 실제로 있는 값에 맞춘다. tools/check-topic-claims.mjs가 CLAIMS를 데이터로 대조한다(화면이 바뀌면 점검이 실패한다).
 const josa = (w) => ((w.charCodeAt(w.length - 1) - 0xac00) % 28 ? "은" : "는");
-// label → (place) => { href?, text }  (href가 null이면 이 포털에 없는 항목: 확인할 곳을 안내)
-export const TOPIC_SAY = {
-  "교육 특색": (pl) => pl.level === "middle"
-    ? { href: "#select/curriculum?v=schools&lv=middle", text: "중학교 보기 비교표의 '교육 특색·노력중점' 칸에서 볼 수 있어요" }
-    : { href: "#select/curriculum?v=schools&lv=high&g=%EA%B5%90%EC%9C%A1%EA%B3%BC%EC%A0%95", text: "고교 보기 비교표의 '교육과정 특징(편제표 요약)' 칸에서 볼 수 있어요(편제표를 옮긴 학교만 값이 있어요)" },
-  "편제표(학교별 과목표)": (pl) => ({ href: pl.schoolId ? `#select/curriculum?s=${encodeURIComponent(pl.schoolId)}&hl=${encodeURIComponent("과목표")}` : null, text: "학교 요약 화면의 과목표에서 볼 수 있어요" }),
-  "학비·비용": () => ({ href: "#select/curriculum?v=types&hl=%EB%B9%84%EC%9A%A9", text: "고교 종류 화면의 '비용' 줄에서 유형별 학비를 볼 수 있어요(학교별 금액은 이 포털에 없어요 → 학교 누리집·학교알리미)" }),
-  "모집 인원": () => ({ href: "#select/curriculum?v=types&hl=%EA%B0%9C%EB%B3%84%20%ED%95%99%EA%B5%90%20%EB%AA%A8%EC%A7%91%20%ED%98%84%ED%99%A9", text: "학교별 모집 인원은 이 포털에 없어요 → 각 학교 누리집의 입학전형요항 공고·경기도교육청 고입·전학 포털에서 확인해요" }),
-  "대학 진학 현황": (pl) => ({ href: pl.level === "high" ? "#select/curriculum?v=schools&lv=high&g=%EC%A7%84%ED%95%99" : null, text: "고교 보기 비교표의 '대학 진학 현황' 칸에서 볼 수 있어요" }),
-  "설명회 노트": () => ({ href: null, text: "" }), // 노트가 있는 학교는 search.js가 그 문서 주소로 보낸다
-  "입학·전형": (pl) => pl.level === "middle"
-    ? { href: "#schedule?t=life", text: "중학교 일정 화면에서 배정·입학 일정을 볼 수 있어요" }
-    : { href: "#schedule?t=hs", text: "고교 일정 화면에서 고입 전형 일정을 볼 수 있어요(학교별 입학 방식은 고교 보기 비교표의 '입학 방식' 칸)" },
-  "학교군": (pl) => pl.level === "middle"
-    ? { href: "#select/curriculum?v=schools&lv=middle", text: "중학교 보기 비교표의 '학교군' 칸에서 볼 수 있어요" }
-    : { href: "#select/curriculum?v=schools&lv=high&g=%EC%9E%85%ED%95%99", text: "고교 보기 비교표의 '학군·구역' 칸에서 볼 수 있어요" },
+// 학교급(level)마다 문구와 확인처가 다르다. SAY[label] = { level: "both"|"high"|"middle", high: (place) => {href,text}|null, middle: ... }
+//  href가 없거나 항목이 null이면 이 포털에 없는 항목: noneText(또는 none)로 확인할 곳을 안내한다. 초등학교 등 다른 학교급은 항상 없음 안내.
+const HS = "#select/curriculum?v=schools&lv=high", MS = "#select/curriculum?v=schools&lv=middle";
+export const SAY = {
+  "교육 특색": { level: "both",
+    high: () => ({ href: `${HS}&g=%EA%B5%90%EC%9C%A1%EA%B3%BC%EC%A0%95`, text: "고교 보기 비교표의 '교육과정 특징(편제표 요약)' 칸에서 볼 수 있어요(편제표를 옮긴 학교만 값이 있어요)" }),
+    middle: () => ({ href: MS, text: "중학교 보기 비교표의 '교육 특색·노력중점' 칸에서 볼 수 있어요" }) },
+  "방과후학교": { level: "both",
+    high: () => ({ href: null, none: "방과후학교 칸은 이 포털에 없어요(교육 특색에 방과후 프로그램을 적은 학교는 그 행에 있어요) → 학교 홈페이지·학교알리미 공시에서 확인해요" }),
+    middle: () => ({ href: null, none: "방과후학교 칸은 이 포털에 없어요(교육 특색에 방과후 프로그램을 적은 학교는 그 행에 있어요) → 학교 홈페이지·학교알리미 공시에서 확인해요" }) },
+  "편제표(학교별 과목표)": { level: "high",
+    high: (pl) => ({ href: pl.schoolId ? `#select/curriculum?s=${encodeURIComponent(pl.schoolId)}&hl=${encodeURIComponent("과목표")}` : null, text: "학교 요약 화면의 과목표에서 볼 수 있어요" }), middle: null },
+  "학비·비용": { level: "high",
+    high: () => ({ href: "#select/curriculum?v=types&hl=%EB%B9%84%EC%9A%A9", text: "고교 종류 화면의 '비용' 줄에서 유형별 학비를 볼 수 있어요(학교별 금액은 이 포털에 없어요 → 학교 누리집·학교알리미)" }), middle: null },
+  "모집 인원": { level: "both",
+    high: () => ({ href: "#select/curriculum?v=types&hl=%EA%B0%9C%EB%B3%84%20%ED%95%99%EA%B5%90%20%EB%AA%A8%EC%A7%91%20%ED%98%84%ED%99%A9", text: "학교별 모집 인원은 이 포털에 없어요 → 각 학교 누리집의 입학전형요항 공고·경기도교육청 고입·전학 포털에서 확인해요" }),
+    middle: () => ({ href: "#select/curriculum?v=middle&hl=%EB%B0%B0%EC%A0%95%EB%B6%80%ED%84%B0%20%EB%93%B1%EB%A1%9D%EA%B9%8C%EC%A7%80", text: "중학교는 입학 전형이 아니라 배정이에요. 배정·입학 준비 화면의 '배정부터 등록까지'에서 일정·절차를 볼 수 있어요(학교별 배정 인원은 이 포털에 없어요 → 용인교육지원청 배정 공지)" }) },
+  "대학 진학 현황": { level: "high", high: () => ({ href: `${HS}&g=%EC%A7%84%ED%95%99`, text: "고교 보기 비교표의 '대학 진학 현황' 칸에서 볼 수 있어요" }), middle: null },
+  "설명회 노트": { level: "high", high: () => ({ href: null, text: "" }), middle: null }, // 노트가 있는 학교는 search.js가 그 문서 주소로 보낸다
+  "입학·전형": { level: "both",
+    high: () => ({ href: "#schedule?t=hs", text: "고교 일정 화면에서 고입 전형 일정을 볼 수 있어요(학교별 입학 방식은 고교 보기 비교표의 '입학 방식' 칸)" }),
+    middle: () => ({ href: "#schedule?t=life", text: "중학교 일정 화면에서 배정·입학 일정을 볼 수 있어요" }) },
+  "학교군": { level: "both",
+    high: () => ({ href: `${HS}&g=%EC%9E%85%ED%95%99`, text: "고교 보기 비교표의 '학군·구역' 칸에서 볼 수 있어요" }),
+    middle: () => ({ href: MS, text: "중학교 보기 비교표의 '학교군' 칸에서 볼 수 있어요" }) },
 };
+// 호환용: 예전 이름(TOPIC_SAY)을 쓰던 도구를 위해 (label)->(place) 형태도 둔다
+export const TOPIC_SAY = Object.fromEntries(Object.entries(SAY).map(([k, e]) => [k, (pl) => { const f = e[pl.level === "middle" ? "middle" : pl.level === "high" ? "high" : null]; return f ? f(pl) : null; }]));
 export const sayOf = (label, pl) => { const f = TOPIC_SAY[label]; return f ? f(pl) : null; };
-export const noneText = (label) => `${label}${josa(label)} 이 포털에 아직 없어요 → 학교 홈페이지·학교알리미 공시에서 확인해요`;
+export const noneText = (label) => { const w = label.replace(/\(.*\)$/, ""); return `${w}${josa(w)} 이 포털에 아직 없어요 → 학교 홈페이지·학교알리미 공시에서 확인해요`; };
 
 // 점검표: 문구가 가리키는 값이 실제 데이터에 있는지(tools/check-topic-claims.mjs)
 //  kind "field": data 파일의 fields에 label이 든 항목이 있고 값이 있는 학교가 1곳 이상
@@ -32,5 +43,9 @@ export const CLAIMS = [
   { label: "대학 진학 현황", level: "high", kind: "field", data: "hs-compare", field: "univStats", fieldLabel: "대학 진학 현황" },
   { label: "입학·전형", level: "high", kind: "field", data: "hs-compare", field: "admission", fieldLabel: "입학 방식" },
   { label: "학비·비용", kind: "types", key: "cost", screenText: "비용" },
-  { label: "모집 인원", kind: "absent", words: /모집|정원/, data: ["hs-compare", "middle-compare"] },
+  { label: "모집 인원", level: "high", kind: "absent", words: /모집|정원/, data: ["hs-compare"] },
+  { label: "모집 인원", level: "middle", kind: "absent", words: /모집|정원|배정 ?인원/, data: ["middle-compare"] },
+  { label: "모집 인원", level: "middle", kind: "section", data: "middle-guide", title: "배정부터 등록까지" },
+  { label: "학비·비용", level: "middle", kind: "absent", words: /학비|수업료|등록금|비용/, data: ["middle-compare"] },
+  { label: "방과후학교", level: "both", kind: "absent", words: /방과후/, data: ["hs-compare", "middle-compare"] },
 ];
