@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 const root = resolve(new URL("..", import.meta.url).pathname);
 const load = (n) => JSON.parse(readFileSync(`${root}/portal/data/${n}.json`, "utf8"));
-const { CLAIMS, SAY, sayOf, noneText, REGION_WORDS, GG_WORDS, REGION_ALIAS, regionKnown } = await import(`${root}/portal/search-claims.js`);
+const { CLAIMS, SAY, sayOf, noneText, REGION_WORDS, GG_WORDS, REGION_ALIAS, regionKnown, pyeongCities, CITY_OF } = await import(`${root}/portal/search-claims.js`);
 const bad = [], ok = [];
 const has = (v) => v && v.value != null && v.value !== "";
 for (const c of CLAIMS) {
@@ -77,6 +77,12 @@ ok.push(`대응표 ${Object.keys(SAY).length}항목 × 초·중·고 ${combos}�
     else (hasEo ? gaiLine : absent).push(w);
   }
   ok.push(`다른 지역 선언: 서울(${known.join("·")})은 서울 데이터로 연결, 경기 지역 ${gg.length}곳은 경기 일정으로 연결, 외고·국제고·자사고 질의는 ${gaiLine.length}곳(${gaiLine.join("·")}) 학교 이름이 데이터에 있어 연결, 그 밖의 ${absent.length + gaiLine.length}곳은 일반 고입 자료가 어떤 데이터에도 없음`);
+  { // 경기 지역 낱말의 평준화 여부 안내는 gg-25(확정)의 9학군 목록에서 읽는다: 목록이 읽히고 용인을 포함해야 하며, 낱말마다 소속/비소속이 결정되어야 한다
+    const set = pyeongCities(load("policy")), g25 = load("policy").find((r) => r.id === "gg-25");
+    if (!set || set.size < 9 || !set.has("용인")) bad.push(`평준화 9학군 목록을 gg-25에서 읽지 못했어요(${set ? [...set].join(",") : "null"})`);
+    else if (g25.status !== "confirmed") bad.push("gg-25가 확정 상태가 아니에요(지역 낱말 안내의 근거)");
+    else ok.push(`경기 지역 낱말 ${GG_WORDS.length}곳 평준화 구분: 9학군(${[...set].join("·")}) 소속 ${GG_WORDS.filter((w) => set.has(CITY_OF[w] || w)).join("·")} / 비소속은 '학교별 전형'으로(시·군 목록은 gg-26 추정이라 사실처럼 말하지 않음)`);
+  }
   if (!/서울/.test(hay)) bad.push("안내 문구가 말하는 '서울'이 정책 데이터에 없어요");
 }
 for (const l of ok) console.log("  ✓", l);
