@@ -73,6 +73,7 @@ jobs:
             node tools/check-topic-claims.mjs
             node tools/check-no-assertions.mjs
             node tools/check-school-aliases.mjs
+            node tools/check-joint-zones.mjs
             node tools/check-places-addresses.mjs
             node tools/build-ics.mjs --check
             node tools/build-roadmap.mjs --check
