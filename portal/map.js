@@ -80,6 +80,9 @@ export async function mapBody(el, { load, esc, focus = null, level = null }) {
     const L = window.L;
     layer.clearLayers(); markers = new Map();
     /* 핀이 겹치면 묶음 마커('3곳')로 그리고, 누르면 그 묶음이 보이게 확대한다. 낱개 핀은 서로 30px 이상 떨어져 눌림 영역(핀 크기 그대로)이 겹치지 않는다 */
+    /* 마커를 키보드로: Tab으로 닿고 Enter·Space로 낱개는 학교 열기, 묶음은 확대. 읽어 주는 이름은 aria-label */
+    const a11y = (m, label, act) => { const el = m.getElement?.(); if (!el) return; el.setAttribute("role", "button"); el.setAttribute("aria-label", label); el.removeAttribute("title"); el.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); act(); } }); };
+    const lvLabel = ({ elementary: "초등학교", middle: "중학교", high: "고교" })[st.level] || "학교";
     const D = 52, list = shown().filter((x) => x.lat != null).sort((a, b) => (b.id === st.sel) - (a.id === st.sel)), cl = [];
     for (const p of list) {
       const pt = map.latLngToContainerPoint([p.lat, p.lng]), c = p.id === st.sel ? null : cl.find((k) => !k.sel && Math.hypot(k.x - pt.x, k.y - pt.y) < D);
@@ -88,11 +91,11 @@ export async function mapBody(el, { load, esc, focus = null, level = null }) {
     for (const k of cl) {
       if (k.items.length === 1) {
         const p = k.items[0], m = L.marker([p.lat, p.lng], { icon: icon(L, p, p.id === st.sel, 30), title: p.name, keyboard: true }).addTo(layer);
-        m.on("click", () => select(p.id, false)); markers.set(p.id, m);
+        m.on("click", () => select(p.id, false)); markers.set(p.id, m); a11y(m, p.name, () => select(p.id, false));
       } else {
         const lat = k.items.reduce((a, p) => a + p.lat, 0) / k.items.length, lng = k.items.reduce((a, p) => a + p.lng, 0) / k.items.length, names = k.items.map((p) => p.name).join(", ");
-        const m = L.marker([lat, lng], { icon: L.divIcon({ className: "", html: `<span class="pl-hit" style="width:34px;height:34px"><span class="pl-pin pl-cl">${k.items.length}곳</span></span>`, iconSize: [34, 34], iconAnchor: [17, 17] }), title: `${k.items.length}곳: ${names}`, keyboard: true }).addTo(layer);
-        m.on("click", () => { map.fitBounds(k.items.map((p) => [p.lat, p.lng]), { padding: [40, 40], maxZoom: 18 }); });
+        const m = L.marker([lat, lng], { icon: L.divIcon({ className: "", html: `<span class="pl-hit" style="width:34px;height:34px"><span class="pl-pin pl-cl">${k.items.length}곳</span></span>`, iconSize: [34, 34], iconAnchor: [17, 17] }), title: `${k.items.length}곳 묶음`, keyboard: true }).addTo(layer);
+        const zoomIn = () => map.fitBounds(k.items.map((p) => [p.lat, p.lng]), { padding: [40, 40], maxZoom: 18 }); m.on("click", zoomIn); a11y(m, `${lvLabel} ${k.items.length}곳 묶음, 확대`, zoomIn);
       }
     }
   };
