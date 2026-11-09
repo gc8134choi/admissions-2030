@@ -46,7 +46,10 @@ for (const a of mid.areas || []) {
   const flat = S.search(`${sc.name} 학교군`).flatMap(([, l]) => l), note = flat.find((x) => (x.t || "") === `${sc.name} · 학교군`); nz++;
   if (!note) { bad.push(`${sc.name} 학교군: 안내 행이 없어요`); continue; }
   for (const nm of names) if (!note.s.includes(nm)) bad.push(`${sc.name} 학교군: '${nm}'이 안내에 없어요 → ${note.s.slice(0, 80)}`);
-  if (joint !== /공동학군/.test(note.s)) bad.push(`${sc.name} 학교군: 공동학군 표시가 데이터(${joint ? "공동" : "단일"})와 달라요 → ${note.s.slice(0, 80)}`);
+  // 학구 일부만 공동학군이면(고기초: 운중동 일부·판교중학군) 그 범위와 상대 학군이 안내에 있어야 하고, 학교 전체가 공동이면 두 학군 이름과 '공동학군'
+  const part = /\((.+?)[은는] (\S+?학군)과 공동학군\)/.exec(a.from.note || "");
+  if (part) { const scope = part[1].replace(/^.+? 학구 중 /, ""); if (!note.s.includes("학구 일부") || !note.s.includes(scope) || !note.s.includes(part[2])) bad.push(`${sc.name} 학교군: 학구 일부 공동학군(범위 '${scope}'·상대 '${part[2]}')이 안내에 없어요 → ${note.s.slice(0, 120)}`); }
+  else if (joint !== /공동학군/.test(note.s)) bad.push(`${sc.name} 학교군: 공동학군 표시가 데이터(${joint ? "공동" : "단일"})와 달라요 → ${note.s.slice(0, 80)}`);
 }
 // 학교급 한 글자 띄어쓰기(서원 중·홍천 고)·'고교/중교' 변형: 같은 이름의 다른 학교급 값을 1위로 내면 안 된다. 학교급 없는 모호한 이름(서원·홍천)은 후보 안내
 const SHORT = { 초등학교: ["초", "초교"], 중학교: ["중", "중교"], 고등학교: ["고", "고교"] }; let nv = 0;
