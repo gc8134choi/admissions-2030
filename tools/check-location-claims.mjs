@@ -58,6 +58,17 @@ for (const l of LOC) {
   }
   ok.push(`대학 요건 개수 문장 ${nu}개 대학을 requirements가 있는 규칙 수와 대조`);
 }
+// ②-c 화면에 따로 그려지지 않는 행(NO_HL: sch-04·hs-11·log-13·b33-06)과 2028 참고 행: 도착 화면에 값이 없으면 검색 결과에서 본문이 바로 보여야 한다(결과 항목 inline + 본문 앞 260자에 핵심 값)
+{
+  const { makeSearcher, buildSearchData, NO_HL } = await import(`${root}/portal/search.js`), { loadSearchExtra } = await import(`${root}/portal/search-extra.js`), load = async (n) => data(n), store = { get: (k, d) => d, set() {} };
+  const parts = await Promise.all([load("policy"), load("summary"), load("links").catch(() => ({ items: [] })), load("subject-info").catch(() => ({ subjects: [] })), load("places"), loadSearchExtra(load)]), S = makeSearcher(store); S.setData(buildSearchData(parts, store));
+  let nn = 0;
+  for (const id of NO_HL) { const row = parts[0].find((r) => r.id === id); if (!row) continue; nn++;
+    const key = (row.body || "").match(/\d[\d.~()월화수목금토일]*\d|\d{2,}/)?.[0] || row.title, flat = S.search(row.title).flatMap(([, l]) => l), hit = flat.find((x) => x.t === row.title);
+    if (!hit) { bad.push(`NO_HL ${id}: 제목으로 검색해도 행이 안 나와요`); continue; }
+    if (!`${hit.inline ? hit.x || "" : ""} ${hit.s || ""}`.slice(0, 300).includes(key)) bad.push(`NO_HL ${id}(${row.title}): 결과에 본문이 바로 보이지 않아요(핵심 값 '${key}')`); }
+  ok.push(`화면에 안 그려지는 행 ${nn}건: 검색 결과에서 본문(핵심 값)이 바로 보임`);
+}
 // ③ 비교표 학교 조합별 빈 칸 사유
 {
   const hc = data("hs-compare"), reasonOf = (name) => hc.schools.find((s) => s.name === name)?.values?.univStats?.nullReason || "";

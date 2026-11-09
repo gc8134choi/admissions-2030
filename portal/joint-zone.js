@@ -7,7 +7,7 @@ export const jointOf = (area) => {
   if (j && (j.type === "일부" || j.type === "전체")) {
     const others = j.otherZones || [];
     return j.type === "일부"
-      ? { type: "part", home: home[0] || "", other: others.join("·"), scope: String(j.rangeText || "").replace(/^성남시\s*/, "").trim(), groups: home }
+      ? { type: "part", home: home[0] || "", other: others.join("·"), scope: String(j.rangeText || "").replace(/^성남시\s*/, "").replace(/\s*\(([^)]*)\)/, " $1").trim(), groups: home }
       : { type: "all", home: home[0] || "", groups: [...new Set([...home, ...others])] };
   }
   if (j || /공동학군/.test(fn + " " + zs.map((z) => z.note || "").join(" "))) return { type: "unknown", home: home[0] || "", groups: home, raw: fn };
