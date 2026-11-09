@@ -10,6 +10,8 @@ const ok = (p) => p.catch(() => null);
 // "정확히 맞는 내용이 없을 수 있어요" 류 안내는 하드코딩하지 않는다: 해당 데이터가 있으면 그 데이터로 연결하고(found), 없을 때만 "없음 + 어디서 확인"(none)을 낸다.
 // tools/check-search-notices.mjs가 같은 규칙을 데이터로 점검한다(안내가 가리키는 주제의 데이터가 실제로 없는지).
 export const elemZone = new Map(); // 초등학교 placeId → 학교군 이름(middle.json 첫 중학교 항목의 '수지1중학군(…)' 앞부분)
+export const FIELDS = { high: new Set(), middle: new Set() }; // 학교 비교표(고교·중학교 보기)에 있는 칸 이름
+export const midZone = new Map(); // placeId → 중학교 비교의 '학교군' 값
 export const curInfo = new Map(); // placeId → {has, why}: 고교 비교의 '교육과정 특징' 칸에 값이 있는지와 빈 칸 사유
 export const univInfo = new Map(); // placeId → {has, why}: 학교별 비교의 '대학 진학 현황' 칸에 값이 있는지와 빈 칸 사유(화면과 같은 문구)
 const univResultText = (hc) => { /* 빈 칸 학교의 사유를 학교별 nullReason에서 센다(문구를 고정하지 않는다) */
@@ -215,6 +217,8 @@ export function gapDocs(D) {
 export async function loadSearchExtra(load) {
   const [guide, tl, ht, gl, hc, bf, mc, el, ex, rl, pol, evs, un, ar, mid] = await Promise.all([ok(load("middle-guide")), ok(load("timeline")), ok(load("hs-types")), ok(load("glossary")), ok(load("hs-compare")), ok(load("briefings")), ok(load("middle-compare")), ok(load("electives")), ok(load("exam-trends")), ok(load("rules")), ok(load("policy")), ok(load("events")), ok(load("universities")), ok(load("admission-rules")), ok(load("middle"))]);
     elemZone.clear(); try { const md = await load("middle"); for (const a of md?.areas || []) { const j = jointOf(a); if (!j.home && !j.groups.length) continue; elemZone.set(a.from.placeId, zoneText(j)); } } catch {} /* 공동학군 해석은 joint-zone.js 한 곳 */
+  FIELDS.high = new Set((hc?.fields || []).map((f) => f.label)); FIELDS.middle = new Set((mc?.fields || []).map((f) => f.label));
+  midZone.clear(); for (const sc of mc?.schools || []) { const v = sc.values?.zone; if (v && v.value) midZone.set(sc.placeId, String(v.value)); }
   curInfo.clear(); for (const sc of hc?.schools || []) { const v = sc.values?.curriculum; curInfo.set(sc.placeId, { has: !!(v && v.value != null && v.value !== ""), why: v?.nullReason || "" }); }
   univInfo.clear(); for (const sc of hc?.schools || []) { const v = sc.values?.univStats; univInfo.set(sc.placeId, { has: !!(v && v.value != null && v.value !== ""), why: v?.nullReason || "" }); }
   const out = [];
