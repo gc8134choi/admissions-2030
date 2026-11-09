@@ -29,6 +29,7 @@ export const schoolAliases = (name) => {
   const n = norm(name), m = /^(.*?)(초등학교|중학교|고등학교)$/.exec(n); if (!m) return [n];
   const core = m[1], sh = m[2][0], out = new Set([n, core + sh]);
   if (core.startsWith("용인") && core.length >= 4) { out.add(n.slice(2)); out.add(core.slice(2) + sh); }
+  else if (core.length >= 2) { out.add("용인" + n); out.add("용인" + core + sh); } // 공식 정식 이름(용인홍천고등학교)으로 불러도
   return [...out];
 };const ROUTE = {
   "exam-schedule": "#schedule?t=univ", "hs-schedule": "#schedule?t=hs", "gg-hs-entry": "#schedule?t=hs", "life-schedule": "#schedule?t=life",
@@ -200,6 +201,7 @@ export function makeSearcher(store) {
         if (!hitDomain && !cands.length) { /* 데이터 어디에도 없는 핵심어가 있고 맞은 건 흔한 낱말뿐이면 다른 주제 행을 정답처럼 내지 않는다 */ r = [["안내", [{ href: "#library/links", t: "이 포털에서 찾기 어려운 내용이에요", s: "찾는 말에 맞는 자료가 없어요 → 학교알리미(학교별 공시)나 해당 학교 누리집에서 확인해요" }]], ["공식 확인처", HELP.slice(1, 2).map(([n, u, d]) => ({ href: u, ext: true, t: n, s: d })).concat([{ href: "#select/curriculum?v=map", t: "학교 지도(학교 홈페이지·전화)", s: "학교 카드에서 학교 누리집으로 이어져요" }])]]; return r; }
       }
     }
+    if (weak && r.some(([, l]) => l.some((x) => x.term && (() => { const raw = String(q0).split(/\s+/).map(norm).filter(Boolean), tn = norm(String(x.t).replace(/\s*\(용어\)\s*$/, "")); return raw.includes(tn) && tn.length >= 2 && raw.length <= 2 && raw.filter((w) => w !== tn).every((w) => r.some(([, l2]) => l2.some((y) => norm(`${y.t} ${y.s || ""}`).includes(w)))); })()))) weak = false; // 질의의 낱말 하나가 정확한 용어 행이면 "정확히 맞는 내용이 없을 수 있어요" 배너를 내지 않는다
     if (weak) { // 신뢰도 낮음: 안내를 먼저 내고 느슨한 결과는 최대 3행
       const flat = r.filter(([h]) => h !== "과목").flatMap(([h, l]) => l.map((x) => ({ ...x, _g: h }))).slice(0, 3);
       { const bn = ["안내", [{ href: "#library/links", t: "이 포털에 정확히 맞는 내용이 없을 수 있어요", s: "아래는 낱말 일부만 맞는 비슷한 화면이에요 → 정확한 내용은 공식 안내(교육청·학교알리미·대입정보포털)에서 확인해요" }, ...notes]], sm = flat.length ? [["비슷한 화면", flat]] : []; r = [...(strongTop ? [...sm, bn] : [bn, ...sm]), ["공식 확인처", HELP.slice(0, 3).map(([n, u, d]) => ({ href: u, ext: true, t: n, s: d }))]]; }
