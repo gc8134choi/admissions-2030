@@ -606,7 +606,7 @@ function rewriteHash(id, q) {
   if (id !== "select/curriculum") return null;
   const v = q.get("v"), n = new URLSearchParams(q);
   if (v === "middle" && (q.get("open") === "cmp" || q.has("g"))) { n.set("v", "schools"); n.set("lv", "middle"); n.delete("open"); return `${id}?${n}`.replace(/%2C/g, ","); } // 중학교 비교·학교별 항목 → 중학교 학교 보기
-  if (v === "map" && q.get("lv") === "middle") { n.set("v", "schools"); n.set("show", "map"); return `${id}?${n}`.replace(/%2C/g, ","); } // 중학교 지도 → 학교 보기의 지도
+  if (v === "map" && (q.get("lv") === "middle" || q.get("lv") === "elementary")) { n.set("lv", "middle"); /* 초등학교 지도는 중학교 보기의 지도(학교급 필터는 선택한 학교의 학교급으로 맞춰진다) */ n.set("v", "schools"); n.set("show", "map"); return `${id}?${n}`.replace(/%2C/g, ","); } // 중학교 지도 → 학교 보기의 지도
   if (!v || v === "hs" || v === "summary") { n.set("v", "schools"); n.set("lv", "high"); if (v === "hs" && q.get("ty") === "1") { n.set("v", "types"); n.delete("lv"); n.delete("ty"); } return `${id}?${n}`.replace(/%2C/g, ","); } // 학교 비교(옛 주소) → 고교 학교 보기, 고교 종류(ty=1)는 전용 화면
   if (v === "compare") { n.set("v", "schools"); n.set("lv", "high"); n.set("show", "subj"); return `${id}?${n}`.replace(/%2C/g, ","); } // 과목 비교 → 학교 보기의 과목
   if (v === "map") { n.set("v", "schools"); n.set("lv", "high"); n.set("show", "map"); return `${id}?${n}`.replace(/%2C/g, ","); } // 고교 지도 → 학교 보기의 지도

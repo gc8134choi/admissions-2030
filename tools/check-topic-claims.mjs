@@ -34,9 +34,10 @@ for (const nm of SCREEN) if (!menu.includes(nm)) bad.push(`문구가 쓰는 화�
 let combos = 0;
 for (const [label, e] of Object.entries(SAY)) {
   if (!["both", "high", "middle"].includes(e.level)) bad.push(`${label}: level(high/middle/both)이 없어요`);
-  for (const lv of ["high", "middle"]) {
+  for (const lv of ["high", "middle", "elementary"]) {
     const pl = { level: lv, schoolId: lv === "high" ? "school-pungdeok" : undefined }, r = sayOf(label, pl); combos++;
-    const shown = r?.href ? r.text : r?.none || noneText(label), tag = `${label}(${lv === "high" ? "고" : "중"})`;
+    if (lv === "elementary") { const shownE = noneText(label, "elementary"); if (r) bad.push(`${label}(초): 초등학교에 안내가 있어요(없는 값을 있다고 하면 안 돼요)`); if (!("elementary" in e)) bad.push(`${label}: elementary를 명시하지 않았어요`); if (/고입|고교|고등학교|배정|중학교 보기/.test(shownE.replace("중학교·고등학교만", ""))) bad.push(`${label}(초): 초등학교 문구에 다른 학교급 확인처가 있어요`); continue; }
+    const shown = r?.href ? r.text : r?.none || noneText(label, lv), tag = `${label}(${lv === "high" ? "고" : "중"})`;
     if (e.level === "high" && lv === "middle" && r) bad.push(`${tag}: level=high인데 중학교에 안내가 있어요`);
     if (e.level === "middle" && lv === "high" && r) bad.push(`${tag}: level=middle인데 고교에 안내가 있어요`);
     if (lv === "middle" && /고입|고교 |고등학교/.test(shown)) bad.push(`${tag}: 중학교 질의에 고교 확인처 문구가 있어요 → ${shown.slice(0, 40)}`);
@@ -49,7 +50,7 @@ for (const [label, e] of Object.entries(SAY)) {
     if (hl && !/[?&]s=/.test(r.href) && !allData.includes(hl.slice(0, 8))) bad.push(`${tag}: hl '${hl}'이 데이터에 없어요`);
   }
 }
-ok.push(`대응표 ${Object.keys(SAY).length}항목 × 고·중 ${combos}조합의 문구·주소·확인처 대조`);
+ok.push(`대응표 ${Object.keys(SAY).length}항목 × 초·중·고 ${combos}조합의 문구·주소·확인처 대조`);
 for (const l of ok) console.log("  ✓", l);
 if (bad.length) { for (const l of bad) console.log("  ✗", l); console.log(`실패 ${bad.length}건`); process.exit(1); }
 console.log(`OK: 학교+주제 안내 ${ok.length}항목이 가리키는 화면에 값이 있어요`);

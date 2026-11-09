@@ -49,7 +49,7 @@ export async function mapBody(el, { load, esc, focus = null, level = null }) {
   if (!places.length) { el.innerHTML = `<div class="ed"><h2>학교 지도</h2><p class="muted">아직 정리 중이에요.</p></div>`; return; }
   const lv0 = level || new URLSearchParams((location.hash.split("?")[1] || "")).get("lv");
   const st = (el.__map ||= { level: LEVEL[lv0] ? lv0 : "all", view: "map", sel: null, near: false });
-  if (focus && all.some((p) => p.id === focus)) { st.sel = focus; st.view = "map"; }
+  if (focus && all.some((p) => p.id === focus)) { st.sel = focus; st.view = "map"; const fp = all.find((p) => p.id === focus); if (st.level !== "all" && fp.level && fp.level !== st.level && LEVEL[fp.level]) st.level = fp.level; } // 주소의 학교급 필터가 그 학교를 가리면 학교의 학교급으로(마커가 보이게)
   let map = null, layer = null, markers = new Map(), mapFailed = false;
   const shown = () => [...places.filter((p) => st.level === "all" || p.level === st.level), ...(st.near ? nearby : [])];
   const chip = (k, v, t, cur) => `<button type="button" class="chip ${v === cur ? "on" : ""}" data-k="${k}" data-v="${v}" aria-pressed="${v === cur}">${t}</button>`;
