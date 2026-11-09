@@ -107,10 +107,10 @@ export function makeSearcher(store) {
   };
   // 안내가 정해진 주제(이사·배정 서류·자사고 배점·재수 …)는 느슨하게 맞는 다른 행보다 먼저 보여 준다. 없는 주제는 엉뚱한 행 대신 안내만 보인다.
   let regionHay = null;
-  const priority = (q, q0 = "") => { const nq = norm(q), nr = norm(String(q0).replace(/[?？!！.,~]/g, " ")); const rawQ = String(q0 || q).toLowerCase(); const hit = data.guide.filter((g) => g.q && (g.raw ? new RegExp(g.q).test(rawQ) : (new RegExp(g.q).test(nq) || new RegExp(g.q).test(nr)))).filter((g) => !(g.gap === "none-topics" && /수능|가채점/.test(nr) && /날짜|며칠|언제|시행|몇월|몇일|일정/.test(nr))); /* 질의에 날짜 낱말이 있는 수능 질의는 "다루지 않는다"로 막지 않는다(정리된 질의에서 날짜 낱말이 빠져 선언이 걸리던 오류) */ if (hit.some((g) => g.gap === "none-topics")) { const o = hit.filter((g) => g.gap === "none-topics"); return { list: o.map((g) => ({ href: g.href, t: g.t, s: g.s })), only: true }; } // 이 포털이 다루지 않는 주제는 안내만(링크·소음 행이 앞서지 않게)
-    if (hit.some((g) => g.gap === "other-region")) { // 질의의 지역 낱말이 이 포털 데이터(정책·안내)에 있으면 '다른 지역은 없어요'라고 하지 않는다(서울·수원외고 등) — 데이터에 없는 지역만 선언
+  const priority = (q, q0 = "") => { const nq = norm(q), nr = norm(String(q0).replace(/[?？!！.,~]/g, " ")); const rawQ = String(q0 || q).toLowerCase(); const hit = data.guide.filter((g) => g.q && (g.raw ? new RegExp(g.q).test(rawQ) : (new RegExp(g.q).test(nq) || new RegExp(g.q).test(nr)))).filter((g) => !(g.gap === "none-topics" && /수능|가채점/.test(nr) && /날짜|며칠|언제|시행|몇월|몇일|일정/.test(nr))); /* 질의에 날짜 낱말이 있는 수능 질의는 약한 안내로 막지 않는다(정리된 질의에서 날짜 낱말이 빠져 선언이 걸리던 오류) */ if (hit.some((g) => g.gap === "none-topics")) { const o = hit.filter((g) => g.gap === "none-topics"); return { list: o.map((g) => ({ href: g.href, t: g.t, s: g.s })), only: true }; } // 정확한 자료가 없을 수 있는 주제는 약한 안내만(링크·소음 행이 앞서지 않게)
+    if (hit.some((g) => g.gap === "other-region")) { // 질의의 지역 낱말이 포털 데이터(정책·안내)에 있으면 지역 안내를 내지 않는다(서울·수원외고 등) — 데이터에 없는 지역만 약한 안내
       const w = REGION_WORDS.find((x) => new RegExp("(?<![가-힣])" + x).test(nr)); regionHay ||= JSON.stringify([data.policy, data.guide.map((g) => [g.t, g.s, g.text])]);
-      if (w && GG_WORDS.includes(w) && !regionKnown(w, regionHay, nr)) { const rest = hit.filter((g) => g.gap !== "other-region"); return { list: [{ href: "#schedule?t=hs", t: "경기 고입 일정", s: `${w}도 경기도라 경기 고입 전기·후기 전형 일정은 같이 적용돼요. 학교 목록·학교별 모집 안내는 이 포털에 없어요(${w} 지역 교육지원청·학교 누리집에서 확인) — 용인·경기 일정은 일정 화면에 있어요` }, ...rest.map((g) => ({ href: withHl(g.href, g.hl), t: g.t, s: g.s }))], only: false }; } // 경기 지역 낱말(수원·성남 등)은 '없는 지역'이 아니라 경기 전체 일정 안내로
+      if (w && GG_WORDS.includes(w) && !regionKnown(w, regionHay, nr)) { const rest = hit.filter((g) => g.gap !== "other-region"); return { list: [{ href: "#schedule?t=hs", t: "경기 고입 일정", s: `${w}도 경기도라 경기 고입 전기·후기 전형 일정은 같이 적용돼요. 학교 목록·학교별 모집 안내는 포털에서 찾지 못했어요(${w} 지역 교육지원청·학교 누리집에서 확인) — 용인·경기 일정은 일정 화면에 있어요` }, ...rest.map((g) => ({ href: withHl(g.href, g.hl), t: g.t, s: g.s }))], only: false }; } // 경기 지역 낱말(수원·성남 등)은 '없는 지역'이 아니라 경기 전체 일정 안내로
       if (w && regionKnown(w, regionHay, nr)) { const rest = hit.filter((g) => g.gap !== "other-region"); return rest.length ? { list: rest.map((g) => ({ href: withHl(g.href, g.hl), t: g.t, s: g.s })), only: rest.some((g) => g.only) } : null; }
     }
     if (hit.some((g) => g.gap === "other-region")) { const o = hit.filter((g) => g.gap === "other-region"); return { list: o.map((g) => ({ href: withHl(g.href, g.hl), t: g.t, s: g.s })), only: true }; } // 다른 지역 질의는 지역 경고만 먼저(이어서 우리 지역 결과로 오해하지 않게)
@@ -125,7 +125,7 @@ export function makeSearcher(store) {
     if (hs) { const i = r.findIndex(([h]) => h.startsWith("일정")), j = r.findIndex(([h]) => h.startsWith("가이드")); if (i > j && j >= 0) { const [g] = r.splice(i, 1); r.splice(j, 0, g); } }
     return r;
   };
-  // 낱말 일부만 맞은 느슨한 결과(OR)와 없는 학교, 학교+주제 질의를 구조적으로 처리한다
+  // 낱말 일부만 맞은 느슨한 결과(OR)와 학교 이름 판정, 학교+주제 질의를 구조적으로 처리한다
   const TOPICS = [[/방과후/, "방과후학교", null], [/특색|교육 ?목표|교육 ?중점/, "교육 특색", (pl) => (pl.level === "middle" ? "#select/curriculum?v=middle&g=%EA%B5%90%EC%9C%A1" : "#select/curriculum?v=hs&g=%EA%B5%90%EC%9C%A1%EA%B3%BC%EC%A0%95")], [/편제표|개설(하는|되는)? ?과목|과목표|과목 ?구성/, "편제표(학교별 과목표)", (pl) => (pl.schoolId ? `#select/curriculum?s=${encodeURIComponent(pl.schoolId)}&hl=${encodeURIComponent("과목표")}` : null)], [/학비|등록금|수업료/, "학비·비용", () => "#select/curriculum?v=types"], [/모집 ?인원|정원|몇 ?명/, "모집 인원", () => "#select/curriculum?v=types"], [/진학 ?실적|대입 ?결과|입시 ?결과|합격 ?실적|합격자|진학/, "대학 진학 현황", (pl) => (pl.level === "high" ? "#select/curriculum?v=hs&g=%EC%A7%84%ED%95%99" : null)], [/설명회/, "설명회 노트", (pl) => data.guide.find((g) => pl.schoolId && g.href.includes("bf=" + pl.schoolId))?.href || null], [/합격선|커트라인|입결/, "합격선", () => null], [/입학|전형|지원|가려면|가고 ?싶|들어가/, "입학·전형", () => "#schedule?t=hs"], [/학군|학교군|중학구/, "학교군", () => "#select/curriculum?v=middle"], [/어느 ?중학교|갈 ?수 ?있는 ?중학교|가는 ?중학교|중학교 ?배정|배정 ?(되|받)/, "학교군", () => "#select/curriculum?v=middle", "elementary"]];
   // 과목 이름의 로마숫자(미적분Ⅱ·화학Ⅰ)를 질의의 아라비아 숫자(미적분2·화학 1)와 맞춘다
   const romanize = (str) => {
@@ -183,18 +183,18 @@ export function makeSearcher(store) {
       for (const [re, label, fn, onlyLv] of ambig.length ? [] : TOPICS) if (re.test(q0) && (!onlyLv || first.level === onlyLv) && !notes.some((n) => n.t === `${first.name} · ${label}`) && !(p && /설명회/.test(label))) {
         const say = sayOf(label, first), href = label === "설명회 노트" ? (fn ? fn(first) : null) : say?.href || null; // 문구는 search-claims.js의 대응표(도착 화면에 실제로 있는 값)
         if (/몇 ?명/.test(q0) && label === "모집 인원" && !/모집 ?인원|정원/.test(q0)) continue; // '서울대 몇 명'은 진학 현황 질의 — 모집 인원 안내가 가리지 않는다
-        const ui = label === "대학 진학 현황" ? univInfo.get(first.id) : null; // 값이 없는 학교는 화면의 빈 칸 사유 그대로
+        const ui = label === "대학 진학 현황" ? univInfo.get(first.id) : null; // 값이 비어 있는 학교는 화면의 빈 칸 사유 그대로
         if (ui && !ui.has) { notes.push({ href, t: `${first.name} · ${label}`, s: `${ui.why || "비교 화면의 이 칸은 비어 있어요"} (고교 보기 비교표의 빈 칸 사유)` }); continue; }
         if (label === "설명회 노트") { notes.push(href ? { href, t: `${first.name} · ${label}`, s: "설명회 노트 화면에서 볼 수 있어요" } : { href: "#library/links", t: `${first.name} · ${label}`, s: noneText(label, first.level) }); continue; }
         notes.push(href && say ? { href, t: `${first.name} · ${label}`, s: say.text + (label === "학교군" && first.level === "elementary" && elemZone.get(first.id) ? ` — ${first.name.replace(/등학교$/, "")}는 ${elemZone.get(first.id)}${/공동학군$/.test(elemZone.get(first.id)) ? "이에요" : "이에요"}` : "") } : { href: "#library/links", t: `${first.name} · ${label}`, s: say?.none || noneText(label, first.level) });
       }
       if (/용인한국외국어/.test(rest)) notes.push({ href: "#select/curriculum?v=types", t: "용인외대부고(자율형 사립고)", s: "외·국·자 전형 일정과 유형 설명은 고교 유형 화면에 있어요" });
     } else {
-      // 이 포털에 없는 학교(예: 죽전중·풍덕중): 학교 이름 모양의 낱말이 어떤 학교 이름과도 안 맞으면 알려 준다
+      // 목록에서 찾지 못한 학교 이름(예: 죽전중·풍덕중): 학교 이름 모양의 낱말이 어떤 학교 이름과도 안 맞으면 알려 준다
       const LV = { 중: ["middle", "중학교"], 고: ["high", "고등학교"], 초: ["elementary", "초등학교"] };
       for (const t of words) { const m = /^([가-힣]{2,5})(중학교|고등학교|초등학교|중|고|초)$/.exec(t); if (!m || /(신고|공고|광고|보고|통고|예고|사고|경고|출고|원고|항고|상고|신초|최초|개중|도중|기중|동중|전입신고)$/.test(t) || /^(언제|어디|어느|무엇|뭐|누구|얼마|어떻|어떤|이러|그러|저러|이래|그래|저래|아니|또는|그리|하지|되지|있지|없지|이고|그리고)$/.test(m[1]) || /(하|되|싶|있|없|보|알|해|서|가|오|나|내|주|받|쓰|열|떨|들|살|찾|맞|넣|놓|같|끝|돌|걸|골|르|리|아|어|지|자|다|라|네|죠|누|뀌|꾸|추|우|치|키|끄|뜨|크|트|프|요|면|며|니|까|게|듯|던|든|는|은|을|를)$/.test(m[1]) || /^(자공|자율|자사|일반|특성화|마이스터|자사|외|국제|과학|영재|예술|체육|특목|자율|자율형|자율형공립|자율형사립|공립|사립|전기|후기|평준화|비평준화|외국어|명문|상위|진학|입시|특수|대안|각종|모든|우리|근처|인근|다른|광역|지역|학군|중학|고등|초등|특성화|연합|통합)$/.test(m[1])) continue; const lv = LV[m[2][0]]; if (!lv || SYN.some((g) => g.includes(t)) || data.guide.some((g) => !g.q && ng(g).includes(norm(t))) || data.policy.some((r) => nr(r).includes(norm(t))) || data.places.some((x) => x.level === lv[0] && schoolAliases(x.name).some((a) => a.startsWith(t) || a.startsWith(m[1])))) continue;
         const all = data.places.filter((x) => x.level === lv[0]).map((x) => x.name.replace(/(중학교|고등학교|초등학교)$/, m[2][0])), names = all.slice(0, 40); // 31교 전체를 보여 준다
-        notes.push({ href: `#select/curriculum?v=map`, t: `${t}${(t.charCodeAt(t.length - 1) - 0xac00) % 28 ? "은" : "는"} 이 포털에 없는 학교예요`, s: `있는 ${lv[1]} ${all.length}곳: ${names.join("·")} → 없는 학교는 학교 지도나 학교알리미에서 찾아요` }); weak = true; break; }
+        notes.push({ href: `#select/curriculum?v=map`, t: `${t}${(t.charCodeAt(t.length - 1) - 0xac00) % 28 ? "은" : "는"} 포털의 학교 목록에서 찾지 못했어요`, s: `있는 ${lv[1]} ${all.length}곳: ${names.join("·")} → 학교 지도나 학교알리미에서도 찾아 보세요` }); weak = true; break; }
     }
     { // 과목 이름을 묻는 말(화학·확률과 통계·정보 과목…)은 과목 카드를 맨 위에(내신 평가계획 등 소음보다 먼저)
       const SUBGEN = /^(과목|설명|소개|내용|수업|뭐|무엇|어떤|뜻|의미|특징|유형|종류|구분|어느|들어|배우|배워|공부|과목이|과목은)$/;
@@ -223,7 +223,7 @@ export function makeSearcher(store) {
       else if (core.length >= 2 && (missing.length || uncov.length) && best <= 1) { // 핵심어가 데이터에 없고 맞은 건 흔한 낱말뿐이면(동아리 활동·학교 평균 등급) 무관 행 대신 안내 한 줄
         const DOMAIN = /^(배정|전형|입학|지원|접수|원서|등록|고입|중입|대입|수능|내신|졸업|학점|과목|서류|준비물|설명회|교복|급식|학교군|지망|추첨|전학|이사|예비소집|교과서)$/;
         const hitDomain = core.some((w) => DOMAIN.test(w) && cands.some((x) => expand(w).some((v) => norm(x.t + " " + x.s).includes(v))));
-        if (!hitDomain && !cands.length) { /* 데이터 어디에도 없는 핵심어가 있고 맞은 건 흔한 낱말뿐이면 다른 주제 행을 정답처럼 내지 않는다 */ r = [["안내", [{ href: "#library/links", t: "이 포털에서 찾기 어려운 내용이에요", s: "찾는 말에 맞는 자료가 없어요 → 학교알리미(학교별 공시)나 해당 학교 누리집에서 확인해요" }]], ["공식 확인처", HELP.slice(1, 2).map(([n, u, d]) => ({ href: u, ext: true, t: n, s: d })).concat([{ href: "#select/curriculum?v=map", t: "학교 지도(학교 홈페이지·전화)", s: "학교 카드에서 학교 누리집으로 이어져요" }])]]; return r; }
+        if (!hitDomain && !cands.length) { /* 데이터 어디에도 없는 핵심어가 있고 맞은 건 흔한 낱말뿐이면 다른 주제 행을 정답처럼 내지 않는다 */ r = [["안내", [{ href: "#library/links", t: "정확히 맞는 내용이 없을 수 있어요", s: "찾는 말에 정확히 맞는 자료를 찾지 못했어요 → 학교알리미(학교별 공시)나 해당 학교 누리집에서 확인해요" }]], ["공식 확인처", HELP.slice(1, 2).map(([n, u, d]) => ({ href: u, ext: true, t: n, s: d })).concat([{ href: "#select/curriculum?v=map", t: "학교 지도(학교 홈페이지·전화)", s: "학교 카드에서 학교 누리집으로 이어져요" }])]]; return r; }
       }
     }
     if (weak && r.some(([, l]) => l.some((x) => x.term && (() => { const raw = String(q0).split(/\s+/).map(norm).filter(Boolean), tn = norm(String(x.t).replace(/\s*\(용어\)\s*$/, "")); return raw.includes(tn) && tn.length >= 2 && raw.length <= 2 && raw.filter((w) => w !== tn).every((w) => r.some(([, l2]) => l2.some((y) => norm(`${y.t} ${y.s || ""}`).includes(w)))); })()))) weak = false; // 질의의 낱말 하나가 정확한 용어 행이면 "정확히 맞는 내용이 없을 수 있어요" 배너를 내지 않는다
@@ -244,7 +244,7 @@ export function makeSearcher(store) {
       const top = r.find(([h]) => h === "일정·제도" || h === "가이드·용어")?.[1]?.[0];
       if (top && ct.length >= 2 && !top.term) { const tx = norm(top.t + " " + top.s + " " + (top.x || "")); const nums = ct.filter((w) => /^\d{4}\.\d{1,2}\.\d{1,2}$|^\d{1,2}\.\d{1,2}$/.test(w)); if (nums.some((w) => !tokIn(w, tx)) || (ct.includes("대학") && ct.some((w) => /기숙사|급식|교복|체육복|통학|방과후/.test(w)) && /v=(hs|middle)|&g=/.test(top.href))) r = []; }
     }
-    if (!r.length && !p) r = [["안내", [{ href: "#library/links", t: "이 포털에서 찾기 어려운 내용이에요", s: "찾는 말에 맞는 자료가 없어요 → 학교알리미(학교별 공시)나 교육청·학교 누리집에서 확인해요" }]], ["공식 확인처", HELP.slice(1, 2).map(([n, u, d]) => ({ href: u, ext: true, t: n, s: d }))]];
+    if (!r.length && !p) r = [["안내", [{ href: "#library/links", t: "정확히 맞는 내용이 없을 수 있어요", s: "찾는 말에 정확히 맞는 자료를 찾지 못했어요 → 학교알리미(학교별 공시)나 교육청·학교 누리집에서 확인해요" }]], ["공식 확인처", HELP.slice(1, 2).map(([n, u, d]) => ({ href: u, ext: true, t: n, s: d }))]];
     if (p) r = [["바로 안내", p.list], ...r.map(([h, l]) => [h, l.filter((x) => !p.list.some((y) => y.t === x.t))]).filter(([, l]) => l.length)];
     return r;
   };
@@ -263,7 +263,7 @@ export function mountSearch(btn, { load, store, esc }) {
     const q = box.querySelector("input").value, out = box.querySelector(".sr-out");
     if (!q.trim()) { const r = recent(); out.innerHTML = r.length ? `<p class="sr-h">최근 검색</p><p class="sr-rec">${r.map((x) => `<button type="button" class="lnk" data-q="${esc(x)}">${esc(x)}</button>`).join("")}</p>` : '<p class="muted">일정, 학교, 과목, 용어를 찾아 보세요.</p>'; return; }
     const res = search(q);
-    out.innerHTML = res.length ? res.map(([h, l]) => `<p class="sr-h">${h} <span class="muted">${l.length}</span></p><ul class="rows">${l.map(item).join("")}</ul>`).join("") : `<div class="empty"><p>찾는 정보가 없어요.</p><small>다른 말로 다시 찾거나, 아래 공식 사이트·학교 공지에서 확인해 보세요.</small></div><p class="sr-h">문의처·공식 링크</p><ul class="rows">${HELP.map(([n, u, d]) => item({ href: u, ext: true, t: n, s: d })).join("")}<li><a href="#select/curriculum?v=map" data-go><b>학교 지도에서 학교 찾기</b><span>학교 홈페이지·전화는 학교 지도 카드에서 볼 수 있어요</span></a></li></ul>`;
+    out.innerHTML = res.length ? res.map(([h, l]) => `<p class="sr-h">${h} <span class="muted">${l.length}</span></p><ul class="rows">${l.map(item).join("")}</ul>`).join("") : `<div class="empty"><p>정확히 맞는 내용을 찾지 못했어요.</p><small>다른 말로 다시 찾거나, 아래 공식 사이트·학교 공지에서 확인해 보세요.</small></div><p class="sr-h">문의처·공식 링크</p><ul class="rows">${HELP.map(([n, u, d]) => item({ href: u, ext: true, t: n, s: d })).join("")}<li><a href="#select/curriculum?v=map" data-go><b>학교 지도에서 학교 찾기</b><span>학교 홈페이지·전화는 학교 지도 카드에서 볼 수 있어요</span></a></li></ul>`;
   };
   const close = () => { if (!box) return; box.remove(); box = null; document.removeEventListener("keydown", onKey); btn.focus(); };
   const onKey = (e) => { if (e.key === "Escape") close(); };

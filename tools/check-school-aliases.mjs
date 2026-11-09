@@ -19,7 +19,7 @@ for (const p of places) {
   const core = p.name.replace(SUF, ""), forms = new Set([p.name, core + SH[m[0]], core.replace(/^용인/, "") + SH[m[0]], ...(official.get(p.id) || [])]); // 공식 정식 이름(용인홍천고등학교)과 그 약칭(용인홍천고)도
   for (const f of [...forms].filter((x) => x.length >= 3)) for (const topic of ["학교군", "방과후학교", "모집 인원"]) {
     const q = `${f} ${topic}`, res = S.search(q), flat = res.flatMap(([, l]) => l); n++;
-    if (flat.some((x) => /이 포털에 없는 학교예요/.test(x.t || ""))) bad.push(`'${q}' → '없는 학교' 선언 (${p.name}은 있음)`);
+    if (flat.some((x) => /포털의 학교 목록에서 찾지 못했어요/.test(x.t || ""))) bad.push(`'${q}' → '목록에서 찾지 못했어요' 선언 (${p.name}은 목록에 있음)`);
     else if (!flat.some((x) => (x.t || "").startsWith(p.name))) bad.push(`'${q}' → ${p.name} 행이 안 나와요`);
   }
 }
@@ -57,4 +57,4 @@ let namb = 0; for (const [c, names] of byCore) if (names.length >= 2) { namb++; 
 console.log(`  · 학교급 변형 ${nv}질의, 모호한 이름 ${namb}개 후보 안내`);
 console.log(`  · 띄어 쓴 학교급 ${nsp}질의, 초등 학교군 문구 ${nz}곳 데이터 대조`);
 if (bad.length) { for (const b of bad.slice(0, 40)) console.log("  ✗", b); console.log(`실패 ${bad.length}건 / ${n}질의`); process.exit(1); }
-console.log(`OK: 학교 ${places.length}곳 × 이름 형태·주제 ${n}질의에서 '없는 학교' 오선언 없음`);
+console.log(`OK: 학교 ${places.length}곳 × 이름 형태·주제 ${n}질의에서 '찾지 못했어요' 오선언 없음`);
