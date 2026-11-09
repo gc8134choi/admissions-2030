@@ -23,7 +23,7 @@
 - 정기 점검(3시간): `prs.py status`·`merge-ready` 한 번씩, 필요할 때만 세션 상태 확인. 멈춘 세션이 있으면 한 줄로 이어 가라고 보낸다. 하루 한 번 `sitecheck`.
 
 ## 점검 도구
-`tools/pm/sitecheck.py`(로컬 주소 인자로, 25화면×5폭), `layoutcheck.py`(비교 표 규칙 포함), `density.py`, `fontscan.py`, `skincheck`, `preserve-check`, `codescan`, `check-exposed`, `tools/check-menu-captions.mjs`(브라우저 필요, 수동), `research/tools/check-counts/check_counts.py`, 각 `tools/build-*.mjs --check`(`build-db`는 이 환경에서 `content/curriculum`이 없어 실패하는 것이 정상). 평가에서 Lighthouse 절대 점수는 샌드박스·동시 실행의 영향이 커서 직전 커밋과의 상대 비교로만 본다.
+`tools/pm/sitecheck.py`(로컬 주소 인자로, 25화면×5폭), `layoutcheck.py`(비교 표 규칙 포함), `density.py`, `fontscan.py`, `skincheck`, `preserve-check`, `codescan`, `check-exposed`, `tools/check-menu-captions.mjs`(브라우저 필요, 수동), `tools/check-screen-claims.mjs`(화면 23곳의 '없어요·아직·찾지 못했어요' 문장 전수 대조, 브라우저·로컬 서버 필요, 수동·평가 전 실행), CI 자동: `check-topic-claims`·`check-no-assertions`·`check-school-aliases`·`check-event-dates`, `research/tools/check-counts/check_counts.py`, 각 `tools/build-*.mjs --check`(`build-db`는 이 환경에서 `content/curriculum`이 없어 실패하는 것이 정상). 평가에서 Lighthouse 절대 점수는 샌드박스·동시 실행의 영향이 커서 직전 커밋과의 상대 비교로만 본다.
 
 ## 데이터 원칙
 - 새로 손댄 데이터는 오류가 잘 난다(24~37차 반복): 원문 장·쪽을 같이 기록하고(인쇄쪽/PDF쪽 구분), 새 값은 두 번째 판독으로 대조하며 `research/reverify-log.md`에 남긴다. 개수·날짜가 문구에 박혀 있으면 빌더가 세어서 만든다.
