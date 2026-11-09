@@ -161,3 +161,7 @@ body:has(#main[data-r=home]) .legend{display:none}
 #main .el-v{font-size:16px!important}
 #main i.cr{font-size:16px!important;width:24px;height:24px;margin:0 2px}
 .wide-fold>summary{min-height:44px;box-sizing:border-box;display:flex;align-items:center}
+/* 체크박스: 눌림 영역 44px, 보이는 상자는 26px(그려 넣음) */
+#main input[type=checkbox]{appearance:none;-webkit-appearance:none;width:44px;height:44px;margin:0 -8px 0 -10px;border:0;border-radius:0;background:transparent center/26px 26px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Crect x='2' y='2' width='22' height='22' fill='%23fff' stroke='%23555' stroke-width='2'/%3E%3C/svg%3E");cursor:pointer}
+#main input[type=checkbox]:checked{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Crect x='2' y='2' width='22' height='22' fill='%23C4310D' stroke='%23C4310D' stroke-width='2'/%3E%3Cpath d='M7 13.5l4 4 8-9' fill='none' stroke='%23fff' stroke-width='2.6'/%3E%3C/svg%3E")}
+#main input[type=checkbox]:focus-visible{outline:2px solid var(--accent,#C4310D);outline-offset:-4px}

@@ -103,7 +103,7 @@ const bodyHtml = (t, esc2 = esc) => {
     const seenEv = new Set(); // 같은 날짜·같은 이름의 행(예: 2030학년도 수능 시행일/2030학년도 수능)은 한 줄만
     let evs = rows.flatMap((r) => (r.events || []).map((e, i) => ({ ...e, r, first: i === 0 }))).filter((x) => { const k = `${x.r.title.replace(/ ?시행일$/, "")}|${x.label || ""}|${x.start}|${x.end || ""}|${x.r.topic}`; if (seenEv.has(k)) return false; seenEv.add(k); return true; }).sort((a, b) => a.start.localeCompare(b.start));
     if (week) evs = evs.filter(inWeek);
-    const tr = (e) => { const d0 = e.start.length === 10 ? dn(e.start) : null, soon = d0 != null && d0 >= 0 && d0 <= 7, live = e.start.length === 10 && d0 < 0 && (e.end || e.start) >= t; return `<tr class="${(e.end || e.start) < t ? "past" : soon ? "due" : live ? "now" : ""}"><td class="l">${stageTag(stageOf(e.r), esc)}${soon ? `<b class="dn num">D-${d0}</b> ` : live ? '<b class="dn">진행 중</b> ' : ""}${esc(fmt(e))}${tent(e.r) && e.start > t ? " 예정" : ""}</td><td class="l"><b>${esc(e.r.title)}</b>${e.label ? ` · ${esc(e.label)}` : ""}${e.first ? `<div class="muted small">${esc(e.r.body)}</div>` : ""}</td></tr>`; };
+    const tr = (e) => { const d0 = e.start.length === 10 ? dn(e.start) : null, soon = d0 != null && d0 >= 0 && d0 <= 7, live = e.start.length === 10 && d0 < 0 && (e.end || e.start) >= t; return `<tr class="${(e.end || e.start) < t ? "past" : soon ? "due" : live ? "now" : ""}"><td class="l">${stageTag(stageOf(e.r), esc)}${soon ? `<b class="dn num">D-${d0}</b> ` : live ? '<b class="dn">진행 중</b> ' : ""}${esc(fmt(e))}${tent(e.r) && e.start > t ? " 예정" : ""}</td><td class="l">${e.label && (e.r.events || []).length >= 5 ? `<b>${esc(e.label)}</b> <span class="muted small">${esc(e.r.title)}</span>` : `<b>${esc(e.r.title)}</b>${e.label ? ` · ${esc(e.label)}` : ""}`}${e.first && (e.r.events || []).length < 5 ? `<div class="muted small">${esc(e.r.body)}</div>` : ""}</td></tr>`; };
     const none = rows.filter((r) => !r.events);
     if (!evs.length && !none.length) return '<p class="note">아직 모인 일정이 없어요. 일정이 생기면 이 자리에 떠요.</p>';
     return `${(() => { const isPast = (e) => (e.end || e.start) < t, up = evs.filter((e) => !isPast(e)), pa = evs.filter(isPast).reverse();
@@ -269,6 +269,6 @@ const bodyHtml = (t, esc2 = esc) => {
   for (const name of ["system", "schedule", "types", "credit", "changelog"]) {
     const orig = views[name];
     if (typeof orig !== "function") continue;
-    views[name] = async (el, ...a) => { el.style.visibility = "hidden"; /* 용어 ⓘ를 붙이기 전에 보이면 글이 밀려(CLS) 다 붙인 뒤에 보여 준다 */ try { const r = await orig(el, ...a); if (name === "system" || name === "credit") densify(el, { open: [0], keep: 5 }); await preloadGlossary(load); decorateGlossary(el); return r; } finally { el.style.visibility = ""; } };
+    views[name] = async (el, ...a) => { el.style.visibility = "hidden"; /* 용어 ⓘ를 붙이기 전에 보이면 글이 밀려(CLS) 다 붙인 뒤에 보여 준다 */ try { const r = await orig(el, ...a); if (name === "system" || name === "credit") densify(el, { open: [0], keep: 5 }); await preloadGlossary(load); decorateGlossary(el); return r; } finally { try { window.__flushDecor?.(); } catch {} /* 용어 점선·출처 접기 같은 늦은 장식을 보이기 전에 끝낸다(0.25초 뒤 글이 밀려 CLS) */ el.style.visibility = ""; } };
   }
 }
