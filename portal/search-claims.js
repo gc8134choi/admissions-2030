@@ -9,8 +9,8 @@ export const SAY = {
     high: () => ({ href: `${HS}&g=%EA%B5%90%EC%9C%A1%EA%B3%BC%EC%A0%95`, text: "고교 보기 비교표의 '교육과정 특징(편제표 요약)' 칸에서 볼 수 있어요(편제표를 옮긴 학교만 값이 있어요)" }),
     middle: () => ({ href: `${MS}&g=%EA%B5%90%EC%9C%A1`, text: "중학교 보기 비교표의 '교육 특색·노력중점' 칸에서 볼 수 있어요" }) },
   "방과후학교": { level: "both", elementary: null,
-    high: () => ({ href: null, none: "방과후학교 칸은 이 포털에 없어요(교육 특색에 방과후 프로그램을 적은 학교는 그 행에 있어요) → 학교 홈페이지·학교알리미 공시에서 확인해요" }),
-    middle: () => ({ href: null, none: "방과후학교 칸은 이 포털에 없어요(교육 특색에 방과후 프로그램을 적은 학교는 그 행에 있어요) → 학교 홈페이지·학교알리미 공시에서 확인해요" }) },
+    high: () => ({ href: null, none: "방과후학교 칸은 이 포털에 없어요 → 학교 홈페이지·학교알리미 공시에서 확인해요" }),
+    middle: () => ({ href: null, none: "방과후학교 칸은 이 포털에 없어요 → 학교 홈페이지·학교알리미 공시에서 확인해요" }) },
   "편제표(학교별 과목표)": { level: "high", elementary: null,
     high: (pl) => pl.schoolId ? { href: `#select/curriculum?s=${encodeURIComponent(pl.schoolId)}&hl=${encodeURIComponent("과목표")}`, text: "학교 요약 화면의 과목표에서 볼 수 있어요" } : { href: null, none: "이 학교의 과목표(편제표)는 이 포털에 없어요. 편제표를 요약한 '교육과정 특징'은 고교 보기 비교표에 값이 있는 학교만 있어요 → 학교 홈페이지·학교알리미 공시에서 확인해요" }, middle: null },
   "학비·비용": { level: "high", elementary: null,
@@ -49,3 +49,10 @@ export const CLAIMS = [
   { label: "학비·비용", level: "middle", elementary: null, kind: "absent", words: /학비|수업료|등록금|비용/, data: ["middle-compare"] },
   { label: "방과후학교", level: "both", elementary: null, kind: "absent", words: /방과후/, data: ["hs-compare", "middle-compare"] },
 ];
+
+// 다른 지역 안내(search-extra other-region): 질의의 지역 낱말이 포털 데이터에 있으면 '없어요'라고 하지 않는다. 데이터에 없는 지역만 선언한다.
+export const REGION_WORDS = ["분당", "성남", "수원", "화성", "안양", "평택", "판교", "일산", "고양", "부천", "인천", "하남", "동탄", "광교", "강남", "서초", "송파", "의정부", "파주", "김포", "시흥", "안산", "대구", "부산", "대전", "울산", "세종", "제주", "충북", "충남", "전북", "전남", "경북", "경남", "강원"];
+export const REGION_ALIAS = { 강남: "서울", 서초: "서울", 송파: "서울" }; // 서울 구 이름은 서울 데이터로 확인한다
+// 지역 낱말이 질의에서 '다룬 지역'으로 인정되는 경우: 서울(구 이름 포함)은 서울 데이터가 있으면, 그 밖의 지역은 외고·국제고·자사고 질의에서 그 지역 학교 이름(수원외고·동탄국제고 등)이 데이터에 있을 때만.
+// 지역 이름이 데이터에 한 번 나온다는 것만으로는 인정하지 않는다(분당신문·인천시교육청 게시본·화성 연수원 등은 그 지역 고입 자료가 아니다).
+export const regionKnown = (w, hay, q = "") => (REGION_ALIAS[w] === "서울" ? hay.includes("서울") : /외고|외국어고|국제고|자사고|특목|외대부고/.test(q) && new RegExp(w + "(외국어고|외고|국제고|자사고|외대부고)").test(hay));
