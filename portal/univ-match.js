@@ -52,6 +52,10 @@ export async function univBody(el, { load, esc, profile, schools, sel, pick }) {
     if (!anyM && reqTxt) body = `<h3 class="um-h">과목 요건(요강 문구)</h3>${reqTxt}`;
     else if (!anyM) { const u = univs.find((x) => x.id === st.univ); body = emptyLine(esc, { why: kindText(rule), next: u?.admissionsUrl ? { label: "입학처에서 먼저 확인", url: u.admissionsUrl } : { label: "대학 이름으로 검색", url: `https://search.naver.com/search.naver?query=${encodeURIComponent((u?.name || "") + " 입학처 모집요강")}` } }) + (rule.requirementsNullReason ? `<details class="um-more"><summary>사유 자세히</summary><p class="muted small">${esc(plainReason(rule.requirementsNullReason))}</p></details>` : ""); }
     else body = `<div id="um-cmp"></div>`;
+    if ((rule.csatAreaRules || []).length) { /* 수능 응시영역 기준(유형별): 요강 값 그대로, 없는 값은 만들지 않는다 */
+      const li = (a) => (a || []).map((x) => `<li>${esc(x)}</li>`).join("");
+      body += `<h3 class="um-h">수능 응시영역 기준(유형별)</h3>` + rule.csatAreaRules.map((c) => `<section class="um-csat"><h4>${esc(c.typeLabel || "")}</h4>${(c.units || []).length ? `<p class="muted small">해당 모집단위</p><ul>${li(c.units)}</ul>` : ""}${(c.requiredAreas || []).length ? `<p><b>응시 영역</b> ${esc(c.requiredAreas.join(" · "))}</p>` : ""}${c.mathChoice ? `<p><b>수학</b> ${esc(c.mathChoice)}</p>` : ""}${c.inquiryChoice ? `<p><b>탐구</b> ${esc(c.inquiryChoice)}</p>` : ""}${(c.notes || []).length ? `<ul class="muted small">${li(c.notes)}</ul>` : ""}</section>`).join("");
+    }
     const reqCount = (mOf(mine[0].id)?.requirements || []).length;
     st.cfg = anyM ? () => ({
       esc, stage: "대입", title: `${rule.universityName} ${rule.unitName}`, summary: "우리 학교 4곳의 과목표(개설 후보)로 권장 과목을 얼마나 고를 수 있는지 견줘요",
