@@ -82,8 +82,7 @@ function open(b) {
   pop = document.createElement("div");
   pop.className = "sip"; pop.setAttribute("role", "dialog"); pop.setAttribute("aria-label", `${t.term} 뜻`); pop.tabIndex = -1;
   pop.innerHTML = `<div class="sip-h"><b>${esc(t.term)}</b>${t.official && t.official !== t.term ? ` <span class="muted small">공식 명칭: ${esc(t.official)}</span>` : ""}<button type="button" class="sip-x" aria-label="닫기">×</button></div>
-    <p>${esc(t.short)}</p>${t.detail ? `<p class="muted small">${esc(t.detail)}</p>` : ""}
-    <div class="sip-f small">${srcs ? `출처 ${srcs}` : ""}${ES[t.status] ? ` <span class="pst ${esc(t.status)}">${ES[t.status]}</span>` : ""}</div>`;
+    <p>${esc(t.short)}</p>${t.detail ? `<p class="muted small">${esc(t.detail)}</p>` : ""}`; /* 출처·상태 줄은 화면에 쓰지 않는다(2026-11-08 결정, 출처는 자료실) */
   document.body.appendChild(pop);
   anchor = b; b.setAttribute("aria-expanded", "true");
   const r = b.getBoundingClientRect(), w = Math.min(340, innerWidth - 16);
