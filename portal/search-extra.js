@@ -17,6 +17,7 @@ const elCountText = (el) => { const by = new Map(); for (const x of el || []) by
 const row = (D, id) => (D.pol || []).find((r) => r.id === id);
 const snip = (b, re, n = 100) => { const t = String(b || "").replace(/\s+/g, " "), m = re.exec(t); return m ? t.slice(Math.max(0, m.index - 20), Math.max(0, m.index - 20) + n) : t.slice(0, n); };
 import { clip } from "./search.js";
+const REGION_Q = "(?<![가-힣(])(" + REGION_WORDS.map(regionPattern).join("|"); /* 지역 낱말 사전은 search-claims.js REGION_TABLE 한 곳 */
 const firstSent = (s, n = 80) => clip(String(s || "").replace(/\s+/g, " "), n);
 export const GAPS = [
   { id: "transfer", q: "^(?!.*중학교).*전학", words: "전학 이사 배정 전입 배정 전입 이사 가는 지역 교육지원청 문의 고입 전학 포털", found: (D) => row(D, "gg-18") && { href: "#select/curriculum?v=types", hl: row(D, "gg-18").title, t: "전학 · 이사(전입) 배정 · 경기 평준화 고교", s: firstSent(row(D, "gg-18").body) }, none: { href: "#library/links", t: "전학 · 이사 배정(전입 배정)", s: "전학·이사 때의 배정 안내는 정확히 맞는 내용이 없을 수 있어요 → 이사 갈 지역 교육지원청에 문의하고 경기도 고입·전학 포털에서 확인해요" } },
@@ -46,7 +47,7 @@ export const GAPS = [
   { id: "reg-giveup", only: true, q: "등록.*포기|포기.*등록", words: "등록 포기 입학 포기 등록 취소 배정 후 포기 등록 안 함", found: (D) => row(D, "gg-19") && { href: "#select/curriculum?v=types", hl: "등록 포기", t: "고교 등록 포기(경기 평준화 배정 후)", s: snip(row(D, "gg-19").body, /등록 ?포기/, 100) } },
   { id: "reg-giveup-univ", only: true, q: "등록.*포기|포기.*등록", words: "대입 등록 포기 대학 등록 포기 등록포기 절차", found: (D) => row(D, "adm-11") && { href: "#admission/system", hl: "등록포기", t: "대입 등록포기 절차 안내 강화(2029학년도 기본사항)", s: snip(row(D, "adm-11").body, /등록 ?포기/, 100) } },
   // 13차: 고교 일정(배정 발표·등록·전기 학교 접수/발표)과 안내 없는 공백
-  { id: "hs-assign-date", q: "(고교|고등|후기|평준화|일반고|고입).*(배정|합격).*(발표|결과|언제|날짜)|(배정|합격).*발표.*(고교|후기|일반고)", words: "고교 배정 발표일 후기 합격자 발표 배정 학교 발표 일반고 배정 발표 고입 배정 결과 발표 날짜", found: (D) => row(D, "gg-04") && { href: "#schedule?t=hs", hl: row(D, "gg-04").title, t: "경기 후기 평준화 일반고 배정 발표·등록 일정", s: firstSent(String(row(D, "gg-04").body).replace(/^원서접수[^,]*,\s*전형기간[^,]*,\s*/, ""), 100) } },
+  { id: "hs-assign-date", q: "^(?!.*(자사고|외고|외국어고|국제고|외대부|외국어대학교부설)).*?(고교|고등|후기|평준화|일반고|고입).*(배정|합격).*(발표|결과|언제|날짜)|(배정|합격).*발표.*(고교|후기|일반고)", words: "고교 배정 발표일 후기 합격자 발표 배정 학교 발표 일반고 배정 발표 고입 배정 결과 발표 날짜", found: (D) => row(D, "gg-04") && { href: "#schedule?t=hs", hl: row(D, "gg-04").title, t: "경기 후기 평준화 일반고 배정 발표·등록 일정", s: firstSent(String(row(D, "gg-04").body).replace(/^원서접수[^,]*,\s*전형기간[^,]*,\s*/, ""), 100) } },
   { id: "mid-form-where", q: "^(?!.*(서류|준비물|추가)).*배정원서.*(어디|장소|접수처|접수|며칠|내나|내요|제출|쓰고)", words: "중학교 배정원서 접수 장소 배정원서 어디에 내나 배정원서 접수처 배정원서 제출 배정원서 작성", found: (D) => row(D, "life-04") && { href: "#schedule?t=life", hl: row(D, "life-04").title, t: "중학교 배정원서 접수(용인교육지원청)", s: firstSent(row(D, "life-04").body, 100) } },
   { id: "mid-zone-term", q: "(학교군|중학구).*(뭐|뜻|무슨|의미|이란|설명|고시)|^(학교군|중학구)$", words: "학교군 뜻 중학구 뜻 학교군 중학구 고시 학교군 이란 중학구 이란", found: (D) => row(D, "life-12") && { href: "#schedule?t=life", hl: row(D, "life-12").title, t: "2027학년도 학교군·중학구 고시(수지1중학군 변동 없음)", s: firstSent(row(D, "life-12").body, 100) } },
   { id: "zone3-list", q: "3구역.*(학교|목록|어디|처인|기흥|수지)", words: "3구역 학교 목록 3구역 학교 3구역 처인구 3구역 고교", found: (D) => row(D, "asg-07") && { href: "#select/types", hl: row(D, "asg-07").title, t: "3구역 학교 목록(2026학년도 조사표)", s: firstSent(row(D, "asg-07").body, 100) } },
@@ -174,7 +175,7 @@ export const GAPS = [
   { id: "photo-add", q: "사진.*(넣|추가|올|등록|바꾸)", words: "사진 넣기 사진 추가 사진 올리기 졸업 사진 입학 사진 D-day 사진", found: () => ({ href: "#home?open=soonp", t: "사진 넣기(졸업·입학 D-day)", s: "홈 '고등학교 일정'·'중학교 일정' 맨 위 졸업·입학 D-day 카드에서 '사진 넣기'를 누르면 사진을 넣을 수 있어요. 사진은 이 브라우저에만 저장돼요" }) },
   { id: "app-install", q: "앱 ?(설치|깔|다운)|홈 ?화면에 ?추가|바로가기 ?만들|홈 ?화면.*앱|앱.*홈 ?화면|앱처럼|앱으로", words: "앱 설치 앱 다운로드 홈 화면에 추가 바로가기 만들기 설치", found: () => ({ href: "#home", t: "앱처럼 쓰기(홈 화면에 추가)", s: "따로 설치하는 앱은 없고 브라우저에서 바로 열어요. 브라우저 메뉴의 '홈 화면에 추가'로 바로가기를 만들 수 있어요" }) },
   // 17차: 다른 지역·기능 별칭·글자 크기
-  { id: "other-region", only: true, q: "(?<![가-힣(])(분당|성남|수원|화성|안양|평택|판교|일산|고양|부천|인천|하남|동탄|광교|강남|서초|송파|의정부|파주|김포|시흥|안산|대구|부산|대전|울산|세종(?!과학|한성|영재|[·,)])|제주|충북|충남|전북|전남|경북|경남|강원)(?!대).*(고교|고등|일반고|중학|학교|학군|배정|입학|목록|전형|규정|고입|입시|제도|일정|내신|원서|접수|과학고|후기|전기|자사|외고|영재|모집|등록|추첨|과학|마이스터|특성화)", words: "분당 고등학교 목록 수원 일반고 성남 중학교 다른 지역 학교 화성 안양 평택 판교 일산 고양 부천 인천", found: () => false, none: (D) => ({ href: "#select/curriculum?v=map", t: "다른 지역 학교", s: `이 포털은 경기(용인)·서울 중심이에요${(D.hc?.schools || []).length && (D.mc?.schools || []).length ? `(학교는 고교 ${D.hc.schools.length}곳·중학교 ${D.mc.schools.length}곳이 용인)` : ""}. 다른 지역은 정확히 맞는 내용이 없을 수 있어요 → 그 지역 교육지원청·시도교육청 고입 안내·학교알리미에서 찾아요` }) },
+  { id: "other-region", only: true, q: REGION_Q + ")(?!대).*(고교|고등|일반고|중학|학교|학군|배정|입학|목록|전형|규정|고입|입시|제도|일정|내신|원서|접수|과학고|후기|전기|자사|외고|영재|모집|등록|추첨|과학|마이스터|특성화)", words: "분당 고등학교 목록 수원 일반고 성남 중학교 다른 지역 학교 화성 안양 평택 판교 일산 고양 부천 인천", found: () => false, none: (D) => ({ href: "#select/curriculum?v=map", t: "다른 지역 학교", s: `이 포털은 경기(용인)·서울 중심이에요${(D.hc?.schools || []).length && (D.mc?.schools || []).length ? `(학교는 고교 ${D.hc.schools.length}곳·중학교 ${D.mc.schools.length}곳이 용인)` : ""}. 다른 지역은 정확히 맞는 내용이 없을 수 있어요 → 그 지역 교육지원청·시도교육청 고입 안내·학교알리미에서 찾아요` }) },
   { id: "school-map", q: "지도.*(학교|보기|찾|위치)|학교.*(지도|위치).*(보|찾)|학교 ?위치|(집|우리 ?집|근처|가까운).*학교", words: "학교 지도 보기 학교 지도에서 학교 찾기 학교 위치 보기 지도로 학교 찾기", found: (D) => (D.places || 0) > 0 && { href: "#select/curriculum?v=map", t: "학교 지도", s: `학교 위치·주소를 지도에서 보고 카드의 홈페이지·전화로 이어져요(초·중·고 ${D.places}곳)` } },
   { id: "plan-make", q: "^(?!.*학원).*(과목.*(계획).*(저장|보관)|계획표|시간표.*(짜|만들)|(과목|선택).*(계획).*(만들|짜|세우|작성)|내 ?계획|(내가|내).*(고른|듣고 ?싶은|선택한).*(과목).*(모아|보고|짜|시간표))", words: "과목 선택 계획표 만들기 내 계획표 과목 계획 짜기 선택과목 계획 고교 계획표", found: () => ({ href: "#planner/plan", t: "내 계획표(과목 선택 계획)", s: "후보 과목을 골라 학기별 계획표를 만들고 대학 요건과 맞춰 볼 수 있어요(브라우저에만 저장)" }) },
   { id: "csat-dday", q: "d-?day|디데이|남은 ?(일|날)|며칠 ?남", words: "수능 D-day 수능 디데이 수능까지 남은 날 남은 일수 D-day", found: () => ({ href: "#home", hl: "학년도 수능", t: "수능 D-day(홈)", s: "홈의 '고등학교 일정' 맨 아래 수능 줄에 2030학년도 수능 날짜(2029.11.15 예정)와 남은 날(D-day)이 있어요. 졸업·입학 D-day는 맨 위 카드에 있어요" }) },
@@ -187,15 +188,15 @@ export const GAPS = [
   { id: "avg-grade", only: true, q: "(학교|우리 ?학교).*평균 ?등급|평균 ?등급|학교 ?평균", words: "학교 평균 등급 학교 평균 성적 평균 내신", found: () => false, none: { href: "#library/links", t: "학교별 평균 등급", s: "정확히 맞는 내용이 없을 수 있어요(내신은 5등급 상대평가라는 규칙만 있어요) → 학교알리미 공시(성적 분포)에서 확인해요" } },
   { id: "print", q: "인쇄|프린트|출력|pdf", words: "화면 인쇄 인쇄하기 프린트 출력 PDF 저장", found: () => ({ href: "#home", t: "화면 인쇄", s: "브라우저 메뉴의 인쇄(Ctrl/⌘ + P)를 쓰면 접힌 내용까지 펼쳐서 인쇄돼요. 인쇄 화면에서 PDF로 저장할 수도 있어요" }) },
 ];
+import { jointOf, zoneText } from "./joint-zone.js";
+import { REGION_WORDS, regionPattern } from "./search-claims.js";
 export function gapDocs(D) {
   return GAPS.map((g) => { const f = g.found(D); const d = f || (typeof g.none === "function" ? g.none(D) : g.none); return d ? { gap: g.id, raw: !!g.raw, strict: !!g.strict, found: !!f, href: f ? d.href : "#library/links", /* '없음' 안내는 화면이 아니라 공식 확인처로 보낸다(화면에 없는 내용으로 가는 가짜 도착을 만들지 않는다) */ hl: d.hl, t: d.t, s: d.s, q: g.q, only: !!g.only, quiet: !!g.quiet || !!(g.q && f && f.hl && f.t === f.hl), text: g.q ? J([g.words]) : J([g.words, d.t, d.s]) } : null; }).filter(Boolean);
 }
 
 export async function loadSearchExtra(load) {
   const [guide, tl, ht, gl, hc, bf, mc, el, ex, rl, pol, evs, un, ar, mid] = await Promise.all([ok(load("middle-guide")), ok(load("timeline")), ok(load("hs-types")), ok(load("glossary")), ok(load("hs-compare")), ok(load("briefings")), ok(load("middle-compare")), ok(load("electives")), ok(load("exam-trends")), ok(load("rules")), ok(load("policy")), ok(load("events")), ok(load("universities")), ok(load("admission-rules")), ok(load("middle"))]);
-    elemZone.clear(); try { const md = await load("middle"); for (const a of md?.areas || []) { const names = [...new Set((a.zoneSchools || []).map((z) => /^([^\s(（]+?학군)/.exec(z.note || "")?.[1]).filter(Boolean))], fn = a.from.note || "", part = /\((.+?)[은는] (\S+?학군)과 공동학군\)/.exec(fn); if (!names.length) continue;
-    // 학구 일부만 공동이면 그 범위와 상대 학군을 밝히고(고기초: 운중동 일부·판교중학군), 학교 전체가 공동이면 두 학군 이름과 '공동학군'
-    if (part) elemZone.set(a.from.placeId, `${names[0]}(학구 일부 — ${part[1].replace(/^.+? 학구 중 /, "")} — 는 ${part[2]}과 공동학군)`); else elemZone.set(a.from.placeId, names.length > 1 || /공동학군/.test(fn) ? `${names.join("·")} 공동학군` : names[0]); } } catch {}
+    elemZone.clear(); try { const md = await load("middle"); for (const a of md?.areas || []) { const j = jointOf(a); if (!j.home && !j.groups.length) continue; elemZone.set(a.from.placeId, zoneText(j)); } } catch {} /* 공동학군 해석은 joint-zone.js 한 곳 */
   univInfo.clear(); for (const sc of hc?.schools || []) { const v = sc.values?.univStats; univInfo.set(sc.placeId, { has: !!(v && v.value != null && v.value !== ""), why: v?.nullReason || "" }); }
   const out = [];
   for (const s of guide?.sections || []) for (const it of s.items) out.push({ href: "#select/curriculum?v=middle", t: s.title, s: it.text.slice(0, 80), text: J([s.title, it.text]) });

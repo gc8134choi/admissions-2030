@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 const root = resolve(new URL("..", import.meta.url).pathname);
 const load = (n) => JSON.parse(readFileSync(`${root}/portal/data/${n}.json`, "utf8"));
-const { CLAIMS, SAY, sayOf, noneText, REGION_WORDS, GG_WORDS, REGION_ALIAS, regionKnown, pyeongCities, CITY_OF } = await import(`${root}/portal/search-claims.js`);
+const { CLAIMS, SAY, sayOf, noneText, REGION_WORDS, GG_WORDS, REGION_ALIAS, regionKnown, pyeongCities, CITY_OF, gyeonggiNote } = await import(`${root}/portal/search-claims.js`);
 const bad = [], ok = [];
 const has = (v) => v && v.value != null && v.value !== "";
 for (const c of CLAIMS) {
@@ -61,8 +61,9 @@ for (const [label, e] of Object.entries(SAY)) {
 ok.push(`대응표 ${Object.keys(SAY).length}항목 × 초·중·고 ${combos}조합의 문구·주소·확인처 대조`);
 // 다른 지역 '없어요' 선언(search-extra other-region): 질의 지역 낱말 목록이 코드와 같고, 데이터에 있는 지역은 선언하지 않으며(런타임 규칙), 선언하는 지역(데이터에 없는 것)은 실제로 어떤 데이터에도 없어야 한다
 {
-  const ex = readFileSync(`${root}/portal/search-extra.js`, "utf8"), line = ex.split("\n").find((l) => l.includes('id: "other-region"')) || "", alt = line.slice(line.indexOf("(?<![가-힣(])(") + 12, line.indexOf(")(?!대)")).replace("(?!과학|한성|영재|[·,)])", "");
-  const inLine = alt.replace(/\(\?![^)]*\)/g, "").split("|"), miss = REGION_WORDS.filter((w) => !inLine.includes(w)), extra = inLine.filter((w) => w && !REGION_WORDS.includes(w));
+  const { gapDocs } = await import(`${root}/portal/search-extra.js`), gd = gapDocs({ pol: [], hc: { schools: [] }, mc: { schools: [] } }).find((g) => g.gap === "other-region");
+  const qre = gd?.q || "", alt = qre.slice(qre.indexOf("(?<![가-힣(])(") + 12, qre.indexOf(")(?!대)"));
+  const inLine = alt.replaceAll("[·,)]", "").replace(/\(\?![^)]*\)/g, "").split("|"), miss = REGION_WORDS.filter((w) => !inLine.some((x) => x.startsWith(w))), extra = inLine.filter((w) => w && !REGION_WORDS.includes(w));
   if (miss.length || extra.length) bad.push(`다른 지역 낱말 목록이 search-claims.js(REGION_WORDS)와 달라요: 빠짐 ${miss.join(",")} / 더 있음 ${extra.join(",")}`);
   const files = readdirSync(`${root}/portal/data`).filter((f) => f.endsWith(".json") && !["sources.json", "changes.json", "files.json", "school-codes.json"].includes(f));
   const hay = JSON.stringify(load("policy")), ADDR = new Set(["places.json", "schools.json", "middle-compare.json", "hs-compare.json", "middle.json"]), // 주소(도로명)에 지역 낱말이 든 파일은 지역을 다룬다는 근거가 아니다
@@ -79,6 +80,7 @@ ok.push(`대응표 ${Object.keys(SAY).length}항목 × 초·중·고 ${combos}�
   ok.push(`다른 지역 선언: 서울(${known.join("·")})은 서울 데이터로 연결, 경기 지역 ${gg.length}곳은 경기 일정으로 연결, 외고·국제고·자사고 질의는 ${gaiLine.length}곳(${gaiLine.join("·")}) 학교 이름이 데이터에 있어 연결, 그 밖의 ${absent.length + gaiLine.length}곳은 일반 고입 자료가 어떤 데이터에도 없음`);
   { // 경기 지역 낱말의 평준화 여부 안내는 gg-25(확정)의 9학군 목록에서 읽는다: 목록이 읽히고 용인을 포함해야 하며, 낱말마다 소속/비소속이 결정되어야 한다
     const set = pyeongCities(load("policy")), g25 = load("policy").find((r) => r.id === "gg-25");
+    for (const w of GG_WORDS) { const n = gyeonggiNote(w, load("policy")), b = (w.charCodeAt(w.length - 1) - 0xac00) % 28, want = b ? "은" : "는"; if (!n.startsWith(w + want + " ") && !n.startsWith(w + "도 ")) bad.push(`'${w}' 안내의 조사가 틀려요(받침 ${b ? "있음→은" : "없음→는"}): ${n.slice(0, 20)}`); }
     if (!set || set.size < 9 || !set.has("용인")) bad.push(`평준화 9학군 목록을 gg-25에서 읽지 못했어요(${set ? [...set].join(",") : "null"})`);
     else if (g25.status !== "confirmed") bad.push("gg-25가 확정 상태가 아니에요(지역 낱말 안내의 근거)");
     else ok.push(`경기 지역 낱말 ${GG_WORDS.length}곳 평준화 구분: 9학군(${[...set].join("·")}) 소속 ${GG_WORDS.filter((w) => set.has(CITY_OF[w] || w)).join("·")} / 비소속은 '학교별 전형'으로(시·군 목록은 gg-26 추정이라 사실처럼 말하지 않음)`);
