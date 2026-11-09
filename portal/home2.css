@@ -157,6 +157,7 @@ body:has(#main[data-r=home]) .legend{display:none}
 #main .num,#main .pn-m,#main .pn-n,#main .pn-rl,.tip,.tip *{font-size:16px!important}
 #main .pg-rel a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px}
 
-.pl-hit{display:flex;align-items:center;justify-content:center;width:44px;height:44px}
+.pl-hit{display:flex;align-items:center;justify-content:center}
 #main .el-v{font-size:16px!important}
 #main i.cr{font-size:16px!important;width:24px;height:24px;margin:0 2px}
+.wide-fold>summary{min-height:44px;box-sizing:border-box;display:flex;align-items:center}
