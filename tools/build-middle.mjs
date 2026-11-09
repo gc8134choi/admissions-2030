@@ -35,7 +35,18 @@ else {
   areas.forEach((a, i) => { checkArea(a, `areas[${i}]`); if (seenFrom.has(a.from?.placeId)) errs.push(`areas[${i}]: 초등학교 ${a.from?.placeId} 중복`); seenFrom.add(a.from?.placeId); });
   const pid = new Set();
   for (const p of draft.principles || []) { if (pid.has(p.id)) errs.push(`${p.id}: 원칙 id 중복`); pid.add(p.id); chk(p.id, p); }
-  const outAreas = areas.map((a) => ({ from: { placeId: a.from.placeId, note: a.from.note ?? null }, zoneSchools: a.zoneSchools || [] }));
+  // 공동학군은 문장이 아니라 구조화 필드(from.jointZone)로 낸다: {type:"전체"|"일부", otherZones:[상대 학군 이름], rangeText:일부일 때 범위 문구}.
+  for (const a of areas) {
+    const jz = a.from?.jointZone, w = `from(${a.from?.placeId})`;
+    if (/공동학[군구]/.test(a.from?.note || "") && !jz) errs.push(`${w}: note에 공동학군이 있는데 jointZone이 없음`);
+    if (jz) {
+      if (!["전체", "일부"].includes(jz.type)) errs.push(`${w}: jointZone.type은 전체|일부`);
+      if (!Array.isArray(jz.otherZones) || !jz.otherZones.length || jz.otherZones.some((x) => !/학군$|학구$/.test(x))) errs.push(`${w}: jointZone.otherZones는 학군 이름 배열`);
+      if (jz.type === "일부" && !jz.rangeText) errs.push(`${w}: 일부 공동학군은 rangeText 필요`);
+      if (jz.type === "전체" && jz.rangeText != null) errs.push(`${w}: 전체 공동학군은 rangeText가 null`);
+    }
+  }
+  const outAreas = areas.map((a) => ({ from: { placeId: a.from.placeId, note: a.from.note ?? null, ...(a.from.jointZone ? { jointZone: a.from.jointZone } : {}) }, zoneSchools: a.zoneSchools || [] }));
   out = { _meta: { note: "초등학교 → 중학교 배정(생성물, 손으로 고치지 않는다). research/data/middle-school-draft.json에서 tools/build-middle.mjs가 만든다.", checkedAt: draft._meta?.checkedAt ?? null, count: outAreas.reduce((n, a) => n + a.zoneSchools.length, 0), areaCount: outAreas.length }, areas: outAreas, from: outAreas[0].from, zoneSchools: outAreas[0].zoneSchools, principles: (draft.principles || []).map((p) => ({ ...p, title: plain(p.title), body: plain(p.body) })) };
 }
 if (errs.length) { console.error(errs.join("\n")); process.exit(1); }
