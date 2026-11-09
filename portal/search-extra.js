@@ -193,7 +193,7 @@ export function gapDocs(D) {
 
 export async function loadSearchExtra(load) {
   const [guide, tl, ht, gl, hc, bf, mc, el, ex, rl, pol, evs, un, ar, mid] = await Promise.all([ok(load("middle-guide")), ok(load("timeline")), ok(load("hs-types")), ok(load("glossary")), ok(load("hs-compare")), ok(load("briefings")), ok(load("middle-compare")), ok(load("electives")), ok(load("exam-trends")), ok(load("rules")), ok(load("policy")), ok(load("events")), ok(load("universities")), ok(load("admission-rules")), ok(load("middle"))]);
-  elemZone.clear(); try { const md = await load("middle"); for (const a of md?.areas || []) { const m = /^([^()（]+?학군)/.exec(a.zoneSchools?.[0]?.note || ""); if (m) elemZone.set(a.from.placeId, m[1]); } } catch {}
+  elemZone.clear(); try { const md = await load("middle"); for (const a of md?.areas || []) { const names = [...new Set((a.zoneSchools || []).map((z) => /^([^\s(（]+?학군)/.exec(z.note || "")?.[1]).filter(Boolean))]; if (!names.length) continue; elemZone.set(a.from.placeId, names.length > 1 || /공동학군/.test(a.from.note || "") ? `${names.join("·")} 공동학군` : names[0]); } /* 학교군 전체 값(공동학군이면 두 학군 이름과 '공동학군') */ } catch {}
   univInfo.clear(); for (const sc of hc?.schools || []) { const v = sc.values?.univStats; univInfo.set(sc.placeId, { has: !!(v && v.value != null && v.value !== ""), why: v?.nullReason || "" }); }
   const out = [];
   for (const s of guide?.sections || []) for (const it of s.items) out.push({ href: "#select/curriculum?v=middle", t: s.title, s: it.text.slice(0, 80), text: J([s.title, it.text]) });
