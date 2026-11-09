@@ -132,11 +132,13 @@ body:has(#main[data-r=home]) .legend{display:none}
   .hm2-tabs{display:none!important}
   .hm2{display:block!important}
   .hm2 .hm2-col,.hm2[data-show] .hm2-col{display:block!important;break-inside:auto}
-  #main .hm2 .hm2-name{display:block!important}
+  #main .hm2 .hm2-name{display:inline-block!important} /* 손동그라미 밑줄은 글자 폭 */
+  .skip,#skip{display:none!important}
 }
 /* 소개 카드: 두 열 높이를 맞추며 생기는 빈 종이를 항목 사이 간격으로 나눈다(구조는 그대로) */
 @media (min-width:1100px){
-  .hm2-intro .h2-go{display:flex;flex-direction:column}
-  .hm2-intro .h2-go>li{flex:1 1 auto;display:flex}
-  .hm2-intro .h2-go>li>a{flex:1;justify-content:center}
+  .hm2-intro{align-self:start} /* 소개 카드는 항목 간격을 같게 두고 각자 내용만큼(빈 종이를 늘리지 않는다) */
+  /* 일정 목록: 두 열 카드 바닥을 맞추며 생기는 빈 종이는 행 사이 간격으로 나눈다 */
+  .hm2 .h2-dates{display:flex;flex-direction:column}
+  .hm2 .h2-dates>li{flex:1 1 auto}
 }

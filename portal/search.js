@@ -34,7 +34,7 @@ const autoHl = (g) => { if (g.term || g.gap || !/^#/.test(g.href) || /v=map|v=su
 const NO_HL = new Set(["hs-11", "sch-04", "log-13", "b33-06"]); // 기본 화면에 행이 표시되지 않는 행(2033 대입 전망·학년 필터 등): 강조 없이 화면으로만 간다
 // 안내 문장 자르기: 글자 수 한도 안에서 문장 끝(. 다 요)이나 띄어쓰기에서 끊고 "…"를 붙인다(중간에서 뚝 끊기지 않게)
 export const clip = (t, n) => { t = String(t || ""); if (t.length <= n) return t; const head = t.slice(0, n + 40); const m = [...head.matchAll(/[.。]\s|(?:다|요)(?:\.|\s)/g)].map((x) => x.index + x[0].trimEnd().length).filter((i) => i >= n * 0.5 && i <= n + 40).pop(); if (m) return t.slice(0, m).trim(); const cut = t.slice(0, n), sp = cut.lastIndexOf(" "); return (sp > n * 0.6 ? cut.slice(0, sp) : cut).trim() + "…"; };
-const withHl = (href, t) => (!t || !/^#/.test(href) || /[?&]hl=/.test(href) ? href : href + (href.includes("?") ? "&" : "?") + "hl=" + encodeURIComponent(String(t).replace(/ⓘ/g, "").slice(0, 24))); // 검색에서 가면 그 행을 펴서 강조(hl.js)
+const withHl = (href, t) => (!t || !/^#/.test(href) || /[?&]hl=/.test(href) || /[?&]v=univ&u=/.test(href) ? href : href + (href.includes("?") ? "&" : "?") + "hl=" + encodeURIComponent(String(t).replace(/ⓘ/g, "").slice(0, 24))); // 검색에서 가면 그 행을 펴서 강조(hl.js)
 const routeOf = (r) => (r.topic === "gg-hs-entry" && !(r.events && r.events.length) ? "#select/curriculum?v=types"
   : r.topic === "hs-schedule" && r.region === "seoul" ? "#schedule?t=hs&seoul=1" // 서울 행은 일정 화면에서 '서울 보기'를 켜야 보인다
   : r.topic === "admission-structure" || ["cur-29", "cur-30"].includes(r.id) ? "#admission/system?t=types" // 대입 전형 구조 행은 수시·정시(전형) 화면에 있다
