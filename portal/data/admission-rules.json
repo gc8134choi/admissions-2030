@@ -455,7 +455,7 @@
    "sourceIds": [
     "src-16d7b0e4"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "requirementsNullReason": "시행계획의 해당 쪽(sourcePage)에는 교과 이수 요건 항목이 없음. 모집요강 공표 전이라 미확인. 다음 행동: 2028 수시·정시 모집요강 공표 후 지원자격 절 확인",
    "gradeReflection": {
     "areas": [
@@ -478,7 +478,8 @@
     "designatedSubjectIds": []
    },
    "sourcePage": "시행계획 인쇄 11~12쪽(PDF 15~16쪽): 전형방법·반영교과 11쪽, 수능최저 표 12쪽",
-   "trackNote": "학생부교과전형 추천형. 2028학년도부터 일괄합산에서 단계별 전형(1단계 500%, 2단계 교과 80 + 서류평가 20)으로 변경, 전 모집단위 수능최저 적용"
+   "trackNote": "학생부교과전형 추천형. 2028학년도부터 일괄합산에서 단계별 전형(1단계 500%, 2단계 교과 80 + 서류평가 20)으로 변경, 전 모집단위 수능최저 적용",
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-yonsei-nat-gyogwa",
@@ -503,7 +504,7 @@
    "sourceIds": [
     "src-16d7b0e4"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "requirementsNullReason": "시행계획의 해당 쪽(sourcePage)에는 교과 이수 요건 항목이 없음. 모집요강 공표 전이라 미확인. 다음 행동: 2028 수시·정시 모집요강 공표 후 지원자격 절 확인",
    "gradeReflection": {
     "areas": [
@@ -526,7 +527,8 @@
     "designatedSubjectIds": []
    },
    "sourcePage": "시행계획 인쇄 11~12쪽(PDF 15~16쪽): 전형방법·반영교과 11쪽, 수능최저 표 12쪽",
-   "trackNote": "학생부교과전형 추천형. 2028학년도부터 일괄합산에서 단계별 전형(1단계 500%, 2단계 교과 80 + 서류평가 20)으로 변경, 전 모집단위 수능최저 적용"
+   "trackNote": "학생부교과전형 추천형. 2028학년도부터 일괄합산에서 단계별 전형(1단계 500%, 2단계 교과 80 + 서류평가 20)으로 변경, 전 모집단위 수능최저 적용",
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-yonsei-med-gyogwa",
@@ -551,7 +553,7 @@
    "sourceIds": [
     "src-16d7b0e4"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "requirementsNullReason": "시행계획의 해당 쪽(sourcePage)에는 교과 이수 요건 항목이 없음. 모집요강 공표 전이라 미확인. 다음 행동: 2028 수시·정시 모집요강 공표 후 지원자격 절 확인",
    "gradeReflection": {
     "areas": [
@@ -574,7 +576,8 @@
     "designatedSubjectIds": []
    },
    "sourcePage": "시행계획 인쇄 11~12쪽(PDF 15~16쪽): 전형방법·반영교과 11쪽, 수능최저 표 12쪽",
-   "trackNote": "학생부교과전형 추천형. 2028학년도부터 일괄합산에서 단계별 전형(1단계 500%, 2단계 교과 80 + 서류평가 20)으로 변경, 전 모집단위 수능최저 적용"
+   "trackNote": "학생부교과전형 추천형. 2028학년도부터 일괄합산에서 단계별 전형(1단계 500%, 2단계 교과 80 + 서류평가 20)으로 변경, 전 모집단위 수능최저 적용",
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-yonsei-integ-gyogwa",
@@ -599,7 +602,7 @@
    "sourceIds": [
     "src-16d7b0e4"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "requirementsNullReason": "시행계획의 해당 쪽(sourcePage)에는 교과 이수 요건 항목이 없음. 모집요강 공표 전이라 미확인. 다음 행동: 2028 수시·정시 모집요강 공표 후 지원자격 절 확인",
    "gradeReflection": {
     "areas": [
@@ -622,7 +625,8 @@
     "designatedSubjectIds": []
    },
    "sourcePage": "시행계획 인쇄 11~12쪽(PDF 15~16쪽): 전형방법·반영교과 11쪽, 수능최저 표 12쪽",
-   "trackNote": "학생부교과전형 추천형. 2028학년도부터 일괄합산에서 단계별 전형(1단계 500%, 2단계 교과 80 + 서류평가 20)으로 변경, 전 모집단위 수능최저 적용"
+   "trackNote": "학생부교과전형 추천형. 2028학년도부터 일괄합산에서 단계별 전형(1단계 500%, 2단계 교과 80 + 서류평가 20)으로 변경, 전 모집단위 수능최저 적용",
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-yonsei-all-jonghap",
@@ -647,7 +651,7 @@
    "sourceIds": [
     "src-16d7b0e4"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "requirementsNullReason": "시행계획의 해당 쪽(sourcePage)에는 교과 이수 요건 항목이 없음. 모집요강 공표 전이라 미확인. 다음 행동: 2028 수시·정시 모집요강 공표 후 지원자격 절 확인",
    "gradeReflection": {
     "gradeMethod": "1단계 서류평가 100%(4배수), 2단계 서류 70 + 면접 30",
@@ -665,7 +669,8 @@
     ],
     "designatedSubjectIds": []
    },
-   "sourcePage": "시행계획 인쇄 13쪽(PDF 17쪽): 전형방법·수능최저 표. 일부 모집단위 미적용 문구는 인쇄 1쪽(PDF 5쪽)"
+   "sourcePage": "시행계획 인쇄 13쪽(PDF 17쪽): 전형방법·수능최저 표. 일부 모집단위 미적용 문구는 인쇄 1쪽(PDF 5쪽)",
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-yonsei-all-csat",
@@ -690,14 +695,15 @@
    "sourceIds": [
     "src-16d7b0e4"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "requirementsNullReason": "시행계획의 해당 쪽(sourcePage)에는 교과 이수 요건 항목이 없음. 모집요강 공표 전이라 미확인. 다음 행동: 2028 수시·정시 모집요강 공표 후 지원자격 절 확인",
    "gradeReflection": {
     "gradeMethod": "수능 필수 응시영역: 국어·수학·영어·사회탐구·과학탐구·한국사(유형 Ⅰ~Ⅲ). 표준점수 반영, 반영점수 배점(900점 기준): 유형 Ⅰ(인문) 국어 300·수학 200·영어 100·사회탐구 200·과학탐구 100, 유형 Ⅱ(자연) 국어 200·수학 300·영어 100·사회탐구 100·과학탐구 200, 유형 Ⅲ(상경·생활과학·간호·언더우드 등) 국어 200·수학 200·영어 100·탐구 각 100(합계 700을 900으로 환산). 영어 등급별 반영점수 1~9등급 100·95·87.5·75·60·40·25·12.5·5. 한국사 4등급 이내 감점 없음, 5등급부터 0.2씩 감점. 2028학년도 선택과목 폐지로 탐구 가산점 제도 폐지",
     "careerSubjectsPolicy": null
    },
    "sourcePage": "시행계획 인쇄 20쪽(PDF 24쪽, 일반전형 전형요소)·인쇄 25쪽(PDF 29쪽, 반영점수·필수 응시영역)·인쇄 3쪽(PDF 7쪽, 가산점 폐지 변경사항)",
-   "csatMinimumNullReason": "수능 최저학력기준 없음(정시 일괄합산, 시행계획 인쇄 20쪽·25쪽). 영역별 반영 배점은 gradeMethod에 옮김"
+   "csatMinimumNullReason": "수능 최저학력기준 없음(정시 일괄합산, 시행계획 인쇄 20쪽·25쪽). 영역별 반영 배점은 gradeMethod에 옮김",
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-ku-hum-nat-gyogwa",
@@ -722,7 +728,7 @@
    "sourceIds": [
     "src-b6893041"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "requirementsNullReason": "시행계획 PDF 35쪽 전체를 키워드 검색(이수과목·권장과목·핵심 교과·최소 이수)한 결과 과목 요건 항목 없음. 모집요강 공표 전이라 요강 단계는 미확인. 다음 행동: 2028 모집요강 공표 후 재확인",
    "gradeReflection": {
     "areas": [
@@ -737,7 +743,8 @@
     "requiredAreas": [],
     "designatedSubjectIds": []
    },
-   "sourcePage": "시행계획 PDF 3·11~12쪽(인쇄 2·10~11쪽)"
+   "sourcePage": "시행계획 PDF 3·11~12쪽(인쇄 2·10~11쪽)",
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-ku-med-gyogwa",
@@ -762,7 +769,7 @@
    "sourceIds": [
     "src-b6893041"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "requirementsNullReason": "시행계획 PDF 35쪽 전체를 키워드 검색(이수과목·권장과목·핵심 교과·최소 이수)한 결과 과목 요건 항목 없음. 모집요강 공표 전이라 요강 단계는 미확인. 다음 행동: 2028 모집요강 공표 후 재확인",
    "gradeReflection": {
     "areas": [
@@ -783,7 +790,8 @@
     ],
     "designatedSubjectIds": []
    },
-   "sourcePage": "시행계획 PDF 3·12쪽(인쇄 2·11쪽)"
+   "sourcePage": "시행계획 PDF 3·12쪽(인쇄 2·11쪽)",
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-ku-hum-nat-jonghap",
@@ -808,7 +816,7 @@
    "sourceIds": [
     "src-b6893041"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "requirementsNullReason": "시행계획 PDF 35쪽 전체를 키워드 검색(이수과목·권장과목·핵심 교과·최소 이수)한 결과 과목 요건 항목 없음. 모집요강 공표 전이라 요강 단계는 미확인. 다음 행동: 2028 모집요강 공표 후 재확인",
    "gradeReflection": {
     "gradeMethod": "1단계 서류 100%(모집인원의 5배수 선발), 2단계 1단계 성적 80 + 면접 20(2027학년도는 서류 100% 일괄선발)",
@@ -825,7 +833,8 @@
     ],
     "designatedSubjectIds": []
    },
-   "sourcePage": "시행계획 PDF 3·13쪽(인쇄 2·12쪽)"
+   "sourcePage": "시행계획 PDF 3·13쪽(인쇄 2·12쪽)",
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-ku-med-jonghap",
@@ -850,7 +859,7 @@
    "sourceIds": [
     "src-b6893041"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "requirementsNullReason": "시행계획 PDF 35쪽 전체를 키워드 검색(이수과목·권장과목·핵심 교과·최소 이수)한 결과 과목 요건 항목 없음. 모집요강 공표 전이라 요강 단계는 미확인. 다음 행동: 2028 모집요강 공표 후 재확인",
    "gradeReflection": {
     "gradeMethod": "1단계 서류 100%(모집인원의 5배수 선발), 2단계 1단계 성적 80 + 면접 20, 의학과는 적성·인성면접을 추가 시행(2027학년도는 서류 100% 일괄선발)",
@@ -867,7 +876,8 @@
     ],
     "designatedSubjectIds": []
    },
-   "sourcePage": "시행계획 PDF 3·13쪽(인쇄 2·12쪽)"
+   "sourcePage": "시행계획 PDF 3·13쪽(인쇄 2·12쪽)",
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-ku-all-csat",
@@ -892,14 +902,15 @@
    "sourceIds": [
     "src-b6893041"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "requirementsNullReason": "시행계획 PDF 35쪽 전체를 키워드 검색(이수과목·권장과목·핵심 교과·최소 이수)한 결과 과목 요건 항목 없음. 모집요강 공표 전이라 요강 단계는 미확인. 다음 행동: 2028 모집요강 공표 후 재확인",
    "gradeReflection": {
     "gradeMethod": "수능 지정 응시영역: 인문·자연·체능은 국어·수학·영어·사회/과학탐구·한국사 모두, 디자인조형학부는 수학 제외(탐구는 제2외국어/한문으로 대체 불가). 표준점수 반영 배점: 자연(가정교육과·간호학과 제외) 국어 200·수학 240·탐구 200, 가정교육과·간호학과 200·200·160, 인문 200·200·160, 체육교육과 200·200·160, 디자인조형학부 국어 200·탐구 160. 영어 등급별 감점 1~9등급 0·1·3·6·12·15·18·21·24, 한국사 감점 0·0·0·0·0.2·0.4·0.6·0.8·2.0(원문 표기 그대로). 인문·자연(의학과·사이버국방학과 제외)은 수능 100% 일괄합산, 의학과는 적성·인성 면접 별도 배점 없음, 사이버국방학과는 수능 80%+기타 20%, 체육교육과·디자인조형학부는 수능 70%+실기 30%",
     "careerSubjectsPolicy": null
    },
    "csatMinimumNullReason": "일반 정시에는 수능 최저학력기준 없음(지정 응시영역만 적용). 사이버국방학과는 수학 1등급 또는 과학탐구 1등급 또는 국·수·영·탐(상위 1과목) 등급 합 8 이내 중 하나 충족이 지원조건",
-   "sourcePage": "시행계획 PDF 24~25쪽(인쇄 23~24쪽)"
+   "sourcePage": "시행계획 PDF 24~25쪽(인쇄 23~24쪽)",
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "universityId": "s-901",
@@ -910,7 +921,52 @@
    "announcedAtNote": "대학 시행계획 공표 기한(2026-04-30)을 임시로 넣음. 정시 요강 실제 게시일은 확인 못 함",
    "status": "confirmed",
    "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음(2015 개정 기준 과학탐구Ⅰ·Ⅱ 체계)",
-   "requirements": [],
+   "requirements": [
+    {
+     "subjectIds": [],
+     "legacyKeys": [],
+     "minCount": 1,
+     "strength": "advised",
+     "orGroupLabel": "교과이수기준Ⅰ(전 모집단위): 사회(역사/도덕 포함) 3과목+과학 3과목 또는 사회 2과목+과학 4과목 이수 권장(진로희망에 따라 과학Ⅱ 권장)",
+     "group": null,
+     "groupNullReason": "교과군 라벨을 읽지 못해 과목 집합을 만들지 않음"
+    },
+    {
+     "subjectIds": [],
+     "legacyKeys": [],
+     "minCount": 1,
+     "strength": "advised",
+     "orGroupLabel": "제2외국어/한문 교과(군) 1과목 이상",
+     "group": {
+      "area": "제2외국어/한문",
+      "kind": null,
+      "subjectIds": [
+       "sj-0123",
+       "sj-0124",
+       "sj-0125",
+       "sj-0126",
+       "sj-0127",
+       "sj-0128",
+       "sj-0129",
+       "sj-0130",
+       "sj-0131",
+       "sj-0132",
+       "sj-0134",
+       "sj-0135",
+       "sj-0136"
+      ]
+     }
+    },
+    {
+     "subjectIds": [],
+     "legacyKeys": [],
+     "minCount": 2,
+     "strength": "advised",
+     "orGroupLabel": "교과이수기준Ⅱ: 수학(일반선택 4과목 또는 일반선택 3+진로선택 1)·과학(일반선택 3+진로선택 2 또는 일반선택 2+진로선택 3)·사회(일반선택 3+진로선택 1 또는 일반선택 2+진로선택 2) 중 2개 교과(군) 이상 충족",
+     "group": null,
+     "groupNullReason": "교과군 라벨을 읽지 못해 과목 집합을 만들지 않음"
+    }
+   ],
    "sources": [
     {
      "name": "서울대학교 2027학년도 정시모집 '나'군 안내(입학본부, PDF, <붙임 1> 75~76쪽)",
@@ -922,7 +978,7 @@
    "sourceIds": [
     "src-635ac469"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "ruleId": "ar-2027-snu-jeongsi-regional",
    "unitName": "정시 수능위주 지역균형전형(전 모집단위)",
    "csatMinimumNullReason": "수능 최저학력기준 없음(응시영역기준만 적용). 수능 60 + 교과평가 40",
@@ -930,8 +986,7 @@
     "gradeMethod": "수능 영역별 상대 반영비율 국어 100·수학 120(표준점수×1.2)·탐구 80(과목별 표준점수 합×0.8). 영어 1등급 0, 2등급부터 0.5·2·4·6·8·10·12·14 감점, 한국사 3등급 이내 감점 없고 4등급부터 0.4씩, 제2외국어/한문 2등급 이내 감점 없고 3등급부터 0.5씩(유형 해당자). 과학탐구Ⅱ 응시 시 조정점수(Ⅰ+Ⅱ 3, Ⅱ+Ⅱ 5)",
     "careerSubjectsPolicy": null
    },
-   "sourcePage": "요강 인쇄쪽 19~20쪽(PDF 23~24쪽: 전형요소·수능 반영·감점표), 75~76쪽(PDF 79~80쪽: 응시영역기준)",
-   "requirementsNullReason": "정시는 교과 이수 권장·필수 과목 해당 없음(2027 정시요강 지원자격은 수능 응시영역 기준 중심, 인쇄 75~76쪽 확인)"
+   "sourcePage": "요강 인쇄쪽 19~20쪽(PDF 23~24쪽: 전형요소·수능 반영·감점표), 75~76쪽(PDF 79~80쪽: 응시영역기준); 교과이수기준 <붙임 2> PDF 81쪽(인쇄 77쪽), 전공 연계 교과이수과목(모집단위별 핵심 권장·권장과목 표) <붙임 3> PDF 82~85쪽(인쇄 78~)"
   },
   {
    "universityId": "s-901",
@@ -942,7 +997,52 @@
    "announcedAtNote": "대학 시행계획 공표 기한(2026-04-30)을 임시로 넣음. 정시 요강 실제 게시일은 확인 못 함",
    "status": "confirmed",
    "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음(2015 개정 기준 과학탐구Ⅰ·Ⅱ 체계)",
-   "requirements": [],
+   "requirements": [
+    {
+     "subjectIds": [],
+     "legacyKeys": [],
+     "minCount": 1,
+     "strength": "advised",
+     "orGroupLabel": "교과이수기준Ⅰ(전 모집단위): 사회(역사/도덕 포함) 3과목+과학 3과목 또는 사회 2과목+과학 4과목 이수 권장(진로희망에 따라 과학Ⅱ 권장)",
+     "group": null,
+     "groupNullReason": "교과군 라벨을 읽지 못해 과목 집합을 만들지 않음"
+    },
+    {
+     "subjectIds": [],
+     "legacyKeys": [],
+     "minCount": 1,
+     "strength": "advised",
+     "orGroupLabel": "제2외국어/한문 교과(군) 1과목 이상",
+     "group": {
+      "area": "제2외국어/한문",
+      "kind": null,
+      "subjectIds": [
+       "sj-0123",
+       "sj-0124",
+       "sj-0125",
+       "sj-0126",
+       "sj-0127",
+       "sj-0128",
+       "sj-0129",
+       "sj-0130",
+       "sj-0131",
+       "sj-0132",
+       "sj-0134",
+       "sj-0135",
+       "sj-0136"
+      ]
+     }
+    },
+    {
+     "subjectIds": [],
+     "legacyKeys": [],
+     "minCount": 2,
+     "strength": "advised",
+     "orGroupLabel": "교과이수기준Ⅱ: 수학(일반선택 4과목 또는 일반선택 3+진로선택 1)·과학(일반선택 3+진로선택 2 또는 일반선택 2+진로선택 3)·사회(일반선택 3+진로선택 1 또는 일반선택 2+진로선택 2) 중 2개 교과(군) 이상 충족",
+     "group": null,
+     "groupNullReason": "교과군 라벨을 읽지 못해 과목 집합을 만들지 않음"
+    }
+   ],
    "sources": [
     {
      "name": "서울대학교 2027학년도 정시모집 '나'군 안내(입학본부, PDF, <붙임 1> 75~76쪽)",
@@ -954,7 +1054,7 @@
    "sourceIds": [
     "src-635ac469"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "ruleId": "ar-2027-snu-jeongsi-opportunity",
    "unitName": "정시 기회균형특별전형(농어촌·저소득, 미술·음악대학 제외)",
    "csatMinimum": {
@@ -968,8 +1068,7 @@
     "designatedSubjectIds": []
    },
    "gradeReflection": null,
-   "sourcePage": "요강 인쇄쪽 76쪽(PDF 80쪽, <붙임 1> 3. 수능 최저학력기준)",
-   "requirementsNullReason": "정시는 교과 이수 권장·필수 과목 해당 없음(2027 정시요강 지원자격은 수능 응시영역 기준 중심, 인쇄 75~76쪽 확인)"
+   "sourcePage": "요강 인쇄쪽 76쪽(PDF 80쪽, <붙임 1> 3. 수능 최저학력기준); 교과이수기준 <붙임 2> PDF 81쪽(인쇄 77쪽), 전공 연계 교과이수과목(모집단위별 핵심 권장·권장과목 표) <붙임 3> PDF 82~85쪽(인쇄 78~)"
   },
   {
    "universityId": "s-901",
@@ -980,7 +1079,52 @@
    "announcedAtNote": "대학 시행계획 공표 기한(2026-04-30)을 임시로 넣음. 정시 요강 실제 게시일은 확인 못 함",
    "status": "confirmed",
    "referenceNote": "2027학년도(현 고3) 기준 참고 구조. 2030학년도에는 달라질 수 있음(2015 개정 기준 과학탐구Ⅰ·Ⅱ 체계)",
-   "requirements": [],
+   "requirements": [
+    {
+     "subjectIds": [],
+     "legacyKeys": [],
+     "minCount": 1,
+     "strength": "advised",
+     "orGroupLabel": "교과이수기준Ⅰ(전 모집단위): 사회(역사/도덕 포함) 3과목+과학 3과목 또는 사회 2과목+과학 4과목 이수 권장(진로희망에 따라 과학Ⅱ 권장)",
+     "group": null,
+     "groupNullReason": "교과군 라벨을 읽지 못해 과목 집합을 만들지 않음"
+    },
+    {
+     "subjectIds": [],
+     "legacyKeys": [],
+     "minCount": 1,
+     "strength": "advised",
+     "orGroupLabel": "제2외국어/한문 교과(군) 1과목 이상",
+     "group": {
+      "area": "제2외국어/한문",
+      "kind": null,
+      "subjectIds": [
+       "sj-0123",
+       "sj-0124",
+       "sj-0125",
+       "sj-0126",
+       "sj-0127",
+       "sj-0128",
+       "sj-0129",
+       "sj-0130",
+       "sj-0131",
+       "sj-0132",
+       "sj-0134",
+       "sj-0135",
+       "sj-0136"
+      ]
+     }
+    },
+    {
+     "subjectIds": [],
+     "legacyKeys": [],
+     "minCount": 2,
+     "strength": "advised",
+     "orGroupLabel": "교과이수기준Ⅱ: 수학(일반선택 4과목 또는 일반선택 3+진로선택 1)·과학(일반선택 3+진로선택 2 또는 일반선택 2+진로선택 3)·사회(일반선택 3+진로선택 1 또는 일반선택 2+진로선택 2) 중 2개 교과(군) 이상 충족",
+     "group": null,
+     "groupNullReason": "교과군 라벨을 읽지 못해 과목 집합을 만들지 않음"
+    }
+   ],
    "sources": [
     {
      "name": "서울대학교 2027학년도 정시모집 '나'군 안내(입학본부, PDF, <붙임 1> 75~76쪽)",
@@ -992,13 +1136,12 @@
    "sourceIds": [
     "src-635ac469"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "ruleId": "ar-2027-snu-jeongsi-areas",
    "unitName": "정시 응시영역기준(지역균형·일반·기회균형 공통, 유형 구분)",
    "csatMinimumNullReason": "수능 최저가 아니라 응시영역기준. 인문·사회·사범 일부·생활과학 일부 등(유형 ①(원문 표기; 유형 미지정))은 국어·수학·영어·한국사·탐구·제2외국어/한문 모두 응시, 수학은 확률과 통계·미적분·기하 중 택1, 탐구는 사회·과학 구분 없이 2과목. 유형 2-1(원문 표기; 자연·공학·의학 등 일부)은 국어·수학·영어·한국사·탐구, 수학은 미적분·기하 중 택1, 탐구는 과학탐구 8과목 중 2과목(Ⅰ+Ⅰ·Ⅰ+Ⅱ·Ⅱ+Ⅱ, 물리·화학 Ⅰ·Ⅱ 중 1과목 이상), 유형 2-2는 같은 과학탐구 2과목이되 물리·화학 지정 없음. 2-1·2-2 모두 Ⅰ+Ⅱ 조합은 서로 다른 분야 과목이어야 하고 과학탐구Ⅱ 선택 시 조정점수 부여. 모집단위별 유형은 요강 75쪽 표 참조",
    "gradeReflection": null,
-   "sourcePage": "요강 인쇄쪽 75~76쪽(PDF 79~80쪽, <붙임 1> 1. 응시영역기준)",
-   "requirementsNullReason": "정시는 교과 이수 권장·필수 과목 해당 없음(2027 정시요강 지원자격은 수능 응시영역 기준 중심, 인쇄 75~76쪽 확인)"
+   "sourcePage": "요강 인쇄쪽 75~76쪽(PDF 79~80쪽, <붙임 1> 1. 응시영역기준); 교과이수기준 <붙임 2> PDF 81쪽(인쇄 77쪽), 전공 연계 교과이수과목(모집단위별 핵심 권장·권장과목 표) <붙임 3> PDF 82~85쪽(인쇄 78~)"
   },
   {
    "ruleId": "ar-2027-postech-general1",
@@ -1126,8 +1269,9 @@
     "src-2a94f115",
     "src-5b78bf2f"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "기사 본문",
+   "requirementsReasonKind": "unverified-blocked",
    "requirements": []
   },
   {
@@ -1165,8 +1309,9 @@
     "src-2a94f115",
     "src-579edc52"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "기사 본문",
+   "requirementsReasonKind": "unverified-blocked",
    "requirements": []
   },
   {
@@ -1191,7 +1336,7 @@
    "sourceIds": [
     "src-2701dc5b"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "수시요강 필수응시영역·최저 표(11쪽), 전형요소 표",
    "requirements": [],
    "requirementsNullReason": "성균관대 2027학년도 수시요강 PDF 전체(77쪽)를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음 ('선택과목 이수노력'은 학종 평가요소일 뿐 지원 요건 아님, 수시요강 72쪽)",
@@ -1208,7 +1353,8 @@
      "탐구"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-skku-susi-tamgu",
@@ -1232,7 +1378,7 @@
    "sourceIds": [
     "src-2701dc5b"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "수시요강 전형요소 표",
    "requirements": [],
    "requirementsNullReason": "성균관대 2027학년도 수시요강 PDF 전체(77쪽)를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음 ('선택과목 이수노력'은 학종 평가요소일 뿐 지원 요건 아님, 수시요강 72쪽)",
@@ -1240,7 +1386,8 @@
     "gradeMethod": "학생부 100%, 서류형",
     "careerSubjectsPolicy": null
    },
-   "csatMinimumNullReason": "수능 최저학력기준 적용 안 함(전형요소 표)"
+   "csatMinimumNullReason": "수능 최저학력기준 적용 안 함(전형요소 표)",
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-skku-susi-gyogwa",
@@ -1264,7 +1411,7 @@
    "sourceIds": [
     "src-2701dc5b"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "sourcePage": "수시요강 인쇄쪽 11쪽 최저 표, 39~40쪽 교과 반영(PDF 41~42쪽)",
    "requirements": [],
    "requirementsNullReason": "성균관대 2027학년도 수시요강 PDF 전체(77쪽)를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음 ('선택과목 이수노력'은 학종 평가요소일 뿐 지원 요건 아님, 수시요강 72쪽)",
@@ -1281,7 +1428,8 @@
      "탐구"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-skku-susi-nonsul",
@@ -1305,7 +1453,7 @@
    "sourceIds": [
     "src-2701dc5b"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "수시요강 11쪽 최저 표",
    "requirements": [],
    "requirementsNullReason": "성균관대 2027학년도 수시요강 PDF 전체(77쪽)를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음 ('선택과목 이수노력'은 학종 평가요소일 뿐 지원 요건 아님, 수시요강 72쪽)",
@@ -1322,7 +1470,8 @@
      "탐구"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-skku-jeongsi",
@@ -1346,15 +1495,16 @@
    "sourceIds": [
     "src-f5b96cae"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "sourcePage": "정시요강 수능 반영 방법(22~23쪽)",
    "requirements": [],
-   "requirementsNullReason": "정시는 교과 이수 권장·필수 과목 해당 없음",
+   "requirementsNullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)",
    "gradeReflection": {
     "gradeMethod": "수능 100%(총점 1,000). 필수응시영역: 국어·수학·영어·사탐/과탐(2개 과목)·한국사. 국어·수학은 표준점수(가·다군) 또는 백분위(나군), 영어는 등급 자체 변환점수, 탐구는 2개 과목 반영(다군은 변환표준점수가 높은 상위 1개 과목만 반영), 모집단위별로 영역 반영 비율이 다름(표 열 구성이 PDF 텍스트에서 섞여 배점은 옮기지 않음). 가군 한국사 감점 1~9등급 0·0·0·0·1·2·5·10·20. 일부 모집단위는 과학탐구·미적분 선택자 가산점(최대 5%·3%)",
     "careerSubjectsPolicy": null
    },
-   "csatMinimumNullReason": "수능 최저학력기준 없음(정시 수능 100%)"
+   "csatMinimumNullReason": "수능 최저학력기준 없음(정시 수능 100%)",
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-sogang-susi-gyogwa",
@@ -1378,7 +1528,7 @@
    "sourceIds": [
     "src-18bf5659"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "sourcePage": "수시요강 6쪽, 14~16쪽",
    "requirements": [],
    "requirementsNullReason": "서강대 2027학년도 수시요강 PDF 전체(61쪽)를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음 (4학기 이수·기준학과 이수자는 성적 취득 기간·특성화고 자격 조건)",
@@ -1396,7 +1546,8 @@
      "한국사"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-sogang-susi-jonghap",
@@ -1420,7 +1571,7 @@
    "sourceIds": [
     "src-18bf5659"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "수시요강 6쪽, 17~18쪽",
    "requirements": [],
    "requirementsNullReason": "서강대 2027학년도 수시요강 PDF 전체(61쪽)를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음 (4학기 이수·기준학과 이수자는 성적 취득 기간·특성화고 자격 조건)",
@@ -1428,7 +1579,8 @@
     "gradeMethod": "서류평가 100% 정성평가(일반Ⅰ 494명, 일반Ⅱ 74명). 일반Ⅱ(자유전공 등)는 입학 후 2학기 이수 중 모집단위 내에서 전공 선택",
     "careerSubjectsPolicy": null
    },
-   "csatMinimumNullReason": "수능 최저학력기준 적용 안 함(전형요소 표)"
+   "csatMinimumNullReason": "수능 최저학력기준 적용 안 함(전형요소 표)",
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-sogang-susi-nonsul",
@@ -1452,7 +1604,7 @@
    "sourceIds": [
     "src-18bf5659"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "수시요강 6쪽, 30~31쪽",
    "requirements": [],
    "requirementsNullReason": "서강대 2027학년도 수시요강 PDF 전체(61쪽)를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음 (4학기 이수·기준학과 이수자는 성적 취득 기간·특성화고 자격 조건)",
@@ -1470,7 +1622,8 @@
      "한국사"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-sogang-jeongsi",
@@ -1494,15 +1647,16 @@
    "sourceIds": [
     "src-ebf590bb"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "sourcePage": "정시요강 6쪽(필수응시영역·최저), 11쪽(수능(일반) 지원자격), 34~35쪽(수능 반영방법)",
    "requirements": [],
-   "requirementsNullReason": "정시는 교과 이수 권장·필수 과목 해당 없음",
+   "requirementsNullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)",
    "gradeReflection": {
     "gradeMethod": "수능 100%. 필수응시영역: 국어·수학·영어·탐구(사회/과학 2과목)·한국사, 국어·수학 선택과목 제한 없음. 활용지표: 국어·수학 표준점수, 탐구 백분위 변환표준점수, 영어 등급별 가산점(1~9등급 100·99.5·98.5·97·95·92.5·89.5·86·82), 한국사 가산점(1~4등급 10, 5등급부터 9.5·9.0·8.5·8.0·7.5). 영역 가중치 유형 A(국어 1.1·수학 1.3·탐구 0.6)와 B(국어 1.3·수학 1.1·탐구 0.6) 중 상위 점수 자동 적용",
     "careerSubjectsPolicy": null
    },
-   "csatMinimumNullReason": "수능(일반) 수능 최저학력기준 적용하지 않음(농어촌·기초생활·장애인·특성화고는 3개 영역 등급 합 9 이내+한국사 4등급 이내)"
+   "csatMinimumNullReason": "수능(일반) 수능 최저학력기준 적용하지 않음(농어촌·기초생활·장애인·특성화고는 3개 영역 등급 합 9 이내+한국사 4등급 이내)",
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-hanyang-susi-gyogwa",
@@ -1526,7 +1680,7 @@
    "sourceIds": [
     "src-8489fbb6"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "수시요강 21~22쪽, 53쪽",
    "requirements": [],
    "requirementsNullReason": "한양대 2027학년도 수시요강 PDF 전체(98쪽)를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음",
@@ -1544,7 +1698,8 @@
      "한국사"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-hanyang-susi-jonghap-rec",
@@ -1568,7 +1723,7 @@
    "sourceIds": [
     "src-8489fbb6"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "수시요강 23~24쪽",
    "requirements": [],
    "requirementsNullReason": "한양대 2027학년도 수시요강 PDF 전체(98쪽)를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음 ('교과목 이수상황' 평가항목은 평가요소일 뿐 지원 요건 아님, 수시요강 66쪽)",
@@ -1586,7 +1741,8 @@
      "한국사"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-hanyang-susi-jonghap-doc",
@@ -1610,7 +1766,7 @@
    "sourceIds": [
     "src-8489fbb6"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "수시요강 25쪽",
    "requirements": [],
    "requirementsNullReason": "한양대 2027학년도 수시요강 PDF 전체(98쪽)를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음 ('교과목 이수상황' 평가항목은 평가요소일 뿐 지원 요건 아님, 수시요강 66쪽)",
@@ -1618,7 +1774,8 @@
     "gradeMethod": "학생부 외 제출서류 없음, 면접 없음",
     "careerSubjectsPolicy": null
    },
-   "csatMinimumNullReason": "수능 최저학력기준 면제(수능 면제, 서류형)"
+   "csatMinimumNullReason": "수능 최저학력기준 면제(수능 면제, 서류형)",
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-hanyang-susi-nonsul",
@@ -1642,7 +1799,7 @@
    "sourceIds": [
     "src-8489fbb6"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "sourcePage": "수시요강 37~38쪽(PDF 44~45쪽)",
    "requirements": [],
    "requirementsNullReason": "한양대 2027학년도 수시요강 PDF 전체(98쪽)를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음",
@@ -1660,7 +1817,8 @@
      "한국사"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-hanyang-jeongsi",
@@ -1684,15 +1842,16 @@
    "sourceIds": [
     "src-0459bd37"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "sourcePage": "정시요강 17쪽(전형별 선발방법·반영비율), 19·25·27쪽(가·나·다군 전형방법), 37~41쪽(수능 반영 비율·산출방법)",
    "requirements": [],
-   "requirementsNullReason": "정시는 교과 이수 권장·필수 과목 해당 없음",
+   "requirementsNullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)",
    "gradeReflection": {
     "gradeMethod": "수능 90% + 학생부종합평가 10%(수능최저 없음). 영역 반영비율(국어:수학:영어:탐구, 반영 탐구 2과목): 자연계열 25:40:10:25, 인문계열 35:30:10:25, 상경·의류학과·실내건축디자인학과·한양인터칼리지학부 35:35:10:20. 점수 활용지표: 국어·수학 표준점수, 탐구 백분위(대학 자체 변환표준점수), 영어·한국사 등급. 수능 발표 후 변환표준점수·탐구 과목별 가산점 공지",
     "careerSubjectsPolicy": null
    },
-   "csatMinimumNullReason": "정시 수능최저학력기준 없음(수능 90%+학생부종합평가 10%)"
+   "csatMinimumNullReason": "정시 수능최저학력기준 없음(수능 90%+학생부종합평가 10%)",
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-cau-susi-gyogwa",
@@ -1716,7 +1875,7 @@
    "sourceIds": [
     "src-236437da"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "sourcePage": "수시요강 PDF 19쪽(인쇄 17쪽: 지원자격·최소 이수과목 요건), 16~19쪽",
    "requirements": [
     {
@@ -1767,7 +1926,7 @@
    "sourceIds": [
     "src-236437da"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "수시요강 일람표, 30~33쪽",
    "requirements": [],
    "requirementsNullReason": "중앙대 2027학년도 수시요강 PDF 전체(123쪽)를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음",
@@ -1785,7 +1944,8 @@
      "한국사"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-cau-susi-tamgu-yungham",
@@ -1809,7 +1969,7 @@
    "sourceIds": [
     "src-236437da"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "수시요강 일람표(2027학년도 학생부종합전형)",
    "requirements": [],
    "requirementsNullReason": "중앙대 2027학년도 수시요강 PDF 전체(123쪽)를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음",
@@ -1817,7 +1977,8 @@
     "gradeMethod": "탐구형인재 512명(면접 ○), 융합형인재 378명(의학부는 1단계 합격자 대상 면접). 학생부종합 정성평가",
     "careerSubjectsPolicy": null
    },
-   "csatMinimumNullReason": "수능최저학력기준 적용하지 않음(탐구형인재·융합형인재)"
+   "csatMinimumNullReason": "수능최저학력기준 적용하지 않음(탐구형인재·융합형인재)",
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-cau-susi-nonsul",
@@ -1841,7 +2002,7 @@
    "sourceIds": [
     "src-236437da"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "수시요강 일람표, 58쪽",
    "requirements": [],
    "requirementsNullReason": "중앙대 2027학년도 수시요강 PDF 전체(123쪽)를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음",
@@ -1859,7 +2020,8 @@
      "한국사"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-cau-jeongsi",
@@ -1883,15 +2045,16 @@
    "sourceIds": [
     "src-c127f100"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "정시요강 일람표, 수능 반영 방법(18~20쪽, 56쪽)",
    "requirements": [],
-   "requirementsNullReason": "정시는 교과 이수 권장·필수 과목 해당 없음",
+   "requirementsNullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)",
    "gradeReflection": {
     "gradeMethod": "모든 전형에서 수능최저 미적용. 국어·수학 표준점수, 탐구는 백분위 활용 변환표준점수, 영어·한국사는 등급 가산점. 영역별 반영 비율(국어:수학:탐구): 인문·예체능(인문대·사범대·공연영상창작학부 영화·사진·디자인학부) 35:30:35, 사회과학대·경영경제대·간호학과(인문) 30:40:30, 자연 전체 30:35:35. 인문대·사범대 사회탐구, 자연계열 과학탐구 과목별 변환표준점수 가산점 5%. 탐구는 사/과 2과목, 비교과(출결) 반영",
     "careerSubjectsPolicy": null
    },
-   "csatMinimumNullReason": "정시 전 전형 수능최저학력기준 적용하지 않음"
+   "csatMinimumNullReason": "정시 전 전형 수능최저학력기준 적용하지 않음",
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-khu-susi-gyogwa",
@@ -1915,7 +2078,7 @@
    "sourceIds": [
     "src-d557dbec"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "수시요강 지역균형전형 안내(27~29쪽), 반영 교과 표",
    "requirements": [],
    "requirementsNullReason": "경희대 2027학년도 수시요강 PDF 전체(136쪽)를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음",
@@ -1933,7 +2096,8 @@
      "한국사"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-khu-susi-neo",
@@ -1957,7 +2121,7 @@
    "sourceIds": [
     "src-d557dbec"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "sourcePage": "수시요강 38쪽(PDF 40쪽) 네오르네상스전형 지원자격·수능최저·전형방법",
    "requirements": [],
    "requirementsNullReason": "경희대 2027학년도 수시요강 PDF 전체(136쪽)를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음",
@@ -1975,7 +2139,8 @@
      "한국사"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-khu-susi-nonsul",
@@ -1999,7 +2164,7 @@
    "sourceIds": [
     "src-d557dbec"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "sourcePage": "수시요강 64쪽(PDF 66쪽) 논술우수자전형 지원자격·수능최저·전형방법",
    "requirements": [],
    "requirementsNullReason": "경희대 2027학년도 수시요강 PDF 전체(136쪽)를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음",
@@ -2017,7 +2182,8 @@
      "한국사"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-khu-jeongsi",
@@ -2041,15 +2207,16 @@
    "sourceIds": [
     "src-0b67c4c1"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "정시요강 수능 반영 안내(41쪽 전후)",
    "requirements": [],
-   "requirementsNullReason": "정시는 교과 이수 권장·필수 과목 해당 없음",
+   "requirementsNullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)",
    "gradeReflection": {
     "gradeMethod": "수능 100%(전형총점 600점). 영역 반영비율: 인문(문과·외국어·생활과학대, 식품영양 제외) 국어 40·수학 25·탐구 35(2과목), 사회(자율전공·정경·경영·국제·호텔관광 등) 국어 35·수학 35·탐구 30(2과목), 자연(자유전공·식품영양·이과·공과·전자정보·소프트웨어융합·응용과학·생명과학·의예·한의예 자연·치의예·약학·간호 등) 국어 25·수학 40·탐구 35(2과목, 과탐 가산점 부여, 자유전공학부 제외), 예술·체육 국어 60·탐구 40(1과목). 영어 감점 1~9등급 0·0·2·4·8·12·18·24·30, 한국사 감점 0·0·0·0·2·4·8·14·20",
     "careerSubjectsPolicy": null
    },
-   "csatMinimumNullReason": "정시 수능위주 일반전형은 요강 전형요소 표의 최저학력기준 칸에 기재 없음(수능 100%)"
+   "csatMinimumNullReason": "정시 수능위주 일반전형은 요강 전형요소 표의 최저학력기준 칸에 기재 없음(수능 100%)",
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-hufs-susi-gyogwa",
@@ -2073,7 +2240,7 @@
    "sourceIds": [
     "src-89481b2c"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "sourcePage": "수시요강 14쪽(전형 요약·수능최저 변경), 15쪽(수능최저 표), 20~22쪽(학교장추천전형; PDF는 인쇄 쪽+2)",
    "requirements": [],
    "requirementsNullReason": "한국외대 2027학년도 수시요강 PDF 전체(51쪽)를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음",
@@ -2090,7 +2257,8 @@
      "탐구"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-hufs-susi-jonghap",
@@ -2114,7 +2282,7 @@
    "sourceIds": [
     "src-89481b2c"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "sourcePage": "수시요강 14쪽(PDF 16쪽) 전형 요약, 23~29쪽(면접형·SW인재·서류형 세부)",
    "requirements": [],
    "requirementsNullReason": "한국외대 2027학년도 수시요강 PDF 전체(51쪽)를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음",
@@ -2122,7 +2290,8 @@
     "gradeMethod": "면접형: 1단계 서류 100%(3배수), 2단계 서류 50%+면접 50%(면접 평가요소가 학업역량·진로역량·공동체역량에서 진로개발역량·협력적소통역량으로 변경). 서류형: 서류 100%. SW인재: 서류 100%",
     "careerSubjectsPolicy": null
    },
-   "csatMinimumNullReason": "수능최저학력기준 적용 안 함(학생부종합 전형 요약표의 수능최저 적용 칸이 ×)"
+   "csatMinimumNullReason": "수능최저학력기준 적용 안 함(학생부종합 전형 요약표의 수능최저 적용 칸이 ×)",
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-hufs-susi-nonsul",
@@ -2146,7 +2315,7 @@
    "sourceIds": [
     "src-89481b2c"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "sourcePage": "수시요강 14쪽(요약), 34~36쪽(논술전형; 수능최저 표는 34쪽, PDF 36쪽)",
    "requirements": [],
    "requirementsNullReason": "한국외대 2027학년도 수시요강 PDF 전체(51쪽)를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음",
@@ -2163,7 +2332,8 @@
      "탐구"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-hufs-jeongsi",
@@ -2187,15 +2357,16 @@
    "sourceIds": [
     "src-db326565"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "정시요강 28쪽 전후, 수능 영역별 반영 비율 표",
    "requirements": [],
-   "requirementsNullReason": "정시는 교과 이수 권장·필수 과목 해당 없음",
+   "requirementsNullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)",
    "gradeReflection": {
     "gradeMethod": "수능 100%(1,000점). 영역 반영비율(국어:수학:영어:탐구): 인문A(영어·서양어·아시아언어문화·중국학·일본학·인문·국가전략언어·Culture & Technology 일부·자유전공 등) 30:30:20:20, 인문B(사회과학·상경·경영·경상·융합인재·국제학부 등) 30:35:15:20, 자연(자연과학·공과·AI융합 일부·바이오메디컬공학부 등) 20:35:15:30. 탐구는 사회/과학, 영어는 등급 환산점수, 한국사는 감점. 해당 계열 이외 유형 응시 시 해당 영역 0점",
     "careerSubjectsPolicy": null
    },
-   "csatMinimumNullReason": "정시 수능 최저학력기준을 요강에서 확인하지 못함(전형요소가 수능 100%)"
+   "csatMinimumNullReason": "정시 수능 최저학력기준을 요강에서 확인하지 못함(전형요소가 수능 100%)",
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-uos-susi-gyogwa",
@@ -2219,7 +2390,7 @@
    "sourceIds": [
     "src-8380f4e8"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "수시요강 PDF 14쪽(인쇄 12쪽 지원자격·반영), PDF 45쪽(인쇄 43쪽 핵심 교과 표), 변경사항 표(1쪽)",
    "requirements": [
     {
@@ -2270,7 +2441,7 @@
    "sourceIds": [
     "src-8380f4e8"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "수시요강 변경사항 표(1쪽)",
    "requirements": [],
    "requirementsNullReason": "서울시립대 2027학년도 수시요강 PDF 전체(55쪽)를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음",
@@ -2278,7 +2449,8 @@
     "gradeMethod": "Ⅰ(면접형): 1단계 서류평가 100%(3배수), 2단계 서류 50%+면접 50%. Ⅱ(서류형): 서류평가 100% 일괄합산. 서류평가는 학생부",
     "careerSubjectsPolicy": null
    },
-   "csatMinimumNullReason": "수능최저학력기준 없음(학생부종합Ⅰ·Ⅱ)"
+   "csatMinimumNullReason": "수능최저학력기준 없음(학생부종합Ⅰ·Ⅱ)",
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-uos-susi-nonsul",
@@ -2302,7 +2474,7 @@
    "sourceIds": [
     "src-8380f4e8"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "수시요강 변경사항 표(1쪽)",
    "requirements": [],
    "requirementsNullReason": "서울시립대 2027학년도 수시요강 PDF 전체(55쪽)를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음",
@@ -2310,7 +2482,8 @@
     "gradeMethod": "논술 80% + 학생부 교과 20%. 학생부 교과는 전학년 전교과 석차등급(원점수·평균·표준편차·석차등급이 모두 기재된 교과만 반영)",
     "careerSubjectsPolicy": null
    },
-   "csatMinimumNullReason": "수능최저학력기준 없음(논술전형)"
+   "csatMinimumNullReason": "수능최저학력기준 없음(논술전형)",
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2027-uos-jeongsi",
@@ -2334,15 +2507,16 @@
    "sourceIds": [
     "src-9e98b50f"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "sourcePage": "정시요강 6~8쪽, 수능 반영영역별 비율 표",
    "requirements": [],
-   "requirementsNullReason": "정시는 교과 이수 권장·필수 과목 해당 없음",
+   "requirementsNullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)",
    "gradeReflection": {
     "gradeMethod": "수능 100%(1,000점, 학생부 반영 없음). 계열별 영역 반영비율 표(국어·수학·영어·탐구 2과목, 한국사는 비율 없이 등급별 감점): 인문계열Ⅰ(경제·사회복지·세무·경영·도시행정·자유전공(인문)) 35·35·15·15%, 인문계열Ⅱ(행정·국제관계·영어영문·국어국문·국사·철학·중국어문화·도시사회) 35·25·20·20%, 자연계열 30·40·10·20%. 영어는 등급별 점수 부여, 한국사는 총점에서 감점. 제2외국어/한문의 탐구 대체 불가",
     "careerSubjectsPolicy": null
    },
-   "csatMinimumNullReason": "정시 수능위주 일반전형 수능 최저학력기준 없음(수능 100%)"
+   "csatMinimumNullReason": "정시 수능위주 일반전형 수능 최저학력기준 없음(수능 100%)",
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2028-hanyang-susi-gyogwa",
@@ -2366,7 +2540,7 @@
    "sourceIds": [
     "src-6192282c"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "시행계획 5쪽, 10쪽",
    "requirements": [],
    "requirementsNullReason": "한양대 2028학년도 시행계획 PDF 전체를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음. 모집요강 공표 전이라 요강 단계는 미확인(다음 행동: 2028 모집요강 공표 후 재확인)",
@@ -2385,7 +2559,8 @@
      "한국사"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-hanyang-susi-hakeop",
@@ -2409,7 +2584,7 @@
    "sourceIds": [
     "src-6192282c"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "시행계획 5쪽, 10~11쪽",
    "requirements": [],
    "requirementsNullReason": "한양대 2028학년도 시행계획 PDF 전체를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음. 모집요강 공표 전이라 요강 단계는 미확인(다음 행동: 2028 모집요강 공표 후 재확인)",
@@ -2427,7 +2602,8 @@
      "과학탐구"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-skku-susi-yungham",
@@ -2451,7 +2627,7 @@
    "sourceIds": [
     "src-b640abaf"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "시행계획 변경사항(수능최저 방법), 수능 최저 표",
    "requirements": [],
    "requirementsNullReason": "성균관대 2028학년도 시행계획 PDF 전체를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음. 모집요강 공표 전이라 요강 단계는 미확인(다음 행동: 2028 모집요강 공표 후 재확인)",
@@ -2469,7 +2645,8 @@
      "과학탐구"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-skku-susi-gyogwa",
@@ -2493,7 +2670,7 @@
    "sourceIds": [
     "src-b640abaf"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "sourcePage": "시행계획 변경사항, 수능 최저 표",
    "requirements": [],
    "requirementsNullReason": "성균관대 2028학년도 시행계획 PDF 전체를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음. 모집요강 공표 전이라 요강 단계는 미확인(다음 행동: 2028 모집요강 공표 후 재확인)",
@@ -2511,7 +2688,8 @@
      "과학탐구"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-skku-susi-nonsul",
@@ -2535,7 +2713,7 @@
    "sourceIds": [
     "src-b640abaf"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "시행계획 수능 최저 표",
    "requirements": [],
    "requirementsNullReason": "성균관대 2028학년도 시행계획 PDF 전체를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음. 모집요강 공표 전이라 요강 단계는 미확인(다음 행동: 2028 모집요강 공표 후 재확인)",
@@ -2553,7 +2731,8 @@
      "과학탐구"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-cau-jeongsi-s67",
@@ -2577,10 +2756,10 @@
    "sourceIds": [
     "src-0d620696"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "시행계획 4쪽, 수능 반영방법 7쪽",
    "requirements": [],
-   "requirementsNullReason": "정시는 교과 이수 권장·필수 과목 해당 없음",
+   "requirementsNullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)",
    "gradeReflection": {
     "gradeMethod": "2028학년도 개편: 수능일반(2027학년도 수능 90+출결 10, 1,687명)을 수능89(수능 89+출결 11, 1,459명, 최저 없음)와 수능67(수능 67+서류 33, 251명, 수능최저 적용)로 분리. 전형 간 중복 지원 가능",
     "careerSubjectsPolicy": null
@@ -2596,7 +2775,8 @@
      "한국사"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2028-cau-susi-jonghap",
@@ -2620,7 +2800,7 @@
    "sourceIds": [
     "src-0d620696"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "sourcePage": "시행계획 4쪽, 수능 반영방법 7쪽",
    "requirements": [],
    "requirementsNullReason": "중앙대 2028학년도 시행계획 PDF 전체를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음. 모집요강 공표 전이라 요강 단계는 미확인(다음 행동: 2028 모집요강 공표 후 재확인)",
@@ -2639,7 +2819,8 @@
      "한국사"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-cau-susi-gyogwa-nonsul",
@@ -2663,7 +2844,7 @@
    "sourceIds": [
     "src-0d620696"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "sourcePage": "시행계획 PDF 4·6쪽(전형 요약), 재학생 논술 인쇄 23쪽(PDF 23쪽, 전형방법 논술 80%·교과 10%·출결 10%), 수능 반영방법 7쪽",
    "requirements": [],
    "requirementsNullReason": "최소 이수과목 요건이 있음(시행계획 PDF 15쪽 지역균형 지원자격: '이수과목 개수 등은 모집요강 공지'). 세부는 2028학년도 모집요강 공표 전이라 미확인. 다음 행동: 2028 수시모집요강 공표(2027.4 전후) 후 지원자격 절 확인. 참고로 2027학년도는 진로선택과목 1과목 이상(수시요강 PDF 19쪽)",
@@ -2682,7 +2863,8 @@
      "한국사"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-hufs-susi-gyogwa",
@@ -2706,7 +2888,7 @@
    "sourceIds": [
     "src-d20570bf"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "sourcePage": "시행계획 1쪽(주요사항), 6~7쪽(교과 지원자격·전형방법·수능최저 표), 19쪽(교과성적 반영방법)",
    "requirements": [],
    "requirementsNullReason": "한국외대 2028학년도 시행계획 PDF 전체를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음. 모집요강 공표 전이라 요강 단계는 미확인(다음 행동: 2028 모집요강 공표 후 재확인)",
@@ -2723,7 +2905,8 @@
      "탐구"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-hufs-susi-nonsul",
@@ -2747,7 +2930,7 @@
    "sourceIds": [
     "src-d20570bf"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "sourcePage": "시행계획 1쪽(주요사항), 13쪽(논술전형 수능최저 표)",
    "requirements": [],
    "requirementsNullReason": "한국외대 2028학년도 시행계획 PDF 전체를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음. 모집요강 공표 전이라 요강 단계는 미확인(다음 행동: 2028 모집요강 공표 후 재확인)",
@@ -2764,7 +2947,8 @@
      "탐구"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-hufs-susi-seoryu",
@@ -2788,10 +2972,10 @@
    "sourceIds": [
     "src-d20570bf"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "sourcePage": "시행계획 1~2쪽(주요사항·모집인원), 8~10쪽(면접형·SW인재·서류형; 서류형 수능최저 표는 10쪽)",
    "requirements": [],
-   "requirementsNullReason": "한국외대 2028학년도 시행계획 PDF 전체를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음. 모집요강 공표 전이라 요강 단계는 미확인(다음 행동: 2028 모집요강 공표 후 재확인)",
+   "requirementsNullReason": "한국외대 2028학년도 시행계획 PDF 전체를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음(서류평가 평가요소의 '교과 이수 현황'은 시행계획 PDF 8쪽, 지원 요건 아님). 모집요강 공표 전이라 요강 단계는 미확인(다음 행동: 2028 모집요강 공표 후 재확인)",
    "gradeReflection": {
     "gradeMethod": "면접형·SW인재는 수능최저 미적용. 서류형은 서류 100%이며 수능최저 적용(2027학년도에는 서류형 최저 없음, 2028학년도 신규)",
     "careerSubjectsPolicy": null
@@ -2805,7 +2989,8 @@
      "탐구"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-sogang-susi-gyogwa",
@@ -2829,7 +3014,7 @@
    "sourceIds": [
     "src-b54316d3"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "시행계획 4쪽, 10쪽",
    "requirements": [],
    "requirementsNullReason": "서강대 2028학년도 시행계획 PDF 전체를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음. 모집요강 공표 전이라 요강 단계는 미확인(다음 행동: 2028 모집요강 공표 후 재확인)",
@@ -2847,7 +3032,8 @@
      "한국사"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-sogang-susi-jonghap",
@@ -2871,7 +3057,7 @@
    "sourceIds": [
     "src-b54316d3"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "sourcePage": "시행계획 4쪽(변경사항), 8쪽(전형요소·최저), 11쪽(일반Ⅰ/일반Ⅱ)",
    "requirements": [],
    "requirementsNullReason": "서강대 2028학년도 시행계획 PDF 전체를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음. 모집요강 공표 전이라 요강 단계는 미확인(다음 행동: 2028 모집요강 공표 후 재확인)",
@@ -2889,7 +3075,8 @@
      "한국사"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-sogang-susi-nonsul",
@@ -2913,7 +3100,7 @@
    "sourceIds": [
     "src-b54316d3"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "sourcePage": "시행계획 4쪽(변경사항), 8쪽(전형요소·최저), 16쪽(논술(일반))",
    "requirements": [],
    "requirementsNullReason": "서강대 2028학년도 시행계획 PDF 전체를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음. 모집요강 공표 전이라 요강 단계는 미확인(다음 행동: 2028 모집요강 공표 후 재확인)",
@@ -2931,7 +3118,8 @@
      "한국사"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-sogang-jeongsi",
@@ -2955,15 +3143,16 @@
    "sourceIds": [
     "src-b54316d3"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "시행계획 4쪽, 수능 반영",
    "requirements": [],
-   "requirementsNullReason": "정시는 교과 이수 권장·필수 과목 해당 없음",
+   "requirementsNullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)",
    "gradeReflection": {
     "gradeMethod": "2028학년도 변경: 수능(지역균형) 신설(고교장추천 인원 제한 없음, 졸업예정자, 수능 전 영역 백분위 + 교과 10% + 출결 10%), 정시 나·다군 모집(수능(일반)은 나·다군, 지역균형·정원외 특별은 나군). 영역 가중치 국어·수학 (1.1·1.3)→(1.2·1.4), 탐구 0.6→0.4",
     "careerSubjectsPolicy": null
    },
-   "csatMinimumNullReason": "수능(일반) 수능 최저 적용하지 않음(2027학년도 구조와 같음, 시행계획 최저 표)"
+   "csatMinimumNullReason": "수능(일반) 수능 최저 적용하지 않음(2027학년도 구조와 같음, 시행계획 최저 표)",
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2028-uos-susi-gyogwa",
@@ -2987,7 +3176,7 @@
    "sourceIds": [
     "src-27eefb81"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "시행계획 1쪽, 전형안내",
    "requirements": [],
    "requirementsNullReason": "서울시립대 2028학년도 시행계획 PDF 전체를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음. 모집요강 공표 전이라 요강 단계는 미확인(다음 행동: 2028 모집요강 공표 후 재확인)",
@@ -3005,7 +3194,8 @@
      "한국사"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-uos-susi-jonghap",
@@ -3029,7 +3219,7 @@
    "sourceIds": [
     "src-27eefb81"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "sourcePage": "시행계획 1쪽, 전형안내",
    "requirements": [],
    "requirementsNullReason": "서울시립대 2028학년도 시행계획 PDF 전체를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음. 모집요강 공표 전이라 요강 단계는 미확인(다음 행동: 2028 모집요강 공표 후 재확인)",
@@ -3037,7 +3227,8 @@
     "gradeMethod": "학생부종합 서류형 폐지. 1단계(3배수) 서류평가 100%, 2단계 서류 50%+면접 50%",
     "careerSubjectsPolicy": null
    },
-   "csatMinimumNullReason": "수능최저학력기준 없음(시행계획 2쪽 전형별 주요사항 표: 학생부종합전형 2028학년도 '수능최저학력기준 없음')"
+   "csatMinimumNullReason": "수능최저학력기준 없음(시행계획 2쪽 전형별 주요사항 표: 학생부종합전형 2028학년도 '수능최저학력기준 없음')",
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-uos-susi-nonsul",
@@ -3061,7 +3252,7 @@
    "sourceIds": [
     "src-27eefb81"
    ],
-   "checkedAt": "2026-10-26",
+   "checkedAt": "2026-11-09",
    "sourcePage": "시행계획 1쪽, 전형안내",
    "requirements": [],
    "requirementsNullReason": "서울시립대 2028학년도 시행계획 PDF 전체를 지원자격·이수과목·권장과목·최소 이수·핵심 교과 키워드로 검색해 확인, 교과 이수 과목 요건 항목 없음. 모집요강 공표 전이라 요강 단계는 미확인(다음 행동: 2028 모집요강 공표 후 재확인)",
@@ -3079,7 +3270,8 @@
      "한국사"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-uos-jeongsi",
@@ -3103,15 +3295,16 @@
    "sourceIds": [
     "src-27eefb81"
    ],
-   "checkedAt": "2026-11-03",
+   "checkedAt": "2026-11-09",
    "sourcePage": "시행계획 PDF 3쪽(인쇄 1쪽, 정시 변경 표), PDF 22쪽(인쇄 20쪽, 정시 반영 방법)",
    "requirements": [],
-   "requirementsNullReason": "정시는 교과 이수 권장·필수 과목 해당 없음",
+   "requirementsNullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)",
    "gradeReflection": {
     "gradeMethod": "2028학년도 변경: 인문/자연계열 수능 100% → 수능 80% + 학생부교과 18% + 출결 2%. 영역 반영 비율(국어·수학·탐구 2과목, 영어·한국사는 등급별 점수 부여): 인문Ⅰ 국어 35·수학 35·탐구 30(수능 800점 기준 280·280·240), 인문Ⅱ 40·25·35, 자연 30·40·30. 표준점수 적용, 인문 사회탐구·자연 과학탐구 표준점수에 3% 가산점 부여(2028학년도 표에는 2027학년도의 '2개 선택시' 조건이 없음). 디자인학과는 정시에서 수시로 이동",
     "careerSubjectsPolicy": null
    },
-   "csatMinimumNullReason": "정시 수능위주 일반전형 수능 최저학력기준 없음"
+   "csatMinimumNullReason": "정시 수능위주 일반전형 수능 최저학력기준 없음",
+   "requirementsReasonKind": "not-found"
   },
   {
    "ruleId": "ar-2028-khu-susi-gyogwa",
@@ -3154,7 +3347,8 @@
      "한국사"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-khu-susi-neo",
@@ -3197,7 +3391,8 @@
      "한국사"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-khu-susi-nonsul",
@@ -3240,7 +3435,8 @@
      "한국사"
     ],
     "designatedSubjectIds": []
-   }
+   },
+   "requirementsReasonKind": "unverified-pending"
   },
   {
    "ruleId": "ar-2028-khu-jeongsi",
@@ -3267,12 +3463,13 @@
    "checkedAt": "2026-11-09",
    "sourcePage": "시행계획 인쇄 2~6쪽(PDF 4~8쪽, 2~5쪽 변경사항·6쪽 일정(안)), 이미지 판독",
    "requirements": [],
-   "requirementsNullReason": "정시는 교과 이수 권장·필수 과목 해당 없음",
+   "requirementsNullReason": "정시 요강·시행계획 PDF 전체를 교과이수·이수기준·전공 연계·권장 과목 키워드로 검색해 확인, 지원자격·권장 과목 요건 항목 없음(수능 영역별 반영만 확인)",
    "gradeReflection": {
     "gradeMethod": "2028학년도 변경: 수능·학생부형(수능 90% + 학생부 교과·비교과(출결·봉사) 10%, 1,348명)과 수능형(수능 100%, 611명)으로 이원화. 영역 반영비율(국어:수학:탐구): 인문 40:35:25(통합사회·통합과학 중 상위 1과목), 사회 35:35:30(상위 1과목), 자연 30:40:통합사회 10·통합과학 20, 예술·체육 70:-:30(상위 1과목), 영어·한국사 반영(등급 점수 표는 읽지 못함). 수능·학생부형 자연계열에는 학생부 수학·과학 이수 가산점(최대 8점: 수학교과 18학점 또는 5과목 이상 4점, 과학교과 20학점 또는 6과목 이상 4점). 정시 일정(안): 원서접수 2028.1.3~6, 가군 1.10~17, 나군 1.18~25, 다군 1.31~2.7, 합격자 발표 2.10",
     "careerSubjectsPolicy": null
    },
-   "csatMinimumNullReason": "정시 수능위주 수능최저 없음(변경 요약에 최저 언급 없음)"
+   "csatMinimumNullReason": "정시 수능위주 수능최저 없음(변경 요약에 최저 언급 없음)",
+   "requirementsReasonKind": "not-found"
   }
  ]
 }
