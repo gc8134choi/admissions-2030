@@ -79,14 +79,21 @@ export async function mapBody(el, { load, esc, focus = null, level = null }) {
     if (!map) return;
     const L = window.L;
     layer.clearLayers(); markers = new Map();
-    const list = shown().filter((x) => x.lat != null), pts = list.map((p) => map.latLngToContainerPoint([p.lat, p.lng]));
-    for (const [i, p] of list.entries()) {
-      /* 눌림 상자는 44px이되, 가장 가까운 핀과 겹치지 않게 그 거리(최소 26px = 보이는 핀 크기)까지만 */
-      let dmin = 99; for (const [j, q] of pts.entries()) if (j !== i) dmin = Math.min(dmin, Math.hypot(q.x - pts[i].x, q.y - pts[i].y));
-      const z = Math.max(6, Math.min(44, Math.floor(dmin / 1.42)));
-      const m = L.marker([p.lat, p.lng], { icon: icon(L, p, p.id === st.sel, z), title: p.name, keyboard: true }).addTo(layer);
-      m.on("click", () => select(p.id, false));
-      markers.set(p.id, m);
+    /* 핀이 겹치면 묶음 마커('3곳')로 그리고, 누르면 그 묶음이 보이게 확대한다. 낱개 핀은 서로 30px 이상 떨어져 눌림 영역(핀 크기 그대로)이 겹치지 않는다 */
+    const D = 52, list = shown().filter((x) => x.lat != null).sort((a, b) => (b.id === st.sel) - (a.id === st.sel)), cl = [];
+    for (const p of list) {
+      const pt = map.latLngToContainerPoint([p.lat, p.lng]), c = p.id === st.sel ? null : cl.find((k) => !k.sel && Math.hypot(k.x - pt.x, k.y - pt.y) < D);
+      if (c) { c.items.push(p); c.x = (c.x * (c.items.length - 1) + pt.x) / c.items.length; c.y = (c.y * (c.items.length - 1) + pt.y) / c.items.length; } else cl.push({ x: pt.x, y: pt.y, items: [p], sel: p.id === st.sel });
+    }
+    for (const k of cl) {
+      if (k.items.length === 1) {
+        const p = k.items[0], m = L.marker([p.lat, p.lng], { icon: icon(L, p, p.id === st.sel, 30), title: p.name, keyboard: true }).addTo(layer);
+        m.on("click", () => select(p.id, false)); markers.set(p.id, m);
+      } else {
+        const lat = k.items.reduce((a, p) => a + p.lat, 0) / k.items.length, lng = k.items.reduce((a, p) => a + p.lng, 0) / k.items.length, names = k.items.map((p) => p.name).join(", ");
+        const m = L.marker([lat, lng], { icon: L.divIcon({ className: "", html: `<span class="pl-hit" style="width:34px;height:34px"><span class="pl-pin pl-cl">${k.items.length}곳</span></span>`, iconSize: [34, 34], iconAnchor: [17, 17] }), title: `${k.items.length}곳: ${names}`, keyboard: true }).addTo(layer);
+        m.on("click", () => { map.fitBounds(k.items.map((p) => [p.lat, p.lng]), { padding: [40, 40], maxZoom: 18 }); });
+      }
     }
   };
   const fit = () => {
@@ -108,11 +115,11 @@ export async function mapBody(el, { load, esc, focus = null, level = null }) {
       const L = await loadLeaflet();
       if (!box.isConnected) return;
       if (!map) {
-        map = L.map(box, { zoomControl: true, attributionControl: false }).setView([37.31, 127.09], 12);
-        L.control.attribution({ prefix: false }).addTo(map); /* 글자만 있는 출처 표기(눌러야 하는 링크 없음) */
+        map = L.map(box, { zoomControl: true, attributionControl: true }).setView([37.31, 127.09], 12);
+        map.attributionControl.setPrefix(false); /* Leaflet 링크만 끄고 OpenStreetMap 출처 표기(링크 포함)는 둔다 */
         layer = L.layerGroup().addTo(map); map.on("zoomend moveend", () => { if (!map._plBusy) drawMarkers(); });
         let ok = 0, bad = 0;
-        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: "© OpenStreetMap contributors" })
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors' })
           .on("tileload", () => { ok++; })
           .on("tileerror", () => { bad++; if (!ok && bad >= 3) fail(); })
           .addTo(map);
