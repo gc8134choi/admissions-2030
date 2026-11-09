@@ -3,7 +3,7 @@
 import { allItems } from "./nav-tree.js";
 import { stageOf } from "./stage.js";
 import { loadSearchExtra, univInfo, elemZone } from "./search-extra.js";
-import { sayOf, noneText, REGION_WORDS, regionKnown } from "./search-claims.js";
+import { sayOf, noneText, REGION_WORDS, GG_WORDS, regionKnown } from "./search-claims.js";
 import { loadProfile, filterByProfile } from "./profile.js";
 const RECENT_KEY = "portal.search.recent";
 // 안내 데이터(중학교 배정 가이드·고교 유형·전형)를 제목+본문 단위로 펼쳐 색인한다. 출처·주소·코드 필드는 뺀다.
@@ -110,6 +110,7 @@ export function makeSearcher(store) {
   const priority = (q, q0 = "") => { const nq = norm(q), nr = norm(String(q0).replace(/[?？!！.,~]/g, " ")); const rawQ = String(q0 || q).toLowerCase(); const hit = data.guide.filter((g) => g.q && (g.raw ? new RegExp(g.q).test(rawQ) : (new RegExp(g.q).test(nq) || new RegExp(g.q).test(nr)))).filter((g) => !(g.gap === "none-topics" && /수능|가채점/.test(nr) && /날짜|며칠|언제|시행|몇월|몇일|일정/.test(nr))); /* 질의에 날짜 낱말이 있는 수능 질의는 "다루지 않는다"로 막지 않는다(정리된 질의에서 날짜 낱말이 빠져 선언이 걸리던 오류) */ if (hit.some((g) => g.gap === "none-topics")) { const o = hit.filter((g) => g.gap === "none-topics"); return { list: o.map((g) => ({ href: g.href, t: g.t, s: g.s })), only: true }; } // 이 포털이 다루지 않는 주제는 안내만(링크·소음 행이 앞서지 않게)
     if (hit.some((g) => g.gap === "other-region")) { // 질의의 지역 낱말이 이 포털 데이터(정책·안내)에 있으면 '다른 지역은 없어요'라고 하지 않는다(서울·수원외고 등) — 데이터에 없는 지역만 선언
       const w = REGION_WORDS.find((x) => new RegExp("(?<![가-힣])" + x).test(nr)); regionHay ||= JSON.stringify([data.policy, data.guide.map((g) => [g.t, g.s, g.text])]);
+      if (w && GG_WORDS.includes(w) && !regionKnown(w, regionHay, nr)) { const rest = hit.filter((g) => g.gap !== "other-region"); return { list: [{ href: "#schedule?t=hs", t: "경기 고입 일정", s: `${w}도 경기도라 경기 고입 전기·후기 전형 일정은 같이 적용돼요. 학교 목록·학교별 모집 안내는 이 포털에 없어요(${w} 지역 교육지원청·학교 누리집에서 확인) — 용인·경기 일정은 일정 화면에 있어요` }, ...rest.map((g) => ({ href: withHl(g.href, g.hl), t: g.t, s: g.s }))], only: false }; } // 경기 지역 낱말(수원·성남 등)은 '없는 지역'이 아니라 경기 전체 일정 안내로
       if (w && regionKnown(w, regionHay, nr)) { const rest = hit.filter((g) => g.gap !== "other-region"); return rest.length ? { list: rest.map((g) => ({ href: withHl(g.href, g.hl), t: g.t, s: g.s })), only: rest.some((g) => g.only) } : null; }
     }
     if (hit.some((g) => g.gap === "other-region")) { const o = hit.filter((g) => g.gap === "other-region"); return { list: o.map((g) => ({ href: withHl(g.href, g.hl), t: g.t, s: g.s })), only: true }; } // 다른 지역 질의는 지역 경고만 먼저(이어서 우리 지역 결과로 오해하지 않게)
@@ -133,6 +134,8 @@ export function makeSearcher(store) {
     let t = String(str).replace(/(미적분|영어|수학|확률과 ?통계|화학|물리학?|생명과학|지구과학)\s*(투|이)(?![가-힣])/g, (_, b, n) => b + (n === "투" ? "2" : "2")).replace(/(미적분|영어|수학|화학|물리학?|생명과학|지구과학)\s*원(?![가-힣])/g, "$11"); for (const [re, b] of data.roman) t = t.replace(re, (_, n) => b + (n === "1" ? "Ⅰ" : "Ⅱ")); for (const [re, v] of data.plainRoman) t = t.replace(re, v); return t;
   };
   const search = (q) => {
+    const joinSp = (t) => t.replace(/([가-힣]{2,6}) +(초등학교|중학교|고등학교)/g, (m, a2, b2) => { if (/^(용인|경기|서울|우리|일반|공립|사립|전국|특성화|자율)$/.test(a2)) return m; const j = norm(a2 + b2); return data.places.some((x) => schoolAliases(x.name).some((al) => al === j || al.startsWith(j))) ? a2 + b2 : m; }); // 학교급을 띄어 쓴 이름(성복 고등학교·수지 초등학교)은 실제 학교 이름일 때만 붙인다
+    q = joinSp(String(q));
     const q0 = romanize(String(q)).replace(/시험을? ?(안|못) ?(보는|치는)( ?학기)?/g, "자유학기"); // 원문(의도 낱말 확인용)
     q = cleanQuery(q0).replace(/(?:용인)?(?:한국)?외(?:국어)?대(?:학교)?부(?:설|속)?(?:고등학교|고)?/g, "용인한국외국어대학교부설고등학교"); // 약칭 → 학교 이름
     const schoolSa = /용인한국외국어대학교부설고등학교/.test(q); /* 외대부고는 자사고: 학교 이름+전형·배점 같은 속성어도 자사고 안내 행을 찾게 */
@@ -176,7 +179,7 @@ export function makeSearcher(store) {
         const ui = label === "대학 진학 현황" ? univInfo.get(first.id) : null; // 값이 없는 학교는 화면의 빈 칸 사유 그대로
         if (ui && !ui.has) { notes.push({ href, t: `${first.name} · ${label}`, s: `${ui.why || "비교 화면의 이 칸은 비어 있어요"} (고교 보기 비교표의 빈 칸 사유)` }); continue; }
         if (label === "설명회 노트") { notes.push(href ? { href, t: `${first.name} · ${label}`, s: "설명회 노트 화면에서 볼 수 있어요" } : { href: "#library/links", t: `${first.name} · ${label}`, s: noneText(label, first.level) }); continue; }
-        notes.push(href && say ? { href, t: `${first.name} · ${label}`, s: say.text + (label === "학교군" && first.level === "elementary" && elemZone.get(first.id) ? ` — ${first.name.replace(/등학교$/, "")}는 ${elemZone.get(first.id)}이에요` : "") } : { href: "#library/links", t: `${first.name} · ${label}`, s: say?.none || noneText(label, first.level) });
+        notes.push(href && say ? { href, t: `${first.name} · ${label}`, s: say.text + (label === "학교군" && first.level === "elementary" && elemZone.get(first.id) ? ` — ${first.name.replace(/등학교$/, "")}는 ${elemZone.get(first.id)}${/공동학군$/.test(elemZone.get(first.id)) ? "이에요" : "이에요"}` : "") } : { href: "#library/links", t: `${first.name} · ${label}`, s: say?.none || noneText(label, first.level) });
       }
       if (/용인한국외국어/.test(rest)) notes.push({ href: "#select/curriculum?v=types", t: "용인외대부고(자율형 사립고)", s: "외·국·자 전형 일정과 유형 설명은 고교 유형 화면에 있어요" });
     } else {

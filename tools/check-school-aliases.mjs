@@ -35,5 +35,19 @@ for (const p of places) { const m = SUF.exec(p.name); if (!m) continue; const co
     const own = nm(p.name.replace(SUF, "").replace(/^용인/, "") + SH[m[0]]); if (own.length < 3) continue; if (!(byForm.get(own) || new Set()).has(p.name)) bad.push(`${p.name}: 자기 약칭 '${own}'이 자기에게 일치하지 않아요`); for (const [k] of byForm) if (k !== own && k.startsWith(own) && !(byForm.get(k) || new Set()).has(p.name)) pre++; }
   console.log(`  · 약칭이 다른 학교 별칭의 접두인 경우 ${pre}건(정확 일치가 우선하므로 확정은 정확 일치 쪽, 접두만 맞으면 후보로 안내)`);
 }
+// 띄어 쓴 학교급(성복 고등학교·수지 초등학교)도 그 학교로 인식
+let nsp = 0;
+for (const p of places) { const m = SUF.exec(p.name); if (!m) continue; const core = p.name.replace(SUF, "").replace(/^용인/, ""); if (core.length < 2) continue; const q = `${core} ${m[0]} 학교군`, flat = S.search(q).flatMap(([, l]) => l); nsp++; if (!flat.some((x) => (x.t || "").startsWith(p.name))) bad.push(`'${q}' → ${p.name} 행이 안 나와요(띄어 쓴 학교급)`); }
+// 초등학교 학교군 문구 25곳 × 데이터 대조: middle.json의 학교군 전체 값(두 학군이면 '공동학군' 포함)이 안내에 그대로 있어야 한다
+const mid = await load("middle"); let nz = 0;
+for (const a of mid.areas || []) {
+  const sc = places.find((x) => x.id === a.from.placeId); if (!sc) continue;
+  const names = [...new Set((a.zoneSchools || []).map((z) => /^([^\s(（]+?학군)/.exec(z.note || "")?.[1]).filter(Boolean))], joint = names.length > 1 || /공동학군/.test(a.from.note || "");
+  const flat = S.search(`${sc.name} 학교군`).flatMap(([, l]) => l), note = flat.find((x) => (x.t || "") === `${sc.name} · 학교군`); nz++;
+  if (!note) { bad.push(`${sc.name} 학교군: 안내 행이 없어요`); continue; }
+  for (const nm of names) if (!note.s.includes(nm)) bad.push(`${sc.name} 학교군: '${nm}'이 안내에 없어요 → ${note.s.slice(0, 80)}`);
+  if (joint !== /공동학군/.test(note.s)) bad.push(`${sc.name} 학교군: 공동학군 표시가 데이터(${joint ? "공동" : "단일"})와 달라요 → ${note.s.slice(0, 80)}`);
+}
+console.log(`  · 띄어 쓴 학교급 ${nsp}질의, 초등 학교군 문구 ${nz}곳 데이터 대조`);
 if (bad.length) { for (const b of bad.slice(0, 40)) console.log("  ✗", b); console.log(`실패 ${bad.length}건 / ${n}질의`); process.exit(1); }
 console.log(`OK: 학교 ${places.length}곳 × 이름 형태·주제 ${n}질의에서 '없는 학교' 오선언 없음`);

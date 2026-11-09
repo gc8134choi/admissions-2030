@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 const root = resolve(new URL("..", import.meta.url).pathname);
 const load = (n) => JSON.parse(readFileSync(`${root}/portal/data/${n}.json`, "utf8"));
-const { CLAIMS, SAY, sayOf, noneText, REGION_WORDS, REGION_ALIAS, regionKnown } = await import(`${root}/portal/search-claims.js`);
+const { CLAIMS, SAY, sayOf, noneText, REGION_WORDS, GG_WORDS, REGION_ALIAS, regionKnown } = await import(`${root}/portal/search-claims.js`);
 const bad = [], ok = [];
 const has = (v) => v && v.value != null && v.value !== "";
 for (const c of CLAIMS) {
@@ -67,15 +67,16 @@ ok.push(`대응표 ${Object.keys(SAY).length}항목 × 초·중·고 ${combos}�
   const files = readdirSync(`${root}/portal/data`).filter((f) => f.endsWith(".json") && !["sources.json", "changes.json", "files.json", "school-codes.json"].includes(f));
   const hay = JSON.stringify(load("policy")), ADDR = new Set(["places.json", "schools.json", "middle-compare.json", "hs-compare.json", "middle.json"]), // 주소(도로명)에 지역 낱말이 든 파일은 지역을 다룬다는 근거가 아니다
      anyData = files.map((f) => [f, readFileSync(`${root}/portal/data/${f}`, "utf8")]);
-  const known = [], absent = [], gaiLine = [];
+  const known = [], absent = [], gaiLine = [], gg = [];
   for (const w of REGION_WORDS) {
     if (REGION_ALIAS[w] === "서울") { known.push(w); continue; } // 서울(구 이름)은 서울 데이터가 있으면 연결
+    if (GG_WORDS.includes(w)) { gg.push(w); if (!/경기/.test(hay)) bad.push("경기 지역 낱말 안내가 말하는 '경기' 일정이 정책 데이터에 없어요"); continue; } // 경기 지역 낱말은 선언하지 않고 경기 일정으로 연결
     const covPat = new RegExp(w + "(외국어고|외고|국제고|자사고|외대부고)"), hasEo = covPat.test(hay);
     const ctx = new RegExp(w + ".{0,6}(일반고|고등학교|중학교|평준화|후기고)"), where = anyData.filter(([f, t]) => !ADDR.has(f) && ctx.test(t)).map(([f]) => f); // 그 지역의 일반 고입·학교 자료가 있으면 '없어요'를 선언하면 안 된다
     if (where.length) bad.push(`지역 '${w}': 없다고 선언하는데 그 지역 고입·학교 자료가 데이터(${where.join(", ")})에 있어요`);
     else (hasEo ? gaiLine : absent).push(w);
   }
-  ok.push(`다른 지역 선언: 서울(${known.join("·")})은 서울 데이터로 연결, 외고·국제고·자사고 질의는 ${gaiLine.length}곳(${gaiLine.join("·")}) 학교 이름이 데이터에 있어 연결, 그 밖의 ${absent.length + gaiLine.length}곳은 일반 고입 자료가 어떤 데이터에도 없음`);
+  ok.push(`다른 지역 선언: 서울(${known.join("·")})은 서울 데이터로 연결, 경기 지역 ${gg.length}곳은 경기 일정으로 연결, 외고·국제고·자사고 질의는 ${gaiLine.length}곳(${gaiLine.join("·")}) 학교 이름이 데이터에 있어 연결, 그 밖의 ${absent.length + gaiLine.length}곳은 일반 고입 자료가 어떤 데이터에도 없음`);
   if (!/서울/.test(hay)) bad.push("안내 문구가 말하는 '서울'이 정책 데이터에 없어요");
 }
 for (const l of ok) console.log("  ✓", l);
