@@ -14,3 +14,6 @@ export const reqKind = (rule) => {
   return /접속|열지 못|열어 보지 못/.test(why) ? "unverified-blocked" : /공표 전|미공표|공개 전|발표 전/.test(why) ? "unverified-pending" : "not-found";
 };
 export const kindText = (rule) => { const k = reqKind(rule); return k === "has" ? "" : KIND_LABEL[k]; };
+
+// 요건 사유 문구 정리(화면·검색 공용): 조사 기록에 섞인 작업 용어(sourcePage·다음 행동·PDF·키워드)를 사용자 문장으로 바꾼다. 데이터는 그대로 두고 보일 때만 바꾼다.
+export const plainReason = (t) => String(t || "").replace(/\s*\(sourcePage\)/g, "").replace(/다음 행동\s*:/g, "다음에 확인할 것:").replace(/키워드 검색\(([^)]*)\)한 결과/g, "$1 낱말로 찾아본 결과").replace(/키워드(?:로|으로)\s*검색해 확인/g, "낱말로 찾아 확인").replace(/키워드/g, "낱말").replace(/PDF\s*/g, "").trim();

@@ -11,9 +11,10 @@ const norm = (s) => String(s).replace(/ⓘ/g, "").replace(/\s+/g, "");
 const b = await chromium.launch(), p = await (await b.newContext({ serviceWorkers: "block", viewport: { width: 1440, height: 900 } })).newPage(), bad = []; let nq = 0, nr = 0;
 for (const uid of [...new Set(rules.map((r) => r.universityId))]) {
   await p.goto(`${base}#select/curriculum?v=univ&u=${encodeURIComponent(uid)}`); await p.waitForTimeout(1500);
-  for (const r of rules.filter((x) => x.universityId === uid && (x.requirements || []).length)) { nr++;
+  for (const r of rules.filter((x) => x.universityId === uid)) { nr++;
     const chip = p.locator(`button.chip[data-k="rule"][data-v="${r.ruleId}"]`); if (!(await chip.count())) { bad.push(`${r.ruleId}: 모집단위 칩이 없어요`); continue; } await chip.first().click(); await p.waitForTimeout(350);
     const txt = norm(await p.evaluate(() => document.querySelector("#main").textContent)), items = (await p.evaluate(() => [...document.querySelectorAll(".um-req li")].map((x) => x.innerText))).map(norm);
+    for (const w of ["sourcePage", "다음 행동", "키워드"]) if (txt.includes(w)) bad.push(`${r.ruleId}: 작업 용어 '${w}'가 화면에 보여요`);
     for (const q of r.requirements) { nq++; const lab = norm(q.orGroupLabel || "");
       if (!txt.includes(lab.slice(0, 40))) bad.push(`${r.ruleId}: 요건 문구가 화면에 없어요 → ${String(q.orGroupLabel).slice(0, 40)}`);
       if (!matched.has(r.ruleId)) { const li = items.find((x) => x.includes(lab.slice(0, 20))); if (!li) bad.push(`${r.ruleId}: 요강 문구 목록에 없어요 → ${String(q.orGroupLabel).slice(0, 30)}`); else { const extra = li.replace(/^(필수|권장|참고)·/, "").slice(lab.length); if (extra) bad.push(`${r.ruleId}: 원문에 없는 꼬리가 붙었어요 → '${extra.slice(0, 20)}' (${String(q.orGroupLabel).slice(0, 20)}…)`); } }
