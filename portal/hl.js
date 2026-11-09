@@ -37,6 +37,7 @@ export function applyHl() {
     clearInterval(t);
     const tl = el.closest("#tl"); if (tl && !tl.classList.contains("all")) { tl.classList.add("all"); tl.querySelector(".more-rows")?.remove(); } // 일정 표의 "N건 더 보기"
     for (let a = el; a && a.id !== "main"; a = a.parentElement) { if (a.hidden) a.hidden = false; if (a.tagName === "DETAILS") a.open = true; if (a.classList?.contains("m-fold")) a.classList.add("m-open"); }
+    try { window.__flushDecor?.(); } catch {} /* 용어 점선·ⓘ 장식은 줄을 찾자마자 끝내 두어, 첫 이동 전에 DOM이 조용해질 시간을 번다(이동과 같은 틱에 장식하면 이동한 자리에서 글이 밀려 CLS) */
     let row = el.closest(".ed-row, tr, li") || el; row.classList.add("hl-row");
     { const g = row.dataset?.g, gb = g != null && row.closest("table")?.querySelector(`.cmp-gb[data-gt="${CSS.escape(g)}"]`); if (gb && gb.getAttribute("aria-expanded") === "false") { gb.setAttribute("aria-expanded", "true"); gb.firstChild && (gb.firstChild.textContent = gb.firstChild.textContent.replace("▸", "▾")); } } // 강조한 줄이 든 접힌 묶음은 머리글도 열린 모양으로
     const unfold = (n) => { for (let a = n; a && a.id !== "main"; a = a.parentElement) { if (a.hidden) a.hidden = false; if (a.tagName === "DETAILS") a.open = true; if (a.classList?.contains("m-fold")) a.classList.add("m-open"); } };

@@ -50,7 +50,7 @@ export async function mapBody(el, { load, esc, focus = null, level = null }) {
   const lv0 = level || new URLSearchParams((location.hash.split("?")[1] || "")).get("lv");
   const st = (el.__map ||= { level: LEVEL[lv0] ? lv0 : "all", view: "map", sel: null, near: false });
   if (focus && all.some((p) => p.id === focus)) { st.sel = focus; st.view = "map"; const fp = all.find((p) => p.id === focus); if (st.level !== "all" && fp.level && fp.level !== st.level && LEVEL[fp.level]) st.level = fp.level; } // 주소의 학교급 필터가 그 학교를 가리면 학교의 학교급으로(마커가 보이게)
-  let map = null, layer = null, markers = new Map(), mapFailed = false, focusReq = null; /* focusReq: 키보드로 연 뒤 포커스를 보낼 곳({at:[lat,lng]} 또는 {detail:true}) */
+  let map = null, layer = null, markers = new Map(), mapFailed = false, focusReq = null, lastEls = []; /* focusReq: 키보드로 연 뒤 포커스를 보낼 곳({at:[lat,lng]} 또는 {detail:true}) */
   const shown = () => [...places.filter((p) => st.level === "all" || p.level === st.level), ...(st.near ? nearby : [])];
   const chip = (k, v, t, cur) => `<button type="button" class="chip ${v === cur ? "on" : ""}" data-k="${k}" data-v="${v}" aria-pressed="${v === cur}">${t}</button>`;
 
@@ -97,9 +97,12 @@ export async function mapBody(el, { load, esc, focus = null, level = null }) {
       } else {
         const lat = k.items.reduce((a, p) => a + p.lat, 0) / k.items.length, lng = k.items.reduce((a, p) => a + p.lng, 0) / k.items.length, names = k.items.map((p) => p.name).join(", ");
         const m = L.marker([lat, lng], { icon: L.divIcon({ className: "", html: `<span class="pl-hit" style="width:44px;height:44px"><span class="pl-pin pl-cl">${k.items.length}곳</span></span>`, iconSize: [44, 44], iconAnchor: [22, 22] }), title: `${k.items.length}곳 묶음`, keyboard: true }).addTo(layer);
-        els.push([m, lat, lng]); const zoomIn = () => { focusReq = { at: [lat, lng], t: Date.now() }; map.fitBounds(k.items.map((p) => [p.lat, p.lng]), { padding: [40, 40], maxZoom: 18 }); }; m.on("click", zoomIn); a11y(m, `${lvLabel} ${k.items.length}곳 묶음, 확대`, zoomIn);
+        els.push([m, lat, lng]); const zoomIn = () => { focusReq = { at: [lat, lng], t: Date.now() }; map.fitBounds(k.items.map((p) => [p.lat, p.lng]), { padding: [40, 40], maxZoom: 18 });
+          /* 확대가 끝난 뒤(재그림 포함) 포커스가 마커에 없으면 가장 가까운 새 마커로, 그래도 없으면 지도 영역으로: 포커스가 BODY로 떨어지지 않게 */
+          setTimeout(() => { const a = document.activeElement; if (a && a.closest?.(".leaflet-marker-icon")) return; const near = lastEls.map(([mm, la, ln]) => [mm, Math.hypot(la - lat, ln - lng)]).sort((x, y) => x[1] - y[1])[0]; const el2 = near?.[0].getElement?.(); if (el2) el2.focus({ preventScroll: true }); else { const box = $("#pl-map"); if (box) { box.tabIndex = -1; box.focus({ preventScroll: true }); } } }, 1000); }; m.on("click", zoomIn); a11y(m, `${lvLabel} ${k.items.length}곳 묶음, 확대`, zoomIn);
       }
     }
+    lastEls = els;
     if (focusReq?.at && Date.now() - focusReq.t < 1500) { const near = els.map(([m, la, ln]) => [m, Math.hypot(la - focusReq.at[0], ln - focusReq.at[1])]).sort((a, b) => a[1] - b[1])[0]; near?.[0].getElement?.()?.focus({ preventScroll: true }); } /* 군집을 확대한 뒤에는 같은 자리의 새 마커로 포커스 */
   };
   const fit = () => {
