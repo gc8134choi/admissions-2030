@@ -71,5 +71,14 @@ console.log(`  · 띄어 쓴 학교급 ${nsp}질의, 초등 학교군 문구 ${n
   }
   console.log(`  · 날짜·기간 질의 ${nd}건`);
 }
+// 배너 진실성: 용어 이름 + 풀이/뜻풀이/정의, 한글 날짜 표기, 공동학군 데이터 낱말 질의는 '찾지 못했어요'·'맞는 내용이 없을 수 있어요' 배너를 1위로 내지 않고 값이 있는 행을 낸다
+{
+  const gl = await load("glossary").catch(() => ({ terms: [] })), BANNER = /목록에서 찾지 못했어요|정확히 맞는 내용이 없을 수 있어요/; let nb = 0;
+  const first = (q) => S.search(q)[0] || ["", []];
+  for (const t of (gl.terms || []).slice(0, 80)) { if (String(t.term).length < 2) continue; for (const suf of ["풀이", "뜻풀이", "정의"]) { const q = `${t.term} ${suf}`, [h, l] = first(q); nb++; if (BANNER.test(`${l[0]?.t} ${l[0]?.s}`) && h === "안내") bad.push(`'${q}' → 배너가 1위 (용어 행이 있음)`); } }
+  const ko = [["2028년 1월 10일 17일", /1\.10~17/], ["2028년 1월 31일 2월 7일", /1\.31~2\.7/], ["2032년 11월 18일 목요일 시험", /2032\.11\.18/], ["공동학군", /공동학군/], ["공동학군 뜻", /공동학군/], ["운중동", /운중동/], ["대장통 석운통", /대장통/], ["판교중학군", /판교중학군/]];
+  for (const [q, must] of ko) { const flat = S.search(q).flatMap(([, l]) => l); nb++; if (!flat.some((x) => must.test(`${x.t} ${x.s} ${x.x || ""}`))) bad.push(`'${q}' → 값이 있는 행이 안 나와요`); if (S.search(q)[0]?.[0] === "안내") bad.push(`'${q}' → 배너가 1위`); }
+  console.log(`  · 배너 진실성 ${nb}질의`);
+}
 if (bad.length) { for (const b of bad.slice(0, 40)) console.log("  ✗", b); console.log(`실패 ${bad.length}건 / ${n}질의`); process.exit(1); }
 console.log(`OK: 학교 ${places.length}곳 × 이름 형태·주제 ${n}질의에서 '찾지 못했어요' 오선언 없음`);
