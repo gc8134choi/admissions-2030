@@ -23,7 +23,7 @@ const LOC = [
   { phrase: "대학별 과목 화면에서 관심 대학의 권장·필수 과목을 볼 수 있어요", screen: "대학별 과목", route: "select/curriculum?v=univ", need: [/모집단위/, /대학/] },
   { phrase: "대학별 과목 화면에서 학교별 과목표와 맞춰 볼 수 있어요", screen: "대학별 과목", route: "select/curriculum?v=univ", need: [/과목표/, /모집단위/] },
   { phrase: "학교 보기 화면에서 설명회 노트", screen: "학교 보기", route: "select/curriculum?v=schools&lv=high", need: [/설명회 노트/] },
-  { phrase: "'수능과 내신' 화면에서 2028학년도 대입전형 기본사항(대교협)", screen: "수능과 내신", route: "admission/system?t=types", need: [/대교협/, /2028학년도/] },
+  { phrase: "'수시·정시' 화면에서 2028학년도 대입전형 기본사항(대교협)", screen: "수시·정시", route: "admission/system?t=types", need: [/대교협/, /2028학년도/] },
   { phrase: "'고교 일정' 화면의 '학년별 큰 그림' 탭의 '현재 초6 기준'(2033학년도 수능 날짜)", screen: "고교 일정", route: "schedule?t=road&b=B", need: [/2032\.11\.18/, /수능/] },
   { phrase: "'고교 일정' 화면의 '대학 입시' 탭에서(수능 날짜)", screen: "고교 일정", route: "schedule?t=univ", need: [/2029\.11\.15/, /수능/] },
 ];
@@ -38,6 +38,7 @@ const b = await chromium.launch(), c = await b.newContext({ serviceWorkers: "blo
 for (const l of LOC) {
   await p.goto(`${base}#${l.route}`); await p.waitForTimeout(2600);
   const t = await p.evaluate(() => { document.querySelectorAll("#main details").forEach((d) => (d.open = true)); return document.querySelector("#main").innerText; });
+  if (l.screen && !t.split("\n").slice(0, 8).some((x) => x.trim() === l.screen)) bad.push(`위치 문장 '${l.phrase}' → ${l.route} 화면의 머리글에 이름 '${l.screen}'이(가) 없어요(머리글: ${t.split("\n").slice(0, 3).join(" / ").slice(0, 50)})`); /* route가 열리는 화면의 이름이 문구가 말하는 화면 이름과 같은지(다른 화면 글자로 통과하는 허점 방지) */
   for (const re of l.need) if (!re.test(t)) bad.push(`위치 문장 '${l.phrase}' → ${l.route} 화면에 ${re} 이(가) 없어요`);
   ok.push(`위치 문장 '${l.phrase}' → ${l.route}: 값 ${l.need.length}개 확인`);
 }
