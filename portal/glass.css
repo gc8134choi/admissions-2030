@@ -474,4 +474,4 @@ button.term{padding-inline:3px;margin-inline:-3px} /* 짧은 용어(2~3자)도 �
 
 /* 늦게 그려지는 큰 구역이 끝나기 전에는 화면 아래 안내(푸터)를 숨겨, 푸터가 밀리는 이동(CLS)을 없앤다 */
 body.lazy-pending .pgfoot{visibility:hidden}
-#main.view-loading .pgfoot{visibility:hidden}
+#main.view-loading .pgfoot,#main.view-loading .soon{visibility:hidden}

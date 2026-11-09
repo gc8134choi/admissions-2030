@@ -70,6 +70,9 @@ export function cmpTable(el, cfg) {
     if (cfg.afterDraw) { try { cfg.afterDraw(el); } catch {} } /* 그린 뒤 덧붙일 일(예: 용어 ⓘ) */
   };
   const jump = (g) => { const b = [...el.querySelectorAll("[data-gt]")].find((x) => x.dataset.gt === g); if (b) { b.scrollIntoView({ block: "center" }); b.focus({ preventScroll: true }); } };
+  /* 주소의 g=로 그룹 자리로 가는 이동은 화면이 조용해진 뒤 한 번만: 위쪽(요약 구역·용어 장식·표 렌더)이 아직 변하는 중에 이동하면 이동한 자리에서 내용이 밀려(CLS) 화면이 흔들린다 */
+  const settleJump = (g) => { const main = document.querySelector("#main") || document.body, t0 = performance.now(); let last = performance.now(), done = false; const mo = new MutationObserver(() => { last = performance.now(); }); mo.observe(main, { childList: true, subtree: true, characterData: true });
+    const tick = () => { if (done) return; const n = performance.now(); if (n - t0 > 2500 || (n - last >= 160 && document.fonts?.status !== "loading" && n - t0 > 350)) { done = true; mo.disconnect(); try { window.__flushDecor?.(); } catch {} requestAnimationFrame(() => jump(g)); return; } setTimeout(tick, 40); }; tick(); };
   el.onclick = (e) => {
     const rm = e.target.closest("[data-rm]"), add = e.target.closest("[data-add]"), gt = e.target.closest("[data-gt]"), gj = e.target.closest("[data-gj]");
     if (rm) { st.sel = st.sel.filter((id) => id !== rm.dataset.rm); save(); draw(); }
@@ -84,5 +87,5 @@ export function cmpTable(el, cfg) {
   draw();
   // 주소의 g(그룹 이름 일부)가 있으면 그 그룹을 펼치고 그 자리로 간다(검색·바로가기 링크용)
   const gq = (urlGet("g") || [])[0], gm = gq && groups.find((x) => x && x.includes(gq));
-  if (gm && !st.__g) { st.__g = 1; st.open.add(gm); draw(); if (!/[?&]hl=/.test(location.hash) && !(window.__hlWanted && Date.now() - window.__hlWanted < 20000)) setTimeout(() => jump(gm), 60); /* ?hl= 도착이면 이동은 hl.js가 한 번만 한다(두 번 튀지 않게) */ }
+  if (gm && !st.__g) { st.__g = 1; st.open.add(gm); draw(); if (!/[?&]hl=/.test(location.hash) && !(window.__hlWanted && Date.now() - window.__hlWanted < 20000)) settleJump(gm); /* ?hl= 도착이면 이동은 hl.js가 한 번만 한다(두 번 튀지 않게) */ }
 }
