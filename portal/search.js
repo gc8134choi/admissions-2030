@@ -148,12 +148,12 @@ export function makeSearcher(store) {
       const rest = norm(q); // 학교 + 주제: 주제어에 맞는 화면을 같이 이어 준다
       const first = ex[0];
       for (const [re, label, fn] of TOPICS) if (re.test(q0) && !(p && /설명회/.test(label))) {
-        const say = sayOf(label, first), href = label === "설명회 노트" || !say ? (fn ? fn(first) : null) : say.href; // 문구는 search-claims.js의 대응표(도착 화면에 실제로 있는 값)
+        const say = sayOf(label, first), href = label === "설명회 노트" ? (fn ? fn(first) : null) : say?.href || null; // 문구는 search-claims.js의 대응표(도착 화면에 실제로 있는 값)
         if (/몇 ?명/.test(q0) && label === "모집 인원" && !/모집 ?인원|정원/.test(q0)) continue; // '서울대 몇 명'은 진학 현황 질의 — 모집 인원 안내가 가리지 않는다
         const ui = label === "대학 진학 현황" ? univInfo.get(first.id) : null; // 값이 없는 학교는 화면의 빈 칸 사유 그대로
         if (ui && !ui.has) { notes.push({ href, t: `${first.name} · ${label}`, s: `${ui.why || "비교 화면의 이 칸은 비어 있어요"} (고교 보기 비교표의 빈 칸 사유)` }); continue; }
         if (label === "설명회 노트") { notes.push(href ? { href, t: `${first.name} · ${label}`, s: "설명회 노트 화면에서 볼 수 있어요" } : { href: "#library/links", t: `${first.name} · ${label}`, s: noneText(label) }); continue; }
-        notes.push(href && say ? { href, t: `${first.name} · ${label}`, s: say.text } : say && label === "모집 인원" ? { href: say.href, t: `${first.name} · ${label}`, s: say.text } : { href: "#library/links", t: `${first.name} · ${label}`, s: noneText(label) });
+        notes.push(href && say ? { href, t: `${first.name} · ${label}`, s: say.text } : { href: "#library/links", t: `${first.name} · ${label}`, s: say?.none || noneText(label) });
       }
       if (/용인한국외국어/.test(rest)) notes.push({ href: "#select/curriculum?v=types", t: "용인외대부고(자율형 사립고)", s: "외·국·자 전형 일정과 유형 설명은 고교 유형 화면에 있어요" });
     } else {

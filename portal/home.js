@@ -113,10 +113,12 @@ export function registerHome(views, { esc, load, store, profiles }) {
         .map((x) => ({ r: x.r, sp: x.sp, label: x.e.label || "", title: x.r.title + (x.e.label ? ` · ${x.e.label}` : ""), date: fmtRange(x.sp, t, x.e), tent: tentative(x.r), isStone: x.r.topic === "life-schedule" && C.stones.test(x.r.title) && DRE.test(x.e.start) && x.e.start.length === 10 ? x : null, start: x.e.start }));
       // 가장 가까운 졸업·입학 한 건은 D-day 카드(사진 넣기)로
       const sc = evs.find((x) => x.isStone), stone = sc ? { id: sc.r.id, label: sc.r.title, date: sc.start, dateText: fmtRange(sc.sp, t, null), tent: sc.tent, r: sc.r, kind: /졸업/.test(sc.r.title) ? "graduation" : "entrance" } : null;
-      const seenDate = new Set(), perRow = new Map(), horizon = t.getTime() + 14 * DAY; // 시작·마감이 14일 이내인 일정은 모두, 먼 일정은 묶음(같은 정책 행)당 2건까지·총 7줄까지(수능 줄 별도, 사용자 결정 2026-11-08)
+      const seenDate = new Set(), perRow = new Map(), horizon = t.getTime() + 14 * DAY; // 시작·마감이 14일 이내인 일정은 모두, 먼 일정은 묶음(같은 정책 행)당 2건까지·총 7줄까지이되 14일 밖 가장 가까운 2건은 항상 남긴다(수능 줄 별도, 사용자 결정 2026-11-08)
       const uniq = evs.filter((x) => x !== sc).filter((x) => { if (seenDate.has(x.date)) return false; seenDate.add(x.date); return true; });
       const isNear = (x) => x.sp.start.getTime() <= horizon && !x.sp.month;
-      const near = uniq.filter(isNear), far = uniq.filter((x) => !isNear(x)).filter((x) => { const n = perRow.get(x.r.id) || 0; if (n >= 2) return false; perRow.set(x.r.id, n + 1); return true; }).slice(0, Math.max(0, Math.max(near.length, 7) - near.length));
+      const near = uniq.filter(isNear), farAll = uniq.filter((x) => !isNear(x)), quota = Math.max(2, Math.max(near.length, 7) - near.length);
+      const firstPer = [], seenRow = new Set(); for (const x of farAll) if (!seenRow.has(x.r.id)) { seenRow.add(x.r.id); firstPer.push(x); } // 먼 일정은 묶음마다 가장 가까운 1건씩 먼저(후기 원서 같은 다음 큰 일정이 같은 묶음에 밀려나지 않게), 남는 자리에 묶음당 둘째
+      const far = [...firstPer, ...farAll.filter((x) => !firstPer.includes(x)).filter((x) => { const n = perRow.get(x.r.id) || 0; if (n >= 1) return false; perRow.set(x.r.id, n + 1); return true; })].slice(0, quota);
       let rest = [...near, ...far].sort((a, b) => a.sp.start - b.sp.start || a.sp.end - b.sp.end);
       // 수능 날짜는 고교(왼쪽) 열 목록에 날짜 줄로 넣는다
       if (C.id === "A" && L.csat?.date && DRE.test(L.csat.date)) {
