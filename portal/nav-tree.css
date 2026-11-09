@@ -244,5 +244,3 @@ body{display:flow-root}
 .sidenav .sd-top{z-index:5;box-shadow:0 3px 0 0 var(--paper)} /* 고정 검색 칸 아래 구분선에 위쪽 항목 글자가 비치지 않게 */
 .sidenav .sd-tree{position:relative;z-index:1}
 
-html.hl-wait #main{opacity:0} /* hl.js: 강조 줄로 이동하기 전까지 잠깐(최대 1.8초) */
-@media print,(prefers-reduced-motion:reduce){html.hl-wait #main{opacity:1}}

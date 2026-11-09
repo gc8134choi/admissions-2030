@@ -2,7 +2,7 @@
 // 데이터는 처음 열 때 한 번에 병렬로 읽는다. 최근 검색은 이 브라우저(localStorage)에만 저장한다.
 import { allItems } from "./nav-tree.js";
 import { stageOf } from "./stage.js";
-import { loadSearchExtra, univInfo } from "./search-extra.js";
+import { loadSearchExtra, univInfo, elemZone } from "./search-extra.js";
 import { sayOf, noneText, REGION_WORDS, regionKnown } from "./search-claims.js";
 import { loadProfile, filterByProfile } from "./profile.js";
 const RECENT_KEY = "portal.search.recent";
@@ -69,7 +69,7 @@ const HELP = [["경기도교육청", "https://www.goe.go.kr", "도 단위 공지
 // 검색 데이터 구성(브라우저 밖에서도 같은 구조를 쓰도록 분리): [policy, summary, links, subject-info, places, extra] → data
 export function buildSearchData([policy0, summary, links, si, pl, extra], store) {
   const policy = filterByProfile(policy0, loadProfile(store), { grade3: true }); /* 화면이 보여 주는 행만 검색 결과로(화면에 없는 행으로 링크되지 않게) */
-  return { places: pl.places || [], guide: extra.map((d) => ({ t: d.t, text: d.text, href: d.href, from: "", sch: d.sch, s: d.s, q: d.q, only: d.only, gap: d.gap, hl: d.hl, term: d.term, quiet: d.quiet })), policy, summary, links: links.items || [], subjects: si.subjects || (Array.isArray(si) ? si : []) };
+  return { places: pl.places || [], guide: extra.map((d) => ({ t: d.t, text: d.text, href: d.href, from: "", sch: d.sch, s: d.s, q: d.q, only: d.only, gap: d.gap, found: d.found, raw: d.raw, strict: d.strict, hl: d.hl, term: d.term, quiet: d.quiet })), policy, summary, links: links.items || [], subjects: si.subjects || (Array.isArray(si) ? si : []) };
 }
 // 점수·순위 계산 전부. 브라우저(DOM) 없이 setData(data) 뒤 search(q)만 부르면 된다.
 export function makeSearcher(store) {
@@ -95,7 +95,7 @@ export function makeSearcher(store) {
     const tokHit = (r) => (toks.length > 1 ? toks.filter((tk) => expand(tk).some((w) => nr(r).includes(w))).length * 1.5 : 0), hsQ = HS_Q.test(norm(q0)) && !MID_Q.test(norm(q0)), hsRow = (r) => /^(hs-|gg-|high-school)/.test(r.topic); const datoks = toks.filter((tk) => /^\d{4}\.\d{1,2}(\.\d{1,2})?$|^\d{1,2}\.\d{1,2}$/.test(tk)), yrtoks = toks.filter((tk) => /^20\d\d년$/.test(tk)), yearHit = (r) => yrtoks.filter((tk) => nr(r).includes(tk.slice(0, 4) + ".")).length * 3, dateHit = (r) => datoks.length && datoks.filter((tk) => expand(tk).some((w) => nr(r).includes(w))).length * 4; /* 날짜를 담은 질의는 그 날짜가 본문에 있는 행을 앞에 */ const OTHER_REG = /^(서울|인천|부산|대구|광주|대전|울산|세종|강원|충북|충남|전북|전남|경북|경남|제주)/, askReg = /용인|수지|성복|풍덕천|서울|인천|부산|대구|광주|대전|울산|세종|강원|충청|충북|충남|전라|전북|전남|경상|경북|경남|제주|타지역|다른 ?지역/.test(q0), regBoost = (r) => (askReg ? 0 : /^경기/.test(r.title) ? 1 : OTHER_REG.test(r.title) ? -1 : 0); /* 지역을 안 밝히면 우리 집 지역(경기) 행을 앞에 */
     const rowOk = (r) => hasN(nr(r)) || (datoks.length >= 1 && !any && datoks.every((tk) => tokIn(tk, nr(r)))); /* 날짜가 본문에 있는 행은 시험·접수 같은 흔한 낱말이 빠져도 맞는 것으로 */
     const rows0 = data.policy.filter((r) => rowOk(r)), rowsStrict = rows0.filter((r) => hasN(nr(r))), rows = (rowsStrict.length ? rowsStrict : rows0).map((r) => ({ href: withHl(routeOf(r), NO_HL.has(r.id) || r.topic === "profile-2033" ? null : r.title), t: r.title, x: r.body, s: clip(r.body || "", 90), sc: rank(r.title, r.body, r) + tokHit(r) + rareHit(r) + (hsQ && hsRow(r) ? 2 : 0) + regBoost(r) + dateHit(r) + yearHit(r) + (hasN(nr(r)) ? 0 : -8) })).sort((a, b) => b.sc - a.sc).slice(0, 12);
-    const gd = data.guide.filter((g) => !g.quiet && hasN(ng(g))).map((g) => ({ sch: g.sch, href: g.hl === null ? g.href : withHl(g.href, g.hl || autoHl(g)), term: g.term, t: g.t, x: g.text, s: clip(g.s || (g.text.split(/(?<=[.。다요])\s/).find((x) => ks.some((w) => norm(x).includes(w))) || g.text), 80), sc: rank(g.t, g.text) })).sort((a, b) => b.sc - a.sc).slice(0, 8);
+    const gd = data.guide.filter((g) => !g.quiet && !(g.strict && !g.rawMatch) && hasN(ng(g))).map((g) => ({ sch: g.sch, href: g.hl === null ? g.href : withHl(g.href, g.hl || autoHl(g)), term: g.term, t: g.t, x: g.text, s: clip(g.s || (g.text.split(/(?<=[.。다요])\s/).find((x) => ks.some((w) => norm(x).includes(w))) || g.text), 80), sc: rank(g.t, g.text) })).sort((a, b) => b.sc - a.sc).slice(0, 8);
     const sch = data.summary.filter((m) => has(m.schoolName, m.region)).map((m) => ({ href: `#select/curriculum?v=summary&s=${m.schoolId}`, t: m.schoolName, s: `${m.creditsRequired}+${m.creditsElective}학점 · ${m.region}` }));
     const sub = (typeof UNIV_Q !== "undefined" && UNIV_Q.test(q0) ? [] : data.subjects).filter((x) => has(x.name, x.summary)).slice(0, 10).map((x) => ({ href: `#select/curriculum?v=compare`, t: x.name, s: `${x.area || ""} · ${(x.summary || "").slice(0, 70)}` }));
     const lk = data.links.filter((x) => has(x.name, x.purpose, x.org)).map((x) => ({ href: x.url, ext: true, t: x.name, s: `${x.org} · ${x.purpose}` }));
@@ -107,7 +107,7 @@ export function makeSearcher(store) {
   };
   // 안내가 정해진 주제(이사·배정 서류·자사고 배점·재수 …)는 느슨하게 맞는 다른 행보다 먼저 보여 준다. 없는 주제는 엉뚱한 행 대신 안내만 보인다.
   let regionHay = null;
-  const priority = (q, q0 = "") => { const nq = norm(q), nr = norm(String(q0).replace(/[?？!！.,~]/g, " ")); const hit = data.guide.filter((g) => g.q && (new RegExp(g.q).test(nq) || new RegExp(g.q).test(nr))).filter((g) => !(g.gap === "none-topics" && /수능|가채점/.test(nr) && /날짜|며칠|언제|시행|몇월|몇일|일정/.test(nr))); /* 질의에 날짜 낱말이 있는 수능 질의는 "다루지 않는다"로 막지 않는다(정리된 질의에서 날짜 낱말이 빠져 선언이 걸리던 오류) */ if (hit.some((g) => g.gap === "none-topics")) { const o = hit.filter((g) => g.gap === "none-topics"); return { list: o.map((g) => ({ href: g.href, t: g.t, s: g.s })), only: true }; } // 이 포털이 다루지 않는 주제는 안내만(링크·소음 행이 앞서지 않게)
+  const priority = (q, q0 = "") => { const nq = norm(q), nr = norm(String(q0).replace(/[?？!！.,~]/g, " ")); const rawQ = String(q0 || q).toLowerCase(); const hit = data.guide.filter((g) => g.q && (g.raw ? new RegExp(g.q).test(rawQ) : (new RegExp(g.q).test(nq) || new RegExp(g.q).test(nr)))).filter((g) => !(g.gap === "none-topics" && /수능|가채점/.test(nr) && /날짜|며칠|언제|시행|몇월|몇일|일정/.test(nr))); /* 질의에 날짜 낱말이 있는 수능 질의는 "다루지 않는다"로 막지 않는다(정리된 질의에서 날짜 낱말이 빠져 선언이 걸리던 오류) */ if (hit.some((g) => g.gap === "none-topics")) { const o = hit.filter((g) => g.gap === "none-topics"); return { list: o.map((g) => ({ href: g.href, t: g.t, s: g.s })), only: true }; } // 이 포털이 다루지 않는 주제는 안내만(링크·소음 행이 앞서지 않게)
     if (hit.some((g) => g.gap === "other-region")) { // 질의의 지역 낱말이 이 포털 데이터(정책·안내)에 있으면 '다른 지역은 없어요'라고 하지 않는다(서울·수원외고 등) — 데이터에 없는 지역만 선언
       const w = REGION_WORDS.find((x) => new RegExp("(?<![가-힣])" + x).test(nr)); regionHay ||= JSON.stringify([data.policy, data.guide.map((g) => [g.t, g.s, g.text])]);
       if (w && regionKnown(w, regionHay, nr)) { const rest = hit.filter((g) => g.gap !== "other-region"); return rest.length ? { list: rest.map((g) => ({ href: withHl(g.href, g.hl), t: g.t, s: g.s })), only: rest.some((g) => g.only) } : null; }
@@ -125,7 +125,7 @@ export function makeSearcher(store) {
     return r;
   };
   // 낱말 일부만 맞은 느슨한 결과(OR)와 없는 학교, 학교+주제 질의를 구조적으로 처리한다
-  const TOPICS = [[/방과후/, "방과후학교", null], [/특색|교육 ?목표|교육 ?중점/, "교육 특색", (pl) => (pl.level === "middle" ? "#select/curriculum?v=middle&g=%EA%B5%90%EC%9C%A1" : "#select/curriculum?v=hs&g=%EA%B5%90%EC%9C%A1%EA%B3%BC%EC%A0%95")], [/편제표|개설(하는|되는)? ?과목|과목표|과목 ?구성/, "편제표(학교별 과목표)", (pl) => (pl.schoolId ? `#select/curriculum?s=${encodeURIComponent(pl.schoolId)}&hl=${encodeURIComponent("과목표")}` : null)], [/학비|등록금|수업료/, "학비·비용", () => "#select/curriculum?v=types"], [/모집 ?인원|정원|몇 ?명/, "모집 인원", () => "#select/curriculum?v=types"], [/진학 ?실적|대입 ?결과|입시 ?결과|합격 ?실적|합격자|진학/, "대학 진학 현황", (pl) => (pl.level === "high" ? "#select/curriculum?v=hs&g=%EC%A7%84%ED%95%99" : null)], [/설명회/, "설명회 노트", (pl) => data.guide.find((g) => pl.schoolId && g.href.includes("bf=" + pl.schoolId))?.href || null], [/합격선|커트라인|입결/, "합격선", () => null], [/입학|전형|지원|가려면|가고 ?싶|들어가/, "입학·전형", () => "#schedule?t=hs"], [/학군|학교군|중학구/, "학교군", () => "#select/curriculum?v=middle"]];
+  const TOPICS = [[/방과후/, "방과후학교", null], [/특색|교육 ?목표|교육 ?중점/, "교육 특색", (pl) => (pl.level === "middle" ? "#select/curriculum?v=middle&g=%EA%B5%90%EC%9C%A1" : "#select/curriculum?v=hs&g=%EA%B5%90%EC%9C%A1%EA%B3%BC%EC%A0%95")], [/편제표|개설(하는|되는)? ?과목|과목표|과목 ?구성/, "편제표(학교별 과목표)", (pl) => (pl.schoolId ? `#select/curriculum?s=${encodeURIComponent(pl.schoolId)}&hl=${encodeURIComponent("과목표")}` : null)], [/학비|등록금|수업료/, "학비·비용", () => "#select/curriculum?v=types"], [/모집 ?인원|정원|몇 ?명/, "모집 인원", () => "#select/curriculum?v=types"], [/진학 ?실적|대입 ?결과|입시 ?결과|합격 ?실적|합격자|진학/, "대학 진학 현황", (pl) => (pl.level === "high" ? "#select/curriculum?v=hs&g=%EC%A7%84%ED%95%99" : null)], [/설명회/, "설명회 노트", (pl) => data.guide.find((g) => pl.schoolId && g.href.includes("bf=" + pl.schoolId))?.href || null], [/합격선|커트라인|입결/, "합격선", () => null], [/입학|전형|지원|가려면|가고 ?싶|들어가/, "입학·전형", () => "#schedule?t=hs"], [/학군|학교군|중학구/, "학교군", () => "#select/curriculum?v=middle"], [/어느 ?중학교|갈 ?수 ?있는 ?중학교|가는 ?중학교|중학교 ?배정|배정 ?(되|받)/, "학교군", () => "#select/curriculum?v=middle", "elementary"]];
   // 과목 이름의 로마숫자(미적분Ⅱ·화학Ⅰ)를 질의의 아라비아 숫자(미적분2·화학 1)와 맞춘다
   const romanize = (str) => {
     if (!data.roman) { const bases = new Set(); for (const x of data.subjects || []) { const m = /^(.+?)\s*(Ⅰ|Ⅱ)$/.exec(x.name || ""); if (m) bases.add(m[1].trim()); } data.roman = [...bases].map((b) => [new RegExp(b.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\s*([12])(?![0-9가-힣])", "g"), b]); }
@@ -156,6 +156,11 @@ export function makeSearcher(store) {
     for (const t of toks0) { const c = data.places.map((x) => [x, tierOf(x, t)]).filter(([, k]) => k < 9); if (!c.length) continue; const b = Math.min(...c.map(([, k]) => k)), hs = c.filter(([, k]) => k === b).map(([x]) => x); if (b === 3 && hs.length > 1) ambig.push([t, hs]); for (const x of hs) exMap.set(x.id, x); }
     const ex = [...exMap.values()];
     const notes = [];
+    if (words.includes("서울") && !ex.length) { // 서울 + 학교 이름(○○고): 서울 고입 데이터에 그 학교가 있으면 그 행을 먼저(예: 서울 하나고 → 서울 후기 일정 행)
+      const stoks = words.filter((t) => /고$/.test(t) && t.length >= 3 && !t.startsWith("서울")), body = (x) => norm(`${x.t} ${x.s} ${x.x || ""}`);
+      const cands = stoks.length ? r.flatMap(([, l]) => l).filter((x) => /서울/.test(body(x)) && stoks.some((t) => body(x).includes(t))).slice(0, 3) : [];
+      if (cands.length) { weak = false; r = [["서울 고입", cands], ...r.map(([h, l]) => [h, l.filter((x) => !cands.includes(x))]).filter(([, l]) => l.length)]; }
+    }
     if (ex.length) {
       const keys = toks0.filter((t) => ex.some((x) => norm(x.name).startsWith(t)));
       const otherToks = words.map(norm).filter((w) => w.length >= 2 && !keys.some((k) => k.includes(w) || w.includes(k))); // 학교 이름 말고 남은 낱말(매점·교복…)이 제목에 든 문서를 앞에
@@ -165,13 +170,13 @@ export function makeSearcher(store) {
       const rest = norm(q); // 학교 + 주제: 주제어에 맞는 화면을 같이 이어 준다
       const first = ex[0];
       for (const [t, hs] of ambig) notes.push({ href: "#select/curriculum?v=map", t: `${t} 후보`, s: `'${t}'(으)로 시작하는 학교가 여러 곳이에요: ${hs.map((x) => x.name).join(" / ")} → 학교 이름을 정확히 입력해 주세요` });
-      for (const [re, label, fn] of ambig.length ? [] : TOPICS) if (re.test(q0) && !(p && /설명회/.test(label))) {
+      for (const [re, label, fn, onlyLv] of ambig.length ? [] : TOPICS) if (re.test(q0) && (!onlyLv || first.level === onlyLv) && !notes.some((n) => n.t === `${first.name} · ${label}`) && !(p && /설명회/.test(label))) {
         const say = sayOf(label, first), href = label === "설명회 노트" ? (fn ? fn(first) : null) : say?.href || null; // 문구는 search-claims.js의 대응표(도착 화면에 실제로 있는 값)
         if (/몇 ?명/.test(q0) && label === "모집 인원" && !/모집 ?인원|정원/.test(q0)) continue; // '서울대 몇 명'은 진학 현황 질의 — 모집 인원 안내가 가리지 않는다
         const ui = label === "대학 진학 현황" ? univInfo.get(first.id) : null; // 값이 없는 학교는 화면의 빈 칸 사유 그대로
         if (ui && !ui.has) { notes.push({ href, t: `${first.name} · ${label}`, s: `${ui.why || "비교 화면의 이 칸은 비어 있어요"} (고교 보기 비교표의 빈 칸 사유)` }); continue; }
         if (label === "설명회 노트") { notes.push(href ? { href, t: `${first.name} · ${label}`, s: "설명회 노트 화면에서 볼 수 있어요" } : { href: "#library/links", t: `${first.name} · ${label}`, s: noneText(label, first.level) }); continue; }
-        notes.push(href && say ? { href, t: `${first.name} · ${label}`, s: say.text } : { href: "#library/links", t: `${first.name} · ${label}`, s: say?.none || noneText(label, first.level) });
+        notes.push(href && say ? { href, t: `${first.name} · ${label}`, s: say.text + (label === "학교군" && first.level === "elementary" && elemZone.get(first.id) ? ` — ${first.name.replace(/등학교$/, "")}는 ${elemZone.get(first.id)}이에요` : "") } : { href: "#library/links", t: `${first.name} · ${label}`, s: say?.none || noneText(label, first.level) });
       }
       if (/용인한국외국어/.test(rest)) notes.push({ href: "#select/curriculum?v=types", t: "용인외대부고(자율형 사립고)", s: "외·국·자 전형 일정과 유형 설명은 고교 유형 화면에 있어요" });
     } else {
