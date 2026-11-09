@@ -592,7 +592,10 @@ function fontGate() {
   const open = () => { if (done) return; done = true; m.classList.remove("fw"); };
   setTimeout(open, 900);
   const t = () => (m.textContent || "").replace(/\s+/g, " ").slice(0, 20000);
-  setTimeout(() => Promise.all([document.fonts.load('400 17px "Pretendard Variable"', t()), document.fonts.load('700 17px "Pretendard Variable"', t())]).then(open, open), 350); // 본문이 그려진 뒤 그 글자만 받는다
+  /* 본문 글자가 더 늘지 않고(두 번 연속 같음) 그 글자의 글꼴이 준비되면 바로 연다: 고정 350ms 대기 대신 80ms마다 확인 */
+  let last = "", n = 0, asked = ""; const noFont = m.dataset.r === "select/curriculum" && /[?&]v=(schools|hs|summary|compare)(&|$)/.test(location.hash); /* 학교 보기류: 밀림의 원인은 용어 ⓘ 장식이 늦게 붙는 것이라, 글자가 안정되면 장식을 먼저 끝내고 연다(글꼴을 기다리지 않는다) */
+  const tick = () => { if (done) return; const x = t(); if (noFont && x && x === last) { try { window.__flushDecor?.(); } catch {} requestAnimationFrame(() => requestAnimationFrame(open)); return; } if (x && x === last) { if (asked !== x) { asked = x; Promise.all([document.fonts.load('400 17px "Pretendard Variable"', x), document.fonts.load('700 17px "Pretendard Variable"', x)]).then(() => { if (t() === asked) open(); else setTimeout(tick, 80); }, open); return; } } last = x; if (++n < 14) setTimeout(tick, 80); };
+  setTimeout(tick, noFont ? 120 : 350);
 }
 // 고교 종류 화면(길이 18,000px↑): 구역별(H2) 접이식 — 첫 구역만 펴고 나머지는 제목 한 줄. 목차·?hl= 이동은 접힌 구역을 알아서 펴고 간다.
 function foldTypeSections(host) {
