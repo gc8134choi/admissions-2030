@@ -74,7 +74,7 @@ export async function mapBody(el, { load, esc, focus = null, level = null }) {
     const p = all.find((x) => x.id === st.sel), d = $("#pl-detail");
     d.hidden = !p; d.innerHTML = p ? placeInfo(p, esc) : "";
   };
-  const icon = (L, p, on) => L.divIcon({ className: "", html: `<span class="pl-pin lv-${p.level} ${on ? "on" : ""}">${lvOf(p)[0]}</span>`, iconSize: [26, 26], iconAnchor: [13, 13] });
+  const icon = (L, p, on) => L.divIcon({ className: "", html: `<span class="pl-hit"><span class="pl-pin lv-${p.level} ${on ? "on" : ""}">${lvOf(p)[0]}</span></span>`, iconSize: [44, 44], iconAnchor: [22, 22] }); // 눌림 영역 44px, 보이는 핀은 26px
   const drawMarkers = () => {
     if (!map) return;
     const L = window.L;
