@@ -24,8 +24,8 @@ const univReqText = (ar, uid, verb) => { const rs = (ar?.rules || []).filter((r)
   const by = {}; for (const r of rs) { const k = reqKind(r); if (k !== "has") by[k] = (by[k] || 0) + 1; }
   const states = Object.entries(by).map(([k, n]) => `${KIND_LABEL[k]} ${n}개`).join(" · "), tail = states ? ` (${states})` : "";
   if (nM) return `${nM}개 전형·모집단위의 필수·권장 과목을 우리 학교 ${verb}${nW > nM ? ` (요건 문구만 있는 모집단위 ${nW - nM}개 더)` : ""}${tail}`;
-  if (nW) { const q0 = withReq[0].requirements[0]; return `과목 요건이 있는 모집단위 ${nW}개: 요강 문구는 대학 요건 화면에서 볼 수 있어요(예: ${withReq[0].unitName} ${q0.strength === "required" ? "필수" : "권장"} · ${shortReq(q0)}). 우리 학교 과목표와 맞춰 보기는 아직 안 돼요${tail}`; }
-  return `이 대학의 모집단위별 요건 상태는 대학 요건 화면에서 볼 수 있어요${tail}`; };
+  if (nW) { const q0 = withReq[0].requirements[0]; return `과목 요건이 있는 모집단위 ${nW}개: 요강 문구는 대학별 과목 화면에서 볼 수 있어요(예: ${withReq[0].unitName} ${q0.strength === "required" ? "필수" : "권장"} · ${shortReq(q0)}). 우리 학교 과목표와 맞춰 보기는 아직 안 돼요${tail}`; }
+  return `이 대학의 모집단위별 요건 상태는 대학별 과목 화면에서 볼 수 있어요${tail}`; };
 const cnt = (d, k) => (d?.schools || []).filter((s) => s.values?.[k] && s.values[k].value != null && s.values[k].value !== "").length;
 // 선택과목 현황: 학교(placeId)별로 값이 있는 곳과 인원 미공개인 곳을 데이터에서 센다
 const elCountText = (el) => { const by = new Map(); for (const x of el || []) by.set(x.placeId, (by.get(x.placeId) || false) || !x.nullReason); const n = [...by.values()].filter(Boolean).length, m = by.size - n; return `탐구 과목 선택 비중을 학교별로 비교해요(값이 있는 학교 ${n}곳${m ? `, 나머지 ${m}곳은 인원 미공개` : ""})`; };
@@ -79,7 +79,7 @@ export const GAPS = [
   { id: "near5-list", only: true, q: "근거리.*(5곳|5개|다섯|명단|목록|어디)|(2|5)지망.*근거리", words: "근거리 중학교 5곳 근거리 중학교 명단 2~5지망 근거리 중학교 근거리 5개교", found: () => false, none: { href: "#select/curriculum?v=middle", t: "근거리 중학교 5개교 명단", s: "근거리 5개교 명단은 아직 이 화면에 옮기지 못했어요(용인교육지원청 '중학교 신입생 배정 안내' 첨부 ②의 수지1중학군 근거리표에 실려 있어요) → 그 근거리표에서 확인해요" } },
   { id: "mid-grade-apply", q: "내신.*(200|구성)|(고입|중학교|중학).*(내신|성적).*(반영|배분|점수|언제|시기|비율)|중1.{0,3}2학기.*(반영|점수|성적)", words: "고입 내신 반영 시기 중학교 성적 고입 반영 중1 2학기 성적 반영 내신 점수 배분 고입 내신 200점", found: (D) => row(D, "gg-05") && { href: "#select/curriculum?v=types", hl: row(D, "gg-05").title, t: "중1 2학기 성적 반영(경기 고입 내신 200점)", s: firstSent(row(D, "gg-05").body, 100) } },
   { id: "jeongsi-ratio", q: "(정시|수능\\s*위주|수능위주).*(비중|비율|줄|늘|얼마)", words: "정시 비중 수능 위주 전형 비율 정시 비율 정시 모집 비율 수능위주 비중", found: (D) => row(D, "str-09") && { href: "#admission/system?t=types", hl: row(D, "str-09").title, t: "총 모집·수시/정시 비율", s: firstSent(row(D, "str-09").body, 100) } },
-  { id: "univ-subj", q: "서울대.*(수학|과학|과목|이수|들어)", words: "서울대 수학 과목 대학별 과목 요건 서울대 필수 과목 대학 권장 과목 서울대 고등학교 수학", found: () => ({ href: "#select/curriculum?v=univ", t: "대학별 과목 요건(서울대 수학 등)", s: "대학 요건 화면에서 관심 대학의 권장·필수 과목을 볼 수 있어요" }) },
+  { id: "univ-subj", q: "서울대.*(수학|과학|과목|이수|들어)", words: "서울대 수학 과목 대학별 과목 요건 서울대 필수 과목 대학 권장 과목 서울대 고등학교 수학", found: () => ({ href: "#select/curriculum?v=univ", t: "대학별 과목 요건(서울대 수학 등)", s: "대학별 과목 화면에서 관심 대학의 권장·필수 과목을 볼 수 있어요" }) },
   { id: "mid-size", q: "(중학교|중학).*(학생수|학급수|학생 수|학급 수|규모)|(학생수|학급수).*(비교)", words: "중학교 학생수 중학교 학급수 학교 규모 학생수 비교 학급수 비교 중학교 비교", found: (D) => cnt(D.mc, "students") > 0 && { href: "#select/curriculum?v=middle", hl: "학생", t: "중학교 학생수·학급수 비교", s: `중학교 ${cnt(D.mc, "students")}곳의 학생수·학급수를 학교 비교에서 나란히 볼 수 있어요(학교알리미 공시 기준)` } },
   { id: "pre-post", q: "전후기|전기.*후기.*(뜻|뭐|차이|무슨)", words: "전후기 전기 후기 전기 후기 차이 전후기 뜻 고입 전기 후기", found: (D) => row(D, "gg-14") && { href: "#schedule?t=hs", hl: row(D, "gg-14").title, t: "전기·후기 고입(경기)", s: "전기는 과학고·마이스터고·예술고·체육고·특성화고(8~11월), 후기는 일반고·외고·국제고·자사고(12월~)예요 · " + firstSent(row(D, "gg-14").body, 60) } },
   { id: "csat-other-year", only: true, q: "(2031|2032|203[4-9]|204\\d)(학년도|년도).{0,3}수능|수능.{0,6}(2031|2032|203[4-9]|204\\d)(학년도|년도)", words: "2031학년도 2032학년도 2034학년도 2035학년도 2036학년도", found: () => false, none: { href: "#select/curriculum?v=middle", t: "다른 해의 시행일", s: "정확히 맞는 내용이 없을 수 있어요(수능 날짜는 2030학년도 2029.11.15 잠정·2033학년도 2032.11.18 잠정 등을 담았어요) → 다른 해는 한국교육과정평가원 시행 기본계획 공고(시험 해 3월 전후)에서 확인해요" } },
@@ -239,7 +239,7 @@ export async function loadSearchExtra(load) {
   for (const r of rl?.csatRegimes || []) if ((r.areas || []).some((a) => a.minutes)) out.push({ href: "#admission/system", t: `${r.label} · 영역별 시험 시간·문항 수`, hl: r.label, s: r.areas.filter((a) => a.minutes).map((a) => `${a.area} ${a.minutes}분`).join(" · "), text: J(["수능 시간 시험시간 시험 시간 영역별 문항 수", r.label, ...r.areas.map((a) => `${a.area} ${a.items ?? ""}문항 ${a.minutes ?? ""}분`)]) });
   for (const ty of ht?.types || []) if (ty.cost?.value) out.push({ href: "#select/curriculum?v=types", t: `${ty.name} · 학비·비용`, hl: "비용", s: String(ty.cost.value).slice(0, 80), text: J(["학비 등록금 수업료 비용 무상교육 급식비 기숙사비", ty.name, ty.cost.value]) });
   out.push({ href: "#life/credit", hl: "한국사", t: "한국사 · 필수 과목", s: "한국사는 공통과목으로 필수예요(졸업 필수 학점 중 6학점)", text: "한국사 필수 필수 과목 한국사 6학점 졸업 필수 학점 공통과목" });
-  out.push({ href: "#select/curriculum?v=univ", t: "대학별 과목 요건(서울대 수학 등)", s: "대학·전형별 필수·권장 과목은 대학 요건 화면에서 학교별 과목표와 맞춰 볼 수 있어요", text: "서울대 수학 권장과목 필수과목 대학 요건 과목 선택 모집단위 미적분 기하 확률과 통계" });
+  out.push({ href: "#select/curriculum?v=univ", t: "대학별 과목 요건(서울대 수학 등)", s: "대학·전형별 필수·권장 과목은 대학별 과목 화면에서 학교별 과목표와 맞춰 볼 수 있어요", text: "서울대 수학 권장과목 필수과목 대학 요건 과목 선택 모집단위 미적분 기하 확률과 통계" });
   out.push({ href: "#select/curriculum?v=middle", t: "자유학기(시험 없는 학기)", s: "자유학기·자유학년 시행 학기의 성적은 고입 내신에 반영하지 않아요(경기도교육청 2027학년도 고입 내신성적 반영지침 기준). 시행 방식은 학교 안내에서 확인해요", text: "자유학기 자유학년 시험 없는 학기 중1 고입 내신 반영 안 함" });
   // 경기 후기 평준화 일반고 배정 발표(정책 행 gg-04에서 날짜를 읽는다)
   const gg04 = (pol || []).find((r) => r.id === "gg-04"), m04 = gg04 && String(gg04.body).match(/배정 대상자 발표[^,]*,\s*배정 학교 발표[^,]*/);
