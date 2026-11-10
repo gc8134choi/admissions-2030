@@ -164,7 +164,7 @@ const bodyHtml = (t, esc2 = esc) => {
       ? `<figure class="ed-fig"><a href="img/credit/${esc(c.file)}" target="_blank" rel="noopener"><img src="img/credit/${esc(c.file)}" alt="${esc(c.title)}" loading="lazy"></a><figcaption>${esc(c.org)} · ${esc(c.title)} · <b>${esc(c.license)}</b> · <a href="${esc(c.sourceUrl)}" target="_blank" rel="noopener">원문 보기</a>${c.note ? `<div>${esc(c.note)}</div>` : ""}</figcaption></figure>`
       : `<p class="ed-src">참고 링크(이용 조건은 확인이 필요해요): <a href="${esc(c.sourceUrl)}" target="_blank" rel="noopener">${esc(c.org)} · ${esc(c.title)}</a></p>`).join("");
     const pick = (await loadPolicy()).filter((r) => r.id === "cur-06" || r.id === "cur-07");
-    const pickLine = pick.length ? `<p class="ed-src">선택과목 조사·대학 권장이수과목: ${pick.map((r) => esc(r.body)).join(" / ")} · <a href="#life/credit">고교학점제 이해에서 자세히</a></p>` : "";
+    const pickLine = pick.length ? `<p class="ed-src">선택과목 조사·대학 권장이수과목: ${pick.map((r) => esc(r.body)).join(" / ")} · <a href="#life/credit">고교학점제에서 자세히</a></p>` : "";
     const cols = [...basic.slice(0, 2), ["대입학년도", (r) => `${r.examYear}<div class="muted small">입학 ${r.entryYear}</div>`], ...basic.slice(2)];
     filtered(el, body, (f) => {
       const rs = (x) => x.filter((r) => stMatch(r, f));
@@ -260,7 +260,7 @@ const bodyHtml = (t, esc2 = esc) => {
       ${asgNew.length ? `<h2>경기 배정 변경 <small>2027학년도</small> ${cnt(asgNew.length)}</h2>${cards(asgNew)}` : ""}
       ${asgSeoul.length ? `<h2>서울 참고 <small>2027학년도 · 다른 지역</small> ${cnt(asgSeoul.length)}</h2><p class="ed-src">우리 집(경기 용인)이 아닌 서울 기준 내용이에요. 참고로만 봐요.</p>${cards(asgSeoul)}` : ""}
       ${credit ? `<h2>고교학점제 <small>입학 후 제도</small></h2>
-      <p class="ed-b">${esc(credit.body)}</p><p class="ed-s">${badgeMain(credit)} · <a href="#life/credit">고교학점제 이해에서 자세히 봐요</a></p>` : ""}
+      <p class="ed-b">${esc(credit.body)}</p><p class="ed-s">${badgeMain(credit)} · <a href="#life/credit">고교학점제에서 자세히 봐요</a></p>` : ""}
       ${opn.length ? `<h2>선택 기준<span class="ed-tag">학원 의견</span> ${cnt(opn.length)}</h2>
       <div class="ed-op"><p>학원 설명회의 의견이에요. 확인된 사실이 아니라서 위 내용과 구분해서 봐요.</p>${cards(opn)}</div>` : ""}
       <p class="ed-src">고입 전형 일정은 <a href="#schedule?t=hs">고교 일정</a> 화면의 '고교 입학' 탭에서 볼 수 있어요.</p></div>`;

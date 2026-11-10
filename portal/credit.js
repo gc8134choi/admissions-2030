@@ -171,7 +171,7 @@ export async function creditView(el, { load, profile, esc, badge, badgeMain, src
   const tail = subj.length ? `<details class="ed-basis cv-big"><summary>과목표(교과군별) 전체 보기</summary>${table(subj)}</details>` : "";
 
   const nav = `<nav class="ed-toc" aria-label="섹션 목차">${toc.map(([n, t], i) => `<button type="button" data-go="cv-sec-${n}"><b>${String(i + 1).padStart(2, "0")}</b>${esc(t)}</button>`).join("")}</nav>`;
-  el.innerHTML = `<div class="ed">${lead}${glance}${profNote}<p class="ed-src">서울교육청 자료는 경기 적용 확인이 필요해요. </p>${nav}${out.join("")}${tail}<p class="ed-src" style="margin-top:36px">수능 출제범위는 <a href="#admission/system">대입 제도</a>에서 봐요.</p></div>`;
+  el.innerHTML = `<div class="ed">${lead}${glance}${profNote}<p class="ed-src">서울교육청 자료는 경기 적용 확인이 필요해요. </p>${nav}${out.join("")}${tail}<p class="ed-src" style="margin-top:36px">수능 출제범위는 <a href="#admission/system">수능과 내신</a>에서 봐요.</p></div>`;
   el.querySelector(".ed-toc")?.addEventListener("click", (e) => { const b = e.target.closest("[data-go]"); if (b) document.getElementById(b.dataset.go)?.scrollIntoView({ behavior: "smooth", block: "start" }); });
   // 과목표(교과군별) 행 본문의 과목명에 ⓘ(subject-info.js)를 붙인다. 설명이 있는 과목만 붙는다.
   await preloadSubjectInfo(load);
