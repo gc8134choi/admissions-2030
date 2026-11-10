@@ -10,7 +10,7 @@ const SOON_WHY = {
   "대학·학과 찾기": { why: "대학 모집요강을 정리하는 중이에요. 2030학년도 시행계획은 2028년 4월 말, 모집요강은 2029년에 나오고, 지금은 2027학년도 기준 참고예요.", next: { label: "지금 쓸 수 있는 대학별 과목 보기", url: "#select/curriculum?v=univ" } },
   "학교별 시뮬레이션": { why: "내 계획표를 후보 학교에 맞춰 보는 기능이에요. 학교별 개설 과목 자료를 더 모아야 해요.", next: { label: "지금 쓸 수 있는 내 계획표로 먼저 확인", url: "#planner/plan" } },
   "목표 학과 체크": { why: "희망 학과 요건과 내 계획을 견주는 기능이에요. 대학 요건 자료를 모으는 중이에요.", next: { label: "지금 쓸 수 있는 대학별 과목 보기", url: "#select/curriculum?v=univ" } },
-  "중학교 교육과정": { why: "중학교별 교육과정은 학교 공지를 모으는 중이에요. 11월 안에 중학교 학교 보기에 먼저 담을게요.", next: { label: "중학교 배정에서 학교 찾기", url: "#select/curriculum?v=middle" } },
+  "중학교 교육과정": { why: "중학교별 교육과정은 학교 공지를 모으는 중이에요. 지금은 중학교 학교 보기에서 학교별 기본 정보를 볼 수 있어요.", next: { label: "중학교 학교 보기", url: "#select/curriculum?v=schools&lv=middle" } },
 };
 import { MENU, STATUS } from "./menu.js";
 import { TABS, REDIRECT, hrefOf, tabHref, locate, treeHtml, footLinks, BOTTOM } from "./nav-tree.js";

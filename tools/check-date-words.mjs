@@ -37,5 +37,11 @@ for (const g of GU) for (const w of ["외고", "고입 일정", "일반고 배�
   const PAT = /(20\d\d)학년도[^."'`\n]{0,24}(?:요강|시행계획)[^."'`\n]{0,16}(20\d\d)년/;
   for (const [f, t] of srcAll) t.split("\n").forEach((l0, i) => { const l = l0.replace(/\/\*.*?\*\//g, " ").replace(/(^|\s)\/\/.*$/, " "); const m = PAT.exec(l); if (m && !REG.some((r) => l.includes(r.phrase))) bad.push(`${f}:${i + 1} 연도가 든 요강·시행계획 문구가 등록부에 없어요 → '${m[0]}' (정책 행 값과 대조해 등록하세요)`); });
 }
+
+// 시한 약속 문구 전수: 코드 속 화면 문구에 '○월 안에·○월까지' 같은 약속이 없어야 한다(날짜가 지나면 사실과 달라진다). 준비 중이면 '준비 중이에요 + 지금 쓸 수 있는 링크'로 쓴다
+{
+  const { readdirSync } = await import("node:fs");
+  for (const f of readdirSync(`${root}/portal`).filter((x) => x.endsWith(".js"))) readFileSync(`${root}/portal/${f}`, "utf8").split("\n").forEach((l0, i) => { const l = l0.replace(/\/\*.*?\*\//g, " ").replace(/(^|\s)\/\/.*$/, " "); const m = /\d{1,2}월\s*(?:안에|중에|내에)\s*[^"'`]{0,20}(?:담을게요|열게요|올릴게요|넣을게요|할게요)/.exec(l); n++; if (m) bad.push(`${f}:${i + 1} 시한 약속 문구 '${m[0]}' — 날짜 없이 '준비 중이에요 + 지금 쓸 수 있는 링크'로`); });
+}
 if (bad.length) { bad.slice(0, 80).forEach((x) => console.log("  ✗", x)); console.log(`실패 ${bad.length}/${n}건`); process.exit(1); }
 console.log(`OK: 2028 수시·정시 참고 일정 날짜×낱말×8표기 ${n}개 질의가 모두 맞게 나와요(수시·정시 참고 일정 행과 서울 구 이름 질의)`);
