@@ -258,3 +258,6 @@ table.policy td.l,table.policy td.l b,table.policy td .muted.small,#tl table.pol
 .past-fold table.policy td{padding-top:6px;padding-bottom:6px}.past-fold table.policy td .muted.small{display:block}
 @media (max-width:899px){.past-fold table.policy td .muted.small{display:none}}
 h2 .nb,h3 .nb{white-space:nowrap;font:inherit!important;letter-spacing:inherit}
+
+.pl-tb .ed-tbl td.tb-note,.pl-tb .ed-tbl th:last-child{min-width:12em}.pl-tb .ed-tbl td.tb-note{white-space:normal} /* 비고 열이 좁아 3~4자씩 줄바꿈되지 않게 */
+.pl-tb .ed-tbl{table-layout:auto;width:max-content;min-width:100%}

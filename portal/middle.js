@@ -22,10 +22,10 @@ const textbookHtml = (p, curBy, fileId, esc) => {
     const c = curBy.get(p.id); if (!c) return "";
     const g = (v) => (v ? esc(v) : '<span class="muted">-</span>');
     const img = (c.sources || []).map((x) => (x.file && fileId(x.file) ? `<a href="#library/files?open=${encodeURIComponent(fileId(x.file))}">원본 이미지 보기</a>` : "")).filter(Boolean)[0] || "";
-    const rows = c.subjects.map((j) => `<tr><td>${esc(j.subject)}</td><td>${g(j.publishers[1])}</td><td>${g(j.publishers[2])}</td><td>${g(j.publishers[3])}</td>${j.note ? `<td class="muted small">${esc(j.note)}</td>` : "<td></td>"}</tr>`).join("");
+    const rows = c.subjects.map((j) => `<tr><td>${esc(j.subject)}</td><td>${g(j.publishers[1])}</td><td>${g(j.publishers[2])}</td><td>${g(j.publishers[3])}</td>${(() => { const nt = String(j.note || "").replace(/\s*\(비고 칸 병합 표기[^)]*\)/g, "").trim(); return nt ? `<td class="muted small tb-note">${esc(nt)}</td>` : "<td></td>"; })()}</tr>`).join("");
     return `<details class="pl-tb"><summary>${esc(p.name)} 교과서·교과 구성 ${tag(c.status, esc)}</summary>
       <div class="pl-tbw"><table class="ed-tbl"><thead><tr><th>교과</th><th>1학년</th><th>2학년</th><th>3학년</th><th>비고</th></tr></thead><tbody>${rows}</tbody></table></div>
-      ${c.footnote ? `<p class="muted small">${esc(c.footnote)}</p>` : ""}
+      ${(() => { const fn = String(c.footnote || "").replace(/\s*\(비고 칸 병합 표기[^)]*\)/g, "").trim(); return fn ? `<p class="muted small">${esc(fn)}</p>` : ""; })()}
       <p class="ed-s0">${srcb(c.sources, esc, img)}</p></details>`;
 };
 
