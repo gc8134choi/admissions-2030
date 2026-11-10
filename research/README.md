@@ -11,3 +11,10 @@
 
 ## 날짜 사본 일관성 검사 (2026-11-08)
 같은 날짜가 hs-types 달력·timeline·roadmap·middle-guide에 손 사본으로 있다. 정본은 정책 행 본문·events이고, `research/data/date-copies.json`이 사본 항목마다 정본 행 id를 연결한다. `node tools/check-event-dates.mjs`(CI 포함)가 ① 사본 글의 날짜(월.일)와 `when`(YYYY-MM-DD)이 연결된 정본에 있는지 ② 날짜가 든 사본 항목이 연결표에 빠지지 않았는지를 본다(읽기 전용). 새 사본 항목을 만들면 date-copies.json에 정본 행 id(또는 skip과 이유)를 함께 적는다. 지난 해 사례처럼 정본에 없는 날짜를 일부러 인용하면 `allow`에 적는다.
+
+## 감시 감지 대조 기한 (2026-11-10)
+- 감시 봇이 `watch-state.json`에 `changedAt`을 남기면 **3일 안에** 조사 세션이 원문과 대조해 `research/data/watch-reviews.json`에 결론을 적는다(키=watchlist id, `changedAt`은 감지 값과 같게). 결론은 변경 없음 / 반영 불필요 / 반영 필요 / 반영함 / 미확인 중 하나이고 근거(목록 줄 비교·이슈 정리·쪽)를 붙인다.
+- 반영 필요이면 같은 PR에서 events·policy를 고치고 verdict를 '반영함'으로 쓴다. 원문을 못 열면 '미확인'과 사유·다음 행동만 적고 값은 만들지 않는다.
+- 봇이 같은 항목을 다시 감지하면 `changedAt`이 달라져 이전 결론은 효력을 잃고 새 대조 대상이 된다.
+- 기한 점검: `node tools/check-watch-reviews.mjs`(3일 넘게 결론 없는 감지 건을 알림, `--strict`는 종료 코드 1). 봇이 새로 감지할 때마다 깨지므로 CI에는 넣지 않고 감시 점검 때 돌린다.
+- 화면: 바뀐 소식 화면이 '공식 문서로 확인 중이에요'를 계속 쓰지 않도록 `watch-reviews.json`을 읽어 결론이 있으면 그 결론을 보이거나 항목을 닫는 코드는 개발 몫이다.
