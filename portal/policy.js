@@ -159,7 +159,7 @@ const bodyHtml = (t, esc2 = esc) => {
     const key = (r) => (ACD_SYS.has(r.id) ? "academy" : CUR_SYS.has(r.id) ? CUR_GROUP[r.id] || "cur-select" : r.topic);
     // 선택과목 조사·대학 권장이수과목은 고교학점제 이해에서 자세히 보고, 여기는 한 줄 요약만 둔다.
     // 공식 이미지(공공누리 제1유형만 저장·표시). 그 밖의 자료는 링크만. 출처·이용 조건은 data/image-credits.json.
-    const credits = (await load("image-credits")).filter((c) => /대입 제도/.test(c.screen));
+    const credits = (await load("image-credits")).filter((c) => /수능과 내신|대입 제도/.test(c.screen));
     const imgBlock = credits.map((c) => c.usable
       ? `<figure class="ed-fig"><a href="img/credit/${esc(c.file)}" target="_blank" rel="noopener"><img src="img/credit/${esc(c.file)}" alt="${esc(c.title)}" loading="lazy"></a><figcaption>${esc(c.org)} · ${esc(c.title)} · <b>${esc(c.license)}</b> · <a href="${esc(c.sourceUrl)}" target="_blank" rel="noopener">원문 보기</a>${c.note ? `<div>${esc(c.note)}</div>` : ""}</figcaption></figure>`
       : `<p class="ed-src">참고 링크(이용 조건은 확인이 필요해요): <a href="${esc(c.sourceUrl)}" target="_blank" rel="noopener">${esc(c.org)} · ${esc(c.title)}</a></p>`).join("");
