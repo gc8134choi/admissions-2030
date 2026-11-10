@@ -21,7 +21,9 @@ for (const row of rows) {
   const tok = TOK.exec(String(item.s || "").replace(/\(\s*[월화수목금토일]\s*\)/g, "").replace(/\([^)]*\)/g, " ")); /* 괄호 속 출처 날짜(보도 입력일 등)는 값이 아니다 */ if (!tok) continue; n++;
   const key = item.href.replace(/[&?]hl=[^&]*/, ""); let body = cache.get(key);
   if (body == null) { await p.goto(base + key); await p.waitForTimeout(1300); body = norm(await p.evaluate(() => { document.querySelectorAll("#main details").forEach((x) => (x.open = true)); return document.querySelector("#main").textContent; })); cache.set(key, body); }
-  if (!body.includes(norm(tok[0])) && !item.inline) bad.push(`${row.id} '${row.title.slice(0, 30)}' 요약의 '${tok[0]}'이 ${key.slice(0, 50)} 화면에 없는데 '결과에만 있어요' 안내(inline)가 없어요`);
+  if (process.env.LIST) console.log(row.id, item.inline ? "inline" : "plain", body.includes(norm(tok[0])) ? "has" : "MISSING", tok[0], key.slice(0, 40));
+  if (body.includes(norm(tok[0])) && item.note) bad.push(`${row.id} '${row.title.slice(0, 30)}' 요약의 '${tok[0]}'이 ${key.slice(0, 50)} 화면에 있는데 '결과에만 있어요' 안내(inline)가 붙었어요(거짓 안내)`);
+  if (!body.includes(norm(tok[0])) && !item.note) bad.push(`${row.id} '${row.title.slice(0, 30)}' 요약의 '${tok[0]}'이 ${key.slice(0, 50)} 화면에 없는데 '결과에만 있어요' 안내(inline)가 없어요`);
   }
 }
 await b.close();
