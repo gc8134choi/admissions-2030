@@ -14,12 +14,15 @@ const norm = (x) => String(x).replace(/\s+/g, "").replace(/ⓘ/g, "").replace(/(
 const TOK = /\d{4}\.\d{1,2}\.\d{1,2}|\d{1,2}\.\d{1,2}(?:~\d{1,2}(?:\.\d{1,2})?)?|\d{4,}(?:명)?/;
 const b = await chromium.launch(), p = await (await b.newContext({ serviceWorkers: "block", viewport: { width: 1440, height: 900 } })).newPage(), cache = new Map(), bad = []; let n = 0;
 for (const row of rows) {
-  const res = S.search(row.title), item = res.flatMap(([, l]) => l).find((y) => y.t === row.title || String(y.t).startsWith(`${row.title} · `)); if (!item || !item.href || !/^#/.test(item.href)) continue;
+  /* 제목·제목+본문 첫머리·본문 첫머리 세 가지로 찾아, 행 제목으로 나온 모든 결과(바로 안내·가이드 변형 포함)를 대조한다 */
+  const found = []; for (const q of [row.title, `${row.title} ${String(row.body || "").slice(0, 14)}`, String(row.body || "").slice(0, 24)]) for (const [, l] of S.search(q)) for (const y of l) if ((y.t === row.title || String(y.t).startsWith(`${row.title} · `)) && y.href && /^#/.test(y.href) && !found.some((z) => z.href === y.href && z.t === y.t)) found.push(y);
+  for (const item of found) {
   if (/^#home(?![a-z/])/.test(item.href) && TOK.test(String(item.s || ""))) { n++; bad.push(`${row.id} '${row.title.slice(0, 30)}' 요약에 값이 있는데 링크가 #home(값 없는 화면)이에요`); continue; }
-  const tok = TOK.exec(String(item.s || "").replace(/\(\s*[월화수목금토일]\s*\)/g, "")); if (!tok) continue; n++;
+  const tok = TOK.exec(String(item.s || "").replace(/\(\s*[월화수목금토일]\s*\)/g, "").replace(/\([^)]*\)/g, " ")); /* 괄호 속 출처 날짜(보도 입력일 등)는 값이 아니다 */ if (!tok) continue; n++;
   const key = item.href.replace(/[&?]hl=[^&]*/, ""); let body = cache.get(key);
   if (body == null) { await p.goto(base + key); await p.waitForTimeout(1300); body = norm(await p.evaluate(() => { document.querySelectorAll("#main details").forEach((x) => (x.open = true)); return document.querySelector("#main").textContent; })); cache.set(key, body); }
   if (!body.includes(norm(tok[0])) && !item.inline) bad.push(`${row.id} '${row.title.slice(0, 30)}' 요약의 '${tok[0]}'이 ${key.slice(0, 50)} 화면에 없는데 '결과에만 있어요' 안내(inline)가 없어요`);
+  }
 }
 await b.close();
 if (bad.length) { bad.slice(0, 40).forEach((x) => console.log("  ✗", x)); console.log(`실패 ${bad.length}/${n}건`); process.exit(1); }
