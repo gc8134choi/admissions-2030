@@ -23,7 +23,7 @@ const LOC = [
   { phrase: "대학별 과목 화면에서 관심 대학의 권장·필수 과목을 볼 수 있어요", screen: "대학별 과목", route: "select/curriculum?v=univ", need: [/모집단위/, /대학/] },
   { phrase: "대학별 과목 화면에서 학교별 과목표와 맞춰 볼 수 있어요", screen: "대학별 과목", route: "select/curriculum?v=univ", need: [/과목표/, /모집단위/] },
   { phrase: "학교 보기 화면에서 설명회 노트", screen: "학교 보기", route: "select/curriculum?v=schools&lv=high", need: [/설명회 노트/] },
-  { phrase: "고교 일정 화면의 '대학 입시' 탭에서 2030학년도 수시 원서접수 행을 볼 수 있어요", screen: "고교 일정", route: "schedule?t=univ", need: [/2030학년도 수시/, /2027\.9\.20/] },
+  { phrase: "고교 일정 화면의 '대학 입시' 탭에서는 2030학년도 수시 원서접수 행의 참고 문장(2028학년도분은 2027.9.20 시작, 보도)만 볼 수 있어요", screen: "고교 일정", route: "schedule?t=univ", need: [/2030학년도 수시/, /2027\.9\.20/] },
   { phrase: "'고교 일정' 화면의 '학년별 큰 그림' 탭의 '현재 초6 기준'(2033학년도 수능 날짜)", screen: "고교 일정", route: "schedule?t=road&b=B", need: [/2032\.11\.18/, /수능/] },
   { phrase: "'고교 일정' 화면의 '대학 입시' 탭에서(수능 날짜)", screen: "고교 일정", route: "schedule?t=univ", need: [/2029\.11\.15/, /수능/] },
 ];
