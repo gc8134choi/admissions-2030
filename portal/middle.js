@@ -25,7 +25,7 @@ const textbookHtml = (p, curBy, fileId, esc) => {
     const rows = c.subjects.map((j) => `<tr><td>${esc(j.subject)}</td><td>${g(j.publishers[1])}</td><td>${g(j.publishers[2])}</td><td>${g(j.publishers[3])}</td>${j.note ? `<td class="muted small">${esc(j.note)}</td>` : "<td></td>"}</tr>`).join("");
     return `<details class="pl-tb"><summary>${esc(p.name)} 교과서·교과 구성 ${tag(c.status, esc)}</summary>
       <div class="pl-tbw"><table class="ed-tbl"><thead><tr><th>교과</th><th>1학년</th><th>2학년</th><th>3학년</th><th>비고</th></tr></thead><tbody>${rows}</tbody></table></div>
-      <p class="muted small">1학년 때 배부하고 2·3학년까지 사용해요.${c.footnote ? ` ${esc(c.footnote)}` : ""}</p>
+      ${c.footnote ? `<p class="muted small">${esc(c.footnote)}</p>` : ""}
       <p class="ed-s0">${srcb(c.sources, esc, img)}</p></details>`;
 };
 
