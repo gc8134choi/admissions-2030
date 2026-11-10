@@ -26,6 +26,7 @@ export async function univBody(el, { load, esc, profile, schools, sel, pick }) {
   const st = (el.__univ ||= { school: (sel.find((id) => mine.some((s) => s.id === id)) || mine[0].id), univ: (univs.find((u) => rules.rules.some((r) => r.universityId === u.id)) || univs[0]).id, rule: null });
   if (!mine.some((s) => s.id === st.school)) st.school = mine[0].id;
   { const uq = new URLSearchParams((location.hash.split("?")[1] || "")).get("u"); if (uq && el.__uq !== uq && univs.some((x) => x.id === uq)) { el.__uq = uq; st.univ = uq; st.rule = null; } } // 검색 결과 등에서 ?u=<대학id>로 오면 그 대학을 고른다
+  { const rq = new URLSearchParams((location.hash.split("?")[1] || "")).get("ur"); if (rq && el.__rq !== rq && rules.rules.some((r) => r.ruleId === rq && r.universityId === st.univ)) { el.__rq = rq; st.rule = rq; } } // ?ur=<규칙id>: 검색 결과가 가리킨 모집단위를 고른다
   const units = () => rules.rules.filter((r) => r.universityId === st.univ);
 
   const chips = (items, key, cur, cls = "") => items.map(([v, t]) => `<button type="button" class="chip ${v === cur ? "on" : ""}" data-k="${key}" data-v="${esc(v)}" aria-pressed="${v === cur}">${esc(t)}</button>`).join("");

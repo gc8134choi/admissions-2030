@@ -13,6 +13,7 @@ export const elemZone = new Map(); // 초등학교 placeId → 학교군 이름(
 export const FIELDS = { high: new Set(), middle: new Set() }; // 학교 비교표(고교·중학교 보기)에 있는 칸 이름
 export const midZone = new Map(); // placeId → 중학교 비교의 '학교군' 값
 export const curInfo = new Map(); // placeId → {has, why}: 고교 비교의 '교육과정 특징' 칸에 값이 있는지와 빈 칸 사유
+export const univRules = new Map(); // 대학id → [{ruleId, unit, labels[]}]: 질의 낱말이 든 모집단위·요건 문구로 도착 화면의 칩·줄을 고르는 데 쓴다
 export const univInfo = new Map(); // placeId → {has, why}: 학교별 비교의 '대학 진학 현황' 칸에 값이 있는지와 빈 칸 사유(화면과 같은 문구)
 const univResultText = (hc) => { /* 빈 칸 학교의 사유를 학교별 nullReason에서 센다(문구를 고정하지 않는다) */
   const sc = hc?.schools || [], vals = sc.map((x) => x.values?.univStats), has = vals.filter((v) => v && v.value != null && v.value !== "").length, empty = vals.filter((v) => !(v && v.value != null && v.value !== "")), open = empty.filter((v) => /열어 보지 못|직접 확인이 필요/.test(v?.nullReason || "")).length, other = empty.length - open;
@@ -94,8 +95,8 @@ export const GAPS = [
   { id: "mid-extra", q: "^(?!.*(고교|고등|일반고|후기|평준화)).*(중학교.*추가.?배정|추가.?배정.*(원서|언제|어디|일정|접수|신청))", words: "중학교 추가배정 일정 추가배정 신청 중학교 추가 배정", found: (D) => row(D, "life-05") && { href: "#schedule?t=life", hl: row(D, "life-05").title, t: row(D, "life-05").title, s: firstSent(row(D, "life-05").body, 100) } },
   { id: "mid-reassign", q: "^재배정$|중학교.*(재배정)|재배정.*(신청|접수|기간|언제|경우|조건|누가|대상|받을|받으려|하려|어떻게|\\d+\\.\\d+)", words: "중학교 재배정 신청 기간 재배정 일정 재배정 원서", found: (D) => row(D, "life-08") && { href: "#schedule?t=life", hl: row(D, "life-08").title, t: row(D, "life-08").title, s: firstSent(row(D, "life-08").body, 100) } },
   { id: "adiga-link", q: "^(?!.*(맛|분식|먹|식당|카페|학원|가르)).*(어디가|adiga)", words: "어디가 링크 대입정보포털 어디가 adiga 대입 정보 포털", found: () => ({ href: "#library/links", hl: "어디가", t: "대입정보포털 어디가(외부 링크)", s: "대학별 모집요강·입시 결과를 모아 둔 공식 포털이에요. 외부 링크 모음에서 바로 열어요" }) },
-  { id: "hsbf-event", q: "(외대부고|외국어대학교부설|용인외대).*(설명회|입학설명)", words: "외대부고 설명회 용인외대부고 입학설명회 외국어대학교부설 설명회 본교 설명회", found: (D) => row(D, "gg-22") && { href: "#select/curriculum?v=types", hl: row(D, "gg-22").title, t: row(D, "gg-22").title, s: firstSent(row(D, "gg-22").body, 100) } },
-  { id: "hs-briefing-dates", q: "입학설명회.*(일정|언제|날짜|궁금)|(일정|언제).*입학설명회|설명회.*(일정|언제|날짜)", words: "입학설명회 일정 고교 입학설명회 설명회 날짜 설명회 언제 학교별 입학설명회", found: (D) => row(D, "gg-22") && { href: "#select/curriculum?v=types", hl: row(D, "gg-22").title, t: row(D, "gg-22").title, s: firstSent(row(D, "gg-22").body, 100) } },
+  { id: "hsbf-event", q: "(외대부고|외국어대학교부설|용인외대).*(설명회|입학설명)", words: "외대부고 설명회 용인외대부고 입학설명회 외국어대학교부설 설명회 본교 설명회", found: (D) => row(D, "gg-22") && { href: "#schedule?t=hs", hl: row(D, "gg-22").title, t: row(D, "gg-22").title, s: firstSent(row(D, "gg-22").body, 100) } },
+  { id: "hs-briefing-dates", q: "입학설명회.*(일정|언제|날짜|궁금)|(일정|언제).*입학설명회|설명회.*(일정|언제|날짜)", words: "입학설명회 일정 고교 입학설명회 설명회 날짜 설명회 언제 학교별 입학설명회", found: (D) => row(D, "gg-22") && { href: "#schedule?t=hs", hl: row(D, "gg-22").title, t: row(D, "gg-22").title, s: firstSent(row(D, "gg-22").body, 100) } },
   { id: "csat-date", q: "^(?!.*2029\\s*학년도)(?!.*(초6|초등|2033|2032|2027|2028|2031|2034|성적)).*수능.*(날짜|언제|며칠|시행일|몇 ?월)", words: "수능 날짜 수능 언제 수능 시행일 수능 며칠 수능 일정", found: () => ({ href: "#home", hl: "학년도 수능", t: "수능 D-day(홈)", s: "홈의 '고등학교 일정' 맨 아래 수능 줄에 2030학년도 수능 날짜(2029.11.15 예정)와 남은 날(D-day)이 있어요. 2030학년도(2029.11.15)는 '고교 일정' 화면의 '대학 입시' 탭에서, 2033학년도(2032.11.18 잠정)는 '고교 일정' 화면의 '학년별 큰 그림' 탭의 '현재 초6 기준'에서 볼 수 있어요" }) },
   { id: "csat-eng", q: "수능.*영어.*(등급|몇\\s*점|컷|나뉘|구간|1등급)", words: "수능 영어 등급 수능 영어 1등급 수능 영어 절대평가 등급 구간 영어 몇 점부터 1등급", found: (D) => row(D, "adm-12") && { href: "#admission/system", hl: row(D, "adm-12").title, t: row(D, "adm-12").title, s: firstSent(row(D, "adm-12").body, 100) } },
   { id: "fail-hs", q: "(후기|외고|자사고|국제고|특목).*(떨어|불합격|탈락)", words: "후기고 떨어지면 외고 불합격 자사고 탈락 떨어지면 어디로", found: (D) => row(D, "gg-17") && { href: "#select/curriculum?v=types", hl: row(D, "gg-17").title, t: row(D, "gg-17").title, s: firstSent(row(D, "gg-17").body, 100) } },
@@ -220,6 +221,7 @@ export async function loadSearchExtra(load) {
   FIELDS.high = new Set((hc?.fields || []).map((f) => f.label)); FIELDS.middle = new Set((mc?.fields || []).map((f) => f.label));
   midZone.clear(); for (const sc of mc?.schools || []) { const v = sc.values?.zone; if (v && v.value) midZone.set(sc.placeId, String(v.value)); }
   curInfo.clear(); for (const sc of hc?.schools || []) { const v = sc.values?.curriculum; curInfo.set(sc.placeId, { has: !!(v && v.value != null && v.value !== ""), why: v?.nullReason || "" }); }
+  univRules.clear(); for (const r of ar?.rules || []) { const a = univRules.get(r.universityId) || []; a.push({ ruleId: r.ruleId, unit: `${r.unitName || ""} ${r.track || ""}`, labels: (r.requirements || []).map((q) => String(q.orGroupLabel || "")) }); univRules.set(r.universityId, a); }
   univInfo.clear(); for (const sc of hc?.schools || []) { const v = sc.values?.univStats; univInfo.set(sc.placeId, { has: !!(v && v.value != null && v.value !== ""), why: v?.nullReason || "" }); }
   const out = [];
   try { MATCHED = new Set(((await ok(load("matches")))?.matches || []).filter((m) => m.summary).map((m) => m.ruleId)); } catch {}
