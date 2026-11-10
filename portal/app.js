@@ -589,12 +589,13 @@ function addToc() {
 function fontGate() {
   const m = $("#main"); if (!m || !(m.classList.contains("info") || m.dataset.r === "schedule" || m.dataset.r === "home" || m.dataset.r === "planner/plan" || m.dataset.r === "select/curriculum") || !document.fonts?.load) return; // 일정 화면도: 칩·안내 줄이 글꼴 교체로 다시 줄바꿈되며 밀리는 것(CLS)
   m.classList.add("fw"); let done = false;
-  const open = () => { if (done) return; done = true; m.classList.remove("fw"); };
+  const open = () => { if (done) return; done = true; try { mob?.disconnect(); } catch {} m.classList.remove("fw"); };
   setTimeout(open, 900);
   const t = () => (m.textContent || "").replace(/\s+/g, " ").slice(0, 20000);
   /* 본문 글자가 더 늘지 않고(두 번 연속 같음) 그 글자의 글꼴이 준비되면 바로 연다: 고정 350ms 대기 대신 80ms마다 확인 */
   let last = "", n = 0, asked = ""; const noFont = m.dataset.r === "select/curriculum" && /[?&]v=(schools|hs|summary|compare)(&|$)/.test(location.hash); /* 학교 보기류: 밀림의 원인은 용어 ⓘ 장식이 늦게 붙는 것이라, 글자가 안정되면 장식을 먼저 끝내고 연다(글꼴을 기다리지 않는다) */
-  const tick = () => { if (done) return; const x = t(); if (noFont && x && x === last) { try { window.__flushDecor?.(); } catch {} requestAnimationFrame(() => requestAnimationFrame(open)); return; } if (x && x === last) { if (asked !== x) { asked = x; Promise.all([document.fonts.load('400 17px "Pretendard Variable"', x), document.fonts.load('700 17px "Pretendard Variable"', x)]).then(() => { if (t() === asked) open(); else setTimeout(tick, 80); }, open); return; } } last = x; if (++n < 14) setTimeout(tick, 80); };
+  let lastMut = performance.now(); const mob = new MutationObserver(() => { lastMut = performance.now(); }); mob.observe(m, { childList: true, subtree: true, characterData: true }); /* 화면 DOM이 120ms 조용해져야 연다(장식·표가 늦게 붙는 도중에 열리지 않게) */
+  const tick = () => { if (done) return; const x = t(); if (noFont && x && x === last && performance.now() - lastMut < 120) { last = x; setTimeout(tick, 40); return; } if (noFont && x && x === last) { try { window.__flushDecor?.(); } catch {} requestAnimationFrame(() => requestAnimationFrame(open)); return; } if (x && x === last) { if (asked !== x) { asked = x; Promise.all([document.fonts.load('400 17px "Pretendard Variable"', x), document.fonts.load('700 17px "Pretendard Variable"', x)]).then(() => { if (t() === asked) open(); else setTimeout(tick, 80); }, open); return; } } last = x; if (++n < 14) setTimeout(tick, 80); };
   setTimeout(tick, noFont ? 120 : 350);
 }
 // 고교 종류 화면(길이 18,000px↑): 구역별(H2) 접이식 — 첫 구역만 펴고 나머지는 제목 한 줄. 목차·?hl= 이동은 접힌 구역을 알아서 펴고 간다.
