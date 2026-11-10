@@ -35,6 +35,10 @@
         "unit": {
           "type": "string",
           "description": "minCount의 원문 단위(예: 과목, 교과(군), 권장 안내(개수 없음)). 화면은 minCount를 '과목 이상'으로 파생하지 말고 이 값을 쓴다."
+        },
+        "sourcePage": {
+          "type": "string",
+          "description": "이 요건 항목의 원문 쪽·절(예: PDF 81쪽(인쇄 77쪽) <붙임 2>). 규칙 단위 sourcePage와 다르면 이 값을 쓴다."
         }
       }
     },

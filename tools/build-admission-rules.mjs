@@ -50,6 +50,7 @@ const rules = draft.items.map((it) => {
     if (r.orGroupLabel) out.orGroupLabel = r.orGroupLabel;
     if (!r.unit) errs.push(`${it.ruleId}: requirements 항목에 unit(원문 단위) 없음`);
     else out.unit = r.unit;
+    if (r.sourcePage) out.sourcePage = r.sourcePage;
     if (!out.subjectIds.length) {
       const g = groupOf(r.orGroupLabel);
       out.group = g;
