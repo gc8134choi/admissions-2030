@@ -37,5 +37,12 @@ for (const f of readdirSync(`${root}/portal`).filter((x) => x.endsWith(".js") &&
     const l = l0.replace(/\/\*.*?\*\//g, " ").replace(/(^|\s)\/\/.*$/, " "); if (OK_LINE.test(l)) return;
     for (const w of STALE) if (l.includes(w) && /["'`]/.test(l)) bad.push(`${f}:${i + 1} 옛 메뉴 이름 '${w}'이(가) 화면 문구에 남아 있어요`); }); }
 }
+
+// 데이터 속 옛 메뉴 이름(화면에 그대로 보이는 policy·events 문장): 데이터는 조사·생성 몫이라 CI를 막지 않고 경고로 알린다(STRICT=1이면 실패)
+{
+  const STALE2 = ["변경 로그", "대입 제도", "학년별 로드맵", "고교학점제 이해", "학년별 할 일"], warn = [];
+  for (const f of ["policy", "events", "glossary", "briefings", "roadmap", "middle-guide"]) { let txt; try { txt = readFileSync(`${root}/portal/data/${f}.json`, "utf8"); } catch { continue; } txt.split("\n").forEach((l, i) => { for (const w of STALE2) if (l.includes(w)) warn.push(`data/${f}.json:${i + 1} 옛 메뉴 이름 '${w}'`); }); }
+  if (warn.length) { warn.slice(0, 10).forEach((w) => console.log("  ⚠", w)); console.log(`  ⚠ 데이터 속 옛 메뉴 이름 ${warn.length}곳 — 조사·데이터 몫(생성물이라 직접 고치지 않음)`); if (process.env.STRICT) bad.push(`데이터 속 옛 메뉴 이름 ${warn.length}곳`); }
+}
 if (bad.length) { for (const b of bad.slice(0, 60)) console.log("  ✗", b); console.log(`화면 이름 불일치 ${bad.length}건 / 패턴 ${n}곳`); process.exit(1); }
 console.log(`OK: 문구 속 '○○ 화면' ${n}곳이 모두 현재 메뉴·탭 이름(${names.size}개)이거나 일반 표현`);
