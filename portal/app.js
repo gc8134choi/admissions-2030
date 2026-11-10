@@ -452,7 +452,7 @@ async function compareShell(el, onReset, getAreas) {
       const first = r.area !== area;
       if (first) { area = r.area; ai++; }
       const cls = `ra${ai % 2}${first ? " af" : ""}`; // 이어 붙일 때 값이 바뀌지 않게 지금 정해 둔다
-      if (first) trs.push(() => `<tr class="${cls} grp"><th class="gh" scope="rowgroup" colspan="${ids.length + 1}">${esc(r.area)}</th></tr>`); // 교과군은 열이 아니라 그룹 머리글 행
+      if (first) (trs.heads ||= new Set()).add(trs.length), trs.push(() => `<tr class="${cls} grp"><th class="gh" scope="rowgroup" colspan="${ids.length + 1}">${esc(r.area)}</th></tr>`); // 교과군은 열이 아니라 그룹 머리글 행
       trs.push(() => `<tr class="${cls}"><td class="l">${subjectName(r.name)}</td>${ids.map((id) => cell(r.cells[id])).join("")}</tr>`);
     }
     need = AW + LW + CW * ids.length;
@@ -467,7 +467,7 @@ async function compareShell(el, onReset, getAreas) {
     root.querySelector("#rowsmore")?.remove();
     if (trs.length > CH) {
       const wrap = document.createElement("div"); wrap.id = "rowsmore"; wrap.className = "more-rows";
-      const paint = () => { wrap.innerHTML = shown < trs.length ? `<button type="button" class="btn">과목 더 보기 (${shown}/${trs.length})</button> <button type="button" class="btn lnk" data-all>모두 보기</button>` : ""; };
+      const paint = () => { wrap.innerHTML = shown < trs.length ? `<button type="button" class="btn">과목 더 보기 (${trs.slice(0, shown).filter((_, i) => !trs.heads?.has(i)).length}/${trs.length - (trs.heads?.size || 0)})</button> <button type="button" class="btn lnk" data-all>모두 보기</button>` : ""; };
       paint();
       wrap.addEventListener("click", (e) => { if (token !== drawToken) return; const all = e.target.closest("[data-all]"); if (!all && !e.target.closest("button")) return; const to = all ? trs.length : Math.min(trs.length, shown + CH); $("#tbl tbody").insertAdjacentHTML("beforeend", trs.slice(shown, to).map((f) => f()).join("")); shown = to; paint(); });
       $("#tbl").closest(".tw,.cmp-wrap,div")?.after(wrap);

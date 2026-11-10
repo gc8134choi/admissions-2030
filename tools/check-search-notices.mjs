@@ -22,7 +22,8 @@ src.forEach((l, i) => { if (!/^\s*\/\//.test(l) && NONE.test(l) && !/none:/.test
 {
   const elBy = new Map(); for (const x of D.el || []) elBy.set(x.placeId, (elBy.get(x.placeId) || false) || !x.nullReason);
   const elN = [...elBy.values()].filter(Boolean).length, elM = elBy.size - elN;
-  const allowed = new Set([D.hc?.schools?.length, D.mc?.schools?.length, D.places, elN, elM].filter((n) => Number.isFinite(n) && n > 0));
+  const vc = (d, k) => (d?.schools || []).filter((x) => x.values?.[k] && x.values[k].value != null && x.values[k].value !== "").length; /* 칸별로 값이 있는 학교 수(규모·교육과정·진학)도 데이터에서 센 값 */
+  const allowed = new Set([D.hc?.schools?.length, D.mc?.schools?.length, D.places, elN, elM, vc(D.hc, "students"), vc(D.hc, "curriculum"), vc(D.hc, "univStats")].filter((n) => Number.isFinite(n) && n > 0));
   const COUNT_IDS = new Set(["el-count", "other-region", "school-map", "compare-general", "hs-list", "uniform", "meal-mid", "commute"]); // 학교 수를 문구에 쓰는 안내(정책 행 본문에서 가져온 숫자는 제외)
   const ALLOW_FIXED = { "near5-list": [5] }; // 규칙상 고정 숫자(근거리 중학교 5곳)
   for (const d of docs.filter((x) => COUNT_IDS.has(x.gap))) for (const m of (d.t + " " + d.s).matchAll(/(\d+)\s?(곳|개교)/g)) { const n = Number(m[1]); if (!allowed.has(n) && !(ALLOW_FIXED[d.gap] || []).includes(n)) errs.push(`${d.gap}: 안내의 '${m[0]}'이 연결 데이터 개수(${[...allowed].join("·")})와 맞지 않음`); }
