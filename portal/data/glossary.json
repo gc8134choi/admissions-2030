@@ -1,8 +1,8 @@
 {
  "_meta": {
   "note": "용어사전(생성물, 손으로 고치지 않는다). research/data/glossary-draft.json에서 tools/build-glossary.mjs가 만든다.",
-  "checkedAt": "2026-10-31",
-  "count": 54
+  "checkedAt": "2026-11-10",
+  "count": 56
  },
  "terms": [
   {
@@ -1104,6 +1104,51 @@
    ],
    "sourceIds": [
     "src-4a089aa6"
+   ]
+  },
+  {
+   "id": "gl-055",
+   "term": "N수생",
+   "aliases": [
+    "엔수생"
+   ],
+   "short": "수능에 다시 도전하는 졸업생을 부르는 말이에요. 2026학년도 수능에서는 응시자 49만3896명 중 졸업생이 14만1539명이었어요(평가원 발표를 인용한 보도).",
+   "detail": null,
+   "official": null,
+   "category": "입시",
+   "status": "reported",
+   "sources": [
+    {
+     "name": "헤럴드경제 「‘아빠, 요즘 재수는 필수야’ 작년도 또 맞았다…수능 ‘N수생 압도적 강세’」(2026.9.15, 한국교육과정평가원 '2026학년도 수능 성적 분석 결과' 인용)",
+     "url": "https://www.heraldk.com/article/2026091520005439527"
+    }
+   ],
+   "sourceIds": [
+    "src-f9c0e839"
+   ]
+  },
+  {
+   "id": "gl-056",
+   "term": "심화수학",
+   "aliases": [],
+   "short": "2028학년도 수능 개편 시안(2023.10)에서 미적분·기하 범위로 제시됐던 선택과목 이름이에요. 교육부는 수능에 포함하지 않기로 최종 결정했고(2023.12), 학교에서는 배울 수 있어요.",
+   "detail": null,
+   "official": null,
+   "category": "입시",
+   "status": "reported",
+   "sources": [
+    {
+     "name": "교육부 2028 대입제도 개편 확정 브리핑(2023.12.27) — 심화수학은 수능에 포함하지 않는 것으로 최종 결정",
+     "url": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156607888"
+    },
+    {
+     "name": "뉴시스 「[대입 개편]선택 '심화수학' 도입되면…」(2023.10.10) — 2028 시안의 심화수학은 미적분·기하에서 출제",
+     "url": "https://mobile.newsis.com/view/NISX20231010_0002477221"
+    }
+   ],
+   "sourceIds": [
+    "src-676f9b43",
+    "src-41879043"
    ]
   }
  ]
