@@ -7,10 +7,9 @@ import { crumbHtml, footHtml, sourcesHtml } from "./pagefoot.js";
 import { preloadGlossary, decorateGlossary } from "./glossary.js";
 // "곧 열려요"에는 왜 아직인지와 지금 할 수 있는 행동을 한 줄로 적는다
 const SOON_WHY = {
-  "학년별 할 일": { why: "학년마다 챙길 일을 모으는 중이에요. 11월 안에 학년별 로드맵에 먼저 담을게요.", next: { label: "학년별 로드맵 보기", url: "#schedule?t=road" } },
-  "대학·학과 찾기": { why: "대학 모집요강을 정리하는 중이에요. 2030학년도 요강은 2028년에 공개되고, 지금은 2027학년도 기준 참고예요.", next: { label: "대학 요건 보기", url: "#select/curriculum?v=univ" } },
-  "학교별 시뮬레이션": { why: "내 계획표를 후보 학교에 맞춰 보는 기능이에요. 학교별 개설 과목 자료를 더 모아야 해요.", next: { label: "내 계획표로 먼저 확인", url: "#planner/plan" } },
-  "목표 학과 체크": { why: "희망 학과 요건과 내 계획을 견주는 기능이에요. 대학 요건 자료를 모으는 중이에요.", next: { label: "대학 요건 보기", url: "#select/curriculum?v=univ" } },
+  "대학·학과 찾기": { why: "대학 모집요강을 정리하는 중이에요. 2030학년도 시행계획은 2028년 4월 말, 모집요강은 2029년에 나오고, 지금은 2027학년도 기준 참고예요.", next: { label: "지금 쓸 수 있는 대학별 과목 보기", url: "#select/curriculum?v=univ" } },
+  "학교별 시뮬레이션": { why: "내 계획표를 후보 학교에 맞춰 보는 기능이에요. 학교별 개설 과목 자료를 더 모아야 해요.", next: { label: "지금 쓸 수 있는 내 계획표로 먼저 확인", url: "#planner/plan" } },
+  "목표 학과 체크": { why: "희망 학과 요건과 내 계획을 견주는 기능이에요. 대학 요건 자료를 모으는 중이에요.", next: { label: "지금 쓸 수 있는 대학별 과목 보기", url: "#select/curriculum?v=univ" } },
   "중학교 교육과정": { why: "중학교별 교육과정은 학교 공지를 모으는 중이에요. 11월 안에 중학교 학교 보기에 먼저 담을게요.", next: { label: "중학교 배정에서 학교 찾기", url: "#select/curriculum?v=middle" } },
 };
 import { MENU, STATUS } from "./menu.js";
@@ -660,7 +659,7 @@ function render(routed) {
   const navA = (href, title, on) => `<a href="${href}"${on ? ' aria-current="page"' : ""}>${esc(title)}</a>`;
   const row = (cls, label, links) => `<nav class="subnav${cls}" aria-label="${esc(label)}">${links}</nav>`;
   const sub = ""; // 메뉴 고르기는 좌측 트리 한 곳(화면 안 글자 탭 제거)
-  const soonL = loc.item.soon || []; // "곧 열려요"는 고교 일정 한 곳에만
+  const soonL = (query.get("t") || "hs") === "hs" ? (loc.item.soon || []) : []; /* 고교 일정의 기본 탭에서만(다른 탭에 되풀이하지 않는다) */ // "곧 열려요"는 고교 일정 한 곳에만
   const soon = soonL.length ? `<div class="soon"><b>곧 열려요</b>${soonL.map((n) => `<div class="soon-i"><span>${esc(n)}</span>${emptyLine(esc, SOON_WHY[n] || { why: "준비 중이에요. 자료를 모으는 대로 열어요." })}</div>`).join("")}</div>` : "";
   if (n.view === "curriculum" && currentProfile(store).key === "b") { // 프로필 B는 아직 학교가 없다
     $("#main").innerHTML = `${sub}<div id="view"><section class="sec"><div class="empty"><span class="z" aria-hidden="true">0</span><p>${esc(currentProfile(store).name)}의 학교는 아직 없어요.</p><small>고입 이후 학교가 정해지면 과목표가 여기에 들어옵니다.</small><a href="#home">오늘 화면으로 →</a></div></section></div>${soon}`;

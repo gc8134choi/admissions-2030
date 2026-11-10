@@ -28,5 +28,14 @@ for (const f of readdirSync(`${root}/portal`).filter((x) => x.endsWith(".js") &&
   for (const f of readdirSync(`${root}/portal`).filter((x) => x.endsWith(".js"))) { const src = readFileSync(`${root}/portal/${f}`, "utf8"); for (const m of src.matchAll(/\["[a-z]+", "#[^"]+", "([^"]+)"\]/g)) tabs.add(m[1]); }
   for (const f of readdirSync(`${root}/portal`).filter((x) => x.endsWith(".js") && !/^(menu-tree|menu|sw)\.js$/.test(x))) { readFileSync(`${root}/portal/${f}`, "utf8").split("\n").forEach((l0, i) => { const l = l0.replace(/\/\*.*?\*\//g, " ").replace(/(^|\s)\/\/.*$/, "$1"); for (const m of l.matchAll(/'([^']{2,14})' 탭/g)) { n++; if (!m[1].split(/\s*\|\s*/).every((x) => tabs.has(x) || names.has(x))) bad.push(`${f}:${i + 1} '${m[1]}' 탭 — 화면에 그런 탭 이름이 없어요`); } }); }
 }
+
+// 옛 메뉴 이름 전수: 메뉴 개편 뒤 바뀐 이름(대입 제도·고교학점제 이해·변경 로그·학년별 로드맵·학년별 할 일)이 화면에 보이는 문구(주석 제외)에 남지 않았는지
+{
+  const STALE = ["대입 제도", "고교학점제 이해", "변경 로그", "학년별 로드맵", "학년별 할 일", "대학 요건 보기", "대학 요건 맞춰보기"];
+  const OK_LINE = /image-credits|\.screen\b|FILE\s*=|screen\)|\bscreen:/; // 데이터 분류 값·내부 식별용은 제외
+  for (const f of readdirSync(`${root}/portal`).filter((x) => x.endsWith(".js") && !/^(menu-tree|menu|sw)\.js$/.test(x))) { readFileSync(`${root}/portal/${f}`, "utf8").split("\n").forEach((l0, i) => {
+    const l = l0.replace(/\/\*.*?\*\//g, " ").replace(/(^|\s)\/\/.*$/, " "); if (OK_LINE.test(l)) return;
+    for (const w of STALE) if (l.includes(w) && /["'`]/.test(l)) bad.push(`${f}:${i + 1} 옛 메뉴 이름 '${w}'이(가) 화면 문구에 남아 있어요`); }); }
+}
 if (bad.length) { for (const b of bad.slice(0, 60)) console.log("  ✗", b); console.log(`화면 이름 불일치 ${bad.length}건 / 패턴 ${n}곳`); process.exit(1); }
 console.log(`OK: 문구 속 '○○ 화면' ${n}곳이 모두 현재 메뉴·탭 이름(${names.size}개)이거나 일반 표현`);

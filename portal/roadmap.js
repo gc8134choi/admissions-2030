@@ -12,7 +12,7 @@ export async function roadmapView(el, { load, esc, learner, fmt, badgeMain, noti
   const fo0 = store ? store.get("portal.focus", null) : null; // 홈에서 "중학교 입학 준비"만 켰으면 초6 기준을 먼저
   const byFocus = Array.isArray(fo0) && fo0.length === 1 && fo0[0] === "중입" && ids.includes("B") ? "B" : "";
   const base = ids.includes(sv) ? sv : byFocus || (ids.includes(learner.id) ? learner.id : ids[0]);
-  const BASES = [["A", "현재 중3 기준", "중3 기준 학년별 로드맵이에요."], ["B", "현재 초6 기준", "초6 기준 큰 그림이에요. 중학교 입학 2027 → 고교 입학 2030 → 대입 2033 순서예요. 먼 일정은 대부분 추정이라 바뀔 수 있어요."]].filter(([k]) => ids.includes(k));
+  const BASES = [["A", "현재 중3 기준", "중3 기준 학년별 큰 그림이에요."], ["B", "현재 초6 기준", "초6 기준 큰 그림이에요. 중학교 입학 2027 → 고교 입학 2030 → 대입 2033 순서예요. 먼 일정은 대부분 추정이라 바뀔 수 있어요."]].filter(([k]) => ids.includes(k));
   const items = d.items.filter((x) => x.learner === base);
   const now = new Date();
   const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
@@ -42,7 +42,7 @@ export async function roadmapView(el, { load, esc, learner, fmt, badgeMain, noti
     }).join("") || '<p class="ed-src">이 조건에 맞는 항목이 없어요.</p>';
   };
   el.innerHTML = `<div class="ed"><div class="ed-filter" id="rdbase" role="group" aria-label="기준 학년"><span>기준 학년</span>${BASES.map(([k, t]) => `<button type="button" class="${k === base ? "on" : ""}" data-b="${k}" aria-pressed="${k === base}">${t}</button>`).join("")}</div>
-    <p class="ed-top"><b>${esc((BASES.find(([k]) => k === base) || [0, 0, "학년별 로드맵이에요."])[2])}</b> 추정은 아직 공고 전이라 바뀔 수 있어요.</p>
+    <p class="ed-top"><b>${esc((BASES.find(([k]) => k === base) || [0, 0, "학년별 큰 그림이에요."])[2])}</b> 추정은 아직 공고 전이라 바뀔 수 있어요.</p>
     <nav class="ed-toc" aria-label="시기 축">${stages.map((s) => `<button type="button" data-go="rd-${esc(s.key)}"${s.key === cur.key ? ' aria-current="true"' : ""}>${esc(s.label)}</button>`).join("")}</nav>
     <div class="ed-filter" id="rdw" role="group" aria-label="누구 할 일"><span>보기</span><button type="button" class="on" data-w="">전체</button><button type="button" data-w="학생">학생</button><button type="button" data-w="학부모">학부모</button></div>
     <div class="chipbar" id="rdstg"></div>

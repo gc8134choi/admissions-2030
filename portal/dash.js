@@ -69,7 +69,7 @@ export async function planPanel({ load, esc, store }) {
     <div class="pbar" aria-hidden="true"><i class="r" style="width:${Math.min(100, (cr(chosen.filter((o) => o.slot === "required")) / goalAll) * 100)}%"></i><i class="e" style="width:${Math.min(100, (cr(chosen.filter((o) => o.slot !== "required")) / goalAll) * 100)}%"></i></div>
     <ul><li><b>필수 이수</b> <span class="num ${reqHave >= reqTotal ? "done" : ""}">${reqHave}/${reqTotal}</span>${lack.length ? `<small>${lack.map((r) => `${esc(r.t)} ${r.have}/${r.need}`).join(" · ")} 부족</small>` : ""}</li>${uni}
     ${none ? `<li><small>아직 고른 과목이 없어요. 계획표에서 학기별로 골라 보세요.</small></li>` : ""}</ul>
-    <p class="plan-go"><a href="#planner/plan">과목 고르기</a> <a href="#select/curriculum?v=univ">대학 요건 맞춰보기</a></p></section>`;
+    <p class="plan-go"><a href="#planner/plan">과목 고르기</a> <a href="#select/curriculum?v=univ">대학별 과목 맞춰보기</a></p></section>`;
 }
 
 // 고교 한눈에: 학교별 핵심 지표 한 줄씩 + 지도·설명회 노트 바로가기

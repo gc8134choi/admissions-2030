@@ -11,9 +11,9 @@ export const RELATED = {
   "schedule?t=road": [["고교 일정", "#schedule?t=hs"], ["수능과 내신", "#admission/system"], ["내 계획표", "#planner/plan"]],
   "admission/system": [["대학별 과목", "#select/curriculum?v=univ"], ["일정", "#schedule?t=univ"], ["고교학점제", "#life/credit"]],
   "select/curriculum?v=univ": [["수능과 내신", "#admission/system"], ["일정", "#schedule?t=univ"], ["내 계획표", "#planner/plan"]],
-  "schedule?t=hs": [["학교 보기", "#select/curriculum?v=schools&lv=high"], ["수능과 내신", "#admission/system"], ["학년별 할 일", "#schedule?t=road"]],
+  "schedule?t=hs": [["학교 보기", "#select/curriculum?v=schools&lv=high"], ["수능과 내신", "#admission/system"], ["학년별 큰 그림", "#schedule?t=road"]],
   "schedule?t=life": [["배정·입학 준비", "#select/curriculum?v=middle"], ["입학 준비", "#select/curriculum?v=middle&open=guide"]],
-  "schedule": [["학교 보기", "#select/curriculum?v=schools&lv=high"], ["수능과 내신", "#admission/system"], ["학년별 할 일", "#schedule?t=road"]],
+  "schedule": [["학교 보기", "#select/curriculum?v=schools&lv=high"], ["수능과 내신", "#admission/system"], ["학년별 큰 그림", "#schedule?t=road"]],
   "changelog": [["출처·확인일", "#library/sources"], ["갱신 현황", "#library/status"]],
 };
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));

@@ -27,5 +27,15 @@ for (const id of ["sch-04", "sch-10"]) {
 // 서울 구 이름 25곳 × 고입 낱말: 데이터는 서울 전체 단위라, 구 이름 + 고입 낱말을 물으면 제목이 '서울'로 시작하는 서울 행이 맨 위 3건 안에 나와야 한다(경기 행이 먼저 나오지 않게)
 const GU = ["종로", "용산", "성동", "광진", "동대문", "중랑", "성북", "강북", "도봉", "노원", "은평", "서대문", "마포", "양천", "강서", "구로", "금천", "영등포", "동작", "관악", "서초", "강남", "송파", "강동"];
 for (const g of GU) for (const w of ["외고", "고입 일정", "일반고 배정", "자사고"]) for (const q of [`${g} ${w}`, `서울 ${g}구 ${w}`]) { n++; const r = S.search(q), top = r.filter(([h]) => h !== "안내" && h !== "공식 확인처").flatMap(([, l]) => l).slice(0, 3); if (!top.some((y) => /^서울|서울/.test(y.t))) bad.push(`'${q}' → 위 3건에 서울 행이 없어요(${top.map((y) => y.t).join(" / ").slice(0, 60)})`); }
+
+// 코드 속 문구(SOON_WHY·검색 0건 틀 등)의 학년도·연도·시기 표현 전수: '○○학년도 …요강/시행계획 … ○○○○년' 꼴 문장은 아래 등록부에 있어야 하고, 연결한 정책 행(policy.json)이 그 값을 담아야 한다
+{
+  const { readdirSync } = await import("node:fs");
+  const REG = [{ phrase: "2030학년도 시행계획은 2028년 4월 말, 모집요강은 2029년에 나오고", rows: ["str-14"], need: [/시행계획\(2028년 4월 말 공표\)/, /모집요강\(2029년\)/] }];
+  const files = readdirSync(`${root}/portal`).filter((f) => f.endsWith(".js")); const srcAll = files.map((f) => [f, readFileSync(`${root}/portal/${f}`, "utf8")]);
+  for (const r of REG) { n++; if (!srcAll.some(([, t]) => t.includes(r.phrase))) bad.push(`등록 문구가 코드에 없어요: ${r.phrase}`); const body = r.rows.map((id) => rows.find((x) => x.id === id)).map((x) => `${x?.title} ${x?.body}`).join(" "); for (const re of r.need) if (!re.test(body)) bad.push(`'${r.phrase}' ← 정책 행 ${r.rows.join(",")}에 ${re} 이(가) 없어요`); }
+  const PAT = /(20\d\d)학년도[^."'`\n]{0,24}(?:요강|시행계획)[^."'`\n]{0,16}(20\d\d)년/;
+  for (const [f, t] of srcAll) t.split("\n").forEach((l0, i) => { const l = l0.replace(/\/\*.*?\*\//g, " ").replace(/(^|\s)\/\/.*$/, " "); const m = PAT.exec(l); if (m && !REG.some((r) => l.includes(r.phrase))) bad.push(`${f}:${i + 1} 연도가 든 요강·시행계획 문구가 등록부에 없어요 → '${m[0]}' (정책 행 값과 대조해 등록하세요)`); });
+}
 if (bad.length) { bad.slice(0, 80).forEach((x) => console.log("  ✗", x)); console.log(`실패 ${bad.length}/${n}건`); process.exit(1); }
 console.log(`OK: 2028 수시·정시 참고 일정 날짜×낱말×8표기 ${n}개 질의가 모두 맞게 나와요(수시·정시 참고 일정 행과 서울 구 이름 질의)`);
