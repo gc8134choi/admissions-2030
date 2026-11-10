@@ -2,7 +2,7 @@
 // 데이터는 처음 열 때 한 번에 병렬로 읽는다. 최근 검색은 이 브라우저(localStorage)에만 저장한다.
 import { allItems } from "./nav-tree.js";
 import { stageOf } from "./stage.js";
-import { loadSearchExtra, univInfo, curInfo, midZone, elemZone, FIELDS } from "./search-extra.js";
+import { loadSearchExtra, univInfo, curInfo, midZone, elemZone, FIELDS, univRules } from "./search-extra.js";
 import { sayOf, noneText, REGION_WORDS, GG_WORDS, REGION_ALIAS, regionKnown, regionFindPattern, gyeonggiNote } from "./search-claims.js";
 import { loadProfile, filterByProfile } from "./profile.js";
 const RECENT_KEY = "portal.search.recent";
@@ -400,7 +400,7 @@ export function makeSearcher(store) {
     if (/서울/.test(String(q)) && /설명회/.test(String(q)) && !/서울대|서울시립|대학|입시/.test(String(q)) && !(data.policyAll || data.policy).some((x) => /^서울/.test(x.title) && /설명회/.test(`${x.title} ${x.body || ""}`))) r = [["안내", [{ href: "#schedule?t=hs&seoul=1", t: "서울 입학설명회 일정은 목록에서 찾지 못했어요", s: "서울 고입 기본계획·전형 일정은 아래 결과나 일정(고교)의 '서울 일정도 보기'에서 볼 수 있어요" }]], ...r.filter(([h]) => h !== "안내")]; /* 서울 설명회 행이 데이터에 없음을 데이터로 입증할 때만 */
     { /* 질의가 한 학교급(초등학교·중학교·고등학교)만 말했는데 도착 강조가 다른 학교급 줄이면 그 학교급 줄로 바꾼다(초등학교 졸업식 → '초등학교 졸업' 줄) */
       const LVS = ["초등학교", "중학교", "고등학교"], lq = LVS.filter((l) => String(q).includes(l));
-      if (lq.length === 1) r = r.map(([h, l]) => [h, l.map((y) => { const m = /([?&]hl=)([^&]*)/.exec(y.href || ""); if (!m) return y; let hl; try { hl = decodeURIComponent(m[2]); } catch { return y; } const other = LVS.find((x) => x !== lq[0] && hl.startsWith(x)); return other && /졸업|입학|배정|등록/.test(hl) ? { ...y, href: y.href.replace(m[0], m[1] + encodeURIComponent(hl.replace(other, lq[0]))) } : y; })]);
+      if (lq.length === 1) r = r.map(([h, l]) => [h, l.map((y) => { const m = /([?&]hl=)([^&]*)/.exec(y.href || ""); if (!m) return y; let hl; try { hl = decodeURIComponent(m[2]); } catch { return y; } const other = LVS.find((x) => x !== lq[0] && hl.startsWith(x)); return other && /^(?:초등학교|중학교|고등학교) 졸업$/.test(hl) ? { ...y, href: y.href.replace(m[0], m[1] + encodeURIComponent(hl.replace(other, lq[0]))) } : y; })]);
     }
     { /* 질의가 'N학년도'를 말했는데 제목이 다른 학년도인 행(2029학년도 질의의 2028학년도 행)은 그 학년도 행보다 뒤로 */
       const my = /(20\d{2})\s*학년도/.exec(String(q)); if (my) { const bad = (y) => { const t = /^(20\d{2})학년도/.exec(y.t || ""); return t && t[1] !== my[1]; }, mis = (g) => g[1].length && g[1].every(bad) ? 1 : 0;
@@ -413,6 +413,12 @@ export function makeSearcher(store) {
       const gm = /(처인|기흥|수지)구?(?=\s|$|의|에)/.exec(String(q)), lm = /(초등학교|중학교|고등학교|고교)/.exec(String(q));
       if (gm && lm && /이름|목록|학교들|어디|어느|몇\s*곳|무슨|뭐|있어|있나/.test(String(q)) && !/대학|입시/.test(String(q))) { const lv = /초/.test(lm[1]) ? "elementary" : /중/.test(lm[1]) ? "middle" : "high", list = (data.places || []).filter((x) => x.level === lv && new RegExp(`용인시 ${gm[1]}구`).test(x.address || "")).slice(0, 24);
         if (list.length) r = [["학교", list.map((x) => ({ href: `#select/curriculum?v=map&lv=${lv}&p=${encodeURIComponent(x.id)}`, t: x.name, s: `${lv === "middle" ? "중학교" : lv === "elementary" ? "초등학교" : "고등학교"} · ${x.address || ""}` }))], ...r.filter(([h]) => h !== "안내" && h !== "학교")]; } }
+    { /* 화면에 그려지지 않는 행(현재 학년 화면에 없는 2028 참고·2033 전망 등)은 결과에서 값을 보여 주는 inline 행으로 표시 */
+      const shownT = new Set(data.policy.map((x) => x.title)), hidT = new Map((data.policyAll || []).filter((x) => !shownT.has(x.title)).map((x) => [x.title, x]));
+      if (hidT.size) r = r.map(([h, l]) => [h, l.map((y) => (hidT.has(y.t) && !y.inline && /^#[a-z]/.test(y.href || "") ? { ...y, inline: true, x: y.x || hidT.get(y.t).body } : y))]); }
+    { /* 대학 요건 행: 질의 낱말(지역균형·진로선택…)이 든 모집단위와 요건 문구가 있으면 그 모집단위 칩과 요건 줄로 도착한다(?ur=·hl=) */
+      const qt = [...new Set(String(q).split(/[\s,]+/).map((w) => norm(w)).filter((w) => w.length >= 2))];
+      r = r.map(([h, l]) => [h, l.map((y) => { const m = /^(#select\/curriculum\?v=univ&u=)([^&]+)$/.exec(y.href || ""); const rs = m && univRules.get(decodeURIComponent(m[2])); if (!rs) return y; const nm = (x) => norm(x); let best = null; for (const u of rs) { const lab = u.labels.find((x) => qt.some((w) => nm(x).includes(w) && !/대학|학교/.test(w))); const unit = qt.filter((w) => nm(u.unit).includes(w)).length; const sc = unit + (lab ? 2 : 0); if (sc > 0 && (!best || sc > best.sc)) best = { u, lab, sc }; } return best ? { ...y, href: `${y.href}&ur=${encodeURIComponent(best.u.ruleId)}${best.lab ? `&hl=${encodeURIComponent(best.lab.slice(0, 24))}` : ""}` } : y; })]); }
     { /* 긴 본문 행(경기 전기 일정 등)의 요약이 앞부분에서 잘려 질의가 말한 값(예술고 접수·발표)이 안 보이면, 질의 낱말이 든 문장을 요약으로 보여 준다 */
       const body = new Map([...data.guide.filter((g) => g.text && !g.term).map((g) => [g.t, String(g.text)]), ...(data.policyAll || data.policy).map((x) => [x.title, String(x.body || "")]), ...(data.policyAll || data.policy).filter((x) => x.id === "gg-14").map((x) => ["경기 전기 학교(과학고·마이스터고 등) 전형 일정", String(x.body || "")])]), tk = String(q).split(/\s+/).map(norm).filter((w) => w.length >= 3 && !STOP.has(w) && !STOP2.has(w) && !/^[\d.~]+$/.test(w));
       if (tk.length) r = r.map(([h, l]) => [h, l.map((y) => { const b = body.get(y.t); if (!b || b.length < 120 || y.term || y.inline) return y; const nb = norm(b), w = tk.find((t) => nb.includes(t)); if (!w) return y; const segs = b.split(/(?<=[가-힣\d)])\.\s+(?=[가-힣])/), k = segs.findIndex((sg) => norm(sg).includes(w)); return k > 0 ? { ...y, s: clip(segs[k].trim(), 110) + ((/ · 서울은[^]*$/.exec(y.s || "") || [""])[0]) } : y; })]); }
@@ -428,7 +434,7 @@ export function mountSearch(btn, { load, store, esc }) {
   const recent = () => store.get(RECENT_KEY, []);
   const remember = (q) => { if (q.trim().length < 2) return; store.set(RECENT_KEY, [q.trim(), ...recent().filter((x) => x !== q.trim())].slice(0, 6)); };
 
-  const item = (x) => x.term ? `<li><a href="#" data-term="${esc(x.term)}" data-go><b>${esc(x.t)}</b><span>${esc(x.s)}</span></a></li>` : `<li><a href="${esc(x.href)}"${x.ext ? ' target="_blank" rel="noopener"' : ""} data-go><b>${esc(x.t)}${x.ext ? " ↗" : ""}</b><span>${esc(x.inline && x.x ? String(x.x).slice(0, 260) : x.s)}${x.inline && x.x && /^(20\d{2})학년도/.test(x.t) && !/^2029학년도/.test(x.t) && /#admission\/system/.test(x.href || "") ? esc(` → ${x.t.slice(0, 4)}학년도 날짜는 이 결과의 본문에만 있어요. 누르면 가는 '수능과 내신' 화면에는 이 날짜가 없어요`) : ""}</span></a></li>`; /* 도착 화면에 그 행이 따로 그려지지 않는 행(2028 참고·2033 전망 등)은 값이 결과에서 바로 보이게 본문을 더 보여 준다 */
+  const item = (x) => x.term ? `<li><a href="#" data-term="${esc(x.term)}" data-go><b>${esc(x.t)}</b><span>${esc(x.s)}</span></a></li>` : `<li><a href="${esc(x.href)}"${x.ext ? ' target="_blank" rel="noopener"' : ""} data-go><b>${esc(x.t)}${x.ext ? " ↗" : ""}</b><span>${esc(x.inline && x.x ? String(x.x).slice(0, 260) : x.s)}${x.inline && x.x && /^#[a-z]/.test(x.href || "") && !/^#(library|home)/.test(x.href) ? esc(" → 이 값은 이 결과의 본문에만 있어요. 누르면 가는 화면에는 이 행이 따로 없어요") : ""}</span></a></li>`; /* 도착 화면에 그 행이 따로 그려지지 않는 행(2028 참고·2033 전망 등)은 값이 결과에서 바로 보이게 본문을 더 보여 준다 */
   const paint = () => {
     const q = box.querySelector("input").value, out = box.querySelector(".sr-out");
     if (!q.trim()) { const r = recent(); out.innerHTML = r.length ? `<p class="sr-h">최근 검색</p><p class="sr-rec">${r.map((x) => `<button type="button" class="lnk" data-q="${esc(x)}">${esc(x)}</button>`).join("")}</p>` : '<p class="muted">일정, 학교, 과목, 용어를 찾아 보세요.</p>'; return; }
