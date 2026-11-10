@@ -177,12 +177,14 @@ const bodyHtml = (t, esc2 = esc) => {
   // 감시 봇이 최근 30일 안에 "바뀌었다"고 기록한 페이지(watch-state.json의 changedAt)를 같은 표기(추정·원문 확인 전)로 목록에 넣는다. 홈 "바뀐 소식"과 같은 규칙. 읽지 못하면 조용히 건너뛴다.
   const watchRows = async () => {
     try {
-      const [st, wl] = await Promise.all([fetch("../research/data/watch-state.json").then((r) => (r.ok ? r.json() : {})), fetch("../research/data/watchlist.json").then((r) => (r.ok ? r.json() : { items: [] }))]);
+      const [st, wl, rv] = await Promise.all([fetch("../research/data/watch-state.json").then((r) => (r.ok ? r.json() : {})), fetch("../research/data/watchlist.json").then((r) => (r.ok ? r.json() : { items: [] })), fetch("../research/data/watch-reviews.json").then((r) => (r.ok ? r.json() : {})).catch(() => ({}))]);
       const now = Date.now();
       return Object.entries(st).filter(([, v]) => v.changedAt && now - new Date(v.changedAt) < 30 * 86400000).map(([id, v]) => {
         const it = (wl.items || []).find((x) => x.id === id); if (!it) return null;
+        const rev = rv?.reviews?.[id], done = rev && rev.changedAt === v.changedAt ? rev : null; /* 같은 감지(changedAt)에 대한 원문 대조 결론이 있으면: 변경 없음·반영 불필요는 항목을 닫고, 반영함은 결론을 보인다 */
+        if (done && /^(변경 없음|반영 불필요)$/.test(done.verdict)) return null;
         const c = new Date(v.changedAt), d = `${c.getFullYear()}-${String(c.getMonth() + 1).padStart(2, "0")}-${String(c.getDate()).padStart(2, "0")}`;
-        return { id: `watch-${id}`, topic: "change-log", title: `${d} ${it.name} 페이지가 바뀌었어요`, body: "감시 봇이 감지했어요. 공식 문서로 확인 중이에요.", status: "estimated", unverified: true, reason: "감시 봇이 감지했고 공식 문서로 확인 중이에요", sources: [{ name: "원문 열기", url: it.url }] };
+        return { id: `watch-${id}`, topic: "change-log", title: `${d} ${it.name} 페이지가 바뀌었어요`, body: done && done.verdict === "반영함" ? "공식 문서와 대조해 바뀐 내용을 이미 일정·안내에 반영했어요." : "감시 봇이 감지했어요. 공식 문서로 확인 중이에요.", status: "estimated", unverified: !(done && done.verdict === "반영함"), reason: done && done.verdict === "반영함" ? "공식 문서와 대조해 반영했어요" : "감시 봇이 감지했고 공식 문서로 확인 중이에요", sources: [{ name: "원문 열기", url: it.url }] };
       }).filter(Boolean);
     } catch { return []; }
   };
