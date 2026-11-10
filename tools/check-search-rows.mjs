@@ -14,7 +14,8 @@ const norm = (x) => String(x).replace(/\s+/g, "").replace(/ⓘ/g, "").replace(/(
 const TOK = /\d{4}\.\d{1,2}\.\d{1,2}|\d{1,2}\.\d{1,2}(?:~\d{1,2}(?:\.\d{1,2})?)?|\d{4,}(?:명)?/;
 const b = await chromium.launch(), p = await (await b.newContext({ serviceWorkers: "block", viewport: { width: 1440, height: 900 } })).newPage(), cache = new Map(), bad = []; let n = 0;
 for (const row of rows) {
-  const res = S.search(row.title), item = res.flatMap(([, l]) => l).find((y) => y.t === row.title); if (!item || !item.href || !/^#/.test(item.href)) continue;
+  const res = S.search(row.title), item = res.flatMap(([, l]) => l).find((y) => y.t === row.title || String(y.t).startsWith(`${row.title} · `)); if (!item || !item.href || !/^#/.test(item.href)) continue;
+  if (/^#home(?![a-z/])/.test(item.href) && TOK.test(String(item.s || ""))) { n++; bad.push(`${row.id} '${row.title.slice(0, 30)}' 요약에 값이 있는데 링크가 #home(값 없는 화면)이에요`); continue; }
   const tok = TOK.exec(String(item.s || "").replace(/\(\s*[월화수목금토일]\s*\)/g, "")); if (!tok) continue; n++;
   const key = item.href.replace(/[&?]hl=[^&]*/, ""); let body = cache.get(key);
   if (body == null) { await p.goto(base + key); await p.waitForTimeout(1300); body = norm(await p.evaluate(() => { document.querySelectorAll("#main details").forEach((x) => (x.open = true)); return document.querySelector("#main").textContent; })); cache.set(key, body); }
