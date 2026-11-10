@@ -17,7 +17,7 @@ for (const uid of [...new Set(rules.map((r) => r.universityId))]) {
     for (const w of ["sourcePage", "다음 행동", "키워드"]) if (txt.includes(w)) bad.push(`${r.ruleId}: 작업 용어 '${w}'가 화면에 보여요`);
     for (const q of r.requirements) { nq++; const lab = norm(q.orGroupLabel || "");
       if (!txt.includes(lab.slice(0, 40))) bad.push(`${r.ruleId}: 요건 문구가 화면에 없어요 → ${String(q.orGroupLabel).slice(0, 40)}`);
-      if (!matched.has(r.ruleId)) { const li = items.find((x) => x.includes(lab.slice(0, 20))); if (!li) bad.push(`${r.ruleId}: 요강 문구 목록에 없어요 → ${String(q.orGroupLabel).slice(0, 30)}`); else { const extra = li.replace(/^(필수|권장|참고)·/, "").slice(lab.length); if (extra) bad.push(`${r.ruleId}: 원문에 없는 꼬리가 붙었어요 → '${extra.slice(0, 20)}' (${String(q.orGroupLabel).slice(0, 20)}…)`); } }
+      if (!matched.has(r.ruleId)) { const li = items.find((x) => x.includes(lab.slice(0, 20))); if (!li) bad.push(`${r.ruleId}: 요강 문구 목록에 없어요 → ${String(q.orGroupLabel).slice(0, 30)}`); else { const extra = li.replace(/^(필수|권장|참고)·/, "").slice(lab.length).replace(/^—.*$/, ""); /* 요건별 요강 쪽 표기(— …쪽)는 허용 */ if (extra) bad.push(`${r.ruleId}: 원문에 없는 꼬리가 붙었어요 → '${extra.slice(0, 20)}' (${String(q.orGroupLabel).slice(0, 20)}…)`); } }
       if (txt.includes(lab) && new RegExp(lab.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\(\\d+과목이상\\)").test(txt)) bad.push(`${r.ruleId}: 원문 뒤에 '(N과목 이상)'을 덧붙였어요`); } }
 }
 await b.close();
