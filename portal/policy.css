@@ -264,5 +264,5 @@ h2 .nb,h3 .nb{white-space:nowrap;font:inherit!important;letter-spacing:inherit}
 
 .tb-hint{display:none;margin:4px 0}
 @media (max-width:700px){.tb-hint{display:block}}
-.pl-tbw{background:linear-gradient(to right,var(--bg) 30%,color-mix(in srgb,var(--bg) 0%,transparent)) left center/24px 100% no-repeat local,linear-gradient(to left,var(--bg) 30%,color-mix(in srgb,var(--bg) 0%,transparent)) right center/24px 100% no-repeat local,radial-gradient(farthest-side at 0 50%,rgba(0,0,0,.22),rgba(0,0,0,0)) left center/10px 100% no-repeat scroll,radial-gradient(farthest-side at 100% 50%,rgba(0,0,0,.22),rgba(0,0,0,0)) right center/10px 100% no-repeat scroll} /* 가로 스크롤 단서: 가장자리 그림자 */
+.pl-tbw{background:radial-gradient(farthest-side at 0 50%,rgba(0,0,0,.22),rgba(0,0,0,0)) left center/10px 100% no-repeat scroll,radial-gradient(farthest-side at 100% 50%,rgba(0,0,0,.22),rgba(0,0,0,0)) right center/10px 100% no-repeat scroll} /* 가로 스크롤 단서: 가장자리 그림자 */
 .pl-tbw:focus-visible{outline:2px solid var(--accent,#c4310d);outline-offset:2px}
