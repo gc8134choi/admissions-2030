@@ -24,7 +24,7 @@ const textbookHtml = (p, curBy, fileId, esc) => {
     const img = (c.sources || []).map((x) => (x.file && fileId(x.file) ? `<a href="#library/files?open=${encodeURIComponent(fileId(x.file))}">원본 이미지 보기</a>` : "")).filter(Boolean)[0] || "";
     const rows = c.subjects.map((j) => `<tr><td>${esc(j.subject)}</td><td>${g(j.publishers[1])}</td><td>${g(j.publishers[2])}</td><td>${g(j.publishers[3])}</td>${(() => { const nt = String(j.note || "").replace(/\s*\(비고 칸 병합 표기[^)]*\)/g, "").trim(); return nt ? `<td class="muted small tb-note">${esc(nt)}</td>` : "<td></td>"; })()}</tr>`).join("");
     return `<details class="pl-tb"><summary>${esc(p.name)} 교과서·교과 구성 ${tag(c.status, esc)}</summary>
-      <p class="muted small tb-hint">표를 옆으로 밀면 비고까지 볼 수 있어요</p><div class="pl-tbw" tabindex="0" role="region" aria-label="교과서 표, 가로로 스크롤할 수 있어요"><table class="ed-tbl"><thead><tr><th>교과</th><th>1학년</th><th>2학년</th><th>3학년</th><th>비고</th></tr></thead><tbody>${rows}</tbody></table></div>
+      <p class="muted small tb-hint">표를 옆으로 밀면 비고까지 볼 수 있어요</p><div class="pl-tbw"><table class="ed-tbl"><thead><tr><th>교과</th><th>1학년</th><th>2학년</th><th>3학년</th><th>비고</th></tr></thead><tbody>${rows}</tbody></table></div>
       ${(() => { const fn = String(c.footnote || "").replace(/\s*\(비고 칸 병합 표기[^)]*\)/g, "").trim(); return fn ? `<p class="muted small">${esc(fn)}</p>` : ""; })()}
       <p class="ed-s0">${srcb(c.sources, esc, img)}</p></details>`;
 };
@@ -148,6 +148,9 @@ export async function middleSchoolsBody(el, { load, esc, show = "table", focus =
     const tbs = mc.schools.map((s) => place.get(s.placeId)).filter(Boolean).map((p) => textbookHtml(p, curBy, fileId, esc)).filter(Boolean).join("");
     const noTb = mc.schools.filter((s) => !curBy.has(s.placeId)).length;
     body.querySelector("#ms-tbs").innerHTML = (tbs || '<p class="muted">아직 정리 중이에요.</p>') + (noTb ? `<p class="muted small">교과서 출판사 표가 없는 학교(${noTb}개교)는 학교 공지에서 확인해 주세요.</p>` : "");
+    { /* 표가 실제로 옆으로 넘칠 때만 키보드 정지점(tabindex)·안내 줄을 둔다(열림·창 크기 변경 때 갱신) */
+      const fit = () => body.querySelectorAll(".pl-tb").forEach((d) => { const w = d.querySelector(".pl-tbw"), h = d.querySelector(".tb-hint"); if (!w) return; const o = d.open && w.scrollWidth > w.clientWidth + 1; if (o) { w.setAttribute("tabindex", "0"); w.setAttribute("role", "region"); w.setAttribute("aria-label", "교과서 표, 가로로 스크롤할 수 있어요"); } else { w.removeAttribute("tabindex"); w.removeAttribute("role"); w.removeAttribute("aria-label"); } if (h && d.open) h.hidden = !o; });
+      body.querySelectorAll(".pl-tb").forEach((d) => d.addEventListener("toggle", fit)); if (!window.__tbFit) { window.__tbFit = true; addEventListener("resize", () => window.__tbFitRun?.()); } window.__tbFitRun = fit; fit(); }
     decorateGlossary(body);
   };
   tog.addEventListener("click", (e) => { const b = e.target.closest("[data-show]"); if (!b || b.dataset.show === st.show) return; st.show = b.dataset.show; if (st.show === "table") st.focus = null; draw(); });
