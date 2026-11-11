@@ -11,7 +11,7 @@ const load = async (n) => JSON.parse(readFileSync(`${root}/portal/data/${n}.json
 const parts = await Promise.all([load("policy"), load("summary"), load("links"), load("subject-info"), load("places"), loadSearchExtra(load)]), S = makeSearcher(st); S.setData(buildSearchData(parts, st));
 const pol = parts[0], rows = pol.items || pol.policy || (Array.isArray(pol) ? pol : Object.values(pol));
 const norm = (x) => String(x).replace(/\s+/g, "").replace(/ⓘ/g, "").replace(/(\d),(?=\d{3})/g, "$1");
-const TOK = /\d{4}\.\d{1,2}\.\d{1,2}|(?<![\d.])\d{1,2}\.\d{1,2}(?:~\d{1,2}(?:\.\d{1,2})?)?(?![\d.])|\d{5,}(?:명)?/;
+const TOK = /\d{4}\.\d{1,2}\.\d{1,2}|\d{4}\.\d{1,2}(?![\d.])|\d{4}년\s?\d{1,2}월|(?<![\d.])\d{1,2}\.\d{1,2}(?:~\d{1,2}(?:\.\d{1,2})?)?(?![\d.])|\d{5,}(?:명)?/;
 const b = await chromium.launch(), p = await (await b.newContext({ serviceWorkers: "block", viewport: { width: 1440, height: 900 } })).newPage(), cache = new Map(), bad = []; let n = 0;
 for (const row of rows) {
   /* 제목·제목+본문 첫머리·본문 첫머리 세 가지로 찾아, 행 제목으로 나온 모든 결과(바로 안내·가이드 변형 포함)를 대조한다 */
@@ -29,9 +29,11 @@ for (const row of rows) {
   }
 }
 /* 요약 절단: 말줄임표 없이 천 단위 쉼표 중간(11,44 · 11,)에서 끝나는 요약을 용어·가이드·정책·검색 문서 전 행에서 찾는다 */
-{ const cutBad = (where, t, s0) => { s0 = String(s0 || ""); if (/\d,\d{0,2}$/.test(s0) || /\d,…$/.test(s0)) { n++; bad.push(`${where} '${String(t).slice(0, 30)}' 요약이 숫자 중간에서 끊겼어요: …${s0.slice(-14)}`); } };
+{ const cutBad = (where, t, s0) => { s0 = String(s0 || ""); if (/\d,\d{0,2}$/.test(s0) || /\d,…$/.test(s0) || s0.split("(").length > s0.split(")").length) { n++; bad.push(`${where} '${String(t).slice(0, 30)}' 요약이 숫자 중간에서 끊겼어요: …${s0.slice(-14)}`); } };
   for (const d of parts[5]) cutBad("검색 문서", d.t, d.s);
   for (const row of rows) cutBad("정책 행", row.title, row.summary || row.s);
+  const isKw = (sg) => { const tk = String(sg).trim().split(/\s+/); return tk.length >= 4 && !/[\d.,;·()→~]/.test(sg) && tk.every((x) => x.length <= 7 && !/[다요고며서니음함은는을를에로의가도]$/.test(x)); }; /* 낱말 나열(검색용 키워드) 요약 */
+  const seen = new Set(); for (const d of parts[5]) { if (seen.size > 400) break; for (const [, l] of S.search(d.t)) for (const y of l) { const k = `${y.t}|${y.s}`; if (seen.has(k)) continue; seen.add(k); if (isKw(y.s)) { n++; bad.push(`낱말 나열 요약 '${String(y.t).slice(0, 30)}': ${String(y.s).slice(0, 40)}`); } } }
   for (const q of ["논술전형", "수시 정시", "수능", "내신", "전형 비율", "모집인원", "응시자", "N수생", "지역균형", "학생부종합", "대교협", "정시 수능 위주 비율", "수시 모집인원 수도권"]) for (const [, l] of S.search(q)) for (const y of l) cutBad("결과", y.t, y.s); }
 await b.close();
 if (bad.length) { bad.slice(0, 40).forEach((x) => console.log("  ✗", x)); console.log(`실패 ${bad.length}/${n}건`); process.exit(1); }
