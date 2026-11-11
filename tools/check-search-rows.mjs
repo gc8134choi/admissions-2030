@@ -28,6 +28,11 @@ for (const row of rows) {
   if (!body.includes(norm(tok[0])) && !item.note) bad.push(`${row.id} '${row.title.slice(0, 30)}' 요약의 '${tok[0]}'이 ${key.slice(0, 50)} 화면에 없는데 '결과에만 있어요' 안내(inline)가 없어요`);
   }
 }
+/* 요약 절단: 말줄임표 없이 천 단위 쉼표 중간(11,44 · 11,)에서 끝나는 요약을 용어·가이드·정책·검색 문서 전 행에서 찾는다 */
+{ const cutBad = (where, t, s0) => { s0 = String(s0 || ""); if (/\d,\d{0,2}$/.test(s0) || /\d,…$/.test(s0)) { n++; bad.push(`${where} '${String(t).slice(0, 30)}' 요약이 숫자 중간에서 끊겼어요: …${s0.slice(-14)}`); } };
+  for (const d of parts[5]) cutBad("검색 문서", d.t, d.s);
+  for (const row of rows) cutBad("정책 행", row.title, row.summary || row.s);
+  for (const q of ["논술전형", "수시 정시", "수능", "내신", "전형 비율", "모집인원", "응시자", "N수생", "지역균형", "학생부종합", "대교협", "정시 수능 위주 비율", "수시 모집인원 수도권"]) for (const [, l] of S.search(q)) for (const y of l) cutBad("결과", y.t, y.s); }
 await b.close();
 if (bad.length) { bad.slice(0, 40).forEach((x) => console.log("  ✗", x)); console.log(`실패 ${bad.length}/${n}건`); process.exit(1); }
 console.log(`OK: 정책 행 ${n}건의 요약 값이 도착 화면에 있거나 '이 결과에만' 안내가 붙어 있어요`);
