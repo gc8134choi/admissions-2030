@@ -2,6 +2,7 @@
 // 데이터는 처음 열 때 한 번에 병렬로 읽는다. 최근 검색은 이 브라우저(localStorage)에만 저장한다.
 import { allItems } from "./nav-tree.js";
 import { stageOf } from "./stage.js";
+import { firstVal } from "./val-tokens.js";
 import { cutNum, loadSearchExtra, univInfo, curInfo, midZone, elemZone, FIELDS, univRules } from "./search-extra.js";
 import { sayOf, noneText, REGION_WORDS, GG_WORDS, REGION_ALIAS, regionKnown, regionFindPattern, gyeonggiNote } from "./search-claims.js";
 import { loadProfile, filterByProfile } from "./profile.js";
@@ -44,7 +45,7 @@ export const NO_HL = new Set(["hs-11", "sch-04", "log-13", "b33-06"]); // 기본
 export const clip = (t, n) => { t = String(t || ""); if (t.length <= n) return t; const head = t.slice(0, n + 40); const m = [...head.matchAll(/[.。]\s|(?:다|요)(?:\.|\s)/g)].map((x) => x.index + x[0].trimEnd().length).filter((i) => i >= n * 0.5 && i <= n + 40 && (t.slice(0, i).split("(").length === t.slice(0, i).split(")").length)).pop(); /* 괄호가 열린 채로 문장 끝에서 끊지 않는다 */ if (m) return t.slice(0, m).trim(); return cutNum(t, n); };
 const withHl = (href, t) => (!t || !/^#/.test(href) || /[?&]hl=/.test(href) || /[?&]v=univ&u=/.test(href) ? href : href + (href.includes("?") ? "&" : "?") + "hl=" + encodeURIComponent(String(t).replace(/ⓘ/g, "").slice(0, 24))); // 검색에서 가면 그 행을 펴서 강조(hl.js)
 const eunNeun = (w) => { const c = String(w).charCodeAt(String(w).length - 1) - 0xac00; return c >= 0 && c <= 11171 && c % 28 === 0 ? "는" : "은"; }; /* 받침 없으면 는 */
-const routeOf = (r) => (r.topic === "profile-2033" ? "#schedule?t=road&b=B" /* 2033 전망 행은 학년별 큰 그림(현재 초6 기준)이 가장 가깝다. 화면에 따로 그려지지 않는 값은 결과가 본문을 보여 준다 */ : r.topic === "gg-hs-entry" && !(r.events && r.events.length) ? "#select/curriculum?v=types"
+export const routeOf = (r) => (r.topic === "profile-2033" ? "#schedule?t=road&b=B" /* 2033 전망 행은 학년별 큰 그림(현재 초6 기준)이 가장 가깝다. 화면에 따로 그려지지 않는 값은 결과가 본문을 보여 준다 */ : r.topic === "gg-hs-entry" && !(r.events && r.events.length) ? "#select/curriculum?v=types"
   : r.topic === "hs-schedule" && r.region === "seoul" ? "#schedule?t=hs&seoul=1" // 서울 행은 일정 화면에서 '서울 보기'를 켜야 보인다
   : r.topic === "admission-structure" || ["cur-29", "cur-30"].includes(r.id) ? "#admission/system?t=types" // 대입 전형 구조 행은 수시·정시(전형) 화면에 있다
   : ["cur-08", "sch-03"].includes(r.id) ? "#admission/system" // 수능 참고 행은 대입 제도 화면에 있다
@@ -71,7 +72,7 @@ const HELP = [["경기도교육청", "https://www.goe.go.kr", "도 단위 공지
 // 검색 데이터 구성(브라우저 밖에서도 같은 구조를 쓰도록 분리): [policy, summary, links, subject-info, places, extra] → data
 export function buildSearchData([policy0, summary, links, si, pl, extra], store) {
   const policy = filterByProfile(policy0, loadProfile(store), { grade3: true }); /* 화면이 보여 주는 행만 검색 결과로(화면에 없는 행으로 링크되지 않게) */
-  return { places: pl.places || [], guide: extra.map((d) => ({ t: d.t, text: d.text, href: d.href, from: "", sch: d.sch, s: d.s, q: d.q, only: d.only, gap: d.gap, found: d.found, raw: d.raw, strict: d.strict, hl: d.hl, term: d.term, quiet: d.quiet })), policy, policyAll: policy0, summary, links: links.items || [], subjects: si.subjects || (Array.isArray(si) ? si : []) };
+  return { places: pl.places || [], guide: extra.map((d) => ({ t: d.t, text: d.text, href: d.href, from: "", sch: d.sch, s: d.s, q: d.q, only: d.only, gap: d.gap, found: d.found, raw: d.raw, strict: d.strict, hl: d.hl, term: d.term, quiet: d.quiet })), policy, policyAll: policy0, dest: extra.dest || {}, destPhrase: extra.destPhrase || {}, summary, links: links.items || [], subjects: si.subjects || (Array.isArray(si) ? si : []) };
 }
 // 점수·순위 계산 전부. 브라우저(DOM) 없이 setData(data) 뒤 search(q)만 부르면 된다.
 // 한글 날짜·퍼센트 표기를 데이터 표기로: '2028년 1월 10일 17일' → '2028.1.10~17', '1월 31일 2월 7일' → '1.31~2.7', '10퍼' → '10%'
@@ -433,9 +434,8 @@ export function makeSearcher(store) {
     { /* 같은 2033 전망 정책 행은 어느 질의에서든 같은 도착 화면(routeOf)으로 간다(질의마다 화면이 달라지지 않게) */
       const p33 = new Map((data.policyAll || []).filter((x) => x.topic === "profile-2033").map((x) => [x.title, routeOf(x)]));
       r = r.map(([h, l]) => [h, l.map((y) => { const rt = p33.get(y.t); if (!rt || !y.href || y.ext || y.term) return y; const m = /^([^&?]*(?:\?[^&]*)?)((?:&.*)?)$/.exec(y.href); const base = y.href.replace(/[&?]hl=.*$/, ""); return base === rt ? y : { ...y, href: rt + (/[&?]hl=/.test(y.href) ? y.href.slice(y.href.search(/[&?]hl=/)).replace(/^\?/, "&") : "") }; })]); }
-    { /* '이 값은 이 결과의 본문에만 있어요' 안내는 행의 요약 첫 값이 도착 화면 본문에 실제 없을 때만(tools/check-search-rows.mjs가 도착 화면을 열어 확인한 행 id) */
-      const NOTE_IDS = new Set(["sch-03", "sch-04", "sch-05", "sch-10", "b33-06", "b33-09", "log-13"]), noteRow = new Map((data.policyAll || []).filter((x) => NOTE_IDS.has(x.id)).map((x) => [x.title, x]));
-      r = r.map(([h, l]) => [h, l.map((y) => { if (!y.inline) return y; const nr0 = noteRow.get(y.t); return { ...y, note: !!nr0 && String(y.href || "").replace(/[&?]hl=.*$/, "") === routeOf(nr0) }; })]); } /* 안내는 그 행이 가리키는 화면(routeOf)으로 가는 결과에만 */
+    { /* '이 값은 이 결과의 본문에만 있어요' 안내: 행 요약의 첫 값(날짜·큰 수, val-tokens.js 정규화)이 도착 화면 본문의 값 토큰에 없을 때만 자동으로 붙인다(도착 화면 토큰은 tools/build-dest-values.mjs가 만든 data/dest-values.json, check-search-rows가 최신인지·안내가 맞는지 검사) */
+      r = r.map(([h, l]) => [h, l.map((y) => { if (!y.inline) return y; const rt = String(y.href || "").replace(/[&?]hl=.*$/, ""), fv = firstVal(y.s), toks = (data.dest || {})[rt]; return { ...y, note: fv ? !!toks && !toks.includes(fv) : ((data.destPhrase || {})[rt] || []).includes(y.t) }; })]); }
     { /* 메뉴 이름을 그대로(+모음·목록·화면) 쓴 질의는 그 메뉴 항목을 맨 앞에(메뉴 이름·설명은 menu-tree가 정본) */
       const SUF = /\s*(?:모음|목록|화면|메뉴|페이지|보기|바로가기)\s*$/, bare = (x) => String(x).replace(/[^가-힣A-Za-z0-9]/g, "");
       let sq = String(q), hadSuf = false; const its = allItems(), stages = [sq]; while (SUF.test(sq) && sq.replace(SUF, "").trim()) { sq = sq.replace(SUF, ""); hadSuf = true; stages.push(sq); }
