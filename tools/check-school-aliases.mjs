@@ -4,14 +4,15 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 const root = resolve(new URL("..", import.meta.url).pathname);
-const { makeSearcher, buildSearchData, schoolAliases } = await import(`${root}/portal/search.js`);
+const { makeSearcher, buildSearchData, schoolAliases, isMidRow, routeOf } = await import(`${root}/portal/search.js`);
 const { jointOf } = await import(`${root}/portal/joint-zone.js`);
 const { loadSearchExtra } = await import(`${root}/portal/search-extra.js`);
 const load = async (n) => JSON.parse(readFileSync(`${root}/portal/data/${n}.json`, "utf8"));
 const store = { get: (k, d) => d, set() {} };
 const parts = await Promise.all([load("policy"), load("summary"), load("links").catch(() => ({ items: [] })), load("subject-info").catch(() => ({ subjects: [] })), load("places").catch(() => ({ places: [] })), loadSearchExtra(load).catch(() => [])]);
 const S = makeSearcher(store); S.setData(buildSearchData(parts, store));
-const places = parts[4].places || [], bad = [];
+parts[0] = parts[0].filter((r) => !isMidRow({ href: routeOf(r), t: r.title })); parts[5] = parts[5].filter((d) => !isMidRow(d)); /* 중학교 흐름 행은 검색에 없는 세계로 점검 */
+const places = (parts[4].places || []).filter((p) => p.level === "high"), bad = []; /* 중학교·초등학교 화면은 없앴다(2026-11-13): 고교만 점검 */
 const official = new Map(); for (const f of ["hs-compare", "middle-compare"]) for (const sc of (await load(f)).schools || []) { const m = /^(.*?)(초등학교|중학교|고등학교)$/.exec(sc.name || ""); if (m) official.set(sc.placeId, [sc.name, m[1] + m[2][0]]); }
 const SUF = /(초등학교|중학교|고등학교)$/, SH = { 초등학교: "초", 중학교: "중", 고등학교: "고" };
 let n = 0;
@@ -100,7 +101,7 @@ console.log(`  · 띄어 쓴 학교급 ${nsp}질의, 초등 학교군 문구 ${n
 // 숫자 값 전수: 정책 본문·학교 값 칸의 큰 수(콤마 유무 × '명' 유무)와 퍼센트 값(소수 포함)을 그대로 물으면 상위 3위 안에 그 값이 든 행이 나와야 한다(경계 유지: 12.44·2.1244 안에서는 맞지 않음)
 {
   const strip = (t) => String(t).replace(/(\d),(?=\d{3}(?!\d))/g, "$1").replace(/(\d),(?=\d{3}(?!\d))/g, "$1");
-  const sources = [...parts[0].map((r) => ({ t: r.title, tx: `${r.title} ${r.body || ""}` })), ...parts[5].filter((d) => !d.gap && !/전화|팩스/.test(d.t || "")).map((d) => ({ t: d.t, tx: `${d.t} ${d.s || ""} ${d.text || ""}` }))];
+  const sources = [...parts[0].filter((r) => !isMidRow({ href: routeOf(r), t: r.title })).map((r) => ({ t: r.title, tx: `${r.title} ${r.body || ""}` })), ...parts[5].filter((d) => !d.gap && !isMidRow(d) && !/전화|팩스/.test(d.t || "")).map((d) => ({ t: d.t, tx: `${d.t} ${d.s || ""} ${d.text || ""}` }))];
   const ints = new Map(), pcts = new Map();
   for (const x of sources) { const t = strip(x.tx); for (const m of t.matchAll(/(?<![\d.,])(\d{4,7})(?![\d]|\.\d|%)(명|곳|개|학급)?/g)) { if (/^(19|20)\d{2}$/.test(m[1]) && !m[2]) continue; if (!ints.has(m[1])) ints.set(m[1], { ...x, sfx: m[2] || "" }); } for (const m of t.matchAll(/(?<![\d.])(\d{1,3}\.\d)\s*%/g)) if (!pcts.has(m[1])) pcts.set(m[1], x); }
   const has = (res, key, pct) => res.flatMap(([, l]) => l).slice(0, 3).some((x) => { const tx = strip(`${x.t} ${x.s || ""} ${x.x || ""} ${(sources.find((z) => z.t === x.t) || {}).tx || ""}`); return pct ? new RegExp("(?<![\\d.])" + key.replace(".", "\\.") + "\\s*%").test(tx) : new RegExp("(?<![\\d.])" + key + "(?![\\d]|\\.\\d)").test(tx); });
@@ -127,7 +128,7 @@ console.log(`  · 띄어 쓴 학교급 ${nsp}질의, 초등 학교군 문구 ${n
   const gl = await load("glossary").catch(() => ({ terms: [] })), BANNER = /목록에서 찾지 못했어요|정확히 맞는 내용이 없을 수 있어요/; let nb = 0;
   const first = (q) => S.search(q)[0] || ["", []];
   for (const t of (gl.terms || []).slice(0, 80)) { if (String(t.term).length < 2) continue; for (const suf of ["풀이", "뜻풀이", "정의"]) { const q = `${t.term} ${suf}`, [h, l] = first(q); nb++; if (BANNER.test(`${l[0]?.t} ${l[0]?.s}`) && h === "안내") bad.push(`'${q}' → 배너가 1위 (용어 행이 있음)`); } }
-  const ko = [["2028년 1월 10일 17일", /1\.10~17/], ["2028년 1월 31일 2월 7일", /1\.31~2\.7/], ["2032년 11월 18일 목요일 시험", /2032\.11\.18/], ["공동학군", /공동학군/], ["공동학군 뜻", /공동학군/], ["운중동", /운중동/], ["대장통 석운통", /대장통/], ["판교중학군", /판교중학군/]];
+  const ko = [["2028년 1월 10일 17일", /1\.10~17/], ["2028년 1월 31일 2월 7일", /1\.31~2\.7/]]; /* 2033학년도(초6 흐름)·공동학군(중학교) 질의는 중학교 그룹 삭제(2026-11-13)로 뺐다 */
   for (const [q, must] of ko) { const flat = S.search(q).flatMap(([, l]) => l); nb++; if (!flat.some((x) => must.test(`${x.t} ${x.s} ${x.x || ""}`))) bad.push(`'${q}' → 값이 있는 행이 안 나와요`); if (S.search(q)[0]?.[0] === "안내") bad.push(`'${q}' → 배너가 1위`); }
   console.log(`  · 배너 진실성 ${nb}질의`);
 }

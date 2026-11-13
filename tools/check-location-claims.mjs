@@ -16,15 +16,12 @@ const LOC = [
   { phrase: "고교 종류 화면에 있어요", screen: "고교 종류", route: "select/curriculum?v=types", need: [/외·국·자|외고·국제고·자사고/] },
   { phrase: "빈 칸의 사유", route: "select/curriculum?v=schools&lv=high&g=%EC%A7%84%ED%95%99", need: [/빈 칸이 있는 항목 \d+개\(빈 칸 \d+곳(, 사유 \d+가지)?\)의 사유/, /대학 진학 현황/] },
   { phrase: "고교 일정 화면에서 고입 전형 일정", screen: "고교 일정", route: "schedule?t=hs", need: [/전형/, /원서접수/] },
-  { phrase: "중학교 일정 화면에서 배정·입학 일정", screen: "중학교 일정", route: "schedule?t=life", need: [/배정/, /입학/] },
-  { phrase: "배정·입학 준비 화면에서 학교를 고르면 학교군", screen: "배정·입학 준비", route: "select/curriculum?v=middle", need: [/학교군/, /갈 수 있는 중학교/] },
   { phrase: "대학별 과목 화면에서 모집단위별", screen: "대학별 과목", route: "select/curriculum?v=univ", need: [/모집단위/, /필수|권장/] },
   { phrase: "대학별 과목 화면에서 볼 수 있어요", screen: "대학별 과목", route: "select/curriculum?v=univ", need: [/모집단위/, /대학/] },
   { phrase: "대학별 과목 화면에서 관심 대학의 권장·필수 과목을 볼 수 있어요", screen: "대학별 과목", route: "select/curriculum?v=univ", need: [/모집단위/, /대학/] },
   { phrase: "대학별 과목 화면에서 학교별 과목표와 맞춰 볼 수 있어요", screen: "대학별 과목", route: "select/curriculum?v=univ", need: [/과목표/, /모집단위/] },
   { phrase: "학교 보기 화면에서 설명회 노트", screen: "학교 보기", route: "select/curriculum?v=schools&lv=high", need: [/설명회 노트/] },
   { phrase: "고교 일정 화면의 '대학 입시' 탭에서는 2030학년도 수시 원서접수 행의 참고 문장(2028학년도분은 2027.9.20 시작, 보도)만 볼 수 있어요", screen: "고교 일정", route: "schedule?t=univ", need: [/2030학년도 수시/, /2027\.9\.20/] },
-  { phrase: "'고교 일정' 화면의 '학년별 큰 그림' 탭의 '현재 초6 기준'(2033학년도 수능 날짜)", screen: "고교 일정", route: "schedule?t=road&b=B", need: [/2032\.11\.18/, /수능/] },
   { phrase: "'고교 일정' 화면의 '대학 입시' 탭에서(수능 날짜)", screen: "고교 일정", route: "schedule?t=univ", need: [/2029\.11\.15/, /수능/] },
 ];
 const files = readdirSync(`${root}/portal`).filter((f) => f.endsWith(".js"));
@@ -83,7 +80,7 @@ for (const l of LOC) {
   const { makeSearcher, buildSearchData, NO_HL } = await import(`${root}/portal/search.js`), { loadSearchExtra } = await import(`${root}/portal/search-extra.js`), load = async (n) => data(n), store = { get: (k, d) => d, set() {} };
   const parts = await Promise.all([load("policy"), load("summary"), load("links").catch(() => ({ items: [] })), load("subject-info").catch(() => ({ subjects: [] })), load("places"), loadSearchExtra(load)]), S = makeSearcher(store); S.setData(buildSearchData(parts, store));
   let nn = 0;
-  for (const id of NO_HL) { const row = parts[0].find((r) => r.id === id); if (!row) continue; nn++;
+  for (const id of NO_HL) { const row = parts[0].find((r) => r.id === id); if (!row || id.startsWith("b33-")) continue; /* 2033(초6 흐름) 행은 검색에서 뺐다(2026-11-13) */ nn++;
     const key = (row.body || "").match(/\d[\d.~()월화수목금토일]*\d|\d{2,}/)?.[0] || row.title, flat = S.search(row.title).flatMap(([, l]) => l), hit = flat.find((x) => x.t === row.title);
     if (!hit) { bad.push(`NO_HL ${id}: 제목으로 검색해도 행이 안 나와요`); continue; }
     if (!`${hit.inline ? hit.x || "" : ""} ${hit.s || ""}`.slice(0, 300).includes(key)) bad.push(`NO_HL ${id}(${row.title}): 결과에 본문이 바로 보이지 않아요(핵심 값 '${key}')`); }

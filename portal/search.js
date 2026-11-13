@@ -45,7 +45,11 @@ export const NO_HL = new Set(["hs-11", "sch-04", "log-13", "b33-06"]); // 기본
 export const clip = (t, n) => { t = String(t || ""); if (t.length <= n) return t; const head = t.slice(0, n + 40); const m = [...head.matchAll(/[.。]\s|(?:다|요)(?:\.|\s)/g)].map((x) => x.index + x[0].trimEnd().length).filter((i) => i >= n * 0.5 && i <= n + 40 && (t.slice(0, i).split("(").length === t.slice(0, i).split(")").length)).pop(); /* 괄호가 열린 채로 문장 끝에서 끊지 않는다 */ if (m) return t.slice(0, m).trim(); return cutNum(t, n); };
 const withHl = (href, t) => (!t || !/^#/.test(href) || /[?&]hl=/.test(href) || /[?&]v=univ&u=/.test(href) ? href : href + (href.includes("?") ? "&" : "?") + "hl=" + encodeURIComponent(String(t).replace(/ⓘ/g, "").slice(0, 24))); // 검색에서 가면 그 행을 펴서 강조(hl.js)
 const eunNeun = (w) => { const c = String(w).charCodeAt(String(w).length - 1) - 0xac00; return c >= 0 && c <= 11171 && c % 28 === 0 ? "는" : "은"; }; /* 받침 없으면 는 */
-export const routeOf = (r) => (r.topic === "profile-2033" ? "#schedule?t=road&b=B" /* 2033 전망 행은 학년별 큰 그림(현재 초6 기준)이 가장 가깝다. 화면에 따로 그려지지 않는 값은 결과가 본문을 보여 준다 */ : r.topic === "gg-hs-entry" && !(r.events && r.events.length) ? "#select/curriculum?v=types"
+/* 중학교(중입·초6) 화면으로 가거나 그 흐름을 말하는 결과 행(사용자 결정 2026-11-13로 화면을 없앴다) */
+export const MIDH = /[?&]v=middle(?![a-z])|[?&]lv=(?:middle|elementary)(?![a-z])|[?&]t=life(?![a-z])|[?&]b=B(?![A-Za-z])|#mid\//;
+export const MIDT = /^초6|^중[123] · 큰 그림|중학교 (?:신입생|입학|배정|이사|추가배정|재배정|졸업|교복|준비물)|중학교 일정|중학교·초등학교|배정원서|초등학교 → 중학교|출신 초등학교/;
+export const isMidRow = (y) => MIDH.test(String(y.href || "")) || MIDT.test(String(y.t || ""));
+export const routeOf = (r) => (r.topic === "life-schedule" && r.stage === "중졸" ? "#home" /* 중학교 졸업 D-day는 홈에 있다(중학교 일정 화면은 없앴다) */ : r.topic === "life-schedule" && r.stage === "고교" ? "#schedule?t=hs" : r.topic === "profile-2033" ? "#schedule?t=road&b=B" /* 2033 전망 행은 학년별 큰 그림(현재 초6 기준)이 가장 가깝다. 화면에 따로 그려지지 않는 값은 결과가 본문을 보여 준다 */ : r.topic === "gg-hs-entry" && !(r.events && r.events.length) ? "#select/curriculum?v=types"
   : r.topic === "hs-schedule" && r.region === "seoul" ? "#schedule?t=hs&seoul=1" // 서울 행은 일정 화면에서 '서울 보기'를 켜야 보인다
   : r.topic === "admission-structure" || ["cur-29", "cur-30"].includes(r.id) ? "#admission/system?t=types" // 대입 전형 구조 행은 수시·정시(전형) 화면에 있다
   : ["cur-08", "sch-03"].includes(r.id) ? "#admission/system" // 수능 참고 행은 대입 제도 화면에 있다
@@ -71,7 +75,7 @@ const HELP = [["경기도교육청", "https://www.goe.go.kr", "도 단위 공지
 
 // 검색 데이터 구성(브라우저 밖에서도 같은 구조를 쓰도록 분리): [policy, summary, links, subject-info, places, extra] → data
 export function buildSearchData([policy0, summary, links, si, pl, extra], store) {
-  const policy = filterByProfile(policy0, loadProfile(store), { grade3: true }); /* 화면이 보여 주는 행만 검색 결과로(화면에 없는 행으로 링크되지 않게) */
+  const policy = filterByProfile(policy0, loadProfile(store), { grade3: true }).filter((r) => !(r.topic === "life-schedule" && r.stage === "고교")); /* 고교 입학식(월 단위)은 중학교 일정 화면과 함께 화면에서 없어졌다 → 본문만 보여 주는 숨은 행 */ /* 화면이 보여 주는 행만 검색 결과로(화면에 없는 행으로 링크되지 않게) */
   return { places: pl.places || [], guide: extra.map((d) => ({ t: d.t, text: d.text, href: d.href, from: "", sch: d.sch, s: d.s, q: d.q, only: d.only, gap: d.gap, found: d.found, raw: d.raw, strict: d.strict, hl: d.hl, term: d.term, quiet: d.quiet })), policy, policyAll: policy0, dest: extra.dest || {}, destPhrase: extra.destPhrase || {}, summary, links: links.items || [], subjects: si.subjects || (Array.isArray(si) ? si : []) };
 }
 // 점수·순위 계산 전부. 브라우저(DOM) 없이 setData(data) 뒤 search(q)만 부르면 된다.
@@ -98,7 +102,7 @@ const numTokens = (q) => { const t = stripComma(q), out = [];
   return out; };
 const numHas = (text, tk) => { const t = stripComma(text); if (tk.kind === "approx") return [...t.matchAll(/(?<![\d.])(\d{4,7})(?![\d]|\.\d)/g)].some((m) => +m[1] >= tk.v - tk.tol / 2 && +m[1] < tk.v + tk.tol) || new RegExp("(?<![\\d.])" + String(tk.v / 10000).replace(".", "\\.") + "\\s*만").test(t); return tk.kind === "pct" ? new RegExp("(?<![\\d.])" + tk.v.replace(/\./g, "\\.") + "\\s*%").test(t) : new RegExp("(?<![\\d.])" + tk.v + "(?![\\d]|\\.\\d)").test(t); };
 // 질의 속 날짜·기간 표기를 정책 행 본문에서 글자 그대로 찾는다(2028.1.3 ↔ 1.3, '1.10~17'은 그대로·시작·끝 모두). 날짜가 둘 이상이면 모두 든 행이 먼저, 하나뿐이면 다른 낱말도 하나 이상 겹쳐야 한다.
-const dateRows = (q0, policy, visIds) => {
+export const dateRows = (q0, policy, visIds) => {
   const raw = String(q0 || "").replace(/[～〜∼]/g, "~"), refs = [], DT = "\\d{4}\\.\\d{1,2}\\.\\d{1,2}|\\d{1,2}\\.\\d{1,2}";
   for (const m of raw.matchAll(new RegExp(`(?<![\\d.])(${DT})(?:\\s*~\\s*(${DT}|\\d{1,2}))?(?![\\d%])`, "g"))) {
     const a = m[1], b = m[2], md = (x) => x.replace(/^\d{4}\./, ""), year = /^\d{4}/.test(a) ? a.slice(0, 4) : "";
@@ -455,6 +459,14 @@ export function makeSearcher(store) {
     { /* 긴 본문 행(경기 전기 일정 등)의 요약이 앞부분에서 잘려 질의가 말한 값(예술고 접수·발표)이 안 보이면, 질의 낱말이 든 문장을 요약으로 보여 준다 */
       const body = new Map([...data.guide.filter((g) => g.text && !g.term).map((g) => [g.t, String(g.text)]), ...(data.policyAll || data.policy).map((x) => [x.title, String(x.body || "")]), ...(data.policyAll || data.policy).filter((x) => x.id === "gg-14").map((x) => ["경기 전기 학교(과학고·마이스터고 등) 전형 일정", String(x.body || "")])]), tk = String(q).split(/\s+/).map(norm).filter((w) => w.length >= 3 && !STOP.has(w) && !STOP2.has(w) && !/^[\d.~]+$/.test(w));
       if (tk.length) r = r.map(([h, l]) => [h, l.map((y) => { const b = body.get(y.t); if (!b || b.length < 120 || y.term || y.inline) return y; const nb = norm(b), w = tk.find((t) => nb.includes(t)); if (!w) return y; const segs = b.split(/(?<=[가-힣\d)])\.\s+(?=[가-힣])|;\s+|\s\/\s|,\s+(?=[가-힣]{2,12}:)/), isKw = (sg) => { const tk = sg.trim().split(/\s+/); return tk.length >= 3 && !/[\d.,;·()→]/.test(sg) && tk.every((x) => x.length <= 7 && !/[다요고며서니음함]$/.test(x)); }, ok2 = (sg) => !isKw(sg), k0 = segs.findIndex((sg) => ok2(sg) && norm(sg).startsWith(w)), k = k0 >= 0 ? k0 : segs.findIndex((sg) => ok2(sg) && norm(sg).includes(w)); return k > 0 ? { ...y, s: clip(segs[k].trim(), 110) + ((/ · 서울은[^]*$/.exec(y.s || "") || [""])[0]) } : y; })]); }
+    { /* 날짜 하나(연.월.일)만 묻는 말: 본문에 그 날짜가 글자 그대로 든 정책 행이 상위 3위 안에 없으면 그 행(최대 3)을 일정·제도 맨 앞에 */
+      const dm = /^\s*(\d{4})\s*[.\-/]\s*(\d{1,2})\s*[.\-/]\s*(\d{1,2})\s*$/.exec(String(q));
+      if (dm) { const lit = new RegExp(`(?<![\\d.])${dm[1]}\\.${+dm[2]}\\.${+dm[3]}(?![\\d%]|\\.\\d)`), rowsL = (data.policyAll || []).filter((x) => lit.test(String(x.body || "").replace(/\(\s*[월화수목금토일]\s*\)/g, "")) && !isMidRow({ href: routeOf(x), t: x.title })).slice(0, 3), top3 = r.flatMap(([h, l]) => (h === "안내" || h === "공식 확인처" ? [] : l)).slice(0, 3);
+        const missing = rowsL.filter((x) => !top3.some((y) => y.t === x.title));
+        if (missing.length) { const shownIds = new Set(data.policy.map((x) => x.id)), ct = new Set(missing.map((x) => x.title)); r = r.map(([h, l]) => [h, l.filter((y) => !ct.has(y.t))]).filter(([, l]) => l.length); const it = missing.map((x) => ({ href: withHl(routeOf(x), shownIds.has(x.id) && !NO_HL.has(x.id) ? evHlFor(x, q) : null), t: x.title, x: x.body, s: clip(String(x.body || "").replace(/\s+/g, " "), 90), inline: !shownIds.has(x.id) })), k = r.findIndex(([h]) => h === "일정·제도"); if (k >= 0) { r[k] = [r[k][0], [...it, ...r[k][1]]]; if (k > 0) r = [r[k], ...r.filter((_, i) => i !== k)]; } else r = [["일정·제도", it], ...r]; } } }
+    { /* 중학교(중입·초6) 화면은 없앴다(사용자 결정 2026-11-13): 그 화면으로 가는 결과 행은 내지 않는다(데이터는 그대로 두고 검색 결과에서만 거른다) */
+            r = r.map(([h, l]) => [h, l.filter((y) => !isMidRow(y))]).filter(([, l]) => l.length);
+      if (!r.length) r = [["안내", [{ href: "#library/links", t: "정확히 맞는 내용이 없을 수 있어요", s: "같은 낱말이 든 자료를 목록에서 찾지 못했어요 → 학교알리미(학교별 공시)나 해당 학교 누리집에서 확인해요" }]], ["공식 확인처", HELP.slice(0, 3).map(([n, u, d]) => ({ href: u, ext: true, t: n, s: d }))]]; }
     return r;
   };
   return { setData: (d) => { data = d; }, search };
