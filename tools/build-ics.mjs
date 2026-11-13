@@ -5,6 +5,8 @@
 import { readFileSync, writeFileSync } from "node:fs";
 
 const events = JSON.parse(readFileSync("portal/data/events.json", "utf8"));
+const pol0 = JSON.parse(readFileSync("portal/data/policy.json", "utf8")), polRows = pol0.items || pol0.policy || pol0, stageOf = new Map(polRows.map((r) => [r.id, r.stage]));
+const MID_STAGES = new Set(["초졸", "중입"]); // 중학교 입학 흐름(초등 졸업·중학교 배정·입학)은 달력에서 뺐다(사용자 결정 2026-11-13)
 const esc = (t) => String(t).replace(/\\/g, "\\\\").replace(/;/g, "\;").replace(/,/g, "\\,").replace(/\r?\n/g, "\\n");
 // RFC 5545: 한 줄은 75옥텟 이하. 넘으면 CRLF + 공백으로 접는다(UTF-8 문자 경계를 지킨다).
 const fold = (line) => {
@@ -29,6 +31,7 @@ const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//admissions-2030//sch
 let n = 0;
 for (const e of events) {
   if ((e.audience || []).includes("grade3")) continue;
+  if (MID_STAGES.has(stageOf.get(e.policyId))) continue;
   if ((e.learners || []).length && !e.learners.some((x) => x === "A" || x === "all" || x === "common") && !/^life-/.test(e.policyId)) continue; // 2033학년도 등 기본 기준 밖 일정(졸업·입학은 항상 포함)
   const s0 = isMonth(e.start) ? monthStart(e.start) : e.start;
   const e0 = e.end ? (isMonth(e.end) ? monthEnd(e.end) : e.end) : isMonth(e.start) ? monthEnd(e.start) : e.start;

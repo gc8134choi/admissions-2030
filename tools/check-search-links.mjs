@@ -8,7 +8,8 @@ const { chromium } = require("playwright");
 const base = (process.argv[2] || "http://localhost:8000/portal/").replace(/\/?$/, "/");
 const { loadSearchExtra } = await import(`${root}/portal/search-extra.js`);
 const load = async (n) => JSON.parse(readFileSync(`${root}/portal/data/${n}.json`, "utf8"));
-const docs = await loadSearchExtra(load);
+const { isMidRow } = await import(`${root}/portal/search.js`);
+const docs = (await loadSearchExtra(load)).filter((d) => !isMidRow(d)); /* 중학교 화면으로 가는 문서는 검색 결과에서 거르므로 점검 밖(2026-11-13) */
 const { buildSearchData } = await import(`${root}/portal/search.js`); const pol0 = await load("policy"), sd = buildSearchData([pol0, await load("summary"), await load("links"), await load("subject-info"), await load("places"), docs], { get: (k, d) => d, set() {} }); const shownT = new Set((sd.policy || []).map((x) => x.title)), hiddenT = new Set((sd.policyAll || []).filter((x) => !shownT.has(x.title)).map((x) => x.title)); /* 화면에 그려지지 않는 정책 행 제목: 결과가 값을 직접 보여 주는 행 */
 const labels = new Set(); for (const f of ["hs-compare", "middle-compare"]) for (const x of (await load(f)).fields || []) { const w = String(x.label).replace(/\(.*$/, "").trim(); if (w.length >= 3 && w !== "학교 홈페이지" && w !== "학교알리미") labels.add(w); }
 const FIXED = ["학생수", "학급수", "학급당 학생수", "교원수", "전화", "출처", "뜻", "교복", "급식", "진학", "교육과정", "입학 방식", "통학", "매점", "기숙사"];

@@ -43,19 +43,19 @@ export function placeInfo(p, esc) {
 // level: 처음 보여 줄 학교급(elementary|middle|high). 없으면 주소의 lv= 값을 읽는다(#select/curriculum?v=map&lv=middle).
 export async function mapBody(el, { load, esc, focus = null, level = null }) {
   const data = await load("places");
-  const places = data.places;
+  const places = data.places.filter((p) => p.level === "high"); // 중학교·초등학교 학교는 지도에서 뺐다(사용자 결정 2026-11-13, 데이터는 그대로)
   const nearby = data.nearby || [];
   const all = [...places, ...nearby];
   if (!places.length) { el.innerHTML = `<div class="ed"><h2>학교 지도</h2><p class="muted">아직 정리 중이에요.</p></div>`; return; }
   const lv0 = level || new URLSearchParams((location.hash.split("?")[1] || "")).get("lv");
-  const st = (el.__map ||= { level: LEVEL[lv0] ? lv0 : "all", view: "map", sel: null, near: false });
+  const st = (el.__map ||= { level: "high", view: "map", sel: null, near: false });
   if (focus && all.some((p) => p.id === focus)) { st.sel = focus; st.view = "map"; const fp = all.find((p) => p.id === focus); if (st.level !== "all" && fp.level && fp.level !== st.level && LEVEL[fp.level]) st.level = fp.level; } // 주소의 학교급 필터가 그 학교를 가리면 학교의 학교급으로(마커가 보이게)
   let map = null, layer = null, markers = new Map(), mapFailed = false, focusReq = null, lastEls = []; /* focusReq: 키보드로 연 뒤 포커스를 보낼 곳({at:[lat,lng]} 또는 {detail:true}) */
   const shown = () => [...places.filter((p) => st.level === "all" || p.level === st.level), ...(st.near ? nearby : [])];
   const chip = (k, v, t, cur) => `<button type="button" class="chip ${v === cur ? "on" : ""}" data-k="${k}" data-v="${v}" aria-pressed="${v === cur}">${t}</button>`;
 
   el.innerHTML = `<div class="ed pl-wrap"><div class="chipbar"><span class="flabel">표시</span><div class="chips" id="pl-view"></div></div>
-    <div class="chipbar"><span class="flabel">학교급</span><div class="chips" id="pl-level"></div></div>
+    <div class="chipbar" hidden><span class="flabel">학교급</span><div class="chips" id="pl-level"></div></div>
     <div class="chipbar"><span class="flabel">주변</span><div class="chips" id="pl-near"></div></div>
     <div id="pl-map" class="pl-map" hidden></div><p id="pl-fail" class="muted small" hidden>지도를 불러오지 못했어요. 목록과 링크로 확인해 주세요.</p>
     <div id="pl-detail" class="pl-detail" hidden></div><div id="pl-list"></div>
@@ -65,7 +65,7 @@ export async function mapBody(el, { load, esc, focus = null, level = null }) {
   const drawChips = () => {
     $("#pl-view").innerHTML = chip("view", "map", "지도", st.view) + chip("view", "list", "목록", st.view);
     $("#pl-near").innerHTML = nearby.length ? `<button type="button" class="chip ${st.near ? "on" : ""}" data-k="near" data-v="${st.near ? "" : "1"}" aria-pressed="${st.near}">주변 시설 보기</button>` : '<span class="muted small">준비 중</span>';
-    $("#pl-level").innerHTML = chip("level", "all", "전체", st.level) + Object.entries(LEVEL).map(([k, v]) => chip("level", k, v[1], st.level)).join("");
+    $("#pl-level").innerHTML = ""; $("#pl-level").hidden = true; /* 학교급 칩은 없앴다: 중학교·초등학교 화면은 사용자 결정(2026-11-13)으로 뺐고 지도는 고교만 */
   };
   const drawList = () => {
     $("#pl-list").innerHTML = `<ul class="pl-list">${shown().map((p) => `<li class="${p.id === st.sel ? "on" : ""}" data-id="${esc(p.id)}"><button type="button" class="pl-row" data-id="${esc(p.id)}"><span class="pl-lv">${lvOf(p)[0]}</span><span><b>${esc(p.name)}</b><span class="muted small"> ${esc(p.address)}</span>${p.lat == null ? ' <span class="muted small">(지도 위치 없음)</span>' : ""}</span></button></li>`).join("")}</ul>`;

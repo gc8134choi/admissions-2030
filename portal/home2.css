@@ -37,7 +37,7 @@ body:has(#main[data-r=home]) .legend{display:none}
 .hm2 .mss{margin:0 0 6px}
 .hm2 .hint{font-size:16px;margin:6px 0 0}
 @media (min-width:1100px){ /* 좁은 폭(900~1099)은 한 열로 쌓는다: 열이 좁아 제목 열이 몇 글자만 남던 문제 */
-  .hm2{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+  .hm2{grid-template-columns:minmax(0,860px);align-items:stretch}
   .hm2-col{display:contents}
   .hm2-col[data-col=A]>*{grid-column:1}
   .hm2-col[data-col=B]>*{grid-column:2}

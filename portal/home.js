@@ -45,7 +45,6 @@ const ART = {
 const HIDE_ON_HOME = new Set(["gg-08", "gg-20"]);
 const COLS = [
   { id: "A", side: "고등학교", stage: "고입", stones: /졸업|입학식/, intro: ["select/curriculum?v=types", "select/curriculum?v=schools&lv=high", "life/credit", "schedule?t=hs"], all: "#schedule?t=hs" },
-  { id: "B", side: "중학교", stage: "중입", stones: /졸업|입학식/, intro: ["select/curriculum?v=middle", "select/curriculum?v=schools&lv=middle", "schedule?t=life"], all: "#schedule?t=life" },
 ];
 const MENU = new Map(GROUPS.flatMap((g) => g.items.map((it) => [it.id, it])));
 const PSTX = { reported: "보도", estimated: "추정", unknown: "미정", material: "사용자 제공" };
@@ -137,12 +136,12 @@ export function registerHome(views, { esc, load, store, profiles }) {
         <details class="dp hm2-b hm2-intro" open><summary><h3>${C.side} 소개</h3></summary><ul class="h2-go">${intro}</ul></details>
       </div>`;
     };
-    let showCol = "A"; try { showCol = localStorage.getItem("portal.homecol") === "B" ? "B" : "A"; } catch {} // 좁은 폭(<1100): 고등학교 | 중학교 탭, 한 번에 한 열(마지막에 고른 쪽 기억)
-    el.innerHTML = `<div class="hm hm2" data-show="${showCol}"><div class="hm2-tabs" role="tablist" aria-label="고등학교 · 중학교">${COLS.map((C) => `<button type="button" role="tab" id="hmtab-${C.id}" aria-controls="hmcol-${C.id}" data-tab="${C.id}" aria-selected="${C.id === showCol}" tabindex="${C.id === showCol ? 0 : -1}">${esc(C.side)}</button>`).join("")}</div>${COLS.map(colHtml).join("")}</div>`;
-    { const mq = matchMedia("(min-width:1100px)"), roles = () => el.querySelectorAll(".hm2-col").forEach((c) => { if (mq.matches) { c.setAttribute("role", "region"); c.removeAttribute("aria-labelledby"); c.setAttribute("aria-label", c.dataset.col === "A" ? "고등학교" : "중학교"); } else { c.setAttribute("role", "tabpanel"); c.removeAttribute("aria-label"); c.setAttribute("aria-labelledby", "hmtab-" + c.dataset.col); } }); roles(); mq.addEventListener?.("change", roles); } // 넓은 폭은 탭이 없으니 열은 구역(region), 좁은 폭은 탭 패널
+    const showCol = "A"; /* 중학교 열은 없앴다(2026-11-13 사용자 결정): 홈은 고등학교 한 열 */ // 좁은 폭(<1100): 고등학교 | 중학교 탭, 한 번에 한 열(마지막에 고른 쪽 기억)
+    el.innerHTML = `<div class="hm hm2" data-show="${showCol}">${COLS.map(colHtml).join("")}</div>`;
+    { const mq = matchMedia("(min-width:1100px)"), roles = () => el.querySelectorAll(".hm2-col").forEach((c) => { if (mq.matches) { c.setAttribute("role", "region"); c.removeAttribute("aria-labelledby"); c.setAttribute("aria-label", c.dataset.col === "A" ? "고등학교" : "중학교"); } else { c.setAttribute("role", "region"); c.removeAttribute("aria-labelledby"); c.setAttribute("aria-label", "고등학교"); } }); roles(); mq.addEventListener?.("change", roles); } // 넓은 폭은 탭이 없으니 열은 구역(region), 좁은 폭은 탭 패널
         const tabsEl = el.querySelector(".hm2-tabs"), pickTab = (c, focus) => { const hm = el.querySelector(".hm2"); hm.dataset.show = c; hm.querySelectorAll("[data-tab]").forEach((x) => { const on = x.dataset.tab === c; x.setAttribute("aria-selected", String(on)); x.tabIndex = on ? 0 : -1; if (on && focus) x.focus(); }); try { localStorage.setItem("portal.homecol", c); } catch {} };
-    tabsEl.addEventListener("click", (e) => { const b = e.target.closest("[data-tab]"); if (b) pickTab(b.dataset.tab); });
-    tabsEl.addEventListener("keydown", (e) => { const ids = COLS.map((C) => C.id), cur = ids.indexOf(el.querySelector(".hm2").dataset.show); let n = -1; if (e.key === "ArrowRight" || e.key === "ArrowDown") n = (cur + 1) % ids.length; else if (e.key === "ArrowLeft" || e.key === "ArrowUp") n = (cur - 1 + ids.length) % ids.length; else if (e.key === "Home") n = 0; else if (e.key === "End") n = ids.length - 1; if (n < 0) return; e.preventDefault(); pickTab(ids[n], true); });
+    tabsEl?.addEventListener("click", (e) => { const b = e.target.closest("[data-tab]"); if (b) pickTab(b.dataset.tab); });
+    tabsEl?.addEventListener("keydown", (e) => { const ids = COLS.map((C) => C.id), cur = ids.indexOf(el.querySelector(".hm2").dataset.show); let n = -1; if (e.key === "ArrowRight" || e.key === "ArrowDown") n = (cur + 1) % ids.length; else if (e.key === "ArrowLeft" || e.key === "ArrowUp") n = (cur - 1 + ids.length) % ids.length; else if (e.key === "Home") n = 0; else if (e.key === "End") n = ids.length - 1; if (n < 0) return; e.preventDefault(); pickTab(ids[n], true); });
     decorateTerms(el, ".h2-go"); initTerms(); // 용어 ⓘ는 소개 블록에만(일정 제목 줄이 깨지지 않게)
     if (matchMedia("(max-width:899px)").matches) el.querySelectorAll(".hm2-intro").forEach((d) => d.removeAttribute("open")); // 모바일 홈 높이: 소개는 눌러서 연다
     { // 검색 결과 등에서 "#home?open=soonp"(곧 있을 일)로 오면 그 자리로 간다
