@@ -519,7 +519,6 @@ const filesApi = registerFiles(views, { esc, load, nm });
 // 보관함 > 바로가기: 분류별 헤어라인 목록. 공식·공공은 구분해 적고, 확인일을 함께 보여 준다(data/links.json).
 views.midlife = async (el) => {
   el.innerHTML = `<div class="ed"><ul class="rows lk">
-    <li class="row"><div><h3><a href="#select/curriculum?v=middle">교과서·교과 구성</a></h3><p>배정·입학 준비 화면에서 학교를 열면 나와요.</p></div></li>
     <li class="row"><div><h3><a href="#schedule?t=life" data-stage="중입">중학교 시기 일정</a></h3><p>중학교 배정·입학 일정을 일정 화면에 모여 있어요.</p></div></li></ul>
     ${emptyLine(esc, SOON_WHY["중학교 교육과정"])}</div>`;
   el.onclick = (e) => { if (e.target.closest("[data-stage]")) store.set("portal.schedule.stage", "중입"); };
@@ -608,8 +607,9 @@ function foldTypeSections(host) {
 function rewriteHash(id, q) {
   if (id !== "select/curriculum") return null;
   const v = q.get("v"), n = new URLSearchParams(q);
-  if (v === "middle" && (q.get("open") === "cmp" || q.has("g"))) { n.set("v", "schools"); n.set("lv", "middle"); n.delete("open"); return `${id}?${n}`.replace(/%2C/g, ","); } // 중학교 비교·학교별 항목 → 중학교 학교 보기
-  if (v === "map" && (q.get("lv") === "middle" || q.get("lv") === "elementary")) { n.set("lv", "middle"); /* 초등학교 지도는 중학교 보기의 지도(학교급 필터는 선택한 학교의 학교급으로 맞춰진다) */ n.set("v", "schools"); n.set("show", "map"); return `${id}?${n}`.replace(/%2C/g, ","); } // 중학교 지도 → 학교 보기의 지도
+  /* 중학교 화면은 없앴다(사용자 결정 2026-11-13): 옛 중학교 주소는 홈 또는 고교 학교 보기로 이동한다(주소가 깨지지 않게) */
+  if (v === "middle") return "home";
+  if (q.get("lv") === "middle" || q.get("lv") === "elementary") { n.set("lv", "high"); if (v === "map") { n.set("v", "schools"); n.set("show", "map"); } n.delete("p"); n.delete("from"); n.delete("m"); n.delete("col"); n.delete("g"); n.delete("in"); n.delete("c"); return `${id}?${n}`.replace(/%2C/g, ","); }
   if (!v || v === "hs" || v === "summary") { n.set("v", "schools"); n.set("lv", "high"); if (v === "hs" && q.get("ty") === "1") { n.set("v", "types"); n.delete("lv"); n.delete("ty"); } return `${id}?${n}`.replace(/%2C/g, ","); } // 학교 비교(옛 주소) → 고교 학교 보기, 고교 종류(ty=1)는 전용 화면
   if (v === "compare") { n.set("v", "schools"); n.set("lv", "high"); n.set("show", "subj"); return `${id}?${n}`.replace(/%2C/g, ","); } // 과목 비교 → 학교 보기의 과목
   if (v === "map") { n.set("v", "schools"); n.set("lv", "high"); n.set("show", "map"); return `${id}?${n}`.replace(/%2C/g, ","); } // 고교 지도 → 학교 보기의 지도

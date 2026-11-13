@@ -106,7 +106,7 @@ export async function midPanel({ load, esc, policy }) {
   const ids = ["life-04", "life-06", "life-07"];
   const rows = ids.map((id) => policy.find((r) => r.id === id)).filter(Boolean).map((r) => ({ t: r.title.replace(/\(.*\)/, "").trim(), d: ymd(r.events?.[0]?.start) }));
   return `<section class="dp mid t1"><h2>${stageTag("중입", esc)}<em>중입</em>중학교 배정<a href="#select/curriculum?v=middle">열기 ›</a></h2>
-    <p class="mid-s"><b>성복초 → 수지1중학군</b> <small class="muted">${names.length ? `${esc(names.slice(0, 3).join(" · "))}${names.length > 3 ? ` 외 ${names.length - 3}` : ""}` : "학교 목록은 배정·입학 준비 화면에서"}</small></p>
+    <p class="mid-s"><b>성복초 → 수지1중학군</b> <small class="muted">${names.length ? `${esc(names.slice(0, 3).join(" · "))}${names.length > 3 ? ` 외 ${names.length - 3}` : ""}` : "학교 목록은 중학교 배정 안내에서"}</small></p>
     <ul>${rows.map((r) => `<li><span>${esc(r.t)}</span> <b class="num">${esc(r.d)}</b></li>`).join("")}</ul></section>`;
 }
 

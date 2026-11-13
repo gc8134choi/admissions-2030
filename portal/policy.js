@@ -69,7 +69,7 @@ const bodyHtml = (t, esc2 = esc) => {
   const cnt = (n) => `<span class="cnt">${n}</span>`;
   const tabs = (items, on) => `<div class="ed-tabs">${items.map(([k, h, t]) => `<a href="${h}" class="${k === on ? "on" : ""}">${t}</a>`).join("")}</div>`;
   // 일정 화면: 위에 학교급 토글(중학교 | 고등학교), 고등학교일 때만 탭 3개(고교 입학·대학 입시·학년별 큰 그림). 중학교 일정은 탭 없이 한 화면.
-  const schTabs = (on) => `<div class="ed-tabs sch-lv" role="group" aria-label="학교급"><a href="#schedule?t=life" class="${on === "life" ? "on" : ""}"${on === "life" ? ' aria-current="page"' : ""}>중학교</a><a href="#schedule?t=hs" class="${on !== "life" ? "on" : ""}"${on !== "life" ? ' aria-current="page"' : ""}>고등학교</a></div>${on === "life" ? "" : tabs([["hs", "#schedule?t=hs", "고교 입학"], ["univ", "#schedule?t=univ", "대학 입시"], ["road", "#schedule?t=road", "학년별 큰 그림"]], on)}`;
+  const schTabs = (on) => tabs([["hs", "#schedule?t=hs", "고교 입학"], ["univ", "#schedule?t=univ", "대학 입시"], ["road", "#schedule?t=road", "학년별 큰 그림"]], on); /* 중학교 탭은 없앴다(2026-11-13 사용자 결정) */
   const today = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
   // 날짜 표시: 일 단위 값에는 요일을 코드로 계산해 붙이고, 월 단위 값은 그대로 둔다.
   const DOW = "일월화수목금토";
@@ -198,7 +198,7 @@ const bodyHtml = (t, esc2 = esc) => {
   views.schedule = async (el, query) => {
     // 주소에 t가 없으면 홈에서 고른 "주로 보는 단계"에 맞는 탭으로 연다(중학교 입학 준비→졸업·입학, 대입 준비→대입)
     const fo0 = store.get("portal.focus", null), foc0 = Array.isArray(fo0) && fo0.length === 1 ? fo0[0] : "";
-    const tab = ["hs", "univ", "life", "road"].includes(query.get("t")) ? query.get("t") : ({ 중입: "life", 대입: "univ" }[foc0] || "hs");
+    const tab = ["hs", "univ", "road"].includes(query.get("t")) ? query.get("t") : ({ 대입: "univ" }[foc0] || "hs"); /* t=life(옛 중학교 일정)는 고교 입학 탭으로 */
     if (tab === "road") {
       const tb = `<div class="ed">${schTabs("road")}</div>`;
       el.innerHTML = tb + '<div id="rdhost"></div>';

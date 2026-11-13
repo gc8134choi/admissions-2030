@@ -52,7 +52,7 @@ export function registerFiles(views, { esc, load, nm }) {
         ${(f.schoolIds || []).length ? `<span class="fl-sch">${f.schoolIds.map((id) => nm(id, schools.find((s) => s.id === id)?.name || id, 18)).join(" ")}</span>` : ""}</span></button>`;
 
   views.files = async (el, query) => {
-    const [files, schools] = await Promise.all([load("files"), load("schools")]);
+    const [files0, schools] = await Promise.all([load("files"), load("schools")]), files = files0.filter((f) => f.topic !== "middle-school-curriculum"); /* 중학교 자료는 화면에서 뺐다(2026-11-13, 파일 데이터는 그대로) */
     el.innerHTML = files.length ? `<div class="fl-grid">${files.map((f) => card(f, schools)).join("")}</div><p class="muted small">카드를 누르면 크게 볼 수 있습니다. 학교에서 받은 원본 사진·양식입니다.</p>` : '<p class="muted">등록된 원본 파일이 없습니다.</p>';
     // 이미지가 없으면(아직 올리기 전) 썸네일 대신 "파일 준비 중"만 보인다
     el.querySelectorAll(".fl-thumb img").forEach((im) => { const miss = () => im.closest(".fl-thumb").classList.add("miss"); im.addEventListener("error", miss); if (im.complete && im.naturalWidth === 0) miss(); });

@@ -62,10 +62,6 @@ const cur = (f) => (id, q) => id === "select/curriculum" && f(q.get("v") || "sum
 const at = (rid) => (id) => id === rid;
 export const TABS = [
   { id: "home", title: "오늘", groups: [{ key: "", title: "", items: [{ id: "home", title: "오늘", m: at("home") }] }] },
-  { id: "mid", title: "중학교", groups: [{ key: "", title: "", items: [
-    { id: "select/curriculum?v=middle", title: "중학교 배정", m: cur((v) => v === "middle") },
-    { id: "select/curriculum?v=map&lv=middle", title: "학교 지도", m: cur((v, lv) => v === "map" && lv === "middle") },
-    { id: "mid/life", title: "중학교 생활", m: at("mid/life") }] }] },
   { id: "high", title: "고등학교", groups: [{ key: "", title: "", items: [
     { id: "select/curriculum?v=hs", title: "학교 비교", m: cur((v) => v === "hs" || v === "summary" || v === "compare") },
     { id: "select/curriculum?v=map", title: "학교 지도", m: cur((v, lv) => v === "map" && lv !== "middle") },

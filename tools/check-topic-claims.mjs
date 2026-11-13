@@ -27,9 +27,9 @@ for (const c of CLAIMS) {
   }
 }
 // 학교급 × 항목 전수: 모든 대응표 항목을 고·중 학교 각각에 대해 문구·주소·확인처를 대조한다
-const NAME = [[/고교 종류/, /v=types/], [/고교 보기/, /v=schools&lv=high/], [/중학교 보기/, /v=schools&lv=middle/], [/학교 요약/, /[?&]s=/], [/고교 일정/, /schedule\?t=hs/], [/중학교 일정/, /schedule\?t=life/], [/배정·입학 준비/, /v=middle/]];
+const NAME = [[/고교 종류/, /v=types/], [/고교 보기/, /v=schools&lv=high/], [/학교 요약/, /[?&]s=/], [/고교 일정/, /schedule\?t=hs/]];
 const menu = readFileSync(`${root}/portal/menu-tree.js`, "utf8"), allData = readFileSync(`${root}/portal/data/policy.json`, "utf8") + ["hs-types", "middle-guide", "hs-compare", "middle-compare"].map((n) => readFileSync(`${root}/portal/data/${n}.json`, "utf8")).join("");
-const SCREEN = ["고교 종류", "고교 보기", "중학교 보기", "고교 일정", "중학교 일정", "배정·입학 준비"]; // 문구가 부르는 화면 이름이 메뉴에 실제로 있어야 한다
+const SCREEN = ["고교 종류", "고교 보기", "고교 일정"]; /* 중학교 화면 이름은 중학교 그룹 삭제(2026-11-13)로 뺐다 */ // 문구가 부르는 화면 이름이 메뉴에 실제로 있어야 한다
 for (const nm of SCREEN) if (!menu.includes(nm)) bad.push(`문구가 쓰는 화면 이름 '${nm}'이 메뉴(menu-tree.js)에 없어요`);
 import { readdirSync } from "node:fs";
 const elIds = load("places").places.filter((p) => p.level === "elementary").map((p) => p.id), ALLOW = new Set(["places.json", "middle.json", "school-codes.json", "changes.json", "index.json", "sources.json", "facets.json"]);

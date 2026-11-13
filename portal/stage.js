@@ -1,6 +1,6 @@
 // 입시 단계(중입·고입·대입) 규칙 한 곳. 화면(홈·바로가기)과 다른 세션이 함께 import한다.
 // 행의 stage 필드 값(초졸·중입·중졸·고교 …)과 topic·제목으로 3단계로 접는다. 어느 단계도 아니면 null(태그 없음).
-export const STAGES = ["중입", "고입", "대입"];
+export const STAGES = ["고입", "대입"]; // 중입 단계 선택은 중학교 그룹 삭제(2026-11-13)로 뺐다. stageOf는 중입 행을 여전히 가려낸다(화면에서 거르기 위해)
 const TOPIC = {
   "hs-schedule": "고입", "gg-hs-entry": "고입", "hs-types": "고입", "high-school-assignment": "고입", "hs-choice-opinion": "고입",
   "hs-credit-system": "고입", "curriculum-guide": "고입", "academy-material": "고입",

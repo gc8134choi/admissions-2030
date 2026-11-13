@@ -2,12 +2,8 @@
 // 항목: id = 이동 주소(해시, 기존 이름 그대로), title = 쉬운 말 이름, desc = 이름 아래 작은 회색 한 줄(어떤 내용이 있는지),
 //       vals = 비교표 계열 항목이 설명 줄에 적은 항목의 값이 학교 절반 이상에 실제로 있어야 함({data, fields}), keys = 설명 줄의 핵심어(설명 줄 안에 있고 화면에도 실제로 있어야 함: tools/check-menu-captions.mjs), r = 화면 경로 id, q = 이 항목으로 볼 조건(값, 값 배열, null=없어야 함, "!값"=그 값이 아니어야 함; v는 비면 summary), also = 같은 항목으로 켜지는 다른 경로.
 export const HOME = { id: "home", title: "스쿨 라이프", desc: "다가올 졸업과 날짜순 일정", keys: ["졸업","일정"], r: "home"};
-// 최상위는 중학교·고등학교 두 그룹(사용자 결정 2026-11-08). sub = 그 항목부터 시작하는 의미 단위 소제목(시각 구분만, 메뉴 단계는 2단계). foot = 메뉴 맨 아래 작은 글자 링크 묶음(화면 모드 위).
+// 최상위는 고등학교 그룹과 자료·소식(중학교 그룹은 사용자 결정 2026-11-13으로 없앴다). sub = 그 항목부터 시작하는 의미 단위 소제목(시각 구분만, 메뉴 단계는 2단계). foot = 메뉴 맨 아래 작은 글자 링크 묶음(화면 모드 위).
 export const GROUPS = [
-  { id: "mid", title: "중학교", items: [
-    { id: "select/curriculum?v=middle", title: "배정·입학 준비", desc: "발표·추가배정·등록·재배정·근거리 중학교·예비소집·교복·준비물", keys: ["발표", "추가배정", "등록", "재배정", "근거리", "예비소집", "교복", "준비물"], r: "select/curriculum", q: { v: "middle" } },
-    { id: "select/curriculum?v=schools&lv=middle", title: "학교 보기", page: "중학교 보기", desc: "중학교 13곳 학생 수·급식·교복 표로 견주기·지도·교과서", keys: ["학생", "급식", "교복", "지도", "교과서"], vals: { data: "middle-compare", fields: ["students", "meal", "uniform"] }, r: "select/curriculum", q: { v: "schools", lv: "middle" } },
-    { id: "schedule?t=life", title: "중학교 일정", page: "중학교 일정", desc: "졸업·입학(배정원서·입학식)", keys: ["졸업", "배정원서", "입학"], r: "schedule", q: { t: "life" } }] },
   { id: "hs", title: "고등학교", items: [
     { id: "select/curriculum?v=types", title: "고교 종류", desc: "일반·특목·자사고 종류와 지원 방법·지망·구역·고입 내신 반영·선지원 추첨", keys: ["일반","자사고","지원","지망","구역","고입 내신","선지원","추첨"], r: "select/curriculum", q: { v: "types"}, sub: "학교 알아보기"},
     { id: "select/curriculum?v=schools&lv=high", title: "학교 보기", page: "고교 보기", desc: "학교별 기본 정보·입학 방식·구역·과목·지도·설명회 노트", keys: ["입학 방식", "구역", "과목", "지도", "설명회"], vals: { data: "hs-compare", fields: ["type", "admission", "zone"] }, r: "select/curriculum", q: { v: "schools", lv: "high" } },
@@ -24,5 +20,5 @@ export const GROUPS = [
     { id: "library/files", title: "원본 파일", desc: "학교에서 받은 사진·양식", keys: ["사진","양식"], r: "library/files"},
     { id: "library/settings", title: "화면 설정", desc: "어둡게·스킨", keys: ["어둡","스킨"], r: "library/settings"}] },
 ];
-// 하단 바(모바일, 900px 미만): 메뉴 | 오늘 | 일정 | 검색 (일정은 중학교·고등학교 일정을 모두 보는 전체 일정 화면)
+// 하단 바(모바일, 900px 미만): 메뉴 | 오늘 | 일정 | 검색 (일정은 전체 일정 화면)
 export const BOTTOM = [{ key: "menu", label: "메뉴"},{ key: "home", label: "오늘", href: "#home", r: "home"},{ key: "sched", label: "일정", href: "#schedule", r: "schedule"},{ key: "search", label: "검색"}];
