@@ -2,7 +2,7 @@
 // 데이터는 처음 열 때 한 번에 병렬로 읽는다. 최근 검색은 이 브라우저(localStorage)에만 저장한다.
 import { allItems } from "./nav-tree.js";
 import { stageOf } from "./stage.js";
-import { firstVal } from "./val-tokens.js";
+import { allVals } from "./val-tokens.js";
 import { cutNum, loadSearchExtra, univInfo, curInfo, midZone, elemZone, FIELDS, univRules } from "./search-extra.js";
 import { sayOf, noneText, REGION_WORDS, GG_WORDS, REGION_ALIAS, regionKnown, regionFindPattern, gyeonggiNote } from "./search-claims.js";
 import { loadProfile, filterByProfile } from "./profile.js";
@@ -435,7 +435,7 @@ export function makeSearcher(store) {
       const p33 = new Map((data.policyAll || []).filter((x) => x.topic === "profile-2033").map((x) => [x.title, routeOf(x)]));
       r = r.map(([h, l]) => [h, l.map((y) => { const rt = p33.get(y.t); if (!rt || !y.href || y.ext || y.term) return y; const m = /^([^&?]*(?:\?[^&]*)?)((?:&.*)?)$/.exec(y.href); const base = y.href.replace(/[&?]hl=.*$/, ""); return base === rt ? y : { ...y, href: rt + (/[&?]hl=/.test(y.href) ? y.href.slice(y.href.search(/[&?]hl=/)).replace(/^\?/, "&") : "") }; })]); }
     { /* '이 값은 이 결과의 본문에만 있어요' 안내: 행 요약의 첫 값(날짜·큰 수, val-tokens.js 정규화)이 도착 화면 본문의 값 토큰에 없을 때만 자동으로 붙인다(도착 화면 토큰은 tools/build-dest-values.mjs가 만든 data/dest-values.json, check-search-rows가 최신인지·안내가 맞는지 검사) */
-      r = r.map(([h, l]) => [h, l.map((y) => { if (!y.inline) return y; const rt = String(y.href || "").replace(/[&?]hl=.*$/, ""), fv = firstVal(y.s), toks = (data.dest || {})[rt]; return { ...y, note: fv ? !!toks && !toks.includes(fv) : ((data.destPhrase || {})[rt] || []).includes(y.t) }; })]); }
+      r = r.map(([h, l]) => [h, l.map((y) => { if (!y.inline) return y; const rt = String(y.href || "").replace(/[&?]hl=.*$/, ""), vs = [...allVals(y.s)], toks = (data.dest || {})[rt]; return { ...y, note: vs.length ? !!toks && !vs.some((v) => toks.includes(v)) : ((data.destPhrase || {})[rt] || []).includes(y.t) }; })]); }
     { /* 메뉴 이름을 그대로(+모음·목록·화면) 쓴 질의는 그 메뉴 항목을 맨 앞에(메뉴 이름·설명은 menu-tree가 정본) */
       const SUF = /\s*(?:모음|목록|화면|메뉴|페이지|보기|바로가기)\s*$/, bare = (x) => String(x).replace(/[^가-힣A-Za-z0-9]/g, "");
       let sq = String(q), hadSuf = false; const its = allItems(), stages = [sq]; while (SUF.test(sq) && sq.replace(SUF, "").trim()) { sq = sq.replace(SUF, ""); hadSuf = true; stages.push(sq); }
