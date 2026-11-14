@@ -73,13 +73,19 @@ function renderHome() {
       .filter((e) => (e.end || e.start).length === 7 ? (e.end || e.start) >= month : (e.end || e.start) >= today)
       .sort((a, b) => a.start.localeCompare(b.start));
     const name = (e) => (e.label ? e.title + " · " + e.label : e.title);
-    const next = list.find((e) => e.start.length === 10 && e.start >= today);
+    // 가까운 3건: 일 단위 날짜 중 start>=오늘, 날짜순(같은 날은 events.json 순서 그대로, 일정 단위로 3건)
+    const nexts = list.filter((e) => e.start.length === 10 && e.start >= today).slice(0, 3);
     const dday = document.createElement("section"); dday.className = "home-dday";
-    if (next) {
-      const n = dayNum(next.start) - dayNum(today);
-      const big = document.createElement("p"); big.className = "dday-n"; big.textContent = n === 0 ? "D-Day" : "D-" + n;
-      const t = document.createElement("p"); t.className = "dday-t"; t.textContent = name(next) + (next.status !== "confirmed" ? " (예정)" : "");
-      dday.append(big, t);
+    if (nexts.length) {
+      const ol = document.createElement("ol"); ol.className = "dday-list";
+      nexts.forEach((e) => {
+        const n = dayNum(e.start) - dayNum(today);
+        const li = document.createElement("li");
+        const big = document.createElement("p"); big.className = "dday-n"; big.textContent = n === 0 ? "D-Day" : "D-" + n;
+        const t = document.createElement("p"); t.className = "dday-t"; t.textContent = name(e) + (e.status !== "confirmed" ? " (예정)" : "");
+        li.append(big, t); ol.append(li);
+      });
+      dday.append(ol);
     } else dday.textContent = "다가올 일정이 없어요.";
     const ul = document.createElement("ul"); ul.className = "home-list";
     list.forEach((e) => {
