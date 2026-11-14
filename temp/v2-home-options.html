@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>v2 홈 화면 안 5개 (시안)</title>
+<style>
+@font-face{font-family:'GmarketSans';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');font-weight:500;font-display:swap}
+@font-face{font-family:'GmarketSans';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');font-weight:700;font-display:swap}
+:root{--pt:#C4310D;--ink:#1a1a1a;--sub:#555;--line:#d6d6d6;--bg:#f0f0f0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 16px/1.6 'GmarketSans',system-ui,sans-serif}
+main{max-width:1100px;margin:0 auto;background:#fff;padding:32px 28px 64px}
+h1{font-size:28px;font-weight:700;margin:0 0 8px}
+h2{font-size:24px;font-weight:700;margin:0 0 4px}
+h3{font-size:18px;font-weight:700;margin:20px 0 6px}
+p{margin:6px 0}
+.intro{color:var(--sub)}
+.intro b{color:var(--ink)}
+.toc{margin:16px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.toc li{border-bottom:1px solid var(--line)}
+.toc a{display:block;padding:10px 0;color:var(--ink);text-decoration:none;min-height:44px}
+.toc a b{color:var(--pt);margin-right:8px}
+section.opt{margin-top:56px;padding-top:24px;border-top:3px solid var(--ink)}
+.concept{font-size:18px;color:var(--sub);margin-bottom:16px}
+/* 목업 틀 */
+.frame{border:1px solid #999;background:#fff;margin:12px 0 4px}
+.nav{display:flex;justify-content:flex-end;gap:20px;padding:12px 16px;border-bottom:1px solid var(--line);font-size:15px;flex-wrap:wrap}
+.nav span:first-child{margin-right:auto;font-weight:700}
+.nav .on{color:var(--pt);font-weight:700}
+.scr{padding:20px}
+.cap{font-size:14px;color:var(--sub)}
+.big{font-size:40px;font-weight:700;line-height:1.15}
+.pt{color:var(--pt)}
+.date{font-weight:700;white-space:nowrap}
+.rows{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:150px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.row .more{color:var(--sub);font-size:15px}
+.lnk{color:var(--pt);text-decoration:underline;font-weight:700}
+/* 평가표 */
+.eval{display:grid;grid-template-columns:1fr 1fr;gap:0 32px;margin-top:16px}
+.eval ul{margin:4px 0;padding-left:20px}
+.verdict{margin-top:12px;padding:12px 0;border-top:1px solid var(--line)}
+.verdict b{display:inline-block;min-width:150px}
+/* A안 */
+.a-hero{border-bottom:2px solid var(--ink);padding-bottom:16px}
+.a-hero .what{font-size:26px;font-weight:700;margin:6px 0}
+.a-next{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);margin-top:16px}
+.a-next div{padding:12px 12px 12px 0;border-right:1px solid var(--line)}
+.a-next div+div{padding-left:12px}
+.a-next div:last-child{border-right:0}
+/* B안 */
+.b-grp h4{font-size:17px;margin:18px 0 4px;font-weight:700}
+.b-grp h4 small{font-weight:500;color:var(--sub);font-size:14px;margin-left:6px}
+.b-chk{display:grid;grid-template-columns:28px 160px 1fr;gap:8px;padding:10px 0;border-bottom:1px solid var(--line);align-items:start}
+.b-chk .box{width:22px;height:22px;border:2px solid var(--ink);margin-top:2px}
+/* C안 */
+.c-wrap{overflow-x:auto}
+.c-tl{position:relative;min-width:760px;height:300px;border-top:1px solid var(--line)}
+.c-m{position:absolute;top:0;bottom:0;border-left:1px solid var(--line);font-size:14px;color:var(--sub);padding:4px 6px}
+.c-bar{position:absolute;height:34px;border:2px solid var(--ink);background:#fff;font-size:14px;padding:4px 8px;white-space:nowrap;overflow:hidden}
+.c-bar.key{border-color:var(--pt);color:var(--pt);font-weight:700}
+.c-dot{position:absolute;font-size:14px;white-space:nowrap}
+.c-dot::before{content:'';display:inline-block;width:10px;height:10px;background:var(--ink);margin-right:6px;vertical-align:1px}
+.c-today{position:absolute;top:0;bottom:0;border-left:3px solid var(--pt)}
+.c-today span{position:absolute;bottom:4px;left:6px;color:var(--pt);font-weight:700;font-size:14px;white-space:nowrap}
+/* D안 */
+.d-road{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--ink)}
+.d-st{padding:12px 12px 12px 0;border-right:1px solid var(--line)}
+.d-st+.d-st{padding-left:12px}
+.d-st:last-child{border-right:0}
+.d-st .t{font-weight:700;font-size:18px}
+.d-st.now{border-top:6px solid var(--pt);margin-top:-4px}
+.d-st.now .t{color:var(--pt)}
+.d-st ul{margin:6px 0 0;padding-left:18px;font-size:15px}
+/* E안 */
+.e-q{border-bottom:1px solid var(--line)}
+.e-q summary{list-style:none;cursor:pointer;padding:14px 0;font-size:20px;font-weight:700;min-height:44px}
+.e-q summary::-webkit-details-marker{display:none}
+.e-q summary::after{content:' ▾';color:var(--pt)}
+.e-q .ans{padding:0 0 14px}
+.rec{margin-top:56px;padding:20px;border:3px solid var(--pt)}
+.rec h2{color:var(--pt)}
+.cmp{width:100%;border-collapse:collapse;margin-top:12px;font-size:15px}
+.cmp th,.cmp td{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:top}
+.cmp th{font-weight:700}
+@media (max-width:700px){
+  main{padding:20px 14px 48px}
+  .big{font-size:32px}
+  .row{grid-template-columns:1fr;gap:0}
+  .a-next{grid-template-columns:1fr}
+  .a-next div{border-right:0;border-bottom:1px solid var(--line);padding-left:0!important}
+  .b-chk{grid-template-columns:28px 1fr}
+  .b-chk .when{grid-column:2}
+  .b-chk .what{grid-column:2}
+  .d-road{grid-template-columns:1fr}
+  .d-st{border-right:0;border-bottom:1px solid var(--line);padding-left:0!important}
+  .d-st.now{border-top:0;border-left:6px solid var(--pt);padding-left:10px!important;margin-top:0}
+  .eval{grid-template-columns:1fr}
+  .nav{gap:12px;font-size:14px}
+}
+</style>
+</head>
+<body>
+<main>
+<h1>v2 홈 화면, 다섯 가지 안</h1>
+<p class="intro">기준일 <b>2026.11.14(토)</b>. 목업 안 날짜·행사는 <code>portal/data/events.json</code>의 실제 값입니다(고입 흐름만, 중학교 입학 관련 일정 제외). 확정이 아닌 날짜는 '예정'으로만 적었습니다.</p>
+<p class="intro">포인트색 <b class="pt">#C4310D</b>는 v1에서 쓰던 색을 그대로 쓴 <b>제안</b>입니다. v2 포인트색은 아직 정하지 않았습니다.</p>
+<p class="intro">지금 v2 홈의 문제 두 가지: ① D-34만 있고 날짜·행사명이 없음 ② 일정 25건 중 22건이 경기 외고·국제고·자사고 설명회라 '지금 챙길 것'이 묻힘. 다섯 안 모두 <b>D-일수 옆에 날짜와 행사명을 같이 쓰고</b>, <b>설명회 같은 반복 일정은 한 줄로 묶습니다.</b></p>
+<ol class="toc">
+<li><a href="#a"><b>A</b>다음 할 일 한 문장형</a></li>
+<li><a href="#b"><b>B</b>이번 주 · 다음 주 · 이번 달 묶음형</a></li>
+<li><a href="#c"><b>C</b>겨울 시간 띠(타임라인)형</a></li>
+<li><a href="#d"><b>D</b>3년 로드맵형</a></li>
+<li><a href="#e"><b>E</b>질문으로 찾기형</a></li>
+<li><a href="#rec"><b>→</b>추천과 한눈 비교</a></li>
+</ol>
+
+<!-- A -->
+<section class="opt" id="a">
+<h2>A. 다음 할 일 한 문장형</h2>
+<p class="concept">화면 맨 위에 "다음에 할 일" 하나만 큰 글씨로. 그 아래 그다음 세 가지만.</p>
+<div class="frame">
+<div class="nav"><span>스쿨 라이프</span><span class="on">홈</span><span>학교 보기</span><span>수능과 내신</span><span>수시·정시</span></div>
+<div class="scr">
+<div class="a-hero">
+<div class="cap">다음에 할 일</div>
+<div class="what">고등학교 원서 접수</div>
+<div class="big"><span class="pt">D-20</span> · 12.4(금) ~ 12.10(목)</div>
+<p>경기 후기 원서접수(일반고·외고·국제고·자사고). 평준화 지역은 해당 지역 교육지원청에 냅니다. 용인은 마감 17:00. <a class="lnk" href="#a">자세히</a></p>
+</div>
+<div class="a-next">
+<div><div class="cap">그다음</div><span class="date">12.18(금)</span><br>중학교 졸업식 · D-34</div>
+<div><div class="cap">그다음</div><span class="date">12.11 ~ 1.5</span><br>평준화 일반고 전형 기간</div>
+<div><div class="cap">그다음</div><span class="date">2027.3 예정</span><br>고등학교 입학식</div>
+</div>
+<p class="cap" style="margin-top:12px">이번 달 외고·국제고·자사고 설명회 2건 남음(11.21 고양외고, 11.25 과천외고 온라인) <a class="lnk" href="#a">모두 보기</a></p>
+</div>
+</div>
+<div class="eval">
+<div><h3>장점</h3><ul><li>읽을 것이 한 문장이라 가장 빠름</li><li>D-일수·날짜·행사명이 한 줄에 같이 있음</li><li>모바일에서도 그대로 한 화면</li></ul></div>
+<div><h3>단점</h3><ul><li>'다음 할 일'을 하나로 고르는 규칙이 필요(설명회와 원서 중 무엇을 위로?)</li><li>같은 주에 일이 겹치면 하나가 가려짐</li><li>화면이 비어 보일 수 있음</li></ul></div>
+</div>
+<div class="verdict"><b>할머니 3초 테스트</b> 통과. 큰 글씨 한 줄이 곧 답.<br><b>구현 난이도</b> 낮음. events.json 그대로, '중요' 표시(원서·졸업·입학) 규칙만 새로 정하면 됨.</div>
+</section>
+
+<!-- B -->
+<section class="opt" id="b">
+<h2>B. 이번 주 · 다음 주 · 이번 달 묶음형</h2>
+<p class="concept">"언제까지 뭘 하나"를 시간 말(이번 주, 다음 주, 12월)로 묶은 체크 목록. 반복 설명회는 한 줄로 접음.</p>
+<div class="frame">
+<div class="nav"><span>스쿨 라이프</span><span class="on">홈</span><span>학교 보기</span><span>수능과 내신</span><span>수시·정시</span></div>
+<div class="scr">
+<div class="cap">오늘 11.14(토)</div>
+<div class="b-grp">
+<h4>이번 주 <small>11.14 ~ 11.20</small></h4>
+<div class="b-chk"><span class="box"></span><span class="date when">11.14(토) 오늘</span><span class="what">김포외고 최종 설명회</span></div>
+<h4>다음 주 <small>11.21 ~ 11.27</small></h4>
+<div class="b-chk"><span class="box"></span><span class="date when">11.21(토) · 11.25(수)</span><span class="what">외고 설명회 2건(고양외고 4차, 과천외고 온라인) <a class="lnk" href="#b">펼치기</a></span></div>
+<h4>12월 <small>가장 중요한 달</small></h4>
+<div class="b-chk"><span class="box"></span><span class="date when">12.4(금) ~ 12.10(목)</span><span class="what"><b class="pt">고등학교 원서 접수 · D-20</b><br><span class="cap">용인은 교육지원청 접수, 마감 17:00</span></span></div>
+<div class="b-chk"><span class="box"></span><span class="date when">12.18(금)</span><span class="what">중학교 졸업식 · D-34</span></div>
+<h4>그 뒤</h4>
+<div class="b-chk"><span class="box"></span><span class="date when">2.4(목) ~ 2.5(금)</span><span class="what">평준화 일반고 추가배정</span></div>
+<div class="b-chk"><span class="box"></span><span class="date when">2027.3 예정</span><span class="what">고등학교 입학식</span></div>
+</div>
+<p class="cap" style="margin-top:10px">지난 일정과 전체 목록은 <a class="lnk" href="#b">일정 전체</a></p>
+</div>
+</div>
+<div class="eval">
+<div><h3>장점</h3><ul><li>'이번 주/다음 주'는 누구나 아는 말이라 찾기 쉬움</li><li>25건이 6~7줄로 줄어듦(설명회 묶음)</li><li>D-일수는 중요한 두 건에만 붙음</li><li>체크칸은 화면용이 아니라 '할 일'이라는 신호(저장 안 해도 됨)</li></ul></div>
+<div><h3>단점</h3><ul><li>A안보다 한 번 더 읽어야 함</li><li>일이 없는 주는 묶음이 비어 '없음' 표시가 필요</li><li>체크를 저장하려면 기기 저장(localStorage)이 추가로 필요</li></ul></div>
+</div>
+<div class="verdict"><b>할머니 3초 테스트</b> 통과. '이번 주' 아래 첫 줄을 보면 됨.<br><b>구현 난이도</b> 중하. events.json 그대로. 주 단위 묶기와 같은 제목 시리즈 합치기(title 같음) 코드만 추가.</div>
+</section>
+
+<!-- C -->
+<section class="opt" id="c">
+<h2>C. 겨울 시간 띠(타임라인)형</h2>
+<p class="concept">11월~3월을 가로 띠 하나에 그려 기간이 겹치는 모습을 한눈에. 오늘 위치에 세로선.</p>
+<div class="frame">
+<div class="nav"><span>스쿨 라이프</span><span class="on">홈</span><span>학교 보기</span><span>수능과 내신</span><span>수시·정시</span></div>
+<div class="scr">
+<div class="cap">고등학교 들어가기까지 (11월 ~ 3월) · 옆으로 밀어 보기</div>
+<div class="c-wrap"><div class="c-tl">
+<div class="c-m" style="left:0">11월</div><div class="c-m" style="left:20%">12월</div><div class="c-m" style="left:40%">1월</div><div class="c-m" style="left:60%">2월</div><div class="c-m" style="left:80%">3월</div>
+<div class="c-dot" style="left:9%;top:34px">11.21 · 11.25 외고 설명회 2건</div>
+<div class="c-bar key" style="left:22%;width:14%;top:72px">원서 접수 12.4~12.10 · D-20</div>
+<div class="c-bar" style="left:23%;width:20%;top:116px">평준화 일반고 전형 12.11 ~ 1.5</div>
+<div class="c-bar" style="left:22%;width:29%;top:160px">외고·국제고·자사고 전형 12.4 ~ 1.14</div>
+<div class="c-dot" style="left:31%;top:206px">12.18(금) 졸업식 · D-34</div>
+<div class="c-dot" style="left:62%;top:206px">2.4~2.5 추가배정</div>
+<div class="c-dot" style="left:81%;top:240px">3월 입학식 예정</div>
+<div class="c-today" style="left:9%"><span>오늘 11.14</span></div>
+</div></div>
+</div>
+</div>
+<div class="eval">
+<div><h3>장점</h3><ul><li>원서·전형·졸업이 어떻게 겹치는지 한눈에</li><li>'남은 시간'이 길이로 느껴짐</li><li>고입 전체 흐름을 설명할 때 좋음</li></ul></div>
+<div><h3>단점</h3><ul><li>모바일에서 가로로 밀어야 함(할머니에게 어려움)</li><li>막대 글씨가 작아지기 쉬움(16px 유지 어려움)</li><li>'다음에 뭘 할지'는 직접 찾아 읽어야 함</li></ul></div>
+</div>
+<div class="verdict"><b>할머니 3초 테스트</b> 어려움. 그림은 보이지만 '무엇을 할지' 문장이 없음.<br><b>구현 난이도</b> 중상. 데이터는 있음(start·end). 막대 겹침 배치·모바일 가로 스크롤·월만 아는 일정(2027-03) 처리 코드가 필요.</div>
+</section>
+
+<!-- D -->
+<section class="opt" id="d">
+<h2>D. 3년 로드맵형</h2>
+<p class="concept">중3 겨울부터 고3 수능까지 네 칸 길. 지금 칸만 펼쳐 할 일을 보여 주고, 나머지 칸은 큰 이정표만.</p>
+<div class="frame">
+<div class="nav"><span>스쿨 라이프</span><span class="on">홈</span><span>학교 보기</span><span>수능과 내신</span><span>수시·정시</span></div>
+<div class="scr">
+<div class="d-road">
+<div class="d-st now"><div class="t">지금 · 중3 겨울</div>
+<ul><li><b>12.4 ~ 12.10</b> 고등학교 원서 접수 · D-20</li><li><b>12.18(금)</b> 졸업식 · D-34</li><li><b>2027.3 예정</b> 고등학교 입학</li></ul></div>
+<div class="d-st"><div class="t">고1 · 2027</div>
+<ul><li>2027.3 예정 대입 개편안 공표</li><li>2027.8 예정 2030학년도 대입전형 기본사항 발표</li></ul></div>
+<div class="d-st"><div class="t">고2 · 2028</div>
+<ul><li>선택 과목 정하기(학교 편제표 참고)</li><li><a class="lnk" href="#d">학교별 과목 보기</a></li></ul></div>
+<div class="d-st"><div class="t">고3 · 2029</div>
+<ul><li>2029.3 예정 수능 시행 기본계획</li><li><b>2029.11.15(목) 예정 수능</b></li></ul></div>
+</div>
+<p class="cap" style="margin-top:12px">이번 달 외고·국제고·자사고 설명회 2건 남음 <a class="lnk" href="#d">보기</a></p>
+</div>
+</div>
+<div class="eval">
+<div><h3>장점</h3><ul><li>'3년 동안 쓰는 포털'이라는 목표와 잘 맞음</li><li>학년이 바뀌어도 화면 틀이 그대로(칸만 이동)</li><li>수능·대입 개편 같은 먼 일정도 자리가 있음</li></ul></div>
+<div><h3>단점</h3><ul><li>지금 칸이 1/4이라 당장 할 일이 작게 보임</li><li>먼 칸은 '예정'뿐이라 내용이 얇음</li><li>고2 칸 문구처럼 설명 문장은 사실 확인 부담이 생김</li></ul></div>
+</div>
+<div class="verdict"><b>할머니 3초 테스트</b> 보통. 빨간 '지금' 칸을 찾으면 되지만 글씨가 작아짐(모바일은 세로로 쌓여 괜찮음).<br><b>구현 난이도</b> 중. 일정은 events.json(대입 개편·수능 행 있음), 학년 칸 정의와 칸 설명 문구는 새로 필요.</div>
+</section>
+
+<!-- E -->
+<section class="opt" id="e">
+<h2>E. 질문으로 찾기형</h2>
+<p class="concept">가족이 실제로 묻는 질문 다섯 개를 큰 글씨로. 누르면 그 자리에서 답 한 줄 + 해당 화면 링크.</p>
+<div class="frame">
+<div class="nav"><span>스쿨 라이프</span><span class="on">홈</span><span>학교 보기</span><span>수능과 내신</span><span>수시·정시</span></div>
+<div class="scr">
+<details class="e-q" open><summary>지금 뭘 해야 해요?</summary><div class="ans"><b class="pt">D-20 · 12.4(금) ~ 12.10(목) 고등학교 원서 접수.</b> 용인은 교육지원청 접수, 마감 17:00.</div></details>
+<details class="e-q"><summary>졸업식은 언제예요?</summary><div class="ans"><b>12.18(금)</b> · D-34</div></details>
+<details class="e-q"><summary>고등학교는 언제 정해져요?</summary><div class="ans">평준화 일반고 전형 기간 12.11 ~ 1.5, 추가배정 2.4 ~ 2.5. <a class="lnk" href="#e">일정 전체</a></div></details>
+<details class="e-q"><summary>어느 고등학교가 과목이 많아요?</summary><div class="ans">풍덕·홍천·성복·수지 비교 <a class="lnk" href="#e">학교 보기</a></div></details>
+<details class="e-q"><summary>수능은 언제예요?</summary><div class="ans"><b>2029.11.15(목) 예정</b>. 세부 범위는 2029.3 무렵 공고 예정.</div></details>
+</div>
+</div>
+<div class="eval">
+<div><h3>장점</h3><ul><li>메뉴 이름을 몰라도 질문으로 찾음</li><li>첫 질문을 펼쳐 두면 A안과 같은 효과</li><li>학교 보기·수능 화면으로 가는 입구 역할도 함</li></ul></div>
+<div><h3>단점</h3><ul><li>질문 고르기·답 문구 관리가 사람 손에 달림(문구 ↔ 실제 화면 대조 부담)</li><li>일정 목록 기능이 약함(전체를 보려면 다른 화면)</li><li>질문이 늘어나면 다시 긴 목록이 됨</li></ul></div>
+</div>
+<div class="verdict"><b>할머니 3초 테스트</b> 통과(첫 질문이 펼쳐져 있을 때).<br><b>구현 난이도</b> 중. 답의 날짜는 events.json에서 가져오되 질문 목록(5개 정도)은 새 데이터 파일이 필요.</div>
+</section>
+
+<section class="rec" id="rec">
+<h2>추천: B안 (이번 주 · 다음 주 · 이번 달 묶음형)</h2>
+<p>1. '이번 주/다음 주/12월'이라는 시간 말로 묶어, 할머니도 맨 위 묶음 첫 줄만 보면 다음 할 일을 압니다.</p>
+<p>2. 설명회 22건을 한 줄로 접고 D-일수는 원서·졸업 같은 큰 일정에만 날짜와 함께 붙여, 지적된 문제 ①②를 바로 풉니다.</p>
+<p>3. 데이터를 새로 만들 필요 없이 events.json만으로 되고, 나중에 A안의 큰 한 줄을 맨 위에 얹는 것도 쉽습니다.</p>
+<table class="cmp">
+<thead><tr><th>안</th><th>3초 테스트</th><th>새 데이터</th><th>난이도</th></tr></thead>
+<tbody>
+<tr><td>A 한 문장</td><td>통과</td><td>'중요' 규칙만</td><td>낮음</td></tr>
+<tr><td>B 묶음</td><td>통과</td><td>없음</td><td>중하</td></tr>
+<tr><td>C 시간 띠</td><td>어려움</td><td>없음</td><td>중상</td></tr>
+<tr><td>D 로드맵</td><td>보통</td><td>학년 칸 문구</td><td>중</td></tr>
+<tr><td>E 질문</td><td>통과</td><td>질문 목록</td><td>중</td></tr>
+</tbody>
+</table>
+</section>
+</main>
+</body>
+</html>
