@@ -23,15 +23,29 @@ function renderSchools() {
   const box = document.createElement("div");
   box.id = "schools"; box.className = "sc-grid";
   content.append(box);
-  schoolsP ||= fetch("../portal/data/schools.json").then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); });
-  schoolsP.then((all) => {
+  const get = (u) => fetch(u).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); });
+  schoolsP ||= Promise.all([get("../portal/data/schools.json"), get("../portal/data/links.json")]);
+  schoolsP.then(([all, links]) => {
     if (!box.isConnected) return;
     const list = Array.isArray(all) ? all : all.schools || [];
     const head = document.createElement("div"); head.className = "sc-row sc-head";
     SCHOOL_IDS.forEach((id) => {
-      const h = document.createElement("h2"); h.className = "sc-cell";
-      h.textContent = list.find((s) => s.id === id)?.name || "";
-      head.append(h);
+      const sc = list.find((s) => s.id === id) || {};
+      // 공식 홈페이지: links.json '학교 정보' 항목 중 기관명이 '<학교명 줄임>고등학교'를 포함하는 것(없으면 비워 둔다)
+      const stem = (sc.name || "").replace(/고$/, "");
+      const hp = stem && links.items.find((l) => l.category === "학교 정보" && l.name === "학교 홈페이지" && l.org.includes(stem + "고등학교"));
+      const cell = document.createElement("div"); cell.className = "sc-cell sc-school";
+      const img = document.createElement("img");
+      img.src = "../portal/img/schools/128/" + id + ".png"; img.alt = sc.name || ""; img.width = 56; img.height = 56; img.className = "sc-logo";
+      const txt = document.createElement("div"); txt.className = "sc-text";
+      const h = document.createElement("h2"); h.className = "sc-name"; h.textContent = sc.name || "";
+      const sub = document.createElement("p"); sub.className = "sc-sub";
+      sub.append(sc.address || "");
+      if (hp) {
+        const a = document.createElement("a"); a.href = hp.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = "홈페이지";
+        sub.append(", ", a);
+      }
+      txt.append(h, sub); cell.append(img, txt); head.append(cell);
     });
     box.append(head);
   }).catch(() => { schoolsP = null; box.textContent = "학교 목록을 불러오지 못했어요."; });
