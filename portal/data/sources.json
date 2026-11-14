@@ -1,11 +1,11 @@
 {
  "_meta": {
   "note": "출처 등록부(생성물, 손으로 고치지 않는다). tools/build-sources.mjs가 portal/data의 출처 항목에서 만든다. 데이터 행의 sourceIds가 이 id를 가리킨다.",
-  "count": 163,
+  "count": 164,
   "kinds": {
    "official": 117,
    "media": 25,
-   "user": 16,
+   "user": 17,
    "self": 0,
    "other": 5
   }
@@ -1575,6 +1575,19 @@
     "events.json": 1,
     "policy.json": 2,
     "rules.json": 3
+   }
+  },
+  {
+   "id": "src-a3a48b30",
+   "url": null,
+   "kind": "user",
+   "org": null,
+   "checked": "2026-10-29",
+   "names": [
+    "사용자 제공 캡처(학교알리미 학교현황 형식으로 보이나 주소 미확인)"
+   ],
+   "usedIn": {
+    "hs-compare.json": 2
    }
   },
   {

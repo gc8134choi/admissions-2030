@@ -50,6 +50,13 @@
    "type": "text"
   },
   {
+   "id": "gradeDetail",
+   "label": "학년별 학급·학생수",
+   "group": "규모",
+   "order": 6.5,
+   "type": "text"
+  },
+  {
    "id": "students",
    "label": "학생수(특수·순회학급 포함)",
    "group": "규모",
@@ -82,6 +89,13 @@
    "order": 10,
    "type": "number",
    "needsAsOf": true
+  },
+  {
+   "id": "perClassDetail",
+   "label": "학년별 학급당 학생수·지역 비교",
+   "group": "규모",
+   "order": 10.5,
+   "type": "text"
   },
   {
    "id": "perTeacher",
@@ -427,6 +441,20 @@
      "sourceId": "src-23491a33",
      "nullReason": null,
      "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -688,6 +716,30 @@
      "sourceId": "src-5b6184f8",
      "nullReason": null,
      "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
+    },
+    "gradeDetail": {
+     "asOf": "2026학년도",
+     "status": "reported",
+     "source": {
+      "name": "사용자 제공 캡처(학교알리미 학교현황 형식으로 보이나 주소 미확인)",
+      "url": null
+     },
+     "sourceId": "src-a3a48b30",
+     "nullReason": null,
+     "value": "일반학과 2026학년도: 1학년 12학급 359명 · 2학년 12학급 337명 · 3학년 12학급 357명 · 특수학급 1학급 8명 · 순회학급 1학급 1명 · 계 38(2)학급 1,062(9)명",
+     "note": "사용자 제공 캡처에서 옮김(합계 검산 359+337+357+8+1=1,062, 학급 36+1+1=38). 괄호 값의 뜻은 캡처에 설명이 없어 표기 그대로. 출처 주소 미확인(2026-11-14 확인)"
+    },
+    "perClassDetail": {
+     "asOf": "2026학년도",
+     "status": "reported",
+     "source": {
+      "name": "사용자 제공 캡처(학교알리미 학교현황 형식으로 보이나 주소 미확인)",
+      "url": null
+     },
+     "sourceId": "src-a3a48b30",
+     "nullReason": null,
+     "value": "학급당 학생수 1학년 29.9 · 2학년 28.1 · 3학년 29.8 · 특수 8.0 · 순회 1.0 · 계 27.9(29.3) / 수업교원 1인당 학생수 14.8(교원수 78(3), 수업교원수 72) / 비교(학급당 1·2·3학년 · 수업교원 1인당): 용인시 수지구 31 · 29.7 · 31.2 · 15.3, 경기도 26.8 · 25.1 · 25.6 · 12.4, 전국 24.9 · 23.2 · 23.5 · 11.3 / 학교현황 평균은 특수학급·순회학급 학생수를 제외한 수치",
+     "note": "사용자 제공 캡처에서 옮김. 괄호 값의 뜻은 캡처에 설명이 없어 표기 그대로. 출처 주소 미확인(2026-11-14 확인)"
     }
    },
    "externalIds": [
@@ -950,6 +1002,20 @@
      "sourceId": "src-9db376ea",
      "nullReason": null,
      "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -1212,6 +1278,20 @@
      "sourceId": "src-5b647dcd",
      "nullReason": null,
      "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -1469,6 +1549,20 @@
      "sourceId": "src-e0d3a017",
      "nullReason": null,
      "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -1726,6 +1820,20 @@
      "sourceId": "src-1d8d9c24",
      "nullReason": null,
      "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -1983,6 +2091,20 @@
      "sourceId": "src-1be5261a",
      "nullReason": null,
      "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -2240,6 +2362,20 @@
      "sourceId": "src-d05050e2",
      "nullReason": null,
      "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -2497,6 +2633,20 @@
      "sourceId": "src-61d0636c",
      "nullReason": null,
      "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -2755,6 +2905,20 @@
      "sourceId": "src-11e53ef6",
      "nullReason": null,
      "note": "학생수와 같은 기준(특수학급·순회학급 포함)"
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -2960,6 +3124,20 @@
      },
      "sourceId": "src-d58e0251",
      "nullReason": null
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -3160,6 +3338,20 @@
      },
      "sourceId": "src-d58e0251",
      "nullReason": null
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -3360,6 +3552,20 @@
      },
      "sourceId": "src-d58e0251",
      "nullReason": null
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -3560,6 +3766,20 @@
      },
      "sourceId": "src-d58e0251",
      "nullReason": null
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -3760,6 +3980,20 @@
      },
      "sourceId": "src-d58e0251",
      "nullReason": null
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -3961,6 +4195,20 @@
      },
      "sourceId": "src-d58e0251",
      "nullReason": null
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -4161,6 +4409,20 @@
      },
      "sourceId": "src-d58e0251",
      "nullReason": null
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -4365,6 +4627,20 @@
      },
      "sourceId": "src-d58e0251",
      "nullReason": null
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -4565,6 +4841,20 @@
      },
      "sourceId": "src-d58e0251",
      "nullReason": null
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -4765,6 +5055,20 @@
      },
      "sourceId": "src-d58e0251",
      "nullReason": null
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -4965,6 +5269,20 @@
      },
      "sourceId": "src-d58e0251",
      "nullReason": null
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -5165,6 +5483,20 @@
      },
      "sourceId": "src-d58e0251",
      "nullReason": null
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -5366,6 +5698,20 @@
      },
      "sourceId": "src-d58e0251",
      "nullReason": null
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -5566,6 +5912,20 @@
      },
      "sourceId": "src-d58e0251",
      "nullReason": null
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -5770,6 +6130,20 @@
      },
      "sourceId": "src-d58e0251",
      "nullReason": null
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -5971,6 +6345,20 @@
      },
      "sourceId": "src-d58e0251",
      "nullReason": null
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -6180,6 +6568,20 @@
      },
      "sourceId": "src-d58e0251",
      "nullReason": null
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -6380,6 +6782,20 @@
      },
      "sourceId": "src-d58e0251",
      "nullReason": null
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -6580,6 +6996,20 @@
      },
      "sourceId": "src-d58e0251",
      "nullReason": null
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -6778,6 +7208,20 @@
      },
      "sourceId": "src-d58e0251",
      "nullReason": null
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [
@@ -6976,6 +7420,20 @@
      },
      "sourceId": "src-d58e0251",
      "nullReason": null
+    },
+    "gradeDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
+    },
+    "perClassDetail": {
+     "value": null,
+     "asOf": null,
+     "status": "reported",
+     "source": null,
+     "nullReason": "학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 10개교만 모았어요)"
     }
    },
    "externalIds": [

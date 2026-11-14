@@ -51,7 +51,7 @@ const LABEL = { students: "학생수(특수·순회학급 포함)", studentsDeta
 const fields = draft.fields.map((f) => (LABEL[f.id] ? { ...f, label: LABEL[f.id] } : f)).sort((a, b) => a.order - b.order);
 // 사유 없이 '공식 문서로 확인 중'만 있는 칸은 항목별 사유+다음 행동으로
 const GEN = /공식 문서로 확인 중/;
-const BY = { classes: "S", classesDetail: "S", students: "S", studentsDetail: "S", teachers: "S", perClass: "S", perTeacher: "S", meal: "S", schoolinfo: "S", curriculum: "C", subjectCount: "C", canteen: "D", dorm: "D" };
+const BY = { classes: "S", classesDetail: "S", gradeDetail: "S", perClassDetail: "S", students: "S", studentsDetail: "S", teachers: "S", perClass: "S", perTeacher: "S", meal: "S", schoolinfo: "S", curriculum: "C", subjectCount: "C", canteen: "D", dorm: "D" };
 const cnt = (k) => draft.schools.filter((s) => s.values?.[k]?.value != null).length; // 문구의 개수는 실제 데이터에서 센다
 const TXT = { S: `학교알리미 학교 페이지에서 확인해요(이 포털은 학교알리미 값을 ${cnt("students")}개교만 모았어요)`, C: `교육과정 정보를 모은 ${cnt("curriculum")}개교만 값이 있어요 → 학교 홈페이지 교육과정 게시판·편제표에서 확인해요`, D: "학교알리미 공시 항목에 없어요 → 학교 설명회·학교 홈페이지에서 확인해요" };
 for (const s of draft.schools) for (const [k, v] of Object.entries(s.values || {})) if (v && v.value == null && BY[k] && (GEN.test(v.nullReason || ""))) v.nullReason = TXT[BY[k]];
