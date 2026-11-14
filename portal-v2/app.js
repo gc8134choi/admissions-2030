@@ -41,7 +41,8 @@ function renderSchools() {
       const txt = document.createElement("div"); txt.className = "sc-text";
       const h = document.createElement("h2"); h.className = "sc-name"; h.textContent = sc.name || "";
       const sub = document.createElement("p"); sub.className = "sc-sub";
-      sub.append(sc.address || "");
+      const addr = document.createElement("span"); addr.className = "sc-addr"; addr.textContent = sc.address || "";
+      sub.append(addr);
       if (hp) {
         const a = document.createElement("a"); a.href = hp.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = "홈페이지";
         sub.append(", ", a);
