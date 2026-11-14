@@ -10,6 +10,7 @@ function route() {
     if (on) { a.setAttribute("aria-current", "page"); title.textContent = a.textContent; document.title = a.textContent + " · 포털 v2"; } else a.removeAttribute("aria-current");
   });
   content.dataset.route = id;
+  title.hidden = id === "schools"; // 학교 보기는 화면 제목을 보이지 않는다(네비 항목으로 충분)
   if (id === "schools") renderSchools(); else document.getElementById("schools")?.remove();
 }
 addEventListener("hashchange", route);
