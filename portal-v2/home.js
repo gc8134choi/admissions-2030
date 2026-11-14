@@ -39,10 +39,13 @@ function partA(core, today) {
   const sec = el("section", "h-a");
   sec.append(el("h2", "h-cap", "다음에 할 일"));
   if (!core.length) { sec.append(el("p", "h-big", "다가올 일정이 없어요.")); return sec; }
-  sec.append(el("p", "h-big", sentence(core[0], today)));
+  // 가로 1/2씩: 왼쪽 = 큰 것 1건, 오른쪽 = 작은 것 3건(세로로 쌓음). 900px 이하는 위·아래.
+  const grid = el("div", "h-a-grid");
+  grid.append(el("p", "h-big", sentence(core[0], today)));
   const ol = el("ol", "h-next");
   core.slice(1, 4).forEach((e) => ol.append(el("li", "", sentence(e, today))));
-  sec.append(ol);
+  grid.append(ol);
+  sec.append(grid);
   return sec;
 }
 
