@@ -162,6 +162,10 @@ def cmd_push(title, files, open_pr=True):
         print(f"CONFLICT: origin/main 합치기 실패(되돌림). 충돌 파일을 직접 풀어야 해요.\n{out[-300:]}")
         return 2
     _run("git", "add", "-u")
+    rc0, un = _run("git", "ls-files", "--others", "--exclude-standard")
+    missing = [u for u in un.splitlines() if u and u not in files and not u.startswith(("node_modules/", "/tmp"))]
+    if missing:
+        print("경고: 추적되지 않는 새 파일이 있어요(커밋에 안 들어감). 필요하면 경로로 지정하세요:\n  " + "\n  ".join(missing[:10]), flush=True)
     for f in files:
         rc, o = _run("git", "add", "--", f)
         if rc != 0:
