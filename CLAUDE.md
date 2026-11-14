@@ -76,8 +76,8 @@ Playwright는 설치돼 있다(`require('playwright')`). 화면 변경 후 스�
 | 세션 | 브랜치 | 담당 |
 |---|---|---|
 | PM | `pm/*` | 사용자 접수·분류·지시, `CLAUDE.md`·`WORKFLOW.md`·`ROADMAP.md`·`evaluation/` 문서, 평가 운영, `.github/workflows/` |
-| 개발 | `dev/portal-policy` | `portal/` 화면 코드 전부, `tools/build-*.mjs`, `portal/data` 생성물 반영 |
-| 조사 | `research/materials` | `research/` 전체(원문 확인·초안 JSON·감시), 데이터 정확성 |
+| 개발(v2, session_017N52G8XW4H4XBXkxfJ68wo) | `dev/v2` | `portal-v2/` 화면 코드(사용자 지시 하나씩). 2026-11-14 기존 개발(`dev/portal-policy`)·조사 세션은 보관(archive) 처리 |
+| 조사 | `research/materials` | 보관됨(필요할 때 새로 만든다). `research/` 전체(원문 확인·초안 JSON), 데이터 정확성 |
 | 독립 평가자 | 평가마다 새 에이전트(별도 worktree) | 채점만, 코드·데이터 수정 금지, 결과는 `evaluation/runs/` |
 휴면: `dev/portal`(개발은 `dev/portal-policy` 하나로 일한다), 편제표 데이터(`data/verify-curriculum`, 정본은 사용자 승인 전 변경 금지), 분석, 의사결정, QA. 세션 제목 `입시포털 <개발|데이터|감시|조사>: <주제>`, 태그 `admissions:dev|data|watch|research`, PM `입시포털 PM: 전체 진행 관리`(`admissions:pm`).
 
