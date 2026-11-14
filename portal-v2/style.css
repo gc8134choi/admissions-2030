@@ -6,8 +6,8 @@ html{-webkit-text-size-adjust:100%}
 body{margin:0;font-family:'GmarketSans','Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-weight:500;font-size:16px;line-height:1.3;color:#222;background:#f0f0f0}
 h1,h2,h3{font-family:'GmarketSans','Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-weight:700;font-size:32px;line-height:1.3}
 a{color:inherit}
-/* 전체 폭 1200px 컬럼, 가운데 정렬(네비바·컨텐츠 공통). 1200px보다 좁으면 100%로 줄어든다 */
-.nav,.content{width:100%;max-width:1200px;margin-left:auto;margin-right:auto;background:#fff} /* 컬럼 안쪽 흰색, 바깥(body)은 옅은 회색 */
+/* 전체 폭 1500px 컬럼, 가운데 정렬(네비바·컨텐츠 공통). 1500px보다 좁으면 100%로 줄어든다 */
+.nav,.content{width:100%;max-width:1500px;margin-left:auto;margin-right:auto;background:#fff} /* 컬럼 안쪽 흰색, 바깥(body)은 옅은 회색 */
 .nav{border-bottom:1px solid #ddd}
 .nav-list{display:flex;gap:4px;margin:0;padding:0 8px;list-style:none;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .nav-list li{flex:0 0 auto}
