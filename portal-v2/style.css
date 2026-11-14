@@ -1,13 +1,13 @@
 /* 최소 중립 스타일: 본문 16px 이상, 터치 44px, 모바일에서 네비바가 깨지지 않게(가로 넘침은 스크롤) */
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;font:16px/1.6 system-ui,-apple-system,"Noto Sans KR",sans-serif;color:#222;background:#fff}
+body{margin:0;font:16px/1.6 system-ui,-apple-system,"Noto Sans KR",sans-serif;color:#222;background:#f0f0f0}
 a{color:inherit}
 /* 전체 폭 900px 컬럼, 가운데 정렬(로고·네비바·컨텐츠 공통). 900px보다 좁으면 100%로 줄어든다 */
-.logo,.nav,.content{width:100%;max-width:900px;margin-left:auto;margin-right:auto}
+.logo,.nav,.content{width:100%;max-width:900px;margin-left:auto;margin-right:auto;background:#fff} /* 컬럼 안쪽 흰색, 바깥(body)은 옅은 회색 */
 .logo{padding:12px 16px;border-bottom:1px solid #ddd}
 .logo-link{display:inline-flex;align-items:center;min-height:44px;font-size:20px;font-weight:700;text-decoration:none}
-.nav{border-bottom:1px solid #ddd;background:#fafafa}
+.nav{border-bottom:1px solid #ddd}
 .nav-list{display:flex;gap:4px;margin:0;padding:0 8px;list-style:none;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .nav-list li{flex:0 0 auto}
 .nav-list a{display:flex;align-items:center;min-height:44px;padding:0 14px;text-decoration:none;white-space:nowrap}
