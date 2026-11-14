@@ -1578,19 +1578,6 @@
    }
   },
   {
-   "id": "src-a3a48b30",
-   "url": null,
-   "kind": "user",
-   "org": null,
-   "checked": "2026-10-29",
-   "names": [
-    "사용자 제공 캡처(학교알리미 학교현황 형식으로 보이나 주소 미확인)"
-   ],
-   "usedIn": {
-    "hs-compare.json": 2
-   }
-  },
-  {
    "id": "src-a5860564",
    "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&lev=0&statusYN=W&s=moe&m=020402&opType=N&boardSeq=103512",
    "kind": "official",
@@ -1982,6 +1969,19 @@
     "events.json": 1,
     "policy.json": 2,
     "rules.json": 3
+   }
+  },
+  {
+   "id": "src-cb41d00c",
+   "url": null,
+   "kind": "user",
+   "org": null,
+   "checked": "2026-10-29",
+   "names": [
+    "사용자 제공 캡처(학교알리미 학교현황 형식)"
+   ],
+   "usedIn": {
+    "hs-compare.json": 2
    }
   },
   {

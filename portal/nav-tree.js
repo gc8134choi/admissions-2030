@@ -16,7 +16,7 @@ export const tabHref = (t) => hrefOf(t.groups[0].items[0]);
 export const allItems = () => TABS.flatMap((t) => t.groups.flatMap((g) => g.items.map((it) => ({ ...it, tab: t.title, group: g.title }))));
 export function locate(id, query) {
   for (const t of TABS) for (const g of t.groups) for (const it of g.items) if (it.m(id, query)) return { tab: t, group: g, item: it };
-  if (id === "select/curriculum") { const t = TABS.find((x) => x.id === "hs"); return { tab: t, group: t.groups[0], item: t.groups[0].items[1] }; }
+  if (id === "select/curriculum") { const t = TABS.find((x) => x.id === "hs"); return { tab: t, group: t.groups[0], item: t.groups[0].items[0] }; }
   return null;
 }
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
