@@ -5,8 +5,7 @@ export const HOME = { id: "home", title: "스쿨 라이프", desc: "다가올 �
 // 최상위는 고등학교 그룹과 자료·소식(중학교 그룹은 사용자 결정 2026-11-13으로 없앴다). sub = 그 항목부터 시작하는 의미 단위 소제목(시각 구분만, 메뉴 단계는 2단계). foot = 메뉴 맨 아래 작은 글자 링크 묶음(화면 모드 위).
 export const GROUPS = [
   { id: "hs", title: "고등학교", items: [
-    { id: "select/curriculum?v=types", title: "고교 종류", desc: "일반·특목·자사고 종류와 지원 방법·지망·구역·고입 내신 반영·선지원 추첨", keys: ["일반","자사고","지원","지망","구역","고입 내신","선지원","추첨"], r: "select/curriculum", q: { v: "types"}, sub: "학교 알아보기"},
-    { id: "select/curriculum?v=schools&lv=high", title: "학교 보기", page: "고교 보기", desc: "학교별 기본 정보·입학 방식·구역·과목·지도·설명회 노트", keys: ["입학 방식", "구역", "과목", "지도", "설명회"], vals: { data: "hs-compare", fields: ["type", "admission", "zone"] }, r: "select/curriculum", q: { v: "schools", lv: "high" } },
+    { id: "select/curriculum?v=schools&lv=high", sub: "학교 알아보기", title: "학교 보기", page: "고교 보기", desc: "학교별 기본 정보·입학 방식·구역·과목·지도·설명회 노트", keys: ["입학 방식", "구역", "과목", "지도", "설명회"], vals: { data: "hs-compare", fields: ["type", "admission", "zone"] }, r: "select/curriculum", q: { v: "schools", lv: "high" } },
     { id: "life/credit", title: "고교학점제", desc: "졸업 학점·과목 이수 기준", keys: ["졸업","학점","이수"], r: "life/credit", sub: "고교 생활"},
     { id: "planner/plan", title: "내 계획표", desc: "학기별 학점 계획", keys: ["학기","학점","계획"], r: "planner/plan"},
     { id: "admission/system", title: "수능과 내신", desc: "수능 체제·시간표, 내신 5등급 계산, 대교협 기본사항, 대입 개편", keys: ["수능","시간","내신","5등급","대교협","기본사항","개편"], r: "admission/system", q: { t: null}, sub: "대입"},
@@ -14,6 +13,7 @@ export const GROUPS = [
     { id: "select/curriculum?v=univ", title: "대학별 과목", desc: "대학이 요구하는 과목과 학교 과목표 비교", keys: ["대학","과목","과목표"], r: "select/curriculum", q: { v: "univ"}},
     { soon: ["대학·학과 찾기", "학교별 시뮬레이션", "목표 학과 체크"], id: "schedule?t=hs", title: "고교 일정", page: "고교 일정", desc: "고교 입학·대학 입시·학년별 큰 그림(초6~대입)·캘린더 구독", keys: ["학년별 큰 그림","캘린더","구독"], r: "schedule", q: { t: ["hs","univ","road",null]}, sub: "일정"}] },
   { id: "lib", title: "자료·소식", foot: true, items: [
+    { id: "select/curriculum?v=types", title: "고교 종류", desc: "일반·특목·자사고 종류와 지원 방법·지망·구역·고입 내신 반영·선지원 추첨", keys: ["일반","자사고","지원","지망","구역","고입 내신","선지원","추첨"], r: "select/curriculum", q: { v: "types"}},
     { id: "changelog", title: "바뀐 소식", desc: "제도가 바뀐 내용", keys: ["바뀐"], r: "changelog"},
     { id: "library", title: "관련 사이트", desc: "학교알리미·교육청 바로가기", keys: ["학교알리미","교육청"], r: "library"},
     { id: "library/sources", title: "출처·확인일", desc: "자료 출처와 확인한 날", keys: ["출처","확인"], r: "library/sources", also: ["library/status"]},

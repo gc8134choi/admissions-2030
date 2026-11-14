@@ -668,7 +668,7 @@
           "asOf": "2026학년도",
           "status": "reported",
           "source": {
-            "name": "사용자 제공 캡처(학교알리미 학교현황 형식으로 보이나 주소 미확인)",
+            "name": "사용자 제공 캡처(학교알리미 학교현황 형식)",
             "url": null
           },
           "nullReason": null,
@@ -679,7 +679,7 @@
           "asOf": "2026학년도",
           "status": "reported",
           "source": {
-            "name": "사용자 제공 캡처(학교알리미 학교현황 형식으로 보이나 주소 미확인)",
+            "name": "사용자 제공 캡처(학교알리미 학교현황 형식)",
             "url": null
           },
           "nullReason": null,
