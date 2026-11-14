@@ -74,20 +74,24 @@ function renderHome() {
       .filter((e) => (e.end || e.start).length === 7 ? (e.end || e.start) >= month : (e.end || e.start) >= today)
       .sort((a, b) => a.start.localeCompare(b.start));
     const name = (e) => (e.label ? e.title + " · " + e.label : e.title);
-    // 가까운 3건: 일 단위 날짜 중 start>=오늘, 날짜순(같은 날은 events.json 순서 그대로, 일정 단위로 3건)
-    const nexts = list.filter((e) => e.start.length === 10 && e.start >= today).slice(0, 3);
+    // D-Day 박스: 졸업식 = ev-life-01-1('중학교 졸업'), 입학식 = ev-life-10-1('고교 입학식·개학').
+    // 입학식은 날짜가 월만('2027-03') 있어 D-일수를 만들지 않고 'YYYY.M 예정'으로 표기한다.
+    const rows = [["졸업식", "ev-life-01-1"], ["입학식", "ev-life-10-1"]].map(([label, id]) => [label, (Array.isArray(all) ? all : all.events || []).find((e) => e.id === id)]);
     const dday = document.createElement("section"); dday.className = "home-dday";
-    if (nexts.length) {
-      const ol = document.createElement("ol"); ol.className = "dday-list";
-      nexts.forEach((e) => {
+    const ol = document.createElement("ol"); ol.className = "dday-list";
+    rows.forEach(([label, e]) => {
+      if (!e) return;
+      const li = document.createElement("li");
+      const big = document.createElement("p"); big.className = "dday-n";
+      if (e.start.length === 10) {
         const n = dayNum(e.start) - dayNum(today);
-        const li = document.createElement("li");
-        const big = document.createElement("p"); big.className = "dday-n"; big.textContent = n === 0 ? "D-Day" : "D-" + n;
-        const t = document.createElement("p"); t.className = "dday-t"; t.textContent = name(e) + (e.status !== "confirmed" ? " (예정)" : "");
-        li.append(big, t); ol.append(li);
-      });
-      dday.append(ol);
-    } else dday.textContent = "다가올 일정이 없어요.";
+        big.textContent = n === 0 ? "D-Day" : n > 0 ? "D-" + n : "D+" + -n;
+      } else big.textContent = Number(e.start.slice(0, 4)) + "." + Number(e.start.slice(5)) + " 예정";
+      const t = document.createElement("p"); t.className = "dday-t";
+      t.textContent = label + (e.start.length === 10 && e.status !== "confirmed" ? " (예정)" : "");
+      li.append(big, t); ol.append(li);
+    });
+    dday.append(ol);
     const ul = document.createElement("ul"); ul.className = "home-list";
     list.forEach((e) => {
       const li = document.createElement("li");
