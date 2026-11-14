@@ -1,7 +1,7 @@
-// 홈: ①다음 할 일(큰 한 문장 + 다음 3건) → ②겨울 시간 띠(11~3월) → ③3년 길(네 칸). 데이터: ../portal/data/events.json
+// 홈: ①다음 할 일(dday.json: 큰 1건 + 작은 3건) → ②겨울 시간 띠(11~3월) → ③3년 길(네 칸). 데이터: ../portal/data/events.json
 // 쓴 필드: start·end('YYYY-MM-DD' 또는 월만 'YYYY-MM'), title·label(이름 = label || title), status(confirmed 아니면 날짜 뒤 '예정'), examYear(2030만), region(서울 제외), id.
 const DAY = ["일", "월", "화", "수", "목", "금", "토"];
-// '핵심 일정'(①·②의 뼈대): 경기 후기 원서접수 · 중학교 졸업 · 평준화 일반고 추가 배정 · 고교 입학식. 데이터 행의 id로만 고른다(새 값을 만들지 않음).
+// '핵심 일정'(②시간 띠의 뼈대): 경기 후기 원서접수 · 중학교 졸업 · 평준화 일반고 추가 배정 · 고교 입학식. 데이터 행의 id로만 고른다(새 값을 만들지 않음).
 const CORE = ["ev-gg-02-1", "ev-life-01-1", "ev-gg-16-1", "ev-life-10-1"];
 const SPAN = "ev-gg-04-1"; // 시간 띠에만 추가: 경기 평준화 일반고 원서접수~추가배정(기간)
 const EXCLUDED = (e) => e.title === "평준화 배정 설명회" && e.start === "2026-10-19" && e.end === "2026-11-27";
@@ -35,9 +35,10 @@ function sentence(e, today) {
   return (d ? d + " · " : "") + dateText(e, today) + (tent ? " 예정" : "") + " " + nameOf(e);
 }
 
-function partA(core, today) {
+function partA(items, today) {
   const sec = el("section", "h-a");
   sec.append(el("h2", "h-cap", "다음에 할 일"));
+  const core = items;
   if (!core.length) { sec.append(el("p", "h-big", "다가올 일정이 없어요.")); return sec; }
   // 가로 1/2씩: 왼쪽 = 큰 것 1건, 오른쪽 = 작은 것 3건(세로로 쌓음). 900px 이하는 위·아래.
   const grid = el("div", "h-a-grid");
@@ -109,14 +110,16 @@ export function renderHome(content) {
   if (document.getElementById("home-box")) return;
   const box = el("div", "home"); box.id = "home-box";
   content.append(box);
-  eventsP ||= fetch("../portal/data/events.json").then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); });
-  eventsP.then((raw) => {
+  const get = (u) => fetch(u).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); });
+  // D-Day(A)는 사용자가 정한 dday.json, 일정(C)은 조사한 events.json
+  eventsP ||= Promise.all([get("../portal/data/events.json"), get("dday.json")]);
+  eventsP.then(([raw, dd]) => {
     if (!box.isConnected) return;
     const today = seoulToday();
     // 제외 규칙: 2030학년도(examYear)만 → 중입·초졸·2033·2028 참고 제외, 서울 일정 제외, 평준화 배정 설명회 제외
     const all = (Array.isArray(raw) ? raw : raw.events || []).filter((e) => e.examYear === 2030 && e.start && e.region !== "seoul" && !EXCLUDED(e));
-    const core = CORE.map((id) => all.find((e) => e.id === id)).filter((e) => e && dn(endOf(e).length === 7 ? endOf(e) + "-28" : endOf(e)) >= dn(today))
-      .sort((p, q) => p.start.localeCompare(q.start));
-    box.append(partA(core, today), partC(all, today), partD(all, today));
+    const mine = (dd.items || []).map((x) => ({ title: x.title, start: x.date || x.month, status: "confirmed", note: x.note })).filter((x) => x.start)
+      .filter((x) => (x.start.length === 7 ? x.start >= today.slice(0, 7) : x.start >= today)).sort((p, q) => p.start.localeCompare(q.start));
+    box.append(partA(mine, today), partC(all, today), partD(all, today));
   }).catch(() => { eventsP = null; box.textContent = "일정을 불러오지 못했어요."; });
 }
