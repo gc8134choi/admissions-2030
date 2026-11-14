@@ -66,6 +66,7 @@ Playwright는 설치돼 있다(`require('playwright')`). 화면 변경 후 스�
 - 자율 범위: 내용 보완·버그·점수 개선·성능·접근성·데이터 갱신. 사용자 확인: 디자인 방향·메뉴 구조·화면 구조 대개편. 보고는 완료 한 줄과 변화가 있는 날 요약. 변화 없는 점검은 보고하지 않는다.
 - `main`에 직접 푸시하지 않는다. 작업 브랜치(`dev/*`, `research/*`, `data/*`, `pm/*`)에서 시작하기 전에 `origin/main`을 합치고, 끝나면 푸시한 세션이 직접 PR을 연다: `python3 tools/pm/prs.py open <브랜치> "<제목>"`(또는 `ship`). CI(`.github/workflows/ci.yml`)를 통과하면 `automerge.yml`이 자동 머지한다(`hold` 라벨이면 멈춤). 충돌이 나면 `origin/main`을 합쳐 다시 푸시한다. 사이트는 `main`에서 GitHub Pages로 배포된다.
 - 이 저장소의 클론은 `main`만 추적한다. `git fetch origin main` 뒤 `FETCH_HEAD`를 쓰고, 최신 상태 확인은 `git ls-remote origin main` 또는 `gh api repos/.../commits?sha=main`을 쓴다(로컬 `origin/main`은 오래될 수 있다). 푸시 직후 stop hook 경고를 막으려면 `git fetch origin +refs/heads/<브랜치>:refs/remotes/origin/<브랜치>`.
+- 푸시는 손으로 git을 여러 번 치지 말고 `python3 tools/pm/prs.py push "제목" [새 파일 경로...]` 한 번으로 한다(origin/main 합치기·커밋·푸시 재시도·PR 열기, 충돌은 보고). 자동 머지까지 기다리려면 이어서 `prs.py ship <브랜치>`.
 - 토큰 절약: 단순·반복 작업은 스크립트(`tools/`, `tools/pm/`)로 하고 출력은 요약만 본다.
 - 세션은 PM에 중간 진행을 보내지 않는다. 작업 완료(PR 링크와 확인 결과 한 줄)와 막힘·문의(질문 하나와 선택지)만 보낸다. 사용자에게 묻는 질문은 PM이 옵션 박스로 대신 묻는다.
 - 푸시하면 클릭 가능한 링크(PR·화면)를 알려준다. Pages 주소: `https://gc8134choi.github.io/admissions-2030/portal/`

@@ -6,6 +6,9 @@
   python3 tools/pm/prs.py open BRANCH [제목]   PR이 없으면 만든다(번호 출력)
   python3 tools/pm/prs.py merge-ready         CI 통과·병합 가능한 열린 PR을 모두 머지
   python3 tools/pm/prs.py ship BRANCH [제목] [--wait 분]   열고, CI를 기다렸다가, 머지(충돌/실패는 보고)
+  python3 tools/pm/prs.py push "제목" [파일...] [--no-pr]   현재 브랜치: origin/main 합치기→커밋→푸시(재시도)→PR 열기를 한 번에
+                    파일을 주면 그 파일(+이미 추적 중인 변경)만 커밋, 없으면 추적 중인 변경만. 새 파일은 반드시 경로로 지정(add -A 안 씀)
+                    커밋 꼬리말은 환경변수 SESSION_URL이 있으면 붙인다. 충돌은 합치기를 되돌리고 보고(종료 2)
 gh CLI(REST만 사용)가 필요하다. main 직접 푸시는 하지 않는다.
 """
 import json, subprocess, sys, time
@@ -141,6 +144,53 @@ def cmd_ship(branch, title=None, wait=12):
     return 5
 
 
+def _run(*a):
+    r = subprocess.run(list(a), capture_output=True, text=True)
+    return r.returncode, (r.stdout + r.stderr).strip()
+
+
+def cmd_push(title, files, open_pr=True):
+    import os
+    rc, br = _run("git", "rev-parse", "--abbrev-ref", "HEAD")
+    if br in ("main", "HEAD"):
+        print("main/분리된 HEAD에서는 푸시하지 않아요. 작업 브랜치로 옮기세요.")
+        return 1
+    _run("git", "fetch", "-q", "origin", "main")
+    rc, out = _run("git", "merge", "--no-edit", "FETCH_HEAD")
+    if rc != 0:
+        _run("git", "merge", "--abort")
+        print(f"CONFLICT: origin/main 합치기 실패(되돌림). 충돌 파일을 직접 풀어야 해요.\n{out[-300:]}")
+        return 2
+    _run("git", "add", "-u")
+    for f in files:
+        rc, o = _run("git", "add", "--", f)
+        if rc != 0:
+            print(f"add 실패: {f}: {o[:200]}")
+            return 1
+    if _run("git", "diff", "--cached", "--quiet")[0] != 0:
+        msg = title
+        url = os.environ.get("SESSION_URL")
+        if url:
+            msg += f"\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nClaude-Session: {url}"
+        rc, o = _run("git", "commit", "-q", "-m", msg)
+        if rc != 0:
+            print(f"commit 실패: {o[:300]}")
+            return 1
+    for i in range(4):
+        rc, o = _run("git", "push", "-q", "-u", "origin", br)
+        if rc == 0:
+            break
+        time.sleep(2 ** (i + 1))
+    else:
+        print(f"push 실패(4회): {o[-300:]}")
+        return 1
+    _run("git", "fetch", "-q", "origin", f"+refs/heads/{br}:refs/remotes/origin/{br}")
+    print(f"pushed {br}", flush=True)
+    if open_pr:
+        cmd_open(br, title.splitlines()[0])
+    return 0
+
+
 def main(argv):
     if len(argv) < 2:
         print(__doc__)
@@ -150,6 +200,14 @@ def main(argv):
         cmd_status()
     elif c == "open":
         cmd_open(argv[2], argv[3] if len(argv) > 3 else None)
+    elif c == "push":
+        args = argv[2:]
+        no_pr = "--no-pr" in args
+        args = [a for a in args if a != "--no-pr"]
+        if not args:
+            print(__doc__)
+            return 1
+        return cmd_push(args[0], args[1:], not no_pr)
     elif c == "merge-ready":
         cmd_merge_ready()
     elif c == "ship":
