@@ -19,3 +19,9 @@ a:focus-visible{outline:2px solid #06c;outline-offset:-2px}
 .content{min-height:60vh;padding:16px}
 .content:focus{outline:none}
 .title{margin:0;font-size:24px;line-height:1.4}
+
+/* 학교 보기: 4칸 균등 그리드. 좁은 화면에서는 칸 최소 폭을 지키고 가로 스크롤 */
+.sc-grid{margin-top:16px;overflow-x:auto}
+.sc-row{display:grid;grid-template-columns:repeat(4,minmax(140px,1fr))}
+.sc-cell{margin:0;padding:8px 12px;font-size:18px;line-height:1.4;min-width:0;overflow-wrap:anywhere}
+.sc-head{border-bottom:2px solid #222}
