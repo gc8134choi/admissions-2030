@@ -69,6 +69,7 @@ function renderHome() {
     if (!box.isConnected) return;
     const today = seoulToday(), month = today.slice(0, 7);
     const list = (Array.isArray(all) ? all : all.events || [])
+      .filter((e) => !(e.title === "평준화 배정 설명회" && e.start === "2026-10-19" && e.end === "2026-11-27")) // 홈에서 제외(사용자 지시): 제목+기간이 정확히 일치하는 1건만
       .filter((e) => e.examYear === 2030 && e.start) // 중입·초6(2033)·2028 참고 일정 제외
       .filter((e) => (e.end || e.start).length === 7 ? (e.end || e.start) >= month : (e.end || e.start) >= today)
       .sort((a, b) => a.start.localeCompare(b.start));
