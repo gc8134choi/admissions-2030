@@ -1,6 +1,6 @@
 // 해시 라우팅(최소): 주소 해시를 읽어 네비바의 현재 항목에 aria-current를 달고 선택된 메뉴 이름을 제목으로 보여 준다.
 // 내용은 항목별로 이후 지시에 따라 붙인다(데이터는 필요해질 때 ../portal/data/*.json을 읽는다). 해시가 없거나 모르는 값이면 홈.
-let schoolsP;
+let schoolsP, eventsP;
 const links = [...document.querySelectorAll("#nav a")], content = document.getElementById("content"), title = document.getElementById("title");
 function route() {
   let id = location.hash.slice(1);
@@ -12,6 +12,7 @@ function route() {
   content.dataset.route = id;
   title.hidden = id === "schools"; // 학교 보기는 화면 제목을 보이지 않는다(네비 항목으로 충분)
   if (id === "schools") renderSchools(); else document.getElementById("schools")?.remove();
+  if (id === "home") renderHome(); else document.getElementById("home-box")?.remove();
 }
 addEventListener("hashchange", route);
 route();
@@ -51,4 +52,43 @@ function renderSchools() {
     });
     box.append(head);
   }).catch(() => { schoolsP = null; box.textContent = "학교 목록을 불러오지 못했어요."; });
+}
+
+// 홈: 왼쪽 1/4 D-Day 박스(가장 가까운 일정 1건) + 오른쪽 3/4 일정 목록(오늘 이후, 날짜순). 데이터: ../portal/data/events.json
+// 사용 필드: start·end(날짜, 'YYYY-MM-DD' 또는 월만 'YYYY-MM'), title·label(이름), status(확정 여부), examYear(2030만).
+const pad = (n) => String(n).padStart(2, "0");
+const seoulToday = () => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul" }).format(new Date()); // YYYY-MM-DD
+const dayNum = (d) => { const [y, m, dd] = d.split("-").map(Number); return Date.UTC(y, m - 1, dd) / 864e5; };
+const fmtDate = (d) => d.replaceAll("-", ".");
+function renderHome() {
+  if (document.getElementById("home-box")) return;
+  const box = document.createElement("div"); box.id = "home-box"; box.className = "home";
+  content.append(box);
+  eventsP ||= fetch("../portal/data/events.json").then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); });
+  eventsP.then((all) => {
+    if (!box.isConnected) return;
+    const today = seoulToday(), month = today.slice(0, 7);
+    const list = (Array.isArray(all) ? all : all.events || [])
+      .filter((e) => e.examYear === 2030 && e.start) // 중입·초6(2033)·2028 참고 일정 제외
+      .filter((e) => (e.end || e.start).length === 7 ? (e.end || e.start) >= month : (e.end || e.start) >= today)
+      .sort((a, b) => a.start.localeCompare(b.start));
+    const name = (e) => (e.label ? e.title + " · " + e.label : e.title);
+    const next = list.find((e) => e.start.length === 10 && e.start >= today);
+    const dday = document.createElement("section"); dday.className = "home-dday";
+    if (next) {
+      const n = dayNum(next.start) - dayNum(today);
+      const big = document.createElement("p"); big.className = "dday-n"; big.textContent = n === 0 ? "D-Day" : "D-" + n;
+      const t = document.createElement("p"); t.className = "dday-t"; t.textContent = name(next) + (next.status !== "confirmed" ? " (예정)" : "");
+      dday.append(big, t);
+    } else dday.textContent = "다가올 일정이 없어요.";
+    const ul = document.createElement("ul"); ul.className = "home-list";
+    list.forEach((e) => {
+      const li = document.createElement("li");
+      const d = document.createElement("span"); d.className = "ev-date";
+      d.textContent = fmtDate(e.start) + (e.end && e.end !== e.start ? "~" + fmtDate(e.end) : "") + (e.status !== "confirmed" ? " 예정" : "");
+      const t = document.createElement("span"); t.className = "ev-title"; t.textContent = name(e);
+      li.append(d, t); ul.append(li);
+    });
+    box.append(dday, ul);
+  }).catch(() => { eventsP = null; box.textContent = "일정을 불러오지 못했어요."; });
 }
