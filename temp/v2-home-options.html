@@ -79,6 +79,29 @@ section.opt{margin-top:56px;padding-top:24px;border-top:3px solid var(--ink)}
 .e-q summary::-webkit-details-marker{display:none}
 .e-q summary::after{content:' ▾';color:var(--pt)}
 .e-q .ans{padding:0 0 14px}
+/* F 혼합안 */
+.f-a{border-bottom:2px solid var(--ink);padding-bottom:14px}
+.f-a .what{font-size:24px;font-weight:700;margin:4px 0}
+.f-tl{position:relative;height:250px;border-top:1px solid var(--line);margin-top:8px;list-style:none;padding:0}
+.f-tl .m{position:absolute;top:0;bottom:0;border-left:1px solid var(--line);font-size:14px;color:var(--sub);padding:4px 6px}
+.f-tl li{position:absolute;left:var(--l);top:var(--t);min-width:var(--w);border:2px solid var(--ink);background:#fff;padding:4px 8px;font-size:15px;white-space:nowrap}
+.f-tl li.pt-it{border-color:var(--pt);color:var(--pt);font-weight:700}
+.f-tl li.dot{border:0;padding-left:0}
+.f-tl li.dot::before{content:'';display:inline-block;width:10px;height:10px;background:var(--ink);margin-right:6px}
+.f-tl .today{position:absolute;top:0;bottom:0;left:9%;border-left:3px solid var(--pt)}
+.f-tl .today span{position:absolute;bottom:4px;left:6px;color:var(--pt);font-weight:700;font-size:14px;white-space:nowrap}
+.f-road{display:grid;grid-template-columns:repeat(4,1fr);margin-top:20px;border-top:1px solid var(--line)}
+.f-road div{padding:10px 10px 10px 0;font-size:15px}
+.f-road div b{display:block;font-size:16px}
+.f-road .now{border-top:6px solid var(--pt);margin-top:-3px}
+.f-road .now b{color:var(--pt)}
+.f-zoom{border:2px solid var(--pt);padding:16px;margin-top:-1px}
+@media (max-width:700px){
+  .f-tl{height:auto;border-top:0}
+  .f-tl .m,.f-tl .today{display:none}
+  .f-tl li{position:static;min-width:0;white-space:normal;margin:0 0 8px}
+  .f-road{grid-template-columns:1fr 1fr}
+}
 .rec{margin-top:56px;padding:20px;border:3px solid var(--pt)}
 .rec h2{color:var(--pt)}
 .cmp{width:100%;border-collapse:collapse;margin-top:12px;font-size:15px}
@@ -113,6 +136,8 @@ section.opt{margin-top:56px;padding-top:24px;border-top:3px solid var(--ink)}
 <li><a href="#c"><b>C</b>겨울 시간 띠(타임라인)형</a></li>
 <li><a href="#d"><b>D</b>3년 로드맵형</a></li>
 <li><a href="#e"><b>E</b>질문으로 찾기형</a></li>
+<li><a href="#f1"><b>F1</b>A+C+D 섞기: 오늘 → 이번 겨울 → 3년</a></li>
+<li><a href="#f2"><b>F2</b>A+C+D 섞기: 3년 길 안에 지금 칸 펼침</a></li>
 <li><a href="#rec"><b>→</b>추천과 한눈 비교</a></li>
 </ol>
 
@@ -250,8 +275,75 @@ section.opt{margin-top:56px;padding-top:24px;border-top:3px solid var(--ink)}
 <div class="verdict"><b>할머니 3초 테스트</b> 통과(첫 질문이 펼쳐져 있을 때).<br><b>구현 난이도</b> 중. 답의 날짜는 events.json에서 가져오되 질문 목록(5개 정도)은 새 데이터 파일이 필요.</div>
 </section>
 
+<section class="opt" id="f1">
+<h2>F1. A+C+D 섞기, 위에서 아래로 (오늘 → 이번 겨울 → 3년)</h2>
+<p class="concept">가까운 것부터 먼 것 순서. 맨 위 A의 큰 한 줄, 가운데 C의 겨울 시간 띠, 맨 아래 D의 3년 길은 한 줄로 얇게.</p>
+<div class="frame"><div class="nav"><span>스쿨 라이프</span><span class="on">홈</span><span>학교 보기</span><span>수능과 내신</span><span>수시·정시</span></div><div class="scr">
+<div class="f-a"><div class="cap">다음에 할 일</div><div class="what">고등학교 원서 접수</div>
+<div class="big"><span class="pt">D-20</span> · 12.4(금) ~ 12.10(목)</div>
+<p>용인은 교육지원청에 접수, 마감 17:00. <a class="lnk" href="#f1">자세히</a></p></div>
+<h3>이번 겨울 (11월 ~ 3월)</h3>
+<ol class="f-tl">
+<span class="m" style="left:0">11월</span><span class="m" style="left:20%">12월</span><span class="m" style="left:40%">1월</span><span class="m" style="left:60%">2월</span><span class="m" style="left:80%">3월</span>
+<span class="today"><span>오늘 11.14</span></span>
+<li class="dot" style="--l:10%;--t:30px">11.21 · 11.25 외고 설명회 2건</li>
+<li class="pt-it" style="--l:22%;--t:66px;--w:14%">12.4 ~ 12.10 원서 접수 · D-20</li>
+<li style="--l:23%;--t:106px;--w:20%">12.11 ~ 1.5 평준화 일반고 전형</li>
+<li class="dot" style="--l:31%;--t:146px">12.18(금) 졸업식 · D-34</li>
+<li class="dot" style="--l:62%;--t:180px">2.4 ~ 2.5 추가배정</li>
+<li class="dot" style="--l:81%;--t:214px">3월 입학식 예정</li>
+</ol>
+<h3>3년 길</h3>
+<div class="f-road">
+<div class="now"><b>지금 · 중3 겨울</b>원서 → 졸업 → 입학</div>
+<div><b>고1 · 2027</b>3월 예정 대입 개편안 공표</div>
+<div><b>고2 · 2028</b>선택 과목 정하기</div>
+<div><b>고3 · 2029</b>11.15(목) 예정 수능</div>
+</div>
+</div></div>
+<div class="eval">
+<div><h3>장점</h3><ul><li>3초 답(A)이 맨 위라 할머니 테스트 통과</li><li>C의 약점(모바일 가로 밀기)은 휴대폰에서 날짜순 세로 목록으로 바꿔 해결</li><li>D는 맨 아래 한 줄이라 화면을 차지하지 않음</li></ul></div>
+<div><h3>단점</h3><ul><li>세로로 길어짐(PC는 한 화면, 휴대폰은 두 화면 정도)</li><li>A와 시간 띠에 원서 접수가 두 번 나옴(띠에서는 강조색으로만 연결)</li></ul></div>
+</div>
+<div class="verdict"><b>할머니 3초 테스트</b> 통과.<br><b>구현 난이도</b> 중. 일정은 events.json 그대로, 3년 길 네 칸 문구만 새로(짧게).</div>
+</section>
+
+<section class="opt" id="f2">
+<h2>F2. A+C+D 섞기, 확대형 (3년 길 안에 지금 칸을 펼침)</h2>
+<p class="concept">맨 위에 D의 3년 길 띠. '지금' 칸이 아래로 열려 그 안에 A의 큰 한 줄과 C의 겨울 시간 띠가 들어감. 학년이 바뀌면 열리는 칸만 옮겨 감.</p>
+<div class="frame"><div class="nav"><span>스쿨 라이프</span><span class="on">홈</span><span>학교 보기</span><span>수능과 내신</span><span>수시·정시</span></div><div class="scr">
+<div class="f-road">
+<div class="now"><b>지금 · 중3 겨울</b>원서 → 졸업 → 입학</div>
+<div><b>고1 · 2027</b>3월 예정 대입 개편안 공표</div>
+<div><b>고2 · 2028</b>선택 과목 정하기</div>
+<div><b>고3 · 2029</b>11.15(목) 예정 수능</div>
+</div>
+<div class="f-zoom">
+<div class="f-a"><div class="cap">다음에 할 일</div><div class="what">고등학교 원서 접수</div>
+<div class="big"><span class="pt">D-20</span> · 12.4(금) ~ 12.10(목)</div>
+<p>용인은 교육지원청에 접수, 마감 17:00. <a class="lnk" href="#f2">자세히</a></p></div>
+<ol class="f-tl">
+<span class="m" style="left:0">11월</span><span class="m" style="left:20%">12월</span><span class="m" style="left:40%">1월</span><span class="m" style="left:60%">2월</span><span class="m" style="left:80%">3월</span>
+<span class="today"><span>오늘 11.14</span></span>
+<li class="dot" style="--l:10%;--t:30px">11.21 · 11.25 외고 설명회 2건</li>
+<li class="pt-it" style="--l:22%;--t:66px;--w:14%">12.4 ~ 12.10 원서 접수 · D-20</li>
+<li style="--l:23%;--t:106px;--w:20%">12.11 ~ 1.5 평준화 일반고 전형</li>
+<li class="dot" style="--l:31%;--t:146px">12.18(금) 졸업식 · D-34</li>
+<li class="dot" style="--l:62%;--t:180px">2.4 ~ 2.5 추가배정</li>
+<li class="dot" style="--l:81%;--t:214px">3월 입학식 예정</li>
+</ol>
+</div>
+</div></div>
+<div class="eval">
+<div><h3>장점</h3><ul><li>'3년 중 지금 어디'와 '지금 뭘'이 한 번에 보임</li><li>3년 동안 같은 틀을 쓰고 칸만 바뀜(D의 장점 유지)</li><li>고1이 되면 시간 띠가 '1학기' 같은 기간으로 자연스럽게 바뀜</li></ul></div>
+<div><h3>단점</h3><ul><li>3초 답(A)이 3년 길 띠 아래로 한 칸 내려감</li><li>칸이 열리는 모양을 테두리로 이어야 해서 디자인 손이 더 감</li></ul></div>
+</div>
+<div class="verdict"><b>할머니 3초 테스트</b> 대체로 통과(큰 글씨 D-20이 첫 화면 안에 있음).<br><b>구현 난이도</b> 중. F1과 같은 데이터, 학년 칸 선택(오늘 날짜로 지금 칸 정하기) 코드만 추가.</div>
+</section>
+
 <section class="rec" id="rec">
-<h2>추천: B안 (이번 주 · 다음 주 · 이번 달 묶음형)</h2>
+<p><b>A+C+D 섞기 요청(추가)</b>: 둘 중에는 <b>F1</b>을 권합니다. 할머니용 3초 답이 맨 위에 있고, 3년 길은 아래 한 줄이면 충분합니다.</p>
+<h2>처음 추천: B안 (이번 주 · 다음 주 · 이번 달 묶음형)</h2>
 <p>1. '이번 주/다음 주/12월'이라는 시간 말로 묶어, 할머니도 맨 위 묶음 첫 줄만 보면 다음 할 일을 압니다.</p>
 <p>2. 설명회 22건을 한 줄로 접고 D-일수는 원서·졸업 같은 큰 일정에만 날짜와 함께 붙여, 지적된 문제 ①②를 바로 풉니다.</p>
 <p>3. 데이터를 새로 만들 필요 없이 events.json만으로 되고, 나중에 A안의 큰 한 줄을 맨 위에 얹는 것도 쉽습니다.</p>
@@ -263,6 +355,8 @@ section.opt{margin-top:56px;padding-top:24px;border-top:3px solid var(--ink)}
 <tr><td>C 시간 띠</td><td>어려움</td><td>없음</td><td>중상</td></tr>
 <tr><td>D 로드맵</td><td>보통</td><td>학년 칸 문구</td><td>중</td></tr>
 <tr><td>E 질문</td><td>통과</td><td>질문 목록</td><td>중</td></tr>
+<tr><td>F1 섞기(쌓기)</td><td>통과</td><td>3년 길 문구</td><td>중</td></tr>
+<tr><td>F2 섞기(확대)</td><td>대체로 통과</td><td>3년 길 문구</td><td>중</td></tr>
 </tbody>
 </table>
 </section>
