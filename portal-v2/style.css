@@ -55,3 +55,7 @@ a:focus-visible{outline:2px solid #06c;outline-offset:-2px}
 .f-road>div+div{border-left:0;border-top:1px solid #ddd}
 .h-big{font-size:28px}
 }
+.sc-group{margin:24px 0 4px;padding:0 12px;font-size:20px;line-height:1.4}
+.sc-data{border-bottom:1px solid #ddd}
+.sc-label{grid-column:1/-1;margin:0;padding:8px 12px 0;font-size:12px}
+.sc-val{margin:0;padding:2px 12px 8px;font-size:14px;font-weight:500;min-width:0;overflow-wrap:anywhere}

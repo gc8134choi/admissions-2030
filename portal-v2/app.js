@@ -20,6 +20,14 @@ route();
 
 // 학교 보기: 근처 고등학교 4곳을 왼쪽→오른쪽 풍덕·홍천·성복·수지 순서로 가로 4칸. 표시 이름은 schools.json에서 id로 읽는다.
 // 칸 아래 내용은 이후 지시에 따라 행(.sc-row)으로 추가한다(같은 행이 4칸에 정렬되는 그리드).
+// 비교 행 묶음(소제목, hs-compare.json 필드 id). 4개교 모두 값이 있는 것만 보인다.
+const GROUPS = [
+  ["기본 정보", ["type", "founding", "coed"]],
+  ["입학", ["admission", "zone"]],
+  ["학생수·규모", ["classes", "classesDetail", "students", "studentsDetail", "teachers", "perClass", "perTeacher"]],
+  ["교육과정·과목", ["curriculum", "subjectCount"]],
+  ["생활", ["meal", "dorm"]],
+];
 const SCHOOL_IDS = ["school-pungdeok", "school-yonginheungcheon", "school-seongbok", "school-suji"];
 function renderSchools() {
   if (document.getElementById("schools")) return;
@@ -27,8 +35,8 @@ function renderSchools() {
   box.id = "schools"; box.className = "sc-grid";
   content.append(box);
   const get = (u) => fetch(u).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); });
-  schoolsP ||= Promise.all([get("../portal/data/schools.json"), get("../portal/data/links.json")]);
-  schoolsP.then(([all, links]) => {
+  schoolsP ||= Promise.all([get("../portal/data/schools.json"), get("../portal/data/links.json"), get("../portal/data/hs-compare.json")]);
+  schoolsP.then(([all, links, cmp]) => {
     if (!box.isConnected) return;
     const list = Array.isArray(all) ? all : all.schools || [];
     const head = document.createElement("div"); head.className = "sc-row sc-head";
@@ -52,5 +60,21 @@ function renderSchools() {
       txt.append(h, sub); cell.append(img, txt); head.append(cell);
     });
     box.append(head);
+    // 비교 행: hs-compare.json의 schools[].values[필드].value. 네 학교 모두 값이 있는 필드만(없으면 그 행을 건너뜀).
+    const rows = SCHOOL_IDS.map((id) => cmp.schools.find((x) => x.schoolId === id)?.values || {});
+    GROUPS.forEach(([gt, ids]) => {
+      const f = ids.map((fid) => cmp.fields.find((x) => x.id === fid)).filter((f) => f && rows.every((v) => v[f.id] && v[f.id].value != null && v[f.id].value !== ""));
+      if (!f.length) return;
+      box.append(Object.assign(document.createElement("h3"), { className: "sc-group", textContent: gt }));
+      f.forEach((fl) => {
+        const row = document.createElement("div"); row.className = "sc-row sc-data";
+        row.append(Object.assign(document.createElement("p"), { className: "sc-label", textContent: fl.label }));
+        rows.forEach((v) => {
+          const x = v[fl.id].value;
+          row.append(Object.assign(document.createElement("p"), { className: "sc-val", textContent: typeof x === "number" ? x.toLocaleString() + (fl.unit || "") : x }));
+        });
+        box.append(row);
+      });
+    });
   }).catch(() => { schoolsP = null; box.textContent = "학교 목록을 불러오지 못했어요."; });
 }
